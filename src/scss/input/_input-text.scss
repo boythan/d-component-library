@@ -1,0 +1,89 @@
+@import "../variables";
+
+@mixin input {
+    padding: $input-padding;
+    border-radius: $border-radius !important;
+    outline: none !important;
+    color: $input-color-content;
+}
+
+@mixin disabled {
+    padding: $input-padding !important;
+    color: $input-color-disabled !important;
+    background-color: $input-bg-color-disabled !important;
+    border: none !important;
+}
+
+@mixin outline {
+    border: $input-border !important;
+    outline: none;
+
+    &:focus {
+        outline: none !important;
+        border: $input-border-focus !important;
+    }
+}
+
+@mixin standard {
+    border: none !important;
+    border-bottom: $input-border !important;
+    outline: none;
+    padding-left: 0px;
+
+    &:focus {
+        outline: none !important;
+        border: none !important;
+        border-bottom: $input-border-focus !important;
+    }
+}
+/********************************************LABEL & CONTAINER********************************************/
+.d-input-text__container {
+    display: flex;
+    flex-direction: column;
+}
+
+.d-input-text__label {
+    color: $input-color-label;
+}
+
+/********************************************INPUT TEXT********************************************/
+.d-input-text__input {
+    @include input();
+    height: 40px !important;
+    &::placeholder {
+        opacity: 0.4;
+    }
+}
+
+.d-input-text__input-outline {
+    @include outline();
+}
+
+.d-input-text__input-standard {
+    @include standard();
+}
+
+.d-input-text__error {
+    border: $input-border-error !important;
+}
+
+.d-input-text__input-disabled {
+    @include disabled();
+}
+
+/********************************************INPUT AREA********************************************/
+.d-input-area__input {
+    @include input();
+}
+
+.d-input-area__input-outline {
+    @include outline();
+}
+
+.d-input-area__input-standard {
+    @include standard();
+}
+
+.d-input-area__input-disabled {
+    @include disabled();
+}

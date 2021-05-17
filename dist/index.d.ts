@@ -1,3 +1,3 @@
-import "./index.scss";
-export type { ButtonProps } from "./components/button/Button";
-export { default as Button } from "./components/button/Button";
+import "./scss/index.scss";
+export type { InputTextProps } from "./components/input/InputText";
+export { default as InputText } from "./components/input/InputText";

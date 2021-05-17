@@ -1,0 +1,251 @@
+/*
+// .site
+*/
+@import "../variables";
+@import "../mixins/hacks";
+
+$height-nav-bar: 60px;
+$height-content-nav-bar: 40px;
+$width-side-bar: 250px;
+.site {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.site__header {
+    flex-shrink: 0;
+}
+.site__body {
+    flex-grow: 1;
+}
+.site__footer {
+    flex-shrink: 0;
+}
+
+.app-layout__navbar {
+    background-color: $light-color;
+    height: $height-nav-bar;
+    padding: 8px 16px;
+    border-bottom: 1px solid $light-divider-color;
+    display: flex;
+    align-items: center;
+}
+
+.app-layout__menu-list {
+    height: 100%;
+    overflow: hidden;
+}
+.app-layout__wrapper {
+    display: flex;
+    align-items: stretch;
+    height: 100vh;
+}
+
+#app-layout__sidebar {
+    min-width: $width-side-bar;
+    max-width: $width-side-bar;
+    transition: all 0.3s;
+    background-color: $dark-color;
+    overflow-y: scroll;
+    padding-bottom: 2rem;
+}
+
+#app-layout__sidebar::-webkit-scrollbar {
+    display: none;
+}
+
+.app-layout__sidebar-button {
+    padding: 0px !important;
+    > i {
+        color: $dark-color;
+    }
+}
+
+#app-layout__sidebar.active {
+    min-width: 0px;
+    max-width: 0px;
+    text-align: center;
+}
+
+#app-layout__sidebar.active .app-layout__menu-list,
+#app-layout__sidebar.active .app-layout__sidebar-user-info,
+#app-layout__sidebar.active .CTAs {
+    display: none;
+}
+
+.app-layout__sidebar-header {
+    background: $accent-color;
+    height: $height-nav-bar;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 5px 20px;
+    min-width: $width-side-bar;
+    max-width: $width-side-bar;
+    transition: all 0.3s;
+    img {
+        object-fit: contain !important;
+        height: 100%;
+        width: 100%;
+    }
+}
+.app-layout__sidebar-user-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+
+    .user-info-avatar {
+        height: 85px;
+        width: 85px;
+        object-fit: cover;
+        border-radius: 40px;
+        margin: 10px;
+    }
+
+    .user-info-email {
+        color: $light-opposite-muted-color;
+        margin-top: 1rem;
+    }
+}
+
+.app-layout__menu-list-item {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    i {
+        color: $light-opposite-muted-color;
+    }
+
+    :hover {
+        cursor: pointer;
+    }
+}
+
+.app-layout__menu-list-item-inner {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.app-layout__menu-list-item-active {
+    background: rgba($color: #ffffff, $alpha: 0.3);
+
+    i {
+        color: $light-color;
+    }
+
+    .app-layout__menu-list-title {
+        color: $light-color;
+    }
+}
+
+.app-layout__sub-menu-item-active {
+    .app-layout__menu-list-title {
+        color: $light-color !important;
+    }
+}
+
+.app-layout__menu-list-title {
+    color: $light-opposite-muted-color;
+    margin-left: 20px;
+    flex: 1;
+}
+
+.app-layout__sub-menu-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.app-layout__sub-menu-item {
+    padding: 10px;
+    color: $light-opposite-muted-color;
+
+    i {
+        color: $dark-color;
+    }
+}
+
+.app-layout__nav-bar-content {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.app-layout__nav-bar-right-content {
+    display: flex;
+    position: relative;
+    i {
+        font-size: 20px;
+    }
+    > .btn {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        height: $height-content-nav-bar !important;
+        width: $height-content-nav-bar !important;
+        padding: 0px;
+    }
+    .btn-setting {
+        height: $height-content-nav-bar;
+        width: $height-content-nav-bar;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        background-color: $accent-color;
+        i {
+            color: $light-color;
+        }
+    }
+
+    > .btn-notification {
+        margin-right: 10px;
+    }
+
+    .app-layout__nav-bar-language {
+        margin-right: 1rem;
+    }
+
+    .topbar-dropdown__btn {
+        background-color: $btn-trans-bg-color;
+        height: $height-content-nav-bar !important;
+        margin-right: 1rem;
+    }
+}
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+
+.app-layout__content {
+    width: 100%;
+    min-height: 100vh;
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+    width: calc(100vw - 250px) !important;
+}
+
+.app-layout__content.active {
+    width: 100vw !important;
+}
+
+.app-layout__dropdown-setting {
+    box-shadow: 0 1px 15px rgba(#000, 0.25);
+    background: $light-color;
+    color: $light-opposite-color;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+
+    // without it IE renders a blurred menu
+    @include only-ie() {
+        box-shadow: 0 0 0 1px rgba(#000, 0.15);
+    }
+}

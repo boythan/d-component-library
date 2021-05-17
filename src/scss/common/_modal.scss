@@ -1,0 +1,30 @@
+.sm-modal {
+    width: 40% !important;
+}
+.md-modal {
+    width: 50% !important;
+}
+.lg-modal {
+    width: 85% !important;
+}
+
+@media screen and (max-width: 576px) {
+    .sm-modal {
+        width: 100% !important;
+    }
+    .md-modal {
+        width: 100% !important;
+    }
+    .lg-modal {
+        width: 100% !important;
+    }
+}
+
+@media screen and (min-width: 576px) and (max-width: 768px) {
+    .sm-modal {
+        width: 60% !important;
+    }
+    .md-modal {
+        width: 85% !important;
+    }
+}
