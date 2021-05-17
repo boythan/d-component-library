@@ -1,2 +1,3 @@
-export type { ButtonProps } from "./components/Button";
-export { default as Button } from "./components/Button";
+import "./index.scss";
+export type { ButtonProps } from "./components/button/Button";
+export { default as Button } from "./components/button/Button";
