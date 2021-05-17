@@ -633,8 +633,7 @@ h6,
   padding: 10px 16px;
   border-radius: 0px !important;
   outline: none !important;
-  color: #3D464D;
-  height: 40px !important; }
+  color: #3D464D; }
   .d-input-text__input::placeholder {
     opacity: 0.4; }
 
