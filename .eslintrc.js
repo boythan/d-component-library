@@ -41,7 +41,7 @@ module.exports = {
         "react/jsx-props-no-spreading": [0],
         "react/jsx-fragments": ["error", "element"],
         "no-unused-vars": "off",
-        "@typescript-eslint/no-unused-vars": ["error"],
+        "@typescript-eslint/no-unused-vars": ["warn"],
         "import/extensions": [
             "error",
             "ignorePackages",
@@ -66,7 +66,11 @@ module.exports = {
             },
         ],
         "react/jsx-filename-extension": [1, { extensions: [".jsx", ".tsx"] }],
-        "eslint quotes": ["never", "double"],
+        quotes: [0, "double"],
         "arrow-body-style": ["error", "never"],
+        "import/no-extraneous-dependencies": [0],
+        "object-curly-newline": [0],
+        "arrow-body-style": [0],
+        "comma-dangle": [0],
     },
 };

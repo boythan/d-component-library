@@ -7,7 +7,7 @@ import scss from "rollup-plugin-scss";
 import pkg from "./package.json";
 
 export default {
-    input: "src/index.tsx",
+    input: "src/dcomponent.tsx",
     output: [
         {
             file: pkg.main,
@@ -25,7 +25,9 @@ export default {
     plugins: [
         external(),
         resolve(),
-        scss(),
+        scss({
+            output: true,
+        }),
         typescript({
             rollupCommonJSResolveHack: true,
             exclude: "**/__tests__/**",
