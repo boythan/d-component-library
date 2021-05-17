@@ -1,7 +1,6 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
-// @ts-ignore
 import { Button } from "d-component-library";
 
 function App() {
@@ -21,7 +20,7 @@ function App() {
           Learn React
         </a>
       </header>
-      <Button />
+      <Button content="test" />
     </div>
   );
 }
