@@ -1,9 +1,9 @@
 import React, { ReactElement } from "react";
 
-interface Props {
+export interface ButtonProps {
   content?: string;
 }
 
-export default function Button({ content }: Props): ReactElement {
+export default function Button({ content }: ButtonProps): ReactElement {
   return <button type="button">{content}</button>;
 }
