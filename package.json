@@ -1,6 +1,6 @@
 {
   "name": "d-react-components",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
   "typings": "dist/index.d.ts",
@@ -66,11 +66,13 @@
     "eslint-plugin-jsx-a11y": "6.4.1",
     "eslint-plugin-react": "7.21.5",
     "npm-run-all": "^4.1.5",
+    "postcss": "^8.2.15",
     "rollup": "^2.48.0",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.0",
     "rollup-plugin-scss": "^2.6.1",
     "rollup-plugin-typescript2": "^0.30.0",
     "typescript": "^4.1.2"
