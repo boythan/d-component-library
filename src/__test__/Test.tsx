@@ -1,8 +1,9 @@
-import "antd/dist/antd.css";
 import React, { ReactElement, useState } from "react";
+import InputText from "../components/input/InputText";
+import Icon, { IconProps } from "../components/icon/Icon";
 import Button from "../components/button/Button";
 import HeaderTable from "../components/header/HeaderTable";
-import InputText from "../components/input/InputText";
+import Checkbox from "../components/checkbox/Checkbox";
 import Select from "../components/select/Select";
 
 interface Props {
@@ -17,6 +18,7 @@ const ATTRIBUTE_INPUT_TYPE = [
 ];
 
 export default function Test({ content }: Props): ReactElement {
+    const [checked, setChecked] = useState(false);
     const [valueSelect, setValueSelect] = useState();
     return (
         <div className="p-5">
@@ -56,6 +58,11 @@ export default function Test({ content }: Props): ReactElement {
                 onClickFilter={() => {}}
                 onClickNew={() => {}}
             />
+
+            <div className="my-5">
+                <Checkbox value="123" variant="radio" label="Label value 1" />
+                <Checkbox value="123" variant="checkbox" label="Label value 1" />
+            </div>
         </div>
     );
 }
