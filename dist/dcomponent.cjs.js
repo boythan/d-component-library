@@ -16895,6 +16895,15 @@ var Select = function (_a) {
                     jsxRuntime.jsx("text", __assign({ className: errorTextClass }, { children: error }), void 0)] }), void 0))] }), void 0));
 };
 
+var Checkbox = function (_a) {
+    var className = _a.className, classNameInput = _a.classNameInput, id = _a.id, name = _a.name, value = _a.value, onChange = _a.onChange, label = _a.label, _b = _a.variant, variant = _b === void 0 ? "square" : _b;
+    var classNameContainer = classnames("checkbox__container", className);
+    var classNameCheckbox = classnames("checkbox__input", "checkbox__input-" + variant, classNameInput);
+    return (jsxRuntime.jsxs("div", __assign({ className: classNameContainer }, { children: [jsxRuntime.jsx("input", { type: "checkbox", id: id, name: name, value: value, onChange: onChange, className: classNameCheckbox }, void 0),
+            jsxRuntime.jsx("text", __assign({ className: "ml-3" }, { children: label }), void 0)] }), void 0));
+};
+
+exports.Checkbox = Checkbox;
 exports.Icon = Icon$1;
 exports.InputText = InputText;
 exports.Select = Select;

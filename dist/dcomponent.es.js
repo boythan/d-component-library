@@ -16866,5 +16866,13 @@ var Select = function (_a) {
                     jsx("text", __assign({ className: errorTextClass }, { children: error }), void 0)] }), void 0))] }), void 0));
 };
 
-export { Icon$1 as Icon, InputText, Select };
+var Checkbox = function (_a) {
+    var className = _a.className, classNameInput = _a.classNameInput, id = _a.id, name = _a.name, value = _a.value, onChange = _a.onChange, label = _a.label, _b = _a.variant, variant = _b === void 0 ? "square" : _b;
+    var classNameContainer = classnames("checkbox__container", className);
+    var classNameCheckbox = classnames("checkbox__input", "checkbox__input-" + variant, classNameInput);
+    return (jsxs("div", __assign({ className: classNameContainer }, { children: [jsx("input", { type: "checkbox", id: id, name: name, value: value, onChange: onChange, className: classNameCheckbox }, void 0),
+            jsx("text", __assign({ className: "ml-3" }, { children: label }), void 0)] }), void 0));
+};
+
+export { Checkbox, Icon$1 as Icon, InputText, Select };
 //# sourceMappingURL=dcomponent.es.js.map

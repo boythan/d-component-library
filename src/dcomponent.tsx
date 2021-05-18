@@ -8,3 +8,6 @@ export { default as Icon } from "./components/icon/Icon";
 
 export type { SelectProps } from "./components/select/Select";
 export { default as Select } from "./components/select/Select";
+
+export type { CheckboxProps } from "./components/checkbox/Checkbox";
+export { default as Checkbox } from "./components/checkbox/Checkbox";

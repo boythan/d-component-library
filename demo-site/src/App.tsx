@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
-import { InputText, Select } from "d-component-library";
+import { InputText, Select, Checkbox } from "d-component-library";
 
 const ATTRIBUTE_INPUT_TYPE = [
     { id: "dropdown", label: "dropdown" },
@@ -21,6 +21,7 @@ function App() {
                     value={selectValue}
                     className="mt-5"
                 />
+                <Checkbox />
             </div>
         </div>
     );
