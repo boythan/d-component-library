@@ -11,6 +11,7 @@ export interface CheckboxGroupProps {
     value?: Array<any>;
     defaultValue?: Array<any>;
     onChange?: (values: Array<any>) => void;
+    getDisabledItem?: (checkItem: any) => void;
 }
 
 const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
@@ -20,6 +21,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
     getValue = (item: any) => item?.id,
     value = [],
     onChange,
+    getDisabledItem,
 }) => {
     const containerClass = ClassNames("d-checkbox-group", className);
 
@@ -35,6 +37,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
                 const iLabel = getLabel(item);
                 const iValue: any = getValue(item);
                 const isChecked = listValues.includes(iValue);
+                const isDisabled = ((getDisabledItem && getDisabledItem(item)) as any) || false;
                 return (
                     <Checkbox
                         label={iLabel}
@@ -52,6 +55,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
                             onChange && onChange(clone);
                         }}
                         checked={isChecked}
+                        disabled={isDisabled}
                     />
                 );
             })}
