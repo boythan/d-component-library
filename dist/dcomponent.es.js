@@ -114,7 +114,7 @@ var InputText = function (_a) {
     var className = _a.className, classNameInput = _a.classNameInput, _b = _a.variant, variant = _b === void 0 ? "outline" : _b, // standard || outline
     multiple = _a.multiple, value = _a.value, error = _a.error, name = _a.name, label = _a.label, key = _a.key, placeholder = _a.placeholder, type = _a.type, _c = _a.rows, rows = _c === void 0 ? 5 : _c, cols = _a.cols, disabled = _a.disabled, onChange = _a.onChange, onBlur = _a.onBlur;
     var container = classnames("d-input-text__container", className);
-    var labelClass = classnames("text-x-small", "d-input-text__label");
+    var labelClass = classnames("text-label");
     var inputClass = classnames("text-x-small", "d-input-text__input", "d-input-text__input-" + variant, {
         "d-input-text__input-disabled": disabled,
         "d-input-text__error": !!error,
@@ -16848,7 +16848,7 @@ var Select = function (_a) {
         });
     }, [dataSource]);
     var container = classnames("d-select__container", "d-select__container-" + variant, className);
-    var labelClass = classnames("text-x-small", "d-select__label");
+    var labelClass = classnames("text-label");
     var selectClass = classnames("d-select__select", "d-select__select-" + variant, {
         "d-select__select-disabled": disabled,
         "d-select__error": !!error,

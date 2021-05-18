@@ -34,7 +34,7 @@ const InputText = ({
     onBlur,
 }: InputTextProps) => {
     const container = classname("d-input-text__container", className);
-    const labelClass = classname("text-x-small", "d-input-text__label");
+    const labelClass = classname("text-label");
 
     const inputClass = classname(
         "text-x-small",

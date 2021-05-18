@@ -43,10 +43,6 @@
     flex-direction: column;
 }
 
-.d-input-text__label {
-    color: $input-color-label;
-}
-
 /********************************************INPUT TEXT********************************************/
 .d-input-text__input {
     @include input();
