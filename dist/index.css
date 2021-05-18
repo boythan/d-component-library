@@ -8622,3 +8622,64 @@ h6,
 /* ----------------------------------------
 // Checkbox
 // ---------------------------------------- */
+.checkbox__container {
+  display: flex;
+  align-items: center;
+  flex-direction: row; }
+  .checkbox__container .checkbox__input-wrapper {
+    cursor: pointer;
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    height: 18px;
+    width: 18px; }
+    .checkbox__container .checkbox__input-wrapper .checkbox__input {
+      cursor: pointer;
+      position: absolute;
+      opacity: 0;
+      height: 18px;
+      width: 18px; }
+    .checkbox__container .checkbox__input-wrapper .checkbox__check-mark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      border: 2px solid #bbbbbb;
+      pointer-events: none;
+      min-width: 18px; }
+    .checkbox__container .checkbox__input-wrapper .checkbox__input:checked ~ .checkbox__check-mark {
+      background-color: #DE0D0C !important;
+      border: none; }
+  .checkbox__container .checkbox__input-wrapper-checkbox .checkbox__check-mark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 5px;
+    top: 0px;
+    width: 8px;
+    height: 14px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg); }
+  .checkbox__container .checkbox__input-wrapper-radio .checkbox__check-mark {
+    border-radius: 999px; }
+  .checkbox__container .checkbox__input-wrapper-radio .checkbox__check-mark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    top: 5px;
+    left: 5px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white; }
+  .checkbox__container .checkbox__input:checked ~ .checkbox__check-mark::after {
+    display: block; }
+  .checkbox__container .checkbox__label {
+    display: block;
+    margin-left: 8px; }
