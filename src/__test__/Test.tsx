@@ -5,6 +5,7 @@ import Button from "../components/button/Button";
 import HeaderTable from "../components/header/HeaderTable";
 import Checkbox from "../components/checkbox/Checkbox";
 import Select from "../components/select/Select";
+import CheckboxGroup from "../components/checkbox/CheckboxGroup";
 
 interface Props {
     content?: any;
@@ -19,17 +20,20 @@ const ATTRIBUTE_INPUT_TYPE = [
 
 export default function Test({ content }: Props): ReactElement {
     const [checked, setChecked] = useState(false);
-    const [valueSelect, setValueSelect] = useState();
+    const [valueSelect, setValueSelect] = useState(["text"]);
+
+    console.log({ valueSelect });
+
     return (
         <div className="p-5">
             <InputText />
-            <Select
+            {/* <Select
                 dataSource={ATTRIBUTE_INPUT_TYPE}
                 label="Please select"
                 className="mt-4"
                 value={valueSelect}
                 onChange={setValueSelect}
-            />
+            /> */}
             <div className="d-flex my-4">
                 <div className="d-flex flex-column mr-5">
                     <Button content="Button" />
@@ -62,6 +66,14 @@ export default function Test({ content }: Props): ReactElement {
             <div className="my-5">
                 <Checkbox value="123" variant="radio" label="Label value 1" />
                 <Checkbox value="123" variant="checkbox" label="Label value 1" />
+                <Checkbox value="123" variant="checkbox" label="Label value 1" disabled />
+            </div>
+            <div className="my-5">
+                <CheckboxGroup
+                    dataSource={ATTRIBUTE_INPUT_TYPE}
+                    value={valueSelect}
+                    onChange={(value) => setValueSelect(value)}
+                />
             </div>
         </div>
     );
