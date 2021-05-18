@@ -3,7 +3,7 @@ import classname from "classnames";
 
 export interface IconProps {
     name: string;
-    size?: "medium" | "large" | "small";
+    size?: "medium" | "large" | "small" | "x-small";
     className?: string;
 }
 

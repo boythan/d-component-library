@@ -3,6 +3,7 @@
 import React from "react";
 import { render } from "react-dom";
 import reportWebVitals from "./__test__/reportWebVitals";
+import "bootstrap/dist/css/bootstrap.min.css";
 import Test from "./__test__/Test";
 import "./scss/index.scss";
 

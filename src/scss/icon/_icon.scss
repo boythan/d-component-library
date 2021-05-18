@@ -1,14 +1,16 @@
+@import "../variables";
+
 .customized-icon {
-    &-tiny {
-        font-size: 18px;
+    &-x-small {
+        font-size: $text-x-small-size;
     }
     &-small {
-        font-size: 20px;
+        font-size: $text-small-size;
+    }
+    &-medium {
+        font-size: $text-medium-size;
     }
     &-large {
-        font-size: 30px;
-    }
-    &-super-large {
-        font-size: 100px;
+        font-size: $text-large-size;
     }
 }
