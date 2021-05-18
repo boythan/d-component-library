@@ -1,3 +1,5 @@
+/* eslint-disable implicit-arrow-linebreak */
+/* eslint-disable operator-linebreak */
 import { Select as SelectAnt } from "antd";
 import classname from "classnames";
 import React, { useMemo } from "react";
@@ -46,7 +48,7 @@ const Select = ({
     );
 
     const container = classname("d-select__container", `d-select__container-${variant}`, className);
-    const labelClass = classname("text-x-small", "d-select__label");
+    const labelClass = classname("text-label");
 
     const selectClass = classname(
         "d-select__select",

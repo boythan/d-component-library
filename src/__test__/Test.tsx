@@ -4,16 +4,32 @@ import Icon, { IconProps } from "../components/icon/Icon";
 import Button from "../components/button/Button";
 import HeaderTable from "../components/header/HeaderTable";
 import Checkbox from "../components/checkbox/Checkbox";
+import Select from "../components/select/Select";
 
 interface Props {
     content?: any;
 }
 
+const ATTRIBUTE_INPUT_TYPE = [
+    { id: "dropdown", label: "dropdown" },
+    { id: "text", label: "swatchText" },
+    { id: "image", label: "swatchImage" },
+    { id: "color", label: "swatchColor" },
+];
+
 export default function Test({ content }: Props): ReactElement {
     const [checked, setChecked] = useState(false);
+    const [valueSelect, setValueSelect] = useState();
     return (
         <div className="p-5">
             <InputText />
+            <Select
+                dataSource={ATTRIBUTE_INPUT_TYPE}
+                label="Please select"
+                className="mt-4"
+                value={valueSelect}
+                onChange={setValueSelect}
+            />
             <div className="d-flex my-4">
                 <div className="d-flex flex-column mr-5">
                     <Button content="Button" />

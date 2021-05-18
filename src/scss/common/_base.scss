@@ -241,6 +241,11 @@ text,
     }
 }
 
+.text-label {
+    @extend .text-x-small-bold;
+    color: $input-color-label;
+}
+
 .text-nowrap {
     white-space: nowrap !important;
     overflow: hidden !important;

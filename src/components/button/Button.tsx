@@ -29,7 +29,7 @@ const Button: React.FC<ButtonProps> = ({
     });
     const iconClass = ClassNames("d-block", { "mx-2": content && iconName });
     return (
-        <button className={buttonClass} type={type} disabled={disabled}>
+        <button className={buttonClass} type={type} disabled={disabled} onClick={onClick}>
             {iconName && <Icon name={iconName} size="large" className={iconClass} />}
             {content}
         </button>
