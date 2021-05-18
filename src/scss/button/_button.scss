@@ -1,0 +1,42 @@
+@import "../mixins/buttons";
+
+//base
+.d-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 56px;
+    width: fit-content;
+    border: none;
+}
+
+//size
+.d-button_large {
+    @include btn-large();
+}
+.d-button_medium {
+    @include btn-medium();
+}
+.d-button_small {
+    @include btn-small();
+}
+.d-button_x-small {
+    @include btn-x-small();
+}
+//variant
+.d-button_standard {
+    background-color: $accent-color;
+    color: $light-color;
+}
+.d-button_disabled {
+    background-color: $disabled-color !important;
+}
+.d-button_outlined {
+    border: 1px solid $accent-color;
+    background-color: $light-color;
+    color: $accent-color;
+}
+.d-button_icon {
+    min-width: auto;
+    padding: 0px 12px !important;
+}

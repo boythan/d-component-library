@@ -112,7 +112,6 @@
     $border-focus-color:            #041b47                 !default;
 
 
-
 // ----------------------------------------
 // -- helpers
 // ----------------------------------------
@@ -431,6 +430,9 @@
          $btn-light-active-bg-color:   #e5e5e5                     !default;
          $btn-light-active-font-color: $btn-light-hover-font-color !default;
          $btn-light-active-icon-color: $btn-light-hover-icon-color !default;
+
+      //height
+      $btn-base-height:                36px               !default;
 
    // ----------------------------------------
    // -- .card
