@@ -2,6 +2,7 @@ import React, { ReactElement } from "react";
 import InputText from "../components/input/InputText";
 import Icon, { IconProps } from "../components/icon/Icon";
 import Button from "../components/button/Button";
+import HeaderTable from "../components/header/HeaderTable";
 
 interface Props {
     content?: any;
@@ -31,6 +32,14 @@ export default function Test({ content }: Props): ReactElement {
                     <Button className="my-3" iconName="home" variant="outlined" />
                 </div>
             </div>
+
+            <HeaderTable
+                label="Product table"
+                onChangeText={() => {}}
+                onClickExport={() => {}}
+                onClickFilter={() => {}}
+                onClickNew={() => {}}
+            />
         </div>
     );
 }

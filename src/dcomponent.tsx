@@ -11,3 +11,6 @@ export { default as Select } from "./components/select/Select";
 
 export type { CheckboxProps } from "./components/checkbox/Checkbox";
 export { default as Checkbox } from "./components/checkbox/Checkbox";
+
+export type { HeaderTableProps } from "./components/header/HeaderTable";
+export { default as HeaderTable } from "./components/header/HeaderTable";

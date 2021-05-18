@@ -16874,5 +16874,35 @@ var Checkbox = function (_a) {
             jsx("text", __assign({ className: "ml-3" }, { children: label }), void 0)] }), void 0));
 };
 
-export { Checkbox, Icon$1 as Icon, InputText, Select };
+var Button = function (_a) {
+    var content = _a.content, iconName = _a.iconName; _a.onClick; var _b = _a.type, type = _b === void 0 ? "button" : _b, className = _a.className, _c = _a.disabled, disabled = _c === void 0 ? false : _c, _d = _a.size, size = _d === void 0 ? "large" : _d, _e = _a.variant, variant = _e === void 0 ? "standard" : _e;
+    var buttonClass = classnames("text text-nowrap " + className + " d-button d-button_" + size + " d-button_" + variant, {
+        "text-x-small": size === "x-small",
+        "d-button_disabled": disabled,
+        "d-button_icon": iconName && !content,
+    });
+    var iconClass = classnames("d-block", { "mx-2": content && iconName });
+    return (jsxs("button", __assign({ className: buttonClass, type: type, disabled: disabled }, { children: [iconName && jsx(Icon$1, { name: iconName, size: "large", className: iconClass }, void 0), content] }), void 0));
+};
+
+var InputTextSearch = function (_a) {
+    var className = _a.className, _b = _a.variant, variant = _b === void 0 ? "outline" : _b, // standard || outline
+    value = _a.value, error = _a.error, name = _a.name, key = _a.key, placeholder = _a.placeholder, disabled = _a.disabled, onChange = _a.onChange, onBlur = _a.onBlur;
+    var container = classnames("d-input-search", "d-input-search__" + variant, {
+        "d-input-search__disabled": disabled,
+        "d-input-search__error": !!error,
+    }, className);
+    return (jsxs("div", __assign({ className: container }, { children: [jsx(Icon$1, { name: "search", className: "mr-3" }, void 0),
+            jsx("input", { value: value, onChange: onChange, name: name, required: true, placeholder: placeholder, onBlur: onBlur, disabled: disabled }, key)] }), void 0));
+};
+
+var HeaderTable = function (_a) {
+    var _b = _a.label, label = _b === void 0 ? "" : _b, _c = _a.placeholder, placeholder = _c === void 0 ? "Search" : _c, onChangeText = _a.onChangeText, onClickNew = _a.onClickNew, onClickExport = _a.onClickExport, onClickFilter = _a.onClickFilter, customView = _a.customView;
+    return (jsxs("div", __assign({ className: "w-100" }, { children: [jsxs("div", __assign({ className: "d-flex justify-content-between mb-3" }, { children: [jsx("div", __assign({ className: "h3" }, { children: label }), void 0),
+                    jsxs("div", __assign({ className: "d-flex" }, { children: [onClickNew && jsx(Button, { iconName: "add", content: "New", onClick: onClickNew, className: "mr-3" }, void 0),
+                            onClickExport && jsx(Button, { iconName: "cloud_download", content: "Export", onClick: onClickExport }, void 0)] }), void 0)] }), void 0),
+            jsxs("div", __assign({ className: "flex-center-y" }, { children: [jsx(InputTextSearch, { className: "w-100 mr-3", placeholder: placeholder, onChange: onChangeText }, void 0), customView && customView(), onClickFilter && jsx(Button, { iconName: "filter_list", onClick: onClickFilter }, void 0)] }), void 0)] }), void 0));
+};
+
+export { Checkbox, HeaderTable, Icon$1 as Icon, InputText, Select };
 //# sourceMappingURL=dcomponent.es.js.map

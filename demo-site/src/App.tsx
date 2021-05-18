@@ -21,7 +21,7 @@ function App() {
                     value={selectValue}
                     className="mt-5"
                 />
-                <Checkbox />
+
             </div>
         </div>
     );

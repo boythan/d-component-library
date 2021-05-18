@@ -30,7 +30,7 @@ const Button: React.FC<ButtonProps> = ({
     const iconClass = ClassNames("d-block", { "mx-2": content && iconName });
     return (
         <button className={buttonClass} type={type} disabled={disabled}>
-            {iconName && <Icon name={iconName} size={content && iconName ? "small" : "large"} className={iconClass} />}
+            {iconName && <Icon name={iconName} size="large" className={iconClass} />}
             {content}
         </button>
     );

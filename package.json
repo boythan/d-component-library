@@ -1,6 +1,6 @@
 {
   "name": "d-react-components",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "main": "dist/dcomponent.cjs.js",
   "module": "dist/dcomponent.es.js",
   "typings": "dist/dcomponent.d.ts",
@@ -21,7 +21,7 @@
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "antd": "^4.15.5",
-    "bootstrap": "^5.0.1",
+    "bootstrap": "4.5.3",
     "classnames": "^2.3.1",
     "lodash": "^4.17.21",
     "moment": "^2.29.1",

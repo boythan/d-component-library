@@ -5,6 +5,7 @@
     border-radius: $border-radius !important;
     outline: none !important;
     color: $input-color-content;
+    min-height: $input-height;
 }
 
 @mixin disabled {
@@ -84,5 +85,29 @@
 }
 
 .d-input-area__input-disabled {
+    @include disabled();
+}
+/********************************************INPUT SEARCH********************************************/
+
+.d-input-search {
+    @extend .flex-center-y;
+    @include input();
+    > input {
+        width: 100%;
+        @extend .text-x-small;
+        border: none !important;
+        outline: none !important;
+    }
+}
+
+.d-input-search__outline {
+    @include outline();
+}
+
+.d-input-search__standard {
+    @include standard();
+}
+
+.d-input-search__disabled {
     @include disabled();
 }
