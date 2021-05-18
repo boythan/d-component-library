@@ -8,6 +8,8 @@
 @import "./common/page-header";
 @import "./common/site";
 @import "./common/modal";
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,700,900");
 
 /* ----------------------------------------
 // Input
@@ -27,4 +29,4 @@
 /* ----------------------------------------
 // Select
 // ---------------------------------------- */
-@import "./button/Button.scss";
+@import "./button/button";

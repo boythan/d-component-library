@@ -11,11 +11,25 @@ export default function Test({ content }: Props): ReactElement {
     return (
         <div className="p-5">
             <InputText />
-            <Icon name="menu" />
-            <div className="d-flex align-items-center">
-                <Button content="Button" />
-                <Button content="Icon Button" className="mx-3" iconName="home" />
-                <Button content="Disabled Button" className="mx-3" disabled />
+            <div className="d-flex my-4">
+                <div className="d-flex flex-column mr-5">
+                    <Button content="Button" />
+                    <Button content="Disabled Button" className="my-3" disabled />
+                    <Button content="Button" className="my-3" size="medium" />
+                    <Button content="Button" className="my-3" size="small" />
+                    <Button content="Button" className="my-3" size="x-small" />
+                </div>
+                <div className="d-flex flex-column mx-5">
+                    <Button content="Button" variant="outlined" />
+                    <Button content="Button" className="my-3" size="medium" variant="outlined" />
+                    <Button content="Button" className="my-3" size="small" variant="outlined" />
+                    <Button content="Button" className="my-3" size="x-small" variant="outlined" />
+                </div>
+                <div className="d-flex flex-column ml-5">
+                    <Button content="Icon Button" iconName="home" />
+                    <Button content="Icon Button" className="my-3" iconName="home" variant="outlined" />
+                    <Button className="my-3" iconName="home" variant="outlined" />
+                </div>
             </div>
         </div>
     );

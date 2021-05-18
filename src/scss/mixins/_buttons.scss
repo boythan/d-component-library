@@ -12,30 +12,30 @@
     }
 }
 @mixin btn-large() {
-    height: calc(2.75rem + 2px);
-    padding: 0.8125rem 2rem;
+    height: $btn-base-height + 4px;
+    padding: 0 16px;
     &.btn-svg-icon {
         width: calc(2.75rem + 2px);
     }
 }
 @mixin btn-medium() {
-    height: calc(2.25rem + 2px);
-    padding: 0.375rem 1.25rem;
+    height: $btn-base-height;
+    padding: 0 16px;
 
     &.btn-svg-icon {
         width: calc(2.25rem + 2px);
     }
 }
 @mixin btn-small() {
-    height: calc(1.875rem + 2px);
-    padding: 0.375rem 1rem;
+    height: $btn-base-height - 4px;
+    padding: 0px 12px;
     &.btn-svg-icon {
         width: calc(1.875rem + 2px);
     }
 }
 @mixin btn-x-small() {
-    height: calc(1.5rem + 2px);
-    padding: 0.25rem 0.5625rem;
+    height: $btn-base-height - 12px;
+    padding: 0px 12px;
 
     &.btn-svg-icon {
         width: calc(1.5rem + 2px);
