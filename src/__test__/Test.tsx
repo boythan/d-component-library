@@ -1,14 +1,16 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, useState } from "react";
 import InputText from "../components/input/InputText";
 import Icon, { IconProps } from "../components/icon/Icon";
 import Button from "../components/button/Button";
 import HeaderTable from "../components/header/HeaderTable";
+import Checkbox from "../components/checkbox/Checkbox";
 
 interface Props {
     content?: any;
 }
 
 export default function Test({ content }: Props): ReactElement {
+    const [checked, setChecked] = useState(false);
     return (
         <div className="p-5">
             <InputText />
@@ -40,6 +42,11 @@ export default function Test({ content }: Props): ReactElement {
                 onClickFilter={() => {}}
                 onClickNew={() => {}}
             />
+
+            <div className="my-5">
+                <Checkbox value="123" variant="radio" label="Label value 1" />
+                <Checkbox value="123" variant="checkbox" label="Label value 1" />
+            </div>
         </div>
     );
 }
