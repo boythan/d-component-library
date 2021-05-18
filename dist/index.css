@@ -4,6 +4,8 @@
 /*
 // animations
 */
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,700,900");
 @keyframes preloader-animation {
   from {
     transform: rotateZ(0deg); }
@@ -1056,10 +1058,46 @@ h6,
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 56px; }
+  min-width: 56px;
+  width: fit-content;
+  border: none; }
 
 .d-button_large {
-  height: calc(2.75rem + 2px);
-  padding: 0.8125rem 2rem; }
+  height: 40px;
+  padding: 0 16px; }
   .d-button_large.btn-svg-icon {
     width: calc(2.75rem + 2px); }
+
+.d-button_medium {
+  height: 36px;
+  padding: 0 16px; }
+  .d-button_medium.btn-svg-icon {
+    width: calc(2.25rem + 2px); }
+
+.d-button_small {
+  height: 32px;
+  padding: 0px 12px; }
+  .d-button_small.btn-svg-icon {
+    width: calc(1.875rem + 2px); }
+
+.d-button_x-small {
+  height: 24px;
+  padding: 0px 12px; }
+  .d-button_x-small.btn-svg-icon {
+    width: calc(1.5rem + 2px); }
+
+.d-button_standard {
+  background-color: #DE0D0C;
+  color: #fff; }
+
+.d-button_disabled {
+  background-color: #858585 !important; }
+
+.d-button_outlined {
+  border: 1px solid #DE0D0C;
+  background-color: #fff;
+  color: #DE0D0C; }
+
+.d-button_icon {
+  min-width: auto;
+  padding: 0px 12px !important; }
