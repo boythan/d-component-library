@@ -195,6 +195,7 @@ body {
     font-style: $text-large-style;
 
     &-bold {
+        @extend .text-large;
         font-weight: $text-large-weight-bold;
     }
 }
@@ -207,6 +208,7 @@ body {
     font-style: $text-medium-style;
 
     &-bold {
+        @extend .text-medium;
         font-weight: $text-medium-weight-bold;
     }
 }
@@ -221,6 +223,7 @@ text,
     font-style: $text-small-style;
 
     &-bold {
+        @extend .text-small;
         font-weight: $text-small-weight-bold;
     }
 }
@@ -233,6 +236,7 @@ text,
     font-style: $text-x-small-style;
 
     &-bold {
+        @extend .text-x-small;
         font-weight: $text-x-small-weight-bold;
     }
 }

@@ -133,6 +133,12 @@ var classnames = createCommonjsModule(function (module) {
 }());
 });
 
+var Icon$1 = function (_a) {
+    var name = _a.name, _b = _a.size, size = _b === void 0 ? "medium" : _b, className = _a.className;
+    var iconClass = classnames("material-icons", "customized-icon-" + size, className);
+    return jsxRuntime.jsx("i", __assign({ className: iconClass }, { children: name }), void 0);
+};
+
 var InputText = function (_a) {
     var className = _a.className, classNameInput = _a.classNameInput, _b = _a.variant, variant = _b === void 0 ? "outline" : _b, // standard || outline
     multiple = _a.multiple, value = _a.value, error = _a.error, name = _a.name, label = _a.label, key = _a.key, placeholder = _a.placeholder, type = _a.type, _c = _a.rows, rows = _c === void 0 ? 5 : _c, cols = _a.cols, disabled = _a.disabled, onChange = _a.onChange, onBlur = _a.onBlur;
@@ -153,13 +159,8 @@ var InputText = function (_a) {
         }
         return (jsxRuntime.jsx("input", { value: value, onChange: onChange, className: inputClass, name: name, required: true, placeholder: placeholder, onBlur: onBlur, type: type, disabled: disabled }, key));
     };
-    return (jsxRuntime.jsxs("div", __assign({ className: container }, { children: [label && (jsxRuntime.jsx("label", __assign({ htmlFor: name, className: labelClass }, { children: jsxRuntime.jsx("span", { children: label }, void 0) }), void 0)), renderInput(), error && (jsxRuntime.jsx("div", __assign({ className: "flex-center-y mt-1" }, { children: jsxRuntime.jsx("text", __assign({ className: errorTextClass }, { children: error }), void 0) }), void 0))] }), void 0));
-};
-
-var Icon$1 = function (_a) {
-    var name = _a.name, _b = _a.size, size = _b === void 0 ? "medium" : _b, className = _a.className;
-    var iconClass = classnames("material-icons", "customized-icon-" + size, className);
-    return jsxRuntime.jsx("i", __assign({ className: iconClass }, { children: name }), void 0);
+    return (jsxRuntime.jsxs("div", __assign({ className: container }, { children: [label && (jsxRuntime.jsx("label", __assign({ htmlFor: name, className: labelClass }, { children: jsxRuntime.jsx("span", { children: label }, void 0) }), void 0)), renderInput(), error && (jsxRuntime.jsxs("div", __assign({ className: "flex-center-y mt-1" }, { children: [jsxRuntime.jsx(Icon$1, { name: "error_outline", className: "text-error", size: "small" }, void 0),
+                    jsxRuntime.jsx("text", __assign({ className: errorTextClass }, { children: error }), void 0)] }), void 0))] }), void 0));
 };
 
 function _extends$1() {
