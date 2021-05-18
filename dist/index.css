@@ -8186,7 +8186,8 @@ h6,
   .d-input-search > input {
     width: 100%;
     border: none !important;
-    outline: none !important; }
+    outline: none !important;
+    background-color: transparent !important; }
 
 .d-input-search__outline {
   border: 0.5px solid #a7a7a7 !important;

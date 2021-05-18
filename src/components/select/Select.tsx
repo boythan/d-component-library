@@ -1,3 +1,5 @@
+/* eslint-disable implicit-arrow-linebreak */
+/* eslint-disable operator-linebreak */
 import { Select as SelectAnt } from "antd";
 import classname from "classnames";
 import React, { useMemo } from "react";
