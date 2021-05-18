@@ -1,17 +1,12 @@
 {
   "name": "d-react-components",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
   "typings": "dist/index.d.ts",
   "source": "src/index.tsx",
-  "style": "dist/index.css",
-  "sass": "dist/index.css",
   "files": [
-    "./dist",
-    "dist/{css,js}/*.{css,js,map}",
-    "js/{src,dist}/**/*.{js,map}",
-    "scss/**/*.scss"
+    "./dist"
   ],
   "repository": {
     "type": "git",
