@@ -8,6 +8,11 @@
     min-width: 56px;
     width: fit-content;
     border: none;
+
+    &:focus {
+        outline: none !important;
+        border: $btn-border-focus !important;
+    }
 }
 
 //size

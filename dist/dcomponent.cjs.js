@@ -141,7 +141,7 @@ var Icon$1 = function (_a) {
 
 var InputText = function (_a) {
     var className = _a.className, classNameInput = _a.classNameInput, _b = _a.variant, variant = _b === void 0 ? "outline" : _b, // standard || outline
-    multiple = _a.multiple, value = _a.value, error = _a.error, name = _a.name, label = _a.label, key = _a.key, placeholder = _a.placeholder, type = _a.type, _c = _a.rows, rows = _c === void 0 ? 5 : _c, cols = _a.cols, disabled = _a.disabled, onChange = _a.onChange, onBlur = _a.onBlur;
+    multiple = _a.multiple, value = _a.value, defaultValue = _a.defaultValue, error = _a.error, name = _a.name, label = _a.label, key = _a.key, placeholder = _a.placeholder, type = _a.type, _c = _a.rows, rows = _c === void 0 ? 5 : _c, cols = _a.cols, disabled = _a.disabled, onChange = _a.onChange, onBlur = _a.onBlur;
     var container = classnames("d-input-text__container", className);
     var labelClass = classnames("text-label");
     var inputClass = classnames("text-x-small", "d-input-text__input", "d-input-text__input-" + variant, {
@@ -155,9 +155,9 @@ var InputText = function (_a) {
     var errorTextClass = classnames("text-x-small", "text-error", "ml-1");
     var renderInput = function () {
         if (multiple) {
-            return (jsxRuntime.jsx("textarea", { value: value, onChange: onChange, rows: rows, name: name, className: textAreaClass, cols: cols, disabled: disabled }, void 0));
+            return (jsxRuntime.jsx("textarea", { value: value, onChange: onChange, rows: rows, name: name, className: textAreaClass, cols: cols, disabled: disabled, defaultValue: defaultValue }, void 0));
         }
-        return (jsxRuntime.jsx("input", { value: value, onChange: onChange, className: inputClass, name: name, required: true, placeholder: placeholder, onBlur: onBlur, type: type, disabled: disabled }, key));
+        return (jsxRuntime.jsx("input", { value: value, onChange: onChange, className: inputClass, name: name, required: true, placeholder: placeholder, onBlur: onBlur, type: type, disabled: disabled, defaultValue: defaultValue }, key));
     };
     return (jsxRuntime.jsxs("div", __assign({ className: container }, { children: [label && (jsxRuntime.jsx("label", __assign({ htmlFor: name, className: labelClass }, { children: jsxRuntime.jsx("span", { children: label }, void 0) }), void 0)), renderInput(), error && (jsxRuntime.jsxs("div", __assign({ className: "flex-center-y mt-1" }, { children: [jsxRuntime.jsx(Icon$1, { name: "error_outline", className: "text-error", size: "small" }, void 0),
                     jsxRuntime.jsx("text", __assign({ className: errorTextClass }, { children: error }), void 0)] }), void 0))] }), void 0));
@@ -16907,11 +16907,14 @@ var Button = function (_a) {
 };
 
 var Checkbox = function (_a) {
-    var className = _a.className, classNameInput = _a.classNameInput, id = _a.id, name = _a.name, value = _a.value, onChange = _a.onChange, label = _a.label, _b = _a.variant, variant = _b === void 0 ? "square" : _b;
-    var classNameContainer = classnames("checkbox__container", className);
-    var classNameCheckbox = classnames("checkbox__input", "checkbox__input-" + variant, classNameInput);
-    return (jsxRuntime.jsxs("div", __assign({ className: classNameContainer }, { children: [jsxRuntime.jsx("input", { type: "checkbox", id: id, name: name, value: value, onChange: onChange, className: classNameCheckbox }, void 0),
-            jsxRuntime.jsx("text", __assign({ className: "ml-3" }, { children: label }), void 0)] }), void 0));
+    var className = _a.className, classNameInput = _a.classNameInput, classNameInputWrapper = _a.classNameInputWrapper, classNameLabel = _a.classNameLabel, id = _a.id, name = _a.name, value = _a.value, onChange = _a.onChange, label = _a.label, _b = _a.variant, variant = _b === void 0 ? "checkbox" : _b;
+    var classContainer = classnames("checkbox__container", className);
+    var classInputWrapper = classnames("checkbox__input-wrapper", "checkbox__input-wrapper-" + variant, classNameInputWrapper);
+    var classInput = classnames("checkbox__input", classNameInput);
+    var classLabel = classnames("checkbox__label ml-3 text-nowrap", classNameLabel);
+    return (jsxRuntime.jsxs("div", __assign({ className: classContainer }, { children: [jsxRuntime.jsxs("div", __assign({ className: classInputWrapper }, { children: [jsxRuntime.jsx("input", { type: "checkbox", id: id, name: name, value: value, onChange: onChange, className: classInput }, void 0),
+                    jsxRuntime.jsx("span", { className: "checkbox__check-mark" }, void 0)] }), void 0),
+            label && jsxRuntime.jsx("div", __assign({ className: classLabel }, { children: label }), void 0)] }), void 0));
 };
 
 var InputTextSearch = function (_a) {
