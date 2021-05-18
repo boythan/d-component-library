@@ -16896,14 +16896,14 @@ var Select = function (_a) {
 };
 
 var Button = function (_a) {
-    var content = _a.content, iconName = _a.iconName; _a.onClick; var _b = _a.type, type = _b === void 0 ? "button" : _b, className = _a.className, _c = _a.disabled, disabled = _c === void 0 ? false : _c, _d = _a.size, size = _d === void 0 ? "large" : _d, _e = _a.variant, variant = _e === void 0 ? "standard" : _e;
+    var content = _a.content, iconName = _a.iconName, onClick = _a.onClick, _b = _a.type, type = _b === void 0 ? "button" : _b, className = _a.className, _c = _a.disabled, disabled = _c === void 0 ? false : _c, _d = _a.size, size = _d === void 0 ? "large" : _d, _e = _a.variant, variant = _e === void 0 ? "standard" : _e;
     var buttonClass = classnames("text text-nowrap " + className + " d-button d-button_" + size + " d-button_" + variant, {
         "text-x-small": size === "x-small",
         "d-button_disabled": disabled,
         "d-button_icon": iconName && !content,
     });
     var iconClass = classnames("d-block", { "mx-2": content && iconName });
-    return (jsxRuntime.jsxs("button", __assign({ className: buttonClass, type: type, disabled: disabled }, { children: [iconName && jsxRuntime.jsx(Icon$1, { name: iconName, size: "large", className: iconClass }, void 0), content] }), void 0));
+    return (jsxRuntime.jsxs("button", __assign({ className: buttonClass, type: type, disabled: disabled, onClick: onClick }, { children: [iconName && jsxRuntime.jsx(Icon$1, { name: iconName, size: "large", className: iconClass }, void 0), content] }), void 0));
 };
 
 var Checkbox = function (_a) {
