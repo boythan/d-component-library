@@ -74,13 +74,15 @@ const Select = ({
                 showArrow
                 disabled={disabled}
                 optionFilterProp="children"
-                // filterOption={(input, option) => {
-                //     if (!hasFilter) {
-                //         return;
-                //     }
-                //     option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0 ||
-                //         (option.props.value && `${option.props.value}`.toLowerCase().indexOf(input.toLowerCase()) >= 0);
-                // }}
+                filterOption={(input: any, option: any) => {
+                    if (!hasFilter) {
+                        return false;
+                    }
+                    return (
+                        option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0 ||
+                        (option.props.value && `${option.props.value}`.toLowerCase().indexOf(input.toLowerCase()) >= 0)
+                    );
+                }}
             >
                 {children}
             </SelectAnt>
