@@ -16866,14 +16866,6 @@ var Select = function (_a) {
                     jsx("text", __assign({ className: errorTextClass }, { children: error }), void 0)] }), void 0))] }), void 0));
 };
 
-var Checkbox = function (_a) {
-    var className = _a.className, classNameInput = _a.classNameInput, id = _a.id, name = _a.name, value = _a.value, onChange = _a.onChange, label = _a.label, _b = _a.variant, variant = _b === void 0 ? "square" : _b;
-    var classNameContainer = classnames("checkbox__container", className);
-    var classNameCheckbox = classnames("checkbox__input", "checkbox__input-" + variant, classNameInput);
-    return (jsxs("div", __assign({ className: classNameContainer }, { children: [jsx("input", { type: "checkbox", id: id, name: name, value: value, onChange: onChange, className: classNameCheckbox }, void 0),
-            jsx("text", __assign({ className: "ml-3" }, { children: label }), void 0)] }), void 0));
-};
-
 var Button = function (_a) {
     var content = _a.content, iconName = _a.iconName; _a.onClick; var _b = _a.type, type = _b === void 0 ? "button" : _b, className = _a.className, _c = _a.disabled, disabled = _c === void 0 ? false : _c, _d = _a.size, size = _d === void 0 ? "large" : _d, _e = _a.variant, variant = _e === void 0 ? "standard" : _e;
     var buttonClass = classnames("text text-nowrap " + className + " d-button d-button_" + size + " d-button_" + variant, {
@@ -16883,6 +16875,14 @@ var Button = function (_a) {
     });
     var iconClass = classnames("d-block", { "mx-2": content && iconName });
     return (jsxs("button", __assign({ className: buttonClass, type: type, disabled: disabled }, { children: [iconName && jsx(Icon$1, { name: iconName, size: "large", className: iconClass }, void 0), content] }), void 0));
+};
+
+var Checkbox = function (_a) {
+    var className = _a.className, classNameInput = _a.classNameInput, id = _a.id, name = _a.name, value = _a.value, onChange = _a.onChange, label = _a.label, _b = _a.variant, variant = _b === void 0 ? "square" : _b;
+    var classNameContainer = classnames("checkbox__container", className);
+    var classNameCheckbox = classnames("checkbox__input", "checkbox__input-" + variant, classNameInput);
+    return (jsxs("div", __assign({ className: classNameContainer }, { children: [jsx("input", { type: "checkbox", id: id, name: name, value: value, onChange: onChange, className: classNameCheckbox }, void 0),
+            jsx("text", __assign({ className: "ml-3" }, { children: label }), void 0)] }), void 0));
 };
 
 var InputTextSearch = function (_a) {
@@ -16904,5 +16904,5 @@ var HeaderTable = function (_a) {
             jsxs("div", __assign({ className: "flex-center-y" }, { children: [jsx(InputTextSearch, { className: "w-100 mr-3", placeholder: placeholder, onChange: onChangeText }, void 0), customView && customView(), onClickFilter && jsx(Button, { iconName: "filter_list", onClick: onClickFilter }, void 0)] }), void 0)] }), void 0));
 };
 
-export { Checkbox, HeaderTable, Icon$1 as Icon, InputText, Select };
+export { Button, Checkbox, HeaderTable, Icon$1 as Icon, InputText, Select };
 //# sourceMappingURL=dcomponent.es.js.map
