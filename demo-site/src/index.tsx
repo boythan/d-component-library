@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import "d-component-library/dist/dcomponent.cjs.css";
 import "antd/dist/antd.css";
 import "d-component-library/dist/index.css";
 

@@ -86,12 +86,10 @@
     "react": ">=16.9.0",
     "react-dom": ">=16.9.0"
   },
-   
   "description": "### NAMING  #### SELECT .d-select__container .d-select__select .d-select__label",
   "bugs": {
     "url": "https://github.com/boythan/d-component-library/issues"
   },
-  "homepage": "https://github.com/boythan/d-component-library#readme",
   "keywords": [
     "react-component"
   ],
