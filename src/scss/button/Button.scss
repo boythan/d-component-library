@@ -1,0 +1,11 @@
+@import "../mixins/buttons";
+
+.d-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 56px;
+}
+.d-button_large {
+    @include btn-large();
+}
