@@ -94,7 +94,7 @@ const InputText = ({
             {renderInput()}
             {error && (
                 <div className="flex-center-y mt-1">
-                    {/* <Icon name="error_outline" className="text-error" size="small" /> */}
+                    <Icon name="error_outline" className="text-error" size="small" />
                     <text className={errorTextClass}>{error}</text>
                 </div>
             )}
