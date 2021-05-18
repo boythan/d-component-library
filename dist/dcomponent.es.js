@@ -112,7 +112,7 @@ var Icon$1 = function (_a) {
 
 var InputText = function (_a) {
     var className = _a.className, classNameInput = _a.classNameInput, _b = _a.variant, variant = _b === void 0 ? "outline" : _b, // standard || outline
-    multiple = _a.multiple, value = _a.value, error = _a.error, name = _a.name, label = _a.label, key = _a.key, placeholder = _a.placeholder, type = _a.type, _c = _a.rows, rows = _c === void 0 ? 5 : _c, cols = _a.cols, disabled = _a.disabled, onChange = _a.onChange, onBlur = _a.onBlur;
+    multiple = _a.multiple, value = _a.value, defaultValue = _a.defaultValue, error = _a.error, name = _a.name, label = _a.label, key = _a.key, placeholder = _a.placeholder, type = _a.type, _c = _a.rows, rows = _c === void 0 ? 5 : _c, cols = _a.cols, disabled = _a.disabled, onChange = _a.onChange, onBlur = _a.onBlur;
     var container = classnames("d-input-text__container", className);
     var labelClass = classnames("text-label");
     var inputClass = classnames("text-x-small", "d-input-text__input", "d-input-text__input-" + variant, {
@@ -126,9 +126,9 @@ var InputText = function (_a) {
     var errorTextClass = classnames("text-x-small", "text-error", "ml-1");
     var renderInput = function () {
         if (multiple) {
-            return (jsx("textarea", { value: value, onChange: onChange, rows: rows, name: name, className: textAreaClass, cols: cols, disabled: disabled }, void 0));
+            return (jsx("textarea", { value: value, onChange: onChange, rows: rows, name: name, className: textAreaClass, cols: cols, disabled: disabled, defaultValue: defaultValue }, void 0));
         }
-        return (jsx("input", { value: value, onChange: onChange, className: inputClass, name: name, required: true, placeholder: placeholder, onBlur: onBlur, type: type, disabled: disabled }, key));
+        return (jsx("input", { value: value, onChange: onChange, className: inputClass, name: name, required: true, placeholder: placeholder, onBlur: onBlur, type: type, disabled: disabled, defaultValue: defaultValue }, key));
     };
     return (jsxs("div", __assign({ className: container }, { children: [label && (jsx("label", __assign({ htmlFor: name, className: labelClass }, { children: jsx("span", { children: label }, void 0) }), void 0)), renderInput(), error && (jsxs("div", __assign({ className: "flex-center-y mt-1" }, { children: [jsx(Icon$1, { name: "error_outline", className: "text-error", size: "small" }, void 0),
                     jsx("text", __assign({ className: errorTextClass }, { children: error }), void 0)] }), void 0))] }), void 0));

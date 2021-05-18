@@ -8575,6 +8575,9 @@ h6,
   min-width: 56px;
   width: fit-content;
   border: none; }
+  .d-button:focus {
+    outline: none !important;
+    border: 0.5px solid #041b47 !important; }
 
 .d-button_large {
   height: 40px;

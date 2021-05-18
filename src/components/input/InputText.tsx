@@ -20,6 +20,7 @@ const InputText = ({
     variant = "outline", // standard || outline
     multiple,
     value,
+    defaultValue,
     error,
     name,
     label,
@@ -65,6 +66,7 @@ const InputText = ({
                     className={textAreaClass}
                     cols={cols}
                     disabled={disabled}
+                    defaultValue={defaultValue}
                 />
             );
         }
@@ -80,6 +82,7 @@ const InputText = ({
                 onBlur={onBlur}
                 type={type}
                 disabled={disabled}
+                defaultValue={defaultValue}
             />
         );
     };
