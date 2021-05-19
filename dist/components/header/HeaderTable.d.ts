@@ -1,5 +1,6 @@
 /// <reference types="react" />
 export interface HeaderTableProps {
+    className?: string;
     label: string;
     onChangeText: any;
     placeholder?: string;
@@ -8,5 +9,5 @@ export interface HeaderTableProps {
     onClickFilter?: any;
     customView?: any;
 }
-declare const HeaderTable: ({ label, placeholder, onChangeText, onClickNew, onClickExport, onClickFilter, customView, }: HeaderTableProps) => JSX.Element;
+declare const HeaderTable: ({ className, label, placeholder, onChangeText, onClickNew, onClickExport, onClickFilter, customView, }: HeaderTableProps) => JSX.Element;
 export default HeaderTable;

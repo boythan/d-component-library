@@ -35,7 +35,7 @@ export default function Test({ content }: Props): ReactElement {
                 <InputText />
                 {/* <Select
                 dataSource={ATTRIBUTE_INPUT_TYPE}
-                label="Please select"
+                label="Select"
                 className="mt-4"
                 value={valueSelect}
                 onChange={setValueSelect}
