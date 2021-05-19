@@ -28962,47 +28962,52 @@ h6,
   min-width: 56px;
   width: fit-content;
   border: none; }
-  .d-button:focus {
-    outline: none !important;
-    border: 0.5px solid #041b47 !important; }
 
-.d-button_large {
+.d-button__large {
   height: 40px;
   padding: 0 16px; }
-  .d-button_large.btn-svg-icon {
+  .d-button__large.btn-svg-icon {
     width: calc(2.75rem + 2px); }
 
-.d-button_medium {
+.d-button__medium {
   height: 36px;
   padding: 0 16px; }
-  .d-button_medium.btn-svg-icon {
+  .d-button__medium.btn-svg-icon {
     width: calc(2.25rem + 2px); }
 
-.d-button_small {
+.d-button__small {
   height: 32px;
   padding: 0px 12px; }
-  .d-button_small.btn-svg-icon {
+  .d-button__small.btn-svg-icon {
     width: calc(1.875rem + 2px); }
 
-.d-button_x-small {
+.d-button__x-small {
   height: 24px;
   padding: 0px 12px; }
-  .d-button_x-small.btn-svg-icon {
+  .d-button__x-small.btn-svg-icon {
     width: calc(1.5rem + 2px); }
 
-.d-button_standard {
+.d-button__standard {
   background-color: #DE0D0C;
   color: #fff; }
+  .d-button__standard:focus {
+    outline: none !important;
+    background-color: #ae0a09; }
+  .d-button__standard:hover {
+    background-color: rgba(222, 13, 12, 0.5); }
 
-.d-button_disabled {
-  background-color: #858585 !important; }
+.d-button__disabled {
+  background-color: rgba(222, 13, 12, 0.3) !important; }
 
-.d-button_outlined {
+.d-button__outline {
   border: 1px solid #DE0D0C;
   background-color: #fff;
   color: #DE0D0C; }
+  .d-button__outline:focus {
+    outline: none !important;
+    background-color: #ae0a09; }
 
-.d-button_icon {
+.d-button__icon {
   min-width: auto;
   padding: 0px 12px !important; }
 
@@ -29029,6 +29034,7 @@ h6,
       height: 18px;
       width: 18px; }
     .checkbox__container .checkbox__input-wrapper .checkbox__check-mark {
+      transition: all 0.2s ease-in;
       position: absolute;
       top: 0;
       left: 0;
@@ -29065,6 +29071,8 @@ h6,
     height: 8px;
     border-radius: 50%;
     background: white; }
+  .checkbox__container .checkbox__input-wrapper-disabled .checkbox__check-mark {
+    background-color: rgba(222, 13, 12, 0.3); }
   .checkbox__container .checkbox__input:checked ~ .checkbox__check-mark::after {
     display: block; }
   .checkbox__container .checkbox__label {

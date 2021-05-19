@@ -5,7 +5,8 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
     className?: string;
     disabled?: boolean;
     size?: "large" | "medium" | "small" | "x-small";
-    variant?: "standard" | "outlined";
+    variant?: "standard" | "outline";
+    color?: "primary" | "secondary" | "success" | "info" | "warning" | "danger" | "dark" | "light";
 }
 declare const Button: React.FC<ButtonProps>;
 export default Button;
