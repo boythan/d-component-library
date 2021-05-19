@@ -33,8 +33,15 @@ export { default as Button } from "./components/button/Button";
 export type { CheckboxProps } from "./components/checkbox/Checkbox";
 export { default as Checkbox } from "./components/checkbox/Checkbox";
 
+export type { CheckboxGroupProps } from "./components/checkbox/CheckboxGroup";
+export { default as CheckboxGroup } from "./components/checkbox/CheckboxGroup";
+
+export type { RadioGroupProps } from "./components/checkbox/RadioGroup";
+export { default as RadioGroup } from "./components/checkbox/RadioGroup";
+
 /* ----------------------------------------
 // Header
 // ---------------------------------------- */
+
 export type { HeaderTableProps } from "./components/header/HeaderTable";
 export { default as HeaderTable } from "./components/header/HeaderTable";

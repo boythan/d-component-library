@@ -22,6 +22,7 @@
         }
 
         .checkbox__check-mark {
+            transition: all 0.2s ease-in;
             position: absolute;
             top: 0;
             left: 0;
@@ -39,8 +40,6 @@
     }
 
     .checkbox__input-wrapper-checkbox {
-        .checkbox__check-mark {
-        }
         .checkbox__check-mark:after {
             content: "";
             position: absolute;
@@ -70,6 +69,11 @@
             height: 8px;
             border-radius: 50%;
             background: white;
+        }
+    }
+    .checkbox__input-wrapper-disabled {
+        .checkbox__check-mark {
+            background-color: $disabled-color;
         }
     }
     .checkbox__input:checked ~ .checkbox__check-mark::after {

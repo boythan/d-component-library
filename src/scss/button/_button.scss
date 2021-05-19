@@ -1,4 +1,5 @@
 @import "../mixins/buttons";
+@import "../variables";
 
 //base
 .d-button {
@@ -8,40 +9,48 @@
     min-width: 56px;
     width: fit-content;
     border: none;
-
-    &:focus {
-        outline: none !important;
-        border: $btn-border-focus !important;
-    }
 }
 
 //size
-.d-button_large {
+.d-button__large {
     @include btn-large();
 }
-.d-button_medium {
+.d-button__medium {
     @include btn-medium();
 }
-.d-button_small {
+.d-button__small {
     @include btn-small();
 }
-.d-button_x-small {
+.d-button__x-small {
     @include btn-x-small();
 }
 //variant
-.d-button_standard {
+.d-button__standard {
     background-color: $accent-color;
     color: $light-color;
+    &:focus {
+        outline: none !important;
+        background-color: $btn-primary-active-bg-color;
+        // border: $btn-border-focus !important;
+    }
+    &:hover {
+        background-color: $btn-primary-hover-bg-color;
+    }
 }
-.d-button_disabled {
+.d-button__disabled {
     background-color: $disabled-color !important;
 }
-.d-button_outlined {
+.d-button__outline {
     border: 1px solid $accent-color;
     background-color: $light-color;
     color: $accent-color;
+    &:focus {
+        outline: none !important;
+        background-color: $btn-primary-active-bg-color;
+        // border: $btn-border-focus !important;
+    }
 }
-.d-button_icon {
+.d-button__icon {
     min-width: auto;
     padding: 0px 12px !important;
 }

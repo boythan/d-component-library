@@ -376,18 +376,18 @@
    // ----------------------------------------
    // -- .btn
    // ----------------------------------------
-         $btn-border-focus:    0.5px solid $border-focus-color                !default;
+         $btn-border-focus:    0.5px solid $border-focus-color          !default;
       // primary
          // default
          $btn-primary-bg-color:          $accent-color                 !default;
          $btn-primary-font-color:        $light-color                  !default;
          $btn-primary-icon-color:        $btn-primary-font-color       !default;
          // hover
-         $btn-primary-hover-bg-color:    #c80100                     !default;
+         $btn-primary-hover-bg-color:    rgba($accent-color,0.5)       !default;
          $btn-primary-hover-font-color:  $dark-opposite-color          !default;
          $btn-primary-hover-icon-color:  $btn-primary-hover-font-color !default;
          // active
-         $btn-primary-active-bg-color:   lighten($dark-color, 10%)     !default;
+         $btn-primary-active-bg-color:   darken($accent-color, 10%)     !default;
          $btn-primary-active-font-color: $btn-primary-hover-font-color !default;
          $btn-primary-active-icon-color: $btn-primary-hover-icon-color !default;
       // secondary
@@ -698,5 +698,5 @@
       $primary:                            $accent-color                 !default;
       $input-color:                        #3D464D                     !default;
       $common-image-size:                  12rem                         !default;
-      $disabled-color:                     #858585                     !default;
+      $disabled-color:                     rgba($accent-color,0.3)         !default;
  
