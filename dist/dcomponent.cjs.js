@@ -58,7 +58,7 @@ var __assign = function() {
     return __assign.apply(this, arguments);
 };
 
-function __rest$2(s, e) {
+function __rest$3(s, e) {
     var t = {};
     for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
         t[p] = s[p];
@@ -68,6 +68,12 @@ function __rest$2(s, e) {
                 t[p[i]] = s[p[i]];
         }
     return t;
+}
+
+function __spreadArray(to, from) {
+    for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
+        to[j] = from[i];
+    return to;
 }
 
 function unwrapExports (x) {
@@ -663,7 +669,7 @@ var reactIs_1 = reactIs.isFragment;
 reactIs.ForwardRef;
 var reactIs_3 = reactIs.isMemo;
 
-function toArray$2(children) {
+function toArray$3(children) {
   var option = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
   var ret = [];
   React__default['default'].Children.forEach(children, function (child) {
@@ -672,9 +678,9 @@ function toArray$2(children) {
     }
 
     if (Array.isArray(child)) {
-      ret = ret.concat(toArray$2(child));
+      ret = ret.concat(toArray$3(child));
     } else if (reactIs_1(child) && child.props) {
-      ret = ret.concat(toArray$2(child.props.children, option));
+      ret = ret.concat(toArray$3(child.props.children, option));
     } else {
       ret.push(child);
     }
@@ -1799,7 +1805,7 @@ var ReactResizeObserver = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       var children = this.props.children;
-      var childNodes = toArray$2(children);
+      var childNodes = toArray$3(children);
 
       if (childNodes.length > 1) {
         warningOnce(false, 'Find more than one child node with `children` in ResizeObserver. Will only observe first one.');
@@ -1941,7 +1947,7 @@ var Context = /*#__PURE__*/React__namespace.createContext({
   }
 });
 
-function toArray$1(value) {
+function toArray$2(value) {
   if (value === undefined || value === null) {
     return [];
   }
@@ -4255,7 +4261,7 @@ function set(entity, paths, value) {
  */
 
 function getNamePath(path) {
-  return toArray$1(path);
+  return toArray$2(path);
 }
 function getValue$1(store, namePath) {
   var value = get(store, namePath);
@@ -5019,7 +5025,7 @@ var Field = /*#__PURE__*/function (_React$Component) {
               return true;
             }
 
-            var triggerList = toArray$1(validateTrigger);
+            var triggerList = toArray$2(validateTrigger);
             return triggerList.includes(triggerName);
           });
         }
@@ -5101,7 +5107,7 @@ var Field = /*#__PURE__*/function (_React$Component) {
       } // Filed element only
 
 
-      var childList = toArray$2(children);
+      var childList = toArray$3(children);
 
       if (childList.length !== 1 || ! /*#__PURE__*/React__namespace.isValidElement(childList[0])) {
         return {
@@ -5189,7 +5195,7 @@ var Field = /*#__PURE__*/function (_React$Component) {
       }; // Add validateTrigger
 
 
-      var validateTriggerList = toArray$1(mergedValidateTrigger || []);
+      var validateTriggerList = toArray$2(mergedValidateTrigger || []);
       validateTriggerList.forEach(function (triggerName) {
         // Wrap additional function of component, so that we can get latest value from store
         var originTrigger = control[triggerName];
@@ -6663,6 +6669,10 @@ function useMemo(getValue, condition, shouldUpdate) {
   return cacheRef.current.value;
 }
 
+var devWarning = (function (valid, component, message) {
+  warningOnce(valid, "[antd: ".concat(component, "] ").concat(message));
+});
+
 var enUS = {
   // Options.jsx
   items_per_page: '/ page',
@@ -6987,7 +6997,7 @@ var Simple = function Simple() {
   }))));
 };
 
-var __rest$1 = undefined && undefined.__rest || function (s, e) {
+var __rest$2 = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -7010,7 +7020,7 @@ var Empty = function Empty(_a) {
       description = _a.description,
       children = _a.children,
       imageStyle = _a.imageStyle,
-      restProps = __rest$1(_a, ["className", "prefixCls", "image", "description", "children", "imageStyle"]);
+      restProps = __rest$2(_a, ["className", "prefixCls", "image", "description", "children", "imageStyle"]);
 
   var _React$useContext = React__namespace.useContext(ConfigContext),
       getPrefixCls = _React$useContext.getPrefixCls,
@@ -10737,7 +10747,7 @@ var TransBtn = function TransBtn(_ref) {
  * Will fallback to dom if use customize render.
  */
 
-var OptionList = function OptionList(_ref, ref) {
+var OptionList$1 = function OptionList(_ref, ref) {
   var prefixCls = _ref.prefixCls,
       id = _ref.id,
       flattenOptions = _ref.flattenOptions,
@@ -11046,8 +11056,8 @@ var OptionList = function OptionList(_ref, ref) {
   }));
 };
 
-var RefOptionList = /*#__PURE__*/React__namespace.forwardRef(OptionList);
-RefOptionList.displayName = 'OptionList';
+var RefOptionList$1 = /*#__PURE__*/React__namespace.forwardRef(OptionList$1);
+RefOptionList$1.displayName = 'OptionList';
 
 /** This is a placeholder, not real render in dom */
 var Option$1 = function Option() {
@@ -11077,9 +11087,9 @@ function convertNodeToOption(node) {
   }, restProps);
 }
 
-function convertChildrenToData(nodes) {
+function convertChildrenToData$1(nodes) {
   var optionOnly = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-  return toArray$2(nodes).map(function (node, index) {
+  return toArray$3(nodes).map(function (node, index) {
     if (! /*#__PURE__*/React__namespace.isValidElement(node) || !node.type) {
       return null;
     }
@@ -11098,14 +11108,14 @@ function convertChildrenToData(nodes) {
       key: "__RC_SELECT_GRP__".concat(key === null ? index : key, "__"),
       label: key
     }, restProps), {}, {
-      options: convertChildrenToData(children)
+      options: convertChildrenToData$1(children)
     });
   }).filter(function (data) {
     return data;
   });
 }
 
-function toArray(value) {
+function toArray$1(value) {
   if (Array.isArray(value)) {
     return value;
   }
@@ -11212,7 +11222,7 @@ function getUUID() {
   return retId;
 }
 
-function getKey(data, index) {
+function getKey$1(data, index) {
   var key = data.key;
   var value;
 
@@ -11237,7 +11247,7 @@ function getKey(data, index) {
  */
 
 
-function flattenOptions(options) {
+function flattenOptions$1(options) {
   var flattenList = [];
 
   function dig(list, isGroupOption) {
@@ -11245,14 +11255,14 @@ function flattenOptions(options) {
       if (isGroupOption || !('options' in data)) {
         // Option
         flattenList.push({
-          key: getKey(data, flattenList.length),
+          key: getKey$1(data, flattenList.length),
           groupOption: isGroupOption,
           data: data
         });
       } else {
         // Option Group
         flattenList.push({
-          key: getKey(data, flattenList.length),
+          key: getKey$1(data, flattenList.length),
           group: true,
           data: data
         });
@@ -11283,7 +11293,7 @@ function injectPropsWithOption(option) {
   return newOption;
 }
 
-function findValueOption(values, options) {
+function findValueOption$1(values, options) {
   var _ref = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
       _ref$prevValueOptions = _ref.prevValueOptions,
       prevValueOptions = _ref$prevValueOptions === void 0 ? [] : _ref$prevValueOptions;
@@ -11313,7 +11323,7 @@ var getLabeledValue = function getLabeledValue(value, _ref2) {
       prevValueMap = _ref2.prevValueMap,
       labelInValue = _ref2.labelInValue,
       optionLabelProp = _ref2.optionLabelProp;
-  var item = findValueOption([value], options)[0];
+  var item = findValueOption$1([value], options)[0];
   var result = {
     value: value
   };
@@ -11338,7 +11348,7 @@ var getLabeledValue = function getLabeledValue(value, _ref2) {
 };
 
 function toRawString(content) {
-  return toArray(content).join('');
+  return toArray$1(content).join('');
 }
 /** Filter single option if match the search text */
 
@@ -11360,7 +11370,7 @@ function getFilterFunction(optionFilterProp) {
 /** Filter options and return a new options by the search text */
 
 
-function filterOptions(searchValue, options, _ref3) {
+function filterOptions$1(searchValue, options, _ref3) {
   var optionFilterProp = _ref3.optionFilterProp,
       filterOption = _ref3.filterOption;
   var filteredOptions = [];
@@ -11434,8 +11444,8 @@ function getSeparatedContent(text, tokens) {
   var list = separate(text, tokens);
   return match ? list : null;
 }
-function isValueDisabled(value, options) {
-  var option = findValueOption([value], options)[0];
+function isValueDisabled$1(value, options) {
+  var option = findValueOption$1([value], options)[0];
   return option.disabled;
 }
 /**
@@ -11443,7 +11453,7 @@ function isValueDisabled(value, options) {
  */
 
 function fillOptionsWithMissingValue(options, value, optionLabelProp, labelInValue) {
-  var values = toArray(value).slice().sort();
+  var values = toArray$1(value).slice().sort();
 
   var cloneOptions = _toConsumableArray(options); // Convert options value to set
 
@@ -14593,7 +14603,7 @@ Popup.displayName = 'Popup';
 
 var TriggerContext = /*#__PURE__*/React__namespace.createContext(null);
 
-function noop() {}
+function noop$1() {}
 
 function returnEmptyString() {
   return '';
@@ -15343,9 +15353,9 @@ function generateTrigger(PortalComponent) {
     prefixCls: 'rc-trigger-popup',
     getPopupClassNameFromAlign: returnEmptyString,
     getDocument: returnDocument,
-    onPopupVisibleChange: noop,
-    afterPopupVisibleChange: noop,
-    onPopupAlign: noop,
+    onPopupVisibleChange: noop$1,
+    afterPopupVisibleChange: noop$1,
+    onPopupAlign: noop$1,
     popupClassName: '',
     mouseEnterDelay: 0,
     mouseLeaveDelay: 0.1,
@@ -16470,7 +16480,7 @@ function generateSelector(config) {
   return RefSelect;
 }
 
-function warningProps(props) {
+function warningProps$1(props) {
   var mode = props.mode,
       options = props.options,
       children = props.children,
@@ -16488,7 +16498,7 @@ function warningProps(props) {
       optionLabelProp = props.optionLabelProp;
   var multiple = mode === 'multiple' || mode === 'tags';
   var mergedShowSearch = showSearch !== undefined ? showSearch : multiple || mode === 'combobox';
-  var mergedOptions = options || convertChildrenToData(children); // `tags` should not set option as disabled
+  var mergedOptions = options || convertChildrenToData$1(children); // `tags` should not set option as disabled
 
   warningOnce(mode !== 'tags' || mergedOptions.every(function (opt) {
     return !opt.disabled;
@@ -16523,7 +16533,7 @@ function warningProps(props) {
   noteOnce(!defaultOpen || autoFocus, '`defaultOpen` makes Select open without focus which means it will not close by click outside. You can set `autoFocus` if needed.');
 
   if (value !== undefined && value !== null) {
-    var values = toArray(value);
+    var values = toArray$1(value);
     warningOnce(!labelInValue || values.every(function (val) {
       return _typeof$4(val) === 'object' && ('key' in val || 'value' in val);
     }), '`value` should in shape of `{ value: string | number, label?: ReactNode }` when you set `labelInValue` to `true`');
@@ -16533,7 +16543,7 @@ function warningProps(props) {
 
   if (children) {
     var invalidateChildType = null;
-    toArray$2(children).some(function (node) {
+    toArray$3(children).some(function (node) {
       if (! /*#__PURE__*/React__namespace.isValidElement(node) || !node.type) {
         return false;
       }
@@ -16545,7 +16555,7 @@ function warningProps(props) {
       }
 
       if (type.isSelectOptGroup) {
-        var allChildrenValid = toArray$2(node.props.children).every(function (subNode) {
+        var allChildrenValid = toArray$3(node.props.children).every(function (subNode) {
           if (! /*#__PURE__*/React__namespace.isValidElement(subNode) || !node.type || subNode.type.isSelectOption) {
             return true;
           }
@@ -16573,18 +16583,18 @@ function warningProps(props) {
   }
 }
 
-var RefSelect = generateSelector({
+var RefSelect$1 = generateSelector({
   prefixCls: 'rc-select',
   components: {
-    optionList: RefOptionList
+    optionList: RefOptionList$1
   },
-  convertChildrenToData: convertChildrenToData,
-  flattenOptions: flattenOptions,
+  convertChildrenToData: convertChildrenToData$1,
+  flattenOptions: flattenOptions$1,
   getLabeledValue: getLabeledValue,
-  filterOptions: filterOptions,
-  isValueDisabled: isValueDisabled,
-  findValueOption: findValueOption,
-  warningProps: warningProps,
+  filterOptions: filterOptions$1,
+  isValueDisabled: isValueDisabled$1,
+  findValueOption: findValueOption$1,
+  warningProps: warningProps$1,
   fillOptionsWithMissingValue: fillOptionsWithMissingValue
 });
 /**
@@ -16619,7 +16629,7 @@ var Select$2 = /*#__PURE__*/function (_React$Component) {
   _createClass$2(Select, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/React__namespace.createElement(RefSelect, _extends$1({
+      return /*#__PURE__*/React__namespace.createElement(RefSelect$1, _extends$1({
         ref: this.selectRef
       }, this.props));
     }
@@ -16757,7 +16767,7 @@ var getTransitionName = function getTransitionName(rootPrefixCls, motion, transi
 };
 
 // TODO: 4.0 - codemod should help to change `filterOption` to support node props.
-var __rest = undefined && undefined.__rest || function (s, e) {
+var __rest$1 = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -16786,7 +16796,7 @@ var InternalSelect = function InternalSelect(_a, ref) {
       listItemHeight = _a$listItemHeight === void 0 ? 24 : _a$listItemHeight,
       customizeSize = _a.size,
       notFoundContent = _a.notFoundContent,
-      props = __rest(_a, ["prefixCls", "bordered", "className", "getPopupContainer", "dropdownClassName", "listHeight", "listItemHeight", "size", "notFoundContent"]);
+      props = __rest$1(_a, ["prefixCls", "bordered", "className", "getPopupContainer", "dropdownClassName", "listHeight", "listItemHeight", "size", "notFoundContent"]);
 
   var _React$useContext = React__namespace.useContext(ConfigContext),
       getContextPopupContainer = _React$useContext.getPopupContainer,
@@ -16866,9 +16876,4483 @@ Select$1.SECRET_COMBOBOX_MODE_DO_NOT_USE = SECRET_COMBOBOX_MODE_DO_NOT_USE;
 Select$1.Option = Option$1;
 Select$1.OptGroup = OptGroup;
 
+var isValidElement = React__namespace.isValidElement;
+function replaceElement(element, replacement, props) {
+  if (!isValidElement(element)) return replacement;
+  return /*#__PURE__*/React__namespace.cloneElement(element, typeof props === 'function' ? props(element.props || {}) : props);
+}
+function cloneElement(element, props) {
+  return replaceElement(element, element, props);
+}
+
+/**
+ * Webpack has bug for import loop, which is not the same behavior as ES module.
+ * When util.js imports the TreeNode for tree generate will cause treeContextTypes be empty.
+ */
+var TreeContext = /*#__PURE__*/React__namespace.createContext(null);
+
+var Indent = function Indent(_ref) {
+  var prefixCls = _ref.prefixCls,
+      level = _ref.level,
+      isStart = _ref.isStart,
+      isEnd = _ref.isEnd;
+  var baseClassName = "".concat(prefixCls, "-indent-unit");
+  var list = [];
+
+  for (var i = 0; i < level; i += 1) {
+    var _classNames;
+
+    list.push( /*#__PURE__*/React__namespace.createElement("span", {
+      key: i,
+      className: classnames(baseClassName, (_classNames = {}, _defineProperty$4(_classNames, "".concat(baseClassName, "-start"), isStart[i]), _defineProperty$4(_classNames, "".concat(baseClassName, "-end"), isEnd[i]), _classNames))
+    }));
+  }
+
+  return /*#__PURE__*/React__namespace.createElement("span", {
+    "aria-hidden": "true",
+    className: "".concat(prefixCls, "-indent")
+  }, list);
+};
+
+var ICON_OPEN = 'open';
+var ICON_CLOSE = 'close';
+var defaultTitle = '---';
+
+var InternalTreeNode = /*#__PURE__*/function (_React$Component) {
+  _inherits$1(InternalTreeNode, _React$Component);
+
+  var _super = _createSuper$1(InternalTreeNode);
+
+  function InternalTreeNode() {
+    var _this;
+
+    _classCallCheck$2(this, InternalTreeNode);
+
+    _this = _super.apply(this, arguments);
+    _this.state = {
+      dragNodeHighlight: false
+    };
+
+    _this.onSelectorClick = function (e) {
+      // Click trigger before select/check operation
+      var onNodeClick = _this.props.context.onNodeClick;
+      onNodeClick(e, convertNodePropsToEventData(_this.props));
+
+      if (_this.isSelectable()) {
+        _this.onSelect(e);
+      } else {
+        _this.onCheck(e);
+      }
+    };
+
+    _this.onSelectorDoubleClick = function (e) {
+      var onNodeDoubleClick = _this.props.context.onNodeDoubleClick;
+      onNodeDoubleClick(e, convertNodePropsToEventData(_this.props));
+    };
+
+    _this.onSelect = function (e) {
+      if (_this.isDisabled()) return;
+      var onNodeSelect = _this.props.context.onNodeSelect;
+      e.preventDefault();
+      onNodeSelect(e, convertNodePropsToEventData(_this.props));
+    };
+
+    _this.onCheck = function (e) {
+      if (_this.isDisabled()) return;
+      var _this$props = _this.props,
+          disableCheckbox = _this$props.disableCheckbox,
+          checked = _this$props.checked;
+      var onNodeCheck = _this.props.context.onNodeCheck;
+      if (!_this.isCheckable() || disableCheckbox) return;
+      e.preventDefault();
+      var targetChecked = !checked;
+      onNodeCheck(e, convertNodePropsToEventData(_this.props), targetChecked);
+    };
+
+    _this.onMouseEnter = function (e) {
+      var onNodeMouseEnter = _this.props.context.onNodeMouseEnter;
+      onNodeMouseEnter(e, convertNodePropsToEventData(_this.props));
+    };
+
+    _this.onMouseLeave = function (e) {
+      var onNodeMouseLeave = _this.props.context.onNodeMouseLeave;
+      onNodeMouseLeave(e, convertNodePropsToEventData(_this.props));
+    };
+
+    _this.onContextMenu = function (e) {
+      var onNodeContextMenu = _this.props.context.onNodeContextMenu;
+      onNodeContextMenu(e, convertNodePropsToEventData(_this.props));
+    };
+
+    _this.onDragStart = function (e) {
+      var onNodeDragStart = _this.props.context.onNodeDragStart;
+      e.stopPropagation();
+
+      _this.setState({
+        dragNodeHighlight: true
+      });
+
+      onNodeDragStart(e, _assertThisInitialized$1(_this));
+
+      try {
+        // ie throw error
+        // firefox-need-it
+        e.dataTransfer.setData('text/plain', '');
+      } catch (error) {// empty
+      }
+    };
+
+    _this.onDragEnter = function (e) {
+      var onNodeDragEnter = _this.props.context.onNodeDragEnter;
+      e.preventDefault();
+      e.stopPropagation();
+      onNodeDragEnter(e, _assertThisInitialized$1(_this));
+    };
+
+    _this.onDragOver = function (e) {
+      var onNodeDragOver = _this.props.context.onNodeDragOver;
+      e.preventDefault();
+      e.stopPropagation();
+      onNodeDragOver(e, _assertThisInitialized$1(_this));
+    };
+
+    _this.onDragLeave = function (e) {
+      var onNodeDragLeave = _this.props.context.onNodeDragLeave;
+      e.stopPropagation();
+      onNodeDragLeave(e, _assertThisInitialized$1(_this));
+    };
+
+    _this.onDragEnd = function (e) {
+      var onNodeDragEnd = _this.props.context.onNodeDragEnd;
+      e.stopPropagation();
+
+      _this.setState({
+        dragNodeHighlight: false
+      });
+
+      onNodeDragEnd(e, _assertThisInitialized$1(_this));
+    };
+
+    _this.onDrop = function (e) {
+      var onNodeDrop = _this.props.context.onNodeDrop;
+      e.preventDefault();
+      e.stopPropagation();
+
+      _this.setState({
+        dragNodeHighlight: false
+      });
+
+      onNodeDrop(e, _assertThisInitialized$1(_this));
+    }; // Disabled item still can be switch
+
+
+    _this.onExpand = function (e) {
+      var _this$props2 = _this.props,
+          loading = _this$props2.loading,
+          onNodeExpand = _this$props2.context.onNodeExpand;
+      if (loading) return;
+      onNodeExpand(e, convertNodePropsToEventData(_this.props));
+    }; // Drag usage
+
+
+    _this.setSelectHandle = function (node) {
+      _this.selectHandle = node;
+    };
+
+    _this.getNodeState = function () {
+      var expanded = _this.props.expanded;
+
+      if (_this.isLeaf()) {
+        return null;
+      }
+
+      return expanded ? ICON_OPEN : ICON_CLOSE;
+    };
+
+    _this.hasChildren = function () {
+      var eventKey = _this.props.eventKey;
+      var keyEntities = _this.props.context.keyEntities;
+
+      var _ref = keyEntities[eventKey] || {},
+          children = _ref.children;
+
+      return !!(children || []).length;
+    };
+
+    _this.isLeaf = function () {
+      var _this$props3 = _this.props,
+          isLeaf = _this$props3.isLeaf,
+          loaded = _this$props3.loaded;
+      var loadData = _this.props.context.loadData;
+
+      var hasChildren = _this.hasChildren();
+
+      if (isLeaf === false) {
+        return false;
+      }
+
+      return isLeaf || !loadData && !hasChildren || loadData && loaded && !hasChildren;
+    };
+
+    _this.isDisabled = function () {
+      var disabled = _this.props.disabled;
+      var treeDisabled = _this.props.context.disabled;
+      return !!(treeDisabled || disabled);
+    };
+
+    _this.isCheckable = function () {
+      var checkable = _this.props.checkable;
+      var treeCheckable = _this.props.context.checkable; // Return false if tree or treeNode is not checkable
+
+      if (!treeCheckable || checkable === false) return false;
+      return treeCheckable;
+    }; // Load data to avoid default expanded tree without data
+
+
+    _this.syncLoadData = function (props) {
+      var expanded = props.expanded,
+          loading = props.loading,
+          loaded = props.loaded;
+      var _this$props$context = _this.props.context,
+          loadData = _this$props$context.loadData,
+          onNodeLoad = _this$props$context.onNodeLoad;
+      if (loading) return; // read from state to avoid loadData at same time
+
+      if (loadData && expanded && !_this.isLeaf()) {
+        // We needn't reload data when has children in sync logic
+        // It's only needed in node expanded
+        if (!_this.hasChildren() && !loaded) {
+          onNodeLoad(convertNodePropsToEventData(_this.props));
+        }
+      }
+    };
+
+    _this.renderSwitcherIconDom = function (isLeaf) {
+      var switcherIconFromProps = _this.props.switcherIcon;
+      var switcherIconFromCtx = _this.props.context.switcherIcon;
+      var switcherIcon = switcherIconFromProps || switcherIconFromCtx; // if switcherIconDom is null, no render switcher span
+
+      if (typeof switcherIcon === 'function') {
+        return switcherIcon(_objectSpread2$1(_objectSpread2$1({}, _this.props), {}, {
+          isLeaf: isLeaf
+        }));
+      }
+
+      return switcherIcon;
+    }; // Switcher
+
+
+    _this.renderSwitcher = function () {
+      var expanded = _this.props.expanded;
+      var prefixCls = _this.props.context.prefixCls;
+
+      if (_this.isLeaf()) {
+        // if switcherIconDom is null, no render switcher span
+        var _switcherIconDom = _this.renderSwitcherIconDom(true);
+
+        return _switcherIconDom !== false ? /*#__PURE__*/React__namespace.createElement("span", {
+          className: classnames("".concat(prefixCls, "-switcher"), "".concat(prefixCls, "-switcher-noop"))
+        }, _switcherIconDom) : null;
+      }
+
+      var switcherCls = classnames("".concat(prefixCls, "-switcher"), "".concat(prefixCls, "-switcher_").concat(expanded ? ICON_OPEN : ICON_CLOSE));
+
+      var switcherIconDom = _this.renderSwitcherIconDom(false);
+
+      return switcherIconDom !== false ? /*#__PURE__*/React__namespace.createElement("span", {
+        onClick: _this.onExpand,
+        className: switcherCls
+      }, switcherIconDom) : null;
+    }; // Checkbox
+
+
+    _this.renderCheckbox = function () {
+      var _this$props4 = _this.props,
+          checked = _this$props4.checked,
+          halfChecked = _this$props4.halfChecked,
+          disableCheckbox = _this$props4.disableCheckbox;
+      var prefixCls = _this.props.context.prefixCls;
+
+      var disabled = _this.isDisabled();
+
+      var checkable = _this.isCheckable();
+
+      if (!checkable) return null; // [Legacy] Custom element should be separate with `checkable` in future
+
+      var $custom = typeof checkable !== 'boolean' ? checkable : null;
+      return /*#__PURE__*/React__namespace.createElement("span", {
+        className: classnames("".concat(prefixCls, "-checkbox"), checked && "".concat(prefixCls, "-checkbox-checked"), !checked && halfChecked && "".concat(prefixCls, "-checkbox-indeterminate"), (disabled || disableCheckbox) && "".concat(prefixCls, "-checkbox-disabled")),
+        onClick: _this.onCheck
+      }, $custom);
+    };
+
+    _this.renderIcon = function () {
+      var loading = _this.props.loading;
+      var prefixCls = _this.props.context.prefixCls;
+      return /*#__PURE__*/React__namespace.createElement("span", {
+        className: classnames("".concat(prefixCls, "-iconEle"), "".concat(prefixCls, "-icon__").concat(_this.getNodeState() || 'docu'), loading && "".concat(prefixCls, "-icon_loading"))
+      });
+    }; // Icon + Title
+
+
+    _this.renderSelector = function () {
+      var dragNodeHighlight = _this.state.dragNodeHighlight;
+      var _this$props5 = _this.props,
+          title = _this$props5.title,
+          selected = _this$props5.selected,
+          icon = _this$props5.icon,
+          loading = _this$props5.loading,
+          data = _this$props5.data;
+      var _this$props$context2 = _this.props.context,
+          prefixCls = _this$props$context2.prefixCls,
+          showIcon = _this$props$context2.showIcon,
+          treeIcon = _this$props$context2.icon,
+          draggable = _this$props$context2.draggable,
+          loadData = _this$props$context2.loadData,
+          titleRender = _this$props$context2.titleRender;
+
+      var disabled = _this.isDisabled();
+
+      var mergedDraggable = typeof draggable === 'function' ? draggable(data) : draggable;
+      var wrapClass = "".concat(prefixCls, "-node-content-wrapper"); // Icon - Still show loading icon when loading without showIcon
+
+      var $icon;
+
+      if (showIcon) {
+        var currentIcon = icon || treeIcon;
+        $icon = currentIcon ? /*#__PURE__*/React__namespace.createElement("span", {
+          className: classnames("".concat(prefixCls, "-iconEle"), "".concat(prefixCls, "-icon__customize"))
+        }, typeof currentIcon === 'function' ? currentIcon(_this.props) : currentIcon) : _this.renderIcon();
+      } else if (loadData && loading) {
+        $icon = _this.renderIcon();
+      } // Title
+
+
+      var titleNode;
+
+      if (typeof title === 'function') {
+        titleNode = title(data);
+      } else if (titleRender) {
+        titleNode = titleRender(data);
+      } else {
+        titleNode = title;
+      }
+
+      var $title = /*#__PURE__*/React__namespace.createElement("span", {
+        className: "".concat(prefixCls, "-title")
+      }, titleNode);
+      return /*#__PURE__*/React__namespace.createElement("span", {
+        ref: _this.setSelectHandle,
+        title: typeof title === 'string' ? title : '',
+        className: classnames("".concat(wrapClass), "".concat(wrapClass, "-").concat(_this.getNodeState() || 'normal'), !disabled && (selected || dragNodeHighlight) && "".concat(prefixCls, "-node-selected"), !disabled && mergedDraggable && 'draggable'),
+        draggable: !disabled && mergedDraggable || undefined,
+        "aria-grabbed": !disabled && mergedDraggable || undefined,
+        onMouseEnter: _this.onMouseEnter,
+        onMouseLeave: _this.onMouseLeave,
+        onContextMenu: _this.onContextMenu,
+        onClick: _this.onSelectorClick,
+        onDoubleClick: _this.onSelectorDoubleClick,
+        onDragStart: mergedDraggable ? _this.onDragStart : undefined
+      }, $icon, $title, _this.renderDropIndicator());
+    };
+
+    _this.renderDropIndicator = function () {
+      var _this$props6 = _this.props,
+          disabled = _this$props6.disabled,
+          eventKey = _this$props6.eventKey;
+      var _this$props$context3 = _this.props.context,
+          draggable = _this$props$context3.draggable,
+          dropLevelOffset = _this$props$context3.dropLevelOffset,
+          dropPosition = _this$props$context3.dropPosition,
+          prefixCls = _this$props$context3.prefixCls,
+          indent = _this$props$context3.indent,
+          dropIndicatorRender = _this$props$context3.dropIndicatorRender,
+          dragOverNodeKey = _this$props$context3.dragOverNodeKey,
+          direction = _this$props$context3.direction;
+      var mergedDraggable = draggable !== false; // allowDrop is calculated in Tree.tsx, there is no need for calc it here
+
+      var showIndicator = !disabled && mergedDraggable && dragOverNodeKey === eventKey;
+      return showIndicator ? dropIndicatorRender({
+        dropPosition: dropPosition,
+        dropLevelOffset: dropLevelOffset,
+        indent: indent,
+        prefixCls: prefixCls,
+        direction: direction
+      }) : null;
+    };
+
+    return _this;
+  } // Isomorphic needn't load data in server side
+
+
+  _createClass$2(InternalTreeNode, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.syncLoadData(this.props);
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      this.syncLoadData(this.props);
+    }
+  }, {
+    key: "isSelectable",
+    value: function isSelectable() {
+      var selectable = this.props.selectable;
+      var treeSelectable = this.props.context.selectable; // Ignore when selectable is undefined or null
+
+      if (typeof selectable === 'boolean') {
+        return selectable;
+      }
+
+      return treeSelectable;
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _classNames;
+
+      var _this$props7 = this.props,
+          eventKey = _this$props7.eventKey,
+          className = _this$props7.className,
+          style = _this$props7.style,
+          dragOver = _this$props7.dragOver,
+          dragOverGapTop = _this$props7.dragOverGapTop,
+          dragOverGapBottom = _this$props7.dragOverGapBottom,
+          isLeaf = _this$props7.isLeaf,
+          isStart = _this$props7.isStart,
+          isEnd = _this$props7.isEnd,
+          expanded = _this$props7.expanded,
+          selected = _this$props7.selected,
+          checked = _this$props7.checked,
+          halfChecked = _this$props7.halfChecked,
+          loading = _this$props7.loading,
+          domRef = _this$props7.domRef,
+          active = _this$props7.active,
+          data = _this$props7.data,
+          onMouseMove = _this$props7.onMouseMove,
+          otherProps = _objectWithoutProperties$1(_this$props7, ["eventKey", "className", "style", "dragOver", "dragOverGapTop", "dragOverGapBottom", "isLeaf", "isStart", "isEnd", "expanded", "selected", "checked", "halfChecked", "loading", "domRef", "active", "data", "onMouseMove"]);
+
+      var _this$props$context4 = this.props.context,
+          prefixCls = _this$props$context4.prefixCls,
+          filterTreeNode = _this$props$context4.filterTreeNode,
+          draggable = _this$props$context4.draggable,
+          keyEntities = _this$props$context4.keyEntities,
+          dropContainerKey = _this$props$context4.dropContainerKey,
+          dropTargetKey = _this$props$context4.dropTargetKey;
+      var disabled = this.isDisabled();
+      var dataOrAriaAttributeProps = getDataAndAria(otherProps);
+
+      var _ref2 = keyEntities[eventKey] || {},
+          level = _ref2.level;
+
+      var isEndNode = isEnd[isEnd.length - 1];
+      var mergedDraggable = typeof draggable === 'function' ? draggable(data) : draggable;
+      return /*#__PURE__*/React__namespace.createElement("div", _extends$1({
+        ref: domRef,
+        className: classnames(className, "".concat(prefixCls, "-treenode"), (_classNames = {}, _defineProperty$4(_classNames, "".concat(prefixCls, "-treenode-disabled"), disabled), _defineProperty$4(_classNames, "".concat(prefixCls, "-treenode-switcher-").concat(expanded ? 'open' : 'close'), !isLeaf), _defineProperty$4(_classNames, "".concat(prefixCls, "-treenode-checkbox-checked"), checked), _defineProperty$4(_classNames, "".concat(prefixCls, "-treenode-checkbox-indeterminate"), halfChecked), _defineProperty$4(_classNames, "".concat(prefixCls, "-treenode-selected"), selected), _defineProperty$4(_classNames, "".concat(prefixCls, "-treenode-loading"), loading), _defineProperty$4(_classNames, "".concat(prefixCls, "-treenode-active"), active), _defineProperty$4(_classNames, "".concat(prefixCls, "-treenode-leaf-last"), isEndNode), _defineProperty$4(_classNames, 'drop-target', dropTargetKey === eventKey), _defineProperty$4(_classNames, 'drop-container', dropContainerKey === eventKey), _defineProperty$4(_classNames, 'drag-over', !disabled && dragOver), _defineProperty$4(_classNames, 'drag-over-gap-top', !disabled && dragOverGapTop), _defineProperty$4(_classNames, 'drag-over-gap-bottom', !disabled && dragOverGapBottom), _defineProperty$4(_classNames, 'filter-node', filterTreeNode && filterTreeNode(convertNodePropsToEventData(this.props))), _classNames)),
+        style: style,
+        onDragEnter: mergedDraggable ? this.onDragEnter : undefined,
+        onDragOver: mergedDraggable ? this.onDragOver : undefined,
+        onDragLeave: mergedDraggable ? this.onDragLeave : undefined,
+        onDrop: mergedDraggable ? this.onDrop : undefined,
+        onDragEnd: mergedDraggable ? this.onDragEnd : undefined,
+        onMouseMove: onMouseMove
+      }, dataOrAriaAttributeProps), /*#__PURE__*/React__namespace.createElement(Indent, {
+        prefixCls: prefixCls,
+        level: level,
+        isStart: isStart,
+        isEnd: isEnd
+      }), this.renderSwitcher(), this.renderCheckbox(), this.renderSelector());
+    }
+  }]);
+
+  return InternalTreeNode;
+}(React__namespace.Component);
+
+var ContextTreeNode = function ContextTreeNode(props) {
+  return /*#__PURE__*/React__namespace.createElement(TreeContext.Consumer, null, function (context) {
+    return /*#__PURE__*/React__namespace.createElement(InternalTreeNode, _extends$1({}, props, {
+      context: context
+    }));
+  });
+};
+
+ContextTreeNode.displayName = 'TreeNode';
+ContextTreeNode.defaultProps = {
+  title: defaultTitle
+};
+ContextTreeNode.isTreeNode = 1;
+
+function arrDel(list, value) {
+  var clone = list.slice();
+  var index = clone.indexOf(value);
+
+  if (index >= 0) {
+    clone.splice(index, 1);
+  }
+
+  return clone;
+}
+function arrAdd(list, value) {
+  var clone = list.slice();
+
+  if (clone.indexOf(value) === -1) {
+    clone.push(value);
+  }
+
+  return clone;
+}
+function posToArr(pos) {
+  return pos.split('-');
+}
+function getPosition(level, index) {
+  return "".concat(level, "-").concat(index);
+}
+function isTreeNode(node) {
+  return node && node.type && node.type.isTreeNode;
+}
+function getDragChildrenKeys(dragNodeKey, keyEntities) {
+  // not contains self
+  // self for left or right drag
+  var dragChildrenKeys = [];
+  var entity = keyEntities[dragNodeKey];
+
+  function dig() {
+    var list = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+    list.forEach(function (_ref) {
+      var key = _ref.key,
+          children = _ref.children;
+      dragChildrenKeys.push(key);
+      dig(children);
+    });
+  }
+
+  dig(entity.children);
+  return dragChildrenKeys;
+}
+function isLastChild(treeNodeEntity) {
+  if (treeNodeEntity.parent) {
+    var posArr = posToArr(treeNodeEntity.pos);
+    return Number(posArr[posArr.length - 1]) === treeNodeEntity.parent.children.length - 1;
+  }
+
+  return false;
+}
+function isFirstChild(treeNodeEntity) {
+  var posArr = posToArr(treeNodeEntity.pos);
+  return Number(posArr[posArr.length - 1]) === 0;
+} // Only used when drag, not affect SSR.
+
+function calcDropPosition(event, dragNode, targetNode, indent, startMousePosition, allowDrop, flattenedNodes, keyEntities, expandKeys, direction) {
+  var _abstractDropNodeEnti;
+
+  var clientX = event.clientX,
+      clientY = event.clientY;
+
+  var _event$target$getBoun = event.target.getBoundingClientRect(),
+      top = _event$target$getBoun.top,
+      height = _event$target$getBoun.height; // optional chain for testing
+
+
+  var horizontalMouseOffset = (direction === 'rtl' ? -1 : 1) * (((startMousePosition === null || startMousePosition === void 0 ? void 0 : startMousePosition.x) || 0) - clientX);
+  var rawDropLevelOffset = (horizontalMouseOffset - 12) / indent; // find abstract drop node by horizontal offset
+
+  var abstractDropNodeEntity = keyEntities[targetNode.props.eventKey];
+
+  if (clientY < top + height / 2) {
+    // first half, set abstract drop node to previous node
+    var nodeIndex = flattenedNodes.findIndex(function (flattenedNode) {
+      return flattenedNode.data.key === abstractDropNodeEntity.key;
+    });
+    var prevNodeIndex = nodeIndex <= 0 ? 0 : nodeIndex - 1;
+    var prevNodeKey = flattenedNodes[prevNodeIndex].data.key;
+    abstractDropNodeEntity = keyEntities[prevNodeKey];
+  }
+
+  var initialAbstractDropNodeKey = abstractDropNodeEntity.key;
+  var abstractDragOverEntity = abstractDropNodeEntity;
+  var dragOverNodeKey = abstractDropNodeEntity.key;
+  var dropPosition = 0;
+  var dropLevelOffset = 0; // Only allow cross level drop when dragging on a non-expanded node
+
+  if (!expandKeys.includes(initialAbstractDropNodeKey)) {
+    for (var i = 0; i < rawDropLevelOffset; i += 1) {
+      if (isLastChild(abstractDropNodeEntity)) {
+        abstractDropNodeEntity = abstractDropNodeEntity.parent;
+        dropLevelOffset += 1;
+      } else {
+        break;
+      }
+    }
+  }
+
+  var abstractDropDataNode = abstractDropNodeEntity.node;
+  var dropAllowed = true;
+
+  if (isFirstChild(abstractDropNodeEntity) && abstractDropNodeEntity.level === 0 && clientY < top + height / 2 && allowDrop({
+    dropNode: abstractDropDataNode,
+    dropPosition: -1
+  }) && abstractDropNodeEntity.key === targetNode.props.eventKey) {
+    // first half of first node in first level
+    dropPosition = -1;
+  } else if ((abstractDragOverEntity.children || []).length && expandKeys.includes(dragOverNodeKey)) {
+    // drop on expanded node
+    // only allow drop inside
+    if (allowDrop({
+      dropNode: abstractDropDataNode,
+      dropPosition: 0
+    })) {
+      dropPosition = 0;
+    } else {
+      dropAllowed = false;
+    }
+  } else if (dropLevelOffset === 0) {
+    if (rawDropLevelOffset > -1.5) {
+      // | Node     | <- abstractDropNode
+      // | -^-===== | <- mousePosition
+      // 1. try drop after
+      // 2. do not allow drop
+      if (allowDrop({
+        dropNode: abstractDropDataNode,
+        dropPosition: 1
+      })) {
+        dropPosition = 1;
+      } else {
+        dropAllowed = false;
+      }
+    } else {
+      // | Node     | <- abstractDropNode
+      // | ---==^== | <- mousePosition
+      // whether it has children or doesn't has children
+      // always
+      // 1. try drop inside
+      // 2. try drop after
+      // 3. do not allow drop
+      if (allowDrop({
+        dropNode: abstractDropDataNode,
+        dropPosition: 0
+      })) {
+        dropPosition = 0;
+      } else if (allowDrop({
+        dropNode: abstractDropDataNode,
+        dropPosition: 1
+      })) {
+        dropPosition = 1;
+      } else {
+        dropAllowed = false;
+      }
+    }
+  } else {
+    // | Node1 | <- abstractDropNode
+    //      |  Node2  |
+    // --^--|----=====| <- mousePosition
+    // 1. try insert after Node1
+    // 2. do not allow drop
+    if (allowDrop({
+      dropNode: abstractDropDataNode,
+      dropPosition: 1
+    })) {
+      dropPosition = 1;
+    } else {
+      dropAllowed = false;
+    }
+  }
+
+  return {
+    dropPosition: dropPosition,
+    dropLevelOffset: dropLevelOffset,
+    dropTargetKey: abstractDropNodeEntity.key,
+    dropTargetPos: abstractDropNodeEntity.pos,
+    dragOverNodeKey: dragOverNodeKey,
+    dropContainerKey: dropPosition === 0 ? null : ((_abstractDropNodeEnti = abstractDropNodeEntity.parent) === null || _abstractDropNodeEnti === void 0 ? void 0 : _abstractDropNodeEnti.key) || null,
+    dropAllowed: dropAllowed
+  };
+}
+/**
+ * Return selectedKeys according with multiple prop
+ * @param selectedKeys
+ * @param props
+ * @returns [string]
+ */
+
+function calcSelectedKeys(selectedKeys, props) {
+  if (!selectedKeys) return undefined;
+  var multiple = props.multiple;
+
+  if (multiple) {
+    return selectedKeys.slice();
+  }
+
+  if (selectedKeys.length) {
+    return [selectedKeys[0]];
+  }
+
+  return selectedKeys;
+}
+/**
+ * Parse `checkedKeys` to { checkedKeys, halfCheckedKeys } style
+ */
+
+function parseCheckedKeys(keys) {
+  if (!keys) {
+    return null;
+  } // Convert keys to object format
+
+
+  var keyProps;
+
+  if (Array.isArray(keys)) {
+    // [Legacy] Follow the api doc
+    keyProps = {
+      checkedKeys: keys,
+      halfCheckedKeys: undefined
+    };
+  } else if (_typeof$4(keys) === 'object') {
+    keyProps = {
+      checkedKeys: keys.checked || undefined,
+      halfCheckedKeys: keys.halfChecked || undefined
+    };
+  } else {
+    warningOnce(false, '`checkedKeys` is not an array or an object');
+    return null;
+  }
+
+  return keyProps;
+}
+/**
+ * If user use `autoExpandParent` we should get the list of parent node
+ * @param keyList
+ * @param keyEntities
+ */
+
+function conductExpandParent(keyList, keyEntities) {
+  var expandedKeys = new Set();
+
+  function conductUp(key) {
+    if (expandedKeys.has(key)) return;
+    var entity = keyEntities[key];
+    if (!entity) return;
+    expandedKeys.add(key);
+    var parent = entity.parent,
+        node = entity.node;
+    if (node.disabled) return;
+
+    if (parent) {
+      conductUp(parent.key);
+    }
+  }
+
+  (keyList || []).forEach(function (key) {
+    conductUp(key);
+  });
+  return _toConsumableArray(expandedKeys);
+}
+/**
+ * Returns only the data- and aria- key/value pairs
+ */
+
+function getDataAndAria(props) {
+  var omitProps = {};
+  Object.keys(props).forEach(function (key) {
+    if (key.startsWith('data-') || key.startsWith('aria-')) {
+      omitProps[key] = props[key];
+    }
+  });
+  return omitProps;
+}
+
+function getKey(key, pos) {
+  if (key !== null && key !== undefined) {
+    return key;
+  }
+
+  return pos;
+}
+/**
+ * Warning if TreeNode do not provides key
+ */
+
+function warningWithoutKey() {
+  var treeData = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var keys = new Map();
+
+  function dig(list) {
+    var path = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+    (list || []).forEach(function (treeNode) {
+      var key = treeNode.key,
+          children = treeNode.children;
+      warningOnce(key !== null && key !== undefined, "Tree node must have a certain key: [".concat(path).concat(key, "]"));
+      var recordKey = String(key);
+      warningOnce(!keys.has(recordKey) || key === null || key === undefined, "Same 'key' exist in the Tree: ".concat(recordKey));
+      keys.set(recordKey, true);
+      dig(children, "".concat(path).concat(recordKey, " > "));
+    });
+  }
+
+  dig(treeData);
+}
+/**
+ * Convert `children` of Tree into `treeData` structure.
+ */
+
+function convertTreeToData(rootNodes) {
+  function dig(node) {
+    var treeNodes = toArray$3(node);
+    return treeNodes.map(function (treeNode) {
+      // Filter invalidate node
+      if (!isTreeNode(treeNode)) {
+        warningOnce(!treeNode, 'Tree/TreeNode can only accept TreeNode as children.');
+        return null;
+      }
+
+      var key = treeNode.key;
+
+      var _treeNode$props = treeNode.props,
+          children = _treeNode$props.children,
+          rest = _objectWithoutProperties$1(_treeNode$props, ["children"]);
+
+      var dataNode = _objectSpread2$1({
+        key: key
+      }, rest);
+
+      var parsedChildren = dig(children);
+
+      if (parsedChildren.length) {
+        dataNode.children = parsedChildren;
+      }
+
+      return dataNode;
+    }).filter(function (dataNode) {
+      return dataNode;
+    });
+  }
+
+  return dig(rootNodes);
+}
+/**
+ * Flat nest tree data into flatten list. This is used for virtual list render.
+ * @param treeNodeList Origin data node list
+ * @param expandedKeys
+ * need expanded keys, provides `true` means all expanded (used in `rc-tree-select`).
+ */
+
+function flattenTreeData() {
+  var treeNodeList = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var expandedKeys = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
+  var expandedKeySet = new Set(expandedKeys === true ? [] : expandedKeys);
+  var flattenList = [];
+
+  function dig(list) {
+    var parent = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+    return list.map(function (treeNode, index) {
+      var pos = getPosition(parent ? parent.pos : '0', index);
+      var mergedKey = getKey(treeNode.key, pos); // Add FlattenDataNode into list
+
+      var flattenNode = _objectSpread2$1(_objectSpread2$1({}, treeNode), {}, {
+        parent: parent,
+        pos: pos,
+        children: null,
+        data: treeNode,
+        isStart: [].concat(_toConsumableArray(parent ? parent.isStart : []), [index === 0]),
+        isEnd: [].concat(_toConsumableArray(parent ? parent.isEnd : []), [index === list.length - 1])
+      });
+
+      flattenList.push(flattenNode); // Loop treeNode children
+
+      if (expandedKeys === true || expandedKeySet.has(mergedKey)) {
+        flattenNode.children = dig(treeNode.children || [], flattenNode);
+      } else {
+        flattenNode.children = [];
+      }
+
+      return flattenNode;
+    });
+  }
+
+  dig(treeNodeList);
+  return flattenList;
+}
+/**
+ * Traverse all the data by `treeData`.
+ * Please not use it out of the `rc-tree` since we may refactor this code.
+ */
+
+function traverseDataNodes(dataNodes, callback, // To avoid too many params, let use config instead of origin param
+config) {
+  // Init config
+  var externalGetKey = null;
+  var childrenPropName;
+
+  var configType = _typeof$4(config);
+
+  if (configType === 'function' || configType === 'string') {
+    // Legacy getKey param
+    externalGetKey = config;
+  } else if (config && configType === 'object') {
+    childrenPropName = config.childrenPropName;
+    externalGetKey = config.externalGetKey;
+  }
+
+  childrenPropName = childrenPropName || 'children'; // Get keys
+
+  var syntheticGetKey;
+
+  if (externalGetKey) {
+    if (typeof externalGetKey === 'string') {
+      syntheticGetKey = function syntheticGetKey(node) {
+        return node[externalGetKey];
+      };
+    } else if (typeof externalGetKey === 'function') {
+      syntheticGetKey = function syntheticGetKey(node) {
+        return externalGetKey(node);
+      };
+    }
+  } else {
+    syntheticGetKey = function syntheticGetKey(node, pos) {
+      return getKey(node.key, pos);
+    };
+  } // Process
+
+
+  function processNode(node, index, parent) {
+    var children = node ? node[childrenPropName] : dataNodes;
+    var pos = node ? getPosition(parent.pos, index) : '0'; // Process node if is not root
+
+    if (node) {
+      var key = syntheticGetKey(node, pos);
+      var data = {
+        node: node,
+        index: index,
+        pos: pos,
+        key: key,
+        parentPos: parent.node ? parent.pos : null,
+        level: parent.level + 1
+      };
+      callback(data);
+    } // Process children node
+
+
+    if (children) {
+      children.forEach(function (subNode, subIndex) {
+        processNode(subNode, subIndex, {
+          node: node,
+          pos: pos,
+          level: parent ? parent.level + 1 : -1
+        });
+      });
+    }
+  }
+
+  processNode(null);
+}
+/**
+ * Convert `treeData` into entity records.
+ */
+
+function convertDataToEntities(dataNodes) {
+  var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+      initWrapper = _ref.initWrapper,
+      processEntity = _ref.processEntity,
+      onProcessFinished = _ref.onProcessFinished,
+      externalGetKey = _ref.externalGetKey,
+      childrenPropName = _ref.childrenPropName;
+
+  var
+  /** @deprecated Use `config.externalGetKey` instead */
+  legacyExternalGetKey = arguments.length > 2 ? arguments[2] : undefined;
+  // Init config
+  var mergedExternalGetKey = externalGetKey || legacyExternalGetKey;
+  var posEntities = {};
+  var keyEntities = {};
+  var wrapper = {
+    posEntities: posEntities,
+    keyEntities: keyEntities
+  };
+
+  if (initWrapper) {
+    wrapper = initWrapper(wrapper) || wrapper;
+  }
+
+  traverseDataNodes(dataNodes, function (item) {
+    var node = item.node,
+        index = item.index,
+        pos = item.pos,
+        key = item.key,
+        parentPos = item.parentPos,
+        level = item.level;
+    var entity = {
+      node: node,
+      index: index,
+      key: key,
+      pos: pos,
+      level: level
+    };
+    var mergedKey = getKey(key, pos);
+    posEntities[pos] = entity;
+    keyEntities[mergedKey] = entity; // Fill children
+
+    entity.parent = posEntities[parentPos];
+
+    if (entity.parent) {
+      entity.parent.children = entity.parent.children || [];
+      entity.parent.children.push(entity);
+    }
+
+    if (processEntity) {
+      processEntity(entity, wrapper);
+    }
+  }, {
+    externalGetKey: mergedExternalGetKey,
+    childrenPropName: childrenPropName
+  });
+
+  if (onProcessFinished) {
+    onProcessFinished(wrapper);
+  }
+
+  return wrapper;
+}
+/**
+ * Get TreeNode props with Tree props.
+ */
+
+function getTreeNodeProps(key, _ref2) {
+  var expandedKeys = _ref2.expandedKeys,
+      selectedKeys = _ref2.selectedKeys,
+      loadedKeys = _ref2.loadedKeys,
+      loadingKeys = _ref2.loadingKeys,
+      checkedKeys = _ref2.checkedKeys,
+      halfCheckedKeys = _ref2.halfCheckedKeys,
+      dragOverNodeKey = _ref2.dragOverNodeKey,
+      dropPosition = _ref2.dropPosition,
+      keyEntities = _ref2.keyEntities;
+  var entity = keyEntities[key];
+  var treeNodeProps = {
+    eventKey: key,
+    expanded: expandedKeys.indexOf(key) !== -1,
+    selected: selectedKeys.indexOf(key) !== -1,
+    loaded: loadedKeys.indexOf(key) !== -1,
+    loading: loadingKeys.indexOf(key) !== -1,
+    checked: checkedKeys.indexOf(key) !== -1,
+    halfChecked: halfCheckedKeys.indexOf(key) !== -1,
+    pos: String(entity ? entity.pos : ''),
+    // [Legacy] Drag props
+    // Since the interaction of drag is changed, the semantic of the props are
+    // not accuracy, I think it should be finally removed
+    dragOver: dragOverNodeKey === key && dropPosition === 0,
+    dragOverGapTop: dragOverNodeKey === key && dropPosition === -1,
+    dragOverGapBottom: dragOverNodeKey === key && dropPosition === 1
+  };
+  return treeNodeProps;
+}
+function convertNodePropsToEventData(props) {
+  var data = props.data,
+      expanded = props.expanded,
+      selected = props.selected,
+      checked = props.checked,
+      loaded = props.loaded,
+      loading = props.loading,
+      halfChecked = props.halfChecked,
+      dragOver = props.dragOver,
+      dragOverGapTop = props.dragOverGapTop,
+      dragOverGapBottom = props.dragOverGapBottom,
+      pos = props.pos,
+      active = props.active;
+
+  var eventData = _objectSpread2$1(_objectSpread2$1({}, data), {}, {
+    expanded: expanded,
+    selected: selected,
+    checked: checked,
+    loaded: loaded,
+    loading: loading,
+    halfChecked: halfChecked,
+    dragOver: dragOver,
+    dragOverGapTop: dragOverGapTop,
+    dragOverGapBottom: dragOverGapBottom,
+    pos: pos,
+    active: active
+  });
+
+  if (!('props' in eventData)) {
+    Object.defineProperty(eventData, 'props', {
+      get: function get() {
+        warningOnce(false, 'Second param return from event is node data instead of TreeNode instance. Please read value directly instead of reading from `props`.');
+        return props;
+      }
+    });
+  }
+
+  return eventData;
+}
+
+function removeFromCheckedKeys(halfCheckedKeys, checkedKeys) {
+  var filteredKeys = new Set();
+  halfCheckedKeys.forEach(function (key) {
+    if (!checkedKeys.has(key)) {
+      filteredKeys.add(key);
+    }
+  });
+  return filteredKeys;
+}
+
+function isCheckDisabled$1(node) {
+  var _ref = node || {},
+      disabled = _ref.disabled,
+      disableCheckbox = _ref.disableCheckbox,
+      checkable = _ref.checkable;
+
+  return !!(disabled || disableCheckbox) || checkable === false;
+} // Fill miss keys
+
+function fillConductCheck(keys, levelEntities, maxLevel, syntheticGetCheckDisabled) {
+  var checkedKeys = new Set(keys);
+  var halfCheckedKeys = new Set(); // Add checked keys top to bottom
+
+  for (var level = 0; level <= maxLevel; level += 1) {
+    var entities = levelEntities.get(level) || new Set();
+    entities.forEach(function (entity) {
+      var key = entity.key,
+          node = entity.node,
+          _entity$children = entity.children,
+          children = _entity$children === void 0 ? [] : _entity$children;
+
+      if (checkedKeys.has(key) && !syntheticGetCheckDisabled(node)) {
+        children.filter(function (childEntity) {
+          return !syntheticGetCheckDisabled(childEntity.node);
+        }).forEach(function (childEntity) {
+          checkedKeys.add(childEntity.key);
+        });
+      }
+    });
+  } // Add checked keys from bottom to top
+
+
+  var visitedKeys = new Set();
+
+  for (var _level = maxLevel; _level >= 0; _level -= 1) {
+    var _entities = levelEntities.get(_level) || new Set();
+
+    _entities.forEach(function (entity) {
+      var parent = entity.parent,
+          node = entity.node; // Skip if no need to check
+
+      if (syntheticGetCheckDisabled(node) || !entity.parent || visitedKeys.has(entity.parent.key)) {
+        return;
+      } // Skip if parent is disabled
+
+
+      if (syntheticGetCheckDisabled(entity.parent.node)) {
+        visitedKeys.add(parent.key);
+        return;
+      }
+
+      var allChecked = true;
+      var partialChecked = false;
+      (parent.children || []).filter(function (childEntity) {
+        return !syntheticGetCheckDisabled(childEntity.node);
+      }).forEach(function (_ref2) {
+        var key = _ref2.key;
+        var checked = checkedKeys.has(key);
+
+        if (allChecked && !checked) {
+          allChecked = false;
+        }
+
+        if (!partialChecked && (checked || halfCheckedKeys.has(key))) {
+          partialChecked = true;
+        }
+      });
+
+      if (allChecked) {
+        checkedKeys.add(parent.key);
+      }
+
+      if (partialChecked) {
+        halfCheckedKeys.add(parent.key);
+      }
+
+      visitedKeys.add(parent.key);
+    });
+  }
+
+  return {
+    checkedKeys: Array.from(checkedKeys),
+    halfCheckedKeys: Array.from(removeFromCheckedKeys(halfCheckedKeys, checkedKeys))
+  };
+} // Remove useless key
+
+
+function cleanConductCheck(keys, halfKeys, levelEntities, maxLevel, syntheticGetCheckDisabled) {
+  var checkedKeys = new Set(keys);
+  var halfCheckedKeys = new Set(halfKeys); // Remove checked keys from top to bottom
+
+  for (var level = 0; level <= maxLevel; level += 1) {
+    var entities = levelEntities.get(level) || new Set();
+    entities.forEach(function (entity) {
+      var key = entity.key,
+          node = entity.node,
+          _entity$children2 = entity.children,
+          children = _entity$children2 === void 0 ? [] : _entity$children2;
+
+      if (!checkedKeys.has(key) && !halfCheckedKeys.has(key) && !syntheticGetCheckDisabled(node)) {
+        children.filter(function (childEntity) {
+          return !syntheticGetCheckDisabled(childEntity.node);
+        }).forEach(function (childEntity) {
+          checkedKeys.delete(childEntity.key);
+        });
+      }
+    });
+  } // Remove checked keys form bottom to top
+
+
+  halfCheckedKeys = new Set();
+  var visitedKeys = new Set();
+
+  for (var _level2 = maxLevel; _level2 >= 0; _level2 -= 1) {
+    var _entities2 = levelEntities.get(_level2) || new Set();
+
+    _entities2.forEach(function (entity) {
+      var parent = entity.parent,
+          node = entity.node; // Skip if no need to check
+
+      if (syntheticGetCheckDisabled(node) || !entity.parent || visitedKeys.has(entity.parent.key)) {
+        return;
+      } // Skip if parent is disabled
+
+
+      if (syntheticGetCheckDisabled(entity.parent.node)) {
+        visitedKeys.add(parent.key);
+        return;
+      }
+
+      var allChecked = true;
+      var partialChecked = false;
+      (parent.children || []).filter(function (childEntity) {
+        return !syntheticGetCheckDisabled(childEntity.node);
+      }).forEach(function (_ref3) {
+        var key = _ref3.key;
+        var checked = checkedKeys.has(key);
+
+        if (allChecked && !checked) {
+          allChecked = false;
+        }
+
+        if (!partialChecked && (checked || halfCheckedKeys.has(key))) {
+          partialChecked = true;
+        }
+      });
+
+      if (!allChecked) {
+        checkedKeys.delete(parent.key);
+      }
+
+      if (partialChecked) {
+        halfCheckedKeys.add(parent.key);
+      }
+
+      visitedKeys.add(parent.key);
+    });
+  }
+
+  return {
+    checkedKeys: Array.from(checkedKeys),
+    halfCheckedKeys: Array.from(removeFromCheckedKeys(halfCheckedKeys, checkedKeys))
+  };
+}
+/**
+ * Conduct with keys.
+ * @param keyList current key list
+ * @param keyEntities key - dataEntity map
+ * @param mode `fill` to fill missing key, `clean` to remove useless key
+ */
+
+
+function conductCheck(keyList, checked, keyEntities, getCheckDisabled) {
+  var warningMissKeys = [];
+  var syntheticGetCheckDisabled;
+
+  if (getCheckDisabled) {
+    syntheticGetCheckDisabled = getCheckDisabled;
+  } else {
+    syntheticGetCheckDisabled = isCheckDisabled$1;
+  } // We only handle exist keys
+
+
+  var keys = new Set(keyList.filter(function (key) {
+    var hasEntity = !!keyEntities[key];
+
+    if (!hasEntity) {
+      warningMissKeys.push(key);
+    }
+
+    return hasEntity;
+  }));
+  var levelEntities = new Map();
+  var maxLevel = 0; // Convert entities by level for calculation
+
+  Object.keys(keyEntities).forEach(function (key) {
+    var entity = keyEntities[key];
+    var level = entity.level;
+    var levelSet = levelEntities.get(level);
+
+    if (!levelSet) {
+      levelSet = new Set();
+      levelEntities.set(level, levelSet);
+    }
+
+    levelSet.add(entity);
+    maxLevel = Math.max(maxLevel, level);
+  });
+  warningOnce(!warningMissKeys.length, "Tree missing follow keys: ".concat(warningMissKeys.slice(0, 100).map(function (key) {
+    return "'".concat(key, "'");
+  }).join(', ')));
+  var result;
+
+  if (checked === true) {
+    result = fillConductCheck(keys, levelEntities, maxLevel, syntheticGetCheckDisabled);
+  } else {
+    result = cleanConductCheck(keys, checked.halfCheckedKeys, levelEntities, maxLevel, syntheticGetCheckDisabled);
+  }
+
+  return result;
+}
+
+var MotionTreeNode = function MotionTreeNode(_ref, ref) {
+  var className = _ref.className,
+      style = _ref.style,
+      motion = _ref.motion,
+      motionNodes = _ref.motionNodes,
+      motionType = _ref.motionType,
+      onOriginMotionStart = _ref.onMotionStart,
+      onOriginMotionEnd = _ref.onMotionEnd,
+      active = _ref.active,
+      treeNodeRequiredProps = _ref.treeNodeRequiredProps,
+      props = _objectWithoutProperties$1(_ref, ["className", "style", "motion", "motionNodes", "motionType", "onMotionStart", "onMotionEnd", "active", "treeNodeRequiredProps"]);
+
+  var _React$useState = React__namespace.useState(true),
+      _React$useState2 = _slicedToArray$3(_React$useState, 2),
+      visible = _React$useState2[0],
+      setVisible = _React$useState2[1];
+
+  var _React$useContext = React__namespace.useContext(TreeContext),
+      prefixCls = _React$useContext.prefixCls;
+
+  var motionedRef = React__namespace.useRef(false);
+
+  var onMotionEnd = function onMotionEnd() {
+    if (!motionedRef.current) {
+      onOriginMotionEnd();
+    }
+
+    motionedRef.current = true;
+  };
+
+  React.useEffect(function () {
+    if (motionNodes && motionType === 'hide' && visible) {
+      setVisible(false);
+    }
+  }, [motionNodes]);
+  React.useEffect(function () {
+    // Trigger motion only when patched
+    if (motionNodes) {
+      onOriginMotionStart();
+    }
+
+    return function () {
+      if (motionNodes) {
+        onMotionEnd();
+      }
+    };
+  }, []);
+
+  if (motionNodes) {
+    return /*#__PURE__*/React__namespace.createElement(CSSMotion, _extends$1({
+      ref: ref,
+      visible: visible
+    }, motion, {
+      motionAppear: motionType === 'show',
+      onAppearEnd: onMotionEnd,
+      onLeaveEnd: onMotionEnd
+    }), function (_ref2, motionRef) {
+      var motionClassName = _ref2.className,
+          motionStyle = _ref2.style;
+      return /*#__PURE__*/React__namespace.createElement("div", {
+        ref: motionRef,
+        className: classnames("".concat(prefixCls, "-treenode-motion"), motionClassName),
+        style: motionStyle
+      }, motionNodes.map(function (treeNode) {
+        var _treeNode$data = treeNode.data,
+            key = _treeNode$data.key,
+            restProps = _objectWithoutProperties$1(_treeNode$data, ["key"]),
+            isStart = treeNode.isStart,
+            isEnd = treeNode.isEnd;
+
+        delete restProps.children;
+        var treeNodeProps = getTreeNodeProps(key, treeNodeRequiredProps);
+        return /*#__PURE__*/React__namespace.createElement(ContextTreeNode, _extends$1({}, restProps, treeNodeProps, {
+          active: active,
+          data: treeNode.data,
+          key: key,
+          isStart: isStart,
+          isEnd: isEnd
+        }));
+      }));
+    });
+  }
+
+  return /*#__PURE__*/React__namespace.createElement(ContextTreeNode, _extends$1({
+    domRef: ref,
+    className: className,
+    style: style
+  }, props, {
+    active: active
+  }));
+};
+
+MotionTreeNode.displayName = 'MotionTreeNode';
+var RefMotionTreeNode = /*#__PURE__*/React__namespace.forwardRef(MotionTreeNode);
+
+function findExpandedKeys() {
+  var prev = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var next = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
+  var prevLen = prev.length;
+  var nextLen = next.length;
+
+  if (Math.abs(prevLen - nextLen) !== 1) {
+    return {
+      add: false,
+      key: null
+    };
+  }
+
+  function find(shorter, longer) {
+    var cache = new Map();
+    shorter.forEach(function (key) {
+      cache.set(key, true);
+    });
+    var keys = longer.filter(function (key) {
+      return !cache.has(key);
+    });
+    return keys.length === 1 ? keys[0] : null;
+  }
+
+  if (prevLen < nextLen) {
+    return {
+      add: true,
+      key: find(prev, next)
+    };
+  }
+
+  return {
+    add: false,
+    key: find(next, prev)
+  };
+}
+function getExpandRange(shorter, longer, key) {
+  var shorterStartIndex = shorter.findIndex(function (_ref) {
+    var data = _ref.data;
+    return data.key === key;
+  });
+  var shorterEndNode = shorter[shorterStartIndex + 1];
+  var longerStartIndex = longer.findIndex(function (_ref2) {
+    var data = _ref2.data;
+    return data.key === key;
+  });
+
+  if (shorterEndNode) {
+    var longerEndIndex = longer.findIndex(function (_ref3) {
+      var data = _ref3.data;
+      return data.key === shorterEndNode.data.key;
+    });
+    return longer.slice(longerStartIndex + 1, longerEndIndex);
+  }
+
+  return longer.slice(longerStartIndex + 1);
+}
+
+var HIDDEN_STYLE$1 = {
+  width: 0,
+  height: 0,
+  display: 'flex',
+  overflow: 'hidden',
+  opacity: 0,
+  border: 0,
+  padding: 0,
+  margin: 0
+};
+
+var noop = function noop() {};
+
+var MOTION_KEY = "RC_TREE_MOTION_".concat(Math.random());
+var MotionNode = {
+  key: MOTION_KEY
+};
+var MotionEntity = {
+  key: MOTION_KEY,
+  level: 0,
+  index: 0,
+  pos: '0',
+  node: MotionNode
+};
+var MotionFlattenData = {
+  parent: null,
+  children: [],
+  pos: MotionEntity.pos,
+  data: MotionNode,
+
+  /** Hold empty list here since we do not use it */
+  isStart: [],
+  isEnd: []
+};
+/**
+ * We only need get visible content items to play the animation.
+ */
+
+function getMinimumRangeTransitionRange(list, virtual, height, itemHeight) {
+  if (virtual === false || !height) {
+    return list;
+  }
+
+  return list.slice(0, Math.ceil(height / itemHeight) + 1);
+}
+
+function itemKey(item) {
+  var key = item.data.key,
+      pos = item.pos;
+  return getKey(key, pos);
+}
+
+function getAccessibilityPath(item) {
+  var path = String(item.data.key);
+  var current = item;
+
+  while (current.parent) {
+    current = current.parent;
+    path = "".concat(current.data.key, " > ").concat(path);
+  }
+
+  return path;
+}
+
+var RefNodeList = function RefNodeList(props, ref) {
+  var prefixCls = props.prefixCls,
+      data = props.data;
+      props.selectable;
+      props.checkable;
+      var expandedKeys = props.expandedKeys,
+      selectedKeys = props.selectedKeys,
+      checkedKeys = props.checkedKeys,
+      loadedKeys = props.loadedKeys,
+      loadingKeys = props.loadingKeys,
+      halfCheckedKeys = props.halfCheckedKeys,
+      keyEntities = props.keyEntities,
+      disabled = props.disabled,
+      dragging = props.dragging,
+      dragOverNodeKey = props.dragOverNodeKey,
+      dropPosition = props.dropPosition,
+      motion = props.motion,
+      height = props.height,
+      itemHeight = props.itemHeight,
+      virtual = props.virtual,
+      focusable = props.focusable,
+      activeItem = props.activeItem,
+      focused = props.focused,
+      tabIndex = props.tabIndex,
+      onKeyDown = props.onKeyDown,
+      onFocus = props.onFocus,
+      onBlur = props.onBlur,
+      onActiveChange = props.onActiveChange,
+      onListChangeStart = props.onListChangeStart,
+      onListChangeEnd = props.onListChangeEnd,
+      domProps = _objectWithoutProperties$1(props, ["prefixCls", "data", "selectable", "checkable", "expandedKeys", "selectedKeys", "checkedKeys", "loadedKeys", "loadingKeys", "halfCheckedKeys", "keyEntities", "disabled", "dragging", "dragOverNodeKey", "dropPosition", "motion", "height", "itemHeight", "virtual", "focusable", "activeItem", "focused", "tabIndex", "onKeyDown", "onFocus", "onBlur", "onActiveChange", "onListChangeStart", "onListChangeEnd"]); // =============================== Ref ================================
+
+
+  var listRef = React__namespace.useRef(null);
+  var indentMeasurerRef = React__namespace.useRef(null);
+  React__namespace.useImperativeHandle(ref, function () {
+    return {
+      scrollTo: function scrollTo(scroll) {
+        listRef.current.scrollTo(scroll);
+      },
+      getIndentWidth: function getIndentWidth() {
+        return indentMeasurerRef.current.offsetWidth;
+      }
+    };
+  }); // ============================== Motion ==============================
+
+  var _React$useState = React__namespace.useState(expandedKeys),
+      _React$useState2 = _slicedToArray$3(_React$useState, 2),
+      prevExpandedKeys = _React$useState2[0],
+      setPrevExpandedKeys = _React$useState2[1];
+
+  var _React$useState3 = React__namespace.useState(data),
+      _React$useState4 = _slicedToArray$3(_React$useState3, 2),
+      prevData = _React$useState4[0],
+      setPrevData = _React$useState4[1];
+
+  var _React$useState5 = React__namespace.useState(data),
+      _React$useState6 = _slicedToArray$3(_React$useState5, 2),
+      transitionData = _React$useState6[0],
+      setTransitionData = _React$useState6[1];
+
+  var _React$useState7 = React__namespace.useState([]),
+      _React$useState8 = _slicedToArray$3(_React$useState7, 2),
+      transitionRange = _React$useState8[0],
+      setTransitionRange = _React$useState8[1];
+
+  var _React$useState9 = React__namespace.useState(null),
+      _React$useState10 = _slicedToArray$3(_React$useState9, 2),
+      motionType = _React$useState10[0],
+      setMotionType = _React$useState10[1];
+
+  function onMotionEnd() {
+    setPrevData(data);
+    setTransitionData(data);
+    setTransitionRange([]);
+    setMotionType(null);
+    onListChangeEnd();
+  } // Do animation if expanded keys changed
+
+
+  React__namespace.useEffect(function () {
+    setPrevExpandedKeys(expandedKeys);
+    var diffExpanded = findExpandedKeys(prevExpandedKeys, expandedKeys);
+
+    if (diffExpanded.key !== null) {
+      if (diffExpanded.add) {
+        var keyIndex = prevData.findIndex(function (_ref) {
+          var key = _ref.data.key;
+          return key === diffExpanded.key;
+        });
+        var rangeNodes = getMinimumRangeTransitionRange(getExpandRange(prevData, data, diffExpanded.key), virtual, height, itemHeight);
+        var newTransitionData = prevData.slice();
+        newTransitionData.splice(keyIndex + 1, 0, MotionFlattenData);
+        setTransitionData(newTransitionData);
+        setTransitionRange(rangeNodes);
+        setMotionType('show');
+      } else {
+        var _keyIndex = data.findIndex(function (_ref2) {
+          var key = _ref2.data.key;
+          return key === diffExpanded.key;
+        });
+
+        var _rangeNodes = getMinimumRangeTransitionRange(getExpandRange(data, prevData, diffExpanded.key), virtual, height, itemHeight);
+
+        var _newTransitionData = data.slice();
+
+        _newTransitionData.splice(_keyIndex + 1, 0, MotionFlattenData);
+
+        setTransitionData(_newTransitionData);
+        setTransitionRange(_rangeNodes);
+        setMotionType('hide');
+      }
+    } else if (prevData !== data) {
+      // If whole data changed, we just refresh the list
+      setPrevData(data);
+      setTransitionData(data);
+    }
+  }, [expandedKeys, data]); // We should clean up motion if is changed by dragging
+
+  React__namespace.useEffect(function () {
+    if (!dragging) {
+      onMotionEnd();
+    }
+  }, [dragging]);
+  var mergedData = motion ? transitionData : data;
+  var treeNodeRequiredProps = {
+    expandedKeys: expandedKeys,
+    selectedKeys: selectedKeys,
+    loadedKeys: loadedKeys,
+    loadingKeys: loadingKeys,
+    checkedKeys: checkedKeys,
+    halfCheckedKeys: halfCheckedKeys,
+    dragOverNodeKey: dragOverNodeKey,
+    dropPosition: dropPosition,
+    keyEntities: keyEntities
+  };
+  return /*#__PURE__*/React__namespace.createElement(React__namespace.Fragment, null, focused && activeItem && /*#__PURE__*/React__namespace.createElement("span", {
+    style: HIDDEN_STYLE$1,
+    "aria-live": "assertive"
+  }, getAccessibilityPath(activeItem)), /*#__PURE__*/React__namespace.createElement("div", {
+    role: "tree"
+  }, /*#__PURE__*/React__namespace.createElement("input", {
+    style: HIDDEN_STYLE$1,
+    disabled: focusable === false || disabled,
+    tabIndex: focusable !== false ? tabIndex : null,
+    onKeyDown: onKeyDown,
+    onFocus: onFocus,
+    onBlur: onBlur,
+    value: "",
+    onChange: noop
+  })), /*#__PURE__*/React__namespace.createElement("div", {
+    className: "".concat(prefixCls, "-treenode"),
+    "aria-hidden": true,
+    style: {
+      position: 'absolute',
+      pointerEvents: 'none',
+      visibility: 'hidden',
+      height: 0,
+      overflow: 'hidden'
+    }
+  }, /*#__PURE__*/React__namespace.createElement("div", {
+    className: "".concat(prefixCls, "-indent")
+  }, /*#__PURE__*/React__namespace.createElement("div", {
+    ref: indentMeasurerRef,
+    className: "".concat(prefixCls, "-indent-unit")
+  }))), /*#__PURE__*/React__namespace.createElement(List, _extends$1({}, domProps, {
+    data: mergedData,
+    itemKey: itemKey,
+    height: height,
+    fullHeight: false,
+    virtual: virtual,
+    itemHeight: itemHeight,
+    prefixCls: "".concat(prefixCls, "-list"),
+    ref: listRef
+  }), function (treeNode) {
+    var pos = treeNode.pos,
+        _treeNode$data = treeNode.data,
+        key = _treeNode$data.key,
+        restProps = _objectWithoutProperties$1(_treeNode$data, ["key"]),
+        isStart = treeNode.isStart,
+        isEnd = treeNode.isEnd;
+
+    var mergedKey = getKey(key, pos);
+    delete restProps.children;
+    var treeNodeProps = getTreeNodeProps(mergedKey, treeNodeRequiredProps);
+    return /*#__PURE__*/React__namespace.createElement(RefMotionTreeNode, _extends$1({}, restProps, treeNodeProps, {
+      active: !!activeItem && key === activeItem.data.key,
+      pos: pos,
+      data: treeNode.data,
+      isStart: isStart,
+      isEnd: isEnd,
+      motion: motion,
+      motionNodes: key === MOTION_KEY ? transitionRange : null,
+      motionType: motionType,
+      onMotionStart: onListChangeStart,
+      onMotionEnd: onMotionEnd,
+      treeNodeRequiredProps: treeNodeRequiredProps,
+      onMouseMove: function onMouseMove() {
+        onActiveChange(null);
+      }
+    }));
+  }));
+};
+
+var NodeList = /*#__PURE__*/React__namespace.forwardRef(RefNodeList);
+NodeList.displayName = 'NodeList';
+
+function DropIndicator(_ref) {
+  var dropPosition = _ref.dropPosition,
+      dropLevelOffset = _ref.dropLevelOffset,
+      indent = _ref.indent;
+  var style = {
+    pointerEvents: 'none',
+    position: 'absolute',
+    right: 0,
+    backgroundColor: 'red',
+    height: 2
+  };
+
+  switch (dropPosition) {
+    case -1:
+      style.top = 0;
+      style.left = -dropLevelOffset * indent;
+      break;
+
+    case 1:
+      style.bottom = 0;
+      style.left = -dropLevelOffset * indent;
+      break;
+
+    case 0:
+      style.bottom = 0;
+      style.left = indent;
+      break;
+  }
+
+  return /*#__PURE__*/React__namespace.createElement("div", {
+    style: style
+  });
+}
+
+var Tree = /*#__PURE__*/function (_React$Component) {
+  _inherits$1(Tree, _React$Component);
+
+  var _super = _createSuper$1(Tree);
+
+  function Tree() {
+    var _this;
+
+    _classCallCheck$2(this, Tree);
+
+    _this = _super.apply(this, arguments);
+    _this.destroyed = false;
+    _this.state = {
+      keyEntities: {},
+      indent: null,
+      selectedKeys: [],
+      checkedKeys: [],
+      halfCheckedKeys: [],
+      loadedKeys: [],
+      loadingKeys: [],
+      expandedKeys: [],
+      dragging: false,
+      dragChildrenKeys: [],
+      // dropTargetKey is the key of abstract-drop-node
+      // the abstract-drop-node is the real drop node when drag and drop
+      // not the DOM drag over node
+      dropTargetKey: null,
+      dropPosition: null,
+      dropContainerKey: null,
+      dropLevelOffset: null,
+      dropTargetPos: null,
+      dropAllowed: true,
+      // the abstract-drag-over-node
+      // if mouse is on the bottom of top dom node or no the top of the bottom dom node
+      // abstract-drag-over-node is the top node
+      dragOverNodeKey: null,
+      treeData: [],
+      flattenNodes: [],
+      focused: false,
+      activeKey: null,
+      listChanging: false,
+      prevProps: null
+    };
+    _this.dragStartMousePosition = null;
+    _this.listRef = /*#__PURE__*/React__namespace.createRef();
+
+    _this.onNodeDragStart = function (event, node) {
+      var _this$state = _this.state,
+          expandedKeys = _this$state.expandedKeys,
+          keyEntities = _this$state.keyEntities;
+      var onDragStart = _this.props.onDragStart;
+      var eventKey = node.props.eventKey;
+      _this.dragNode = node;
+      _this.dragStartMousePosition = {
+        x: event.clientX,
+        y: event.clientY
+      };
+      var newExpandedKeys = arrDel(expandedKeys, eventKey);
+
+      _this.setState({
+        dragging: true,
+        dragChildrenKeys: getDragChildrenKeys(eventKey, keyEntities),
+        indent: _this.listRef.current.getIndentWidth()
+      });
+
+      _this.setExpandedKeys(newExpandedKeys);
+
+      window.addEventListener('dragend', _this.onWindowDragEnd);
+
+      if (onDragStart) {
+        onDragStart({
+          event: event,
+          node: convertNodePropsToEventData(node.props)
+        });
+      }
+    };
+    /**
+     * [Legacy] Select handler is smaller than node,
+     * so that this will trigger when drag enter node or select handler.
+     * This is a little tricky if customize css without padding.
+     * Better for use mouse move event to refresh drag state.
+     * But let's just keep it to avoid event trigger logic change.
+     */
+
+
+    _this.onNodeDragEnter = function (event, node) {
+      var _this$state2 = _this.state,
+          expandedKeys = _this$state2.expandedKeys,
+          keyEntities = _this$state2.keyEntities,
+          dragChildrenKeys = _this$state2.dragChildrenKeys,
+          flattenNodes = _this$state2.flattenNodes,
+          indent = _this$state2.indent;
+      var _this$props = _this.props,
+          onDragEnter = _this$props.onDragEnter,
+          onExpand = _this$props.onExpand,
+          allowDrop = _this$props.allowDrop,
+          direction = _this$props.direction;
+      var pos = node.props.pos;
+
+      var _assertThisInitialize = _assertThisInitialized$1(_this),
+          dragNode = _assertThisInitialize.dragNode;
+
+      var _calcDropPosition = calcDropPosition(event, dragNode, node, indent, _this.dragStartMousePosition, allowDrop, flattenNodes, keyEntities, expandedKeys, direction),
+          dropPosition = _calcDropPosition.dropPosition,
+          dropLevelOffset = _calcDropPosition.dropLevelOffset,
+          dropTargetKey = _calcDropPosition.dropTargetKey,
+          dropContainerKey = _calcDropPosition.dropContainerKey,
+          dropTargetPos = _calcDropPosition.dropTargetPos,
+          dropAllowed = _calcDropPosition.dropAllowed,
+          dragOverNodeKey = _calcDropPosition.dragOverNodeKey;
+
+      if (!dragNode || // don't allow drop inside its children
+      dragChildrenKeys.indexOf(dropTargetKey) !== -1 || // don't allow drop when drop is not allowed caculated by calcDropPosition
+      !dropAllowed) {
+        _this.setState({
+          dragOverNodeKey: null,
+          dropPosition: null,
+          dropLevelOffset: null,
+          dropTargetKey: null,
+          dropContainerKey: null,
+          dropTargetPos: null,
+          dropAllowed: false
+        });
+
+        return;
+      } // Side effect for delay drag
+
+
+      if (!_this.delayedDragEnterLogic) {
+        _this.delayedDragEnterLogic = {};
+      }
+
+      Object.keys(_this.delayedDragEnterLogic).forEach(function (key) {
+        clearTimeout(_this.delayedDragEnterLogic[key]);
+      });
+
+      if (dragNode.props.eventKey !== node.props.eventKey) {
+        // hoist expand logic here
+        // since if logic is on the bottom
+        // it will be blocked by abstract dragover node check
+        //   => if you dragenter from top, you mouse will still be consider as in the top node
+        event.persist();
+        _this.delayedDragEnterLogic[pos] = window.setTimeout(function () {
+          if (!_this.state.dragging) return;
+
+          var newExpandedKeys = _toConsumableArray(expandedKeys);
+
+          var entity = keyEntities[node.props.eventKey];
+
+          if (entity && (entity.children || []).length) {
+            newExpandedKeys = arrAdd(expandedKeys, node.props.eventKey);
+          }
+
+          if (!('expandedKeys' in _this.props)) {
+            _this.setExpandedKeys(newExpandedKeys);
+          }
+
+          if (onExpand) {
+            onExpand(newExpandedKeys, {
+              node: convertNodePropsToEventData(node.props),
+              expanded: true,
+              nativeEvent: event.nativeEvent
+            });
+          }
+        }, 800);
+      } // Skip if drag node is self
+
+
+      if (dragNode.props.eventKey === dropTargetKey && dropLevelOffset === 0) {
+        _this.setState({
+          dragOverNodeKey: null,
+          dropPosition: null,
+          dropLevelOffset: null,
+          dropTargetKey: null,
+          dropContainerKey: null,
+          dropTargetPos: null,
+          dropAllowed: false
+        });
+
+        return;
+      } // Update drag over node and drag state
+
+
+      _this.setState({
+        dragOverNodeKey: dragOverNodeKey,
+        dropPosition: dropPosition,
+        dropLevelOffset: dropLevelOffset,
+        dropTargetKey: dropTargetKey,
+        dropContainerKey: dropContainerKey,
+        dropTargetPos: dropTargetPos,
+        dropAllowed: dropAllowed
+      });
+
+      if (onDragEnter) {
+        onDragEnter({
+          event: event,
+          node: convertNodePropsToEventData(node.props),
+          expandedKeys: expandedKeys
+        });
+      }
+    };
+
+    _this.onNodeDragOver = function (event, node) {
+      var _this$state3 = _this.state,
+          dragChildrenKeys = _this$state3.dragChildrenKeys,
+          flattenNodes = _this$state3.flattenNodes,
+          keyEntities = _this$state3.keyEntities,
+          expandedKeys = _this$state3.expandedKeys,
+          indent = _this$state3.indent;
+      var _this$props2 = _this.props,
+          onDragOver = _this$props2.onDragOver,
+          allowDrop = _this$props2.allowDrop,
+          direction = _this$props2.direction;
+
+      var _assertThisInitialize2 = _assertThisInitialized$1(_this),
+          dragNode = _assertThisInitialize2.dragNode;
+
+      var _calcDropPosition2 = calcDropPosition(event, dragNode, node, indent, _this.dragStartMousePosition, allowDrop, flattenNodes, keyEntities, expandedKeys, direction),
+          dropPosition = _calcDropPosition2.dropPosition,
+          dropLevelOffset = _calcDropPosition2.dropLevelOffset,
+          dropTargetKey = _calcDropPosition2.dropTargetKey,
+          dropContainerKey = _calcDropPosition2.dropContainerKey,
+          dropAllowed = _calcDropPosition2.dropAllowed,
+          dropTargetPos = _calcDropPosition2.dropTargetPos,
+          dragOverNodeKey = _calcDropPosition2.dragOverNodeKey;
+
+      if (!dragNode || dragChildrenKeys.indexOf(dropTargetKey) !== -1 || !dropAllowed) {
+        // don't allow drop inside its children
+        // don't allow drop when drop is not allowed caculated by calcDropPosition
+        return;
+      } // Update drag position
+
+
+      if (dragNode.props.eventKey === dropTargetKey && dropLevelOffset === 0) {
+        if (!(_this.state.dropPosition === null && _this.state.dropLevelOffset === null && _this.state.dropTargetKey === null && _this.state.dropContainerKey === null && _this.state.dropTargetPos === null && _this.state.dropAllowed === false && _this.state.dragOverNodeKey === null)) {
+          _this.setState({
+            dropPosition: null,
+            dropLevelOffset: null,
+            dropTargetKey: null,
+            dropContainerKey: null,
+            dropTargetPos: null,
+            dropAllowed: false,
+            dragOverNodeKey: null
+          });
+        }
+      } else if (!(dropPosition === _this.state.dropPosition && dropLevelOffset === _this.state.dropLevelOffset && dropTargetKey === _this.state.dropTargetKey && dropContainerKey === _this.state.dropContainerKey && dropTargetPos === _this.state.dropTargetPos && dropAllowed === _this.state.dropAllowed && dragOverNodeKey === _this.state.dragOverNodeKey)) {
+        _this.setState({
+          dropPosition: dropPosition,
+          dropLevelOffset: dropLevelOffset,
+          dropTargetKey: dropTargetKey,
+          dropContainerKey: dropContainerKey,
+          dropTargetPos: dropTargetPos,
+          dropAllowed: dropAllowed,
+          dragOverNodeKey: dragOverNodeKey
+        });
+      }
+
+      if (onDragOver) {
+        onDragOver({
+          event: event,
+          node: convertNodePropsToEventData(node.props)
+        });
+      }
+    };
+
+    _this.onNodeDragLeave = function (event, node) {
+      var onDragLeave = _this.props.onDragLeave;
+
+      if (onDragLeave) {
+        onDragLeave({
+          event: event,
+          node: convertNodePropsToEventData(node.props)
+        });
+      }
+    }; // since stopPropagation() is called in treeNode
+    // if onWindowDrag is called, whice means state is keeped, drag state should be cleared
+
+
+    _this.onWindowDragEnd = function (event) {
+      _this.onNodeDragEnd(event, null, true);
+
+      window.removeEventListener('dragend', _this.onWindowDragEnd);
+    }; // if onNodeDragEnd is called, onWindowDragEnd won't be called since stopPropagation() is called
+
+
+    _this.onNodeDragEnd = function (event, node) {
+      var outsideTree = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+      var onDragEnd = _this.props.onDragEnd;
+
+      _this.setState({
+        dragOverNodeKey: null
+      });
+
+      _this.cleanDragState();
+
+      if (onDragEnd && !outsideTree) {
+        onDragEnd({
+          event: event,
+          node: convertNodePropsToEventData(node.props)
+        });
+      }
+
+      _this.dragNode = null;
+    };
+
+    _this.onNodeDrop = function (event, node) {
+      var _this$getActiveItem;
+
+      var outsideTree = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+      var _this$state4 = _this.state,
+          dragChildrenKeys = _this$state4.dragChildrenKeys,
+          dropPosition = _this$state4.dropPosition,
+          dropTargetKey = _this$state4.dropTargetKey,
+          dropTargetPos = _this$state4.dropTargetPos,
+          dropAllowed = _this$state4.dropAllowed;
+      if (!dropAllowed) return;
+      var onDrop = _this.props.onDrop;
+
+      _this.setState({
+        dragOverNodeKey: null
+      });
+
+      _this.cleanDragState();
+
+      if (dropTargetKey === null) return;
+
+      var abstractDropNodeProps = _objectSpread2$1(_objectSpread2$1({}, getTreeNodeProps(dropTargetKey, _this.getTreeNodeRequiredProps())), {}, {
+        active: ((_this$getActiveItem = _this.getActiveItem()) === null || _this$getActiveItem === void 0 ? void 0 : _this$getActiveItem.data.key) === dropTargetKey,
+        data: _this.state.keyEntities[dropTargetKey].node
+      });
+
+      var dropToChild = dragChildrenKeys.indexOf(dropTargetKey) !== -1;
+      warningOnce(!dropToChild, "Can not drop to dragNode's children node. This is a bug of rc-tree. Please report an issue.");
+      var posArr = posToArr(dropTargetPos);
+      var dropResult = {
+        event: event,
+        node: convertNodePropsToEventData(abstractDropNodeProps),
+        dragNode: _this.dragNode ? convertNodePropsToEventData(_this.dragNode.props) : null,
+        dragNodesKeys: [_this.dragNode.props.eventKey].concat(dragChildrenKeys),
+        dropToGap: dropPosition !== 0,
+        dropPosition: dropPosition + Number(posArr[posArr.length - 1])
+      };
+
+      if (onDrop && !outsideTree) {
+        onDrop(dropResult);
+      }
+
+      _this.dragNode = null;
+    };
+
+    _this.cleanDragState = function () {
+      var dragging = _this.state.dragging;
+
+      if (dragging) {
+        _this.setState({
+          dragging: false,
+          dropPosition: null,
+          dropContainerKey: null,
+          dropTargetKey: null,
+          dropLevelOffset: null,
+          dropAllowed: true,
+          dragOverNodeKey: null
+        });
+      }
+
+      _this.dragStartMousePosition = null;
+    };
+
+    _this.onNodeClick = function (e, treeNode) {
+      var onClick = _this.props.onClick;
+
+      if (onClick) {
+        onClick(e, treeNode);
+      }
+    };
+
+    _this.onNodeDoubleClick = function (e, treeNode) {
+      var onDoubleClick = _this.props.onDoubleClick;
+
+      if (onDoubleClick) {
+        onDoubleClick(e, treeNode);
+      }
+    };
+
+    _this.onNodeSelect = function (e, treeNode) {
+      var selectedKeys = _this.state.selectedKeys;
+      var keyEntities = _this.state.keyEntities;
+      var _this$props3 = _this.props,
+          onSelect = _this$props3.onSelect,
+          multiple = _this$props3.multiple;
+      var selected = treeNode.selected,
+          key = treeNode.key;
+      var targetSelected = !selected; // Update selected keys
+
+      if (!targetSelected) {
+        selectedKeys = arrDel(selectedKeys, key);
+      } else if (!multiple) {
+        selectedKeys = [key];
+      } else {
+        selectedKeys = arrAdd(selectedKeys, key);
+      } // [Legacy] Not found related usage in doc or upper libs
+
+
+      var selectedNodes = selectedKeys.map(function (selectedKey) {
+        var entity = keyEntities[selectedKey];
+        if (!entity) return null;
+        return entity.node;
+      }).filter(function (node) {
+        return node;
+      });
+
+      _this.setUncontrolledState({
+        selectedKeys: selectedKeys
+      });
+
+      if (onSelect) {
+        onSelect(selectedKeys, {
+          event: 'select',
+          selected: targetSelected,
+          node: treeNode,
+          selectedNodes: selectedNodes,
+          nativeEvent: e.nativeEvent
+        });
+      }
+    };
+
+    _this.onNodeCheck = function (e, treeNode, checked) {
+      var _this$state5 = _this.state,
+          keyEntities = _this$state5.keyEntities,
+          oriCheckedKeys = _this$state5.checkedKeys,
+          oriHalfCheckedKeys = _this$state5.halfCheckedKeys;
+      var _this$props4 = _this.props,
+          checkStrictly = _this$props4.checkStrictly,
+          onCheck = _this$props4.onCheck;
+      var key = treeNode.key; // Prepare trigger arguments
+
+      var checkedObj;
+      var eventObj = {
+        event: 'check',
+        node: treeNode,
+        checked: checked,
+        nativeEvent: e.nativeEvent
+      };
+
+      if (checkStrictly) {
+        var checkedKeys = checked ? arrAdd(oriCheckedKeys, key) : arrDel(oriCheckedKeys, key);
+        var halfCheckedKeys = arrDel(oriHalfCheckedKeys, key);
+        checkedObj = {
+          checked: checkedKeys,
+          halfChecked: halfCheckedKeys
+        };
+        eventObj.checkedNodes = checkedKeys.map(function (checkedKey) {
+          return keyEntities[checkedKey];
+        }).filter(function (entity) {
+          return entity;
+        }).map(function (entity) {
+          return entity.node;
+        });
+
+        _this.setUncontrolledState({
+          checkedKeys: checkedKeys
+        });
+      } else {
+        // Always fill first
+        var _conductCheck = conductCheck([].concat(_toConsumableArray(oriCheckedKeys), [key]), true, keyEntities),
+            _checkedKeys = _conductCheck.checkedKeys,
+            _halfCheckedKeys = _conductCheck.halfCheckedKeys; // If remove, we do it again to correction
+
+
+        if (!checked) {
+          var keySet = new Set(_checkedKeys);
+          keySet.delete(key);
+
+          var _conductCheck2 = conductCheck(Array.from(keySet), {
+            checked: false,
+            halfCheckedKeys: _halfCheckedKeys
+          }, keyEntities);
+
+          _checkedKeys = _conductCheck2.checkedKeys;
+          _halfCheckedKeys = _conductCheck2.halfCheckedKeys;
+        }
+
+        checkedObj = _checkedKeys; // [Legacy] This is used for `rc-tree-select`
+
+        eventObj.checkedNodes = [];
+        eventObj.checkedNodesPositions = [];
+        eventObj.halfCheckedKeys = _halfCheckedKeys;
+
+        _checkedKeys.forEach(function (checkedKey) {
+          var entity = keyEntities[checkedKey];
+          if (!entity) return;
+          var node = entity.node,
+              pos = entity.pos;
+          eventObj.checkedNodes.push(node);
+          eventObj.checkedNodesPositions.push({
+            node: node,
+            pos: pos
+          });
+        });
+
+        _this.setUncontrolledState({
+          checkedKeys: _checkedKeys
+        }, false, {
+          halfCheckedKeys: _halfCheckedKeys
+        });
+      }
+
+      if (onCheck) {
+        onCheck(checkedObj, eventObj);
+      }
+    };
+
+    _this.onNodeLoad = function (treeNode) {
+      return new Promise(function (resolve) {
+        // We need to get the latest state of loading/loaded keys
+        _this.setState(function (_ref) {
+          var _ref$loadedKeys = _ref.loadedKeys,
+              loadedKeys = _ref$loadedKeys === void 0 ? [] : _ref$loadedKeys,
+              _ref$loadingKeys = _ref.loadingKeys,
+              loadingKeys = _ref$loadingKeys === void 0 ? [] : _ref$loadingKeys;
+          var _this$props5 = _this.props,
+              loadData = _this$props5.loadData,
+              onLoad = _this$props5.onLoad;
+          var key = treeNode.key;
+
+          if (!loadData || loadedKeys.indexOf(key) !== -1 || loadingKeys.indexOf(key) !== -1) {
+            // react 15 will warn if return null
+            return {};
+          } // Process load data
+
+
+          var promise = loadData(treeNode);
+          promise.then(function () {
+            var _this$state6 = _this.state,
+                currentLoadedKeys = _this$state6.loadedKeys,
+                currentLoadingKeys = _this$state6.loadingKeys;
+            var newLoadedKeys = arrAdd(currentLoadedKeys, key);
+            var newLoadingKeys = arrDel(currentLoadingKeys, key); // onLoad should trigger before internal setState to avoid `loadData` trigger twice.
+            // https://github.com/ant-design/ant-design/issues/12464
+
+            if (onLoad) {
+              onLoad(newLoadedKeys, {
+                event: 'load',
+                node: treeNode
+              });
+            }
+
+            _this.setUncontrolledState({
+              loadedKeys: newLoadedKeys
+            });
+
+            _this.setState({
+              loadingKeys: newLoadingKeys
+            });
+
+            resolve();
+          });
+          return {
+            loadingKeys: arrAdd(loadingKeys, key)
+          };
+        });
+      });
+    };
+
+    _this.onNodeMouseEnter = function (event, node) {
+      var onMouseEnter = _this.props.onMouseEnter;
+
+      if (onMouseEnter) {
+        onMouseEnter({
+          event: event,
+          node: node
+        });
+      }
+    };
+
+    _this.onNodeMouseLeave = function (event, node) {
+      var onMouseLeave = _this.props.onMouseLeave;
+
+      if (onMouseLeave) {
+        onMouseLeave({
+          event: event,
+          node: node
+        });
+      }
+    };
+
+    _this.onNodeContextMenu = function (event, node) {
+      var onRightClick = _this.props.onRightClick;
+
+      if (onRightClick) {
+        event.preventDefault();
+        onRightClick({
+          event: event,
+          node: node
+        });
+      }
+    };
+
+    _this.onFocus = function () {
+      var onFocus = _this.props.onFocus;
+
+      _this.setState({
+        focused: true
+      });
+
+      if (onFocus) {
+        onFocus.apply(void 0, arguments);
+      }
+    };
+
+    _this.onBlur = function () {
+      var onBlur = _this.props.onBlur;
+
+      _this.setState({
+        focused: false
+      });
+
+      _this.onActiveChange(null);
+
+      if (onBlur) {
+        onBlur.apply(void 0, arguments);
+      }
+    };
+
+    _this.getTreeNodeRequiredProps = function () {
+      var _this$state7 = _this.state,
+          expandedKeys = _this$state7.expandedKeys,
+          selectedKeys = _this$state7.selectedKeys,
+          loadedKeys = _this$state7.loadedKeys,
+          loadingKeys = _this$state7.loadingKeys,
+          checkedKeys = _this$state7.checkedKeys,
+          halfCheckedKeys = _this$state7.halfCheckedKeys,
+          dragOverNodeKey = _this$state7.dragOverNodeKey,
+          dropPosition = _this$state7.dropPosition,
+          keyEntities = _this$state7.keyEntities;
+      return {
+        expandedKeys: expandedKeys || [],
+        selectedKeys: selectedKeys || [],
+        loadedKeys: loadedKeys || [],
+        loadingKeys: loadingKeys || [],
+        checkedKeys: checkedKeys || [],
+        halfCheckedKeys: halfCheckedKeys || [],
+        dragOverNodeKey: dragOverNodeKey,
+        dropPosition: dropPosition,
+        keyEntities: keyEntities
+      };
+    }; // =========================== Expanded ===========================
+
+    /** Set uncontrolled `expandedKeys`. This will also auto update `flattenNodes`. */
+
+
+    _this.setExpandedKeys = function (expandedKeys) {
+      var treeData = _this.state.treeData;
+      var flattenNodes = flattenTreeData(treeData, expandedKeys);
+
+      _this.setUncontrolledState({
+        expandedKeys: expandedKeys,
+        flattenNodes: flattenNodes
+      }, true);
+    };
+
+    _this.onNodeExpand = function (e, treeNode) {
+      var expandedKeys = _this.state.expandedKeys;
+      var listChanging = _this.state.listChanging;
+      var _this$props6 = _this.props,
+          onExpand = _this$props6.onExpand,
+          loadData = _this$props6.loadData;
+      var key = treeNode.key,
+          expanded = treeNode.expanded; // Do nothing when motion is in progress
+
+      if (listChanging) {
+        return;
+      } // Update selected keys
+
+
+      var index = expandedKeys.indexOf(key);
+      var targetExpanded = !expanded;
+      warningOnce(expanded && index !== -1 || !expanded && index === -1, 'Expand state not sync with index check');
+
+      if (targetExpanded) {
+        expandedKeys = arrAdd(expandedKeys, key);
+      } else {
+        expandedKeys = arrDel(expandedKeys, key);
+      }
+
+      _this.setExpandedKeys(expandedKeys);
+
+      if (onExpand) {
+        onExpand(expandedKeys, {
+          node: treeNode,
+          expanded: targetExpanded,
+          nativeEvent: e.nativeEvent
+        });
+      } // Async Load data
+
+
+      if (targetExpanded && loadData) {
+        var loadPromise = _this.onNodeLoad(treeNode);
+
+        if (loadPromise) {
+          loadPromise.then(function () {
+            // [Legacy] Refresh logic
+            var newFlattenTreeData = flattenTreeData(_this.state.treeData, expandedKeys);
+
+            _this.setUncontrolledState({
+              flattenNodes: newFlattenTreeData
+            });
+          });
+        }
+      }
+    };
+
+    _this.onListChangeStart = function () {
+      _this.setUncontrolledState({
+        listChanging: true
+      });
+    };
+
+    _this.onListChangeEnd = function () {
+      setTimeout(function () {
+        _this.setUncontrolledState({
+          listChanging: false
+        });
+      });
+    }; // =========================== Keyboard ===========================
+
+
+    _this.onActiveChange = function (newActiveKey) {
+      var activeKey = _this.state.activeKey;
+      var onActiveChange = _this.props.onActiveChange;
+
+      if (activeKey === newActiveKey) {
+        return;
+      }
+
+      _this.setState({
+        activeKey: newActiveKey
+      });
+
+      if (newActiveKey !== null) {
+        _this.scrollTo({
+          key: newActiveKey
+        });
+      }
+
+      if (onActiveChange) {
+        onActiveChange(newActiveKey);
+      }
+    };
+
+    _this.getActiveItem = function () {
+      var _this$state8 = _this.state,
+          activeKey = _this$state8.activeKey,
+          flattenNodes = _this$state8.flattenNodes;
+
+      if (activeKey === null) {
+        return null;
+      }
+
+      return flattenNodes.find(function (_ref2) {
+        var key = _ref2.data.key;
+        return key === activeKey;
+      }) || null;
+    };
+
+    _this.offsetActiveKey = function (offset) {
+      var _this$state9 = _this.state,
+          flattenNodes = _this$state9.flattenNodes,
+          activeKey = _this$state9.activeKey;
+      var index = flattenNodes.findIndex(function (_ref3) {
+        var key = _ref3.data.key;
+        return key === activeKey;
+      }); // Align with index
+
+      if (index === -1 && offset < 0) {
+        index = flattenNodes.length;
+      }
+
+      index = (index + offset + flattenNodes.length) % flattenNodes.length;
+      var item = flattenNodes[index];
+
+      if (item) {
+        var key = item.data.key;
+
+        _this.onActiveChange(key);
+      } else {
+        _this.onActiveChange(null);
+      }
+    };
+
+    _this.onKeyDown = function (event) {
+      var _this$state10 = _this.state,
+          activeKey = _this$state10.activeKey,
+          expandedKeys = _this$state10.expandedKeys,
+          checkedKeys = _this$state10.checkedKeys;
+      var _this$props7 = _this.props,
+          onKeyDown = _this$props7.onKeyDown,
+          checkable = _this$props7.checkable,
+          selectable = _this$props7.selectable; // >>>>>>>>>> Direction
+
+      switch (event.which) {
+        case KeyCode.UP:
+          {
+            _this.offsetActiveKey(-1);
+
+            event.preventDefault();
+            break;
+          }
+
+        case KeyCode.DOWN:
+          {
+            _this.offsetActiveKey(1);
+
+            event.preventDefault();
+            break;
+          }
+      } // >>>>>>>>>> Expand & Selection
+
+
+      var activeItem = _this.getActiveItem();
+
+      if (activeItem && activeItem.data) {
+        var treeNodeRequiredProps = _this.getTreeNodeRequiredProps();
+
+        var expandable = activeItem.data.isLeaf === false || !!(activeItem.data.children || []).length;
+        var eventNode = convertNodePropsToEventData(_objectSpread2$1(_objectSpread2$1({}, getTreeNodeProps(activeKey, treeNodeRequiredProps)), {}, {
+          data: activeItem.data,
+          active: true
+        }));
+
+        switch (event.which) {
+          // >>> Expand
+          case KeyCode.LEFT:
+            {
+              // Collapse if possible
+              if (expandable && expandedKeys.includes(activeKey)) {
+                _this.onNodeExpand({}, eventNode);
+              } else if (activeItem.parent) {
+                _this.onActiveChange(activeItem.parent.data.key);
+              }
+
+              event.preventDefault();
+              break;
+            }
+
+          case KeyCode.RIGHT:
+            {
+              // Expand if possible
+              if (expandable && !expandedKeys.includes(activeKey)) {
+                _this.onNodeExpand({}, eventNode);
+              } else if (activeItem.children && activeItem.children.length) {
+                _this.onActiveChange(activeItem.children[0].data.key);
+              }
+
+              event.preventDefault();
+              break;
+            }
+          // Selection
+
+          case KeyCode.ENTER:
+          case KeyCode.SPACE:
+            {
+              if (checkable && !eventNode.disabled && eventNode.checkable !== false && !eventNode.disableCheckbox) {
+                _this.onNodeCheck({}, eventNode, !checkedKeys.includes(activeKey));
+              } else if (!checkable && selectable && !eventNode.disabled && eventNode.selectable !== false) {
+                _this.onNodeSelect({}, eventNode);
+              }
+
+              break;
+            }
+        }
+      }
+
+      if (onKeyDown) {
+        onKeyDown(event);
+      }
+    };
+    /**
+     * Only update the value which is not in props
+     */
+
+
+    _this.setUncontrolledState = function (state) {
+      var atomic = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+      var forceState = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+
+      if (_this.destroyed) {
+        return;
+      }
+
+      var needSync = false;
+      var allPassed = true;
+      var newState = {};
+      Object.keys(state).forEach(function (name) {
+        if (name in _this.props) {
+          allPassed = false;
+          return;
+        }
+
+        needSync = true;
+        newState[name] = state[name];
+      });
+
+      if (needSync && (!atomic || allPassed)) {
+        _this.setState(_objectSpread2$1(_objectSpread2$1({}, newState), forceState));
+      }
+    };
+
+    _this.scrollTo = function (scroll) {
+      _this.listRef.current.scrollTo(scroll);
+    };
+
+    return _this;
+  }
+
+  _createClass$2(Tree, [{
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      window.removeEventListener('dragend', this.onWindowDragEnd);
+      this.destroyed = true;
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _classNames;
+
+      var _this$state11 = this.state,
+          focused = _this$state11.focused,
+          flattenNodes = _this$state11.flattenNodes,
+          keyEntities = _this$state11.keyEntities,
+          dragging = _this$state11.dragging,
+          activeKey = _this$state11.activeKey,
+          dropLevelOffset = _this$state11.dropLevelOffset,
+          dropContainerKey = _this$state11.dropContainerKey,
+          dropTargetKey = _this$state11.dropTargetKey,
+          dropPosition = _this$state11.dropPosition,
+          dragOverNodeKey = _this$state11.dragOverNodeKey,
+          indent = _this$state11.indent;
+      var _this$props8 = this.props,
+          prefixCls = _this$props8.prefixCls,
+          className = _this$props8.className,
+          style = _this$props8.style,
+          showLine = _this$props8.showLine,
+          focusable = _this$props8.focusable,
+          _this$props8$tabIndex = _this$props8.tabIndex,
+          tabIndex = _this$props8$tabIndex === void 0 ? 0 : _this$props8$tabIndex,
+          selectable = _this$props8.selectable,
+          showIcon = _this$props8.showIcon,
+          icon = _this$props8.icon,
+          switcherIcon = _this$props8.switcherIcon,
+          draggable = _this$props8.draggable,
+          checkable = _this$props8.checkable,
+          checkStrictly = _this$props8.checkStrictly,
+          disabled = _this$props8.disabled,
+          motion = _this$props8.motion,
+          loadData = _this$props8.loadData,
+          filterTreeNode = _this$props8.filterTreeNode,
+          height = _this$props8.height,
+          itemHeight = _this$props8.itemHeight,
+          virtual = _this$props8.virtual,
+          titleRender = _this$props8.titleRender,
+          dropIndicatorRender = _this$props8.dropIndicatorRender,
+          onContextMenu = _this$props8.onContextMenu,
+          direction = _this$props8.direction;
+      var domProps = getDataAndAria(this.props);
+      return /*#__PURE__*/React__namespace.createElement(TreeContext.Provider, {
+        value: {
+          prefixCls: prefixCls,
+          selectable: selectable,
+          showIcon: showIcon,
+          icon: icon,
+          switcherIcon: switcherIcon,
+          draggable: draggable,
+          checkable: checkable,
+          checkStrictly: checkStrictly,
+          disabled: disabled,
+          keyEntities: keyEntities,
+          dropLevelOffset: dropLevelOffset,
+          dropContainerKey: dropContainerKey,
+          dropTargetKey: dropTargetKey,
+          dropPosition: dropPosition,
+          dragOverNodeKey: dragOverNodeKey,
+          indent: indent,
+          direction: direction,
+          dropIndicatorRender: dropIndicatorRender,
+          loadData: loadData,
+          filterTreeNode: filterTreeNode,
+          titleRender: titleRender,
+          onNodeClick: this.onNodeClick,
+          onNodeDoubleClick: this.onNodeDoubleClick,
+          onNodeExpand: this.onNodeExpand,
+          onNodeSelect: this.onNodeSelect,
+          onNodeCheck: this.onNodeCheck,
+          onNodeLoad: this.onNodeLoad,
+          onNodeMouseEnter: this.onNodeMouseEnter,
+          onNodeMouseLeave: this.onNodeMouseLeave,
+          onNodeContextMenu: this.onNodeContextMenu,
+          onNodeDragStart: this.onNodeDragStart,
+          onNodeDragEnter: this.onNodeDragEnter,
+          onNodeDragOver: this.onNodeDragOver,
+          onNodeDragLeave: this.onNodeDragLeave,
+          onNodeDragEnd: this.onNodeDragEnd,
+          onNodeDrop: this.onNodeDrop
+        }
+      }, /*#__PURE__*/React__namespace.createElement("div", {
+        className: classnames(prefixCls, className, (_classNames = {}, _defineProperty$4(_classNames, "".concat(prefixCls, "-show-line"), showLine), _defineProperty$4(_classNames, "".concat(prefixCls, "-focused"), focused), _defineProperty$4(_classNames, "".concat(prefixCls, "-active-focused"), activeKey !== null), _classNames))
+      }, /*#__PURE__*/React__namespace.createElement(NodeList, _extends$1({
+        ref: this.listRef,
+        prefixCls: prefixCls,
+        style: style,
+        data: flattenNodes,
+        disabled: disabled,
+        selectable: selectable,
+        checkable: !!checkable,
+        motion: motion,
+        dragging: dragging,
+        height: height,
+        itemHeight: itemHeight,
+        virtual: virtual,
+        focusable: focusable,
+        focused: focused,
+        tabIndex: tabIndex,
+        activeItem: this.getActiveItem(),
+        onFocus: this.onFocus,
+        onBlur: this.onBlur,
+        onKeyDown: this.onKeyDown,
+        onActiveChange: this.onActiveChange,
+        onListChangeStart: this.onListChangeStart,
+        onListChangeEnd: this.onListChangeEnd,
+        onContextMenu: onContextMenu
+      }, this.getTreeNodeRequiredProps(), domProps))));
+    }
+  }], [{
+    key: "getDerivedStateFromProps",
+    value: function getDerivedStateFromProps(props, prevState) {
+      var prevProps = prevState.prevProps;
+      var newState = {
+        prevProps: props
+      };
+
+      function needSync(name) {
+        return !prevProps && name in props || prevProps && prevProps[name] !== props[name];
+      } // ================== Tree Node ==================
+
+
+      var treeData; // Check if `treeData` or `children` changed and save into the state.
+
+      if (needSync('treeData')) {
+        treeData = props.treeData;
+      } else if (needSync('children')) {
+        warningOnce(false, '`children` of Tree is deprecated. Please use `treeData` instead.');
+        treeData = convertTreeToData(props.children);
+      } // Save flatten nodes info and convert `treeData` into keyEntities
+
+
+      if (treeData) {
+        newState.treeData = treeData;
+        var entitiesMap = convertDataToEntities(treeData);
+        newState.keyEntities = _objectSpread2$1(_defineProperty$4({}, MOTION_KEY, MotionEntity), entitiesMap.keyEntities); // Warning if treeNode not provide key
+
+        if (process.env.NODE_ENV !== 'production') {
+          warningWithoutKey(treeData);
+        }
+      }
+
+      var keyEntities = newState.keyEntities || prevState.keyEntities; // ================ expandedKeys =================
+
+      if (needSync('expandedKeys') || prevProps && needSync('autoExpandParent')) {
+        newState.expandedKeys = props.autoExpandParent || !prevProps && props.defaultExpandParent ? conductExpandParent(props.expandedKeys, keyEntities) : props.expandedKeys;
+      } else if (!prevProps && props.defaultExpandAll) {
+        var cloneKeyEntities = _objectSpread2$1({}, keyEntities);
+
+        delete cloneKeyEntities[MOTION_KEY];
+        newState.expandedKeys = Object.keys(cloneKeyEntities).map(function (key) {
+          return cloneKeyEntities[key].key;
+        });
+      } else if (!prevProps && props.defaultExpandedKeys) {
+        newState.expandedKeys = props.autoExpandParent || props.defaultExpandParent ? conductExpandParent(props.defaultExpandedKeys, keyEntities) : props.defaultExpandedKeys;
+      }
+
+      if (!newState.expandedKeys) {
+        delete newState.expandedKeys;
+      } // ================ flattenNodes =================
+
+
+      if (treeData || newState.expandedKeys) {
+        var flattenNodes = flattenTreeData(treeData || prevState.treeData, newState.expandedKeys || prevState.expandedKeys);
+        newState.flattenNodes = flattenNodes;
+      } // ================ selectedKeys =================
+
+
+      if (props.selectable) {
+        if (needSync('selectedKeys')) {
+          newState.selectedKeys = calcSelectedKeys(props.selectedKeys, props);
+        } else if (!prevProps && props.defaultSelectedKeys) {
+          newState.selectedKeys = calcSelectedKeys(props.defaultSelectedKeys, props);
+        }
+      } // ================= checkedKeys =================
+
+
+      if (props.checkable) {
+        var checkedKeyEntity;
+
+        if (needSync('checkedKeys')) {
+          checkedKeyEntity = parseCheckedKeys(props.checkedKeys) || {};
+        } else if (!prevProps && props.defaultCheckedKeys) {
+          checkedKeyEntity = parseCheckedKeys(props.defaultCheckedKeys) || {};
+        } else if (treeData) {
+          // If `treeData` changed, we also need check it
+          checkedKeyEntity = parseCheckedKeys(props.checkedKeys) || {
+            checkedKeys: prevState.checkedKeys,
+            halfCheckedKeys: prevState.halfCheckedKeys
+          };
+        }
+
+        if (checkedKeyEntity) {
+          var _checkedKeyEntity = checkedKeyEntity,
+              _checkedKeyEntity$che = _checkedKeyEntity.checkedKeys,
+              checkedKeys = _checkedKeyEntity$che === void 0 ? [] : _checkedKeyEntity$che,
+              _checkedKeyEntity$hal = _checkedKeyEntity.halfCheckedKeys,
+              halfCheckedKeys = _checkedKeyEntity$hal === void 0 ? [] : _checkedKeyEntity$hal;
+
+          if (!props.checkStrictly) {
+            var conductKeys = conductCheck(checkedKeys, true, keyEntities);
+            checkedKeys = conductKeys.checkedKeys;
+            halfCheckedKeys = conductKeys.halfCheckedKeys;
+          }
+
+          newState.checkedKeys = checkedKeys;
+          newState.halfCheckedKeys = halfCheckedKeys;
+        }
+      } // ================= loadedKeys ==================
+
+
+      if (needSync('loadedKeys')) {
+        newState.loadedKeys = props.loadedKeys;
+      }
+
+      return newState;
+    }
+  }]);
+
+  return Tree;
+}(React__namespace.Component);
+
+Tree.defaultProps = {
+  prefixCls: 'rc-tree',
+  showLine: false,
+  showIcon: true,
+  selectable: true,
+  multiple: false,
+  checkable: false,
+  disabled: false,
+  checkStrictly: false,
+  draggable: false,
+  defaultExpandParent: true,
+  autoExpandParent: false,
+  defaultExpandAll: false,
+  defaultExpandedKeys: [],
+  defaultCheckedKeys: [],
+  defaultSelectedKeys: [],
+  dropIndicatorRender: DropIndicator,
+  allowDrop: function allowDrop() {
+    return true;
+  }
+};
+Tree.TreeNode = ContextTreeNode;
+
+// This icon file is generated automatically.
+var FileOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M854.6 288.6L639.4 73.4c-6-6-14.1-9.4-22.6-9.4H192c-17.7 0-32 14.3-32 32v832c0 17.7 14.3 32 32 32h640c17.7 0 32-14.3 32-32V311.3c0-8.5-3.4-16.7-9.4-22.7zM790.2 326H602V137.8L790.2 326zm1.8 562H232V136h302v216a42 42 0 0042 42h216v494z" } }] }, "name": "file", "theme": "outlined" };
+
+// GENERATE BY ./scripts/generate.ts
+
+var FileOutlined = function FileOutlined(props, ref) {
+  return /*#__PURE__*/React__namespace.createElement(Icon, Object.assign({}, props, {
+    ref: ref,
+    icon: FileOutlined$2
+  }));
+};
+
+FileOutlined.displayName = 'FileOutlined';
+var FileOutlined$1 = /*#__PURE__*/React__namespace.forwardRef(FileOutlined);
+
+// This icon file is generated automatically.
+var MinusSquareOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M328 544h368c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8H328c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8z" } }, { "tag": "path", "attrs": { "d": "M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656z" } }] }, "name": "minus-square", "theme": "outlined" };
+
+// GENERATE BY ./scripts/generate.ts
+
+var MinusSquareOutlined = function MinusSquareOutlined(props, ref) {
+  return /*#__PURE__*/React__namespace.createElement(Icon, Object.assign({}, props, {
+    ref: ref,
+    icon: MinusSquareOutlined$2
+  }));
+};
+
+MinusSquareOutlined.displayName = 'MinusSquareOutlined';
+var MinusSquareOutlined$1 = /*#__PURE__*/React__namespace.forwardRef(MinusSquareOutlined);
+
+// This icon file is generated automatically.
+var PlusSquareOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M328 544h152v152c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V544h152c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8H544V328c0-4.4-3.6-8-8-8h-48c-4.4 0-8 3.6-8 8v152H328c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8z" } }, { "tag": "path", "attrs": { "d": "M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656z" } }] }, "name": "plus-square", "theme": "outlined" };
+
+// GENERATE BY ./scripts/generate.ts
+
+var PlusSquareOutlined = function PlusSquareOutlined(props, ref) {
+  return /*#__PURE__*/React__namespace.createElement(Icon, Object.assign({}, props, {
+    ref: ref,
+    icon: PlusSquareOutlined$2
+  }));
+};
+
+PlusSquareOutlined.displayName = 'PlusSquareOutlined';
+var PlusSquareOutlined$1 = /*#__PURE__*/React__namespace.forwardRef(PlusSquareOutlined);
+
+// This icon file is generated automatically.
+var CaretDownFilled$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "0 0 1024 1024", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M840.4 300H183.6c-19.7 0-30.7 20.8-18.5 35l328.4 380.8c9.4 10.9 27.5 10.9 37 0L858.9 335c12.2-14.2 1.2-35-18.5-35z" } }] }, "name": "caret-down", "theme": "filled" };
+
+// GENERATE BY ./scripts/generate.ts
+
+var CaretDownFilled = function CaretDownFilled(props, ref) {
+  return /*#__PURE__*/React__namespace.createElement(Icon, Object.assign({}, props, {
+    ref: ref,
+    icon: CaretDownFilled$2
+  }));
+};
+
+CaretDownFilled.displayName = 'CaretDownFilled';
+var CaretDownFilled$1 = /*#__PURE__*/React__namespace.forwardRef(CaretDownFilled);
+
+function renderSwitcherIcon(prefixCls, switcherIcon, showLine, _ref) {
+  var isLeaf = _ref.isLeaf,
+      expanded = _ref.expanded,
+      loading = _ref.loading;
+
+  if (loading) {
+    return /*#__PURE__*/React__namespace.createElement(LoadingOutlined$1, {
+      className: "".concat(prefixCls, "-switcher-loading-icon")
+    });
+  }
+
+  var showLeafIcon;
+
+  if (showLine && _typeof$4(showLine) === 'object') {
+    showLeafIcon = showLine.showLeafIcon;
+  }
+
+  if (isLeaf) {
+    if (showLine) {
+      if (_typeof$4(showLine) === 'object' && !showLeafIcon) {
+        return /*#__PURE__*/React__namespace.createElement("span", {
+          className: "".concat(prefixCls, "-switcher-leaf-line")
+        });
+      }
+
+      return /*#__PURE__*/React__namespace.createElement(FileOutlined$1, {
+        className: "".concat(prefixCls, "-switcher-line-icon")
+      });
+    }
+
+    return null;
+  }
+
+  var switcherCls = "".concat(prefixCls, "-switcher-icon");
+
+  if (isValidElement(switcherIcon)) {
+    return cloneElement(switcherIcon, {
+      className: classnames(switcherIcon.props.className || '', switcherCls)
+    });
+  }
+
+  if (switcherIcon) {
+    return switcherIcon;
+  }
+
+  if (showLine) {
+    return expanded ? /*#__PURE__*/React__namespace.createElement(MinusSquareOutlined$1, {
+      className: "".concat(prefixCls, "-switcher-line-icon")
+    }) : /*#__PURE__*/React__namespace.createElement(PlusSquareOutlined$1, {
+      className: "".concat(prefixCls, "-switcher-line-icon")
+    });
+  }
+
+  return /*#__PURE__*/React__namespace.createElement(CaretDownFilled$1, {
+    className: switcherCls
+  });
+}
+
+var SelectContext = /*#__PURE__*/React__namespace.createContext(null);
+
+function isDisabled(dataNode, skipType) {
+  if (!dataNode) {
+    return true;
+  }
+
+  var _dataNode$data = dataNode.data,
+      disabled = _dataNode$data.disabled,
+      disableCheckbox = _dataNode$data.disableCheckbox;
+
+  switch (skipType) {
+    case 'select':
+      return disabled;
+
+    case 'checkbox':
+      return disabled || disableCheckbox;
+  }
+
+  return false;
+}
+function useKeyValueMapping(cacheKeyMap, cacheValueMap) {
+  var getEntityByKey = React__namespace.useCallback(function (key) {
+    var skipType = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'select';
+    var ignoreDisabledCheck = arguments.length > 2 ? arguments[2] : undefined;
+    var dataNode = cacheKeyMap.get(key);
+
+    if (!ignoreDisabledCheck && isDisabled(dataNode, skipType)) {
+      return null;
+    }
+
+    return dataNode;
+  }, [cacheKeyMap]);
+  var getEntityByValue = React__namespace.useCallback(function (value) {
+    var skipType = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'select';
+    var ignoreDisabledCheck = arguments.length > 2 ? arguments[2] : undefined;
+    var dataNode = cacheValueMap.get(value);
+
+    if (!ignoreDisabledCheck && isDisabled(dataNode, skipType)) {
+      return null;
+    }
+
+    return dataNode;
+  }, [cacheValueMap]);
+  return [getEntityByKey, getEntityByValue];
+}
+
+/**
+ * Return cached Key Value map with DataNode.
+ * Only re-calculate when `flattenOptions` changed.
+ */
+
+function useKeyValueMap(flattenOptions) {
+  return React__namespace.useMemo(function () {
+    var cacheKeyMap = new Map();
+    var cacheValueMap = new Map(); // Cache options by key
+
+    flattenOptions.forEach(function (dataNode) {
+      cacheKeyMap.set(dataNode.key, dataNode);
+      cacheValueMap.set(dataNode.data.value, dataNode);
+    });
+    return [cacheKeyMap, cacheValueMap];
+  }, [flattenOptions]);
+}
+
+var HIDDEN_STYLE = {
+  width: 0,
+  height: 0,
+  display: 'flex',
+  overflow: 'hidden',
+  opacity: 0,
+  border: 0,
+  padding: 0,
+  margin: 0
+};
+
+var OptionList = function OptionList(props, ref) {
+  var prefixCls = props.prefixCls,
+      height = props.height,
+      itemHeight = props.itemHeight,
+      virtual = props.virtual,
+      options = props.options,
+      flattenOptions = props.flattenOptions,
+      multiple = props.multiple,
+      searchValue = props.searchValue,
+      onSelect = props.onSelect,
+      onToggleOpen = props.onToggleOpen,
+      open = props.open,
+      notFoundContent = props.notFoundContent,
+      onMouseEnter = props.onMouseEnter;
+
+  var _React$useContext = React__namespace.useContext(SelectContext),
+      checkable = _React$useContext.checkable,
+      checkedKeys = _React$useContext.checkedKeys,
+      halfCheckedKeys = _React$useContext.halfCheckedKeys,
+      treeExpandedKeys = _React$useContext.treeExpandedKeys,
+      treeDefaultExpandAll = _React$useContext.treeDefaultExpandAll,
+      treeDefaultExpandedKeys = _React$useContext.treeDefaultExpandedKeys,
+      onTreeExpand = _React$useContext.onTreeExpand,
+      treeIcon = _React$useContext.treeIcon,
+      showTreeIcon = _React$useContext.showTreeIcon,
+      switcherIcon = _React$useContext.switcherIcon,
+      treeLine = _React$useContext.treeLine,
+      treeNodeFilterProp = _React$useContext.treeNodeFilterProp,
+      loadData = _React$useContext.loadData,
+      treeLoadedKeys = _React$useContext.treeLoadedKeys,
+      treeMotion = _React$useContext.treeMotion,
+      onTreeLoad = _React$useContext.onTreeLoad;
+
+  var treeRef = React__namespace.useRef();
+  var memoOptions = useMemo(function () {
+    return options;
+  }, [open, options], function (prev, next) {
+    return next[0] && prev[1] !== next[1];
+  });
+
+  var _useKeyValueMap = useKeyValueMap(flattenOptions),
+      _useKeyValueMap2 = _slicedToArray$3(_useKeyValueMap, 2),
+      cacheKeyMap = _useKeyValueMap2[0],
+      cacheValueMap = _useKeyValueMap2[1];
+
+  var _useKeyValueMapping = useKeyValueMapping(cacheKeyMap, cacheValueMap),
+      _useKeyValueMapping2 = _slicedToArray$3(_useKeyValueMapping, 2),
+      getEntityByKey = _useKeyValueMapping2[0],
+      getEntityByValue = _useKeyValueMapping2[1]; // ========================== Values ==========================
+
+
+  var valueKeys = React__namespace.useMemo(function () {
+    return checkedKeys.map(function (val) {
+      var entity = getEntityByValue(val);
+      return entity ? entity.key : null;
+    });
+  }, [checkedKeys, getEntityByValue]);
+  var mergedCheckedKeys = React__namespace.useMemo(function () {
+    if (!checkable) {
+      return null;
+    }
+
+    return {
+      checked: valueKeys,
+      halfChecked: halfCheckedKeys
+    };
+  }, [valueKeys, halfCheckedKeys, checkable]); // ========================== Scroll ==========================
+
+  React__namespace.useEffect(function () {
+    // Single mode should scroll to current key
+    if (open && !multiple && valueKeys.length) {
+      var _treeRef$current;
+
+      (_treeRef$current = treeRef.current) === null || _treeRef$current === void 0 ? void 0 : _treeRef$current.scrollTo({
+        key: valueKeys[0]
+      });
+    }
+  }, [open]); // ========================== Search ==========================
+
+  var lowerSearchValue = String(searchValue).toLowerCase();
+
+  var filterTreeNode = function filterTreeNode(treeNode) {
+    if (!lowerSearchValue) {
+      return false;
+    }
+
+    return String(treeNode[treeNodeFilterProp]).toLowerCase().includes(lowerSearchValue);
+  }; // =========================== Keys ===========================
+
+
+  var _React$useState = React__namespace.useState(treeDefaultExpandedKeys),
+      _React$useState2 = _slicedToArray$3(_React$useState, 2),
+      expandedKeys = _React$useState2[0],
+      setExpandedKeys = _React$useState2[1];
+
+  var _React$useState3 = React__namespace.useState(null),
+      _React$useState4 = _slicedToArray$3(_React$useState3, 2),
+      searchExpandedKeys = _React$useState4[0],
+      setSearchExpandedKeys = _React$useState4[1];
+
+  var mergedExpandedKeys = React__namespace.useMemo(function () {
+    if (treeExpandedKeys) {
+      return _toConsumableArray(treeExpandedKeys);
+    }
+
+    return searchValue ? searchExpandedKeys : expandedKeys;
+  }, [expandedKeys, searchExpandedKeys, lowerSearchValue, treeExpandedKeys]);
+  React__namespace.useEffect(function () {
+    if (searchValue) {
+      setSearchExpandedKeys(flattenOptions.map(function (o) {
+        return o.key;
+      }));
+    }
+  }, [searchValue]);
+
+  var onInternalExpand = function onInternalExpand(keys) {
+    setExpandedKeys(keys);
+    setSearchExpandedKeys(keys);
+
+    if (onTreeExpand) {
+      onTreeExpand(keys);
+    }
+  }; // ========================== Events ==========================
+
+
+  var onListMouseDown = function onListMouseDown(event) {
+    event.preventDefault();
+  };
+
+  var onInternalSelect = function onInternalSelect(_, _ref) {
+    var key = _ref.node.key;
+    var entity = getEntityByKey(key, checkable ? 'checkbox' : 'select');
+
+    if (entity !== null) {
+      onSelect(entity.data.value, {
+        selected: !checkedKeys.includes(entity.data.value)
+      });
+    }
+
+    if (!multiple) {
+      onToggleOpen(false);
+    }
+  }; // ========================= Keyboard =========================
+
+
+  var _React$useState5 = React__namespace.useState(null),
+      _React$useState6 = _slicedToArray$3(_React$useState5, 2),
+      activeKey = _React$useState6[0],
+      setActiveKey = _React$useState6[1];
+
+  var activeEntity = getEntityByKey(activeKey);
+  React__namespace.useImperativeHandle(ref, function () {
+    var _treeRef$current2;
+
+    return {
+      scrollTo: (_treeRef$current2 = treeRef.current) === null || _treeRef$current2 === void 0 ? void 0 : _treeRef$current2.scrollTo,
+      onKeyDown: function onKeyDown(event) {
+        var _treeRef$current3;
+
+        var which = event.which;
+
+        switch (which) {
+          // >>> Arrow keys
+          case KeyCode.UP:
+          case KeyCode.DOWN:
+          case KeyCode.LEFT:
+          case KeyCode.RIGHT:
+            (_treeRef$current3 = treeRef.current) === null || _treeRef$current3 === void 0 ? void 0 : _treeRef$current3.onKeyDown(event);
+            break;
+          // >>> Select item
+
+          case KeyCode.ENTER:
+            {
+              var _activeEntity$data;
+
+              if ((activeEntity === null || activeEntity === void 0 ? void 0 : (_activeEntity$data = activeEntity.data) === null || _activeEntity$data === void 0 ? void 0 : _activeEntity$data.selectable) !== false) {
+                onInternalSelect(null, {
+                  node: {
+                    key: activeKey
+                  },
+                  selected: !checkedKeys.includes(activeEntity.data.value)
+                });
+              }
+
+              break;
+            }
+          // >>> Close
+
+          case KeyCode.ESC:
+            {
+              onToggleOpen(false);
+            }
+        }
+      },
+      onKeyUp: function onKeyUp() {}
+    };
+  }); // ========================== Render ==========================
+
+  if (memoOptions.length === 0) {
+    return /*#__PURE__*/React__namespace.createElement("div", {
+      role: "listbox",
+      className: "".concat(prefixCls, "-empty"),
+      onMouseDown: onListMouseDown
+    }, notFoundContent);
+  }
+
+  var treeProps = {};
+
+  if (treeLoadedKeys) {
+    treeProps.loadedKeys = treeLoadedKeys;
+  }
+
+  if (mergedExpandedKeys) {
+    treeProps.expandedKeys = mergedExpandedKeys;
+  }
+
+  return /*#__PURE__*/React__namespace.createElement("div", {
+    onMouseDown: onListMouseDown,
+    onMouseEnter: onMouseEnter
+  }, activeEntity && open && /*#__PURE__*/React__namespace.createElement("span", {
+    style: HIDDEN_STYLE,
+    "aria-live": "assertive"
+  }, activeEntity.data.value), /*#__PURE__*/React__namespace.createElement(Tree, _extends$1({
+    ref: treeRef,
+    focusable: false,
+    prefixCls: "".concat(prefixCls, "-tree"),
+    treeData: memoOptions,
+    height: height,
+    itemHeight: itemHeight,
+    virtual: virtual,
+    multiple: multiple,
+    icon: treeIcon,
+    showIcon: showTreeIcon,
+    switcherIcon: switcherIcon,
+    showLine: treeLine,
+    loadData: searchValue ? null : loadData,
+    motion: treeMotion // We handle keys by out instead tree self
+    ,
+    checkable: checkable,
+    checkStrictly: true,
+    checkedKeys: mergedCheckedKeys,
+    selectedKeys: !checkable ? valueKeys : [],
+    defaultExpandAll: treeDefaultExpandAll
+  }, treeProps, {
+    // Proxy event out
+    onActiveChange: setActiveKey,
+    onSelect: onInternalSelect,
+    onCheck: onInternalSelect,
+    onExpand: onInternalExpand,
+    onLoad: onTreeLoad,
+    filterTreeNode: filterTreeNode
+  })));
+};
+
+var RefOptionList = /*#__PURE__*/React__namespace.forwardRef(OptionList);
+RefOptionList.displayName = 'OptionList';
+
+/** This is a placeholder, not real render in dom */
+var TreeNode = function TreeNode() {
+  return null;
+};
+
+function convertChildrenToData(nodes) {
+  return toArray$3(nodes).map(function (node) {
+    if (! /*#__PURE__*/React__namespace.isValidElement(node) || !node.type) {
+      return null;
+    }
+
+    var key = node.key,
+        _node$props = node.props,
+        children = _node$props.children,
+        value = _node$props.value,
+        restProps = _objectWithoutProperties$1(_node$props, ["children", "value"]);
+
+    var data = _objectSpread2$1({
+      key: key,
+      value: value
+    }, restProps);
+
+    var childData = convertChildrenToData(children);
+
+    if (childData.length) {
+      data.children = childData;
+    }
+
+    return data;
+  }).filter(function (data) {
+    return data;
+  });
+}
+function fillLegacyProps(dataNode) {
+  // Skip if not dataNode exist
+  if (!dataNode) {
+    return dataNode;
+  }
+
+  var cloneNode = _objectSpread2$1({}, dataNode);
+
+  if (!('props' in cloneNode)) {
+    Object.defineProperty(cloneNode, 'props', {
+      get: function get() {
+        warningOnce(false, 'New `rc-tree-select` not support return node instance as argument anymore. Please consider to remove `props` access.');
+        return cloneNode;
+      }
+    });
+  }
+
+  return cloneNode;
+}
+function fillAdditionalInfo(extra, triggerValue, checkedValues, treeData, showPosition) {
+  var triggerNode = null;
+  var nodeList = null;
+
+  function generateMap() {
+    function dig(list) {
+      var level = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '0';
+      var parentIncluded = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+      return list.map(function (dataNode, index) {
+        var pos = "".concat(level, "-").concat(index);
+        var included = checkedValues.includes(dataNode.value);
+        var children = dig(dataNode.children || [], pos, included);
+        var node = /*#__PURE__*/React__namespace.createElement(TreeNode, dataNode, children.map(function (child) {
+          return child.node;
+        })); // Link with trigger node
+
+        if (triggerValue === dataNode.value) {
+          triggerNode = node;
+        }
+
+        if (included) {
+          var checkedNode = {
+            pos: pos,
+            node: node,
+            children: children
+          };
+
+          if (!parentIncluded) {
+            nodeList.push(checkedNode);
+          }
+
+          return checkedNode;
+        }
+
+        return null;
+      }).filter(function (node) {
+        return node;
+      });
+    }
+
+    if (!nodeList) {
+      nodeList = [];
+      dig(treeData); // Sort to keep the checked node length
+
+      nodeList.sort(function (_ref, _ref2) {
+        var val1 = _ref.node.props.value;
+        var val2 = _ref2.node.props.value;
+        var index1 = checkedValues.indexOf(val1);
+        var index2 = checkedValues.indexOf(val2);
+        return index1 - index2;
+      });
+    }
+  }
+
+  Object.defineProperty(extra, 'triggerNode', {
+    get: function get() {
+      warningOnce(false, '`triggerNode` is deprecated. Please consider decoupling data with node.');
+      generateMap();
+      return triggerNode;
+    }
+  });
+  Object.defineProperty(extra, 'allCheckedNodes', {
+    get: function get() {
+      warningOnce(false, '`allCheckedNodes` is deprecated. Please consider decoupling data with node.');
+      generateMap();
+
+      if (showPosition) {
+        return nodeList;
+      }
+
+      return nodeList.map(function (_ref3) {
+        var node = _ref3.node;
+        return node;
+      });
+    }
+  });
+}
+
+function toArray(value) {
+  if (Array.isArray(value)) {
+    return value;
+  }
+
+  return value !== undefined ? [value] : [];
+}
+function findValueOption(values, options) {
+  var optionMap = new Map();
+  options.forEach(function (flattenItem) {
+    var data = flattenItem.data;
+    optionMap.set(data.value, data);
+  });
+  return values.map(function (val) {
+    return fillLegacyProps(optionMap.get(val));
+  });
+}
+function isValueDisabled(value, options) {
+  var option = findValueOption([value], options)[0];
+
+  if (option) {
+    return option.disabled;
+  }
+
+  return false;
+}
+function isCheckDisabled(node) {
+  return node.disabled || node.disableCheckbox || node.checkable === false;
+}
+
+function getLevel(_ref) {
+  var parent = _ref.parent;
+  var level = 0;
+  var current = parent;
+
+  while (current) {
+    current = current.parent;
+    level += 1;
+  }
+
+  return level;
+}
+/**
+ * Before reuse `rc-tree` logic, we need to add key since TreeSelect use `value` instead of `key`.
+ */
+
+
+function flattenOptions(options) {
+  // Add missing key
+  function fillKey(list) {
+    return (list || []).map(function (node) {
+      var value = node.value,
+          key = node.key,
+          children = node.children;
+
+      var clone = _objectSpread2$1(_objectSpread2$1({}, node), {}, {
+        key: 'key' in node ? key : value
+      });
+
+      if (children) {
+        clone.children = fillKey(children);
+      }
+
+      return clone;
+    });
+  }
+
+  var flattenList = flattenTreeData(fillKey(options), true);
+  return flattenList.map(function (node) {
+    return {
+      key: node.data.key,
+      data: node.data,
+      level: getLevel(node)
+    };
+  });
+}
+
+function getDefaultFilterOption(optionFilterProp) {
+  return function (searchValue, dataNode) {
+    var value = dataNode[optionFilterProp];
+    return String(value).toLowerCase().includes(String(searchValue).toLowerCase());
+  };
+}
+/** Filter options and return a new options by the search text */
+
+
+function filterOptions(searchValue, options, _ref2) {
+  var optionFilterProp = _ref2.optionFilterProp,
+      filterOption = _ref2.filterOption;
+
+  if (filterOption === false) {
+    return options;
+  }
+
+  var filterOptionFunc;
+
+  if (typeof filterOption === 'function') {
+    filterOptionFunc = filterOption;
+  } else {
+    filterOptionFunc = getDefaultFilterOption(optionFilterProp);
+  }
+
+  function dig(list) {
+    var keepAll = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+    return list.map(function (dataNode) {
+      var children = dataNode.children;
+      var match = keepAll || filterOptionFunc(searchValue, fillLegacyProps(dataNode));
+      var childList = dig(children || [], match);
+
+      if (match || childList.length) {
+        return _objectSpread2$1(_objectSpread2$1({}, dataNode), {}, {
+          children: childList
+        });
+      }
+
+      return null;
+    }).filter(function (node) {
+      return node;
+    });
+  }
+
+  return dig(options);
+}
+function getRawValueLabeled(values, prevValue, getEntityByValue, getLabelProp) {
+  var valueMap = new Map();
+  toArray(prevValue).forEach(function (item) {
+    if (item && _typeof$4(item) === 'object' && 'value' in item) {
+      valueMap.set(item.value, item);
+    }
+  });
+  return values.map(function (val) {
+    var item = {
+      value: val
+    };
+    var entity = getEntityByValue(val, 'select', true);
+    var label = entity ? getLabelProp(entity.data) : val;
+
+    if (valueMap.has(val)) {
+      var labeledValue = valueMap.get(val);
+      item.label = 'label' in labeledValue ? labeledValue.label : label;
+
+      if ('halfChecked' in labeledValue) {
+        item.halfChecked = labeledValue.halfChecked;
+      }
+    } else {
+      item.label = label;
+    }
+
+    return item;
+  });
+}
+function addValue(rawValues, value) {
+  var values = new Set(rawValues);
+  values.add(value);
+  return Array.from(values);
+}
+function removeValue(rawValues, value) {
+  var values = new Set(rawValues);
+  values.delete(value);
+  return Array.from(values);
+}
+
+function warningProps(props) {
+  var searchPlaceholder = props.searchPlaceholder,
+      treeCheckStrictly = props.treeCheckStrictly,
+      treeCheckable = props.treeCheckable,
+      labelInValue = props.labelInValue,
+      value = props.value,
+      multiple = props.multiple;
+  warningOnce(!searchPlaceholder, '`searchPlaceholder` has been removed.');
+
+  if (treeCheckStrictly && labelInValue === false) {
+    warningOnce(false, '`treeCheckStrictly` will force set `labelInValue` to `true`.');
+  }
+
+  if (labelInValue || treeCheckStrictly) {
+    warningOnce(toArray(value).every(function (val) {
+      return val && _typeof$4(val) === 'object' && 'value' in val;
+    }), 'Invalid prop `value` supplied to `TreeSelect`. You should use { label: string, value: string | number } or [{ label: string, value: string | number }] instead.');
+  }
+
+  if (treeCheckStrictly || multiple || treeCheckable) {
+    warningOnce(!value || Array.isArray(value), '`value` should be an array when `TreeSelect` is checkable or multiple.');
+  } else {
+    warningOnce(!Array.isArray(value), '`value` should not be array when `TreeSelect` is single mode.');
+  }
+}
+
+var MAX_WARNING_TIMES = 10;
+
+function parseSimpleTreeData(treeData, _ref) {
+  var id = _ref.id,
+      pId = _ref.pId,
+      rootPId = _ref.rootPId;
+  var keyNodes = {};
+  var rootNodeList = []; // Fill in the map
+
+  var nodeList = treeData.map(function (node) {
+    var clone = _objectSpread2$1({}, node);
+
+    var key = clone[id];
+    keyNodes[key] = clone;
+    clone.key = clone.key || key;
+    return clone;
+  }); // Connect tree
+
+  nodeList.forEach(function (node) {
+    var parentKey = node[pId];
+    var parent = keyNodes[parentKey]; // Fill parent
+
+    if (parent) {
+      parent.children = parent.children || [];
+      parent.children.push(node);
+    } // Fill root tree node
+
+
+    if (parentKey === rootPId || !parent && rootPId === null) {
+      rootNodeList.push(node);
+    }
+  });
+  return rootNodeList;
+}
+/**
+ * Format `treeData` with `value` & `key` which is used for calculation
+ */
+
+
+function formatTreeData(treeData, getLabelProp) {
+  var warningTimes = 0;
+  var valueSet = new Set();
+
+  function dig(dataNodes) {
+    return (dataNodes || []).map(function (node) {
+      var key = node.key,
+          value = node.value,
+          children = node.children,
+          rest = _objectWithoutProperties$1(node, ["key", "value", "children"]);
+
+      var mergedValue = 'value' in node ? value : key;
+
+      var dataNode = _objectSpread2$1(_objectSpread2$1({}, rest), {}, {
+        key: key !== null && key !== undefined ? key : mergedValue,
+        value: mergedValue,
+        title: getLabelProp(node)
+      }); // Check `key` & `value` and warning user
+
+
+      if (process.env.NODE_ENV !== 'production') {
+        if (key !== null && key !== undefined && value !== undefined && String(key) !== String(value) && warningTimes < MAX_WARNING_TIMES) {
+          warningTimes += 1;
+          warningOnce(false, "`key` or `value` with TreeNode must be the same or you can remove one of them. key: ".concat(key, ", value: ").concat(value, "."));
+        }
+
+        warningOnce(!valueSet.has(value), "Same `value` exist in the tree: ".concat(value));
+        valueSet.add(value);
+      }
+
+      if ('children' in node) {
+        dataNode.children = dig(children);
+      }
+
+      return dataNode;
+    });
+  }
+
+  return dig(treeData);
+}
+/**
+ * Convert `treeData` or `children` into formatted `treeData`.
+ * Will not re-calculate if `treeData` or `children` not change.
+ */
+
+
+function useTreeData(treeData, children, _ref2) {
+  var getLabelProp = _ref2.getLabelProp,
+      simpleMode = _ref2.simpleMode;
+  var cacheRef = React__namespace.useRef({});
+
+  if (treeData) {
+    cacheRef.current.formatTreeData = cacheRef.current.treeData === treeData ? cacheRef.current.formatTreeData : formatTreeData(simpleMode ? parseSimpleTreeData(treeData, _objectSpread2$1({
+      id: 'id',
+      pId: 'pId',
+      rootPId: null
+    }, simpleMode !== true ? simpleMode : {})) : treeData, getLabelProp);
+    cacheRef.current.treeData = treeData;
+  } else {
+    cacheRef.current.formatTreeData = cacheRef.current.children === children ? cacheRef.current.formatTreeData : formatTreeData(convertChildrenToData(children), getLabelProp);
+  }
+
+  return cacheRef.current.formatTreeData;
+}
+
+var SHOW_ALL = 'SHOW_ALL';
+var SHOW_PARENT = 'SHOW_PARENT';
+var SHOW_CHILD = 'SHOW_CHILD';
+function formatStrategyKeys(keys, strategy, keyEntities) {
+  var keySet = new Set(keys);
+
+  if (strategy === SHOW_CHILD) {
+    return keys.filter(function (key) {
+      var entity = keyEntities[key];
+
+      if (entity && entity.children && entity.children.every(function (_ref) {
+        var node = _ref.node;
+        return isCheckDisabled(node) || keySet.has(node.key);
+      })) {
+        return false;
+      }
+
+      return true;
+    });
+  }
+
+  if (strategy === SHOW_PARENT) {
+    return keys.filter(function (key) {
+      var entity = keyEntities[key];
+      var parent = entity ? entity.parent : null;
+
+      if (parent && !isCheckDisabled(parent.node) && keySet.has(parent.node.key)) {
+        return false;
+      }
+
+      return true;
+    });
+  }
+
+  return keys;
+}
+
+/** Return  */
+
+function useSelectValues(rawValues, _ref) {
+  var value = _ref.value,
+      getEntityByValue = _ref.getEntityByValue,
+      getEntityByKey = _ref.getEntityByKey,
+      treeConduction = _ref.treeConduction,
+      showCheckedStrategy = _ref.showCheckedStrategy,
+      conductKeyEntities = _ref.conductKeyEntities,
+      getLabelProp = _ref.getLabelProp;
+  return React__namespace.useMemo(function () {
+    var mergedRawValues = rawValues;
+
+    if (treeConduction) {
+      var rawKeys = formatStrategyKeys(rawValues.map(function (val) {
+        var entity = getEntityByValue(val);
+        return entity ? entity.key : val;
+      }), showCheckedStrategy, conductKeyEntities);
+      mergedRawValues = rawKeys.map(function (key) {
+        var entity = getEntityByKey(key);
+        return entity ? entity.data.value : key;
+      });
+    }
+
+    return getRawValueLabeled(mergedRawValues, value, getEntityByValue, getLabelProp);
+  }, [rawValues, value, treeConduction, showCheckedStrategy, getEntityByValue]);
+}
+
+var OMIT_PROPS = ['expandedKeys', 'treeData', 'treeCheckable', 'showCheckedStrategy', 'searchPlaceholder', 'treeLine', 'treeIcon', 'showTreeIcon', 'switcherIcon', 'treeNodeFilterProp', 'filterTreeNode', 'dropdownPopupAlign', 'treeDefaultExpandAll', 'treeCheckStrictly', 'treeExpandedKeys', 'treeLoadedKeys', 'treeMotion', 'onTreeExpand', 'onTreeLoad', 'loadData', 'treeDataSimpleMode', 'treeNodeLabelProp', 'treeDefaultExpandedKeys'];
+var RefSelect = generateSelector({
+  prefixCls: 'rc-tree-select',
+  components: {
+    optionList: RefOptionList
+  },
+  // Not use generate since we will handle ourself
+  convertChildrenToData: function convertChildrenToData() {
+    return null;
+  },
+  flattenOptions: flattenOptions,
+  // Handle `optionLabelProp` in TreeSelect component
+  getLabeledValue: getLabeledValue,
+  filterOptions: filterOptions,
+  isValueDisabled: isValueDisabled,
+  findValueOption: findValueOption,
+  omitDOMProps: function omitDOMProps(props) {
+    var cloneProps = _objectSpread2$1({}, props);
+
+    OMIT_PROPS.forEach(function (prop) {
+      delete cloneProps[prop];
+    });
+    return cloneProps;
+  }
+});
+RefSelect.displayName = 'Select';
+var RefTreeSelect = /*#__PURE__*/React__namespace.forwardRef(function (props, ref) {
+  var multiple = props.multiple,
+      treeCheckable = props.treeCheckable,
+      treeCheckStrictly = props.treeCheckStrictly,
+      _props$showCheckedStr = props.showCheckedStrategy,
+      showCheckedStrategy = _props$showCheckedStr === void 0 ? 'SHOW_CHILD' : _props$showCheckedStr,
+      labelInValue = props.labelInValue,
+      loadData = props.loadData,
+      treeLoadedKeys = props.treeLoadedKeys,
+      _props$treeNodeFilter = props.treeNodeFilterProp,
+      treeNodeFilterProp = _props$treeNodeFilter === void 0 ? 'value' : _props$treeNodeFilter,
+      treeNodeLabelProp = props.treeNodeLabelProp,
+      treeDataSimpleMode = props.treeDataSimpleMode,
+      treeData = props.treeData,
+      treeExpandedKeys = props.treeExpandedKeys,
+      treeDefaultExpandedKeys = props.treeDefaultExpandedKeys,
+      treeDefaultExpandAll = props.treeDefaultExpandAll,
+      children = props.children,
+      treeIcon = props.treeIcon,
+      showTreeIcon = props.showTreeIcon,
+      switcherIcon = props.switcherIcon,
+      treeLine = props.treeLine,
+      treeMotion = props.treeMotion,
+      filterTreeNode = props.filterTreeNode,
+      dropdownPopupAlign = props.dropdownPopupAlign,
+      onChange = props.onChange,
+      onTreeExpand = props.onTreeExpand,
+      onTreeLoad = props.onTreeLoad,
+      onDropdownVisibleChange = props.onDropdownVisibleChange,
+      onSelect = props.onSelect,
+      onDeselect = props.onDeselect;
+  var mergedCheckable = treeCheckable || treeCheckStrictly;
+  var mergedMultiple = multiple || mergedCheckable;
+  var treeConduction = treeCheckable && !treeCheckStrictly;
+  var mergedLabelInValue = treeCheckStrictly || labelInValue; // ========================== Ref ==========================
+
+  var selectRef = React__namespace.useRef(null);
+  React__namespace.useImperativeHandle(ref, function () {
+    return {
+      scrollTo: selectRef.current.scrollTo,
+      focus: selectRef.current.focus,
+      blur: selectRef.current.blur
+    };
+  }); // ======================= Tree Data =======================
+  // Legacy both support `label` or `title` if not set.
+  // We have to fallback to function to handle this
+
+  var getTreeNodeTitle = function getTreeNodeTitle(node) {
+    if (!treeData) {
+      return node.title;
+    }
+
+    return node.label || node.title;
+  };
+
+  var getTreeNodeLabelProp = function getTreeNodeLabelProp(node) {
+    if (treeNodeLabelProp) {
+      return node[treeNodeLabelProp];
+    }
+
+    return getTreeNodeTitle(node);
+  };
+
+  var mergedTreeData = useTreeData(treeData, children, {
+    getLabelProp: getTreeNodeTitle,
+    simpleMode: treeDataSimpleMode
+  });
+  var flattedOptions = React.useMemo(function () {
+    return flattenOptions(mergedTreeData);
+  }, [mergedTreeData]);
+
+  var _useKeyValueMap = useKeyValueMap(flattedOptions),
+      _useKeyValueMap2 = _slicedToArray$3(_useKeyValueMap, 2),
+      cacheKeyMap = _useKeyValueMap2[0],
+      cacheValueMap = _useKeyValueMap2[1];
+
+  var _useKeyValueMapping = useKeyValueMapping(cacheKeyMap, cacheValueMap),
+      _useKeyValueMapping2 = _slicedToArray$3(_useKeyValueMapping, 2),
+      getEntityByKey = _useKeyValueMapping2[0],
+      getEntityByValue = _useKeyValueMapping2[1]; // Only generate keyEntities for check conduction when is `treeCheckable`
+
+
+  var _useMemo = React.useMemo(function () {
+    if (treeConduction) {
+      return convertDataToEntities(mergedTreeData);
+    }
+
+    return {
+      keyEntities: null
+    };
+  }, [mergedTreeData, treeCheckable, treeCheckStrictly]),
+      conductKeyEntities = _useMemo.keyEntities; // ========================= Value =========================
+
+
+  var _useMergedState = useControlledState(props.defaultValue, {
+    value: props.value
+  }),
+      _useMergedState2 = _slicedToArray$3(_useMergedState, 2),
+      value = _useMergedState2[0],
+      setValue = _useMergedState2[1];
+  /** Get `missingRawValues` which not exist in the tree yet */
+
+
+  var splitRawValues = function splitRawValues(newRawValues) {
+    var missingRawValues = [];
+    var existRawValues = []; // Keep missing value in the cache
+
+    newRawValues.forEach(function (val) {
+      if (getEntityByValue(val)) {
+        existRawValues.push(val);
+      } else {
+        missingRawValues.push(val);
+      }
+    });
+    return {
+      missingRawValues: missingRawValues,
+      existRawValues: existRawValues
+    };
+  };
+
+  var _useMemo2 = React.useMemo(function () {
+    var valueHalfCheckedKeys = [];
+    var newRawValues = [];
+    toArray(value).forEach(function (item) {
+      if (item && _typeof$4(item) === 'object' && 'value' in item) {
+        if (item.halfChecked && treeCheckStrictly) {
+          var entity = getEntityByValue(item.value);
+          valueHalfCheckedKeys.push(entity ? entity.key : item.value);
+        } else {
+          newRawValues.push(item.value);
+        }
+      } else {
+        newRawValues.push(item);
+      }
+    }); // We need do conduction of values
+
+    if (treeConduction) {
+      var _splitRawValues = splitRawValues(newRawValues),
+          missingRawValues = _splitRawValues.missingRawValues,
+          existRawValues = _splitRawValues.existRawValues;
+
+      var keyList = existRawValues.map(function (val) {
+        return getEntityByValue(val).key;
+      });
+
+      var _conductCheck = conductCheck(keyList, true, conductKeyEntities),
+          checkedKeys = _conductCheck.checkedKeys,
+          halfCheckedKeys = _conductCheck.halfCheckedKeys;
+
+      return [[].concat(_toConsumableArray(missingRawValues), _toConsumableArray(checkedKeys.map(function (key) {
+        return getEntityByKey(key).data.value;
+      }))), halfCheckedKeys];
+    }
+
+    return [newRawValues, valueHalfCheckedKeys];
+  }, [value, mergedMultiple, mergedLabelInValue, treeCheckable, treeCheckStrictly]),
+      _useMemo3 = _slicedToArray$3(_useMemo2, 2),
+      rawValues = _useMemo3[0],
+      rawHalfCheckedKeys = _useMemo3[1];
+
+  var selectValues = useSelectValues(rawValues, {
+    treeConduction: treeConduction,
+    value: value,
+    showCheckedStrategy: showCheckedStrategy,
+    conductKeyEntities: conductKeyEntities,
+    getEntityByValue: getEntityByValue,
+    getEntityByKey: getEntityByKey,
+    getLabelProp: getTreeNodeLabelProp
+  });
+
+  var triggerChange = function triggerChange(newRawValues, extra, source) {
+    setValue(mergedMultiple ? newRawValues : newRawValues[0]);
+
+    if (onChange) {
+      var eventValues = newRawValues;
+
+      if (treeConduction && showCheckedStrategy !== 'SHOW_ALL') {
+        var keyList = newRawValues.map(function (val) {
+          var entity = getEntityByValue(val);
+          return entity ? entity.key : val;
+        });
+        var formattedKeyList = formatStrategyKeys(keyList, showCheckedStrategy, conductKeyEntities);
+        eventValues = formattedKeyList.map(function (key) {
+          var entity = getEntityByKey(key);
+          return entity ? entity.data.value : key;
+        });
+      }
+
+      var _ref = extra || {
+        triggerValue: undefined,
+        selected: undefined
+      },
+          triggerValue = _ref.triggerValue,
+          selected = _ref.selected;
+
+      var returnValues = mergedLabelInValue ? getRawValueLabeled(eventValues, value, getEntityByValue, getTreeNodeLabelProp) : eventValues; // We need fill half check back
+
+      if (treeCheckStrictly) {
+        var halfValues = rawHalfCheckedKeys.map(function (key) {
+          var entity = getEntityByKey(key);
+          return entity ? entity.data.value : key;
+        }).filter(function (val) {
+          return !eventValues.includes(val);
+        });
+        returnValues = [].concat(_toConsumableArray(returnValues), _toConsumableArray(getRawValueLabeled(halfValues, value, getEntityByValue, getTreeNodeLabelProp)));
+      }
+
+      var additionalInfo = {
+        // [Legacy] Always return as array contains label & value
+        preValue: selectValues,
+        triggerValue: triggerValue
+      }; // [Legacy] Fill legacy data if user query.
+      // This is expansive that we only fill when user query
+      // https://github.com/react-component/tree-select/blob/fe33eb7c27830c9ac70cd1fdb1ebbe7bc679c16a/src/Select.jsx
+
+      var showPosition = true;
+
+      if (treeCheckStrictly || source === 'selection' && !selected) {
+        showPosition = false;
+      }
+
+      fillAdditionalInfo(additionalInfo, triggerValue, newRawValues, mergedTreeData, showPosition);
+
+      if (mergedCheckable) {
+        additionalInfo.checked = selected;
+      } else {
+        additionalInfo.selected = selected;
+      }
+
+      onChange(mergedMultiple ? returnValues : returnValues[0], mergedLabelInValue ? null : eventValues.map(function (val) {
+        var entity = getEntityByValue(val);
+        return entity ? getTreeNodeLabelProp(entity.data) : null;
+      }), additionalInfo);
+    }
+  };
+
+  var onInternalSelect = function onInternalSelect(selectValue, option, source) {
+    var eventValue = mergedLabelInValue ? selectValue : selectValue;
+
+    if (!mergedMultiple) {
+      // Single mode always set value
+      triggerChange([selectValue], {
+        selected: true,
+        triggerValue: selectValue
+      }, source);
+    } else {
+      var newRawValues = addValue(rawValues, selectValue); // Add keys if tree conduction
+
+      if (treeConduction) {
+        // Should keep missing values
+        var _splitRawValues2 = splitRawValues(newRawValues),
+            missingRawValues = _splitRawValues2.missingRawValues,
+            existRawValues = _splitRawValues2.existRawValues;
+
+        var keyList = existRawValues.map(function (val) {
+          return getEntityByValue(val).key;
+        });
+
+        var _conductCheck2 = conductCheck(keyList, true, conductKeyEntities),
+            checkedKeys = _conductCheck2.checkedKeys;
+
+        newRawValues = [].concat(_toConsumableArray(missingRawValues), _toConsumableArray(checkedKeys.map(function (key) {
+          return getEntityByKey(key).data.value;
+        })));
+      }
+
+      triggerChange(newRawValues, {
+        selected: true,
+        triggerValue: selectValue
+      }, source);
+    }
+
+    if (onSelect) {
+      onSelect(eventValue, option);
+    }
+  };
+
+  var onInternalDeselect = function onInternalDeselect(selectValue, option, source) {
+    var eventValue = mergedLabelInValue ? selectValue : selectValue;
+    var newRawValues = removeValue(rawValues, selectValue); // Remove keys if tree conduction
+
+    if (treeConduction) {
+      var _splitRawValues3 = splitRawValues(newRawValues),
+          missingRawValues = _splitRawValues3.missingRawValues,
+          existRawValues = _splitRawValues3.existRawValues;
+
+      var keyList = existRawValues.map(function (val) {
+        return getEntityByValue(val).key;
+      });
+
+      var _conductCheck3 = conductCheck(keyList, {
+        checked: false,
+        halfCheckedKeys: rawHalfCheckedKeys
+      }, conductKeyEntities),
+          checkedKeys = _conductCheck3.checkedKeys;
+
+      newRawValues = [].concat(_toConsumableArray(missingRawValues), _toConsumableArray(checkedKeys.map(function (key) {
+        return getEntityByKey(key).data.value;
+      })));
+    }
+
+    triggerChange(newRawValues, {
+      selected: false,
+      triggerValue: selectValue
+    }, source);
+
+    if (onDeselect) {
+      onDeselect(eventValue, option);
+    }
+  };
+
+  var onInternalClear = function onInternalClear() {
+    triggerChange([], null, 'clear');
+  }; // ========================= Open ==========================
+
+
+  var onInternalDropdownVisibleChange = React__namespace.useCallback(function (open) {
+    if (onDropdownVisibleChange) {
+      var legacyParam = {};
+      Object.defineProperty(legacyParam, 'documentClickClose', {
+        get: function get() {
+          warningOnce(false, 'Second param of `onDropdownVisibleChange` has been removed.');
+          return false;
+        }
+      });
+      onDropdownVisibleChange(open, legacyParam);
+    }
+  }, [onDropdownVisibleChange]); // ======================== Warning ========================
+
+  if (process.env.NODE_ENV !== 'production') {
+    warningProps(props);
+  } // ======================== Render =========================
+  // We pass some props into select props style
+
+
+  var selectProps = {
+    optionLabelProp: null,
+    optionFilterProp: treeNodeFilterProp,
+    dropdownAlign: dropdownPopupAlign,
+    internalProps: {
+      mark: INTERNAL_PROPS_MARK,
+      onClear: onInternalClear,
+      skipTriggerChange: true,
+      skipTriggerSelect: true,
+      onRawSelect: onInternalSelect,
+      onRawDeselect: onInternalDeselect
+    }
+  };
+
+  if ('filterTreeNode' in props) {
+    selectProps.filterOption = filterTreeNode;
+  }
+
+  return /*#__PURE__*/React__namespace.createElement(SelectContext.Provider, {
+    value: {
+      checkable: mergedCheckable,
+      loadData: loadData,
+      treeLoadedKeys: treeLoadedKeys,
+      onTreeLoad: onTreeLoad,
+      checkedKeys: rawValues,
+      halfCheckedKeys: rawHalfCheckedKeys,
+      treeDefaultExpandAll: treeDefaultExpandAll,
+      treeExpandedKeys: treeExpandedKeys,
+      treeDefaultExpandedKeys: treeDefaultExpandedKeys,
+      onTreeExpand: onTreeExpand,
+      treeIcon: treeIcon,
+      treeMotion: treeMotion,
+      showTreeIcon: showTreeIcon,
+      switcherIcon: switcherIcon,
+      treeLine: treeLine,
+      treeNodeFilterProp: treeNodeFilterProp
+    }
+  }, /*#__PURE__*/React__namespace.createElement(RefSelect, _extends$1({
+    ref: selectRef,
+    mode: mergedMultiple ? 'multiple' : null
+  }, props, selectProps, {
+    value: selectValues // We will handle this ourself since we need calculate conduction
+    ,
+    labelInValue: true,
+    options: mergedTreeData,
+    onChange: null,
+    onSelect: null,
+    onDeselect: null,
+    onDropdownVisibleChange: onInternalDropdownVisibleChange
+  })));
+}); // Use class component since typescript not support generic
+// by `forwardRef` with function component yet.
+
+var TreeSelect$2 = /*#__PURE__*/function (_React$Component) {
+  _inherits$1(TreeSelect, _React$Component);
+
+  var _super = _createSuper$1(TreeSelect);
+
+  function TreeSelect() {
+    var _this;
+
+    _classCallCheck$2(this, TreeSelect);
+
+    _this = _super.apply(this, arguments);
+    _this.selectRef = /*#__PURE__*/React__namespace.createRef();
+
+    _this.focus = function () {
+      _this.selectRef.current.focus();
+    };
+
+    _this.blur = function () {
+      _this.selectRef.current.blur();
+    };
+
+    return _this;
+  }
+
+  _createClass$2(TreeSelect, [{
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/React__namespace.createElement(RefTreeSelect, _extends$1({
+        ref: this.selectRef
+      }, this.props));
+    }
+  }]);
+
+  return TreeSelect;
+}(React__namespace.Component);
+
+TreeSelect$2.TreeNode = TreeNode;
+TreeSelect$2.SHOW_ALL = SHOW_ALL;
+TreeSelect$2.SHOW_PARENT = SHOW_PARENT;
+TreeSelect$2.SHOW_CHILD = SHOW_CHILD;
+
+var __rest = undefined && undefined.__rest || function (s, e) {
+  var t = {};
+
+  for (var p in s) {
+    if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
+  }
+
+  if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+    if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i])) t[p[i]] = s[p[i]];
+  }
+  return t;
+};
+
+var InternalTreeSelect = function InternalTreeSelect(_a, ref) {
+  var _classNames2;
+
+  var customizePrefixCls = _a.prefixCls,
+      customizeSize = _a.size,
+      _a$bordered = _a.bordered,
+      bordered = _a$bordered === void 0 ? true : _a$bordered,
+      className = _a.className,
+      treeCheckable = _a.treeCheckable,
+      multiple = _a.multiple,
+      _a$listHeight = _a.listHeight,
+      listHeight = _a$listHeight === void 0 ? 256 : _a$listHeight,
+      _a$listItemHeight = _a.listItemHeight,
+      listItemHeight = _a$listItemHeight === void 0 ? 26 : _a$listItemHeight,
+      notFoundContent = _a.notFoundContent,
+      _switcherIcon = _a.switcherIcon,
+      treeLine = _a.treeLine,
+      getPopupContainer = _a.getPopupContainer,
+      dropdownClassName = _a.dropdownClassName,
+      _a$treeIcon = _a.treeIcon,
+      treeIcon = _a$treeIcon === void 0 ? false : _a$treeIcon,
+      transitionName = _a.transitionName,
+      _a$choiceTransitionNa = _a.choiceTransitionName,
+      choiceTransitionName = _a$choiceTransitionNa === void 0 ? '' : _a$choiceTransitionNa,
+      props = __rest(_a, ["prefixCls", "size", "bordered", "className", "treeCheckable", "multiple", "listHeight", "listItemHeight", "notFoundContent", "switcherIcon", "treeLine", "getPopupContainer", "dropdownClassName", "treeIcon", "transitionName", "choiceTransitionName"]);
+
+  var _React$useContext = React__namespace.useContext(ConfigContext),
+      getContextPopupContainer = _React$useContext.getPopupContainer,
+      getPrefixCls = _React$useContext.getPrefixCls,
+      renderEmpty = _React$useContext.renderEmpty,
+      direction = _React$useContext.direction,
+      virtual = _React$useContext.virtual,
+      dropdownMatchSelectWidth = _React$useContext.dropdownMatchSelectWidth;
+
+  var size = React__namespace.useContext(SizeContext);
+  devWarning(multiple !== false || !treeCheckable, 'TreeSelect', '`multiple` will alway be `true` when `treeCheckable` is true');
+  var prefixCls = getPrefixCls('select', customizePrefixCls);
+  var treePrefixCls = getPrefixCls('select-tree', customizePrefixCls);
+  var treeSelectPrefixCls = getPrefixCls('tree-select', customizePrefixCls);
+  var mergedDropdownClassName = classnames(dropdownClassName, "".concat(treeSelectPrefixCls, "-dropdown"), _defineProperty$4({}, "".concat(treeSelectPrefixCls, "-dropdown-rtl"), direction === 'rtl'));
+  var isMultiple = !!(treeCheckable || multiple); // ===================== Icons =====================
+
+  var _getIcons = getIcons(_extends$1(_extends$1({}, props), {
+    multiple: isMultiple,
+    prefixCls: prefixCls
+  })),
+      suffixIcon = _getIcons.suffixIcon,
+      removeIcon = _getIcons.removeIcon,
+      clearIcon = _getIcons.clearIcon; // ===================== Empty =====================
+
+
+  var mergedNotFound;
+
+  if (notFoundContent !== undefined) {
+    mergedNotFound = notFoundContent;
+  } else {
+    mergedNotFound = renderEmpty('Select');
+  } // ==================== Render =====================
+
+
+  var selectProps = omit(props, ['suffixIcon', 'itemIcon', 'removeIcon', 'clearIcon', 'switcherIcon']);
+  var mergedSize = customizeSize || size;
+  var mergedClassName = classnames(!customizePrefixCls && treeSelectPrefixCls, (_classNames2 = {}, _defineProperty$4(_classNames2, "".concat(prefixCls, "-lg"), mergedSize === 'large'), _defineProperty$4(_classNames2, "".concat(prefixCls, "-sm"), mergedSize === 'small'), _defineProperty$4(_classNames2, "".concat(prefixCls, "-rtl"), direction === 'rtl'), _defineProperty$4(_classNames2, "".concat(prefixCls, "-borderless"), !bordered), _classNames2), className);
+  var rootPrefixCls = getPrefixCls();
+  return /*#__PURE__*/React__namespace.createElement(TreeSelect$2, _extends$1({
+    virtual: virtual,
+    dropdownMatchSelectWidth: dropdownMatchSelectWidth
+  }, selectProps, {
+    ref: ref,
+    prefixCls: prefixCls,
+    className: mergedClassName,
+    listHeight: listHeight,
+    listItemHeight: listItemHeight,
+    treeCheckable: treeCheckable ? /*#__PURE__*/React__namespace.createElement("span", {
+      className: "".concat(prefixCls, "-tree-checkbox-inner")
+    }) : treeCheckable,
+    inputIcon: suffixIcon,
+    multiple: multiple,
+    removeIcon: removeIcon,
+    clearIcon: clearIcon,
+    switcherIcon: function switcherIcon(nodeProps) {
+      return renderSwitcherIcon(treePrefixCls, _switcherIcon, treeLine, nodeProps);
+    },
+    showTreeIcon: treeIcon,
+    notFoundContent: mergedNotFound,
+    getPopupContainer: getPopupContainer || getContextPopupContainer,
+    treeMotion: null,
+    dropdownClassName: mergedDropdownClassName,
+    choiceTransitionName: getTransitionName(rootPrefixCls, '', choiceTransitionName),
+    transitionName: getTransitionName(rootPrefixCls, 'slide-up', transitionName)
+  }));
+};
+
+var TreeSelectRef = /*#__PURE__*/React__namespace.forwardRef(InternalTreeSelect);
+var TreeSelect$1 = TreeSelectRef;
+TreeSelect$1.TreeNode = TreeNode;
+TreeSelect$1.SHOW_ALL = SHOW_ALL;
+TreeSelect$1.SHOW_PARENT = SHOW_PARENT;
+TreeSelect$1.SHOW_CHILD = SHOW_CHILD;
+
 var Option = Select$1.Option;
 var Select = function (_a) {
-    var className = _a.className, classNameSelect = _a.classNameSelect, _b = _a.value, value = _b === void 0 ? [] : _b, label = _a.label, _c = _a.defaultValue, defaultValue = _c === void 0 ? [] : _c, _d = _a.placeholder, placeholder = _d === void 0 ? "Please select" : _d, onChange = _a.onChange, disabled = _a.disabled, _e = _a.dataSource, dataSource = _e === void 0 ? [] : _e, error = _a.error, _f = _a.multiple, multiple = _f === void 0 ? false : _f, _g = _a.getLabel, getLabel = _g === void 0 ? function (item) { return item.label; } : _g, _h = _a.getKey, getKey = _h === void 0 ? function (item) { return item.id; } : _h, _j = _a.getValue, getValue = _j === void 0 ? function (item) { var _a; return (_a = item === null || item === void 0 ? void 0 : item.id) !== null && _a !== void 0 ? _a : null; } : _j, _k = _a.allowClear, allowClear = _k === void 0 ? true : _k, _l = _a.variant, variant = _l === void 0 ? "outline" : _l, _m = _a.hasFilter, hasFilter = _m === void 0 ? true : _m, props = __rest$2(_a, ["className", "classNameSelect", "value", "label", "defaultValue", "placeholder", "onChange", "disabled", "dataSource", "error", "multiple", "getLabel", "getKey", "getValue", "allowClear", "variant", "hasFilter"]);
+    var className = _a.className, classNameSelect = _a.classNameSelect, _b = _a.value, value = _b === void 0 ? [] : _b, label = _a.label, _c = _a.defaultValue, defaultValue = _c === void 0 ? [] : _c, _d = _a.placeholder, placeholder = _d === void 0 ? "Please select" : _d, onChange = _a.onChange, disabled = _a.disabled, _e = _a.dataSource, dataSource = _e === void 0 ? [] : _e, error = _a.error, _f = _a.multiple, multiple = _f === void 0 ? false : _f, _g = _a.getLabel, getLabel = _g === void 0 ? function (item) { return item.label; } : _g, _h = _a.getKey, getKey = _h === void 0 ? function (item) { return item.id; } : _h, _j = _a.getValue, getValue = _j === void 0 ? function (item) { var _a; return (_a = item === null || item === void 0 ? void 0 : item.id) !== null && _a !== void 0 ? _a : null; } : _j, _k = _a.allowClear, allowClear = _k === void 0 ? true : _k, _l = _a.variant, variant = _l === void 0 ? "outline" : _l, _m = _a.hasFilter, hasFilter = _m === void 0 ? true : _m, props = __rest$3(_a, ["className", "classNameSelect", "value", "label", "defaultValue", "placeholder", "onChange", "disabled", "dataSource", "error", "multiple", "getLabel", "getKey", "getValue", "allowClear", "variant", "hasFilter"]);
     var children = React.useMemo(function () {
         return dataSource.map(function (dataItem) {
             var label = getLabel(dataItem);
@@ -16895,26 +21379,97 @@ var Select = function (_a) {
                     jsxRuntime.jsx("text", __assign({ className: errorTextClass }, { children: error }), void 0)] }), void 0))] }), void 0));
 };
 
+var TreeSelect = function (_a) {
+    var className = _a.className, classNameSelect = _a.classNameSelect, _b = _a.value, value = _b === void 0 ? [] : _b, label = _a.label, _c = _a.placeholder, placeholder = _c === void 0 ? "Please select" : _c, onChange = _a.onChange, disabled = _a.disabled, _d = _a.dataSource, dataSource = _d === void 0 ? [] : _d, error = _a.error, _e = _a.multiple, multiple = _e === void 0 ? false : _e, _f = _a.allowClear, allowClear = _f === void 0 ? true : _f, _g = _a.variant, variant = _g === void 0 ? "outline" : _g;
+    var container = classnames("d-select__container", "d-select__container-" + variant, className);
+    var labelClass = classnames("text-label", "d-select__label");
+    var selectClass = classnames("d-select__select", "d-select__select-" + variant, {
+        "d-select__select-disabled": disabled,
+        "d-select__error": !!error,
+    }, classNameSelect);
+    var errorTextClass = classnames("text-x-small", "text-error", "ml-1");
+    return (jsxRuntime.jsxs("div", __assign({ className: container }, { children: [label && jsxRuntime.jsx("label", __assign({ className: labelClass }, { children: label }), void 0),
+            jsxRuntime.jsx(TreeSelect$1, { className: selectClass, disabled: disabled, treeData: dataSource, onChange: onChange, value: value, placeholder: placeholder, multiple: multiple, allowClear: allowClear }, void 0),
+            error && (jsxRuntime.jsxs("div", __assign({ className: "flex-center-y mt-1" }, { children: [jsxRuntime.jsx(Icon$1, { name: "error_outline", className: "text-error", size: "small" }, void 0),
+                    jsxRuntime.jsx("text", __assign({ className: errorTextClass }, { children: error }), void 0)] }), void 0))] }), void 0));
+};
+
 var Button = function (_a) {
-    var content = _a.content, iconName = _a.iconName, onClick = _a.onClick, _b = _a.type, type = _b === void 0 ? "button" : _b, className = _a.className, _c = _a.disabled, disabled = _c === void 0 ? false : _c, _d = _a.size, size = _d === void 0 ? "large" : _d, _e = _a.variant, variant = _e === void 0 ? "standard" : _e;
-    var buttonClass = classnames("text text-nowrap " + className + " d-button d-button_" + size + " d-button_" + variant, {
+    var content = _a.content, iconName = _a.iconName, onClick = _a.onClick, _b = _a.type, type = _b === void 0 ? "button" : _b, className = _a.className, _c = _a.disabled, disabled = _c === void 0 ? false : _c, _d = _a.size, size = _d === void 0 ? "large" : _d, _e = _a.variant, variant = _e === void 0 ? "standard" : _e; _a.color;
+    var buttonClass = classnames("text text-nowrap d-button d-button__" + size + " d-button__" + variant, {
         "text-x-small": size === "x-small",
-        "d-button_disabled": disabled,
-        "d-button_icon": iconName && !content,
-    });
+        "d-button__disabled": disabled,
+        "d-button__icon": iconName && !content,
+    }, className);
     var iconClass = classnames("d-block", { "mx-2": content && iconName });
     return (jsxRuntime.jsxs("button", __assign({ className: buttonClass, type: type, disabled: disabled, onClick: onClick }, { children: [iconName && jsxRuntime.jsx(Icon$1, { name: iconName, size: "large", className: iconClass }, void 0), content] }), void 0));
 };
 
 var Checkbox = function (_a) {
-    var className = _a.className, classNameInput = _a.classNameInput, classNameInputWrapper = _a.classNameInputWrapper, classNameLabel = _a.classNameLabel, id = _a.id, name = _a.name, value = _a.value, onChange = _a.onChange, label = _a.label, _b = _a.variant, variant = _b === void 0 ? "checkbox" : _b;
+    var className = _a.className, classNameInput = _a.classNameInput, classNameInputWrapper = _a.classNameInputWrapper, classNameLabel = _a.classNameLabel, id = _a.id, name = _a.name, value = _a.value, onChange = _a.onChange, label = _a.label, _b = _a.variant, variant = _b === void 0 ? "checkbox" : _b, disabled = _a.disabled, checked = _a.checked;
     var classContainer = classnames("checkbox__container", className);
-    var classInputWrapper = classnames("checkbox__input-wrapper", "checkbox__input-wrapper-" + variant, classNameInputWrapper);
+    var classInputWrapper = classnames("checkbox__input-wrapper", "checkbox__input-wrapper-" + variant, { "checkbox__input-wrapper-disabled": disabled }, classNameInputWrapper);
     var classInput = classnames("checkbox__input", classNameInput);
     var classLabel = classnames("checkbox__label ml-3 text-nowrap", classNameLabel);
-    return (jsxRuntime.jsxs("div", __assign({ className: classContainer }, { children: [jsxRuntime.jsxs("div", __assign({ className: classInputWrapper }, { children: [jsxRuntime.jsx("input", { type: "checkbox", id: id, name: name, value: value, onChange: onChange, className: classInput }, void 0),
+    return (jsxRuntime.jsxs("div", __assign({ className: classContainer }, { children: [jsxRuntime.jsxs("div", __assign({ className: classInputWrapper }, { children: [jsxRuntime.jsx("input", { type: "checkbox", id: id, name: name, value: value, onChange: onChange, className: classInput, disabled: disabled, checked: checked }, void 0),
                     jsxRuntime.jsx("span", { className: "checkbox__check-mark" }, void 0)] }), void 0),
             label && jsxRuntime.jsx("div", __assign({ className: classLabel }, { children: label }), void 0)] }), void 0));
+};
+
+var CheckboxGroup = function (_a) {
+    var dataSource = _a.dataSource, className = _a.className, _b = _a.getLabel, getLabel = _b === void 0 ? function (item) { return item === null || item === void 0 ? void 0 : item.label; } : _b, _c = _a.getValue, getValue = _c === void 0 ? function (item) { return item === null || item === void 0 ? void 0 : item.id; } : _c, _d = _a.value, value = _d === void 0 ? [] : _d, onChange = _a.onChange, getDisabledItem = _a.getDisabledItem;
+    var containerClass = classnames("d-checkbox-group", className);
+    var _e = React.useState([]), listValues = _e[0], setListValues = _e[1];
+    React.useEffect(function () {
+        setListValues(value);
+    }, [value]);
+    return (jsxRuntime.jsx("div", __assign({ className: containerClass }, { children: dataSource.map(function (item) {
+            var iLabel = getLabel(item);
+            var iValue = getValue(item);
+            var isChecked = listValues.includes(iValue);
+            var isDisabled = (getDisabledItem && getDisabledItem(item)) || false;
+            return (jsxRuntime.jsx(Checkbox, { label: iLabel, value: iValue, onChange: function (event) {
+                    var isPush = event.target.checked;
+                    var changeValue = event.target.value;
+                    var clone = __spreadArray([], listValues);
+                    if (isPush) {
+                        clone.push(iValue);
+                    }
+                    else {
+                        clone = listValues.filter(function (i) { return i !== changeValue; });
+                    }
+                    setListValues(clone);
+                    onChange && onChange(clone);
+                }, checked: isChecked, disabled: isDisabled }, void 0));
+        }) }), void 0));
+};
+
+var RadioGroup = function (_a) {
+    var dataSource = _a.dataSource, className = _a.className, _b = _a.getLabel, getLabel = _b === void 0 ? function (item) { return item === null || item === void 0 ? void 0 : item.label; } : _b, _c = _a.getValue, getValue = _c === void 0 ? function (item) { return item === null || item === void 0 ? void 0 : item.id; } : _c, getDisabledItem = _a.getDisabledItem, _d = _a.value, value = _d === void 0 ? [] : _d, onChange = _a.onChange;
+    var containerClass = classnames("d-checkbox-group", className);
+    var _e = React.useState([]), listValues = _e[0], setListValues = _e[1];
+    React.useEffect(function () {
+        setListValues(value);
+    }, [value]);
+    return (jsxRuntime.jsx("div", __assign({ className: containerClass }, { children: dataSource.map(function (item) {
+            var iLabel = getLabel(item);
+            var iValue = getValue(item);
+            var isChecked = listValues.includes(iValue);
+            var isDisabled = (getDisabledItem && getDisabledItem(item)) || false;
+            return (jsxRuntime.jsx(Checkbox, { label: iLabel, value: iValue, onChange: function (event) {
+                    var isPush = event.target.checked;
+                    var changeValue = event.target.value;
+                    var clone;
+                    if (isPush) {
+                        clone = [changeValue];
+                    }
+                    else {
+                        clone = listValues.filter(function (i) { return i !== changeValue; });
+                    }
+                    setListValues(clone);
+                    onChange && onChange(clone);
+                }, checked: isChecked, variant: "radio", disabled: isDisabled }, void 0));
+        }) }), void 0));
 };
 
 var InputTextSearch = function (_a) {
@@ -16938,8 +21493,11 @@ var HeaderTable = function (_a) {
 
 exports.Button = Button;
 exports.Checkbox = Checkbox;
+exports.CheckboxGroup = CheckboxGroup;
 exports.HeaderTable = HeaderTable;
 exports.Icon = Icon$1;
 exports.InputText = InputText;
+exports.RadioGroup = RadioGroup;
 exports.Select = Select;
+exports.TreeSelect = TreeSelect;
 //# sourceMappingURL=dcomponent.cjs.js.map

@@ -1,6 +1,5 @@
 import React from "react";
 export interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElement> {
-    onChange?: any;
     label?: string;
     id?: string;
     name?: string;
@@ -10,5 +9,5 @@ export interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElemen
     classNameLabel?: string;
     variant?: "checkbox" | "radio";
 }
-declare const Checkbox: ({ className, classNameInput, classNameInputWrapper, classNameLabel, id, name, value, onChange, label, variant, }: CheckboxProps) => JSX.Element;
+declare const Checkbox: ({ className, classNameInput, classNameInputWrapper, classNameLabel, id, name, value, onChange, label, variant, disabled, checked, }: CheckboxProps) => JSX.Element;
 export default Checkbox;
