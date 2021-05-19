@@ -9,6 +9,9 @@
     min-width: 56px;
     width: fit-content;
     border: none;
+    i {
+        text-decoration: none !important;
+    }
 }
 
 //size
@@ -28,12 +31,21 @@
 .d-button__standard {
     background-color: $accent-color;
     color: $light-color;
-    &:focus {
+    &:active {
         outline: none !important;
-        background-color: $btn-primary-active-bg-color;
+        border: none !important;
+        background-color: $btn-primary-active-bg-color !important;
+    }
+    &:focus {
+        border: none !important;
+        outline: none !important;
     }
     &:hover {
         background-color: $btn-primary-hover-bg-color;
+    }
+    &:disabled {
+        border: 1px solid rgba($accent-color, 0.3);
+        background-color: $disabled-color !important;
     }
 }
 
@@ -41,13 +53,21 @@
     border: 1px solid $accent-color;
     background-color: $light-color;
     color: $accent-color;
+    &:active {
+        outline: none !important;
+        background-color: $btn-primary-active-bg-color !important;
+        color: $light-color;
+    }
     &:focus {
         outline: none !important;
-        background-color: $btn-primary-active-bg-color;
-        color: $light-color;
     }
     &:hover {
         background-color: $btn-outline-hover-color;
+    }
+    &:disabled {
+        border: 1px solid rgba($accent-color, 0.3);
+        color: rgba($accent-color, 0.3);
+        background-color: $light-color;
     }
 }
 
@@ -56,22 +76,23 @@
     color: $accent-color;
     border: none;
     outline: none;
-    text-decoration: underline;
+    &:active {
+        outline: none !important;
+        background-color: $btn-trans-active-bg-color !important;
+        color: $btn-trans-active-font-color;
+    }
     &:focus {
         outline: none !important;
-        background-color: $btn-trans-active-bg-color;
-        color: $btn-trans-active-font-color;
     }
     &:hover {
         background-color: $btn-trans-hover-bg-color;
+    }
+    &:disabled {
+        color: $disabled-color;
     }
 }
 
 .d-button__icon {
     min-width: auto;
     padding: 0px 12px !important;
-}
-
-.d-button__disabled {
-    background-color: $disabled-color !important;
 }
