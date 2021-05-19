@@ -24,19 +24,24 @@ export default function Test({ content }: Props): ReactElement {
     const [valueSelect, setValueSelect] = useState(["text"]);
     const [radioValue, setRadioValue] = useState<any>(["color"]);
 
-    console.log({ valueSelect });
-    console.log({ radioValue });
-
     return (
         <div className="p-5">
             <InputText />
-            {/* <Select
+            <Select
                 dataSource={ATTRIBUTE_INPUT_TYPE}
-                label="Please select"
+                label="Select"
                 className="mt-4"
                 value={valueSelect}
                 onChange={setValueSelect}
-            /> */}
+            />
+            <Select
+                dataSource={ATTRIBUTE_INPUT_TYPE}
+                label="Select multiple"
+                className="mt-4"
+                value={valueSelect}
+                onChange={setValueSelect}
+                multiple
+            />
             <div className="d-flex my-4">
                 <div className="d-flex flex-column mr-5">
                     <Button content="Button" />

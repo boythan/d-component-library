@@ -21484,11 +21484,11 @@ var InputTextSearch = function (_a) {
 };
 
 var HeaderTable = function (_a) {
-    var _b = _a.label, label = _b === void 0 ? "" : _b, _c = _a.placeholder, placeholder = _c === void 0 ? "Search" : _c, onChangeText = _a.onChangeText, onClickNew = _a.onClickNew, onClickExport = _a.onClickExport, onClickFilter = _a.onClickFilter, customView = _a.customView;
-    return (jsxRuntime.jsxs("div", __assign({ className: "w-100" }, { children: [jsxRuntime.jsxs("div", __assign({ className: "d-flex justify-content-between mb-3" }, { children: [jsxRuntime.jsx("div", __assign({ className: "h3" }, { children: label }), void 0),
+    var _b = _a.className, className = _b === void 0 ? "" : _b, _c = _a.label, label = _c === void 0 ? "" : _c, _d = _a.placeholder, placeholder = _d === void 0 ? "Search" : _d, onChangeText = _a.onChangeText, onClickNew = _a.onClickNew, onClickExport = _a.onClickExport, onClickFilter = _a.onClickFilter, customView = _a.customView;
+    return (jsxRuntime.jsxs("div", __assign({ className: classnames("w-100", className) }, { children: [jsxRuntime.jsxs("div", __assign({ className: "d-flex justify-content-between mb-3" }, { children: [jsxRuntime.jsx("div", __assign({ className: "h4" }, { children: label }), void 0),
                     jsxRuntime.jsxs("div", __assign({ className: "d-flex" }, { children: [onClickNew && jsxRuntime.jsx(Button, { iconName: "add", content: "New", onClick: onClickNew, className: "mr-3" }, void 0),
                             onClickExport && jsxRuntime.jsx(Button, { iconName: "cloud_download", content: "Export", onClick: onClickExport }, void 0)] }), void 0)] }), void 0),
-            jsxRuntime.jsxs("div", __assign({ className: "flex-center-y" }, { children: [jsxRuntime.jsx(InputTextSearch, { className: "w-100 mr-3", placeholder: placeholder, onChange: onChangeText }, void 0), customView && customView(), onClickFilter && jsxRuntime.jsx(Button, { iconName: "filter_list", onClick: onClickFilter }, void 0)] }), void 0)] }), void 0));
+            jsxRuntime.jsxs("div", __assign({ className: "flex-center-y" }, { children: [jsxRuntime.jsx(InputTextSearch, { className: "w-100 mr-3 bg-white", placeholder: placeholder, onChange: onChangeText }, void 0), customView && customView(), onClickFilter && jsxRuntime.jsx(Button, { iconName: "filter_list", onClick: onClickFilter }, void 0)] }), void 0)] }), void 0));
 };
 
 exports.Button = Button;
