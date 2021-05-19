@@ -31,15 +31,12 @@
     &:focus {
         outline: none !important;
         background-color: $btn-primary-active-bg-color;
-        // border: $btn-border-focus !important;
     }
     &:hover {
         background-color: $btn-primary-hover-bg-color;
     }
 }
-.d-button__disabled {
-    background-color: $disabled-color !important;
-}
+
 .d-button__outline {
     border: 1px solid $accent-color;
     background-color: $light-color;
@@ -47,10 +44,34 @@
     &:focus {
         outline: none !important;
         background-color: $btn-primary-active-bg-color;
-        // border: $btn-border-focus !important;
+        color: $light-color;
+    }
+    &:hover {
+        background-color: $btn-outline-hover-color;
     }
 }
+
+.d-button__trans {
+    background-color: transparent;
+    color: $accent-color;
+    border: none;
+    outline: none;
+    text-decoration: underline;
+    &:focus {
+        outline: none !important;
+        background-color: $btn-trans-active-bg-color;
+        color: $btn-trans-active-font-color;
+    }
+    &:hover {
+        background-color: $btn-trans-hover-bg-color;
+    }
+}
+
 .d-button__icon {
     min-width: auto;
     padding: 0px 12px !important;
+}
+
+.d-button__disabled {
+    background-color: $disabled-color !important;
 }

@@ -9,7 +9,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
     className?: string;
     disabled?: boolean;
     size?: "large" | "medium" | "small" | "x-small";
-    variant?: "standard" | "outline";
+    variant?: "standard" | "outline" | "trans";
     color?: "primary" | "secondary" | "success" | "info" | "warning" | "danger" | "dark" | "light";
 }
 

@@ -40,6 +40,7 @@ export default function Test({ content }: Props): ReactElement {
             <div className="d-flex my-4">
                 <div className="d-flex flex-column mr-5">
                     <Button content="Button" />
+                    <Button content="Button" variant="trans" />
                     <Button content="Disabled Button" className="my-3" disabled />
                     <Button content="Button" className="my-3" size="medium" />
                     <Button content="Button" className="my-3" size="small" />
