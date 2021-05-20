@@ -17,3 +17,5 @@ export type { RadioGroupProps } from "./components/checkbox/RadioGroup";
 export { default as RadioGroup } from "./components/checkbox/RadioGroup";
 export type { HeaderTableProps } from "./components/header/HeaderTable";
 export { default as HeaderTable } from "./components/header/HeaderTable";
+export type { ModalProps } from "./components/modal/Modal";
+export { default as Modal } from "./components/modal/Modal";

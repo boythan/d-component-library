@@ -1,51 +1,7 @@
-import { jsx, jsxs } from 'react/jsx-runtime';
 import * as React from 'react';
-import React__default, { createContext, useRef, useState, useEffect, useLayoutEffect as useLayoutEffect$1, useContext, useMemo as useMemo$1, useCallback, forwardRef, useImperativeHandle } from 'react';
-import ReactDOM from 'react-dom';
-
-/*! *****************************************************************************
-Copyright (c) Microsoft Corporation.
-
-Permission to use, copy, modify, and/or distribute this software for any
-purpose with or without fee is hereby granted.
-
-THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
-REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
-AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
-INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
-LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
-OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
-PERFORMANCE OF THIS SOFTWARE.
-***************************************************************************** */
-
-var __assign = function() {
-    __assign = Object.assign || function __assign(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-
-function __rest$3(s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-                t[p[i]] = s[p[i]];
-        }
-    return t;
-}
-
-function __spreadArray(to, from) {
-    for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
-        to[j] = from[i];
-    return to;
-}
+import React__default, { createContext, useRef, useState, useEffect, useLayoutEffect as useLayoutEffect$1, Component, useContext, useMemo as useMemo$1, useCallback, forwardRef, useImperativeHandle } from 'react';
+import * as ReactDOM from 'react-dom';
+import ReactDOM__default from 'react-dom';
 
 function unwrapExports (x) {
 	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
@@ -113,9 +69,10 @@ var classnames = createCommonjsModule(function (module) {
 var Icon$1 = function (_a) {
     var name = _a.name, _b = _a.size, size = _b === void 0 ? "medium" : _b, className = _a.className;
     var iconClass = classnames("material-icons", "customized-icon-" + size, className);
-    return jsx("i", __assign({ className: iconClass }, { children: name }), void 0);
+    return React__default.createElement("i", { className: iconClass }, name);
 };
 
+// react
 var InputText = function (_a) {
     var className = _a.className, classNameInput = _a.classNameInput, _b = _a.variant, variant = _b === void 0 ? "outline" : _b, // standard || outline
     multiple = _a.multiple, value = _a.value, defaultValue = _a.defaultValue, error = _a.error, name = _a.name, label = _a.label, key = _a.key, placeholder = _a.placeholder, type = _a.type, _c = _a.rows, rows = _c === void 0 ? 5 : _c, cols = _a.cols, disabled = _a.disabled, onChange = _a.onChange, onBlur = _a.onBlur;
@@ -132,13 +89,62 @@ var InputText = function (_a) {
     var errorTextClass = classnames("text-x-small", "text-error", "ml-1");
     var renderInput = function () {
         if (multiple) {
-            return (jsx("textarea", { value: value, onChange: onChange, rows: rows, name: name, className: textAreaClass, cols: cols, disabled: disabled, defaultValue: defaultValue }, void 0));
+            return (React__default.createElement("textarea", { value: value, onChange: onChange, rows: rows, name: name, className: textAreaClass, cols: cols, disabled: disabled, defaultValue: defaultValue }));
         }
-        return (jsx("input", { value: value, onChange: onChange, className: inputClass, name: name, required: true, placeholder: placeholder, onBlur: onBlur, type: type, disabled: disabled, defaultValue: defaultValue }, key));
+        return (React__default.createElement("input", { value: value, onChange: onChange, className: inputClass, name: name, required: true, key: key, placeholder: placeholder, onBlur: onBlur, type: type, disabled: disabled, defaultValue: defaultValue }));
     };
-    return (jsxs("div", __assign({ className: container }, { children: [label && (jsx("label", __assign({ htmlFor: name, className: labelClass }, { children: jsx("span", { children: label }, void 0) }), void 0)), renderInput(), error && (jsxs("div", __assign({ className: "flex-center-y mt-1" }, { children: [jsx(Icon$1, { name: "error_outline", className: "text-error", size: "small" }, void 0),
-                    jsx("text", __assign({ className: errorTextClass }, { children: error }), void 0)] }), void 0))] }), void 0));
+    return (React__default.createElement("div", { className: container },
+        label && (React__default.createElement("label", { htmlFor: name, className: labelClass },
+            React__default.createElement("span", null, label))),
+        renderInput(),
+        error && (React__default.createElement("div", { className: "flex-center-y mt-1" },
+            React__default.createElement(Icon$1, { name: "error_outline", className: "text-error", size: "small" }),
+            React__default.createElement("text", { className: errorTextClass }, error)))));
 };
+
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation.
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+***************************************************************************** */
+
+var __assign = function() {
+    __assign = Object.assign || function __assign(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+
+function __rest$7(s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+}
+
+function __spreadArray(to, from) {
+    for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
+        to[j] = from[i];
+    return to;
+}
 
 function _extends$1() {
   _extends$1 = Object.assign || function (target) {
@@ -226,7 +232,7 @@ function _getPrototypeOf$2(o) {
   return _getPrototypeOf$2(o);
 }
 
-function _isNativeReflectConstruct$2() {
+function _isNativeReflectConstruct$3() {
   if (typeof Reflect === "undefined" || !Reflect.construct) return false;
   if (Reflect.construct.sham) return false;
   if (typeof Proxy === "function") return true;
@@ -282,8 +288,8 @@ function _possibleConstructorReturn$1(self, call) {
   return _assertThisInitialized$1(self);
 }
 
-function _createSuper$1(Derived) {
-  var hasNativeReflectConstruct = _isNativeReflectConstruct$2();
+function _createSuper$2(Derived) {
+  var hasNativeReflectConstruct = _isNativeReflectConstruct$3();
   return function _createSuperInternal() {
     var Super = _getPrototypeOf$2(Derived),
         result;
@@ -378,7 +384,7 @@ function findDOMNode(node) {
     return node;
   }
 
-  return ReactDOM.findDOMNode(node);
+  return ReactDOM__default.findDOMNode(node);
 }
 
 /** @license React v16.13.1
@@ -1659,7 +1665,7 @@ var INTERNAL_PREFIX_KEY = 'rc-observer-key'; // Still need to be compatible with
 var ReactResizeObserver = /*#__PURE__*/function (_React$Component) {
   _inherits$1(ReactResizeObserver, _React$Component);
 
-  var _super = _createSuper$1(ReactResizeObserver);
+  var _super = _createSuper$2(ReactResizeObserver);
 
   function ReactResizeObserver() {
     var _this;
@@ -2755,7 +2761,7 @@ function _setPrototypeOf$1(o, p) {
   return _setPrototypeOf$1(o, p);
 }
 
-function _isNativeReflectConstruct$1() {
+function _isNativeReflectConstruct$2() {
   if (typeof Reflect === "undefined" || !Reflect.construct) return false;
   if (Reflect.construct.sham) return false;
   if (typeof Proxy === "function") return true;
@@ -2769,7 +2775,7 @@ function _isNativeReflectConstruct$1() {
 }
 
 function _construct(Parent, args, Class) {
-  if (_isNativeReflectConstruct$1()) {
+  if (_isNativeReflectConstruct$2()) {
     _construct = Reflect.construct;
   } else {
     _construct = function _construct(Parent, args, Class) {
@@ -4765,7 +4771,7 @@ function requireUpdate(shouldUpdate, prev, next, prevValue, nextValue, info) {
 var Field = /*#__PURE__*/function (_React$Component) {
   _inherits$1(Field, _React$Component);
 
-  var _super = _createSuper$1(Field);
+  var _super = _createSuper$2(Field);
 
   // ============================== Subscriptions ==============================
   function Field(props) {
@@ -6835,12 +6841,82 @@ var localeValues = {
   }
 };
 
+var runtimeLocale = _extends$1({}, localeValues.Modal);
+
+function changeConfirmLocale(newLocale) {
+  if (newLocale) {
+    runtimeLocale = _extends$1(_extends$1({}, runtimeLocale), newLocale);
+  } else {
+    runtimeLocale = _extends$1({}, localeValues.Modal);
+  }
+}
+function getConfirmLocale() {
+  return runtimeLocale;
+}
+
 var LocaleContext = /*#__PURE__*/createContext(undefined);
+
+var ANT_MARK = 'internalMark';
+
+var LocaleProvider = /*#__PURE__*/function (_React$Component) {
+  _inherits$1(LocaleProvider, _React$Component);
+
+  var _super = _createSuper$2(LocaleProvider);
+
+  function LocaleProvider(props) {
+    var _this;
+
+    _classCallCheck$2(this, LocaleProvider);
+
+    _this = _super.call(this, props);
+    changeConfirmLocale(props.locale && props.locale.Modal);
+    devWarning(props._ANT_MARK__ === ANT_MARK, 'LocaleProvider', '`LocaleProvider` is deprecated. Please use `locale` with `ConfigProvider` instead: http://u.ant.design/locale');
+    return _this;
+  }
+
+  _createClass$2(LocaleProvider, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      changeConfirmLocale(this.props.locale && this.props.locale.Modal);
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      var locale = this.props.locale;
+
+      if (prevProps.locale !== locale) {
+        changeConfirmLocale(locale && locale.Modal);
+      }
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      changeConfirmLocale();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          locale = _this$props.locale,
+          children = _this$props.children;
+      return /*#__PURE__*/React.createElement(LocaleContext.Provider, {
+        value: _extends$1(_extends$1({}, locale), {
+          exist: true
+        })
+      }, children);
+    }
+  }]);
+
+  return LocaleProvider;
+}(React.Component);
+LocaleProvider.defaultProps = {
+  locale: {}
+};
 
 var LocaleReceiver = /*#__PURE__*/function (_React$Component) {
   _inherits$1(LocaleReceiver, _React$Component);
 
-  var _super = _createSuper$1(LocaleReceiver);
+  var _super = _createSuper$2(LocaleReceiver);
 
   function LocaleReceiver() {
     _classCallCheck$2(this, LocaleReceiver);
@@ -6968,7 +7044,7 @@ var Simple = function Simple() {
   }))));
 };
 
-var __rest$2 = undefined && undefined.__rest || function (s, e) {
+var __rest$6 = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -6991,7 +7067,7 @@ var Empty = function Empty(_a) {
       description = _a.description,
       children = _a.children,
       imageStyle = _a.imageStyle,
-      restProps = __rest$2(_a, ["className", "prefixCls", "image", "description", "children", "imageStyle"]);
+      restProps = __rest$6(_a, ["className", "prefixCls", "image", "description", "children", "imageStyle"]);
 
   var _React$useContext = React.useContext(ConfigContext),
       getPrefixCls = _React$useContext.getPrefixCls,
@@ -7073,6 +7149,15 @@ var ConfigContext = /*#__PURE__*/React.createContext({
 var ConfigConsumer = ConfigContext.Consumer;
 
 var SizeContext = /*#__PURE__*/React.createContext(undefined);
+var SizeContextProvider = function SizeContextProvider(_ref) {
+  var children = _ref.children,
+      size = _ref.size;
+  return /*#__PURE__*/React.createElement(SizeContext.Consumer, null, function (originSize) {
+    return /*#__PURE__*/React.createElement(SizeContext.Provider, {
+      value: size || originSize
+    }, children);
+  });
+};
 
 function canUseDom() {
   return !!(typeof window !== 'undefined' && window.document && window.document.createElement);
@@ -7218,7 +7303,7 @@ function cleanup(id) {
   rafIds.delete(id);
 }
 
-function wrapperRaf(callback) {
+function wrapperRaf$1(callback) {
   var times = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
   rafUUID += 1;
   var id = rafUUID;
@@ -7243,7 +7328,7 @@ function wrapperRaf(callback) {
   return id;
 }
 
-wrapperRaf.cancel = function (id) {
+wrapperRaf$1.cancel = function (id) {
   var realId = rafIds.get(id);
   cleanup(realId);
   return caf(realId);
@@ -7253,13 +7338,13 @@ var useNextFrame = (function () {
   var nextFrameRef = React.useRef(null);
 
   function cancelNextFrame() {
-    wrapperRaf.cancel(nextFrameRef.current);
+    wrapperRaf$1.cancel(nextFrameRef.current);
   }
 
   function nextFrame(callback) {
     var delay = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2;
     cancelNextFrame();
-    var nextFrameId = wrapperRaf(function () {
+    var nextFrameId = wrapperRaf$1(function () {
       if (delay <= 1) {
         callback({
           isCanceled: function isCanceled() {
@@ -7597,7 +7682,7 @@ function useStatus(supportMotion, visible, getElement, _ref) {
 var DomWrapper = /*#__PURE__*/function (_React$Component) {
   _inherits$1(DomWrapper, _React$Component);
 
-  var _super = _createSuper$1(DomWrapper);
+  var _super = _createSuper$2(DomWrapper);
 
   function DomWrapper() {
     _classCallCheck$2(this, DomWrapper);
@@ -7733,6 +7818,664 @@ function genCSSMotion(config) {
   return CSSMotion;
 }
 var CSSMotion = genCSSMotion(supportTransition);
+
+var STATUS_ADD = 'add';
+var STATUS_KEEP = 'keep';
+var STATUS_REMOVE = 'remove';
+var STATUS_REMOVED = 'removed';
+function wrapKeyToObject(key) {
+  var keyObj;
+
+  if (key && _typeof$4(key) === 'object' && 'key' in key) {
+    keyObj = key;
+  } else {
+    keyObj = {
+      key: key
+    };
+  }
+
+  return _objectSpread2$1(_objectSpread2$1({}, keyObj), {}, {
+    key: String(keyObj.key)
+  });
+}
+function parseKeys() {
+  var keys = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  return keys.map(wrapKeyToObject);
+}
+function diffKeys() {
+  var prevKeys = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var currentKeys = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
+  var list = [];
+  var currentIndex = 0;
+  var currentLen = currentKeys.length;
+  var prevKeyObjects = parseKeys(prevKeys);
+  var currentKeyObjects = parseKeys(currentKeys); // Check prev keys to insert or keep
+
+  prevKeyObjects.forEach(function (keyObj) {
+    var hit = false;
+
+    for (var i = currentIndex; i < currentLen; i += 1) {
+      var currentKeyObj = currentKeyObjects[i];
+
+      if (currentKeyObj.key === keyObj.key) {
+        // New added keys should add before current key
+        if (currentIndex < i) {
+          list = list.concat(currentKeyObjects.slice(currentIndex, i).map(function (obj) {
+            return _objectSpread2$1(_objectSpread2$1({}, obj), {}, {
+              status: STATUS_ADD
+            });
+          }));
+          currentIndex = i;
+        }
+
+        list.push(_objectSpread2$1(_objectSpread2$1({}, currentKeyObj), {}, {
+          status: STATUS_KEEP
+        }));
+        currentIndex += 1;
+        hit = true;
+        break;
+      }
+    } // If not hit, it means key is removed
+
+
+    if (!hit) {
+      list.push(_objectSpread2$1(_objectSpread2$1({}, keyObj), {}, {
+        status: STATUS_REMOVE
+      }));
+    }
+  }); // Add rest to the list
+
+  if (currentIndex < currentLen) {
+    list = list.concat(currentKeyObjects.slice(currentIndex).map(function (obj) {
+      return _objectSpread2$1(_objectSpread2$1({}, obj), {}, {
+        status: STATUS_ADD
+      });
+    }));
+  }
+  /**
+   * Merge same key when it remove and add again:
+   *    [1 - add, 2 - keep, 1 - remove] -> [1 - keep, 2 - keep]
+   */
+
+
+  var keys = {};
+  list.forEach(function (_ref) {
+    var key = _ref.key;
+    keys[key] = (keys[key] || 0) + 1;
+  });
+  var duplicatedKeys = Object.keys(keys).filter(function (key) {
+    return keys[key] > 1;
+  });
+  duplicatedKeys.forEach(function (matchKey) {
+    // Remove `STATUS_REMOVE` node.
+    list = list.filter(function (_ref2) {
+      var key = _ref2.key,
+          status = _ref2.status;
+      return key !== matchKey || status !== STATUS_REMOVE;
+    }); // Update `STATUS_ADD` to `STATUS_KEEP`
+
+    list.forEach(function (node) {
+      if (node.key === matchKey) {
+        // eslint-disable-next-line no-param-reassign
+        node.status = STATUS_KEEP;
+      }
+    });
+  });
+  return list;
+}
+
+var MOTION_PROP_NAMES = ['eventProps', 'visible', 'children', 'motionName', 'motionAppear', 'motionEnter', 'motionLeave', 'motionLeaveImmediately', 'motionDeadline', 'removeOnLeave', 'leavedClassName', 'onAppearStart', 'onAppearActive', 'onAppearEnd', 'onEnterStart', 'onEnterActive', 'onEnterEnd', 'onLeaveStart', 'onLeaveActive', 'onLeaveEnd'];
+/**
+ * Generate a CSSMotionList component with config
+ * @param transitionSupport No need since CSSMotionList no longer depends on transition support
+ * @param CSSMotion CSSMotion component
+ */
+
+function genCSSMotionList(transitionSupport) {
+  var CSSMotion$1 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : CSSMotion;
+
+  var CSSMotionList = /*#__PURE__*/function (_React$Component) {
+    _inherits$1(CSSMotionList, _React$Component);
+
+    var _super = _createSuper$2(CSSMotionList);
+
+    function CSSMotionList() {
+      var _this;
+
+      _classCallCheck$2(this, CSSMotionList);
+
+      _this = _super.apply(this, arguments);
+      _this.state = {
+        keyEntities: []
+      };
+
+      _this.removeKey = function (removeKey) {
+        _this.setState(function (_ref) {
+          var keyEntities = _ref.keyEntities;
+          return {
+            keyEntities: keyEntities.map(function (entity) {
+              if (entity.key !== removeKey) return entity;
+              return _objectSpread2$1(_objectSpread2$1({}, entity), {}, {
+                status: STATUS_REMOVED
+              });
+            })
+          };
+        });
+      };
+
+      return _this;
+    }
+
+    _createClass$2(CSSMotionList, [{
+      key: "render",
+      value: function render() {
+        var _this2 = this;
+
+        var keyEntities = this.state.keyEntities;
+
+        var _this$props = this.props,
+            component = _this$props.component,
+            children = _this$props.children,
+            _onVisibleChanged = _this$props.onVisibleChanged,
+            restProps = _objectWithoutProperties$1(_this$props, ["component", "children", "onVisibleChanged"]);
+
+        var Component = component || React.Fragment;
+        var motionProps = {};
+        MOTION_PROP_NAMES.forEach(function (prop) {
+          motionProps[prop] = restProps[prop];
+          delete restProps[prop];
+        });
+        delete restProps.keys;
+        return /*#__PURE__*/React.createElement(Component, restProps, keyEntities.map(function (_ref2) {
+          var status = _ref2.status,
+              eventProps = _objectWithoutProperties$1(_ref2, ["status"]);
+
+          var visible = status === STATUS_ADD || status === STATUS_KEEP;
+          return /*#__PURE__*/React.createElement(CSSMotion$1, _extends$1({}, motionProps, {
+            key: eventProps.key,
+            visible: visible,
+            eventProps: eventProps,
+            onVisibleChanged: function onVisibleChanged(changedVisible) {
+              _onVisibleChanged === null || _onVisibleChanged === void 0 ? void 0 : _onVisibleChanged(changedVisible, {
+                key: eventProps.key
+              });
+
+              if (!changedVisible) {
+                _this2.removeKey(eventProps.key);
+              }
+            }
+          }), children);
+        }));
+      }
+    }], [{
+      key: "getDerivedStateFromProps",
+      value: function getDerivedStateFromProps(_ref3, _ref4) {
+        var keys = _ref3.keys;
+        var keyEntities = _ref4.keyEntities;
+        var parsedKeyObjects = parseKeys(keys);
+        var mixedKeyEntities = diffKeys(keyEntities, parsedKeyObjects);
+        return {
+          keyEntities: mixedKeyEntities.filter(function (entity) {
+            var prevEntity = keyEntities.find(function (_ref5) {
+              var key = _ref5.key;
+              return entity.key === key;
+            }); // Remove if already mark as removed
+
+            if (prevEntity && prevEntity.status === STATUS_REMOVED && entity.status === STATUS_REMOVE) {
+              return false;
+            }
+
+            return true;
+          })
+        };
+      }
+    }]);
+
+    return CSSMotionList;
+  }(React.Component);
+
+  CSSMotionList.defaultProps = {
+    component: 'div'
+  };
+  return CSSMotionList;
+}
+var CSSMotionList = genCSSMotionList(supportTransition);
+
+var Notice = /*#__PURE__*/function (_Component) {
+  _inherits$1(Notice, _Component);
+
+  var _super = _createSuper$2(Notice);
+
+  function Notice() {
+    var _this;
+
+    _classCallCheck$2(this, Notice);
+
+    _this = _super.apply(this, arguments);
+    _this.closeTimer = null;
+
+    _this.close = function (e) {
+      if (e) {
+        e.stopPropagation();
+      }
+
+      _this.clearCloseTimer();
+
+      var _this$props = _this.props,
+          onClose = _this$props.onClose,
+          noticeKey = _this$props.noticeKey;
+
+      if (onClose) {
+        onClose(noticeKey);
+      }
+    };
+
+    _this.startCloseTimer = function () {
+      if (_this.props.duration) {
+        _this.closeTimer = window.setTimeout(function () {
+          _this.close();
+        }, _this.props.duration * 1000);
+      }
+    };
+
+    _this.clearCloseTimer = function () {
+      if (_this.closeTimer) {
+        clearTimeout(_this.closeTimer);
+        _this.closeTimer = null;
+      }
+    };
+
+    return _this;
+  }
+
+  _createClass$2(Notice, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.startCloseTimer();
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      if (this.props.duration !== prevProps.duration || this.props.updateMark !== prevProps.updateMark) {
+        this.restartCloseTimer();
+      }
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.clearCloseTimer();
+    }
+  }, {
+    key: "restartCloseTimer",
+    value: function restartCloseTimer() {
+      this.clearCloseTimer();
+      this.startCloseTimer();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var _this$props2 = this.props,
+          prefixCls = _this$props2.prefixCls,
+          className = _this$props2.className,
+          closable = _this$props2.closable,
+          closeIcon = _this$props2.closeIcon,
+          style = _this$props2.style,
+          onClick = _this$props2.onClick,
+          children = _this$props2.children,
+          holder = _this$props2.holder;
+      var componentClass = "".concat(prefixCls, "-notice");
+      var dataOrAriaAttributeProps = Object.keys(this.props).reduce(function (acc, key) {
+        if (key.substr(0, 5) === 'data-' || key.substr(0, 5) === 'aria-' || key === 'role') {
+          acc[key] = _this2.props[key];
+        }
+
+        return acc;
+      }, {});
+      var node = /*#__PURE__*/React.createElement("div", _extends$1({
+        className: classnames(componentClass, className, _defineProperty$4({}, "".concat(componentClass, "-closable"), closable)),
+        style: style,
+        onMouseEnter: this.clearCloseTimer,
+        onMouseLeave: this.startCloseTimer,
+        onClick: onClick
+      }, dataOrAriaAttributeProps), /*#__PURE__*/React.createElement("div", {
+        className: "".concat(componentClass, "-content")
+      }, children), closable ? /*#__PURE__*/React.createElement("a", {
+        tabIndex: 0,
+        onClick: this.close,
+        className: "".concat(componentClass, "-close")
+      }, closeIcon || /*#__PURE__*/React.createElement("span", {
+        className: "".concat(componentClass, "-close-x")
+      })) : null);
+
+      if (holder) {
+        return /*#__PURE__*/ReactDOM__default.createPortal(node, holder);
+      }
+
+      return node;
+    }
+  }]);
+
+  return Notice;
+}(Component);
+Notice.defaultProps = {
+  onClose: function onClose() {},
+  duration: 1.5
+};
+
+function useNotification(notificationInstance) {
+  var createdRef = React.useRef({});
+
+  var _React$useState = React.useState([]),
+      _React$useState2 = _slicedToArray$3(_React$useState, 2),
+      elements = _React$useState2[0],
+      setElements = _React$useState2[1];
+
+  function notify(noticeProps) {
+    var firstMount = true;
+    notificationInstance.add(noticeProps, function (div, props) {
+      var key = props.key;
+
+      if (div && (!createdRef.current[key] || firstMount)) {
+        var noticeEle = /*#__PURE__*/React.createElement(Notice, _extends$1({}, props, {
+          holder: div
+        }));
+        createdRef.current[key] = noticeEle;
+        setElements(function (originElements) {
+          var index = originElements.findIndex(function (ele) {
+            return ele.key === props.key;
+          });
+
+          if (index === -1) {
+            return [].concat(_toConsumableArray(originElements), [noticeEle]);
+          }
+
+          var cloneList = _toConsumableArray(originElements);
+
+          cloneList[index] = noticeEle;
+          return cloneList;
+        });
+      }
+
+      firstMount = false;
+    });
+  }
+
+  return [notify, /*#__PURE__*/React.createElement(React.Fragment, null, elements)];
+}
+
+var seed = 0;
+var now = Date.now();
+
+function getUuid() {
+  var id = seed;
+  seed += 1;
+  return "rcNotification_".concat(now, "_").concat(id);
+}
+
+var Notification = /*#__PURE__*/function (_Component) {
+  _inherits$1(Notification, _Component);
+
+  var _super = _createSuper$2(Notification);
+
+  function Notification() {
+    var _this;
+
+    _classCallCheck$2(this, Notification);
+
+    _this = _super.apply(this, arguments);
+    _this.state = {
+      notices: []
+    };
+    _this.hookRefs = new Map();
+
+    _this.add = function (originNotice, holderCallback) {
+      var key = originNotice.key || getUuid();
+
+      var notice = _objectSpread2$1(_objectSpread2$1({}, originNotice), {}, {
+        key: key
+      });
+
+      var maxCount = _this.props.maxCount;
+
+      _this.setState(function (previousState) {
+        var notices = previousState.notices;
+        var noticeIndex = notices.map(function (v) {
+          return v.notice.key;
+        }).indexOf(key);
+        var updatedNotices = notices.concat();
+
+        if (noticeIndex !== -1) {
+          updatedNotices.splice(noticeIndex, 1, {
+            notice: notice,
+            holderCallback: holderCallback
+          });
+        } else {
+          if (maxCount && notices.length >= maxCount) {
+            // XXX, use key of first item to update new added (let React to move exsiting
+            // instead of remove and mount). Same key was used before for both a) external
+            // manual control and b) internal react 'key' prop , which is not that good.
+            // eslint-disable-next-line no-param-reassign
+            // zombieJ: Not know why use `updateKey`. This makes Notice infinite loop in jest.
+            // Change to `updateMark` for compare instead.
+            // https://github.com/react-component/notification/commit/32299e6be396f94040bfa82517eea940db947ece
+            notice.key = updatedNotices[0].notice.key;
+            notice.updateMark = getUuid(); // zombieJ: That's why. User may close by key directly.
+            // We need record this but not re-render to avoid upper issue
+            // https://github.com/react-component/notification/issues/129
+
+            notice.userPassKey = key;
+            updatedNotices.shift();
+          }
+
+          updatedNotices.push({
+            notice: notice,
+            holderCallback: holderCallback
+          });
+        }
+
+        return {
+          notices: updatedNotices
+        };
+      });
+    };
+
+    _this.remove = function (removeKey) {
+      _this.setState(function (_ref) {
+        var notices = _ref.notices;
+        return {
+          notices: notices.filter(function (_ref2) {
+            var _ref2$notice = _ref2.notice,
+                key = _ref2$notice.key,
+                userPassKey = _ref2$notice.userPassKey;
+            var mergedKey = userPassKey || key;
+            return mergedKey !== removeKey;
+          })
+        };
+      });
+    };
+
+    _this.noticePropsMap = {};
+    return _this;
+  }
+
+  _createClass$2(Notification, [{
+    key: "getTransitionName",
+    value: function getTransitionName() {
+      var _this$props = this.props,
+          prefixCls = _this$props.prefixCls,
+          animation = _this$props.animation;
+      var transitionName = this.props.transitionName;
+
+      if (!transitionName && animation) {
+        transitionName = "".concat(prefixCls, "-").concat(animation);
+      }
+
+      return transitionName;
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var notices = this.state.notices;
+      var _this$props2 = this.props,
+          prefixCls = _this$props2.prefixCls,
+          className = _this$props2.className,
+          closeIcon = _this$props2.closeIcon,
+          style = _this$props2.style;
+      var noticeKeys = [];
+      notices.forEach(function (_ref3, index) {
+        var notice = _ref3.notice,
+            holderCallback = _ref3.holderCallback;
+        var updateMark = index === notices.length - 1 ? notice.updateMark : undefined;
+        var key = notice.key,
+            userPassKey = notice.userPassKey;
+
+        var noticeProps = _objectSpread2$1(_objectSpread2$1(_objectSpread2$1({
+          prefixCls: prefixCls,
+          closeIcon: closeIcon
+        }, notice), notice.props), {}, {
+          key: key,
+          noticeKey: userPassKey || key,
+          updateMark: updateMark,
+          onClose: function onClose(noticeKey) {
+            var _notice$onClose;
+
+            _this2.remove(noticeKey);
+
+            (_notice$onClose = notice.onClose) === null || _notice$onClose === void 0 ? void 0 : _notice$onClose.call(notice);
+          },
+          onClick: notice.onClick,
+          children: notice.content
+        }); // Give to motion
+
+
+        noticeKeys.push(key);
+        _this2.noticePropsMap[key] = {
+          props: noticeProps,
+          holderCallback: holderCallback
+        };
+      });
+      return /*#__PURE__*/React.createElement("div", {
+        className: classnames(prefixCls, className),
+        style: style
+      }, /*#__PURE__*/React.createElement(CSSMotionList, {
+        keys: noticeKeys,
+        motionName: this.getTransitionName(),
+        onVisibleChanged: function onVisibleChanged(changedVisible, _ref4) {
+          var key = _ref4.key;
+
+          if (!changedVisible) {
+            delete _this2.noticePropsMap[key];
+          }
+        }
+      }, function (_ref5) {
+        var key = _ref5.key,
+            motionClassName = _ref5.className,
+            motionStyle = _ref5.style;
+        var _this2$noticePropsMap = _this2.noticePropsMap[key],
+            noticeProps = _this2$noticePropsMap.props,
+            holderCallback = _this2$noticePropsMap.holderCallback;
+
+        if (holderCallback) {
+          return /*#__PURE__*/React.createElement("div", {
+            key: key,
+            className: classnames(motionClassName, "".concat(prefixCls, "-hook-holder")),
+            style: _objectSpread2$1({}, motionStyle),
+            ref: function ref(div) {
+              if (typeof key === 'undefined') {
+                return;
+              }
+
+              if (div) {
+                _this2.hookRefs.set(key, div);
+
+                holderCallback(div, noticeProps);
+              } else {
+                _this2.hookRefs.delete(key);
+              }
+            }
+          });
+        }
+
+        return /*#__PURE__*/React.createElement(Notice, _extends$1({}, noticeProps, {
+          className: classnames(motionClassName, noticeProps === null || noticeProps === void 0 ? void 0 : noticeProps.className),
+          style: _objectSpread2$1(_objectSpread2$1({}, motionStyle), noticeProps === null || noticeProps === void 0 ? void 0 : noticeProps.style)
+        }));
+      }));
+    }
+  }]);
+
+  return Notification;
+}(Component);
+
+Notification.defaultProps = {
+  prefixCls: 'rc-notification',
+  animation: 'fade',
+  style: {
+    top: 65,
+    left: '50%'
+  }
+};
+
+Notification.newInstance = function newNotificationInstance(properties, callback) {
+  var _ref6 = properties || {},
+      getContainer = _ref6.getContainer,
+      props = _objectWithoutProperties$1(_ref6, ["getContainer"]);
+
+  var div = document.createElement('div');
+
+  if (getContainer) {
+    var root = getContainer();
+    root.appendChild(div);
+  } else {
+    document.body.appendChild(div);
+  }
+
+  var called = false;
+
+  function ref(notification) {
+    if (called) {
+      return;
+    }
+
+    called = true;
+    callback({
+      notice: function notice(noticeProps) {
+        notification.add(noticeProps);
+      },
+      removeNotice: function removeNotice(key) {
+        notification.remove(key);
+      },
+      component: notification,
+      destroy: function destroy() {
+        ReactDOM__default.unmountComponentAtNode(div);
+
+        if (div.parentNode) {
+          div.parentNode.removeChild(div);
+        }
+      },
+      // Hooks
+      useNotification: function useNotification$1() {
+        return useNotification(notification);
+      }
+    });
+  } // Only used for test case usage
+
+
+  if (process.env.NODE_ENV === 'test' && properties.TEST_RENDER) {
+    properties.TEST_RENDER( /*#__PURE__*/React.createElement(Notification, _extends$1({}, props, {
+      ref: ref
+    })));
+    return;
+  }
+
+  ReactDOM__default.render( /*#__PURE__*/React.createElement(Notification, _extends$1({}, props, {
+    ref: ref
+  })), div);
+};
 
 // This icon file is generated automatically.
 var LoadingOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "0 0 1024 1024", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M988 548c-19.9 0-36-16.1-36-36 0-59.4-11.6-117-34.6-171.3a440.45 440.45 0 00-94.3-139.9 437.71 437.71 0 00-139.9-94.3C629 83.6 571.4 72 512 72c-19.9 0-36-16.1-36-36s16.1-36 36-36c69.1 0 136.2 13.5 199.3 40.3C772.3 66 827 103 874 150c47 47 83.9 101.8 109.7 162.7 26.7 63.1 40.2 130.2 40.2 199.3.1 19.9-16 36-35.9 36z" } }] }, "name": "loading", "theme": "outlined" };
@@ -8516,7 +9259,7 @@ Object.keys(presetPrimaryColors).forEach(function (key) {
 
 var MARK_KEY = "rc-util-key";
 
-function getContainer(option) {
+function getContainer$1(option) {
   if (option.attachTo) {
     return option.attachTo;
   }
@@ -8543,7 +9286,7 @@ function injectCSS(css) {
   }
 
   styleNode.innerHTML = css;
-  var container = getContainer(option);
+  var container = getContainer$1(option);
   var firstChild = container.firstChild;
 
   if (option.prepend && container.prepend) {
@@ -8561,7 +9304,7 @@ function injectCSS(css) {
 var containerCache = new Map();
 function updateCSS(css, key) {
   var option = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-  var container = getContainer(option); // Get real parent
+  var container = getContainer$1(option); // Get real parent
 
   if (!containerCache.has(container)) {
     var placeholderStyle = injectCSS('', option);
@@ -8816,6 +9559,21 @@ LoadingOutlined.displayName = 'LoadingOutlined';
 var LoadingOutlined$1 = /*#__PURE__*/React.forwardRef(LoadingOutlined);
 
 // This icon file is generated automatically.
+var ExclamationCircleFilled$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm-32 232c0-4.4 3.6-8 8-8h48c4.4 0 8 3.6 8 8v272c0 4.4-3.6 8-8 8h-48c-4.4 0-8-3.6-8-8V296zm32 440a48.01 48.01 0 010-96 48.01 48.01 0 010 96z" } }] }, "name": "exclamation-circle", "theme": "filled" };
+
+// GENERATE BY ./scripts/generate.ts
+
+var ExclamationCircleFilled = function ExclamationCircleFilled(props, ref) {
+  return /*#__PURE__*/React.createElement(Icon, Object.assign({}, props, {
+    ref: ref,
+    icon: ExclamationCircleFilled$2
+  }));
+};
+
+ExclamationCircleFilled.displayName = 'ExclamationCircleFilled';
+var ExclamationCircleFilled$1 = /*#__PURE__*/React.forwardRef(ExclamationCircleFilled);
+
+// This icon file is generated automatically.
 var CloseCircleFilled$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm165.4 618.2l-66-.3L512 563.4l-99.3 118.4-66.1.3c-4.4 0-8-3.5-8-8 0-1.9.7-3.7 1.9-5.2l130.1-155L340.5 359a8.32 8.32 0 01-1.9-5.2c0-4.4 3.6-8 8-8l66.1.3L512 464.6l99.3-118.4 66-.3c4.4 0 8 3.5 8 8 0 1.9-.7 3.7-1.9 5.2L553.5 514l130 155c1.2 1.5 1.9 3.3 1.9 5.2 0 4.4-3.6 8-8 8z" } }] }, "name": "close-circle", "theme": "filled" };
 
 // GENERATE BY ./scripts/generate.ts
@@ -8829,6 +9587,324 @@ var CloseCircleFilled = function CloseCircleFilled(props, ref) {
 
 CloseCircleFilled.displayName = 'CloseCircleFilled';
 var CloseCircleFilled$1 = /*#__PURE__*/React.forwardRef(CloseCircleFilled);
+
+// This icon file is generated automatically.
+var CheckCircleFilled$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm193.5 301.7l-210.6 292a31.8 31.8 0 01-51.7 0L318.5 484.9c-3.8-5.3 0-12.7 6.5-12.7h46.9c10.2 0 19.9 4.9 25.9 13.3l71.2 98.8 157.2-218c6-8.3 15.6-13.3 25.9-13.3H699c6.5 0 10.3 7.4 6.5 12.7z" } }] }, "name": "check-circle", "theme": "filled" };
+
+// GENERATE BY ./scripts/generate.ts
+
+var CheckCircleFilled = function CheckCircleFilled(props, ref) {
+  return /*#__PURE__*/React.createElement(Icon, Object.assign({}, props, {
+    ref: ref,
+    icon: CheckCircleFilled$2
+  }));
+};
+
+CheckCircleFilled.displayName = 'CheckCircleFilled';
+var CheckCircleFilled$1 = /*#__PURE__*/React.forwardRef(CheckCircleFilled);
+
+// This icon file is generated automatically.
+var InfoCircleFilled$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm32 664c0 4.4-3.6 8-8 8h-48c-4.4 0-8-3.6-8-8V456c0-4.4 3.6-8 8-8h48c4.4 0 8 3.6 8 8v272zm-32-344a48.01 48.01 0 010-96 48.01 48.01 0 010 96z" } }] }, "name": "info-circle", "theme": "filled" };
+
+// GENERATE BY ./scripts/generate.ts
+
+var InfoCircleFilled = function InfoCircleFilled(props, ref) {
+  return /*#__PURE__*/React.createElement(Icon, Object.assign({}, props, {
+    ref: ref,
+    icon: InfoCircleFilled$2
+  }));
+};
+
+InfoCircleFilled.displayName = 'InfoCircleFilled';
+var InfoCircleFilled$1 = /*#__PURE__*/React.forwardRef(InfoCircleFilled);
+
+function createUseMessage(getRcNotificationInstance, getRCNoticeProps) {
+  var useMessage = function useMessage() {
+    // We can only get content by render
+    var getPrefixCls; // We create a proxy to handle delay created instance
+
+    var innerInstance = null;
+    var proxy = {
+      add: function add(noticeProps, holderCallback) {
+        innerInstance === null || innerInstance === void 0 ? void 0 : innerInstance.component.add(noticeProps, holderCallback);
+      }
+    };
+
+    var _useRCNotification = useNotification(proxy),
+        _useRCNotification2 = _slicedToArray$3(_useRCNotification, 2),
+        hookNotify = _useRCNotification2[0],
+        holder = _useRCNotification2[1];
+
+    function notify(args) {
+      var customizePrefixCls = args.prefixCls;
+      var mergedPrefixCls = getPrefixCls('message', customizePrefixCls);
+      var rootPrefixCls = getPrefixCls();
+      var target = args.key || getKeyThenIncreaseKey();
+      var closePromise = new Promise(function (resolve) {
+        var callback = function callback() {
+          if (typeof args.onClose === 'function') {
+            args.onClose();
+          }
+
+          return resolve(true);
+        };
+
+        getRcNotificationInstance(_extends$1(_extends$1({}, args), {
+          prefixCls: mergedPrefixCls,
+          rootPrefixCls: rootPrefixCls
+        }), function (_ref) {
+          var prefixCls = _ref.prefixCls,
+              instance = _ref.instance;
+          innerInstance = instance;
+          hookNotify(getRCNoticeProps(_extends$1(_extends$1({}, args), {
+            key: target,
+            onClose: callback
+          }), prefixCls));
+        });
+      });
+
+      var result = function result() {
+        if (innerInstance) {
+          innerInstance.removeNotice(target);
+        }
+      };
+
+      result.then = function (filled, rejected) {
+        return closePromise.then(filled, rejected);
+      };
+
+      result.promise = closePromise;
+      return result;
+    } // Fill functions
+
+
+    var hookApiRef = React.useRef({});
+    hookApiRef.current.open = notify;
+    ['success', 'info', 'warning', 'error', 'loading'].forEach(function (type) {
+      return attachTypeApi(hookApiRef.current, type);
+    });
+    return [hookApiRef.current, /*#__PURE__*/React.createElement(ConfigConsumer, {
+      key: "holder"
+    }, function (context) {
+      getPrefixCls = context.getPrefixCls;
+      return holder;
+    })];
+  };
+
+  return useMessage;
+}
+
+var messageInstance;
+var defaultDuration$1 = 3;
+var defaultTop$1;
+var key = 1;
+var localPrefixCls = '';
+var transitionName = 'move-up';
+var hasTransitionName = false;
+var getContainer;
+var maxCount;
+var rtl$1 = false;
+function getKeyThenIncreaseKey() {
+  return key++;
+}
+
+function setMessageConfig(options) {
+  if (options.top !== undefined) {
+    defaultTop$1 = options.top;
+    messageInstance = null; // delete messageInstance for new defaultTop
+  }
+
+  if (options.duration !== undefined) {
+    defaultDuration$1 = options.duration;
+  }
+
+  if (options.prefixCls !== undefined) {
+    localPrefixCls = options.prefixCls;
+  }
+
+  if (options.getContainer !== undefined) {
+    getContainer = options.getContainer;
+  }
+
+  if (options.transitionName !== undefined) {
+    transitionName = options.transitionName;
+    messageInstance = null; // delete messageInstance for new transitionName
+
+    hasTransitionName = true;
+  }
+
+  if (options.maxCount !== undefined) {
+    maxCount = options.maxCount;
+    messageInstance = null;
+  }
+
+  if (options.rtl !== undefined) {
+    rtl$1 = options.rtl;
+  }
+}
+
+function getRCNotificationInstance(args, callback) {
+  var customizePrefixCls = args.prefixCls;
+
+  var _globalConfig = globalConfig(),
+      getPrefixCls = _globalConfig.getPrefixCls,
+      getRootPrefixCls = _globalConfig.getRootPrefixCls;
+
+  var prefixCls = getPrefixCls('message', customizePrefixCls || localPrefixCls);
+  var rootPrefixCls = getRootPrefixCls(args.rootPrefixCls, prefixCls);
+
+  if (messageInstance) {
+    callback({
+      prefixCls: prefixCls,
+      rootPrefixCls: rootPrefixCls,
+      instance: messageInstance
+    });
+    return;
+  }
+
+  var instanceConfig = {
+    prefixCls: prefixCls,
+    transitionName: hasTransitionName ? transitionName : "".concat(rootPrefixCls, "-").concat(transitionName),
+    style: {
+      top: defaultTop$1
+    },
+    getContainer: getContainer,
+    maxCount: maxCount
+  };
+  Notification.newInstance(instanceConfig, function (instance) {
+    if (messageInstance) {
+      callback({
+        prefixCls: prefixCls,
+        rootPrefixCls: rootPrefixCls,
+        instance: messageInstance
+      });
+      return;
+    }
+
+    messageInstance = instance;
+
+    if (process.env.NODE_ENV === 'test') {
+      messageInstance.config = instanceConfig;
+    }
+
+    callback({
+      prefixCls: prefixCls,
+      rootPrefixCls: rootPrefixCls,
+      instance: instance
+    });
+  });
+}
+
+var typeToIcon$1 = {
+  info: InfoCircleFilled$1,
+  success: CheckCircleFilled$1,
+  error: CloseCircleFilled$1,
+  warning: ExclamationCircleFilled$1,
+  loading: LoadingOutlined$1
+};
+
+function getRCNoticeProps$1(args, prefixCls) {
+  var _classNames;
+
+  var duration = args.duration !== undefined ? args.duration : defaultDuration$1;
+  var IconComponent = typeToIcon$1[args.type];
+  var messageClass = classnames("".concat(prefixCls, "-custom-content"), (_classNames = {}, _defineProperty$4(_classNames, "".concat(prefixCls, "-").concat(args.type), args.type), _defineProperty$4(_classNames, "".concat(prefixCls, "-rtl"), rtl$1 === true), _classNames));
+  return {
+    key: args.key,
+    duration: duration,
+    style: args.style || {},
+    className: args.className,
+    content: /*#__PURE__*/React.createElement("div", {
+      className: messageClass
+    }, args.icon || IconComponent && /*#__PURE__*/React.createElement(IconComponent, null), /*#__PURE__*/React.createElement("span", null, args.content)),
+    onClose: args.onClose,
+    onClick: args.onClick
+  };
+}
+
+function notice$1(args) {
+  var target = args.key || key++;
+  var closePromise = new Promise(function (resolve) {
+    var callback = function callback() {
+      if (typeof args.onClose === 'function') {
+        args.onClose();
+      }
+
+      return resolve(true);
+    };
+
+    getRCNotificationInstance(args, function (_ref) {
+      var prefixCls = _ref.prefixCls,
+          instance = _ref.instance;
+      instance.notice(getRCNoticeProps$1(_extends$1(_extends$1({}, args), {
+        key: target,
+        onClose: callback
+      }), prefixCls));
+    });
+  });
+
+  var result = function result() {
+    if (messageInstance) {
+      messageInstance.removeNotice(target);
+    }
+  };
+
+  result.then = function (filled, rejected) {
+    return closePromise.then(filled, rejected);
+  };
+
+  result.promise = closePromise;
+  return result;
+}
+
+function isArgsProps(content) {
+  return Object.prototype.toString.call(content) === '[object Object]' && !!content.content;
+}
+
+var api$1 = {
+  open: notice$1,
+  config: setMessageConfig,
+  destroy: function destroy(messageKey) {
+    if (messageInstance) {
+      if (messageKey) {
+        var _messageInstance = messageInstance,
+            removeNotice = _messageInstance.removeNotice;
+        removeNotice(messageKey);
+      } else {
+        var _messageInstance2 = messageInstance,
+            destroy = _messageInstance2.destroy;
+        destroy();
+        messageInstance = null;
+      }
+    }
+  }
+};
+function attachTypeApi(originalApi, type) {
+  originalApi[type] = function (content, duration, onClose) {
+    if (isArgsProps(content)) {
+      return originalApi.open(_extends$1(_extends$1({}, content), {
+        type: type
+      }));
+    }
+
+    if (typeof duration === 'function') {
+      onClose = duration;
+      duration = undefined;
+    }
+
+    return originalApi.open({
+      content: content,
+      duration: duration,
+      type: type,
+      onClose: onClose
+    });
+  };
+}
+['success', 'info', 'warning', 'error', 'loading'].forEach(function (type) {
+  return attachTypeApi(api$1, type);
+});
+api$1.warn = api$1.warning;
+api$1.useMessage = createUseMessage(getRCNotificationInstance, getRCNoticeProps$1);
 
 // This icon file is generated automatically.
 var CloseOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M563.8 512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7 0-9.2 2.1-12.3 5.7L511.6 449.8 295.1 191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8 0-10.5 7.9-6.1 13.1L459.4 512 196.9 824.9A7.95 7.95 0 00203 838h79.8c4.7 0 9.2-2.1 12.3-5.7l216.5-258.1 216.5 258.1c3 3.6 7.5 5.7 12.3 5.7h79.8c6.8 0 10.5-7.9 6.1-13.1L563.8 512z" } }] }, "name": "close", "theme": "outlined" };
@@ -8845,10 +9921,560 @@ var CloseOutlined = function CloseOutlined(props, ref) {
 CloseOutlined.displayName = 'CloseOutlined';
 var CloseOutlined$1 = /*#__PURE__*/React.forwardRef(CloseOutlined);
 
+// This icon file is generated automatically.
+var CheckCircleOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M699 353h-46.9c-10.2 0-19.9 4.9-25.9 13.3L469 584.3l-71.2-98.8c-6-8.3-15.6-13.3-25.9-13.3H325c-6.5 0-10.3 7.4-6.5 12.7l124.6 172.8a31.8 31.8 0 0051.7 0l210.6-292c3.9-5.3.1-12.7-6.4-12.7z" } }, { "tag": "path", "attrs": { "d": "M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z" } }] }, "name": "check-circle", "theme": "outlined" };
+
+// GENERATE BY ./scripts/generate.ts
+
+var CheckCircleOutlined = function CheckCircleOutlined(props, ref) {
+  return /*#__PURE__*/React.createElement(Icon, Object.assign({}, props, {
+    ref: ref,
+    icon: CheckCircleOutlined$2
+  }));
+};
+
+CheckCircleOutlined.displayName = 'CheckCircleOutlined';
+var CheckCircleOutlined$1 = /*#__PURE__*/React.forwardRef(CheckCircleOutlined);
+
+// This icon file is generated automatically.
+var CloseCircleOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M685.4 354.8c0-4.4-3.6-8-8-8l-66 .3L512 465.6l-99.3-118.4-66.1-.3c-4.4 0-8 3.5-8 8 0 1.9.7 3.7 1.9 5.2l130.1 155L340.5 670a8.32 8.32 0 00-1.9 5.2c0 4.4 3.6 8 8 8l66.1-.3L512 564.4l99.3 118.4 66 .3c4.4 0 8-3.5 8-8 0-1.9-.7-3.7-1.9-5.2L553.5 515l130.1-155c1.2-1.4 1.8-3.3 1.8-5.2z" } }, { "tag": "path", "attrs": { "d": "M512 65C264.6 65 64 265.6 64 513s200.6 448 448 448 448-200.6 448-448S759.4 65 512 65zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z" } }] }, "name": "close-circle", "theme": "outlined" };
+
+// GENERATE BY ./scripts/generate.ts
+
+var CloseCircleOutlined = function CloseCircleOutlined(props, ref) {
+  return /*#__PURE__*/React.createElement(Icon, Object.assign({}, props, {
+    ref: ref,
+    icon: CloseCircleOutlined$2
+  }));
+};
+
+CloseCircleOutlined.displayName = 'CloseCircleOutlined';
+var CloseCircleOutlined$1 = /*#__PURE__*/React.forwardRef(CloseCircleOutlined);
+
+// This icon file is generated automatically.
+var ExclamationCircleOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z" } }, { "tag": "path", "attrs": { "d": "M464 688a48 48 0 1096 0 48 48 0 10-96 0zm24-112h48c4.4 0 8-3.6 8-8V296c0-4.4-3.6-8-8-8h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8z" } }] }, "name": "exclamation-circle", "theme": "outlined" };
+
+// GENERATE BY ./scripts/generate.ts
+
+var ExclamationCircleOutlined = function ExclamationCircleOutlined(props, ref) {
+  return /*#__PURE__*/React.createElement(Icon, Object.assign({}, props, {
+    ref: ref,
+    icon: ExclamationCircleOutlined$2
+  }));
+};
+
+ExclamationCircleOutlined.displayName = 'ExclamationCircleOutlined';
+var ExclamationCircleOutlined$1 = /*#__PURE__*/React.forwardRef(ExclamationCircleOutlined);
+
+// This icon file is generated automatically.
+var InfoCircleOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z" } }, { "tag": "path", "attrs": { "d": "M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z" } }] }, "name": "info-circle", "theme": "outlined" };
+
+// GENERATE BY ./scripts/generate.ts
+
+var InfoCircleOutlined = function InfoCircleOutlined(props, ref) {
+  return /*#__PURE__*/React.createElement(Icon, Object.assign({}, props, {
+    ref: ref,
+    icon: InfoCircleOutlined$2
+  }));
+};
+
+InfoCircleOutlined.displayName = 'InfoCircleOutlined';
+var InfoCircleOutlined$1 = /*#__PURE__*/React.forwardRef(InfoCircleOutlined);
+
+function createUseNotification(getNotificationInstance, getRCNoticeProps) {
+  var useNotification$1 = function useNotification$1() {
+    // We can only get content by render
+    var getPrefixCls; // We create a proxy to handle delay created instance
+
+    var innerInstance = null;
+    var proxy = {
+      add: function add(noticeProps, holderCallback) {
+        innerInstance === null || innerInstance === void 0 ? void 0 : innerInstance.component.add(noticeProps, holderCallback);
+      }
+    };
+
+    var _useRCNotification = useNotification(proxy),
+        _useRCNotification2 = _slicedToArray$3(_useRCNotification, 2),
+        hookNotify = _useRCNotification2[0],
+        holder = _useRCNotification2[1];
+
+    function notify(args) {
+      var customizePrefixCls = args.prefixCls;
+      var mergedPrefixCls = getPrefixCls('notification', customizePrefixCls);
+      getNotificationInstance(_extends$1(_extends$1({}, args), {
+        prefixCls: mergedPrefixCls
+      }), function (_ref) {
+        var prefixCls = _ref.prefixCls,
+            instance = _ref.instance;
+        innerInstance = instance;
+        hookNotify(getRCNoticeProps(args, prefixCls));
+      });
+    } // Fill functions
+
+
+    var hookApiRef = React.useRef({});
+    hookApiRef.current.open = notify;
+    ['success', 'info', 'warning', 'error'].forEach(function (type) {
+      hookApiRef.current[type] = function (args) {
+        return hookApiRef.current.open(_extends$1(_extends$1({}, args), {
+          type: type
+        }));
+      };
+    });
+    return [hookApiRef.current, /*#__PURE__*/React.createElement(ConfigConsumer, {
+      key: "holder"
+    }, function (context) {
+      getPrefixCls = context.getPrefixCls;
+      return holder;
+    })];
+  };
+
+  return useNotification$1;
+}
+
+undefined && undefined.__awaiter || function (thisArg, _arguments, P, generator) {
+  function adopt(value) {
+    return value instanceof P ? value : new P(function (resolve) {
+      resolve(value);
+    });
+  }
+
+  return new (P || (P = Promise))(function (resolve, reject) {
+    function fulfilled(value) {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+
+    function rejected(value) {
+      try {
+        step(generator["throw"](value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+
+    function step(result) {
+      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+    }
+
+    step((generator = generator.apply(thisArg, _arguments || [])).next());
+  });
+};
+var notificationInstance = {};
+var defaultDuration = 4.5;
+var defaultTop = 24;
+var defaultBottom = 24;
+var defaultPrefixCls$1 = '';
+var defaultPlacement = 'topRight';
+var defaultGetContainer;
+var defaultCloseIcon;
+var rtl = false;
+
+function setNotificationConfig(options) {
+  var duration = options.duration,
+      placement = options.placement,
+      bottom = options.bottom,
+      top = options.top,
+      getContainer = options.getContainer,
+      closeIcon = options.closeIcon,
+      prefixCls = options.prefixCls;
+
+  if (prefixCls !== undefined) {
+    defaultPrefixCls$1 = prefixCls;
+  }
+
+  if (duration !== undefined) {
+    defaultDuration = duration;
+  }
+
+  if (placement !== undefined) {
+    defaultPlacement = placement;
+  } else if (options.rtl) {
+    defaultPlacement = 'topLeft';
+  }
+
+  if (bottom !== undefined) {
+    defaultBottom = bottom;
+  }
+
+  if (top !== undefined) {
+    defaultTop = top;
+  }
+
+  if (getContainer !== undefined) {
+    defaultGetContainer = getContainer;
+  }
+
+  if (closeIcon !== undefined) {
+    defaultCloseIcon = closeIcon;
+  }
+
+  if (options.rtl !== undefined) {
+    rtl = options.rtl;
+  }
+}
+
+function getPlacementStyle(placement) {
+  var top = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : defaultTop;
+  var bottom = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : defaultBottom;
+  var style;
+
+  switch (placement) {
+    case 'topLeft':
+      style = {
+        left: 0,
+        top: top,
+        bottom: 'auto'
+      };
+      break;
+
+    case 'topRight':
+      style = {
+        right: 0,
+        top: top,
+        bottom: 'auto'
+      };
+      break;
+
+    case 'bottomLeft':
+      style = {
+        left: 0,
+        top: 'auto',
+        bottom: bottom
+      };
+      break;
+
+    default:
+      style = {
+        right: 0,
+        top: 'auto',
+        bottom: bottom
+      };
+      break;
+  }
+
+  return style;
+}
+
+function getNotificationInstance(args, callback) {
+  var _args$placement = args.placement,
+      placement = _args$placement === void 0 ? defaultPlacement : _args$placement,
+      top = args.top,
+      bottom = args.bottom,
+      _args$getContainer = args.getContainer,
+      getContainer = _args$getContainer === void 0 ? defaultGetContainer : _args$getContainer,
+      _args$closeIcon = args.closeIcon,
+      closeIcon = _args$closeIcon === void 0 ? defaultCloseIcon : _args$closeIcon,
+      customizePrefixCls = args.prefixCls;
+
+  var _globalConfig = globalConfig(),
+      getPrefixCls = _globalConfig.getPrefixCls;
+
+  var prefixCls = getPrefixCls('notification', customizePrefixCls || defaultPrefixCls$1);
+  var cacheKey = "".concat(prefixCls, "-").concat(placement);
+  var cacheInstance = notificationInstance[cacheKey];
+
+  if (cacheInstance) {
+    Promise.resolve(cacheInstance).then(function (instance) {
+      callback({
+        prefixCls: "".concat(prefixCls, "-notice"),
+        instance: instance
+      });
+    });
+    return;
+  }
+
+  var closeIconToRender = /*#__PURE__*/React.createElement("span", {
+    className: "".concat(prefixCls, "-close-x")
+  }, closeIcon || /*#__PURE__*/React.createElement(CloseOutlined$1, {
+    className: "".concat(prefixCls, "-close-icon")
+  }));
+  var notificationClass = classnames("".concat(prefixCls, "-").concat(placement), _defineProperty$4({}, "".concat(prefixCls, "-rtl"), rtl === true));
+  notificationInstance[cacheKey] = new Promise(function (resolve) {
+    Notification.newInstance({
+      prefixCls: prefixCls,
+      className: notificationClass,
+      style: getPlacementStyle(placement, top, bottom),
+      getContainer: getContainer,
+      closeIcon: closeIconToRender
+    }, function (notification) {
+      resolve(notification);
+      callback({
+        prefixCls: "".concat(prefixCls, "-notice"),
+        instance: notification
+      });
+    });
+  });
+}
+
+var typeToIcon = {
+  success: CheckCircleOutlined$1,
+  info: InfoCircleOutlined$1,
+  error: CloseCircleOutlined$1,
+  warning: ExclamationCircleOutlined$1
+};
+
+function getRCNoticeProps(args, prefixCls) {
+  var durationArg = args.duration,
+      icon = args.icon,
+      type = args.type,
+      description = args.description,
+      message = args.message,
+      btn = args.btn,
+      onClose = args.onClose,
+      onClick = args.onClick,
+      key = args.key,
+      style = args.style,
+      className = args.className;
+  var duration = durationArg === undefined ? defaultDuration : durationArg;
+  var iconNode = null;
+
+  if (icon) {
+    iconNode = /*#__PURE__*/React.createElement("span", {
+      className: "".concat(prefixCls, "-icon")
+    }, args.icon);
+  } else if (type) {
+    iconNode = /*#__PURE__*/React.createElement(typeToIcon[type] || null, {
+      className: "".concat(prefixCls, "-icon ").concat(prefixCls, "-icon-").concat(type)
+    });
+  }
+
+  var autoMarginTag = !description && iconNode ? /*#__PURE__*/React.createElement("span", {
+    className: "".concat(prefixCls, "-message-single-line-auto-margin")
+  }) : null;
+  return {
+    content: /*#__PURE__*/React.createElement("div", {
+      className: iconNode ? "".concat(prefixCls, "-with-icon") : '',
+      role: "alert"
+    }, iconNode, /*#__PURE__*/React.createElement("div", {
+      className: "".concat(prefixCls, "-message")
+    }, autoMarginTag, message), /*#__PURE__*/React.createElement("div", {
+      className: "".concat(prefixCls, "-description")
+    }, description), btn ? /*#__PURE__*/React.createElement("span", {
+      className: "".concat(prefixCls, "-btn")
+    }, btn) : null),
+    duration: duration,
+    closable: true,
+    onClose: onClose,
+    onClick: onClick,
+    key: key,
+    style: style || {},
+    className: classnames(className, _defineProperty$4({}, "".concat(prefixCls, "-").concat(type), !!type))
+  };
+}
+
+function notice(args) {
+  getNotificationInstance(args, function (_ref) {
+    var prefixCls = _ref.prefixCls,
+        instance = _ref.instance;
+    instance.notice(getRCNoticeProps(args, prefixCls));
+  });
+}
+
+var api = {
+  open: notice,
+  close: function close(key) {
+    Object.keys(notificationInstance).forEach(function (cacheKey) {
+      return Promise.resolve(notificationInstance[cacheKey]).then(function (instance) {
+        instance.removeNotice(key);
+      });
+    });
+  },
+  config: setNotificationConfig,
+  destroy: function destroy() {
+    Object.keys(notificationInstance).forEach(function (cacheKey) {
+      Promise.resolve(notificationInstance[cacheKey]).then(function (instance) {
+        instance.destroy();
+      });
+      delete notificationInstance[cacheKey]; // lgtm[js/missing-await]
+    });
+  }
+};
+['success', 'info', 'warning', 'error'].forEach(function (type) {
+  api[type] = function (args) {
+    return api.open(_extends$1(_extends$1({}, args), {
+      type: type
+    }));
+  };
+});
+api.warn = api.warning;
+api.useNotification = createUseNotification(getNotificationInstance, getRCNoticeProps);
+
+var PASSED_PROPS = ['getTargetContainer', 'getPopupContainer', 'renderEmpty', 'pageHeader', 'input', 'form'];
+var defaultPrefixCls = 'ant';
+var globalPrefixCls;
+
+var setGlobalConfig = function setGlobalConfig(params) {
+  if (params.prefixCls !== undefined) {
+    globalPrefixCls = params.prefixCls;
+  }
+};
+
+function getGlobalPrefixCls() {
+  return globalPrefixCls || defaultPrefixCls;
+}
+
+var globalConfig = function globalConfig() {
+  return {
+    getPrefixCls: function getPrefixCls(suffixCls, customizePrefixCls) {
+      if (customizePrefixCls) return customizePrefixCls;
+      return suffixCls ? "".concat(getGlobalPrefixCls(), "-").concat(suffixCls) : getGlobalPrefixCls();
+    },
+    getRootPrefixCls: function getRootPrefixCls(rootPrefixCls, customizePrefixCls) {
+      // Customize rootPrefixCls is first priority
+      if (rootPrefixCls) {
+        return rootPrefixCls;
+      } // If Global prefixCls provided, use this
+
+
+      if (globalPrefixCls) {
+        return globalPrefixCls;
+      } // [Legacy] If customize prefixCls provided, we cut it to get the prefixCls
+
+
+      if (customizePrefixCls && customizePrefixCls.includes('-')) {
+        return customizePrefixCls.replace(/^(.*)-[^-]*$/, '$1');
+      } // Fallback to default prefixCls
+
+
+      return getGlobalPrefixCls();
+    }
+  };
+};
+
+var ProviderChildren = function ProviderChildren(props) {
+  var children = props.children,
+      csp = props.csp,
+      autoInsertSpaceInButton = props.autoInsertSpaceInButton,
+      form = props.form,
+      locale = props.locale,
+      componentSize = props.componentSize,
+      direction = props.direction,
+      space = props.space,
+      virtual = props.virtual,
+      dropdownMatchSelectWidth = props.dropdownMatchSelectWidth,
+      legacyLocale = props.legacyLocale,
+      parentContext = props.parentContext,
+      iconPrefixCls = props.iconPrefixCls;
+  var getPrefixCls = React.useCallback(function (suffixCls, customizePrefixCls) {
+    var prefixCls = props.prefixCls;
+    if (customizePrefixCls) return customizePrefixCls;
+    var mergedPrefixCls = prefixCls || parentContext.getPrefixCls('');
+    return suffixCls ? "".concat(mergedPrefixCls, "-").concat(suffixCls) : mergedPrefixCls;
+  }, [parentContext.getPrefixCls]);
+
+  var config = _extends$1(_extends$1({}, parentContext), {
+    csp: csp,
+    autoInsertSpaceInButton: autoInsertSpaceInButton,
+    locale: locale || legacyLocale,
+    direction: direction,
+    space: space,
+    virtual: virtual,
+    dropdownMatchSelectWidth: dropdownMatchSelectWidth,
+    getPrefixCls: getPrefixCls
+  }); // Pass the props used by `useContext` directly with child component.
+  // These props should merged into `config`.
+
+
+  PASSED_PROPS.forEach(function (propName) {
+    var propValue = props[propName];
+
+    if (propValue) {
+      config[propName] = propValue;
+    }
+  }); // https://github.com/ant-design/ant-design/issues/27617
+
+  var memoedConfig = useMemo(function () {
+    return config;
+  }, config, function (prevConfig, currentConfig) {
+    var prevKeys = Object.keys(prevConfig);
+    var currentKeys = Object.keys(currentConfig);
+    return prevKeys.length !== currentKeys.length || prevKeys.some(function (key) {
+      return prevConfig[key] !== currentConfig[key];
+    });
+  });
+  var memoIconContextValue = React.useMemo(function () {
+    return {
+      prefixCls: iconPrefixCls,
+      csp: csp
+    };
+  }, [iconPrefixCls]);
+  var childNode = children; // Additional Form provider
+
+  var validateMessages = {};
+
+  if (locale && locale.Form && locale.Form.defaultValidateMessages) {
+    validateMessages = locale.Form.defaultValidateMessages;
+  }
+
+  if (form && form.validateMessages) {
+    validateMessages = _extends$1(_extends$1({}, validateMessages), form.validateMessages);
+  }
+
+  if (Object.keys(validateMessages).length > 0) {
+    childNode = /*#__PURE__*/React.createElement(FormProvider, {
+      validateMessages: validateMessages
+    }, children);
+  }
+
+  if (locale) {
+    childNode = /*#__PURE__*/React.createElement(LocaleProvider, {
+      locale: locale,
+      _ANT_MARK__: ANT_MARK
+    }, childNode);
+  }
+
+  if (iconPrefixCls) {
+    childNode = /*#__PURE__*/React.createElement(IconContext.Provider, {
+      value: memoIconContextValue
+    }, childNode);
+  }
+
+  if (componentSize) {
+    childNode = /*#__PURE__*/React.createElement(SizeContextProvider, {
+      size: componentSize
+    }, childNode);
+  }
+
+  return /*#__PURE__*/React.createElement(ConfigContext.Provider, {
+    value: memoedConfig
+  }, childNode);
+};
+
+var ConfigProvider = function ConfigProvider(props) {
+  React.useEffect(function () {
+    if (props.direction) {
+      api$1.config({
+        rtl: props.direction === 'rtl'
+      });
+      api.config({
+        rtl: props.direction === 'rtl'
+      });
+    }
+  }, [props.direction]);
+  return /*#__PURE__*/React.createElement(LocaleReceiver, null, function (_, __, legacyLocale) {
+    return /*#__PURE__*/React.createElement(ConfigConsumer, null, function (context) {
+      return /*#__PURE__*/React.createElement(ProviderChildren, _extends$1({
+        parentContext: context,
+        legacyLocale: legacyLocale
+      }, props));
+    });
+  });
+};
+/** @private internal Usage. do not use in your production */
+
+
+ConfigProvider.ConfigContext = ConfigContext;
+ConfigProvider.SizeContext = SizeContext;
+ConfigProvider.config = setGlobalConfig;
+
 function addEventListenerWrap(target, eventType, cb, option) {
   /* eslint camelcase: 2 */
-  var callback = ReactDOM.unstable_batchedUpdates ? function run(e) {
-    ReactDOM.unstable_batchedUpdates(cb, e);
+  var callback = ReactDOM__default.unstable_batchedUpdates ? function run(e) {
+    ReactDOM__default.unstable_batchedUpdates(cb, e);
   } : cb;
 
   if (target.addEventListener) {
@@ -9607,13 +11233,13 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _createSuper$1(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$1(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof$3(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct$1() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 var MIN_SIZE = 20;
@@ -9625,7 +11251,7 @@ function getPageY(e) {
 var ScrollBar = /*#__PURE__*/function (_React$Component) {
   _inherits(ScrollBar, _React$Component);
 
-  var _super = _createSuper(ScrollBar);
+  var _super = _createSuper$1(ScrollBar);
 
   function ScrollBar() {
     var _this;
@@ -9689,7 +11315,7 @@ var ScrollBar = /*#__PURE__*/function (_React$Component) {
 
       _this.thumbRef.current.removeEventListener('touchend', _this.onMouseUp);
 
-      wrapperRaf.cancel(_this.moveRaf);
+      wrapperRaf$1.cancel(_this.moveRaf);
     }; // ======================= Thumb =======================
 
 
@@ -9716,7 +11342,7 @@ var ScrollBar = /*#__PURE__*/function (_React$Component) {
           pageY = _this$state.pageY,
           startTop = _this$state.startTop;
       var onScroll = _this.props.onScroll;
-      wrapperRaf.cancel(_this.moveRaf);
+      wrapperRaf$1.cancel(_this.moveRaf);
 
       if (dragging) {
         var offsetY = getPageY(e) - pageY;
@@ -9728,7 +11354,7 @@ var ScrollBar = /*#__PURE__*/function (_React$Component) {
 
         var ptg = enableHeightRange ? newTop / enableHeightRange : 0;
         var newScrollTop = Math.ceil(ptg * enableScrollRange);
-        _this.moveRaf = wrapperRaf(function () {
+        _this.moveRaf = wrapperRaf$1(function () {
           onScroll(newScrollTop);
         });
       }
@@ -10003,7 +11629,7 @@ function useScrollTo(containerRef, data, heights, itemHeight, getKey, collectHei
     } // Normal scroll logic
 
 
-    wrapperRaf.cancel(scrollRef.current);
+    wrapperRaf$1.cancel(scrollRef.current);
 
     if (typeof arg === 'number') {
       syncScrollTop(arg);
@@ -10079,7 +11705,7 @@ function useScrollTo(containerRef, data, heights, itemHeight, getKey, collectHei
         } // We will retry since element may not sync height as it described
 
 
-        scrollRef.current = wrapperRaf(function () {
+        scrollRef.current = wrapperRaf$1(function () {
           if (needCollectHeight) {
             collectHeight();
           }
@@ -10250,7 +11876,7 @@ function useFrameWheel(inVirtual, isScrollAtTop, isScrollAtBottom, onWheelDelta)
 
   function onWheel(event) {
     if (!inVirtual) return;
-    wrapperRaf.cancel(nextFrameRef.current);
+    wrapperRaf$1.cancel(nextFrameRef.current);
     var deltaY = event.deltaY;
     offsetRef.current += deltaY;
     wheelValueRef.current = deltaY; // Do nothing when scroll at the edge, Skip check when is in scroll
@@ -10261,7 +11887,7 @@ function useFrameWheel(inVirtual, isScrollAtTop, isScrollAtBottom, onWheelDelta)
       event.preventDefault();
     }
 
-    nextFrameRef.current = wrapperRaf(function () {
+    nextFrameRef.current = wrapperRaf$1(function () {
       // Patch a multiple for Firefox to fix wheel number too small
       // ref: https://github.com/ant-design/ant-design/issues/26372#issuecomment-679460266
       var patchMultiple = isMouseScrollRef.current ? 10 : 1;
@@ -11175,17 +12801,17 @@ var isClient = typeof window !== 'undefined' && window.document && window.docume
 /** Is client side and not jsdom */
 
 var isBrowserClient = process.env.NODE_ENV !== 'test' && isClient;
-var uuid = 0;
+var uuid$3 = 0;
 /** Get unique id for accessibility usage */
 
-function getUUID() {
+function getUUID$1() {
   var retId; // Test never reach
 
   /* istanbul ignore if */
 
   if (isBrowserClient) {
-    retId = uuid;
-    uuid += 1;
+    retId = uuid$3;
+    uuid$3 += 1;
   } else {
     retId = 'TEST_OR_SSR';
   }
@@ -11603,9 +13229,9 @@ function useBatchFrameState() {
 
     function setValue(val) {
       statesRef.current[myIndex] = typeof val === 'function' ? val(statesRef.current[myIndex]) : val;
-      wrapperRaf.cancel(beforeFrameId); // Flush with batch
+      wrapperRaf$1.cancel(beforeFrameId); // Flush with batch
 
-      beforeFrameId = wrapperRaf(function () {
+      beforeFrameId = wrapperRaf$1(function () {
         if (!destroyRef.current) {
           forceUpdate({});
         }
@@ -12472,7 +14098,7 @@ var Portal = forwardRef(function (props, ref) {
       (_containerRef$current = containerRef.current) === null || _containerRef$current === void 0 ? void 0 : (_containerRef$current2 = _containerRef$current.parentNode) === null || _containerRef$current2 === void 0 ? void 0 : _containerRef$current2.removeChild(containerRef.current);
     };
   }, []);
-  return containerRef.current ? ReactDOM.createPortal(children, containerRef.current) : null;
+  return containerRef.current ? ReactDOM__default.createPortal(children, containerRef.current) : null;
 });
 
 function isPointsEq(a1, a2, isAlignPoint) {
@@ -12527,7 +14153,7 @@ function getMotion(_ref) {
   return null;
 }
 
-function Mask(props) {
+function Mask$1(props) {
   var prefixCls = props.prefixCls,
       visible = props.visible,
       zIndex = props.zIndex,
@@ -12849,7 +14475,7 @@ function getClientPosition(elem) {
   };
 }
 
-function getScroll(w, top) {
+function getScroll$1(w, top) {
   var ret = w["page".concat(top ? 'Y' : 'X', "Offset")];
   var method = "scroll".concat(top ? 'Top' : 'Left');
 
@@ -12868,11 +14494,11 @@ function getScroll(w, top) {
 }
 
 function getScrollLeft(w) {
-  return getScroll(w);
+  return getScroll$1(w);
 }
 
 function getScrollTop(w) {
-  return getScroll(w, true);
+  return getScroll$1(w, true);
 }
 
 function getOffset(el) {
@@ -13404,7 +15030,7 @@ mix(utils, domUtils);
  * 得到会导致元素显示不全的祖先元素
  */
 
-var getParent = utils.getParent;
+var getParent$1 = utils.getParent;
 
 function getOffsetParent(element) {
   if (utils.isWindow(element) || element.nodeType === 9) {
@@ -13434,10 +15060,10 @@ function getOffsetParent(element) {
   var skipStatic = positionStyle === 'fixed' || positionStyle === 'absolute';
 
   if (!skipStatic) {
-    return element.nodeName.toLowerCase() === 'html' ? null : getParent(element);
+    return element.nodeName.toLowerCase() === 'html' ? null : getParent$1(element);
   }
 
-  for (parent = getParent(element); parent && parent !== body && parent.nodeType !== 9; parent = getParent(parent)) {
+  for (parent = getParent$1(element); parent && parent !== body && parent.nodeType !== 9; parent = getParent$1(parent)) {
     positionStyle = utils.css(parent, 'position');
 
     if (positionStyle !== 'static') {
@@ -13448,7 +15074,7 @@ function getOffsetParent(element) {
   return null;
 }
 
-var getParent$1 = utils.getParent;
+var getParent$1$1 = utils.getParent;
 function isAncestorFixed(element) {
   if (utils.isWindow(element) || element.nodeType === 9) {
     return false;
@@ -13458,7 +15084,7 @@ function isAncestorFixed(element) {
   var body = doc.body;
   var parent = null;
 
-  for (parent = getParent$1(element); parent && parent !== body; parent = getParent$1(parent)) {
+  for (parent = getParent$1$1(element); parent && parent !== body; parent = getParent$1$1(parent)) {
     var positionStyle = utils.css(parent, 'position');
 
     if (positionStyle === 'fixed') {
@@ -14195,12 +15821,12 @@ var useVisibleStatus = (function (visible, doMeasure) {
   }
 
   function cancelRaf() {
-    wrapperRaf.cancel(rafRef.current);
+    wrapperRaf$1.cancel(rafRef.current);
   }
 
   function goNextStatus(callback) {
     cancelRaf();
-    rafRef.current = wrapperRaf(function () {
+    rafRef.current = wrapperRaf$1(function () {
       // Only align should be manually trigger
       setStatus(function (prev) {
         switch (status) {
@@ -14230,7 +15856,7 @@ var useVisibleStatus = (function (visible, doMeasure) {
     }
 
     if (status) {
-      rafRef.current = wrapperRaf( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/regenerator.mark(function _callee() {
+      rafRef.current = wrapperRaf$1( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/regenerator.mark(function _callee() {
         var index, nextStatus;
         return regenerator.wrap(function _callee$(_context) {
           while (1) {
@@ -14568,7 +16194,7 @@ var Popup = /*#__PURE__*/React.forwardRef(function (_ref, ref) {
     ref: ref
   })); // We can use fragment directly but this may failed some selector usage. Keep as origin logic
 
-  return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(Mask, cloneProps), popupNode);
+  return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(Mask$1, cloneProps), popupNode);
 });
 Popup.displayName = 'Popup';
 
@@ -14597,7 +16223,7 @@ function generateTrigger(PortalComponent) {
   var Trigger = /*#__PURE__*/function (_React$Component) {
     _inherits$1(Trigger, _React$Component);
 
-    var _super = _createSuper$1(Trigger);
+    var _super = _createSuper$2(Trigger);
 
     function Trigger(props) {
       var _this;
@@ -14779,7 +16405,7 @@ function generateTrigger(PortalComponent) {
         } catch (err) {// Do nothing
         }
 
-        return ReactDOM.findDOMNode(_assertThisInitialized$1(_this));
+        return ReactDOM__default.findDOMNode(_assertThisInitialized$1(_this));
       };
 
       _this.getPopupClassNameFromAlign = function (align) {
@@ -14868,7 +16494,7 @@ function generateTrigger(PortalComponent) {
       };
 
       _this.attachParent = function (popupContainer) {
-        wrapperRaf.cancel(_this.attachId);
+        wrapperRaf$1.cancel(_this.attachId);
         var _this$props3 = _this.props,
             getPopupContainer = _this$props3.getPopupContainer,
             getDocument = _this$props3.getDocument;
@@ -14890,7 +16516,7 @@ function generateTrigger(PortalComponent) {
           mountNode.appendChild(popupContainer);
         } else {
           // Retry after frame render in case parent not ready
-          _this.attachId = wrapperRaf(function () {
+          _this.attachId = wrapperRaf$1(function () {
             _this.attachParent(popupContainer);
           });
         }
@@ -14999,7 +16625,7 @@ function generateTrigger(PortalComponent) {
         this.clearDelayTimer();
         this.clearOutsideHandler();
         clearTimeout(this.mouseDownTimeout);
-        wrapperRaf.cancel(this.attachId);
+        wrapperRaf$1.cancel(this.attachId);
       }
     }, {
       key: "getPopupDomNode",
@@ -15704,7 +17330,7 @@ function generateSelector(config) {
         setInnerId = _useState2[1];
 
     useEffect(function () {
-      setInnerId("rc_select_".concat(getUUID()));
+      setInnerId("rc_select_".concat(getUUID$1()));
     }, []);
     var mergedId = id || innerId; // optionLabelProp
 
@@ -16576,7 +18202,7 @@ var RefSelect$1 = generateSelector({
 var Select$2 = /*#__PURE__*/function (_React$Component) {
   _inherits$1(Select, _React$Component);
 
-  var _super = _createSuper$1(Select);
+  var _super = _createSuper$2(Select);
 
   function Select() {
     var _this;
@@ -16738,7 +18364,7 @@ var getTransitionName = function getTransitionName(rootPrefixCls, motion, transi
 };
 
 // TODO: 4.0 - codemod should help to change `filterOption` to support node props.
-var __rest$1 = undefined && undefined.__rest || function (s, e) {
+var __rest$5 = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -16767,7 +18393,7 @@ var InternalSelect = function InternalSelect(_a, ref) {
       listItemHeight = _a$listItemHeight === void 0 ? 24 : _a$listItemHeight,
       customizeSize = _a.size,
       notFoundContent = _a.notFoundContent,
-      props = __rest$1(_a, ["prefixCls", "bordered", "className", "getPopupContainer", "dropdownClassName", "listHeight", "listItemHeight", "size", "notFoundContent"]);
+      props = __rest$5(_a, ["prefixCls", "bordered", "className", "getPopupContainer", "dropdownClassName", "listHeight", "listItemHeight", "size", "notFoundContent"]);
 
   var _React$useContext = React.useContext(ConfigContext),
       getContextPopupContainer = _React$useContext.getPopupContainer,
@@ -16856,6 +18482,2263 @@ function cloneElement(element, props) {
   return replaceElement(element, element, props);
 }
 
+// https://stackoverflow.com/questions/46176165/ways-to-get-string-literal-type-of-array-values-without-enum-overhead
+var tuple = function tuple() {
+  for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+    args[_key] = arguments[_key];
+  }
+
+  return args;
+};
+
+var UnreachableException = function UnreachableException(value) {
+  _classCallCheck$2(this, UnreachableException);
+
+  return new Error("unreachable case: ".concat(JSON.stringify(value)));
+};
+
+var __rest$4 = undefined && undefined.__rest || function (s, e) {
+  var t = {};
+
+  for (var p in s) {
+    if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
+  }
+
+  if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+    if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i])) t[p[i]] = s[p[i]];
+  }
+  return t;
+};
+
+var ButtonGroup = function ButtonGroup(props) {
+  return /*#__PURE__*/React.createElement(ConfigConsumer, null, function (_ref) {
+    var _classNames;
+
+    var getPrefixCls = _ref.getPrefixCls,
+        direction = _ref.direction;
+
+    var customizePrefixCls = props.prefixCls,
+        size = props.size,
+        className = props.className,
+        others = __rest$4(props, ["prefixCls", "size", "className"]);
+
+    var prefixCls = getPrefixCls('btn-group', customizePrefixCls); // large => lg
+    // small => sm
+
+    var sizeCls = '';
+
+    switch (size) {
+      case 'large':
+        sizeCls = 'lg';
+        break;
+
+      case 'small':
+        sizeCls = 'sm';
+        break;
+
+      case 'middle':
+      case undefined:
+        break;
+
+      default:
+        // eslint-disable-next-line no-console
+        console.warn(new UnreachableException(size));
+    }
+
+    var classes = classnames(prefixCls, (_classNames = {}, _defineProperty$4(_classNames, "".concat(prefixCls, "-").concat(sizeCls), sizeCls), _defineProperty$4(_classNames, "".concat(prefixCls, "-rtl"), direction === 'rtl'), _classNames), className);
+    return /*#__PURE__*/React.createElement("div", _extends$1({}, others, {
+      className: classes
+    }));
+  });
+};
+
+var id = 0;
+var ids = {}; // Support call raf with delay specified frame
+
+function wrapperRaf(callback) {
+  var delayFrames = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+  var myId = id++;
+  var restFrames = delayFrames;
+
+  function internalCallback() {
+    restFrames -= 1;
+
+    if (restFrames <= 0) {
+      callback();
+      delete ids[myId];
+    } else {
+      ids[myId] = wrapperRaf$1(internalCallback);
+    }
+  }
+
+  ids[myId] = wrapperRaf$1(internalCallback);
+  return myId;
+}
+
+wrapperRaf.cancel = function cancel(pid) {
+  if (pid === undefined) return;
+  wrapperRaf$1.cancel(ids[pid]);
+  delete ids[pid];
+};
+
+wrapperRaf.ids = ids; // export this for test usage
+
+var styleForPseudo; // Where el is the DOM element you'd like to test for visibility
+
+function isHidden(element) {
+  if (process.env.NODE_ENV === 'test') {
+    return false;
+  }
+
+  return !element || element.offsetParent === null || element.hidden;
+}
+
+function isNotGrey(color) {
+  // eslint-disable-next-line no-useless-escape
+  var match = (color || '').match(/rgba?\((\d*), (\d*), (\d*)(, [\d.]*)?\)/);
+
+  if (match && match[1] && match[2] && match[3]) {
+    return !(match[1] === match[2] && match[2] === match[3]);
+  }
+
+  return true;
+}
+
+var Wave = /*#__PURE__*/function (_React$Component) {
+  _inherits$1(Wave, _React$Component);
+
+  var _super = _createSuper$2(Wave);
+
+  function Wave() {
+    var _this;
+
+    _classCallCheck$2(this, Wave);
+
+    _this = _super.apply(this, arguments);
+    _this.containerRef = /*#__PURE__*/React.createRef();
+    _this.animationStart = false;
+    _this.destroyed = false;
+
+    _this.onClick = function (node, waveColor) {
+      var _a, _b;
+
+      if (!node || isHidden(node) || node.className.indexOf('-leave') >= 0) {
+        return;
+      }
+
+      var insertExtraNode = _this.props.insertExtraNode;
+      _this.extraNode = document.createElement('div');
+
+      var _assertThisInitialize = _assertThisInitialized$1(_this),
+          extraNode = _assertThisInitialize.extraNode;
+
+      var getPrefixCls = _this.context.getPrefixCls;
+      extraNode.className = "".concat(getPrefixCls(''), "-click-animating-node");
+
+      var attributeName = _this.getAttributeName();
+
+      node.setAttribute(attributeName, 'true'); // Not white or transparent or grey
+
+      if (waveColor && waveColor !== '#ffffff' && waveColor !== 'rgb(255, 255, 255)' && isNotGrey(waveColor) && !/rgba\((?:\d*, ){3}0\)/.test(waveColor) && // any transparent rgba color
+      waveColor !== 'transparent') {
+        extraNode.style.borderColor = waveColor;
+        var nodeRoot = ((_a = node.getRootNode) === null || _a === void 0 ? void 0 : _a.call(node)) || node.ownerDocument;
+        var nodeBody = nodeRoot instanceof Document ? nodeRoot.body : (_b = nodeRoot.firstChild) !== null && _b !== void 0 ? _b : nodeRoot;
+        styleForPseudo = updateCSS("\n      [".concat(getPrefixCls(''), "-click-animating-without-extra-node='true']::after, .").concat(getPrefixCls(''), "-click-animating-node {\n        --antd-wave-shadow-color: ").concat(waveColor, ";\n      }"), 'antd-wave', {
+          csp: _this.csp,
+          attachTo: nodeBody
+        });
+      }
+
+      if (insertExtraNode) {
+        node.appendChild(extraNode);
+      }
+
+      ['transition', 'animation'].forEach(function (name) {
+        node.addEventListener("".concat(name, "start"), _this.onTransitionStart);
+        node.addEventListener("".concat(name, "end"), _this.onTransitionEnd);
+      });
+    };
+
+    _this.onTransitionStart = function (e) {
+      if (_this.destroyed) {
+        return;
+      }
+
+      var node = _this.containerRef.current;
+
+      if (!e || e.target !== node || _this.animationStart) {
+        return;
+      }
+
+      _this.resetEffect(node);
+    };
+
+    _this.onTransitionEnd = function (e) {
+      if (!e || e.animationName !== 'fadeEffect') {
+        return;
+      }
+
+      _this.resetEffect(e.target);
+    };
+
+    _this.bindAnimationEvent = function (node) {
+      if (!node || !node.getAttribute || node.getAttribute('disabled') || node.className.indexOf('disabled') >= 0) {
+        return;
+      }
+
+      var onClick = function onClick(e) {
+        // Fix radio button click twice
+        if (e.target.tagName === 'INPUT' || isHidden(e.target)) {
+          return;
+        }
+
+        _this.resetEffect(node); // Get wave color from target
+
+
+        var waveColor = getComputedStyle(node).getPropertyValue('border-top-color') || // Firefox Compatible
+        getComputedStyle(node).getPropertyValue('border-color') || getComputedStyle(node).getPropertyValue('background-color');
+        _this.clickWaveTimeoutId = window.setTimeout(function () {
+          return _this.onClick(node, waveColor);
+        }, 0);
+        wrapperRaf.cancel(_this.animationStartId);
+        _this.animationStart = true; // Render to trigger transition event cost 3 frames. Let's delay 10 frames to reset this.
+
+        _this.animationStartId = wrapperRaf(function () {
+          _this.animationStart = false;
+        }, 10);
+      };
+
+      node.addEventListener('click', onClick, true);
+      return {
+        cancel: function cancel() {
+          node.removeEventListener('click', onClick, true);
+        }
+      };
+    };
+
+    _this.renderWave = function (_ref) {
+      var csp = _ref.csp;
+      var children = _this.props.children;
+      _this.csp = csp;
+      if (! /*#__PURE__*/React.isValidElement(children)) return children;
+      var ref = _this.containerRef;
+
+      if (supportRef(children)) {
+        ref = composeRef(children.ref, _this.containerRef);
+      }
+
+      return cloneElement(children, {
+        ref: ref
+      });
+    };
+
+    return _this;
+  }
+
+  _createClass$2(Wave, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var node = this.containerRef.current;
+
+      if (!node || node.nodeType !== 1) {
+        return;
+      }
+
+      this.instance = this.bindAnimationEvent(node);
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      if (this.instance) {
+        this.instance.cancel();
+      }
+
+      if (this.clickWaveTimeoutId) {
+        clearTimeout(this.clickWaveTimeoutId);
+      }
+
+      this.destroyed = true;
+    }
+  }, {
+    key: "getAttributeName",
+    value: function getAttributeName() {
+      var getPrefixCls = this.context.getPrefixCls;
+      var insertExtraNode = this.props.insertExtraNode;
+      return insertExtraNode ? "".concat(getPrefixCls(''), "-click-animating") : "".concat(getPrefixCls(''), "-click-animating-without-extra-node");
+    }
+  }, {
+    key: "resetEffect",
+    value: function resetEffect(node) {
+      var _this2 = this;
+
+      if (!node || node === this.extraNode || !(node instanceof Element)) {
+        return;
+      }
+
+      var insertExtraNode = this.props.insertExtraNode;
+      var attributeName = this.getAttributeName();
+      node.setAttribute(attributeName, 'false'); // edge has bug on `removeAttribute` #14466
+
+      if (styleForPseudo) {
+        styleForPseudo.innerHTML = '';
+      }
+
+      if (insertExtraNode && this.extraNode && node.contains(this.extraNode)) {
+        node.removeChild(this.extraNode);
+      }
+
+      ['transition', 'animation'].forEach(function (name) {
+        node.removeEventListener("".concat(name, "start"), _this2.onTransitionStart);
+        node.removeEventListener("".concat(name, "end"), _this2.onTransitionEnd);
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/React.createElement(ConfigConsumer, null, this.renderWave);
+    }
+  }]);
+
+  return Wave;
+}(React.Component);
+Wave.contextType = ConfigContext;
+
+var getCollapsedWidth = function getCollapsedWidth() {
+  return {
+    width: 0,
+    opacity: 0,
+    transform: 'scale(0)'
+  };
+};
+
+var getRealWidth = function getRealWidth(node) {
+  return {
+    width: node.scrollWidth,
+    opacity: 1,
+    transform: 'scale(1)'
+  };
+};
+
+var LoadingIcon = function LoadingIcon(_ref) {
+  var prefixCls = _ref.prefixCls,
+      loading = _ref.loading,
+      existIcon = _ref.existIcon;
+  var visible = !!loading;
+
+  if (existIcon) {
+    return /*#__PURE__*/React__default.createElement("span", {
+      className: "".concat(prefixCls, "-loading-icon")
+    }, /*#__PURE__*/React__default.createElement(LoadingOutlined$1, null));
+  }
+
+  return /*#__PURE__*/React__default.createElement(CSSMotion, {
+    visible: visible // We do not really use this motionName
+    ,
+    motionName: "".concat(prefixCls, "-loading-icon-motion"),
+    removeOnLeave: true,
+    onAppearStart: getCollapsedWidth,
+    onAppearActive: getRealWidth,
+    onEnterStart: getCollapsedWidth,
+    onEnterActive: getRealWidth,
+    onLeaveStart: getRealWidth,
+    onLeaveActive: getCollapsedWidth
+  }, function (_ref2, ref) {
+    var className = _ref2.className,
+        style = _ref2.style;
+    return /*#__PURE__*/React__default.createElement("span", {
+      className: "".concat(prefixCls, "-loading-icon"),
+      style: style,
+      ref: ref
+    }, /*#__PURE__*/React__default.createElement(LoadingOutlined$1, {
+      className: className
+    }));
+  });
+};
+
+var __rest$3 = undefined && undefined.__rest || function (s, e) {
+  var t = {};
+
+  for (var p in s) {
+    if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
+  }
+
+  if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+    if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i])) t[p[i]] = s[p[i]];
+  }
+  return t;
+};
+var rxTwoCNChar = /^[\u4e00-\u9fa5]{2}$/;
+var isTwoCNChar = rxTwoCNChar.test.bind(rxTwoCNChar);
+
+function isString(str) {
+  return typeof str === 'string';
+}
+
+function isUnborderedButtonType(type) {
+  return type === 'text' || type === 'link';
+} // Insert one space between two chinese characters automatically.
+
+
+function insertSpace(child, needInserted) {
+  // Check the child if is undefined or null.
+  if (child == null) {
+    return;
+  }
+
+  var SPACE = needInserted ? ' ' : ''; // strictNullChecks oops.
+
+  if (typeof child !== 'string' && typeof child !== 'number' && isString(child.type) && isTwoCNChar(child.props.children)) {
+    return cloneElement(child, {
+      children: child.props.children.split('').join(SPACE)
+    });
+  }
+
+  if (typeof child === 'string') {
+    if (isTwoCNChar(child)) {
+      child = child.split('').join(SPACE);
+    }
+
+    return /*#__PURE__*/React.createElement("span", null, child);
+  }
+
+  return child;
+}
+
+function spaceChildren(children, needInserted) {
+  var isPrevChildPure = false;
+  var childList = [];
+  React.Children.forEach(children, function (child) {
+    var type = _typeof$4(child);
+
+    var isCurrentChildPure = type === 'string' || type === 'number';
+
+    if (isPrevChildPure && isCurrentChildPure) {
+      var lastIndex = childList.length - 1;
+      var lastChild = childList[lastIndex];
+      childList[lastIndex] = "".concat(lastChild).concat(child);
+    } else {
+      childList.push(child);
+    }
+
+    isPrevChildPure = isCurrentChildPure;
+  }); // Pass to React.Children.map to auto fill key
+
+  return React.Children.map(childList, function (child) {
+    return insertSpace(child, needInserted);
+  });
+}
+
+tuple('default', 'primary', 'ghost', 'dashed', 'link', 'text');
+tuple('circle', 'round');
+tuple('submit', 'button', 'reset');
+function convertLegacyProps(type) {
+  if (type === 'danger') {
+    return {
+      danger: true
+    };
+  }
+
+  return {
+    type: type
+  };
+}
+
+var InternalButton = function InternalButton(props, ref) {
+  var _classNames;
+
+  var _props$loading = props.loading,
+      loading = _props$loading === void 0 ? false : _props$loading,
+      customizePrefixCls = props.prefixCls,
+      type = props.type,
+      danger = props.danger,
+      shape = props.shape,
+      customizeSize = props.size,
+      className = props.className,
+      children = props.children,
+      icon = props.icon,
+      _props$ghost = props.ghost,
+      ghost = _props$ghost === void 0 ? false : _props$ghost,
+      _props$block = props.block,
+      block = _props$block === void 0 ? false : _props$block,
+      _props$htmlType = props.htmlType,
+      htmlType = _props$htmlType === void 0 ? 'button' : _props$htmlType,
+      rest = __rest$3(props, ["loading", "prefixCls", "type", "danger", "shape", "size", "className", "children", "icon", "ghost", "block", "htmlType"]);
+
+  var size = React.useContext(SizeContext);
+
+  var _React$useState = React.useState(!!loading),
+      _React$useState2 = _slicedToArray$3(_React$useState, 2),
+      innerLoading = _React$useState2[0],
+      setLoading = _React$useState2[1];
+
+  var _React$useState3 = React.useState(false),
+      _React$useState4 = _slicedToArray$3(_React$useState3, 2),
+      hasTwoCNChar = _React$useState4[0],
+      setHasTwoCNChar = _React$useState4[1];
+
+  var _React$useContext = React.useContext(ConfigContext),
+      getPrefixCls = _React$useContext.getPrefixCls,
+      autoInsertSpaceInButton = _React$useContext.autoInsertSpaceInButton,
+      direction = _React$useContext.direction;
+
+  var buttonRef = ref || /*#__PURE__*/React.createRef();
+  var delayTimeoutRef = React.useRef();
+
+  var isNeedInserted = function isNeedInserted() {
+    return React.Children.count(children) === 1 && !icon && !isUnborderedButtonType(type);
+  };
+
+  var fixTwoCNChar = function fixTwoCNChar() {
+    // Fix for HOC usage like <FormatMessage />
+    if (!buttonRef || !buttonRef.current || autoInsertSpaceInButton === false) {
+      return;
+    }
+
+    var buttonText = buttonRef.current.textContent;
+
+    if (isNeedInserted() && isTwoCNChar(buttonText)) {
+      if (!hasTwoCNChar) {
+        setHasTwoCNChar(true);
+      }
+    } else if (hasTwoCNChar) {
+      setHasTwoCNChar(false);
+    }
+  }; // =============== Update Loading ===============
+
+
+  var loadingOrDelay;
+
+  if (_typeof$4(loading) === 'object' && loading.delay) {
+    loadingOrDelay = loading.delay || true;
+  } else {
+    loadingOrDelay = !!loading;
+  }
+
+  React.useEffect(function () {
+    clearTimeout(delayTimeoutRef.current);
+
+    if (typeof loadingOrDelay === 'number') {
+      delayTimeoutRef.current = window.setTimeout(function () {
+        setLoading(loadingOrDelay);
+      }, loadingOrDelay);
+    } else {
+      setLoading(loadingOrDelay);
+    }
+  }, [loadingOrDelay]);
+  React.useEffect(fixTwoCNChar, [buttonRef]);
+
+  var handleClick = function handleClick(e) {
+    var _a;
+
+    var onClick = props.onClick,
+        disabled = props.disabled; // https://github.com/ant-design/ant-design/issues/30207
+
+    if (innerLoading || disabled) {
+      e.preventDefault();
+      return;
+    }
+
+    (_a = onClick) === null || _a === void 0 ? void 0 : _a(e);
+  };
+
+  devWarning(!(typeof icon === 'string' && icon.length > 2), 'Button', "`icon` is using ReactNode instead of string naming in v4. Please check `".concat(icon, "` at https://ant.design/components/icon"));
+  devWarning(!(ghost && isUnborderedButtonType(type)), 'Button', "`link` or `text` button can't be a `ghost` button.");
+  var prefixCls = getPrefixCls('btn', customizePrefixCls);
+  var autoInsertSpace = autoInsertSpaceInButton !== false; // large => lg
+  // small => sm
+
+  var sizeCls = '';
+
+  switch (customizeSize || size) {
+    case 'large':
+      sizeCls = 'lg';
+      break;
+
+    case 'small':
+      sizeCls = 'sm';
+      break;
+  }
+
+  var iconType = innerLoading ? 'loading' : icon;
+  var classes = classnames(prefixCls, (_classNames = {}, _defineProperty$4(_classNames, "".concat(prefixCls, "-").concat(type), type), _defineProperty$4(_classNames, "".concat(prefixCls, "-").concat(shape), shape), _defineProperty$4(_classNames, "".concat(prefixCls, "-").concat(sizeCls), sizeCls), _defineProperty$4(_classNames, "".concat(prefixCls, "-icon-only"), !children && children !== 0 && !!iconType), _defineProperty$4(_classNames, "".concat(prefixCls, "-background-ghost"), ghost && !isUnborderedButtonType(type)), _defineProperty$4(_classNames, "".concat(prefixCls, "-loading"), innerLoading), _defineProperty$4(_classNames, "".concat(prefixCls, "-two-chinese-chars"), hasTwoCNChar && autoInsertSpace), _defineProperty$4(_classNames, "".concat(prefixCls, "-block"), block), _defineProperty$4(_classNames, "".concat(prefixCls, "-dangerous"), !!danger), _defineProperty$4(_classNames, "".concat(prefixCls, "-rtl"), direction === 'rtl'), _classNames), className);
+  var iconNode = icon && !innerLoading ? icon : /*#__PURE__*/React.createElement(LoadingIcon, {
+    existIcon: !!icon,
+    prefixCls: prefixCls,
+    loading: !!innerLoading
+  });
+  var kids = children || children === 0 ? spaceChildren(children, isNeedInserted() && autoInsertSpace) : null;
+  var linkButtonRestProps = omit(rest, ['navigate']);
+
+  if (linkButtonRestProps.href !== undefined) {
+    return /*#__PURE__*/React.createElement("a", _extends$1({}, linkButtonRestProps, {
+      className: classes,
+      onClick: handleClick,
+      ref: buttonRef
+    }), iconNode, kids);
+  }
+
+  var buttonNode = /*#__PURE__*/React.createElement("button", _extends$1({}, rest, {
+    type: htmlType,
+    className: classes,
+    onClick: handleClick,
+    ref: buttonRef
+  }), iconNode, kids);
+
+  if (isUnborderedButtonType(type)) {
+    return buttonNode;
+  }
+
+  return /*#__PURE__*/React.createElement(Wave, null, buttonNode);
+};
+
+var Button$1 = /*#__PURE__*/React.forwardRef(InternalButton);
+Button$1.displayName = 'Button';
+Button$1.Group = ButtonGroup;
+Button$1.__ANT_BUTTON = true;
+
+var canUseDocElement = function canUseDocElement() {
+  return canUseDom() && window.document.documentElement;
+};
+
+var cached;
+function getScrollBarSize(fresh) {
+  if (typeof document === 'undefined') {
+    return 0;
+  }
+
+  if (fresh || cached === undefined) {
+    var inner = document.createElement('div');
+    inner.style.width = '100%';
+    inner.style.height = '200px';
+    var outer = document.createElement('div');
+    var outerStyle = outer.style;
+    outerStyle.position = 'absolute';
+    outerStyle.top = 0;
+    outerStyle.left = 0;
+    outerStyle.pointerEvents = 'none';
+    outerStyle.visibility = 'hidden';
+    outerStyle.width = '200px';
+    outerStyle.height = '150px';
+    outerStyle.overflow = 'hidden';
+    outer.appendChild(inner);
+    document.body.appendChild(outer);
+    var widthContained = inner.offsetWidth;
+    outer.style.overflow = 'scroll';
+    var widthScroll = inner.offsetWidth;
+
+    if (widthContained === widthScroll) {
+      widthScroll = outer.clientWidth;
+    }
+
+    document.body.removeChild(outer);
+    cached = widthContained - widthScroll;
+  }
+
+  return cached;
+}
+
+/**
+ * Easy to set element style, return previous style
+ * IE browser compatible(IE browser doesn't merge overflow style, need to set it separately)
+ * https://github.com/ant-design/ant-design/issues/19393
+ *
+ */
+function setStyle(style) {
+  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+  if (!style) {
+    return {};
+  }
+
+  var _options$element = options.element,
+      element = _options$element === void 0 ? document.body : _options$element;
+  var oldStyle = {};
+  var styleKeys = Object.keys(style); // IE browser compatible
+
+  styleKeys.forEach(function (key) {
+    oldStyle[key] = element.style[key];
+  });
+  styleKeys.forEach(function (key) {
+    element.style[key] = style[key];
+  });
+  return oldStyle;
+}
+
+function isBodyOverflowing() {
+  return document.body.scrollHeight > (window.innerHeight || document.documentElement.clientHeight) && window.innerWidth > document.body.offsetWidth;
+}
+
+var cacheStyle$1 = {};
+var switchScrollingEffect = (function (close) {
+  if (!isBodyOverflowing() && !close) {
+    return;
+  } // https://github.com/ant-design/ant-design/issues/19729
+
+
+  var scrollingEffectClassName = 'ant-scrolling-effect';
+  var scrollingEffectClassNameReg = new RegExp("".concat(scrollingEffectClassName), 'g');
+  var bodyClassName = document.body.className;
+
+  if (close) {
+    if (!scrollingEffectClassNameReg.test(bodyClassName)) return;
+    setStyle(cacheStyle$1);
+    cacheStyle$1 = {};
+    document.body.className = bodyClassName.replace(scrollingEffectClassNameReg, '').trim();
+    return;
+  }
+
+  var scrollBarSize = getScrollBarSize();
+
+  if (scrollBarSize) {
+    cacheStyle$1 = setStyle({
+      position: 'relative',
+      width: "calc(100% - ".concat(scrollBarSize, "px)")
+    });
+
+    if (!scrollingEffectClassNameReg.test(bodyClassName)) {
+      var addClassName = "".concat(bodyClassName, " ").concat(scrollingEffectClassName);
+      document.body.className = addClassName.trim();
+    }
+  }
+});
+
+var locks = [];
+var scrollingEffectClassName = 'ant-scrolling-effect';
+var scrollingEffectClassNameReg = new RegExp("".concat(scrollingEffectClassName), 'g');
+var uuid$2 = 0; // https://github.com/ant-design/ant-design/issues/19340
+// https://github.com/ant-design/ant-design/issues/19332
+
+var cacheStyle = new Map();
+
+var ScrollLocker = function ScrollLocker(options) {
+  var _this = this;
+
+  _classCallCheck$2(this, ScrollLocker);
+
+  this.getContainer = function () {
+    var _this$options;
+
+    return (_this$options = _this.options) === null || _this$options === void 0 ? void 0 : _this$options.container;
+  }; // if options change...
+
+
+  this.reLock = function (options) {
+    var findLock = locks.find(function (_ref) {
+      var target = _ref.target;
+      return target === _this.lockTarget;
+    });
+
+    if (findLock) {
+      _this.unLock();
+    }
+
+    _this.options = options;
+
+    if (findLock) {
+      findLock.options = options;
+
+      _this.lock();
+    }
+  };
+
+  this.lock = function () {
+    var _this$options3;
+
+    // If lockTarget exist return
+    if (locks.some(function (_ref2) {
+      var target = _ref2.target;
+      return target === _this.lockTarget;
+    })) {
+      return;
+    } // If same container effect, return
+
+
+    if (locks.some(function (_ref3) {
+      var _this$options2;
+
+      var options = _ref3.options;
+      return (options === null || options === void 0 ? void 0 : options.container) === ((_this$options2 = _this.options) === null || _this$options2 === void 0 ? void 0 : _this$options2.container);
+    })) {
+      locks = [].concat(_toConsumableArray(locks), [{
+        target: _this.lockTarget,
+        options: _this.options
+      }]);
+      return;
+    }
+
+    var scrollBarSize = 0;
+    var container = ((_this$options3 = _this.options) === null || _this$options3 === void 0 ? void 0 : _this$options3.container) || document.body;
+
+    if (container === document.body && window.innerWidth - document.documentElement.clientWidth > 0 || container.scrollHeight > container.clientHeight) {
+      scrollBarSize = getScrollBarSize();
+    }
+
+    var containerClassName = container.className;
+
+    if (locks.filter(function (_ref4) {
+      var _this$options4;
+
+      var options = _ref4.options;
+      return (options === null || options === void 0 ? void 0 : options.container) === ((_this$options4 = _this.options) === null || _this$options4 === void 0 ? void 0 : _this$options4.container);
+    }).length === 0) {
+      cacheStyle.set(container, setStyle({
+        width: "calc(100% - ".concat(scrollBarSize, "px)"),
+        overflow: 'hidden',
+        overflowX: 'hidden',
+        overflowY: 'hidden'
+      }, {
+        element: container
+      }));
+    } // https://github.com/ant-design/ant-design/issues/19729
+
+
+    if (!scrollingEffectClassNameReg.test(containerClassName)) {
+      var addClassName = "".concat(containerClassName, " ").concat(scrollingEffectClassName);
+      container.className = addClassName.trim();
+    }
+
+    locks = [].concat(_toConsumableArray(locks), [{
+      target: _this.lockTarget,
+      options: _this.options
+    }]);
+  };
+
+  this.unLock = function () {
+    var _this$options5;
+
+    var findLock = locks.find(function (_ref5) {
+      var target = _ref5.target;
+      return target === _this.lockTarget;
+    });
+    locks = locks.filter(function (_ref6) {
+      var target = _ref6.target;
+      return target !== _this.lockTarget;
+    });
+
+    if (!findLock || locks.some(function (_ref7) {
+      var _findLock$options;
+
+      var options = _ref7.options;
+      return (options === null || options === void 0 ? void 0 : options.container) === ((_findLock$options = findLock.options) === null || _findLock$options === void 0 ? void 0 : _findLock$options.container);
+    })) {
+      return;
+    } // Remove Effect
+
+
+    var container = ((_this$options5 = _this.options) === null || _this$options5 === void 0 ? void 0 : _this$options5.container) || document.body;
+    var containerClassName = container.className;
+    if (!scrollingEffectClassNameReg.test(containerClassName)) return;
+    setStyle(cacheStyle.get(container), {
+      element: container
+    });
+    cacheStyle.delete(container);
+    container.className = container.className.replace(scrollingEffectClassNameReg, '').trim();
+  }; // eslint-disable-next-line no-plusplus
+
+
+  this.lockTarget = uuid$2++;
+  this.options = options;
+};
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf$2(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$2(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$1(this, result); }; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+var openCount = 0;
+var supportDom = canUseDom();
+// https://github.com/ant-design/ant-design/issues/19332
+
+var cacheOverflow = {};
+
+var getParent = function getParent(getContainer) {
+  if (!supportDom) {
+    return null;
+  }
+
+  if (getContainer) {
+    if (typeof getContainer === 'string') {
+      return document.querySelectorAll(getContainer)[0];
+    }
+
+    if (typeof getContainer === 'function') {
+      return getContainer();
+    }
+
+    if (_typeof$4(getContainer) === 'object' && getContainer instanceof window.HTMLElement) {
+      return getContainer;
+    }
+  }
+
+  return document.body;
+};
+
+var PortalWrapper = /*#__PURE__*/function (_React$Component) {
+  _inherits$1(PortalWrapper, _React$Component);
+
+  var _super = _createSuper(PortalWrapper);
+
+  function PortalWrapper(props) {
+    var _this;
+
+    _classCallCheck$2(this, PortalWrapper);
+
+    _this = _super.call(this, props);
+    _this.componentRef = React.createRef();
+
+    _this.updateScrollLocker = function (prevProps) {
+      var _ref = prevProps || {},
+          prevVisible = _ref.visible;
+
+      var _this$props = _this.props,
+          getContainer = _this$props.getContainer,
+          visible = _this$props.visible;
+
+      if (visible && visible !== prevVisible && supportDom && getParent(getContainer) !== _this.scrollLocker.getContainer()) {
+        _this.scrollLocker.reLock({
+          container: getParent(getContainer)
+        });
+      }
+    };
+
+    _this.updateOpenCount = function (prevProps) {
+      var _ref2 = prevProps || {},
+          prevVisible = _ref2.visible,
+          prevGetContainer = _ref2.getContainer;
+
+      var _this$props2 = _this.props,
+          visible = _this$props2.visible,
+          getContainer = _this$props2.getContainer; // Update count
+
+      if (visible !== prevVisible && supportDom && getParent(getContainer) === document.body) {
+        if (visible && !prevVisible) {
+          openCount += 1;
+        } else if (prevProps) {
+          openCount -= 1;
+        }
+      } // Clean up container if needed
+
+
+      var getContainerIsFunc = typeof getContainer === 'function' && typeof prevGetContainer === 'function';
+
+      if (getContainerIsFunc ? getContainer.toString() !== prevGetContainer.toString() : getContainer !== prevGetContainer) {
+        _this.removeCurrentContainer();
+      }
+    };
+
+    _this.attachToParent = function () {
+      var force = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+
+      if (force || _this.container && !_this.container.parentNode) {
+        var parent = getParent(_this.props.getContainer);
+
+        if (parent) {
+          parent.appendChild(_this.container);
+          return true;
+        }
+
+        return false;
+      }
+
+      return true;
+    };
+
+    _this.getContainer = function () {
+      if (!supportDom) {
+        return null;
+      }
+
+      if (!_this.container) {
+        _this.container = document.createElement('div');
+
+        _this.attachToParent(true);
+      }
+
+      _this.setWrapperClassName();
+
+      return _this.container;
+    };
+
+    _this.setWrapperClassName = function () {
+      var wrapperClassName = _this.props.wrapperClassName;
+
+      if (_this.container && wrapperClassName && wrapperClassName !== _this.container.className) {
+        _this.container.className = wrapperClassName;
+      }
+    };
+
+    _this.removeCurrentContainer = function () {
+      var _this$container, _this$container$paren;
+
+      // Portal will remove from `parentNode`.
+      // Let's handle this again to avoid refactor issue.
+      (_this$container = _this.container) === null || _this$container === void 0 ? void 0 : (_this$container$paren = _this$container.parentNode) === null || _this$container$paren === void 0 ? void 0 : _this$container$paren.removeChild(_this.container);
+    };
+    /**
+     * Enhance ./switchScrollingEffect
+     * 1. Simulate document body scroll bar with
+     * 2. Record body has overflow style and recover when all of PortalWrapper invisible
+     * 3. Disable body scroll when PortalWrapper has open
+     *
+     * @memberof PortalWrapper
+     */
+
+
+    _this.switchScrollingEffect = function () {
+      if (openCount === 1 && !Object.keys(cacheOverflow).length) {
+        switchScrollingEffect(); // Must be set after switchScrollingEffect
+
+        cacheOverflow = setStyle({
+          overflow: 'hidden',
+          overflowX: 'hidden',
+          overflowY: 'hidden'
+        });
+      } else if (!openCount) {
+        setStyle(cacheOverflow);
+        cacheOverflow = {};
+        switchScrollingEffect(true);
+      }
+    };
+
+    _this.scrollLocker = new ScrollLocker({
+      container: getParent(props.getContainer)
+    });
+    return _this;
+  }
+
+  _createClass$2(PortalWrapper, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      this.updateOpenCount();
+
+      if (!this.attachToParent()) {
+        this.rafId = wrapperRaf$1(function () {
+          _this2.forceUpdate();
+        });
+      }
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      this.updateOpenCount(prevProps);
+      this.updateScrollLocker(prevProps);
+      this.setWrapperClassName();
+      this.attachToParent();
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      var _this$props3 = this.props,
+          visible = _this$props3.visible,
+          getContainer = _this$props3.getContainer;
+
+      if (supportDom && getParent(getContainer) === document.body) {
+        // 离开时不会 render， 导到离开时数值不变，改用 func 。。
+        openCount = visible && openCount ? openCount - 1 : openCount;
+      }
+
+      this.removeCurrentContainer();
+      wrapperRaf$1.cancel(this.rafId);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props4 = this.props,
+          children = _this$props4.children,
+          forceRender = _this$props4.forceRender,
+          visible = _this$props4.visible;
+      var portal = null;
+      var childProps = {
+        getOpenCount: function getOpenCount() {
+          return openCount;
+        },
+        getContainer: this.getContainer,
+        switchScrollingEffect: this.switchScrollingEffect,
+        scrollLocker: this.scrollLocker
+      };
+
+      if (forceRender || visible || this.componentRef.current) {
+        portal = /*#__PURE__*/React.createElement(Portal, {
+          getContainer: this.getContainer,
+          ref: this.componentRef
+        }, children(childProps));
+      }
+
+      return portal;
+    }
+  }]);
+
+  return PortalWrapper;
+}(React.Component);
+
+function Mask(props) {
+  var prefixCls = props.prefixCls,
+      style = props.style,
+      visible = props.visible,
+      maskProps = props.maskProps,
+      motionName = props.motionName;
+  return /*#__PURE__*/React.createElement(CSSMotion, {
+    key: "mask",
+    visible: visible,
+    motionName: motionName,
+    leavedClassName: "".concat(prefixCls, "-mask-hidden")
+  }, function (_ref) {
+    var motionClassName = _ref.className,
+        motionStyle = _ref.style;
+    return /*#__PURE__*/React.createElement("div", _extends$1({
+      style: _objectSpread2$1(_objectSpread2$1({}, motionStyle), style),
+      className: classnames("".concat(prefixCls, "-mask"), motionClassName)
+    }, maskProps));
+  });
+}
+
+// =============================== Motion ===============================
+function getMotionName(prefixCls, transitionName, animationName) {
+  var motionName = transitionName;
+
+  if (!motionName && animationName) {
+    motionName = "".concat(prefixCls, "-").concat(animationName);
+  }
+
+  return motionName;
+} // ================================ UUID ================================
+
+var uuid$1 = -1;
+function getUUID() {
+  uuid$1 += 1;
+  return uuid$1;
+} // =============================== Offset ===============================
+
+function getScroll(w, top) {
+  var ret = w["page".concat(top ? 'Y' : 'X', "Offset")];
+  var method = "scroll".concat(top ? 'Top' : 'Left');
+
+  if (typeof ret !== 'number') {
+    var d = w.document;
+    ret = d.documentElement[method];
+
+    if (typeof ret !== 'number') {
+      ret = d.body[method];
+    }
+  }
+
+  return ret;
+}
+
+function offset(el) {
+  var rect = el.getBoundingClientRect();
+  var pos = {
+    left: rect.left,
+    top: rect.top
+  };
+  var doc = el.ownerDocument;
+  var w = doc.defaultView || doc.parentWindow;
+  pos.left += getScroll(w);
+  pos.top += getScroll(w, true);
+  return pos;
+}
+
+var MemoChildren = /*#__PURE__*/React.memo(function (_ref) {
+  var children = _ref.children;
+  return children;
+}, function (_, _ref2) {
+  var shouldUpdate = _ref2.shouldUpdate;
+  return !shouldUpdate;
+});
+
+var sentinelStyle = {
+  width: 0,
+  height: 0,
+  overflow: 'hidden',
+  outline: 'none'
+};
+var Content = /*#__PURE__*/React.forwardRef(function (props, ref) {
+  var closable = props.closable,
+      prefixCls = props.prefixCls,
+      width = props.width,
+      height = props.height,
+      footer = props.footer,
+      title = props.title,
+      closeIcon = props.closeIcon,
+      style = props.style,
+      className = props.className,
+      visible = props.visible,
+      forceRender = props.forceRender,
+      bodyStyle = props.bodyStyle,
+      bodyProps = props.bodyProps,
+      children = props.children,
+      destroyOnClose = props.destroyOnClose,
+      modalRender = props.modalRender,
+      motionName = props.motionName,
+      ariaId = props.ariaId,
+      onClose = props.onClose,
+      onVisibleChanged = props.onVisibleChanged,
+      onMouseDown = props.onMouseDown,
+      onMouseUp = props.onMouseUp,
+      mousePosition = props.mousePosition;
+  var sentinelStartRef = useRef();
+  var sentinelEndRef = useRef();
+  var dialogRef = useRef(); // ============================== Ref ===============================
+
+  React.useImperativeHandle(ref, function () {
+    return {
+      focus: function focus() {
+        var _sentinelStartRef$cur;
+
+        (_sentinelStartRef$cur = sentinelStartRef.current) === null || _sentinelStartRef$cur === void 0 ? void 0 : _sentinelStartRef$cur.focus();
+      },
+      changeActive: function changeActive(next) {
+        var _document = document,
+            activeElement = _document.activeElement;
+
+        if (next && activeElement === sentinelEndRef.current) {
+          sentinelStartRef.current.focus();
+        } else if (!next && activeElement === sentinelStartRef.current) {
+          sentinelEndRef.current.focus();
+        }
+      }
+    };
+  }); // ============================= Style ==============================
+
+  var _React$useState = React.useState(),
+      _React$useState2 = _slicedToArray$3(_React$useState, 2),
+      transformOrigin = _React$useState2[0],
+      setTransformOrigin = _React$useState2[1];
+
+  var contentStyle = {};
+
+  if (width !== undefined) {
+    contentStyle.width = width;
+  }
+
+  if (height !== undefined) {
+    contentStyle.height = height;
+  }
+
+  if (transformOrigin) {
+    contentStyle.transformOrigin = transformOrigin;
+  }
+
+  function onPrepare() {
+    var elementOffset = offset(dialogRef.current);
+    setTransformOrigin(mousePosition ? "".concat(mousePosition.x - elementOffset.left, "px ").concat(mousePosition.y - elementOffset.top, "px") : '');
+  } // ============================= Render =============================
+
+
+  var footerNode;
+
+  if (footer) {
+    footerNode = /*#__PURE__*/React.createElement("div", {
+      className: "".concat(prefixCls, "-footer")
+    }, footer);
+  }
+
+  var headerNode;
+
+  if (title) {
+    headerNode = /*#__PURE__*/React.createElement("div", {
+      className: "".concat(prefixCls, "-header")
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "".concat(prefixCls, "-title"),
+      id: ariaId
+    }, title));
+  }
+
+  var closer;
+
+  if (closable) {
+    closer = /*#__PURE__*/React.createElement("button", {
+      type: "button",
+      onClick: onClose,
+      "aria-label": "Close",
+      className: "".concat(prefixCls, "-close")
+    }, closeIcon || /*#__PURE__*/React.createElement("span", {
+      className: "".concat(prefixCls, "-close-x")
+    }));
+  }
+
+  var content = /*#__PURE__*/React.createElement("div", {
+    className: "".concat(prefixCls, "-content")
+  }, closer, headerNode, /*#__PURE__*/React.createElement("div", _extends$1({
+    className: "".concat(prefixCls, "-body"),
+    style: bodyStyle
+  }, bodyProps), children), footerNode);
+  return /*#__PURE__*/React.createElement(CSSMotion, {
+    visible: visible,
+    onVisibleChanged: onVisibleChanged,
+    onAppearPrepare: onPrepare,
+    onEnterPrepare: onPrepare,
+    forceRender: forceRender,
+    motionName: motionName,
+    removeOnLeave: destroyOnClose,
+    ref: dialogRef
+  }, function (_ref, motionRef) {
+    var motionClassName = _ref.className,
+        motionStyle = _ref.style;
+    return /*#__PURE__*/React.createElement("div", {
+      key: "dialog-element",
+      role: "document",
+      ref: motionRef,
+      style: _objectSpread2$1(_objectSpread2$1(_objectSpread2$1({}, motionStyle), style), contentStyle),
+      className: classnames(prefixCls, className, motionClassName),
+      onMouseDown: onMouseDown,
+      onMouseUp: onMouseUp
+    }, /*#__PURE__*/React.createElement("div", {
+      tabIndex: 0,
+      ref: sentinelStartRef,
+      style: sentinelStyle,
+      "aria-hidden": "true"
+    }), /*#__PURE__*/React.createElement(MemoChildren, {
+      shouldUpdate: visible || forceRender
+    }, modalRender ? modalRender(content) : content), /*#__PURE__*/React.createElement("div", {
+      tabIndex: 0,
+      ref: sentinelEndRef,
+      style: sentinelStyle,
+      "aria-hidden": "true"
+    }));
+  });
+});
+Content.displayName = 'Content';
+
+function Dialog(props) {
+  var _props$prefixCls = props.prefixCls,
+      prefixCls = _props$prefixCls === void 0 ? 'rc-dialog' : _props$prefixCls,
+      zIndex = props.zIndex,
+      _props$visible = props.visible,
+      visible = _props$visible === void 0 ? false : _props$visible,
+      _props$keyboard = props.keyboard,
+      keyboard = _props$keyboard === void 0 ? true : _props$keyboard,
+      _props$focusTriggerAf = props.focusTriggerAfterClose,
+      focusTriggerAfterClose = _props$focusTriggerAf === void 0 ? true : _props$focusTriggerAf,
+      scrollLocker = props.scrollLocker,
+      title = props.title,
+      wrapStyle = props.wrapStyle,
+      wrapClassName = props.wrapClassName,
+      wrapProps = props.wrapProps,
+      onClose = props.onClose,
+      afterClose = props.afterClose,
+      transitionName = props.transitionName,
+      animation = props.animation,
+      _props$closable = props.closable,
+      closable = _props$closable === void 0 ? true : _props$closable,
+      _props$mask = props.mask,
+      mask = _props$mask === void 0 ? true : _props$mask,
+      maskTransitionName = props.maskTransitionName,
+      maskAnimation = props.maskAnimation,
+      _props$maskClosable = props.maskClosable,
+      maskClosable = _props$maskClosable === void 0 ? true : _props$maskClosable,
+      maskStyle = props.maskStyle,
+      maskProps = props.maskProps;
+  var lastOutSideActiveElementRef = useRef();
+  var wrapperRef = useRef();
+  var contentRef = useRef();
+
+  var _React$useState = React.useState(visible),
+      _React$useState2 = _slicedToArray$3(_React$useState, 2),
+      animatedVisible = _React$useState2[0],
+      setAnimatedVisible = _React$useState2[1]; // ========================== Init ==========================
+
+
+  var ariaIdRef = useRef();
+
+  if (!ariaIdRef.current) {
+    ariaIdRef.current = "rcDialogTitle".concat(getUUID());
+  } // ========================= Events =========================
+
+
+  function onDialogVisibleChanged(newVisible) {
+    if (newVisible) {
+      // Try to focus
+      if (!contains(wrapperRef.current, document.activeElement)) {
+        var _contentRef$current;
+
+        lastOutSideActiveElementRef.current = document.activeElement;
+        (_contentRef$current = contentRef.current) === null || _contentRef$current === void 0 ? void 0 : _contentRef$current.focus();
+      }
+    } else {
+      // Clean up scroll bar & focus back
+      setAnimatedVisible(false);
+
+      if (mask && lastOutSideActiveElementRef.current && focusTriggerAfterClose) {
+        try {
+          lastOutSideActiveElementRef.current.focus({
+            preventScroll: true
+          });
+        } catch (e) {// Do nothing
+        }
+
+        lastOutSideActiveElementRef.current = null;
+      } // Trigger afterClose only when change visible from true to false
+
+
+      if (animatedVisible) {
+        afterClose === null || afterClose === void 0 ? void 0 : afterClose();
+      }
+    }
+  }
+
+  function onInternalClose(e) {
+    onClose === null || onClose === void 0 ? void 0 : onClose(e);
+  } // >>> Content
+
+
+  var contentClickRef = useRef(false);
+  var contentTimeoutRef = useRef(); // We need record content click incase content popup out of dialog
+
+  var onContentMouseDown = function onContentMouseDown() {
+    clearTimeout(contentTimeoutRef.current);
+    contentClickRef.current = true;
+  };
+
+  var onContentMouseUp = function onContentMouseUp() {
+    contentTimeoutRef.current = setTimeout(function () {
+      contentClickRef.current = false;
+    });
+  }; // >>> Wrapper
+  // Close only when element not on dialog
+
+
+  var onWrapperClick = null;
+
+  if (maskClosable) {
+    onWrapperClick = function onWrapperClick(e) {
+      if (contentClickRef.current) {
+        contentClickRef.current = false;
+      } else if (wrapperRef.current === e.target) {
+        onInternalClose(e);
+      }
+    };
+  }
+
+  function onWrapperKeyDown(e) {
+    if (keyboard && e.keyCode === KeyCode.ESC) {
+      e.stopPropagation();
+      onInternalClose(e);
+      return;
+    } // keep focus inside dialog
+
+
+    if (visible) {
+      if (e.keyCode === KeyCode.TAB) {
+        contentRef.current.changeActive(!e.shiftKey);
+      }
+    }
+  } // ========================= Effect =========================
+
+
+  useEffect(function () {
+    if (visible) {
+      setAnimatedVisible(true);
+    }
+
+    return function () {};
+  }, [visible]); // Remove direct should also check the scroll bar update
+
+  useEffect(function () {
+    return function () {
+      clearTimeout(contentTimeoutRef.current);
+    };
+  }, []);
+  useEffect(function () {
+    if (animatedVisible) {
+      scrollLocker === null || scrollLocker === void 0 ? void 0 : scrollLocker.lock();
+      return scrollLocker === null || scrollLocker === void 0 ? void 0 : scrollLocker.unLock;
+    }
+
+    return function () {};
+  }, [animatedVisible, scrollLocker]); // ========================= Render =========================
+
+  return /*#__PURE__*/React.createElement("div", {
+    className: "".concat(prefixCls, "-root")
+  }, /*#__PURE__*/React.createElement(Mask, {
+    prefixCls: prefixCls,
+    visible: mask && visible,
+    motionName: getMotionName(prefixCls, maskTransitionName, maskAnimation),
+    style: _objectSpread2$1({
+      zIndex: zIndex
+    }, maskStyle),
+    maskProps: maskProps
+  }), /*#__PURE__*/React.createElement("div", _extends$1({
+    tabIndex: -1,
+    onKeyDown: onWrapperKeyDown,
+    className: classnames("".concat(prefixCls, "-wrap"), wrapClassName),
+    ref: wrapperRef,
+    onClick: onWrapperClick,
+    role: "dialog",
+    "aria-labelledby": title ? ariaIdRef.current : null,
+    style: _objectSpread2$1(_objectSpread2$1({
+      zIndex: zIndex
+    }, wrapStyle), {}, {
+      display: !animatedVisible ? 'none' : null
+    })
+  }, wrapProps), /*#__PURE__*/React.createElement(Content, _extends$1({}, props, {
+    onMouseDown: onContentMouseDown,
+    onMouseUp: onContentMouseUp,
+    ref: contentRef,
+    closable: closable,
+    ariaId: ariaIdRef.current,
+    prefixCls: prefixCls,
+    visible: visible,
+    onClose: onInternalClose,
+    onVisibleChanged: onDialogVisibleChanged,
+    motionName: getMotionName(prefixCls, transitionName, animation)
+  }))));
+}
+
+/*
+ * getContainer remarks
+ * Custom container should not be return, because in the Portal component, it will remove the
+ * return container element here, if the custom container is the only child of it's component,
+ * like issue #10656, It will has a conflict with removeChild method in react-dom.
+ * So here should add a child (div element) to custom container.
+ * */
+
+var DialogWrap = function DialogWrap(props) {
+  var visible = props.visible,
+      getContainer = props.getContainer,
+      forceRender = props.forceRender,
+      _props$destroyOnClose = props.destroyOnClose,
+      destroyOnClose = _props$destroyOnClose === void 0 ? false : _props$destroyOnClose,
+      _afterClose = props.afterClose;
+
+  var _React$useState = React.useState(visible),
+      _React$useState2 = _slicedToArray$3(_React$useState, 2),
+      animatedVisible = _React$useState2[0],
+      setAnimatedVisible = _React$useState2[1];
+
+  React.useEffect(function () {
+    if (visible) {
+      setAnimatedVisible(true);
+    }
+  }, [visible]); // 渲染在当前 dom 里；
+
+  if (getContainer === false) {
+    return /*#__PURE__*/React.createElement(Dialog, _extends$1({}, props, {
+      getOpenCount: function getOpenCount() {
+        return 2;
+      } // 不对 body 做任何操作。。
+
+    }));
+  } // Destroy on close will remove wrapped div
+
+
+  if (!forceRender && destroyOnClose && !animatedVisible) {
+    return null;
+  }
+
+  return /*#__PURE__*/React.createElement(PortalWrapper, {
+    visible: visible,
+    forceRender: forceRender,
+    getContainer: getContainer
+  }, function (childProps) {
+    return /*#__PURE__*/React.createElement(Dialog, _extends$1({}, props, {
+      destroyOnClose: destroyOnClose,
+      afterClose: function afterClose() {
+        _afterClose === null || _afterClose === void 0 ? void 0 : _afterClose();
+        setAnimatedVisible(false);
+      }
+    }, childProps));
+  });
+};
+
+DialogWrap.displayName = 'Dialog';
+
+function usePatchElement() {
+  var _React$useState = React.useState([]),
+      _React$useState2 = _slicedToArray$3(_React$useState, 2),
+      elements = _React$useState2[0],
+      setElements = _React$useState2[1];
+
+  var patchElement = React.useCallback(function (element) {
+    // append a new element to elements (and create a new ref)
+    setElements(function (originElements) {
+      return [].concat(_toConsumableArray(originElements), [element]);
+    }); // return a function that removes the new element out of elements (and create a new ref)
+    // it works a little like useEffect
+
+    return function () {
+      setElements(function (originElements) {
+        return originElements.filter(function (ele) {
+          return ele !== element;
+        });
+      });
+    };
+  }, []);
+  return [elements, patchElement];
+}
+
+var ActionButton = function ActionButton(props) {
+  var clickedRef = React.useRef(false);
+  var ref = React.useRef();
+
+  var _React$useState = React.useState(false),
+      _React$useState2 = _slicedToArray$3(_React$useState, 2),
+      loading = _React$useState2[0],
+      setLoading = _React$useState2[1];
+
+  React.useEffect(function () {
+    var timeoutId;
+
+    if (props.autoFocus) {
+      var $this = ref.current;
+      timeoutId = setTimeout(function () {
+        return $this.focus();
+      });
+    }
+
+    return function () {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+    };
+  }, []);
+
+  var handlePromiseOnOk = function handlePromiseOnOk(returnValueOfOnOk) {
+    var closeModal = props.closeModal;
+
+    if (!returnValueOfOnOk || !returnValueOfOnOk.then) {
+      return;
+    }
+
+    setLoading(true);
+    returnValueOfOnOk.then(function () {
+      // It's unnecessary to set loading=false, for the Modal will be unmounted after close.
+      // setState({ loading: false });
+      closeModal.apply(void 0, arguments);
+    }, function (e) {
+      // Emit error when catch promise reject
+      // eslint-disable-next-line no-console
+      console.error(e); // See: https://github.com/ant-design/ant-design/issues/6183
+
+      setLoading(false);
+      clickedRef.current = false;
+    });
+  };
+
+  var onClick = function onClick() {
+    var actionFn = props.actionFn,
+        closeModal = props.closeModal;
+
+    if (clickedRef.current) {
+      return;
+    }
+
+    clickedRef.current = true;
+
+    if (!actionFn) {
+      closeModal();
+      return;
+    }
+
+    var returnValueOfOnOk;
+
+    if (actionFn.length) {
+      returnValueOfOnOk = actionFn(closeModal); // https://github.com/ant-design/ant-design/issues/23358
+
+      clickedRef.current = false;
+    } else {
+      returnValueOfOnOk = actionFn();
+
+      if (!returnValueOfOnOk) {
+        closeModal();
+        return;
+      }
+    }
+
+    handlePromiseOnOk(returnValueOfOnOk);
+  };
+
+  var type = props.type,
+      children = props.children,
+      prefixCls = props.prefixCls,
+      buttonProps = props.buttonProps;
+  return /*#__PURE__*/React.createElement(Button$1, _extends$1({}, convertLegacyProps(type), {
+    onClick: onClick,
+    loading: loading,
+    prefixCls: prefixCls
+  }, buttonProps, {
+    ref: ref
+  }), children);
+};
+
+var ConfirmDialog = function ConfirmDialog(props) {
+  var icon = props.icon,
+      onCancel = props.onCancel,
+      onOk = props.onOk,
+      close = props.close,
+      zIndex = props.zIndex,
+      afterClose = props.afterClose,
+      visible = props.visible,
+      keyboard = props.keyboard,
+      centered = props.centered,
+      getContainer = props.getContainer,
+      maskStyle = props.maskStyle,
+      okText = props.okText,
+      okButtonProps = props.okButtonProps,
+      cancelText = props.cancelText,
+      cancelButtonProps = props.cancelButtonProps,
+      direction = props.direction,
+      prefixCls = props.prefixCls,
+      rootPrefixCls = props.rootPrefixCls,
+      bodyStyle = props.bodyStyle,
+      _props$closable = props.closable,
+      closable = _props$closable === void 0 ? false : _props$closable,
+      closeIcon = props.closeIcon,
+      modalRender = props.modalRender,
+      focusTriggerAfterClose = props.focusTriggerAfterClose;
+  devWarning(!(typeof icon === 'string' && icon.length > 2), 'Modal', "`icon` is using ReactNode instead of string naming in v4. Please check `".concat(icon, "` at https://ant.design/components/icon")); // 支持传入{ icon: null }来隐藏`Modal.confirm`默认的Icon
+
+  var okType = props.okType || 'primary';
+  var contentPrefixCls = "".concat(prefixCls, "-confirm"); // 默认为 true，保持向下兼容
+
+  var okCancel = 'okCancel' in props ? props.okCancel : true;
+  var width = props.width || 416;
+  var style = props.style || {};
+  var mask = props.mask === undefined ? true : props.mask; // 默认为 false，保持旧版默认行为
+
+  var maskClosable = props.maskClosable === undefined ? false : props.maskClosable;
+  var autoFocusButton = props.autoFocusButton === null ? false : props.autoFocusButton || 'ok';
+  var classString = classnames(contentPrefixCls, "".concat(contentPrefixCls, "-").concat(props.type), _defineProperty$4({}, "".concat(contentPrefixCls, "-rtl"), direction === 'rtl'), props.className);
+  var cancelButton = okCancel && /*#__PURE__*/React.createElement(ActionButton, {
+    actionFn: onCancel,
+    closeModal: close,
+    autoFocus: autoFocusButton === 'cancel',
+    buttonProps: cancelButtonProps,
+    prefixCls: "".concat(rootPrefixCls, "-btn")
+  }, cancelText);
+  return /*#__PURE__*/React.createElement(Modal$2, {
+    prefixCls: prefixCls,
+    className: classString,
+    wrapClassName: classnames(_defineProperty$4({}, "".concat(contentPrefixCls, "-centered"), !!props.centered)),
+    onCancel: function onCancel() {
+      return close({
+        triggerCancel: true
+      });
+    },
+    visible: visible,
+    title: "",
+    footer: "",
+    transitionName: getTransitionName(rootPrefixCls, 'zoom', props.transitionName),
+    maskTransitionName: getTransitionName(rootPrefixCls, 'fade', props.maskTransitionName),
+    mask: mask,
+    maskClosable: maskClosable,
+    maskStyle: maskStyle,
+    style: style,
+    width: width,
+    zIndex: zIndex,
+    afterClose: afterClose,
+    keyboard: keyboard,
+    centered: centered,
+    getContainer: getContainer,
+    closable: closable,
+    closeIcon: closeIcon,
+    modalRender: modalRender,
+    focusTriggerAfterClose: focusTriggerAfterClose
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "".concat(contentPrefixCls, "-body-wrapper")
+  }, /*#__PURE__*/React.createElement(ConfigProvider, {
+    prefixCls: rootPrefixCls
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "".concat(contentPrefixCls, "-body"),
+    style: bodyStyle
+  }, icon, props.title === undefined ? null : /*#__PURE__*/React.createElement("span", {
+    className: "".concat(contentPrefixCls, "-title")
+  }, props.title), /*#__PURE__*/React.createElement("div", {
+    className: "".concat(contentPrefixCls, "-content")
+  }, props.content))), /*#__PURE__*/React.createElement("div", {
+    className: "".concat(contentPrefixCls, "-btns")
+  }, cancelButton, /*#__PURE__*/React.createElement(ActionButton, {
+    type: okType,
+    actionFn: onOk,
+    closeModal: close,
+    autoFocus: autoFocusButton === 'ok',
+    buttonProps: okButtonProps,
+    prefixCls: "".concat(rootPrefixCls, "-btn")
+  }, okText))));
+};
+
+var HookModal = function HookModal(_ref, ref) {
+  var afterClose = _ref.afterClose,
+      config = _ref.config;
+
+  var _React$useState = React.useState(true),
+      _React$useState2 = _slicedToArray$3(_React$useState, 2),
+      visible = _React$useState2[0],
+      setVisible = _React$useState2[1];
+
+  var _React$useState3 = React.useState(config),
+      _React$useState4 = _slicedToArray$3(_React$useState3, 2),
+      innerConfig = _React$useState4[0],
+      setInnerConfig = _React$useState4[1];
+
+  var _React$useContext = React.useContext(ConfigContext),
+      direction = _React$useContext.direction,
+      getPrefixCls = _React$useContext.getPrefixCls;
+
+  var prefixCls = getPrefixCls('modal');
+  var rootPrefixCls = getPrefixCls();
+
+  function close() {
+    setVisible(false);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    var triggerCancel = args.some(function (param) {
+      return param && param.triggerCancel;
+    });
+
+    if (innerConfig.onCancel && triggerCancel) {
+      innerConfig.onCancel();
+    }
+  }
+
+  React.useImperativeHandle(ref, function () {
+    return {
+      destroy: close,
+      update: function update(newConfig) {
+        setInnerConfig(function (originConfig) {
+          return _extends$1(_extends$1({}, originConfig), newConfig);
+        });
+      }
+    };
+  });
+  return /*#__PURE__*/React.createElement(LocaleReceiver, {
+    componentName: "Modal",
+    defaultLocale: localeValues.Modal
+  }, function (modalLocale) {
+    return /*#__PURE__*/React.createElement(ConfirmDialog, _extends$1({
+      prefixCls: prefixCls,
+      rootPrefixCls: rootPrefixCls
+    }, innerConfig, {
+      close: close,
+      visible: visible,
+      afterClose: afterClose,
+      okText: innerConfig.okText || (innerConfig.okCancel ? modalLocale.okText : modalLocale.justOkText),
+      direction: direction,
+      cancelText: innerConfig.cancelText || modalLocale.cancelText
+    }));
+  });
+};
+
+var HookModal$1 = /*#__PURE__*/React.forwardRef(HookModal);
+
+var __rest$2 = undefined && undefined.__rest || function (s, e) {
+  var t = {};
+
+  for (var p in s) {
+    if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
+  }
+
+  if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+    if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i])) t[p[i]] = s[p[i]];
+  }
+  return t;
+};
+var defaultRootPrefixCls = '';
+
+function getRootPrefixCls() {
+  return defaultRootPrefixCls;
+}
+
+function confirm(config) {
+  var div = document.createElement('div');
+  document.body.appendChild(div); // eslint-disable-next-line @typescript-eslint/no-use-before-define
+
+  var currentConfig = _extends$1(_extends$1({}, config), {
+    close: close,
+    visible: true
+  });
+
+  function destroy() {
+    var unmountResult = ReactDOM.unmountComponentAtNode(div);
+
+    if (unmountResult && div.parentNode) {
+      div.parentNode.removeChild(div);
+    }
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    var triggerCancel = args.some(function (param) {
+      return param && param.triggerCancel;
+    });
+
+    if (config.onCancel && triggerCancel) {
+      config.onCancel.apply(config, args);
+    }
+
+    for (var i = 0; i < destroyFns.length; i++) {
+      var fn = destroyFns[i]; // eslint-disable-next-line @typescript-eslint/no-use-before-define
+
+      if (fn === close) {
+        destroyFns.splice(i, 1);
+        break;
+      }
+    }
+  }
+
+  function render(_a) {
+    var okText = _a.okText,
+        cancelText = _a.cancelText,
+        customizePrefixCls = _a.prefixCls,
+        props = __rest$2(_a, ["okText", "cancelText", "prefixCls"]);
+    /**
+     * https://github.com/ant-design/ant-design/issues/23623
+     *
+     * Sync render blocks React event. Let's make this async.
+     */
+
+
+    setTimeout(function () {
+      var runtimeLocale = getConfirmLocale();
+
+      var _globalConfig = globalConfig(),
+          getPrefixCls = _globalConfig.getPrefixCls; // because Modal.config  set rootPrefixCls, which is different from other components
+
+
+      var rootPrefixCls = getPrefixCls(undefined, getRootPrefixCls());
+      var prefixCls = customizePrefixCls || "".concat(rootPrefixCls, "-modal");
+      ReactDOM.render( /*#__PURE__*/React.createElement(ConfirmDialog, _extends$1({}, props, {
+        prefixCls: prefixCls,
+        rootPrefixCls: rootPrefixCls,
+        okText: okText || (props.okCancel ? runtimeLocale.okText : runtimeLocale.justOkText),
+        cancelText: cancelText || runtimeLocale.cancelText
+      })), div);
+    });
+  }
+
+  function close() {
+    var _this = this;
+
+    for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+      args[_key2] = arguments[_key2];
+    }
+
+    currentConfig = _extends$1(_extends$1({}, currentConfig), {
+      visible: false,
+      afterClose: function afterClose() {
+        if (typeof config.afterClose === 'function') {
+          config.afterClose();
+        }
+
+        destroy.apply(_this, args);
+      }
+    });
+    render(currentConfig);
+  }
+
+  function update(configUpdate) {
+    if (typeof configUpdate === 'function') {
+      currentConfig = configUpdate(currentConfig);
+    } else {
+      currentConfig = _extends$1(_extends$1({}, currentConfig), configUpdate);
+    }
+
+    render(currentConfig);
+  }
+
+  render(currentConfig);
+  destroyFns.push(close);
+  return {
+    destroy: close,
+    update: update
+  };
+}
+function withWarn(props) {
+  return _extends$1(_extends$1({
+    icon: /*#__PURE__*/React.createElement(ExclamationCircleOutlined$1, null),
+    okCancel: false
+  }, props), {
+    type: 'warning'
+  });
+}
+function withInfo(props) {
+  return _extends$1(_extends$1({
+    icon: /*#__PURE__*/React.createElement(InfoCircleOutlined$1, null),
+    okCancel: false
+  }, props), {
+    type: 'info'
+  });
+}
+function withSuccess(props) {
+  return _extends$1(_extends$1({
+    icon: /*#__PURE__*/React.createElement(CheckCircleOutlined$1, null),
+    okCancel: false
+  }, props), {
+    type: 'success'
+  });
+}
+function withError(props) {
+  return _extends$1(_extends$1({
+    icon: /*#__PURE__*/React.createElement(CloseCircleOutlined$1, null),
+    okCancel: false
+  }, props), {
+    type: 'error'
+  });
+}
+function withConfirm(props) {
+  return _extends$1(_extends$1({
+    icon: /*#__PURE__*/React.createElement(ExclamationCircleOutlined$1, null),
+    okCancel: true
+  }, props), {
+    type: 'confirm'
+  });
+}
+function modalGlobalConfig(_ref) {
+  var rootPrefixCls = _ref.rootPrefixCls;
+  devWarning(false, 'Modal', 'Modal.config is deprecated. Please use ConfigProvider.config instead.');
+  defaultRootPrefixCls = rootPrefixCls;
+}
+
+var uuid = 0;
+var ElementsHolder = /*#__PURE__*/React.memo( /*#__PURE__*/React.forwardRef(function (_props, ref) {
+  var _usePatchElement = usePatchElement(),
+      _usePatchElement2 = _slicedToArray$3(_usePatchElement, 2),
+      elements = _usePatchElement2[0],
+      patchElement = _usePatchElement2[1];
+
+  React.useImperativeHandle(ref, function () {
+    return {
+      patchElement: patchElement
+    };
+  }, []);
+  return /*#__PURE__*/React.createElement(React.Fragment, null, elements);
+}));
+function useModal() {
+  var holderRef = React.useRef(null); // ========================== Effect ==========================
+
+  var _React$useState = React.useState([]),
+      _React$useState2 = _slicedToArray$3(_React$useState, 2),
+      actionQueue = _React$useState2[0],
+      setActionQueue = _React$useState2[1];
+
+  React.useEffect(function () {
+    if (actionQueue.length) {
+      var cloneQueue = _toConsumableArray(actionQueue);
+
+      cloneQueue.forEach(function (action) {
+        action();
+      });
+      setActionQueue([]);
+    }
+  }, [actionQueue]); // =========================== Hook ===========================
+
+  var getConfirmFunc = React.useCallback(function (withFunc) {
+    return function hookConfirm(config) {
+      var _a;
+
+      uuid += 1;
+      var modalRef = /*#__PURE__*/React.createRef();
+      var closeFunc;
+      var modal = /*#__PURE__*/React.createElement(HookModal$1, {
+        key: "modal-".concat(uuid),
+        config: withFunc(config),
+        ref: modalRef,
+        afterClose: function afterClose() {
+          closeFunc();
+        }
+      });
+      closeFunc = (_a = holderRef.current) === null || _a === void 0 ? void 0 : _a.patchElement(modal);
+      return {
+        destroy: function destroy() {
+          function destroyAction() {
+            var _a;
+
+            (_a = modalRef.current) === null || _a === void 0 ? void 0 : _a.destroy();
+          }
+
+          if (modalRef.current) {
+            destroyAction();
+          } else {
+            setActionQueue(function (prev) {
+              return [].concat(_toConsumableArray(prev), [destroyAction]);
+            });
+          }
+        },
+        update: function update(newConfig) {
+          function updateAction() {
+            var _a;
+
+            (_a = modalRef.current) === null || _a === void 0 ? void 0 : _a.update(newConfig);
+          }
+
+          if (modalRef.current) {
+            updateAction();
+          } else {
+            setActionQueue(function (prev) {
+              return [].concat(_toConsumableArray(prev), [updateAction]);
+            });
+          }
+        }
+      };
+    };
+  }, []);
+  var fns = React.useMemo(function () {
+    return {
+      info: getConfirmFunc(withInfo),
+      success: getConfirmFunc(withSuccess),
+      error: getConfirmFunc(withError),
+      warning: getConfirmFunc(withWarn),
+      confirm: getConfirmFunc(withConfirm)
+    };
+  }, []); // eslint-disable-next-line react/jsx-key
+
+  return [fns, /*#__PURE__*/React.createElement(ElementsHolder, {
+    ref: holderRef
+  })];
+}
+
+var __rest$1 = undefined && undefined.__rest || function (s, e) {
+  var t = {};
+
+  for (var p in s) {
+    if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
+  }
+
+  if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+    if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i])) t[p[i]] = s[p[i]];
+  }
+  return t;
+};
+var mousePosition;
+var destroyFns = []; // ref: https://github.com/ant-design/ant-design/issues/15795
+
+var getClickPosition = function getClickPosition(e) {
+  mousePosition = {
+    x: e.pageX,
+    y: e.pageY
+  }; // 100ms 内发生过点击事件，则从点击位置动画展示
+  // 否则直接 zoom 展示
+  // 这样可以兼容非点击方式展开
+
+  setTimeout(function () {
+    mousePosition = null;
+  }, 100);
+}; // 只有点击事件支持从鼠标位置动画展开
+
+
+if (canUseDocElement()) {
+  document.documentElement.addEventListener('click', getClickPosition, true);
+}
+
+var Modal$2 = function Modal(props) {
+  var _classNames;
+
+  var _React$useContext = React.useContext(ConfigContext),
+      getContextPopupContainer = _React$useContext.getPopupContainer,
+      getPrefixCls = _React$useContext.getPrefixCls,
+      direction = _React$useContext.direction;
+
+  var handleCancel = function handleCancel(e) {
+    var onCancel = props.onCancel;
+    onCancel === null || onCancel === void 0 ? void 0 : onCancel(e);
+  };
+
+  var handleOk = function handleOk(e) {
+    var onOk = props.onOk;
+    onOk === null || onOk === void 0 ? void 0 : onOk(e);
+  };
+
+  var renderFooter = function renderFooter(locale) {
+    var okText = props.okText,
+        okType = props.okType,
+        cancelText = props.cancelText,
+        confirmLoading = props.confirmLoading;
+    return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Button$1, _extends$1({
+      onClick: handleCancel
+    }, props.cancelButtonProps), cancelText || locale.cancelText), /*#__PURE__*/React.createElement(Button$1, _extends$1({}, convertLegacyProps(okType), {
+      loading: confirmLoading,
+      onClick: handleOk
+    }, props.okButtonProps), okText || locale.okText));
+  };
+
+  var customizePrefixCls = props.prefixCls,
+      footer = props.footer,
+      visible = props.visible,
+      wrapClassName = props.wrapClassName,
+      centered = props.centered,
+      getContainer = props.getContainer,
+      closeIcon = props.closeIcon,
+      _props$focusTriggerAf = props.focusTriggerAfterClose,
+      focusTriggerAfterClose = _props$focusTriggerAf === void 0 ? true : _props$focusTriggerAf,
+      restProps = __rest$1(props, ["prefixCls", "footer", "visible", "wrapClassName", "centered", "getContainer", "closeIcon", "focusTriggerAfterClose"]);
+
+  var prefixCls = getPrefixCls('modal', customizePrefixCls);
+  var rootPrefixCls = getPrefixCls();
+  var defaultFooter = /*#__PURE__*/React.createElement(LocaleReceiver, {
+    componentName: "Modal",
+    defaultLocale: getConfirmLocale()
+  }, renderFooter);
+  var closeIconToRender = /*#__PURE__*/React.createElement("span", {
+    className: "".concat(prefixCls, "-close-x")
+  }, closeIcon || /*#__PURE__*/React.createElement(CloseOutlined$1, {
+    className: "".concat(prefixCls, "-close-icon")
+  }));
+  var wrapClassNameExtended = classnames(wrapClassName, (_classNames = {}, _defineProperty$4(_classNames, "".concat(prefixCls, "-centered"), !!centered), _defineProperty$4(_classNames, "".concat(prefixCls, "-wrap-rtl"), direction === 'rtl'), _classNames));
+  return /*#__PURE__*/React.createElement(DialogWrap, _extends$1({}, restProps, {
+    getContainer: getContainer === undefined ? getContextPopupContainer : getContainer,
+    prefixCls: prefixCls,
+    wrapClassName: wrapClassNameExtended,
+    footer: footer === undefined ? defaultFooter : footer,
+    visible: visible,
+    mousePosition: mousePosition,
+    onClose: handleCancel,
+    closeIcon: closeIconToRender,
+    focusTriggerAfterClose: focusTriggerAfterClose,
+    transitionName: getTransitionName(rootPrefixCls, 'zoom', props.transitionName),
+    maskTransitionName: getTransitionName(rootPrefixCls, 'fade', props.maskTransitionName)
+  }));
+};
+
+Modal$2.useModal = useModal;
+Modal$2.defaultProps = {
+  width: 520,
+  confirmLoading: false,
+  visible: false,
+  okType: 'primary'
+};
+
+function modalWarn(props) {
+  return confirm(withWarn(props));
+}
+
+var Modal$1 = Modal$2;
+
+Modal$1.info = function infoFn(props) {
+  return confirm(withInfo(props));
+};
+
+Modal$1.success = function successFn(props) {
+  return confirm(withSuccess(props));
+};
+
+Modal$1.error = function errorFn(props) {
+  return confirm(withError(props));
+};
+
+Modal$1.warning = modalWarn;
+Modal$1.warn = modalWarn;
+
+Modal$1.confirm = function confirmFn(props) {
+  return confirm(withConfirm(props));
+};
+
+Modal$1.destroyAll = function destroyAllFn() {
+  while (destroyFns.length) {
+    var close = destroyFns.pop();
+
+    if (close) {
+      close();
+    }
+  }
+};
+
+Modal$1.config = modalGlobalConfig;
+
 /**
  * Webpack has bug for import loop, which is not the same behavior as ES module.
  * When util.js imports the TreeNode for tree generate will cause treeContextTypes be empty.
@@ -16892,7 +20775,7 @@ var defaultTitle = '---';
 var InternalTreeNode = /*#__PURE__*/function (_React$Component) {
   _inherits$1(InternalTreeNode, _React$Component);
 
-  var _super = _createSuper$1(InternalTreeNode);
+  var _super = _createSuper$2(InternalTreeNode);
 
   function InternalTreeNode() {
     var _this;
@@ -18650,7 +22533,7 @@ function DropIndicator(_ref) {
 var Tree = /*#__PURE__*/function (_React$Component) {
   _inherits$1(Tree, _React$Component);
 
-  var _super = _createSuper$1(Tree);
+  var _super = _createSuper$2(Tree);
 
   function Tree() {
     var _this;
@@ -21170,7 +25053,7 @@ var RefTreeSelect = /*#__PURE__*/React.forwardRef(function (props, ref) {
 var TreeSelect$2 = /*#__PURE__*/function (_React$Component) {
   _inherits$1(TreeSelect, _React$Component);
 
-  var _super = _createSuper$1(TreeSelect);
+  var _super = _createSuper$2(TreeSelect);
 
   function TreeSelect() {
     var _this;
@@ -21323,12 +25206,12 @@ TreeSelect$1.SHOW_CHILD = SHOW_CHILD;
 
 var Option = Select$1.Option;
 var Select = function (_a) {
-    var className = _a.className, classNameSelect = _a.classNameSelect, _b = _a.value, value = _b === void 0 ? [] : _b, label = _a.label, _c = _a.defaultValue, defaultValue = _c === void 0 ? [] : _c, _d = _a.placeholder, placeholder = _d === void 0 ? "Please select" : _d, onChange = _a.onChange, disabled = _a.disabled, _e = _a.dataSource, dataSource = _e === void 0 ? [] : _e, error = _a.error, _f = _a.multiple, multiple = _f === void 0 ? false : _f, _g = _a.getLabel, getLabel = _g === void 0 ? function (item) { return item.label; } : _g, _h = _a.getKey, getKey = _h === void 0 ? function (item) { return item.id; } : _h, _j = _a.getValue, getValue = _j === void 0 ? function (item) { var _a; return (_a = item === null || item === void 0 ? void 0 : item.id) !== null && _a !== void 0 ? _a : null; } : _j, _k = _a.allowClear, allowClear = _k === void 0 ? true : _k, _l = _a.variant, variant = _l === void 0 ? "outline" : _l, _m = _a.hasFilter, hasFilter = _m === void 0 ? true : _m, props = __rest$3(_a, ["className", "classNameSelect", "value", "label", "defaultValue", "placeholder", "onChange", "disabled", "dataSource", "error", "multiple", "getLabel", "getKey", "getValue", "allowClear", "variant", "hasFilter"]);
+    var className = _a.className, classNameSelect = _a.classNameSelect, _b = _a.value, value = _b === void 0 ? [] : _b, label = _a.label, _c = _a.defaultValue, defaultValue = _c === void 0 ? [] : _c, _d = _a.placeholder, placeholder = _d === void 0 ? "Please select" : _d, onChange = _a.onChange, disabled = _a.disabled, _e = _a.dataSource, dataSource = _e === void 0 ? [] : _e, error = _a.error, _f = _a.multiple, multiple = _f === void 0 ? false : _f, _g = _a.getLabel, getLabel = _g === void 0 ? function (item) { return item.label; } : _g, _h = _a.getKey, getKey = _h === void 0 ? function (item) { return item.id; } : _h, _j = _a.getValue, getValue = _j === void 0 ? function (item) { var _a; return (_a = item === null || item === void 0 ? void 0 : item.id) !== null && _a !== void 0 ? _a : null; } : _j, _k = _a.allowClear, allowClear = _k === void 0 ? true : _k, _l = _a.variant, variant = _l === void 0 ? "outline" : _l, _m = _a.hasFilter, hasFilter = _m === void 0 ? true : _m, props = __rest$7(_a, ["className", "classNameSelect", "value", "label", "defaultValue", "placeholder", "onChange", "disabled", "dataSource", "error", "multiple", "getLabel", "getKey", "getValue", "allowClear", "variant", "hasFilter"]);
     var children = useMemo$1(function () {
         return dataSource.map(function (dataItem) {
             var label = getLabel(dataItem);
             var key = getKey(dataItem);
-            return (jsx(Option, __assign({ value: getValue(dataItem) }, { children: label }), key));
+            return (React__default.createElement(Option, { key: key, value: getValue(dataItem) }, label));
         });
     }, [dataSource]);
     var container = classnames("d-select__container", "d-select__container-" + variant, className);
@@ -21338,16 +25221,18 @@ var Select = function (_a) {
         "d-select__error": !!error,
     }, classNameSelect);
     var errorTextClass = classnames("text-x-small", "text-error", "ml-1");
-    return (jsxs("div", __assign({ className: container }, { children: [label && jsx("label", __assign({ className: labelClass }, { children: label }), void 0),
-            jsx(Select$1, __assign({}, props, { value: value, mode: multiple ? "multiple" : undefined, allowClear: allowClear, placeholder: placeholder, defaultValue: defaultValue, onChange: onChange, className: selectClass, showArrow: true, disabled: disabled, optionFilterProp: "children", filterOption: function (input, option) {
-                    if (!hasFilter) {
-                        return false;
-                    }
-                    return (option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0 ||
-                        (option.props.value && ("" + option.props.value).toLowerCase().indexOf(input.toLowerCase()) >= 0));
-                } }, { children: children }), void 0),
-            error && (jsxs("div", __assign({ className: "flex-center-y mt-1" }, { children: [jsx(Icon$1, { name: "error_outline", className: "text-error", size: "small" }, void 0),
-                    jsx("text", __assign({ className: errorTextClass }, { children: error }), void 0)] }), void 0))] }), void 0));
+    return (React__default.createElement("div", { className: container },
+        label && React__default.createElement("label", { className: labelClass }, label),
+        React__default.createElement(Select$1, __assign({}, props, { value: value, mode: multiple ? "multiple" : undefined, allowClear: allowClear, placeholder: placeholder, defaultValue: defaultValue, onChange: onChange, className: selectClass, showArrow: true, disabled: disabled, optionFilterProp: "children", filterOption: function (input, option) {
+                if (!hasFilter) {
+                    return false;
+                }
+                return (option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0 ||
+                    (option.props.value && ("" + option.props.value).toLowerCase().indexOf(input.toLowerCase()) >= 0));
+            } }), children),
+        error && (React__default.createElement("div", { className: "flex-center-y mt-1" },
+            React__default.createElement(Icon$1, { name: "error_outline", className: "text-error", size: "small" }),
+            React__default.createElement("text", { className: errorTextClass }, error)))));
 };
 
 var TreeSelect = function (_a) {
@@ -21359,32 +25244,39 @@ var TreeSelect = function (_a) {
         "d-select__error": !!error,
     }, classNameSelect);
     var errorTextClass = classnames("text-x-small", "text-error", "ml-1");
-    return (jsxs("div", __assign({ className: container }, { children: [label && jsx("label", __assign({ className: labelClass }, { children: label }), void 0),
-            jsx(TreeSelect$1, { className: selectClass, disabled: disabled, treeData: dataSource, onChange: onChange, value: value, placeholder: placeholder, multiple: multiple, allowClear: allowClear }, void 0),
-            error && (jsxs("div", __assign({ className: "flex-center-y mt-1" }, { children: [jsx(Icon$1, { name: "error_outline", className: "text-error", size: "small" }, void 0),
-                    jsx("text", __assign({ className: errorTextClass }, { children: error }), void 0)] }), void 0))] }), void 0));
+    return (React__default.createElement("div", { className: container },
+        label && React__default.createElement("label", { className: labelClass }, label),
+        React__default.createElement(TreeSelect$1, { className: selectClass, disabled: disabled, treeData: dataSource, onChange: onChange, value: value, placeholder: placeholder, multiple: multiple, allowClear: allowClear }),
+        error && (React__default.createElement("div", { className: "flex-center-y mt-1" },
+            React__default.createElement(Icon$1, { name: "error_outline", className: "text-error", size: "small" }),
+            React__default.createElement("text", { className: errorTextClass }, error)))));
 };
 
 var Button = function (_a) {
-    var content = _a.content, iconName = _a.iconName, onClick = _a.onClick, _b = _a.type, type = _b === void 0 ? "button" : _b, className = _a.className, _c = _a.disabled, disabled = _c === void 0 ? false : _c, _d = _a.size, size = _d === void 0 ? "large" : _d, _e = _a.variant, variant = _e === void 0 ? "standard" : _e; _a.color;
+    var content = _a.content, iconName = _a.iconName, onClick = _a.onClick, _b = _a.type, type = _b === void 0 ? "button" : _b, className = _a.className, _c = _a.disabled, disabled = _c === void 0 ? false : _c, _d = _a.size, size = _d === void 0 ? "large" : _d, _e = _a.variant, variant = _e === void 0 ? "standard" : _e; _a.color; var props = __rest$7(_a, ["content", "iconName", "onClick", "type", "className", "disabled", "size", "variant", "color"]);
     var buttonClass = classnames("text text-nowrap d-button d-button__" + size + " d-button__" + variant, {
         "text-x-small": size === "x-small",
-        "d-button__disabled": disabled,
+        "text-small font-weight-bold": variant === "trans",
+        "text-underline": !iconName && variant === "trans",
         "d-button__icon": iconName && !content,
     }, className);
     var iconClass = classnames("d-block", { "mx-2": content && iconName });
-    return (jsxs("button", __assign({ className: buttonClass, type: type, disabled: disabled, onClick: onClick }, { children: [iconName && jsx(Icon$1, { name: iconName, size: "large", className: iconClass }, void 0), content] }), void 0));
+    return (React__default.createElement("button", __assign({ className: buttonClass, type: type, disabled: disabled, onClick: onClick }, props),
+        iconName && React__default.createElement(Icon$1, { name: iconName, size: "large", className: iconClass }),
+        content));
 };
 
 var Checkbox = function (_a) {
-    var className = _a.className, classNameInput = _a.classNameInput, classNameInputWrapper = _a.classNameInputWrapper, classNameLabel = _a.classNameLabel, id = _a.id, name = _a.name, value = _a.value, onChange = _a.onChange, label = _a.label, _b = _a.variant, variant = _b === void 0 ? "checkbox" : _b, disabled = _a.disabled, checked = _a.checked;
+    var className = _a.className, classNameInput = _a.classNameInput, classNameInputWrapper = _a.classNameInputWrapper, classNameLabel = _a.classNameLabel, id = _a.id, name = _a.name, value = _a.value, onChange = _a.onChange, label = _a.label, _b = _a.variant, variant = _b === void 0 ? "checkbox" : _b, disabled = _a.disabled, checked = _a.checked, props = __rest$7(_a, ["className", "classNameInput", "classNameInputWrapper", "classNameLabel", "id", "name", "value", "onChange", "label", "variant", "disabled", "checked"]);
     var classContainer = classnames("checkbox__container", className);
     var classInputWrapper = classnames("checkbox__input-wrapper", "checkbox__input-wrapper-" + variant, { "checkbox__input-wrapper-disabled": disabled }, classNameInputWrapper);
     var classInput = classnames("checkbox__input", classNameInput);
     var classLabel = classnames("checkbox__label ml-3 text-nowrap", classNameLabel);
-    return (jsxs("div", __assign({ className: classContainer }, { children: [jsxs("div", __assign({ className: classInputWrapper }, { children: [jsx("input", { type: "checkbox", id: id, name: name, value: value, onChange: onChange, className: classInput, disabled: disabled, checked: checked }, void 0),
-                    jsx("span", { className: "checkbox__check-mark" }, void 0)] }), void 0),
-            label && jsx("div", __assign({ className: classLabel }, { children: label }), void 0)] }), void 0));
+    return (React__default.createElement("div", __assign({ className: classContainer }, props),
+        React__default.createElement("div", { className: classInputWrapper },
+            React__default.createElement("input", { type: "checkbox", id: id, name: name, value: value, onChange: onChange, className: classInput, disabled: disabled, checked: checked }),
+            React__default.createElement("span", { className: "checkbox__check-mark" })),
+        label && React__default.createElement("div", { className: classLabel }, label)));
 };
 
 var CheckboxGroup = function (_a) {
@@ -21394,27 +25286,28 @@ var CheckboxGroup = function (_a) {
     useEffect(function () {
         setListValues(value);
     }, [value]);
-    return (jsx("div", __assign({ className: containerClass }, { children: dataSource.map(function (item) {
-            var iLabel = getLabel(item);
-            var iValue = getValue(item);
-            var isChecked = listValues.includes(iValue);
-            var isDisabled = (getDisabledItem && getDisabledItem(item)) || false;
-            return (jsx(Checkbox, { label: iLabel, value: iValue, onChange: function (event) {
-                    var isPush = event.target.checked;
-                    var changeValue = event.target.value;
-                    var clone = __spreadArray([], listValues);
-                    if (isPush) {
-                        clone.push(iValue);
-                    }
-                    else {
-                        clone = listValues.filter(function (i) { return i !== changeValue; });
-                    }
-                    setListValues(clone);
-                    onChange && onChange(clone);
-                }, checked: isChecked, disabled: isDisabled }, void 0));
-        }) }), void 0));
+    return (React__default.createElement("div", { className: containerClass }, dataSource.map(function (item) {
+        var iLabel = getLabel(item);
+        var iValue = getValue(item);
+        var isChecked = listValues.includes(iValue);
+        var isDisabled = (getDisabledItem && getDisabledItem(item)) || false;
+        return (React__default.createElement(Checkbox, { label: iLabel, value: iValue, onChange: function (event) {
+                var isPush = event.target.checked;
+                var changeValue = event.target.value;
+                var clone = __spreadArray([], listValues);
+                if (isPush) {
+                    clone.push(iValue);
+                }
+                else {
+                    clone = listValues.filter(function (i) { return i !== changeValue; });
+                }
+                setListValues(clone);
+                onChange && onChange(clone);
+            }, checked: isChecked, disabled: isDisabled }));
+    })));
 };
 
+/* eslint-disable no-unused-expressions */
 var RadioGroup = function (_a) {
     var dataSource = _a.dataSource, className = _a.className, _b = _a.getLabel, getLabel = _b === void 0 ? function (item) { return item === null || item === void 0 ? void 0 : item.label; } : _b, _c = _a.getValue, getValue = _c === void 0 ? function (item) { return item === null || item === void 0 ? void 0 : item.id; } : _c, getDisabledItem = _a.getDisabledItem, _d = _a.value, value = _d === void 0 ? [] : _d, onChange = _a.onChange;
     var containerClass = classnames("d-checkbox-group", className);
@@ -21422,27 +25315,28 @@ var RadioGroup = function (_a) {
     useEffect(function () {
         setListValues(value);
     }, [value]);
-    return (jsx("div", __assign({ className: containerClass }, { children: dataSource.map(function (item) {
-            var iLabel = getLabel(item);
-            var iValue = getValue(item);
-            var isChecked = listValues.includes(iValue);
-            var isDisabled = (getDisabledItem && getDisabledItem(item)) || false;
-            return (jsx(Checkbox, { label: iLabel, value: iValue, onChange: function (event) {
-                    var isPush = event.target.checked;
-                    var changeValue = event.target.value;
-                    var clone;
-                    if (isPush) {
-                        clone = [changeValue];
-                    }
-                    else {
-                        clone = listValues.filter(function (i) { return i !== changeValue; });
-                    }
-                    setListValues(clone);
-                    onChange && onChange(clone);
-                }, checked: isChecked, variant: "radio", disabled: isDisabled }, void 0));
-        }) }), void 0));
+    return (React__default.createElement("div", { className: containerClass }, dataSource.map(function (item) {
+        var iLabel = getLabel(item);
+        var iValue = getValue(item);
+        var isChecked = listValues.includes(iValue);
+        var isDisabled = (getDisabledItem && getDisabledItem(item)) || false;
+        return (React__default.createElement(Checkbox, { label: iLabel, value: iValue, onChange: function (event) {
+                var isPush = event.target.checked;
+                var changeValue = event.target.value;
+                var clone;
+                if (isPush) {
+                    clone = [changeValue];
+                }
+                else {
+                    clone = listValues.filter(function (i) { return i !== changeValue; });
+                }
+                setListValues(clone);
+                onChange && onChange(clone);
+            }, checked: isChecked, variant: "radio", disabled: isDisabled }));
+    })));
 };
 
+// react
 var InputTextSearch = function (_a) {
     var className = _a.className, _b = _a.variant, variant = _b === void 0 ? "outline" : _b, // standard || outline
     value = _a.value, error = _a.error, name = _a.name, key = _a.key, placeholder = _a.placeholder, disabled = _a.disabled, onChange = _a.onChange, onBlur = _a.onBlur;
@@ -21450,17 +25344,71 @@ var InputTextSearch = function (_a) {
         "d-input-search__disabled": disabled,
         "d-input-search__error": !!error,
     }, className);
-    return (jsxs("div", __assign({ className: container }, { children: [jsx(Icon$1, { name: "search", className: "mr-3" }, void 0),
-            jsx("input", { value: value, onChange: onChange, name: name, required: true, placeholder: placeholder, onBlur: onBlur, disabled: disabled }, key)] }), void 0));
+    return (React__default.createElement("div", { className: container },
+        React__default.createElement(Icon$1, { name: "search", className: "mr-3" }),
+        React__default.createElement("input", { value: value, onChange: onChange, name: name, required: true, key: key, placeholder: placeholder, onBlur: onBlur, disabled: disabled })));
 };
 
 var HeaderTable = function (_a) {
     var _b = _a.className, className = _b === void 0 ? "" : _b, _c = _a.label, label = _c === void 0 ? "" : _c, _d = _a.placeholder, placeholder = _d === void 0 ? "Search" : _d, onChangeText = _a.onChangeText, onClickNew = _a.onClickNew, onClickExport = _a.onClickExport, onClickFilter = _a.onClickFilter, customView = _a.customView;
-    return (jsxs("div", __assign({ className: classnames("w-100", className) }, { children: [jsxs("div", __assign({ className: "d-flex justify-content-between mb-3" }, { children: [jsx("div", __assign({ className: "h4" }, { children: label }), void 0),
-                    jsxs("div", __assign({ className: "d-flex" }, { children: [onClickNew && jsx(Button, { iconName: "add", content: "New", onClick: onClickNew, className: "mr-3" }, void 0),
-                            onClickExport && jsx(Button, { iconName: "cloud_download", content: "Export", onClick: onClickExport }, void 0)] }), void 0)] }), void 0),
-            jsxs("div", __assign({ className: "flex-center-y" }, { children: [jsx(InputTextSearch, { className: "w-100 mr-3 bg-white", placeholder: placeholder, onChange: onChangeText }, void 0), customView && customView(), onClickFilter && jsx(Button, { iconName: "filter_list", onClick: onClickFilter }, void 0)] }), void 0)] }), void 0));
+    return (React__default.createElement("div", { className: classnames("w-100", className) },
+        React__default.createElement("div", { className: "d-flex justify-content-between mb-3" },
+            React__default.createElement("div", { className: "h4" }, label),
+            React__default.createElement("div", { className: "d-flex" },
+                onClickNew && React__default.createElement(Button, { iconName: "add", content: "New", onClick: onClickNew, className: "mr-3" }),
+                onClickExport && React__default.createElement(Button, { iconName: "cloud_download", content: "Export", onClick: onClickExport }))),
+        React__default.createElement("div", { className: "flex-center-y" },
+            React__default.createElement(InputTextSearch, { className: "w-100 mr-3 bg-white", placeholder: placeholder, onChange: onChangeText }),
+            customView && customView(),
+            onClickFilter && React__default.createElement(Button, { iconName: "filter_list", onClick: onClickFilter }))));
 };
 
-export { Button, Checkbox, CheckboxGroup, HeaderTable, Icon$1 as Icon, InputText, RadioGroup, Select, TreeSelect };
+var Modal = function (_a) {
+    var children = _a.children, open = _a.open, _b = _a.centered, centered = _b === void 0 ? true : _b, _c = _a.closable, closable = _c === void 0 ? false : _c, onClose = _a.onClose, onSave = _a.onSave, onSideClick = _a.onSideClick, cancelAction = _a.cancelAction, width = _a.width, className = _a.className, title = _a.title, customHeader = _a.customHeader, customFooter = _a.customFooter, customSideButton = _a.customSideButton, _d = _a.hasCloseIcon, hasCloseIcon = _d === void 0 ? true : _d, _e = _a.hasCancelButton, hasCancelButton = _e === void 0 ? false : _e, _f = _a.saveText, saveText = _f === void 0 ? "Save" : _f, _g = _a.cancelText, cancelText = _g === void 0 ? "Cancel" : _g, _h = _a.sideText, sideText = _h === void 0 ? "Clear" : _h, props = __rest$7(_a, ["children", "open", "centered", "closable", "onClose", "onSave", "onSideClick", "cancelAction", "width", "className", "title", "customHeader", "customFooter", "customSideButton", "hasCloseIcon", "hasCancelButton", "saveText", "cancelText", "sideText"]);
+    var modalClass = classnames("d-modal", className);
+    var childrenClass = classnames("d-modal__children");
+    var headerClass = classnames("border-bottom py-3", { "d-flex align-items-center": !!title });
+    var header = function () {
+        var content;
+        content = function () {
+            return (React__default.createElement(React__default.Fragment, null,
+                hasCloseIcon && React__default.createElement(Button, { iconName: "close", variant: "trans", onClick: onClose }),
+                title && React__default.createElement("h4", { className: "w-100 text-center" }, title)));
+        };
+        if (customHeader) {
+            content = customHeader;
+        }
+        return React__default.createElement("div", { className: headerClass }, content());
+    };
+    var footer = function () {
+        var content;
+        var sideButton;
+        sideButton = function () { return React__default.createElement(Button, { variant: "trans", content: sideText, onClick: onSideClick }); };
+        if (customSideButton) {
+            sideButton = customSideButton;
+        }
+        content = function () {
+            return (React__default.createElement(React__default.Fragment, null,
+                (onSideClick || !!customSideButton) && sideButton(),
+                React__default.createElement("div", { className: "w-100 d-flex align-items-center justify-content-end" },
+                    hasCancelButton && (React__default.createElement(Button, { variant: "outline", content: cancelText, className: "mr-3", onClick: function (e) {
+                            if (cancelAction) {
+                                return cancelAction(e);
+                            }
+                            return onClose && onClose(e);
+                        } })),
+                    React__default.createElement(Button, { variant: "standard", content: saveText }))));
+        };
+        if (customFooter) {
+            content = customFooter;
+        }
+        return React__default.createElement("div", { className: "d-flex align-items-center border-top py-3 px-3" }, content());
+    };
+    return (React__default.createElement(Modal$1, __assign({ visible: open, onCancel: onClose, centered: centered, className: modalClass, closable: closable, onOk: onSave, width: width, footer: null }, props),
+        header(),
+        React__default.createElement("div", { className: childrenClass }, children),
+        footer()));
+};
+
+export { Button, Checkbox, CheckboxGroup, HeaderTable, Icon$1 as Icon, InputText, Modal, RadioGroup, Select, TreeSelect };
 //# sourceMappingURL=dcomponent.es.js.map
