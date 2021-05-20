@@ -10,7 +10,8 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
     disabled?: boolean;
     size?: "large" | "medium" | "small" | "x-small";
     variant?: "standard" | "outline" | "trans";
-    color?: "primary" | "secondary" | "success" | "info" | "warning" | "danger" | "dark" | "light";
+    color?: "primary" | "secondary" | "green" | "red" | "yellow" | "blue" | "dark" | "light";
+    suffixIcon?: string;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -23,10 +24,12 @@ const Button: React.FC<ButtonProps> = ({
     size = "large",
     variant = "standard",
     color = "primary",
+    suffixIcon,
     ...props
 }) => {
     const buttonClass = ClassNames(
-        `text text-nowrap d-button d-button__${size} d-button__${variant}`,
+        `text text-nowrap d-button d-button__${size} 
+         d-button__${variant}-${color}`,
         {
             "text-x-small": size === "x-small",
             "text-small font-weight-bold": variant === "trans",
@@ -40,6 +43,7 @@ const Button: React.FC<ButtonProps> = ({
         <button className={buttonClass} type={type} disabled={disabled} onClick={onClick} {...props}>
             {iconName && <Icon name={iconName} size="large" className={iconClass} />}
             {content}
+            {suffixIcon && <Icon name={suffixIcon} size="large" className={iconClass} />}
         </button>
     );
 };

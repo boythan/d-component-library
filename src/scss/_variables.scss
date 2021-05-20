@@ -80,9 +80,20 @@
     $light-opposite-muted-color:     #999                  !default;
     $light-opposite-alt-color:       #6c757d               !default;
     $light-divider-color:            #ebebeb               !default;
+
    // dark
-    $dark-color:                     $light-opposite-color   !default;
-    $dark-opposite-color:            $light-color            !default;
+   $dark-color:                     $light-opposite-color   !default;
+   $dark-opposite-color:            $light-color            !default;
+   
+   // blue
+    $green-color:                    #149B22               !default;
+   
+   // blue
+    $blue-color:                     #17a2b8               !default;
+   // yellow
+    $yellow-color:                   #ffc107               !default;
+   // red
+    $red-color:                      #d21c09               !default;
    // accent
     $accent-color:                   $primary-color          !default;
     $accent-opposite-color:          $light-color            !default;

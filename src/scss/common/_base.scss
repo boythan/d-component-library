@@ -242,6 +242,8 @@ text,
     }
 }
 
+label,
+.label,
 .text-label {
     @extend .text-x-small-bold;
     color: $input-color-label;

@@ -1,6 +1,18 @@
 @import "../mixins/buttons";
 @import "../variables";
 
+$button-variant: ("outline", "standard", "trans");
+$button-color: (
+    "primary": $accent-color,
+    "secondary": $secondary-color,
+    "green": $green-color,
+    "red": $red-color,
+    "yellow": $yellow-color,
+    "blue": $blue-color,
+    "dark": $dark-color,
+    "light": $light-color,
+);
+
 //base
 .d-button {
     display: flex;
@@ -28,67 +40,72 @@
     @include btn-x-small();
 }
 //variant
-.d-button__standard {
-    background-color: $accent-color;
-    color: $light-color;
-    &:active {
-        outline: none !important;
-        border: none !important;
-        background-color: $btn-primary-active-bg-color !important;
-    }
-    &:focus {
-        border: none !important;
-        outline: none !important;
-    }
-    &:hover {
-        background-color: $btn-primary-hover-bg-color;
-    }
-    &:disabled {
-        border: 1px solid rgba($accent-color, 0.3);
-        background-color: $disabled-color !important;
-    }
-}
 
-.d-button__outline {
-    border: 1px solid $accent-color;
-    background-color: $light-color;
-    color: $accent-color;
-    &:active {
-        outline: none !important;
-        background-color: $btn-primary-active-bg-color !important;
-        color: $light-color;
-    }
-    &:focus {
-        outline: none !important;
-    }
-    &:hover {
-        background-color: $btn-outline-hover-color;
-    }
-    &:disabled {
-        border: 1px solid rgba($accent-color, 0.3);
-        color: rgba($accent-color, 0.3);
-        background-color: $light-color;
-    }
-}
-
-.d-button__trans {
-    background-color: transparent;
-    color: $accent-color;
-    border: none;
-    outline: none;
-    &:active {
-        outline: none !important;
-        background-color: $btn-trans-active-bg-color !important;
-        color: $btn-trans-active-font-color;
-    }
-    &:focus {
-        outline: none !important;
-    }
-    &:hover {
-        background-color: $btn-trans-hover-bg-color;
-    }
-    &:disabled {
-        color: $disabled-color;
+@each $var in $button-variant {
+    @each $name, $color in $button-color {
+        .d-button__#{$var}-#{$name} {
+            @if ($var == "trans") {
+                background-color: transparent;
+                color: $color;
+                border: none;
+                outline: none;
+                &:active {
+                    outline: none !important;
+                    background-color: $btn-trans-active-bg-color !important;
+                    color: $btn-trans-active-font-color;
+                }
+                &:focus {
+                    outline: none !important;
+                }
+                &:hover {
+                    background-color: $btn-trans-hover-bg-color;
+                }
+                &:disabled {
+                    color: $disabled-color;
+                }
+            }
+            @if ($var == "outline") {
+                border: 1px solid $color;
+                background-color: $light-color;
+                color: $color;
+                &:active {
+                    outline: none !important;
+                    background-color: darken($color, 10%) !important;
+                    color: $light-color;
+                }
+                &:focus {
+                    outline: none !important;
+                }
+                &:hover {
+                    background-color: $btn-outline-hover-color;
+                }
+                &:disabled {
+                    border: 1px solid rgba($accent-color, 0.3);
+                    color: rgba($accent-color, 0.3);
+                    background-color: $light-color;
+                }
+            }
+            @if ($var == "standard") {
+                background-color: $color;
+                color: $light-color;
+                &:active {
+                    outline: none !important;
+                    border: none !important;
+                    background-color: darken($color, 10%) !important;
+                }
+                &:focus {
+                    border: none !important;
+                    outline: none !important;
+                }
+                &:hover {
+                    background-color: rgba($color, 0.9);
+                }
+                &:disabled {
+                    border: 1px solid rgba($accent-color, 0.3);
+                    background-color: $disabled-color !important;
+                }
+            }
+        }
     }
 }
 
