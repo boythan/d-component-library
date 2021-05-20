@@ -25,6 +25,7 @@ const Checkbox = ({
     variant = "checkbox",
     disabled,
     checked,
+    ...props
 }: CheckboxProps) => {
     const classContainer = ClassNames("checkbox__container", className);
     const classInputWrapper = ClassNames(
@@ -36,7 +37,7 @@ const Checkbox = ({
     const classInput = ClassNames("checkbox__input", classNameInput);
     const classLabel = ClassNames("checkbox__label ml-3 text-nowrap", classNameLabel);
     return (
-        <div className={classContainer}>
+        <div className={classContainer} {...props}>
             <div className={classInputWrapper}>
                 <input
                     type="checkbox"

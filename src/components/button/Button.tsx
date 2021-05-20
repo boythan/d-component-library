@@ -9,7 +9,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
     className?: string;
     disabled?: boolean;
     size?: "large" | "medium" | "small" | "x-small";
-    variant?: "standard" | "outline";
+    variant?: "standard" | "outline" | "trans";
     color?: "primary" | "secondary" | "success" | "info" | "warning" | "danger" | "dark" | "light";
 }
 
@@ -23,19 +23,21 @@ const Button: React.FC<ButtonProps> = ({
     size = "large",
     variant = "standard",
     color = "primary",
+    ...props
 }) => {
     const buttonClass = ClassNames(
         `text text-nowrap d-button d-button__${size} d-button__${variant}`,
         {
             "text-x-small": size === "x-small",
-            "d-button__disabled": disabled,
+            "text-small font-weight-bold": variant === "trans",
+            "text-underline": !iconName && variant === "trans",
             "d-button__icon": iconName && !content,
         },
         className
     );
     const iconClass = ClassNames("d-block", { "mx-2": content && iconName });
     return (
-        <button className={buttonClass} type={type} disabled={disabled} onClick={onClick}>
+        <button className={buttonClass} type={type} disabled={disabled} onClick={onClick} {...props}>
             {iconName && <Icon name={iconName} size="large" className={iconClass} />}
             {content}
         </button>

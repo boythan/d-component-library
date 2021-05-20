@@ -383,7 +383,7 @@
          $btn-primary-font-color:        $light-color                  !default;
          $btn-primary-icon-color:        $btn-primary-font-color       !default;
          // hover
-         $btn-primary-hover-bg-color:    rgba($accent-color,0.5)       !default;
+         $btn-primary-hover-bg-color:    rgba($accent-color,0.95)       !default;
          $btn-primary-hover-font-color:  $dark-opposite-color          !default;
          $btn-primary-hover-icon-color:  $btn-primary-hover-font-color !default;
          // active
@@ -414,8 +414,13 @@
          $btn-light-hover-icon-color:  $btn-light-hover-font-color !default;
          // active
          $btn-light-active-bg-color:   #e5e5e5                     !default;
-         $btn-light-active-font-color: $btn-light-hover-font-color !default;
-         $btn-light-active-icon-color: $btn-light-hover-icon-color !default;
+         $btn-light-active-font-color: $btn-light-hover-font-color   !default;
+         $btn-light-active-icon-color: $btn-light-hover-icon-color   !default;
+      // outline
+         // default
+         $btn-outline-bg-color:        $light-color                  !default;
+         // hover
+         $btn-outline-hover-color:     rgba($accent-color,0.05)       !default;
 
 
       // transparent
@@ -424,13 +429,13 @@
          $btn-trans-font-color:        $dark-color               !default;
          $btn-trans-icon-color:        $dark-color               !default;
          // hover
-         $btn-light-hover-bg-color:    #f0f0f0                     !default;
-         $btn-light-hover-font-color:  $light-opposite-color       !default;
-         $btn-light-hover-icon-color:  $btn-light-hover-font-color !default;
+         $btn-trans-hover-bg-color:    #f0f0f0                   !default;
+         $btn-trans-hover-font-color:  $light-opposite-color       !default;
+         $btn-trans-hover-icon-color:  $btn-light-hover-font-color !default;
          // active
-         $btn-light-active-bg-color:   #e5e5e5                     !default;
-         $btn-light-active-font-color: $btn-light-hover-font-color !default;
-         $btn-light-active-icon-color: $btn-light-hover-icon-color !default;
+         $btn-trans-active-bg-color:   #e5e5e5                     !default;
+         $btn-trans-active-font-color: $btn-light-hover-font-color !default;
+         $btn-trans-active-icon-color: $btn-light-hover-icon-color !default;
 
       //height
       $btn-base-height:                36px               !default;
