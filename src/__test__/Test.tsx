@@ -167,6 +167,7 @@ export default function Test({ content }: Props): ReactElement {
                 closeIcon={false}
                 hasCancelButton
                 onSideClick={() => {}}
+                size="medium"
             >
                 {mainContent()}
             </Modal>

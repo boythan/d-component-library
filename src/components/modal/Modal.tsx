@@ -17,6 +17,7 @@ export interface ModalProps extends ModalAntProps {
     hasCancelButton?: boolean;
     saveText?: string;
     sideText?: string;
+    size?: "large" | "medium" | "small";
 }
 
 const Modal: React.FC<ModalProps> = ({
@@ -39,9 +40,10 @@ const Modal: React.FC<ModalProps> = ({
     saveText = "Save",
     cancelText = "Cancel",
     sideText = "Clear",
+    size,
     ...props
 }) => {
-    const modalClass = ClassNames("d-modal", className);
+    const modalClass = ClassNames("d-modal", `d-modal__${size}`, className);
     const childrenClass = ClassNames("d-modal__children");
     const headerClass = ClassNames("border-bottom py-3", { "d-flex align-items-center": !!title });
     const header = () => {
