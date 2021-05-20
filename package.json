@@ -6,7 +6,7 @@
   "typings": "dist/dcomponent.d.ts",
   "source": "src/dcomponent.tsx",
   "files": [
-    "./dist"
+    "dist"
   ],
   "repository": {
     "type": "git",
