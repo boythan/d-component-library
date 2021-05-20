@@ -93,6 +93,10 @@ export default function Test({ content }: Props): ReactElement {
                         variant="square"
                     />
                 </div>
+                <div className="d-flex align-items-center my-4">
+                    <Avatar size="small" className="mx-3" text="Joker" />
+                    <Avatar size="medium" className="mx-3" variant="square" text="Batman" />
+                </div>
                 {/* <Select
                 dataSource={ATTRIBUTE_INPUT_TYPE}
                 label="Select"

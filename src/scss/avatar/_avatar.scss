@@ -21,17 +21,11 @@ $avatar-variant: ("rounded", "square");
             width: $size;
             height: $size;
             @if ($var == "rounded") {
+                border-radius: 9999px;
                 .d-image__image {
                     border-radius: 9999px;
                 }
             }
         }
-    }
-}
-
-@each $name, $size in $avatar-size {
-    .d-image__#{$name} {
-        width: $size;
-        height: $size;
     }
 }
