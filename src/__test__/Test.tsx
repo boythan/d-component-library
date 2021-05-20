@@ -8,6 +8,7 @@ import Select from "../components/select/Select";
 import CheckboxGroup from "../components/checkbox/CheckboxGroup";
 import RadioGroup from "../components/checkbox/RadioGroup";
 import Modal from "../components/modal/Modal";
+import Avatar from "../components/avatar/Avatar";
 
 interface Props {
     content?: any;
@@ -33,6 +34,65 @@ export default function Test({ content }: Props): ReactElement {
         return (
             <React.Fragment>
                 <InputText />
+                <div className="d-flex align-items-center my-3">
+                    <Avatar
+                        src="https://c4.wallpaperflare.com/wallpaper/462/200/955/face-women-model-portrait-wallpaper-preview.jpg"
+                        size="x-large"
+                        className="mx-3"
+                    />
+                    <Avatar
+                        src="https://c4.wallpaperflare.com/wallpaper/462/200/955/face-women-model-portrait-wallpaper-preview.jpg"
+                        size="large"
+                        className="mx-3"
+                    />
+                    <Avatar
+                        src="https://c4.wallpaperflare.com/wallpaper/462/200/955/face-women-model-portrait-wallpaper-preview.jpg"
+                        size="medium"
+                        className="mx-3"
+                    />
+                    <Avatar
+                        src="https://c4.wallpaperflare.com/wallpaper/462/200/955/face-women-model-portrait-wallpaper-preview.jpg"
+                        size="small"
+                        className="mx-3"
+                    />
+                    <Avatar
+                        src="https://c4.wallpaperflare.com/wallpaper/462/200/955/face-women-model-portrait-wallpaper-preview.jpg"
+                        size="x-small"
+                        className="mx-3"
+                    />
+                </div>
+                <div className="d-flex align-items-center my-3">
+                    <Avatar
+                        src="https://c4.wallpaperflare.com/wallpaper/462/200/955/face-women-model-portrait-wallpaper-preview.jpg"
+                        size="x-large"
+                        className="mx-3"
+                        variant="square"
+                    />
+                    <Avatar
+                        src="https://c4.wallpaperflare.com/wallpaper/462/200/955/face-women-model-portrait-wallpaper-preview.jpg"
+                        size="large"
+                        className="mx-3"
+                        variant="square"
+                    />
+                    <Avatar
+                        src="https://c4.wallpaperflare.com/wallpaper/462/200/955/face-women-model-portrait-wallpaper-preview.jpg"
+                        size="medium"
+                        className="mx-3"
+                        variant="square"
+                    />
+                    <Avatar
+                        src="https://c4.wallpaperflare.com/wallpaper/462/200/955/face-women-model-portrait-wallpaper-preview.jpg"
+                        size="small"
+                        className="mx-3"
+                        variant="square"
+                    />
+                    <Avatar
+                        src="https://c4.wallpaperflare.com/wallpaper/462/200/955/face-women-model-portrait-wallpaper-preview.jpg"
+                        size="x-small"
+                        className="mx-3"
+                        variant="square"
+                    />
+                </div>
                 {/* <Select
                 dataSource={ATTRIBUTE_INPUT_TYPE}
                 label="Select"

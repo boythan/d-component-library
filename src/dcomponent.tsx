@@ -57,3 +57,10 @@ export { default as HeaderTable } from "./components/header/HeaderTable";
 
 export type { ModalProps } from "./components/modal/Modal";
 export { default as Modal } from "./components/modal/Modal";
+
+/* ----------------------------------------
+// Avatar
+// ---------------------------------------- */
+
+export type { AvatarProps } from "./components/avatar/Avatar";
+export { default as Avatar } from "./components/avatar/Avatar";

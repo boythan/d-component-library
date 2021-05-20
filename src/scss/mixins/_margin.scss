@@ -1,0 +1,18 @@
+@mixin margin-class($side, $number) {
+    $firstLetter: str-slice($side, 0, 1);
+    .m-#{$firstLetter}-#{$number} {
+        margin-#{$side}: #{$number}px;
+    }
+}
+
+$margins: (10, 20);
+$sides: ("top", "right", "bottom", "left");
+@mixin generate-margin() {
+    @each $margin in $margins {
+        @each $side in $sides {
+            @include margin-class($side, $margin);
+        }
+    }
+}
+
+@include generate-margin();
