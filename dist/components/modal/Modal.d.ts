@@ -10,10 +10,12 @@ export interface ModalProps extends ModalAntProps {
     customHeader?: () => ReactNode;
     customFooter?: () => ReactNode;
     customSideButton?: () => ReactNode;
+    headerSide?: () => ReactNode;
     hasCloseIcon?: boolean;
     hasCancelButton?: boolean;
     saveText?: string;
     sideText?: string;
+    size?: "large" | "medium" | "small";
 }
 declare const Modal: React.FC<ModalProps>;
 export default Modal;

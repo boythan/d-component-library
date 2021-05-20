@@ -25393,16 +25393,18 @@ var HeaderTable = function (_a) {
 };
 
 var Modal = function (_a) {
-    var children = _a.children, open = _a.open, _b = _a.centered, centered = _b === void 0 ? true : _b, _c = _a.closable, closable = _c === void 0 ? false : _c, onClose = _a.onClose, onSave = _a.onSave, onSideClick = _a.onSideClick, cancelAction = _a.cancelAction, width = _a.width, className = _a.className, title = _a.title, customHeader = _a.customHeader, customFooter = _a.customFooter, customSideButton = _a.customSideButton, _d = _a.hasCloseIcon, hasCloseIcon = _d === void 0 ? true : _d, _e = _a.hasCancelButton, hasCancelButton = _e === void 0 ? false : _e, _f = _a.saveText, saveText = _f === void 0 ? "Save" : _f, _g = _a.cancelText, cancelText = _g === void 0 ? "Cancel" : _g, _h = _a.sideText, sideText = _h === void 0 ? "Clear" : _h, props = __rest$7(_a, ["children", "open", "centered", "closable", "onClose", "onSave", "onSideClick", "cancelAction", "width", "className", "title", "customHeader", "customFooter", "customSideButton", "hasCloseIcon", "hasCancelButton", "saveText", "cancelText", "sideText"]);
-    var modalClass = classnames("d-modal", className);
+    var children = _a.children, open = _a.open, _b = _a.centered, centered = _b === void 0 ? true : _b, _c = _a.closable, closable = _c === void 0 ? false : _c, onClose = _a.onClose, onSave = _a.onSave, onSideClick = _a.onSideClick, cancelAction = _a.cancelAction, width = _a.width, className = _a.className, title = _a.title, customHeader = _a.customHeader, customFooter = _a.customFooter, customSideButton = _a.customSideButton, headerSide = _a.headerSide, _d = _a.hasCloseIcon, hasCloseIcon = _d === void 0 ? true : _d, _e = _a.hasCancelButton, hasCancelButton = _e === void 0 ? false : _e, _f = _a.saveText, saveText = _f === void 0 ? "Save" : _f, _g = _a.cancelText, cancelText = _g === void 0 ? "Cancel" : _g, _h = _a.sideText, sideText = _h === void 0 ? "Clear" : _h, size = _a.size, props = __rest$7(_a, ["children", "open", "centered", "closable", "onClose", "onSave", "onSideClick", "cancelAction", "width", "className", "title", "customHeader", "customFooter", "customSideButton", "headerSide", "hasCloseIcon", "hasCancelButton", "saveText", "cancelText", "sideText", "size"]);
+    var modalClass = classnames("d-modal", "d-modal__" + size, className);
     var childrenClass = classnames("d-modal__children");
-    var headerClass = classnames("border-bottom py-3", { "d-flex align-items-center": !!title });
+    var headerClass = classnames("d-modal__header border-bottom py-3", { "d-flex align-items-center": !!title });
+    var footerClass = classnames("d-modal__footer d-flex align-items-center border-top py-3 px-3");
     var header = function () {
         var content;
         content = function () {
             return (React__default['default'].createElement(React__default['default'].Fragment, null,
                 hasCloseIcon && React__default['default'].createElement(Button, { iconName: "close", variant: "trans", onClick: onClose }),
-                title && React__default['default'].createElement("h4", { className: "w-100 text-center" }, title)));
+                title && React__default['default'].createElement("h4", { className: "w-100 text-center" }, title),
+                headerSide && headerSide()));
         };
         if (customHeader) {
             content = customHeader;
@@ -25431,7 +25433,7 @@ var Modal = function (_a) {
         if (customFooter) {
             content = customFooter;
         }
-        return React__default['default'].createElement("div", { className: "d-flex align-items-center border-top py-3 px-3" }, content());
+        return React__default['default'].createElement("div", { className: footerClass }, content());
     };
     return (React__default['default'].createElement(Modal$1, __assign({ visible: open, onCancel: onClose, centered: centered, className: modalClass, closable: closable, onOk: onSave, width: width, footer: null }, props),
         header(),
@@ -25439,6 +25441,22 @@ var Modal = function (_a) {
         footer()));
 };
 
+function Avatar(_a) {
+    var _b = _a.size, size = _b === void 0 ? "medium" : _b, src = _a.src, alt = _a.alt, _c = _a.variant, variant = _c === void 0 ? "rounded" : _c, className = _a.className, text = _a.text, _d = _a.color, color = _d === void 0 ? "gray" : _d, props = __rest$7(_a, ["size", "src", "alt", "variant", "className", "text", "color"]);
+    var wrapperClass = classnames("d-image__container d-image__" + variant + "-" + size + " bg-" + color, { "d-flex justify-content-center align-items-center": !!text }, className);
+    var imageClass = classnames("d-image__image");
+    var content;
+    if (text) {
+        var firstLetter = text.charAt(0);
+        content = (React__default['default'].createElement("h2", { className: "text-white text-center", style: { fontWeight: "normal" } }, firstLetter));
+    }
+    if (src) {
+        content = React__default['default'].createElement("img", __assign({ src: src }, props, { alt: alt, className: imageClass }));
+    }
+    return (React__default['default'].createElement("div", { className: wrapperClass, style: { backgroundColor: color } }, content));
+}
+
+exports.Avatar = Avatar;
 exports.Button = Button;
 exports.Checkbox = Checkbox;
 exports.CheckboxGroup = CheckboxGroup;

@@ -28491,6 +28491,33 @@ h6,
     width: 85% !important; } }
 
 /* ----------------------------------------
+// custom-mixin
+// ---------------------------------------- */
+.m-t-10 {
+  margin-top: 10px; }
+
+.m-r-10 {
+  margin-right: 10px; }
+
+.m-b-10 {
+  margin-bottom: 10px; }
+
+.m-l-10 {
+  margin-left: 10px; }
+
+.m-t-20 {
+  margin-top: 20px; }
+
+.m-r-20 {
+  margin-right: 20px; }
+
+.m-b-20 {
+  margin-bottom: 20px; }
+
+.m-l-20 {
+  margin-left: 20px; }
+
+/* ----------------------------------------
 // Input
 // ---------------------------------------- */
 /********************************************LABEL & CONTAINER********************************************/
@@ -29122,3 +29149,89 @@ h6,
   padding: 24px;
   max-height: 800px;
   overflow-y: scroll; }
+
+.d-modal__small {
+  width: 40% !important; }
+
+.d-modal__medium {
+  width: 50% !important; }
+
+.d-modal__large {
+  width: 85% !important; }
+
+@media screen and (max-width: 576px) {
+  .d-modal__small {
+    width: 100% !important; }
+  .d-modal__medium {
+    width: 100% !important; }
+  .d-modal__large {
+    width: 100% !important; } }
+
+@media screen and (min-width: 576px) and (max-width: 768px) {
+  .d-modal__small {
+    width: 60% !important; }
+  .d-modal__medium {
+    width: 85% !important; } }
+
+/* ----------------------------------------
+// modal
+// ---------------------------------------- */
+.d-image__image {
+  width: 100%;
+  height: 100%;
+  object-fit: fill; }
+
+.d-image__rounded-x-large {
+  width: 160px;
+  height: 160px;
+  border-radius: 9999px; }
+  .d-image__rounded-x-large .d-image__image {
+    border-radius: 9999px; }
+
+.d-image__rounded-large {
+  width: 96px;
+  height: 96px;
+  border-radius: 9999px; }
+  .d-image__rounded-large .d-image__image {
+    border-radius: 9999px; }
+
+.d-image__rounded-medium {
+  width: 72px;
+  height: 72px;
+  border-radius: 9999px; }
+  .d-image__rounded-medium .d-image__image {
+    border-radius: 9999px; }
+
+.d-image__rounded-small {
+  width: 48px;
+  height: 48px;
+  border-radius: 9999px; }
+  .d-image__rounded-small .d-image__image {
+    border-radius: 9999px; }
+
+.d-image__rounded-x-small {
+  width: 32px;
+  height: 32px;
+  border-radius: 9999px; }
+  .d-image__rounded-x-small .d-image__image {
+    border-radius: 9999px; }
+
+.d-image__square-x-large {
+  width: 160px;
+  height: 160px; }
+
+.d-image__square-large {
+  width: 96px;
+  height: 96px; }
+
+.d-image__square-medium {
+  width: 72px;
+  height: 72px; }
+
+.d-image__square-small {
+  width: 48px;
+  height: 48px; }
+
+.d-image__square-x-small {
+  width: 32px;
+  height: 32px; }
