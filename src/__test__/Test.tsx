@@ -168,6 +168,11 @@ export default function Test({ content }: Props): ReactElement {
                 hasCancelButton
                 onSideClick={() => {}}
                 size="medium"
+                headerSide={() => (
+                    <div className="text-nowrap" style={{ width: "200px" }}>
+                        this is header side
+                    </div>
+                )}
             >
                 {mainContent()}
             </Modal>

@@ -13,6 +13,7 @@ export interface ModalProps extends ModalAntProps {
     customHeader?: () => ReactNode;
     customFooter?: () => ReactNode;
     customSideButton?: () => ReactNode;
+    headerSide?: () => ReactNode;
     hasCloseIcon?: boolean;
     hasCancelButton?: boolean;
     saveText?: string;
@@ -35,6 +36,7 @@ const Modal: React.FC<ModalProps> = ({
     customHeader,
     customFooter,
     customSideButton,
+    headerSide,
     hasCloseIcon = true,
     hasCancelButton = false,
     saveText = "Save",
@@ -45,7 +47,9 @@ const Modal: React.FC<ModalProps> = ({
 }) => {
     const modalClass = ClassNames("d-modal", `d-modal__${size}`, className);
     const childrenClass = ClassNames("d-modal__children");
-    const headerClass = ClassNames("border-bottom py-3", { "d-flex align-items-center": !!title });
+    const headerClass = ClassNames("d-modal__header border-bottom py-3", { "d-flex align-items-center": !!title });
+    const footerClass = ClassNames("d-modal__footer d-flex align-items-center border-top py-3 px-3");
+
     const header = () => {
         let content;
         content = () => {
@@ -53,6 +57,7 @@ const Modal: React.FC<ModalProps> = ({
                 <React.Fragment>
                     {hasCloseIcon && <Button iconName="close" variant="trans" onClick={onClose} />}
                     {title && <h4 className="w-100 text-center">{title}</h4>}
+                    {headerSide && headerSide()}
                 </React.Fragment>
             );
         };
@@ -100,8 +105,9 @@ const Modal: React.FC<ModalProps> = ({
             content = customFooter;
         }
 
-        return <div className="d-flex align-items-center border-top py-3 px-3">{content()}</div>;
+        return <div className={footerClass}>{content()}</div>;
     };
+
     return (
         <ModalAnt
             visible={open}
