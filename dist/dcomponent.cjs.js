@@ -25282,18 +25282,18 @@ var TreeSelect = function (_a) {
 };
 
 var Button = function (_a) {
-    var content = _a.content, iconName = _a.iconName, onClick = _a.onClick, _b = _a.type, type = _b === void 0 ? "button" : _b, className = _a.className, _c = _a.disabled, disabled = _c === void 0 ? false : _c, _d = _a.size, size = _d === void 0 ? "large" : _d, _e = _a.variant, variant = _e === void 0 ? "standard" : _e, _f = _a.color, color = _f === void 0 ? "primary" : _f, suffixIcon = _a.suffixIcon, props = __rest$7(_a, ["content", "iconName", "onClick", "type", "className", "disabled", "size", "variant", "color", "suffixIcon"]);
+    var content = _a.content, iconName = _a.iconName, className = _a.className, classNameIcon = _a.classNameIcon, classNameIconSuffix = _a.classNameIconSuffix, onClick = _a.onClick, _b = _a.type, type = _b === void 0 ? "button" : _b, _c = _a.size, size = _c === void 0 ? "large" : _c, _d = _a.variant, variant = _d === void 0 ? "standard" : _d, _e = _a.color, color = _e === void 0 ? "primary" : _e, _f = _a.disabled, disabled = _f === void 0 ? false : _f, suffixIcon = _a.suffixIcon, props = __rest$7(_a, ["content", "iconName", "className", "classNameIcon", "classNameIconSuffix", "onClick", "type", "size", "variant", "color", "disabled", "suffixIcon"]);
     var buttonClass = classnames("text text-nowrap d-button d-button__" + size + " \n         d-button__" + variant + "-" + color, {
         "text-x-small": size === "x-small",
         "text-small font-weight-bold": variant === "trans",
-        "text-underline": !iconName && variant === "trans",
         "d-button__icon": iconName && !content,
     }, className);
-    var iconClass = classnames("d-block", { "mx-2": content && iconName });
+    var iconClass = classnames("d-block", { "mx-2": content && iconName }, classNameIcon);
+    var suffixIconClass = classnames("d-block", { "mx-2": content && iconName }, classNameIconSuffix);
     return (React__default['default'].createElement("button", __assign({ className: buttonClass, type: type, disabled: disabled, onClick: onClick }, props),
         iconName && React__default['default'].createElement(Icon$1, { name: iconName, size: "large", className: iconClass }),
         content,
-        suffixIcon && React__default['default'].createElement(Icon$1, { name: suffixIcon, size: "large", className: iconClass })));
+        suffixIcon && React__default['default'].createElement(Icon$1, { name: suffixIcon, size: "large", className: suffixIconClass })));
 };
 
 var Checkbox = function (_a) {
@@ -25457,6 +25457,33 @@ function Avatar(_a) {
     return (React__default['default'].createElement("div", { className: wrapperClass, style: { backgroundColor: color } }, content));
 }
 
+var RowInterchangeView = function (_a) {
+    var _b = _a.dataSource, dataSource = _b === void 0 ? {} : _b, _c = _a.keyList, keyList = _c === void 0 ? [] : _c, className = _a.className, getLabel = _a.getLabel, getContent = _a.getContent;
+    var wrapperClass = classnames(className);
+    return (React__default['default'].createElement("div", { className: wrapperClass }, keyList.map(function (row, index) {
+        var _a;
+        var rowClass = classnames("d-flex align-items-center w-100 justify-content-between py-2 px-3", {
+            "bg-light-gray": index % 2,
+        });
+        var id = row.id, label = row.label;
+        var labelView;
+        var content;
+        labelView = row.label;
+        if (getLabel) {
+            labelView = getLabel(label, row, dataSource);
+        }
+        content = (_a = dataSource === null || dataSource === void 0 ? void 0 : dataSource[id]) !== null && _a !== void 0 ? _a : "N/A";
+        if (getContent) {
+            content = getContent(id, row, dataSource);
+        }
+        var contentView = React__default['default'].createElement("label", { className: "d-block text" }, content);
+        return (React__default['default'].createElement("div", { className: rowClass, key: index },
+            React__default['default'].createElement("div", { className: "w-100" },
+                React__default['default'].createElement("div", { className: "d-block text" }, labelView)),
+            React__default['default'].createElement("div", { className: "w-100" }, contentView)));
+    })));
+};
+
 exports.Avatar = Avatar;
 exports.Button = Button;
 exports.Checkbox = Checkbox;
@@ -25466,6 +25493,7 @@ exports.Icon = Icon$1;
 exports.InputText = InputText;
 exports.Modal = Modal;
 exports.RadioGroup = RadioGroup;
+exports.RowInterchangeView = RowInterchangeView;
 exports.Select = Select;
 exports.TreeSelect = TreeSelect;
 //# sourceMappingURL=dcomponent.cjs.js.map
