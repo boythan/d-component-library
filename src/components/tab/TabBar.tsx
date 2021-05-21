@@ -45,7 +45,6 @@ const TabBar: React.FC<TabBarProps> = ({
                 const itemClass = ClassNames(classNameTabItem, "d-tab-bar__item text-small", {
                     // "d-tab-bar__item-active text-primary": isSelect,
                     "d-tab-bar__item-active": isSelect,
-                    "text-gray": !isSelect,
                 });
                 let label = tabItem?.label ?? "N/A";
                 const icon = tabItem?.iconName ?? undefined;
