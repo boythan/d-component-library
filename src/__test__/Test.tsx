@@ -9,6 +9,7 @@ import CheckboxGroup from "../components/checkbox/CheckboxGroup";
 import RadioGroup from "../components/checkbox/RadioGroup";
 import Modal from "../components/modal/Modal";
 import Avatar from "../components/avatar/Avatar";
+import RowInterchangeView from "../components/view/RowInterchangeView";
 
 interface Props {
     content?: any;
@@ -163,63 +164,15 @@ export default function Test({ content }: Props): ReactElement {
                     />
                 </div>
 
-                {/* <HeaderTable
-                    label="Product table"
-                    onChangeText={() => {}}
-                    onClickExport={() => {}}
-                    onClickFilter={() => {}}
-                    onClickNew={() => {}}
+                <RowInterchangeView
+                    dataSource={{ customerId: 62 }}
+                    keyList={[
+                        { id: "customerId", label: "customerId" },
+                        { id: "typeCustomer", label: "typeCustomer" },
+                        { id: "firstName", label: "firstName" },
+                        { id: "lastName", label: "lastName" },
+                    ]}
                 />
-
-                <div className="my-5">
-                    <Checkbox value="123" variant="radio" label="Label value 1" />
-                    <Checkbox value="123" variant="checkbox" label="Label value 1" />
-                    <Checkbox value="123" variant="checkbox" label="Label value 1" disabled />
-                </div>
-                <div className="my-5">
-                    <CheckboxGroup
-                        dataSource={ATTRIBUTE_INPUT_TYPE}
-                        value={valueSelect}
-                        onChange={(value) => setValueSelect(value)}
-                    />
-                </div>
-                <div className="my-5">
-                    <RadioGroup
-                        dataSource={ATTRIBUTE_INPUT_TYPE}
-                        value={radioValue}
-                        onChange={(value) => setRadioValue(value)}
-                        getDisabledItem={(item) => item?.id === "color"}
-                    />
-                </div>
-
-                <HeaderTable
-                    label="Product table"
-                    onChangeText={() => {}}
-                    onClickExport={() => {}}
-                    onClickFilter={() => {}}
-                    onClickNew={() => {}}
-                />
-
-                <div className="my-5">
-                    <Checkbox value="123" variant="radio" label="Label value 1" />
-                    <Checkbox value="123" variant="checkbox" label="Label value 1" />
-                    <Checkbox value="123" variant="checkbox" label="Label value 1" disabled />
-                </div>
-                <div className="my-5">
-                    <CheckboxGroup
-                        dataSource={ATTRIBUTE_INPUT_TYPE}
-                        value={valueSelect}
-                        onChange={(value) => setValueSelect(value)}
-                    />
-                </div>
-                <div className="my-5">
-                    <RadioGroup
-                        dataSource={ATTRIBUTE_INPUT_TYPE}
-                        value={radioValue}
-                        onChange={(value) => setRadioValue(value)}
-                        getDisabledItem={(item) => item?.id === "color"}
-                    />
-                </div> */}
             </React.Fragment>
         );
     };
