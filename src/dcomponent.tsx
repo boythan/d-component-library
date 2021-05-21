@@ -71,3 +71,10 @@ export { default as Avatar } from "./components/avatar/Avatar";
 
 export type { RowInterchangeViewProps, RowsKey } from "./components/view/RowInterchangeView";
 export { default as RowInterchangeView } from "./components/view/RowInterchangeView";
+
+/* ----------------------------------------
+// TabBar
+// ---------------------------------------- */
+
+export type { TabBarProps, ITabItem } from "./components/tab/TabBar";
+export { default as TabBar } from "./components/tab/TabBar";

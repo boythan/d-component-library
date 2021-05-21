@@ -10,6 +10,7 @@ import RadioGroup from "../components/checkbox/RadioGroup";
 import Modal from "../components/modal/Modal";
 import Avatar from "../components/avatar/Avatar";
 import RowInterchangeView from "../components/view/RowInterchangeView";
+import TabBar from "../components/tab/TabBar";
 
 interface Props {
     content?: any;
@@ -27,14 +28,14 @@ export default function Test({ content }: Props): ReactElement {
     const [valueSelect, setValueSelect] = useState(["text"]);
     const [radioValue, setRadioValue] = useState<any>(["color"]);
     const [openModal, setOpenModal] = useState(false);
+    const [selectedTab, setSelectedTab] = useState<any>();
 
     console.log({ valueSelect });
     console.log({ radioValue });
 
     const mainContent = () => {
-        return (
+        const avatar = (
             <React.Fragment>
-                <InputText />
                 <div className="d-flex align-items-center my-3">
                     <Avatar
                         src="https://c4.wallpaperflare.com/wallpaper/462/200/955/face-women-model-portrait-wallpaper-preview.jpg"
@@ -98,51 +99,52 @@ export default function Test({ content }: Props): ReactElement {
                     <Avatar size="small" className="mx-3" text="Joker" />
                     <Avatar size="medium" className="mx-3" variant="square" text="Batman" />
                 </div>
-                {/* <Select
-                dataSource={ATTRIBUTE_INPUT_TYPE}
-                label="Select"
-                className="mt-4"
-                value={valueSelect}
-                onChange={setValueSelect}
-            /> */}
-                <div className="d-flex my-4">
-                    <div className="d-flex flex-column mr-5">
-                        <Button
-                            content="Button"
-                            color="gray"
-                            variant="outline"
-                            className="text-underline text-secondary"
-                        />
-                        <Button content="Button" color="gray" variant="standard" />
-                        <Button content="Button" color="green" variant="trans" />
-                        <Button content="Button" variant="trans" className="my-3" />
-                        <Button content="Disabled Button" className="my-3" disabled />
-                        <Button content="Button" className="my-3" size="medium" />
-                        <Button content="Button" className="my-3" size="small" />
-                        <Button content="Button" className="my-3" size="x-small" />
-                    </div>
-                    <div className="d-flex flex-column mx-5">
-                        <Button content="Button" variant="outline" className="my-3" disabled />
-                        <Button content="Button" className="my-3" size="medium" variant="outline" />
-                        <Button content="Button" className="my-3" size="small" variant="outline" />
-                        <Button content="Button" className="my-3" size="x-small" variant="outline" />
-                    </div>
-                    <div className="d-flex flex-column ml-5">
-                        <Button content="Icon Button" iconName="home" />
-                        <Button content="Icon Button" iconName="home" suffixIcon="home" variant="trans" />
-                        <Button content="Icon Button" className="my-3" iconName="home" variant="outline" />
-                        <Button className="my-3" iconName="home" variant="outline" />
-                    </div>
-                </div>
+            </React.Fragment>
+        );
 
-                <HeaderTable
-                    label="Product table"
-                    onChangeText={() => {}}
-                    onClickExport={() => {}}
-                    onClickFilter={() => {}}
-                    onClickNew={() => {}}
+        const input = (
+            <div className="my-4">
+                <InputText />
+
+                <Select
+                    dataSource={ATTRIBUTE_INPUT_TYPE}
+                    label="Select"
+                    className="mt-4"
+                    value={valueSelect}
+                    onChange={setValueSelect}
                 />
+            </div>
+        );
 
+        const button = (
+            <div className="d-flex my-4">
+                <div className="d-flex flex-column mr-5">
+                    <Button content="Button" color="gray" variant="outline" className="text-underline text-secondary" />
+                    <Button content="Button" color="gray" variant="standard" />
+                    <Button content="Button" color="green" variant="trans" />
+                    <Button content="Button" variant="trans" className="my-3" />
+                    <Button content="Disabled Button" className="my-3" disabled />
+                    <Button content="Button" className="my-3" size="medium" />
+                    <Button content="Button" className="my-3" size="small" />
+                    <Button content="Button" className="my-3" size="x-small" />
+                </div>
+                <div className="d-flex flex-column mx-5">
+                    <Button content="Button" variant="outline" className="my-3" disabled />
+                    <Button content="Button" className="my-3" size="medium" variant="outline" />
+                    <Button content="Button" className="my-3" size="small" variant="outline" />
+                    <Button content="Button" className="my-3" size="x-small" variant="outline" />
+                </div>
+                <div className="d-flex flex-column ml-5">
+                    <Button content="Icon Button" iconName="home" />
+                    <Button content="Icon Button" iconName="home" suffixIcon="home" variant="trans" />
+                    <Button content="Icon Button" className="my-3" iconName="home" variant="outline" />
+                    <Button className="my-3" iconName="home" variant="outline" />
+                </div>
+            </div>
+        );
+
+        const checkBox = (
+            <React.Fragment>
                 <div className="my-5">
                     <Checkbox value="123" variant="radio" label="Label value 1" />
                     <Checkbox value="123" variant="checkbox" label="Label value 1" />
@@ -163,7 +165,22 @@ export default function Test({ content }: Props): ReactElement {
                         getDisabledItem={(item) => item?.id === "color"}
                     />
                 </div>
+            </React.Fragment>
+        );
 
+        const header = (
+            <div className="my-4">
+                <HeaderTable
+                    label="Product table"
+                    onChangeText={() => {}}
+                    onClickExport={() => {}}
+                    onClickFilter={() => {}}
+                    onClickNew={() => {}}
+                />
+            </div>
+        );
+        const view = (
+            <div className="my-4">
                 <RowInterchangeView
                     dataSource={{ customerId: 62 }}
                     keyList={[
@@ -173,6 +190,28 @@ export default function Test({ content }: Props): ReactElement {
                         { id: "lastName", label: "lastName" },
                     ]}
                 />
+            </div>
+        );
+        const tab = (
+            <div className="my-4">
+                <TabBar dataSource={ATTRIBUTE_INPUT_TYPE} onChange={(tab) => setSelectedTab(tab)} value={selectedTab} />
+                <TabBar
+                    dataSource={ATTRIBUTE_INPUT_TYPE}
+                    onChange={(tab) => setSelectedTab(tab)}
+                    value={selectedTab}
+                    variant="vertical"
+                />
+            </div>
+        );
+        return (
+            <React.Fragment>
+                {/* {avatar} */}
+                {/* {input} */}
+                {/* {button} */}
+                {/* {checkBox} */}
+                {/* {header} */}
+                {tab}
+                {view}
             </React.Fragment>
         );
     };
