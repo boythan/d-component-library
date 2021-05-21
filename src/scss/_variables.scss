@@ -80,20 +80,23 @@
     $light-opposite-muted-color:     #999                  !default;
     $light-opposite-alt-color:       #6c757d               !default;
     $light-divider-color:            #ebebeb               !default;
+    $light-gray-color:               #D8D8D8               !default;
 
    // dark
    $dark-color:                     $light-opposite-color   !default;
    $dark-opposite-color:            $light-color            !default;
    
    // blue
-    $green-color:                    #149B22               !default;
+    $green-color:                    #33963D               !default;
    
    // blue
     $blue-color:                     #17a2b8               !default;
    // yellow
-    $yellow-color:                   #ffc107               !default;
+    $yellow-color:                   #FAC256               !default;
    // red
-    $red-color:                      #d21c09               !default;
+    $red-color:                      #F44336               !default;
+   // red
+    $gray-color:                     #A7A7A7               !default;
    // accent
     $accent-color:                   $primary-color          !default;
     $accent-opposite-color:          $light-color            !default;
@@ -431,7 +434,7 @@
          // default
          $btn-outline-bg-color:        $light-color                  !default;
          // hover
-         $btn-outline-hover-color:     rgba($accent-color,0.05)       !default;
+         $btn-outline-hover-color:     rgba($light-gray-color,0.1)             !default;
 
 
       // transparent

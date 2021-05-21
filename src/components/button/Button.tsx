@@ -10,7 +10,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
     disabled?: boolean;
     size?: "large" | "medium" | "small" | "x-small";
     variant?: "standard" | "outline" | "trans";
-    color?: "primary" | "secondary" | "green" | "red" | "yellow" | "blue" | "dark" | "light";
+    color?: "primary" | "secondary" | "green" | "red" | "yellow" | "blue" | "gray" | "dark" | "light";
     suffixIcon?: string;
 }
 

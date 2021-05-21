@@ -9,6 +9,7 @@ $button-color: (
     "red": $red-color,
     "yellow": $yellow-color,
     "blue": $blue-color,
+    "gray": $gray-color,
     "dark": $dark-color,
     "light": $light-color,
 );
@@ -77,7 +78,10 @@ $button-color: (
                     outline: none !important;
                 }
                 &:hover {
-                    background-color: $btn-outline-hover-color;
+                    // background-color: $btn-outline-hover-color;
+                    background-color: rgba($color, 0.05);
+                    color: darken($color, 5%);
+                    // color: $light-color;
                 }
                 &:disabled {
                     border: 1px solid rgba($accent-color, 0.3);
