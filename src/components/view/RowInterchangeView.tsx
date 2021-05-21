@@ -43,9 +43,9 @@ const RowInterchangeView: React.FC<RowInterchangeViewProps> = ({
                 return (
                     <div className={rowClass} key={index}>
                         <div className="w-100">
-                            <div className="d-block text">{labelView}</div>
+                            <div className="d-block text-x-small">{labelView}</div>
                         </div>
-                        <div className="w-100">{contentView}</div>
+                        <div className="w-100 text">{contentView}</div>
                     </div>
                 );
             })}
