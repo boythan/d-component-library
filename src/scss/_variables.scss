@@ -80,7 +80,7 @@
     $light-opposite-muted-color:     #999                  !default;
     $light-opposite-alt-color:       #6c757d               !default;
     $light-divider-color:            #ebebeb               !default;
-    $light-gray-color:               #D8D8D8               !default;
+    $light-gray-color:               rgba(245, 245, 245, 1)               !default;
 
    // dark
    $dark-color:                     $light-opposite-color   !default;
