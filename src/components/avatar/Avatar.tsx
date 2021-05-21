@@ -15,7 +15,7 @@ export default function Avatar({
     variant = "rounded",
     className,
     text,
-    color = "gray",
+    color = "#D8D8D8",
     ...props
 }: AvatarProps): ReactElement {
     const wrapperClass = ClassNames(
