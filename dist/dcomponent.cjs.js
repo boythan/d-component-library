@@ -25282,8 +25282,8 @@ var TreeSelect = function (_a) {
 };
 
 var Button = function (_a) {
-    var content = _a.content, iconName = _a.iconName, onClick = _a.onClick, _b = _a.type, type = _b === void 0 ? "button" : _b, className = _a.className, _c = _a.disabled, disabled = _c === void 0 ? false : _c, _d = _a.size, size = _d === void 0 ? "large" : _d, _e = _a.variant, variant = _e === void 0 ? "standard" : _e; _a.color; var props = __rest$7(_a, ["content", "iconName", "onClick", "type", "className", "disabled", "size", "variant", "color"]);
-    var buttonClass = classnames("text text-nowrap d-button d-button__" + size + " d-button__" + variant, {
+    var content = _a.content, iconName = _a.iconName, onClick = _a.onClick, _b = _a.type, type = _b === void 0 ? "button" : _b, className = _a.className, _c = _a.disabled, disabled = _c === void 0 ? false : _c, _d = _a.size, size = _d === void 0 ? "large" : _d, _e = _a.variant, variant = _e === void 0 ? "standard" : _e, _f = _a.color, color = _f === void 0 ? "primary" : _f, suffixIcon = _a.suffixIcon, props = __rest$7(_a, ["content", "iconName", "onClick", "type", "className", "disabled", "size", "variant", "color", "suffixIcon"]);
+    var buttonClass = classnames("text text-nowrap d-button d-button__" + size + " \n         d-button__" + variant + "-" + color, {
         "text-x-small": size === "x-small",
         "text-small font-weight-bold": variant === "trans",
         "text-underline": !iconName && variant === "trans",
@@ -25292,7 +25292,8 @@ var Button = function (_a) {
     var iconClass = classnames("d-block", { "mx-2": content && iconName });
     return (React__default['default'].createElement("button", __assign({ className: buttonClass, type: type, disabled: disabled, onClick: onClick }, props),
         iconName && React__default['default'].createElement(Icon$1, { name: iconName, size: "large", className: iconClass }),
-        content));
+        content,
+        suffixIcon && React__default['default'].createElement(Icon$1, { name: suffixIcon, size: "large", className: iconClass })));
 };
 
 var Checkbox = function (_a) {
@@ -25442,7 +25443,7 @@ var Modal = function (_a) {
 };
 
 function Avatar(_a) {
-    var _b = _a.size, size = _b === void 0 ? "medium" : _b, src = _a.src, alt = _a.alt, _c = _a.variant, variant = _c === void 0 ? "rounded" : _c, className = _a.className, text = _a.text, _d = _a.color, color = _d === void 0 ? "gray" : _d, props = __rest$7(_a, ["size", "src", "alt", "variant", "className", "text", "color"]);
+    var _b = _a.size, size = _b === void 0 ? "medium" : _b, src = _a.src, alt = _a.alt, _c = _a.variant, variant = _c === void 0 ? "rounded" : _c, className = _a.className, text = _a.text, _d = _a.color, color = _d === void 0 ? "#D8D8D8" : _d, props = __rest$7(_a, ["size", "src", "alt", "variant", "className", "text", "color"]);
     var wrapperClass = classnames("d-image__container d-image__" + variant + "-" + size + " bg-" + color, { "d-flex justify-content-center align-items-center": !!text }, className);
     var imageClass = classnames("d-image__image");
     var content;
