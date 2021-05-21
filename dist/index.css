@@ -27932,6 +27932,9 @@ label,
 .text-secondary {
   color: #DE0D0C !important; }
 
+.text-gray {
+  color: #A7A7A7 !important; }
+
 .text-link {
   color: #DE0D0C; }
 
@@ -29455,7 +29458,7 @@ body {
     width: 85% !important; } }
 
 /* ----------------------------------------
-// modal
+// avatar
 // ---------------------------------------- */
 .d-image__image {
   width: 100%;
@@ -29526,3 +29529,40 @@ body {
   width: 32px;
   min-width: 32px;
   height: 32px; }
+
+/* ----------------------------------------
+// tab-bar
+// ---------------------------------------- */
+.d-tab-bar__horizontal .d-tab-bar__item {
+  font-weight: 400 !important; }
+  .d-tab-bar__horizontal .d-tab-bar__item-active {
+    font-weight: 600 !important;
+    border-bottom: 3px solid #DE0D0C; }
+
+.d-tab-bar__vertical .d-tab-bar__item {
+  width: 100%;
+  font-weight: 400 !important;
+  border-bottom: 1px solid whitesmoke;
+  border-top: 1px solid whitesmoke; }
+  .d-tab-bar__vertical .d-tab-bar__item-active {
+    font-weight: 600 !important;
+    background-color: #DE0D0C;
+    color: #fff; }
+
+.vertical-tab-view-item {
+  display: flex;
+  flex-direction: column;
+  border: 0px white solid;
+  width: 100%;
+  background-color: white;
+  cursor: pointer; }
+
+.vertical-tab-view-item-active {
+  background-color: #f8f8f8;
+  border-left: 5px solid #DE0D0C !important;
+  color: #DE0D0C; }
+
+.view-item-active {
+  background-color: #f8f8f8;
+  border-bottom: 3px solid #DE0D0C !important;
+  color: #DE0D0C; }

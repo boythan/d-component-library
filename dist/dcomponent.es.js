@@ -25450,10 +25450,31 @@ var RowInterchangeView = function (_a) {
         var contentView = React__default.createElement("label", { className: "d-block text" }, content);
         return (React__default.createElement("div", { className: rowClass, key: index },
             React__default.createElement("div", { className: "w-100" },
-                React__default.createElement("div", { className: "d-block text" }, labelView)),
-            React__default.createElement("div", { className: "w-100" }, contentView)));
+                React__default.createElement("div", { className: "d-block text-x-small" }, labelView)),
+            React__default.createElement("div", { className: "w-100 text" }, contentView)));
     })));
 };
 
-export { Avatar, Button, Checkbox, CheckboxGroup, HeaderTable, Icon$1 as Icon, InputText, Modal, RadioGroup, RowInterchangeView, Select, TreeSelect };
+// react
+var TabBar = function (_a) {
+    var _b = _a.dataSource, dataSource = _b === void 0 ? [] : _b, value = _a.value, onChange = _a.onChange, className = _a.className, classNameTabItem = _a.classNameTabItem, getLabel = _a.getLabel, _c = _a.variant, variant = _c === void 0 ? "horizontal" : _c;
+    var wrapperClass = classnames("d-tab-bar d-tab-bar__" + variant, { "d-flex flex-wrap": variant === "horizontal" }, className);
+    return (React__default.createElement("div", { className: wrapperClass }, dataSource.map(function (tabItem, index) {
+        var _a, _b;
+        var isSelect = (value === null || value === void 0 ? void 0 : value.id) === (tabItem === null || tabItem === void 0 ? void 0 : tabItem.id);
+        var itemClass = classnames(classNameTabItem, "d-tab-bar__item text-small", {
+            // "d-tab-bar__item-active text-primary": isSelect,
+            "d-tab-bar__item-active": isSelect,
+            "text-gray": !isSelect,
+        });
+        var label = (_a = tabItem === null || tabItem === void 0 ? void 0 : tabItem.label) !== null && _a !== void 0 ? _a : "N/A";
+        var icon = (_b = tabItem === null || tabItem === void 0 ? void 0 : tabItem.iconName) !== null && _b !== void 0 ? _b : undefined;
+        if (getLabel) {
+            label = getLabel(tabItem);
+        }
+        return (React__default.createElement(Button, { className: itemClass, onClick: function () { return onChange && onChange(tabItem); }, key: index, variant: "trans", content: label, iconName: icon }));
+    })));
+};
+
+export { Avatar, Button, Checkbox, CheckboxGroup, HeaderTable, Icon$1 as Icon, InputText, Modal, RadioGroup, RowInterchangeView, Select, TabBar, TreeSelect };
 //# sourceMappingURL=dcomponent.es.js.map
