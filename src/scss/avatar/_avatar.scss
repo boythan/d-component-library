@@ -19,6 +19,7 @@ $avatar-variant: ("rounded", "square");
     @each $name, $size in $avatar-size {
         .d-image__#{$var}-#{$name} {
             width: $size;
+            min-width: $size;
             height: $size;
             @if ($var == "rounded") {
                 border-radius: 9999px;

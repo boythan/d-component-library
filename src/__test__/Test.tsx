@@ -108,7 +108,7 @@ export default function Test({ content }: Props): ReactElement {
                     <div className="d-flex flex-column mr-5">
                         <Button content="Button" color="gray" variant="outline" />
                         <Button content="Button" color="gray" variant="standard" />
-                        <Button content="Button" color="green" variant="trans" />
+                        <Button content="Button" color="green" variant="trans" className="text-underline" />
                         <Button content="Button" variant="trans" className="my-3" />
                         <Button content="Disabled Button" className="my-3" disabled />
                         <Button content="Button" className="my-3" size="medium" />
