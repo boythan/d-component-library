@@ -29,7 +29,7 @@ export default {
         resolve(),
         // scss(),
         postcss({
-            extract: true,
+            // extract: true,
             // Or with custom file name, it will generate file relative to bundle.js in v3
 
             extract: path.resolve('dist/index.css')
