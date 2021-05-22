@@ -11,6 +11,7 @@ import Modal from "../components/modal/Modal";
 import Avatar from "../components/avatar/Avatar";
 import RowInterchangeView from "../components/view/RowInterchangeView";
 import TabBar from "../components/tab/TabBar";
+import PopoverList from "../components/list/popoverList/PopoverList";
 
 interface Props {
     content?: any;
@@ -203,6 +204,19 @@ export default function Test({ content }: Props): ReactElement {
                 />
             </div>
         );
+
+        const list = (
+            <div className="my-4">
+                <PopoverList
+                    source={(paging) => Promise.resolve(ATTRIBUTE_INPUT_TYPE)}
+                    transformer={(data) => data}
+                    buttonText="New"
+                    buttonIconName="add"
+                    loadMoreText="Load More"
+                />
+            </div>
+        );
+
         return (
             <React.Fragment>
                 {/* {avatar} */}
@@ -212,6 +226,7 @@ export default function Test({ content }: Props): ReactElement {
                 {/* {header} */}
                 {tab}
                 {view}
+                {list}
             </React.Fragment>
         );
     };

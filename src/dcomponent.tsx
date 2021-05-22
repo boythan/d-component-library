@@ -78,3 +78,10 @@ export { default as RowInterchangeView } from "./components/view/RowInterchangeV
 
 export type { TabBarProps, ITabItem } from "./components/tab/TabBar";
 export { default as TabBar } from "./components/tab/TabBar";
+
+/* ----------------------------------------
+// List
+// ---------------------------------------- */
+
+export type { PopoverListProps } from "./components/list/popoverList/PopoverList";
+export { default as PopoverList } from "./components/list/popoverList/PopoverList";

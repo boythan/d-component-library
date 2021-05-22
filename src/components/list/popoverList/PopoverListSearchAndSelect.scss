@@ -1,0 +1,12 @@
+.popoverListSearchAndSelect {
+  position: relative;
+  &-input {
+    display: flex;
+    align-items: center;
+    // background-color: rgb(230, 230, 230);
+    // border-radius: 8px;
+    // margin-top: 8px;
+    width: 100%;
+    border-bottom: black solid 1px;
+  }
+}
