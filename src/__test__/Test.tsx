@@ -12,6 +12,8 @@ import Avatar from "../components/avatar/Avatar";
 import RowInterchangeView from "../components/view/RowInterchangeView";
 import TabBar from "../components/tab/TabBar";
 import PopoverList from "../components/list/popoverList/PopoverList";
+import Loading from "../components/loading/Loading";
+import AwesomeListComponent from "../components/list/awesomeList/AwesomeListComponent";
 
 interface Props {
     content?: any;
@@ -207,13 +209,43 @@ export default function Test({ content }: Props): ReactElement {
 
         const list = (
             <div className="my-4">
-                <PopoverList
-                    source={(paging) => Promise.resolve(ATTRIBUTE_INPUT_TYPE)}
-                    transformer={(data) => data}
+                {/* <PopoverList
+                    source={async (paging) => {
+                        const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+                        return Promise.resolve(res);
+                    }}
+                    transformer={async (res) => {
+                        // const data = JSON.stringify(res);
+                        const data = await res.json();
+                        console.log({ data });
+                        return data;
+                    }}
                     buttonText="New"
                     buttonIconName="add"
                     loadMoreText="Load More"
+                    renderItem={(item) => item?.id}
+                /> */}
+                <AwesomeListComponent
+                    source={async (paging) => {
+                        const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+                        return Promise.resolve(res);
+                    }}
+                    transformer={async (res) => {
+                        // const data = JSON.stringify(res);
+                        const data = await res.json();
+                        console.log({ data });
+                        return data as any;
+                    }}
+                    renderItem={(item, index) => <div>{item?.id}</div>}
                 />
+            </div>
+        );
+
+        const loading = (
+            <div className="my-4 d-flex align-items-center">
+                <Loading />
+                <Loading size="large" className="mx-5" />
+                <Loading size="small" />
             </div>
         );
 
@@ -227,6 +259,7 @@ export default function Test({ content }: Props): ReactElement {
                 {tab}
                 {view}
                 {list}
+                {loading}
             </React.Fragment>
         );
     };

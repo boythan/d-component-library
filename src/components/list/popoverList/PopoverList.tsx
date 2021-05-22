@@ -9,8 +9,8 @@ import React, { useEffect, useRef, useState } from "react";
 import ClassNames from "classnames";
 import Button, { ButtonProps } from "../../button/Button";
 import InputTextSearch from "../../input/InputTextSearch";
-import EmptyView from "./EmptyView";
-import PopoverMode from "./PopoverMode";
+import PopoverMode from "../shared/Mode";
+import EmptyView from "../shared/EmptyView";
 
 const DEFAULT_PAGING_DATA = {
     pageIndex: 1,
@@ -113,12 +113,12 @@ const PopoverList: React.FC<PopoverListProps> = ({
         }
 
         source(pagingData.current)
-            .then((response: any) => {
+            .then(async (response: any) => {
                 pagingData.current = {
                     ...pagingData.current,
                     pageIndex: pagingData.current.pageIndex + 1,
                 };
-                const data = transformer(response);
+                const data = await transformer(response);
 
                 noMoreData.current = isNoMoreData(data);
 

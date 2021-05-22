@@ -86,6 +86,9 @@ export { default as TabBar } from "./components/tab/TabBar";
 export type { PopoverListProps } from "./components/list/popoverList/PopoverList";
 export { default as PopoverList } from "./components/list/popoverList/PopoverList";
 
+export type { AwesomeListComponentProps } from "./components/list/awesomeList/AwesomeListComponent";
+export { default as AwesomeListComponent } from "./components/list/awesomeList/AwesomeListComponent";
+
 /* ----------------------------------------
 // Loading
 // ---------------------------------------- */
