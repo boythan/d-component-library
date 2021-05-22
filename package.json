@@ -34,7 +34,8 @@
     "start-demo": "cd demo-site && npm run start",
     "i-all": "npm i && cd demo-site && npm i",
     "dev": "npm-run-all --parallel build-watch start-demo",
-    "start": "react-scripts start"
+    "start": "react-scripts start",
+    "buildReact": "react-scripts build"
   },
   "eslintConfig": {
     "extends": [
