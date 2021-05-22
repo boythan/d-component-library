@@ -85,3 +85,10 @@ export { default as TabBar } from "./components/tab/TabBar";
 
 export type { PopoverListProps } from "./components/list/popoverList/PopoverList";
 export { default as PopoverList } from "./components/list/popoverList/PopoverList";
+
+/* ----------------------------------------
+// Loading
+// ---------------------------------------- */
+
+export type { LoadingProps } from "./components/loading/Loading";
+export { default as Loading } from "./components/loading/Loading";
