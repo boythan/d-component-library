@@ -1,0 +1,28 @@
+@import "../variables";
+
+.d-tab-bar__horizontal {
+    .d-tab-bar__item {
+        font-weight: $font-weight-normal !important;
+        color: $gray-color;
+        &-active {
+            font-weight: $font-weight-semi-bold !important;
+            border-bottom: 3px solid $accent-color;
+            color: $accent-color !important;
+        }
+    }
+}
+
+.d-tab-bar__vertical {
+    .d-tab-bar__item {
+        width: 100%;
+        font-weight: $font-weight-normal !important;
+        border-bottom: 1px solid $light-gray-color;
+        border-top: 1px solid $light-gray-color;
+        color: $gray-color;
+        &-active {
+            font-weight: $font-weight-semi-bold !important;
+            background-color: $accent-color;
+            color: $light-color !important;
+        }
+    }
+}

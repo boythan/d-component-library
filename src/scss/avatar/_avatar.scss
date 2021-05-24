@@ -1,0 +1,32 @@
+@import "../variables";
+
+$avatar-size: (
+    "x-large": $avatar-size-x-large,
+    "large": $avatar-size-large,
+    "medium": $avatar-size-medium,
+    "small": $avatar-size-small,
+    "x-small": $avatar-size-x-small,
+);
+$avatar-variant: ("rounded", "square");
+
+.d-image__image {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+
+@each $var in $avatar-variant {
+    @each $name, $size in $avatar-size {
+        .d-image__#{$var}-#{$name} {
+            width: $size;
+            min-width: $size;
+            height: $size;
+            @if ($var == "rounded") {
+                border-radius: 9999px;
+                .d-image__image {
+                    border-radius: 9999px;
+                }
+            }
+        }
+    }
+}

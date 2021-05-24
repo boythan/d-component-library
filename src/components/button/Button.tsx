@@ -7,39 +7,47 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
     content?: string;
     iconName?: string;
     className?: string;
+    classNameIcon?: string;
+    classNameIconSuffix?: string;
     disabled?: boolean;
     size?: "large" | "medium" | "small" | "x-small";
     variant?: "standard" | "outline" | "trans";
-    color?: "primary" | "secondary" | "success" | "info" | "warning" | "danger" | "dark" | "light";
+    color?: "primary" | "secondary" | "green" | "red" | "yellow" | "blue" | "gray" | "dark" | "light";
+    suffixIcon?: string;
 }
 
 const Button: React.FC<ButtonProps> = ({
     content,
     iconName,
+    className,
+    classNameIcon,
+    classNameIconSuffix,
     onClick,
     type = "button",
-    className,
-    disabled = false,
     size = "large",
     variant = "standard",
     color = "primary",
+    disabled = false,
+    suffixIcon,
     ...props
 }) => {
     const buttonClass = ClassNames(
-        `text text-nowrap d-button d-button__${size} d-button__${variant}`,
+        `text text-nowrap d-button d-button__${size} 
+         d-button__${variant}-${color}`,
         {
             "text-x-small": size === "x-small",
             "text-small font-weight-bold": variant === "trans",
-            "text-underline": !iconName && variant === "trans",
             "d-button__icon": iconName && !content,
         },
         className
     );
-    const iconClass = ClassNames("d-block", { "mx-2": content && iconName });
+    const iconClass = ClassNames("d-block", { "mx-2": content && iconName }, classNameIcon);
+    const suffixIconClass = ClassNames("d-block", { "mx-2": content && iconName }, classNameIconSuffix);
     return (
         <button className={buttonClass} type={type} disabled={disabled} onClick={onClick} {...props}>
             {iconName && <Icon name={iconName} size="large" className={iconClass} />}
             {content}
+            {suffixIcon && <Icon name={suffixIcon} size="large" className={suffixIconClass} />}
         </button>
     );
 };

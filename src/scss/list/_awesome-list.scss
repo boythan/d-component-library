@@ -1,0 +1,36 @@
+
+.d-awesome-list {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow: scroll;
+}
+
+.d-page-view__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 2rem;
+    :hover {
+        cursor: pointer;
+    }
+}
+.d-empty-view__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 2rem;
+}
+
+.d-awesome-list__empty-view {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
