@@ -1,4 +1,6 @@
-export default class InfiniteScroll extends React.Component<any, any, any> {
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+export default class InfiniteScroll extends Component<any, any> {
     static propTypes: {
         children: PropTypes.Validator<string | number | boolean | {} | PropTypes.ReactElementLike | PropTypes.ReactNodeArray>;
         element: PropTypes.Requireable<PropTypes.ReactNodeLike>;
@@ -27,26 +29,28 @@ export default class InfiniteScroll extends React.Component<any, any, any> {
         loader: null;
         getScrollParent: null;
     };
-    constructor(props: any);
-    scrollListener(): void;
-    eventListenerOptions(): any;
-    mousewheelListener(e: any): void;
     pageLoaded: any;
     options: any;
-    loadMore: boolean | undefined;
-    isPassiveSupported(): boolean;
-    setDefaultLoader(loader: any): void;
+    loadMore: any;
+    scrollComponent: any;
+    beforeScrollHeight: any;
     defaultLoader: any;
+    beforeScrollTop: any;
+    constructor(props: any);
+    componentDidMount(): void;
+    componentDidUpdate(): void;
+    componentWillUnmount(): void;
+    isPassiveSupported(): boolean;
+    eventListenerOptions(): any;
+    setDefaultLoader(loader: any): void;
     detachMousewheelListener(): void;
     detachScrollListener(): void;
     getParentElement(el: any): any;
     filterProps(props: any): any;
     attachScrollListener(): void;
-    beforeScrollHeight: any;
-    beforeScrollTop: any;
+    mousewheelListener(e: any): void;
+    scrollListener(): void;
     calculateOffset(el: any, scrollTop: any): any;
     calculateTopPosition(el: any): any;
-    scrollComponent: any;
+    render(): React.CElement<any, React.Component<any, any, any>>;
 }
-import React from "react";
-import PropTypes from "prop-types";
