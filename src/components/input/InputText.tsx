@@ -1,5 +1,5 @@
 // react
-import React from "react";
+import React, { InputHTMLAttributes } from "react";
 
 // third-party
 import classname from "classnames";
@@ -9,14 +9,13 @@ import classname from "classnames";
 // data stubs
 import Icon from "../icon/Icon";
 
-export interface InputTextProps {
+export interface InputTextProps extends InputHTMLAttributes<any> {
     className?: string;
     classNameInput?: string;
     classNameInputContainer?: string;
 
     variant?: "standard" | "outline";
     multiple?: boolean;
-    value?: string;
     defaultValue?: string;
     error?: string;
     name?: string;
@@ -30,8 +29,6 @@ export interface InputTextProps {
     prefix?: any;
     suffix?: any;
 
-    onChange?: any;
-    onBlur?: any;
 }
 
 const InputText = ({
