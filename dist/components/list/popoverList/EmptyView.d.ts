@@ -1,5 +1,6 @@
-export default EmptyView;
-declare class EmptyView extends React.Component<any, any, any> {
+import { Component } from "react";
+import PropTypes from "prop-types";
+declare class EmptyView extends Component<any, any> {
     static propTypes: {
         mode: PropTypes.Requireable<any>;
         renderEmptyView: PropTypes.Requireable<(...args: any[]) => any>;
@@ -18,8 +19,6 @@ declare class EmptyView extends React.Component<any, any, any> {
         emptyText: string;
         filterEmptyText: string;
     };
-    constructor(props: any);
-    constructor(props: any, context: any);
     retryInternal(): void;
     /**
      * Should not be override this method
@@ -57,6 +56,6 @@ declare class EmptyView extends React.Component<any, any, any> {
      * Incase change only few cases, we should use props.renderErrorView
      */
     renderErrorView(): JSX.Element;
+    render(): JSX.Element | null;
 }
-import React from "react";
-import PropTypes from "prop-types";
+export default EmptyView;

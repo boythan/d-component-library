@@ -9312,6 +9312,19 @@ Object.keys(presetPrimaryColors).forEach(function (key) {
   });
   presetDarkPalettes[key].primary = presetDarkPalettes[key][5];
 });
+presetPalettes.red;
+presetPalettes.volcano;
+presetPalettes.gold;
+presetPalettes.orange;
+presetPalettes.yellow;
+presetPalettes.lime;
+presetPalettes.green;
+presetPalettes.cyan;
+presetPalettes.blue;
+presetPalettes.geekblue;
+presetPalettes.purple;
+presetPalettes.magenta;
+presetPalettes.grey;
 
 var MARK_KEY = "rc-util-key";
 
@@ -19157,6 +19170,7 @@ var canUseDocElement = function canUseDocElement() {
   return canUseDom() && window.document.documentElement;
 };
 
+/* eslint-disable no-param-reassign */
 var cached;
 function getScrollBarSize(fresh) {
   if (typeof document === 'undefined') {
@@ -19170,8 +19184,8 @@ function getScrollBarSize(fresh) {
     var outer = document.createElement('div');
     var outerStyle = outer.style;
     outerStyle.position = 'absolute';
-    outerStyle.top = 0;
-    outerStyle.left = 0;
+    outerStyle.top = '0';
+    outerStyle.left = '0';
     outerStyle.pointerEvents = 'none';
     outerStyle.visibility = 'hidden';
     outerStyle.width = '200px';
