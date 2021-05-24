@@ -1,0 +1,156 @@
+.rowPrintTable td {
+  font-family: var(--appFont);
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1.5rem;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.rowPrintTable .ant-table-cell-with-append {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.tablePrint thead > tr > th {
+  font-family: var(--appFont);
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1.5rem;
+  color: rgba(0, 0, 0, 0.56);
+}
+
+.tablePrint {
+  .ant-table-row-level-0{
+    .ant-table-row-expand-icon{
+      display: none !important;
+    }
+  }
+  font-family: var(--appFont);
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1.5rem;
+  color: rgba(0, 0, 0, 0.87);
+
+  .lastRowClassName>td{
+    border-bottom: 0px solid white;
+  }
+
+  tr th .tableTitle {
+    font-weight: bold !important;
+  }
+
+  
+}
+
+.containerControl {
+  flex-direction: row;
+  display: flex;
+}
+
+.tablePrint thead > tr > th {
+  background-color: #e8e8e8;
+}
+
+.ant-table-small
+  > .ant-table-content
+  > .ant-table-header
+  > table
+  > .ant-table-thead
+  > tr
+  > th,
+.ant-table-small
+  > .ant-table-content
+  > .ant-table-body
+  > table
+  > .ant-table-thead
+  > tr
+  > th,
+.ant-table-small
+  > .ant-table-content
+  > .ant-table-scroll
+  > .ant-table-header
+  > table
+  > .ant-table-thead
+  > tr
+  > th,
+.ant-table-small
+  > .ant-table-content
+  > .ant-table-scroll
+  > .ant-table-body
+  > table
+  > .ant-table-thead
+  > tr
+  > th,
+.ant-table-small
+  > .ant-table-content
+  > .ant-table-fixed-left
+  > .ant-table-header
+  > table
+  > .ant-table-thead
+  > tr
+  > th,
+.ant-table-small
+  > .ant-table-content
+  > .ant-table-fixed-right
+  > .ant-table-header
+  > table
+  > .ant-table-thead
+  > tr
+  > th,
+.ant-table-small
+  > .ant-table-content
+  > .ant-table-fixed-left
+  > .ant-table-body-outer
+  > .ant-table-body-inner
+  > table
+  > .ant-table-thead
+  > tr
+  > th,
+.ant-table-small
+  > .ant-table-content
+  > .ant-table-fixed-right
+  > .ant-table-body-outer
+  > .ant-table-body-inner
+  > table
+  > .ant-table-thead
+  > tr
+  > th {
+  background-color: #e8e8e8;
+}
+
+@media screen and (max-width: 1000px) {
+  .tablePrintContainer table,
+  .tablePrintContainer tbody,
+  .tablePrintContainer thead,
+  .tablePrintContainer tr,
+  .tablePrintContainer th,
+  .tablePrintContainer td {
+    display: block;
+  }
+  .tablePrintContainer thead > tr {
+    position: absolute;
+    top: -9999999px;
+    left: -9999999px;
+  }
+  .tablePrintContainer tr {
+    width: 100%;
+    border: 1px solid rgb(220, 220, 220);
+  }
+  .tablePrintContainer .ant-table-tbody > tr > td {
+    position: relative;
+    padding-left: 50%;
+    width: 100%;
+    text-align: left !important;
+  }
+  .tablePrintContainer .ant-table-tbody > tr > td::before {
+    content: attr(data-title);
+    white-space: nowrap;
+    font-size: 1.5rem;
+    font-family: var(--appFont);
+    font-weight: bold;
+    text-align: left !important;
+    position: absolute;
+    left: 0.5rem;
+  }
+}
