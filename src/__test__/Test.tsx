@@ -102,6 +102,12 @@ export default function Test({ content }: Props): ReactElement {
                     <Avatar size="small" className="mx-3" text="Joker" />
                     <Avatar size="medium" className="mx-3" variant="square" text="Batman" />
                 </div>
+                <div className="d-flex align-items-center my-4">
+                    <Icon size="large" className="mx-3" name="photo_camera" />
+                    <Icon size="x-large" className="mx-3" name="photo_camera" />
+                    <Icon size="xx-large" className="mx-3" name="photo_camera" />
+                    <Icon size="xxx-large" className="mx-3" name="photo_camera" />
+                </div>
             </React.Fragment>
         );
 
@@ -251,14 +257,14 @@ export default function Test({ content }: Props): ReactElement {
 
         return (
             <React.Fragment>
-                {/* {avatar} */}
+                {avatar}
                 {/* {input} */}
                 {/* {button} */}
                 {/* {checkBox} */}
                 {/* {header} */}
                 {tab}
                 {view}
-                {list}
+                {/* {list} */}
                 {loading}
             </React.Fragment>
         );
