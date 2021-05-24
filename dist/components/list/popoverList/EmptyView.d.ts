@@ -10,7 +10,7 @@ declare class EmptyView extends React.Component<any, any, any> {
         filterEmptyText: PropTypes.Requireable<string>;
     };
     static defaultProps: {
-        mode: number;
+        mode: any;
         renderEmptyView: null;
         renderProgress: null;
         renderErrorView: null;
