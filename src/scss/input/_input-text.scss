@@ -80,11 +80,11 @@
 
 .d-input-text__prefix-container {
     @include prefix();
-    border-right: $input-border !important;
+    border-right: $input-border;
 }
 .d-input-text__suffix-container {
     @include prefix();
-    border-left: $input-border !important;
+    border-left: $input-border;
 }
 
 /********************************************INPUT TEXT********************************************/

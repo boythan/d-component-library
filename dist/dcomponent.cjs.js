@@ -198,7 +198,7 @@ var classnames = createCommonjsModule(function (module) {
 
 var Icon$1 = function (_a) {
     var name = _a.name, _b = _a.size, size = _b === void 0 ? "medium" : _b, className = _a.className;
-    var iconClass = classnames("material-icons", "customized-icon-" + size, className);
+    var iconClass = classnames("material-icons", "customized-icon__" + size, className);
     return jsxRuntime.jsx("i", __assign({ className: iconClass }, { children: name }), void 0);
 };
 
@@ -212,8 +212,14 @@ var InputText = function (_a) {
         "d-input-text__input-container-disabled": disabled,
         "d-input-text__error": !!error,
     }, classNameInputContainer);
-    var inputPrefixClass = classnames("text-x-small", "d-input-text__prefix-container", { "d-none": !prefix });
-    var inputSuffixClass = classnames("text-x-small", "d-input-text__suffix-container", { "d-none": !suffix });
+    var inputPrefixClass = classnames("text-x-small", "d-input-text__prefix-container", {
+        "d-none": !prefix,
+        "border-0": disabled,
+    });
+    var inputSuffixClass = classnames("text-x-small", "d-input-text__suffix-container", {
+        "d-none": !suffix,
+        "border-0": disabled,
+    });
     var textAreaClass = classnames("d-input-area__input", {
         "d-input-text__error": !!error,
     });

@@ -73,8 +73,14 @@ const InputText = ({
         classNameInputContainer
     );
 
-    const inputPrefixClass = classname("text-x-small", "d-input-text__prefix-container", { "d-none": !prefix });
-    const inputSuffixClass = classname("text-x-small", "d-input-text__suffix-container", { "d-none": !suffix });
+    const inputPrefixClass = classname("text-x-small", "d-input-text__prefix-container", {
+        "d-none": !prefix,
+        "border-0": disabled,
+    });
+    const inputSuffixClass = classname("text-x-small", "d-input-text__suffix-container", {
+        "d-none": !suffix,
+        "border-0": disabled,
+    });
 
     const textAreaClass = classname("d-input-area__input", {
         "d-input-text__error": !!error,
