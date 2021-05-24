@@ -1,0 +1,52 @@
+export default class InfiniteScroll extends React.Component<any, any, any> {
+    static propTypes: {
+        children: PropTypes.Validator<string | number | boolean | {} | PropTypes.ReactElementLike | PropTypes.ReactNodeArray>;
+        element: PropTypes.Requireable<PropTypes.ReactNodeLike>;
+        hasMore: PropTypes.Requireable<boolean>;
+        initialLoad: PropTypes.Requireable<boolean>;
+        isReverse: PropTypes.Requireable<boolean>;
+        loader: PropTypes.Requireable<PropTypes.ReactNodeLike>;
+        loadMore: PropTypes.Validator<(...args: any[]) => any>;
+        pageStart: PropTypes.Requireable<number>;
+        ref: PropTypes.Requireable<(...args: any[]) => any>;
+        getScrollParent: PropTypes.Requireable<(...args: any[]) => any>;
+        threshold: PropTypes.Requireable<number>;
+        useCapture: PropTypes.Requireable<boolean>;
+        useWindow: PropTypes.Requireable<boolean>;
+    };
+    static defaultProps: {
+        element: string;
+        hasMore: boolean;
+        initialLoad: boolean;
+        pageStart: number;
+        ref: null;
+        threshold: number;
+        useWindow: boolean;
+        isReverse: boolean;
+        useCapture: boolean;
+        loader: null;
+        getScrollParent: null;
+    };
+    constructor(props: any);
+    scrollListener(): void;
+    eventListenerOptions(): any;
+    mousewheelListener(e: any): void;
+    pageLoaded: any;
+    options: any;
+    loadMore: boolean | undefined;
+    isPassiveSupported(): boolean;
+    setDefaultLoader(loader: any): void;
+    defaultLoader: any;
+    detachMousewheelListener(): void;
+    detachScrollListener(): void;
+    getParentElement(el: any): any;
+    filterProps(props: any): any;
+    attachScrollListener(): void;
+    beforeScrollHeight: any;
+    beforeScrollTop: any;
+    calculateOffset(el: any, scrollTop: any): any;
+    calculateTopPosition(el: any): any;
+    scrollComponent: any;
+}
+import React from "react";
+import PropTypes from "prop-types";

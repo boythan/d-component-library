@@ -1,12 +1,12 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/static-property-placement */
-import React, { Component } from "react";
-import { Spin } from "antd";
 import PropTypes from "prop-types";
+import React, { Component } from "react";
+import Loading from "../../loading/Loading";
 import Mode from "./Mode";
 
 // create a component
-class EmptyView extends Component {
+class EmptyView extends Component<any, any> {
     static propTypes = {
         mode: PropTypes.any,
         renderEmptyView: PropTypes.func,
@@ -80,7 +80,7 @@ class EmptyView extends Component {
      * Incase change only few cases, we should use props.renderEmptyView
      */
     renderEmptyView() {
-        return <div className="subTitle2">{this.props.emptyText}</div>;
+        return <div className="text">{this.props.emptyText}</div>;
     }
 
     /**
@@ -88,7 +88,7 @@ class EmptyView extends Component {
      * Incase change only few cases, we should use props.renderFilterEmptyView
      */
     renderFilterEmptyView() {
-        return <div className="subTitle2">{this.props.filterEmptyText}</div>;
+        return <div className="text">{this.props.filterEmptyText}</div>;
     }
 
     /**
@@ -97,7 +97,7 @@ class EmptyView extends Component {
      */
     // eslint-disable-next-line class-methods-use-this
     renderProgress() {
-        return <Spin size="large" />;
+        return <Loading size="large" />;
     }
 
     /**
@@ -106,7 +106,7 @@ class EmptyView extends Component {
      */
     // eslint-disable-next-line class-methods-use-this
     renderErrorView() {
-        return <div className="subTitle2">No result</div>;
+        return <div className="text">No result</div>;
     }
 
     render() {
@@ -116,7 +116,7 @@ class EmptyView extends Component {
         return (
             // pointerEvents to prevent touch to EmptyView and pass through to under component.
             // But still accept its children view receive touch.
-            <div className="emptyView-popoverlist" pointerEvents="box-none">
+            <div className="d-list-empty-view">
                 {this.renderEmptyViewInternal()}
                 {this.renderErrorViewInternal()}
                 {this.renderProgressInternal()}
