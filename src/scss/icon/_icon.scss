@@ -1,16 +1,25 @@
 @import "../variables";
 
 .customized-icon {
-    &-x-small {
+    &__x-small {
         font-size: $text-x-small-size;
     }
-    &-small {
+    &__small {
         font-size: $text-small-size;
     }
-    &-medium {
+    &__medium {
         font-size: $text-medium-size;
     }
-    &-large {
+    &__large {
         font-size: $text-large-size;
+    }
+    &__x-large {
+        font-size: $text-large-size + 10px;
+    }
+    &__xx-large {
+        font-size: $text-large-size + 20px;
+    }
+    &__xxx-large {
+        font-size: $text-large-size + 30px;
     }
 }

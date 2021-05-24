@@ -1,0 +1,124 @@
+@import "../../../node_modules/d-react-components/src/scss/index.scss";
+
+.tableAwesomeComponent {
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    &-selectColumn {
+        width: "100%";
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+    .ant-pagination {
+        background-color: $light-color;
+        width: 100%;
+        margin: 0 !important;
+        padding: 16px 0;
+    }
+}
+
+.rowAwesomeTable td {
+    @extend .text-small;
+}
+
+.rowAwesomeTable .ant-table-cell-with-append {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+// .tableAwesome thead > tr > th {
+//     font-family: var(--appFont);
+//     font-style: normal;
+//     font-weight: normal;
+//     font-size: 1.5rem;
+//     color: rgba(0, 0, 0, 0.56);
+// }
+
+.tableAwesome {
+    font-family: var(--appFont);
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.5rem;
+    color: rgba(0, 0, 0, 0.87);
+}
+
+.containerControl {
+    flex-direction: row;
+    display: flex;
+}
+
+.tableAwesome thead > tr > th {
+    background-color: #e8e8e8;
+}
+
+.ant-table-content {
+    > table {
+        background-color: white;
+    }
+}
+
+.tableAwesomeComponent .ant-table-thead > tr > th {
+    background-color: white !important;
+    @extend .text-x-small;
+}
+.tableAwesomeComponent .ant-pagination-total-text {
+    @extend .flex-center-y;
+    @extend .text-x-small;
+}
+
+.tableAwesomeComponent .ant-pagination-item-link {
+    @extend .text-x-small;
+    border-radius: $border-radius !important;
+}
+
+.tableAwesomeComponent .ant-pagination-options-quick-jumper input {
+    @extend .text-x-small;
+    border-radius: $border-radius !important;
+}
+
+.tableAwesomeComponent {
+    .ant-pagination-item,
+    .ant-select-selection-item {
+        @extend .text-x-small;
+        @extend .flex-center;
+        border-radius: $border-radius !important;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .tableAwesomeComponent table,
+    .tableAwesomeComponent tbody,
+    .tableAwesomeComponent thead,
+    .tableAwesomeComponent tr,
+    .tableAwesomeComponent th,
+    .tableAwesomeComponent td {
+        display: block;
+    }
+    .tableAwesomeComponent thead > tr {
+        position: absolute;
+        top: -9999999px;
+        left: -9999999px;
+    }
+    .tableAwesomeComponent tr {
+        width: 100%;
+        border: 1px solid rgb(220, 220, 220);
+    }
+    .tableAwesomeComponent .ant-table-tbody > tr > td {
+        position: relative;
+        padding-left: 50%;
+        width: 100%;
+        text-align: left !important;
+    }
+    .tableAwesomeComponent .ant-table-tbody > tr > td::before {
+        content: attr(data-title);
+        white-space: nowrap;
+        font-size: 1.5rem;
+        font-family: var(--appFont);
+        font-weight: bold;
+        text-align: left !important;
+        position: absolute;
+        left: 0.5rem;
+    }
+}

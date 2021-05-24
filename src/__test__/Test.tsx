@@ -103,6 +103,12 @@ export default function Test({ content }: Props): ReactElement {
                     <Avatar size="small" className="mx-3" text="Joker" />
                     <Avatar size="medium" className="mx-3" variant="square" text="Batman" />
                 </div>
+                <div className="d-flex align-items-center my-4">
+                    <Icon size="large" className="mx-3" name="photo_camera" />
+                    <Icon size="x-large" className="mx-3" name="photo_camera" />
+                    <Icon size="xx-large" className="mx-3" name="photo_camera" />
+                    <Icon size="xxx-large" className="mx-3" name="photo_camera" />
+                </div>
             </React.Fragment>
         );
 
@@ -111,7 +117,7 @@ export default function Test({ content }: Props): ReactElement {
                 <InputText label="Input Text" placeholder="Please enter" className="mt-3" />
                 <InputText label="Input Text" placeholder="Please enter" className="mt-3" error="Error Text" />
                 <InputText label="Input Text" placeholder="Please enter" className="mt-3" disabled />
-                <InputText label="Input Text" placeholder="Please enter" className="mt-3" suffix="$" disabled />
+                <InputText label="Input Text" placeholder="Please enter" className="mt-3" suffix="$" />
                 <InputText label="Input Text" placeholder="Please enter" className="mt-3" prefix="$" />
                 <InputText label="Input Text" placeholder="Please enter" multiple className="mt-3" />
                 <InputText label="Input Text" placeholder="Please enter" multiple className="mt-3" error="Error Text" />
@@ -260,14 +266,14 @@ export default function Test({ content }: Props): ReactElement {
 
         return (
             <React.Fragment>
-                {/* {avatar} */}
-                {input}
+                {avatar}
+                {/* {input} */}
                 {/* {button} */}
                 {/* {checkBox} */}
                 {/* {header} */}
                 {tab}
                 {view}
-                {list}
+                {/* {list} */}
                 {loading}
             </React.Fragment>
         );
