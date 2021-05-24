@@ -1,12 +1,12 @@
 {
   "name": "d-react-components",
-  "version": "0.1.17",
+  "version": "0.1.19",
   "main": "dist/dcomponent.cjs.js",
   "module": "dist/dcomponent.es.js",
   "typings": "dist/dcomponent.d.ts",
   "source": "src/dcomponent.tsx",
   "files": [
-    "./dist"
+    "dist"
   ],
   "repository": {
     "type": "git",

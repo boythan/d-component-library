@@ -1,7 +1,17 @@
 @import "../variables";
 
 @mixin input {
+    border-radius: $border-radius !important;
+    outline: none !important;
+    border: none !important;
+    color: $input-color-content;
+    width: 100%;
     padding: $input-padding;
+}
+
+@mixin input-container {
+    display: flex !important;
+    flex-direction: row !important;
     border-radius: $border-radius !important;
     outline: none !important;
     color: $input-color-content;
@@ -9,7 +19,7 @@
 }
 
 @mixin disabled {
-    padding: $input-padding !important;
+    // padding: $input-padding !important;
     color: $input-color-disabled !important;
     background-color: $input-bg-color-disabled !important;
     border: none !important;
@@ -19,7 +29,7 @@
     border: $input-border !important;
     outline: none;
 
-    &:focus {
+    &:focus-within {
         outline: none !important;
         border: $input-border-focus !important;
     }
@@ -31,16 +41,50 @@
     outline: none;
     padding-left: 0px;
 
-    &:focus {
+    &:focus-within {
         outline: none !important;
         border: none !important;
         border-bottom: $input-border-focus !important;
     }
 }
+
+@mixin prefix {
+    padding: $input-padding;
+    background-color: $bg-muted-color;
+}
 /********************************************LABEL & CONTAINER********************************************/
 .d-input-text__container {
     display: flex;
     flex-direction: column;
+}
+
+.d-input-text__input-container {
+    @include input-container();
+}
+
+.d-input-text__input-container-outline {
+    @include outline();
+}
+
+.d-input-text__input-container-standard {
+    @include standard();
+}
+
+.d-input-text__error {
+    border: $input-border-error !important;
+}
+
+.d-input-text__input-container-disabled {
+    @include disabled();
+}
+
+.d-input-text__prefix-container {
+    @include prefix();
+    border-right: $input-border !important;
+}
+.d-input-text__suffix-container {
+    @include prefix();
+    border-left: $input-border !important;
 }
 
 /********************************************INPUT TEXT********************************************/
@@ -51,38 +95,14 @@
     }
 }
 
-.d-input-text__input-outline {
-    @include outline();
-}
-
-.d-input-text__input-standard {
-    @include standard();
-}
-
-.d-input-text__error {
-    border: $input-border-error !important;
-}
-
-.d-input-text__input-disabled {
-    @include disabled();
-}
-
 /********************************************INPUT AREA********************************************/
 .d-input-area__input {
     @include input();
+    &::placeholder {
+        opacity: 0.4;
+    }
 }
 
-.d-input-area__input-outline {
-    @include outline();
-}
-
-.d-input-area__input-standard {
-    @include standard();
-}
-
-.d-input-area__input-disabled {
-    @include disabled();
-}
 /********************************************INPUT SEARCH********************************************/
 
 .d-input-search {

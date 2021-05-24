@@ -14,6 +14,7 @@ import TabBar from "../components/tab/TabBar";
 import PopoverList from "../components/list/popoverList/PopoverList";
 import Loading from "../components/loading/Loading";
 import AwesomeListComponent from "../components/list/awesomeList/AwesomeListComponent";
+import InputTextSearch from "../components/input/InputTextSearch";
 
 interface Props {
     content?: any;
@@ -113,7 +114,15 @@ export default function Test({ content }: Props): ReactElement {
 
         const input = (
             <div className="my-4">
-                <InputText />
+                <InputText label="Input Text" placeholder="Please enter" className="mt-3" />
+                <InputText label="Input Text" placeholder="Please enter" className="mt-3" error="Error Text" />
+                <InputText label="Input Text" placeholder="Please enter" className="mt-3" disabled />
+                <InputText label="Input Text" placeholder="Please enter" className="mt-3" suffix="$" />
+                <InputText label="Input Text" placeholder="Please enter" className="mt-3" prefix="$" />
+                <InputText label="Input Text" placeholder="Please enter" multiple className="mt-3" />
+                <InputText label="Input Text" placeholder="Please enter" multiple className="mt-3" error="Error Text" />
+                <InputText label="Input Text" placeholder="Please enter" multiple className="mt-3" disabled />
+                <InputTextSearch placeholder="Please enter" className="mt-3" />
 
                 <Select
                     dataSource={ATTRIBUTE_INPUT_TYPE}
