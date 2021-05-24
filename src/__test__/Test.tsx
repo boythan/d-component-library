@@ -299,6 +299,7 @@ export default function Test({ content }: Props): ReactElement {
             <Modal
                 open={openModal}
                 onClose={() => setOpenModal(false)}
+                onSave={() => setOpenModal(false)}
                 title="Filter"
                 closeIcon={false}
                 hasCancelButton

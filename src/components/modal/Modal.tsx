@@ -95,7 +95,7 @@ const Modal: React.FC<ModalProps> = ({
                                 }}
                             />
                         )}
-                        <Button variant="standard" content={saveText} />
+                        <Button variant="standard" content={saveText} onClick={onSave} />
                     </div>
                 </React.Fragment>
             );
@@ -115,7 +115,6 @@ const Modal: React.FC<ModalProps> = ({
             centered={centered}
             className={modalClass}
             closable={closable}
-            onOk={onSave}
             width={width}
             footer={null}
             {...props}
