@@ -198,7 +198,7 @@ var classnames = createCommonjsModule(function (module) {
 
 var Icon$1 = function (_a) {
     var name = _a.name, _b = _a.size, size = _b === void 0 ? "medium" : _b, className = _a.className;
-    var iconClass = classnames("material-icons", "customized-icon-" + size, className);
+    var iconClass = classnames("material-icons", "customized-icon__" + size, className);
     return jsxRuntime.jsx("i", __assign({ className: iconClass }, { children: name }), void 0);
 };
 

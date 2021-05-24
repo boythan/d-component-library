@@ -28656,17 +28656,26 @@ body {
 /* ----------------------------------------
 // Icon
 // ---------------------------------------- */
-.customized-icon-x-small {
+.customized-icon__x-small {
   font-size: 12px; }
 
-.customized-icon-small {
+.customized-icon__small {
   font-size: 14px; }
 
-.customized-icon-medium {
+.customized-icon__medium {
   font-size: 16px; }
 
-.customized-icon-large {
+.customized-icon__large {
   font-size: 18px; }
+
+.customized-icon__x-large {
+  font-size: 28px; }
+
+.customized-icon__xx-large {
+  font-size: 38px; }
+
+.customized-icon__xxx-large {
+  font-size: 48px; }
 
 /* ----------------------------------------
 // Select
