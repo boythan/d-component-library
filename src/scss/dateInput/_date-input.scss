@@ -1,3 +1,5 @@
+@import "../variables";
+
 .d-date-input {
     &__no-out-line {
         border: 0px solid white !important;
@@ -5,9 +7,13 @@
     }
     &__input {
         width: 100%;
-        margin-top: 3px !important;
+        height: 40px;
     }
     &__label {
         margin-bottom: 25px;
+    }
+    .ant-picker:hover,
+    .ant-picker-focused {
+        border: 1px solid  $accent-color;
     }
 }

@@ -18,7 +18,8 @@ export interface DateInputNewProps {
     label?: string;
     showTime?: boolean;
     format?: TDateFormat;
-    variant?: "single" | "range";
+    isRangePicker?: boolean;
+    variant?: "standard" | "outline";
 }
 
 export type DateInputProp = DatePickerProps & DateInputNewProps;
@@ -36,14 +37,14 @@ const DateInput: React.FC<DateInputProp> = ({
     format = "DD/MM/YYYY HH:mm",
     className,
     showTime = false,
-    variant = "single",
+    variant = "outline",
+    isRangePicker = false,
     ...props
 }) => {
     const datePickerClass = ClassNames(
         "d-date-input__input",
-        "pb-2",
         {
-            "d-date-input__no-out-line": !outline,
+            "d-date-input__no-out-line": variant === "standard",
         },
         "w-100"
     );
@@ -64,7 +65,7 @@ const DateInput: React.FC<DateInputProp> = ({
             showTime={showTime as any}
         />
     );
-    if (variant === "range") {
+    if (isRangePicker) {
         content = (
             <RangePicker
                 value={value as any}
