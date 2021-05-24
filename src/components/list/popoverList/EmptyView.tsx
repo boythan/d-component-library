@@ -3,10 +3,10 @@
 import React, { Component } from "react";
 import { Spin } from "antd";
 import PropTypes from "prop-types";
-import PopoverMode from "./PopoverMode";
+import PopoverMode from "../shared/Mode";
 
 // create a component
-class EmptyView extends Component {
+class EmptyView extends Component<any, any> {
     static propTypes = {
         mode: PropTypes.any,
         renderEmptyView: PropTypes.func,
@@ -116,7 +116,7 @@ class EmptyView extends Component {
         return (
             // pointerEvents to prevent touch to EmptyView and pass through to under component.
             // But still accept its children view receive touch.
-            <div className="emptyView-popoverlist" pointerEvents="box-none">
+            <div className="emptyView-popoverlist">
                 {this.renderEmptyViewInternal()}
                 {this.renderErrorViewInternal()}
                 {this.renderProgressInternal()}

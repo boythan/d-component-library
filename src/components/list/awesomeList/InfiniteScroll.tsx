@@ -6,7 +6,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-export default class InfiniteScroll extends Component {
+export default class InfiniteScroll extends Component<any, any> {
     static propTypes = {
         children: PropTypes.node.isRequired,
         element: PropTypes.node,
@@ -37,7 +37,21 @@ export default class InfiniteScroll extends Component {
         getScrollParent: null,
     };
 
-    constructor(props) {
+    pageLoaded: any;
+
+    options: any;
+
+    loadMore: any;
+
+    scrollComponent: any;
+
+    beforeScrollHeight: any;
+
+    defaultLoader: any;
+
+    beforeScrollTop: any;
+
+    constructor(props: any) {
         super(props);
 
         this.scrollListener = this.scrollListener.bind(this);
@@ -74,12 +88,13 @@ export default class InfiniteScroll extends Component {
             // eslint-disable-next-line getter-return
             get passive() {
                 passive = true;
+                return passive;
             },
         };
 
         try {
-            document.addEventListener("test", null, testOptions);
-            document.removeEventListener("test", null, testOptions);
+            document.addEventListener("test" as any, null as any, testOptions as any);
+            document.removeEventListener("test" as any, null as any, testOptions as any);
         } catch (e) {
             // ignore
         }
@@ -104,7 +119,7 @@ export default class InfiniteScroll extends Component {
     }
 
     // Set a defaut loader for all your `InfiniteScroll` components
-    setDefaultLoader(loader) {
+    setDefaultLoader(loader: any) {
         this.defaultLoader = loader;
     }
 
@@ -129,7 +144,7 @@ export default class InfiniteScroll extends Component {
         scrollEl.removeEventListener("resize", this.scrollListener, this.options ? this.options : useCapture);
     }
 
-    getParentElement(el) {
+    getParentElement(el: any) {
         const { getScrollParent } = this.props;
         const scrollParent = getScrollParent && getScrollParent();
         if (scrollParent != null) {
@@ -138,7 +153,7 @@ export default class InfiniteScroll extends Component {
         return el && el.parentNode;
     }
 
-    filterProps(props) {
+    filterProps(props: any) {
         return props;
     }
 
@@ -164,7 +179,7 @@ export default class InfiniteScroll extends Component {
         }
     }
 
-    mousewheelListener(e) {
+    mousewheelListener(e: any) {
         // Prevents Chrome hangups
         // See: https://stackoverflow.com/questions/47524205/random-high-content-download-time-in-chrome/47684257#47684257
         if (e.deltaY === 1 && !this.isPassiveSupported()) {
@@ -206,7 +221,7 @@ export default class InfiniteScroll extends Component {
         }
     }
 
-    calculateOffset(el, scrollTop) {
+    calculateOffset(el: any, scrollTop: any) {
         if (!el) {
             return 0;
         }
@@ -214,7 +229,7 @@ export default class InfiniteScroll extends Component {
         return this.calculateTopPosition(el) + (el.offsetHeight - scrollTop - window.innerHeight);
     }
 
-    calculateTopPosition(el) {
+    calculateTopPosition(el: any): any {
         if (!el) {
             return 0;
         }
@@ -240,7 +255,7 @@ export default class InfiniteScroll extends Component {
             ...props
         } = renderProps;
 
-        props.ref = (node) => {
+        props.ref = (node: any) => {
             this.scrollComponent = node;
             if (ref) {
                 ref(node);
