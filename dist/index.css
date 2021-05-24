@@ -28588,12 +28588,12 @@ body {
 .d-input-text__prefix-container {
   padding: 10px 16px;
   background-color: #F5F5F5;
-  border-right: 0.5px solid #a7a7a7 !important; }
+  border-right: 0.5px solid #a7a7a7; }
 
 .d-input-text__suffix-container {
   padding: 10px 16px;
   background-color: #F5F5F5;
-  border-left: 0.5px solid #a7a7a7 !important; }
+  border-left: 0.5px solid #a7a7a7; }
 
 /********************************************INPUT TEXT********************************************/
 .d-input-text__input {

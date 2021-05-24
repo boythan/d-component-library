@@ -212,8 +212,14 @@ var InputText = function (_a) {
         "d-input-text__input-container-disabled": disabled,
         "d-input-text__error": !!error,
     }, classNameInputContainer);
-    var inputPrefixClass = classnames("text-x-small", "d-input-text__prefix-container", { "d-none": !prefix });
-    var inputSuffixClass = classnames("text-x-small", "d-input-text__suffix-container", { "d-none": !suffix });
+    var inputPrefixClass = classnames("text-x-small", "d-input-text__prefix-container", {
+        "d-none": !prefix,
+        "border-0": disabled,
+    });
+    var inputSuffixClass = classnames("text-x-small", "d-input-text__suffix-container", {
+        "d-none": !suffix,
+        "border-0": disabled,
+    });
     var textAreaClass = classnames("d-input-area__input", {
         "d-input-text__error": !!error,
     });

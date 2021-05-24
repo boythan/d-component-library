@@ -111,7 +111,7 @@ export default function Test({ content }: Props): ReactElement {
                 <InputText label="Input Text" placeholder="Please enter" className="mt-3" />
                 <InputText label="Input Text" placeholder="Please enter" className="mt-3" error="Error Text" />
                 <InputText label="Input Text" placeholder="Please enter" className="mt-3" disabled />
-                <InputText label="Input Text" placeholder="Please enter" className="mt-3" suffix="$" />
+                <InputText label="Input Text" placeholder="Please enter" className="mt-3" suffix="$" disabled />
                 <InputText label="Input Text" placeholder="Please enter" className="mt-3" prefix="$" />
                 <InputText label="Input Text" placeholder="Please enter" multiple className="mt-3" />
                 <InputText label="Input Text" placeholder="Please enter" multiple className="mt-3" error="Error Text" />
@@ -261,7 +261,7 @@ export default function Test({ content }: Props): ReactElement {
         return (
             <React.Fragment>
                 {/* {avatar} */}
-                {/* {input} */}
+                {input}
                 {/* {button} */}
                 {/* {checkBox} */}
                 {/* {header} */}
