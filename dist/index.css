@@ -28552,29 +28552,27 @@ body {
   display: flex;
   flex-direction: column; }
 
-/********************************************INPUT TEXT********************************************/
-.d-input-text__input {
-  padding: 10px 16px;
+.d-input-text__input-container {
+  display: flex !important;
+  flex-direction: row !important;
   border-radius: 0px !important;
   outline: none !important;
   color: #3D464D;
   min-height: 40px; }
-  .d-input-text__input::placeholder {
-    opacity: 0.4; }
 
-.d-input-text__input-outline {
+.d-input-text__input-container-outline {
   border: 0.5px solid #a7a7a7 !important;
   outline: none; }
-  .d-input-text__input-outline:focus {
+  .d-input-text__input-container-outline:focus-within {
     outline: none !important;
     border: 0.5px solid #041b47 !important; }
 
-.d-input-text__input-standard {
+.d-input-text__input-container-standard {
   border: none !important;
   border-bottom: 0.5px solid #a7a7a7 !important;
   outline: none;
   padding-left: 0px; }
-  .d-input-text__input-standard:focus {
+  .d-input-text__input-container-standard:focus-within {
     outline: none !important;
     border: none !important;
     border-bottom: 0.5px solid #041b47 !important; }
@@ -28582,50 +28580,51 @@ body {
 .d-input-text__error {
   border: 0.5px solid #d21c09 !important; }
 
-.d-input-text__input-disabled {
-  padding: 10px 16px !important;
+.d-input-text__input-container-disabled {
   color: #A7A7A7 !important;
   background-color: #F5F5F5 !important;
   border: none !important; }
+
+.d-input-text__prefix-container {
+  padding: 10px 16px;
+  background-color: #F5F5F5;
+  border-right: 0.5px solid #a7a7a7 !important; }
+
+.d-input-text__suffix-container {
+  padding: 10px 16px;
+  background-color: #F5F5F5;
+  border-left: 0.5px solid #a7a7a7 !important; }
+
+/********************************************INPUT TEXT********************************************/
+.d-input-text__input {
+  border-radius: 0px !important;
+  outline: none !important;
+  border: none !important;
+  color: #3D464D;
+  width: 100%;
+  padding: 10px 16px; }
+  .d-input-text__input::placeholder {
+    opacity: 0.4; }
 
 /********************************************INPUT AREA********************************************/
 .d-input-area__input {
-  padding: 10px 16px;
   border-radius: 0px !important;
   outline: none !important;
-  color: #3D464D;
-  min-height: 40px; }
-
-.d-input-area__input-outline {
-  border: 0.5px solid #a7a7a7 !important;
-  outline: none; }
-  .d-input-area__input-outline:focus {
-    outline: none !important;
-    border: 0.5px solid #041b47 !important; }
-
-.d-input-area__input-standard {
   border: none !important;
-  border-bottom: 0.5px solid #a7a7a7 !important;
-  outline: none;
-  padding-left: 0px; }
-  .d-input-area__input-standard:focus {
-    outline: none !important;
-    border: none !important;
-    border-bottom: 0.5px solid #041b47 !important; }
-
-.d-input-area__input-disabled {
-  padding: 10px 16px !important;
-  color: #A7A7A7 !important;
-  background-color: #F5F5F5 !important;
-  border: none !important; }
+  color: #3D464D;
+  width: 100%;
+  padding: 10px 16px; }
+  .d-input-area__input::placeholder {
+    opacity: 0.4; }
 
 /********************************************INPUT SEARCH********************************************/
 .d-input-search {
-  padding: 10px 16px;
   border-radius: 0px !important;
   outline: none !important;
+  border: none !important;
   color: #3D464D;
-  min-height: 40px; }
+  width: 100%;
+  padding: 10px 16px; }
   .d-input-search > input {
     width: 100%;
     border: none !important;
@@ -28635,7 +28634,7 @@ body {
 .d-input-search__outline {
   border: 0.5px solid #a7a7a7 !important;
   outline: none; }
-  .d-input-search__outline:focus {
+  .d-input-search__outline:focus-within {
     outline: none !important;
     border: 0.5px solid #041b47 !important; }
 
@@ -28644,13 +28643,12 @@ body {
   border-bottom: 0.5px solid #a7a7a7 !important;
   outline: none;
   padding-left: 0px; }
-  .d-input-search__standard:focus {
+  .d-input-search__standard:focus-within {
     outline: none !important;
     border: none !important;
     border-bottom: 0.5px solid #041b47 !important; }
 
 .d-input-search__disabled {
-  padding: 10px 16px !important;
   color: #A7A7A7 !important;
   background-color: #F5F5F5 !important;
   border: none !important; }

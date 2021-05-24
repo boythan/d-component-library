@@ -10,12 +10,34 @@ import classname from "classnames";
 import Icon from "../icon/Icon";
 
 export interface InputTextProps {
-    [key: string]: any;
+    className?: string;
+    classNameInput?: string;
+    classNameInputContainer?: string;
+
+    variant?: "standard" | "outline";
+    multiple?: boolean;
+    value?: string;
+    defaultValue?: string;
+    error?: string;
+    name?: string;
+    label?: any;
+    key?: string;
+    placeholder?: string;
+    type?: string;
+    rows?: number;
+    cols?: number;
+    disabled?: boolean;
+    prefix?: any;
+    suffix?: any;
+
+    onChange?: any;
+    onBlur?: any;
 }
 
 const InputText = ({
     className,
     classNameInput,
+    classNameInputContainer,
 
     variant = "outline", // standard || outline
     multiple,
@@ -30,6 +52,8 @@ const InputText = ({
     rows = 5,
     cols,
     disabled,
+    prefix,
+    suffix,
 
     onChange,
     onBlur,
@@ -37,19 +61,22 @@ const InputText = ({
     const container = classname("d-input-text__container", className);
     const labelClass = classname("text-label");
 
-    const inputClass = classname(
-        "text-x-small",
-        "d-input-text__input",
-        `d-input-text__input-${variant}`,
+    const inputClass = classname("text-x-small", "d-input-text__input", classNameInput);
+
+    const inputContainerClass = classname(
+        "d-input-text__input-container",
+        `d-input-text__input-container-${variant}`,
         {
-            "d-input-text__input-disabled": disabled,
+            "d-input-text__input-container-disabled": disabled,
             "d-input-text__error": !!error,
         },
-        classNameInput
+        classNameInputContainer
     );
 
-    const textAreaClass = classname("d-input-area__input", `d-input-area__input-${variant}`, {
-        "d-input-area__input-disabled": disabled,
+    const inputPrefixClass = classname("text-x-small", "d-input-text__prefix-container", { "d-none": !prefix });
+    const inputSuffixClass = classname("text-x-small", "d-input-text__suffix-container", { "d-none": !suffix });
+
+    const textAreaClass = classname("d-input-area__input", {
         "d-input-text__error": !!error,
     });
 
@@ -67,6 +94,7 @@ const InputText = ({
                     cols={cols}
                     disabled={disabled}
                     defaultValue={defaultValue}
+                    placeholder={placeholder}
                 />
             );
         }
@@ -94,7 +122,11 @@ const InputText = ({
                     <span>{label}</span>
                 </label>
             )}
-            {renderInput()}
+            <div className={inputContainerClass}>
+                <div className={inputPrefixClass}>{prefix}</div>
+                {renderInput()}
+                <div className={inputSuffixClass}>{suffix}</div>
+            </div>
             {error && (
                 <div className="flex-center-y mt-1">
                     <Icon name="error_outline" className="text-error" size="small" />

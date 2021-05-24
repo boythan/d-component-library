@@ -1,108 +1,8 @@
+import { jsx, jsxs } from 'react/jsx-runtime';
 import * as React from 'react';
 import React__default, { createContext, useRef, useState, useEffect, useLayoutEffect as useLayoutEffect$1, Component, useContext, useMemo as useMemo$1, useCallback, forwardRef, useImperativeHandle } from 'react';
 import * as ReactDOM from 'react-dom';
 import ReactDOM__default from 'react-dom';
-
-var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
-
-function unwrapExports (x) {
-	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
-}
-
-function createCommonjsModule(fn, module) {
-	return module = { exports: {} }, fn(module, module.exports), module.exports;
-}
-
-var classnames = createCommonjsModule(function (module) {
-/*!
-  Copyright (c) 2018 Jed Watson.
-  Licensed under the MIT License (MIT), see
-  http://jedwatson.github.io/classnames
-*/
-/* global define */
-
-(function () {
-
-	var hasOwn = {}.hasOwnProperty;
-
-	function classNames() {
-		var classes = [];
-
-		for (var i = 0; i < arguments.length; i++) {
-			var arg = arguments[i];
-			if (!arg) continue;
-
-			var argType = typeof arg;
-
-			if (argType === 'string' || argType === 'number') {
-				classes.push(arg);
-			} else if (Array.isArray(arg)) {
-				if (arg.length) {
-					var inner = classNames.apply(null, arg);
-					if (inner) {
-						classes.push(inner);
-					}
-				}
-			} else if (argType === 'object') {
-				if (arg.toString === Object.prototype.toString) {
-					for (var key in arg) {
-						if (hasOwn.call(arg, key) && arg[key]) {
-							classes.push(key);
-						}
-					}
-				} else {
-					classes.push(arg.toString());
-				}
-			}
-		}
-
-		return classes.join(' ');
-	}
-
-	if (module.exports) {
-		classNames.default = classNames;
-		module.exports = classNames;
-	} else {
-		window.classNames = classNames;
-	}
-}());
-});
-
-var Icon$1 = function (_a) {
-    var name = _a.name, _b = _a.size, size = _b === void 0 ? "medium" : _b, className = _a.className;
-    var iconClass = classnames("material-icons", "customized-icon-" + size, className);
-    return React__default.createElement("i", { className: iconClass }, name);
-};
-
-// react
-var InputText = function (_a) {
-    var className = _a.className, classNameInput = _a.classNameInput, _b = _a.variant, variant = _b === void 0 ? "outline" : _b, // standard || outline
-    multiple = _a.multiple, value = _a.value, defaultValue = _a.defaultValue, error = _a.error, name = _a.name, label = _a.label, key = _a.key, placeholder = _a.placeholder, type = _a.type, _c = _a.rows, rows = _c === void 0 ? 5 : _c, cols = _a.cols, disabled = _a.disabled, onChange = _a.onChange, onBlur = _a.onBlur;
-    var container = classnames("d-input-text__container", className);
-    var labelClass = classnames("text-label");
-    var inputClass = classnames("text-x-small", "d-input-text__input", "d-input-text__input-" + variant, {
-        "d-input-text__input-disabled": disabled,
-        "d-input-text__error": !!error,
-    }, classNameInput);
-    var textAreaClass = classnames("d-input-area__input", "d-input-area__input-" + variant, {
-        "d-input-area__input-disabled": disabled,
-        "d-input-text__error": !!error,
-    });
-    var errorTextClass = classnames("text-x-small", "text-error", "ml-1");
-    var renderInput = function () {
-        if (multiple) {
-            return (React__default.createElement("textarea", { value: value, onChange: onChange, rows: rows, name: name, className: textAreaClass, cols: cols, disabled: disabled, defaultValue: defaultValue }));
-        }
-        return (React__default.createElement("input", { value: value, onChange: onChange, className: inputClass, name: name, required: true, key: key, placeholder: placeholder, onBlur: onBlur, type: type, disabled: disabled, defaultValue: defaultValue }));
-    };
-    return (React__default.createElement("div", { className: container },
-        label && (React__default.createElement("label", { htmlFor: name, className: labelClass },
-            React__default.createElement("span", null, label))),
-        renderInput(),
-        error && (React__default.createElement("div", { className: "flex-center-y mt-1" },
-            React__default.createElement(Icon$1, { name: "error_outline", className: "text-error", size: "small" }),
-            React__default.createElement("text", { className: errorTextClass }, error)))));
-};
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation.
@@ -201,6 +101,105 @@ function __spreadArray(to, from) {
         to[j] = from[i];
     return to;
 }
+
+var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
+
+function unwrapExports (x) {
+	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
+}
+
+function createCommonjsModule(fn, module) {
+	return module = { exports: {} }, fn(module, module.exports), module.exports;
+}
+
+var classnames = createCommonjsModule(function (module) {
+/*!
+  Copyright (c) 2018 Jed Watson.
+  Licensed under the MIT License (MIT), see
+  http://jedwatson.github.io/classnames
+*/
+/* global define */
+
+(function () {
+
+	var hasOwn = {}.hasOwnProperty;
+
+	function classNames() {
+		var classes = [];
+
+		for (var i = 0; i < arguments.length; i++) {
+			var arg = arguments[i];
+			if (!arg) continue;
+
+			var argType = typeof arg;
+
+			if (argType === 'string' || argType === 'number') {
+				classes.push(arg);
+			} else if (Array.isArray(arg)) {
+				if (arg.length) {
+					var inner = classNames.apply(null, arg);
+					if (inner) {
+						classes.push(inner);
+					}
+				}
+			} else if (argType === 'object') {
+				if (arg.toString === Object.prototype.toString) {
+					for (var key in arg) {
+						if (hasOwn.call(arg, key) && arg[key]) {
+							classes.push(key);
+						}
+					}
+				} else {
+					classes.push(arg.toString());
+				}
+			}
+		}
+
+		return classes.join(' ');
+	}
+
+	if (module.exports) {
+		classNames.default = classNames;
+		module.exports = classNames;
+	} else {
+		window.classNames = classNames;
+	}
+}());
+});
+
+var Icon$1 = function (_a) {
+    var name = _a.name, _b = _a.size, size = _b === void 0 ? "medium" : _b, className = _a.className;
+    var iconClass = classnames("material-icons", "customized-icon-" + size, className);
+    return jsx("i", __assign({ className: iconClass }, { children: name }), void 0);
+};
+
+var InputText = function (_a) {
+    var className = _a.className, classNameInput = _a.classNameInput, classNameInputContainer = _a.classNameInputContainer, _b = _a.variant, variant = _b === void 0 ? "outline" : _b, // standard || outline
+    multiple = _a.multiple, value = _a.value, defaultValue = _a.defaultValue, error = _a.error, name = _a.name, label = _a.label, key = _a.key, placeholder = _a.placeholder, type = _a.type, _c = _a.rows, rows = _c === void 0 ? 5 : _c, cols = _a.cols, disabled = _a.disabled, prefix = _a.prefix, suffix = _a.suffix, onChange = _a.onChange, onBlur = _a.onBlur;
+    var container = classnames("d-input-text__container", className);
+    var labelClass = classnames("text-label");
+    var inputClass = classnames("text-x-small", "d-input-text__input", classNameInput);
+    var inputContainerClass = classnames("d-input-text__input-container", "d-input-text__input-container-" + variant, {
+        "d-input-text__input-container-disabled": disabled,
+        "d-input-text__error": !!error,
+    }, classNameInputContainer);
+    var inputPrefixClass = classnames("text-x-small", "d-input-text__prefix-container", { "d-none": !prefix });
+    var inputSuffixClass = classnames("text-x-small", "d-input-text__suffix-container", { "d-none": !suffix });
+    var textAreaClass = classnames("d-input-area__input", {
+        "d-input-text__error": !!error,
+    });
+    var errorTextClass = classnames("text-x-small", "text-error", "ml-1");
+    var renderInput = function () {
+        if (multiple) {
+            return (jsx("textarea", { value: value, onChange: onChange, rows: rows, name: name, className: textAreaClass, cols: cols, disabled: disabled, defaultValue: defaultValue, placeholder: placeholder }, void 0));
+        }
+        return (jsx("input", { value: value, onChange: onChange, className: inputClass, name: name, required: true, placeholder: placeholder, onBlur: onBlur, type: type, disabled: disabled, defaultValue: defaultValue }, key));
+    };
+    return (jsxs("div", __assign({ className: container }, { children: [label && (jsx("label", __assign({ htmlFor: name, className: labelClass }, { children: jsx("span", { children: label }, void 0) }), void 0)),
+            jsxs("div", __assign({ className: inputContainerClass }, { children: [jsx("div", __assign({ className: inputPrefixClass }, { children: prefix }), void 0), renderInput(), jsx("div", __assign({ className: inputSuffixClass }, { children: suffix }), void 0)] }), void 0),
+            error && (jsxs("div", __assign({ className: "flex-center-y mt-1" }, { children: [jsx(Icon$1, { name: "error_outline", className: "text-error", size: "small" }, void 0),
+                    jsx("text", __assign({ className: errorTextClass }, { children: error }), void 0)] }), void 0))] }), void 0));
+};
 
 function _extends$1() {
   _extends$1 = Object.assign || function (target) {
@@ -25281,7 +25280,7 @@ var Select = function (_a) {
         return dataSource.map(function (dataItem) {
             var label = getLabel(dataItem);
             var key = getKey(dataItem);
-            return (React__default.createElement(Option, { key: key, value: getValue(dataItem) }, label));
+            return (jsx(Option, __assign({ value: getValue(dataItem) }, { children: label }), key));
         });
     }, [dataSource]);
     var container = classnames("d-select__container", "d-select__container-" + variant, className);
@@ -25291,18 +25290,16 @@ var Select = function (_a) {
         "d-select__error": !!error,
     }, classNameSelect);
     var errorTextClass = classnames("text-x-small", "text-error", "ml-1");
-    return (React__default.createElement("div", { className: container },
-        label && React__default.createElement("label", { className: labelClass }, label),
-        React__default.createElement(Select$1, __assign({}, props, { value: value, mode: multiple ? "multiple" : undefined, allowClear: allowClear, placeholder: placeholder, defaultValue: defaultValue, onChange: onChange, className: selectClass, showArrow: true, disabled: disabled, optionFilterProp: "children", filterOption: function (input, option) {
-                if (!hasFilter) {
-                    return false;
-                }
-                return (option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0 ||
-                    (option.props.value && ("" + option.props.value).toLowerCase().indexOf(input.toLowerCase()) >= 0));
-            } }), children),
-        error && (React__default.createElement("div", { className: "flex-center-y mt-1" },
-            React__default.createElement(Icon$1, { name: "error_outline", className: "text-error", size: "small" }),
-            React__default.createElement("text", { className: errorTextClass }, error)))));
+    return (jsxs("div", __assign({ className: container }, { children: [label && jsx("label", __assign({ className: labelClass }, { children: label }), void 0),
+            jsx(Select$1, __assign({}, props, { value: value, mode: multiple ? "multiple" : undefined, allowClear: allowClear, placeholder: placeholder, defaultValue: defaultValue, onChange: onChange, className: selectClass, showArrow: true, disabled: disabled, optionFilterProp: "children", filterOption: function (input, option) {
+                    if (!hasFilter) {
+                        return false;
+                    }
+                    return (option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0 ||
+                        (option.props.value && ("" + option.props.value).toLowerCase().indexOf(input.toLowerCase()) >= 0));
+                } }, { children: children }), void 0),
+            error && (jsxs("div", __assign({ className: "flex-center-y mt-1" }, { children: [jsx(Icon$1, { name: "error_outline", className: "text-error", size: "small" }, void 0),
+                    jsx("text", __assign({ className: errorTextClass }, { children: error }), void 0)] }), void 0))] }), void 0));
 };
 
 var TreeSelect = function (_a) {
@@ -25314,12 +25311,10 @@ var TreeSelect = function (_a) {
         "d-select__error": !!error,
     }, classNameSelect);
     var errorTextClass = classnames("text-x-small", "text-error", "ml-1");
-    return (React__default.createElement("div", { className: container },
-        label && React__default.createElement("label", { className: labelClass }, label),
-        React__default.createElement(TreeSelect$1, { className: selectClass, disabled: disabled, treeData: dataSource, onChange: onChange, value: value, placeholder: placeholder, multiple: multiple, allowClear: allowClear }),
-        error && (React__default.createElement("div", { className: "flex-center-y mt-1" },
-            React__default.createElement(Icon$1, { name: "error_outline", className: "text-error", size: "small" }),
-            React__default.createElement("text", { className: errorTextClass }, error)))));
+    return (jsxs("div", __assign({ className: container }, { children: [label && jsx("label", __assign({ className: labelClass }, { children: label }), void 0),
+            jsx(TreeSelect$1, { className: selectClass, disabled: disabled, treeData: dataSource, onChange: onChange, value: value, placeholder: placeholder, multiple: multiple, allowClear: allowClear }, void 0),
+            error && (jsxs("div", __assign({ className: "flex-center-y mt-1" }, { children: [jsx(Icon$1, { name: "error_outline", className: "text-error", size: "small" }, void 0),
+                    jsx("text", __assign({ className: errorTextClass }, { children: error }), void 0)] }), void 0))] }), void 0));
 };
 
 var Button = function (_a) {
@@ -25331,10 +25326,7 @@ var Button = function (_a) {
     }, className);
     var iconClass = classnames("d-block", { "mx-2": content && iconName }, classNameIcon);
     var suffixIconClass = classnames("d-block", { "mx-2": content && iconName }, classNameIconSuffix);
-    return (React__default.createElement("button", __assign({ className: buttonClass, type: type, disabled: disabled, onClick: onClick }, props),
-        iconName && React__default.createElement(Icon$1, { name: iconName, size: "large", className: iconClass }),
-        content,
-        suffixIcon && React__default.createElement(Icon$1, { name: suffixIcon, size: "large", className: suffixIconClass })));
+    return (jsxs("button", __assign({ className: buttonClass, type: type, disabled: disabled, onClick: onClick }, props, { children: [iconName && jsx(Icon$1, { name: iconName, size: "large", className: iconClass }, void 0), content, suffixIcon && jsx(Icon$1, { name: suffixIcon, size: "large", className: suffixIconClass }, void 0)] }), void 0));
 };
 
 var Checkbox = function (_a) {
@@ -25343,11 +25335,9 @@ var Checkbox = function (_a) {
     var classInputWrapper = classnames("checkbox__input-wrapper", "checkbox__input-wrapper-" + variant, { "checkbox__input-wrapper-disabled": disabled }, classNameInputWrapper);
     var classInput = classnames("checkbox__input", classNameInput);
     var classLabel = classnames("checkbox__label ml-3 text-nowrap", classNameLabel);
-    return (React__default.createElement("div", __assign({ className: classContainer }, props),
-        React__default.createElement("div", { className: classInputWrapper },
-            React__default.createElement("input", { type: "checkbox", id: id, name: name, value: value, onChange: onChange, className: classInput, disabled: disabled, checked: checked }),
-            React__default.createElement("span", { className: "checkbox__check-mark" })),
-        label && React__default.createElement("div", { className: classLabel }, label)));
+    return (jsxs("div", __assign({ className: classContainer }, props, { children: [jsxs("div", __assign({ className: classInputWrapper }, { children: [jsx("input", { type: "checkbox", id: id, name: name, value: value, onChange: onChange, className: classInput, disabled: disabled, checked: checked }, void 0),
+                    jsx("span", { className: "checkbox__check-mark" }, void 0)] }), void 0),
+            label && jsx("div", __assign({ className: classLabel }, { children: label }), void 0)] }), void 0));
 };
 
 var CheckboxGroup = function (_a) {
@@ -25357,28 +25347,27 @@ var CheckboxGroup = function (_a) {
     useEffect(function () {
         setListValues(value);
     }, [value]);
-    return (React__default.createElement("div", { className: containerClass }, dataSource.map(function (item) {
-        var iLabel = getLabel(item);
-        var iValue = getValue(item);
-        var isChecked = listValues.includes(iValue);
-        var isDisabled = (getDisabledItem && getDisabledItem(item)) || false;
-        return (React__default.createElement(Checkbox, { label: iLabel, value: iValue, onChange: function (event) {
-                var isPush = event.target.checked;
-                var changeValue = event.target.value;
-                var clone = __spreadArray([], listValues);
-                if (isPush) {
-                    clone.push(iValue);
-                }
-                else {
-                    clone = listValues.filter(function (i) { return i !== changeValue; });
-                }
-                setListValues(clone);
-                onChange && onChange(clone);
-            }, checked: isChecked, disabled: isDisabled }));
-    })));
+    return (jsx("div", __assign({ className: containerClass }, { children: dataSource.map(function (item) {
+            var iLabel = getLabel(item);
+            var iValue = getValue(item);
+            var isChecked = listValues.includes(iValue);
+            var isDisabled = (getDisabledItem && getDisabledItem(item)) || false;
+            return (jsx(Checkbox, { label: iLabel, value: iValue, onChange: function (event) {
+                    var isPush = event.target.checked;
+                    var changeValue = event.target.value;
+                    var clone = __spreadArray([], listValues);
+                    if (isPush) {
+                        clone.push(iValue);
+                    }
+                    else {
+                        clone = listValues.filter(function (i) { return i !== changeValue; });
+                    }
+                    setListValues(clone);
+                    onChange && onChange(clone);
+                }, checked: isChecked, disabled: isDisabled }, void 0));
+        }) }), void 0));
 };
 
-/* eslint-disable no-unused-expressions */
 var RadioGroup = function (_a) {
     var dataSource = _a.dataSource, className = _a.className, _b = _a.getLabel, getLabel = _b === void 0 ? function (item) { return item === null || item === void 0 ? void 0 : item.label; } : _b, _c = _a.getValue, getValue = _c === void 0 ? function (item) { return item === null || item === void 0 ? void 0 : item.id; } : _c, getDisabledItem = _a.getDisabledItem, _d = _a.value, value = _d === void 0 ? [] : _d, onChange = _a.onChange;
     var containerClass = classnames("d-checkbox-group", className);
@@ -25386,52 +25375,43 @@ var RadioGroup = function (_a) {
     useEffect(function () {
         setListValues(value);
     }, [value]);
-    return (React__default.createElement("div", { className: containerClass }, dataSource.map(function (item) {
-        var iLabel = getLabel(item);
-        var iValue = getValue(item);
-        var isChecked = listValues.includes(iValue);
-        var isDisabled = (getDisabledItem && getDisabledItem(item)) || false;
-        return (React__default.createElement(Checkbox, { label: iLabel, value: iValue, onChange: function (event) {
-                var isPush = event.target.checked;
-                var changeValue = event.target.value;
-                var clone;
-                if (isPush) {
-                    clone = [changeValue];
-                }
-                else {
-                    clone = listValues.filter(function (i) { return i !== changeValue; });
-                }
-                setListValues(clone);
-                onChange && onChange(clone);
-            }, checked: isChecked, variant: "radio", disabled: isDisabled }));
-    })));
+    return (jsx("div", __assign({ className: containerClass }, { children: dataSource.map(function (item) {
+            var iLabel = getLabel(item);
+            var iValue = getValue(item);
+            var isChecked = listValues.includes(iValue);
+            var isDisabled = (getDisabledItem && getDisabledItem(item)) || false;
+            return (jsx(Checkbox, { label: iLabel, value: iValue, onChange: function (event) {
+                    var isPush = event.target.checked;
+                    var changeValue = event.target.value;
+                    var clone;
+                    if (isPush) {
+                        clone = [changeValue];
+                    }
+                    else {
+                        clone = listValues.filter(function (i) { return i !== changeValue; });
+                    }
+                    setListValues(clone);
+                    onChange && onChange(clone);
+                }, checked: isChecked, variant: "radio", disabled: isDisabled }, void 0));
+        }) }), void 0));
 };
 
-// react
 var InputTextSearch = function (_a) {
-    var className = _a.className, _b = _a.variant, variant = _b === void 0 ? "outline" : _b, // standard || outline
-    value = _a.value, error = _a.error, name = _a.name, key = _a.key, placeholder = _a.placeholder, disabled = _a.disabled, onChange = _a.onChange, onBlur = _a.onBlur;
+    var className = _a.className, _b = _a.variant, variant = _b === void 0 ? "outline" : _b, value = _a.value, defaultValue = _a.defaultValue, error = _a.error, placeholder = _a.placeholder, disabled = _a.disabled, onChange = _a.onChange, onBlur = _a.onBlur;
     var container = classnames("d-input-search", "d-input-search__" + variant, {
         "d-input-search__disabled": disabled,
         "d-input-search__error": !!error,
     }, className);
-    return (React__default.createElement("div", { className: container },
-        React__default.createElement(Icon$1, { name: "search", className: "mr-3" }),
-        React__default.createElement("input", { value: value, onChange: onChange, name: name, required: true, key: key, placeholder: placeholder, onBlur: onBlur, disabled: disabled })));
+    return (jsxs("div", __assign({ className: container }, { children: [jsx(Icon$1, { name: "search", className: "mr-3" }, void 0),
+            jsx("input", { value: value, onChange: onChange, required: true, placeholder: placeholder, onBlur: onBlur, disabled: disabled, defaultValue: defaultValue }, void 0)] }), void 0));
 };
 
 var HeaderTable = function (_a) {
     var _b = _a.className, className = _b === void 0 ? "" : _b, _c = _a.label, label = _c === void 0 ? "" : _c, _d = _a.placeholder, placeholder = _d === void 0 ? "Search" : _d, onChangeText = _a.onChangeText, onClickNew = _a.onClickNew, onClickExport = _a.onClickExport, onClickFilter = _a.onClickFilter, customView = _a.customView;
-    return (React__default.createElement("div", { className: classnames("w-100", className) },
-        React__default.createElement("div", { className: "d-flex justify-content-between mb-3" },
-            React__default.createElement("div", { className: "h4" }, label),
-            React__default.createElement("div", { className: "d-flex" },
-                onClickNew && React__default.createElement(Button, { iconName: "add", content: "New", onClick: onClickNew, className: "mr-3" }),
-                onClickExport && React__default.createElement(Button, { iconName: "cloud_download", content: "Export", onClick: onClickExport }))),
-        React__default.createElement("div", { className: "flex-center-y" },
-            React__default.createElement(InputTextSearch, { className: "w-100 mr-3 bg-white", placeholder: placeholder, onChange: onChangeText }),
-            customView && customView(),
-            onClickFilter && React__default.createElement(Button, { iconName: "filter_list", onClick: onClickFilter }))));
+    return (jsxs("div", __assign({ className: classnames("w-100", className) }, { children: [jsxs("div", __assign({ className: "d-flex justify-content-between mb-3" }, { children: [jsx("div", __assign({ className: "h4" }, { children: label }), void 0),
+                    jsxs("div", __assign({ className: "d-flex" }, { children: [onClickNew && jsx(Button, { iconName: "add", content: "New", onClick: onClickNew, className: "mr-3" }, void 0),
+                            onClickExport && jsx(Button, { iconName: "cloud_download", content: "Export", onClick: onClickExport }, void 0)] }), void 0)] }), void 0),
+            jsxs("div", __assign({ className: "flex-center-y" }, { children: [jsx(InputTextSearch, { className: "w-100 mr-3 bg-white", placeholder: placeholder, onChange: onChangeText }, void 0), customView && customView(), onClickFilter && jsx(Button, { iconName: "filter_list", onClick: onClickFilter }, void 0)] }), void 0)] }), void 0));
 };
 
 var Modal = function (_a) {
@@ -25443,44 +25423,36 @@ var Modal = function (_a) {
     var header = function () {
         var content;
         content = function () {
-            return (React__default.createElement(React__default.Fragment, null,
-                hasCloseIcon && React__default.createElement(Button, { iconName: "close", variant: "trans", onClick: onClose }),
-                title && React__default.createElement("h4", { className: "w-100 text-center" }, title),
-                headerSide && headerSide()));
+            return (jsxs(React__default.Fragment, { children: [hasCloseIcon && jsx(Button, { iconName: "close", variant: "trans", onClick: onClose }, void 0),
+                    title && jsx("h4", __assign({ className: "w-100 text-center" }, { children: title }), void 0), headerSide && headerSide()] }, void 0));
         };
         if (customHeader) {
             content = customHeader;
         }
-        return React__default.createElement("div", { className: headerClass }, content());
+        return jsx("div", __assign({ className: headerClass }, { children: content() }), void 0);
     };
     var footer = function () {
         var content;
         var sideButton;
-        sideButton = function () { return React__default.createElement(Button, { variant: "trans", content: sideText, onClick: onSideClick }); };
+        sideButton = function () { return jsx(Button, { variant: "trans", content: sideText, onClick: onSideClick }, void 0); };
         if (customSideButton) {
             sideButton = customSideButton;
         }
         content = function () {
-            return (React__default.createElement(React__default.Fragment, null,
-                (onSideClick || !!customSideButton) && sideButton(),
-                React__default.createElement("div", { className: "w-100 d-flex align-items-center justify-content-end" },
-                    hasCancelButton && (React__default.createElement(Button, { variant: "outline", content: cancelText, className: "mr-3", onClick: function (e) {
-                            if (cancelAction) {
-                                return cancelAction(e);
-                            }
-                            return onClose && onClose(e);
-                        } })),
-                    React__default.createElement(Button, { variant: "standard", content: saveText }))));
+            return (jsxs(React__default.Fragment, { children: [(onSideClick || !!customSideButton) && sideButton(), jsxs("div", __assign({ className: "w-100 d-flex align-items-center justify-content-end" }, { children: [hasCancelButton && (jsx(Button, { variant: "outline", content: cancelText, className: "mr-3", onClick: function (e) {
+                                    if (cancelAction) {
+                                        return cancelAction(e);
+                                    }
+                                    return onClose && onClose(e);
+                                } }, void 0)),
+                            jsx(Button, { variant: "standard", content: saveText }, void 0)] }), void 0)] }, void 0));
         };
         if (customFooter) {
             content = customFooter;
         }
-        return React__default.createElement("div", { className: footerClass }, content());
+        return jsx("div", __assign({ className: footerClass }, { children: content() }), void 0);
     };
-    return (React__default.createElement(Modal$1, __assign({ visible: open, onCancel: onClose, centered: centered, className: modalClass, closable: closable, onOk: onSave, width: width, footer: null }, props),
-        header(),
-        React__default.createElement("div", { className: childrenClass }, children),
-        footer()));
+    return (jsxs(Modal$1, __assign({ visible: open, onCancel: onClose, centered: centered, className: modalClass, closable: closable, onOk: onSave, width: width, footer: null }, props, { children: [header(), jsx("div", __assign({ className: childrenClass }, { children: children }), void 0), footer()] }), void 0));
 };
 
 function Avatar(_a) {
@@ -25490,59 +25462,56 @@ function Avatar(_a) {
     var content;
     if (text) {
         var firstLetter = text.charAt(0);
-        content = (React__default.createElement("h2", { className: "text-white text-center", style: { fontWeight: "normal" } }, firstLetter));
+        content = (jsx("h2", __assign({ className: "text-white text-center", style: { fontWeight: "normal" } }, { children: firstLetter }), void 0));
     }
     if (src) {
-        content = React__default.createElement("img", __assign({ src: src }, props, { alt: alt, className: imageClass }));
+        content = jsx("img", __assign({ src: src }, props, { alt: alt, className: imageClass }), void 0);
     }
-    return (React__default.createElement("div", { className: wrapperClass, style: { backgroundColor: color } }, content));
+    return (jsx("div", __assign({ className: wrapperClass, style: { backgroundColor: color } }, { children: content }), void 0));
 }
 
 var RowInterchangeView = function (_a) {
     var _b = _a.dataSource, dataSource = _b === void 0 ? {} : _b, _c = _a.keyList, keyList = _c === void 0 ? [] : _c, className = _a.className, getLabel = _a.getLabel, getContent = _a.getContent;
     var wrapperClass = classnames(className);
-    return (React__default.createElement("div", { className: wrapperClass }, keyList.map(function (row, index) {
-        var _a;
-        var rowClass = classnames("d-flex align-items-center w-100 justify-content-between py-2 px-3", {
-            "bg-light-gray": index % 2,
-        });
-        var id = row.id, label = row.label;
-        var labelView;
-        var content;
-        labelView = row.label;
-        if (getLabel) {
-            labelView = getLabel(label, row, dataSource);
-        }
-        content = (_a = dataSource === null || dataSource === void 0 ? void 0 : dataSource[id]) !== null && _a !== void 0 ? _a : "N/A";
-        if (getContent) {
-            content = getContent(id, row, dataSource);
-        }
-        var contentView = React__default.createElement("label", { className: "d-block text" }, content);
-        return (React__default.createElement("div", { className: rowClass, key: index },
-            React__default.createElement("div", { className: "w-100" },
-                React__default.createElement("div", { className: "d-block text-x-small" }, labelView)),
-            React__default.createElement("div", { className: "w-100 text" }, contentView)));
-    })));
+    return (jsx("div", __assign({ className: wrapperClass }, { children: keyList.map(function (row, index) {
+            var _a;
+            var rowClass = classnames("d-flex align-items-center w-100 justify-content-between py-2 px-3", {
+                "bg-light-gray": index % 2,
+            });
+            var id = row.id, label = row.label;
+            var labelView;
+            var content;
+            labelView = row.label;
+            if (getLabel) {
+                labelView = getLabel(label, row, dataSource);
+            }
+            content = (_a = dataSource === null || dataSource === void 0 ? void 0 : dataSource[id]) !== null && _a !== void 0 ? _a : "N/A";
+            if (getContent) {
+                content = getContent(id, row, dataSource);
+            }
+            var contentView = jsx("label", __assign({ className: "d-block text" }, { children: content }), void 0);
+            return (jsxs("div", __assign({ className: rowClass }, { children: [jsx("div", __assign({ className: "w-100" }, { children: jsx("div", __assign({ className: "d-block text-x-small" }, { children: labelView }), void 0) }), void 0),
+                    jsx("div", __assign({ className: "w-100 text" }, { children: contentView }), void 0)] }), index));
+        }) }), void 0));
 };
 
-// react
 var TabBar = function (_a) {
     var _b = _a.dataSource, dataSource = _b === void 0 ? [] : _b, value = _a.value, onChange = _a.onChange, className = _a.className, classNameTabItem = _a.classNameTabItem, getLabel = _a.getLabel, _c = _a.variant, variant = _c === void 0 ? "horizontal" : _c;
     var wrapperClass = classnames("d-tab-bar d-tab-bar__" + variant, { "d-flex flex-wrap": variant === "horizontal" }, className);
-    return (React__default.createElement("div", { className: wrapperClass }, dataSource.map(function (tabItem, index) {
-        var _a, _b;
-        var isSelect = (value === null || value === void 0 ? void 0 : value.id) === (tabItem === null || tabItem === void 0 ? void 0 : tabItem.id);
-        var itemClass = classnames(classNameTabItem, "d-tab-bar__item text-small", {
-            // "d-tab-bar__item-active text-primary": isSelect,
-            "d-tab-bar__item-active": isSelect,
-        });
-        var label = (_a = tabItem === null || tabItem === void 0 ? void 0 : tabItem.label) !== null && _a !== void 0 ? _a : "N/A";
-        var icon = (_b = tabItem === null || tabItem === void 0 ? void 0 : tabItem.iconName) !== null && _b !== void 0 ? _b : undefined;
-        if (getLabel) {
-            label = getLabel(tabItem);
-        }
-        return (React__default.createElement(Button, { className: itemClass, onClick: function () { return onChange && onChange(tabItem); }, key: index, variant: "trans", content: label, iconName: icon }));
-    })));
+    return (jsx("div", __assign({ className: wrapperClass }, { children: dataSource.map(function (tabItem, index) {
+            var _a, _b;
+            var isSelect = (value === null || value === void 0 ? void 0 : value.id) === (tabItem === null || tabItem === void 0 ? void 0 : tabItem.id);
+            var itemClass = classnames(classNameTabItem, "d-tab-bar__item text-small", {
+                // "d-tab-bar__item-active text-primary": isSelect,
+                "d-tab-bar__item-active": isSelect,
+            });
+            var label = (_a = tabItem === null || tabItem === void 0 ? void 0 : tabItem.label) !== null && _a !== void 0 ? _a : "N/A";
+            var icon = (_b = tabItem === null || tabItem === void 0 ? void 0 : tabItem.iconName) !== null && _b !== void 0 ? _b : undefined;
+            if (getLabel) {
+                label = getLabel(tabItem);
+            }
+            return (jsx(Button, { className: itemClass, onClick: function () { return onChange && onChange(tabItem); }, variant: "trans", content: label, iconName: icon }, index));
+        }) }), void 0));
 };
 
 var lodash = createCommonjsModule(function (module, exports) {
@@ -43591,8 +43560,7 @@ if (process.env.NODE_ENV !== 'production') {
 var Loading = function (_a) {
     var className = _a.className, _b = _a.size, size = _b === void 0 ? "medium" : _b;
     var wrapperClass = classnames("spinner-border text-primary", "d-loading__" + size, className);
-    return (React__default.createElement("div", { className: wrapperClass, role: "status" },
-        React__default.createElement("span", { className: "sr-only text-small" }, "Loading...")));
+    return (jsx("div", __assign({ className: wrapperClass, role: "status" }, { children: jsx("span", __assign({ className: "sr-only text-small" }, { children: "Loading..." }), void 0) }), void 0));
 };
 
 // create a component
@@ -43651,14 +43619,14 @@ var EmptyView = /** @class */ (function (_super) {
      * Incase change only few cases, we should use props.renderEmptyView
      */
     EmptyView.prototype.renderEmptyView = function () {
-        return React__default.createElement("div", { className: "text" }, this.props.emptyText);
+        return jsx("div", __assign({ className: "text" }, { children: this.props.emptyText }), void 0);
     };
     /**
      * Override incase build another EmptyView in whole system
      * Incase change only few cases, we should use props.renderFilterEmptyView
      */
     EmptyView.prototype.renderFilterEmptyView = function () {
-        return React__default.createElement("div", { className: "text" }, this.props.filterEmptyText);
+        return jsx("div", __assign({ className: "text" }, { children: this.props.filterEmptyText }), void 0);
     };
     /**
      * Override incase build another EmptyView in whole system
@@ -43666,7 +43634,7 @@ var EmptyView = /** @class */ (function (_super) {
      */
     // eslint-disable-next-line class-methods-use-this
     EmptyView.prototype.renderProgress = function () {
-        return React__default.createElement(Loading, { size: "large" });
+        return jsx(Loading, { size: "large" }, void 0);
     };
     /**
      * Override incase build another EmptyView in whole system
@@ -43674,7 +43642,7 @@ var EmptyView = /** @class */ (function (_super) {
      */
     // eslint-disable-next-line class-methods-use-this
     EmptyView.prototype.renderErrorView = function () {
-        return React__default.createElement("div", { className: "text" }, "No result");
+        return jsx("div", __assign({ className: "text" }, { children: "No result" }), void 0);
     };
     EmptyView.prototype.render = function () {
         // If mode not set or hidden do not render EmptyView
@@ -43684,11 +43652,7 @@ var EmptyView = /** @class */ (function (_super) {
         return (
         // pointerEvents to prevent touch to EmptyView and pass through to under component.
         // But still accept its children view receive touch.
-        React__default.createElement("div", { className: "d-list-empty-view" },
-            this.renderEmptyViewInternal(),
-            this.renderErrorViewInternal(),
-            this.renderProgressInternal(),
-            this.renderFilterEmptyViewInternal()));
+        jsxs("div", __assign({ className: "d-list-empty-view" }, { children: [this.renderEmptyViewInternal(), this.renderErrorViewInternal(), this.renderProgressInternal(), this.renderFilterEmptyViewInternal()] }), void 0));
     };
     EmptyView.propTypes = {
         mode: propTypes.any,
@@ -43828,7 +43792,7 @@ var PopoverList = function (_a) {
         if (renderItem) {
             content = renderItem(item, index);
         }
-        return (React__default.createElement("div", { className: "renderItemList", onClick: function () { return onClickItemList(item, index); }, key: index + Math.random() }, content));
+        return (jsx("div", __assign({ className: "renderItemList", onClick: function () { return onClickItemList(item, index); } }, { children: content }), index + Math.random()));
     };
     var mainViewPopover = function () {
         if (customView) {
@@ -43837,24 +43801,21 @@ var PopoverList = function (_a) {
             }
             return customView;
         }
-        return (React__default.createElement(InputTextSearch, { onChange: function (event) {
+        return (jsx(InputTextSearch, { onChange: function (event) {
                 if (!event.target.value.trim()) {
                     return;
                 }
                 !isClickOpen && setOpenPopover(true);
                 onChange && onChange(event.target.value);
-            } }));
+            } }, void 0));
     };
-    return (React__default.createElement("div", { className: wrapperClass, ref: outSideRef },
-        React__default.createElement("div", { onClick: function () { return isClickOpen && setOpenPopover(true); } }, mainViewPopover()),
-        openPopover && (React__default.createElement("div", { className: "d-popover-list__dropdown" },
-            buttonText && (React__default.createElement("div", { className: "d-flex w-100 justify-content-end" },
-                React__default.createElement(Button, { content: buttonText, iconName: buttonIconName, variant: buttonVariant, onClick: function () {
-                        onClickCreateNewHandle();
-                    } }))),
-            dataList.data.map(function (item, index) { return renderItemList(item, index); }),
-            React__default.createElement(EmptyView, { mode: dataList.emptyMode }),
-            showLoadMore && (React__default.createElement(Button, { className: "d-popover-list__footer", onClick: function () { return onClickLoadMore(); }, variant: "trans" }, loadMoreText))))));
+    return (jsxs("div", __assign({ className: wrapperClass, ref: outSideRef }, { children: [jsx("div", __assign({ onClick: function () { return isClickOpen && setOpenPopover(true); } }, { children: mainViewPopover() }), void 0),
+            openPopover && (jsxs("div", __assign({ className: "d-popover-list__dropdown" }, { children: [buttonText && (jsx("div", __assign({ className: "d-flex w-100 justify-content-end" }, { children: jsx(Button, { content: buttonText, iconName: buttonIconName, variant: buttonVariant, onClick: function () {
+                                onClickCreateNewHandle();
+                            } }, void 0) }), void 0)),
+                    dataList.data.map(function (item, index) { return renderItemList(item, index); }),
+                    jsx(EmptyView, { mode: dataList.emptyMode }, void 0),
+                    showLoadMore && (jsx(Button, __assign({ className: "d-popover-list__footer", onClick: function () { return onClickLoadMore(); }, variant: "trans" }, { children: loadMoreText }), void 0))] }), void 0))] }), void 0));
 };
 
 var InfiniteScroll = /** @class */ (function (_super) {
@@ -44073,18 +44034,15 @@ var InfiniteScroll = /** @class */ (function (_super) {
     return InfiniteScroll;
 }(Component));
 
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 var PagingView = function (_a) {
     var mode = _a.mode, onClickRetry = _a.onClickRetry;
     if (mode === MODE.HIDDEN) {
-        return React__default.createElement("div", null);
+        return jsx("div", {}, void 0);
     }
     if (mode === MODE.ERROR) {
-        return (React__default.createElement("div", { className: "d-page-view__container", onClick: onClickRetry },
-            React__default.createElement("div", { className: "h5" }, "Error..... Click to retry!")));
+        return (jsx("div", __assign({ className: "d-page-view__container", onClick: onClickRetry }, { children: jsx("div", __assign({ className: "h5" }, { children: "Error..... Click to retry!" }), void 0) }), void 0));
     }
-    return (React__default.createElement("div", { className: "d-page-view__container" },
-        React__default.createElement(Loading, { size: "small" })));
+    return (jsx("div", __assign({ className: "d-page-view__container" }, { children: jsx(Loading, { size: "small" }, void 0) }), void 0));
 };
 
 var DEFAULT_PAGING_DATA = {
@@ -44223,16 +44181,15 @@ var AwesomeListComponent = /** @class */ (function (_super) {
         var _this = this;
         var _a = this.state, data = _a.data, hasMoreData = _a.hasMoreData, loading = _a.loading, emptyMode = _a.emptyMode;
         var _b = this.props, renderItem = _b.renderItem, styleContainer = _b.styleContainer, isReverse = _b.isReverse, className = _b.className, classNameInfinityScroll = _b.classNameInfinityScroll, emptyView = _b.emptyView;
-        return (React__default.createElement("div", { className: "d-awesome-list " + className, style: __assign({}, styleContainer) },
-            React__default.createElement(InfiniteScroll, { threshold: 1, pageStart: 0, loadMore: function () {
-                    return (
-                    // eslint-disable-next-line operator-linebreak
-                    !loading &&
-                        _this.setState({ loading: true }, function () {
-                            _this.start();
-                        }));
-                }, hasMore: hasMoreData, isReverse: isReverse, loader: React__default.createElement(PagingView, { onClickRetry: this.pagingRetry }), useWindow: false, className: classNameInfinityScroll }, data.map(function (item, index) { return renderItem(item, index); })),
-            React__default.createElement(EmptyView, { mode: emptyMode, emptyText: emptyView })));
+        return (jsxs("div", __assign({ className: "d-awesome-list " + className, style: __assign({}, styleContainer) }, { children: [jsx(InfiniteScroll, __assign({ threshold: 1, pageStart: 0, loadMore: function () {
+                        return (
+                        // eslint-disable-next-line operator-linebreak
+                        !loading &&
+                            _this.setState({ loading: true }, function () {
+                                _this.start();
+                            }));
+                    }, hasMore: hasMoreData, isReverse: isReverse, loader: jsx(PagingView, { onClickRetry: this.pagingRetry }, void 0), useWindow: false, className: classNameInfinityScroll }, { children: data.map(function (item, index) { return renderItem(item, index); }) }), void 0),
+                jsx(EmptyView, { mode: emptyMode, emptyText: emptyView }, void 0)] }), void 0));
     };
     AwesomeListComponent.propTypes = {
         source: propTypes.func,

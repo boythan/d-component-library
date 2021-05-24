@@ -10,21 +10,29 @@ import classname from "classnames";
 import Icon from "../icon/Icon";
 
 export interface InputTextProps {
-    [key: string]: any;
+    className?: string;
+
+    variant?: "standard" | "outline";
+
+    value?: string;
+    defaultValue?: string;
+    error?: string;
+
+    placeholder?: string;
+
+    disabled?: boolean;
+
+    onChange?: any;
+    onBlur?: any;
 }
 
 const InputTextSearch = ({
     className,
-
-    variant = "outline", // standard || outline
-
+    variant = "outline",
     value,
+    defaultValue,
     error,
-    name,
-
-    key,
     placeholder,
-
     disabled,
 
     onChange,
@@ -46,12 +54,11 @@ const InputTextSearch = ({
             <input
                 value={value}
                 onChange={onChange}
-                name={name}
                 required
-                key={key}
                 placeholder={placeholder}
                 onBlur={onBlur}
                 disabled={disabled}
+                defaultValue={defaultValue}
             />
         </div>
     );
