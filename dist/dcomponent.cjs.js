@@ -75,7 +75,7 @@ var __assign = function() {
     return __assign.apply(this, arguments);
 };
 
-function __rest$7(s, e) {
+function __rest$b(s, e) {
     var t = {};
     for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
         t[p] = s[p];
@@ -132,6 +132,10 @@ function __spreadArray(to, from) {
 }
 
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
+
+function commonjsRequire () {
+	throw new Error('Dynamic requires are not currently supported by rollup-plugin-commonjs');
+}
 
 function unwrapExports (x) {
 	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
@@ -736,7 +740,7 @@ var reactIs_1 = reactIs.isFragment;
 reactIs.ForwardRef;
 var reactIs_3 = reactIs.isMemo;
 
-function toArray$3(children) {
+function toArray$5(children) {
   var option = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
   var ret = [];
   React__default['default'].Children.forEach(children, function (child) {
@@ -745,9 +749,9 @@ function toArray$3(children) {
     }
 
     if (Array.isArray(child)) {
-      ret = ret.concat(toArray$3(child));
+      ret = ret.concat(toArray$5(child));
     } else if (reactIs_1(child) && child.props) {
-      ret = ret.concat(toArray$3(child.props.children, option));
+      ret = ret.concat(toArray$5(child.props.children, option));
     } else {
       ret.push(child);
     }
@@ -1872,7 +1876,7 @@ var ReactResizeObserver = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       var children = this.props.children;
-      var childNodes = toArray$3(children);
+      var childNodes = toArray$5(children);
 
       if (childNodes.length > 1) {
         warningOnce(false, 'Find more than one child node with `children` in ResizeObserver. Will only observe first one.');
@@ -2014,7 +2018,7 @@ var Context = /*#__PURE__*/React__namespace.createContext({
   }
 });
 
-function toArray$2(value) {
+function toArray$4(value) {
   if (value === undefined || value === null) {
     return [];
   }
@@ -4328,9 +4332,9 @@ function set(entity, paths, value) {
  */
 
 function getNamePath(path) {
-  return toArray$2(path);
+  return toArray$4(path);
 }
-function getValue$1(store, namePath) {
+function getValue$2(store, namePath) {
   var value = get(store, namePath);
   return value;
 }
@@ -4342,7 +4346,7 @@ function setValue(store, namePath, value) {
 function cloneByNamePathList(store, namePathList) {
   var newStore = {};
   namePathList.forEach(function (namePath) {
-    var value = getValue$1(store, namePath);
+    var value = getValue$2(store, namePath);
     newStore = setValue(newStore, namePath, value);
   });
   return newStore;
@@ -5092,7 +5096,7 @@ var Field = /*#__PURE__*/function (_React$Component) {
               return true;
             }
 
-            var triggerList = toArray$2(validateTrigger);
+            var triggerList = toArray$4(validateTrigger);
             return triggerList.includes(triggerName);
           });
         }
@@ -5174,7 +5178,7 @@ var Field = /*#__PURE__*/function (_React$Component) {
       } // Filed element only
 
 
-      var childList = toArray$3(children);
+      var childList = toArray$5(children);
 
       if (childList.length !== 1 || ! /*#__PURE__*/React__namespace.isValidElement(childList[0])) {
         return {
@@ -5195,7 +5199,7 @@ var Field = /*#__PURE__*/function (_React$Component) {
 
       var namePath = _this.getNamePath();
 
-      return getValue$1(store || getFieldsValue(true), namePath);
+      return getValue$2(store || getFieldsValue(true), namePath);
     };
 
     _this.getControlled = function () {
@@ -5262,7 +5266,7 @@ var Field = /*#__PURE__*/function (_React$Component) {
       }; // Add validateTrigger
 
 
-      var validateTriggerList = toArray$2(mergedValidateTrigger || []);
+      var validateTriggerList = toArray$4(mergedValidateTrigger || []);
       validateTriggerList.forEach(function (triggerName) {
         // Wrap additional function of component, so that we can get latest value from store
         var originTrigger = control[triggerName];
@@ -5763,7 +5767,7 @@ var FormStore = function FormStore(forceRootUpdate) {
   };
 
   this.getInitialValue = function (namePath) {
-    return getValue$1(_this.initialValues, namePath);
+    return getValue$2(_this.initialValues, namePath);
   };
 
   this.setCallbacks = function (callbacks) {
@@ -5875,7 +5879,7 @@ var FormStore = function FormStore(forceRootUpdate) {
     _this.warningUnhooked();
 
     var namePath = getNamePath(name);
-    return getValue$1(_this.store, namePath);
+    return getValue$2(_this.store, namePath);
   };
 
   this.getFieldsError = function (nameList) {
@@ -6173,7 +6177,7 @@ var FormStore = function FormStore(forceRootUpdate) {
 
     if (initialValue !== undefined) {
       var namePath = entity.getNamePath();
-      var prevValue = getValue$1(_this.store, namePath);
+      var prevValue = getValue$2(_this.store, namePath);
 
       if (prevValue === undefined) {
         _this.store = setValue(_this.store, namePath, initialValue);
@@ -6210,7 +6214,7 @@ var FormStore = function FormStore(forceRootUpdate) {
 
       if (mergedPreserve === false && (!isListField || subNamePath.length > 1)) {
         var namePath = entity.getNamePath();
-        var defaultValue = isListField ? undefined : getValue$1(_this.initialValues, namePath);
+        var defaultValue = isListField ? undefined : getValue$2(_this.initialValues, namePath);
 
         if (namePath.length && _this.getFieldValue(namePath) !== defaultValue && _this.fieldEntities.every(function (field) {
           return (// Only reset when no namePath exist
@@ -7134,7 +7138,7 @@ var Simple = function Simple() {
   }))));
 };
 
-var __rest$6 = undefined && undefined.__rest || function (s, e) {
+var __rest$a = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -7157,7 +7161,7 @@ var Empty = function Empty(_a) {
       description = _a.description,
       children = _a.children,
       imageStyle = _a.imageStyle,
-      restProps = __rest$6(_a, ["className", "prefixCls", "image", "description", "children", "imageStyle"]);
+      restProps = __rest$a(_a, ["className", "prefixCls", "image", "description", "children", "imageStyle"]);
 
   var _React$useContext = React__namespace.useContext(ConfigContext),
       getPrefixCls = _React$useContext.getPrefixCls,
@@ -9261,7 +9265,7 @@ function getSaturation(hsv, i, light) {
   return Number(saturation.toFixed(2));
 }
 
-function getValue(hsv, i, light) {
+function getValue$1(hsv, i, light) {
   var value;
 
   if (light) {
@@ -9287,7 +9291,7 @@ function generate$1(color) {
     var colorString = toHex(inputToRGB({
       h: getHue(hsv, i, true),
       s: getSaturation(hsv, i, true),
-      v: getValue(hsv, i, true)
+      v: getValue$1(hsv, i, true)
     }));
     patterns.push(colorString);
   }
@@ -9300,7 +9304,7 @@ function generate$1(color) {
     var _colorString = toHex(inputToRGB({
       h: getHue(_hsv, _i),
       s: getSaturation(_hsv, _i),
-      v: getValue(_hsv, _i)
+      v: getValue$1(_hsv, _i)
     }));
 
     patterns.push(_colorString);
@@ -9346,19 +9350,6 @@ Object.keys(presetPrimaryColors).forEach(function (key) {
   });
   presetDarkPalettes[key].primary = presetDarkPalettes[key][5];
 });
-presetPalettes.red;
-presetPalettes.volcano;
-presetPalettes.gold;
-presetPalettes.orange;
-presetPalettes.yellow;
-presetPalettes.lime;
-presetPalettes.green;
-presetPalettes.cyan;
-presetPalettes.blue;
-presetPalettes.geekblue;
-presetPalettes.purple;
-presetPalettes.magenta;
-presetPalettes.grey;
 
 var MARK_KEY = "rc-util-key";
 
@@ -12789,7 +12780,7 @@ function convertNodeToOption(node) {
 
 function convertChildrenToData$1(nodes) {
   var optionOnly = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-  return toArray$3(nodes).map(function (node, index) {
+  return toArray$5(nodes).map(function (node, index) {
     if (! /*#__PURE__*/React__namespace.isValidElement(node) || !node.type) {
       return null;
     }
@@ -12815,7 +12806,7 @@ function convertChildrenToData$1(nodes) {
   });
 }
 
-function toArray$1(value) {
+function toArray$3(value) {
   if (Array.isArray(value)) {
     return value;
   }
@@ -13048,7 +13039,7 @@ var getLabeledValue = function getLabeledValue(value, _ref2) {
 };
 
 function toRawString(content) {
-  return toArray$1(content).join('');
+  return toArray$3(content).join('');
 }
 /** Filter single option if match the search text */
 
@@ -13153,7 +13144,7 @@ function isValueDisabled$1(value, options) {
  */
 
 function fillOptionsWithMissingValue(options, value, optionLabelProp, labelInValue) {
-  var values = toArray$1(value).slice().sort();
+  var values = toArray$3(value).slice().sort();
 
   var cloneOptions = _toConsumableArray(options); // Convert options value to set
 
@@ -18233,7 +18224,7 @@ function warningProps$1(props) {
   noteOnce(!defaultOpen || autoFocus, '`defaultOpen` makes Select open without focus which means it will not close by click outside. You can set `autoFocus` if needed.');
 
   if (value !== undefined && value !== null) {
-    var values = toArray$1(value);
+    var values = toArray$3(value);
     warningOnce(!labelInValue || values.every(function (val) {
       return _typeof$4(val) === 'object' && ('key' in val || 'value' in val);
     }), '`value` should in shape of `{ value: string | number, label?: ReactNode }` when you set `labelInValue` to `true`');
@@ -18243,7 +18234,7 @@ function warningProps$1(props) {
 
   if (children) {
     var invalidateChildType = null;
-    toArray$3(children).some(function (node) {
+    toArray$5(children).some(function (node) {
       if (! /*#__PURE__*/React__namespace.isValidElement(node) || !node.type) {
         return false;
       }
@@ -18255,7 +18246,7 @@ function warningProps$1(props) {
       }
 
       if (type.isSelectOptGroup) {
-        var allChildrenValid = toArray$3(node.props.children).every(function (subNode) {
+        var allChildrenValid = toArray$5(node.props.children).every(function (subNode) {
           if (! /*#__PURE__*/React__namespace.isValidElement(subNode) || !node.type || subNode.type.isSelectOption) {
             return true;
           }
@@ -18467,7 +18458,7 @@ var getTransitionName = function getTransitionName(rootPrefixCls, motion, transi
 };
 
 // TODO: 4.0 - codemod should help to change `filterOption` to support node props.
-var __rest$5 = undefined && undefined.__rest || function (s, e) {
+var __rest$9 = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -18496,7 +18487,7 @@ var InternalSelect = function InternalSelect(_a, ref) {
       listItemHeight = _a$listItemHeight === void 0 ? 24 : _a$listItemHeight,
       customizeSize = _a.size,
       notFoundContent = _a.notFoundContent,
-      props = __rest$5(_a, ["prefixCls", "bordered", "className", "getPopupContainer", "dropdownClassName", "listHeight", "listItemHeight", "size", "notFoundContent"]);
+      props = __rest$9(_a, ["prefixCls", "bordered", "className", "getPopupContainer", "dropdownClassName", "listHeight", "listItemHeight", "size", "notFoundContent"]);
 
   var _React$useContext = React__namespace.useContext(ConfigContext),
       getContextPopupContainer = _React$useContext.getPopupContainer,
@@ -18586,7 +18577,7 @@ function cloneElement(element, props) {
 }
 
 // https://stackoverflow.com/questions/46176165/ways-to-get-string-literal-type-of-array-values-without-enum-overhead
-var tuple = function tuple() {
+var tuple$1 = function tuple() {
   for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
     args[_key] = arguments[_key];
   }
@@ -18594,13 +18585,17 @@ var tuple = function tuple() {
   return args;
 };
 
+var PresetStatusColorTypes = tuple$1('success', 'processing', 'error', 'default', 'warning'); // eslint-disable-next-line import/prefer-default-export
+
+var PresetColorTypes = tuple$1('pink', 'red', 'yellow', 'orange', 'cyan', 'green', 'blue', 'purple', 'geekblue', 'magenta', 'volcano', 'gold', 'lime');
+
 var UnreachableException = function UnreachableException(value) {
   _classCallCheck$2(this, UnreachableException);
 
   return new Error("unreachable case: ".concat(JSON.stringify(value)));
 };
 
-var __rest$4 = undefined && undefined.__rest || function (s, e) {
+var __rest$8 = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -18623,7 +18618,7 @@ var ButtonGroup = function ButtonGroup(props) {
     var customizePrefixCls = props.prefixCls,
         size = props.size,
         className = props.className,
-        others = __rest$4(props, ["prefixCls", "size", "className"]);
+        others = __rest$8(props, ["prefixCls", "size", "className"]);
 
     var prefixCls = getPrefixCls('btn-group', customizePrefixCls); // large => lg
     // small => sm
@@ -18959,7 +18954,7 @@ var LoadingIcon = function LoadingIcon(_ref) {
   });
 };
 
-var __rest$3 = undefined && undefined.__rest || function (s, e) {
+var __rest$7 = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -19032,9 +19027,9 @@ function spaceChildren(children, needInserted) {
   });
 }
 
-tuple('default', 'primary', 'ghost', 'dashed', 'link', 'text');
-tuple('circle', 'round');
-tuple('submit', 'button', 'reset');
+tuple$1('default', 'primary', 'ghost', 'dashed', 'link', 'text');
+tuple$1('circle', 'round');
+tuple$1('submit', 'button', 'reset');
 function convertLegacyProps(type) {
   if (type === 'danger') {
     return {
@@ -19066,7 +19061,7 @@ var InternalButton = function InternalButton(props, ref) {
       block = _props$block === void 0 ? false : _props$block,
       _props$htmlType = props.htmlType,
       htmlType = _props$htmlType === void 0 ? 'button' : _props$htmlType,
-      rest = __rest$3(props, ["loading", "prefixCls", "type", "danger", "shape", "size", "className", "children", "icon", "ghost", "block", "htmlType"]);
+      rest = __rest$7(props, ["loading", "prefixCls", "type", "danger", "shape", "size", "className", "children", "icon", "ghost", "block", "htmlType"]);
 
   var size = React__namespace.useContext(SizeContext);
 
@@ -19200,11 +19195,11006 @@ Button$1.displayName = 'Button';
 Button$1.Group = ButtonGroup;
 Button$1.__ANT_BUTTON = true;
 
+//
+
+var shallowequal = function shallowEqual(objA, objB, compare, compareContext) {
+  var ret = compare ? compare.call(compareContext, objA, objB) : void 0;
+
+  if (ret !== void 0) {
+    return !!ret;
+  }
+
+  if (objA === objB) {
+    return true;
+  }
+
+  if (typeof objA !== "object" || !objA || typeof objB !== "object" || !objB) {
+    return false;
+  }
+
+  var keysA = Object.keys(objA);
+  var keysB = Object.keys(objB);
+
+  if (keysA.length !== keysB.length) {
+    return false;
+  }
+
+  var bHasOwnProperty = Object.prototype.hasOwnProperty.bind(objB);
+
+  // Test for A's keys different from B.
+  for (var idx = 0; idx < keysA.length; idx++) {
+    var key = keysA[idx];
+
+    if (!bHasOwnProperty(key)) {
+      return false;
+    }
+
+    var valueA = objA[key];
+    var valueB = objB[key];
+
+    ret = compare ? compare.call(compareContext, valueA, valueB, key) : void 0;
+
+    if (ret === false || (ret === void 0 && valueA !== valueB)) {
+      return false;
+    }
+  }
+
+  return true;
+};
+
+var moment = createCommonjsModule(function (module, exports) {
+(function (global, factory) {
+    module.exports = factory() ;
+}(commonjsGlobal, (function () {
+    var hookCallback;
+
+    function hooks() {
+        return hookCallback.apply(null, arguments);
+    }
+
+    // This is done to register the method called with moment()
+    // without creating circular dependencies.
+    function setHookCallback(callback) {
+        hookCallback = callback;
+    }
+
+    function isArray(input) {
+        return (
+            input instanceof Array ||
+            Object.prototype.toString.call(input) === '[object Array]'
+        );
+    }
+
+    function isObject(input) {
+        // IE8 will treat undefined and null as object if it wasn't for
+        // input != null
+        return (
+            input != null &&
+            Object.prototype.toString.call(input) === '[object Object]'
+        );
+    }
+
+    function hasOwnProp(a, b) {
+        return Object.prototype.hasOwnProperty.call(a, b);
+    }
+
+    function isObjectEmpty(obj) {
+        if (Object.getOwnPropertyNames) {
+            return Object.getOwnPropertyNames(obj).length === 0;
+        } else {
+            var k;
+            for (k in obj) {
+                if (hasOwnProp(obj, k)) {
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
+
+    function isUndefined(input) {
+        return input === void 0;
+    }
+
+    function isNumber(input) {
+        return (
+            typeof input === 'number' ||
+            Object.prototype.toString.call(input) === '[object Number]'
+        );
+    }
+
+    function isDate(input) {
+        return (
+            input instanceof Date ||
+            Object.prototype.toString.call(input) === '[object Date]'
+        );
+    }
+
+    function map(arr, fn) {
+        var res = [],
+            i;
+        for (i = 0; i < arr.length; ++i) {
+            res.push(fn(arr[i], i));
+        }
+        return res;
+    }
+
+    function extend(a, b) {
+        for (var i in b) {
+            if (hasOwnProp(b, i)) {
+                a[i] = b[i];
+            }
+        }
+
+        if (hasOwnProp(b, 'toString')) {
+            a.toString = b.toString;
+        }
+
+        if (hasOwnProp(b, 'valueOf')) {
+            a.valueOf = b.valueOf;
+        }
+
+        return a;
+    }
+
+    function createUTC(input, format, locale, strict) {
+        return createLocalOrUTC(input, format, locale, strict, true).utc();
+    }
+
+    function defaultParsingFlags() {
+        // We need to deep clone this object.
+        return {
+            empty: false,
+            unusedTokens: [],
+            unusedInput: [],
+            overflow: -2,
+            charsLeftOver: 0,
+            nullInput: false,
+            invalidEra: null,
+            invalidMonth: null,
+            invalidFormat: false,
+            userInvalidated: false,
+            iso: false,
+            parsedDateParts: [],
+            era: null,
+            meridiem: null,
+            rfc2822: false,
+            weekdayMismatch: false,
+        };
+    }
+
+    function getParsingFlags(m) {
+        if (m._pf == null) {
+            m._pf = defaultParsingFlags();
+        }
+        return m._pf;
+    }
+
+    var some;
+    if (Array.prototype.some) {
+        some = Array.prototype.some;
+    } else {
+        some = function (fun) {
+            var t = Object(this),
+                len = t.length >>> 0,
+                i;
+
+            for (i = 0; i < len; i++) {
+                if (i in t && fun.call(this, t[i], i, t)) {
+                    return true;
+                }
+            }
+
+            return false;
+        };
+    }
+
+    function isValid(m) {
+        if (m._isValid == null) {
+            var flags = getParsingFlags(m),
+                parsedParts = some.call(flags.parsedDateParts, function (i) {
+                    return i != null;
+                }),
+                isNowValid =
+                    !isNaN(m._d.getTime()) &&
+                    flags.overflow < 0 &&
+                    !flags.empty &&
+                    !flags.invalidEra &&
+                    !flags.invalidMonth &&
+                    !flags.invalidWeekday &&
+                    !flags.weekdayMismatch &&
+                    !flags.nullInput &&
+                    !flags.invalidFormat &&
+                    !flags.userInvalidated &&
+                    (!flags.meridiem || (flags.meridiem && parsedParts));
+
+            if (m._strict) {
+                isNowValid =
+                    isNowValid &&
+                    flags.charsLeftOver === 0 &&
+                    flags.unusedTokens.length === 0 &&
+                    flags.bigHour === undefined;
+            }
+
+            if (Object.isFrozen == null || !Object.isFrozen(m)) {
+                m._isValid = isNowValid;
+            } else {
+                return isNowValid;
+            }
+        }
+        return m._isValid;
+    }
+
+    function createInvalid(flags) {
+        var m = createUTC(NaN);
+        if (flags != null) {
+            extend(getParsingFlags(m), flags);
+        } else {
+            getParsingFlags(m).userInvalidated = true;
+        }
+
+        return m;
+    }
+
+    // Plugins that add properties should also add the key here (null value),
+    // so we can properly clone ourselves.
+    var momentProperties = (hooks.momentProperties = []),
+        updateInProgress = false;
+
+    function copyConfig(to, from) {
+        var i, prop, val;
+
+        if (!isUndefined(from._isAMomentObject)) {
+            to._isAMomentObject = from._isAMomentObject;
+        }
+        if (!isUndefined(from._i)) {
+            to._i = from._i;
+        }
+        if (!isUndefined(from._f)) {
+            to._f = from._f;
+        }
+        if (!isUndefined(from._l)) {
+            to._l = from._l;
+        }
+        if (!isUndefined(from._strict)) {
+            to._strict = from._strict;
+        }
+        if (!isUndefined(from._tzm)) {
+            to._tzm = from._tzm;
+        }
+        if (!isUndefined(from._isUTC)) {
+            to._isUTC = from._isUTC;
+        }
+        if (!isUndefined(from._offset)) {
+            to._offset = from._offset;
+        }
+        if (!isUndefined(from._pf)) {
+            to._pf = getParsingFlags(from);
+        }
+        if (!isUndefined(from._locale)) {
+            to._locale = from._locale;
+        }
+
+        if (momentProperties.length > 0) {
+            for (i = 0; i < momentProperties.length; i++) {
+                prop = momentProperties[i];
+                val = from[prop];
+                if (!isUndefined(val)) {
+                    to[prop] = val;
+                }
+            }
+        }
+
+        return to;
+    }
+
+    // Moment prototype object
+    function Moment(config) {
+        copyConfig(this, config);
+        this._d = new Date(config._d != null ? config._d.getTime() : NaN);
+        if (!this.isValid()) {
+            this._d = new Date(NaN);
+        }
+        // Prevent infinite loop in case updateOffset creates new moment
+        // objects.
+        if (updateInProgress === false) {
+            updateInProgress = true;
+            hooks.updateOffset(this);
+            updateInProgress = false;
+        }
+    }
+
+    function isMoment(obj) {
+        return (
+            obj instanceof Moment || (obj != null && obj._isAMomentObject != null)
+        );
+    }
+
+    function warn(msg) {
+        if (
+            hooks.suppressDeprecationWarnings === false &&
+            typeof console !== 'undefined' &&
+            console.warn
+        ) {
+            console.warn('Deprecation warning: ' + msg);
+        }
+    }
+
+    function deprecate(msg, fn) {
+        var firstTime = true;
+
+        return extend(function () {
+            if (hooks.deprecationHandler != null) {
+                hooks.deprecationHandler(null, msg);
+            }
+            if (firstTime) {
+                var args = [],
+                    arg,
+                    i,
+                    key;
+                for (i = 0; i < arguments.length; i++) {
+                    arg = '';
+                    if (typeof arguments[i] === 'object') {
+                        arg += '\n[' + i + '] ';
+                        for (key in arguments[0]) {
+                            if (hasOwnProp(arguments[0], key)) {
+                                arg += key + ': ' + arguments[0][key] + ', ';
+                            }
+                        }
+                        arg = arg.slice(0, -2); // Remove trailing comma and space
+                    } else {
+                        arg = arguments[i];
+                    }
+                    args.push(arg);
+                }
+                warn(
+                    msg +
+                        '\nArguments: ' +
+                        Array.prototype.slice.call(args).join('') +
+                        '\n' +
+                        new Error().stack
+                );
+                firstTime = false;
+            }
+            return fn.apply(this, arguments);
+        }, fn);
+    }
+
+    var deprecations = {};
+
+    function deprecateSimple(name, msg) {
+        if (hooks.deprecationHandler != null) {
+            hooks.deprecationHandler(name, msg);
+        }
+        if (!deprecations[name]) {
+            warn(msg);
+            deprecations[name] = true;
+        }
+    }
+
+    hooks.suppressDeprecationWarnings = false;
+    hooks.deprecationHandler = null;
+
+    function isFunction(input) {
+        return (
+            (typeof Function !== 'undefined' && input instanceof Function) ||
+            Object.prototype.toString.call(input) === '[object Function]'
+        );
+    }
+
+    function set(config) {
+        var prop, i;
+        for (i in config) {
+            if (hasOwnProp(config, i)) {
+                prop = config[i];
+                if (isFunction(prop)) {
+                    this[i] = prop;
+                } else {
+                    this['_' + i] = prop;
+                }
+            }
+        }
+        this._config = config;
+        // Lenient ordinal parsing accepts just a number in addition to
+        // number + (possibly) stuff coming from _dayOfMonthOrdinalParse.
+        // TODO: Remove "ordinalParse" fallback in next major release.
+        this._dayOfMonthOrdinalParseLenient = new RegExp(
+            (this._dayOfMonthOrdinalParse.source || this._ordinalParse.source) +
+                '|' +
+                /\d{1,2}/.source
+        );
+    }
+
+    function mergeConfigs(parentConfig, childConfig) {
+        var res = extend({}, parentConfig),
+            prop;
+        for (prop in childConfig) {
+            if (hasOwnProp(childConfig, prop)) {
+                if (isObject(parentConfig[prop]) && isObject(childConfig[prop])) {
+                    res[prop] = {};
+                    extend(res[prop], parentConfig[prop]);
+                    extend(res[prop], childConfig[prop]);
+                } else if (childConfig[prop] != null) {
+                    res[prop] = childConfig[prop];
+                } else {
+                    delete res[prop];
+                }
+            }
+        }
+        for (prop in parentConfig) {
+            if (
+                hasOwnProp(parentConfig, prop) &&
+                !hasOwnProp(childConfig, prop) &&
+                isObject(parentConfig[prop])
+            ) {
+                // make sure changes to properties don't modify parent config
+                res[prop] = extend({}, res[prop]);
+            }
+        }
+        return res;
+    }
+
+    function Locale(config) {
+        if (config != null) {
+            this.set(config);
+        }
+    }
+
+    var keys;
+
+    if (Object.keys) {
+        keys = Object.keys;
+    } else {
+        keys = function (obj) {
+            var i,
+                res = [];
+            for (i in obj) {
+                if (hasOwnProp(obj, i)) {
+                    res.push(i);
+                }
+            }
+            return res;
+        };
+    }
+
+    var defaultCalendar = {
+        sameDay: '[Today at] LT',
+        nextDay: '[Tomorrow at] LT',
+        nextWeek: 'dddd [at] LT',
+        lastDay: '[Yesterday at] LT',
+        lastWeek: '[Last] dddd [at] LT',
+        sameElse: 'L',
+    };
+
+    function calendar(key, mom, now) {
+        var output = this._calendar[key] || this._calendar['sameElse'];
+        return isFunction(output) ? output.call(mom, now) : output;
+    }
+
+    function zeroFill(number, targetLength, forceSign) {
+        var absNumber = '' + Math.abs(number),
+            zerosToFill = targetLength - absNumber.length,
+            sign = number >= 0;
+        return (
+            (sign ? (forceSign ? '+' : '') : '-') +
+            Math.pow(10, Math.max(0, zerosToFill)).toString().substr(1) +
+            absNumber
+        );
+    }
+
+    var formattingTokens = /(\[[^\[]*\])|(\\)?([Hh]mm(ss)?|Mo|MM?M?M?|Do|DDDo|DD?D?D?|ddd?d?|do?|w[o|w]?|W[o|W]?|Qo?|N{1,5}|YYYYYY|YYYYY|YYYY|YY|y{2,4}|yo?|gg(ggg?)?|GG(GGG?)?|e|E|a|A|hh?|HH?|kk?|mm?|ss?|S{1,9}|x|X|zz?|ZZ?|.)/g,
+        localFormattingTokens = /(\[[^\[]*\])|(\\)?(LTS|LT|LL?L?L?|l{1,4})/g,
+        formatFunctions = {},
+        formatTokenFunctions = {};
+
+    // token:    'M'
+    // padded:   ['MM', 2]
+    // ordinal:  'Mo'
+    // callback: function () { this.month() + 1 }
+    function addFormatToken(token, padded, ordinal, callback) {
+        var func = callback;
+        if (typeof callback === 'string') {
+            func = function () {
+                return this[callback]();
+            };
+        }
+        if (token) {
+            formatTokenFunctions[token] = func;
+        }
+        if (padded) {
+            formatTokenFunctions[padded[0]] = function () {
+                return zeroFill(func.apply(this, arguments), padded[1], padded[2]);
+            };
+        }
+        if (ordinal) {
+            formatTokenFunctions[ordinal] = function () {
+                return this.localeData().ordinal(
+                    func.apply(this, arguments),
+                    token
+                );
+            };
+        }
+    }
+
+    function removeFormattingTokens(input) {
+        if (input.match(/\[[\s\S]/)) {
+            return input.replace(/^\[|\]$/g, '');
+        }
+        return input.replace(/\\/g, '');
+    }
+
+    function makeFormatFunction(format) {
+        var array = format.match(formattingTokens),
+            i,
+            length;
+
+        for (i = 0, length = array.length; i < length; i++) {
+            if (formatTokenFunctions[array[i]]) {
+                array[i] = formatTokenFunctions[array[i]];
+            } else {
+                array[i] = removeFormattingTokens(array[i]);
+            }
+        }
+
+        return function (mom) {
+            var output = '',
+                i;
+            for (i = 0; i < length; i++) {
+                output += isFunction(array[i])
+                    ? array[i].call(mom, format)
+                    : array[i];
+            }
+            return output;
+        };
+    }
+
+    // format date using native date object
+    function formatMoment(m, format) {
+        if (!m.isValid()) {
+            return m.localeData().invalidDate();
+        }
+
+        format = expandFormat(format, m.localeData());
+        formatFunctions[format] =
+            formatFunctions[format] || makeFormatFunction(format);
+
+        return formatFunctions[format](m);
+    }
+
+    function expandFormat(format, locale) {
+        var i = 5;
+
+        function replaceLongDateFormatTokens(input) {
+            return locale.longDateFormat(input) || input;
+        }
+
+        localFormattingTokens.lastIndex = 0;
+        while (i >= 0 && localFormattingTokens.test(format)) {
+            format = format.replace(
+                localFormattingTokens,
+                replaceLongDateFormatTokens
+            );
+            localFormattingTokens.lastIndex = 0;
+            i -= 1;
+        }
+
+        return format;
+    }
+
+    var defaultLongDateFormat = {
+        LTS: 'h:mm:ss A',
+        LT: 'h:mm A',
+        L: 'MM/DD/YYYY',
+        LL: 'MMMM D, YYYY',
+        LLL: 'MMMM D, YYYY h:mm A',
+        LLLL: 'dddd, MMMM D, YYYY h:mm A',
+    };
+
+    function longDateFormat(key) {
+        var format = this._longDateFormat[key],
+            formatUpper = this._longDateFormat[key.toUpperCase()];
+
+        if (format || !formatUpper) {
+            return format;
+        }
+
+        this._longDateFormat[key] = formatUpper
+            .match(formattingTokens)
+            .map(function (tok) {
+                if (
+                    tok === 'MMMM' ||
+                    tok === 'MM' ||
+                    tok === 'DD' ||
+                    tok === 'dddd'
+                ) {
+                    return tok.slice(1);
+                }
+                return tok;
+            })
+            .join('');
+
+        return this._longDateFormat[key];
+    }
+
+    var defaultInvalidDate = 'Invalid date';
+
+    function invalidDate() {
+        return this._invalidDate;
+    }
+
+    var defaultOrdinal = '%d',
+        defaultDayOfMonthOrdinalParse = /\d{1,2}/;
+
+    function ordinal(number) {
+        return this._ordinal.replace('%d', number);
+    }
+
+    var defaultRelativeTime = {
+        future: 'in %s',
+        past: '%s ago',
+        s: 'a few seconds',
+        ss: '%d seconds',
+        m: 'a minute',
+        mm: '%d minutes',
+        h: 'an hour',
+        hh: '%d hours',
+        d: 'a day',
+        dd: '%d days',
+        w: 'a week',
+        ww: '%d weeks',
+        M: 'a month',
+        MM: '%d months',
+        y: 'a year',
+        yy: '%d years',
+    };
+
+    function relativeTime(number, withoutSuffix, string, isFuture) {
+        var output = this._relativeTime[string];
+        return isFunction(output)
+            ? output(number, withoutSuffix, string, isFuture)
+            : output.replace(/%d/i, number);
+    }
+
+    function pastFuture(diff, output) {
+        var format = this._relativeTime[diff > 0 ? 'future' : 'past'];
+        return isFunction(format) ? format(output) : format.replace(/%s/i, output);
+    }
+
+    var aliases = {};
+
+    function addUnitAlias(unit, shorthand) {
+        var lowerCase = unit.toLowerCase();
+        aliases[lowerCase] = aliases[lowerCase + 's'] = aliases[shorthand] = unit;
+    }
+
+    function normalizeUnits(units) {
+        return typeof units === 'string'
+            ? aliases[units] || aliases[units.toLowerCase()]
+            : undefined;
+    }
+
+    function normalizeObjectUnits(inputObject) {
+        var normalizedInput = {},
+            normalizedProp,
+            prop;
+
+        for (prop in inputObject) {
+            if (hasOwnProp(inputObject, prop)) {
+                normalizedProp = normalizeUnits(prop);
+                if (normalizedProp) {
+                    normalizedInput[normalizedProp] = inputObject[prop];
+                }
+            }
+        }
+
+        return normalizedInput;
+    }
+
+    var priorities = {};
+
+    function addUnitPriority(unit, priority) {
+        priorities[unit] = priority;
+    }
+
+    function getPrioritizedUnits(unitsObj) {
+        var units = [],
+            u;
+        for (u in unitsObj) {
+            if (hasOwnProp(unitsObj, u)) {
+                units.push({ unit: u, priority: priorities[u] });
+            }
+        }
+        units.sort(function (a, b) {
+            return a.priority - b.priority;
+        });
+        return units;
+    }
+
+    function isLeapYear(year) {
+        return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
+    }
+
+    function absFloor(number) {
+        if (number < 0) {
+            // -0 -> 0
+            return Math.ceil(number) || 0;
+        } else {
+            return Math.floor(number);
+        }
+    }
+
+    function toInt(argumentForCoercion) {
+        var coercedNumber = +argumentForCoercion,
+            value = 0;
+
+        if (coercedNumber !== 0 && isFinite(coercedNumber)) {
+            value = absFloor(coercedNumber);
+        }
+
+        return value;
+    }
+
+    function makeGetSet(unit, keepTime) {
+        return function (value) {
+            if (value != null) {
+                set$1(this, unit, value);
+                hooks.updateOffset(this, keepTime);
+                return this;
+            } else {
+                return get(this, unit);
+            }
+        };
+    }
+
+    function get(mom, unit) {
+        return mom.isValid()
+            ? mom._d['get' + (mom._isUTC ? 'UTC' : '') + unit]()
+            : NaN;
+    }
+
+    function set$1(mom, unit, value) {
+        if (mom.isValid() && !isNaN(value)) {
+            if (
+                unit === 'FullYear' &&
+                isLeapYear(mom.year()) &&
+                mom.month() === 1 &&
+                mom.date() === 29
+            ) {
+                value = toInt(value);
+                mom._d['set' + (mom._isUTC ? 'UTC' : '') + unit](
+                    value,
+                    mom.month(),
+                    daysInMonth(value, mom.month())
+                );
+            } else {
+                mom._d['set' + (mom._isUTC ? 'UTC' : '') + unit](value);
+            }
+        }
+    }
+
+    // MOMENTS
+
+    function stringGet(units) {
+        units = normalizeUnits(units);
+        if (isFunction(this[units])) {
+            return this[units]();
+        }
+        return this;
+    }
+
+    function stringSet(units, value) {
+        if (typeof units === 'object') {
+            units = normalizeObjectUnits(units);
+            var prioritized = getPrioritizedUnits(units),
+                i;
+            for (i = 0; i < prioritized.length; i++) {
+                this[prioritized[i].unit](units[prioritized[i].unit]);
+            }
+        } else {
+            units = normalizeUnits(units);
+            if (isFunction(this[units])) {
+                return this[units](value);
+            }
+        }
+        return this;
+    }
+
+    var match1 = /\d/, //       0 - 9
+        match2 = /\d\d/, //      00 - 99
+        match3 = /\d{3}/, //     000 - 999
+        match4 = /\d{4}/, //    0000 - 9999
+        match6 = /[+-]?\d{6}/, // -999999 - 999999
+        match1to2 = /\d\d?/, //       0 - 99
+        match3to4 = /\d\d\d\d?/, //     999 - 9999
+        match5to6 = /\d\d\d\d\d\d?/, //   99999 - 999999
+        match1to3 = /\d{1,3}/, //       0 - 999
+        match1to4 = /\d{1,4}/, //       0 - 9999
+        match1to6 = /[+-]?\d{1,6}/, // -999999 - 999999
+        matchUnsigned = /\d+/, //       0 - inf
+        matchSigned = /[+-]?\d+/, //    -inf - inf
+        matchOffset = /Z|[+-]\d\d:?\d\d/gi, // +00:00 -00:00 +0000 -0000 or Z
+        matchShortOffset = /Z|[+-]\d\d(?::?\d\d)?/gi, // +00 -00 +00:00 -00:00 +0000 -0000 or Z
+        matchTimestamp = /[+-]?\d+(\.\d{1,3})?/, // 123456789 123456789.123
+        // any word (or two) characters or numbers including two/three word month in arabic.
+        // includes scottish gaelic two word and hyphenated months
+        matchWord = /[0-9]{0,256}['a-z\u00A0-\u05FF\u0700-\uD7FF\uF900-\uFDCF\uFDF0-\uFF07\uFF10-\uFFEF]{1,256}|[\u0600-\u06FF\/]{1,256}(\s*?[\u0600-\u06FF]{1,256}){1,2}/i,
+        regexes;
+
+    regexes = {};
+
+    function addRegexToken(token, regex, strictRegex) {
+        regexes[token] = isFunction(regex)
+            ? regex
+            : function (isStrict, localeData) {
+                  return isStrict && strictRegex ? strictRegex : regex;
+              };
+    }
+
+    function getParseRegexForToken(token, config) {
+        if (!hasOwnProp(regexes, token)) {
+            return new RegExp(unescapeFormat(token));
+        }
+
+        return regexes[token](config._strict, config._locale);
+    }
+
+    // Code from http://stackoverflow.com/questions/3561493/is-there-a-regexp-escape-function-in-javascript
+    function unescapeFormat(s) {
+        return regexEscape(
+            s
+                .replace('\\', '')
+                .replace(/\\(\[)|\\(\])|\[([^\]\[]*)\]|\\(.)/g, function (
+                    matched,
+                    p1,
+                    p2,
+                    p3,
+                    p4
+                ) {
+                    return p1 || p2 || p3 || p4;
+                })
+        );
+    }
+
+    function regexEscape(s) {
+        return s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+    }
+
+    var tokens = {};
+
+    function addParseToken(token, callback) {
+        var i,
+            func = callback;
+        if (typeof token === 'string') {
+            token = [token];
+        }
+        if (isNumber(callback)) {
+            func = function (input, array) {
+                array[callback] = toInt(input);
+            };
+        }
+        for (i = 0; i < token.length; i++) {
+            tokens[token[i]] = func;
+        }
+    }
+
+    function addWeekParseToken(token, callback) {
+        addParseToken(token, function (input, array, config, token) {
+            config._w = config._w || {};
+            callback(input, config._w, config, token);
+        });
+    }
+
+    function addTimeToArrayFromToken(token, input, config) {
+        if (input != null && hasOwnProp(tokens, token)) {
+            tokens[token](input, config._a, config, token);
+        }
+    }
+
+    var YEAR = 0,
+        MONTH = 1,
+        DATE = 2,
+        HOUR = 3,
+        MINUTE = 4,
+        SECOND = 5,
+        MILLISECOND = 6,
+        WEEK = 7,
+        WEEKDAY = 8;
+
+    function mod(n, x) {
+        return ((n % x) + x) % x;
+    }
+
+    var indexOf;
+
+    if (Array.prototype.indexOf) {
+        indexOf = Array.prototype.indexOf;
+    } else {
+        indexOf = function (o) {
+            // I know
+            var i;
+            for (i = 0; i < this.length; ++i) {
+                if (this[i] === o) {
+                    return i;
+                }
+            }
+            return -1;
+        };
+    }
+
+    function daysInMonth(year, month) {
+        if (isNaN(year) || isNaN(month)) {
+            return NaN;
+        }
+        var modMonth = mod(month, 12);
+        year += (month - modMonth) / 12;
+        return modMonth === 1
+            ? isLeapYear(year)
+                ? 29
+                : 28
+            : 31 - ((modMonth % 7) % 2);
+    }
+
+    // FORMATTING
+
+    addFormatToken('M', ['MM', 2], 'Mo', function () {
+        return this.month() + 1;
+    });
+
+    addFormatToken('MMM', 0, 0, function (format) {
+        return this.localeData().monthsShort(this, format);
+    });
+
+    addFormatToken('MMMM', 0, 0, function (format) {
+        return this.localeData().months(this, format);
+    });
+
+    // ALIASES
+
+    addUnitAlias('month', 'M');
+
+    // PRIORITY
+
+    addUnitPriority('month', 8);
+
+    // PARSING
+
+    addRegexToken('M', match1to2);
+    addRegexToken('MM', match1to2, match2);
+    addRegexToken('MMM', function (isStrict, locale) {
+        return locale.monthsShortRegex(isStrict);
+    });
+    addRegexToken('MMMM', function (isStrict, locale) {
+        return locale.monthsRegex(isStrict);
+    });
+
+    addParseToken(['M', 'MM'], function (input, array) {
+        array[MONTH] = toInt(input) - 1;
+    });
+
+    addParseToken(['MMM', 'MMMM'], function (input, array, config, token) {
+        var month = config._locale.monthsParse(input, token, config._strict);
+        // if we didn't find a month name, mark the date as invalid.
+        if (month != null) {
+            array[MONTH] = month;
+        } else {
+            getParsingFlags(config).invalidMonth = input;
+        }
+    });
+
+    // LOCALES
+
+    var defaultLocaleMonths = 'January_February_March_April_May_June_July_August_September_October_November_December'.split(
+            '_'
+        ),
+        defaultLocaleMonthsShort = 'Jan_Feb_Mar_Apr_May_Jun_Jul_Aug_Sep_Oct_Nov_Dec'.split(
+            '_'
+        ),
+        MONTHS_IN_FORMAT = /D[oD]?(\[[^\[\]]*\]|\s)+MMMM?/,
+        defaultMonthsShortRegex = matchWord,
+        defaultMonthsRegex = matchWord;
+
+    function localeMonths(m, format) {
+        if (!m) {
+            return isArray(this._months)
+                ? this._months
+                : this._months['standalone'];
+        }
+        return isArray(this._months)
+            ? this._months[m.month()]
+            : this._months[
+                  (this._months.isFormat || MONTHS_IN_FORMAT).test(format)
+                      ? 'format'
+                      : 'standalone'
+              ][m.month()];
+    }
+
+    function localeMonthsShort(m, format) {
+        if (!m) {
+            return isArray(this._monthsShort)
+                ? this._monthsShort
+                : this._monthsShort['standalone'];
+        }
+        return isArray(this._monthsShort)
+            ? this._monthsShort[m.month()]
+            : this._monthsShort[
+                  MONTHS_IN_FORMAT.test(format) ? 'format' : 'standalone'
+              ][m.month()];
+    }
+
+    function handleStrictParse(monthName, format, strict) {
+        var i,
+            ii,
+            mom,
+            llc = monthName.toLocaleLowerCase();
+        if (!this._monthsParse) {
+            // this is not used
+            this._monthsParse = [];
+            this._longMonthsParse = [];
+            this._shortMonthsParse = [];
+            for (i = 0; i < 12; ++i) {
+                mom = createUTC([2000, i]);
+                this._shortMonthsParse[i] = this.monthsShort(
+                    mom,
+                    ''
+                ).toLocaleLowerCase();
+                this._longMonthsParse[i] = this.months(mom, '').toLocaleLowerCase();
+            }
+        }
+
+        if (strict) {
+            if (format === 'MMM') {
+                ii = indexOf.call(this._shortMonthsParse, llc);
+                return ii !== -1 ? ii : null;
+            } else {
+                ii = indexOf.call(this._longMonthsParse, llc);
+                return ii !== -1 ? ii : null;
+            }
+        } else {
+            if (format === 'MMM') {
+                ii = indexOf.call(this._shortMonthsParse, llc);
+                if (ii !== -1) {
+                    return ii;
+                }
+                ii = indexOf.call(this._longMonthsParse, llc);
+                return ii !== -1 ? ii : null;
+            } else {
+                ii = indexOf.call(this._longMonthsParse, llc);
+                if (ii !== -1) {
+                    return ii;
+                }
+                ii = indexOf.call(this._shortMonthsParse, llc);
+                return ii !== -1 ? ii : null;
+            }
+        }
+    }
+
+    function localeMonthsParse(monthName, format, strict) {
+        var i, mom, regex;
+
+        if (this._monthsParseExact) {
+            return handleStrictParse.call(this, monthName, format, strict);
+        }
+
+        if (!this._monthsParse) {
+            this._monthsParse = [];
+            this._longMonthsParse = [];
+            this._shortMonthsParse = [];
+        }
+
+        // TODO: add sorting
+        // Sorting makes sure if one month (or abbr) is a prefix of another
+        // see sorting in computeMonthsParse
+        for (i = 0; i < 12; i++) {
+            // make the regex if we don't have it already
+            mom = createUTC([2000, i]);
+            if (strict && !this._longMonthsParse[i]) {
+                this._longMonthsParse[i] = new RegExp(
+                    '^' + this.months(mom, '').replace('.', '') + '$',
+                    'i'
+                );
+                this._shortMonthsParse[i] = new RegExp(
+                    '^' + this.monthsShort(mom, '').replace('.', '') + '$',
+                    'i'
+                );
+            }
+            if (!strict && !this._monthsParse[i]) {
+                regex =
+                    '^' + this.months(mom, '') + '|^' + this.monthsShort(mom, '');
+                this._monthsParse[i] = new RegExp(regex.replace('.', ''), 'i');
+            }
+            // test the regex
+            if (
+                strict &&
+                format === 'MMMM' &&
+                this._longMonthsParse[i].test(monthName)
+            ) {
+                return i;
+            } else if (
+                strict &&
+                format === 'MMM' &&
+                this._shortMonthsParse[i].test(monthName)
+            ) {
+                return i;
+            } else if (!strict && this._monthsParse[i].test(monthName)) {
+                return i;
+            }
+        }
+    }
+
+    // MOMENTS
+
+    function setMonth(mom, value) {
+        var dayOfMonth;
+
+        if (!mom.isValid()) {
+            // No op
+            return mom;
+        }
+
+        if (typeof value === 'string') {
+            if (/^\d+$/.test(value)) {
+                value = toInt(value);
+            } else {
+                value = mom.localeData().monthsParse(value);
+                // TODO: Another silent failure?
+                if (!isNumber(value)) {
+                    return mom;
+                }
+            }
+        }
+
+        dayOfMonth = Math.min(mom.date(), daysInMonth(mom.year(), value));
+        mom._d['set' + (mom._isUTC ? 'UTC' : '') + 'Month'](value, dayOfMonth);
+        return mom;
+    }
+
+    function getSetMonth(value) {
+        if (value != null) {
+            setMonth(this, value);
+            hooks.updateOffset(this, true);
+            return this;
+        } else {
+            return get(this, 'Month');
+        }
+    }
+
+    function getDaysInMonth() {
+        return daysInMonth(this.year(), this.month());
+    }
+
+    function monthsShortRegex(isStrict) {
+        if (this._monthsParseExact) {
+            if (!hasOwnProp(this, '_monthsRegex')) {
+                computeMonthsParse.call(this);
+            }
+            if (isStrict) {
+                return this._monthsShortStrictRegex;
+            } else {
+                return this._monthsShortRegex;
+            }
+        } else {
+            if (!hasOwnProp(this, '_monthsShortRegex')) {
+                this._monthsShortRegex = defaultMonthsShortRegex;
+            }
+            return this._monthsShortStrictRegex && isStrict
+                ? this._monthsShortStrictRegex
+                : this._monthsShortRegex;
+        }
+    }
+
+    function monthsRegex(isStrict) {
+        if (this._monthsParseExact) {
+            if (!hasOwnProp(this, '_monthsRegex')) {
+                computeMonthsParse.call(this);
+            }
+            if (isStrict) {
+                return this._monthsStrictRegex;
+            } else {
+                return this._monthsRegex;
+            }
+        } else {
+            if (!hasOwnProp(this, '_monthsRegex')) {
+                this._monthsRegex = defaultMonthsRegex;
+            }
+            return this._monthsStrictRegex && isStrict
+                ? this._monthsStrictRegex
+                : this._monthsRegex;
+        }
+    }
+
+    function computeMonthsParse() {
+        function cmpLenRev(a, b) {
+            return b.length - a.length;
+        }
+
+        var shortPieces = [],
+            longPieces = [],
+            mixedPieces = [],
+            i,
+            mom;
+        for (i = 0; i < 12; i++) {
+            // make the regex if we don't have it already
+            mom = createUTC([2000, i]);
+            shortPieces.push(this.monthsShort(mom, ''));
+            longPieces.push(this.months(mom, ''));
+            mixedPieces.push(this.months(mom, ''));
+            mixedPieces.push(this.monthsShort(mom, ''));
+        }
+        // Sorting makes sure if one month (or abbr) is a prefix of another it
+        // will match the longer piece.
+        shortPieces.sort(cmpLenRev);
+        longPieces.sort(cmpLenRev);
+        mixedPieces.sort(cmpLenRev);
+        for (i = 0; i < 12; i++) {
+            shortPieces[i] = regexEscape(shortPieces[i]);
+            longPieces[i] = regexEscape(longPieces[i]);
+        }
+        for (i = 0; i < 24; i++) {
+            mixedPieces[i] = regexEscape(mixedPieces[i]);
+        }
+
+        this._monthsRegex = new RegExp('^(' + mixedPieces.join('|') + ')', 'i');
+        this._monthsShortRegex = this._monthsRegex;
+        this._monthsStrictRegex = new RegExp(
+            '^(' + longPieces.join('|') + ')',
+            'i'
+        );
+        this._monthsShortStrictRegex = new RegExp(
+            '^(' + shortPieces.join('|') + ')',
+            'i'
+        );
+    }
+
+    // FORMATTING
+
+    addFormatToken('Y', 0, 0, function () {
+        var y = this.year();
+        return y <= 9999 ? zeroFill(y, 4) : '+' + y;
+    });
+
+    addFormatToken(0, ['YY', 2], 0, function () {
+        return this.year() % 100;
+    });
+
+    addFormatToken(0, ['YYYY', 4], 0, 'year');
+    addFormatToken(0, ['YYYYY', 5], 0, 'year');
+    addFormatToken(0, ['YYYYYY', 6, true], 0, 'year');
+
+    // ALIASES
+
+    addUnitAlias('year', 'y');
+
+    // PRIORITIES
+
+    addUnitPriority('year', 1);
+
+    // PARSING
+
+    addRegexToken('Y', matchSigned);
+    addRegexToken('YY', match1to2, match2);
+    addRegexToken('YYYY', match1to4, match4);
+    addRegexToken('YYYYY', match1to6, match6);
+    addRegexToken('YYYYYY', match1to6, match6);
+
+    addParseToken(['YYYYY', 'YYYYYY'], YEAR);
+    addParseToken('YYYY', function (input, array) {
+        array[YEAR] =
+            input.length === 2 ? hooks.parseTwoDigitYear(input) : toInt(input);
+    });
+    addParseToken('YY', function (input, array) {
+        array[YEAR] = hooks.parseTwoDigitYear(input);
+    });
+    addParseToken('Y', function (input, array) {
+        array[YEAR] = parseInt(input, 10);
+    });
+
+    // HELPERS
+
+    function daysInYear(year) {
+        return isLeapYear(year) ? 366 : 365;
+    }
+
+    // HOOKS
+
+    hooks.parseTwoDigitYear = function (input) {
+        return toInt(input) + (toInt(input) > 68 ? 1900 : 2000);
+    };
+
+    // MOMENTS
+
+    var getSetYear = makeGetSet('FullYear', true);
+
+    function getIsLeapYear() {
+        return isLeapYear(this.year());
+    }
+
+    function createDate(y, m, d, h, M, s, ms) {
+        // can't just apply() to create a date:
+        // https://stackoverflow.com/q/181348
+        var date;
+        // the date constructor remaps years 0-99 to 1900-1999
+        if (y < 100 && y >= 0) {
+            // preserve leap years using a full 400 year cycle, then reset
+            date = new Date(y + 400, m, d, h, M, s, ms);
+            if (isFinite(date.getFullYear())) {
+                date.setFullYear(y);
+            }
+        } else {
+            date = new Date(y, m, d, h, M, s, ms);
+        }
+
+        return date;
+    }
+
+    function createUTCDate(y) {
+        var date, args;
+        // the Date.UTC function remaps years 0-99 to 1900-1999
+        if (y < 100 && y >= 0) {
+            args = Array.prototype.slice.call(arguments);
+            // preserve leap years using a full 400 year cycle, then reset
+            args[0] = y + 400;
+            date = new Date(Date.UTC.apply(null, args));
+            if (isFinite(date.getUTCFullYear())) {
+                date.setUTCFullYear(y);
+            }
+        } else {
+            date = new Date(Date.UTC.apply(null, arguments));
+        }
+
+        return date;
+    }
+
+    // start-of-first-week - start-of-year
+    function firstWeekOffset(year, dow, doy) {
+        var // first-week day -- which january is always in the first week (4 for iso, 1 for other)
+            fwd = 7 + dow - doy,
+            // first-week day local weekday -- which local weekday is fwd
+            fwdlw = (7 + createUTCDate(year, 0, fwd).getUTCDay() - dow) % 7;
+
+        return -fwdlw + fwd - 1;
+    }
+
+    // https://en.wikipedia.org/wiki/ISO_week_date#Calculating_a_date_given_the_year.2C_week_number_and_weekday
+    function dayOfYearFromWeeks(year, week, weekday, dow, doy) {
+        var localWeekday = (7 + weekday - dow) % 7,
+            weekOffset = firstWeekOffset(year, dow, doy),
+            dayOfYear = 1 + 7 * (week - 1) + localWeekday + weekOffset,
+            resYear,
+            resDayOfYear;
+
+        if (dayOfYear <= 0) {
+            resYear = year - 1;
+            resDayOfYear = daysInYear(resYear) + dayOfYear;
+        } else if (dayOfYear > daysInYear(year)) {
+            resYear = year + 1;
+            resDayOfYear = dayOfYear - daysInYear(year);
+        } else {
+            resYear = year;
+            resDayOfYear = dayOfYear;
+        }
+
+        return {
+            year: resYear,
+            dayOfYear: resDayOfYear,
+        };
+    }
+
+    function weekOfYear(mom, dow, doy) {
+        var weekOffset = firstWeekOffset(mom.year(), dow, doy),
+            week = Math.floor((mom.dayOfYear() - weekOffset - 1) / 7) + 1,
+            resWeek,
+            resYear;
+
+        if (week < 1) {
+            resYear = mom.year() - 1;
+            resWeek = week + weeksInYear(resYear, dow, doy);
+        } else if (week > weeksInYear(mom.year(), dow, doy)) {
+            resWeek = week - weeksInYear(mom.year(), dow, doy);
+            resYear = mom.year() + 1;
+        } else {
+            resYear = mom.year();
+            resWeek = week;
+        }
+
+        return {
+            week: resWeek,
+            year: resYear,
+        };
+    }
+
+    function weeksInYear(year, dow, doy) {
+        var weekOffset = firstWeekOffset(year, dow, doy),
+            weekOffsetNext = firstWeekOffset(year + 1, dow, doy);
+        return (daysInYear(year) - weekOffset + weekOffsetNext) / 7;
+    }
+
+    // FORMATTING
+
+    addFormatToken('w', ['ww', 2], 'wo', 'week');
+    addFormatToken('W', ['WW', 2], 'Wo', 'isoWeek');
+
+    // ALIASES
+
+    addUnitAlias('week', 'w');
+    addUnitAlias('isoWeek', 'W');
+
+    // PRIORITIES
+
+    addUnitPriority('week', 5);
+    addUnitPriority('isoWeek', 5);
+
+    // PARSING
+
+    addRegexToken('w', match1to2);
+    addRegexToken('ww', match1to2, match2);
+    addRegexToken('W', match1to2);
+    addRegexToken('WW', match1to2, match2);
+
+    addWeekParseToken(['w', 'ww', 'W', 'WW'], function (
+        input,
+        week,
+        config,
+        token
+    ) {
+        week[token.substr(0, 1)] = toInt(input);
+    });
+
+    // HELPERS
+
+    // LOCALES
+
+    function localeWeek(mom) {
+        return weekOfYear(mom, this._week.dow, this._week.doy).week;
+    }
+
+    var defaultLocaleWeek = {
+        dow: 0, // Sunday is the first day of the week.
+        doy: 6, // The week that contains Jan 6th is the first week of the year.
+    };
+
+    function localeFirstDayOfWeek() {
+        return this._week.dow;
+    }
+
+    function localeFirstDayOfYear() {
+        return this._week.doy;
+    }
+
+    // MOMENTS
+
+    function getSetWeek(input) {
+        var week = this.localeData().week(this);
+        return input == null ? week : this.add((input - week) * 7, 'd');
+    }
+
+    function getSetISOWeek(input) {
+        var week = weekOfYear(this, 1, 4).week;
+        return input == null ? week : this.add((input - week) * 7, 'd');
+    }
+
+    // FORMATTING
+
+    addFormatToken('d', 0, 'do', 'day');
+
+    addFormatToken('dd', 0, 0, function (format) {
+        return this.localeData().weekdaysMin(this, format);
+    });
+
+    addFormatToken('ddd', 0, 0, function (format) {
+        return this.localeData().weekdaysShort(this, format);
+    });
+
+    addFormatToken('dddd', 0, 0, function (format) {
+        return this.localeData().weekdays(this, format);
+    });
+
+    addFormatToken('e', 0, 0, 'weekday');
+    addFormatToken('E', 0, 0, 'isoWeekday');
+
+    // ALIASES
+
+    addUnitAlias('day', 'd');
+    addUnitAlias('weekday', 'e');
+    addUnitAlias('isoWeekday', 'E');
+
+    // PRIORITY
+    addUnitPriority('day', 11);
+    addUnitPriority('weekday', 11);
+    addUnitPriority('isoWeekday', 11);
+
+    // PARSING
+
+    addRegexToken('d', match1to2);
+    addRegexToken('e', match1to2);
+    addRegexToken('E', match1to2);
+    addRegexToken('dd', function (isStrict, locale) {
+        return locale.weekdaysMinRegex(isStrict);
+    });
+    addRegexToken('ddd', function (isStrict, locale) {
+        return locale.weekdaysShortRegex(isStrict);
+    });
+    addRegexToken('dddd', function (isStrict, locale) {
+        return locale.weekdaysRegex(isStrict);
+    });
+
+    addWeekParseToken(['dd', 'ddd', 'dddd'], function (input, week, config, token) {
+        var weekday = config._locale.weekdaysParse(input, token, config._strict);
+        // if we didn't get a weekday name, mark the date as invalid
+        if (weekday != null) {
+            week.d = weekday;
+        } else {
+            getParsingFlags(config).invalidWeekday = input;
+        }
+    });
+
+    addWeekParseToken(['d', 'e', 'E'], function (input, week, config, token) {
+        week[token] = toInt(input);
+    });
+
+    // HELPERS
+
+    function parseWeekday(input, locale) {
+        if (typeof input !== 'string') {
+            return input;
+        }
+
+        if (!isNaN(input)) {
+            return parseInt(input, 10);
+        }
+
+        input = locale.weekdaysParse(input);
+        if (typeof input === 'number') {
+            return input;
+        }
+
+        return null;
+    }
+
+    function parseIsoWeekday(input, locale) {
+        if (typeof input === 'string') {
+            return locale.weekdaysParse(input) % 7 || 7;
+        }
+        return isNaN(input) ? null : input;
+    }
+
+    // LOCALES
+    function shiftWeekdays(ws, n) {
+        return ws.slice(n, 7).concat(ws.slice(0, n));
+    }
+
+    var defaultLocaleWeekdays = 'Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday'.split(
+            '_'
+        ),
+        defaultLocaleWeekdaysShort = 'Sun_Mon_Tue_Wed_Thu_Fri_Sat'.split('_'),
+        defaultLocaleWeekdaysMin = 'Su_Mo_Tu_We_Th_Fr_Sa'.split('_'),
+        defaultWeekdaysRegex = matchWord,
+        defaultWeekdaysShortRegex = matchWord,
+        defaultWeekdaysMinRegex = matchWord;
+
+    function localeWeekdays(m, format) {
+        var weekdays = isArray(this._weekdays)
+            ? this._weekdays
+            : this._weekdays[
+                  m && m !== true && this._weekdays.isFormat.test(format)
+                      ? 'format'
+                      : 'standalone'
+              ];
+        return m === true
+            ? shiftWeekdays(weekdays, this._week.dow)
+            : m
+            ? weekdays[m.day()]
+            : weekdays;
+    }
+
+    function localeWeekdaysShort(m) {
+        return m === true
+            ? shiftWeekdays(this._weekdaysShort, this._week.dow)
+            : m
+            ? this._weekdaysShort[m.day()]
+            : this._weekdaysShort;
+    }
+
+    function localeWeekdaysMin(m) {
+        return m === true
+            ? shiftWeekdays(this._weekdaysMin, this._week.dow)
+            : m
+            ? this._weekdaysMin[m.day()]
+            : this._weekdaysMin;
+    }
+
+    function handleStrictParse$1(weekdayName, format, strict) {
+        var i,
+            ii,
+            mom,
+            llc = weekdayName.toLocaleLowerCase();
+        if (!this._weekdaysParse) {
+            this._weekdaysParse = [];
+            this._shortWeekdaysParse = [];
+            this._minWeekdaysParse = [];
+
+            for (i = 0; i < 7; ++i) {
+                mom = createUTC([2000, 1]).day(i);
+                this._minWeekdaysParse[i] = this.weekdaysMin(
+                    mom,
+                    ''
+                ).toLocaleLowerCase();
+                this._shortWeekdaysParse[i] = this.weekdaysShort(
+                    mom,
+                    ''
+                ).toLocaleLowerCase();
+                this._weekdaysParse[i] = this.weekdays(mom, '').toLocaleLowerCase();
+            }
+        }
+
+        if (strict) {
+            if (format === 'dddd') {
+                ii = indexOf.call(this._weekdaysParse, llc);
+                return ii !== -1 ? ii : null;
+            } else if (format === 'ddd') {
+                ii = indexOf.call(this._shortWeekdaysParse, llc);
+                return ii !== -1 ? ii : null;
+            } else {
+                ii = indexOf.call(this._minWeekdaysParse, llc);
+                return ii !== -1 ? ii : null;
+            }
+        } else {
+            if (format === 'dddd') {
+                ii = indexOf.call(this._weekdaysParse, llc);
+                if (ii !== -1) {
+                    return ii;
+                }
+                ii = indexOf.call(this._shortWeekdaysParse, llc);
+                if (ii !== -1) {
+                    return ii;
+                }
+                ii = indexOf.call(this._minWeekdaysParse, llc);
+                return ii !== -1 ? ii : null;
+            } else if (format === 'ddd') {
+                ii = indexOf.call(this._shortWeekdaysParse, llc);
+                if (ii !== -1) {
+                    return ii;
+                }
+                ii = indexOf.call(this._weekdaysParse, llc);
+                if (ii !== -1) {
+                    return ii;
+                }
+                ii = indexOf.call(this._minWeekdaysParse, llc);
+                return ii !== -1 ? ii : null;
+            } else {
+                ii = indexOf.call(this._minWeekdaysParse, llc);
+                if (ii !== -1) {
+                    return ii;
+                }
+                ii = indexOf.call(this._weekdaysParse, llc);
+                if (ii !== -1) {
+                    return ii;
+                }
+                ii = indexOf.call(this._shortWeekdaysParse, llc);
+                return ii !== -1 ? ii : null;
+            }
+        }
+    }
+
+    function localeWeekdaysParse(weekdayName, format, strict) {
+        var i, mom, regex;
+
+        if (this._weekdaysParseExact) {
+            return handleStrictParse$1.call(this, weekdayName, format, strict);
+        }
+
+        if (!this._weekdaysParse) {
+            this._weekdaysParse = [];
+            this._minWeekdaysParse = [];
+            this._shortWeekdaysParse = [];
+            this._fullWeekdaysParse = [];
+        }
+
+        for (i = 0; i < 7; i++) {
+            // make the regex if we don't have it already
+
+            mom = createUTC([2000, 1]).day(i);
+            if (strict && !this._fullWeekdaysParse[i]) {
+                this._fullWeekdaysParse[i] = new RegExp(
+                    '^' + this.weekdays(mom, '').replace('.', '\\.?') + '$',
+                    'i'
+                );
+                this._shortWeekdaysParse[i] = new RegExp(
+                    '^' + this.weekdaysShort(mom, '').replace('.', '\\.?') + '$',
+                    'i'
+                );
+                this._minWeekdaysParse[i] = new RegExp(
+                    '^' + this.weekdaysMin(mom, '').replace('.', '\\.?') + '$',
+                    'i'
+                );
+            }
+            if (!this._weekdaysParse[i]) {
+                regex =
+                    '^' +
+                    this.weekdays(mom, '') +
+                    '|^' +
+                    this.weekdaysShort(mom, '') +
+                    '|^' +
+                    this.weekdaysMin(mom, '');
+                this._weekdaysParse[i] = new RegExp(regex.replace('.', ''), 'i');
+            }
+            // test the regex
+            if (
+                strict &&
+                format === 'dddd' &&
+                this._fullWeekdaysParse[i].test(weekdayName)
+            ) {
+                return i;
+            } else if (
+                strict &&
+                format === 'ddd' &&
+                this._shortWeekdaysParse[i].test(weekdayName)
+            ) {
+                return i;
+            } else if (
+                strict &&
+                format === 'dd' &&
+                this._minWeekdaysParse[i].test(weekdayName)
+            ) {
+                return i;
+            } else if (!strict && this._weekdaysParse[i].test(weekdayName)) {
+                return i;
+            }
+        }
+    }
+
+    // MOMENTS
+
+    function getSetDayOfWeek(input) {
+        if (!this.isValid()) {
+            return input != null ? this : NaN;
+        }
+        var day = this._isUTC ? this._d.getUTCDay() : this._d.getDay();
+        if (input != null) {
+            input = parseWeekday(input, this.localeData());
+            return this.add(input - day, 'd');
+        } else {
+            return day;
+        }
+    }
+
+    function getSetLocaleDayOfWeek(input) {
+        if (!this.isValid()) {
+            return input != null ? this : NaN;
+        }
+        var weekday = (this.day() + 7 - this.localeData()._week.dow) % 7;
+        return input == null ? weekday : this.add(input - weekday, 'd');
+    }
+
+    function getSetISODayOfWeek(input) {
+        if (!this.isValid()) {
+            return input != null ? this : NaN;
+        }
+
+        // behaves the same as moment#day except
+        // as a getter, returns 7 instead of 0 (1-7 range instead of 0-6)
+        // as a setter, sunday should belong to the previous week.
+
+        if (input != null) {
+            var weekday = parseIsoWeekday(input, this.localeData());
+            return this.day(this.day() % 7 ? weekday : weekday - 7);
+        } else {
+            return this.day() || 7;
+        }
+    }
+
+    function weekdaysRegex(isStrict) {
+        if (this._weekdaysParseExact) {
+            if (!hasOwnProp(this, '_weekdaysRegex')) {
+                computeWeekdaysParse.call(this);
+            }
+            if (isStrict) {
+                return this._weekdaysStrictRegex;
+            } else {
+                return this._weekdaysRegex;
+            }
+        } else {
+            if (!hasOwnProp(this, '_weekdaysRegex')) {
+                this._weekdaysRegex = defaultWeekdaysRegex;
+            }
+            return this._weekdaysStrictRegex && isStrict
+                ? this._weekdaysStrictRegex
+                : this._weekdaysRegex;
+        }
+    }
+
+    function weekdaysShortRegex(isStrict) {
+        if (this._weekdaysParseExact) {
+            if (!hasOwnProp(this, '_weekdaysRegex')) {
+                computeWeekdaysParse.call(this);
+            }
+            if (isStrict) {
+                return this._weekdaysShortStrictRegex;
+            } else {
+                return this._weekdaysShortRegex;
+            }
+        } else {
+            if (!hasOwnProp(this, '_weekdaysShortRegex')) {
+                this._weekdaysShortRegex = defaultWeekdaysShortRegex;
+            }
+            return this._weekdaysShortStrictRegex && isStrict
+                ? this._weekdaysShortStrictRegex
+                : this._weekdaysShortRegex;
+        }
+    }
+
+    function weekdaysMinRegex(isStrict) {
+        if (this._weekdaysParseExact) {
+            if (!hasOwnProp(this, '_weekdaysRegex')) {
+                computeWeekdaysParse.call(this);
+            }
+            if (isStrict) {
+                return this._weekdaysMinStrictRegex;
+            } else {
+                return this._weekdaysMinRegex;
+            }
+        } else {
+            if (!hasOwnProp(this, '_weekdaysMinRegex')) {
+                this._weekdaysMinRegex = defaultWeekdaysMinRegex;
+            }
+            return this._weekdaysMinStrictRegex && isStrict
+                ? this._weekdaysMinStrictRegex
+                : this._weekdaysMinRegex;
+        }
+    }
+
+    function computeWeekdaysParse() {
+        function cmpLenRev(a, b) {
+            return b.length - a.length;
+        }
+
+        var minPieces = [],
+            shortPieces = [],
+            longPieces = [],
+            mixedPieces = [],
+            i,
+            mom,
+            minp,
+            shortp,
+            longp;
+        for (i = 0; i < 7; i++) {
+            // make the regex if we don't have it already
+            mom = createUTC([2000, 1]).day(i);
+            minp = regexEscape(this.weekdaysMin(mom, ''));
+            shortp = regexEscape(this.weekdaysShort(mom, ''));
+            longp = regexEscape(this.weekdays(mom, ''));
+            minPieces.push(minp);
+            shortPieces.push(shortp);
+            longPieces.push(longp);
+            mixedPieces.push(minp);
+            mixedPieces.push(shortp);
+            mixedPieces.push(longp);
+        }
+        // Sorting makes sure if one weekday (or abbr) is a prefix of another it
+        // will match the longer piece.
+        minPieces.sort(cmpLenRev);
+        shortPieces.sort(cmpLenRev);
+        longPieces.sort(cmpLenRev);
+        mixedPieces.sort(cmpLenRev);
+
+        this._weekdaysRegex = new RegExp('^(' + mixedPieces.join('|') + ')', 'i');
+        this._weekdaysShortRegex = this._weekdaysRegex;
+        this._weekdaysMinRegex = this._weekdaysRegex;
+
+        this._weekdaysStrictRegex = new RegExp(
+            '^(' + longPieces.join('|') + ')',
+            'i'
+        );
+        this._weekdaysShortStrictRegex = new RegExp(
+            '^(' + shortPieces.join('|') + ')',
+            'i'
+        );
+        this._weekdaysMinStrictRegex = new RegExp(
+            '^(' + minPieces.join('|') + ')',
+            'i'
+        );
+    }
+
+    // FORMATTING
+
+    function hFormat() {
+        return this.hours() % 12 || 12;
+    }
+
+    function kFormat() {
+        return this.hours() || 24;
+    }
+
+    addFormatToken('H', ['HH', 2], 0, 'hour');
+    addFormatToken('h', ['hh', 2], 0, hFormat);
+    addFormatToken('k', ['kk', 2], 0, kFormat);
+
+    addFormatToken('hmm', 0, 0, function () {
+        return '' + hFormat.apply(this) + zeroFill(this.minutes(), 2);
+    });
+
+    addFormatToken('hmmss', 0, 0, function () {
+        return (
+            '' +
+            hFormat.apply(this) +
+            zeroFill(this.minutes(), 2) +
+            zeroFill(this.seconds(), 2)
+        );
+    });
+
+    addFormatToken('Hmm', 0, 0, function () {
+        return '' + this.hours() + zeroFill(this.minutes(), 2);
+    });
+
+    addFormatToken('Hmmss', 0, 0, function () {
+        return (
+            '' +
+            this.hours() +
+            zeroFill(this.minutes(), 2) +
+            zeroFill(this.seconds(), 2)
+        );
+    });
+
+    function meridiem(token, lowercase) {
+        addFormatToken(token, 0, 0, function () {
+            return this.localeData().meridiem(
+                this.hours(),
+                this.minutes(),
+                lowercase
+            );
+        });
+    }
+
+    meridiem('a', true);
+    meridiem('A', false);
+
+    // ALIASES
+
+    addUnitAlias('hour', 'h');
+
+    // PRIORITY
+    addUnitPriority('hour', 13);
+
+    // PARSING
+
+    function matchMeridiem(isStrict, locale) {
+        return locale._meridiemParse;
+    }
+
+    addRegexToken('a', matchMeridiem);
+    addRegexToken('A', matchMeridiem);
+    addRegexToken('H', match1to2);
+    addRegexToken('h', match1to2);
+    addRegexToken('k', match1to2);
+    addRegexToken('HH', match1to2, match2);
+    addRegexToken('hh', match1to2, match2);
+    addRegexToken('kk', match1to2, match2);
+
+    addRegexToken('hmm', match3to4);
+    addRegexToken('hmmss', match5to6);
+    addRegexToken('Hmm', match3to4);
+    addRegexToken('Hmmss', match5to6);
+
+    addParseToken(['H', 'HH'], HOUR);
+    addParseToken(['k', 'kk'], function (input, array, config) {
+        var kInput = toInt(input);
+        array[HOUR] = kInput === 24 ? 0 : kInput;
+    });
+    addParseToken(['a', 'A'], function (input, array, config) {
+        config._isPm = config._locale.isPM(input);
+        config._meridiem = input;
+    });
+    addParseToken(['h', 'hh'], function (input, array, config) {
+        array[HOUR] = toInt(input);
+        getParsingFlags(config).bigHour = true;
+    });
+    addParseToken('hmm', function (input, array, config) {
+        var pos = input.length - 2;
+        array[HOUR] = toInt(input.substr(0, pos));
+        array[MINUTE] = toInt(input.substr(pos));
+        getParsingFlags(config).bigHour = true;
+    });
+    addParseToken('hmmss', function (input, array, config) {
+        var pos1 = input.length - 4,
+            pos2 = input.length - 2;
+        array[HOUR] = toInt(input.substr(0, pos1));
+        array[MINUTE] = toInt(input.substr(pos1, 2));
+        array[SECOND] = toInt(input.substr(pos2));
+        getParsingFlags(config).bigHour = true;
+    });
+    addParseToken('Hmm', function (input, array, config) {
+        var pos = input.length - 2;
+        array[HOUR] = toInt(input.substr(0, pos));
+        array[MINUTE] = toInt(input.substr(pos));
+    });
+    addParseToken('Hmmss', function (input, array, config) {
+        var pos1 = input.length - 4,
+            pos2 = input.length - 2;
+        array[HOUR] = toInt(input.substr(0, pos1));
+        array[MINUTE] = toInt(input.substr(pos1, 2));
+        array[SECOND] = toInt(input.substr(pos2));
+    });
+
+    // LOCALES
+
+    function localeIsPM(input) {
+        // IE8 Quirks Mode & IE7 Standards Mode do not allow accessing strings like arrays
+        // Using charAt should be more compatible.
+        return (input + '').toLowerCase().charAt(0) === 'p';
+    }
+
+    var defaultLocaleMeridiemParse = /[ap]\.?m?\.?/i,
+        // Setting the hour should keep the time, because the user explicitly
+        // specified which hour they want. So trying to maintain the same hour (in
+        // a new timezone) makes sense. Adding/subtracting hours does not follow
+        // this rule.
+        getSetHour = makeGetSet('Hours', true);
+
+    function localeMeridiem(hours, minutes, isLower) {
+        if (hours > 11) {
+            return isLower ? 'pm' : 'PM';
+        } else {
+            return isLower ? 'am' : 'AM';
+        }
+    }
+
+    var baseConfig = {
+        calendar: defaultCalendar,
+        longDateFormat: defaultLongDateFormat,
+        invalidDate: defaultInvalidDate,
+        ordinal: defaultOrdinal,
+        dayOfMonthOrdinalParse: defaultDayOfMonthOrdinalParse,
+        relativeTime: defaultRelativeTime,
+
+        months: defaultLocaleMonths,
+        monthsShort: defaultLocaleMonthsShort,
+
+        week: defaultLocaleWeek,
+
+        weekdays: defaultLocaleWeekdays,
+        weekdaysMin: defaultLocaleWeekdaysMin,
+        weekdaysShort: defaultLocaleWeekdaysShort,
+
+        meridiemParse: defaultLocaleMeridiemParse,
+    };
+
+    // internal storage for locale config files
+    var locales = {},
+        localeFamilies = {},
+        globalLocale;
+
+    function commonPrefix(arr1, arr2) {
+        var i,
+            minl = Math.min(arr1.length, arr2.length);
+        for (i = 0; i < minl; i += 1) {
+            if (arr1[i] !== arr2[i]) {
+                return i;
+            }
+        }
+        return minl;
+    }
+
+    function normalizeLocale(key) {
+        return key ? key.toLowerCase().replace('_', '-') : key;
+    }
+
+    // pick the locale from the array
+    // try ['en-au', 'en-gb'] as 'en-au', 'en-gb', 'en', as in move through the list trying each
+    // substring from most specific to least, but move to the next array item if it's a more specific variant than the current root
+    function chooseLocale(names) {
+        var i = 0,
+            j,
+            next,
+            locale,
+            split;
+
+        while (i < names.length) {
+            split = normalizeLocale(names[i]).split('-');
+            j = split.length;
+            next = normalizeLocale(names[i + 1]);
+            next = next ? next.split('-') : null;
+            while (j > 0) {
+                locale = loadLocale(split.slice(0, j).join('-'));
+                if (locale) {
+                    return locale;
+                }
+                if (
+                    next &&
+                    next.length >= j &&
+                    commonPrefix(split, next) >= j - 1
+                ) {
+                    //the next array item is better than a shallower substring of this one
+                    break;
+                }
+                j--;
+            }
+            i++;
+        }
+        return globalLocale;
+    }
+
+    function loadLocale(name) {
+        var oldLocale = null,
+            aliasedRequire;
+        // TODO: Find a better way to register and load all the locales in Node
+        if (
+            locales[name] === undefined &&
+            'object' !== 'undefined' &&
+            module &&
+            module.exports
+        ) {
+            try {
+                oldLocale = globalLocale._abbr;
+                aliasedRequire = commonjsRequire;
+                aliasedRequire('./locale/' + name);
+                getSetGlobalLocale(oldLocale);
+            } catch (e) {
+                // mark as not found to avoid repeating expensive file require call causing high CPU
+                // when trying to find en-US, en_US, en-us for every format call
+                locales[name] = null; // null means not found
+            }
+        }
+        return locales[name];
+    }
+
+    // This function will load locale and then set the global locale.  If
+    // no arguments are passed in, it will simply return the current global
+    // locale key.
+    function getSetGlobalLocale(key, values) {
+        var data;
+        if (key) {
+            if (isUndefined(values)) {
+                data = getLocale(key);
+            } else {
+                data = defineLocale(key, values);
+            }
+
+            if (data) {
+                // moment.duration._locale = moment._locale = data;
+                globalLocale = data;
+            } else {
+                if (typeof console !== 'undefined' && console.warn) {
+                    //warn user if arguments are passed but the locale could not be set
+                    console.warn(
+                        'Locale ' + key + ' not found. Did you forget to load it?'
+                    );
+                }
+            }
+        }
+
+        return globalLocale._abbr;
+    }
+
+    function defineLocale(name, config) {
+        if (config !== null) {
+            var locale,
+                parentConfig = baseConfig;
+            config.abbr = name;
+            if (locales[name] != null) {
+                deprecateSimple(
+                    'defineLocaleOverride',
+                    'use moment.updateLocale(localeName, config) to change ' +
+                        'an existing locale. moment.defineLocale(localeName, ' +
+                        'config) should only be used for creating a new locale ' +
+                        'See http://momentjs.com/guides/#/warnings/define-locale/ for more info.'
+                );
+                parentConfig = locales[name]._config;
+            } else if (config.parentLocale != null) {
+                if (locales[config.parentLocale] != null) {
+                    parentConfig = locales[config.parentLocale]._config;
+                } else {
+                    locale = loadLocale(config.parentLocale);
+                    if (locale != null) {
+                        parentConfig = locale._config;
+                    } else {
+                        if (!localeFamilies[config.parentLocale]) {
+                            localeFamilies[config.parentLocale] = [];
+                        }
+                        localeFamilies[config.parentLocale].push({
+                            name: name,
+                            config: config,
+                        });
+                        return null;
+                    }
+                }
+            }
+            locales[name] = new Locale(mergeConfigs(parentConfig, config));
+
+            if (localeFamilies[name]) {
+                localeFamilies[name].forEach(function (x) {
+                    defineLocale(x.name, x.config);
+                });
+            }
+
+            // backwards compat for now: also set the locale
+            // make sure we set the locale AFTER all child locales have been
+            // created, so we won't end up with the child locale set.
+            getSetGlobalLocale(name);
+
+            return locales[name];
+        } else {
+            // useful for testing
+            delete locales[name];
+            return null;
+        }
+    }
+
+    function updateLocale(name, config) {
+        if (config != null) {
+            var locale,
+                tmpLocale,
+                parentConfig = baseConfig;
+
+            if (locales[name] != null && locales[name].parentLocale != null) {
+                // Update existing child locale in-place to avoid memory-leaks
+                locales[name].set(mergeConfigs(locales[name]._config, config));
+            } else {
+                // MERGE
+                tmpLocale = loadLocale(name);
+                if (tmpLocale != null) {
+                    parentConfig = tmpLocale._config;
+                }
+                config = mergeConfigs(parentConfig, config);
+                if (tmpLocale == null) {
+                    // updateLocale is called for creating a new locale
+                    // Set abbr so it will have a name (getters return
+                    // undefined otherwise).
+                    config.abbr = name;
+                }
+                locale = new Locale(config);
+                locale.parentLocale = locales[name];
+                locales[name] = locale;
+            }
+
+            // backwards compat for now: also set the locale
+            getSetGlobalLocale(name);
+        } else {
+            // pass null for config to unupdate, useful for tests
+            if (locales[name] != null) {
+                if (locales[name].parentLocale != null) {
+                    locales[name] = locales[name].parentLocale;
+                    if (name === getSetGlobalLocale()) {
+                        getSetGlobalLocale(name);
+                    }
+                } else if (locales[name] != null) {
+                    delete locales[name];
+                }
+            }
+        }
+        return locales[name];
+    }
+
+    // returns locale data
+    function getLocale(key) {
+        var locale;
+
+        if (key && key._locale && key._locale._abbr) {
+            key = key._locale._abbr;
+        }
+
+        if (!key) {
+            return globalLocale;
+        }
+
+        if (!isArray(key)) {
+            //short-circuit everything else
+            locale = loadLocale(key);
+            if (locale) {
+                return locale;
+            }
+            key = [key];
+        }
+
+        return chooseLocale(key);
+    }
+
+    function listLocales() {
+        return keys(locales);
+    }
+
+    function checkOverflow(m) {
+        var overflow,
+            a = m._a;
+
+        if (a && getParsingFlags(m).overflow === -2) {
+            overflow =
+                a[MONTH] < 0 || a[MONTH] > 11
+                    ? MONTH
+                    : a[DATE] < 1 || a[DATE] > daysInMonth(a[YEAR], a[MONTH])
+                    ? DATE
+                    : a[HOUR] < 0 ||
+                      a[HOUR] > 24 ||
+                      (a[HOUR] === 24 &&
+                          (a[MINUTE] !== 0 ||
+                              a[SECOND] !== 0 ||
+                              a[MILLISECOND] !== 0))
+                    ? HOUR
+                    : a[MINUTE] < 0 || a[MINUTE] > 59
+                    ? MINUTE
+                    : a[SECOND] < 0 || a[SECOND] > 59
+                    ? SECOND
+                    : a[MILLISECOND] < 0 || a[MILLISECOND] > 999
+                    ? MILLISECOND
+                    : -1;
+
+            if (
+                getParsingFlags(m)._overflowDayOfYear &&
+                (overflow < YEAR || overflow > DATE)
+            ) {
+                overflow = DATE;
+            }
+            if (getParsingFlags(m)._overflowWeeks && overflow === -1) {
+                overflow = WEEK;
+            }
+            if (getParsingFlags(m)._overflowWeekday && overflow === -1) {
+                overflow = WEEKDAY;
+            }
+
+            getParsingFlags(m).overflow = overflow;
+        }
+
+        return m;
+    }
+
+    // iso 8601 regex
+    // 0000-00-00 0000-W00 or 0000-W00-0 + T + 00 or 00:00 or 00:00:00 or 00:00:00.000 + +00:00 or +0000 or +00)
+    var extendedIsoRegex = /^\s*((?:[+-]\d{6}|\d{4})-(?:\d\d-\d\d|W\d\d-\d|W\d\d|\d\d\d|\d\d))(?:(T| )(\d\d(?::\d\d(?::\d\d(?:[.,]\d+)?)?)?)([+-]\d\d(?::?\d\d)?|\s*Z)?)?$/,
+        basicIsoRegex = /^\s*((?:[+-]\d{6}|\d{4})(?:\d\d\d\d|W\d\d\d|W\d\d|\d\d\d|\d\d|))(?:(T| )(\d\d(?:\d\d(?:\d\d(?:[.,]\d+)?)?)?)([+-]\d\d(?::?\d\d)?|\s*Z)?)?$/,
+        tzRegex = /Z|[+-]\d\d(?::?\d\d)?/,
+        isoDates = [
+            ['YYYYYY-MM-DD', /[+-]\d{6}-\d\d-\d\d/],
+            ['YYYY-MM-DD', /\d{4}-\d\d-\d\d/],
+            ['GGGG-[W]WW-E', /\d{4}-W\d\d-\d/],
+            ['GGGG-[W]WW', /\d{4}-W\d\d/, false],
+            ['YYYY-DDD', /\d{4}-\d{3}/],
+            ['YYYY-MM', /\d{4}-\d\d/, false],
+            ['YYYYYYMMDD', /[+-]\d{10}/],
+            ['YYYYMMDD', /\d{8}/],
+            ['GGGG[W]WWE', /\d{4}W\d{3}/],
+            ['GGGG[W]WW', /\d{4}W\d{2}/, false],
+            ['YYYYDDD', /\d{7}/],
+            ['YYYYMM', /\d{6}/, false],
+            ['YYYY', /\d{4}/, false],
+        ],
+        // iso time formats and regexes
+        isoTimes = [
+            ['HH:mm:ss.SSSS', /\d\d:\d\d:\d\d\.\d+/],
+            ['HH:mm:ss,SSSS', /\d\d:\d\d:\d\d,\d+/],
+            ['HH:mm:ss', /\d\d:\d\d:\d\d/],
+            ['HH:mm', /\d\d:\d\d/],
+            ['HHmmss.SSSS', /\d\d\d\d\d\d\.\d+/],
+            ['HHmmss,SSSS', /\d\d\d\d\d\d,\d+/],
+            ['HHmmss', /\d\d\d\d\d\d/],
+            ['HHmm', /\d\d\d\d/],
+            ['HH', /\d\d/],
+        ],
+        aspNetJsonRegex = /^\/?Date\((-?\d+)/i,
+        // RFC 2822 regex: For details see https://tools.ietf.org/html/rfc2822#section-3.3
+        rfc2822 = /^(?:(Mon|Tue|Wed|Thu|Fri|Sat|Sun),?\s)?(\d{1,2})\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s(\d{2,4})\s(\d\d):(\d\d)(?::(\d\d))?\s(?:(UT|GMT|[ECMP][SD]T)|([Zz])|([+-]\d{4}))$/,
+        obsOffsets = {
+            UT: 0,
+            GMT: 0,
+            EDT: -4 * 60,
+            EST: -5 * 60,
+            CDT: -5 * 60,
+            CST: -6 * 60,
+            MDT: -6 * 60,
+            MST: -7 * 60,
+            PDT: -7 * 60,
+            PST: -8 * 60,
+        };
+
+    // date from iso format
+    function configFromISO(config) {
+        var i,
+            l,
+            string = config._i,
+            match = extendedIsoRegex.exec(string) || basicIsoRegex.exec(string),
+            allowTime,
+            dateFormat,
+            timeFormat,
+            tzFormat;
+
+        if (match) {
+            getParsingFlags(config).iso = true;
+
+            for (i = 0, l = isoDates.length; i < l; i++) {
+                if (isoDates[i][1].exec(match[1])) {
+                    dateFormat = isoDates[i][0];
+                    allowTime = isoDates[i][2] !== false;
+                    break;
+                }
+            }
+            if (dateFormat == null) {
+                config._isValid = false;
+                return;
+            }
+            if (match[3]) {
+                for (i = 0, l = isoTimes.length; i < l; i++) {
+                    if (isoTimes[i][1].exec(match[3])) {
+                        // match[2] should be 'T' or space
+                        timeFormat = (match[2] || ' ') + isoTimes[i][0];
+                        break;
+                    }
+                }
+                if (timeFormat == null) {
+                    config._isValid = false;
+                    return;
+                }
+            }
+            if (!allowTime && timeFormat != null) {
+                config._isValid = false;
+                return;
+            }
+            if (match[4]) {
+                if (tzRegex.exec(match[4])) {
+                    tzFormat = 'Z';
+                } else {
+                    config._isValid = false;
+                    return;
+                }
+            }
+            config._f = dateFormat + (timeFormat || '') + (tzFormat || '');
+            configFromStringAndFormat(config);
+        } else {
+            config._isValid = false;
+        }
+    }
+
+    function extractFromRFC2822Strings(
+        yearStr,
+        monthStr,
+        dayStr,
+        hourStr,
+        minuteStr,
+        secondStr
+    ) {
+        var result = [
+            untruncateYear(yearStr),
+            defaultLocaleMonthsShort.indexOf(monthStr),
+            parseInt(dayStr, 10),
+            parseInt(hourStr, 10),
+            parseInt(minuteStr, 10),
+        ];
+
+        if (secondStr) {
+            result.push(parseInt(secondStr, 10));
+        }
+
+        return result;
+    }
+
+    function untruncateYear(yearStr) {
+        var year = parseInt(yearStr, 10);
+        if (year <= 49) {
+            return 2000 + year;
+        } else if (year <= 999) {
+            return 1900 + year;
+        }
+        return year;
+    }
+
+    function preprocessRFC2822(s) {
+        // Remove comments and folding whitespace and replace multiple-spaces with a single space
+        return s
+            .replace(/\([^)]*\)|[\n\t]/g, ' ')
+            .replace(/(\s\s+)/g, ' ')
+            .replace(/^\s\s*/, '')
+            .replace(/\s\s*$/, '');
+    }
+
+    function checkWeekday(weekdayStr, parsedInput, config) {
+        if (weekdayStr) {
+            // TODO: Replace the vanilla JS Date object with an independent day-of-week check.
+            var weekdayProvided = defaultLocaleWeekdaysShort.indexOf(weekdayStr),
+                weekdayActual = new Date(
+                    parsedInput[0],
+                    parsedInput[1],
+                    parsedInput[2]
+                ).getDay();
+            if (weekdayProvided !== weekdayActual) {
+                getParsingFlags(config).weekdayMismatch = true;
+                config._isValid = false;
+                return false;
+            }
+        }
+        return true;
+    }
+
+    function calculateOffset(obsOffset, militaryOffset, numOffset) {
+        if (obsOffset) {
+            return obsOffsets[obsOffset];
+        } else if (militaryOffset) {
+            // the only allowed military tz is Z
+            return 0;
+        } else {
+            var hm = parseInt(numOffset, 10),
+                m = hm % 100,
+                h = (hm - m) / 100;
+            return h * 60 + m;
+        }
+    }
+
+    // date and time from ref 2822 format
+    function configFromRFC2822(config) {
+        var match = rfc2822.exec(preprocessRFC2822(config._i)),
+            parsedArray;
+        if (match) {
+            parsedArray = extractFromRFC2822Strings(
+                match[4],
+                match[3],
+                match[2],
+                match[5],
+                match[6],
+                match[7]
+            );
+            if (!checkWeekday(match[1], parsedArray, config)) {
+                return;
+            }
+
+            config._a = parsedArray;
+            config._tzm = calculateOffset(match[8], match[9], match[10]);
+
+            config._d = createUTCDate.apply(null, config._a);
+            config._d.setUTCMinutes(config._d.getUTCMinutes() - config._tzm);
+
+            getParsingFlags(config).rfc2822 = true;
+        } else {
+            config._isValid = false;
+        }
+    }
+
+    // date from 1) ASP.NET, 2) ISO, 3) RFC 2822 formats, or 4) optional fallback if parsing isn't strict
+    function configFromString(config) {
+        var matched = aspNetJsonRegex.exec(config._i);
+        if (matched !== null) {
+            config._d = new Date(+matched[1]);
+            return;
+        }
+
+        configFromISO(config);
+        if (config._isValid === false) {
+            delete config._isValid;
+        } else {
+            return;
+        }
+
+        configFromRFC2822(config);
+        if (config._isValid === false) {
+            delete config._isValid;
+        } else {
+            return;
+        }
+
+        if (config._strict) {
+            config._isValid = false;
+        } else {
+            // Final attempt, use Input Fallback
+            hooks.createFromInputFallback(config);
+        }
+    }
+
+    hooks.createFromInputFallback = deprecate(
+        'value provided is not in a recognized RFC2822 or ISO format. moment construction falls back to js Date(), ' +
+            'which is not reliable across all browsers and versions. Non RFC2822/ISO date formats are ' +
+            'discouraged. Please refer to http://momentjs.com/guides/#/warnings/js-date/ for more info.',
+        function (config) {
+            config._d = new Date(config._i + (config._useUTC ? ' UTC' : ''));
+        }
+    );
+
+    // Pick the first defined of two or three arguments.
+    function defaults(a, b, c) {
+        if (a != null) {
+            return a;
+        }
+        if (b != null) {
+            return b;
+        }
+        return c;
+    }
+
+    function currentDateArray(config) {
+        // hooks is actually the exported moment object
+        var nowValue = new Date(hooks.now());
+        if (config._useUTC) {
+            return [
+                nowValue.getUTCFullYear(),
+                nowValue.getUTCMonth(),
+                nowValue.getUTCDate(),
+            ];
+        }
+        return [nowValue.getFullYear(), nowValue.getMonth(), nowValue.getDate()];
+    }
+
+    // convert an array to a date.
+    // the array should mirror the parameters below
+    // note: all values past the year are optional and will default to the lowest possible value.
+    // [year, month, day , hour, minute, second, millisecond]
+    function configFromArray(config) {
+        var i,
+            date,
+            input = [],
+            currentDate,
+            expectedWeekday,
+            yearToUse;
+
+        if (config._d) {
+            return;
+        }
+
+        currentDate = currentDateArray(config);
+
+        //compute day of the year from weeks and weekdays
+        if (config._w && config._a[DATE] == null && config._a[MONTH] == null) {
+            dayOfYearFromWeekInfo(config);
+        }
+
+        //if the day of the year is set, figure out what it is
+        if (config._dayOfYear != null) {
+            yearToUse = defaults(config._a[YEAR], currentDate[YEAR]);
+
+            if (
+                config._dayOfYear > daysInYear(yearToUse) ||
+                config._dayOfYear === 0
+            ) {
+                getParsingFlags(config)._overflowDayOfYear = true;
+            }
+
+            date = createUTCDate(yearToUse, 0, config._dayOfYear);
+            config._a[MONTH] = date.getUTCMonth();
+            config._a[DATE] = date.getUTCDate();
+        }
+
+        // Default to current date.
+        // * if no year, month, day of month are given, default to today
+        // * if day of month is given, default month and year
+        // * if month is given, default only year
+        // * if year is given, don't default anything
+        for (i = 0; i < 3 && config._a[i] == null; ++i) {
+            config._a[i] = input[i] = currentDate[i];
+        }
+
+        // Zero out whatever was not defaulted, including time
+        for (; i < 7; i++) {
+            config._a[i] = input[i] =
+                config._a[i] == null ? (i === 2 ? 1 : 0) : config._a[i];
+        }
+
+        // Check for 24:00:00.000
+        if (
+            config._a[HOUR] === 24 &&
+            config._a[MINUTE] === 0 &&
+            config._a[SECOND] === 0 &&
+            config._a[MILLISECOND] === 0
+        ) {
+            config._nextDay = true;
+            config._a[HOUR] = 0;
+        }
+
+        config._d = (config._useUTC ? createUTCDate : createDate).apply(
+            null,
+            input
+        );
+        expectedWeekday = config._useUTC
+            ? config._d.getUTCDay()
+            : config._d.getDay();
+
+        // Apply timezone offset from input. The actual utcOffset can be changed
+        // with parseZone.
+        if (config._tzm != null) {
+            config._d.setUTCMinutes(config._d.getUTCMinutes() - config._tzm);
+        }
+
+        if (config._nextDay) {
+            config._a[HOUR] = 24;
+        }
+
+        // check for mismatching day of week
+        if (
+            config._w &&
+            typeof config._w.d !== 'undefined' &&
+            config._w.d !== expectedWeekday
+        ) {
+            getParsingFlags(config).weekdayMismatch = true;
+        }
+    }
+
+    function dayOfYearFromWeekInfo(config) {
+        var w, weekYear, week, weekday, dow, doy, temp, weekdayOverflow, curWeek;
+
+        w = config._w;
+        if (w.GG != null || w.W != null || w.E != null) {
+            dow = 1;
+            doy = 4;
+
+            // TODO: We need to take the current isoWeekYear, but that depends on
+            // how we interpret now (local, utc, fixed offset). So create
+            // a now version of current config (take local/utc/offset flags, and
+            // create now).
+            weekYear = defaults(
+                w.GG,
+                config._a[YEAR],
+                weekOfYear(createLocal(), 1, 4).year
+            );
+            week = defaults(w.W, 1);
+            weekday = defaults(w.E, 1);
+            if (weekday < 1 || weekday > 7) {
+                weekdayOverflow = true;
+            }
+        } else {
+            dow = config._locale._week.dow;
+            doy = config._locale._week.doy;
+
+            curWeek = weekOfYear(createLocal(), dow, doy);
+
+            weekYear = defaults(w.gg, config._a[YEAR], curWeek.year);
+
+            // Default to current week.
+            week = defaults(w.w, curWeek.week);
+
+            if (w.d != null) {
+                // weekday -- low day numbers are considered next week
+                weekday = w.d;
+                if (weekday < 0 || weekday > 6) {
+                    weekdayOverflow = true;
+                }
+            } else if (w.e != null) {
+                // local weekday -- counting starts from beginning of week
+                weekday = w.e + dow;
+                if (w.e < 0 || w.e > 6) {
+                    weekdayOverflow = true;
+                }
+            } else {
+                // default to beginning of week
+                weekday = dow;
+            }
+        }
+        if (week < 1 || week > weeksInYear(weekYear, dow, doy)) {
+            getParsingFlags(config)._overflowWeeks = true;
+        } else if (weekdayOverflow != null) {
+            getParsingFlags(config)._overflowWeekday = true;
+        } else {
+            temp = dayOfYearFromWeeks(weekYear, week, weekday, dow, doy);
+            config._a[YEAR] = temp.year;
+            config._dayOfYear = temp.dayOfYear;
+        }
+    }
+
+    // constant that refers to the ISO standard
+    hooks.ISO_8601 = function () {};
+
+    // constant that refers to the RFC 2822 form
+    hooks.RFC_2822 = function () {};
+
+    // date from string and format string
+    function configFromStringAndFormat(config) {
+        // TODO: Move this to another part of the creation flow to prevent circular deps
+        if (config._f === hooks.ISO_8601) {
+            configFromISO(config);
+            return;
+        }
+        if (config._f === hooks.RFC_2822) {
+            configFromRFC2822(config);
+            return;
+        }
+        config._a = [];
+        getParsingFlags(config).empty = true;
+
+        // This array is used to make a Date, either with `new Date` or `Date.UTC`
+        var string = '' + config._i,
+            i,
+            parsedInput,
+            tokens,
+            token,
+            skipped,
+            stringLength = string.length,
+            totalParsedInputLength = 0,
+            era;
+
+        tokens =
+            expandFormat(config._f, config._locale).match(formattingTokens) || [];
+
+        for (i = 0; i < tokens.length; i++) {
+            token = tokens[i];
+            parsedInput = (string.match(getParseRegexForToken(token, config)) ||
+                [])[0];
+            if (parsedInput) {
+                skipped = string.substr(0, string.indexOf(parsedInput));
+                if (skipped.length > 0) {
+                    getParsingFlags(config).unusedInput.push(skipped);
+                }
+                string = string.slice(
+                    string.indexOf(parsedInput) + parsedInput.length
+                );
+                totalParsedInputLength += parsedInput.length;
+            }
+            // don't parse if it's not a known token
+            if (formatTokenFunctions[token]) {
+                if (parsedInput) {
+                    getParsingFlags(config).empty = false;
+                } else {
+                    getParsingFlags(config).unusedTokens.push(token);
+                }
+                addTimeToArrayFromToken(token, parsedInput, config);
+            } else if (config._strict && !parsedInput) {
+                getParsingFlags(config).unusedTokens.push(token);
+            }
+        }
+
+        // add remaining unparsed input length to the string
+        getParsingFlags(config).charsLeftOver =
+            stringLength - totalParsedInputLength;
+        if (string.length > 0) {
+            getParsingFlags(config).unusedInput.push(string);
+        }
+
+        // clear _12h flag if hour is <= 12
+        if (
+            config._a[HOUR] <= 12 &&
+            getParsingFlags(config).bigHour === true &&
+            config._a[HOUR] > 0
+        ) {
+            getParsingFlags(config).bigHour = undefined;
+        }
+
+        getParsingFlags(config).parsedDateParts = config._a.slice(0);
+        getParsingFlags(config).meridiem = config._meridiem;
+        // handle meridiem
+        config._a[HOUR] = meridiemFixWrap(
+            config._locale,
+            config._a[HOUR],
+            config._meridiem
+        );
+
+        // handle era
+        era = getParsingFlags(config).era;
+        if (era !== null) {
+            config._a[YEAR] = config._locale.erasConvertYear(era, config._a[YEAR]);
+        }
+
+        configFromArray(config);
+        checkOverflow(config);
+    }
+
+    function meridiemFixWrap(locale, hour, meridiem) {
+        var isPm;
+
+        if (meridiem == null) {
+            // nothing to do
+            return hour;
+        }
+        if (locale.meridiemHour != null) {
+            return locale.meridiemHour(hour, meridiem);
+        } else if (locale.isPM != null) {
+            // Fallback
+            isPm = locale.isPM(meridiem);
+            if (isPm && hour < 12) {
+                hour += 12;
+            }
+            if (!isPm && hour === 12) {
+                hour = 0;
+            }
+            return hour;
+        } else {
+            // this is not supposed to happen
+            return hour;
+        }
+    }
+
+    // date from string and array of format strings
+    function configFromStringAndArray(config) {
+        var tempConfig,
+            bestMoment,
+            scoreToBeat,
+            i,
+            currentScore,
+            validFormatFound,
+            bestFormatIsValid = false;
+
+        if (config._f.length === 0) {
+            getParsingFlags(config).invalidFormat = true;
+            config._d = new Date(NaN);
+            return;
+        }
+
+        for (i = 0; i < config._f.length; i++) {
+            currentScore = 0;
+            validFormatFound = false;
+            tempConfig = copyConfig({}, config);
+            if (config._useUTC != null) {
+                tempConfig._useUTC = config._useUTC;
+            }
+            tempConfig._f = config._f[i];
+            configFromStringAndFormat(tempConfig);
+
+            if (isValid(tempConfig)) {
+                validFormatFound = true;
+            }
+
+            // if there is any input that was not parsed add a penalty for that format
+            currentScore += getParsingFlags(tempConfig).charsLeftOver;
+
+            //or tokens
+            currentScore += getParsingFlags(tempConfig).unusedTokens.length * 10;
+
+            getParsingFlags(tempConfig).score = currentScore;
+
+            if (!bestFormatIsValid) {
+                if (
+                    scoreToBeat == null ||
+                    currentScore < scoreToBeat ||
+                    validFormatFound
+                ) {
+                    scoreToBeat = currentScore;
+                    bestMoment = tempConfig;
+                    if (validFormatFound) {
+                        bestFormatIsValid = true;
+                    }
+                }
+            } else {
+                if (currentScore < scoreToBeat) {
+                    scoreToBeat = currentScore;
+                    bestMoment = tempConfig;
+                }
+            }
+        }
+
+        extend(config, bestMoment || tempConfig);
+    }
+
+    function configFromObject(config) {
+        if (config._d) {
+            return;
+        }
+
+        var i = normalizeObjectUnits(config._i),
+            dayOrDate = i.day === undefined ? i.date : i.day;
+        config._a = map(
+            [i.year, i.month, dayOrDate, i.hour, i.minute, i.second, i.millisecond],
+            function (obj) {
+                return obj && parseInt(obj, 10);
+            }
+        );
+
+        configFromArray(config);
+    }
+
+    function createFromConfig(config) {
+        var res = new Moment(checkOverflow(prepareConfig(config)));
+        if (res._nextDay) {
+            // Adding is smart enough around DST
+            res.add(1, 'd');
+            res._nextDay = undefined;
+        }
+
+        return res;
+    }
+
+    function prepareConfig(config) {
+        var input = config._i,
+            format = config._f;
+
+        config._locale = config._locale || getLocale(config._l);
+
+        if (input === null || (format === undefined && input === '')) {
+            return createInvalid({ nullInput: true });
+        }
+
+        if (typeof input === 'string') {
+            config._i = input = config._locale.preparse(input);
+        }
+
+        if (isMoment(input)) {
+            return new Moment(checkOverflow(input));
+        } else if (isDate(input)) {
+            config._d = input;
+        } else if (isArray(format)) {
+            configFromStringAndArray(config);
+        } else if (format) {
+            configFromStringAndFormat(config);
+        } else {
+            configFromInput(config);
+        }
+
+        if (!isValid(config)) {
+            config._d = null;
+        }
+
+        return config;
+    }
+
+    function configFromInput(config) {
+        var input = config._i;
+        if (isUndefined(input)) {
+            config._d = new Date(hooks.now());
+        } else if (isDate(input)) {
+            config._d = new Date(input.valueOf());
+        } else if (typeof input === 'string') {
+            configFromString(config);
+        } else if (isArray(input)) {
+            config._a = map(input.slice(0), function (obj) {
+                return parseInt(obj, 10);
+            });
+            configFromArray(config);
+        } else if (isObject(input)) {
+            configFromObject(config);
+        } else if (isNumber(input)) {
+            // from milliseconds
+            config._d = new Date(input);
+        } else {
+            hooks.createFromInputFallback(config);
+        }
+    }
+
+    function createLocalOrUTC(input, format, locale, strict, isUTC) {
+        var c = {};
+
+        if (format === true || format === false) {
+            strict = format;
+            format = undefined;
+        }
+
+        if (locale === true || locale === false) {
+            strict = locale;
+            locale = undefined;
+        }
+
+        if (
+            (isObject(input) && isObjectEmpty(input)) ||
+            (isArray(input) && input.length === 0)
+        ) {
+            input = undefined;
+        }
+        // object construction must be done this way.
+        // https://github.com/moment/moment/issues/1423
+        c._isAMomentObject = true;
+        c._useUTC = c._isUTC = isUTC;
+        c._l = locale;
+        c._i = input;
+        c._f = format;
+        c._strict = strict;
+
+        return createFromConfig(c);
+    }
+
+    function createLocal(input, format, locale, strict) {
+        return createLocalOrUTC(input, format, locale, strict, false);
+    }
+
+    var prototypeMin = deprecate(
+            'moment().min is deprecated, use moment.max instead. http://momentjs.com/guides/#/warnings/min-max/',
+            function () {
+                var other = createLocal.apply(null, arguments);
+                if (this.isValid() && other.isValid()) {
+                    return other < this ? this : other;
+                } else {
+                    return createInvalid();
+                }
+            }
+        ),
+        prototypeMax = deprecate(
+            'moment().max is deprecated, use moment.min instead. http://momentjs.com/guides/#/warnings/min-max/',
+            function () {
+                var other = createLocal.apply(null, arguments);
+                if (this.isValid() && other.isValid()) {
+                    return other > this ? this : other;
+                } else {
+                    return createInvalid();
+                }
+            }
+        );
+
+    // Pick a moment m from moments so that m[fn](other) is true for all
+    // other. This relies on the function fn to be transitive.
+    //
+    // moments should either be an array of moment objects or an array, whose
+    // first element is an array of moment objects.
+    function pickBy(fn, moments) {
+        var res, i;
+        if (moments.length === 1 && isArray(moments[0])) {
+            moments = moments[0];
+        }
+        if (!moments.length) {
+            return createLocal();
+        }
+        res = moments[0];
+        for (i = 1; i < moments.length; ++i) {
+            if (!moments[i].isValid() || moments[i][fn](res)) {
+                res = moments[i];
+            }
+        }
+        return res;
+    }
+
+    // TODO: Use [].sort instead?
+    function min() {
+        var args = [].slice.call(arguments, 0);
+
+        return pickBy('isBefore', args);
+    }
+
+    function max() {
+        var args = [].slice.call(arguments, 0);
+
+        return pickBy('isAfter', args);
+    }
+
+    var now = function () {
+        return Date.now ? Date.now() : +new Date();
+    };
+
+    var ordering = [
+        'year',
+        'quarter',
+        'month',
+        'week',
+        'day',
+        'hour',
+        'minute',
+        'second',
+        'millisecond',
+    ];
+
+    function isDurationValid(m) {
+        var key,
+            unitHasDecimal = false,
+            i;
+        for (key in m) {
+            if (
+                hasOwnProp(m, key) &&
+                !(
+                    indexOf.call(ordering, key) !== -1 &&
+                    (m[key] == null || !isNaN(m[key]))
+                )
+            ) {
+                return false;
+            }
+        }
+
+        for (i = 0; i < ordering.length; ++i) {
+            if (m[ordering[i]]) {
+                if (unitHasDecimal) {
+                    return false; // only allow non-integers for smallest unit
+                }
+                if (parseFloat(m[ordering[i]]) !== toInt(m[ordering[i]])) {
+                    unitHasDecimal = true;
+                }
+            }
+        }
+
+        return true;
+    }
+
+    function isValid$1() {
+        return this._isValid;
+    }
+
+    function createInvalid$1() {
+        return createDuration(NaN);
+    }
+
+    function Duration(duration) {
+        var normalizedInput = normalizeObjectUnits(duration),
+            years = normalizedInput.year || 0,
+            quarters = normalizedInput.quarter || 0,
+            months = normalizedInput.month || 0,
+            weeks = normalizedInput.week || normalizedInput.isoWeek || 0,
+            days = normalizedInput.day || 0,
+            hours = normalizedInput.hour || 0,
+            minutes = normalizedInput.minute || 0,
+            seconds = normalizedInput.second || 0,
+            milliseconds = normalizedInput.millisecond || 0;
+
+        this._isValid = isDurationValid(normalizedInput);
+
+        // representation for dateAddRemove
+        this._milliseconds =
+            +milliseconds +
+            seconds * 1e3 + // 1000
+            minutes * 6e4 + // 1000 * 60
+            hours * 1000 * 60 * 60; //using 1000 * 60 * 60 instead of 36e5 to avoid floating point rounding errors https://github.com/moment/moment/issues/2978
+        // Because of dateAddRemove treats 24 hours as different from a
+        // day when working around DST, we need to store them separately
+        this._days = +days + weeks * 7;
+        // It is impossible to translate months into days without knowing
+        // which months you are are talking about, so we have to store
+        // it separately.
+        this._months = +months + quarters * 3 + years * 12;
+
+        this._data = {};
+
+        this._locale = getLocale();
+
+        this._bubble();
+    }
+
+    function isDuration(obj) {
+        return obj instanceof Duration;
+    }
+
+    function absRound(number) {
+        if (number < 0) {
+            return Math.round(-1 * number) * -1;
+        } else {
+            return Math.round(number);
+        }
+    }
+
+    // compare two arrays, return the number of differences
+    function compareArrays(array1, array2, dontConvert) {
+        var len = Math.min(array1.length, array2.length),
+            lengthDiff = Math.abs(array1.length - array2.length),
+            diffs = 0,
+            i;
+        for (i = 0; i < len; i++) {
+            if (
+                (dontConvert && array1[i] !== array2[i]) ||
+                (!dontConvert && toInt(array1[i]) !== toInt(array2[i]))
+            ) {
+                diffs++;
+            }
+        }
+        return diffs + lengthDiff;
+    }
+
+    // FORMATTING
+
+    function offset(token, separator) {
+        addFormatToken(token, 0, 0, function () {
+            var offset = this.utcOffset(),
+                sign = '+';
+            if (offset < 0) {
+                offset = -offset;
+                sign = '-';
+            }
+            return (
+                sign +
+                zeroFill(~~(offset / 60), 2) +
+                separator +
+                zeroFill(~~offset % 60, 2)
+            );
+        });
+    }
+
+    offset('Z', ':');
+    offset('ZZ', '');
+
+    // PARSING
+
+    addRegexToken('Z', matchShortOffset);
+    addRegexToken('ZZ', matchShortOffset);
+    addParseToken(['Z', 'ZZ'], function (input, array, config) {
+        config._useUTC = true;
+        config._tzm = offsetFromString(matchShortOffset, input);
+    });
+
+    // HELPERS
+
+    // timezone chunker
+    // '+10:00' > ['10',  '00']
+    // '-1530'  > ['-15', '30']
+    var chunkOffset = /([\+\-]|\d\d)/gi;
+
+    function offsetFromString(matcher, string) {
+        var matches = (string || '').match(matcher),
+            chunk,
+            parts,
+            minutes;
+
+        if (matches === null) {
+            return null;
+        }
+
+        chunk = matches[matches.length - 1] || [];
+        parts = (chunk + '').match(chunkOffset) || ['-', 0, 0];
+        minutes = +(parts[1] * 60) + toInt(parts[2]);
+
+        return minutes === 0 ? 0 : parts[0] === '+' ? minutes : -minutes;
+    }
+
+    // Return a moment from input, that is local/utc/zone equivalent to model.
+    function cloneWithOffset(input, model) {
+        var res, diff;
+        if (model._isUTC) {
+            res = model.clone();
+            diff =
+                (isMoment(input) || isDate(input)
+                    ? input.valueOf()
+                    : createLocal(input).valueOf()) - res.valueOf();
+            // Use low-level api, because this fn is low-level api.
+            res._d.setTime(res._d.valueOf() + diff);
+            hooks.updateOffset(res, false);
+            return res;
+        } else {
+            return createLocal(input).local();
+        }
+    }
+
+    function getDateOffset(m) {
+        // On Firefox.24 Date#getTimezoneOffset returns a floating point.
+        // https://github.com/moment/moment/pull/1871
+        return -Math.round(m._d.getTimezoneOffset());
+    }
+
+    // HOOKS
+
+    // This function will be called whenever a moment is mutated.
+    // It is intended to keep the offset in sync with the timezone.
+    hooks.updateOffset = function () {};
+
+    // MOMENTS
+
+    // keepLocalTime = true means only change the timezone, without
+    // affecting the local hour. So 5:31:26 +0300 --[utcOffset(2, true)]-->
+    // 5:31:26 +0200 It is possible that 5:31:26 doesn't exist with offset
+    // +0200, so we adjust the time as needed, to be valid.
+    //
+    // Keeping the time actually adds/subtracts (one hour)
+    // from the actual represented time. That is why we call updateOffset
+    // a second time. In case it wants us to change the offset again
+    // _changeInProgress == true case, then we have to adjust, because
+    // there is no such time in the given timezone.
+    function getSetOffset(input, keepLocalTime, keepMinutes) {
+        var offset = this._offset || 0,
+            localAdjust;
+        if (!this.isValid()) {
+            return input != null ? this : NaN;
+        }
+        if (input != null) {
+            if (typeof input === 'string') {
+                input = offsetFromString(matchShortOffset, input);
+                if (input === null) {
+                    return this;
+                }
+            } else if (Math.abs(input) < 16 && !keepMinutes) {
+                input = input * 60;
+            }
+            if (!this._isUTC && keepLocalTime) {
+                localAdjust = getDateOffset(this);
+            }
+            this._offset = input;
+            this._isUTC = true;
+            if (localAdjust != null) {
+                this.add(localAdjust, 'm');
+            }
+            if (offset !== input) {
+                if (!keepLocalTime || this._changeInProgress) {
+                    addSubtract(
+                        this,
+                        createDuration(input - offset, 'm'),
+                        1,
+                        false
+                    );
+                } else if (!this._changeInProgress) {
+                    this._changeInProgress = true;
+                    hooks.updateOffset(this, true);
+                    this._changeInProgress = null;
+                }
+            }
+            return this;
+        } else {
+            return this._isUTC ? offset : getDateOffset(this);
+        }
+    }
+
+    function getSetZone(input, keepLocalTime) {
+        if (input != null) {
+            if (typeof input !== 'string') {
+                input = -input;
+            }
+
+            this.utcOffset(input, keepLocalTime);
+
+            return this;
+        } else {
+            return -this.utcOffset();
+        }
+    }
+
+    function setOffsetToUTC(keepLocalTime) {
+        return this.utcOffset(0, keepLocalTime);
+    }
+
+    function setOffsetToLocal(keepLocalTime) {
+        if (this._isUTC) {
+            this.utcOffset(0, keepLocalTime);
+            this._isUTC = false;
+
+            if (keepLocalTime) {
+                this.subtract(getDateOffset(this), 'm');
+            }
+        }
+        return this;
+    }
+
+    function setOffsetToParsedOffset() {
+        if (this._tzm != null) {
+            this.utcOffset(this._tzm, false, true);
+        } else if (typeof this._i === 'string') {
+            var tZone = offsetFromString(matchOffset, this._i);
+            if (tZone != null) {
+                this.utcOffset(tZone);
+            } else {
+                this.utcOffset(0, true);
+            }
+        }
+        return this;
+    }
+
+    function hasAlignedHourOffset(input) {
+        if (!this.isValid()) {
+            return false;
+        }
+        input = input ? createLocal(input).utcOffset() : 0;
+
+        return (this.utcOffset() - input) % 60 === 0;
+    }
+
+    function isDaylightSavingTime() {
+        return (
+            this.utcOffset() > this.clone().month(0).utcOffset() ||
+            this.utcOffset() > this.clone().month(5).utcOffset()
+        );
+    }
+
+    function isDaylightSavingTimeShifted() {
+        if (!isUndefined(this._isDSTShifted)) {
+            return this._isDSTShifted;
+        }
+
+        var c = {},
+            other;
+
+        copyConfig(c, this);
+        c = prepareConfig(c);
+
+        if (c._a) {
+            other = c._isUTC ? createUTC(c._a) : createLocal(c._a);
+            this._isDSTShifted =
+                this.isValid() && compareArrays(c._a, other.toArray()) > 0;
+        } else {
+            this._isDSTShifted = false;
+        }
+
+        return this._isDSTShifted;
+    }
+
+    function isLocal() {
+        return this.isValid() ? !this._isUTC : false;
+    }
+
+    function isUtcOffset() {
+        return this.isValid() ? this._isUTC : false;
+    }
+
+    function isUtc() {
+        return this.isValid() ? this._isUTC && this._offset === 0 : false;
+    }
+
+    // ASP.NET json date format regex
+    var aspNetRegex = /^(-|\+)?(?:(\d*)[. ])?(\d+):(\d+)(?::(\d+)(\.\d*)?)?$/,
+        // from http://docs.closure-library.googlecode.com/git/closure_goog_date_date.js.source.html
+        // somewhat more in line with 4.4.3.2 2004 spec, but allows decimal anywhere
+        // and further modified to allow for strings containing both week and day
+        isoRegex = /^(-|\+)?P(?:([-+]?[0-9,.]*)Y)?(?:([-+]?[0-9,.]*)M)?(?:([-+]?[0-9,.]*)W)?(?:([-+]?[0-9,.]*)D)?(?:T(?:([-+]?[0-9,.]*)H)?(?:([-+]?[0-9,.]*)M)?(?:([-+]?[0-9,.]*)S)?)?$/;
+
+    function createDuration(input, key) {
+        var duration = input,
+            // matching against regexp is expensive, do it on demand
+            match = null,
+            sign,
+            ret,
+            diffRes;
+
+        if (isDuration(input)) {
+            duration = {
+                ms: input._milliseconds,
+                d: input._days,
+                M: input._months,
+            };
+        } else if (isNumber(input) || !isNaN(+input)) {
+            duration = {};
+            if (key) {
+                duration[key] = +input;
+            } else {
+                duration.milliseconds = +input;
+            }
+        } else if ((match = aspNetRegex.exec(input))) {
+            sign = match[1] === '-' ? -1 : 1;
+            duration = {
+                y: 0,
+                d: toInt(match[DATE]) * sign,
+                h: toInt(match[HOUR]) * sign,
+                m: toInt(match[MINUTE]) * sign,
+                s: toInt(match[SECOND]) * sign,
+                ms: toInt(absRound(match[MILLISECOND] * 1000)) * sign, // the millisecond decimal point is included in the match
+            };
+        } else if ((match = isoRegex.exec(input))) {
+            sign = match[1] === '-' ? -1 : 1;
+            duration = {
+                y: parseIso(match[2], sign),
+                M: parseIso(match[3], sign),
+                w: parseIso(match[4], sign),
+                d: parseIso(match[5], sign),
+                h: parseIso(match[6], sign),
+                m: parseIso(match[7], sign),
+                s: parseIso(match[8], sign),
+            };
+        } else if (duration == null) {
+            // checks for null or undefined
+            duration = {};
+        } else if (
+            typeof duration === 'object' &&
+            ('from' in duration || 'to' in duration)
+        ) {
+            diffRes = momentsDifference(
+                createLocal(duration.from),
+                createLocal(duration.to)
+            );
+
+            duration = {};
+            duration.ms = diffRes.milliseconds;
+            duration.M = diffRes.months;
+        }
+
+        ret = new Duration(duration);
+
+        if (isDuration(input) && hasOwnProp(input, '_locale')) {
+            ret._locale = input._locale;
+        }
+
+        if (isDuration(input) && hasOwnProp(input, '_isValid')) {
+            ret._isValid = input._isValid;
+        }
+
+        return ret;
+    }
+
+    createDuration.fn = Duration.prototype;
+    createDuration.invalid = createInvalid$1;
+
+    function parseIso(inp, sign) {
+        // We'd normally use ~~inp for this, but unfortunately it also
+        // converts floats to ints.
+        // inp may be undefined, so careful calling replace on it.
+        var res = inp && parseFloat(inp.replace(',', '.'));
+        // apply sign while we're at it
+        return (isNaN(res) ? 0 : res) * sign;
+    }
+
+    function positiveMomentsDifference(base, other) {
+        var res = {};
+
+        res.months =
+            other.month() - base.month() + (other.year() - base.year()) * 12;
+        if (base.clone().add(res.months, 'M').isAfter(other)) {
+            --res.months;
+        }
+
+        res.milliseconds = +other - +base.clone().add(res.months, 'M');
+
+        return res;
+    }
+
+    function momentsDifference(base, other) {
+        var res;
+        if (!(base.isValid() && other.isValid())) {
+            return { milliseconds: 0, months: 0 };
+        }
+
+        other = cloneWithOffset(other, base);
+        if (base.isBefore(other)) {
+            res = positiveMomentsDifference(base, other);
+        } else {
+            res = positiveMomentsDifference(other, base);
+            res.milliseconds = -res.milliseconds;
+            res.months = -res.months;
+        }
+
+        return res;
+    }
+
+    // TODO: remove 'name' arg after deprecation is removed
+    function createAdder(direction, name) {
+        return function (val, period) {
+            var dur, tmp;
+            //invert the arguments, but complain about it
+            if (period !== null && !isNaN(+period)) {
+                deprecateSimple(
+                    name,
+                    'moment().' +
+                        name +
+                        '(period, number) is deprecated. Please use moment().' +
+                        name +
+                        '(number, period). ' +
+                        'See http://momentjs.com/guides/#/warnings/add-inverted-param/ for more info.'
+                );
+                tmp = val;
+                val = period;
+                period = tmp;
+            }
+
+            dur = createDuration(val, period);
+            addSubtract(this, dur, direction);
+            return this;
+        };
+    }
+
+    function addSubtract(mom, duration, isAdding, updateOffset) {
+        var milliseconds = duration._milliseconds,
+            days = absRound(duration._days),
+            months = absRound(duration._months);
+
+        if (!mom.isValid()) {
+            // No op
+            return;
+        }
+
+        updateOffset = updateOffset == null ? true : updateOffset;
+
+        if (months) {
+            setMonth(mom, get(mom, 'Month') + months * isAdding);
+        }
+        if (days) {
+            set$1(mom, 'Date', get(mom, 'Date') + days * isAdding);
+        }
+        if (milliseconds) {
+            mom._d.setTime(mom._d.valueOf() + milliseconds * isAdding);
+        }
+        if (updateOffset) {
+            hooks.updateOffset(mom, days || months);
+        }
+    }
+
+    var add = createAdder(1, 'add'),
+        subtract = createAdder(-1, 'subtract');
+
+    function isString(input) {
+        return typeof input === 'string' || input instanceof String;
+    }
+
+    // type MomentInput = Moment | Date | string | number | (number | string)[] | MomentInputObject | void; // null | undefined
+    function isMomentInput(input) {
+        return (
+            isMoment(input) ||
+            isDate(input) ||
+            isString(input) ||
+            isNumber(input) ||
+            isNumberOrStringArray(input) ||
+            isMomentInputObject(input) ||
+            input === null ||
+            input === undefined
+        );
+    }
+
+    function isMomentInputObject(input) {
+        var objectTest = isObject(input) && !isObjectEmpty(input),
+            propertyTest = false,
+            properties = [
+                'years',
+                'year',
+                'y',
+                'months',
+                'month',
+                'M',
+                'days',
+                'day',
+                'd',
+                'dates',
+                'date',
+                'D',
+                'hours',
+                'hour',
+                'h',
+                'minutes',
+                'minute',
+                'm',
+                'seconds',
+                'second',
+                's',
+                'milliseconds',
+                'millisecond',
+                'ms',
+            ],
+            i,
+            property;
+
+        for (i = 0; i < properties.length; i += 1) {
+            property = properties[i];
+            propertyTest = propertyTest || hasOwnProp(input, property);
+        }
+
+        return objectTest && propertyTest;
+    }
+
+    function isNumberOrStringArray(input) {
+        var arrayTest = isArray(input),
+            dataTypeTest = false;
+        if (arrayTest) {
+            dataTypeTest =
+                input.filter(function (item) {
+                    return !isNumber(item) && isString(input);
+                }).length === 0;
+        }
+        return arrayTest && dataTypeTest;
+    }
+
+    function isCalendarSpec(input) {
+        var objectTest = isObject(input) && !isObjectEmpty(input),
+            propertyTest = false,
+            properties = [
+                'sameDay',
+                'nextDay',
+                'lastDay',
+                'nextWeek',
+                'lastWeek',
+                'sameElse',
+            ],
+            i,
+            property;
+
+        for (i = 0; i < properties.length; i += 1) {
+            property = properties[i];
+            propertyTest = propertyTest || hasOwnProp(input, property);
+        }
+
+        return objectTest && propertyTest;
+    }
+
+    function getCalendarFormat(myMoment, now) {
+        var diff = myMoment.diff(now, 'days', true);
+        return diff < -6
+            ? 'sameElse'
+            : diff < -1
+            ? 'lastWeek'
+            : diff < 0
+            ? 'lastDay'
+            : diff < 1
+            ? 'sameDay'
+            : diff < 2
+            ? 'nextDay'
+            : diff < 7
+            ? 'nextWeek'
+            : 'sameElse';
+    }
+
+    function calendar$1(time, formats) {
+        // Support for single parameter, formats only overload to the calendar function
+        if (arguments.length === 1) {
+            if (!arguments[0]) {
+                time = undefined;
+                formats = undefined;
+            } else if (isMomentInput(arguments[0])) {
+                time = arguments[0];
+                formats = undefined;
+            } else if (isCalendarSpec(arguments[0])) {
+                formats = arguments[0];
+                time = undefined;
+            }
+        }
+        // We want to compare the start of today, vs this.
+        // Getting start-of-today depends on whether we're local/utc/offset or not.
+        var now = time || createLocal(),
+            sod = cloneWithOffset(now, this).startOf('day'),
+            format = hooks.calendarFormat(this, sod) || 'sameElse',
+            output =
+                formats &&
+                (isFunction(formats[format])
+                    ? formats[format].call(this, now)
+                    : formats[format]);
+
+        return this.format(
+            output || this.localeData().calendar(format, this, createLocal(now))
+        );
+    }
+
+    function clone() {
+        return new Moment(this);
+    }
+
+    function isAfter(input, units) {
+        var localInput = isMoment(input) ? input : createLocal(input);
+        if (!(this.isValid() && localInput.isValid())) {
+            return false;
+        }
+        units = normalizeUnits(units) || 'millisecond';
+        if (units === 'millisecond') {
+            return this.valueOf() > localInput.valueOf();
+        } else {
+            return localInput.valueOf() < this.clone().startOf(units).valueOf();
+        }
+    }
+
+    function isBefore(input, units) {
+        var localInput = isMoment(input) ? input : createLocal(input);
+        if (!(this.isValid() && localInput.isValid())) {
+            return false;
+        }
+        units = normalizeUnits(units) || 'millisecond';
+        if (units === 'millisecond') {
+            return this.valueOf() < localInput.valueOf();
+        } else {
+            return this.clone().endOf(units).valueOf() < localInput.valueOf();
+        }
+    }
+
+    function isBetween(from, to, units, inclusivity) {
+        var localFrom = isMoment(from) ? from : createLocal(from),
+            localTo = isMoment(to) ? to : createLocal(to);
+        if (!(this.isValid() && localFrom.isValid() && localTo.isValid())) {
+            return false;
+        }
+        inclusivity = inclusivity || '()';
+        return (
+            (inclusivity[0] === '('
+                ? this.isAfter(localFrom, units)
+                : !this.isBefore(localFrom, units)) &&
+            (inclusivity[1] === ')'
+                ? this.isBefore(localTo, units)
+                : !this.isAfter(localTo, units))
+        );
+    }
+
+    function isSame(input, units) {
+        var localInput = isMoment(input) ? input : createLocal(input),
+            inputMs;
+        if (!(this.isValid() && localInput.isValid())) {
+            return false;
+        }
+        units = normalizeUnits(units) || 'millisecond';
+        if (units === 'millisecond') {
+            return this.valueOf() === localInput.valueOf();
+        } else {
+            inputMs = localInput.valueOf();
+            return (
+                this.clone().startOf(units).valueOf() <= inputMs &&
+                inputMs <= this.clone().endOf(units).valueOf()
+            );
+        }
+    }
+
+    function isSameOrAfter(input, units) {
+        return this.isSame(input, units) || this.isAfter(input, units);
+    }
+
+    function isSameOrBefore(input, units) {
+        return this.isSame(input, units) || this.isBefore(input, units);
+    }
+
+    function diff(input, units, asFloat) {
+        var that, zoneDelta, output;
+
+        if (!this.isValid()) {
+            return NaN;
+        }
+
+        that = cloneWithOffset(input, this);
+
+        if (!that.isValid()) {
+            return NaN;
+        }
+
+        zoneDelta = (that.utcOffset() - this.utcOffset()) * 6e4;
+
+        units = normalizeUnits(units);
+
+        switch (units) {
+            case 'year':
+                output = monthDiff(this, that) / 12;
+                break;
+            case 'month':
+                output = monthDiff(this, that);
+                break;
+            case 'quarter':
+                output = monthDiff(this, that) / 3;
+                break;
+            case 'second':
+                output = (this - that) / 1e3;
+                break; // 1000
+            case 'minute':
+                output = (this - that) / 6e4;
+                break; // 1000 * 60
+            case 'hour':
+                output = (this - that) / 36e5;
+                break; // 1000 * 60 * 60
+            case 'day':
+                output = (this - that - zoneDelta) / 864e5;
+                break; // 1000 * 60 * 60 * 24, negate dst
+            case 'week':
+                output = (this - that - zoneDelta) / 6048e5;
+                break; // 1000 * 60 * 60 * 24 * 7, negate dst
+            default:
+                output = this - that;
+        }
+
+        return asFloat ? output : absFloor(output);
+    }
+
+    function monthDiff(a, b) {
+        if (a.date() < b.date()) {
+            // end-of-month calculations work correct when the start month has more
+            // days than the end month.
+            return -monthDiff(b, a);
+        }
+        // difference in months
+        var wholeMonthDiff = (b.year() - a.year()) * 12 + (b.month() - a.month()),
+            // b is in (anchor - 1 month, anchor + 1 month)
+            anchor = a.clone().add(wholeMonthDiff, 'months'),
+            anchor2,
+            adjust;
+
+        if (b - anchor < 0) {
+            anchor2 = a.clone().add(wholeMonthDiff - 1, 'months');
+            // linear across the month
+            adjust = (b - anchor) / (anchor - anchor2);
+        } else {
+            anchor2 = a.clone().add(wholeMonthDiff + 1, 'months');
+            // linear across the month
+            adjust = (b - anchor) / (anchor2 - anchor);
+        }
+
+        //check for negative zero, return zero if negative zero
+        return -(wholeMonthDiff + adjust) || 0;
+    }
+
+    hooks.defaultFormat = 'YYYY-MM-DDTHH:mm:ssZ';
+    hooks.defaultFormatUtc = 'YYYY-MM-DDTHH:mm:ss[Z]';
+
+    function toString() {
+        return this.clone().locale('en').format('ddd MMM DD YYYY HH:mm:ss [GMT]ZZ');
+    }
+
+    function toISOString(keepOffset) {
+        if (!this.isValid()) {
+            return null;
+        }
+        var utc = keepOffset !== true,
+            m = utc ? this.clone().utc() : this;
+        if (m.year() < 0 || m.year() > 9999) {
+            return formatMoment(
+                m,
+                utc
+                    ? 'YYYYYY-MM-DD[T]HH:mm:ss.SSS[Z]'
+                    : 'YYYYYY-MM-DD[T]HH:mm:ss.SSSZ'
+            );
+        }
+        if (isFunction(Date.prototype.toISOString)) {
+            // native implementation is ~50x faster, use it when we can
+            if (utc) {
+                return this.toDate().toISOString();
+            } else {
+                return new Date(this.valueOf() + this.utcOffset() * 60 * 1000)
+                    .toISOString()
+                    .replace('Z', formatMoment(m, 'Z'));
+            }
+        }
+        return formatMoment(
+            m,
+            utc ? 'YYYY-MM-DD[T]HH:mm:ss.SSS[Z]' : 'YYYY-MM-DD[T]HH:mm:ss.SSSZ'
+        );
+    }
+
+    /**
+     * Return a human readable representation of a moment that can
+     * also be evaluated to get a new moment which is the same
+     *
+     * @link https://nodejs.org/dist/latest/docs/api/util.html#util_custom_inspect_function_on_objects
+     */
+    function inspect() {
+        if (!this.isValid()) {
+            return 'moment.invalid(/* ' + this._i + ' */)';
+        }
+        var func = 'moment',
+            zone = '',
+            prefix,
+            year,
+            datetime,
+            suffix;
+        if (!this.isLocal()) {
+            func = this.utcOffset() === 0 ? 'moment.utc' : 'moment.parseZone';
+            zone = 'Z';
+        }
+        prefix = '[' + func + '("]';
+        year = 0 <= this.year() && this.year() <= 9999 ? 'YYYY' : 'YYYYYY';
+        datetime = '-MM-DD[T]HH:mm:ss.SSS';
+        suffix = zone + '[")]';
+
+        return this.format(prefix + year + datetime + suffix);
+    }
+
+    function format(inputString) {
+        if (!inputString) {
+            inputString = this.isUtc()
+                ? hooks.defaultFormatUtc
+                : hooks.defaultFormat;
+        }
+        var output = formatMoment(this, inputString);
+        return this.localeData().postformat(output);
+    }
+
+    function from(time, withoutSuffix) {
+        if (
+            this.isValid() &&
+            ((isMoment(time) && time.isValid()) || createLocal(time).isValid())
+        ) {
+            return createDuration({ to: this, from: time })
+                .locale(this.locale())
+                .humanize(!withoutSuffix);
+        } else {
+            return this.localeData().invalidDate();
+        }
+    }
+
+    function fromNow(withoutSuffix) {
+        return this.from(createLocal(), withoutSuffix);
+    }
+
+    function to(time, withoutSuffix) {
+        if (
+            this.isValid() &&
+            ((isMoment(time) && time.isValid()) || createLocal(time).isValid())
+        ) {
+            return createDuration({ from: this, to: time })
+                .locale(this.locale())
+                .humanize(!withoutSuffix);
+        } else {
+            return this.localeData().invalidDate();
+        }
+    }
+
+    function toNow(withoutSuffix) {
+        return this.to(createLocal(), withoutSuffix);
+    }
+
+    // If passed a locale key, it will set the locale for this
+    // instance.  Otherwise, it will return the locale configuration
+    // variables for this instance.
+    function locale(key) {
+        var newLocaleData;
+
+        if (key === undefined) {
+            return this._locale._abbr;
+        } else {
+            newLocaleData = getLocale(key);
+            if (newLocaleData != null) {
+                this._locale = newLocaleData;
+            }
+            return this;
+        }
+    }
+
+    var lang = deprecate(
+        'moment().lang() is deprecated. Instead, use moment().localeData() to get the language configuration. Use moment().locale() to change languages.',
+        function (key) {
+            if (key === undefined) {
+                return this.localeData();
+            } else {
+                return this.locale(key);
+            }
+        }
+    );
+
+    function localeData() {
+        return this._locale;
+    }
+
+    var MS_PER_SECOND = 1000,
+        MS_PER_MINUTE = 60 * MS_PER_SECOND,
+        MS_PER_HOUR = 60 * MS_PER_MINUTE,
+        MS_PER_400_YEARS = (365 * 400 + 97) * 24 * MS_PER_HOUR;
+
+    // actual modulo - handles negative numbers (for dates before 1970):
+    function mod$1(dividend, divisor) {
+        return ((dividend % divisor) + divisor) % divisor;
+    }
+
+    function localStartOfDate(y, m, d) {
+        // the date constructor remaps years 0-99 to 1900-1999
+        if (y < 100 && y >= 0) {
+            // preserve leap years using a full 400 year cycle, then reset
+            return new Date(y + 400, m, d) - MS_PER_400_YEARS;
+        } else {
+            return new Date(y, m, d).valueOf();
+        }
+    }
+
+    function utcStartOfDate(y, m, d) {
+        // Date.UTC remaps years 0-99 to 1900-1999
+        if (y < 100 && y >= 0) {
+            // preserve leap years using a full 400 year cycle, then reset
+            return Date.UTC(y + 400, m, d) - MS_PER_400_YEARS;
+        } else {
+            return Date.UTC(y, m, d);
+        }
+    }
+
+    function startOf(units) {
+        var time, startOfDate;
+        units = normalizeUnits(units);
+        if (units === undefined || units === 'millisecond' || !this.isValid()) {
+            return this;
+        }
+
+        startOfDate = this._isUTC ? utcStartOfDate : localStartOfDate;
+
+        switch (units) {
+            case 'year':
+                time = startOfDate(this.year(), 0, 1);
+                break;
+            case 'quarter':
+                time = startOfDate(
+                    this.year(),
+                    this.month() - (this.month() % 3),
+                    1
+                );
+                break;
+            case 'month':
+                time = startOfDate(this.year(), this.month(), 1);
+                break;
+            case 'week':
+                time = startOfDate(
+                    this.year(),
+                    this.month(),
+                    this.date() - this.weekday()
+                );
+                break;
+            case 'isoWeek':
+                time = startOfDate(
+                    this.year(),
+                    this.month(),
+                    this.date() - (this.isoWeekday() - 1)
+                );
+                break;
+            case 'day':
+            case 'date':
+                time = startOfDate(this.year(), this.month(), this.date());
+                break;
+            case 'hour':
+                time = this._d.valueOf();
+                time -= mod$1(
+                    time + (this._isUTC ? 0 : this.utcOffset() * MS_PER_MINUTE),
+                    MS_PER_HOUR
+                );
+                break;
+            case 'minute':
+                time = this._d.valueOf();
+                time -= mod$1(time, MS_PER_MINUTE);
+                break;
+            case 'second':
+                time = this._d.valueOf();
+                time -= mod$1(time, MS_PER_SECOND);
+                break;
+        }
+
+        this._d.setTime(time);
+        hooks.updateOffset(this, true);
+        return this;
+    }
+
+    function endOf(units) {
+        var time, startOfDate;
+        units = normalizeUnits(units);
+        if (units === undefined || units === 'millisecond' || !this.isValid()) {
+            return this;
+        }
+
+        startOfDate = this._isUTC ? utcStartOfDate : localStartOfDate;
+
+        switch (units) {
+            case 'year':
+                time = startOfDate(this.year() + 1, 0, 1) - 1;
+                break;
+            case 'quarter':
+                time =
+                    startOfDate(
+                        this.year(),
+                        this.month() - (this.month() % 3) + 3,
+                        1
+                    ) - 1;
+                break;
+            case 'month':
+                time = startOfDate(this.year(), this.month() + 1, 1) - 1;
+                break;
+            case 'week':
+                time =
+                    startOfDate(
+                        this.year(),
+                        this.month(),
+                        this.date() - this.weekday() + 7
+                    ) - 1;
+                break;
+            case 'isoWeek':
+                time =
+                    startOfDate(
+                        this.year(),
+                        this.month(),
+                        this.date() - (this.isoWeekday() - 1) + 7
+                    ) - 1;
+                break;
+            case 'day':
+            case 'date':
+                time = startOfDate(this.year(), this.month(), this.date() + 1) - 1;
+                break;
+            case 'hour':
+                time = this._d.valueOf();
+                time +=
+                    MS_PER_HOUR -
+                    mod$1(
+                        time + (this._isUTC ? 0 : this.utcOffset() * MS_PER_MINUTE),
+                        MS_PER_HOUR
+                    ) -
+                    1;
+                break;
+            case 'minute':
+                time = this._d.valueOf();
+                time += MS_PER_MINUTE - mod$1(time, MS_PER_MINUTE) - 1;
+                break;
+            case 'second':
+                time = this._d.valueOf();
+                time += MS_PER_SECOND - mod$1(time, MS_PER_SECOND) - 1;
+                break;
+        }
+
+        this._d.setTime(time);
+        hooks.updateOffset(this, true);
+        return this;
+    }
+
+    function valueOf() {
+        return this._d.valueOf() - (this._offset || 0) * 60000;
+    }
+
+    function unix() {
+        return Math.floor(this.valueOf() / 1000);
+    }
+
+    function toDate() {
+        return new Date(this.valueOf());
+    }
+
+    function toArray() {
+        var m = this;
+        return [
+            m.year(),
+            m.month(),
+            m.date(),
+            m.hour(),
+            m.minute(),
+            m.second(),
+            m.millisecond(),
+        ];
+    }
+
+    function toObject() {
+        var m = this;
+        return {
+            years: m.year(),
+            months: m.month(),
+            date: m.date(),
+            hours: m.hours(),
+            minutes: m.minutes(),
+            seconds: m.seconds(),
+            milliseconds: m.milliseconds(),
+        };
+    }
+
+    function toJSON() {
+        // new Date(NaN).toJSON() === null
+        return this.isValid() ? this.toISOString() : null;
+    }
+
+    function isValid$2() {
+        return isValid(this);
+    }
+
+    function parsingFlags() {
+        return extend({}, getParsingFlags(this));
+    }
+
+    function invalidAt() {
+        return getParsingFlags(this).overflow;
+    }
+
+    function creationData() {
+        return {
+            input: this._i,
+            format: this._f,
+            locale: this._locale,
+            isUTC: this._isUTC,
+            strict: this._strict,
+        };
+    }
+
+    addFormatToken('N', 0, 0, 'eraAbbr');
+    addFormatToken('NN', 0, 0, 'eraAbbr');
+    addFormatToken('NNN', 0, 0, 'eraAbbr');
+    addFormatToken('NNNN', 0, 0, 'eraName');
+    addFormatToken('NNNNN', 0, 0, 'eraNarrow');
+
+    addFormatToken('y', ['y', 1], 'yo', 'eraYear');
+    addFormatToken('y', ['yy', 2], 0, 'eraYear');
+    addFormatToken('y', ['yyy', 3], 0, 'eraYear');
+    addFormatToken('y', ['yyyy', 4], 0, 'eraYear');
+
+    addRegexToken('N', matchEraAbbr);
+    addRegexToken('NN', matchEraAbbr);
+    addRegexToken('NNN', matchEraAbbr);
+    addRegexToken('NNNN', matchEraName);
+    addRegexToken('NNNNN', matchEraNarrow);
+
+    addParseToken(['N', 'NN', 'NNN', 'NNNN', 'NNNNN'], function (
+        input,
+        array,
+        config,
+        token
+    ) {
+        var era = config._locale.erasParse(input, token, config._strict);
+        if (era) {
+            getParsingFlags(config).era = era;
+        } else {
+            getParsingFlags(config).invalidEra = input;
+        }
+    });
+
+    addRegexToken('y', matchUnsigned);
+    addRegexToken('yy', matchUnsigned);
+    addRegexToken('yyy', matchUnsigned);
+    addRegexToken('yyyy', matchUnsigned);
+    addRegexToken('yo', matchEraYearOrdinal);
+
+    addParseToken(['y', 'yy', 'yyy', 'yyyy'], YEAR);
+    addParseToken(['yo'], function (input, array, config, token) {
+        var match;
+        if (config._locale._eraYearOrdinalRegex) {
+            match = input.match(config._locale._eraYearOrdinalRegex);
+        }
+
+        if (config._locale.eraYearOrdinalParse) {
+            array[YEAR] = config._locale.eraYearOrdinalParse(input, match);
+        } else {
+            array[YEAR] = parseInt(input, 10);
+        }
+    });
+
+    function localeEras(m, format) {
+        var i,
+            l,
+            date,
+            eras = this._eras || getLocale('en')._eras;
+        for (i = 0, l = eras.length; i < l; ++i) {
+            switch (typeof eras[i].since) {
+                case 'string':
+                    // truncate time
+                    date = hooks(eras[i].since).startOf('day');
+                    eras[i].since = date.valueOf();
+                    break;
+            }
+
+            switch (typeof eras[i].until) {
+                case 'undefined':
+                    eras[i].until = +Infinity;
+                    break;
+                case 'string':
+                    // truncate time
+                    date = hooks(eras[i].until).startOf('day').valueOf();
+                    eras[i].until = date.valueOf();
+                    break;
+            }
+        }
+        return eras;
+    }
+
+    function localeErasParse(eraName, format, strict) {
+        var i,
+            l,
+            eras = this.eras(),
+            name,
+            abbr,
+            narrow;
+        eraName = eraName.toUpperCase();
+
+        for (i = 0, l = eras.length; i < l; ++i) {
+            name = eras[i].name.toUpperCase();
+            abbr = eras[i].abbr.toUpperCase();
+            narrow = eras[i].narrow.toUpperCase();
+
+            if (strict) {
+                switch (format) {
+                    case 'N':
+                    case 'NN':
+                    case 'NNN':
+                        if (abbr === eraName) {
+                            return eras[i];
+                        }
+                        break;
+
+                    case 'NNNN':
+                        if (name === eraName) {
+                            return eras[i];
+                        }
+                        break;
+
+                    case 'NNNNN':
+                        if (narrow === eraName) {
+                            return eras[i];
+                        }
+                        break;
+                }
+            } else if ([name, abbr, narrow].indexOf(eraName) >= 0) {
+                return eras[i];
+            }
+        }
+    }
+
+    function localeErasConvertYear(era, year) {
+        var dir = era.since <= era.until ? +1 : -1;
+        if (year === undefined) {
+            return hooks(era.since).year();
+        } else {
+            return hooks(era.since).year() + (year - era.offset) * dir;
+        }
+    }
+
+    function getEraName() {
+        var i,
+            l,
+            val,
+            eras = this.localeData().eras();
+        for (i = 0, l = eras.length; i < l; ++i) {
+            // truncate time
+            val = this.clone().startOf('day').valueOf();
+
+            if (eras[i].since <= val && val <= eras[i].until) {
+                return eras[i].name;
+            }
+            if (eras[i].until <= val && val <= eras[i].since) {
+                return eras[i].name;
+            }
+        }
+
+        return '';
+    }
+
+    function getEraNarrow() {
+        var i,
+            l,
+            val,
+            eras = this.localeData().eras();
+        for (i = 0, l = eras.length; i < l; ++i) {
+            // truncate time
+            val = this.clone().startOf('day').valueOf();
+
+            if (eras[i].since <= val && val <= eras[i].until) {
+                return eras[i].narrow;
+            }
+            if (eras[i].until <= val && val <= eras[i].since) {
+                return eras[i].narrow;
+            }
+        }
+
+        return '';
+    }
+
+    function getEraAbbr() {
+        var i,
+            l,
+            val,
+            eras = this.localeData().eras();
+        for (i = 0, l = eras.length; i < l; ++i) {
+            // truncate time
+            val = this.clone().startOf('day').valueOf();
+
+            if (eras[i].since <= val && val <= eras[i].until) {
+                return eras[i].abbr;
+            }
+            if (eras[i].until <= val && val <= eras[i].since) {
+                return eras[i].abbr;
+            }
+        }
+
+        return '';
+    }
+
+    function getEraYear() {
+        var i,
+            l,
+            dir,
+            val,
+            eras = this.localeData().eras();
+        for (i = 0, l = eras.length; i < l; ++i) {
+            dir = eras[i].since <= eras[i].until ? +1 : -1;
+
+            // truncate time
+            val = this.clone().startOf('day').valueOf();
+
+            if (
+                (eras[i].since <= val && val <= eras[i].until) ||
+                (eras[i].until <= val && val <= eras[i].since)
+            ) {
+                return (
+                    (this.year() - hooks(eras[i].since).year()) * dir +
+                    eras[i].offset
+                );
+            }
+        }
+
+        return this.year();
+    }
+
+    function erasNameRegex(isStrict) {
+        if (!hasOwnProp(this, '_erasNameRegex')) {
+            computeErasParse.call(this);
+        }
+        return isStrict ? this._erasNameRegex : this._erasRegex;
+    }
+
+    function erasAbbrRegex(isStrict) {
+        if (!hasOwnProp(this, '_erasAbbrRegex')) {
+            computeErasParse.call(this);
+        }
+        return isStrict ? this._erasAbbrRegex : this._erasRegex;
+    }
+
+    function erasNarrowRegex(isStrict) {
+        if (!hasOwnProp(this, '_erasNarrowRegex')) {
+            computeErasParse.call(this);
+        }
+        return isStrict ? this._erasNarrowRegex : this._erasRegex;
+    }
+
+    function matchEraAbbr(isStrict, locale) {
+        return locale.erasAbbrRegex(isStrict);
+    }
+
+    function matchEraName(isStrict, locale) {
+        return locale.erasNameRegex(isStrict);
+    }
+
+    function matchEraNarrow(isStrict, locale) {
+        return locale.erasNarrowRegex(isStrict);
+    }
+
+    function matchEraYearOrdinal(isStrict, locale) {
+        return locale._eraYearOrdinalRegex || matchUnsigned;
+    }
+
+    function computeErasParse() {
+        var abbrPieces = [],
+            namePieces = [],
+            narrowPieces = [],
+            mixedPieces = [],
+            i,
+            l,
+            eras = this.eras();
+
+        for (i = 0, l = eras.length; i < l; ++i) {
+            namePieces.push(regexEscape(eras[i].name));
+            abbrPieces.push(regexEscape(eras[i].abbr));
+            narrowPieces.push(regexEscape(eras[i].narrow));
+
+            mixedPieces.push(regexEscape(eras[i].name));
+            mixedPieces.push(regexEscape(eras[i].abbr));
+            mixedPieces.push(regexEscape(eras[i].narrow));
+        }
+
+        this._erasRegex = new RegExp('^(' + mixedPieces.join('|') + ')', 'i');
+        this._erasNameRegex = new RegExp('^(' + namePieces.join('|') + ')', 'i');
+        this._erasAbbrRegex = new RegExp('^(' + abbrPieces.join('|') + ')', 'i');
+        this._erasNarrowRegex = new RegExp(
+            '^(' + narrowPieces.join('|') + ')',
+            'i'
+        );
+    }
+
+    // FORMATTING
+
+    addFormatToken(0, ['gg', 2], 0, function () {
+        return this.weekYear() % 100;
+    });
+
+    addFormatToken(0, ['GG', 2], 0, function () {
+        return this.isoWeekYear() % 100;
+    });
+
+    function addWeekYearFormatToken(token, getter) {
+        addFormatToken(0, [token, token.length], 0, getter);
+    }
+
+    addWeekYearFormatToken('gggg', 'weekYear');
+    addWeekYearFormatToken('ggggg', 'weekYear');
+    addWeekYearFormatToken('GGGG', 'isoWeekYear');
+    addWeekYearFormatToken('GGGGG', 'isoWeekYear');
+
+    // ALIASES
+
+    addUnitAlias('weekYear', 'gg');
+    addUnitAlias('isoWeekYear', 'GG');
+
+    // PRIORITY
+
+    addUnitPriority('weekYear', 1);
+    addUnitPriority('isoWeekYear', 1);
+
+    // PARSING
+
+    addRegexToken('G', matchSigned);
+    addRegexToken('g', matchSigned);
+    addRegexToken('GG', match1to2, match2);
+    addRegexToken('gg', match1to2, match2);
+    addRegexToken('GGGG', match1to4, match4);
+    addRegexToken('gggg', match1to4, match4);
+    addRegexToken('GGGGG', match1to6, match6);
+    addRegexToken('ggggg', match1to6, match6);
+
+    addWeekParseToken(['gggg', 'ggggg', 'GGGG', 'GGGGG'], function (
+        input,
+        week,
+        config,
+        token
+    ) {
+        week[token.substr(0, 2)] = toInt(input);
+    });
+
+    addWeekParseToken(['gg', 'GG'], function (input, week, config, token) {
+        week[token] = hooks.parseTwoDigitYear(input);
+    });
+
+    // MOMENTS
+
+    function getSetWeekYear(input) {
+        return getSetWeekYearHelper.call(
+            this,
+            input,
+            this.week(),
+            this.weekday(),
+            this.localeData()._week.dow,
+            this.localeData()._week.doy
+        );
+    }
+
+    function getSetISOWeekYear(input) {
+        return getSetWeekYearHelper.call(
+            this,
+            input,
+            this.isoWeek(),
+            this.isoWeekday(),
+            1,
+            4
+        );
+    }
+
+    function getISOWeeksInYear() {
+        return weeksInYear(this.year(), 1, 4);
+    }
+
+    function getISOWeeksInISOWeekYear() {
+        return weeksInYear(this.isoWeekYear(), 1, 4);
+    }
+
+    function getWeeksInYear() {
+        var weekInfo = this.localeData()._week;
+        return weeksInYear(this.year(), weekInfo.dow, weekInfo.doy);
+    }
+
+    function getWeeksInWeekYear() {
+        var weekInfo = this.localeData()._week;
+        return weeksInYear(this.weekYear(), weekInfo.dow, weekInfo.doy);
+    }
+
+    function getSetWeekYearHelper(input, week, weekday, dow, doy) {
+        var weeksTarget;
+        if (input == null) {
+            return weekOfYear(this, dow, doy).year;
+        } else {
+            weeksTarget = weeksInYear(input, dow, doy);
+            if (week > weeksTarget) {
+                week = weeksTarget;
+            }
+            return setWeekAll.call(this, input, week, weekday, dow, doy);
+        }
+    }
+
+    function setWeekAll(weekYear, week, weekday, dow, doy) {
+        var dayOfYearData = dayOfYearFromWeeks(weekYear, week, weekday, dow, doy),
+            date = createUTCDate(dayOfYearData.year, 0, dayOfYearData.dayOfYear);
+
+        this.year(date.getUTCFullYear());
+        this.month(date.getUTCMonth());
+        this.date(date.getUTCDate());
+        return this;
+    }
+
+    // FORMATTING
+
+    addFormatToken('Q', 0, 'Qo', 'quarter');
+
+    // ALIASES
+
+    addUnitAlias('quarter', 'Q');
+
+    // PRIORITY
+
+    addUnitPriority('quarter', 7);
+
+    // PARSING
+
+    addRegexToken('Q', match1);
+    addParseToken('Q', function (input, array) {
+        array[MONTH] = (toInt(input) - 1) * 3;
+    });
+
+    // MOMENTS
+
+    function getSetQuarter(input) {
+        return input == null
+            ? Math.ceil((this.month() + 1) / 3)
+            : this.month((input - 1) * 3 + (this.month() % 3));
+    }
+
+    // FORMATTING
+
+    addFormatToken('D', ['DD', 2], 'Do', 'date');
+
+    // ALIASES
+
+    addUnitAlias('date', 'D');
+
+    // PRIORITY
+    addUnitPriority('date', 9);
+
+    // PARSING
+
+    addRegexToken('D', match1to2);
+    addRegexToken('DD', match1to2, match2);
+    addRegexToken('Do', function (isStrict, locale) {
+        // TODO: Remove "ordinalParse" fallback in next major release.
+        return isStrict
+            ? locale._dayOfMonthOrdinalParse || locale._ordinalParse
+            : locale._dayOfMonthOrdinalParseLenient;
+    });
+
+    addParseToken(['D', 'DD'], DATE);
+    addParseToken('Do', function (input, array) {
+        array[DATE] = toInt(input.match(match1to2)[0]);
+    });
+
+    // MOMENTS
+
+    var getSetDayOfMonth = makeGetSet('Date', true);
+
+    // FORMATTING
+
+    addFormatToken('DDD', ['DDDD', 3], 'DDDo', 'dayOfYear');
+
+    // ALIASES
+
+    addUnitAlias('dayOfYear', 'DDD');
+
+    // PRIORITY
+    addUnitPriority('dayOfYear', 4);
+
+    // PARSING
+
+    addRegexToken('DDD', match1to3);
+    addRegexToken('DDDD', match3);
+    addParseToken(['DDD', 'DDDD'], function (input, array, config) {
+        config._dayOfYear = toInt(input);
+    });
+
+    // HELPERS
+
+    // MOMENTS
+
+    function getSetDayOfYear(input) {
+        var dayOfYear =
+            Math.round(
+                (this.clone().startOf('day') - this.clone().startOf('year')) / 864e5
+            ) + 1;
+        return input == null ? dayOfYear : this.add(input - dayOfYear, 'd');
+    }
+
+    // FORMATTING
+
+    addFormatToken('m', ['mm', 2], 0, 'minute');
+
+    // ALIASES
+
+    addUnitAlias('minute', 'm');
+
+    // PRIORITY
+
+    addUnitPriority('minute', 14);
+
+    // PARSING
+
+    addRegexToken('m', match1to2);
+    addRegexToken('mm', match1to2, match2);
+    addParseToken(['m', 'mm'], MINUTE);
+
+    // MOMENTS
+
+    var getSetMinute = makeGetSet('Minutes', false);
+
+    // FORMATTING
+
+    addFormatToken('s', ['ss', 2], 0, 'second');
+
+    // ALIASES
+
+    addUnitAlias('second', 's');
+
+    // PRIORITY
+
+    addUnitPriority('second', 15);
+
+    // PARSING
+
+    addRegexToken('s', match1to2);
+    addRegexToken('ss', match1to2, match2);
+    addParseToken(['s', 'ss'], SECOND);
+
+    // MOMENTS
+
+    var getSetSecond = makeGetSet('Seconds', false);
+
+    // FORMATTING
+
+    addFormatToken('S', 0, 0, function () {
+        return ~~(this.millisecond() / 100);
+    });
+
+    addFormatToken(0, ['SS', 2], 0, function () {
+        return ~~(this.millisecond() / 10);
+    });
+
+    addFormatToken(0, ['SSS', 3], 0, 'millisecond');
+    addFormatToken(0, ['SSSS', 4], 0, function () {
+        return this.millisecond() * 10;
+    });
+    addFormatToken(0, ['SSSSS', 5], 0, function () {
+        return this.millisecond() * 100;
+    });
+    addFormatToken(0, ['SSSSSS', 6], 0, function () {
+        return this.millisecond() * 1000;
+    });
+    addFormatToken(0, ['SSSSSSS', 7], 0, function () {
+        return this.millisecond() * 10000;
+    });
+    addFormatToken(0, ['SSSSSSSS', 8], 0, function () {
+        return this.millisecond() * 100000;
+    });
+    addFormatToken(0, ['SSSSSSSSS', 9], 0, function () {
+        return this.millisecond() * 1000000;
+    });
+
+    // ALIASES
+
+    addUnitAlias('millisecond', 'ms');
+
+    // PRIORITY
+
+    addUnitPriority('millisecond', 16);
+
+    // PARSING
+
+    addRegexToken('S', match1to3, match1);
+    addRegexToken('SS', match1to3, match2);
+    addRegexToken('SSS', match1to3, match3);
+
+    var token, getSetMillisecond;
+    for (token = 'SSSS'; token.length <= 9; token += 'S') {
+        addRegexToken(token, matchUnsigned);
+    }
+
+    function parseMs(input, array) {
+        array[MILLISECOND] = toInt(('0.' + input) * 1000);
+    }
+
+    for (token = 'S'; token.length <= 9; token += 'S') {
+        addParseToken(token, parseMs);
+    }
+
+    getSetMillisecond = makeGetSet('Milliseconds', false);
+
+    // FORMATTING
+
+    addFormatToken('z', 0, 0, 'zoneAbbr');
+    addFormatToken('zz', 0, 0, 'zoneName');
+
+    // MOMENTS
+
+    function getZoneAbbr() {
+        return this._isUTC ? 'UTC' : '';
+    }
+
+    function getZoneName() {
+        return this._isUTC ? 'Coordinated Universal Time' : '';
+    }
+
+    var proto = Moment.prototype;
+
+    proto.add = add;
+    proto.calendar = calendar$1;
+    proto.clone = clone;
+    proto.diff = diff;
+    proto.endOf = endOf;
+    proto.format = format;
+    proto.from = from;
+    proto.fromNow = fromNow;
+    proto.to = to;
+    proto.toNow = toNow;
+    proto.get = stringGet;
+    proto.invalidAt = invalidAt;
+    proto.isAfter = isAfter;
+    proto.isBefore = isBefore;
+    proto.isBetween = isBetween;
+    proto.isSame = isSame;
+    proto.isSameOrAfter = isSameOrAfter;
+    proto.isSameOrBefore = isSameOrBefore;
+    proto.isValid = isValid$2;
+    proto.lang = lang;
+    proto.locale = locale;
+    proto.localeData = localeData;
+    proto.max = prototypeMax;
+    proto.min = prototypeMin;
+    proto.parsingFlags = parsingFlags;
+    proto.set = stringSet;
+    proto.startOf = startOf;
+    proto.subtract = subtract;
+    proto.toArray = toArray;
+    proto.toObject = toObject;
+    proto.toDate = toDate;
+    proto.toISOString = toISOString;
+    proto.inspect = inspect;
+    if (typeof Symbol !== 'undefined' && Symbol.for != null) {
+        proto[Symbol.for('nodejs.util.inspect.custom')] = function () {
+            return 'Moment<' + this.format() + '>';
+        };
+    }
+    proto.toJSON = toJSON;
+    proto.toString = toString;
+    proto.unix = unix;
+    proto.valueOf = valueOf;
+    proto.creationData = creationData;
+    proto.eraName = getEraName;
+    proto.eraNarrow = getEraNarrow;
+    proto.eraAbbr = getEraAbbr;
+    proto.eraYear = getEraYear;
+    proto.year = getSetYear;
+    proto.isLeapYear = getIsLeapYear;
+    proto.weekYear = getSetWeekYear;
+    proto.isoWeekYear = getSetISOWeekYear;
+    proto.quarter = proto.quarters = getSetQuarter;
+    proto.month = getSetMonth;
+    proto.daysInMonth = getDaysInMonth;
+    proto.week = proto.weeks = getSetWeek;
+    proto.isoWeek = proto.isoWeeks = getSetISOWeek;
+    proto.weeksInYear = getWeeksInYear;
+    proto.weeksInWeekYear = getWeeksInWeekYear;
+    proto.isoWeeksInYear = getISOWeeksInYear;
+    proto.isoWeeksInISOWeekYear = getISOWeeksInISOWeekYear;
+    proto.date = getSetDayOfMonth;
+    proto.day = proto.days = getSetDayOfWeek;
+    proto.weekday = getSetLocaleDayOfWeek;
+    proto.isoWeekday = getSetISODayOfWeek;
+    proto.dayOfYear = getSetDayOfYear;
+    proto.hour = proto.hours = getSetHour;
+    proto.minute = proto.minutes = getSetMinute;
+    proto.second = proto.seconds = getSetSecond;
+    proto.millisecond = proto.milliseconds = getSetMillisecond;
+    proto.utcOffset = getSetOffset;
+    proto.utc = setOffsetToUTC;
+    proto.local = setOffsetToLocal;
+    proto.parseZone = setOffsetToParsedOffset;
+    proto.hasAlignedHourOffset = hasAlignedHourOffset;
+    proto.isDST = isDaylightSavingTime;
+    proto.isLocal = isLocal;
+    proto.isUtcOffset = isUtcOffset;
+    proto.isUtc = isUtc;
+    proto.isUTC = isUtc;
+    proto.zoneAbbr = getZoneAbbr;
+    proto.zoneName = getZoneName;
+    proto.dates = deprecate(
+        'dates accessor is deprecated. Use date instead.',
+        getSetDayOfMonth
+    );
+    proto.months = deprecate(
+        'months accessor is deprecated. Use month instead',
+        getSetMonth
+    );
+    proto.years = deprecate(
+        'years accessor is deprecated. Use year instead',
+        getSetYear
+    );
+    proto.zone = deprecate(
+        'moment().zone is deprecated, use moment().utcOffset instead. http://momentjs.com/guides/#/warnings/zone/',
+        getSetZone
+    );
+    proto.isDSTShifted = deprecate(
+        'isDSTShifted is deprecated. See http://momentjs.com/guides/#/warnings/dst-shifted/ for more information',
+        isDaylightSavingTimeShifted
+    );
+
+    function createUnix(input) {
+        return createLocal(input * 1000);
+    }
+
+    function createInZone() {
+        return createLocal.apply(null, arguments).parseZone();
+    }
+
+    function preParsePostFormat(string) {
+        return string;
+    }
+
+    var proto$1 = Locale.prototype;
+
+    proto$1.calendar = calendar;
+    proto$1.longDateFormat = longDateFormat;
+    proto$1.invalidDate = invalidDate;
+    proto$1.ordinal = ordinal;
+    proto$1.preparse = preParsePostFormat;
+    proto$1.postformat = preParsePostFormat;
+    proto$1.relativeTime = relativeTime;
+    proto$1.pastFuture = pastFuture;
+    proto$1.set = set;
+    proto$1.eras = localeEras;
+    proto$1.erasParse = localeErasParse;
+    proto$1.erasConvertYear = localeErasConvertYear;
+    proto$1.erasAbbrRegex = erasAbbrRegex;
+    proto$1.erasNameRegex = erasNameRegex;
+    proto$1.erasNarrowRegex = erasNarrowRegex;
+
+    proto$1.months = localeMonths;
+    proto$1.monthsShort = localeMonthsShort;
+    proto$1.monthsParse = localeMonthsParse;
+    proto$1.monthsRegex = monthsRegex;
+    proto$1.monthsShortRegex = monthsShortRegex;
+    proto$1.week = localeWeek;
+    proto$1.firstDayOfYear = localeFirstDayOfYear;
+    proto$1.firstDayOfWeek = localeFirstDayOfWeek;
+
+    proto$1.weekdays = localeWeekdays;
+    proto$1.weekdaysMin = localeWeekdaysMin;
+    proto$1.weekdaysShort = localeWeekdaysShort;
+    proto$1.weekdaysParse = localeWeekdaysParse;
+
+    proto$1.weekdaysRegex = weekdaysRegex;
+    proto$1.weekdaysShortRegex = weekdaysShortRegex;
+    proto$1.weekdaysMinRegex = weekdaysMinRegex;
+
+    proto$1.isPM = localeIsPM;
+    proto$1.meridiem = localeMeridiem;
+
+    function get$1(format, index, field, setter) {
+        var locale = getLocale(),
+            utc = createUTC().set(setter, index);
+        return locale[field](utc, format);
+    }
+
+    function listMonthsImpl(format, index, field) {
+        if (isNumber(format)) {
+            index = format;
+            format = undefined;
+        }
+
+        format = format || '';
+
+        if (index != null) {
+            return get$1(format, index, field, 'month');
+        }
+
+        var i,
+            out = [];
+        for (i = 0; i < 12; i++) {
+            out[i] = get$1(format, i, field, 'month');
+        }
+        return out;
+    }
+
+    // ()
+    // (5)
+    // (fmt, 5)
+    // (fmt)
+    // (true)
+    // (true, 5)
+    // (true, fmt, 5)
+    // (true, fmt)
+    function listWeekdaysImpl(localeSorted, format, index, field) {
+        if (typeof localeSorted === 'boolean') {
+            if (isNumber(format)) {
+                index = format;
+                format = undefined;
+            }
+
+            format = format || '';
+        } else {
+            format = localeSorted;
+            index = format;
+            localeSorted = false;
+
+            if (isNumber(format)) {
+                index = format;
+                format = undefined;
+            }
+
+            format = format || '';
+        }
+
+        var locale = getLocale(),
+            shift = localeSorted ? locale._week.dow : 0,
+            i,
+            out = [];
+
+        if (index != null) {
+            return get$1(format, (index + shift) % 7, field, 'day');
+        }
+
+        for (i = 0; i < 7; i++) {
+            out[i] = get$1(format, (i + shift) % 7, field, 'day');
+        }
+        return out;
+    }
+
+    function listMonths(format, index) {
+        return listMonthsImpl(format, index, 'months');
+    }
+
+    function listMonthsShort(format, index) {
+        return listMonthsImpl(format, index, 'monthsShort');
+    }
+
+    function listWeekdays(localeSorted, format, index) {
+        return listWeekdaysImpl(localeSorted, format, index, 'weekdays');
+    }
+
+    function listWeekdaysShort(localeSorted, format, index) {
+        return listWeekdaysImpl(localeSorted, format, index, 'weekdaysShort');
+    }
+
+    function listWeekdaysMin(localeSorted, format, index) {
+        return listWeekdaysImpl(localeSorted, format, index, 'weekdaysMin');
+    }
+
+    getSetGlobalLocale('en', {
+        eras: [
+            {
+                since: '0001-01-01',
+                until: +Infinity,
+                offset: 1,
+                name: 'Anno Domini',
+                narrow: 'AD',
+                abbr: 'AD',
+            },
+            {
+                since: '0000-12-31',
+                until: -Infinity,
+                offset: 1,
+                name: 'Before Christ',
+                narrow: 'BC',
+                abbr: 'BC',
+            },
+        ],
+        dayOfMonthOrdinalParse: /\d{1,2}(th|st|nd|rd)/,
+        ordinal: function (number) {
+            var b = number % 10,
+                output =
+                    toInt((number % 100) / 10) === 1
+                        ? 'th'
+                        : b === 1
+                        ? 'st'
+                        : b === 2
+                        ? 'nd'
+                        : b === 3
+                        ? 'rd'
+                        : 'th';
+            return number + output;
+        },
+    });
+
+    // Side effect imports
+
+    hooks.lang = deprecate(
+        'moment.lang is deprecated. Use moment.locale instead.',
+        getSetGlobalLocale
+    );
+    hooks.langData = deprecate(
+        'moment.langData is deprecated. Use moment.localeData instead.',
+        getLocale
+    );
+
+    var mathAbs = Math.abs;
+
+    function abs() {
+        var data = this._data;
+
+        this._milliseconds = mathAbs(this._milliseconds);
+        this._days = mathAbs(this._days);
+        this._months = mathAbs(this._months);
+
+        data.milliseconds = mathAbs(data.milliseconds);
+        data.seconds = mathAbs(data.seconds);
+        data.minutes = mathAbs(data.minutes);
+        data.hours = mathAbs(data.hours);
+        data.months = mathAbs(data.months);
+        data.years = mathAbs(data.years);
+
+        return this;
+    }
+
+    function addSubtract$1(duration, input, value, direction) {
+        var other = createDuration(input, value);
+
+        duration._milliseconds += direction * other._milliseconds;
+        duration._days += direction * other._days;
+        duration._months += direction * other._months;
+
+        return duration._bubble();
+    }
+
+    // supports only 2.0-style add(1, 's') or add(duration)
+    function add$1(input, value) {
+        return addSubtract$1(this, input, value, 1);
+    }
+
+    // supports only 2.0-style subtract(1, 's') or subtract(duration)
+    function subtract$1(input, value) {
+        return addSubtract$1(this, input, value, -1);
+    }
+
+    function absCeil(number) {
+        if (number < 0) {
+            return Math.floor(number);
+        } else {
+            return Math.ceil(number);
+        }
+    }
+
+    function bubble() {
+        var milliseconds = this._milliseconds,
+            days = this._days,
+            months = this._months,
+            data = this._data,
+            seconds,
+            minutes,
+            hours,
+            years,
+            monthsFromDays;
+
+        // if we have a mix of positive and negative values, bubble down first
+        // check: https://github.com/moment/moment/issues/2166
+        if (
+            !(
+                (milliseconds >= 0 && days >= 0 && months >= 0) ||
+                (milliseconds <= 0 && days <= 0 && months <= 0)
+            )
+        ) {
+            milliseconds += absCeil(monthsToDays(months) + days) * 864e5;
+            days = 0;
+            months = 0;
+        }
+
+        // The following code bubbles up values, see the tests for
+        // examples of what that means.
+        data.milliseconds = milliseconds % 1000;
+
+        seconds = absFloor(milliseconds / 1000);
+        data.seconds = seconds % 60;
+
+        minutes = absFloor(seconds / 60);
+        data.minutes = minutes % 60;
+
+        hours = absFloor(minutes / 60);
+        data.hours = hours % 24;
+
+        days += absFloor(hours / 24);
+
+        // convert days to months
+        monthsFromDays = absFloor(daysToMonths(days));
+        months += monthsFromDays;
+        days -= absCeil(monthsToDays(monthsFromDays));
+
+        // 12 months -> 1 year
+        years = absFloor(months / 12);
+        months %= 12;
+
+        data.days = days;
+        data.months = months;
+        data.years = years;
+
+        return this;
+    }
+
+    function daysToMonths(days) {
+        // 400 years have 146097 days (taking into account leap year rules)
+        // 400 years have 12 months === 4800
+        return (days * 4800) / 146097;
+    }
+
+    function monthsToDays(months) {
+        // the reverse of daysToMonths
+        return (months * 146097) / 4800;
+    }
+
+    function as(units) {
+        if (!this.isValid()) {
+            return NaN;
+        }
+        var days,
+            months,
+            milliseconds = this._milliseconds;
+
+        units = normalizeUnits(units);
+
+        if (units === 'month' || units === 'quarter' || units === 'year') {
+            days = this._days + milliseconds / 864e5;
+            months = this._months + daysToMonths(days);
+            switch (units) {
+                case 'month':
+                    return months;
+                case 'quarter':
+                    return months / 3;
+                case 'year':
+                    return months / 12;
+            }
+        } else {
+            // handle milliseconds separately because of floating point math errors (issue #1867)
+            days = this._days + Math.round(monthsToDays(this._months));
+            switch (units) {
+                case 'week':
+                    return days / 7 + milliseconds / 6048e5;
+                case 'day':
+                    return days + milliseconds / 864e5;
+                case 'hour':
+                    return days * 24 + milliseconds / 36e5;
+                case 'minute':
+                    return days * 1440 + milliseconds / 6e4;
+                case 'second':
+                    return days * 86400 + milliseconds / 1000;
+                // Math.floor prevents floating point math errors here
+                case 'millisecond':
+                    return Math.floor(days * 864e5) + milliseconds;
+                default:
+                    throw new Error('Unknown unit ' + units);
+            }
+        }
+    }
+
+    // TODO: Use this.as('ms')?
+    function valueOf$1() {
+        if (!this.isValid()) {
+            return NaN;
+        }
+        return (
+            this._milliseconds +
+            this._days * 864e5 +
+            (this._months % 12) * 2592e6 +
+            toInt(this._months / 12) * 31536e6
+        );
+    }
+
+    function makeAs(alias) {
+        return function () {
+            return this.as(alias);
+        };
+    }
+
+    var asMilliseconds = makeAs('ms'),
+        asSeconds = makeAs('s'),
+        asMinutes = makeAs('m'),
+        asHours = makeAs('h'),
+        asDays = makeAs('d'),
+        asWeeks = makeAs('w'),
+        asMonths = makeAs('M'),
+        asQuarters = makeAs('Q'),
+        asYears = makeAs('y');
+
+    function clone$1() {
+        return createDuration(this);
+    }
+
+    function get$2(units) {
+        units = normalizeUnits(units);
+        return this.isValid() ? this[units + 's']() : NaN;
+    }
+
+    function makeGetter(name) {
+        return function () {
+            return this.isValid() ? this._data[name] : NaN;
+        };
+    }
+
+    var milliseconds = makeGetter('milliseconds'),
+        seconds = makeGetter('seconds'),
+        minutes = makeGetter('minutes'),
+        hours = makeGetter('hours'),
+        days = makeGetter('days'),
+        months = makeGetter('months'),
+        years = makeGetter('years');
+
+    function weeks() {
+        return absFloor(this.days() / 7);
+    }
+
+    var round = Math.round,
+        thresholds = {
+            ss: 44, // a few seconds to seconds
+            s: 45, // seconds to minute
+            m: 45, // minutes to hour
+            h: 22, // hours to day
+            d: 26, // days to month/week
+            w: null, // weeks to month
+            M: 11, // months to year
+        };
+
+    // helper function for moment.fn.from, moment.fn.fromNow, and moment.duration.fn.humanize
+    function substituteTimeAgo(string, number, withoutSuffix, isFuture, locale) {
+        return locale.relativeTime(number || 1, !!withoutSuffix, string, isFuture);
+    }
+
+    function relativeTime$1(posNegDuration, withoutSuffix, thresholds, locale) {
+        var duration = createDuration(posNegDuration).abs(),
+            seconds = round(duration.as('s')),
+            minutes = round(duration.as('m')),
+            hours = round(duration.as('h')),
+            days = round(duration.as('d')),
+            months = round(duration.as('M')),
+            weeks = round(duration.as('w')),
+            years = round(duration.as('y')),
+            a =
+                (seconds <= thresholds.ss && ['s', seconds]) ||
+                (seconds < thresholds.s && ['ss', seconds]) ||
+                (minutes <= 1 && ['m']) ||
+                (minutes < thresholds.m && ['mm', minutes]) ||
+                (hours <= 1 && ['h']) ||
+                (hours < thresholds.h && ['hh', hours]) ||
+                (days <= 1 && ['d']) ||
+                (days < thresholds.d && ['dd', days]);
+
+        if (thresholds.w != null) {
+            a =
+                a ||
+                (weeks <= 1 && ['w']) ||
+                (weeks < thresholds.w && ['ww', weeks]);
+        }
+        a = a ||
+            (months <= 1 && ['M']) ||
+            (months < thresholds.M && ['MM', months]) ||
+            (years <= 1 && ['y']) || ['yy', years];
+
+        a[2] = withoutSuffix;
+        a[3] = +posNegDuration > 0;
+        a[4] = locale;
+        return substituteTimeAgo.apply(null, a);
+    }
+
+    // This function allows you to set the rounding function for relative time strings
+    function getSetRelativeTimeRounding(roundingFunction) {
+        if (roundingFunction === undefined) {
+            return round;
+        }
+        if (typeof roundingFunction === 'function') {
+            round = roundingFunction;
+            return true;
+        }
+        return false;
+    }
+
+    // This function allows you to set a threshold for relative time strings
+    function getSetRelativeTimeThreshold(threshold, limit) {
+        if (thresholds[threshold] === undefined) {
+            return false;
+        }
+        if (limit === undefined) {
+            return thresholds[threshold];
+        }
+        thresholds[threshold] = limit;
+        if (threshold === 's') {
+            thresholds.ss = limit - 1;
+        }
+        return true;
+    }
+
+    function humanize(argWithSuffix, argThresholds) {
+        if (!this.isValid()) {
+            return this.localeData().invalidDate();
+        }
+
+        var withSuffix = false,
+            th = thresholds,
+            locale,
+            output;
+
+        if (typeof argWithSuffix === 'object') {
+            argThresholds = argWithSuffix;
+            argWithSuffix = false;
+        }
+        if (typeof argWithSuffix === 'boolean') {
+            withSuffix = argWithSuffix;
+        }
+        if (typeof argThresholds === 'object') {
+            th = Object.assign({}, thresholds, argThresholds);
+            if (argThresholds.s != null && argThresholds.ss == null) {
+                th.ss = argThresholds.s - 1;
+            }
+        }
+
+        locale = this.localeData();
+        output = relativeTime$1(this, !withSuffix, th, locale);
+
+        if (withSuffix) {
+            output = locale.pastFuture(+this, output);
+        }
+
+        return locale.postformat(output);
+    }
+
+    var abs$1 = Math.abs;
+
+    function sign(x) {
+        return (x > 0) - (x < 0) || +x;
+    }
+
+    function toISOString$1() {
+        // for ISO strings we do not use the normal bubbling rules:
+        //  * milliseconds bubble up until they become hours
+        //  * days do not bubble at all
+        //  * months bubble up until they become years
+        // This is because there is no context-free conversion between hours and days
+        // (think of clock changes)
+        // and also not between days and months (28-31 days per month)
+        if (!this.isValid()) {
+            return this.localeData().invalidDate();
+        }
+
+        var seconds = abs$1(this._milliseconds) / 1000,
+            days = abs$1(this._days),
+            months = abs$1(this._months),
+            minutes,
+            hours,
+            years,
+            s,
+            total = this.asSeconds(),
+            totalSign,
+            ymSign,
+            daysSign,
+            hmsSign;
+
+        if (!total) {
+            // this is the same as C#'s (Noda) and python (isodate)...
+            // but not other JS (goog.date)
+            return 'P0D';
+        }
+
+        // 3600 seconds -> 60 minutes -> 1 hour
+        minutes = absFloor(seconds / 60);
+        hours = absFloor(minutes / 60);
+        seconds %= 60;
+        minutes %= 60;
+
+        // 12 months -> 1 year
+        years = absFloor(months / 12);
+        months %= 12;
+
+        // inspired by https://github.com/dordille/moment-isoduration/blob/master/moment.isoduration.js
+        s = seconds ? seconds.toFixed(3).replace(/\.?0+$/, '') : '';
+
+        totalSign = total < 0 ? '-' : '';
+        ymSign = sign(this._months) !== sign(total) ? '-' : '';
+        daysSign = sign(this._days) !== sign(total) ? '-' : '';
+        hmsSign = sign(this._milliseconds) !== sign(total) ? '-' : '';
+
+        return (
+            totalSign +
+            'P' +
+            (years ? ymSign + years + 'Y' : '') +
+            (months ? ymSign + months + 'M' : '') +
+            (days ? daysSign + days + 'D' : '') +
+            (hours || minutes || seconds ? 'T' : '') +
+            (hours ? hmsSign + hours + 'H' : '') +
+            (minutes ? hmsSign + minutes + 'M' : '') +
+            (seconds ? hmsSign + s + 'S' : '')
+        );
+    }
+
+    var proto$2 = Duration.prototype;
+
+    proto$2.isValid = isValid$1;
+    proto$2.abs = abs;
+    proto$2.add = add$1;
+    proto$2.subtract = subtract$1;
+    proto$2.as = as;
+    proto$2.asMilliseconds = asMilliseconds;
+    proto$2.asSeconds = asSeconds;
+    proto$2.asMinutes = asMinutes;
+    proto$2.asHours = asHours;
+    proto$2.asDays = asDays;
+    proto$2.asWeeks = asWeeks;
+    proto$2.asMonths = asMonths;
+    proto$2.asQuarters = asQuarters;
+    proto$2.asYears = asYears;
+    proto$2.valueOf = valueOf$1;
+    proto$2._bubble = bubble;
+    proto$2.clone = clone$1;
+    proto$2.get = get$2;
+    proto$2.milliseconds = milliseconds;
+    proto$2.seconds = seconds;
+    proto$2.minutes = minutes;
+    proto$2.hours = hours;
+    proto$2.days = days;
+    proto$2.weeks = weeks;
+    proto$2.months = months;
+    proto$2.years = years;
+    proto$2.humanize = humanize;
+    proto$2.toISOString = toISOString$1;
+    proto$2.toString = toISOString$1;
+    proto$2.toJSON = toISOString$1;
+    proto$2.locale = locale;
+    proto$2.localeData = localeData;
+
+    proto$2.toIsoString = deprecate(
+        'toIsoString() is deprecated. Please use toISOString() instead (notice the capitals)',
+        toISOString$1
+    );
+    proto$2.lang = lang;
+
+    // FORMATTING
+
+    addFormatToken('X', 0, 0, 'unix');
+    addFormatToken('x', 0, 0, 'valueOf');
+
+    // PARSING
+
+    addRegexToken('x', matchSigned);
+    addRegexToken('X', matchTimestamp);
+    addParseToken('X', function (input, array, config) {
+        config._d = new Date(parseFloat(input) * 1000);
+    });
+    addParseToken('x', function (input, array, config) {
+        config._d = new Date(toInt(input));
+    });
+
+    //! moment.js
+
+    hooks.version = '2.29.1';
+
+    setHookCallback(createLocal);
+
+    hooks.fn = proto;
+    hooks.min = min;
+    hooks.max = max;
+    hooks.now = now;
+    hooks.utc = createUTC;
+    hooks.unix = createUnix;
+    hooks.months = listMonths;
+    hooks.isDate = isDate;
+    hooks.locale = getSetGlobalLocale;
+    hooks.invalid = createInvalid;
+    hooks.duration = createDuration;
+    hooks.isMoment = isMoment;
+    hooks.weekdays = listWeekdays;
+    hooks.parseZone = createInZone;
+    hooks.localeData = getLocale;
+    hooks.isDuration = isDuration;
+    hooks.monthsShort = listMonthsShort;
+    hooks.weekdaysMin = listWeekdaysMin;
+    hooks.defineLocale = defineLocale;
+    hooks.updateLocale = updateLocale;
+    hooks.locales = listLocales;
+    hooks.weekdaysShort = listWeekdaysShort;
+    hooks.normalizeUnits = normalizeUnits;
+    hooks.relativeTimeRounding = getSetRelativeTimeRounding;
+    hooks.relativeTimeThreshold = getSetRelativeTimeThreshold;
+    hooks.calendarFormat = getCalendarFormat;
+    hooks.prototype = proto;
+
+    // currently HTML5 input type only supports 24-hour formats
+    hooks.HTML5_FMT = {
+        DATETIME_LOCAL: 'YYYY-MM-DDTHH:mm', // <input type="datetime-local" />
+        DATETIME_LOCAL_SECONDS: 'YYYY-MM-DDTHH:mm:ss', // <input type="datetime-local" step="1" />
+        DATETIME_LOCAL_MS: 'YYYY-MM-DDTHH:mm:ss.SSS', // <input type="datetime-local" step="0.001" />
+        DATE: 'YYYY-MM-DD', // <input type="date" />
+        TIME: 'HH:mm', // <input type="time" />
+        TIME_SECONDS: 'HH:mm:ss', // <input type="time" step="1" />
+        TIME_MS: 'HH:mm:ss.SSS', // <input type="time" step="0.001" />
+        WEEK: 'GGGG-[W]WW', // <input type="week" />
+        MONTH: 'YYYY-MM', // <input type="month" />
+    };
+
+    return hooks;
+
+})));
+});
+
+var generateConfig = {
+  // get
+  getNow: function getNow() {
+    return moment();
+  },
+  getFixedDate: function getFixedDate(string) {
+    return moment(string, 'YYYY-MM-DD');
+  },
+  getEndDate: function getEndDate(date) {
+    var clone = date.clone();
+    return clone.endOf('month');
+  },
+  getWeekDay: function getWeekDay(date) {
+    var clone = date.clone().locale('en_US');
+    return clone.weekday() + clone.localeData().firstDayOfWeek();
+  },
+  getYear: function getYear(date) {
+    return date.year();
+  },
+  getMonth: function getMonth(date) {
+    return date.month();
+  },
+  getDate: function getDate(date) {
+    return date.date();
+  },
+  getHour: function getHour(date) {
+    return date.hour();
+  },
+  getMinute: function getMinute(date) {
+    return date.minute();
+  },
+  getSecond: function getSecond(date) {
+    return date.second();
+  },
+  // set
+  addYear: function addYear(date, diff) {
+    var clone = date.clone();
+    return clone.add(diff, 'year');
+  },
+  addMonth: function addMonth(date, diff) {
+    var clone = date.clone();
+    return clone.add(diff, 'month');
+  },
+  addDate: function addDate(date, diff) {
+    var clone = date.clone();
+    return clone.add(diff, 'day');
+  },
+  setYear: function setYear(date, year) {
+    var clone = date.clone();
+    return clone.year(year);
+  },
+  setMonth: function setMonth(date, month) {
+    var clone = date.clone();
+    return clone.month(month);
+  },
+  setDate: function setDate(date, num) {
+    var clone = date.clone();
+    return clone.date(num);
+  },
+  setHour: function setHour(date, hour) {
+    var clone = date.clone();
+    return clone.hour(hour);
+  },
+  setMinute: function setMinute(date, minute) {
+    var clone = date.clone();
+    return clone.minute(minute);
+  },
+  setSecond: function setSecond(date, second) {
+    var clone = date.clone();
+    return clone.second(second);
+  },
+  // Compare
+  isAfter: function isAfter(date1, date2) {
+    return date1.isAfter(date2);
+  },
+  isValidate: function isValidate(date) {
+    return date.isValid();
+  },
+  locale: {
+    getWeekFirstDay: function getWeekFirstDay(locale) {
+      var date = moment().locale(locale);
+      return date.localeData().firstDayOfWeek();
+    },
+    getWeekFirstDate: function getWeekFirstDate(locale, date) {
+      var clone = date.clone();
+      var result = clone.locale(locale);
+      return result.weekday(0);
+    },
+    getWeek: function getWeek(locale, date) {
+      var clone = date.clone();
+      var result = clone.locale(locale);
+      return result.week();
+    },
+    getShortWeekDays: function getShortWeekDays(locale) {
+      var date = moment().locale(locale);
+      return date.localeData().weekdaysMin();
+    },
+    getShortMonths: function getShortMonths(locale) {
+      var date = moment().locale(locale);
+      return date.localeData().monthsShort();
+    },
+    format: function format(locale, date, _format) {
+      var clone = date.clone();
+      var result = clone.locale(locale);
+      return result.format(_format);
+    },
+    parse: function parse(locale, text, formats) {
+      var fallbackFormatList = [];
+
+      for (var i = 0; i < formats.length; i += 1) {
+        var format = formats[i];
+        var formatText = text;
+
+        if (format.includes('wo') || format.includes('Wo')) {
+          format = format.replace(/wo/g, 'w').replace(/Wo/g, 'W');
+          var matchFormat = format.match(/[-YyMmDdHhSsWwGg]+/g);
+          var matchText = formatText.match(/[-\d]+/g);
+
+          if (matchFormat && matchText) {
+            format = matchFormat.join('');
+            formatText = matchText.join('');
+          } else {
+            fallbackFormatList.push(format.replace(/o/g, ''));
+          }
+        }
+
+        var date = moment(formatText, format, locale, true);
+
+        if (date.isValid()) {
+          return date;
+        }
+      } // Fallback to fuzzy matching, this should always not reach match or need fire a issue
+
+
+      for (var _i = 0; _i < fallbackFormatList.length; _i += 1) {
+        var _date = moment(text, fallbackFormatList[_i], locale, false);
+        /* istanbul ignore next */
+
+
+        if (_date.isValid()) {
+          noteOnce(false, 'Not match any format strictly and fallback to fuzzy match. Please help to fire a issue about this.');
+          return _date;
+        }
+      }
+
+      return null;
+    }
+  }
+};
+
+var PanelContext = /*#__PURE__*/React__namespace.createContext({});
+
+var HIDDEN_STYLE$2 = {
+  visibility: 'hidden'
+};
+
+function Header(_ref) {
+  var prefixCls = _ref.prefixCls,
+      _ref$prevIcon = _ref.prevIcon,
+      prevIcon = _ref$prevIcon === void 0 ? "\u2039" : _ref$prevIcon,
+      _ref$nextIcon = _ref.nextIcon,
+      nextIcon = _ref$nextIcon === void 0 ? "\u203A" : _ref$nextIcon,
+      _ref$superPrevIcon = _ref.superPrevIcon,
+      superPrevIcon = _ref$superPrevIcon === void 0 ? "\xAB" : _ref$superPrevIcon,
+      _ref$superNextIcon = _ref.superNextIcon,
+      superNextIcon = _ref$superNextIcon === void 0 ? "\xBB" : _ref$superNextIcon,
+      onSuperPrev = _ref.onSuperPrev,
+      onSuperNext = _ref.onSuperNext,
+      onPrev = _ref.onPrev,
+      onNext = _ref.onNext,
+      children = _ref.children;
+
+  var _React$useContext = React__namespace.useContext(PanelContext),
+      hideNextBtn = _React$useContext.hideNextBtn,
+      hidePrevBtn = _React$useContext.hidePrevBtn;
+
+  return /*#__PURE__*/React__namespace.createElement("div", {
+    className: prefixCls
+  }, onSuperPrev && /*#__PURE__*/React__namespace.createElement("button", {
+    type: "button",
+    onClick: onSuperPrev,
+    tabIndex: -1,
+    className: "".concat(prefixCls, "-super-prev-btn"),
+    style: hidePrevBtn ? HIDDEN_STYLE$2 : {}
+  }, superPrevIcon), onPrev && /*#__PURE__*/React__namespace.createElement("button", {
+    type: "button",
+    onClick: onPrev,
+    tabIndex: -1,
+    className: "".concat(prefixCls, "-prev-btn"),
+    style: hidePrevBtn ? HIDDEN_STYLE$2 : {}
+  }, prevIcon), /*#__PURE__*/React__namespace.createElement("div", {
+    className: "".concat(prefixCls, "-view")
+  }, children), onNext && /*#__PURE__*/React__namespace.createElement("button", {
+    type: "button",
+    onClick: onNext,
+    tabIndex: -1,
+    className: "".concat(prefixCls, "-next-btn"),
+    style: hideNextBtn ? HIDDEN_STYLE$2 : {}
+  }, nextIcon), onSuperNext && /*#__PURE__*/React__namespace.createElement("button", {
+    type: "button",
+    onClick: onSuperNext,
+    tabIndex: -1,
+    className: "".concat(prefixCls, "-super-next-btn"),
+    style: hideNextBtn ? HIDDEN_STYLE$2 : {}
+  }, superNextIcon));
+}
+
+function DecadeHeader(props) {
+  var prefixCls = props.prefixCls,
+      generateConfig = props.generateConfig,
+      viewDate = props.viewDate,
+      onPrevDecades = props.onPrevDecades,
+      onNextDecades = props.onNextDecades;
+
+  var _React$useContext = React__namespace.useContext(PanelContext),
+      hideHeader = _React$useContext.hideHeader;
+
+  if (hideHeader) {
+    return null;
+  }
+
+  var headerPrefixCls = "".concat(prefixCls, "-header");
+  var yearNumber = generateConfig.getYear(viewDate);
+  var startYear = Math.floor(yearNumber / DECADE_DISTANCE_COUNT) * DECADE_DISTANCE_COUNT;
+  var endYear = startYear + DECADE_DISTANCE_COUNT - 1;
+  return /*#__PURE__*/React__namespace.createElement(Header, _extends$1({}, props, {
+    prefixCls: headerPrefixCls,
+    onSuperPrev: onPrevDecades,
+    onSuperNext: onNextDecades
+  }), startYear, "-", endYear);
+}
+
+function setTime(generateConfig, date, hour, minute, second) {
+  var nextTime = generateConfig.setHour(date, hour);
+  nextTime = generateConfig.setMinute(nextTime, minute);
+  nextTime = generateConfig.setSecond(nextTime, second);
+  return nextTime;
+}
+function setDateTime(generateConfig, date, defaultDate) {
+  if (!defaultDate) {
+    return date;
+  }
+
+  var newDate = date;
+  newDate = generateConfig.setHour(newDate, generateConfig.getHour(defaultDate));
+  newDate = generateConfig.setMinute(newDate, generateConfig.getMinute(defaultDate));
+  newDate = generateConfig.setSecond(newDate, generateConfig.getSecond(defaultDate));
+  return newDate;
+}
+function getLowerBoundTime(hour, minute, second, hourStep, minuteStep, secondStep) {
+  var lowerBoundHour = Math.floor(hour / hourStep) * hourStep;
+
+  if (lowerBoundHour < hour) {
+    return [lowerBoundHour, 60 - minuteStep, 60 - secondStep];
+  }
+
+  var lowerBoundMinute = Math.floor(minute / minuteStep) * minuteStep;
+
+  if (lowerBoundMinute < minute) {
+    return [lowerBoundHour, lowerBoundMinute, 60 - secondStep];
+  }
+
+  var lowerBoundSecond = Math.floor(second / secondStep) * secondStep;
+  return [lowerBoundHour, lowerBoundMinute, lowerBoundSecond];
+}
+function getLastDay(generateConfig, date) {
+  var year = generateConfig.getYear(date);
+  var month = generateConfig.getMonth(date) + 1;
+  var endDate = generateConfig.getEndDate(generateConfig.getFixedDate("".concat(year, "-").concat(month, "-01")));
+  var lastDay = generateConfig.getDate(endDate);
+  var monthShow = month < 10 ? "0".concat(month) : "".concat(month);
+  return "".concat(year, "-").concat(monthShow, "-").concat(lastDay);
+}
+
+function PanelBody(_ref) {
+  var prefixCls = _ref.prefixCls,
+      disabledDate = _ref.disabledDate,
+      onSelect = _ref.onSelect,
+      picker = _ref.picker,
+      rowNum = _ref.rowNum,
+      colNum = _ref.colNum,
+      prefixColumn = _ref.prefixColumn,
+      rowClassName = _ref.rowClassName,
+      baseDate = _ref.baseDate,
+      getCellClassName = _ref.getCellClassName,
+      getCellText = _ref.getCellText,
+      getCellNode = _ref.getCellNode,
+      getCellDate = _ref.getCellDate,
+      generateConfig = _ref.generateConfig,
+      titleCell = _ref.titleCell,
+      headerCells = _ref.headerCells;
+
+  var _React$useContext = React__namespace.useContext(PanelContext),
+      onDateMouseEnter = _React$useContext.onDateMouseEnter,
+      onDateMouseLeave = _React$useContext.onDateMouseLeave,
+      mode = _React$useContext.mode;
+
+  var cellPrefixCls = "".concat(prefixCls, "-cell"); // =============================== Body ===============================
+
+  var rows = [];
+
+  for (var i = 0; i < rowNum; i += 1) {
+    var row = [];
+    var rowStartDate = void 0;
+
+    var _loop = function _loop(j) {
+      var _objectSpread2;
+
+      var offset = i * colNum + j;
+      var currentDate = getCellDate(baseDate, offset);
+      var disabled = getCellDateDisabled({
+        cellDate: currentDate,
+        mode: mode,
+        disabledDate: disabledDate,
+        generateConfig: generateConfig
+      });
+
+      if (j === 0) {
+        rowStartDate = currentDate;
+
+        if (prefixColumn) {
+          row.push(prefixColumn(rowStartDate));
+        }
+      }
+
+      var title = titleCell && titleCell(currentDate);
+      row.push( /*#__PURE__*/React__namespace.createElement("td", {
+        key: j,
+        title: title,
+        className: classnames(cellPrefixCls, _objectSpread2$1((_objectSpread2 = {}, _defineProperty$4(_objectSpread2, "".concat(cellPrefixCls, "-disabled"), disabled), _defineProperty$4(_objectSpread2, "".concat(cellPrefixCls, "-start"), getCellText(currentDate) === 1 || picker === 'year' && Number(title) % 10 === 0), _defineProperty$4(_objectSpread2, "".concat(cellPrefixCls, "-end"), title === getLastDay(generateConfig, currentDate) || picker === 'year' && Number(title) % 10 === 9), _objectSpread2), getCellClassName(currentDate))),
+        onClick: function onClick() {
+          if (!disabled) {
+            onSelect(currentDate);
+          }
+        },
+        onMouseEnter: function onMouseEnter() {
+          if (!disabled && onDateMouseEnter) {
+            onDateMouseEnter(currentDate);
+          }
+        },
+        onMouseLeave: function onMouseLeave() {
+          if (!disabled && onDateMouseLeave) {
+            onDateMouseLeave(currentDate);
+          }
+        }
+      }, getCellNode ? getCellNode(currentDate) : /*#__PURE__*/React__namespace.createElement("div", {
+        className: "".concat(cellPrefixCls, "-inner")
+      }, getCellText(currentDate))));
+    };
+
+    for (var j = 0; j < colNum; j += 1) {
+      _loop(j);
+    }
+
+    rows.push( /*#__PURE__*/React__namespace.createElement("tr", {
+      key: i,
+      className: rowClassName && rowClassName(rowStartDate)
+    }, row));
+  }
+
+  return /*#__PURE__*/React__namespace.createElement("div", {
+    className: "".concat(prefixCls, "-body")
+  }, /*#__PURE__*/React__namespace.createElement("table", {
+    className: "".concat(prefixCls, "-content")
+  }, headerCells && /*#__PURE__*/React__namespace.createElement("thead", null, /*#__PURE__*/React__namespace.createElement("tr", null, headerCells)), /*#__PURE__*/React__namespace.createElement("tbody", null, rows)));
+}
+
+var DECADE_COL_COUNT = 3;
+var DECADE_ROW_COUNT = 4;
+
+function DecadeBody(props) {
+  var DECADE_UNIT_DIFF_DES = DECADE_UNIT_DIFF - 1;
+  var prefixCls = props.prefixCls,
+      viewDate = props.viewDate,
+      generateConfig = props.generateConfig;
+  var cellPrefixCls = "".concat(prefixCls, "-cell");
+  var yearNumber = generateConfig.getYear(viewDate);
+  var decadeYearNumber = Math.floor(yearNumber / DECADE_UNIT_DIFF) * DECADE_UNIT_DIFF;
+  var startDecadeYear = Math.floor(yearNumber / DECADE_DISTANCE_COUNT) * DECADE_DISTANCE_COUNT;
+  var endDecadeYear = startDecadeYear + DECADE_DISTANCE_COUNT - 1;
+  var baseDecadeYear = generateConfig.setYear(viewDate, startDecadeYear - Math.ceil((DECADE_COL_COUNT * DECADE_ROW_COUNT * DECADE_UNIT_DIFF - DECADE_DISTANCE_COUNT) / 2));
+
+  var getCellClassName = function getCellClassName(date) {
+    var _ref;
+
+    var startDecadeNumber = generateConfig.getYear(date);
+    var endDecadeNumber = startDecadeNumber + DECADE_UNIT_DIFF_DES;
+    return _ref = {}, _defineProperty$4(_ref, "".concat(cellPrefixCls, "-in-view"), startDecadeYear <= startDecadeNumber && endDecadeNumber <= endDecadeYear), _defineProperty$4(_ref, "".concat(cellPrefixCls, "-selected"), startDecadeNumber === decadeYearNumber), _ref;
+  };
+
+  return /*#__PURE__*/React__namespace.createElement(PanelBody, _extends$1({}, props, {
+    rowNum: DECADE_ROW_COUNT,
+    colNum: DECADE_COL_COUNT,
+    baseDate: baseDecadeYear,
+    getCellText: function getCellText(date) {
+      var startDecadeNumber = generateConfig.getYear(date);
+      return "".concat(startDecadeNumber, "-").concat(startDecadeNumber + DECADE_UNIT_DIFF_DES);
+    },
+    getCellClassName: getCellClassName,
+    getCellDate: function getCellDate(date, offset) {
+      return generateConfig.addYear(date, offset * DECADE_UNIT_DIFF);
+    }
+  }));
+}
+
+var scrollIds = new Map();
+/** Trigger when element is visible in view */
+
+function waitElementReady(element, callback) {
+  var id;
+
+  function tryOrNextFrame() {
+    if (isVisible(element)) {
+      callback();
+    } else {
+      id = wrapperRaf$1(function () {
+        tryOrNextFrame();
+      });
+    }
+  }
+
+  tryOrNextFrame();
+  return function () {
+    wrapperRaf$1.cancel(id);
+  };
+}
+/* eslint-disable no-param-reassign */
+
+function scrollTo(element, to, duration) {
+  if (scrollIds.get(element)) {
+    cancelAnimationFrame(scrollIds.get(element));
+  } // jump to target if duration zero
+
+
+  if (duration <= 0) {
+    scrollIds.set(element, requestAnimationFrame(function () {
+      element.scrollTop = to;
+    }));
+    return;
+  }
+
+  var difference = to - element.scrollTop;
+  var perTick = difference / duration * 10;
+  scrollIds.set(element, requestAnimationFrame(function () {
+    element.scrollTop += perTick;
+
+    if (element.scrollTop !== to) {
+      scrollTo(element, to, duration - 10);
+    }
+  }));
+}
+function createKeyDownHandler(event, _ref) {
+  var onLeftRight = _ref.onLeftRight,
+      onCtrlLeftRight = _ref.onCtrlLeftRight,
+      onUpDown = _ref.onUpDown,
+      onPageUpDown = _ref.onPageUpDown,
+      onEnter = _ref.onEnter;
+  var which = event.which,
+      ctrlKey = event.ctrlKey,
+      metaKey = event.metaKey;
+
+  switch (which) {
+    case KeyCode.LEFT:
+      if (ctrlKey || metaKey) {
+        if (onCtrlLeftRight) {
+          onCtrlLeftRight(-1);
+          return true;
+        }
+      } else if (onLeftRight) {
+        onLeftRight(-1);
+        return true;
+      }
+      /* istanbul ignore next */
+
+
+      break;
+
+    case KeyCode.RIGHT:
+      if (ctrlKey || metaKey) {
+        if (onCtrlLeftRight) {
+          onCtrlLeftRight(1);
+          return true;
+        }
+      } else if (onLeftRight) {
+        onLeftRight(1);
+        return true;
+      }
+      /* istanbul ignore next */
+
+
+      break;
+
+    case KeyCode.UP:
+      if (onUpDown) {
+        onUpDown(-1);
+        return true;
+      }
+      /* istanbul ignore next */
+
+
+      break;
+
+    case KeyCode.DOWN:
+      if (onUpDown) {
+        onUpDown(1);
+        return true;
+      }
+      /* istanbul ignore next */
+
+
+      break;
+
+    case KeyCode.PAGE_UP:
+      if (onPageUpDown) {
+        onPageUpDown(-1);
+        return true;
+      }
+      /* istanbul ignore next */
+
+
+      break;
+
+    case KeyCode.PAGE_DOWN:
+      if (onPageUpDown) {
+        onPageUpDown(1);
+        return true;
+      }
+      /* istanbul ignore next */
+
+
+      break;
+
+    case KeyCode.ENTER:
+      if (onEnter) {
+        onEnter();
+        return true;
+      }
+      /* istanbul ignore next */
+
+
+      break;
+  }
+
+  return false;
+} // ===================== Format =====================
+
+function getDefaultFormat(format, picker, showTime, use12Hours) {
+  var mergedFormat = format;
+
+  if (!mergedFormat) {
+    switch (picker) {
+      case 'time':
+        mergedFormat = use12Hours ? 'hh:mm:ss a' : 'HH:mm:ss';
+        break;
+
+      case 'week':
+        mergedFormat = 'gggg-wo';
+        break;
+
+      case 'month':
+        mergedFormat = 'YYYY-MM';
+        break;
+
+      case 'quarter':
+        mergedFormat = 'YYYY-[Q]Q';
+        break;
+
+      case 'year':
+        mergedFormat = 'YYYY';
+        break;
+
+      default:
+        mergedFormat = showTime ? 'YYYY-MM-DD HH:mm:ss' : 'YYYY-MM-DD';
+    }
+  }
+
+  return mergedFormat;
+}
+function getInputSize(picker, format, generateConfig) {
+  var defaultSize = picker === 'time' ? 8 : 10;
+  var length = typeof format === 'function' ? format(generateConfig.getNow()).length : format.length;
+  return Math.max(defaultSize, length) + 2;
+}
+var globalClickFunc = null;
+var clickCallbacks = new Set();
+function addGlobalMouseDownEvent(callback) {
+  if (!globalClickFunc && typeof window !== 'undefined' && window.addEventListener) {
+    globalClickFunc = function globalClickFunc(e) {
+      // Clone a new list to avoid repeat trigger events
+      _toConsumableArray(clickCallbacks).forEach(function (queueFunc) {
+        queueFunc(e);
+      });
+    };
+
+    window.addEventListener('mousedown', globalClickFunc);
+  }
+
+  clickCallbacks.add(callback);
+  return function () {
+    clickCallbacks.delete(callback);
+
+    if (clickCallbacks.size === 0) {
+      window.removeEventListener('mousedown', globalClickFunc);
+      globalClickFunc = null;
+    }
+  };
+}
+function getTargetFromEvent(e) {
+  var target = e.target; // get target if in shadow dom
+
+  if (e.composed && target.shadowRoot) {
+    var _e$composedPath;
+
+    return ((_e$composedPath = e.composedPath) === null || _e$composedPath === void 0 ? void 0 : _e$composedPath.call(e)[0]) || target;
+  }
+
+  return target;
+} // ====================== Mode ======================
+
+var getYearNextMode = function getYearNextMode(next) {
+  if (next === 'month' || next === 'date') {
+    return 'year';
+  }
+
+  return next;
+};
+
+var getMonthNextMode = function getMonthNextMode(next) {
+  if (next === 'date') {
+    return 'month';
+  }
+
+  return next;
+};
+
+var getQuarterNextMode = function getQuarterNextMode(next) {
+  if (next === 'month' || next === 'date') {
+    return 'quarter';
+  }
+
+  return next;
+};
+
+var getWeekNextMode = function getWeekNextMode(next) {
+  if (next === 'date') {
+    return 'week';
+  }
+
+  return next;
+};
+
+var PickerModeMap = {
+  year: getYearNextMode,
+  month: getMonthNextMode,
+  quarter: getQuarterNextMode,
+  week: getWeekNextMode,
+  time: null,
+  date: null
+};
+function elementsContains(elements, target) {
+  return elements.some(function (ele) {
+    return ele && ele.contains(target);
+  });
+}
+
+var DECADE_UNIT_DIFF = 10;
+var DECADE_DISTANCE_COUNT = DECADE_UNIT_DIFF * 10;
+
+function DecadePanel(props) {
+  var prefixCls = props.prefixCls,
+      onViewDateChange = props.onViewDateChange,
+      generateConfig = props.generateConfig,
+      viewDate = props.viewDate,
+      operationRef = props.operationRef,
+      onSelect = props.onSelect,
+      onPanelChange = props.onPanelChange;
+  var panelPrefixCls = "".concat(prefixCls, "-decade-panel"); // ======================= Keyboard =======================
+
+  operationRef.current = {
+    onKeyDown: function onKeyDown(event) {
+      return createKeyDownHandler(event, {
+        onLeftRight: function onLeftRight(diff) {
+          onSelect(generateConfig.addYear(viewDate, diff * DECADE_UNIT_DIFF), 'key');
+        },
+        onCtrlLeftRight: function onCtrlLeftRight(diff) {
+          onSelect(generateConfig.addYear(viewDate, diff * DECADE_DISTANCE_COUNT), 'key');
+        },
+        onUpDown: function onUpDown(diff) {
+          onSelect(generateConfig.addYear(viewDate, diff * DECADE_UNIT_DIFF * DECADE_COL_COUNT), 'key');
+        },
+        onEnter: function onEnter() {
+          onPanelChange('year', viewDate);
+        }
+      });
+    }
+  }; // ==================== View Operation ====================
+
+  var onDecadesChange = function onDecadesChange(diff) {
+    var newDate = generateConfig.addYear(viewDate, diff * DECADE_DISTANCE_COUNT);
+    onViewDateChange(newDate);
+    onPanelChange(null, newDate);
+  };
+
+  var onInternalSelect = function onInternalSelect(date) {
+    onSelect(date, 'mouse');
+    onPanelChange('year', date);
+  };
+
+  return /*#__PURE__*/React__namespace.createElement("div", {
+    className: panelPrefixCls
+  }, /*#__PURE__*/React__namespace.createElement(DecadeHeader, _extends$1({}, props, {
+    prefixCls: prefixCls,
+    onPrevDecades: function onPrevDecades() {
+      onDecadesChange(-1);
+    },
+    onNextDecades: function onNextDecades() {
+      onDecadesChange(1);
+    }
+  })), /*#__PURE__*/React__namespace.createElement(DecadeBody, _extends$1({}, props, {
+    prefixCls: prefixCls,
+    onSelect: onInternalSelect
+  })));
+}
+
+var WEEK_DAY_COUNT = 7;
+function isNullEqual(value1, value2) {
+  if (!value1 && !value2) {
+    return true;
+  }
+
+  if (!value1 || !value2) {
+    return false;
+  }
+
+  return undefined;
+}
+function isSameDecade(generateConfig, decade1, decade2) {
+  var equal = isNullEqual(decade1, decade2);
+
+  if (typeof equal === 'boolean') {
+    return equal;
+  }
+
+  var num1 = Math.floor(generateConfig.getYear(decade1) / 10);
+  var num2 = Math.floor(generateConfig.getYear(decade2) / 10);
+  return num1 === num2;
+}
+function isSameYear(generateConfig, year1, year2) {
+  var equal = isNullEqual(year1, year2);
+
+  if (typeof equal === 'boolean') {
+    return equal;
+  }
+
+  return generateConfig.getYear(year1) === generateConfig.getYear(year2);
+}
+function getQuarter(generateConfig, date) {
+  var quota = Math.floor(generateConfig.getMonth(date) / 3);
+  return quota + 1;
+}
+function isSameQuarter(generateConfig, quarter1, quarter2) {
+  var equal = isNullEqual(quarter1, quarter2);
+
+  if (typeof equal === 'boolean') {
+    return equal;
+  }
+
+  return isSameYear(generateConfig, quarter1, quarter2) && getQuarter(generateConfig, quarter1) === getQuarter(generateConfig, quarter2);
+}
+function isSameMonth(generateConfig, month1, month2) {
+  var equal = isNullEqual(month1, month2);
+
+  if (typeof equal === 'boolean') {
+    return equal;
+  }
+
+  return isSameYear(generateConfig, month1, month2) && generateConfig.getMonth(month1) === generateConfig.getMonth(month2);
+}
+function isSameDate(generateConfig, date1, date2) {
+  var equal = isNullEqual(date1, date2);
+
+  if (typeof equal === 'boolean') {
+    return equal;
+  }
+
+  return generateConfig.getYear(date1) === generateConfig.getYear(date2) && generateConfig.getMonth(date1) === generateConfig.getMonth(date2) && generateConfig.getDate(date1) === generateConfig.getDate(date2);
+}
+function isSameTime(generateConfig, time1, time2) {
+  var equal = isNullEqual(time1, time2);
+
+  if (typeof equal === 'boolean') {
+    return equal;
+  }
+
+  return generateConfig.getHour(time1) === generateConfig.getHour(time2) && generateConfig.getMinute(time1) === generateConfig.getMinute(time2) && generateConfig.getSecond(time1) === generateConfig.getSecond(time2);
+}
+function isSameWeek(generateConfig, locale, date1, date2) {
+  var equal = isNullEqual(date1, date2);
+
+  if (typeof equal === 'boolean') {
+    return equal;
+  }
+
+  return generateConfig.locale.getWeek(locale, date1) === generateConfig.locale.getWeek(locale, date2);
+}
+function isEqual(generateConfig, value1, value2) {
+  return isSameDate(generateConfig, value1, value2) && isSameTime(generateConfig, value1, value2);
+}
+/** Between in date but not equal of date */
+
+function isInRange(generateConfig, startDate, endDate, current) {
+  if (!startDate || !endDate || !current) {
+    return false;
+  }
+
+  return !isSameDate(generateConfig, startDate, current) && !isSameDate(generateConfig, endDate, current) && generateConfig.isAfter(current, startDate) && generateConfig.isAfter(endDate, current);
+}
+function getWeekStartDate(locale, generateConfig, value) {
+  var weekFirstDay = generateConfig.locale.getWeekFirstDay(locale);
+  var monthStartDate = generateConfig.setDate(value, 1);
+  var startDateWeekDay = generateConfig.getWeekDay(monthStartDate);
+  var alignStartDate = generateConfig.addDate(monthStartDate, weekFirstDay - startDateWeekDay);
+
+  if (generateConfig.getMonth(alignStartDate) === generateConfig.getMonth(value) && generateConfig.getDate(alignStartDate) > 1) {
+    alignStartDate = generateConfig.addDate(alignStartDate, -7);
+  }
+
+  return alignStartDate;
+}
+function getClosingViewDate(viewDate, picker, generateConfig) {
+  var offset = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 1;
+
+  switch (picker) {
+    case 'year':
+      return generateConfig.addYear(viewDate, offset * 10);
+
+    case 'quarter':
+    case 'month':
+      return generateConfig.addYear(viewDate, offset);
+
+    default:
+      return generateConfig.addMonth(viewDate, offset);
+  }
+}
+function formatValue(value, _ref) {
+  var generateConfig = _ref.generateConfig,
+      locale = _ref.locale,
+      format = _ref.format;
+  return typeof format === 'function' ? format(value) : generateConfig.locale.format(locale.locale, value, format);
+}
+function parseValue(value, _ref2) {
+  var generateConfig = _ref2.generateConfig,
+      locale = _ref2.locale,
+      formatList = _ref2.formatList;
+
+  if (!value || typeof formatList[0] === 'function') {
+    return null;
+  }
+
+  return generateConfig.locale.parse(locale.locale, value, formatList);
+} // eslint-disable-next-line consistent-return
+
+function getCellDateDisabled(_ref3) {
+  var cellDate = _ref3.cellDate,
+      mode = _ref3.mode,
+      disabledDate = _ref3.disabledDate,
+      generateConfig = _ref3.generateConfig;
+  if (!disabledDate) return false; // Whether cellDate is disabled in range
+
+  var getDisabledFromRange = function getDisabledFromRange(currentMode, start, end) {
+    var current = start;
+
+    while (current <= end) {
+      var date = void 0;
+
+      switch (currentMode) {
+        case 'date':
+          {
+            date = generateConfig.setDate(cellDate, current);
+
+            if (!disabledDate(date)) {
+              return false;
+            }
+
+            break;
+          }
+
+        case 'month':
+          {
+            date = generateConfig.setMonth(cellDate, current);
+
+            if (!getCellDateDisabled({
+              cellDate: date,
+              mode: 'month',
+              generateConfig: generateConfig,
+              disabledDate: disabledDate
+            })) {
+              return false;
+            }
+
+            break;
+          }
+
+        case 'year':
+          {
+            date = generateConfig.setYear(cellDate, current);
+
+            if (!getCellDateDisabled({
+              cellDate: date,
+              mode: 'year',
+              generateConfig: generateConfig,
+              disabledDate: disabledDate
+            })) {
+              return false;
+            }
+
+            break;
+          }
+      }
+
+      current += 1;
+    }
+
+    return true;
+  };
+
+  switch (mode) {
+    case 'date':
+    case 'week':
+      {
+        return disabledDate(cellDate);
+      }
+
+    case 'month':
+      {
+        var startDate = 1;
+        var endDate = generateConfig.getDate(generateConfig.getEndDate(cellDate));
+        return getDisabledFromRange('date', startDate, endDate);
+      }
+
+    case 'quarter':
+      {
+        var startMonth = Math.floor(generateConfig.getMonth(cellDate) / 3) * 3;
+        var endMonth = startMonth + 2;
+        return getDisabledFromRange('month', startMonth, endMonth);
+      }
+
+    case 'year':
+      {
+        return getDisabledFromRange('month', 0, 11);
+      }
+
+    case 'decade':
+      {
+        var year = generateConfig.getYear(cellDate);
+        var startYear = Math.floor(year / DECADE_UNIT_DIFF) * DECADE_UNIT_DIFF;
+        var endYear = startYear + DECADE_UNIT_DIFF - 1;
+        return getDisabledFromRange('year', startYear, endYear);
+      }
+  }
+}
+
+function TimeHeader(props) {
+  var _React$useContext = React__namespace.useContext(PanelContext),
+      hideHeader = _React$useContext.hideHeader;
+
+  if (hideHeader) {
+    return null;
+  }
+
+  var prefixCls = props.prefixCls,
+      generateConfig = props.generateConfig,
+      locale = props.locale,
+      value = props.value,
+      format = props.format;
+  var headerPrefixCls = "".concat(prefixCls, "-header");
+  return /*#__PURE__*/React__namespace.createElement(Header, {
+    prefixCls: headerPrefixCls
+  }, value ? formatValue(value, {
+    locale: locale,
+    format: format,
+    generateConfig: generateConfig
+  }) : "\xA0");
+}
+
+function TimeUnitColumn(props) {
+  var prefixCls = props.prefixCls,
+      units = props.units,
+      onSelect = props.onSelect,
+      value = props.value,
+      active = props.active,
+      hideDisabledOptions = props.hideDisabledOptions;
+  var cellPrefixCls = "".concat(prefixCls, "-cell");
+
+  var _React$useContext = React__namespace.useContext(PanelContext),
+      open = _React$useContext.open;
+
+  var ulRef = React.useRef(null);
+  var liRefs = React.useRef(new Map());
+  var scrollRef = React.useRef(); // `useLayoutEffect` here to avoid blink by duration is 0
+
+  React.useLayoutEffect(function () {
+    var li = liRefs.current.get(value);
+
+    if (li && open !== false) {
+      scrollTo(ulRef.current, li.offsetTop, 120);
+    }
+  }, [value]);
+  React.useLayoutEffect(function () {
+    if (open) {
+      var li = liRefs.current.get(value);
+
+      if (li) {
+        scrollRef.current = waitElementReady(li, function () {
+          scrollTo(ulRef.current, li.offsetTop, 0);
+        });
+      }
+    }
+
+    return function () {
+      var _scrollRef$current;
+
+      (_scrollRef$current = scrollRef.current) === null || _scrollRef$current === void 0 ? void 0 : _scrollRef$current.call(scrollRef);
+    };
+  }, [open]);
+  return /*#__PURE__*/React__namespace.createElement("ul", {
+    className: classnames("".concat(prefixCls, "-column"), _defineProperty$4({}, "".concat(prefixCls, "-column-active"), active)),
+    ref: ulRef,
+    style: {
+      position: 'relative'
+    }
+  }, units.map(function (unit) {
+    var _classNames2;
+
+    if (hideDisabledOptions && unit.disabled) {
+      return null;
+    }
+
+    return /*#__PURE__*/React__namespace.createElement("li", {
+      key: unit.value,
+      ref: function ref(element) {
+        liRefs.current.set(unit.value, element);
+      },
+      className: classnames(cellPrefixCls, (_classNames2 = {}, _defineProperty$4(_classNames2, "".concat(cellPrefixCls, "-disabled"), unit.disabled), _defineProperty$4(_classNames2, "".concat(cellPrefixCls, "-selected"), value === unit.value), _classNames2)),
+      onClick: function onClick() {
+        if (unit.disabled) {
+          return;
+        }
+
+        onSelect(unit.value);
+      }
+    }, /*#__PURE__*/React__namespace.createElement("div", {
+      className: "".concat(cellPrefixCls, "-inner")
+    }, unit.label));
+  }));
+}
+
+function leftPad(str, length) {
+  var fill = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '0';
+  var current = String(str);
+
+  while (current.length < length) {
+    current = "".concat(fill).concat(str);
+  }
+
+  return current;
+}
+var tuple = function tuple() {
+  for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+    args[_key] = arguments[_key];
+  }
+
+  return args;
+};
+function toArray$2(val) {
+  if (val === null || val === undefined) {
+    return [];
+  }
+
+  return Array.isArray(val) ? val : [val];
+}
+function getDataOrAriaProps(props) {
+  var retProps = {};
+  Object.keys(props).forEach(function (key) {
+    if ((key.substr(0, 5) === 'data-' || key.substr(0, 5) === 'aria-' || key === 'role' || key === 'name') && key.substr(0, 7) !== 'data-__') {
+      retProps[key] = props[key];
+    }
+  });
+  return retProps;
+}
+function getValue(values, index) {
+  return values ? values[index] : null;
+}
+function updateValues(values, value, index) {
+  var newValues = [getValue(values, 0), getValue(values, 1)];
+  newValues[index] = typeof value === 'function' ? value(newValues[index]) : value;
+
+  if (!newValues[0] && !newValues[1]) {
+    return null;
+  }
+
+  return newValues;
+}
+
+function shouldUnitsUpdate(prevUnits, nextUnits) {
+  if (prevUnits.length !== nextUnits.length) return true; // if any unit's disabled status is different, the units should be re-evaluted
+
+  for (var i = 0; i < prevUnits.length; i += 1) {
+    if (prevUnits[i].disabled !== nextUnits[i].disabled) return true;
+  }
+
+  return false;
+}
+
+function generateUnits(start, end, step, disabledUnits) {
+  var units = [];
+
+  for (var i = start; i <= end; i += step) {
+    units.push({
+      label: leftPad(i, 2),
+      value: i,
+      disabled: (disabledUnits || []).includes(i)
+    });
+  }
+
+  return units;
+}
+
+function TimeBody(props) {
+  var generateConfig = props.generateConfig,
+      prefixCls = props.prefixCls,
+      operationRef = props.operationRef,
+      activeColumnIndex = props.activeColumnIndex,
+      value = props.value,
+      showHour = props.showHour,
+      showMinute = props.showMinute,
+      showSecond = props.showSecond,
+      use12Hours = props.use12Hours,
+      _props$hourStep = props.hourStep,
+      hourStep = _props$hourStep === void 0 ? 1 : _props$hourStep,
+      _props$minuteStep = props.minuteStep,
+      minuteStep = _props$minuteStep === void 0 ? 1 : _props$minuteStep,
+      _props$secondStep = props.secondStep,
+      secondStep = _props$secondStep === void 0 ? 1 : _props$secondStep,
+      disabledHours = props.disabledHours,
+      disabledMinutes = props.disabledMinutes,
+      disabledSeconds = props.disabledSeconds,
+      hideDisabledOptions = props.hideDisabledOptions,
+      onSelect = props.onSelect;
+  var columns = [];
+  var contentPrefixCls = "".concat(prefixCls, "-content");
+  var columnPrefixCls = "".concat(prefixCls, "-time-panel");
+  var isPM;
+  var originHour = value ? generateConfig.getHour(value) : -1;
+  var hour = originHour;
+  var minute = value ? generateConfig.getMinute(value) : -1;
+  var second = value ? generateConfig.getSecond(value) : -1;
+
+  var setTime$1 = function setTime$1(isNewPM, newHour, newMinute, newSecond) {
+    var newDate = value || generateConfig.getNow();
+    var mergedHour = Math.max(0, newHour);
+    var mergedMinute = Math.max(0, newMinute);
+    var mergedSecond = Math.max(0, newSecond);
+    newDate = setTime(generateConfig, newDate, !use12Hours || !isNewPM ? mergedHour : mergedHour + 12, mergedMinute, mergedSecond);
+    return newDate;
+  }; // ========================= Unit =========================
+
+
+  var rawHours = generateUnits(0, 23, hourStep, disabledHours && disabledHours());
+  var memorizedRawHours = useMemo(function () {
+    return rawHours;
+  }, rawHours, shouldUnitsUpdate); // Should additional logic to handle 12 hours
+
+  if (use12Hours) {
+    isPM = hour >= 12; // -1 means should display AM
+
+    hour %= 12;
+  }
+
+  var _React$useMemo = React__namespace.useMemo(function () {
+    if (!use12Hours) {
+      return [false, false];
+    }
+
+    var AMPMDisabled = [true, true];
+    memorizedRawHours.forEach(function (_ref) {
+      var disabled = _ref.disabled,
+          hourValue = _ref.value;
+      if (disabled) return;
+
+      if (hourValue >= 12) {
+        AMPMDisabled[1] = false;
+      } else {
+        AMPMDisabled[0] = false;
+      }
+    });
+    return AMPMDisabled;
+  }, [use12Hours, memorizedRawHours]),
+      _React$useMemo2 = _slicedToArray$3(_React$useMemo, 2),
+      AMDisabled = _React$useMemo2[0],
+      PMDisabled = _React$useMemo2[1];
+
+  var hours = React__namespace.useMemo(function () {
+    if (!use12Hours) return memorizedRawHours;
+    return memorizedRawHours.filter(isPM ? function (hourMeta) {
+      return hourMeta.value >= 12;
+    } : function (hourMeta) {
+      return hourMeta.value < 12;
+    }).map(function (hourMeta) {
+      var hourValue = hourMeta.value % 12;
+      var hourLabel = hourValue === 0 ? '12' : leftPad(hourValue, 2);
+      return _objectSpread2$1(_objectSpread2$1({}, hourMeta), {}, {
+        label: hourLabel,
+        value: hourValue
+      });
+    });
+  }, [use12Hours, isPM, memorizedRawHours]);
+  var minutes = generateUnits(0, 59, minuteStep, disabledMinutes && disabledMinutes(originHour));
+  var seconds = generateUnits(0, 59, secondStep, disabledSeconds && disabledSeconds(originHour, minute)); // ====================== Operations ======================
+
+  operationRef.current = {
+    onUpDown: function onUpDown(diff) {
+      var column = columns[activeColumnIndex];
+
+      if (column) {
+        var valueIndex = column.units.findIndex(function (unit) {
+          return unit.value === column.value;
+        });
+        var unitLen = column.units.length;
+
+        for (var i = 1; i < unitLen; i += 1) {
+          var nextUnit = column.units[(valueIndex + diff * i + unitLen) % unitLen];
+
+          if (nextUnit.disabled !== true) {
+            column.onSelect(nextUnit.value);
+            break;
+          }
+        }
+      }
+    }
+  }; // ======================== Render ========================
+
+  function addColumnNode(condition, node, columnValue, units, onColumnSelect) {
+    if (condition !== false) {
+      columns.push({
+        node: /*#__PURE__*/React__namespace.cloneElement(node, {
+          prefixCls: columnPrefixCls,
+          value: columnValue,
+          active: activeColumnIndex === columns.length,
+          onSelect: onColumnSelect,
+          units: units,
+          hideDisabledOptions: hideDisabledOptions
+        }),
+        onSelect: onColumnSelect,
+        value: columnValue,
+        units: units
+      });
+    }
+  } // Hour
+
+
+  addColumnNode(showHour, /*#__PURE__*/React__namespace.createElement(TimeUnitColumn, {
+    key: "hour"
+  }), hour, hours, function (num) {
+    onSelect(setTime$1(isPM, num, minute, second), 'mouse');
+  }); // Minute
+
+  addColumnNode(showMinute, /*#__PURE__*/React__namespace.createElement(TimeUnitColumn, {
+    key: "minute"
+  }), minute, minutes, function (num) {
+    onSelect(setTime$1(isPM, hour, num, second), 'mouse');
+  }); // Second
+
+  addColumnNode(showSecond, /*#__PURE__*/React__namespace.createElement(TimeUnitColumn, {
+    key: "second"
+  }), second, seconds, function (num) {
+    onSelect(setTime$1(isPM, hour, minute, num), 'mouse');
+  }); // 12 Hours
+
+  var PMIndex = -1;
+
+  if (typeof isPM === 'boolean') {
+    PMIndex = isPM ? 1 : 0;
+  }
+
+  addColumnNode(use12Hours === true, /*#__PURE__*/React__namespace.createElement(TimeUnitColumn, {
+    key: "12hours"
+  }), PMIndex, [{
+    label: 'AM',
+    value: 0,
+    disabled: AMDisabled
+  }, {
+    label: 'PM',
+    value: 1,
+    disabled: PMDisabled
+  }], function (num) {
+    onSelect(setTime$1(!!num, hour, minute, second), 'mouse');
+  });
+  return /*#__PURE__*/React__namespace.createElement("div", {
+    className: contentPrefixCls
+  }, columns.map(function (_ref2) {
+    var node = _ref2.node;
+    return node;
+  }));
+}
+
+var countBoolean = function countBoolean(boolList) {
+  return boolList.filter(function (bool) {
+    return bool !== false;
+  }).length;
+};
+
+function TimePanel(props) {
+  var generateConfig = props.generateConfig,
+      _props$format = props.format,
+      format = _props$format === void 0 ? 'HH:mm:ss' : _props$format,
+      prefixCls = props.prefixCls,
+      active = props.active,
+      operationRef = props.operationRef,
+      showHour = props.showHour,
+      showMinute = props.showMinute,
+      showSecond = props.showSecond,
+      _props$use12Hours = props.use12Hours,
+      use12Hours = _props$use12Hours === void 0 ? false : _props$use12Hours,
+      onSelect = props.onSelect,
+      value = props.value;
+  var panelPrefixCls = "".concat(prefixCls, "-time-panel");
+  var bodyOperationRef = React__namespace.useRef(); // ======================= Keyboard =======================
+
+  var _React$useState = React__namespace.useState(-1),
+      _React$useState2 = _slicedToArray$3(_React$useState, 2),
+      activeColumnIndex = _React$useState2[0],
+      setActiveColumnIndex = _React$useState2[1];
+
+  var columnsCount = countBoolean([showHour, showMinute, showSecond, use12Hours]);
+  operationRef.current = {
+    onKeyDown: function onKeyDown(event) {
+      return createKeyDownHandler(event, {
+        onLeftRight: function onLeftRight(diff) {
+          setActiveColumnIndex((activeColumnIndex + diff + columnsCount) % columnsCount);
+        },
+        onUpDown: function onUpDown(diff) {
+          if (activeColumnIndex === -1) {
+            setActiveColumnIndex(0);
+          } else if (bodyOperationRef.current) {
+            bodyOperationRef.current.onUpDown(diff);
+          }
+        },
+        onEnter: function onEnter() {
+          onSelect(value || generateConfig.getNow(), 'key');
+          setActiveColumnIndex(-1);
+        }
+      });
+    },
+    onBlur: function onBlur() {
+      setActiveColumnIndex(-1);
+    }
+  };
+  return /*#__PURE__*/React__namespace.createElement("div", {
+    className: classnames(panelPrefixCls, _defineProperty$4({}, "".concat(panelPrefixCls, "-active"), active))
+  }, /*#__PURE__*/React__namespace.createElement(TimeHeader, _extends$1({}, props, {
+    format: format,
+    prefixCls: prefixCls
+  })), /*#__PURE__*/React__namespace.createElement(TimeBody, _extends$1({}, props, {
+    prefixCls: prefixCls,
+    activeColumnIndex: activeColumnIndex,
+    operationRef: bodyOperationRef
+  })));
+}
+
+var RangeContext = /*#__PURE__*/React__namespace.createContext({});
+
+function useCellClassName(_ref) {
+  var cellPrefixCls = _ref.cellPrefixCls,
+      generateConfig = _ref.generateConfig,
+      rangedValue = _ref.rangedValue,
+      hoverRangedValue = _ref.hoverRangedValue,
+      isInView = _ref.isInView,
+      isSameCell = _ref.isSameCell,
+      offsetCell = _ref.offsetCell,
+      today = _ref.today,
+      value = _ref.value;
+
+  function getClassName(currentDate) {
+    var _ref2;
+
+    var prevDate = offsetCell(currentDate, -1);
+    var nextDate = offsetCell(currentDate, 1);
+    var rangeStart = getValue(rangedValue, 0);
+    var rangeEnd = getValue(rangedValue, 1);
+    var hoverStart = getValue(hoverRangedValue, 0);
+    var hoverEnd = getValue(hoverRangedValue, 1);
+    var isRangeHovered = isInRange(generateConfig, hoverStart, hoverEnd, currentDate);
+
+    function isRangeStart(date) {
+      return isSameCell(rangeStart, date);
+    }
+
+    function isRangeEnd(date) {
+      return isSameCell(rangeEnd, date);
+    }
+
+    var isHoverStart = isSameCell(hoverStart, currentDate);
+    var isHoverEnd = isSameCell(hoverEnd, currentDate);
+    var isHoverEdgeStart = (isRangeHovered || isHoverEnd) && (!isInView(prevDate) || isRangeEnd(prevDate));
+    var isHoverEdgeEnd = (isRangeHovered || isHoverStart) && (!isInView(nextDate) || isRangeStart(nextDate));
+    return _ref2 = {}, _defineProperty$4(_ref2, "".concat(cellPrefixCls, "-in-view"), isInView(currentDate)), _defineProperty$4(_ref2, "".concat(cellPrefixCls, "-in-range"), isInRange(generateConfig, rangeStart, rangeEnd, currentDate)), _defineProperty$4(_ref2, "".concat(cellPrefixCls, "-range-start"), isRangeStart(currentDate)), _defineProperty$4(_ref2, "".concat(cellPrefixCls, "-range-end"), isRangeEnd(currentDate)), _defineProperty$4(_ref2, "".concat(cellPrefixCls, "-range-start-single"), isRangeStart(currentDate) && !rangeEnd), _defineProperty$4(_ref2, "".concat(cellPrefixCls, "-range-end-single"), isRangeEnd(currentDate) && !rangeStart), _defineProperty$4(_ref2, "".concat(cellPrefixCls, "-range-start-near-hover"), isRangeStart(currentDate) && (isSameCell(prevDate, hoverStart) || isInRange(generateConfig, hoverStart, hoverEnd, prevDate))), _defineProperty$4(_ref2, "".concat(cellPrefixCls, "-range-end-near-hover"), isRangeEnd(currentDate) && (isSameCell(nextDate, hoverEnd) || isInRange(generateConfig, hoverStart, hoverEnd, nextDate))), _defineProperty$4(_ref2, "".concat(cellPrefixCls, "-range-hover"), isRangeHovered), _defineProperty$4(_ref2, "".concat(cellPrefixCls, "-range-hover-start"), isHoverStart), _defineProperty$4(_ref2, "".concat(cellPrefixCls, "-range-hover-end"), isHoverEnd), _defineProperty$4(_ref2, "".concat(cellPrefixCls, "-range-hover-edge-start"), isHoverEdgeStart), _defineProperty$4(_ref2, "".concat(cellPrefixCls, "-range-hover-edge-end"), isHoverEdgeEnd), _defineProperty$4(_ref2, "".concat(cellPrefixCls, "-range-hover-edge-start-near-range"), isHoverEdgeStart && isSameCell(prevDate, rangeEnd)), _defineProperty$4(_ref2, "".concat(cellPrefixCls, "-range-hover-edge-end-near-range"), isHoverEdgeEnd && isSameCell(nextDate, rangeStart)), _defineProperty$4(_ref2, "".concat(cellPrefixCls, "-today"), isSameCell(today, currentDate)), _defineProperty$4(_ref2, "".concat(cellPrefixCls, "-selected"), isSameCell(value, currentDate)), _ref2;
+  }
+
+  return getClassName;
+}
+
+function DateBody(props) {
+  var prefixCls = props.prefixCls,
+      generateConfig = props.generateConfig,
+      prefixColumn = props.prefixColumn,
+      locale = props.locale,
+      rowCount = props.rowCount,
+      viewDate = props.viewDate,
+      value = props.value,
+      dateRender = props.dateRender;
+
+  var _React$useContext = React__namespace.useContext(RangeContext),
+      rangedValue = _React$useContext.rangedValue,
+      hoverRangedValue = _React$useContext.hoverRangedValue;
+
+  var baseDate = getWeekStartDate(locale.locale, generateConfig, viewDate);
+  var cellPrefixCls = "".concat(prefixCls, "-cell");
+  var weekFirstDay = generateConfig.locale.getWeekFirstDay(locale.locale);
+  var today = generateConfig.getNow(); // ============================== Header ==============================
+
+  var headerCells = [];
+  var weekDaysLocale = locale.shortWeekDays || (generateConfig.locale.getShortWeekDays ? generateConfig.locale.getShortWeekDays(locale.locale) : []);
+
+  if (prefixColumn) {
+    headerCells.push( /*#__PURE__*/React__namespace.createElement("th", {
+      key: "empty",
+      "aria-label": "empty cell"
+    }));
+  }
+
+  for (var i = 0; i < WEEK_DAY_COUNT; i += 1) {
+    headerCells.push( /*#__PURE__*/React__namespace.createElement("th", {
+      key: i
+    }, weekDaysLocale[(i + weekFirstDay) % WEEK_DAY_COUNT]));
+  } // =============================== Body ===============================
+
+
+  var getCellClassName = useCellClassName({
+    cellPrefixCls: cellPrefixCls,
+    today: today,
+    value: value,
+    generateConfig: generateConfig,
+    rangedValue: prefixColumn ? null : rangedValue,
+    hoverRangedValue: prefixColumn ? null : hoverRangedValue,
+    isSameCell: function isSameCell(current, target) {
+      return isSameDate(generateConfig, current, target);
+    },
+    isInView: function isInView(date) {
+      return isSameMonth(generateConfig, date, viewDate);
+    },
+    offsetCell: function offsetCell(date, offset) {
+      return generateConfig.addDate(date, offset);
+    }
+  });
+  var getCellNode = dateRender ? function (date) {
+    return dateRender(date, today);
+  } : undefined;
+  return /*#__PURE__*/React__namespace.createElement(PanelBody, _extends$1({}, props, {
+    rowNum: rowCount,
+    colNum: WEEK_DAY_COUNT,
+    baseDate: baseDate,
+    getCellNode: getCellNode,
+    getCellText: generateConfig.getDate,
+    getCellClassName: getCellClassName,
+    getCellDate: generateConfig.addDate,
+    titleCell: function titleCell(date) {
+      return formatValue(date, {
+        locale: locale,
+        format: 'YYYY-MM-DD',
+        generateConfig: generateConfig
+      });
+    },
+    headerCells: headerCells
+  }));
+}
+
+function DateHeader(props) {
+  var prefixCls = props.prefixCls,
+      generateConfig = props.generateConfig,
+      locale = props.locale,
+      viewDate = props.viewDate,
+      onNextMonth = props.onNextMonth,
+      onPrevMonth = props.onPrevMonth,
+      onNextYear = props.onNextYear,
+      onPrevYear = props.onPrevYear,
+      onYearClick = props.onYearClick,
+      onMonthClick = props.onMonthClick;
+
+  var _React$useContext = React__namespace.useContext(PanelContext),
+      hideHeader = _React$useContext.hideHeader;
+
+  if (hideHeader) {
+    return null;
+  }
+
+  var headerPrefixCls = "".concat(prefixCls, "-header");
+  var monthsLocale = locale.shortMonths || (generateConfig.locale.getShortMonths ? generateConfig.locale.getShortMonths(locale.locale) : []);
+  var month = generateConfig.getMonth(viewDate); // =================== Month & Year ===================
+
+  var yearNode = /*#__PURE__*/React__namespace.createElement("button", {
+    type: "button",
+    key: "year",
+    onClick: onYearClick,
+    tabIndex: -1,
+    className: "".concat(prefixCls, "-year-btn")
+  }, formatValue(viewDate, {
+    locale: locale,
+    format: locale.yearFormat,
+    generateConfig: generateConfig
+  }));
+  var monthNode = /*#__PURE__*/React__namespace.createElement("button", {
+    type: "button",
+    key: "month",
+    onClick: onMonthClick,
+    tabIndex: -1,
+    className: "".concat(prefixCls, "-month-btn")
+  }, locale.monthFormat ? formatValue(viewDate, {
+    locale: locale,
+    format: locale.monthFormat,
+    generateConfig: generateConfig
+  }) : monthsLocale[month]);
+  var monthYearNodes = locale.monthBeforeYear ? [monthNode, yearNode] : [yearNode, monthNode];
+  return /*#__PURE__*/React__namespace.createElement(Header, _extends$1({}, props, {
+    prefixCls: headerPrefixCls,
+    onSuperPrev: onPrevYear,
+    onPrev: onPrevMonth,
+    onNext: onNextMonth,
+    onSuperNext: onNextYear
+  }), monthYearNodes);
+}
+
+var DATE_ROW_COUNT = 6;
+
+function DatePanel(props) {
+  var prefixCls = props.prefixCls,
+      _props$panelName = props.panelName,
+      panelName = _props$panelName === void 0 ? 'date' : _props$panelName,
+      keyboardConfig = props.keyboardConfig,
+      active = props.active,
+      operationRef = props.operationRef,
+      generateConfig = props.generateConfig,
+      value = props.value,
+      viewDate = props.viewDate,
+      onViewDateChange = props.onViewDateChange,
+      onPanelChange = props.onPanelChange,
+      _onSelect = props.onSelect;
+  var panelPrefixCls = "".concat(prefixCls, "-").concat(panelName, "-panel"); // ======================= Keyboard =======================
+
+  operationRef.current = {
+    onKeyDown: function onKeyDown(event) {
+      return createKeyDownHandler(event, _objectSpread2$1({
+        onLeftRight: function onLeftRight(diff) {
+          _onSelect(generateConfig.addDate(value || viewDate, diff), 'key');
+        },
+        onCtrlLeftRight: function onCtrlLeftRight(diff) {
+          _onSelect(generateConfig.addYear(value || viewDate, diff), 'key');
+        },
+        onUpDown: function onUpDown(diff) {
+          _onSelect(generateConfig.addDate(value || viewDate, diff * WEEK_DAY_COUNT), 'key');
+        },
+        onPageUpDown: function onPageUpDown(diff) {
+          _onSelect(generateConfig.addMonth(value || viewDate, diff), 'key');
+        }
+      }, keyboardConfig));
+    }
+  }; // ==================== View Operation ====================
+
+  var onYearChange = function onYearChange(diff) {
+    var newDate = generateConfig.addYear(viewDate, diff);
+    onViewDateChange(newDate);
+    onPanelChange(null, newDate);
+  };
+
+  var onMonthChange = function onMonthChange(diff) {
+    var newDate = generateConfig.addMonth(viewDate, diff);
+    onViewDateChange(newDate);
+    onPanelChange(null, newDate);
+  };
+
+  return /*#__PURE__*/React__namespace.createElement("div", {
+    className: classnames(panelPrefixCls, _defineProperty$4({}, "".concat(panelPrefixCls, "-active"), active))
+  }, /*#__PURE__*/React__namespace.createElement(DateHeader, _extends$1({}, props, {
+    prefixCls: prefixCls,
+    value: value,
+    viewDate: viewDate // View Operation
+    ,
+    onPrevYear: function onPrevYear() {
+      onYearChange(-1);
+    },
+    onNextYear: function onNextYear() {
+      onYearChange(1);
+    },
+    onPrevMonth: function onPrevMonth() {
+      onMonthChange(-1);
+    },
+    onNextMonth: function onNextMonth() {
+      onMonthChange(1);
+    },
+    onMonthClick: function onMonthClick() {
+      onPanelChange('month', viewDate);
+    },
+    onYearClick: function onYearClick() {
+      onPanelChange('year', viewDate);
+    }
+  })), /*#__PURE__*/React__namespace.createElement(DateBody, _extends$1({}, props, {
+    onSelect: function onSelect(date) {
+      return _onSelect(date, 'mouse');
+    },
+    prefixCls: prefixCls,
+    value: value,
+    viewDate: viewDate,
+    rowCount: DATE_ROW_COUNT
+  })));
+}
+
+var ACTIVE_PANEL = tuple('date', 'time');
+
+function DatetimePanel(props) {
+  var prefixCls = props.prefixCls,
+      operationRef = props.operationRef,
+      generateConfig = props.generateConfig,
+      value = props.value,
+      defaultValue = props.defaultValue,
+      disabledTime = props.disabledTime,
+      showTime = props.showTime,
+      onSelect = props.onSelect;
+  var panelPrefixCls = "".concat(prefixCls, "-datetime-panel");
+
+  var _React$useState = React__namespace.useState(null),
+      _React$useState2 = _slicedToArray$3(_React$useState, 2),
+      activePanel = _React$useState2[0],
+      setActivePanel = _React$useState2[1];
+
+  var dateOperationRef = React__namespace.useRef({});
+  var timeOperationRef = React__namespace.useRef({});
+  var timeProps = _typeof$4(showTime) === 'object' ? _objectSpread2$1({}, showTime) : {}; // ======================= Keyboard =======================
+
+  function getNextActive(offset) {
+    var activeIndex = ACTIVE_PANEL.indexOf(activePanel) + offset;
+    var nextActivePanel = ACTIVE_PANEL[activeIndex] || null;
+    return nextActivePanel;
+  }
+
+  var onBlur = function onBlur(e) {
+    if (timeOperationRef.current.onBlur) {
+      timeOperationRef.current.onBlur(e);
+    }
+
+    setActivePanel(null);
+  };
+
+  operationRef.current = {
+    onKeyDown: function onKeyDown(event) {
+      // Switch active panel
+      if (event.which === KeyCode.TAB) {
+        var nextActivePanel = getNextActive(event.shiftKey ? -1 : 1);
+        setActivePanel(nextActivePanel);
+
+        if (nextActivePanel) {
+          event.preventDefault();
+        }
+
+        return true;
+      } // Operate on current active panel
+
+
+      if (activePanel) {
+        var ref = activePanel === 'date' ? dateOperationRef : timeOperationRef;
+
+        if (ref.current && ref.current.onKeyDown) {
+          ref.current.onKeyDown(event);
+        }
+
+        return true;
+      } // Switch first active panel if operate without panel
+
+
+      if ([KeyCode.LEFT, KeyCode.RIGHT, KeyCode.UP, KeyCode.DOWN].includes(event.which)) {
+        setActivePanel('date');
+        return true;
+      }
+
+      return false;
+    },
+    onBlur: onBlur,
+    onClose: onBlur
+  }; // ======================== Events ========================
+
+  var onInternalSelect = function onInternalSelect(date, source) {
+    var selectedDate = date;
+
+    if (source === 'date' && !value && timeProps.defaultValue) {
+      // Date with time defaultValue
+      selectedDate = generateConfig.setHour(selectedDate, generateConfig.getHour(timeProps.defaultValue));
+      selectedDate = generateConfig.setMinute(selectedDate, generateConfig.getMinute(timeProps.defaultValue));
+      selectedDate = generateConfig.setSecond(selectedDate, generateConfig.getSecond(timeProps.defaultValue));
+    } else if (source === 'time' && !value && defaultValue) {
+      selectedDate = generateConfig.setYear(selectedDate, generateConfig.getYear(defaultValue));
+      selectedDate = generateConfig.setMonth(selectedDate, generateConfig.getMonth(defaultValue));
+      selectedDate = generateConfig.setDate(selectedDate, generateConfig.getDate(defaultValue));
+    }
+
+    if (onSelect) {
+      onSelect(selectedDate, 'mouse');
+    }
+  }; // ======================== Render ========================
+
+
+  var disabledTimes = disabledTime ? disabledTime(value || null) : {};
+  return /*#__PURE__*/React__namespace.createElement("div", {
+    className: classnames(panelPrefixCls, _defineProperty$4({}, "".concat(panelPrefixCls, "-active"), activePanel))
+  }, /*#__PURE__*/React__namespace.createElement(DatePanel, _extends$1({}, props, {
+    operationRef: dateOperationRef,
+    active: activePanel === 'date',
+    onSelect: function onSelect(date) {
+      onInternalSelect(setDateTime(generateConfig, date, showTime && _typeof$4(showTime) === 'object' ? showTime.defaultValue : null), 'date');
+    }
+  })), /*#__PURE__*/React__namespace.createElement(TimePanel, _extends$1({}, props, {
+    format: undefined
+  }, timeProps, disabledTimes, {
+    defaultValue: undefined,
+    operationRef: timeOperationRef,
+    active: activePanel === 'time',
+    onSelect: function onSelect(date) {
+      onInternalSelect(date, 'time');
+    }
+  })));
+}
+
+function WeekPanel(props) {
+  var prefixCls = props.prefixCls,
+      generateConfig = props.generateConfig,
+      locale = props.locale,
+      value = props.value; // Render additional column
+
+  var cellPrefixCls = "".concat(prefixCls, "-cell");
+
+  var prefixColumn = function prefixColumn(date) {
+    return /*#__PURE__*/React__namespace.createElement("td", {
+      key: "week",
+      className: classnames(cellPrefixCls, "".concat(cellPrefixCls, "-week"))
+    }, generateConfig.locale.getWeek(locale.locale, date));
+  }; // Add row className
+
+
+  var rowPrefixCls = "".concat(prefixCls, "-week-panel-row");
+
+  var rowClassName = function rowClassName(date) {
+    return classnames(rowPrefixCls, _defineProperty$4({}, "".concat(rowPrefixCls, "-selected"), isSameWeek(generateConfig, locale.locale, value, date)));
+  };
+
+  return /*#__PURE__*/React__namespace.createElement(DatePanel, _extends$1({}, props, {
+    panelName: "week",
+    prefixColumn: prefixColumn,
+    rowClassName: rowClassName,
+    keyboardConfig: {
+      onLeftRight: null
+    }
+  }));
+}
+
+function MonthHeader(props) {
+  var prefixCls = props.prefixCls,
+      generateConfig = props.generateConfig,
+      locale = props.locale,
+      viewDate = props.viewDate,
+      onNextYear = props.onNextYear,
+      onPrevYear = props.onPrevYear,
+      onYearClick = props.onYearClick;
+
+  var _React$useContext = React__namespace.useContext(PanelContext),
+      hideHeader = _React$useContext.hideHeader;
+
+  if (hideHeader) {
+    return null;
+  }
+
+  var headerPrefixCls = "".concat(prefixCls, "-header");
+  return /*#__PURE__*/React__namespace.createElement(Header, _extends$1({}, props, {
+    prefixCls: headerPrefixCls,
+    onSuperPrev: onPrevYear,
+    onSuperNext: onNextYear
+  }), /*#__PURE__*/React__namespace.createElement("button", {
+    type: "button",
+    onClick: onYearClick,
+    className: "".concat(prefixCls, "-year-btn")
+  }, formatValue(viewDate, {
+    locale: locale,
+    format: locale.yearFormat,
+    generateConfig: generateConfig
+  })));
+}
+
+var MONTH_COL_COUNT = 3;
+var MONTH_ROW_COUNT = 4;
+
+function MonthBody(props) {
+  var prefixCls = props.prefixCls,
+      locale = props.locale,
+      value = props.value,
+      viewDate = props.viewDate,
+      generateConfig = props.generateConfig,
+      monthCellRender = props.monthCellRender;
+
+  var _React$useContext = React__namespace.useContext(RangeContext),
+      rangedValue = _React$useContext.rangedValue,
+      hoverRangedValue = _React$useContext.hoverRangedValue;
+
+  var cellPrefixCls = "".concat(prefixCls, "-cell");
+  var getCellClassName = useCellClassName({
+    cellPrefixCls: cellPrefixCls,
+    value: value,
+    generateConfig: generateConfig,
+    rangedValue: rangedValue,
+    hoverRangedValue: hoverRangedValue,
+    isSameCell: function isSameCell(current, target) {
+      return isSameMonth(generateConfig, current, target);
+    },
+    isInView: function isInView() {
+      return true;
+    },
+    offsetCell: function offsetCell(date, offset) {
+      return generateConfig.addMonth(date, offset);
+    }
+  });
+  var monthsLocale = locale.shortMonths || (generateConfig.locale.getShortMonths ? generateConfig.locale.getShortMonths(locale.locale) : []);
+  var baseMonth = generateConfig.setMonth(viewDate, 0);
+  var getCellNode = monthCellRender ? function (date) {
+    return monthCellRender(date, locale);
+  } : undefined;
+  return /*#__PURE__*/React__namespace.createElement(PanelBody, _extends$1({}, props, {
+    rowNum: MONTH_ROW_COUNT,
+    colNum: MONTH_COL_COUNT,
+    baseDate: baseMonth,
+    getCellNode: getCellNode,
+    getCellText: function getCellText(date) {
+      return locale.monthFormat ? formatValue(date, {
+        locale: locale,
+        format: locale.monthFormat,
+        generateConfig: generateConfig
+      }) : monthsLocale[generateConfig.getMonth(date)];
+    },
+    getCellClassName: getCellClassName,
+    getCellDate: generateConfig.addMonth,
+    titleCell: function titleCell(date) {
+      return formatValue(date, {
+        locale: locale,
+        format: 'YYYY-MM',
+        generateConfig: generateConfig
+      });
+    }
+  }));
+}
+
+function MonthPanel(props) {
+  var prefixCls = props.prefixCls,
+      operationRef = props.operationRef,
+      onViewDateChange = props.onViewDateChange,
+      generateConfig = props.generateConfig,
+      value = props.value,
+      viewDate = props.viewDate,
+      onPanelChange = props.onPanelChange,
+      _onSelect = props.onSelect;
+  var panelPrefixCls = "".concat(prefixCls, "-month-panel"); // ======================= Keyboard =======================
+
+  operationRef.current = {
+    onKeyDown: function onKeyDown(event) {
+      return createKeyDownHandler(event, {
+        onLeftRight: function onLeftRight(diff) {
+          _onSelect(generateConfig.addMonth(value || viewDate, diff), 'key');
+        },
+        onCtrlLeftRight: function onCtrlLeftRight(diff) {
+          _onSelect(generateConfig.addYear(value || viewDate, diff), 'key');
+        },
+        onUpDown: function onUpDown(diff) {
+          _onSelect(generateConfig.addMonth(value || viewDate, diff * MONTH_COL_COUNT), 'key');
+        },
+        onEnter: function onEnter() {
+          onPanelChange('date', value || viewDate);
+        }
+      });
+    }
+  }; // ==================== View Operation ====================
+
+  var onYearChange = function onYearChange(diff) {
+    var newDate = generateConfig.addYear(viewDate, diff);
+    onViewDateChange(newDate);
+    onPanelChange(null, newDate);
+  };
+
+  return /*#__PURE__*/React__namespace.createElement("div", {
+    className: panelPrefixCls
+  }, /*#__PURE__*/React__namespace.createElement(MonthHeader, _extends$1({}, props, {
+    prefixCls: prefixCls,
+    onPrevYear: function onPrevYear() {
+      onYearChange(-1);
+    },
+    onNextYear: function onNextYear() {
+      onYearChange(1);
+    },
+    onYearClick: function onYearClick() {
+      onPanelChange('year', viewDate);
+    }
+  })), /*#__PURE__*/React__namespace.createElement(MonthBody, _extends$1({}, props, {
+    prefixCls: prefixCls,
+    onSelect: function onSelect(date) {
+      _onSelect(date, 'mouse');
+
+      onPanelChange('date', date);
+    }
+  })));
+}
+
+function QuarterHeader(props) {
+  var prefixCls = props.prefixCls,
+      generateConfig = props.generateConfig,
+      locale = props.locale,
+      viewDate = props.viewDate,
+      onNextYear = props.onNextYear,
+      onPrevYear = props.onPrevYear,
+      onYearClick = props.onYearClick;
+
+  var _React$useContext = React__namespace.useContext(PanelContext),
+      hideHeader = _React$useContext.hideHeader;
+
+  if (hideHeader) {
+    return null;
+  }
+
+  var headerPrefixCls = "".concat(prefixCls, "-header");
+  return /*#__PURE__*/React__namespace.createElement(Header, _extends$1({}, props, {
+    prefixCls: headerPrefixCls,
+    onSuperPrev: onPrevYear,
+    onSuperNext: onNextYear
+  }), /*#__PURE__*/React__namespace.createElement("button", {
+    type: "button",
+    onClick: onYearClick,
+    className: "".concat(prefixCls, "-year-btn")
+  }, formatValue(viewDate, {
+    locale: locale,
+    format: locale.yearFormat,
+    generateConfig: generateConfig
+  })));
+}
+
+var QUARTER_COL_COUNT = 4;
+var QUARTER_ROW_COUNT = 1;
+
+function QuarterBody(props) {
+  var prefixCls = props.prefixCls,
+      locale = props.locale,
+      value = props.value,
+      viewDate = props.viewDate,
+      generateConfig = props.generateConfig;
+
+  var _React$useContext = React__namespace.useContext(RangeContext),
+      rangedValue = _React$useContext.rangedValue,
+      hoverRangedValue = _React$useContext.hoverRangedValue;
+
+  var cellPrefixCls = "".concat(prefixCls, "-cell");
+  var getCellClassName = useCellClassName({
+    cellPrefixCls: cellPrefixCls,
+    value: value,
+    generateConfig: generateConfig,
+    rangedValue: rangedValue,
+    hoverRangedValue: hoverRangedValue,
+    isSameCell: function isSameCell(current, target) {
+      return isSameQuarter(generateConfig, current, target);
+    },
+    isInView: function isInView() {
+      return true;
+    },
+    offsetCell: function offsetCell(date, offset) {
+      return generateConfig.addMonth(date, offset * 3);
+    }
+  });
+  var baseQuarter = generateConfig.setDate(generateConfig.setMonth(viewDate, 0), 1);
+  return /*#__PURE__*/React__namespace.createElement(PanelBody, _extends$1({}, props, {
+    rowNum: QUARTER_ROW_COUNT,
+    colNum: QUARTER_COL_COUNT,
+    baseDate: baseQuarter,
+    getCellText: function getCellText(date) {
+      return formatValue(date, {
+        locale: locale,
+        format: locale.quarterFormat || '[Q]Q',
+        generateConfig: generateConfig
+      });
+    },
+    getCellClassName: getCellClassName,
+    getCellDate: function getCellDate(date, offset) {
+      return generateConfig.addMonth(date, offset * 3);
+    },
+    titleCell: function titleCell(date) {
+      return formatValue(date, {
+        locale: locale,
+        format: 'YYYY-[Q]Q',
+        generateConfig: generateConfig
+      });
+    }
+  }));
+}
+
+function QuarterPanel(props) {
+  var prefixCls = props.prefixCls,
+      operationRef = props.operationRef,
+      onViewDateChange = props.onViewDateChange,
+      generateConfig = props.generateConfig,
+      value = props.value,
+      viewDate = props.viewDate,
+      onPanelChange = props.onPanelChange,
+      _onSelect = props.onSelect;
+  var panelPrefixCls = "".concat(prefixCls, "-quarter-panel"); // ======================= Keyboard =======================
+
+  operationRef.current = {
+    onKeyDown: function onKeyDown(event) {
+      return createKeyDownHandler(event, {
+        onLeftRight: function onLeftRight(diff) {
+          _onSelect(generateConfig.addMonth(value || viewDate, diff * 3), 'key');
+        },
+        onCtrlLeftRight: function onCtrlLeftRight(diff) {
+          _onSelect(generateConfig.addYear(value || viewDate, diff), 'key');
+        },
+        onUpDown: function onUpDown(diff) {
+          _onSelect(generateConfig.addYear(value || viewDate, diff), 'key');
+        }
+      });
+    }
+  }; // ==================== View Operation ====================
+
+  var onYearChange = function onYearChange(diff) {
+    var newDate = generateConfig.addYear(viewDate, diff);
+    onViewDateChange(newDate);
+    onPanelChange(null, newDate);
+  };
+
+  return /*#__PURE__*/React__namespace.createElement("div", {
+    className: panelPrefixCls
+  }, /*#__PURE__*/React__namespace.createElement(QuarterHeader, _extends$1({}, props, {
+    prefixCls: prefixCls,
+    onPrevYear: function onPrevYear() {
+      onYearChange(-1);
+    },
+    onNextYear: function onNextYear() {
+      onYearChange(1);
+    },
+    onYearClick: function onYearClick() {
+      onPanelChange('year', viewDate);
+    }
+  })), /*#__PURE__*/React__namespace.createElement(QuarterBody, _extends$1({}, props, {
+    prefixCls: prefixCls,
+    onSelect: function onSelect(date) {
+      _onSelect(date, 'mouse');
+    }
+  })));
+}
+
+function YearHeader(props) {
+  var prefixCls = props.prefixCls,
+      generateConfig = props.generateConfig,
+      viewDate = props.viewDate,
+      onPrevDecade = props.onPrevDecade,
+      onNextDecade = props.onNextDecade,
+      onDecadeClick = props.onDecadeClick;
+
+  var _React$useContext = React__namespace.useContext(PanelContext),
+      hideHeader = _React$useContext.hideHeader;
+
+  if (hideHeader) {
+    return null;
+  }
+
+  var headerPrefixCls = "".concat(prefixCls, "-header");
+  var yearNumber = generateConfig.getYear(viewDate);
+  var startYear = Math.floor(yearNumber / YEAR_DECADE_COUNT) * YEAR_DECADE_COUNT;
+  var endYear = startYear + YEAR_DECADE_COUNT - 1;
+  return /*#__PURE__*/React__namespace.createElement(Header, _extends$1({}, props, {
+    prefixCls: headerPrefixCls,
+    onSuperPrev: onPrevDecade,
+    onSuperNext: onNextDecade
+  }), /*#__PURE__*/React__namespace.createElement("button", {
+    type: "button",
+    onClick: onDecadeClick,
+    className: "".concat(prefixCls, "-decade-btn")
+  }, startYear, "-", endYear));
+}
+
+var YEAR_COL_COUNT = 3;
+var YEAR_ROW_COUNT = 4;
+
+function YearBody(props) {
+  var prefixCls = props.prefixCls,
+      value = props.value,
+      viewDate = props.viewDate,
+      locale = props.locale,
+      generateConfig = props.generateConfig;
+
+  var _React$useContext = React__namespace.useContext(RangeContext),
+      rangedValue = _React$useContext.rangedValue,
+      hoverRangedValue = _React$useContext.hoverRangedValue;
+
+  var yearPrefixCls = "".concat(prefixCls, "-cell"); // =============================== Year ===============================
+
+  var yearNumber = generateConfig.getYear(viewDate);
+  var startYear = Math.floor(yearNumber / YEAR_DECADE_COUNT) * YEAR_DECADE_COUNT;
+  var endYear = startYear + YEAR_DECADE_COUNT - 1;
+  var baseYear = generateConfig.setYear(viewDate, startYear - Math.ceil((YEAR_COL_COUNT * YEAR_ROW_COUNT - YEAR_DECADE_COUNT) / 2));
+
+  var isInView = function isInView(date) {
+    var currentYearNumber = generateConfig.getYear(date);
+    return startYear <= currentYearNumber && currentYearNumber <= endYear;
+  };
+
+  var getCellClassName = useCellClassName({
+    cellPrefixCls: yearPrefixCls,
+    value: value,
+    generateConfig: generateConfig,
+    rangedValue: rangedValue,
+    hoverRangedValue: hoverRangedValue,
+    isSameCell: function isSameCell(current, target) {
+      return isSameYear(generateConfig, current, target);
+    },
+    isInView: isInView,
+    offsetCell: function offsetCell(date, offset) {
+      return generateConfig.addYear(date, offset);
+    }
+  });
+  return /*#__PURE__*/React__namespace.createElement(PanelBody, _extends$1({}, props, {
+    rowNum: YEAR_ROW_COUNT,
+    colNum: YEAR_COL_COUNT,
+    baseDate: baseYear,
+    getCellText: generateConfig.getYear,
+    getCellClassName: getCellClassName,
+    getCellDate: generateConfig.addYear,
+    titleCell: function titleCell(date) {
+      return formatValue(date, {
+        locale: locale,
+        format: 'YYYY',
+        generateConfig: generateConfig
+      });
+    }
+  }));
+}
+
+var YEAR_DECADE_COUNT = 10;
+
+function YearPanel(props) {
+  var prefixCls = props.prefixCls,
+      operationRef = props.operationRef,
+      onViewDateChange = props.onViewDateChange,
+      generateConfig = props.generateConfig,
+      value = props.value,
+      viewDate = props.viewDate,
+      sourceMode = props.sourceMode,
+      _onSelect = props.onSelect,
+      onPanelChange = props.onPanelChange;
+  var panelPrefixCls = "".concat(prefixCls, "-year-panel"); // ======================= Keyboard =======================
+
+  operationRef.current = {
+    onKeyDown: function onKeyDown(event) {
+      return createKeyDownHandler(event, {
+        onLeftRight: function onLeftRight(diff) {
+          _onSelect(generateConfig.addYear(value || viewDate, diff), 'key');
+        },
+        onCtrlLeftRight: function onCtrlLeftRight(diff) {
+          _onSelect(generateConfig.addYear(value || viewDate, diff * YEAR_DECADE_COUNT), 'key');
+        },
+        onUpDown: function onUpDown(diff) {
+          _onSelect(generateConfig.addYear(value || viewDate, diff * YEAR_COL_COUNT), 'key');
+        },
+        onEnter: function onEnter() {
+          onPanelChange(sourceMode === 'date' ? 'date' : 'month', value || viewDate);
+        }
+      });
+    }
+  }; // ==================== View Operation ====================
+
+  var onDecadeChange = function onDecadeChange(diff) {
+    var newDate = generateConfig.addYear(viewDate, diff * 10);
+    onViewDateChange(newDate);
+    onPanelChange(null, newDate);
+  };
+
+  return /*#__PURE__*/React__namespace.createElement("div", {
+    className: panelPrefixCls
+  }, /*#__PURE__*/React__namespace.createElement(YearHeader, _extends$1({}, props, {
+    prefixCls: prefixCls,
+    onPrevDecade: function onPrevDecade() {
+      onDecadeChange(-1);
+    },
+    onNextDecade: function onNextDecade() {
+      onDecadeChange(1);
+    },
+    onDecadeClick: function onDecadeClick() {
+      onPanelChange('decade', viewDate);
+    }
+  })), /*#__PURE__*/React__namespace.createElement(YearBody, _extends$1({}, props, {
+    prefixCls: prefixCls,
+    onSelect: function onSelect(date) {
+      onPanelChange(sourceMode === 'date' ? 'date' : 'month', date);
+
+      _onSelect(date, 'mouse');
+    }
+  })));
+}
+
+function getExtraFooter(prefixCls, mode, renderExtraFooter) {
+  if (!renderExtraFooter) {
+    return null;
+  }
+
+  return /*#__PURE__*/React__namespace.createElement("div", {
+    className: "".concat(prefixCls, "-footer-extra")
+  }, renderExtraFooter(mode));
+}
+
+function getRanges(_ref) {
+  var prefixCls = _ref.prefixCls,
+      _ref$rangeList = _ref.rangeList,
+      rangeList = _ref$rangeList === void 0 ? [] : _ref$rangeList,
+      _ref$components = _ref.components,
+      components = _ref$components === void 0 ? {} : _ref$components,
+      needConfirmButton = _ref.needConfirmButton,
+      onNow = _ref.onNow,
+      onOk = _ref.onOk,
+      okDisabled = _ref.okDisabled,
+      showNow = _ref.showNow,
+      locale = _ref.locale;
+  var presetNode;
+  var okNode;
+
+  if (rangeList.length) {
+    var Item = components.rangeItem || 'span';
+    presetNode = /*#__PURE__*/React__namespace.createElement(React__namespace.Fragment, null, rangeList.map(function (_ref2) {
+      var label = _ref2.label,
+          onClick = _ref2.onClick,
+          onMouseEnter = _ref2.onMouseEnter,
+          onMouseLeave = _ref2.onMouseLeave;
+      return /*#__PURE__*/React__namespace.createElement("li", {
+        key: label,
+        className: "".concat(prefixCls, "-preset")
+      }, /*#__PURE__*/React__namespace.createElement(Item, {
+        onClick: onClick,
+        onMouseEnter: onMouseEnter,
+        onMouseLeave: onMouseLeave
+      }, label));
+    }));
+  }
+
+  if (needConfirmButton) {
+    var Button = components.button || 'button';
+
+    if (onNow && !presetNode && showNow !== false) {
+      presetNode = /*#__PURE__*/React__namespace.createElement("li", {
+        className: "".concat(prefixCls, "-now")
+      }, /*#__PURE__*/React__namespace.createElement("a", {
+        className: "".concat(prefixCls, "-now-btn"),
+        onClick: onNow
+      }, locale.now));
+    }
+
+    okNode = needConfirmButton && /*#__PURE__*/React__namespace.createElement("li", {
+      className: "".concat(prefixCls, "-ok")
+    }, /*#__PURE__*/React__namespace.createElement(Button, {
+      disabled: okDisabled,
+      onClick: onOk
+    }, locale.ok));
+  }
+
+  if (!presetNode && !okNode) {
+    return null;
+  }
+
+  return /*#__PURE__*/React__namespace.createElement("ul", {
+    className: "".concat(prefixCls, "-ranges")
+  }, presetNode, okNode);
+}
+
+function PickerPanel(props) {
+  var _classNames;
+
+  var _props$prefixCls = props.prefixCls,
+      prefixCls = _props$prefixCls === void 0 ? 'rc-picker' : _props$prefixCls,
+      className = props.className,
+      style = props.style,
+      locale = props.locale,
+      generateConfig = props.generateConfig,
+      value = props.value,
+      defaultValue = props.defaultValue,
+      pickerValue = props.pickerValue,
+      defaultPickerValue = props.defaultPickerValue,
+      disabledDate = props.disabledDate,
+      mode = props.mode,
+      _props$picker = props.picker,
+      picker = _props$picker === void 0 ? 'date' : _props$picker,
+      _props$tabIndex = props.tabIndex,
+      tabIndex = _props$tabIndex === void 0 ? 0 : _props$tabIndex,
+      showNow = props.showNow,
+      showTime = props.showTime,
+      showToday = props.showToday,
+      renderExtraFooter = props.renderExtraFooter,
+      hideHeader = props.hideHeader,
+      onSelect = props.onSelect,
+      onChange = props.onChange,
+      onPanelChange = props.onPanelChange,
+      onMouseDown = props.onMouseDown,
+      onPickerValueChange = props.onPickerValueChange,
+      _onOk = props.onOk,
+      components = props.components,
+      direction = props.direction,
+      _props$hourStep = props.hourStep,
+      hourStep = _props$hourStep === void 0 ? 1 : _props$hourStep,
+      _props$minuteStep = props.minuteStep,
+      minuteStep = _props$minuteStep === void 0 ? 1 : _props$minuteStep,
+      _props$secondStep = props.secondStep,
+      secondStep = _props$secondStep === void 0 ? 1 : _props$secondStep;
+  var needConfirmButton = picker === 'date' && !!showTime || picker === 'time';
+  var isHourStepValid = 24 % hourStep === 0;
+  var isMinuteStepValid = 60 % minuteStep === 0;
+  var isSecondStepValid = 60 % secondStep === 0;
+
+  if (process.env.NODE_ENV !== 'production') {
+    warningOnce(!value || generateConfig.isValidate(value), 'Invalidate date pass to `value`.');
+    warningOnce(!value || generateConfig.isValidate(value), 'Invalidate date pass to `defaultValue`.');
+    warningOnce(isHourStepValid, "`hourStep` ".concat(hourStep, " is invalid. It should be a factor of 24."));
+    warningOnce(isMinuteStepValid, "`minuteStep` ".concat(minuteStep, " is invalid. It should be a factor of 60."));
+    warningOnce(isSecondStepValid, "`secondStep` ".concat(secondStep, " is invalid. It should be a factor of 60."));
+  } // ============================ State =============================
+
+
+  var panelContext = React__namespace.useContext(PanelContext);
+  var operationRef = panelContext.operationRef,
+      panelDivRef = panelContext.panelRef,
+      onContextSelect = panelContext.onSelect,
+      hideRanges = panelContext.hideRanges,
+      defaultOpenValue = panelContext.defaultOpenValue;
+
+  var _React$useContext = React__namespace.useContext(RangeContext),
+      inRange = _React$useContext.inRange,
+      panelPosition = _React$useContext.panelPosition,
+      rangedValue = _React$useContext.rangedValue,
+      hoverRangedValue = _React$useContext.hoverRangedValue;
+
+  var panelRef = React__namespace.useRef({}); // Handle init logic
+
+  var initRef = React__namespace.useRef(true); // Value
+
+  var _useMergedState = useControlledState(null, {
+    value: value,
+    defaultValue: defaultValue,
+    postState: function postState(val) {
+      if (!val && defaultOpenValue && picker === 'time') {
+        return defaultOpenValue;
+      }
+
+      return val;
+    }
+  }),
+      _useMergedState2 = _slicedToArray$3(_useMergedState, 2),
+      mergedValue = _useMergedState2[0],
+      setInnerValue = _useMergedState2[1]; // View date control
+
+
+  var _useMergedState3 = useControlledState(null, {
+    value: pickerValue,
+    defaultValue: defaultPickerValue || mergedValue,
+    postState: function postState(date) {
+      var now = generateConfig.getNow();
+      if (!date) return now; // When value is null and set showTime
+
+      if (!mergedValue && showTime) {
+        if (_typeof$4(showTime) === 'object') {
+          return setDateTime(generateConfig, date, showTime.defaultValue || now);
+        }
+
+        if (defaultValue) {
+          return setDateTime(generateConfig, date, defaultValue);
+        }
+
+        return setDateTime(generateConfig, date, now);
+      }
+
+      return date;
+    }
+  }),
+      _useMergedState4 = _slicedToArray$3(_useMergedState3, 2),
+      viewDate = _useMergedState4[0],
+      setInnerViewDate = _useMergedState4[1];
+
+  var setViewDate = function setViewDate(date) {
+    setInnerViewDate(date);
+
+    if (onPickerValueChange) {
+      onPickerValueChange(date);
+    }
+  }; // Panel control
+
+
+  var getInternalNextMode = function getInternalNextMode(nextMode) {
+    var getNextMode = PickerModeMap[picker];
+
+    if (getNextMode) {
+      return getNextMode(nextMode);
+    }
+
+    return nextMode;
+  }; // Save panel is changed from which panel
+
+
+  var _useMergedState5 = useControlledState(function () {
+    if (picker === 'time') {
+      return 'time';
+    }
+
+    return getInternalNextMode('date');
+  }, {
+    value: mode
+  }),
+      _useMergedState6 = _slicedToArray$3(_useMergedState5, 2),
+      mergedMode = _useMergedState6[0],
+      setInnerMode = _useMergedState6[1];
+
+  React__namespace.useEffect(function () {
+    setInnerMode(picker);
+  }, [picker]);
+
+  var _React$useState = React__namespace.useState(function () {
+    return mergedMode;
+  }),
+      _React$useState2 = _slicedToArray$3(_React$useState, 2),
+      sourceMode = _React$useState2[0],
+      setSourceMode = _React$useState2[1];
+
+  var onInternalPanelChange = function onInternalPanelChange(newMode, viewValue) {
+    var nextMode = getInternalNextMode(newMode || mergedMode);
+    setSourceMode(mergedMode);
+    setInnerMode(nextMode);
+
+    if (onPanelChange && (mergedMode !== nextMode || isEqual(generateConfig, viewDate, viewDate))) {
+      onPanelChange(viewValue, nextMode);
+    }
+  };
+
+  var triggerSelect = function triggerSelect(date, type) {
+    var forceTriggerSelect = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+
+    if (mergedMode === picker || forceTriggerSelect) {
+      setInnerValue(date);
+
+      if (onSelect) {
+        onSelect(date);
+      }
+
+      if (onContextSelect) {
+        onContextSelect(date, type);
+      }
+
+      if (onChange && !isEqual(generateConfig, date, mergedValue) && !(disabledDate === null || disabledDate === void 0 ? void 0 : disabledDate(date))) {
+        onChange(date);
+      }
+    }
+  }; // ========================= Interactive ==========================
+
+
+  var onInternalKeyDown = function onInternalKeyDown(e) {
+    if (panelRef.current && panelRef.current.onKeyDown) {
+      if ([KeyCode.LEFT, KeyCode.RIGHT, KeyCode.UP, KeyCode.DOWN, KeyCode.PAGE_UP, KeyCode.PAGE_DOWN, KeyCode.ENTER].includes(e.which)) {
+        e.preventDefault();
+      }
+
+      return panelRef.current.onKeyDown(e);
+    }
+    /* istanbul ignore next */
+
+    /* eslint-disable no-lone-blocks */
+
+
+    {
+      warningOnce(false, 'Panel not correct handle keyDown event. Please help to fire issue about this.');
+      return false;
+    }
+    /* eslint-enable no-lone-blocks */
+  };
+
+  var onInternalBlur = function onInternalBlur(e) {
+    if (panelRef.current && panelRef.current.onBlur) {
+      panelRef.current.onBlur(e);
+    }
+  };
+
+  if (operationRef && panelPosition !== 'right') {
+    operationRef.current = {
+      onKeyDown: onInternalKeyDown,
+      onClose: function onClose() {
+        if (panelRef.current && panelRef.current.onClose) {
+          panelRef.current.onClose();
+        }
+      }
+    };
+  } // ============================ Effect ============================
+
+
+  React__namespace.useEffect(function () {
+    if (value && !initRef.current) {
+      setInnerViewDate(value);
+    }
+  }, [value]);
+  React__namespace.useEffect(function () {
+    initRef.current = false;
+  }, []); // ============================ Panels ============================
+
+  var panelNode;
+
+  var pickerProps = _objectSpread2$1(_objectSpread2$1({}, props), {}, {
+    operationRef: panelRef,
+    prefixCls: prefixCls,
+    viewDate: viewDate,
+    value: mergedValue,
+    onViewDateChange: setViewDate,
+    sourceMode: sourceMode,
+    onPanelChange: onInternalPanelChange,
+    disabledDate: disabledDate
+  });
+
+  delete pickerProps.onChange;
+  delete pickerProps.onSelect;
+
+  switch (mergedMode) {
+    case 'decade':
+      panelNode = /*#__PURE__*/React__namespace.createElement(DecadePanel, _extends$1({}, pickerProps, {
+        onSelect: function onSelect(date, type) {
+          setViewDate(date);
+          triggerSelect(date, type);
+        }
+      }));
+      break;
+
+    case 'year':
+      panelNode = /*#__PURE__*/React__namespace.createElement(YearPanel, _extends$1({}, pickerProps, {
+        onSelect: function onSelect(date, type) {
+          setViewDate(date);
+          triggerSelect(date, type);
+        }
+      }));
+      break;
+
+    case 'month':
+      panelNode = /*#__PURE__*/React__namespace.createElement(MonthPanel, _extends$1({}, pickerProps, {
+        onSelect: function onSelect(date, type) {
+          setViewDate(date);
+          triggerSelect(date, type);
+        }
+      }));
+      break;
+
+    case 'quarter':
+      panelNode = /*#__PURE__*/React__namespace.createElement(QuarterPanel, _extends$1({}, pickerProps, {
+        onSelect: function onSelect(date, type) {
+          setViewDate(date);
+          triggerSelect(date, type);
+        }
+      }));
+      break;
+
+    case 'week':
+      panelNode = /*#__PURE__*/React__namespace.createElement(WeekPanel, _extends$1({}, pickerProps, {
+        onSelect: function onSelect(date, type) {
+          setViewDate(date);
+          triggerSelect(date, type);
+        }
+      }));
+      break;
+
+    case 'time':
+      delete pickerProps.showTime;
+      panelNode = /*#__PURE__*/React__namespace.createElement(TimePanel, _extends$1({}, pickerProps, _typeof$4(showTime) === 'object' ? showTime : null, {
+        onSelect: function onSelect(date, type) {
+          setViewDate(date);
+          triggerSelect(date, type);
+        }
+      }));
+      break;
+
+    default:
+      if (showTime) {
+        panelNode = /*#__PURE__*/React__namespace.createElement(DatetimePanel, _extends$1({}, pickerProps, {
+          onSelect: function onSelect(date, type) {
+            setViewDate(date);
+            triggerSelect(date, type);
+          }
+        }));
+      } else {
+        panelNode = /*#__PURE__*/React__namespace.createElement(DatePanel, _extends$1({}, pickerProps, {
+          onSelect: function onSelect(date, type) {
+            setViewDate(date);
+            triggerSelect(date, type);
+          }
+        }));
+      }
+
+  } // ============================ Footer ============================
+
+
+  var extraFooter;
+  var rangesNode;
+
+  var onNow = function onNow() {
+    var now = generateConfig.getNow();
+    var lowerBoundTime = getLowerBoundTime(generateConfig.getHour(now), generateConfig.getMinute(now), generateConfig.getSecond(now), isHourStepValid ? hourStep : 1, isMinuteStepValid ? minuteStep : 1, isSecondStepValid ? secondStep : 1);
+    var adjustedNow = setTime(generateConfig, now, lowerBoundTime[0], // hour
+    lowerBoundTime[1], // minute
+    lowerBoundTime[2]);
+    triggerSelect(adjustedNow, 'submit');
+  };
+
+  if (!hideRanges) {
+    extraFooter = getExtraFooter(prefixCls, mergedMode, renderExtraFooter);
+    rangesNode = getRanges({
+      prefixCls: prefixCls,
+      components: components,
+      needConfirmButton: needConfirmButton,
+      okDisabled: !mergedValue || disabledDate && disabledDate(mergedValue),
+      locale: locale,
+      showNow: showNow,
+      onNow: needConfirmButton && onNow,
+      onOk: function onOk() {
+        if (mergedValue) {
+          triggerSelect(mergedValue, 'submit', true);
+
+          if (_onOk) {
+            _onOk(mergedValue);
+          }
+        }
+      }
+    });
+  }
+
+  var todayNode;
+
+  if (showToday && mergedMode === 'date' && picker === 'date' && !showTime) {
+    var now = generateConfig.getNow();
+    var todayCls = "".concat(prefixCls, "-today-btn");
+    var disabled = disabledDate && disabledDate(now);
+    todayNode = /*#__PURE__*/React__namespace.createElement("a", {
+      className: classnames(todayCls, disabled && "".concat(todayCls, "-disabled")),
+      "aria-disabled": disabled,
+      onClick: function onClick() {
+        if (!disabled) {
+          triggerSelect(now, 'mouse', true);
+        }
+      }
+    }, locale.today);
+  }
+
+  return /*#__PURE__*/React__namespace.createElement(PanelContext.Provider, {
+    value: _objectSpread2$1(_objectSpread2$1({}, panelContext), {}, {
+      mode: mergedMode,
+      hideHeader: 'hideHeader' in props ? hideHeader : panelContext.hideHeader,
+      hidePrevBtn: inRange && panelPosition === 'right',
+      hideNextBtn: inRange && panelPosition === 'left'
+    })
+  }, /*#__PURE__*/React__namespace.createElement("div", {
+    tabIndex: tabIndex,
+    className: classnames("".concat(prefixCls, "-panel"), className, (_classNames = {}, _defineProperty$4(_classNames, "".concat(prefixCls, "-panel-has-range"), rangedValue && rangedValue[0] && rangedValue[1]), _defineProperty$4(_classNames, "".concat(prefixCls, "-panel-has-range-hover"), hoverRangedValue && hoverRangedValue[0] && hoverRangedValue[1]), _defineProperty$4(_classNames, "".concat(prefixCls, "-panel-rtl"), direction === 'rtl'), _classNames)),
+    style: style,
+    onKeyDown: onInternalKeyDown,
+    onBlur: onInternalBlur,
+    onMouseDown: onMouseDown,
+    ref: panelDivRef
+  }, panelNode, extraFooter || rangesNode || todayNode ? /*#__PURE__*/React__namespace.createElement("div", {
+    className: "".concat(prefixCls, "-footer")
+  }, extraFooter, rangesNode, todayNode) : null));
+}
+/* eslint-enable */
+
+var BUILT_IN_PLACEMENTS = {
+  bottomLeft: {
+    points: ['tl', 'bl'],
+    offset: [0, 4],
+    overflow: {
+      adjustX: 1,
+      adjustY: 1
+    }
+  },
+  bottomRight: {
+    points: ['tr', 'br'],
+    offset: [0, 4],
+    overflow: {
+      adjustX: 1,
+      adjustY: 1
+    }
+  },
+  topLeft: {
+    points: ['bl', 'tl'],
+    offset: [0, -4],
+    overflow: {
+      adjustX: 0,
+      adjustY: 1
+    }
+  },
+  topRight: {
+    points: ['br', 'tr'],
+    offset: [0, -4],
+    overflow: {
+      adjustX: 0,
+      adjustY: 1
+    }
+  }
+};
+
+function PickerTrigger(_ref) {
+  var _classNames;
+
+  var prefixCls = _ref.prefixCls,
+      popupElement = _ref.popupElement,
+      popupStyle = _ref.popupStyle,
+      visible = _ref.visible,
+      dropdownClassName = _ref.dropdownClassName,
+      dropdownAlign = _ref.dropdownAlign,
+      transitionName = _ref.transitionName,
+      getPopupContainer = _ref.getPopupContainer,
+      children = _ref.children,
+      range = _ref.range,
+      popupPlacement = _ref.popupPlacement,
+      direction = _ref.direction;
+  var dropdownPrefixCls = "".concat(prefixCls, "-dropdown");
+
+  var getPopupPlacement = function getPopupPlacement() {
+    if (popupPlacement !== undefined) {
+      return popupPlacement;
+    }
+
+    return direction === 'rtl' ? 'bottomRight' : 'bottomLeft';
+  };
+
+  return /*#__PURE__*/React__namespace.createElement(Trigger, {
+    showAction: [],
+    hideAction: [],
+    popupPlacement: getPopupPlacement(),
+    builtinPlacements: BUILT_IN_PLACEMENTS,
+    prefixCls: dropdownPrefixCls,
+    popupTransitionName: transitionName,
+    popup: popupElement,
+    popupAlign: dropdownAlign,
+    popupVisible: visible,
+    popupClassName: classnames(dropdownClassName, (_classNames = {}, _defineProperty$4(_classNames, "".concat(dropdownPrefixCls, "-range"), range), _defineProperty$4(_classNames, "".concat(dropdownPrefixCls, "-rtl"), direction === 'rtl'), _classNames)),
+    popupStyle: popupStyle,
+    getPopupContainer: getPopupContainer
+  }, children);
+}
+
+function usePickerInput(_ref) {
+  var open = _ref.open,
+      value = _ref.value,
+      isClickOutside = _ref.isClickOutside,
+      triggerOpen = _ref.triggerOpen,
+      forwardKeyDown = _ref.forwardKeyDown,
+      _onKeyDown = _ref.onKeyDown,
+      blurToCancel = _ref.blurToCancel,
+      onSubmit = _ref.onSubmit,
+      onCancel = _ref.onCancel,
+      _onFocus = _ref.onFocus,
+      _onBlur = _ref.onBlur;
+
+  var _useState = React.useState(false),
+      _useState2 = _slicedToArray$3(_useState, 2),
+      typing = _useState2[0],
+      setTyping = _useState2[1];
+
+  var _useState3 = React.useState(false),
+      _useState4 = _slicedToArray$3(_useState3, 2),
+      focused = _useState4[0],
+      setFocused = _useState4[1];
+  /**
+   * We will prevent blur to handle open event when user click outside,
+   * since this will repeat trigger `onOpenChange` event.
+   */
+
+
+  var preventBlurRef = React.useRef(false);
+  var valueChangedRef = React.useRef(false);
+  var preventDefaultRef = React.useRef(false);
+  var inputProps = {
+    onMouseDown: function onMouseDown() {
+      setTyping(true);
+      triggerOpen(true);
+    },
+    onKeyDown: function onKeyDown(e) {
+      var preventDefault = function preventDefault() {
+        preventDefaultRef.current = true;
+      };
+
+      _onKeyDown(e, preventDefault);
+
+      if (preventDefaultRef.current) return;
+
+      switch (e.which) {
+        case KeyCode.ENTER:
+          {
+            if (!open) {
+              triggerOpen(true);
+            } else if (onSubmit() !== false) {
+              setTyping(true);
+            }
+
+            e.preventDefault();
+            return;
+          }
+
+        case KeyCode.TAB:
+          {
+            if (typing && open && !e.shiftKey) {
+              setTyping(false);
+              e.preventDefault();
+            } else if (!typing && open) {
+              if (!forwardKeyDown(e) && e.shiftKey) {
+                setTyping(true);
+                e.preventDefault();
+              }
+            }
+
+            return;
+          }
+
+        case KeyCode.ESC:
+          {
+            setTyping(true);
+            onCancel();
+            return;
+          }
+      }
+
+      if (!open && ![KeyCode.SHIFT].includes(e.which)) {
+        triggerOpen(true);
+      } else if (!typing) {
+        // Let popup panel handle keyboard
+        forwardKeyDown(e);
+      }
+    },
+    onFocus: function onFocus(e) {
+      setTyping(true);
+      setFocused(true);
+
+      if (_onFocus) {
+        _onFocus(e);
+      }
+    },
+    onBlur: function onBlur(e) {
+      if (preventBlurRef.current || !isClickOutside(document.activeElement)) {
+        preventBlurRef.current = false;
+        return;
+      }
+
+      if (blurToCancel) {
+        setTimeout(function () {
+          var _document = document,
+              activeElement = _document.activeElement;
+
+          while (activeElement && activeElement.shadowRoot) {
+            activeElement = activeElement.shadowRoot.activeElement;
+          }
+
+          if (isClickOutside(activeElement)) {
+            onCancel();
+          }
+        }, 0);
+      } else if (open) {
+        triggerOpen(false);
+
+        if (valueChangedRef.current) {
+          onSubmit();
+        }
+      }
+
+      setFocused(false);
+
+      if (_onBlur) {
+        _onBlur(e);
+      }
+    }
+  }; // check if value changed
+
+  React.useEffect(function () {
+    valueChangedRef.current = false;
+  }, [open]);
+  React.useEffect(function () {
+    valueChangedRef.current = true;
+  }, [value]); // Global click handler
+
+  React.useEffect(function () {
+    return addGlobalMouseDownEvent(function (e) {
+      var target = getTargetFromEvent(e);
+
+      if (open) {
+        var clickedOutside = isClickOutside(target);
+
+        if (!clickedOutside) {
+          preventBlurRef.current = true; // Always set back in case `onBlur` prevented by user
+
+          requestAnimationFrame(function () {
+            preventBlurRef.current = false;
+          });
+        } else if (!focused || clickedOutside) {
+          triggerOpen(false);
+        }
+      }
+    });
+  });
+  return [inputProps, {
+    focused: focused,
+    typing: typing
+  }];
+}
+
+function useTextValueMapping(_ref) {
+  var valueTexts = _ref.valueTexts,
+      onTextChange = _ref.onTextChange;
+
+  var _React$useState = React__namespace.useState(''),
+      _React$useState2 = _slicedToArray$3(_React$useState, 2),
+      text = _React$useState2[0],
+      setInnerText = _React$useState2[1];
+
+  var valueTextsRef = React__namespace.useRef([]);
+  valueTextsRef.current = valueTexts;
+
+  function triggerTextChange(value) {
+    setInnerText(value);
+    onTextChange(value);
+  }
+
+  function resetText() {
+    setInnerText(valueTextsRef.current[0]);
+  }
+
+  React__namespace.useEffect(function () {
+    if (valueTexts.every(function (valText) {
+      return valText !== text;
+    })) {
+      resetText();
+    }
+  }, [valueTexts.join('||')]);
+  return [text, triggerTextChange, resetText];
+}
+
+function useValueTexts(value, _ref) {
+  var formatList = _ref.formatList,
+      generateConfig = _ref.generateConfig,
+      locale = _ref.locale;
+  return useMemo(function () {
+    if (!value) {
+      return [[''], ''];
+    } // We will convert data format back to first format
+
+
+    var firstValueText = '';
+    var fullValueTexts = [];
+
+    for (var i = 0; i < formatList.length; i += 1) {
+      var format = formatList[i];
+      var formatStr = formatValue(value, {
+        generateConfig: generateConfig,
+        locale: locale,
+        format: format
+      });
+      fullValueTexts.push(formatStr);
+
+      if (i === 0) {
+        firstValueText = formatStr;
+      }
+    }
+
+    return [fullValueTexts, firstValueText];
+  }, [value, formatList], function (prev, next) {
+    return prev[0] !== next[0] || !shallowequal(prev[1], next[1]);
+  });
+}
+
+function useHoverValue(valueText, _ref) {
+  var formatList = _ref.formatList,
+      generateConfig = _ref.generateConfig,
+      locale = _ref.locale;
+
+  var _useState = React.useState(null),
+      _useState2 = _slicedToArray$3(_useState, 2),
+      value = _useState2[0],
+      internalSetValue = _useState2[1];
+
+  var raf = React.useRef(null);
+
+  function setValue(val) {
+    var immediately = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+    cancelAnimationFrame(raf.current);
+
+    if (immediately) {
+      internalSetValue(val);
+      return;
+    }
+
+    raf.current = requestAnimationFrame(function () {
+      internalSetValue(val);
+    });
+  }
+
+  var _useValueTexts = useValueTexts(value, {
+    formatList: formatList,
+    generateConfig: generateConfig,
+    locale: locale
+  }),
+      _useValueTexts2 = _slicedToArray$3(_useValueTexts, 2),
+      firstText = _useValueTexts2[1];
+
+  function onEnter(date) {
+    setValue(date);
+  }
+
+  function onLeave() {
+    var immediately = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+    setValue(null, immediately);
+  }
+
+  React.useEffect(function () {
+    onLeave(true);
+  }, [valueText]);
+  React.useEffect(function () {
+    return function () {
+      return cancelAnimationFrame(raf.current);
+    };
+  }, []);
+  return [firstText, onEnter, onLeave];
+}
+
+function InnerPicker(props) {
+  var _classNames2;
+
+  var _props$prefixCls = props.prefixCls,
+      prefixCls = _props$prefixCls === void 0 ? 'rc-picker' : _props$prefixCls,
+      id = props.id,
+      tabIndex = props.tabIndex,
+      style = props.style,
+      className = props.className,
+      dropdownClassName = props.dropdownClassName,
+      dropdownAlign = props.dropdownAlign,
+      popupStyle = props.popupStyle,
+      transitionName = props.transitionName,
+      generateConfig = props.generateConfig,
+      locale = props.locale,
+      inputReadOnly = props.inputReadOnly,
+      allowClear = props.allowClear,
+      autoFocus = props.autoFocus,
+      showTime = props.showTime,
+      _props$picker = props.picker,
+      picker = _props$picker === void 0 ? 'date' : _props$picker,
+      format = props.format,
+      use12Hours = props.use12Hours,
+      value = props.value,
+      defaultValue = props.defaultValue,
+      open = props.open,
+      defaultOpen = props.defaultOpen,
+      defaultOpenValue = props.defaultOpenValue,
+      suffixIcon = props.suffixIcon,
+      clearIcon = props.clearIcon,
+      disabled = props.disabled,
+      disabledDate = props.disabledDate,
+      placeholder = props.placeholder,
+      getPopupContainer = props.getPopupContainer,
+      pickerRef = props.pickerRef,
+      panelRender = props.panelRender,
+      onChange = props.onChange,
+      onOpenChange = props.onOpenChange,
+      onFocus = props.onFocus,
+      onBlur = props.onBlur,
+      onMouseDown = props.onMouseDown,
+      onMouseUp = props.onMouseUp,
+      onMouseEnter = props.onMouseEnter,
+      onMouseLeave = props.onMouseLeave,
+      onContextMenu = props.onContextMenu,
+      onClick = props.onClick,
+      _onKeyDown = props.onKeyDown,
+      _onSelect = props.onSelect,
+      direction = props.direction,
+      _props$autoComplete = props.autoComplete,
+      autoComplete = _props$autoComplete === void 0 ? 'off' : _props$autoComplete;
+  var inputRef = React__namespace.useRef(null);
+  var needConfirmButton = picker === 'date' && !!showTime || picker === 'time'; // ============================= State =============================
+
+  var formatList = toArray$2(getDefaultFormat(format, picker, showTime, use12Hours)); // Panel ref
+
+  var panelDivRef = React__namespace.useRef(null);
+  var inputDivRef = React__namespace.useRef(null); // Real value
+
+  var _useMergedState = useControlledState(null, {
+    value: value,
+    defaultValue: defaultValue
+  }),
+      _useMergedState2 = _slicedToArray$3(_useMergedState, 2),
+      mergedValue = _useMergedState2[0],
+      setInnerValue = _useMergedState2[1]; // Selected value
+
+
+  var _React$useState = React__namespace.useState(mergedValue),
+      _React$useState2 = _slicedToArray$3(_React$useState, 2),
+      selectedValue = _React$useState2[0],
+      setSelectedValue = _React$useState2[1]; // Operation ref
+
+
+  var operationRef = React__namespace.useRef(null); // Open
+
+  var _useMergedState3 = useControlledState(false, {
+    value: open,
+    defaultValue: defaultOpen,
+    postState: function postState(postOpen) {
+      return disabled ? false : postOpen;
+    },
+    onChange: function onChange(newOpen) {
+      if (onOpenChange) {
+        onOpenChange(newOpen);
+      }
+
+      if (!newOpen && operationRef.current && operationRef.current.onClose) {
+        operationRef.current.onClose();
+      }
+    }
+  }),
+      _useMergedState4 = _slicedToArray$3(_useMergedState3, 2),
+      mergedOpen = _useMergedState4[0],
+      triggerInnerOpen = _useMergedState4[1]; // ============================= Text ==============================
+
+
+  var _useValueTexts = useValueTexts(selectedValue, {
+    formatList: formatList,
+    generateConfig: generateConfig,
+    locale: locale
+  }),
+      _useValueTexts2 = _slicedToArray$3(_useValueTexts, 2),
+      valueTexts = _useValueTexts2[0],
+      firstValueText = _useValueTexts2[1];
+
+  var _useTextValueMapping = useTextValueMapping({
+    valueTexts: valueTexts,
+    onTextChange: function onTextChange(newText) {
+      var inputDate = parseValue(newText, {
+        locale: locale,
+        formatList: formatList,
+        generateConfig: generateConfig
+      });
+
+      if (inputDate && (!disabledDate || !disabledDate(inputDate))) {
+        setSelectedValue(inputDate);
+      }
+    }
+  }),
+      _useTextValueMapping2 = _slicedToArray$3(_useTextValueMapping, 3),
+      text = _useTextValueMapping2[0],
+      triggerTextChange = _useTextValueMapping2[1],
+      resetText = _useTextValueMapping2[2]; // ============================ Trigger ============================
+
+
+  var triggerChange = function triggerChange(newValue) {
+    setSelectedValue(newValue);
+    setInnerValue(newValue);
+
+    if (onChange && !isEqual(generateConfig, mergedValue, newValue)) {
+      onChange(newValue, newValue ? formatValue(newValue, {
+        generateConfig: generateConfig,
+        locale: locale,
+        format: formatList[0]
+      }) : '');
+    }
+  };
+
+  var triggerOpen = function triggerOpen(newOpen) {
+    if (disabled && newOpen) {
+      return;
+    }
+
+    triggerInnerOpen(newOpen);
+  };
+
+  var forwardKeyDown = function forwardKeyDown(e) {
+    if (mergedOpen && operationRef.current && operationRef.current.onKeyDown) {
+      // Let popup panel handle keyboard
+      return operationRef.current.onKeyDown(e);
+    }
+    /* istanbul ignore next */
+
+    /* eslint-disable no-lone-blocks */
+
+
+    {
+      warningOnce(false, 'Picker not correct forward KeyDown operation. Please help to fire issue about this.');
+      return false;
+    }
+  };
+
+  var onInternalMouseUp = function onInternalMouseUp() {
+    if (onMouseUp) {
+      onMouseUp.apply(void 0, arguments);
+    }
+
+    if (inputRef.current) {
+      inputRef.current.focus();
+      triggerOpen(true);
+    }
+  }; // ============================= Input =============================
+
+
+  var _usePickerInput = usePickerInput({
+    blurToCancel: needConfirmButton,
+    open: mergedOpen,
+    value: text,
+    triggerOpen: triggerOpen,
+    forwardKeyDown: forwardKeyDown,
+    isClickOutside: function isClickOutside(target) {
+      return !elementsContains([panelDivRef.current, inputDivRef.current], target);
+    },
+    onSubmit: function onSubmit() {
+      if (disabledDate && disabledDate(selectedValue)) {
+        return false;
+      }
+
+      triggerChange(selectedValue);
+      triggerOpen(false);
+      resetText();
+      return true;
+    },
+    onCancel: function onCancel() {
+      triggerOpen(false);
+      setSelectedValue(mergedValue);
+      resetText();
+    },
+    onKeyDown: function onKeyDown(e, preventDefault) {
+      _onKeyDown === null || _onKeyDown === void 0 ? void 0 : _onKeyDown(e, preventDefault);
+    },
+    onFocus: onFocus,
+    onBlur: onBlur
+  }),
+      _usePickerInput2 = _slicedToArray$3(_usePickerInput, 2),
+      inputProps = _usePickerInput2[0],
+      _usePickerInput2$ = _usePickerInput2[1],
+      focused = _usePickerInput2$.focused,
+      typing = _usePickerInput2$.typing; // ============================= Sync ==============================
+  // Close should sync back with text value
+
+
+  React__namespace.useEffect(function () {
+    if (!mergedOpen) {
+      setSelectedValue(mergedValue);
+
+      if (!valueTexts.length || valueTexts[0] === '') {
+        triggerTextChange('');
+      } else if (firstValueText !== text) {
+        resetText();
+      }
+    }
+  }, [mergedOpen, valueTexts]); // Change picker should sync back with text value
+
+  React__namespace.useEffect(function () {
+    if (!mergedOpen) {
+      resetText();
+    }
+  }, [picker]); // Sync innerValue with control mode
+
+  React__namespace.useEffect(function () {
+    // Sync select value
+    setSelectedValue(mergedValue);
+  }, [mergedValue]); // ============================ Private ============================
+
+  if (pickerRef) {
+    pickerRef.current = {
+      focus: function focus() {
+        if (inputRef.current) {
+          inputRef.current.focus();
+        }
+      },
+      blur: function blur() {
+        if (inputRef.current) {
+          inputRef.current.blur();
+        }
+      }
+    };
+  }
+
+  var _useHoverValue = useHoverValue(text, {
+    formatList: formatList,
+    generateConfig: generateConfig,
+    locale: locale
+  }),
+      _useHoverValue2 = _slicedToArray$3(_useHoverValue, 3),
+      hoverValue = _useHoverValue2[0],
+      onEnter = _useHoverValue2[1],
+      onLeave = _useHoverValue2[2]; // ============================= Panel =============================
+
+
+  var panelProps = _objectSpread2$1(_objectSpread2$1({}, props), {}, {
+    className: undefined,
+    style: undefined,
+    pickerValue: undefined,
+    onPickerValueChange: undefined,
+    onChange: null
+  });
+
+  var panelNode = /*#__PURE__*/React__namespace.createElement(PickerPanel, _extends$1({}, panelProps, {
+    generateConfig: generateConfig,
+    className: classnames(_defineProperty$4({}, "".concat(prefixCls, "-panel-focused"), !typing)),
+    value: selectedValue,
+    locale: locale,
+    tabIndex: -1,
+    onSelect: function onSelect(date) {
+      _onSelect === null || _onSelect === void 0 ? void 0 : _onSelect(date);
+      setSelectedValue(date);
+    },
+    direction: direction,
+    onPanelChange: function onPanelChange(viewDate, mode) {
+      var onPanelChange = props.onPanelChange;
+      onLeave(true);
+      onPanelChange === null || onPanelChange === void 0 ? void 0 : onPanelChange(viewDate, mode);
+    }
+  }));
+
+  if (panelRender) {
+    panelNode = panelRender(panelNode);
+  }
+
+  var panel = /*#__PURE__*/React__namespace.createElement("div", {
+    className: "".concat(prefixCls, "-panel-container"),
+    onMouseDown: function onMouseDown(e) {
+      e.preventDefault();
+    }
+  }, panelNode);
+  var suffixNode;
+
+  if (suffixIcon) {
+    suffixNode = /*#__PURE__*/React__namespace.createElement("span", {
+      className: "".concat(prefixCls, "-suffix")
+    }, suffixIcon);
+  }
+
+  var clearNode;
+
+  if (allowClear && mergedValue && !disabled) {
+    clearNode = /*#__PURE__*/React__namespace.createElement("span", {
+      onMouseDown: function onMouseDown(e) {
+        e.preventDefault();
+        e.stopPropagation();
+      },
+      onMouseUp: function onMouseUp(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        triggerChange(null);
+        triggerOpen(false);
+      },
+      className: "".concat(prefixCls, "-clear")
+    }, clearIcon || /*#__PURE__*/React__namespace.createElement("span", {
+      className: "".concat(prefixCls, "-clear-btn")
+    }));
+  } // ============================ Warning ============================
+
+
+  if (process.env.NODE_ENV !== 'production') {
+    warningOnce(!defaultOpenValue, '`defaultOpenValue` may confuse user for the current value status. Please use `defaultValue` instead.');
+  } // ============================ Return =============================
+
+
+  var onContextSelect = function onContextSelect(date, type) {
+    if (type === 'submit' || type !== 'key' && !needConfirmButton) {
+      // triggerChange will also update selected values
+      triggerChange(date);
+      triggerOpen(false);
+    }
+  };
+
+  var popupPlacement = direction === 'rtl' ? 'bottomRight' : 'bottomLeft';
+  return /*#__PURE__*/React__namespace.createElement(PanelContext.Provider, {
+    value: {
+      operationRef: operationRef,
+      hideHeader: picker === 'time',
+      panelRef: panelDivRef,
+      onSelect: onContextSelect,
+      open: mergedOpen,
+      defaultOpenValue: defaultOpenValue,
+      onDateMouseEnter: onEnter,
+      onDateMouseLeave: onLeave
+    }
+  }, /*#__PURE__*/React__namespace.createElement(PickerTrigger, {
+    visible: mergedOpen,
+    popupElement: panel,
+    popupStyle: popupStyle,
+    prefixCls: prefixCls,
+    dropdownClassName: dropdownClassName,
+    dropdownAlign: dropdownAlign,
+    getPopupContainer: getPopupContainer,
+    transitionName: transitionName,
+    popupPlacement: popupPlacement,
+    direction: direction
+  }, /*#__PURE__*/React__namespace.createElement("div", {
+    className: classnames(prefixCls, className, (_classNames2 = {}, _defineProperty$4(_classNames2, "".concat(prefixCls, "-disabled"), disabled), _defineProperty$4(_classNames2, "".concat(prefixCls, "-focused"), focused), _defineProperty$4(_classNames2, "".concat(prefixCls, "-rtl"), direction === 'rtl'), _classNames2)),
+    style: style,
+    onMouseDown: onMouseDown,
+    onMouseUp: onInternalMouseUp,
+    onMouseEnter: onMouseEnter,
+    onMouseLeave: onMouseLeave,
+    onContextMenu: onContextMenu,
+    onClick: onClick
+  }, /*#__PURE__*/React__namespace.createElement("div", {
+    className: classnames("".concat(prefixCls, "-input"), _defineProperty$4({}, "".concat(prefixCls, "-input-placeholder"), !!hoverValue)),
+    ref: inputDivRef
+  }, /*#__PURE__*/React__namespace.createElement("input", _extends$1({
+    id: id,
+    tabIndex: tabIndex,
+    disabled: disabled,
+    readOnly: inputReadOnly || typeof formatList[0] === 'function' || !typing,
+    value: hoverValue || text,
+    onChange: function onChange(e) {
+      triggerTextChange(e.target.value);
+    },
+    autoFocus: autoFocus,
+    placeholder: placeholder,
+    ref: inputRef,
+    title: text
+  }, inputProps, {
+    size: getInputSize(picker, formatList[0], generateConfig)
+  }, getDataOrAriaProps(props), {
+    autoComplete: autoComplete
+  })), suffixNode, clearNode))));
+} // Wrap with class component to enable pass generic with instance method
+
+
+var Picker = /*#__PURE__*/function (_React$Component) {
+  _inherits$1(Picker, _React$Component);
+
+  var _super = _createSuper$2(Picker);
+
+  function Picker() {
+    var _this;
+
+    _classCallCheck$2(this, Picker);
+
+    _this = _super.apply(this, arguments);
+    _this.pickerRef = /*#__PURE__*/React__namespace.createRef();
+
+    _this.focus = function () {
+      if (_this.pickerRef.current) {
+        _this.pickerRef.current.focus();
+      }
+    };
+
+    _this.blur = function () {
+      if (_this.pickerRef.current) {
+        _this.pickerRef.current.blur();
+      }
+    };
+
+    return _this;
+  }
+
+  _createClass$2(Picker, [{
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/React__namespace.createElement(InnerPicker, _extends$1({}, this.props, {
+        pickerRef: this.pickerRef
+      }));
+    }
+  }]);
+
+  return Picker;
+}(React__namespace.Component);
+
+function useRangeDisabled(_ref, disabledStart, disabledEnd) {
+  var picker = _ref.picker,
+      locale = _ref.locale,
+      selectedValue = _ref.selectedValue,
+      disabledDate = _ref.disabledDate,
+      disabled = _ref.disabled,
+      generateConfig = _ref.generateConfig;
+  var startDate = getValue(selectedValue, 0);
+  var endDate = getValue(selectedValue, 1);
+
+  function weekFirstDate(date) {
+    return generateConfig.locale.getWeekFirstDate(locale.locale, date);
+  }
+
+  function monthNumber(date) {
+    var year = generateConfig.getYear(date);
+    var month = generateConfig.getMonth(date);
+    return year * 100 + month;
+  }
+
+  function quarterNumber(date) {
+    var year = generateConfig.getYear(date);
+    var quarter = getQuarter(generateConfig, date);
+    return year * 10 + quarter;
+  }
+
+  var disabledStartDate = React__namespace.useCallback(function (date) {
+    if (disabledDate && disabledDate(date)) {
+      return true;
+    } // Disabled range
+
+
+    if (disabled[1] && endDate) {
+      return !isSameDate(generateConfig, date, endDate) && generateConfig.isAfter(date, endDate);
+    } // Disabled part
+
+
+    if (disabledStart && endDate) {
+      switch (picker) {
+        case 'quarter':
+          return quarterNumber(date) > quarterNumber(endDate);
+
+        case 'month':
+          return monthNumber(date) > monthNumber(endDate);
+
+        case 'week':
+          return weekFirstDate(date) > weekFirstDate(endDate);
+
+        default:
+          return !isSameDate(generateConfig, date, endDate) && generateConfig.isAfter(date, endDate);
+      }
+    }
+
+    return false;
+  }, [disabledDate, disabled[1], endDate, disabledStart]);
+  var disabledEndDate = React__namespace.useCallback(function (date) {
+    if (disabledDate && disabledDate(date)) {
+      return true;
+    } // Disabled range
+
+
+    if (disabled[0] && startDate) {
+      return !isSameDate(generateConfig, date, endDate) && generateConfig.isAfter(startDate, date);
+    } // Disabled part
+
+
+    if (disabledEnd && startDate) {
+      switch (picker) {
+        case 'quarter':
+          return quarterNumber(date) < quarterNumber(startDate);
+
+        case 'month':
+          return monthNumber(date) < monthNumber(startDate);
+
+        case 'week':
+          return weekFirstDate(date) < weekFirstDate(startDate);
+
+        default:
+          return !isSameDate(generateConfig, date, startDate) && generateConfig.isAfter(startDate, date);
+      }
+    }
+
+    return false;
+  }, [disabledDate, disabled[0], startDate, disabledEnd]);
+  return [disabledStartDate, disabledEndDate];
+}
+
+function getStartEndDistance(startDate, endDate, picker, generateConfig) {
+  var startNext = getClosingViewDate(startDate, picker, generateConfig, 1);
+
+  function getDistance(compareFunc) {
+    if (compareFunc(startDate, endDate)) {
+      return 'same';
+    }
+
+    if (compareFunc(startNext, endDate)) {
+      return 'closing';
+    }
+
+    return 'far';
+  }
+
+  switch (picker) {
+    case 'year':
+      return getDistance(function (start, end) {
+        return isSameDecade(generateConfig, start, end);
+      });
+
+    case 'quarter':
+    case 'month':
+      return getDistance(function (start, end) {
+        return isSameYear(generateConfig, start, end);
+      });
+
+    default:
+      return getDistance(function (start, end) {
+        return isSameMonth(generateConfig, start, end);
+      });
+  }
+}
+
+function getRangeViewDate(values, index, picker, generateConfig) {
+  var startDate = getValue(values, 0);
+  var endDate = getValue(values, 1);
+
+  if (index === 0) {
+    return startDate;
+  }
+
+  if (startDate && endDate) {
+    var distance = getStartEndDistance(startDate, endDate, picker, generateConfig);
+
+    switch (distance) {
+      case 'same':
+        return startDate;
+
+      case 'closing':
+        return startDate;
+
+      default:
+        return getClosingViewDate(endDate, picker, generateConfig, -1);
+    }
+  }
+
+  return startDate;
+}
+
+function useRangeViewDates(_ref) {
+  var values = _ref.values,
+      picker = _ref.picker,
+      defaultDates = _ref.defaultDates,
+      generateConfig = _ref.generateConfig;
+
+  var _React$useState = React__namespace.useState(function () {
+    return [getValue(defaultDates, 0), getValue(defaultDates, 1)];
+  }),
+      _React$useState2 = _slicedToArray$3(_React$useState, 2),
+      defaultViewDates = _React$useState2[0],
+      setDefaultViewDates = _React$useState2[1];
+
+  var _React$useState3 = React__namespace.useState(null),
+      _React$useState4 = _slicedToArray$3(_React$useState3, 2),
+      viewDates = _React$useState4[0],
+      setInternalViewDates = _React$useState4[1];
+
+  var startDate = getValue(values, 0);
+  var endDate = getValue(values, 1);
+
+  function getViewDate(index) {
+    // If set default view date, use it
+    if (defaultViewDates[index]) {
+      return defaultViewDates[index];
+    }
+
+    return getValue(viewDates, index) || getRangeViewDate(values, index, picker, generateConfig) || startDate || endDate || generateConfig.getNow();
+  }
+
+  function setViewDate(viewDate, index) {
+    if (viewDate) {
+      var newViewDates = updateValues(viewDates, viewDate, index); // Set view date will clean up default one
+
+      setDefaultViewDates( // Should always be an array
+      updateValues(defaultViewDates, null, index) || [null, null]); // Reset another one when not have value
+
+      var anotherIndex = (index + 1) % 2;
+
+      if (!getValue(values, anotherIndex)) {
+        newViewDates = updateValues(newViewDates, viewDate, anotherIndex);
+      }
+
+      setInternalViewDates(newViewDates);
+    } else if (startDate || endDate) {
+      // Reset all when has values when `viewDate` is `null` which means from open trigger
+      setInternalViewDates(null);
+    }
+  }
+
+  return [getViewDate, setViewDate];
+}
+
+function reorderValues(values, generateConfig) {
+  if (values && values[0] && values[1] && generateConfig.isAfter(values[0], values[1])) {
+    return [values[1], values[0]];
+  }
+
+  return values;
+}
+
+function canValueTrigger(value, index, disabled, allowEmpty) {
+  if (value) {
+    return true;
+  }
+
+  if (allowEmpty && allowEmpty[index]) {
+    return true;
+  }
+
+  if (disabled[(index + 1) % 2]) {
+    return true;
+  }
+
+  return false;
+}
+
+function InnerRangePicker(props) {
+  var _classNames2, _classNames3, _classNames4;
+
+  var _props$prefixCls = props.prefixCls,
+      prefixCls = _props$prefixCls === void 0 ? 'rc-picker' : _props$prefixCls,
+      id = props.id,
+      style = props.style,
+      className = props.className,
+      popupStyle = props.popupStyle,
+      dropdownClassName = props.dropdownClassName,
+      transitionName = props.transitionName,
+      dropdownAlign = props.dropdownAlign,
+      getPopupContainer = props.getPopupContainer,
+      generateConfig = props.generateConfig,
+      locale = props.locale,
+      placeholder = props.placeholder,
+      autoFocus = props.autoFocus,
+      disabled = props.disabled,
+      format = props.format,
+      _props$picker = props.picker,
+      picker = _props$picker === void 0 ? 'date' : _props$picker,
+      showTime = props.showTime,
+      use12Hours = props.use12Hours,
+      _props$separator = props.separator,
+      separator = _props$separator === void 0 ? '~' : _props$separator,
+      value = props.value,
+      defaultValue = props.defaultValue,
+      defaultPickerValue = props.defaultPickerValue,
+      open = props.open,
+      defaultOpen = props.defaultOpen,
+      disabledDate = props.disabledDate,
+      _disabledTime = props.disabledTime,
+      dateRender = props.dateRender,
+      panelRender = props.panelRender,
+      ranges = props.ranges,
+      allowEmpty = props.allowEmpty,
+      allowClear = props.allowClear,
+      suffixIcon = props.suffixIcon,
+      clearIcon = props.clearIcon,
+      pickerRef = props.pickerRef,
+      inputReadOnly = props.inputReadOnly,
+      mode = props.mode,
+      renderExtraFooter = props.renderExtraFooter,
+      onChange = props.onChange,
+      onOpenChange = props.onOpenChange,
+      onPanelChange = props.onPanelChange,
+      onCalendarChange = props.onCalendarChange,
+      _onFocus = props.onFocus,
+      onBlur = props.onBlur,
+      _onOk = props.onOk,
+      _onKeyDown = props.onKeyDown,
+      components = props.components,
+      order = props.order,
+      direction = props.direction,
+      activePickerIndex = props.activePickerIndex,
+      _props$autoComplete = props.autoComplete,
+      autoComplete = _props$autoComplete === void 0 ? 'off' : _props$autoComplete;
+  var needConfirmButton = picker === 'date' && !!showTime || picker === 'time'; // We record opened status here in case repeat open with picker
+
+  var openRecordsRef = React.useRef({});
+  var containerRef = React.useRef(null);
+  var panelDivRef = React.useRef(null);
+  var startInputDivRef = React.useRef(null);
+  var endInputDivRef = React.useRef(null);
+  var separatorRef = React.useRef(null);
+  var startInputRef = React.useRef(null);
+  var endInputRef = React.useRef(null); // ============================= Misc ==============================
+
+  var formatList = toArray$2(getDefaultFormat(format, picker, showTime, use12Hours)); // Active picker
+
+  var _useMergedState = useControlledState(0, {
+    value: activePickerIndex
+  }),
+      _useMergedState2 = _slicedToArray$3(_useMergedState, 2),
+      mergedActivePickerIndex = _useMergedState2[0],
+      setMergedActivePickerIndex = _useMergedState2[1]; // Operation ref
+
+
+  var operationRef = React.useRef(null);
+  var mergedDisabled = React__namespace.useMemo(function () {
+    if (Array.isArray(disabled)) {
+      return disabled;
+    }
+
+    return [disabled || false, disabled || false];
+  }, [disabled]); // ============================= Value =============================
+
+  var _useMergedState3 = useControlledState(null, {
+    value: value,
+    defaultValue: defaultValue,
+    postState: function postState(values) {
+      return picker === 'time' && !order ? values : reorderValues(values, generateConfig);
+    }
+  }),
+      _useMergedState4 = _slicedToArray$3(_useMergedState3, 2),
+      mergedValue = _useMergedState4[0],
+      setInnerValue = _useMergedState4[1]; // =========================== View Date ===========================
+  // Config view panel
+
+
+  var _useRangeViewDates = useRangeViewDates({
+    values: mergedValue,
+    picker: picker,
+    defaultDates: defaultPickerValue,
+    generateConfig: generateConfig
+  }),
+      _useRangeViewDates2 = _slicedToArray$3(_useRangeViewDates, 2),
+      getViewDate = _useRangeViewDates2[0],
+      setViewDate = _useRangeViewDates2[1]; // ========================= Select Values =========================
+
+
+  var _useMergedState5 = useControlledState(mergedValue, {
+    postState: function postState(values) {
+      var postValues = values;
+
+      if (mergedDisabled[0] && mergedDisabled[1]) {
+        return postValues;
+      } // Fill disabled unit
+
+
+      for (var i = 0; i < 2; i += 1) {
+        if (mergedDisabled[i] && !getValue(postValues, i) && !getValue(allowEmpty, i)) {
+          postValues = updateValues(postValues, generateConfig.getNow(), i);
+        }
+      }
+
+      return postValues;
+    }
+  }),
+      _useMergedState6 = _slicedToArray$3(_useMergedState5, 2),
+      selectedValue = _useMergedState6[0],
+      setSelectedValue = _useMergedState6[1]; // ============================= Modes =============================
+
+
+  var _useMergedState7 = useControlledState([picker, picker], {
+    value: mode
+  }),
+      _useMergedState8 = _slicedToArray$3(_useMergedState7, 2),
+      mergedModes = _useMergedState8[0],
+      setInnerModes = _useMergedState8[1];
+
+  React.useEffect(function () {
+    setInnerModes([picker, picker]);
+  }, [picker]);
+
+  var triggerModesChange = function triggerModesChange(modes, values) {
+    setInnerModes(modes);
+
+    if (onPanelChange) {
+      onPanelChange(values, modes);
+    }
+  }; // ========================= Disable Date ==========================
+
+
+  var _useRangeDisabled = useRangeDisabled({
+    picker: picker,
+    selectedValue: selectedValue,
+    locale: locale,
+    disabled: mergedDisabled,
+    disabledDate: disabledDate,
+    generateConfig: generateConfig
+  }, openRecordsRef.current[1], openRecordsRef.current[0]),
+      _useRangeDisabled2 = _slicedToArray$3(_useRangeDisabled, 2),
+      disabledStartDate = _useRangeDisabled2[0],
+      disabledEndDate = _useRangeDisabled2[1]; // ============================= Open ==============================
+
+
+  var _useMergedState9 = useControlledState(false, {
+    value: open,
+    defaultValue: defaultOpen,
+    postState: function postState(postOpen) {
+      return mergedDisabled[mergedActivePickerIndex] ? false : postOpen;
+    },
+    onChange: function onChange(newOpen) {
+      if (onOpenChange) {
+        onOpenChange(newOpen);
+      }
+
+      if (!newOpen && operationRef.current && operationRef.current.onClose) {
+        operationRef.current.onClose();
+      }
+    }
+  }),
+      _useMergedState10 = _slicedToArray$3(_useMergedState9, 2),
+      mergedOpen = _useMergedState10[0],
+      triggerInnerOpen = _useMergedState10[1];
+
+  var startOpen = mergedOpen && mergedActivePickerIndex === 0;
+  var endOpen = mergedOpen && mergedActivePickerIndex === 1; // ============================= Popup =============================
+  // Popup min width
+
+  var _useState = React.useState(0),
+      _useState2 = _slicedToArray$3(_useState, 2),
+      popupMinWidth = _useState2[0],
+      setPopupMinWidth = _useState2[1];
+
+  React.useEffect(function () {
+    if (!mergedOpen && containerRef.current) {
+      setPopupMinWidth(containerRef.current.offsetWidth);
+    }
+  }, [mergedOpen]); // ============================ Trigger ============================
+
+  var triggerRef = React__namespace.useRef();
+
+  function _triggerOpen(newOpen, index) {
+    if (newOpen) {
+      clearTimeout(triggerRef.current);
+      openRecordsRef.current[index] = true;
+      setMergedActivePickerIndex(index);
+      triggerInnerOpen(newOpen); // Open to reset view date
+
+      if (!mergedOpen) {
+        setViewDate(null, index);
+      }
+    } else if (mergedActivePickerIndex === index) {
+      triggerInnerOpen(newOpen); // Clean up async
+      // This makes ref not quick refresh in case user open another input with blur trigger
+
+      var openRecords = openRecordsRef.current;
+      triggerRef.current = setTimeout(function () {
+        if (openRecords === openRecordsRef.current) {
+          openRecordsRef.current = {};
+        }
+      });
+    }
+  }
+
+  function triggerOpenAndFocus(index) {
+    _triggerOpen(true, index); // Use setTimeout to make sure panel DOM exists
+
+
+    setTimeout(function () {
+      var inputRef = [startInputRef, endInputRef][index];
+
+      if (inputRef.current) {
+        inputRef.current.focus();
+      }
+    }, 0);
+  }
+
+  function triggerChange(newValue, sourceIndex) {
+    var values = newValue;
+    var startValue = getValue(values, 0);
+    var endValue = getValue(values, 1); // >>>>> Format start & end values
+
+    if (startValue && endValue && generateConfig.isAfter(startValue, endValue)) {
+      if ( // WeekPicker only compare week
+      picker === 'week' && !isSameWeek(generateConfig, locale.locale, startValue, endValue) || // QuotaPicker only compare week
+      picker === 'quarter' && !isSameQuarter(generateConfig, startValue, endValue) || // Other non-TimePicker compare date
+      picker !== 'week' && picker !== 'quarter' && picker !== 'time' && !isSameDate(generateConfig, startValue, endValue)) {
+        // Clean up end date when start date is after end date
+        if (sourceIndex === 0) {
+          values = [startValue, null];
+          endValue = null;
+        } else {
+          startValue = null;
+          values = [null, endValue];
+        } // Clean up cache since invalidate
+
+
+        openRecordsRef.current = _defineProperty$4({}, sourceIndex, true);
+      } else if (picker !== 'time' || order !== false) {
+        // Reorder when in same date
+        values = reorderValues(values, generateConfig);
+      }
+    }
+
+    setSelectedValue(values);
+    var startStr = values && values[0] ? formatValue(values[0], {
+      generateConfig: generateConfig,
+      locale: locale,
+      format: formatList[0]
+    }) : '';
+    var endStr = values && values[1] ? formatValue(values[1], {
+      generateConfig: generateConfig,
+      locale: locale,
+      format: formatList[0]
+    }) : '';
+
+    if (onCalendarChange) {
+      var info = {
+        range: sourceIndex === 0 ? 'start' : 'end'
+      };
+      onCalendarChange(values, [startStr, endStr], info);
+    } // >>>>> Trigger `onChange` event
+
+
+    var canStartValueTrigger = canValueTrigger(startValue, 0, mergedDisabled, allowEmpty);
+    var canEndValueTrigger = canValueTrigger(endValue, 1, mergedDisabled, allowEmpty);
+    var canTrigger = values === null || canStartValueTrigger && canEndValueTrigger;
+
+    if (canTrigger) {
+      // Trigger onChange only when value is validate
+      setInnerValue(values);
+
+      if (onChange && (!isEqual(generateConfig, getValue(mergedValue, 0), startValue) || !isEqual(generateConfig, getValue(mergedValue, 1), endValue))) {
+        onChange(values, [startStr, endStr]);
+      }
+    } // >>>>> Open picker when
+    // Always open another picker if possible
+
+
+    var nextOpenIndex = null;
+
+    if (sourceIndex === 0 && !mergedDisabled[1]) {
+      nextOpenIndex = 1;
+    } else if (sourceIndex === 1 && !mergedDisabled[0]) {
+      nextOpenIndex = 0;
+    }
+
+    if (nextOpenIndex !== null && nextOpenIndex !== mergedActivePickerIndex && (!openRecordsRef.current[nextOpenIndex] || !getValue(values, nextOpenIndex)) && getValue(values, sourceIndex)) {
+      // Delay to focus to avoid input blur trigger expired selectedValues
+      triggerOpenAndFocus(nextOpenIndex);
+    } else {
+      _triggerOpen(false, sourceIndex);
+    }
+  }
+
+  var forwardKeyDown = function forwardKeyDown(e) {
+    if (mergedOpen && operationRef.current && operationRef.current.onKeyDown) {
+      // Let popup panel handle keyboard
+      return operationRef.current.onKeyDown(e);
+    }
+    /* istanbul ignore next */
+
+    /* eslint-disable no-lone-blocks */
+
+
+    {
+      warningOnce(false, 'Picker not correct forward KeyDown operation. Please help to fire issue about this.');
+      return false;
+    }
+  }; // ============================= Text ==============================
+
+
+  var sharedTextHooksProps = {
+    formatList: formatList,
+    generateConfig: generateConfig,
+    locale: locale
+  };
+
+  var _useValueTexts = useValueTexts(getValue(selectedValue, 0), sharedTextHooksProps),
+      _useValueTexts2 = _slicedToArray$3(_useValueTexts, 2),
+      startValueTexts = _useValueTexts2[0],
+      firstStartValueText = _useValueTexts2[1];
+
+  var _useValueTexts3 = useValueTexts(getValue(selectedValue, 1), sharedTextHooksProps),
+      _useValueTexts4 = _slicedToArray$3(_useValueTexts3, 2),
+      endValueTexts = _useValueTexts4[0],
+      firstEndValueText = _useValueTexts4[1];
+
+  var _onTextChange = function onTextChange(newText, index) {
+    var inputDate = parseValue(newText, {
+      locale: locale,
+      formatList: formatList,
+      generateConfig: generateConfig
+    });
+    var disabledFunc = index === 0 ? disabledStartDate : disabledEndDate;
+
+    if (inputDate && !disabledFunc(inputDate)) {
+      setSelectedValue(updateValues(selectedValue, inputDate, index));
+      setViewDate(inputDate, index);
+    }
+  };
+
+  var _useTextValueMapping = useTextValueMapping({
+    valueTexts: startValueTexts,
+    onTextChange: function onTextChange(newText) {
+      return _onTextChange(newText, 0);
+    }
+  }),
+      _useTextValueMapping2 = _slicedToArray$3(_useTextValueMapping, 3),
+      startText = _useTextValueMapping2[0],
+      triggerStartTextChange = _useTextValueMapping2[1],
+      resetStartText = _useTextValueMapping2[2];
+
+  var _useTextValueMapping3 = useTextValueMapping({
+    valueTexts: endValueTexts,
+    onTextChange: function onTextChange(newText) {
+      return _onTextChange(newText, 1);
+    }
+  }),
+      _useTextValueMapping4 = _slicedToArray$3(_useTextValueMapping3, 3),
+      endText = _useTextValueMapping4[0],
+      triggerEndTextChange = _useTextValueMapping4[1],
+      resetEndText = _useTextValueMapping4[2];
+
+  var _useState3 = React.useState(null),
+      _useState4 = _slicedToArray$3(_useState3, 2),
+      rangeHoverValue = _useState4[0],
+      setRangeHoverValue = _useState4[1]; // ========================== Hover Range ==========================
+
+
+  var _useState5 = React.useState(null),
+      _useState6 = _slicedToArray$3(_useState5, 2),
+      hoverRangedValue = _useState6[0],
+      setHoverRangedValue = _useState6[1];
+
+  var _useHoverValue = useHoverValue(startText, {
+    formatList: formatList,
+    generateConfig: generateConfig,
+    locale: locale
+  }),
+      _useHoverValue2 = _slicedToArray$3(_useHoverValue, 3),
+      startHoverValue = _useHoverValue2[0],
+      onStartEnter = _useHoverValue2[1],
+      onStartLeave = _useHoverValue2[2];
+
+  var _useHoverValue3 = useHoverValue(endText, {
+    formatList: formatList,
+    generateConfig: generateConfig,
+    locale: locale
+  }),
+      _useHoverValue4 = _slicedToArray$3(_useHoverValue3, 3),
+      endHoverValue = _useHoverValue4[0],
+      onEndEnter = _useHoverValue4[1],
+      onEndLeave = _useHoverValue4[2];
+
+  var onDateMouseEnter = function onDateMouseEnter(date) {
+    setHoverRangedValue(updateValues(selectedValue, date, mergedActivePickerIndex));
+
+    if (mergedActivePickerIndex === 0) {
+      onStartEnter(date);
+    } else {
+      onEndEnter(date);
+    }
+  };
+
+  var onDateMouseLeave = function onDateMouseLeave() {
+    setHoverRangedValue(updateValues(selectedValue, null, mergedActivePickerIndex));
+
+    if (mergedActivePickerIndex === 0) {
+      onStartLeave();
+    } else {
+      onEndLeave();
+    }
+  }; // ============================= Input =============================
+
+
+  var getSharedInputHookProps = function getSharedInputHookProps(index, resetText) {
+    return {
+      blurToCancel: needConfirmButton,
+      forwardKeyDown: forwardKeyDown,
+      onBlur: onBlur,
+      isClickOutside: function isClickOutside(target) {
+        return !elementsContains([panelDivRef.current, startInputDivRef.current, endInputDivRef.current], target);
+      },
+      onFocus: function onFocus(e) {
+        setMergedActivePickerIndex(index);
+
+        if (_onFocus) {
+          _onFocus(e);
+        }
+      },
+      triggerOpen: function triggerOpen(newOpen) {
+        _triggerOpen(newOpen, index);
+      },
+      onSubmit: function onSubmit() {
+        triggerChange(selectedValue, index);
+        resetText();
+      },
+      onCancel: function onCancel() {
+        _triggerOpen(false, index);
+
+        setSelectedValue(mergedValue);
+        resetText();
+      }
+    };
+  };
+
+  var _usePickerInput = usePickerInput(_objectSpread2$1(_objectSpread2$1({}, getSharedInputHookProps(0, resetStartText)), {}, {
+    open: startOpen,
+    value: startText,
+    onKeyDown: function onKeyDown(e, preventDefault) {
+      _onKeyDown === null || _onKeyDown === void 0 ? void 0 : _onKeyDown(e, preventDefault);
+    }
+  })),
+      _usePickerInput2 = _slicedToArray$3(_usePickerInput, 2),
+      startInputProps = _usePickerInput2[0],
+      _usePickerInput2$ = _usePickerInput2[1],
+      startFocused = _usePickerInput2$.focused,
+      startTyping = _usePickerInput2$.typing;
+
+  var _usePickerInput3 = usePickerInput(_objectSpread2$1(_objectSpread2$1({}, getSharedInputHookProps(1, resetEndText)), {}, {
+    open: endOpen,
+    value: endText,
+    onKeyDown: function onKeyDown(e, preventDefault) {
+      _onKeyDown === null || _onKeyDown === void 0 ? void 0 : _onKeyDown(e, preventDefault);
+    }
+  })),
+      _usePickerInput4 = _slicedToArray$3(_usePickerInput3, 2),
+      endInputProps = _usePickerInput4[0],
+      _usePickerInput4$ = _usePickerInput4[1],
+      endFocused = _usePickerInput4$.focused,
+      endTyping = _usePickerInput4$.typing; // ========================== Click Picker ==========================
+
+
+  var onPickerClick = function onPickerClick(e) {
+    // When click inside the picker & outside the picker's input elements
+    // the panel should still be opened
+    if (!mergedOpen && !startInputRef.current.contains(e.target) && !endInputRef.current.contains(e.target)) {
+      if (!mergedDisabled[0]) {
+        triggerOpenAndFocus(0);
+      } else if (!mergedDisabled[1]) {
+        triggerOpenAndFocus(1);
+      }
+    }
+  };
+
+  var onPickerMouseDown = function onPickerMouseDown(e) {
+    // shouldn't affect input elements if picker is active
+    if (mergedOpen && (startFocused || endFocused) && !startInputRef.current.contains(e.target) && !endInputRef.current.contains(e.target)) {
+      e.preventDefault();
+    }
+  }; // ============================= Sync ==============================
+  // Close should sync back with text value
+
+
+  var startStr = mergedValue && mergedValue[0] ? formatValue(mergedValue[0], {
+    locale: locale,
+    format: 'YYYYMMDDHHmmss',
+    generateConfig: generateConfig
+  }) : '';
+  var endStr = mergedValue && mergedValue[1] ? formatValue(mergedValue[1], {
+    locale: locale,
+    format: 'YYYYMMDDHHmmss',
+    generateConfig: generateConfig
+  }) : '';
+  React.useEffect(function () {
+    if (!mergedOpen) {
+      setSelectedValue(mergedValue);
+
+      if (!startValueTexts.length || startValueTexts[0] === '') {
+        triggerStartTextChange('');
+      } else if (firstStartValueText !== startText) {
+        resetStartText();
+      }
+
+      if (!endValueTexts.length || endValueTexts[0] === '') {
+        triggerEndTextChange('');
+      } else if (firstEndValueText !== endText) {
+        resetEndText();
+      }
+    }
+  }, [mergedOpen, startValueTexts, endValueTexts]); // Sync innerValue with control mode
+
+  React.useEffect(function () {
+    setSelectedValue(mergedValue);
+  }, [startStr, endStr]); // ============================ Warning ============================
+
+  if (process.env.NODE_ENV !== 'production') {
+    if (value && Array.isArray(disabled) && (getValue(disabled, 0) && !getValue(value, 0) || getValue(disabled, 1) && !getValue(value, 1))) {
+      warningOnce(false, '`disabled` should not set with empty `value`. You should set `allowEmpty` or `value` instead.');
+    }
+  } // ============================ Private ============================
+
+
+  if (pickerRef) {
+    pickerRef.current = {
+      focus: function focus() {
+        if (startInputRef.current) {
+          startInputRef.current.focus();
+        }
+      },
+      blur: function blur() {
+        if (startInputRef.current) {
+          startInputRef.current.blur();
+        }
+
+        if (endInputRef.current) {
+          endInputRef.current.blur();
+        }
+      }
+    };
+  } // ============================ Ranges =============================
+
+
+  var rangeLabels = Object.keys(ranges || {});
+  var rangeList = rangeLabels.map(function (label) {
+    var range = ranges[label];
+    var newValues = typeof range === 'function' ? range() : range;
+    return {
+      label: label,
+      onClick: function onClick() {
+        triggerChange(newValues, null);
+
+        _triggerOpen(false, mergedActivePickerIndex);
+      },
+      onMouseEnter: function onMouseEnter() {
+        setRangeHoverValue(newValues);
+      },
+      onMouseLeave: function onMouseLeave() {
+        setRangeHoverValue(null);
+      }
+    };
+  }); // ============================= Panel =============================
+
+  function renderPanel() {
+    var panelPosition = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+    var panelProps = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+    var panelHoverRangedValue = null;
+
+    if (mergedOpen && hoverRangedValue && hoverRangedValue[0] && hoverRangedValue[1] && generateConfig.isAfter(hoverRangedValue[1], hoverRangedValue[0])) {
+      panelHoverRangedValue = hoverRangedValue;
+    }
+
+    var panelShowTime = showTime;
+
+    if (showTime && _typeof$4(showTime) === 'object' && showTime.defaultValue) {
+      var timeDefaultValues = showTime.defaultValue;
+      panelShowTime = _objectSpread2$1(_objectSpread2$1({}, showTime), {}, {
+        defaultValue: getValue(timeDefaultValues, mergedActivePickerIndex) || undefined
+      });
+    }
+
+    var panelDateRender = null;
+
+    if (dateRender) {
+      panelDateRender = function panelDateRender(date, today) {
+        return dateRender(date, today, {
+          range: mergedActivePickerIndex ? 'end' : 'start'
+        });
+      };
+    }
+
+    return /*#__PURE__*/React__namespace.createElement(RangeContext.Provider, {
+      value: {
+        inRange: true,
+        panelPosition: panelPosition,
+        rangedValue: rangeHoverValue || selectedValue,
+        hoverRangedValue: panelHoverRangedValue
+      }
+    }, /*#__PURE__*/React__namespace.createElement(PickerPanel, _extends$1({}, props, panelProps, {
+      dateRender: panelDateRender,
+      showTime: panelShowTime,
+      mode: mergedModes[mergedActivePickerIndex],
+      generateConfig: generateConfig,
+      style: undefined,
+      direction: direction,
+      disabledDate: mergedActivePickerIndex === 0 ? disabledStartDate : disabledEndDate,
+      disabledTime: function disabledTime(date) {
+        if (_disabledTime) {
+          return _disabledTime(date, mergedActivePickerIndex === 0 ? 'start' : 'end');
+        }
+
+        return false;
+      },
+      className: classnames(_defineProperty$4({}, "".concat(prefixCls, "-panel-focused"), mergedActivePickerIndex === 0 ? !startTyping : !endTyping)),
+      value: getValue(selectedValue, mergedActivePickerIndex),
+      locale: locale,
+      tabIndex: -1,
+      onPanelChange: function onPanelChange(date, newMode) {
+        // clear hover value when panel change
+        if (mergedActivePickerIndex === 0) {
+          onStartLeave(true);
+        }
+
+        if (mergedActivePickerIndex === 1) {
+          onEndLeave(true);
+        }
+
+        triggerModesChange(updateValues(mergedModes, newMode, mergedActivePickerIndex), updateValues(selectedValue, date, mergedActivePickerIndex));
+        var viewDate = date;
+
+        if (panelPosition === 'right' && mergedModes[mergedActivePickerIndex] === newMode) {
+          viewDate = getClosingViewDate(viewDate, newMode, generateConfig, -1);
+        }
+
+        setViewDate(viewDate, mergedActivePickerIndex);
+      },
+      onOk: null,
+      onSelect: undefined,
+      onChange: undefined,
+      defaultValue: mergedActivePickerIndex === 0 ? getValue(selectedValue, 1) : getValue(selectedValue, 0),
+      defaultPickerValue: undefined
+    })));
+  }
+
+  var arrowLeft = 0;
+  var panelLeft = 0;
+
+  if (mergedActivePickerIndex && startInputDivRef.current && separatorRef.current && panelDivRef.current) {
+    // Arrow offset
+    arrowLeft = startInputDivRef.current.offsetWidth + separatorRef.current.offsetWidth;
+
+    if (panelDivRef.current.offsetWidth && arrowLeft > panelDivRef.current.offsetWidth) {
+      panelLeft = arrowLeft;
+    }
+  }
+
+  var arrowPositionStyle = direction === 'rtl' ? {
+    right: arrowLeft
+  } : {
+    left: arrowLeft
+  };
+
+  function renderPanels() {
+    var panels;
+    var extraNode = getExtraFooter(prefixCls, mergedModes[mergedActivePickerIndex], renderExtraFooter);
+    var rangesNode = getRanges({
+      prefixCls: prefixCls,
+      components: components,
+      needConfirmButton: needConfirmButton,
+      okDisabled: !getValue(selectedValue, mergedActivePickerIndex) || disabledDate && disabledDate(selectedValue[mergedActivePickerIndex]),
+      locale: locale,
+      rangeList: rangeList,
+      onOk: function onOk() {
+        if (getValue(selectedValue, mergedActivePickerIndex)) {
+          // triggerChangeOld(selectedValue);
+          triggerChange(selectedValue, mergedActivePickerIndex);
+
+          if (_onOk) {
+            _onOk(selectedValue);
+          }
+        }
+      }
+    });
+
+    if (picker !== 'time' && !showTime) {
+      var viewDate = getViewDate(mergedActivePickerIndex);
+      var nextViewDate = getClosingViewDate(viewDate, picker, generateConfig);
+      var currentMode = mergedModes[mergedActivePickerIndex];
+      var showDoublePanel = currentMode === picker;
+      var leftPanel = renderPanel(showDoublePanel ? 'left' : false, {
+        pickerValue: viewDate,
+        onPickerValueChange: function onPickerValueChange(newViewDate) {
+          setViewDate(newViewDate, mergedActivePickerIndex);
+        }
+      });
+      var rightPanel = renderPanel('right', {
+        pickerValue: nextViewDate,
+        onPickerValueChange: function onPickerValueChange(newViewDate) {
+          setViewDate(getClosingViewDate(newViewDate, picker, generateConfig, -1), mergedActivePickerIndex);
+        }
+      });
+
+      if (direction === 'rtl') {
+        panels = /*#__PURE__*/React__namespace.createElement(React__namespace.Fragment, null, rightPanel, showDoublePanel && leftPanel);
+      } else {
+        panels = /*#__PURE__*/React__namespace.createElement(React__namespace.Fragment, null, leftPanel, showDoublePanel && rightPanel);
+      }
+    } else {
+      panels = renderPanel();
+    }
+
+    var mergedNodes = /*#__PURE__*/React__namespace.createElement(React__namespace.Fragment, null, /*#__PURE__*/React__namespace.createElement("div", {
+      className: "".concat(prefixCls, "-panels")
+    }, panels), (extraNode || rangesNode) && /*#__PURE__*/React__namespace.createElement("div", {
+      className: "".concat(prefixCls, "-footer")
+    }, extraNode, rangesNode));
+
+    if (panelRender) {
+      mergedNodes = panelRender(mergedNodes);
+    }
+
+    return /*#__PURE__*/React__namespace.createElement("div", {
+      className: "".concat(prefixCls, "-panel-container"),
+      style: {
+        marginLeft: panelLeft
+      },
+      ref: panelDivRef,
+      onMouseDown: function onMouseDown(e) {
+        e.preventDefault();
+      }
+    }, mergedNodes);
+  }
+
+  var rangePanel = /*#__PURE__*/React__namespace.createElement("div", {
+    className: classnames("".concat(prefixCls, "-range-wrapper"), "".concat(prefixCls, "-").concat(picker, "-range-wrapper")),
+    style: {
+      minWidth: popupMinWidth
+    }
+  }, /*#__PURE__*/React__namespace.createElement("div", {
+    className: "".concat(prefixCls, "-range-arrow"),
+    style: arrowPositionStyle
+  }), renderPanels()); // ============================= Icons =============================
+
+  var suffixNode;
+
+  if (suffixIcon) {
+    suffixNode = /*#__PURE__*/React__namespace.createElement("span", {
+      className: "".concat(prefixCls, "-suffix")
+    }, suffixIcon);
+  }
+
+  var clearNode;
+
+  if (allowClear && (getValue(mergedValue, 0) && !mergedDisabled[0] || getValue(mergedValue, 1) && !mergedDisabled[1])) {
+    clearNode = /*#__PURE__*/React__namespace.createElement("span", {
+      onMouseDown: function onMouseDown(e) {
+        e.preventDefault();
+        e.stopPropagation();
+      },
+      onMouseUp: function onMouseUp(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var values = mergedValue;
+
+        if (!mergedDisabled[0]) {
+          values = updateValues(values, null, 0);
+        }
+
+        if (!mergedDisabled[1]) {
+          values = updateValues(values, null, 1);
+        }
+
+        triggerChange(values, null);
+
+        _triggerOpen(false, mergedActivePickerIndex);
+      },
+      className: "".concat(prefixCls, "-clear")
+    }, clearIcon || /*#__PURE__*/React__namespace.createElement("span", {
+      className: "".concat(prefixCls, "-clear-btn")
+    }));
+  }
+
+  var inputSharedProps = {
+    size: getInputSize(picker, formatList[0], generateConfig)
+  };
+  var activeBarLeft = 0;
+  var activeBarWidth = 0;
+
+  if (startInputDivRef.current && endInputDivRef.current && separatorRef.current) {
+    if (mergedActivePickerIndex === 0) {
+      activeBarWidth = startInputDivRef.current.offsetWidth;
+    } else {
+      activeBarLeft = arrowLeft;
+      activeBarWidth = endInputDivRef.current.offsetWidth;
+    }
+  }
+
+  var activeBarPositionStyle = direction === 'rtl' ? {
+    right: activeBarLeft
+  } : {
+    left: activeBarLeft
+  }; // ============================ Return =============================
+
+  var onContextSelect = function onContextSelect(date, type) {
+    var values = updateValues(selectedValue, date, mergedActivePickerIndex);
+
+    if (type === 'submit' || type !== 'key' && !needConfirmButton) {
+      // triggerChange will also update selected values
+      triggerChange(values, mergedActivePickerIndex); // clear hover value style
+
+      if (mergedActivePickerIndex === 0) {
+        onStartLeave();
+      } else {
+        onEndLeave();
+      }
+    } else {
+      setSelectedValue(values);
+    }
+  };
+
+  return /*#__PURE__*/React__namespace.createElement(PanelContext.Provider, {
+    value: {
+      operationRef: operationRef,
+      hideHeader: picker === 'time',
+      onDateMouseEnter: onDateMouseEnter,
+      onDateMouseLeave: onDateMouseLeave,
+      hideRanges: true,
+      onSelect: onContextSelect,
+      open: mergedOpen
+    }
+  }, /*#__PURE__*/React__namespace.createElement(PickerTrigger, {
+    visible: mergedOpen,
+    popupElement: rangePanel,
+    popupStyle: popupStyle,
+    prefixCls: prefixCls,
+    dropdownClassName: dropdownClassName,
+    dropdownAlign: dropdownAlign,
+    getPopupContainer: getPopupContainer,
+    transitionName: transitionName,
+    range: true,
+    direction: direction
+  }, /*#__PURE__*/React__namespace.createElement("div", _extends$1({
+    ref: containerRef,
+    className: classnames(prefixCls, "".concat(prefixCls, "-range"), className, (_classNames2 = {}, _defineProperty$4(_classNames2, "".concat(prefixCls, "-disabled"), mergedDisabled[0] && mergedDisabled[1]), _defineProperty$4(_classNames2, "".concat(prefixCls, "-focused"), mergedActivePickerIndex === 0 ? startFocused : endFocused), _defineProperty$4(_classNames2, "".concat(prefixCls, "-rtl"), direction === 'rtl'), _classNames2)),
+    style: style,
+    onClick: onPickerClick,
+    onMouseDown: onPickerMouseDown
+  }, getDataOrAriaProps(props)), /*#__PURE__*/React__namespace.createElement("div", {
+    className: classnames("".concat(prefixCls, "-input"), (_classNames3 = {}, _defineProperty$4(_classNames3, "".concat(prefixCls, "-input-active"), mergedActivePickerIndex === 0), _defineProperty$4(_classNames3, "".concat(prefixCls, "-input-placeholder"), !!startHoverValue), _classNames3)),
+    ref: startInputDivRef
+  }, /*#__PURE__*/React__namespace.createElement("input", _extends$1({
+    id: id,
+    disabled: mergedDisabled[0],
+    readOnly: inputReadOnly || typeof formatList[0] === 'function' || !startTyping,
+    value: startHoverValue || startText,
+    onChange: function onChange(e) {
+      triggerStartTextChange(e.target.value);
+    },
+    autoFocus: autoFocus,
+    placeholder: getValue(placeholder, 0) || '',
+    ref: startInputRef
+  }, startInputProps, inputSharedProps, {
+    autoComplete: autoComplete
+  }))), /*#__PURE__*/React__namespace.createElement("div", {
+    className: "".concat(prefixCls, "-range-separator"),
+    ref: separatorRef
+  }, separator), /*#__PURE__*/React__namespace.createElement("div", {
+    className: classnames("".concat(prefixCls, "-input"), (_classNames4 = {}, _defineProperty$4(_classNames4, "".concat(prefixCls, "-input-active"), mergedActivePickerIndex === 1), _defineProperty$4(_classNames4, "".concat(prefixCls, "-input-placeholder"), !!endHoverValue), _classNames4)),
+    ref: endInputDivRef
+  }, /*#__PURE__*/React__namespace.createElement("input", _extends$1({
+    disabled: mergedDisabled[1],
+    readOnly: inputReadOnly || typeof formatList[0] === 'function' || !endTyping,
+    value: endHoverValue || endText,
+    onChange: function onChange(e) {
+      triggerEndTextChange(e.target.value);
+    },
+    placeholder: getValue(placeholder, 1) || '',
+    ref: endInputRef
+  }, endInputProps, inputSharedProps, {
+    autoComplete: autoComplete
+  }))), /*#__PURE__*/React__namespace.createElement("div", {
+    className: "".concat(prefixCls, "-active-bar"),
+    style: _objectSpread2$1(_objectSpread2$1({}, activeBarPositionStyle), {}, {
+      width: activeBarWidth,
+      position: 'absolute'
+    })
+  }), suffixNode, clearNode)));
+} // Wrap with class component to enable pass generic with instance method
+
+
+var RangePicker$1 = /*#__PURE__*/function (_React$Component) {
+  _inherits$1(RangePicker, _React$Component);
+
+  var _super = _createSuper$2(RangePicker);
+
+  function RangePicker() {
+    var _this;
+
+    _classCallCheck$2(this, RangePicker);
+
+    _this = _super.apply(this, arguments);
+    _this.pickerRef = /*#__PURE__*/React__namespace.createRef();
+
+    _this.focus = function () {
+      if (_this.pickerRef.current) {
+        _this.pickerRef.current.focus();
+      }
+    };
+
+    _this.blur = function () {
+      if (_this.pickerRef.current) {
+        _this.pickerRef.current.blur();
+      }
+    };
+
+    return _this;
+  }
+
+  _createClass$2(RangePicker, [{
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/React__namespace.createElement(InnerRangePicker, _extends$1({}, this.props, {
+        pickerRef: this.pickerRef
+      }));
+    }
+  }]);
+
+  return RangePicker;
+}(React__namespace.Component);
+
 var canUseDocElement = function canUseDocElement() {
   return canUseDom() && window.document.documentElement;
 };
 
-/* eslint-disable no-param-reassign */
+function PickerButton(props) {
+  return /*#__PURE__*/React__namespace.createElement(Button$1, _extends$1({
+    size: "small",
+    type: "primary"
+  }, props));
+}
+
+var __rest$6 = undefined && undefined.__rest || function (s, e) {
+  var t = {};
+
+  for (var p in s) {
+    if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
+  }
+
+  if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+    if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i])) t[p[i]] = s[p[i]];
+  }
+  return t;
+};
+
+var CheckableTag = function CheckableTag(_a) {
+  var _classNames;
+
+  var customizePrefixCls = _a.prefixCls,
+      className = _a.className,
+      checked = _a.checked,
+      onChange = _a.onChange,
+      onClick = _a.onClick,
+      restProps = __rest$6(_a, ["prefixCls", "className", "checked", "onChange", "onClick"]);
+
+  var _React$useContext = React__namespace.useContext(ConfigContext),
+      getPrefixCls = _React$useContext.getPrefixCls;
+
+  var handleClick = function handleClick(e) {
+    onChange === null || onChange === void 0 ? void 0 : onChange(!checked);
+    onClick === null || onClick === void 0 ? void 0 : onClick(e);
+  };
+
+  var prefixCls = getPrefixCls('tag', customizePrefixCls);
+  var cls = classnames(prefixCls, (_classNames = {}, _defineProperty$4(_classNames, "".concat(prefixCls, "-checkable"), true), _defineProperty$4(_classNames, "".concat(prefixCls, "-checkable-checked"), checked), _classNames), className);
+  return /*#__PURE__*/React__namespace.createElement("span", _extends$1({}, restProps, {
+    className: cls,
+    onClick: handleClick
+  }));
+};
+
+var __rest$5 = undefined && undefined.__rest || function (s, e) {
+  var t = {};
+
+  for (var p in s) {
+    if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
+  }
+
+  if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+    if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i])) t[p[i]] = s[p[i]];
+  }
+  return t;
+};
+var PresetColorRegex = new RegExp("^(".concat(PresetColorTypes.join('|'), ")(-inverse)?$"));
+var PresetStatusColorRegex = new RegExp("^(".concat(PresetStatusColorTypes.join('|'), ")$"));
+
+var InternalTag = function InternalTag(_a, ref) {
+  var _classNames;
+
+  var customizePrefixCls = _a.prefixCls,
+      className = _a.className,
+      style = _a.style,
+      children = _a.children,
+      icon = _a.icon,
+      color = _a.color,
+      onClose = _a.onClose,
+      closeIcon = _a.closeIcon,
+      _a$closable = _a.closable,
+      closable = _a$closable === void 0 ? false : _a$closable,
+      props = __rest$5(_a, ["prefixCls", "className", "style", "children", "icon", "color", "onClose", "closeIcon", "closable"]);
+
+  var _React$useContext = React__namespace.useContext(ConfigContext),
+      getPrefixCls = _React$useContext.getPrefixCls,
+      direction = _React$useContext.direction;
+
+  var _React$useState = React__namespace.useState(true),
+      _React$useState2 = _slicedToArray$3(_React$useState, 2),
+      visible = _React$useState2[0],
+      setVisible = _React$useState2[1];
+
+  React__namespace.useEffect(function () {
+    if ('visible' in props) {
+      setVisible(props.visible);
+    }
+  }, [props.visible]);
+
+  var isPresetColor = function isPresetColor() {
+    if (!color) {
+      return false;
+    }
+
+    return PresetColorRegex.test(color) || PresetStatusColorRegex.test(color);
+  };
+
+  var tagStyle = _extends$1({
+    backgroundColor: color && !isPresetColor() ? color : undefined
+  }, style);
+
+  var presetColor = isPresetColor();
+  var prefixCls = getPrefixCls('tag', customizePrefixCls);
+  var tagClassName = classnames(prefixCls, (_classNames = {}, _defineProperty$4(_classNames, "".concat(prefixCls, "-").concat(color), presetColor), _defineProperty$4(_classNames, "".concat(prefixCls, "-has-color"), color && !presetColor), _defineProperty$4(_classNames, "".concat(prefixCls, "-hidden"), !visible), _defineProperty$4(_classNames, "".concat(prefixCls, "-rtl"), direction === 'rtl'), _classNames), className);
+
+  var handleCloseClick = function handleCloseClick(e) {
+    e.stopPropagation();
+    onClose === null || onClose === void 0 ? void 0 : onClose(e);
+
+    if (e.defaultPrevented) {
+      return;
+    }
+
+    if (!('visible' in props)) {
+      setVisible(false);
+    }
+  };
+
+  var renderCloseIcon = function renderCloseIcon() {
+    if (closable) {
+      return closeIcon ? /*#__PURE__*/React__namespace.createElement("span", {
+        className: "".concat(prefixCls, "-close-icon"),
+        onClick: handleCloseClick
+      }, closeIcon) : /*#__PURE__*/React__namespace.createElement(CloseOutlined$1, {
+        className: "".concat(prefixCls, "-close-icon"),
+        onClick: handleCloseClick
+      });
+    }
+
+    return null;
+  };
+
+  var isNeedWave = 'onClick' in props || children && children.type === 'a';
+  var tagProps = omit(props, ['visible']);
+  var iconNode = icon || null;
+  var kids = iconNode ? /*#__PURE__*/React__namespace.createElement(React__namespace.Fragment, null, iconNode, /*#__PURE__*/React__namespace.createElement("span", null, children)) : children;
+  var tagNode = /*#__PURE__*/React__namespace.createElement("span", _extends$1({}, tagProps, {
+    ref: ref,
+    className: tagClassName,
+    style: tagStyle
+  }), kids, renderCloseIcon());
+  return isNeedWave ? /*#__PURE__*/React__namespace.createElement(Wave, null, tagNode) : tagNode;
+};
+
+var Tag = /*#__PURE__*/React__namespace.forwardRef(InternalTag);
+Tag.displayName = 'Tag';
+Tag.CheckableTag = CheckableTag;
+
+function PickerTag(props) {
+  return /*#__PURE__*/React__namespace.createElement(Tag, _extends$1({
+    color: "blue"
+  }, props));
+}
+
+// This icon file is generated automatically.
+var CalendarOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z" } }] }, "name": "calendar", "theme": "outlined" };
+
+// GENERATE BY ./scripts/generate.ts
+
+var CalendarOutlined = function CalendarOutlined(props, ref) {
+  return /*#__PURE__*/React__namespace.createElement(Icon, Object.assign({}, props, {
+    ref: ref,
+    icon: CalendarOutlined$2
+  }));
+};
+
+CalendarOutlined.displayName = 'CalendarOutlined';
+var CalendarOutlined$1 = /*#__PURE__*/React__namespace.forwardRef(CalendarOutlined);
+
+// This icon file is generated automatically.
+var ClockCircleOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z" } }, { "tag": "path", "attrs": { "d": "M686.7 638.6L544.1 535.5V288c0-4.4-3.6-8-8-8H488c-4.4 0-8 3.6-8 8v275.4c0 2.6 1.2 5 3.3 6.5l165.4 120.6c3.6 2.6 8.6 1.8 11.2-1.7l28.6-39c2.6-3.7 1.8-8.7-1.8-11.2z" } }] }, "name": "clock-circle", "theme": "outlined" };
+
+// GENERATE BY ./scripts/generate.ts
+
+var ClockCircleOutlined = function ClockCircleOutlined(props, ref) {
+  return /*#__PURE__*/React__namespace.createElement(Icon, Object.assign({}, props, {
+    ref: ref,
+    icon: ClockCircleOutlined$2
+  }));
+};
+
+ClockCircleOutlined.displayName = 'ClockCircleOutlined';
+var ClockCircleOutlined$1 = /*#__PURE__*/React__namespace.forwardRef(ClockCircleOutlined);
+
+function getPlaceholder(picker, locale, customizePlaceholder) {
+  if (customizePlaceholder !== undefined) {
+    return customizePlaceholder;
+  }
+
+  if (picker === 'year' && locale.lang.yearPlaceholder) {
+    return locale.lang.yearPlaceholder;
+  }
+
+  if (picker === 'quarter' && locale.lang.quarterPlaceholder) {
+    return locale.lang.quarterPlaceholder;
+  }
+
+  if (picker === 'month' && locale.lang.monthPlaceholder) {
+    return locale.lang.monthPlaceholder;
+  }
+
+  if (picker === 'week' && locale.lang.weekPlaceholder) {
+    return locale.lang.weekPlaceholder;
+  }
+
+  if (picker === 'time' && locale.timePickerLocale.placeholder) {
+    return locale.timePickerLocale.placeholder;
+  }
+
+  return locale.lang.placeholder;
+}
+function getRangePlaceholder(picker, locale, customizePlaceholder) {
+  if (customizePlaceholder !== undefined) {
+    return customizePlaceholder;
+  }
+
+  if (picker === 'year' && locale.lang.yearPlaceholder) {
+    return locale.lang.rangeYearPlaceholder;
+  }
+
+  if (picker === 'month' && locale.lang.monthPlaceholder) {
+    return locale.lang.rangeMonthPlaceholder;
+  }
+
+  if (picker === 'week' && locale.lang.weekPlaceholder) {
+    return locale.lang.rangeWeekPlaceholder;
+  }
+
+  if (picker === 'time' && locale.timePickerLocale.placeholder) {
+    return locale.timePickerLocale.rangePlaceholder;
+  }
+
+  return locale.lang.rangePlaceholder;
+}
+
+var __rest$4 = undefined && undefined.__rest || function (s, e) {
+  var t = {};
+
+  for (var p in s) {
+    if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
+  }
+
+  if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+    if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i])) t[p[i]] = s[p[i]];
+  }
+  return t;
+};
+function generatePicker$1(generateConfig) {
+  function getPicker(picker, displayName) {
+    var Picker$1 = /*#__PURE__*/function (_React$Component) {
+      _inherits$1(Picker$1, _React$Component);
+
+      var _super = _createSuper$2(Picker$1);
+
+      function Picker$1(props) {
+        var _this;
+
+        _classCallCheck$2(this, Picker$1);
+
+        _this = _super.call(this, props);
+        _this.pickerRef = /*#__PURE__*/React__namespace.createRef();
+
+        _this.focus = function () {
+          if (_this.pickerRef.current) {
+            _this.pickerRef.current.focus();
+          }
+        };
+
+        _this.blur = function () {
+          if (_this.pickerRef.current) {
+            _this.pickerRef.current.blur();
+          }
+        };
+
+        _this.renderPicker = function (contextLocale) {
+          var locale = _extends$1(_extends$1({}, contextLocale), _this.props.locale);
+
+          var _this$context = _this.context,
+              getPrefixCls = _this$context.getPrefixCls,
+              direction = _this$context.direction,
+              getPopupContainer = _this$context.getPopupContainer;
+
+          var _a = _this.props,
+              customizePrefixCls = _a.prefixCls,
+              customizeGetPopupContainer = _a.getPopupContainer,
+              className = _a.className,
+              customizeSize = _a.size,
+              _a$bordered = _a.bordered,
+              bordered = _a$bordered === void 0 ? true : _a$bordered,
+              placeholder = _a.placeholder,
+              restProps = __rest$4(_a, ["prefixCls", "getPopupContainer", "className", "size", "bordered", "placeholder"]);
+
+          var _this$props = _this.props,
+              format = _this$props.format,
+              showTime = _this$props.showTime;
+          var prefixCls = getPrefixCls('picker', customizePrefixCls);
+          var additionalProps = {
+            showToday: true
+          };
+          var additionalOverrideProps = {};
+
+          if (picker) {
+            additionalOverrideProps.picker = picker;
+          }
+
+          var mergedPicker = picker || _this.props.picker;
+          additionalOverrideProps = _extends$1(_extends$1(_extends$1({}, additionalOverrideProps), showTime ? getTimeProps(_extends$1({
+            format: format,
+            picker: mergedPicker
+          }, showTime)) : {}), mergedPicker === 'time' ? getTimeProps(_extends$1(_extends$1({
+            format: format
+          }, _this.props), {
+            picker: mergedPicker
+          })) : {});
+          var rootPrefixCls = getPrefixCls();
+          return /*#__PURE__*/React__namespace.createElement(SizeContext.Consumer, null, function (size) {
+            var _classNames;
+
+            var mergedSize = customizeSize || size;
+            return /*#__PURE__*/React__namespace.createElement(Picker, _extends$1({
+              ref: _this.pickerRef,
+              placeholder: getPlaceholder(mergedPicker, locale, placeholder),
+              suffixIcon: mergedPicker === 'time' ? /*#__PURE__*/React__namespace.createElement(ClockCircleOutlined$1, null) : /*#__PURE__*/React__namespace.createElement(CalendarOutlined$1, null),
+              clearIcon: /*#__PURE__*/React__namespace.createElement(CloseCircleFilled$1, null),
+              allowClear: true,
+              transitionName: "".concat(rootPrefixCls, "-slide-up")
+            }, additionalProps, restProps, additionalOverrideProps, {
+              locale: locale.lang,
+              className: classnames((_classNames = {}, _defineProperty$4(_classNames, "".concat(prefixCls, "-").concat(mergedSize), mergedSize), _defineProperty$4(_classNames, "".concat(prefixCls, "-borderless"), !bordered), _classNames), className),
+              prefixCls: prefixCls,
+              getPopupContainer: customizeGetPopupContainer || getPopupContainer,
+              generateConfig: generateConfig,
+              prevIcon: /*#__PURE__*/React__namespace.createElement("span", {
+                className: "".concat(prefixCls, "-prev-icon")
+              }),
+              nextIcon: /*#__PURE__*/React__namespace.createElement("span", {
+                className: "".concat(prefixCls, "-next-icon")
+              }),
+              superPrevIcon: /*#__PURE__*/React__namespace.createElement("span", {
+                className: "".concat(prefixCls, "-super-prev-icon")
+              }),
+              superNextIcon: /*#__PURE__*/React__namespace.createElement("span", {
+                className: "".concat(prefixCls, "-super-next-icon")
+              }),
+              components: Components,
+              direction: direction
+            }));
+          });
+        };
+
+        devWarning(picker !== 'quarter', displayName, "DatePicker.".concat(displayName, " is legacy usage. Please use DatePicker[picker='").concat(picker, "'] directly."));
+        return _this;
+      }
+
+      _createClass$2(Picker$1, [{
+        key: "render",
+        value: function render() {
+          return /*#__PURE__*/React__namespace.createElement(LocaleReceiver, {
+            componentName: "DatePicker",
+            defaultLocale: locale
+          }, this.renderPicker);
+        }
+      }]);
+
+      return Picker$1;
+    }(React__namespace.Component);
+
+    Picker$1.contextType = ConfigContext;
+
+    if (displayName) {
+      Picker$1.displayName = displayName;
+    }
+
+    return Picker$1;
+  }
+
+  var DatePicker = getPicker();
+  var WeekPicker = getPicker('week', 'WeekPicker');
+  var MonthPicker = getPicker('month', 'MonthPicker');
+  var YearPicker = getPicker('year', 'YearPicker');
+  var TimePicker = getPicker('time', 'TimePicker');
+  var QuarterPicker = getPicker('quarter', 'QuarterPicker');
+  return {
+    DatePicker: DatePicker,
+    WeekPicker: WeekPicker,
+    MonthPicker: MonthPicker,
+    YearPicker: YearPicker,
+    TimePicker: TimePicker,
+    QuarterPicker: QuarterPicker
+  };
+}
+
+// This icon file is generated automatically.
+var SwapRightOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "0 0 1024 1024", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M873.1 596.2l-164-208A32 32 0 00684 376h-64.8c-6.7 0-10.4 7.7-6.3 13l144.3 183H152c-4.4 0-8 3.6-8 8v60c0 4.4 3.6 8 8 8h695.9c26.8 0 41.7-30.8 25.2-51.8z" } }] }, "name": "swap-right", "theme": "outlined" };
+
+// GENERATE BY ./scripts/generate.ts
+
+var SwapRightOutlined = function SwapRightOutlined(props, ref) {
+  return /*#__PURE__*/React__namespace.createElement(Icon, Object.assign({}, props, {
+    ref: ref,
+    icon: SwapRightOutlined$2
+  }));
+};
+
+SwapRightOutlined.displayName = 'SwapRightOutlined';
+var SwapRightOutlined$1 = /*#__PURE__*/React__namespace.forwardRef(SwapRightOutlined);
+
+var __rest$3 = undefined && undefined.__rest || function (s, e) {
+  var t = {};
+
+  for (var p in s) {
+    if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
+  }
+
+  if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+    if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i])) t[p[i]] = s[p[i]];
+  }
+  return t;
+};
+function generateRangePicker(generateConfig) {
+  var RangePicker = /*#__PURE__*/function (_React$Component) {
+    _inherits$1(RangePicker, _React$Component);
+
+    var _super = _createSuper$2(RangePicker);
+
+    function RangePicker() {
+      var _this;
+
+      _classCallCheck$2(this, RangePicker);
+
+      _this = _super.apply(this, arguments);
+      _this.pickerRef = /*#__PURE__*/React__namespace.createRef();
+
+      _this.focus = function () {
+        if (_this.pickerRef.current) {
+          _this.pickerRef.current.focus();
+        }
+      };
+
+      _this.blur = function () {
+        if (_this.pickerRef.current) {
+          _this.pickerRef.current.blur();
+        }
+      };
+
+      _this.renderPicker = function (contextLocale) {
+        var locale = _extends$1(_extends$1({}, contextLocale), _this.props.locale);
+
+        var _this$context = _this.context,
+            getPrefixCls = _this$context.getPrefixCls,
+            direction = _this$context.direction,
+            getPopupContainer = _this$context.getPopupContainer;
+
+        var _a = _this.props,
+            customizePrefixCls = _a.prefixCls,
+            customGetPopupContainer = _a.getPopupContainer,
+            className = _a.className,
+            customizeSize = _a.size,
+            _a$bordered = _a.bordered,
+            bordered = _a$bordered === void 0 ? true : _a$bordered,
+            placeholder = _a.placeholder,
+            restProps = __rest$3(_a, ["prefixCls", "getPopupContainer", "className", "size", "bordered", "placeholder"]);
+
+        var _this$props = _this.props,
+            format = _this$props.format,
+            showTime = _this$props.showTime,
+            picker = _this$props.picker;
+        var prefixCls = getPrefixCls('picker', customizePrefixCls);
+        var additionalOverrideProps = {};
+        additionalOverrideProps = _extends$1(_extends$1(_extends$1({}, additionalOverrideProps), showTime ? getTimeProps(_extends$1({
+          format: format,
+          picker: picker
+        }, showTime)) : {}), picker === 'time' ? getTimeProps(_extends$1(_extends$1({
+          format: format
+        }, _this.props), {
+          picker: picker
+        })) : {});
+        var rootPrefixCls = getPrefixCls();
+        return /*#__PURE__*/React__namespace.createElement(SizeContext.Consumer, null, function (size) {
+          var _classNames;
+
+          var mergedSize = customizeSize || size;
+          return /*#__PURE__*/React__namespace.createElement(RangePicker$1, _extends$1({
+            separator: /*#__PURE__*/React__namespace.createElement("span", {
+              "aria-label": "to",
+              className: "".concat(prefixCls, "-separator")
+            }, /*#__PURE__*/React__namespace.createElement(SwapRightOutlined$1, null)),
+            ref: _this.pickerRef,
+            placeholder: getRangePlaceholder(picker, locale, placeholder),
+            suffixIcon: picker === 'time' ? /*#__PURE__*/React__namespace.createElement(ClockCircleOutlined$1, null) : /*#__PURE__*/React__namespace.createElement(CalendarOutlined$1, null),
+            clearIcon: /*#__PURE__*/React__namespace.createElement(CloseCircleFilled$1, null),
+            allowClear: true,
+            transitionName: "".concat(rootPrefixCls, "-slide-up")
+          }, restProps, additionalOverrideProps, {
+            className: classnames((_classNames = {}, _defineProperty$4(_classNames, "".concat(prefixCls, "-").concat(mergedSize), mergedSize), _defineProperty$4(_classNames, "".concat(prefixCls, "-borderless"), !bordered), _classNames), className),
+            locale: locale.lang,
+            prefixCls: prefixCls,
+            getPopupContainer: customGetPopupContainer || getPopupContainer,
+            generateConfig: generateConfig,
+            prevIcon: /*#__PURE__*/React__namespace.createElement("span", {
+              className: "".concat(prefixCls, "-prev-icon")
+            }),
+            nextIcon: /*#__PURE__*/React__namespace.createElement("span", {
+              className: "".concat(prefixCls, "-next-icon")
+            }),
+            superPrevIcon: /*#__PURE__*/React__namespace.createElement("span", {
+              className: "".concat(prefixCls, "-super-prev-icon")
+            }),
+            superNextIcon: /*#__PURE__*/React__namespace.createElement("span", {
+              className: "".concat(prefixCls, "-super-next-icon")
+            }),
+            components: Components,
+            direction: direction
+          }));
+        });
+      };
+
+      return _this;
+    }
+
+    _createClass$2(RangePicker, [{
+      key: "render",
+      value: function render() {
+        return /*#__PURE__*/React__namespace.createElement(LocaleReceiver, {
+          componentName: "DatePicker",
+          defaultLocale: locale
+        }, this.renderPicker);
+      }
+    }]);
+
+    return RangePicker;
+  }(React__namespace.Component);
+
+  RangePicker.contextType = ConfigContext;
+  return RangePicker;
+}
+
+var Components = {
+  button: PickerButton,
+  rangeItem: PickerTag
+};
+
+function toArray$1(list) {
+  if (!list) {
+    return [];
+  }
+
+  return Array.isArray(list) ? list : [list];
+}
+
+function getTimeProps(props) {
+  var format = props.format,
+      picker = props.picker,
+      showHour = props.showHour,
+      showMinute = props.showMinute,
+      showSecond = props.showSecond,
+      use12Hours = props.use12Hours;
+  var firstFormat = toArray$1(format)[0];
+
+  var showTimeObj = _extends$1({}, props);
+
+  if (firstFormat && typeof firstFormat === 'string') {
+    if (!firstFormat.includes('s') && showSecond === undefined) {
+      showTimeObj.showSecond = false;
+    }
+
+    if (!firstFormat.includes('m') && showMinute === undefined) {
+      showTimeObj.showMinute = false;
+    }
+
+    if (!firstFormat.includes('H') && !firstFormat.includes('h') && showHour === undefined) {
+      showTimeObj.showHour = false;
+    }
+
+    if ((firstFormat.includes('a') || firstFormat.includes('A')) && use12Hours === undefined) {
+      showTimeObj.use12Hours = true;
+    }
+  }
+
+  if (picker === 'time') {
+    return showTimeObj;
+  }
+
+  if (typeof firstFormat === 'function') {
+    // format of showTime should use default when format is custom format function
+    delete showTimeObj.format;
+  }
+
+  return {
+    showTime: showTimeObj
+  };
+}
+
+function generatePicker(generateConfig) {
+  // =========================== Picker ===========================
+  var _generateSinglePicker = generatePicker$1(generateConfig),
+      DatePicker = _generateSinglePicker.DatePicker,
+      WeekPicker = _generateSinglePicker.WeekPicker,
+      MonthPicker = _generateSinglePicker.MonthPicker,
+      YearPicker = _generateSinglePicker.YearPicker,
+      TimePicker = _generateSinglePicker.TimePicker,
+      QuarterPicker = _generateSinglePicker.QuarterPicker; // ======================== Range Picker ========================
+
+
+  var RangePicker = generateRangePicker(generateConfig);
+  var MergedDatePicker = DatePicker;
+  MergedDatePicker.WeekPicker = WeekPicker;
+  MergedDatePicker.MonthPicker = MonthPicker;
+  MergedDatePicker.YearPicker = YearPicker;
+  MergedDatePicker.RangePicker = RangePicker;
+  MergedDatePicker.TimePicker = TimePicker;
+  MergedDatePicker.QuarterPicker = QuarterPicker;
+  return MergedDatePicker;
+}
+
+var DatePicker = generatePicker(generateConfig);
+
 var cached;
 function getScrollBarSize(fresh) {
   if (typeof document === 'undefined') {
@@ -19218,8 +30208,8 @@ function getScrollBarSize(fresh) {
     var outer = document.createElement('div');
     var outerStyle = outer.style;
     outerStyle.position = 'absolute';
-    outerStyle.top = '0';
-    outerStyle.left = '0';
+    outerStyle.top = 0;
+    outerStyle.left = 0;
     outerStyle.pointerEvents = 'none';
     outerStyle.visibility = 'hidden';
     outerStyle.width = '200px';
@@ -21656,7 +32646,7 @@ function warningWithoutKey() {
 
 function convertTreeToData(rootNodes) {
   function dig(node) {
-    var treeNodes = toArray$3(node);
+    var treeNodes = toArray$5(node);
     return treeNodes.map(function (treeNode) {
       // Filter invalidate node
       if (!isTreeNode(treeNode)) {
@@ -24259,7 +35249,7 @@ var TreeNode = function TreeNode() {
 };
 
 function convertChildrenToData(nodes) {
-  return toArray$3(nodes).map(function (node) {
+  return toArray$5(nodes).map(function (node) {
     if (! /*#__PURE__*/React__namespace.isValidElement(node) || !node.type) {
       return null;
     }
@@ -25310,7 +36300,7 @@ TreeSelect$1.SHOW_CHILD = SHOW_CHILD;
 
 var Option = Select$1.Option;
 var Select = function (_a) {
-    var className = _a.className, classNameSelect = _a.classNameSelect, _b = _a.value, value = _b === void 0 ? [] : _b, label = _a.label, _c = _a.defaultValue, defaultValue = _c === void 0 ? [] : _c, _d = _a.placeholder, placeholder = _d === void 0 ? "Please select" : _d, onChange = _a.onChange, disabled = _a.disabled, _e = _a.dataSource, dataSource = _e === void 0 ? [] : _e, error = _a.error, _f = _a.multiple, multiple = _f === void 0 ? false : _f, _g = _a.getLabel, getLabel = _g === void 0 ? function (item) { return item.label; } : _g, _h = _a.getKey, getKey = _h === void 0 ? function (item) { return item.id; } : _h, _j = _a.getValue, getValue = _j === void 0 ? function (item) { var _a; return (_a = item === null || item === void 0 ? void 0 : item.id) !== null && _a !== void 0 ? _a : null; } : _j, _k = _a.allowClear, allowClear = _k === void 0 ? true : _k, _l = _a.variant, variant = _l === void 0 ? "outline" : _l, _m = _a.hasFilter, hasFilter = _m === void 0 ? true : _m, props = __rest$7(_a, ["className", "classNameSelect", "value", "label", "defaultValue", "placeholder", "onChange", "disabled", "dataSource", "error", "multiple", "getLabel", "getKey", "getValue", "allowClear", "variant", "hasFilter"]);
+    var className = _a.className, classNameSelect = _a.classNameSelect, _b = _a.value, value = _b === void 0 ? [] : _b, label = _a.label, _c = _a.defaultValue, defaultValue = _c === void 0 ? [] : _c, _d = _a.placeholder, placeholder = _d === void 0 ? "Please select" : _d, onChange = _a.onChange, disabled = _a.disabled, _e = _a.dataSource, dataSource = _e === void 0 ? [] : _e, error = _a.error, _f = _a.multiple, multiple = _f === void 0 ? false : _f, _g = _a.getLabel, getLabel = _g === void 0 ? function (item) { return item.label; } : _g, _h = _a.getKey, getKey = _h === void 0 ? function (item) { return item.id; } : _h, _j = _a.getValue, getValue = _j === void 0 ? function (item) { var _a; return (_a = item === null || item === void 0 ? void 0 : item.id) !== null && _a !== void 0 ? _a : null; } : _j, _k = _a.allowClear, allowClear = _k === void 0 ? true : _k, _l = _a.variant, variant = _l === void 0 ? "outline" : _l, _m = _a.hasFilter, hasFilter = _m === void 0 ? true : _m, props = __rest$b(_a, ["className", "classNameSelect", "value", "label", "defaultValue", "placeholder", "onChange", "disabled", "dataSource", "error", "multiple", "getLabel", "getKey", "getValue", "allowClear", "variant", "hasFilter"]);
     var children = React.useMemo(function () {
         return dataSource.map(function (dataItem) {
             var label = getLabel(dataItem);
@@ -25353,7 +36343,7 @@ var TreeSelect = function (_a) {
 };
 
 var Button = function (_a) {
-    var content = _a.content, iconName = _a.iconName, className = _a.className, classNameIcon = _a.classNameIcon, classNameIconSuffix = _a.classNameIconSuffix, onClick = _a.onClick, _b = _a.type, type = _b === void 0 ? "button" : _b, _c = _a.size, size = _c === void 0 ? "large" : _c, _d = _a.variant, variant = _d === void 0 ? "standard" : _d, _e = _a.color, color = _e === void 0 ? "primary" : _e, _f = _a.disabled, disabled = _f === void 0 ? false : _f, suffixIcon = _a.suffixIcon, props = __rest$7(_a, ["content", "iconName", "className", "classNameIcon", "classNameIconSuffix", "onClick", "type", "size", "variant", "color", "disabled", "suffixIcon"]);
+    var content = _a.content, iconName = _a.iconName, className = _a.className, classNameIcon = _a.classNameIcon, classNameIconSuffix = _a.classNameIconSuffix, onClick = _a.onClick, _b = _a.type, type = _b === void 0 ? "button" : _b, _c = _a.size, size = _c === void 0 ? "large" : _c, _d = _a.variant, variant = _d === void 0 ? "standard" : _d, _e = _a.color, color = _e === void 0 ? "primary" : _e, _f = _a.disabled, disabled = _f === void 0 ? false : _f, suffixIcon = _a.suffixIcon, props = __rest$b(_a, ["content", "iconName", "className", "classNameIcon", "classNameIconSuffix", "onClick", "type", "size", "variant", "color", "disabled", "suffixIcon"]);
     var buttonClass = classnames("text text-nowrap d-button d-button__" + size + " \n         d-button__" + variant + "-" + color, {
         "text-x-small": size === "x-small",
         "text-small font-weight-bold": variant === "trans",
@@ -25365,7 +36355,7 @@ var Button = function (_a) {
 };
 
 var Checkbox = function (_a) {
-    var className = _a.className, classNameInput = _a.classNameInput, classNameInputWrapper = _a.classNameInputWrapper, classNameLabel = _a.classNameLabel, id = _a.id, name = _a.name, value = _a.value, onChange = _a.onChange, label = _a.label, _b = _a.variant, variant = _b === void 0 ? "checkbox" : _b, disabled = _a.disabled, checked = _a.checked, props = __rest$7(_a, ["className", "classNameInput", "classNameInputWrapper", "classNameLabel", "id", "name", "value", "onChange", "label", "variant", "disabled", "checked"]);
+    var className = _a.className, classNameInput = _a.classNameInput, classNameInputWrapper = _a.classNameInputWrapper, classNameLabel = _a.classNameLabel, id = _a.id, name = _a.name, value = _a.value, onChange = _a.onChange, label = _a.label, _b = _a.variant, variant = _b === void 0 ? "checkbox" : _b, disabled = _a.disabled, checked = _a.checked, props = __rest$b(_a, ["className", "classNameInput", "classNameInputWrapper", "classNameLabel", "id", "name", "value", "onChange", "label", "variant", "disabled", "checked"]);
     var classContainer = classnames("checkbox__container", className);
     var classInputWrapper = classnames("checkbox__input-wrapper", "checkbox__input-wrapper-" + variant, { "checkbox__input-wrapper-disabled": disabled }, classNameInputWrapper);
     var classInput = classnames("checkbox__input", classNameInput);
@@ -25450,7 +36440,7 @@ var HeaderTable = function (_a) {
 };
 
 var Modal = function (_a) {
-    var children = _a.children, open = _a.open, _b = _a.centered, centered = _b === void 0 ? true : _b, _c = _a.closable, closable = _c === void 0 ? false : _c, onClose = _a.onClose, onSave = _a.onSave, onSideClick = _a.onSideClick, cancelAction = _a.cancelAction, width = _a.width, className = _a.className, title = _a.title, customHeader = _a.customHeader, customFooter = _a.customFooter, customSideButton = _a.customSideButton, headerSide = _a.headerSide, _d = _a.hasCloseIcon, hasCloseIcon = _d === void 0 ? true : _d, _e = _a.hasCancelButton, hasCancelButton = _e === void 0 ? false : _e, _f = _a.saveText, saveText = _f === void 0 ? "Save" : _f, _g = _a.cancelText, cancelText = _g === void 0 ? "Cancel" : _g, _h = _a.sideText, sideText = _h === void 0 ? "Clear" : _h, size = _a.size, props = __rest$7(_a, ["children", "open", "centered", "closable", "onClose", "onSave", "onSideClick", "cancelAction", "width", "className", "title", "customHeader", "customFooter", "customSideButton", "headerSide", "hasCloseIcon", "hasCancelButton", "saveText", "cancelText", "sideText", "size"]);
+    var children = _a.children, open = _a.open, _b = _a.centered, centered = _b === void 0 ? true : _b, _c = _a.closable, closable = _c === void 0 ? false : _c, onClose = _a.onClose, onSave = _a.onSave, onSideClick = _a.onSideClick, cancelAction = _a.cancelAction, width = _a.width, className = _a.className, title = _a.title, customHeader = _a.customHeader, customFooter = _a.customFooter, customSideButton = _a.customSideButton, headerSide = _a.headerSide, _d = _a.hasCloseIcon, hasCloseIcon = _d === void 0 ? true : _d, _e = _a.hasCancelButton, hasCancelButton = _e === void 0 ? false : _e, _f = _a.saveText, saveText = _f === void 0 ? "Save" : _f, _g = _a.cancelText, cancelText = _g === void 0 ? "Cancel" : _g, _h = _a.sideText, sideText = _h === void 0 ? "Clear" : _h, size = _a.size, props = __rest$b(_a, ["children", "open", "centered", "closable", "onClose", "onSave", "onSideClick", "cancelAction", "width", "className", "title", "customHeader", "customFooter", "customSideButton", "headerSide", "hasCloseIcon", "hasCancelButton", "saveText", "cancelText", "sideText", "size"]);
     var modalClass = classnames("d-modal", "d-modal__" + size, className);
     var childrenClass = classnames("d-modal__children");
     var headerClass = classnames("d-modal__header border-bottom py-3", { "d-flex align-items-center": !!title });
@@ -25491,7 +36481,7 @@ var Modal = function (_a) {
 };
 
 function Avatar(_a) {
-    var _b = _a.size, size = _b === void 0 ? "medium" : _b, src = _a.src, alt = _a.alt, _c = _a.variant, variant = _c === void 0 ? "rounded" : _c, className = _a.className, text = _a.text, _d = _a.color, color = _d === void 0 ? "#D8D8D8" : _d, props = __rest$7(_a, ["size", "src", "alt", "variant", "className", "text", "color"]);
+    var _b = _a.size, size = _b === void 0 ? "medium" : _b, src = _a.src, alt = _a.alt, _c = _a.variant, variant = _c === void 0 ? "rounded" : _c, className = _a.className, text = _a.text, _d = _a.color, color = _d === void 0 ? "#D8D8D8" : _d, props = __rest$b(_a, ["size", "src", "alt", "variant", "className", "text", "color"]);
     var wrapperClass = classnames("d-image__container d-image__" + variant + "-" + size + " bg-" + color, { "d-flex justify-content-center align-items-center": !!text }, className);
     var imageClass = classnames("d-image__image");
     var content;
@@ -44020,7 +55010,7 @@ var InfiniteScroll = /** @class */ (function (_super) {
     InfiniteScroll.prototype.render = function () {
         var _this = this;
         var renderProps = this.filterProps(this.props);
-        var children = renderProps.children, element = renderProps.element, hasMore = renderProps.hasMore; renderProps.initialLoad; var isReverse = renderProps.isReverse, loader = renderProps.loader; renderProps.loadMore; renderProps.pageStart; var ref = renderProps.ref; renderProps.threshold; renderProps.useCapture; renderProps.useWindow; renderProps.getScrollParent; var props = __rest$7(renderProps, ["children", "element", "hasMore", "initialLoad", "isReverse", "loader", "loadMore", "pageStart", "ref", "threshold", "useCapture", "useWindow", "getScrollParent"]);
+        var children = renderProps.children, element = renderProps.element, hasMore = renderProps.hasMore; renderProps.initialLoad; var isReverse = renderProps.isReverse, loader = renderProps.loader; renderProps.loadMore; renderProps.pageStart; var ref = renderProps.ref; renderProps.threshold; renderProps.useCapture; renderProps.useWindow; renderProps.getScrollParent; var props = __rest$b(renderProps, ["children", "element", "hasMore", "initialLoad", "isReverse", "loader", "loadMore", "pageStart", "ref", "threshold", "useCapture", "useWindow", "getScrollParent"]);
         props.ref = function (node) {
             _this.scrollComponent = node;
             if (ref) {
@@ -44252,11 +55242,28 @@ var AwesomeListComponent = /** @class */ (function (_super) {
     return AwesomeListComponent;
 }(React.Component));
 
+// application
+// data stubs
+var RangePicker = DatePicker.RangePicker;
+var DateInput = function (_a) {
+    var value = _a.value, onChange = _a.onChange, onBlur = _a.onBlur, _b = _a.outline, outline = _b === void 0 ? true : _b, disabled = _a.disabled, defaultValue = _a.defaultValue, _c = _a.type, type = _c === void 0 ? "date" : _c, label = _a.label, placeholder = _a.placeholder, _d = _a.format, format = _d === void 0 ? "DD/MM/YYYY HH:mm" : _d, className = _a.className, _e = _a.showTime, showTime = _e === void 0 ? false : _e, _f = _a.variant, variant = _f === void 0 ? "single" : _f, props = __rest$b(_a, ["value", "onChange", "onBlur", "outline", "disabled", "defaultValue", "type", "label", "placeholder", "format", "className", "showTime", "variant"]);
+    var datePickerClass = classnames("d-date-input__input", "pb-2", {
+        "d-date-input__no-out-line": !outline,
+    }, "w-100");
+    var wrapperClass = classnames("d-date-input", className);
+    var content = (jsxRuntime.jsx(DatePicker, __assign({}, props, { value: value, onChange: onChange, onBlur: onBlur, className: datePickerClass, disabled: disabled, defaultValue: defaultValue, picker: type, placeholder: placeholder, format: format, showTime: showTime }), void 0));
+    if (variant === "range") {
+        content = (jsxRuntime.jsx(RangePicker, { value: value, onChange: onChange, onBlur: onBlur, className: datePickerClass, disabled: disabled, defaultValue: defaultValue, picker: type, placeholder: placeholder, format: format, showTime: showTime }, void 0));
+    }
+    return (jsxRuntime.jsxs("div", __assign({ className: wrapperClass }, { children: [label && jsxRuntime.jsx("label", __assign({ className: "text-label" }, { children: label }), void 0), content] }), void 0));
+};
+
 exports.Avatar = Avatar;
 exports.AwesomeListComponent = AwesomeListComponent;
 exports.Button = Button;
 exports.Checkbox = Checkbox;
 exports.CheckboxGroup = CheckboxGroup;
+exports.DateInput = DateInput;
 exports.HeaderTable = HeaderTable;
 exports.Icon = Icon$1;
 exports.InputText = InputText;

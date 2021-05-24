@@ -31,3 +31,5 @@ export type { AwesomeListComponentProps } from "./components/list/awesomeList/Aw
 export { default as AwesomeListComponent } from "./components/list/awesomeList/AwesomeListComponent";
 export type { LoadingProps } from "./components/loading/Loading";
 export { default as Loading } from "./components/loading/Loading";
+export type { DateInputProp } from "./components/dateInput/DateInput";
+export { default as DateInput } from "./components/dateInput/DateInput";
