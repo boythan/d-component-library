@@ -95,3 +95,10 @@ export { default as AwesomeListComponent } from "./components/list/awesomeList/A
 
 export type { LoadingProps } from "./components/loading/Loading";
 export { default as Loading } from "./components/loading/Loading";
+
+/* ----------------------------------------
+// Date Input
+// ---------------------------------------- */
+
+export type { DateInputProp } from "./components/dateInput/DateInput";
+export { default as DateInput } from "./components/dateInput/DateInput";

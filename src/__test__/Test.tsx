@@ -15,6 +15,7 @@ import PopoverList from "../components/list/popoverList/PopoverList";
 import Loading from "../components/loading/Loading";
 import AwesomeListComponent from "../components/list/awesomeList/AwesomeListComponent";
 import InputTextSearch from "../components/input/InputTextSearch";
+import DateInput from "../components/dateInput/DateInput";
 
 interface Props {
     content?: any;
@@ -131,6 +132,13 @@ export default function Test({ content }: Props): ReactElement {
                     value={valueSelect}
                     onChange={setValueSelect}
                 />
+            </div>
+        );
+
+        const date = (
+            <div className="my-4">
+                <DateInput label="Date" />
+                <DateInput variant="range" />
             </div>
         );
 
@@ -268,6 +276,7 @@ export default function Test({ content }: Props): ReactElement {
             <React.Fragment>
                 {avatar}
                 {/* {input} */}
+                {date}
                 {/* {button} */}
                 {/* {checkBox} */}
                 {/* {header} */}
