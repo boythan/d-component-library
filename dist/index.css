@@ -29703,10 +29703,14 @@ body {
 
 .d-date-input__input {
   width: 100%;
-  margin-top: 3px !important; }
+  height: 40px; }
 
 .d-date-input__label {
   margin-bottom: 25px; }
+
+.d-date-input .ant-picker:hover,
+.d-date-input .ant-picker-focused {
+  border: 1px solid #DE0D0C; }
 
 .vertical-tab-view-item {
   display: flex;

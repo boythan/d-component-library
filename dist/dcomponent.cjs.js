@@ -55242,20 +55242,21 @@ var AwesomeListComponent = /** @class */ (function (_super) {
     return AwesomeListComponent;
 }(React.Component));
 
-// application
 // data stubs
 var RangePicker = DatePicker.RangePicker;
 var DateInput = function (_a) {
-    var value = _a.value, onChange = _a.onChange, onBlur = _a.onBlur; _a.outline; var disabled = _a.disabled, defaultValue = _a.defaultValue, _c = _a.type, type = _c === void 0 ? "date" : _c, label = _a.label, placeholder = _a.placeholder, _d = _a.format, format = _d === void 0 ? "DD/MM/YYYY HH:mm" : _d, className = _a.className, _e = _a.showTime, showTime = _e === void 0 ? false : _e, _f = _a.variant, variant = _f === void 0 ? "outline" : _f, _g = _a.isRangePicker, isRangePicker = _g === void 0 ? false : _g, props = __rest$b(_a, ["value", "onChange", "onBlur", "outline", "disabled", "defaultValue", "type", "label", "placeholder", "format", "className", "showTime", "variant", "isRangePicker"]);
+    var value = _a.value, onChange = _a.onChange, onBlur = _a.onBlur; _a.outline; var disabled = _a.disabled, defaultValue = _a.defaultValue, _c = _a.type, type = _c === void 0 ? "date" : _c, label = _a.label, placeholder = _a.placeholder, _d = _a.format, format = _d === void 0 ? "DD/MM/YYYY HH:mm" : _d, className = _a.className, _e = _a.showTime, showTime = _e === void 0 ? false : _e, _f = _a.variant, variant = _f === void 0 ? "outline" : _f, _g = _a.isRangePicker, isRangePicker = _g === void 0 ? false : _g, error = _a.error, props = __rest$b(_a, ["value", "onChange", "onBlur", "outline", "disabled", "defaultValue", "type", "label", "placeholder", "format", "className", "showTime", "variant", "isRangePicker", "error"]);
     var datePickerClass = classnames("d-date-input__input", {
         "d-date-input__no-out-line": variant === "standard",
     }, "w-100");
     var wrapperClass = classnames("d-date-input", className);
+    var errorTextClass = classnames("text-x-small", "text-error", "ml-1");
     var content = (jsxRuntime.jsx(DatePicker, __assign({}, props, { value: value, onChange: onChange, onBlur: onBlur, className: datePickerClass, disabled: disabled, defaultValue: defaultValue, picker: type, placeholder: placeholder, format: format, showTime: showTime }), void 0));
     if (isRangePicker) {
         content = (jsxRuntime.jsx(RangePicker, { value: value, onChange: onChange, onBlur: onBlur, className: datePickerClass, disabled: disabled, defaultValue: defaultValue, picker: type, placeholder: placeholder, format: format, showTime: showTime }, void 0));
     }
-    return (jsxRuntime.jsxs("div", __assign({ className: wrapperClass }, { children: [label && jsxRuntime.jsx("label", __assign({ className: "text-label" }, { children: label }), void 0), content] }), void 0));
+    return (jsxRuntime.jsxs("div", __assign({ className: wrapperClass }, { children: [label && jsxRuntime.jsx("label", __assign({ className: "text-label d-block" }, { children: label }), void 0), content, error && (jsxRuntime.jsxs("div", __assign({ className: "flex-center-y mt-1" }, { children: [jsxRuntime.jsx(Icon$1, { name: "error_outline", className: "text-error", size: "small" }, void 0),
+                    jsxRuntime.jsx("text", __assign({ className: errorTextClass }, { children: error }), void 0)] }), void 0))] }), void 0));
 };
 
 exports.Avatar = Avatar;
