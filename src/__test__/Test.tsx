@@ -137,8 +137,8 @@ export default function Test({ content }: Props): ReactElement {
 
         const date = (
             <div className="my-4">
-                <div className="w-100 my-3 d-flex align-items-center">
-                    <InputText label="Date" className="mr-3 w-100" />
+                <div className="w-100 my-3 d-flex align-items-start">
+                    <InputText label="Date" className="mr-3 w-100" error="Text Error" />
                     <DateInput variant="outline" className="ml-3 w-100" label="Range Date" />
                 </div>
             </div>

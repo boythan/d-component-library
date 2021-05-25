@@ -1,10 +1,10 @@
 // react
-import React from "react";
-
+import { DatePicker, DatePickerProps } from "antd";
 // third-party
 import ClassNames from "classnames";
-import { DatePickerProps, DatePicker, TimeRangePickerProps } from "antd";
+import React from "react";
 // application
+import Icon from "../icon/Icon";
 
 // data stubs
 
@@ -20,6 +20,7 @@ export interface DateInputNewProps {
     format?: TDateFormat;
     isRangePicker?: boolean;
     variant?: "standard" | "outline";
+    error?: string;
 }
 
 export type DateInputProp = DatePickerProps & DateInputNewProps;
@@ -39,6 +40,7 @@ const DateInput: React.FC<DateInputProp> = ({
     showTime = false,
     variant = "outline",
     isRangePicker = false,
+    error,
     ...props
 }) => {
     const datePickerClass = ClassNames(
@@ -49,6 +51,8 @@ const DateInput: React.FC<DateInputProp> = ({
         "w-100"
     );
     const wrapperClass = ClassNames("d-date-input", className);
+
+    const errorTextClass = ClassNames("text-x-small", "text-error", "ml-1");
 
     let content = (
         <DatePicker
@@ -83,8 +87,14 @@ const DateInput: React.FC<DateInputProp> = ({
     }
     return (
         <div className={wrapperClass}>
-            {label && <label className="text-label">{label}</label>}
+            {label && <label className="text-label d-block">{label}</label>}
             {content}
+            {error && (
+                <div className="flex-center-y mt-1">
+                    <Icon name="error_outline" className="text-error" size="small" />
+                    <text className={errorTextClass}>{error}</text>
+                </div>
+            )}
         </div>
     );
 };

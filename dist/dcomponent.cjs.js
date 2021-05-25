@@ -36470,14 +36470,14 @@ var Modal = function (_a) {
                                     }
                                     return onClose && onClose(e);
                                 } }, void 0)),
-                            jsxRuntime.jsx(Button, { variant: "standard", content: saveText }, void 0)] }), void 0)] }, void 0));
+                            jsxRuntime.jsx(Button, { variant: "standard", content: saveText, onClick: onSave }, void 0)] }), void 0)] }, void 0));
         };
         if (customFooter) {
             content = customFooter;
         }
         return jsxRuntime.jsx("div", __assign({ className: footerClass }, { children: content() }), void 0);
     };
-    return (jsxRuntime.jsxs(Modal$1, __assign({ visible: open, onCancel: onClose, centered: centered, className: modalClass, closable: closable, onOk: onSave, width: width, footer: null }, props, { children: [header(), jsxRuntime.jsx("div", __assign({ className: childrenClass }, { children: children }), void 0), footer()] }), void 0));
+    return (jsxRuntime.jsxs(Modal$1, __assign({ visible: open, onCancel: onClose, centered: centered, className: modalClass, closable: closable, width: width, footer: null }, props, { children: [header(), jsxRuntime.jsx("div", __assign({ className: childrenClass }, { children: children }), void 0), footer()] }), void 0));
 };
 
 function Avatar(_a) {
@@ -55246,13 +55246,13 @@ var AwesomeListComponent = /** @class */ (function (_super) {
 // data stubs
 var RangePicker = DatePicker.RangePicker;
 var DateInput = function (_a) {
-    var value = _a.value, onChange = _a.onChange, onBlur = _a.onBlur, _b = _a.outline, outline = _b === void 0 ? true : _b, disabled = _a.disabled, defaultValue = _a.defaultValue, _c = _a.type, type = _c === void 0 ? "date" : _c, label = _a.label, placeholder = _a.placeholder, _d = _a.format, format = _d === void 0 ? "DD/MM/YYYY HH:mm" : _d, className = _a.className, _e = _a.showTime, showTime = _e === void 0 ? false : _e, _f = _a.variant, variant = _f === void 0 ? "single" : _f, props = __rest$b(_a, ["value", "onChange", "onBlur", "outline", "disabled", "defaultValue", "type", "label", "placeholder", "format", "className", "showTime", "variant"]);
-    var datePickerClass = classnames("d-date-input__input", "pb-2", {
-        "d-date-input__no-out-line": !outline,
+    var value = _a.value, onChange = _a.onChange, onBlur = _a.onBlur; _a.outline; var disabled = _a.disabled, defaultValue = _a.defaultValue, _c = _a.type, type = _c === void 0 ? "date" : _c, label = _a.label, placeholder = _a.placeholder, _d = _a.format, format = _d === void 0 ? "DD/MM/YYYY HH:mm" : _d, className = _a.className, _e = _a.showTime, showTime = _e === void 0 ? false : _e, _f = _a.variant, variant = _f === void 0 ? "outline" : _f, _g = _a.isRangePicker, isRangePicker = _g === void 0 ? false : _g, props = __rest$b(_a, ["value", "onChange", "onBlur", "outline", "disabled", "defaultValue", "type", "label", "placeholder", "format", "className", "showTime", "variant", "isRangePicker"]);
+    var datePickerClass = classnames("d-date-input__input", {
+        "d-date-input__no-out-line": variant === "standard",
     }, "w-100");
     var wrapperClass = classnames("d-date-input", className);
     var content = (jsxRuntime.jsx(DatePicker, __assign({}, props, { value: value, onChange: onChange, onBlur: onBlur, className: datePickerClass, disabled: disabled, defaultValue: defaultValue, picker: type, placeholder: placeholder, format: format, showTime: showTime }), void 0));
-    if (variant === "range") {
+    if (isRangePicker) {
         content = (jsxRuntime.jsx(RangePicker, { value: value, onChange: onChange, onBlur: onBlur, className: datePickerClass, disabled: disabled, defaultValue: defaultValue, picker: type, placeholder: placeholder, format: format, showTime: showTime }, void 0));
     }
     return (jsxRuntime.jsxs("div", __assign({ className: wrapperClass }, { children: [label && jsxRuntime.jsx("label", __assign({ className: "text-label" }, { children: label }), void 0), content] }), void 0));
