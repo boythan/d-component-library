@@ -27916,6 +27916,15 @@ text-bold,
   .text-label {
     font-weight: 600; }
 
+.text-xx-small, .text-xx-small-bold {
+  font-family: "Poppins", "sans-serif";
+  font-size: 10px;
+  line-height: 14px !important;
+  font-weight: 400;
+  font-style: normal; }
+  .text-xx-small-bold {
+    font-weight: 600; }
+
 label,
 .label,
 .text-label {
@@ -27933,7 +27942,7 @@ label,
   color: #DE0D0C !important; }
 
 .text-gray {
-  color: #A7A7A7 !important; }
+  color: #a7a7a7 !important; }
 
 .text-link {
   color: #DE0D0C; }
@@ -28105,6 +28114,9 @@ body {
 .border-dashed {
   border: 1px dashed #a7a7a7; }
 
+.border-thin {
+  border: 0.5px solid #a7a7a7 !important; }
+
 .image-reg-small {
   height: 40px;
   object-fit: contain; }
@@ -28190,6 +28202,14 @@ body {
 .divider {
   width: 100%;
   border-bottom: 1px solid #ebebeb; }
+
+.px-0 {
+  padding-left: 0 !important;
+  padding-right: 0 !important; }
+
+.py-0 {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important; }
 
 /*
 // .document
@@ -28740,6 +28760,9 @@ body {
 .border-dashed {
   border: 1px dashed #a7a7a7; }
 
+.border-thin {
+  border: 0.5px solid #a7a7a7 !important; }
+
 .image-reg-small {
   height: 40px;
   object-fit: contain; }
@@ -28825,6 +28848,14 @@ body {
 .divider {
   width: 100%;
   border-bottom: 1px solid #ebebeb; }
+
+.px-0 {
+  padding-left: 0 !important;
+  padding-right: 0 !important; }
+
+.py-0 {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important; }
 
 /********************************************LABEL & CONTAINER********************************************/
 .d-select__container {
