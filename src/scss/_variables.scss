@@ -116,7 +116,7 @@
     //text color
     $text-color:                    #3D464D                  !default;
     $sub-text-color:                rgba(0, 0, 0, 0.56)      !default;
-    $placeholder-color:             #A7A7A7                  !default;
+    $placeholder-color:             rgba(167, 167, 167, 1)   !default;
     $text-disabled-color:           #A7A7A7                  !default;
 
     $text-label-color:              rgba(0, 0, 0, 0.9)       !default;
@@ -212,6 +212,14 @@
    $text-x-small-weight:      $font-weight-normal         !default;
    $text-x-small-weight-bold: $font-weight-semi-bold      !default;
    $text-x-small-style:       $text-font-style            !default;
+
+   $text-xx-small-color:       $light-opposite-color       !default;
+   $text-xx-small-family:      $font-family                !default;
+   $text-xx-small-size:        10px                        !default;
+   $text-xx-small-height:      14px                        !default;
+   $text-xx-small-weight:      $font-weight-normal         !default;
+   $text-xx-small-weight-bold: $font-weight-semi-bold      !default;
+   $text-xx-small-style:       $text-font-style            !default;
 
 // ----------------------------------------
 // -- paragraph
