@@ -82,6 +82,10 @@ body {
     border: 1px dashed $border-color;
 }
 
+.border-thin {
+    border: 0.5px solid $border-color;
+}
+
 // ----------------------------------------
 // -- IMAGE
 // ----------------------------------------
