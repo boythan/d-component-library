@@ -102,3 +102,10 @@ export { default as Loading } from "./components/loading/Loading";
 
 export type { DateInputProp } from "./components/dateInput/DateInput";
 export { default as DateInput } from "./components/dateInput/DateInput";
+
+/* ----------------------------------------
+// Dot
+// ---------------------------------------- */
+
+export type { DotProps } from "./components/dot/Dot";
+export { default as Dot } from "./components/dot/Dot";

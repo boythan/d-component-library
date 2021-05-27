@@ -16,6 +16,7 @@ import Loading from "../components/loading/Loading";
 import AwesomeListComponent from "../components/list/awesomeList/AwesomeListComponent";
 import InputTextSearch from "../components/input/InputTextSearch";
 import DateInput from "../components/dateInput/DateInput";
+import Dot from "../components/dot/Dot";
 
 interface Props {
     content?: any;
@@ -152,8 +153,8 @@ export default function Test({ content }: Props): ReactElement {
                     <Button content="Button" color="green" variant="trans" />
                     <Button content="Button" variant="trans" className="my-3" />
                     <Button content="Disabled Button" className="my-3" disabled />
-                    <Button content="Button" className="my-3" size="medium" />
-                    <Button content="Button" className="my-3" size="small" />
+                    <Button content="Button" className="my-3" size="medium" color="error" />
+                    <Button content="Button" className="my-3" size="small" color="success" />
                     <Button content="Button" className="my-3" size="x-small" />
                 </div>
                 <div className="d-flex flex-column mx-5">
@@ -274,18 +275,26 @@ export default function Test({ content }: Props): ReactElement {
             </div>
         );
 
+        const dot = (
+            <div className="my-4 d-flex align-items-center">
+                <Dot />
+            </div>
+        );
+
         return (
             <React.Fragment>
                 {avatar}
                 {/* {input} */}
                 {date}
-                {/* {button} */}
+                {button}
                 {/* {checkBox} */}
                 {/* {header} */}
                 {tab}
                 {view}
                 {/* {list} */}
                 {loading}
+                {dot}
+                <div className="p-3 border bg-primary-30">Border</div>
             </React.Fragment>
         );
     };
