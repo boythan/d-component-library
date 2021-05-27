@@ -55259,12 +55259,19 @@ var DateInput = function (_a) {
                     jsxRuntime.jsx("text", __assign({ className: errorTextClass }, { children: error }), void 0)] }), void 0))] }), void 0));
 };
 
+var Dot = function (_a) {
+    var _b = _a.size, size = _b === void 0 ? "small" : _b, _c = _a.color, color = _c === void 0 ? "green" : _c;
+    var dotClass = classnames("d-dot_container", "d-dot__" + size + "-" + color);
+    return jsxRuntime.jsx("div", { className: dotClass }, void 0);
+};
+
 exports.Avatar = Avatar;
 exports.AwesomeListComponent = AwesomeListComponent;
 exports.Button = Button;
 exports.Checkbox = Checkbox;
 exports.CheckboxGroup = CheckboxGroup;
 exports.DateInput = DateInput;
+exports.Dot = Dot;
 exports.HeaderTable = HeaderTable;
 exports.Icon = Icon$1;
 exports.InputText = InputText;

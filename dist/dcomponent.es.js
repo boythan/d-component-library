@@ -55230,5 +55230,11 @@ var DateInput = function (_a) {
                     jsx("text", __assign({ className: errorTextClass }, { children: error }), void 0)] }), void 0))] }), void 0));
 };
 
-export { Avatar, AwesomeListComponent, Button, Checkbox, CheckboxGroup, DateInput, HeaderTable, Icon$1 as Icon, InputText, Loading, Modal, PopoverList, RadioGroup, RowInterchangeView, Select, TabBar, TreeSelect };
+var Dot = function (_a) {
+    var _b = _a.size, size = _b === void 0 ? "small" : _b, _c = _a.color, color = _c === void 0 ? "green" : _c;
+    var dotClass = classnames("d-dot_container", "d-dot__" + size + "-" + color);
+    return jsx("div", { className: dotClass }, void 0);
+};
+
+export { Avatar, AwesomeListComponent, Button, Checkbox, CheckboxGroup, DateInput, Dot, HeaderTable, Icon$1 as Icon, InputText, Loading, Modal, PopoverList, RadioGroup, RowInterchangeView, Select, TabBar, TreeSelect };
 //# sourceMappingURL=dcomponent.es.js.map
