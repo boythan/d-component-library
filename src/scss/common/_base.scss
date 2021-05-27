@@ -66,9 +66,21 @@ body {
     background-color: $light-gray-color !important;
 }
 
+@each $opacityName, $opacity in $opacity-range {
+    @each $name, $color in $basic-color {
+        .bg-#{$name}-#{$opacityName} {
+            background-color: rgba($color: $color, $alpha: $opacity);
+        }
+    }
+}
+
 // ----------------------------------------
 // -- BORDER
 // ----------------------------------------
+
+.border {
+    border: 1px solid $border-color;
+}
 
 .border-primary {
     border-color: $primary-color !important;
@@ -82,8 +94,24 @@ body {
     border: 1px dashed $border-color;
 }
 
-.border-thin {
-    border: 0.5px solid $border-color !important;
+.border-line {
+    border: 1px solid $line-color !important;
+}
+
+.border-line-start {
+    border-left: 1px solid $line-color !important;
+}
+
+.border-line-top {
+    border-top: 1px solid $line-color !important;
+}
+
+.border-line-end {
+    border-left: 1px solid $line-color !important;
+}
+
+.border-line-bottom {
+    border-bottom: 1px solid $line-color !important;
 }
 
 // ----------------------------------------
