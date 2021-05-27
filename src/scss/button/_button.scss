@@ -2,17 +2,6 @@
 @import "../variables";
 
 $button-variant: ("outline", "standard", "trans");
-$button-color: (
-    "primary": $accent-color,
-    "secondary": $secondary-color,
-    "green": $green-color,
-    "red": $red-color,
-    "yellow": $yellow-color,
-    "blue": $blue-color,
-    "gray": $gray-color,
-    "dark": $dark-color,
-    "light": $light-color,
-);
 
 //base
 .d-button {
@@ -43,7 +32,7 @@ $button-color: (
 //variant
 
 @each $var in $button-variant {
-    @each $name, $color in $button-color {
+    @each $name, $color in $basic-color {
         .d-button__#{$var}-#{$name} {
             @if ($var == "trans") {
                 background-color: transparent;

@@ -41,6 +41,10 @@
 //   - .typography
 
 
+   // @import "bootstrap/scss/variables";
+   @import "bootstrap/scss/functions";
+
+
 // ----------------------------------------
 // -- direction
 // ----------------------------------------
@@ -75,12 +79,12 @@
     
 
    // light
-    $light-color:                    #fff                  !default;
-    $light-opposite-color:           #3d464d               !default; 
-    $light-opposite-muted-color:     #999                  !default;
-    $light-opposite-alt-color:       #6c757d               !default;
-    $light-divider-color:            #ebebeb               !default;
-    $light-gray-color:               rgba(245, 245, 245, 1)               !default;
+    $light-color:                    #fff                         !default;
+    $light-opposite-color:           #3d464d                      !default; 
+    $light-opposite-muted-color:     #999                         !default;
+    $light-opposite-alt-color:       #6c757d                      !default;
+    $light-divider-color:            #ebebeb                      !default;
+    $light-gray-color:               rgba(245, 245, 245, 1)       !default;
 
    // dark
    $dark-color:                     $light-opposite-color   !default;
@@ -110,8 +114,9 @@
     $hover-color:                    rgb(250, 199, 194)    !default;
 
     // status color
-    $success-color:                  #149B22                !default;
-    $error-color:                    #d21c09                !default;
+    $success-color:                  $green-color             !default;
+    $error-color:                    $red-color                !default;
+    $warning-color:                  $yellow-color                !default;
 
     //text color
     $text-color:                    #3D464D                  !default;
@@ -122,9 +127,25 @@
     $text-label-color:              rgba(0, 0, 0, 0.9)       !default;
 
     //border color
-    $border-color:                  rgba(167, 167, 167, 1) !default;
-    $border-focus-color:            #041b47                 !default;
+    $border-color:                  rgba(167, 167, 167, 1)     !default;
+    $border-focus-color:            #041b47                    !default;
+    //line-color
+    $line-color:                    rgba(216, 216, 216, 1)                     !default;
 
+    $basic-color: (
+         "primary": $accent-color,
+         "secondary": $secondary-color,
+         "green": $green-color,
+         "red": $red-color,
+         "yellow": $yellow-color,
+         "blue": $blue-color,
+         "gray": $gray-color,
+         "dark": $dark-color,
+         "light": $light-color,
+         "error": $error-color,
+         "success": $success-color,
+         "warning": $warning-color,
+);
 
 // ----------------------------------------
 // -- helpers
@@ -728,11 +749,37 @@
       $avatar-size-small:        48px                    !default;
       $avatar-size-x-small:      32px                    !default;
 
+   // ----------------------------------------
+   // -- .opacity-range
+   // ----------------------------------------
+
+      $opacity-range:(
+            "5":0.05,
+            "10":0.1,
+            "20":0.2,
+            "30":0.3,
+            "40":0.4,
+            "50":0.5,
+            "60":0.6,
+            "70":0.7,
+            "80":0.8,
+            "90":0.9,
+      );
+
   // ----------------------------------------
    // -- .custom variable
    // ---------------------------------------- 
-      $primary:                            $accent-color                 !default;
-      $input-color:                        #3D464D                     !default;
-      $common-image-size:                  12rem                         !default;
-      $disabled-color:                     rgba($accent-color,0.3)         !default;
- 
+   $primary:                            $accent-color                 !default;
+   $input-color:                        #3D464D                     !default;
+   $common-image-size:                  12rem                         !default;
+   $disabled-color:                     rgba($accent-color,0.3)         !default;
+   
+    // ----------------------------------------
+    // -- .custom variable
+    // ---------------------------------------- 
+   
+      $theme-colors: (
+             "primary": #0074d9,
+              "danger": #ff4136,
+              "success":yellow
+      );
