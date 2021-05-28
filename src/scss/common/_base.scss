@@ -82,6 +82,22 @@ body {
     border: 1px solid $border-color;
 }
 
+.border-end {
+    border-right: 1px solid $border-color !important;
+}
+
+.border-start {
+    border-left: 1px solid $border-color !important;
+}
+
+.border-bottom {
+    border-bottom: 1px solid $border-color !important;
+}
+
+.border-top {
+    border-top: 1px solid $border-color !important;
+}
+
 .border-primary {
     border-color: $primary-color !important;
 }
@@ -145,11 +161,15 @@ body {
 }
 
 // ----------------------------------------
-// -- HOVER
+// -- POINTER
 // ----------------------------------------
 
 .hover-pointer {
     cursor: pointer;
+}
+
+.event-none {
+    pointer-events: none;
 }
 
 // ----------------------------------------
@@ -252,4 +272,24 @@ body {
 .py-0 {
     padding-top: 0 !important;
     padding-bottom: 0 !important;
+}
+
+// ----------------------------------------
+// -- POSITION
+// ----------------------------------------
+
+.top-0 {
+    top: 0px;
+}
+
+.bottom-0 {
+    bottom: 0px;
+}
+
+.start-0 {
+    left: 0px;
+}
+
+.end-0 {
+    right: 0px;
 }
