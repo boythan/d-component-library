@@ -28081,6 +28081,13 @@ body {
 #root {
   height: 100%; }
 
+.card-container {
+  background-color: #fff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+  width: -moz-available;
+  /* WebKit-based browsers will ignore this. */
+  width: -webkit-fill-available; }
+
 .bg-primary {
   background-color: #DE0D0C !important; }
 
@@ -28468,6 +28475,18 @@ body {
 .border {
   border: 1px solid #a7a7a7; }
 
+.border-end {
+  border-right: 1px solid #a7a7a7 !important; }
+
+.border-start {
+  border-left: 1px solid #a7a7a7 !important; }
+
+.border-bottom {
+  border-bottom: 1px solid #a7a7a7 !important; }
+
+.border-top {
+  border-top: 1px solid #a7a7a7 !important; }
+
 .border-primary {
   border-color: #DE0D0C !important; }
 
@@ -28516,6 +28535,9 @@ body {
 
 .hover-pointer {
   cursor: pointer; }
+
+.event-none {
+  pointer-events: none; }
 
 .flex-center {
   display: flex;
@@ -28585,6 +28607,18 @@ body {
 .py-0 {
   padding-top: 0 !important;
   padding-bottom: 0 !important; }
+
+.top-0 {
+  top: 0px; }
+
+.bottom-0 {
+  bottom: 0px; }
+
+.start-0 {
+  left: 0px; }
+
+.end-0 {
+  right: 0px; }
 
 /*
 // .document
@@ -29102,6 +29136,13 @@ body {
 #root {
   height: 100%; }
 
+.card-container {
+  background-color: #fff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+  width: -moz-available;
+  /* WebKit-based browsers will ignore this. */
+  width: -webkit-fill-available; }
+
 .bg-primary {
   background-color: #DE0D0C !important; }
 
@@ -29489,6 +29530,18 @@ body {
 .border {
   border: 1px solid #a7a7a7; }
 
+.border-end {
+  border-right: 1px solid #a7a7a7 !important; }
+
+.border-start {
+  border-left: 1px solid #a7a7a7 !important; }
+
+.border-bottom {
+  border-bottom: 1px solid #a7a7a7 !important; }
+
+.border-top {
+  border-top: 1px solid #a7a7a7 !important; }
+
 .border-primary {
   border-color: #DE0D0C !important; }
 
@@ -29537,6 +29590,9 @@ body {
 
 .hover-pointer {
   cursor: pointer; }
+
+.event-none {
+  pointer-events: none; }
 
 .flex-center {
   display: flex;
@@ -29606,6 +29662,18 @@ body {
 .py-0 {
   padding-top: 0 !important;
   padding-bottom: 0 !important; }
+
+.top-0 {
+  top: 0px; }
+
+.bottom-0 {
+  bottom: 0px; }
+
+.start-0 {
+  left: 0px; }
+
+.end-0 {
+  right: 0px; }
 
 /********************************************LABEL & CONTAINER********************************************/
 .d-select__container {

@@ -201,9 +201,9 @@ var classnames = createCommonjsModule(function (module) {
 });
 
 var Icon$1 = function (_a) {
-    var name = _a.name, _b = _a.size, size = _b === void 0 ? "medium" : _b, className = _a.className;
+    var name = _a.name, _b = _a.size, size = _b === void 0 ? "medium" : _b, className = _a.className, props = __rest$b(_a, ["name", "size", "className"]);
     var iconClass = classnames("material-icons", "customized-icon__" + size, className);
-    return jsxRuntime.jsx("i", __assign({ className: iconClass }, { children: name }), void 0);
+    return (jsxRuntime.jsx("i", __assign({ className: iconClass }, props, { children: name }), void 0));
 };
 
 var InputText = function (_a) {
@@ -36440,11 +36440,11 @@ var HeaderTable = function (_a) {
 };
 
 var Modal = function (_a) {
-    var children = _a.children, open = _a.open, _b = _a.centered, centered = _b === void 0 ? true : _b, _c = _a.closable, closable = _c === void 0 ? false : _c, onClose = _a.onClose, onSave = _a.onSave, onSideClick = _a.onSideClick, cancelAction = _a.cancelAction, width = _a.width, className = _a.className, title = _a.title, customHeader = _a.customHeader, customFooter = _a.customFooter, customSideButton = _a.customSideButton, headerSide = _a.headerSide, _d = _a.hasCloseIcon, hasCloseIcon = _d === void 0 ? true : _d, _e = _a.hasCancelButton, hasCancelButton = _e === void 0 ? false : _e, _f = _a.saveText, saveText = _f === void 0 ? "Save" : _f, _g = _a.cancelText, cancelText = _g === void 0 ? "Cancel" : _g, _h = _a.sideText, sideText = _h === void 0 ? "Clear" : _h, size = _a.size, props = __rest$b(_a, ["children", "open", "centered", "closable", "onClose", "onSave", "onSideClick", "cancelAction", "width", "className", "title", "customHeader", "customFooter", "customSideButton", "headerSide", "hasCloseIcon", "hasCancelButton", "saveText", "cancelText", "sideText", "size"]);
+    var children = _a.children, open = _a.open, _b = _a.centered, centered = _b === void 0 ? true : _b, _c = _a.closable, closable = _c === void 0 ? false : _c, onClose = _a.onClose, onSave = _a.onSave, onSideClick = _a.onSideClick, cancelAction = _a.cancelAction, width = _a.width, title = _a.title, customHeader = _a.customHeader, customFooter = _a.customFooter, customSideButton = _a.customSideButton, headerSide = _a.headerSide, _d = _a.hasCloseIcon, hasCloseIcon = _d === void 0 ? true : _d, _e = _a.hasCancelButton, hasCancelButton = _e === void 0 ? false : _e, _f = _a.saveText, saveText = _f === void 0 ? "Save" : _f, _g = _a.cancelText, cancelText = _g === void 0 ? "Cancel" : _g, _h = _a.sideText, sideText = _h === void 0 ? "Clear" : _h, size = _a.size, className = _a.className, classNameContent = _a.classNameContent, classNameFooter = _a.classNameFooter, classNameHeader = _a.classNameHeader, _j = _a.showFooter, showFooter = _j === void 0 ? true : _j, _k = _a.showHeader, showHeader = _k === void 0 ? true : _k, props = __rest$b(_a, ["children", "open", "centered", "closable", "onClose", "onSave", "onSideClick", "cancelAction", "width", "title", "customHeader", "customFooter", "customSideButton", "headerSide", "hasCloseIcon", "hasCancelButton", "saveText", "cancelText", "sideText", "size", "className", "classNameContent", "classNameFooter", "classNameHeader", "showFooter", "showHeader"]);
     var modalClass = classnames("d-modal", "d-modal__" + size, className);
-    var childrenClass = classnames("d-modal__children");
-    var headerClass = classnames("d-modal__header border-bottom py-3", { "d-flex align-items-center": !!title });
-    var footerClass = classnames("d-modal__footer d-flex align-items-center border-top py-3 px-3");
+    var childrenClass = classnames("d-modal__children", classNameContent);
+    var headerClass = classnames("d-modal__header border-bottom py-3", { "d-flex align-items-center": !!title }, classNameHeader);
+    var footerClass = classnames("d-modal__footer d-flex align-items-center border-top py-3 px-3", classNameFooter);
     var header = function () {
         var content;
         content = function () {
@@ -36477,7 +36477,7 @@ var Modal = function (_a) {
         }
         return jsxRuntime.jsx("div", __assign({ className: footerClass }, { children: content() }), void 0);
     };
-    return (jsxRuntime.jsxs(Modal$1, __assign({ visible: open, onCancel: onClose, centered: centered, className: modalClass, closable: closable, width: width, footer: null }, props, { children: [header(), jsxRuntime.jsx("div", __assign({ className: childrenClass }, { children: children }), void 0), footer()] }), void 0));
+    return (jsxRuntime.jsxs(Modal$1, __assign({ visible: open, onCancel: onClose, centered: centered, className: modalClass, closable: closable, width: width, footer: null }, props, { children: [showHeader && header(), jsxRuntime.jsx("div", __assign({ className: childrenClass }, { children: children }), void 0), showFooter && footer()] }), void 0));
 };
 
 function Avatar(_a) {
@@ -55260,8 +55260,8 @@ var DateInput = function (_a) {
 };
 
 var Dot = function (_a) {
-    var _b = _a.size, size = _b === void 0 ? "small" : _b, _c = _a.color, color = _c === void 0 ? "green" : _c;
-    var dotClass = classnames("d-dot_container", "d-dot__" + size + "-" + color);
+    var _b = _a.size, size = _b === void 0 ? "small" : _b, _c = _a.color, color = _c === void 0 ? "green" : _c, className = _a.className;
+    var dotClass = classnames("d-dot_container", "d-dot__" + size + "-" + color, className);
     return jsxRuntime.jsx("div", { className: dotClass }, void 0);
 };
 
