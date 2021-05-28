@@ -31,6 +31,17 @@ body {
 }
 
 // ----------------------------------------
+// -- CARD
+// ----------------------------------------
+
+.card-container {
+    background-color: $light-color;
+    box-shadow: $card-container-box-shadow;
+    width: -moz-available; /* WebKit-based browsers will ignore this. */
+    width: -webkit-fill-available;
+}
+
+// ----------------------------------------
 // -- BACKGROUND
 // ----------------------------------------
 
