@@ -317,7 +317,7 @@ export default function Test({ content }: Props): ReactElement {
 
     return (
         <div className="p-5 d-flex">
-            <div className="col-3 p-0 pr-4 card-container">
+            <div className="col-3 p-0 mr-4 card-container">
                 <TabBar
                     dataSource={TAB_LIST}
                     variant="vertical"
@@ -325,7 +325,7 @@ export default function Test({ content }: Props): ReactElement {
                     value={selectedTab}
                 />
             </div>
-            <div className="col-9 p-0 pl-4">
+            <div className="col-9 p-0 ml-4 card-container">
                 {selectedTab?.component ?? "N/A"}
                 <Button content="Open Modal" variant="trans" onClick={() => setOpenModal(true)} />
             </div>
