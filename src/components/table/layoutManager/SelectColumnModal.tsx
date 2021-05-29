@@ -3,7 +3,7 @@
 // react
 import React, { useState, useEffect } from "react";
 // third-party
-import { isEmpty, now } from "lodash";
+import _ from "lodash";
 // import { Checkbox } from "antd";
 import ClassNames from "classnames";
 // application
@@ -25,9 +25,13 @@ export const SelectLayoutView = ({
     text = "Select Layout",
 }: any) => {
     const renderTitleSelectLayout = () => {
-        if (isEmpty(selectedLayout)) {
+        if (_.isEmpty(selectedLayout)) {
             return (
-                <div className={ClassNames("d-flex  align-items-center hover-pointer p-2", { "border-right": showBorder })}>
+                <div
+                    className={ClassNames("d-flex  align-items-center hover-pointer p-2", {
+                        "border-right": showBorder,
+                    })}
+                >
                     {/* <CustomizedIcon name="visibility" size="large" /> */}
                     <div className="text text-nowrap mr-2">{text}</div>
                     <Icon name="arrow_drop_down" size="large" className="d-block" />
@@ -57,7 +61,7 @@ export const SelectLayoutView = ({
         const result: Array<any> = [];
         const keyArr = Object.keys(listLayout);
         keyArr.forEach((key: any) => {
-            if (!isEmpty(listLayout[key])) {
+            if (!_.isEmpty(listLayout[key])) {
                 result.push({ ...listLayout[key], name: key });
             }
         });
@@ -70,7 +74,7 @@ export const SelectLayoutView = ({
             renderItem={renderLayoutItem}
             onClickItem={onClickItem}
             isClickOpen
-            key={now()}
+            key={_.now()}
             customView={renderTitleSelectLayout}
         />
     );
@@ -93,7 +97,7 @@ const SelectColumnModal = ({
     const [selectedLayout, setSelectedLayout] = useState<any>({});
 
     const getLayoutTable = () => {
-        if (isEmpty(keyTable)) {
+        if (_.isEmpty(keyTable)) {
             return;
         }
         const listLayoutTable = LayoutTableManager.getLayout(keyTable);
@@ -101,16 +105,16 @@ const SelectColumnModal = ({
     };
 
     useEffect(() => {
-        if (!isEmpty(keyTable)) {
+        if (!_.isEmpty(keyTable)) {
             getLayoutTable();
         }
     }, [keyTable, openOptionModal, openSaveNewModal]);
 
     useEffect(() => {
         let defaultLayout = {};
-        if (!isEmpty(keyTable)) {
+        if (!_.isEmpty(keyTable)) {
             const tableLayout = LayoutTableManager.getLayout(keyTable);
-            if (!isEmpty(tableLayout)) {
+            if (!_.isEmpty(tableLayout)) {
                 const keyTable = Object.keys(tableLayout);
                 keyTable.forEach((key) => {
                     if (tableLayout[key]?.default) {
@@ -143,7 +147,7 @@ const SelectColumnModal = ({
     };
 
     const handleOnClickSave = async () => {
-        if (!isEmpty(selectedLayout)) {
+        if (!_.isEmpty(selectedLayout)) {
             // const storagedLayout = LayoutTableManager.getLayout(selectedLayout?.name)
             const selected = selectedOption.map((item: any) => ({
                 dataIndex: item.dataIndex,
@@ -222,7 +226,7 @@ const SelectColumnModal = ({
                                 }
                             );
                         }}
-                        disabled={isEmpty(listLayout)}
+                        disabled={_.isEmpty(listLayout)}
                         iconName="highlight_off"
                         content="Clear All Layout"
                         variant="trans"
@@ -284,7 +288,7 @@ const SelectColumnModal = ({
                     // eslint-disable-next-line react/jsx-curly-brace-presence
                     content={"Save & Apply"}
                     onClick={handleOnClickSave}
-                    disabled={isEmpty(selectedLayout)}
+                    disabled={_.isEmpty(selectedLayout)}
                     className="mr-3"
                 />
                 <Button content="Save" onClick={handleOnClickSaveNew} />
