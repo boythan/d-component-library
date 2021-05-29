@@ -73516,42 +73516,36 @@ var ResizableTitle = function (props) {
             } }, void 0)), onResize: onResize, draggableOpts: { enableUserSelectHack: false } }, { children: jsx("th", __assign$2({}, restProps), void 0) }), void 0));
 };
 
-const ALL_LAYOUT_TABLE_KEY = "ALL_LAYOUT_TABLE_KEY";
-
-const LayoutTableManager = {};
-
-LayoutTableManager.clearAll = () => {
+var ALL_LAYOUT_TABLE_KEY = "ALL_LAYOUT_TABLE_KEY";
+var LayoutTableManager = {};
+LayoutTableManager.clearAll = function () {
     return localStorage.setItem(ALL_LAYOUT_TABLE_KEY, null);
 };
-
-LayoutTableManager.clearTableLayout = (tableKey) => {
-    const allLayout = LayoutTableManager.getAllLayout();
+LayoutTableManager.clearTableLayout = function (tableKey) {
+    var allLayout = LayoutTableManager.getAllLayout();
     allLayout[tableKey] = null;
     return localStorage.setItem(ALL_LAYOUT_TABLE_KEY, JSON.stringify(allLayout));
 };
-
-LayoutTableManager.saveNewLayout = (layout, tableKey, name) => {
-    const newLayout = LayoutTableManager.getLayout(tableKey);
+LayoutTableManager.saveNewLayout = function (layout, tableKey, name) {
+    var newLayout = LayoutTableManager.getLayout(tableKey);
     newLayout[name] = layout;
-    const allLayout = LayoutTableManager.getAllLayout();
+    var allLayout = LayoutTableManager.getAllLayout();
     allLayout[tableKey] = newLayout;
     return localStorage.setItem(ALL_LAYOUT_TABLE_KEY, JSON.stringify(allLayout));
 };
-
-LayoutTableManager.saveTableLayout = (tableLayout, tableKey) => {
-    const allLayout = LayoutTableManager.getAllLayout();
+LayoutTableManager.saveTableLayout = function (tableLayout, tableKey) {
+    var allLayout = LayoutTableManager.getAllLayout();
     allLayout[tableKey] = tableLayout;
     return localStorage.setItem(ALL_LAYOUT_TABLE_KEY, JSON.stringify(allLayout));
 };
-
-LayoutTableManager.getAllLayout = () => {
-    const allLayout = JSON.parse(localStorage.getItem(ALL_LAYOUT_TABLE_KEY)) || {};
+LayoutTableManager.getAllLayout = function () {
+    var allLayout = JSON.parse(localStorage.getItem(ALL_LAYOUT_TABLE_KEY)) || {};
     return allLayout;
 };
-
-LayoutTableManager.getLayout = (key) => {
-    const allLayout = LayoutTableManager.getAllLayout();
-    return allLayout?.[key] ?? {};
+LayoutTableManager.getLayout = function (key) {
+    var _a;
+    var allLayout = LayoutTableManager.getAllLayout();
+    return (_a = allLayout === null || allLayout === void 0 ? void 0 : allLayout[key]) !== null && _a !== void 0 ? _a : {};
 };
 
 var DialogManager = {
