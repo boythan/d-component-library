@@ -3,6 +3,7 @@ import { DatePicker, DatePickerProps } from "antd";
 // third-party
 import ClassNames from "classnames";
 import React from "react";
+import Button from "../button/Button";
 // application
 import Icon from "../icon/Icon";
 
@@ -14,44 +15,58 @@ export type TDateFormat = "DD/MM/YYYY HH:mm" | "DD/MM/YYYY" | "MM/YYYY" | "YYYY"
 
 export interface DateInputNewProps {
     type?: "date" | "week" | "month" | "quarter" | "year";
-    outline?: boolean;
     label?: string;
     showTime?: boolean;
     format?: TDateFormat;
     isRangePicker?: boolean;
     variant?: "standard" | "outline";
     error?: string;
+    useButton?: boolean;
+    iconButton?: string;
+    iconError?: string;
+    classNameButton?: string;
+    classNameLabel?: string;
+    classNameInput?: string;
+    classNameError?: string;
 }
 
 export type DateInputProp = DatePickerProps & DateInputNewProps;
 
 const DateInput: React.FC<DateInputProp> = ({
-    value,
     onChange,
     onBlur,
-    outline = true,
+    value,
     disabled,
     defaultValue,
-    type = "date",
     label,
     placeholder,
-    format = "DD/MM/YYYY HH:mm",
-    className,
-    showTime = false,
-    variant = "outline",
-    isRangePicker = false,
     error,
+    type = "date",
+    format = "DD/MM/YYYY HH:mm",
+    variant = "outline",
+    iconError = "error_outline",
+    iconButton = "event",
+    showTime = false,
+    useButton = false,
+    isRangePicker = false,
+    className,
+    classNameInput,
+    classNameButton,
+    classNameLabel,
+    classNameError,
     ...props
 }) => {
+    const wrapperClass = ClassNames("d-date-input", { "d-date-input__hide-input": useButton }, className);
+    const labelClass = ClassNames("text-label d-block", classNameLabel);
     const datePickerClass = ClassNames(
         "d-date-input__input",
         {
             "d-date-input__no-out-line": variant === "standard",
         },
-        "w-100"
+        classNameInput
     );
-    const wrapperClass = ClassNames("d-date-input", className);
-
+    const buttonClass = ClassNames("d-date-input__button", classNameButton);
+    const errorClass = ClassNames("flex-center-y mt-1", classNameError);
     const errorTextClass = ClassNames("text-x-small", "text-error", "ml-1");
 
     let content = (
@@ -85,13 +100,15 @@ const DateInput: React.FC<DateInputProp> = ({
             />
         );
     }
+
     return (
         <div className={wrapperClass}>
-            {label && <label className="text-label d-block">{label}</label>}
+            {label && <label className={labelClass}>{label}</label>}
+            <Button className={buttonClass} iconName={iconButton} />
             {content}
             {error && (
-                <div className="flex-center-y mt-1">
-                    <Icon name="error_outline" className="text-error" size="small" />
+                <div className={errorClass}>
+                    <Icon name={iconError} className="text-error" size="small" />
                     <text className={errorTextClass}>{error}</text>
                 </div>
             )}

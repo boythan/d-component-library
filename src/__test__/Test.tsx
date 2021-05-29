@@ -29,6 +29,27 @@ const ATTRIBUTE_INPUT_TYPE = [
     { id: "color", label: "swatchColor" },
 ];
 
+const Date = () => {
+    return (
+        <div className="my-4">
+            <div className="w-100 my-3 d-flex align-items-start">
+                <InputText label="Date" className="mr-3 w-100" error="Text Error" />
+                <DateInput variant="outline" className="ml-3 w-100" label="Range Date" />
+            </div>
+            <div className="w-100 my-3 d-flex align-items-start">
+                <DateInput
+                    variant="outline"
+                    className="ml-3 w-100"
+                    label="Range Date"
+                    useButton
+                    onChange={(value) => console.log({ value })}
+                    isRangePicker
+                />
+            </div>
+        </div>
+    );
+};
+
 export default function Test({ content }: Props): ReactElement {
     const [checked, setChecked] = useState(false);
     const [valueSelect, setValueSelect] = useState(["text"]);
@@ -112,7 +133,10 @@ export default function Test({ content }: Props): ReactElement {
 
     const input = (
         <div className="my-4">
-            <InputText label="Input Text" placeholder="Please enter" className="mt-3" />
+            <input type="datetime-local" onChange={(e) => console.log(e?.target?.value)} />
+            <input type="color" onChange={(value) => console.log({ value })} />
+            <input type="image" alt="" src="./logo192.png" onChange={(value) => console.log({ value })} />
+            <InputText label="Input Text" placeholder="Please enter" className="mt-3" type="number" />
             <InputText label="Input Text" placeholder="Please enter" className="mt-3" error="Error Text" />
             <InputText label="Input Text" placeholder="Please enter" className="mt-3" disabled />
             <InputText label="Input Text" placeholder="Please enter" className="mt-3" suffix="$" />
@@ -129,15 +153,6 @@ export default function Test({ content }: Props): ReactElement {
                 value={valueSelect}
                 onChange={setValueSelect}
             />
-        </div>
-    );
-
-    const date = (
-        <div className="my-4">
-            <div className="w-100 my-3 d-flex align-items-start">
-                <InputText label="Date" className="mr-3 w-100" error="Text Error" />
-                <DateInput variant="outline" className="ml-3 w-100" label="Range Date" />
-            </div>
         </div>
     );
 
@@ -284,7 +299,7 @@ export default function Test({ content }: Props): ReactElement {
             <React.Fragment>
                 {avatar}
                 {/* {input} */}
-                {date}
+                <Date />
                 {button}
                 {/* {checkBox} */}
                 {/* {header} */}
@@ -300,7 +315,7 @@ export default function Test({ content }: Props): ReactElement {
     const TAB_LIST = [
         { id: "AVATAR", label: "AVATAR", component: avatar },
         { id: "INPUT", label: "INPUT", component: input },
-        { id: "DATE", label: "DATE", component: date },
+        { id: "DATE", label: "DATE", component: <Date /> },
         { id: "BUTTON", label: "BUTTON", component: button },
         { id: "CHECKBOX", label: "CHECKBOX", component: checkBox },
         { id: "HEADER", label: "HEADER", component: header },
@@ -327,7 +342,7 @@ export default function Test({ content }: Props): ReactElement {
             </div>
             <div className="col-9 p-0 ml-4 card-container">
                 {selectedTab?.component ?? "N/A"}
-                <Button content="Open Modal" variant="trans" onClick={() => setOpenModal(true)} />
+                {/* <Button content="Open Modal" variant="trans" onClick={() => setOpenModal(true)} /> */}
             </div>
             <Modal
                 open={openModal}
