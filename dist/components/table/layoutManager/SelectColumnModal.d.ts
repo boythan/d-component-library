@@ -1,13 +1,4 @@
-export function SelectLayoutView({ onClickItem, listLayout, selectedLayout, showBorder }: {
-    onClickItem: any;
-    listLayout?: {} | undefined;
-    selectedLayout: any;
-    showBorder: any;
-}): JSX.Element;
+/// <reference types="react" />
+export declare const SelectLayoutView: ({ onClickItem, listLayout, selectedLayout, showBorder, text, }: any) => JSX.Element;
+declare const SelectColumnModal: ({ options, setSelectedColumns, keyTable, refreshLayout, actionText, selectAllText, }: any) => JSX.Element;
 export default SelectColumnModal;
-declare function SelectColumnModal({ options, setSelectedColumns, keyTable, refreshLayout }: {
-    options?: any[] | undefined;
-    setSelectedColumns: any;
-    keyTable?: any;
-    refreshLayout: any;
-}): JSX.Element;

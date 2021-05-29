@@ -35,3 +35,6 @@ export type { DateInputProp } from "./components/dateInput/DateInput";
 export { default as DateInput } from "./components/dateInput/DateInput";
 export type { DotProps } from "./components/dot/Dot";
 export { default as Dot } from "./components/dot/Dot";
+export type { AwesomeTableComponentProps, IPaginationProps } from "./components/table/AwesomeTableComponent";
+export { default as AwesomeTableComponent } from "./components/table/AwesomeTableComponent";
+export { default as AwesomeTableUtils } from "./components/table/AwesomeTableUtils";
