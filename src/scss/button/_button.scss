@@ -61,7 +61,7 @@ $button-variant: ("outline", "standard", "trans");
                 &:active {
                     outline: none !important;
                     background-color: darken($color, 10%) !important;
-                    color: $light-color;
+                    color: $light-color !important;
                 }
                 &:focus {
                     outline: none !important;
