@@ -17,7 +17,7 @@ import ResizableTitle from "./ResizableTitle";
 import SelectColumnModal, { SelectLayoutView } from "./layoutManager/SelectColumnModal";
 // data stubs
 import LayoutTableManager from "./layoutManager/LayoutTableManager";
-import { isArray, isString } from "./TableAwesomeUtils";
+import { isArray, isString } from "./AwesomeTableUtils";
 
 const INIT_PAGINATION = {
     pageIndex: 1,
@@ -37,7 +37,7 @@ export interface IPaginationProps extends TablePaginationConfig {
     // showSizeChanger?: boolean;
 }
 
-export interface ITableAwesomeComponentProps extends TableProps<any> {
+export interface AwesomeTableComponentProps extends TableProps<any> {
     source: (pagination: IPaginationProps | false, sorter?: any) => Promise<any>;
     transformer: (res: any) => Array<any>;
     columns: Array<any>;
@@ -55,7 +55,7 @@ export interface ITableAwesomeComponentProps extends TableProps<any> {
     classNameTable?: string;
 }
 
-export interface ITableAwesomeComponentState {
+export interface AwesomeTableComponentState {
     data: Array<any>;
     loading: boolean;
     total: number;
@@ -75,7 +75,7 @@ export interface ITableAwesomeComponentState {
     selectedLayout: any;
 }
 
-class TableAwesomeComponent extends Component<ITableAwesomeComponentProps, ITableAwesomeComponentState> {
+class AwesomeTableComponent extends Component<AwesomeTableComponentProps, AwesomeTableComponentState> {
     static defaultProps = {
         rowKey: (item: any) => {
             if (item.id) {
@@ -493,4 +493,4 @@ class TableAwesomeComponent extends Component<ITableAwesomeComponentProps, ITabl
     }
 }
 
-export default TableAwesomeComponent;
+export default AwesomeTableComponent;
