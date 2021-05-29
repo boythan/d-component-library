@@ -24,7 +24,8 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
         | "light"
         | "error"
         | "success"
-        | "warning";
+        | "warning"
+        | "muted";
     suffixIcon?: string;
 }
 

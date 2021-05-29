@@ -1,5 +1,6 @@
 @import "../mixins/buttons";
 @import "../variables";
+@import "../functions";
 
 $button-variant: ("outline", "standard", "trans");
 
@@ -80,7 +81,7 @@ $button-variant: ("outline", "standard", "trans");
             }
             @if ($var == "standard") {
                 background-color: $color;
-                color: $light-color;
+                color: set-text-color($color);
                 &:active {
                     outline: none !important;
                     border: none !important;

@@ -50,6 +50,34 @@ const Date = () => {
     );
 };
 
+const ButtonView = () => (
+    <div className="d-flex my-4">
+        <div className="d-flex flex-column mr-5">
+            <Button content="Button" color="gray" variant="outline" className="text-underline text-secondary" />
+            <Button content="Button" color="gray" variant="standard" />
+            <Button content="Button" color="muted" variant="standard" />
+            <Button content="Button" color="green" variant="trans" />
+            <Button content="Button" variant="trans" className="my-3" />
+            <Button content="Disabled Button" className="my-3" disabled />
+            <Button content="Button" className="my-3" size="medium" color="error" />
+            <Button content="Button" className="my-3" size="small" color="success" />
+            <Button content="Button" className="my-3" size="x-small" />
+        </div>
+        <div className="d-flex flex-column mx-5">
+            <Button content="Button" variant="outline" className="my-3" disabled />
+            <Button content="Button" className="my-3" size="medium" variant="outline" />
+            <Button content="Button" className="my-3" size="small" variant="outline" />
+            <Button content="Button" className="my-3" size="x-small" variant="outline" />
+        </div>
+        <div className="d-flex flex-column ml-5">
+            <Button content="Icon Button" iconName="home" />
+            <Button content="Icon Button" iconName="home" suffixIcon="home" variant="trans" />
+            <Button content="Icon Button" className="my-3" iconName="home" variant="outline" />
+            <Button className="my-3" iconName="home" variant="outline" />
+        </div>
+    </div>
+);
+
 export default function Test({ content }: Props): ReactElement {
     const [checked, setChecked] = useState(false);
     const [valueSelect, setValueSelect] = useState(["text"]);
@@ -153,33 +181,6 @@ export default function Test({ content }: Props): ReactElement {
                 value={valueSelect}
                 onChange={setValueSelect}
             />
-        </div>
-    );
-
-    const button = (
-        <div className="d-flex my-4">
-            <div className="d-flex flex-column mr-5">
-                <Button content="Button" color="gray" variant="outline" className="text-underline text-secondary" />
-                <Button content="Button" color="gray" variant="standard" />
-                <Button content="Button" color="green" variant="trans" />
-                <Button content="Button" variant="trans" className="my-3" />
-                <Button content="Disabled Button" className="my-3" disabled />
-                <Button content="Button" className="my-3" size="medium" color="error" />
-                <Button content="Button" className="my-3" size="small" color="success" />
-                <Button content="Button" className="my-3" size="x-small" />
-            </div>
-            <div className="d-flex flex-column mx-5">
-                <Button content="Button" variant="outline" className="my-3" disabled />
-                <Button content="Button" className="my-3" size="medium" variant="outline" />
-                <Button content="Button" className="my-3" size="small" variant="outline" />
-                <Button content="Button" className="my-3" size="x-small" variant="outline" />
-            </div>
-            <div className="d-flex flex-column ml-5">
-                <Button content="Icon Button" iconName="home" />
-                <Button content="Icon Button" iconName="home" suffixIcon="home" variant="trans" />
-                <Button content="Icon Button" className="my-3" iconName="home" variant="outline" />
-                <Button className="my-3" iconName="home" variant="outline" />
-            </div>
         </div>
     );
 
@@ -300,7 +301,7 @@ export default function Test({ content }: Props): ReactElement {
                 {avatar}
                 {/* {input} */}
                 <Date />
-                {button}
+                <ButtonView />
                 {/* {checkBox} */}
                 {/* {header} */}
                 {tab}
@@ -316,7 +317,7 @@ export default function Test({ content }: Props): ReactElement {
         { id: "AVATAR", label: "AVATAR", component: avatar },
         { id: "INPUT", label: "INPUT", component: input },
         { id: "DATE", label: "DATE", component: <Date /> },
-        { id: "BUTTON", label: "BUTTON", component: button },
+        { id: "BUTTON", label: "BUTTON", component: <ButtonView /> },
         { id: "CHECKBOX", label: "CHECKBOX", component: checkBox },
         { id: "HEADER", label: "HEADER", component: header },
         { id: "TAB BAR", label: "TAB BAR", component: tab },
