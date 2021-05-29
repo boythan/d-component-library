@@ -1,35 +1,41 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable no-unused-expressions */
 // react
 import React, { useState, useEffect } from "react";
 // third-party
 import { isEmpty, now } from "lodash";
 // import { Checkbox } from "antd";
-import classname from "classnames";
+import ClassNames from "classnames";
 // application
-import PopoverListSearchComponent from "../popoverList/PopoverListSearchComponent";
-// data stubs
-import "./SelectColumnModal.scss";
-import DialogManager from "../dialog/DialogManager";
-import Modal from "../../modal/Modal";
 import Button from "../../button/Button";
 import Checkbox from "../../checkbox/Checkbox";
 import InputText from "../../input/InputText";
-import LayoutTableManager from "./LayoutTableManager";
+import Modal from "../../modal/Modal";
+import PopoverList from "../../list/popoverList/PopoverList";
 import Icon from "../../icon/Icon";
+// data stubs
+import LayoutTableManager from "./LayoutTableManager";
+import DialogManager from "../../dialog/DialogManager";
 
-export const SelectLayoutView = ({ onClickItem, listLayout = {}, selectedLayout, showBorder }) => {
+export const SelectLayoutView = ({
+    onClickItem,
+    listLayout = {},
+    selectedLayout,
+    showBorder,
+    text = "Select Layout",
+}: any) => {
     const renderTitleSelectLayout = () => {
         if (isEmpty(selectedLayout)) {
             return (
-                <div id="titleSelectShipping" className={classname({ "border-right": showBorder })}>
+                <div className={ClassNames("d-flex  align-items-center hover-pointer p-2", { "border-right": showBorder })}>
                     {/* <CustomizedIcon name="visibility" size="large" /> */}
-                    <div className="body2">{Messages.selectLayout}</div>
-                    <Icon name="arrow_drop_down" size="large" />
+                    <div className="text text-nowrap mr-2">{text}</div>
+                    <Icon name="arrow_drop_down" size="large" className="d-block" />
                 </div>
             );
         }
         return (
-            <div id="titleSelectShipping" className={classname("w-100", { "border-right": showBorder })}>
+            <div id="titleSelectShipping" className={ClassNames("w-100", { "border-right": showBorder })}>
                 <Icon name="visibility" />
                 <text className="mx-2 text-nowrap" style={{ color: "rgba(0, 0, 0, 0.56)" }}>
                     {selectedLayout?.name ?? "N/A"}
@@ -38,19 +44,19 @@ export const SelectLayoutView = ({ onClickItem, listLayout = {}, selectedLayout,
             </div>
         );
     };
-    const renderLayoutItem = (item) => {
+    const renderLayoutItem = (item: any) => {
         const isDefault = item?.default ?? false;
         return (
             <div className="renderLayoutItem">
                 {item?.name ?? "N/A"}
-                <span className="subTile2">{isDefault ? ` - ${Messages.default}` : ""}</span>
+                <span className="subTile2">{isDefault ? `- Default` : ""}</span>
             </div>
         );
     };
-    const transformer = (res) => {
-        const result = [];
+    const transformer = (res: any) => {
+        const result: Array<any> = [];
         const keyArr = Object.keys(listLayout);
-        keyArr.forEach((key) => {
+        keyArr.forEach((key: any) => {
             if (!isEmpty(listLayout[key])) {
                 result.push({ ...listLayout[key], name: key });
             }
@@ -58,32 +64,33 @@ export const SelectLayoutView = ({ onClickItem, listLayout = {}, selectedLayout,
         return result;
     };
     return (
-        <PopoverListSearchComponent
-            placeholder={Messages.search}
-            // onChangeText={(text) => onChangeTextSearchStore(text)}
-            // setRef={(ref) => {
-            //   storeList.current = ref;
-            // }}
+        <PopoverList
             source={() => Promise.resolve()}
             transformer={transformer}
             renderItem={renderLayoutItem}
             onClickItem={onClickItem}
-            createNewButton={false}
             isClickOpen
             key={now()}
-            customMainView={renderTitleSelectLayout()}
+            customView={renderTitleSelectLayout}
         />
     );
 };
 
-const SelectColumnModal = ({ options = [], setSelectedColumns, keyTable = null, refreshLayout }) => {
+const SelectColumnModal = ({
+    options = [],
+    setSelectedColumns,
+    keyTable = null,
+    refreshLayout,
+    actionText = "Action",
+    selectAllText = "Select All",
+}: any) => {
     const [openOptionModal, setOpenOptionModal] = useState(false);
-    const [selectedOption, setSelectedOption] = useState(options);
     const [openSaveNewModal, setOpenSaveNewModal] = useState(false);
-    const [nameOfLayout, setNameOfLayout] = useState();
-    const [listLayout, setListLayout] = useState();
-    const [selectedLayout, setSelectedLayout] = useState({});
     const [selectAll, setSelectAll] = useState(false);
+    const [selectedOption, setSelectedOption] = useState<any>(options);
+    const [nameOfLayout, setNameOfLayout] = useState<any>();
+    const [listLayout, setListLayout] = useState<any>();
+    const [selectedLayout, setSelectedLayout] = useState<any>({});
 
     const getLayoutTable = () => {
         if (isEmpty(keyTable)) {
@@ -124,13 +131,13 @@ const SelectColumnModal = ({ options = [], setSelectedColumns, keyTable = null, 
         }
     }, [selectedOption, openOptionModal]);
 
-    const removeItemFromSelected = (selectedItem) => {
-        const clone = selectedOption.filter((item) => item.dataIndex !== selectedItem);
+    const removeItemFromSelected = (selectedItem: any) => {
+        const clone = selectedOption.filter((item: any) => item.dataIndex !== selectedItem);
         setSelectedOption(clone);
     };
 
-    const addItemToSelected = (selectedItem) => {
-        const addedItem = options.find((obj) => obj.dataIndex === selectedItem);
+    const addItemToSelected = (selectedItem: any) => {
+        const addedItem = options.find((obj: any) => obj.dataIndex === selectedItem);
         const clone = [...selectedOption, addedItem];
         setSelectedOption(clone);
     };
@@ -138,12 +145,12 @@ const SelectColumnModal = ({ options = [], setSelectedColumns, keyTable = null, 
     const handleOnClickSave = async () => {
         if (!isEmpty(selectedLayout)) {
             // const storagedLayout = LayoutTableManager.getLayout(selectedLayout?.name)
-            const selected = selectedOption.map((item) => ({
+            const selected = selectedOption.map((item: any) => ({
                 dataIndex: item.dataIndex,
                 id: Math.random(),
             }));
             const layout = { data: selected, default: true };
-            const newTableLayout = {};
+            const newTableLayout: any = {};
             const keyLayout = Object.keys(listLayout);
             keyLayout.forEach((key) => {
                 if (key === selectedLayout.name) {
@@ -165,7 +172,7 @@ const SelectColumnModal = ({ options = [], setSelectedColumns, keyTable = null, 
     };
 
     const handleOnSaveNewLayout = async () => {
-        const selected = selectedOption.map((item) => ({
+        const selected = selectedOption.map((item: any) => ({
             dataIndex: item.dataIndex,
             id: Math.random(),
         }));
@@ -177,9 +184,9 @@ const SelectColumnModal = ({ options = [], setSelectedColumns, keyTable = null, 
         return Promise.resolve();
     };
 
-    const onSelectLayout = (item) => {
-        const layoutIndex = item?.data?.map((item) => item?.dataIndex) ?? [];
-        const filterOption = options.filter((item) => layoutIndex.includes(item?.dataIndex));
+    const onSelectLayout = (item: any) => {
+        const layoutIndex = item?.data?.map((item: any) => item?.dataIndex) ?? [];
+        const filterOption = options.filter((item: any) => layoutIndex.includes(item?.dataIndex));
         setSelectedLayout(item);
         setSelectedOption(filterOption);
         getLayoutTable();
@@ -188,10 +195,10 @@ const SelectColumnModal = ({ options = [], setSelectedColumns, keyTable = null, 
     const renderContentModal = () => {
         return (
             <div className="d-flex flex-column align-items-start px-5 justify-content-center">
-                {/* <h5>{Messages.action}: </h5> */}
+                <h5>{actionText}:</h5>
                 <div className="d-flex align-items-center">
                     <Checkbox
-                        value={selectAll}
+                        value={selectAll as any}
                         checked={selectAll}
                         onChange={() => {
                             if (!selectAll) {
@@ -201,31 +208,32 @@ const SelectColumnModal = ({ options = [], setSelectedColumns, keyTable = null, 
                         }}
                         color="primary"
                         // eslint-disable-next-line react/no-children-prop
-                        label={<text className="text-primary font-weight-bold">{Messages.selectAll}</text>}
+                        label={selectAllText}
                     />
                     <Button
                         onClick={() => {
-                            // return DialogManager.showConfirm(
-                            //     Messages.clearALlLayout,
-                            //     Messages.areYouSureWantToDeleteAllSavedLayoutOfThisTable,
-                            //     async () => {
-                            //         await LayoutTableManager.clearTableLayout(keyTable);
-                            //         setListLayout();
-                            //         setSelectedLayout({});
-                            //     }
-                            // );
+                            return DialogManager.showConfirm(
+                                "Confirm",
+                                "Are you sure want to delete all Layout?",
+                                async () => {
+                                    await LayoutTableManager.clearTableLayout(keyTable);
+                                    setListLayout({});
+                                    setSelectedLayout({});
+                                }
+                            );
                         }}
                         disabled={isEmpty(listLayout)}
                         iconName="highlight_off"
-                        clear
-                        content={Messages.clearALlLayout}
+                        content="Clear All Layout"
                         variant="trans"
-                        customColor="danger"
+                        color="red"
                     />
                 </div>
                 <div className="d-flex flex-column my-4">
-                    {options.map((item) => {
-                        const isChecked = selectedOption.filter((obj) => obj.dataIndex === item.dataIndex).length > 0;
+                    {options.map((item: any) => {
+                        // eslint-disable-next-line operator-linebreak
+                        const isChecked =
+                            selectedOption.filter((obj: any) => obj.dataIndex === item.dataIndex).length > 0;
                         return (
                             <Checkbox
                                 checked={isChecked}
@@ -252,7 +260,7 @@ const SelectColumnModal = ({ options = [], setSelectedColumns, keyTable = null, 
         return (
             <SelectLayoutView
                 listLayout={listLayout}
-                onClickItem={(item, index) => onSelectLayout(item)}
+                onClickItem={(item: any) => onSelectLayout(item)}
                 selectedLayout={selectedLayout}
             />
         );
@@ -264,7 +272,7 @@ const SelectColumnModal = ({ options = [], setSelectedColumns, keyTable = null, 
                 onChange={(event) => setNameOfLayout(event.target.value)}
                 aria-label="Default"
                 aria-describedby="inputGroup-sizing-default"
-                placeholder={Messages.nameOfLayout}
+                placeholder="Name Of Layout"
             />
         );
     };
@@ -273,32 +281,28 @@ const SelectColumnModal = ({ options = [], setSelectedColumns, keyTable = null, 
         return (
             <div className="d-flex align-items-center w-100 justify-content-end">
                 <Button
-                    content={Messages.saveAndApply}
+                    // eslint-disable-next-line react/jsx-curly-brace-presence
+                    content={"Save & Apply"}
                     onClick={handleOnClickSave}
                     disabled={isEmpty(selectedLayout)}
                     className="mr-3"
                 />
-                <Button content={Messages.save} onClick={handleOnClickSaveNew} />
+                <Button content="Save" onClick={handleOnClickSaveNew} />
             </div>
         );
     };
 
     return (
         <React.Fragment>
-            <Button
-                content={<text style={{ color: "rgba(0, 0, 0, 0.56)" }}>{Messages.column}</text>}
-                iconName="settings"
-                clear
-                onClick={() => setOpenOptionModal(true)}
-            />
+            <Button content="Column" iconName="settings" variant="trans" onClick={() => setOpenOptionModal(true)} />
 
             <Modal
                 open={openOptionModal}
                 onClose={() => setOpenOptionModal(false)}
                 onSave={handleOnClickSave}
-                title={`${Messages.selectLayout}${selectedLayout?.name ? ` - ${selectedLayout?.name}` : ""}`}
+                title={`Select Layout ${selectedLayout?.name ? ` - ${selectedLayout?.name}` : ""}`}
                 customFooter={renderFooter}
-                size="small"
+                size="medium"
                 headerSide={renderSecondTitle}
             >
                 {renderContentModal()}
@@ -307,8 +311,6 @@ const SelectColumnModal = ({ options = [], setSelectedColumns, keyTable = null, 
                 open={openSaveNewModal}
                 onClose={() => setOpenSaveNewModal(false)}
                 onSave={handleOnSaveNewLayout}
-                title={Messages.newLayout}
-                disabledSaveButton={!nameOfLayout}
                 centered={false}
             >
                 {renderContentSaveNewModal()}

@@ -1,10 +1,10 @@
-@import "../../../node_modules/d-react-components/src/scss/index.scss";
+@import "../variables";
 
-.tableAwesomeComponent {
+.d-table-awesome-component {
     height: 100%;
     width: 100%;
     background-color: transparent;
-    &-selectColumn {
+    &__select-column {
         width: "100%";
         display: flex;
         justify-content: flex-end;
@@ -18,25 +18,17 @@
     }
 }
 
-.rowAwesomeTable td {
+.d-table-awesome-component__row td {
     @extend .text-small;
 }
 
-.rowAwesomeTable .ant-table-cell-with-append {
+.d-table-awesome-component__row .ant-table-cell-with-append {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-// .tableAwesome thead > tr > th {
-//     font-family: var(--appFont);
-//     font-style: normal;
-//     font-weight: normal;
-//     font-size: 1.5rem;
-//     color: rgba(0, 0, 0, 0.56);
-// }
-
-.tableAwesome {
+.d-table-awesome-component__table {
     font-family: var(--appFont);
     font-style: normal;
     font-weight: normal;
@@ -49,7 +41,7 @@
     display: flex;
 }
 
-.tableAwesome thead > tr > th {
+.d-table-awesome-component__table thead > tr > th {
     background-color: #e8e8e8;
 }
 
@@ -59,26 +51,26 @@
     }
 }
 
-.tableAwesomeComponent .ant-table-thead > tr > th {
+.d-table-awesome-component .ant-table-thead > tr > th {
     background-color: white !important;
     @extend .text-x-small;
 }
-.tableAwesomeComponent .ant-pagination-total-text {
+.d-table-awesome-component .ant-pagination-total-text {
     @extend .flex-center-y;
     @extend .text-x-small;
 }
 
-.tableAwesomeComponent .ant-pagination-item-link {
+.d-table-awesome-component .ant-pagination-item-link {
     @extend .text-x-small;
     border-radius: $border-radius !important;
 }
 
-.tableAwesomeComponent .ant-pagination-options-quick-jumper input {
+.d-table-awesome-component .ant-pagination-options-quick-jumper input {
     @extend .text-x-small;
     border-radius: $border-radius !important;
 }
 
-.tableAwesomeComponent {
+.d-table-awesome-component {
     .ant-pagination-item,
     .ant-select-selection-item {
         @extend .text-x-small;
@@ -88,30 +80,30 @@
 }
 
 @media screen and (max-width: 1000px) {
-    .tableAwesomeComponent table,
-    .tableAwesomeComponent tbody,
-    .tableAwesomeComponent thead,
-    .tableAwesomeComponent tr,
-    .tableAwesomeComponent th,
-    .tableAwesomeComponent td {
+    .d-table-awesome-component table,
+    .d-table-awesome-component tbody,
+    .d-table-awesome-component thead,
+    .d-table-awesome-component tr,
+    .d-table-awesome-component th,
+    .d-table-awesome-component td {
         display: block;
     }
-    .tableAwesomeComponent thead > tr {
+    .d-table-awesome-component thead > tr {
         position: absolute;
         top: -9999999px;
         left: -9999999px;
     }
-    .tableAwesomeComponent tr {
+    .d-table-awesome-component tr {
         width: 100%;
         border: 1px solid rgb(220, 220, 220);
     }
-    .tableAwesomeComponent .ant-table-tbody > tr > td {
+    .d-table-awesome-component .ant-table-tbody > tr > td {
         position: relative;
         padding-left: 50%;
         width: 100%;
         text-align: left !important;
     }
-    .tableAwesomeComponent .ant-table-tbody > tr > td::before {
+    .d-table-awesome-component .ant-table-tbody > tr > td::before {
         content: attr(data-title);
         white-space: nowrap;
         font-size: 1.5rem;

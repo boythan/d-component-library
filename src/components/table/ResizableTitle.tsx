@@ -4,7 +4,7 @@ import React from "react";
 import { Resizable } from "react-resizable";
 import "./ResizableTitle.scss";
 
-const ResizableTitle = (props) => {
+const ResizableTitle = (props: any) => {
     const { onResize, width, ...restProps } = props;
 
     if (!width) {

@@ -1,53 +1,83 @@
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/no-access-state-in-setstate */
+/* eslint-disable react/static-property-placement */
 /* eslint-disable max-len */
 /* eslint-disable camelcase */
 /* eslint-disable react/sort-comp */
 // react
-import React, { Component } from "react";
-
-// third-party
-import { Table, Input, Button } from "antd";
-import _ from "lodash";
-import PropTypes from "prop-types";
 import { SearchOutlined } from "@ant-design/icons";
+import { Button, Input, Table, TablePaginationConfig, TableProps } from "antd";
+// third-party
+import ClassNames from "classnames";
+import _ from "lodash";
+import React, { Component } from "react";
 import Highlighter from "react-highlight-words";
 // application
-import SelectColumnModal, { SelectLayoutView } from "../modal/SelectColumnModal";
 import ResizableTitle from "./ResizableTitle";
+import SelectColumnModal, { SelectLayoutView } from "./layoutManager/SelectColumnModal";
 // data stubs
-import "./TableAwesome.scss";
-import { isArray, isString } from "./TableAwesomeUtils";
 import LayoutTableManager from "./layoutManager/LayoutTableManager";
+import { isArray, isString } from "./TableAwesomeUtils";
 
 const INIT_PAGINATION = {
     pageIndex: 1,
+    pageSize: 10,
     showQuickJumper: true,
-    showTotal: (total) => <div className="captionText">{`Total ${total} items`}</div>,
+    showTotal: (total: any) => <div className="captionText">{`Total ${total} items`}</div>,
     pageSizeOptions: ["10", "20", "50"],
     showSizeChanger: true,
-    pageSize: 10,
 };
 
-class TableAwesomeComponentUpdated extends Component {
-    static propTypes = {
-        source: PropTypes.func,
-        rowKey: PropTypes.func,
-        transformer: PropTypes.func,
-        renderFooter: PropTypes.func,
+export interface IPaginationProps extends TablePaginationConfig {
+    pageIndex?: number;
+    // pageSize: number;
+    // showQuickJumper?: boolean;
+    // showTotal?: (total: any) => React.ReactNode;
+    // pageSizeOptions?: Array<string>;
+    // showSizeChanger?: boolean;
+}
 
-        isScroll: PropTypes.bool,
-        columns: PropTypes.array.isRequired,
-        isPagination: PropTypes.bool,
-        defaultPagination: PropTypes.object,
+export interface ITableAwesomeComponentProps extends TableProps<any> {
+    source: (pagination: IPaginationProps | false, sorter?: any) => Promise<any>;
+    transformer: (res: any) => Array<any>;
+    columns: Array<any>;
 
-        setCurrentPage: PropTypes.func,
-        tableLayout: PropTypes.string,
-        showSelectColumn: PropTypes.bool,
-        keyTableLayout: PropTypes.string,
-        tableClassName: PropTypes.string,
-    };
+    rowKey?: (item: any) => any;
+    renderFooter?: TableProps<any>["footer"];
+    setCurrentPage?: (paging?: any) => void;
 
+    isScroll?: boolean;
+    isPagination?: boolean;
+    defaultPagination?: IPaginationProps;
+
+    showSelectColumn?: boolean;
+    keyTableLayout?: string;
+    classNameTable?: string;
+}
+
+export interface ITableAwesomeComponentState {
+    data: Array<any>;
+    loading: boolean;
+    total: number;
+
+    searchText: "";
+    searchedColumn: "";
+
+    filteredInfo: any;
+
+    pagination: IPaginationProps | false;
+    sorter: any;
+
+    columns: TableProps<any>["columns"];
+    selectedColumns: TableProps<any>["columns"];
+
+    tableLayoutList: any;
+    selectedLayout: any;
+}
+
+class TableAwesomeComponent extends Component<ITableAwesomeComponentProps, ITableAwesomeComponentState> {
     static defaultProps = {
-        rowKey: (item) => {
+        rowKey: (item: any) => {
             if (item.id) {
                 return item.id;
             }
@@ -56,7 +86,7 @@ class TableAwesomeComponentUpdated extends Component {
             return Math.random();
         },
         source: Promise.resolve([]),
-        transformer: (response) => {
+        transformer: (response: any) => {
             return response;
         },
 
@@ -65,9 +95,9 @@ class TableAwesomeComponentUpdated extends Component {
         isPagination: true,
         defaultPagination: null,
         isScroll: true,
-        tableClassName: "",
+        classNameTable: "",
 
-        setCurrentPage: (page) => {
+        setCurrentPage: (page: any) => {
             return page;
         },
         tableLayout: "auto",
@@ -82,7 +112,11 @@ class TableAwesomeComponentUpdated extends Component {
         },
     };
 
-    constructor(props) {
+    unmounted: boolean | undefined;
+
+    searchInput: Input | null | undefined;
+
+    constructor(props: any) {
         super(props);
 
         this.state = {
@@ -125,8 +159,9 @@ class TableAwesomeComponentUpdated extends Component {
         this.getDefaultTableLayout();
     }
 
-    UNSAFE_componentWillReceiveProps(nextProps) {
-        if (nextProps?.columns !== this.props.columns) {
+    UNSAFE_componentWillReceiveProps(nextProps: any) {
+        const { columns } = this.props;
+        if (nextProps?.columns !== columns) {
             this.setState({ columns: nextProps.columns });
         }
     }
@@ -137,8 +172,8 @@ class TableAwesomeComponentUpdated extends Component {
 
     /** **************************************************HANDLE SEARCH FUNCTION *************************************************** */
 
-    getColumnSearchProps = (dataIndex) => ({
-        filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters }) => (
+    getColumnSearchProps = (dataIndex: any) => ({
+        filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters }: any) => (
             <div style={{ padding: 8 }}>
                 <Input
                     ref={(node) => {
@@ -164,34 +199,41 @@ class TableAwesomeComponentUpdated extends Component {
                 </Button>
             </div>
         ),
-        filterIcon: (filtered) => (
+        filterIcon: (filtered: any) => (
             // <Icons type="search" style={{ color: filtered ? '#1890ff' : undefined }} />
             <SearchOutlined style={{ color: filtered ? "#1890ff" : undefined }} />
         ),
-        onFilter: (value, record) => {
+        onFilter: (value: any, record: any) => {
             return record?.[dataIndex]?.toString().toLowerCase().includes(value.toLowerCase()) ?? false;
         },
 
-        onFilterDropdownVisibleChange: (visible) => {
+        onFilterDropdownVisibleChange: (visible: any) => {
             if (visible) {
-                setTimeout(() => this.searchInput.select());
+                setTimeout(() => {
+                    if (this.searchInput) {
+                        this.searchInput.select();
+                    }
+                });
             }
         },
         // eslint-disable-next-line no-confusing-arrow
-        render: (text) =>
-            this.state.searchedColumn === dataIndex ? (
-                <Highlighter
-                    highlightStyle={{ backgroundColor: "#ffc069", padding: 0 }}
-                    searchWords={[this.state.searchText]}
-                    autoEscape
-                    textToHighlight={text.toString()}
-                />
-            ) : (
-                text
-            ),
+        render: (text: any) => {
+            const { searchedColumn, searchText } = this.state;
+            if (searchedColumn === dataIndex) {
+                return (
+                    <Highlighter
+                        highlightStyle={{ backgroundColor: "#ffc069", padding: 0 }}
+                        searchWords={[searchText]}
+                        autoEscape
+                        textToHighlight={text.toString()}
+                    />
+                );
+            }
+            return text;
+        },
     });
 
-    handleSearch = (selectedKeys, confirm, dataIndex) => {
+    handleSearch = (selectedKeys: any, confirm: any, dataIndex: any) => {
         confirm();
         this.setState({
             searchText: selectedKeys[0],
@@ -199,7 +241,7 @@ class TableAwesomeComponentUpdated extends Component {
         });
     };
 
-    handleReset = (clearFilters) => {
+    handleReset = (clearFilters: any) => {
         clearFilters();
         this.setState({ searchText: "" });
     };
@@ -209,14 +251,14 @@ class TableAwesomeComponentUpdated extends Component {
         if (keyTableLayout && showSelectColumn) {
             const tableLayout = LayoutTableManager.getLayout(keyTableLayout);
             if (!_.isEmpty(tableLayout)) {
-                const listTableLayout = [];
+                const listTableLayout: any = [];
                 const tableKey = Object.keys(tableLayout);
                 tableKey.forEach((key) => {
                     listTableLayout.push({ ...tableLayout[key], name: key });
                 });
-                const defaultLayout = listTableLayout.find((item) => item?.default);
+                const defaultLayout = listTableLayout.find((item: any) => item?.default);
                 if (!_.isEmpty(defaultLayout)) {
-                    const defaultIndex = defaultLayout?.data?.map((item) => item?.dataIndex);
+                    const defaultIndex = defaultLayout?.data?.map((item: any) => item?.dataIndex);
                     const defaultColumns = columns.filter((item) => defaultIndex.includes(item.dataIndex));
                     this.setState({
                         selectedColumns: defaultColumns,
@@ -230,8 +272,8 @@ class TableAwesomeComponentUpdated extends Component {
 
     /** ************************************************** TABLE CONTROL *************************************************** */
 
-    handleResize = (index) => (e, { size }) => {
-        this.setState(({ columns }) => {
+    handleResize = (index: any) => (e: any, { size }: any) => {
+        this.setState(({ columns = [] }) => {
             const nextColumns = [...columns];
             nextColumns[index] = {
                 ...nextColumns[index],
@@ -241,11 +283,11 @@ class TableAwesomeComponentUpdated extends Component {
         });
     };
 
-    handleSelectTableLayout = async (item) => {
+    handleSelectTableLayout = async (item: any) => {
         const { keyTableLayout } = this.props;
         const listLayout = LayoutTableManager.getLayout(keyTableLayout);
         const saveLayout = { data: item.data, default: true };
-        const newTableLayout = {};
+        const newTableLayout: any = {};
         const listLayoutKey = Object.keys(listLayout);
         listLayoutKey.forEach((key) => {
             if (key === item.name) {
@@ -258,15 +300,19 @@ class TableAwesomeComponentUpdated extends Component {
         this.getDefaultTableLayout();
     };
 
-    handleTableChange = (pagination, filters, sorter) => {
-        const { current, pageSize } = pagination;
+    handleTableChange = (paging: IPaginationProps, filters: any, sorter: any) => {
+        const { setCurrentPage } = this.props;
+        const { pagination } = this.state;
+        const { current, pageSize } = paging;
         const { field, order } = sorter;
         const paramSorter = { field, order };
-        this.props.setCurrentPage({ pageIndex: current, pageSize });
+        if (typeof setCurrentPage === "function") {
+            setCurrentPage({ pageIndex: current, pageSize });
+        }
         this.setState(
             {
                 // eslint-disable-next-line react/no-access-state-in-setstate
-                pagination: { ...this.state.pagination, pageIndex: current, pageSize },
+                pagination: { ...pagination, pageIndex: current, pageSize },
                 sorter: paramSorter,
             },
             () => this.start()
@@ -327,7 +373,7 @@ class TableAwesomeComponentUpdated extends Component {
         );
     }
 
-    refreshKeepPaging(paging) {
+    refreshKeepPaging(paging: any) {
         this.setState(
             {
                 loading: true,
@@ -349,15 +395,25 @@ class TableAwesomeComponentUpdated extends Component {
             filteredInfo,
             total,
             pagination,
-            columns,
-            selectedColumns,
+            columns = [],
+            selectedColumns = [],
             tableLayoutList,
             selectedLayout,
+            data,
+            loading,
         } = this.state;
 
-        const { rowKey, isScroll, tableClassName, tableLayout, showSelectColumn, keyTableLayout } = this.props;
+        const {
+            rowKey,
+            isScroll,
+            classNameTable,
+            tableLayout,
+            showSelectColumn,
+            keyTableLayout,
+            className,
+        } = this.props;
 
-        const columnsResult = columns.map((columnParams) => {
+        const columnsResult = columns.map((columnParams: any) => {
             let column = columnParams;
             if (column.filters && column.filters.length > 0) {
                 column = {
@@ -375,9 +431,9 @@ class TableAwesomeComponentUpdated extends Component {
             return column;
         });
 
-        const columnResizable = columnsResult.map((col, index) => ({
+        const columnResizable = columnsResult.map((col: any, index: number) => ({
             ...col,
-            onHeaderCell: (column) => ({
+            onHeaderCell: (column: any) => ({
                 width: column?.width,
                 onResize: this.handleResize(index),
             }),
@@ -386,15 +442,17 @@ class TableAwesomeComponentUpdated extends Component {
         let columnSelected = columnResizable;
 
         if (showSelectColumn) {
-            const selectedIndex = selectedColumns.map((item) => item?.dataIndex);
-            columnSelected = columnResizable.filter((item) => selectedIndex.includes(item.dataIndex));
+            const selectedIndex = selectedColumns.map((item: any) => item?.dataIndex);
+            columnSelected = columnResizable.filter((item: any) => selectedIndex.includes(item.dataIndex));
         }
 
         const paginationResult = pagination ? { ...pagination, current: pagination.pageIndex, total } : false;
+
+        const wrapperClass = ClassNames("d-table-awesome-component", className);
         return (
-            <div className="tableAwesomeComponent">
+            <div className={wrapperClass}>
                 {showSelectColumn && (
-                    <div className="tableAwesomeComponent-selectColumn m-2">
+                    <div className="d-table-awesome-component__select-column m-2">
                         {!_.isEmpty(tableLayoutList) && (
                             <SelectLayoutView
                                 listLayout={tableLayoutList}
@@ -404,8 +462,9 @@ class TableAwesomeComponentUpdated extends Component {
                             />
                         )}
                         <SelectColumnModal
+                            // eslint-disable-next-line react/destructuring-assignment
                             options={this.props.columns}
-                            setSelectedColumns={(column) => this.setState({ selectedColumns: column })}
+                            setSelectedColumns={(column: any) => this.setState({ selectedColumns: column })}
                             keyTable={keyTableLayout}
                             refreshLayout={() => this.getDefaultTableLayout()}
                         />
@@ -413,19 +472,19 @@ class TableAwesomeComponentUpdated extends Component {
                 )}
                 <Table
                     rowKey={rowKey}
-                    dataSource={this.state.data}
-                    loading={this.state.loading}
+                    dataSource={data}
+                    loading={loading}
                     onChange={this.handleTableChange}
                     rowClassName={() => {
-                        return "rowAwesomeTable";
+                        return "d-table-awesome-component__row";
                     }}
-                    className={`tableAwesome ${tableClassName}`}
                     pagination={paginationResult}
                     scroll={isScroll ? { y: 500 } : {}}
                     tableLayout={tableLayout}
                     bordered
                     components={this.components}
                     {...this.props}
+                    className={`d-table-awesome-component__table ${classNameTable}`}
                     // columns props always has to be in last positon in order for Resizable table to work
                     columns={columnSelected}
                 />
@@ -434,4 +493,4 @@ class TableAwesomeComponentUpdated extends Component {
     }
 }
 
-export default TableAwesomeComponentUpdated;
+export default TableAwesomeComponent;
