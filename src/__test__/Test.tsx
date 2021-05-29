@@ -19,7 +19,7 @@ import DateInput from "../components/dateInput/DateInput";
 import Dot from "../components/dot/Dot";
 import DialogComponent from "../components/dialog/DialogComponent";
 import DialogManager from "../components/dialog/DialogManager";
-import TableAwesomeComponent from "../components/table/TableAwesomeComponent";
+import TableAwesomeComponent from "../components/table/AwesomeTableComponent";
 
 interface Props {
     content?: any;
