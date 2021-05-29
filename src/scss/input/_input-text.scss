@@ -95,6 +95,16 @@
     }
 }
 
+.d-input-text__input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.d-input-text__input::-webkit-outer-spin-button,
+.d-input-text__input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 /********************************************INPUT AREA********************************************/
 .d-input-area__input {
     @include input();
