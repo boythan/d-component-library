@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from "react";
+import React, { ReactElement, useEffect, useRef, useState } from "react";
 import InputText from "../components/input/InputText";
 import Icon, { IconProps } from "../components/icon/Icon";
 import Button from "../components/button/Button";
@@ -17,6 +17,9 @@ import AwesomeListComponent from "../components/list/awesomeList/AwesomeListComp
 import InputTextSearch from "../components/input/InputTextSearch";
 import DateInput from "../components/dateInput/DateInput";
 import Dot from "../components/dot/Dot";
+import DialogComponent from "../components/dialog/DialogComponent";
+import DialogManager from "../components/dialog/DialogManager";
+import TableAwesomeComponent from "../components/table/TableAwesomeComponent";
 
 interface Props {
     content?: any;
@@ -28,6 +31,10 @@ const ATTRIBUTE_INPUT_TYPE = [
     { id: "image", label: "swatchImage" },
     { id: "color", label: "swatchColor" },
 ];
+
+const test = (a: any, b?: any) => {
+    return a;
+};
 
 const Date = () => {
     return (
@@ -78,12 +85,25 @@ const ButtonView = () => (
     </div>
 );
 
+const TableView = () => {
+    return (
+        <div className="d-flex my-4">
+            <TableAwesomeComponent source={() => Promise.resolve()} showSelectColumn />
+        </div>
+    );
+};
+
 export default function Test({ content }: Props): ReactElement {
     const [checked, setChecked] = useState(false);
     const [valueSelect, setValueSelect] = useState(["text"]);
     const [radioValue, setRadioValue] = useState<any>(["color"]);
     const [openModal, setOpenModal] = useState(false);
     const [selectedTab, setSelectedTab] = useState<any>();
+    const dialogRef = useRef<any>();
+
+    useEffect(() => {
+        DialogManager.initialDialog(dialogRef.current);
+    }, []);
 
     const avatar = (
         <React.Fragment>
@@ -318,6 +338,7 @@ export default function Test({ content }: Props): ReactElement {
         { id: "INPUT", label: "INPUT", component: input },
         { id: "DATE", label: "DATE", component: <Date /> },
         { id: "BUTTON", label: "BUTTON", component: <ButtonView /> },
+        { id: "TABLE", label: "TABLE", component: <TableView /> },
         { id: "CHECKBOX", label: "CHECKBOX", component: checkBox },
         { id: "HEADER", label: "HEADER", component: header },
         { id: "TAB BAR", label: "TAB BAR", component: tab },
@@ -332,7 +353,8 @@ export default function Test({ content }: Props): ReactElement {
     };
 
     return (
-        <div className="p-5 d-flex">
+        <div className="p-5 d-flex bg-muted">
+            <DialogComponent ref={dialogRef.current} />
             <div className="col-3 p-0 mr-4 card-container">
                 <TabBar
                     dataSource={TAB_LIST}
@@ -341,7 +363,7 @@ export default function Test({ content }: Props): ReactElement {
                     value={selectedTab}
                 />
             </div>
-            <div className="col-9 p-0 ml-4 card-container">
+            <div className="col-9 py-5 px-5 ml-4 card-container">
                 {selectedTab?.component ?? "N/A"}
                 {/* <Button content="Open Modal" variant="trans" onClick={() => setOpenModal(true)} /> */}
             </div>
