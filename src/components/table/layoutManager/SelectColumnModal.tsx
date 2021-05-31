@@ -40,18 +40,26 @@ export const SelectLayoutView = ({
         }
         return (
             <div id="titleSelectShipping" className={ClassNames("w-100", { "border-right": showBorder })}>
-                <Icon name="visibility" />
+                {/* <Icon name="visibility" />
                 <text className="mx-2 text-nowrap" style={{ color: "rgba(0, 0, 0, 0.56)" }}>
                     {selectedLayout?.name ?? "N/A"}
                 </text>
-                <Icon name="arrow_drop_down" size="large" />
+                <Icon name="arrow_drop_down" size="large" /> */}
+                <Button
+                    content={selectedLayout?.name ?? "N/A"}
+                    iconName="visibility"
+                    suffixIcon="arrow_drop_down"
+                    variant="trans"
+                    color="gray"
+                    className="font-weight-normal"
+                />
             </div>
         );
     };
     const renderLayoutItem = (item: any) => {
         const isDefault = item?.default ?? false;
         return (
-            <div className="renderLayoutItem">
+            <div className="d-flex px-3 py-2">
                 {item?.name ?? "N/A"}
                 <span className="subTile2">{isDefault ? `- Default` : ""}</span>
             </div>
@@ -211,7 +219,6 @@ const SelectColumnModal = ({
                             setSelectAll(!selectAll);
                         }}
                         color="primary"
-                        // eslint-disable-next-line react/no-children-prop
                         label={selectAllText}
                     />
                     <Button
@@ -298,7 +305,14 @@ const SelectColumnModal = ({
 
     return (
         <React.Fragment>
-            <Button content="Column" iconName="settings" variant="trans" onClick={() => setOpenOptionModal(true)} />
+            <Button
+                content="Column"
+                iconName="settings"
+                variant="trans"
+                onClick={() => setOpenOptionModal(true)}
+                color="gray"
+                className="font-weight-normal"
+            />
 
             <Modal
                 open={openOptionModal}

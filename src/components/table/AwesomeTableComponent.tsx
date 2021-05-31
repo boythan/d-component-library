@@ -6,18 +6,18 @@
 /* eslint-disable react/sort-comp */
 // react
 import { SearchOutlined } from "@ant-design/icons";
-import { Button, Input, Table, TablePaginationConfig, TableProps } from "antd";
+import { Button, Input, Table, TablePaginationConfig, TableProps, TableColumnType } from "antd";
 // third-party
 import ClassNames from "classnames";
 import _ from "lodash";
 import React, { Component } from "react";
 import Highlighter from "react-highlight-words";
-// application
-import ResizableTitle from "./ResizableTitle";
-import SelectColumnModal, { SelectLayoutView } from "./layoutManager/SelectColumnModal";
+import { isArray, isString } from "./AwesomeTableUtils";
 // data stubs
 import LayoutTableManager from "./layoutManager/LayoutTableManager";
-import { isArray, isString } from "./AwesomeTableUtils";
+import SelectColumnModal, { SelectLayoutView } from "./layoutManager/SelectColumnModal";
+// application
+import ResizableTitle from "./ResizableTitle";
 
 const INIT_PAGINATION = {
     pageIndex: 1,
@@ -38,13 +38,14 @@ export interface IPaginationProps extends TablePaginationConfig {
 }
 
 export interface AwesomeTableComponentProps extends TableProps<any> {
-    source: (pagination: IPaginationProps | false, sorter?: any) => Promise<any>;
+    source: (pagination: IPaginationProps, sorter?: any) => Promise<any>;
     transformer: (res: any) => Array<any>;
-    columns: Array<any>;
+    columns: TableProps<any>["columns"];
 
     rowKey?: (item: any) => any;
     renderFooter?: TableProps<any>["footer"];
     setCurrentPage?: (paging?: any) => void;
+    getTotalItems?: (res: any) => number;
 
     isScroll?: boolean;
     isPagination?: boolean;
@@ -52,6 +53,7 @@ export interface AwesomeTableComponentProps extends TableProps<any> {
 
     showSelectColumn?: boolean;
     keyTableLayout?: string;
+
     classNameTable?: string;
 }
 
@@ -100,6 +102,7 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
         setCurrentPage: (page: any) => {
             return page;
         },
+        getTotalItems: (response: any) => response?.data?.data?.pagination?.items ?? 0,
         tableLayout: "auto",
 
         showSelectColumn: false,
@@ -259,7 +262,9 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
                 const defaultLayout = listTableLayout.find((item: any) => item?.default);
                 if (!_.isEmpty(defaultLayout)) {
                     const defaultIndex = defaultLayout?.data?.map((item: any) => item?.dataIndex);
-                    const defaultColumns = columns.filter((item) => defaultIndex.includes(item.dataIndex));
+                    // eslint-disable-next-line operator-linebreak
+                    const defaultColumns =
+                        columns && columns.filter((item: any) => defaultIndex.includes(item?.dataIndex));
                     this.setState({
                         selectedColumns: defaultColumns,
                         tableLayoutList: tableLayout,
@@ -323,7 +328,7 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
         const { source, transformer } = this.props;
         const { pagination, sorter } = this.state;
 
-        source(pagination, sorter)
+        source(pagination as any, sorter)
             .then((response) => {
                 const data = transformer(response);
                 if (!isArray(data)) {

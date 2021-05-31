@@ -53,13 +53,11 @@ export const calculateDefaultExpandedRowKeys = function (data = [], options: any
     return mapRowKeys(data);
 };
 
-export const transformColumn = (columns = [], baseColumn = {}) => {
-    return columns.map(({ title, titleCustom, titleTooltip, dataIndex, render, ...props }: any) => {
+export const transformColumn = (columns: Array<any> = [], baseColumn: any = {}): Array<any> => {
+    return columns.map(({ title, titleTooltip, dataIndex, render, ...props }: any) => {
         // custom title
         let titleResult: any = title;
-        if (titleCustom) {
-            titleResult = titleCustom;
-        } else if (titleTooltip) {
+        if (titleTooltip) {
             titleResult = (
                 <Tooltip className="flex-center-y" zIndex={10000} title={titleTooltip}>
                     {title}
@@ -73,8 +71,12 @@ export const transformColumn = (columns = [], baseColumn = {}) => {
             title: titleResult,
             dataIndex,
             render: (data: any, item: any) => {
+                let content = data;
+                if (typeof render === "function") {
+                    content = render(data, item);
+                }
                 return {
-                    children: <div className="subtitle1 nowrapCellTable">{render(data, item)}</div>,
+                    children: <div className="text text-nowrap">{content}</div>,
                     props: { "data-title": title },
                 };
             },

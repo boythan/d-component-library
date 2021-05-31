@@ -1,3 +1,4 @@
+/* eslint-disable operator-linebreak */
 import React, { ReactElement, useEffect, useRef, useState } from "react";
 import InputText from "../components/input/InputText";
 import Icon, { IconProps } from "../components/icon/Icon";
@@ -19,16 +20,32 @@ import DateInput from "../components/dateInput/DateInput";
 import Dot from "../components/dot/Dot";
 import DialogComponent from "../components/dialog/DialogComponent";
 import DialogManager from "../components/dialog/DialogManager";
-import TableAwesomeComponent from "../components/table/AwesomeTableComponent";
+import TableAwesomeComponent, { AwesomeTableComponentProps } from "../components/table/AwesomeTableComponent";
+import { transformColumn } from "../components/table/AwesomeTableUtils";
+import AvatarName from "../components/avatar/AvatarName";
 
 interface Props {
     content?: any;
 }
 
+const FAKE_TOKEN =
+    "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5MmRhNDEwNC01NDY4LTQwY2MtODU1Ni1kZjg4NzY0OGZiOGEiLCJqdGkiOiI5ZmZlNjUwNzQwMDRmZjY1MzY4ZmEyZjAwN2ZhY2I2MGRlY2Q3NGFmZjUwOWNhNmI4ZmM3YTBhNDIyYzZmZDdlMDJlNTIwMjBiYTZjYWQ1NyIsImlhdCI6MTYyMTkzNDY3NSwibmJmIjoxNjIxOTM0Njc1LCJleHAiOjE2NTM0NzA2NzUsInN1YiI6ImY4ZjUwMjdmLTdiMTItMTFlYi05MDIyLWNlN2ZjZGYxMWQzMCIsInNjb3BlcyI6W119.QOrc-ngJFxakJNVMI2stK1L2zyBArmvtLHZtfE5OPefj8azpI2Qxlvvp_EmN_RAV-pkW5YK1qv5Lpc6SHhKR6te9GL8xw3bFbVaKbcDxvNHLkx3zhsGszXeWxt-PoVVscQ1lk5q3z3yJhlYdiOXXECPuVwSVWVV3JQo9D9e-kepjk_8-_bd-klzzP1ST3pMlm5V7-MEMYrRB3de_M3ydjhH77ZJLGNyhNWPKV0h40ysM-zUmzynnX7InpzIS26Lr9dKNw0jW69RNwCpDRAfkYX9enhGYqMyRYCWxXmgojiqVkIXOvi4Ec61QjdRJig2W3dcWwt3a_QSaabTvv6Y0Xp-NbL1dl9GsPkHQZmlMH4fYS744lK0F854Ik_4SMeQO57ZUatGxrRFvw5AF04mrSF3cblH-W419am4uXeEiOMKHfBeuzrSj5Vu8BbRiHmWwHl-H4K-nSoe2TRz6_IGuahn-4S9xiFnUOzX3QIqZ_Br7lrFLN4A5EJmG4uYwLDZvwtct-lNiLqmEMp3UovTr3qlBr1GXoMRvLRAlfPMYKipmCJ1bhPYoXyXoOhAwluAM7F24o5GIB43DjD5_dOXYniuUAa7z3ObLtJDtkbtdif3MUyrHKlv9tfrf_c87lFrfTMfYGkLpgZ6pBKz0B7S3ZtkkgNi1oUbVwN98eiZLBrs";
+const URL = "https://api-dev.mattresscity.co.th/api/backend/brand";
 const ATTRIBUTE_INPUT_TYPE = [
     { id: "dropdown", label: "dropdown" },
     { id: "text", label: "swatchText" },
     { id: "image", label: "swatchImage" },
+    { id: "color", label: "swatchColor" },
+    { id: "color", label: "swatchColor" },
+    { id: "color", label: "swatchColor" },
+    { id: "color", label: "swatchColor" },
+    { id: "color", label: "swatchColor" },
+    { id: "color", label: "swatchColor" },
+    { id: "color", label: "swatchColor" },
+    { id: "color", label: "swatchColor" },
+    { id: "color", label: "swatchColor" },
+    { id: "color", label: "swatchColor" },
+    { id: "color", label: "swatchColor" },
     { id: "color", label: "swatchColor" },
 ];
 
@@ -86,9 +103,54 @@ const ButtonView = () => (
 );
 
 const TableView = () => {
+    const columns: AwesomeTableComponentProps["columns"] = [
+        {
+            title: "ID",
+            dataIndex: "id",
+        },
+        {
+            title: "Label",
+            align: "center",
+            dataIndex: "label",
+        },
+    ];
     return (
         <div className="d-flex my-4">
-            <TableAwesomeComponent source={() => Promise.resolve()} showSelectColumn />
+            <TableAwesomeComponent
+                source={(paging) => {
+                    // return fetch(URL, {
+                    //     method: "*GET",
+                    //     mode: "cors", // no-cors, *cors, same-origin
+                    //     cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+                    //     credentials: "same-origin", // include, *same-origin, omit
+                    //     headers: new Headers({
+                    //         Authorization: `Bearer ${FAKE_TOKEN}`,
+                    //         "Content-Type": "application/json",
+                    //         Accept: "application/json",
+                    //         Host: "api-dev.mattresscity.co.th",
+                    //         language: "th",
+                    //     }),
+                    //     body: JSON.stringify({
+                    //         page: paging.pageIndex,
+                    //         per_page: paging.pageSize,
+                    //     }),
+                    //     // body: `page=${paging.pageIndex}&per_page=${paging.pageSize}`,
+                    //     redirect: "follow", // manual, *follow, error
+                    //     referrerPolicy: "no-referrer",
+                    // });
+                    return Promise.resolve();
+                }}
+                transformer={(res) => ATTRIBUTE_INPUT_TYPE}
+                columns={transformColumn(columns)}
+                showSelectColumn
+                keyTableLayout="TEST TABLE"
+                rowSelection={{
+                    onChange: (selectedKey, selectedRow) => {
+                        console.log({ selectedKey });
+                        console.log({ selectedRow });
+                    },
+                }}
+            />
         </div>
     );
 };
@@ -133,6 +195,11 @@ export default function Test({ content }: Props): ReactElement {
                     size="x-small"
                     className="mx-3"
                 />
+                <Avatar
+                    src="https://c4.wallpaperflare.com/wallpaper/462/200/955/face-women-model-portrait-wallpaper-preview.jpg"
+                    size="xx-small"
+                    className="mx-3"
+                />
             </div>
             <div className="d-flex align-items-center my-3">
                 <Avatar
@@ -175,6 +242,15 @@ export default function Test({ content }: Props): ReactElement {
                 <Icon size="x-large" className="mx-3" name="photo_camera" />
                 <Icon size="xx-large" className="mx-3" name="photo_camera" />
                 <Icon size="xxx-large" className="mx-3" name="photo_camera" />
+            </div>
+            <div className="d-flex align-items-center my-4">
+                <AvatarName
+                    user={{
+                        fullName: "Amanda",
+                    }}
+                    subLabel="Actress"
+                    size="x-large"
+                />
             </div>
         </React.Fragment>
     );
@@ -287,8 +363,8 @@ export default function Test({ content }: Props): ReactElement {
             /> */}
             <AwesomeListComponent
                 source={async (paging) => {
-                    const res = await fetch("https://jsonplaceholder.typicode.com/posts");
-                    return Promise.resolve(res);
+                    // const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+                    return fetch("https://jsonplaceholder.typicode.com/posts");
                 }}
                 transformer={async (res) => {
                     // const data = JSON.stringify(res);
