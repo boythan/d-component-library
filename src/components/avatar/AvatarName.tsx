@@ -3,8 +3,9 @@ import ClassNames from "classnames";
 import Avatar, { AvatarProps } from "./Avatar";
 
 export interface IUserBasic {
-    fullName: string;
+    fullName?: string;
     avatar?: string | null;
+    name?: string;
     [key: string]: any;
 }
 
@@ -26,7 +27,12 @@ const AvatarName: React.FC<AvatarNameProps> = ({
     className,
     classNameText,
 }) => {
-    const { avatar, fullName } = user;
+    const { avatar, fullName, name = "" } = user;
+    let displayName = name;
+    if (fullName) {
+        displayName = fullName;
+    }
+
     const wrapperClass = ClassNames(`d-flex align-items-center`, className);
     const nameClass = ClassNames("d-flex flex-column", {
         "mr-2": position === "before",
@@ -47,7 +53,7 @@ const AvatarName: React.FC<AvatarNameProps> = ({
     const renderName = () => {
         return (
             <div className={nameClass}>
-                <div className={`${nameTextClass}`}>{fullName}</div>
+                <div className={`${nameTextClass}`}>{displayName}</div>
                 {subLabel && <div className="text-x-small">{subLabel}</div>}
             </div>
         );
@@ -56,7 +62,7 @@ const AvatarName: React.FC<AvatarNameProps> = ({
         <div className={wrapperClass}>
             {position === "before" && renderName()}
             {avatar && <Avatar src={avatar} size={size} />}
-            {!avatar && <Avatar text={fullName.charAt(0)} size={size} />}
+            {!avatar && <Avatar text={displayName.charAt(0)} size={size} />}
             {position === "after" && renderName()}
         </div>
     );
