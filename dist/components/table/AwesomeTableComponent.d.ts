@@ -4,12 +4,13 @@ export interface IPaginationProps extends TablePaginationConfig {
     pageIndex?: number;
 }
 export interface AwesomeTableComponentProps extends TableProps<any> {
-    source: (pagination: IPaginationProps | false, sorter?: any) => Promise<any>;
+    source: (pagination: IPaginationProps, sorter?: any) => Promise<any>;
     transformer: (res: any) => Array<any>;
-    columns: Array<any>;
+    columns: TableProps<any>["columns"];
     rowKey?: (item: any) => any;
     renderFooter?: TableProps<any>["footer"];
     setCurrentPage?: (paging?: any) => void;
+    getTotalItems?: (res: any) => number;
     isScroll?: boolean;
     isPagination?: boolean;
     defaultPagination?: IPaginationProps;
@@ -42,6 +43,7 @@ declare class AwesomeTableComponent extends Component<AwesomeTableComponentProps
         isScroll: boolean;
         classNameTable: string;
         setCurrentPage: (page: any) => any;
+        getTotalItems: (response: any) => any;
         tableLayout: string;
         showSelectColumn: boolean;
         keyTableLayout: string;

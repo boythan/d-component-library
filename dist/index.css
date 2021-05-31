@@ -27961,6 +27961,9 @@ label,
 .font-weight-bold {
   font-weight: 600 !important; }
 
+.font-weight-normal {
+  font-weight: 400 !important; }
+
 .p-large {
   font-family: "Poppins", "sans-serif";
   font-size: 18px;
@@ -30639,6 +30642,14 @@ body {
   .d-image__rounded-x-small .d-image__image {
     border-radius: 9999px; }
 
+.d-image__rounded-xx-small {
+  width: 24px;
+  min-width: 24px;
+  height: 24px;
+  border-radius: 9999px; }
+  .d-image__rounded-xx-small .d-image__image {
+    border-radius: 9999px; }
+
 .d-image__square-x-large {
   width: 160px;
   min-width: 160px;
@@ -30663,6 +30674,11 @@ body {
   width: 32px;
   min-width: 32px;
   height: 32px; }
+
+.d-image__square-xx-small {
+  width: 24px;
+  min-width: 24px;
+  height: 24px; }
 
 /* ----------------------------------------
 // tab-bar

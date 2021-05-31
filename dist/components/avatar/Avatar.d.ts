@@ -1,6 +1,6 @@
 import React, { ReactElement } from "react";
 export interface AvatarProps extends React.ImgHTMLAttributes<HTMLImageElement> {
-    size?: "x-large" | "large" | "medium" | "small" | "x-small";
+    size?: "x-large" | "large" | "medium" | "small" | "x-small" | "xx-small";
     variant?: "rounded" | "square";
     text?: string;
     color?: string;

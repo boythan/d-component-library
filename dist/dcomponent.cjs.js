@@ -71182,6 +71182,335 @@ module.exports =
 
 var Highlighter = unwrapExports(main);
 
+var isString = function (variable) {
+    return typeof variable === "string";
+};
+var isArray = function (array) {
+    return Array.isArray(array);
+};
+var calculateDefaultExpandedRowKeys = function (data, options) {
+    if (data === void 0) { data = []; }
+    var rowKeys = [];
+    if (!(data && data.length)) {
+        return rowKeys;
+    }
+    var defaultOptions = __assign$2({ level: -1, key: "id" }, options);
+    var level = defaultOptions.level, key = defaultOptions.key;
+    if (!data[0][key]) {
+        return rowKeys;
+    }
+    if (level === 0) {
+        return rowKeys;
+    }
+    var mapRowKeys = function mapRowKeys(source, currentLevel) {
+        if (source === void 0) { source = []; }
+        if (currentLevel === void 0) { currentLevel = 1; }
+        var keys = [];
+        source.forEach(function (_a) {
+            var children = _a.children, rest = __rest$p(_a, ["children"]);
+            if (children !== null) {
+                keys.push(rest[key]);
+                if (level < 0 || (level > 0 && level > currentLevel)) {
+                    var childrenKeys = mapRowKeys(children, currentLevel + 1);
+                    keys = keys.concat(childrenKeys);
+                }
+            }
+        });
+        return keys;
+    };
+    return mapRowKeys(data);
+};
+var transformColumn = function (columns, baseColumn) {
+    if (columns === void 0) { columns = []; }
+    if (baseColumn === void 0) { baseColumn = {}; }
+    return columns.map(function (_a) {
+        var title = _a.title, titleTooltip = _a.titleTooltip, dataIndex = _a.dataIndex, render = _a.render, props = __rest$p(_a, ["title", "titleTooltip", "dataIndex", "render"]);
+        // custom title
+        var titleResult = title;
+        if (titleTooltip) {
+            titleResult = (jsxRuntime.jsxs(Tooltip, __assign$2({ className: "flex-center-y", zIndex: 10000, title: titleTooltip }, { children: [title, jsxRuntime.jsx(Icon$1, { name: "info", className: "ml-3" }, void 0)] }), void 0));
+        }
+        return __assign$2(__assign$2(__assign$2({}, baseColumn), { title: titleResult, dataIndex: dataIndex, render: function (data, item) {
+                var content = data;
+                if (typeof render === "function") {
+                    content = render(data, item);
+                }
+                return {
+                    children: jsxRuntime.jsx("div", __assign$2({ className: "text text-nowrap" }, { children: content }), void 0),
+                    props: { "data-title": title },
+                };
+            } }), props);
+    });
+};
+var AwesomeTableUtils = {
+    transformColumn: transformColumn,
+    calculateDefaultExpandedRowKeys: calculateDefaultExpandedRowKeys,
+};
+
+var ALL_LAYOUT_TABLE_KEY = "ALL_LAYOUT_TABLE_KEY";
+var LayoutTableManager = {};
+LayoutTableManager.clearAll = function () {
+    return localStorage.setItem(ALL_LAYOUT_TABLE_KEY, null);
+};
+LayoutTableManager.clearTableLayout = function (tableKey) {
+    var allLayout = LayoutTableManager.getAllLayout();
+    allLayout[tableKey] = null;
+    return localStorage.setItem(ALL_LAYOUT_TABLE_KEY, JSON.stringify(allLayout));
+};
+LayoutTableManager.saveNewLayout = function (layout, tableKey, name) {
+    var newLayout = LayoutTableManager.getLayout(tableKey);
+    newLayout[name] = layout;
+    var allLayout = LayoutTableManager.getAllLayout();
+    allLayout[tableKey] = newLayout;
+    return localStorage.setItem(ALL_LAYOUT_TABLE_KEY, JSON.stringify(allLayout));
+};
+LayoutTableManager.saveTableLayout = function (tableLayout, tableKey) {
+    var allLayout = LayoutTableManager.getAllLayout();
+    allLayout[tableKey] = tableLayout;
+    return localStorage.setItem(ALL_LAYOUT_TABLE_KEY, JSON.stringify(allLayout));
+};
+LayoutTableManager.getAllLayout = function () {
+    var allLayout = JSON.parse(localStorage.getItem(ALL_LAYOUT_TABLE_KEY)) || {};
+    return allLayout;
+};
+LayoutTableManager.getLayout = function (key) {
+    var _a;
+    var allLayout = LayoutTableManager.getAllLayout();
+    return (_a = allLayout === null || allLayout === void 0 ? void 0 : allLayout[key]) !== null && _a !== void 0 ? _a : {};
+};
+
+var DialogManager = {
+    currentDialog: {
+        showConfirm: function (title, messages, handleOnOK) { },
+        showWarning: function (title, messages, handleOnOK) { },
+        showInfo: function (title, messages, handleOnOK) { },
+        showError: function (title, messages, handleOnOK) { },
+    },
+    initialDialog: function (refDialog) {
+        this.currentDialog = refDialog;
+    },
+    showConfirm: function (title, message, handleOnOk) {
+        this.currentDialog.showConfirm(title, message, handleOnOk);
+    },
+    showWarning: function (title, message, handleOnOk) {
+        this.currentDialog.showWarning(title, message, handleOnOk);
+    },
+    showInfo: function (title, message, handleOnOk) {
+        this.currentDialog.showInfo(title, message, handleOnOk);
+    },
+    showError: function (title, message, handleOnOk) {
+        this.currentDialog.showError(title, message, handleOnOk);
+    },
+};
+
+var SelectLayoutView = function (_a) {
+    var onClickItem = _a.onClickItem, _b = _a.listLayout, listLayout = _b === void 0 ? {} : _b, selectedLayout = _a.selectedLayout, showBorder = _a.showBorder, _c = _a.text, text = _c === void 0 ? "Select Layout" : _c;
+    var renderTitleSelectLayout = function () {
+        var _a;
+        if (lodash.isEmpty(selectedLayout)) {
+            return (jsxRuntime.jsxs("div", __assign$2({ className: classnames("d-flex  align-items-center hover-pointer p-2", {
+                    "border-right": showBorder,
+                }) }, { children: [jsxRuntime.jsx("div", __assign$2({ className: "text text-nowrap mr-2" }, { children: text }), void 0),
+                    jsxRuntime.jsx(Icon$1, { name: "arrow_drop_down", size: "large", className: "d-block" }, void 0)] }), void 0));
+        }
+        return (jsxRuntime.jsx("div", __assign$2({ id: "titleSelectShipping", className: classnames("w-100", { "border-right": showBorder }) }, { children: jsxRuntime.jsx(Button, { content: (_a = selectedLayout === null || selectedLayout === void 0 ? void 0 : selectedLayout.name) !== null && _a !== void 0 ? _a : "N/A", iconName: "visibility", suffixIcon: "arrow_drop_down", variant: "trans", color: "gray", className: "font-weight-normal" }, void 0) }), void 0));
+    };
+    var renderLayoutItem = function (item) {
+        var _a, _b;
+        var isDefault = (_a = item === null || item === void 0 ? void 0 : item.default) !== null && _a !== void 0 ? _a : false;
+        return (jsxRuntime.jsxs("div", __assign$2({ className: "d-flex px-3 py-2" }, { children: [(_b = item === null || item === void 0 ? void 0 : item.name) !== null && _b !== void 0 ? _b : "N/A",
+                jsxRuntime.jsx("span", __assign$2({ className: "subTile2" }, { children: isDefault ? "- Default" : "" }), void 0)] }), void 0));
+    };
+    var transformer = function (res) {
+        var result = [];
+        var keyArr = Object.keys(listLayout);
+        keyArr.forEach(function (key) {
+            if (!lodash.isEmpty(listLayout[key])) {
+                result.push(__assign$2(__assign$2({}, listLayout[key]), { name: key }));
+            }
+        });
+        return result;
+    };
+    return (jsxRuntime.jsx(PopoverList, { source: function () { return Promise.resolve(); }, transformer: transformer, renderItem: renderLayoutItem, onClickItem: onClickItem, isClickOpen: true, customView: renderTitleSelectLayout }, lodash.now()));
+};
+var SelectColumnModal = function (_a) {
+    var _b = _a.options, options = _b === void 0 ? [] : _b, setSelectedColumns = _a.setSelectedColumns, _c = _a.keyTable, keyTable = _c === void 0 ? null : _c, refreshLayout = _a.refreshLayout, _d = _a.actionText, actionText = _d === void 0 ? "Action" : _d, _e = _a.selectAllText, selectAllText = _e === void 0 ? "Select All" : _e;
+    var _f = React.useState(false), openOptionModal = _f[0], setOpenOptionModal = _f[1];
+    var _g = React.useState(false), openSaveNewModal = _g[0], setOpenSaveNewModal = _g[1];
+    var _h = React.useState(false), selectAll = _h[0], setSelectAll = _h[1];
+    var _j = React.useState(options), selectedOption = _j[0], setSelectedOption = _j[1];
+    var _k = React.useState(), nameOfLayout = _k[0], setNameOfLayout = _k[1];
+    var _l = React.useState(), listLayout = _l[0], setListLayout = _l[1];
+    var _m = React.useState({}), selectedLayout = _m[0], setSelectedLayout = _m[1];
+    var getLayoutTable = function () {
+        if (lodash.isEmpty(keyTable)) {
+            return;
+        }
+        var listLayoutTable = LayoutTableManager.getLayout(keyTable);
+        setListLayout(listLayoutTable);
+    };
+    React.useEffect(function () {
+        if (!lodash.isEmpty(keyTable)) {
+            getLayoutTable();
+        }
+    }, [keyTable, openOptionModal, openSaveNewModal]);
+    React.useEffect(function () {
+        var defaultLayout = {};
+        if (!lodash.isEmpty(keyTable)) {
+            var tableLayout_1 = LayoutTableManager.getLayout(keyTable);
+            if (!lodash.isEmpty(tableLayout_1)) {
+                var keyTable_1 = Object.keys(tableLayout_1);
+                keyTable_1.forEach(function (key) {
+                    var _a, _b, _c;
+                    if ((_a = tableLayout_1[key]) === null || _a === void 0 ? void 0 : _a.default) {
+                        defaultLayout = __assign$2(__assign$2({}, tableLayout_1[key]), { name: key });
+                        setSelectedOption((_c = (_b = tableLayout_1 === null || tableLayout_1 === void 0 ? void 0 : tableLayout_1[key]) === null || _b === void 0 ? void 0 : _b.data) !== null && _c !== void 0 ? _c : []);
+                    }
+                });
+            }
+        }
+        setSelectedLayout(defaultLayout);
+    }, [keyTable, openOptionModal]);
+    React.useEffect(function () {
+        if ((selectedOption === null || selectedOption === void 0 ? void 0 : selectedOption.length) === (options === null || options === void 0 ? void 0 : options.length)) {
+            setSelectAll(true);
+        }
+        else {
+            setSelectAll(false);
+        }
+    }, [selectedOption, openOptionModal]);
+    var removeItemFromSelected = function (selectedItem) {
+        var clone = selectedOption.filter(function (item) { return item.dataIndex !== selectedItem; });
+        setSelectedOption(clone);
+    };
+    var addItemToSelected = function (selectedItem) {
+        var addedItem = options.find(function (obj) { return obj.dataIndex === selectedItem; });
+        var clone = __spreadArray(__spreadArray([], selectedOption), [addedItem]);
+        setSelectedOption(clone);
+    };
+    var handleOnClickSave = function () { return __awaiter(void 0, void 0, void 0, function () {
+        var selected, layout_1, newTableLayout_1, keyLayout;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    if (!!lodash.isEmpty(selectedLayout)) return [3 /*break*/, 2];
+                    selected = selectedOption.map(function (item) { return ({
+                        dataIndex: item.dataIndex,
+                        id: Math.random(),
+                    }); });
+                    layout_1 = { data: selected, default: true };
+                    newTableLayout_1 = {};
+                    keyLayout = Object.keys(listLayout);
+                    keyLayout.forEach(function (key) {
+                        if (key === selectedLayout.name) {
+                            newTableLayout_1[key] = layout_1;
+                        }
+                        else {
+                            newTableLayout_1[key] = __assign$2(__assign$2({}, listLayout[key]), { default: false });
+                        }
+                    });
+                    return [4 /*yield*/, LayoutTableManager.saveTableLayout(newTableLayout_1, keyTable)];
+                case 1:
+                    _a.sent();
+                    _a.label = 2;
+                case 2:
+                    setSelectedColumns && setSelectedColumns(selectedOption);
+                    refreshLayout && refreshLayout();
+                    return [2 /*return*/, setOpenOptionModal(false)];
+            }
+        });
+    }); };
+    var handleOnClickSaveNew = function () { return __awaiter(void 0, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            setOpenSaveNewModal(true);
+            return [2 /*return*/, Promise.resolve()];
+        });
+    }); };
+    var handleOnSaveNewLayout = function () { return __awaiter(void 0, void 0, void 0, function () {
+        var selected, layout;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    selected = selectedOption.map(function (item) { return ({
+                        dataIndex: item.dataIndex,
+                        id: Math.random(),
+                    }); });
+                    layout = { data: selected, default: false };
+                    return [4 /*yield*/, LayoutTableManager.saveNewLayout(layout, keyTable, nameOfLayout)];
+                case 1:
+                    _a.sent();
+                    setOpenSaveNewModal(false);
+                    setSelectedLayout(__assign$2(__assign$2({}, layout), { name: nameOfLayout }));
+                    refreshLayout && refreshLayout();
+                    return [2 /*return*/, Promise.resolve()];
+            }
+        });
+    }); };
+    var onSelectLayout = function (item) {
+        var _a, _b;
+        var layoutIndex = (_b = (_a = item === null || item === void 0 ? void 0 : item.data) === null || _a === void 0 ? void 0 : _a.map(function (item) { return item === null || item === void 0 ? void 0 : item.dataIndex; })) !== null && _b !== void 0 ? _b : [];
+        var filterOption = options.filter(function (item) { return layoutIndex.includes(item === null || item === void 0 ? void 0 : item.dataIndex); });
+        setSelectedLayout(item);
+        setSelectedOption(filterOption);
+        getLayoutTable();
+    };
+    var renderContentModal = function () {
+        return (jsxRuntime.jsxs("div", __assign$2({ className: "d-flex flex-column align-items-start px-5 justify-content-center" }, { children: [jsxRuntime.jsxs("h5", { children: [actionText, ":"] }, void 0),
+                jsxRuntime.jsxs("div", __assign$2({ className: "d-flex align-items-center" }, { children: [jsxRuntime.jsx(Checkbox, { value: selectAll, checked: selectAll, onChange: function () {
+                                if (!selectAll) {
+                                    setSelectedOption(options);
+                                }
+                                setSelectAll(!selectAll);
+                            }, color: "primary", label: selectAllText }, void 0),
+                        jsxRuntime.jsx(Button, { onClick: function () {
+                                return DialogManager.showConfirm("Confirm", "Are you sure want to delete all Layout?", function () { return __awaiter(void 0, void 0, void 0, function () {
+                                    return __generator(this, function (_a) {
+                                        switch (_a.label) {
+                                            case 0: return [4 /*yield*/, LayoutTableManager.clearTableLayout(keyTable)];
+                                            case 1:
+                                                _a.sent();
+                                                setListLayout({});
+                                                setSelectedLayout({});
+                                                return [2 /*return*/];
+                                        }
+                                    });
+                                }); });
+                            }, disabled: lodash.isEmpty(listLayout), iconName: "highlight_off", content: "Clear All Layout", variant: "trans", color: "red" }, void 0)] }), void 0),
+                jsxRuntime.jsx("div", __assign$2({ className: "d-flex flex-column my-4" }, { children: options.map(function (item) {
+                        // eslint-disable-next-line operator-linebreak
+                        var isChecked = selectedOption.filter(function (obj) { return obj.dataIndex === item.dataIndex; }).length > 0;
+                        return (jsxRuntime.jsx(Checkbox, { checked: isChecked, onChange: function (event) {
+                                var _a, _b;
+                                if (isChecked) {
+                                    removeItemFromSelected((_a = event === null || event === void 0 ? void 0 : event.target) === null || _a === void 0 ? void 0 : _a.value);
+                                }
+                                else {
+                                    addItemToSelected((_b = event === null || event === void 0 ? void 0 : event.target) === null || _b === void 0 ? void 0 : _b.value);
+                                }
+                            }, value: item === null || item === void 0 ? void 0 : item.dataIndex, 
+                            // eslint-disable-next-line react/no-children-prop
+                            label: (item === null || item === void 0 ? void 0 : item.title) && (item === null || item === void 0 ? void 0 : item.title), className: "my-2" }, void 0));
+                    }) }), void 0)] }), void 0));
+    };
+    var renderSecondTitle = function () {
+        return (jsxRuntime.jsx(SelectLayoutView, { listLayout: listLayout, onClickItem: function (item) { return onSelectLayout(item); }, selectedLayout: selectedLayout }, void 0));
+    };
+    var renderContentSaveNewModal = function () {
+        return (jsxRuntime.jsx(InputText, { onChange: function (event) { return setNameOfLayout(event.target.value); }, "aria-label": "Default", "aria-describedby": "inputGroup-sizing-default", placeholder: "Name Of Layout" }, void 0));
+    };
+    var renderFooter = function () {
+        return (jsxRuntime.jsxs("div", __assign$2({ className: "d-flex align-items-center w-100 justify-content-end" }, { children: [jsxRuntime.jsx(Button
+                // eslint-disable-next-line react/jsx-curly-brace-presence
+                , { 
+                    // eslint-disable-next-line react/jsx-curly-brace-presence
+                    content: "Save & Apply", onClick: handleOnClickSave, disabled: lodash.isEmpty(selectedLayout), className: "mr-3" }, void 0),
+                jsxRuntime.jsx(Button, { content: "Save", onClick: handleOnClickSaveNew }, void 0)] }), void 0));
+    };
+    return (jsxRuntime.jsxs(React__default['default'].Fragment, { children: [jsxRuntime.jsx(Button, { content: "Column", iconName: "settings", variant: "trans", onClick: function () { return setOpenOptionModal(true); }, color: "gray", className: "font-weight-normal" }, void 0),
+            jsxRuntime.jsx(Modal, __assign$2({ open: openOptionModal, onClose: function () { return setOpenOptionModal(false); }, onSave: handleOnClickSave, title: "Select Layout " + ((selectedLayout === null || selectedLayout === void 0 ? void 0 : selectedLayout.name) ? " - " + (selectedLayout === null || selectedLayout === void 0 ? void 0 : selectedLayout.name) : ""), customFooter: renderFooter, size: "medium", headerSide: renderSecondTitle }, { children: renderContentModal() }), void 0),
+            jsxRuntime.jsx(Modal, __assign$2({ open: openSaveNewModal, onClose: function () { return setOpenSaveNewModal(false); }, onSave: handleOnSaveNewLayout, centered: false }, { children: renderContentSaveNewModal() }), void 0)] }, void 0));
+};
+
 var shims = createCommonjsModule(function (module, exports) {
 
 Object.defineProperty(exports, "__esModule", {
@@ -73545,338 +73874,6 @@ var ResizableTitle = function (props) {
             } }, void 0)), onResize: onResize, draggableOpts: { enableUserSelectHack: false } }, { children: jsxRuntime.jsx("th", __assign$2({}, restProps), void 0) }), void 0));
 };
 
-var ALL_LAYOUT_TABLE_KEY = "ALL_LAYOUT_TABLE_KEY";
-var LayoutTableManager = {};
-LayoutTableManager.clearAll = function () {
-    return localStorage.setItem(ALL_LAYOUT_TABLE_KEY, null);
-};
-LayoutTableManager.clearTableLayout = function (tableKey) {
-    var allLayout = LayoutTableManager.getAllLayout();
-    allLayout[tableKey] = null;
-    return localStorage.setItem(ALL_LAYOUT_TABLE_KEY, JSON.stringify(allLayout));
-};
-LayoutTableManager.saveNewLayout = function (layout, tableKey, name) {
-    var newLayout = LayoutTableManager.getLayout(tableKey);
-    newLayout[name] = layout;
-    var allLayout = LayoutTableManager.getAllLayout();
-    allLayout[tableKey] = newLayout;
-    return localStorage.setItem(ALL_LAYOUT_TABLE_KEY, JSON.stringify(allLayout));
-};
-LayoutTableManager.saveTableLayout = function (tableLayout, tableKey) {
-    var allLayout = LayoutTableManager.getAllLayout();
-    allLayout[tableKey] = tableLayout;
-    return localStorage.setItem(ALL_LAYOUT_TABLE_KEY, JSON.stringify(allLayout));
-};
-LayoutTableManager.getAllLayout = function () {
-    var allLayout = JSON.parse(localStorage.getItem(ALL_LAYOUT_TABLE_KEY)) || {};
-    return allLayout;
-};
-LayoutTableManager.getLayout = function (key) {
-    var _a;
-    var allLayout = LayoutTableManager.getAllLayout();
-    return (_a = allLayout === null || allLayout === void 0 ? void 0 : allLayout[key]) !== null && _a !== void 0 ? _a : {};
-};
-
-var DialogManager = {
-    currentDialog: {
-        showConfirm: function (title, messages, handleOnOK) { },
-        showWarning: function (title, messages, handleOnOK) { },
-        showInfo: function (title, messages, handleOnOK) { },
-        showError: function (title, messages, handleOnOK) { },
-    },
-    initialDialog: function (refDialog) {
-        this.currentDialog = refDialog;
-    },
-    showConfirm: function (title, message, handleOnOk) {
-        this.currentDialog.showConfirm(title, message, handleOnOk);
-    },
-    showWarning: function (title, message, handleOnOk) {
-        this.currentDialog.showWarning(title, message, handleOnOk);
-    },
-    showInfo: function (title, message, handleOnOk) {
-        this.currentDialog.showInfo(title, message, handleOnOk);
-    },
-    showError: function (title, message, handleOnOk) {
-        this.currentDialog.showError(title, message, handleOnOk);
-    },
-};
-
-var SelectLayoutView = function (_a) {
-    var onClickItem = _a.onClickItem, _b = _a.listLayout, listLayout = _b === void 0 ? {} : _b, selectedLayout = _a.selectedLayout, showBorder = _a.showBorder, _c = _a.text, text = _c === void 0 ? "Select Layout" : _c;
-    var renderTitleSelectLayout = function () {
-        var _a;
-        if (lodash.isEmpty(selectedLayout)) {
-            return (jsxRuntime.jsxs("div", __assign$2({ className: classnames("d-flex  align-items-center hover-pointer p-2", {
-                    "border-right": showBorder,
-                }) }, { children: [jsxRuntime.jsx("div", __assign$2({ className: "text text-nowrap mr-2" }, { children: text }), void 0),
-                    jsxRuntime.jsx(Icon$1, { name: "arrow_drop_down", size: "large", className: "d-block" }, void 0)] }), void 0));
-        }
-        return (jsxRuntime.jsxs("div", __assign$2({ id: "titleSelectShipping", className: classnames("w-100", { "border-right": showBorder }) }, { children: [jsxRuntime.jsx(Icon$1, { name: "visibility" }, void 0),
-                jsxRuntime.jsx("text", __assign$2({ className: "mx-2 text-nowrap", style: { color: "rgba(0, 0, 0, 0.56)" } }, { children: (_a = selectedLayout === null || selectedLayout === void 0 ? void 0 : selectedLayout.name) !== null && _a !== void 0 ? _a : "N/A" }), void 0),
-                jsxRuntime.jsx(Icon$1, { name: "arrow_drop_down", size: "large" }, void 0)] }), void 0));
-    };
-    var renderLayoutItem = function (item) {
-        var _a, _b;
-        var isDefault = (_a = item === null || item === void 0 ? void 0 : item.default) !== null && _a !== void 0 ? _a : false;
-        return (jsxRuntime.jsxs("div", __assign$2({ className: "renderLayoutItem" }, { children: [(_b = item === null || item === void 0 ? void 0 : item.name) !== null && _b !== void 0 ? _b : "N/A",
-                jsxRuntime.jsx("span", __assign$2({ className: "subTile2" }, { children: isDefault ? "- Default" : "" }), void 0)] }), void 0));
-    };
-    var transformer = function (res) {
-        var result = [];
-        var keyArr = Object.keys(listLayout);
-        keyArr.forEach(function (key) {
-            if (!lodash.isEmpty(listLayout[key])) {
-                result.push(__assign$2(__assign$2({}, listLayout[key]), { name: key }));
-            }
-        });
-        return result;
-    };
-    return (jsxRuntime.jsx(PopoverList, { source: function () { return Promise.resolve(); }, transformer: transformer, renderItem: renderLayoutItem, onClickItem: onClickItem, isClickOpen: true, customView: renderTitleSelectLayout }, lodash.now()));
-};
-var SelectColumnModal = function (_a) {
-    var _b = _a.options, options = _b === void 0 ? [] : _b, setSelectedColumns = _a.setSelectedColumns, _c = _a.keyTable, keyTable = _c === void 0 ? null : _c, refreshLayout = _a.refreshLayout, _d = _a.actionText, actionText = _d === void 0 ? "Action" : _d, _e = _a.selectAllText, selectAllText = _e === void 0 ? "Select All" : _e;
-    var _f = React.useState(false), openOptionModal = _f[0], setOpenOptionModal = _f[1];
-    var _g = React.useState(false), openSaveNewModal = _g[0], setOpenSaveNewModal = _g[1];
-    var _h = React.useState(false), selectAll = _h[0], setSelectAll = _h[1];
-    var _j = React.useState(options), selectedOption = _j[0], setSelectedOption = _j[1];
-    var _k = React.useState(), nameOfLayout = _k[0], setNameOfLayout = _k[1];
-    var _l = React.useState(), listLayout = _l[0], setListLayout = _l[1];
-    var _m = React.useState({}), selectedLayout = _m[0], setSelectedLayout = _m[1];
-    var getLayoutTable = function () {
-        if (lodash.isEmpty(keyTable)) {
-            return;
-        }
-        var listLayoutTable = LayoutTableManager.getLayout(keyTable);
-        setListLayout(listLayoutTable);
-    };
-    React.useEffect(function () {
-        if (!lodash.isEmpty(keyTable)) {
-            getLayoutTable();
-        }
-    }, [keyTable, openOptionModal, openSaveNewModal]);
-    React.useEffect(function () {
-        var defaultLayout = {};
-        if (!lodash.isEmpty(keyTable)) {
-            var tableLayout_1 = LayoutTableManager.getLayout(keyTable);
-            if (!lodash.isEmpty(tableLayout_1)) {
-                var keyTable_1 = Object.keys(tableLayout_1);
-                keyTable_1.forEach(function (key) {
-                    var _a, _b, _c;
-                    if ((_a = tableLayout_1[key]) === null || _a === void 0 ? void 0 : _a.default) {
-                        defaultLayout = __assign$2(__assign$2({}, tableLayout_1[key]), { name: key });
-                        setSelectedOption((_c = (_b = tableLayout_1 === null || tableLayout_1 === void 0 ? void 0 : tableLayout_1[key]) === null || _b === void 0 ? void 0 : _b.data) !== null && _c !== void 0 ? _c : []);
-                    }
-                });
-            }
-        }
-        setSelectedLayout(defaultLayout);
-    }, [keyTable, openOptionModal]);
-    React.useEffect(function () {
-        if ((selectedOption === null || selectedOption === void 0 ? void 0 : selectedOption.length) === (options === null || options === void 0 ? void 0 : options.length)) {
-            setSelectAll(true);
-        }
-        else {
-            setSelectAll(false);
-        }
-    }, [selectedOption, openOptionModal]);
-    var removeItemFromSelected = function (selectedItem) {
-        var clone = selectedOption.filter(function (item) { return item.dataIndex !== selectedItem; });
-        setSelectedOption(clone);
-    };
-    var addItemToSelected = function (selectedItem) {
-        var addedItem = options.find(function (obj) { return obj.dataIndex === selectedItem; });
-        var clone = __spreadArray(__spreadArray([], selectedOption), [addedItem]);
-        setSelectedOption(clone);
-    };
-    var handleOnClickSave = function () { return __awaiter(void 0, void 0, void 0, function () {
-        var selected, layout_1, newTableLayout_1, keyLayout;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    if (!!lodash.isEmpty(selectedLayout)) return [3 /*break*/, 2];
-                    selected = selectedOption.map(function (item) { return ({
-                        dataIndex: item.dataIndex,
-                        id: Math.random(),
-                    }); });
-                    layout_1 = { data: selected, default: true };
-                    newTableLayout_1 = {};
-                    keyLayout = Object.keys(listLayout);
-                    keyLayout.forEach(function (key) {
-                        if (key === selectedLayout.name) {
-                            newTableLayout_1[key] = layout_1;
-                        }
-                        else {
-                            newTableLayout_1[key] = __assign$2(__assign$2({}, listLayout[key]), { default: false });
-                        }
-                    });
-                    return [4 /*yield*/, LayoutTableManager.saveTableLayout(newTableLayout_1, keyTable)];
-                case 1:
-                    _a.sent();
-                    _a.label = 2;
-                case 2:
-                    setSelectedColumns && setSelectedColumns(selectedOption);
-                    refreshLayout && refreshLayout();
-                    return [2 /*return*/, setOpenOptionModal(false)];
-            }
-        });
-    }); };
-    var handleOnClickSaveNew = function () { return __awaiter(void 0, void 0, void 0, function () {
-        return __generator(this, function (_a) {
-            setOpenSaveNewModal(true);
-            return [2 /*return*/, Promise.resolve()];
-        });
-    }); };
-    var handleOnSaveNewLayout = function () { return __awaiter(void 0, void 0, void 0, function () {
-        var selected, layout;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    selected = selectedOption.map(function (item) { return ({
-                        dataIndex: item.dataIndex,
-                        id: Math.random(),
-                    }); });
-                    layout = { data: selected, default: false };
-                    return [4 /*yield*/, LayoutTableManager.saveNewLayout(layout, keyTable, nameOfLayout)];
-                case 1:
-                    _a.sent();
-                    setOpenSaveNewModal(false);
-                    setSelectedLayout(__assign$2(__assign$2({}, layout), { name: nameOfLayout }));
-                    refreshLayout && refreshLayout();
-                    return [2 /*return*/, Promise.resolve()];
-            }
-        });
-    }); };
-    var onSelectLayout = function (item) {
-        var _a, _b;
-        var layoutIndex = (_b = (_a = item === null || item === void 0 ? void 0 : item.data) === null || _a === void 0 ? void 0 : _a.map(function (item) { return item === null || item === void 0 ? void 0 : item.dataIndex; })) !== null && _b !== void 0 ? _b : [];
-        var filterOption = options.filter(function (item) { return layoutIndex.includes(item === null || item === void 0 ? void 0 : item.dataIndex); });
-        setSelectedLayout(item);
-        setSelectedOption(filterOption);
-        getLayoutTable();
-    };
-    var renderContentModal = function () {
-        return (jsxRuntime.jsxs("div", __assign$2({ className: "d-flex flex-column align-items-start px-5 justify-content-center" }, { children: [jsxRuntime.jsxs("h5", { children: [actionText, ":"] }, void 0),
-                jsxRuntime.jsxs("div", __assign$2({ className: "d-flex align-items-center" }, { children: [jsxRuntime.jsx(Checkbox, { value: selectAll, checked: selectAll, onChange: function () {
-                                if (!selectAll) {
-                                    setSelectedOption(options);
-                                }
-                                setSelectAll(!selectAll);
-                            }, color: "primary", 
-                            // eslint-disable-next-line react/no-children-prop
-                            label: selectAllText }, void 0),
-                        jsxRuntime.jsx(Button, { onClick: function () {
-                                return DialogManager.showConfirm("Confirm", "Are you sure want to delete all Layout?", function () { return __awaiter(void 0, void 0, void 0, function () {
-                                    return __generator(this, function (_a) {
-                                        switch (_a.label) {
-                                            case 0: return [4 /*yield*/, LayoutTableManager.clearTableLayout(keyTable)];
-                                            case 1:
-                                                _a.sent();
-                                                setListLayout({});
-                                                setSelectedLayout({});
-                                                return [2 /*return*/];
-                                        }
-                                    });
-                                }); });
-                            }, disabled: lodash.isEmpty(listLayout), iconName: "highlight_off", content: "Clear All Layout", variant: "trans", color: "red" }, void 0)] }), void 0),
-                jsxRuntime.jsx("div", __assign$2({ className: "d-flex flex-column my-4" }, { children: options.map(function (item) {
-                        // eslint-disable-next-line operator-linebreak
-                        var isChecked = selectedOption.filter(function (obj) { return obj.dataIndex === item.dataIndex; }).length > 0;
-                        return (jsxRuntime.jsx(Checkbox, { checked: isChecked, onChange: function (event) {
-                                var _a, _b;
-                                if (isChecked) {
-                                    removeItemFromSelected((_a = event === null || event === void 0 ? void 0 : event.target) === null || _a === void 0 ? void 0 : _a.value);
-                                }
-                                else {
-                                    addItemToSelected((_b = event === null || event === void 0 ? void 0 : event.target) === null || _b === void 0 ? void 0 : _b.value);
-                                }
-                            }, value: item === null || item === void 0 ? void 0 : item.dataIndex, 
-                            // eslint-disable-next-line react/no-children-prop
-                            label: (item === null || item === void 0 ? void 0 : item.title) && (item === null || item === void 0 ? void 0 : item.title), className: "my-2" }, void 0));
-                    }) }), void 0)] }), void 0));
-    };
-    var renderSecondTitle = function () {
-        return (jsxRuntime.jsx(SelectLayoutView, { listLayout: listLayout, onClickItem: function (item) { return onSelectLayout(item); }, selectedLayout: selectedLayout }, void 0));
-    };
-    var renderContentSaveNewModal = function () {
-        return (jsxRuntime.jsx(InputText, { onChange: function (event) { return setNameOfLayout(event.target.value); }, "aria-label": "Default", "aria-describedby": "inputGroup-sizing-default", placeholder: "Name Of Layout" }, void 0));
-    };
-    var renderFooter = function () {
-        return (jsxRuntime.jsxs("div", __assign$2({ className: "d-flex align-items-center w-100 justify-content-end" }, { children: [jsxRuntime.jsx(Button
-                // eslint-disable-next-line react/jsx-curly-brace-presence
-                , { 
-                    // eslint-disable-next-line react/jsx-curly-brace-presence
-                    content: "Save & Apply", onClick: handleOnClickSave, disabled: lodash.isEmpty(selectedLayout), className: "mr-3" }, void 0),
-                jsxRuntime.jsx(Button, { content: "Save", onClick: handleOnClickSaveNew }, void 0)] }), void 0));
-    };
-    return (jsxRuntime.jsxs(React__default['default'].Fragment, { children: [jsxRuntime.jsx(Button, { content: "Column", iconName: "settings", variant: "trans", onClick: function () { return setOpenOptionModal(true); } }, void 0),
-            jsxRuntime.jsx(Modal, __assign$2({ open: openOptionModal, onClose: function () { return setOpenOptionModal(false); }, onSave: handleOnClickSave, title: "Select Layout " + ((selectedLayout === null || selectedLayout === void 0 ? void 0 : selectedLayout.name) ? " - " + (selectedLayout === null || selectedLayout === void 0 ? void 0 : selectedLayout.name) : ""), customFooter: renderFooter, size: "medium", headerSide: renderSecondTitle }, { children: renderContentModal() }), void 0),
-            jsxRuntime.jsx(Modal, __assign$2({ open: openSaveNewModal, onClose: function () { return setOpenSaveNewModal(false); }, onSave: handleOnSaveNewLayout, centered: false }, { children: renderContentSaveNewModal() }), void 0)] }, void 0));
-};
-
-var isString = function (variable) {
-    return typeof variable === "string";
-};
-var isArray = function (array) {
-    return Array.isArray(array);
-};
-var calculateDefaultExpandedRowKeys = function (data, options) {
-    if (data === void 0) { data = []; }
-    var rowKeys = [];
-    if (!(data && data.length)) {
-        return rowKeys;
-    }
-    var defaultOptions = __assign$2({ level: -1, key: "id" }, options);
-    var level = defaultOptions.level, key = defaultOptions.key;
-    if (!data[0][key]) {
-        return rowKeys;
-    }
-    if (level === 0) {
-        return rowKeys;
-    }
-    var mapRowKeys = function mapRowKeys(source, currentLevel) {
-        if (source === void 0) { source = []; }
-        if (currentLevel === void 0) { currentLevel = 1; }
-        var keys = [];
-        source.forEach(function (_a) {
-            var children = _a.children, rest = __rest$p(_a, ["children"]);
-            if (children !== null) {
-                keys.push(rest[key]);
-                if (level < 0 || (level > 0 && level > currentLevel)) {
-                    var childrenKeys = mapRowKeys(children, currentLevel + 1);
-                    keys = keys.concat(childrenKeys);
-                }
-            }
-        });
-        return keys;
-    };
-    return mapRowKeys(data);
-};
-var transformColumn = function (columns, baseColumn) {
-    if (columns === void 0) { columns = []; }
-    if (baseColumn === void 0) { baseColumn = {}; }
-    return columns.map(function (_a) {
-        var title = _a.title, titleCustom = _a.titleCustom, titleTooltip = _a.titleTooltip, dataIndex = _a.dataIndex, render = _a.render, props = __rest$p(_a, ["title", "titleCustom", "titleTooltip", "dataIndex", "render"]);
-        // custom title
-        var titleResult = title;
-        if (titleCustom) {
-            titleResult = titleCustom;
-        }
-        else if (titleTooltip) {
-            titleResult = (jsxRuntime.jsxs(Tooltip, __assign$2({ className: "flex-center-y", zIndex: 10000, title: titleTooltip }, { children: [title, jsxRuntime.jsx(Icon$1, { name: "info", className: "ml-3" }, void 0)] }), void 0));
-        }
-        return __assign$2(__assign$2(__assign$2({}, baseColumn), { title: titleResult, dataIndex: dataIndex, render: function (data, item) {
-                return {
-                    children: jsxRuntime.jsx("div", __assign$2({ className: "subtitle1 nowrapCellTable" }, { children: render(data, item) }), void 0),
-                    props: { "data-title": title },
-                };
-            } }), props);
-    });
-};
-var AwesomeTableUtils = {
-    transformColumn: transformColumn,
-    calculateDefaultExpandedRowKeys: calculateDefaultExpandedRowKeys,
-};
-
 var INIT_PAGINATION = {
     pageIndex: 1,
     pageSize: 10,
@@ -73964,7 +73961,8 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
                     var defaultLayout = listTableLayout_1.find(function (item) { return item === null || item === void 0 ? void 0 : item.default; });
                     if (!lodash.isEmpty(defaultLayout)) {
                         var defaultIndex_1 = (_a = defaultLayout === null || defaultLayout === void 0 ? void 0 : defaultLayout.data) === null || _a === void 0 ? void 0 : _a.map(function (item) { return item === null || item === void 0 ? void 0 : item.dataIndex; });
-                        var defaultColumns = columns.filter(function (item) { return defaultIndex_1.includes(item.dataIndex); });
+                        // eslint-disable-next-line operator-linebreak
+                        var defaultColumns = columns && columns.filter(function (item) { return defaultIndex_1.includes(item === null || item === void 0 ? void 0 : item.dataIndex); });
                         _this.setState({
                             selectedColumns: defaultColumns,
                             tableLayoutList: tableLayout_1,
@@ -74175,6 +74173,7 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
         setCurrentPage: function (page) {
             return page;
         },
+        getTotalItems: function (response) { var _a, _b, _c, _d; return (_d = (_c = (_b = (_a = response === null || response === void 0 ? void 0 : response.data) === null || _a === void 0 ? void 0 : _a.data) === null || _b === void 0 ? void 0 : _b.pagination) === null || _c === void 0 ? void 0 : _c.items) !== null && _d !== void 0 ? _d : 0; },
         tableLayout: "auto",
         showSelectColumn: false,
         keyTableLayout: "",
