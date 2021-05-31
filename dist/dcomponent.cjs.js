@@ -29770,7 +29770,7 @@ var HIDDEN_STYLE$2 = {
   visibility: 'hidden'
 };
 
-function Header$1(_ref) {
+function Header$2(_ref) {
   var prefixCls = _ref.prefixCls,
       _ref$prevIcon = _ref.prevIcon,
       prevIcon = _ref$prevIcon === void 0 ? "\u2039" : _ref$prevIcon,
@@ -29839,7 +29839,7 @@ function DecadeHeader(props) {
   var yearNumber = generateConfig.getYear(viewDate);
   var startYear = Math.floor(yearNumber / DECADE_DISTANCE_COUNT) * DECADE_DISTANCE_COUNT;
   var endYear = startYear + DECADE_DISTANCE_COUNT - 1;
-  return /*#__PURE__*/React__namespace.createElement(Header$1, _extends$1({}, props, {
+  return /*#__PURE__*/React__namespace.createElement(Header$2, _extends$1({}, props, {
     prefixCls: headerPrefixCls,
     onSuperPrev: onPrevDecades,
     onSuperNext: onNextDecades
@@ -30590,7 +30590,7 @@ function TimeHeader(props) {
       value = props.value,
       format = props.format;
   var headerPrefixCls = "".concat(prefixCls, "-header");
-  return /*#__PURE__*/React__namespace.createElement(Header$1, {
+  return /*#__PURE__*/React__namespace.createElement(Header$2, {
     prefixCls: headerPrefixCls
   }, value ? formatValue(value, {
     locale: locale,
@@ -31147,7 +31147,7 @@ function DateHeader(props) {
     generateConfig: generateConfig
   }) : monthsLocale[month]);
   var monthYearNodes = locale.monthBeforeYear ? [monthNode, yearNode] : [yearNode, monthNode];
-  return /*#__PURE__*/React__namespace.createElement(Header$1, _extends$1({}, props, {
+  return /*#__PURE__*/React__namespace.createElement(Header$2, _extends$1({}, props, {
     prefixCls: headerPrefixCls,
     onSuperPrev: onPrevYear,
     onPrev: onPrevMonth,
@@ -31403,7 +31403,7 @@ function MonthHeader(props) {
   }
 
   var headerPrefixCls = "".concat(prefixCls, "-header");
-  return /*#__PURE__*/React__namespace.createElement(Header$1, _extends$1({}, props, {
+  return /*#__PURE__*/React__namespace.createElement(Header$2, _extends$1({}, props, {
     prefixCls: headerPrefixCls,
     onSuperPrev: onPrevYear,
     onSuperNext: onNextYear
@@ -31555,7 +31555,7 @@ function QuarterHeader(props) {
   }
 
   var headerPrefixCls = "".concat(prefixCls, "-header");
-  return /*#__PURE__*/React__namespace.createElement(Header$1, _extends$1({}, props, {
+  return /*#__PURE__*/React__namespace.createElement(Header$2, _extends$1({}, props, {
     prefixCls: headerPrefixCls,
     onSuperPrev: onPrevYear,
     onSuperNext: onNextYear
@@ -31700,7 +31700,7 @@ function YearHeader(props) {
   var yearNumber = generateConfig.getYear(viewDate);
   var startYear = Math.floor(yearNumber / YEAR_DECADE_COUNT) * YEAR_DECADE_COUNT;
   var endYear = startYear + YEAR_DECADE_COUNT - 1;
-  return /*#__PURE__*/React__namespace.createElement(Header$1, _extends$1({}, props, {
+  return /*#__PURE__*/React__namespace.createElement(Header$2, _extends$1({}, props, {
     prefixCls: headerPrefixCls,
     onSuperPrev: onPrevDecade,
     onSuperNext: onNextDecade
@@ -42353,7 +42353,7 @@ function parseHeaderRows(rootColumns) {
   return rows;
 }
 
-function Header(_ref) {
+function Header$1(_ref) {
   var stickyOffsets = _ref.stickyOffsets,
       columns = _ref.columns,
       flattenColumns = _ref.flattenColumns,
@@ -42572,7 +42572,7 @@ var FixedHeader = /*#__PURE__*/React__namespace.forwardRef(function (_ref, ref) 
     colWidths: mergedColumnWidth ? [].concat(_toConsumableArray(mergedColumnWidth), [combinationScrollBarSize]) : [],
     columCount: columCount + 1,
     columns: flattenColumnsWithScrollbar
-  }), /*#__PURE__*/React__namespace.createElement(Header, _extends$1({}, props, {
+  }), /*#__PURE__*/React__namespace.createElement(Header$1, _extends$1({}, props, {
     stickyOffsets: headerStickyOffsets,
     columns: columnsWithScrollbar,
     flattenColumns: flattenColumnsWithScrollbar
@@ -44006,7 +44006,7 @@ function Table$1(props) {
       style: _objectSpread2$1(_objectSpread2$1({}, scrollTableStyle), {}, {
         tableLayout: mergedTableLayout
       })
-    }, bodyColGroup, showHeader !== false && /*#__PURE__*/React__namespace.createElement(Header, _extends$1({}, headerProps, columnContext)), bodyTable, footerTable));
+    }, bodyColGroup, showHeader !== false && /*#__PURE__*/React__namespace.createElement(Header$1, _extends$1({}, headerProps, columnContext)), bodyTable, footerTable));
   }
 
   var ariaProps = getDataAndAriaProps(props);
@@ -50684,6 +50684,100 @@ var HeaderTable = function (_a) {
             jsxRuntime.jsxs("div", __assign$2({ className: "flex-center-y" }, { children: [jsxRuntime.jsx(InputTextSearch, { className: "w-100 mr-3 bg-white", placeholder: placeholder, onChange: onChangeText }, void 0), customView && customView(), onClickFilter && jsxRuntime.jsx(Button, { iconName: "filter_list", onClick: onClickFilter }, void 0)] }), void 0)] }), void 0));
 };
 
+var Header = function (_a) {
+    var Messages = _a.Messages, title = _a.title, _b = _a.saveText, saveText = _b === void 0 ? "save" : _b, _c = _a.cancelText, cancelText = _c === void 0 ? "back" : _c, _d = _a.deleteText, deleteText = _d === void 0 ? "delete" : _d, _e = _a.printText, printText = _e === void 0 ? "print" : _e, _f = _a.editText, editText = _f === void 0 ? "edit" : _f, onCancel = _a.onCancel, onSave = _a.onSave, onDelete = _a.onDelete, onPrint = _a.onPrint, onEdit = _a.onEdit, disabledSave = _a.disabledSave, customLeft = _a.customLeft, _g = _a.showCancel, showCancel = _g === void 0 ? true : _g;
+    var renderLeftView = function () {
+        if (customLeft) {
+            return customLeft();
+        }
+        return jsxRuntime.jsx("h4", __assign$2({ className: "text-primary" }, { children: title }), void 0);
+    };
+    return (jsxRuntime.jsxs("div", __assign$2({ className: "card-container d-common-header" }, { children: [renderLeftView(), jsxRuntime.jsxs("div", __assign$2({ className: "d-common-header__button-group" }, { children: [showCancel && (jsxRuntime.jsx(Button, { variant: "outline", content: cancelText, onClick: function () { return (onCancel ? onCancel() : window.history.go("back")); }, className: "mr-3" }, void 0)),
+                    onDelete && (jsxRuntime.jsx(Button, { content: Messages ? Messages[deleteText] : deleteText, onClick: onDelete, iconName: "delete", className: "mr-3" }, void 0)),
+                    onPrint && (jsxRuntime.jsx(Button, { content: Messages ? Messages[printText] : printText, onClick: onPrint, iconName: "print", className: "mr-3" }, void 0)),
+                    onEdit && (jsxRuntime.jsx(Button, { content: Messages ? Messages[editText] : editText, onClick: onEdit, className: "mr-3", iconName: "edit" }, void 0)),
+                    onSave && (jsxRuntime.jsx(Button, { content: Messages ? Messages[saveText] : saveText, onClick: onSave, disabled: disabledSave }, void 0))] }), void 0)] }), void 0));
+};
+
+function Avatar(_a) {
+    var _b = _a.size, size = _b === void 0 ? "medium" : _b, src = _a.src, alt = _a.alt, _c = _a.variant, variant = _c === void 0 ? "rounded" : _c, className = _a.className, text = _a.text, _d = _a.color, color = _d === void 0 ? "#D8D8D8" : _d, props = __rest$p(_a, ["size", "src", "alt", "variant", "className", "text", "color"]);
+    var wrapperClass = classnames("d-image__container d-image__" + variant + "-" + size + " bg-" + color, { "d-flex justify-content-center align-items-center": !!text }, className);
+    var imageClass = classnames("d-image__image");
+    var content;
+    if (text) {
+        var firstLetter = text.charAt(0);
+        content = (jsxRuntime.jsx("h2", __assign$2({ className: "text-white text-center", style: { fontWeight: "normal" } }, { children: firstLetter }), void 0));
+    }
+    if (src) {
+        content = jsxRuntime.jsx("img", __assign$2({ src: src }, props, { alt: alt, className: imageClass }), void 0);
+    }
+    return (jsxRuntime.jsx("div", __assign$2({ className: wrapperClass, style: { backgroundColor: color } }, { children: content }), void 0));
+}
+
+var AvatarName = function (_a) {
+    var user = _a.user, _b = _a.position, position = _b === void 0 ? "before" : _b, _c = _a.size, size = _c === void 0 ? "x-small" : _c, subLabel = _a.subLabel, className = _a.className, classNameText = _a.classNameText;
+    var avatar = user.avatar, fullName = user.fullName, _d = user.name, name = _d === void 0 ? "" : _d;
+    var displayName = name;
+    if (fullName) {
+        displayName = fullName;
+    }
+    var wrapperClass = classnames("d-flex align-items-center", className);
+    var nameClass = classnames("d-flex flex-column", {
+        "mr-2": position === "before",
+        "ml-2": position === "after",
+    });
+    var nameTextClass = classnames("text-nowrap", {
+        "text-large font-weight-bold": size === "large" || size === "x-large",
+        "text-medium": size === "medium",
+        "text-small": size === "small",
+        "text-x-small": size === "x-small",
+        "text-xx-small": size === "xx-small",
+    }, classNameText);
+    var renderName = function () {
+        return (jsxRuntime.jsxs("div", __assign$2({ className: nameClass }, { children: [jsxRuntime.jsx("div", __assign$2({ className: "" + nameTextClass }, { children: displayName }), void 0),
+                subLabel && jsxRuntime.jsx("div", __assign$2({ className: "text-x-small" }, { children: subLabel }), void 0)] }), void 0));
+    };
+    return (jsxRuntime.jsxs("div", __assign$2({ className: wrapperClass }, { children: [position === "before" && renderName(), avatar && jsxRuntime.jsx(Avatar, { src: avatar, size: size }, void 0),
+            !avatar && jsxRuntime.jsx(Avatar, { text: displayName.charAt(0), size: size }, void 0), position === "after" && renderName()] }), void 0));
+};
+
+var HeaderDetail = function (_a) {
+    var title = _a.title, status = _a.status, _b = _a.listStatus, listStatus = _b === void 0 ? [] : _b, _c = _a.listButton, listButton = _c === void 0 ? [
+        { id: "print", icon: "print", label: "print" },
+        { id: "cancel", icon: "cancel", label: "cancel" },
+    ] : _c, created = _a.created, user = _a.user, customRight = _a.customRight, onButtonClick = _a.onButtonClick, Messages = _a.Messages;
+    var foundStatus = React.useMemo(function () {
+        var result = null;
+        if (status && listStatus.length > 0) {
+            result = listStatus.find(function (item) { return (item === null || item === void 0 ? void 0 : item.id) === status; });
+        }
+        return result;
+    }, [status]);
+    var leftView = function () {
+        var titleStatus = function () {
+            return (jsxRuntime.jsxs("div", __assign$2({ className: "d-flex" }, { children: [jsxRuntime.jsx("h4", { children: title }, void 0),
+                    foundStatus && (jsxRuntime.jsx("div", __assign$2({ className: "py-1 px-2 text-center ml-3 text-white", style: { backgroundColor: foundStatus.color } }, { children: Messages[foundStatus.label] }), void 0))] }), void 0));
+        };
+        var buttons = function () {
+            return (jsxRuntime.jsx("div", __assign$2({ className: "d-flex align-items-center" }, { children: listButton.map(function (button, index) {
+                    var buttonClass = classnames("p-0 text-gray font-weight-normal", {
+                        "mx-3": index !== 0,
+                    });
+                    return (jsxRuntime.jsx(Button, { variant: "trans", content: Messages[button.label], iconName: button.icon, className: buttonClass, onClick: function () { return onButtonClick && onButtonClick(button); } }, void 0));
+                }) }), void 0));
+        };
+        return (jsxRuntime.jsxs("div", __assign$2({ className: "d-flex flex-column" }, { children: [titleStatus(), listButton.length > 0 && buttons()] }), void 0));
+    };
+    var rightView = function () {
+        if (customRight) {
+            return customRight();
+        }
+        return (jsxRuntime.jsxs("div", __assign$2({ className: "d-flex flex-column align-items-end" }, { children: [user && jsxRuntime.jsx(AvatarName, { user: user, className: "mb-1" }, void 0),
+                created && (jsxRuntime.jsx("div", { className: "text-x-small text-gray" }, void 0))] }), void 0));
+    };
+    return (jsxRuntime.jsxs("div", __assign$2({ className: "card-container d-flex align-items-center justify-content-between p-4" }, { children: [leftView(), rightView()] }), void 0));
+};
+
 var Modal = function (_a) {
     var children = _a.children, open = _a.open, _b = _a.centered, centered = _b === void 0 ? true : _b, _c = _a.closable, closable = _c === void 0 ? false : _c, onClose = _a.onClose, onSave = _a.onSave, onSideClick = _a.onSideClick, cancelAction = _a.cancelAction, width = _a.width, title = _a.title, customHeader = _a.customHeader, customFooter = _a.customFooter, customSideButton = _a.customSideButton, headerSide = _a.headerSide, _d = _a.hasCloseIcon, hasCloseIcon = _d === void 0 ? true : _d, _e = _a.hasCancelButton, hasCancelButton = _e === void 0 ? false : _e, _f = _a.saveText, saveText = _f === void 0 ? "Save" : _f, _g = _a.cancelText, cancelText = _g === void 0 ? "Cancel" : _g, _h = _a.sideText, sideText = _h === void 0 ? "Clear" : _h, size = _a.size, className = _a.className, classNameContent = _a.classNameContent, classNameFooter = _a.classNameFooter, classNameHeader = _a.classNameHeader, _j = _a.showFooter, showFooter = _j === void 0 ? true : _j, _k = _a.showHeader, showHeader = _k === void 0 ? true : _k, props = __rest$p(_a, ["children", "open", "centered", "closable", "onClose", "onSave", "onSideClick", "cancelAction", "width", "title", "customHeader", "customFooter", "customSideButton", "headerSide", "hasCloseIcon", "hasCancelButton", "saveText", "cancelText", "sideText", "size", "className", "classNameContent", "classNameFooter", "classNameHeader", "showFooter", "showHeader"]);
     var modalClass = classnames("d-modal", "d-modal__" + size, className);
@@ -50723,44 +50817,6 @@ var Modal = function (_a) {
         return jsxRuntime.jsx("div", __assign$2({ className: footerClass }, { children: content() }), void 0);
     };
     return (jsxRuntime.jsxs(Modal$1, __assign$2({ visible: open, onCancel: onClose, centered: centered, className: modalClass, closable: closable, width: width, footer: null }, props, { children: [showHeader && header(), jsxRuntime.jsx("div", __assign$2({ className: childrenClass }, { children: children }), void 0), showFooter && footer()] }), void 0));
-};
-
-function Avatar(_a) {
-    var _b = _a.size, size = _b === void 0 ? "medium" : _b, src = _a.src, alt = _a.alt, _c = _a.variant, variant = _c === void 0 ? "rounded" : _c, className = _a.className, text = _a.text, _d = _a.color, color = _d === void 0 ? "#D8D8D8" : _d, props = __rest$p(_a, ["size", "src", "alt", "variant", "className", "text", "color"]);
-    var wrapperClass = classnames("d-image__container d-image__" + variant + "-" + size + " bg-" + color, { "d-flex justify-content-center align-items-center": !!text }, className);
-    var imageClass = classnames("d-image__image");
-    var content;
-    if (text) {
-        var firstLetter = text.charAt(0);
-        content = (jsxRuntime.jsx("h2", __assign$2({ className: "text-white text-center", style: { fontWeight: "normal" } }, { children: firstLetter }), void 0));
-    }
-    if (src) {
-        content = jsxRuntime.jsx("img", __assign$2({ src: src }, props, { alt: alt, className: imageClass }), void 0);
-    }
-    return (jsxRuntime.jsx("div", __assign$2({ className: wrapperClass, style: { backgroundColor: color } }, { children: content }), void 0));
-}
-
-var AvatarName = function (_a) {
-    var user = _a.user, _b = _a.position, position = _b === void 0 ? "before" : _b, _c = _a.size, size = _c === void 0 ? "x-small" : _c, subLabel = _a.subLabel, className = _a.className, classNameText = _a.classNameText;
-    var avatar = user.avatar, fullName = user.fullName;
-    var wrapperClass = classnames("d-flex align-items-center", className);
-    var nameClass = classnames("d-flex flex-column", {
-        "mr-2": position === "before",
-        "ml-2": position === "after",
-    });
-    var nameTextClass = classnames("text-nowrap", {
-        "text-large font-weight-bold": size === "large" || size === "x-large",
-        "text-medium": size === "medium",
-        "text-small": size === "small",
-        "text-x-small": size === "x-small",
-        "text-xx-small": size === "xx-small",
-    }, classNameText);
-    var renderName = function () {
-        return (jsxRuntime.jsxs("div", __assign$2({ className: nameClass }, { children: [jsxRuntime.jsx("div", __assign$2({ className: "" + nameTextClass }, { children: fullName }), void 0),
-                subLabel && jsxRuntime.jsx("div", __assign$2({ className: "text-x-small" }, { children: subLabel }), void 0)] }), void 0));
-    };
-    return (jsxRuntime.jsxs("div", __assign$2({ className: wrapperClass }, { children: [position === "before" && renderName(), avatar && jsxRuntime.jsx(Avatar, { src: avatar, size: size }, void 0),
-            !avatar && jsxRuntime.jsx(Avatar, { text: fullName.charAt(0), size: size }, void 0), position === "after" && renderName()] }), void 0));
 };
 
 var RowInterchangeView = function (_a) {
@@ -74227,6 +74283,8 @@ exports.Checkbox = Checkbox;
 exports.CheckboxGroup = CheckboxGroup;
 exports.DateInput = DateInput;
 exports.Dot = Dot;
+exports.Header = Header;
+exports.HeaderDetail = HeaderDetail;
 exports.HeaderTable = HeaderTable;
 exports.Icon = Icon$1;
 exports.InputText = InputText;

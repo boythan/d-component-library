@@ -1,8 +1,9 @@
 import React from "react";
 import { AvatarProps } from "./Avatar";
 export interface IUserBasic {
-    fullName: string;
+    fullName?: string;
     avatar?: string | null;
+    name?: string;
     [key: string]: any;
 }
 export interface AvatarNameProps {

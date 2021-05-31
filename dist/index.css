@@ -28549,26 +28549,58 @@ body {
 .border-error {
   border: 1px solid #F44336 !important; }
 
+.image-reg-xx-small {
+  height: 24px;
+  object-fit: contain; }
+
+.image-reg-x-small {
+  height: 32px;
+  object-fit: contain; }
+
 .image-reg-small {
-  height: 40px;
+  height: 48px;
   object-fit: contain; }
 
 .image-reg-medium {
-  height: 80px;
+  height: 72px;
   object-fit: contain; }
 
 .image-reg-large {
+  height: 96px;
+  object-fit: contain; }
+
+.image-reg-x-large {
   height: 160px;
   object-fit: contain; }
 
-.image-square-tiny {
-  width: 30px;
-  height: 30px;
+.image-square-xx-small {
+  width: 24px;
+  height: 24px;
+  object-fit: cover; }
+
+.image-square-x-small {
+  width: 32px;
+  height: 32px;
   object-fit: cover; }
 
 .image-square-small {
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
+  object-fit: cover; }
+
+.image-square-medium {
+  width: 72px;
+  height: 72px;
+  object-fit: cover; }
+
+.image-square-large {
+  width: 96px;
+  height: 96px;
+  object-fit: cover; }
+
+.image-square-x-large {
+  width: 160px;
+  height: 160px;
   object-fit: cover; }
 
 .hover-pointer {
@@ -29759,26 +29791,58 @@ body {
 .border-error {
   border: 1px solid #F44336 !important; }
 
+.image-reg-xx-small {
+  height: 24px;
+  object-fit: contain; }
+
+.image-reg-x-small {
+  height: 32px;
+  object-fit: contain; }
+
 .image-reg-small {
-  height: 40px;
+  height: 48px;
   object-fit: contain; }
 
 .image-reg-medium {
-  height: 80px;
+  height: 72px;
   object-fit: contain; }
 
 .image-reg-large {
+  height: 96px;
+  object-fit: contain; }
+
+.image-reg-x-large {
   height: 160px;
   object-fit: contain; }
 
-.image-square-tiny {
-  width: 30px;
-  height: 30px;
+.image-square-xx-small {
+  width: 24px;
+  height: 24px;
+  object-fit: cover; }
+
+.image-square-x-small {
+  width: 32px;
+  height: 32px;
   object-fit: cover; }
 
 .image-square-small {
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
+  object-fit: cover; }
+
+.image-square-medium {
+  width: 72px;
+  height: 72px;
+  object-fit: cover; }
+
+.image-square-large {
+  width: 96px;
+  height: 96px;
+  object-fit: cover; }
+
+.image-square-x-large {
+  width: 160px;
+  height: 160px;
   object-fit: cover; }
 
 .hover-pointer {
@@ -31503,6 +31567,19 @@ a {
     text-align: left !important;
     position: absolute;
     left: 0.5rem; } }
+
+/* ----------------------------------------
+// header
+// ---------------------------------------- */
+.d-common-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ebebeb;
+  padding: 1.5rem; }
+  .d-common-header__button-group {
+    display: flex;
+    align-items: center; }
 
 .react-resizable {
   position: relative;

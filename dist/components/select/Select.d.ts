@@ -1,6 +1,16 @@
 /// <reference types="react" />
-export interface SelectProps {
+import { SelectProps as SelectAntProps } from "antd/es/select";
+export interface SelectProps extends SelectAntProps<any> {
     [key: string]: any;
+    label?: string;
+    dataSource: Array<any>;
+    error?: any;
+    variant?: "outline" | "standard";
+    getLabel?: (item: any) => any;
+    getKey?: (item: any) => any;
+    getValue?: (item: any) => any;
+    hasFilter?: boolean;
+    multiple?: boolean;
 }
 declare const Select: ({ className, classNameSelect, value, label, defaultValue, placeholder, onChange, disabled, dataSource, error, multiple, getLabel, getKey, getValue, allowClear, variant, hasFilter, ...props }: SelectProps) => JSX.Element;
 export default Select;
