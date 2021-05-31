@@ -65,6 +65,9 @@ export { default as Modal } from "./components/modal/Modal";
 export type { AvatarProps } from "./components/avatar/Avatar";
 export { default as Avatar } from "./components/avatar/Avatar";
 
+export type { AvatarNameProps } from "./components/avatar/AvatarName";
+export { default as AvatarName } from "./components/avatar/AvatarName";
+
 /* ----------------------------------------
 // RowInterchangeView
 // ---------------------------------------- */
