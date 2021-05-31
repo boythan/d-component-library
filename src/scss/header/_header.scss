@@ -1,0 +1,11 @@
+.d-common-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ebebeb;
+    padding: 1.5rem;
+    &__button-group {
+        display: flex;
+        align-items: center;
+    }
+}

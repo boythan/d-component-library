@@ -51,6 +51,12 @@ export { default as RadioGroup } from "./components/checkbox/RadioGroup";
 export type { HeaderTableProps } from "./components/header/HeaderTable";
 export { default as HeaderTable } from "./components/header/HeaderTable";
 
+export type { HeaderProps } from "./components/header/Header";
+export { default as Header } from "./components/header/Header";
+
+export type { HeaderDetailProps } from "./components/header/HeaderDetail";
+export { default as HeaderDetail } from "./components/header/HeaderDetail";
+
 /* ----------------------------------------
 // Modal
 // ---------------------------------------- */
