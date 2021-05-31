@@ -105,7 +105,7 @@ const ButtonView = () => (
 const TableView = () => {
     const columns: AwesomeTableComponentProps["columns"] = [
         {
-            title: "ID",
+            title: () => <h5>ID</h5>,
             dataIndex: "id",
         },
         {

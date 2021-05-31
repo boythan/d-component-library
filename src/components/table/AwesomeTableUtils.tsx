@@ -57,6 +57,9 @@ export const transformColumn = (columns: Array<any> = [], baseColumn: any = {}):
     return columns.map(({ title, titleTooltip, dataIndex, render, ...props }: any) => {
         // custom title
         let titleResult: any = title;
+        if (typeof title === "function") {
+            titleResult = title();
+        }
         if (titleTooltip) {
             titleResult = (
                 <Tooltip className="flex-center-y" zIndex={10000} title={titleTooltip}>
