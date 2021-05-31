@@ -21,7 +21,7 @@ import ResizableTitle from "./ResizableTitle";
 
 const INIT_PAGINATION = {
     pageIndex: 1,
-    pageSize: 10,
+    pageSize: 20,
     showQuickJumper: true,
     showTotal: (total: any) => <div className="captionText">{`Total ${total} items`}</div>,
     pageSizeOptions: ["10", "20", "50"],
@@ -37,10 +37,12 @@ export interface IPaginationProps extends TablePaginationConfig {
     // showSizeChanger?: boolean;
 }
 
+export type IColumnsProps = TableProps<any>["columns"];
+
 export interface AwesomeTableComponentProps extends TableProps<any> {
     source: (pagination: IPaginationProps, sorter?: any) => Promise<any>;
     transformer: (res: any) => Array<any>;
-    columns: TableProps<any>["columns"];
+    columns: IColumnsProps;
 
     rowKey?: (item: any) => any;
     renderFooter?: TableProps<any>["footer"];
@@ -484,7 +486,7 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
                         return "d-table-awesome-component__row";
                     }}
                     pagination={paginationResult}
-                    scroll={isScroll ? { y: 500 } : {}}
+                    scroll={isScroll ? { y: "1000" } : {}}
                     tableLayout={tableLayout}
                     bordered
                     components={this.components}

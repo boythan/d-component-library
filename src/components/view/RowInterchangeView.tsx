@@ -1,7 +1,7 @@
 import React from "react";
 import ClassNames from "classnames";
 
-export interface RowsKey {
+export interface IRowsKey {
     id: string | number;
     label: string | number;
 }
@@ -9,9 +9,9 @@ export interface RowsKey {
 export interface RowInterchangeViewProps {
     className?: string;
     dataSource: any;
-    keyList: Array<RowsKey>;
-    getLabel?: (label: RowsKey["label"], row: RowsKey, data: any) => any;
-    getContent?: (id: RowsKey["id"], row: RowsKey, data: any) => any;
+    keyList: Array<IRowsKey>;
+    getLabel?: (label: IRowsKey["label"], row: IRowsKey, data: any) => any;
+    getContent?: (id: IRowsKey["id"], row: IRowsKey, data: any) => any;
 }
 
 const RowInterchangeView: React.FC<RowInterchangeViewProps> = ({

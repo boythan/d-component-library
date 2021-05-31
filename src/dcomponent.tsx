@@ -69,7 +69,7 @@ export { default as Avatar } from "./components/avatar/Avatar";
 // RowInterchangeView
 // ---------------------------------------- */
 
-export type { RowInterchangeViewProps, RowsKey } from "./components/view/RowInterchangeView";
+export type { RowInterchangeViewProps, IRowsKey } from "./components/view/RowInterchangeView";
 export { default as RowInterchangeView } from "./components/view/RowInterchangeView";
 
 /* ----------------------------------------
@@ -114,7 +114,11 @@ export { default as Dot } from "./components/dot/Dot";
 // Table
 // ---------------------------------------- */
 
-export type { AwesomeTableComponentProps, IPaginationProps } from "./components/table/AwesomeTableComponent";
+export type {
+    AwesomeTableComponentProps,
+    IPaginationProps,
+    IColumnsProps,
+} from "./components/table/AwesomeTableComponent";
 export { default as AwesomeTableComponent } from "./components/table/AwesomeTableComponent";
 
 export { default as AwesomeTableUtils } from "./components/table/AwesomeTableUtils";
