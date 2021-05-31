@@ -1,12 +1,24 @@
 /* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable operator-linebreak */
 import { Select as SelectAnt } from "antd";
+import { SelectProps as SelectAntProps } from "antd/es/select";
 import classname from "classnames";
 import React, { useMemo } from "react";
 import Icon from "../icon/Icon";
 
-export interface SelectProps {
+export interface SelectProps extends SelectAntProps<any> {
     [key: string]: any;
+    label?: string;
+    dataSource: Array<any>;
+    error?: any;
+    variant?: "outline" | "standard";
+
+    getLabel?: (item: any) => any;
+    getKey?: (item: any) => any;
+    getValue?: (item: any) => any;
+
+    hasFilter?: boolean;
+    multiple?: boolean;
 }
 const { Option } = SelectAnt;
 const Select = ({
@@ -29,7 +41,6 @@ const Select = ({
 
     allowClear = true,
     variant = "outline",
-
     hasFilter = true,
     ...props
 }: SelectProps) => {
