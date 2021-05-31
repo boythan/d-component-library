@@ -4,6 +4,8 @@ import ClassNames from "classnames";
 export interface IRowsKey {
     id: string | number;
     label: string | number;
+    renderLabel?: (id: IRowsKey["id"], row: IRowsKey, data: any) => any;
+    renderContent?: (id: IRowsKey["id"], row: IRowsKey, data: any) => any;
 }
 
 export interface RowInterchangeViewProps {
@@ -13,17 +15,15 @@ export interface RowInterchangeViewProps {
     classNameContent?: string;
     dataSource: any;
     keyList: Array<IRowsKey>;
-    getLabel?: (label: IRowsKey["label"], row: IRowsKey, data: any) => any;
-    getContent?: (id: IRowsKey["id"], row: IRowsKey, data: any) => any;
     variant?: "background" | "border";
+    boldLabel?: boolean;
 }
 
 const RowInterchangeView: React.FC<RowInterchangeViewProps> = ({
     dataSource = {},
     keyList = [],
-    getLabel,
-    getContent,
     variant = "background",
+    boldLabel = false,
     className,
     classNameRow,
     classNameLabel,
@@ -41,18 +41,18 @@ const RowInterchangeView: React.FC<RowInterchangeViewProps> = ({
                     },
                     classNameRow
                 );
-                const labelClass = ClassNames("text-x-small w-100", classNameLabel);
+                const labelClass = ClassNames("text-small w-100", { "font-weight-bold": boldLabel }, classNameLabel);
                 const contentClass = ClassNames("w-100 text", classNameContent);
-                const { id, label } = row;
+                const { id, label, renderLabel, renderContent } = row;
                 let labelView;
                 let content;
-                labelView = row.label;
-                if (getLabel) {
-                    labelView = getLabel(label, row, dataSource);
+                labelView = label;
+                if (typeof renderLabel === "function") {
+                    labelView = renderLabel(id, row, dataSource);
                 }
                 content = dataSource?.[id] ?? "N/A";
-                if (getContent) {
-                    content = getContent(id, row, dataSource);
+                if (typeof renderContent === "function") {
+                    content = renderContent(id, row, dataSource);
                 }
                 const contentView = <div className={contentClass}>{content}</div>;
                 return (
