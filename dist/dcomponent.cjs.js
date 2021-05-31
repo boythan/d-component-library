@@ -50764,7 +50764,7 @@ var AvatarName = function (_a) {
 };
 
 var RowInterchangeView = function (_a) {
-    var _b = _a.dataSource, dataSource = _b === void 0 ? {} : _b, _c = _a.keyList, keyList = _c === void 0 ? [] : _c, getLabel = _a.getLabel, getContent = _a.getContent, _d = _a.variant, variant = _d === void 0 ? "background" : _d, className = _a.className, classNameRow = _a.classNameRow, classNameLabel = _a.classNameLabel, classNameContent = _a.classNameContent;
+    var _b = _a.dataSource, dataSource = _b === void 0 ? {} : _b, _c = _a.keyList, keyList = _c === void 0 ? [] : _c, _d = _a.variant, variant = _d === void 0 ? "background" : _d, _e = _a.boldLabel, boldLabel = _e === void 0 ? false : _e, className = _a.className, classNameRow = _a.classNameRow, classNameLabel = _a.classNameLabel, classNameContent = _a.classNameContent;
     var wrapperClass = classnames(className);
     return (jsxRuntime.jsx("div", __assign$2({ className: wrapperClass }, { children: keyList.map(function (row, index) {
             var _a;
@@ -50772,18 +50772,18 @@ var RowInterchangeView = function (_a) {
                 "bg-light-gray": index % 2 && variant === "background",
                 "border-top": index !== 0 && variant === "border",
             }, classNameRow);
-            var labelClass = classnames("text-x-small w-100", classNameLabel);
+            var labelClass = classnames("text-small w-100", { "font-weight-bold": boldLabel }, classNameLabel);
             var contentClass = classnames("w-100 text", classNameContent);
-            var id = row.id, label = row.label;
+            var id = row.id, label = row.label, renderLabel = row.renderLabel, renderContent = row.renderContent;
             var labelView;
             var content;
-            labelView = row.label;
-            if (getLabel) {
-                labelView = getLabel(label, row, dataSource);
+            labelView = label;
+            if (typeof renderLabel === "function") {
+                labelView = renderLabel(id, row, dataSource);
             }
             content = (_a = dataSource === null || dataSource === void 0 ? void 0 : dataSource[id]) !== null && _a !== void 0 ? _a : "N/A";
-            if (getContent) {
-                content = getContent(id, row, dataSource);
+            if (typeof renderContent === "function") {
+                content = renderContent(id, row, dataSource);
             }
             var contentView = jsxRuntime.jsx("div", __assign$2({ className: contentClass }, { children: content }), void 0);
             return (jsxRuntime.jsxs("div", __assign$2({ className: rowClass }, { children: [jsxRuntime.jsx("div", __assign$2({ className: labelClass }, { children: labelView }), void 0), contentView] }), index));
