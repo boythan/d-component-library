@@ -53,6 +53,104 @@ const test = (a: any, b?: any) => {
     return a;
 };
 
+const AvatarIconView = () => {
+    return (
+        <React.Fragment>
+            <div className="d-flex align-items-center my-3">
+                <Avatar
+                    src="https://c4.wallpaperflare.com/wallpaper/462/200/955/face-women-model-portrait-wallpaper-preview.jpg"
+                    size="x-large"
+                    className="mx-3"
+                />
+                <Avatar
+                    src="https://c4.wallpaperflare.com/wallpaper/462/200/955/face-women-model-portrait-wallpaper-preview.jpg"
+                    size="large"
+                    className="mx-3"
+                />
+                <Avatar
+                    src="https://c4.wallpaperflare.com/wallpaper/462/200/955/face-women-model-portrait-wallpaper-preview.jpg"
+                    size="medium"
+                    className="mx-3"
+                />
+                <Avatar
+                    src="https://c4.wallpaperflare.com/wallpaper/462/200/955/face-women-model-portrait-wallpaper-preview.jpg"
+                    size="small"
+                    className="mx-3"
+                />
+                <Avatar
+                    src="https://c4.wallpaperflare.com/wallpaper/462/200/955/face-women-model-portrait-wallpaper-preview.jpg"
+                    size="x-small"
+                    className="mx-3"
+                />
+                <Avatar
+                    src="https://c4.wallpaperflare.com/wallpaper/462/200/955/face-women-model-portrait-wallpaper-preview.jpg"
+                    size="xx-small"
+                    className="mx-3"
+                />
+            </div>
+            <div className="d-flex align-items-center my-3">
+                <Avatar
+                    src="https://c4.wallpaperflare.com/wallpaper/462/200/955/face-women-model-portrait-wallpaper-preview.jpg"
+                    size="x-large"
+                    className="mx-3"
+                    variant="square"
+                />
+                <Avatar
+                    src="https://c4.wallpaperflare.com/wallpaper/462/200/955/face-women-model-portrait-wallpaper-preview.jpg"
+                    size="large"
+                    className="mx-3"
+                    variant="square"
+                />
+                <Avatar
+                    src="https://c4.wallpaperflare.com/wallpaper/462/200/955/face-women-model-portrait-wallpaper-preview.jpg"
+                    size="medium"
+                    className="mx-3"
+                    variant="square"
+                />
+                <Avatar
+                    src="https://c4.wallpaperflare.com/wallpaper/462/200/955/face-women-model-portrait-wallpaper-preview.jpg"
+                    size="small"
+                    className="mx-3"
+                    variant="square"
+                />
+                <Avatar
+                    src="https://c4.wallpaperflare.com/wallpaper/462/200/955/face-women-model-portrait-wallpaper-preview.jpg"
+                    size="x-small"
+                    className="mx-3"
+                    variant="square"
+                />
+            </div>
+            <div className="d-flex align-items-center my-4">
+                <Avatar size="small" className="mx-3" text="Joker" />
+                <Avatar size="medium" className="mx-3" variant="square" text="Batman" />
+            </div>
+            <div className="d-flex align-items-center my-4">
+                <Icon size="large" className="mx-3" name="photo_camera" />
+                <Icon size="x-large" className="mx-3" name="photo_camera" />
+                <Icon size="xx-large" className="mx-3" name="photo_camera" />
+                <Icon size="xxx-large" className="mx-3" name="photo_camera" />
+            </div>
+            <div className="d-flex align-items-center my-4">
+                <Icon size="small" className="mx-3" name="photo_camera" variant="badge" badge="5" />
+                <Icon size="medium" className="mx-3" name="photo_camera" variant="badge" badge="66" />
+                <Icon size="large" className="mx-3" name="photo_camera" variant="badge" badge="99+" />
+                <Icon size="x-large" className="mx-3" name="chat_bubble" variant="badge" badge="3" />
+                <Icon size="xx-large" className="mx-3" name="photo_camera" variant="badge" badge="9" />
+                <Icon size="xxx-large" className="mx-3" name="photo_camera" variant="badge" />
+            </div>
+            <div className="d-flex align-items-center my-4">
+                <AvatarName
+                    user={{
+                        fullName: "Amanda",
+                    }}
+                    subLabel="Actress"
+                    size="x-large"
+                />
+            </div>
+        </React.Fragment>
+    );
+};
+
 const Date = () => {
     return (
         <div className="my-4">
@@ -166,94 +264,6 @@ export default function Test({ content }: Props): ReactElement {
     useEffect(() => {
         DialogManager.initialDialog(dialogRef.current);
     }, []);
-
-    const avatar = (
-        <React.Fragment>
-            <div className="d-flex align-items-center my-3">
-                <Avatar
-                    src="https://c4.wallpaperflare.com/wallpaper/462/200/955/face-women-model-portrait-wallpaper-preview.jpg"
-                    size="x-large"
-                    className="mx-3"
-                />
-                <Avatar
-                    src="https://c4.wallpaperflare.com/wallpaper/462/200/955/face-women-model-portrait-wallpaper-preview.jpg"
-                    size="large"
-                    className="mx-3"
-                />
-                <Avatar
-                    src="https://c4.wallpaperflare.com/wallpaper/462/200/955/face-women-model-portrait-wallpaper-preview.jpg"
-                    size="medium"
-                    className="mx-3"
-                />
-                <Avatar
-                    src="https://c4.wallpaperflare.com/wallpaper/462/200/955/face-women-model-portrait-wallpaper-preview.jpg"
-                    size="small"
-                    className="mx-3"
-                />
-                <Avatar
-                    src="https://c4.wallpaperflare.com/wallpaper/462/200/955/face-women-model-portrait-wallpaper-preview.jpg"
-                    size="x-small"
-                    className="mx-3"
-                />
-                <Avatar
-                    src="https://c4.wallpaperflare.com/wallpaper/462/200/955/face-women-model-portrait-wallpaper-preview.jpg"
-                    size="xx-small"
-                    className="mx-3"
-                />
-            </div>
-            <div className="d-flex align-items-center my-3">
-                <Avatar
-                    src="https://c4.wallpaperflare.com/wallpaper/462/200/955/face-women-model-portrait-wallpaper-preview.jpg"
-                    size="x-large"
-                    className="mx-3"
-                    variant="square"
-                />
-                <Avatar
-                    src="https://c4.wallpaperflare.com/wallpaper/462/200/955/face-women-model-portrait-wallpaper-preview.jpg"
-                    size="large"
-                    className="mx-3"
-                    variant="square"
-                />
-                <Avatar
-                    src="https://c4.wallpaperflare.com/wallpaper/462/200/955/face-women-model-portrait-wallpaper-preview.jpg"
-                    size="medium"
-                    className="mx-3"
-                    variant="square"
-                />
-                <Avatar
-                    src="https://c4.wallpaperflare.com/wallpaper/462/200/955/face-women-model-portrait-wallpaper-preview.jpg"
-                    size="small"
-                    className="mx-3"
-                    variant="square"
-                />
-                <Avatar
-                    src="https://c4.wallpaperflare.com/wallpaper/462/200/955/face-women-model-portrait-wallpaper-preview.jpg"
-                    size="x-small"
-                    className="mx-3"
-                    variant="square"
-                />
-            </div>
-            <div className="d-flex align-items-center my-4">
-                <Avatar size="small" className="mx-3" text="Joker" />
-                <Avatar size="medium" className="mx-3" variant="square" text="Batman" />
-            </div>
-            <div className="d-flex align-items-center my-4">
-                <Icon size="large" className="mx-3" name="photo_camera" />
-                <Icon size="x-large" className="mx-3" name="photo_camera" />
-                <Icon size="xx-large" className="mx-3" name="photo_camera" />
-                <Icon size="xxx-large" className="mx-3" name="photo_camera" />
-            </div>
-            <div className="d-flex align-items-center my-4">
-                <AvatarName
-                    user={{
-                        fullName: "Amanda",
-                    }}
-                    subLabel="Actress"
-                    size="x-large"
-                />
-            </div>
-        </React.Fragment>
-    );
 
     const input = (
         <div className="my-4">
@@ -394,7 +404,7 @@ export default function Test({ content }: Props): ReactElement {
     const mainContent = () => {
         return (
             <React.Fragment>
-                {avatar}
+                <AvatarIconView />
                 {/* {input} */}
                 <Date />
                 <ButtonView />
@@ -410,7 +420,7 @@ export default function Test({ content }: Props): ReactElement {
         );
     };
     const TAB_LIST = [
-        { id: "AVATAR", label: "AVATAR", component: avatar },
+        { id: "AVATAR", label: "AVATAR", component: <AvatarIconView /> },
         { id: "INPUT", label: "INPUT", component: input },
         { id: "DATE", label: "DATE", component: <Date /> },
         { id: "BUTTON", label: "BUTTON", component: <ButtonView /> },

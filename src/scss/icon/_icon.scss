@@ -1,25 +1,26 @@
 @import "../variables";
 
-.customized-icon {
-    &__x-small {
-        font-size: $text-x-small-size;
+@each $name, $size in $icon-size {
+    .d-icon__#{$name} {
+        font-size: $size;
     }
-    &__small {
-        font-size: $text-small-size;
+    .d-icon__badge {
+        top: -10px;
+        right: 3px;
+        padding: 1px 5px;
+        border-radius: 999px;
+        border: 2px solid white;
+        background-color: $badge-color;
     }
-    &__medium {
-        font-size: $text-medium-size;
+    .d-icon__badge-#{$name} {
+        color: $light-color;
+        font-size: $text-xx-small-size;
     }
-    &__large {
-        font-size: $text-large-size;
-    }
-    &__x-large {
-        font-size: $text-large-size + 10px;
-    }
-    &__xx-large {
-        font-size: $text-large-size + 20px;
-    }
-    &__xxx-large {
-        font-size: $text-large-size + 30px;
+}
+.d-icon__container-badge-long {
+    .d-icon__badge {
+        top: -10px;
+        right: -10px;
+        padding: 1px 5px;
     }
 }

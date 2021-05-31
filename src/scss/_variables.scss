@@ -763,6 +763,23 @@
             "90":0.9,
       );
 
+   // ----------------------------------------
+   // -- .icon
+   // ----------------------------------------
+
+   $icon-size:(
+      "xx-small":$text-xx-small-size,
+      "x-small":$text-x-small-size,
+      "small":$text-small-size,
+      "medium":$text-medium-size,
+      "large":$text-medium-size,
+      "x-large":$text-medium-size+10px,
+      "xx-large":$text-medium-size+20px,
+      "xxx-large":$text-medium-size+30px,
+   );
+
+   $badge-color:                       $primary-color                 !default;
+
   // ----------------------------------------
    // -- .custom variable
    // ---------------------------------------- 
@@ -771,12 +788,3 @@
    $common-image-size:                  12rem                         !default;
    $disabled-color:                     rgba($accent-color,0.3)         !default;
    
-    // ----------------------------------------
-    // -- .custom variable
-    // ---------------------------------------- 
-   
-      $theme-colors: (
-             "primary": #0074d9,
-              "danger": #ff4136,
-              "success":yellow
-      );
