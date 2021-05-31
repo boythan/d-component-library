@@ -2,7 +2,7 @@ import React, { ReactElement } from "react";
 import ClassNames from "classnames";
 
 export interface AvatarProps extends React.ImgHTMLAttributes<HTMLImageElement> {
-    size?: "x-large" | "large" | "medium" | "small" | "x-small";
+    size?: "x-large" | "large" | "medium" | "small" | "x-small" | "xx-small";
     variant?: "rounded" | "square";
     text?: string;
     color?: string;
