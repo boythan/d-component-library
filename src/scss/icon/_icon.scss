@@ -17,6 +17,10 @@
         font-size: $text-xx-small-size;
     }
 }
+.d-icon__container {
+    width: fit-content;
+    height: fit-content;
+}
 .d-icon__container-badge-long {
     .d-icon__badge {
         top: -10px;

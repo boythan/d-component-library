@@ -133,7 +133,9 @@ const AvatarIconView = () => {
                 <Icon size="xxx-large" className="mx-3" name="photo_camera" />
             </div>
             <div className="d-flex align-items-center my-4">
-                <Icon size="small" className="mx-3" name="photo_camera" variant="badge" badge="5" />
+                <div className="w-100" style={{ height: "5px" }}>
+                    <Icon size="small" className="mx-3" name="photo_camera" variant="badge" badge="5" />
+                </div>
                 <Icon size="medium" className="mx-3" name="photo_camera" variant="badge" badge="66" />
                 <Icon size="large" className="mx-3" name="photo_camera" variant="badge" badge="99+" />
                 <Icon size="x-large" className="mx-3" name="chat_bubble" variant="badge" badge="3" />
