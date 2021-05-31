@@ -3,10 +3,11 @@ import { Component } from "react";
 export interface IPaginationProps extends TablePaginationConfig {
     pageIndex?: number;
 }
+export declare type IColumnsProps = TableProps<any>["columns"];
 export interface AwesomeTableComponentProps extends TableProps<any> {
     source: (pagination: IPaginationProps, sorter?: any) => Promise<any>;
     transformer: (res: any) => Array<any>;
-    columns: TableProps<any>["columns"];
+    columns: IColumnsProps;
     rowKey?: (item: any) => any;
     renderFooter?: TableProps<any>["footer"];
     setCurrentPage?: (paging?: any) => void;

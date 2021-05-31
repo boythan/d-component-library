@@ -29132,26 +29132,130 @@ body {
 /* ----------------------------------------
 // Icon
 // ---------------------------------------- */
-.customized-icon__x-small {
+.d-icon__xx-small {
+  font-size: 10px; }
+
+.d-icon__badge {
+  top: -10px;
+  right: 3px;
+  padding: 1px 5px;
+  border-radius: 999px;
+  border: 2px solid white;
+  background-color: #DE0D0C; }
+
+.d-icon__badge-xx-small {
+  color: #fff;
+  font-size: 10px; }
+
+.d-icon__x-small {
   font-size: 12px; }
 
-.customized-icon__small {
+.d-icon__badge {
+  top: -10px;
+  right: 3px;
+  padding: 1px 5px;
+  border-radius: 999px;
+  border: 2px solid white;
+  background-color: #DE0D0C; }
+
+.d-icon__badge-x-small {
+  color: #fff;
+  font-size: 10px; }
+
+.d-icon__small {
   font-size: 14px; }
 
-.customized-icon__medium {
+.d-icon__badge {
+  top: -10px;
+  right: 3px;
+  padding: 1px 5px;
+  border-radius: 999px;
+  border: 2px solid white;
+  background-color: #DE0D0C; }
+
+.d-icon__badge-small {
+  color: #fff;
+  font-size: 10px; }
+
+.d-icon__medium {
   font-size: 16px; }
 
-.customized-icon__large {
-  font-size: 18px; }
+.d-icon__badge {
+  top: -10px;
+  right: 3px;
+  padding: 1px 5px;
+  border-radius: 999px;
+  border: 2px solid white;
+  background-color: #DE0D0C; }
 
-.customized-icon__x-large {
-  font-size: 28px; }
+.d-icon__badge-medium {
+  color: #fff;
+  font-size: 10px; }
 
-.customized-icon__xx-large {
-  font-size: 38px; }
+.d-icon__large {
+  font-size: 16px; }
 
-.customized-icon__xxx-large {
-  font-size: 48px; }
+.d-icon__badge {
+  top: -10px;
+  right: 3px;
+  padding: 1px 5px;
+  border-radius: 999px;
+  border: 2px solid white;
+  background-color: #DE0D0C; }
+
+.d-icon__badge-large {
+  color: #fff;
+  font-size: 10px; }
+
+.d-icon__x-large {
+  font-size: 26px; }
+
+.d-icon__badge {
+  top: -10px;
+  right: 3px;
+  padding: 1px 5px;
+  border-radius: 999px;
+  border: 2px solid white;
+  background-color: #DE0D0C; }
+
+.d-icon__badge-x-large {
+  color: #fff;
+  font-size: 10px; }
+
+.d-icon__xx-large {
+  font-size: 36px; }
+
+.d-icon__badge {
+  top: -10px;
+  right: 3px;
+  padding: 1px 5px;
+  border-radius: 999px;
+  border: 2px solid white;
+  background-color: #DE0D0C; }
+
+.d-icon__badge-xx-large {
+  color: #fff;
+  font-size: 10px; }
+
+.d-icon__xxx-large {
+  font-size: 46px; }
+
+.d-icon__badge {
+  top: -10px;
+  right: 3px;
+  padding: 1px 5px;
+  border-radius: 999px;
+  border: 2px solid white;
+  background-color: #DE0D0C; }
+
+.d-icon__badge-xxx-large {
+  color: #fff;
+  font-size: 10px; }
+
+.d-icon__container-badge-long .d-icon__badge {
+  top: -10px;
+  right: -10px;
+  padding: 1px 5px; }
 
 /* ----------------------------------------
 // Select

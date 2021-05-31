@@ -1,4 +1,4 @@
-import { jsx, jsxs } from 'react/jsx-runtime';
+import { jsxs, jsx } from 'react/jsx-runtime';
 import * as React from 'react';
 import React__default, { createContext, useRef, useState, useEffect, useLayoutEffect as useLayoutEffect$1, Component, useContext, useMemo as useMemo$1, useCallback, forwardRef, useImperativeHandle, isValidElement as isValidElement$1, cloneElement as cloneElement$1 } from 'react';
 import * as ReactDOM from 'react-dom';
@@ -172,8 +172,16 @@ var classnames = createCommonjsModule(function (module) {
 });
 
 var Icon$1 = function (_a) {
-    var name = _a.name, _b = _a.size, size = _b === void 0 ? "medium" : _b, className = _a.className, props = __rest$p(_a, ["name", "size", "className"]);
-    var iconClass = classnames("material-icons", "customized-icon__" + size, className);
+    var name = _a.name, _b = _a.size, size = _b === void 0 ? "medium" : _b, className = _a.className, _c = _a.variant, variant = _c === void 0 ? "single" : _c, badge = _a.badge, classNameContainer = _a.classNameContainer, props = __rest$p(_a, ["name", "size", "className", "variant", "badge", "classNameContainer"]);
+    var iconClass = classnames("material-icons", "d-icon__" + size, className);
+    var wrapperClass = classnames("position-relative d-icon__container", {
+        "d-icon__container-badge-long": badge && (badge === null || badge === void 0 ? void 0 : badge.length) > 2,
+    }, classNameContainer);
+    var badgeClass = classnames("position-absolute d-icon__badge d-icon__badge-" + size);
+    if (variant === "badge") {
+        return (jsxs("div", __assign$2({ className: wrapperClass }, { children: [jsx("i", __assign$2({ className: iconClass }, props, { children: name }), void 0),
+                badge && jsx("div", __assign$2({ className: badgeClass }, { children: badge }), void 0)] }), void 0));
+    }
     return (jsx("i", __assign$2({ className: iconClass }, props, { children: name }), void 0));
 };
 
@@ -71198,6 +71206,9 @@ var transformColumn = function (columns, baseColumn) {
         var title = _a.title, titleTooltip = _a.titleTooltip, dataIndex = _a.dataIndex, render = _a.render, props = __rest$p(_a, ["title", "titleTooltip", "dataIndex", "render"]);
         // custom title
         var titleResult = title;
+        if (typeof title === "function") {
+            titleResult = title();
+        }
         if (titleTooltip) {
             titleResult = (jsxs(Tooltip, __assign$2({ className: "flex-center-y", zIndex: 10000, title: titleTooltip }, { children: [title, jsx(Icon$1, { name: "info", className: "ml-3" }, void 0)] }), void 0));
         }
@@ -73847,7 +73858,7 @@ var ResizableTitle = function (props) {
 
 var INIT_PAGINATION = {
     pageIndex: 1,
-    pageSize: 10,
+    pageSize: 20,
     showQuickJumper: true,
     showTotal: function (total) { return jsx("div", __assign$2({ className: "captionText" }, { children: "Total " + total + " items" }), void 0); },
     pageSizeOptions: ["10", "20", "50"],
@@ -74118,7 +74129,7 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
                             options: this.props.columns, setSelectedColumns: function (column) { return _this.setState({ selectedColumns: column }); }, keyTable: keyTableLayout, refreshLayout: function () { return _this.getDefaultTableLayout(); } }, void 0)] }), void 0)),
                 jsx(Table, __assign$2({ rowKey: rowKey, dataSource: data, loading: loading, onChange: this.handleTableChange, rowClassName: function () {
                         return "d-table-awesome-component__row";
-                    }, pagination: paginationResult, scroll: isScroll ? { y: 500 } : {}, tableLayout: tableLayout, bordered: true, components: this.components }, this.props, { className: "d-table-awesome-component__table " + classNameTable, 
+                    }, pagination: paginationResult, scroll: isScroll ? { y: "1000" } : {}, tableLayout: tableLayout, bordered: true, components: this.components }, this.props, { className: "d-table-awesome-component__table " + classNameTable, 
                     // columns props always has to be in last positon in order for Resizable table to work
                     columns: columnSelected }), void 0)] }), void 0));
     };
