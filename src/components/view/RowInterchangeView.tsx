@@ -8,26 +8,41 @@ export interface IRowsKey {
 
 export interface RowInterchangeViewProps {
     className?: string;
+    classNameRow?: string;
+    classNameLabel?: string;
+    classNameContent?: string;
     dataSource: any;
     keyList: Array<IRowsKey>;
     getLabel?: (label: IRowsKey["label"], row: IRowsKey, data: any) => any;
     getContent?: (id: IRowsKey["id"], row: IRowsKey, data: any) => any;
+    variant?: "background" | "border";
 }
 
 const RowInterchangeView: React.FC<RowInterchangeViewProps> = ({
     dataSource = {},
     keyList = [],
-    className,
     getLabel,
     getContent,
+    variant = "background",
+    className,
+    classNameRow,
+    classNameLabel,
+    classNameContent,
 }) => {
     const wrapperClass = ClassNames(className);
     return (
         <div className={wrapperClass}>
             {keyList.map((row, index) => {
-                const rowClass = ClassNames("d-flex align-items-center w-100 justify-content-between py-2 px-3", {
-                    "bg-light-gray": index % 2,
-                });
+                const rowClass = ClassNames(
+                    "d-flex align-items-start w-100 justify-content-between py-3 px-3",
+                    {
+                        "bg-light-gray": index % 2 && variant === "background",
+                        "border-top": index !== 0 && variant === "border",
+                    },
+                    classNameRow
+                );
+                const labelClass = ClassNames("text-x-small w-100", classNameLabel);
+                const contentClass = ClassNames("w-100 text", classNameContent);
                 const { id, label } = row;
                 let labelView;
                 let content;
@@ -39,13 +54,11 @@ const RowInterchangeView: React.FC<RowInterchangeViewProps> = ({
                 if (getContent) {
                     content = getContent(id, row, dataSource);
                 }
-                const contentView = <label className="d-block text">{content}</label>;
+                const contentView = <div className={contentClass}>{content}</div>;
                 return (
                     <div className={rowClass} key={index}>
-                        <div className="w-100">
-                            <div className="d-block text-x-small">{labelView}</div>
-                        </div>
-                        <div className="w-100 text">{contentView}</div>
+                        <div className={labelClass}>{labelView}</div>
+                        {contentView}
                     </div>
                 );
             })}

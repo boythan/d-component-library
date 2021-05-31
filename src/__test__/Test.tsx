@@ -1,5 +1,5 @@
 /* eslint-disable operator-linebreak */
-import React, { ReactElement, useEffect, useRef, useState } from "react";
+import React, { ReactElement, useContext, useEffect, useRef, useState } from "react";
 import InputText from "../components/input/InputText";
 import Icon, { IconProps } from "../components/icon/Icon";
 import Button from "../components/button/Button";
@@ -27,6 +27,8 @@ import AvatarName from "../components/avatar/AvatarName";
 interface Props {
     content?: any;
 }
+
+const AppStateContext = React.createContext<any>({ defaultValue: null });
 
 const FAKE_TOKEN =
     "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5MmRhNDEwNC01NDY4LTQwY2MtODU1Ni1kZjg4NzY0OGZiOGEiLCJqdGkiOiI5ZmZlNjUwNzQwMDRmZjY1MzY4ZmEyZjAwN2ZhY2I2MGRlY2Q3NGFmZjUwOWNhNmI4ZmM3YTBhNDIyYzZmZDdlMDJlNTIwMjBiYTZjYWQ1NyIsImlhdCI6MTYyMTkzNDY3NSwibmJmIjoxNjIxOTM0Njc1LCJleHAiOjE2NTM0NzA2NzUsInN1YiI6ImY4ZjUwMjdmLTdiMTItMTFlYi05MDIyLWNlN2ZjZGYxMWQzMCIsInNjb3BlcyI6W119.QOrc-ngJFxakJNVMI2stK1L2zyBArmvtLHZtfE5OPefj8azpI2Qxlvvp_EmN_RAV-pkW5YK1qv5Lpc6SHhKR6te9GL8xw3bFbVaKbcDxvNHLkx3zhsGszXeWxt-PoVVscQ1lk5q3z3yJhlYdiOXXECPuVwSVWVV3JQo9D9e-kepjk_8-_bd-klzzP1ST3pMlm5V7-MEMYrRB3de_M3ydjhH77ZJLGNyhNWPKV0h40ysM-zUmzynnX7InpzIS26Lr9dKNw0jW69RNwCpDRAfkYX9enhGYqMyRYCWxXmgojiqVkIXOvi4Ec61QjdRJig2W3dcWwt3a_QSaabTvv6Y0Xp-NbL1dl9GsPkHQZmlMH4fYS744lK0F854Ik_4SMeQO57ZUatGxrRFvw5AF04mrSF3cblH-W419am4uXeEiOMKHfBeuzrSj5Vu8BbRiHmWwHl-H4K-nSoe2TRz6_IGuahn-4S9xiFnUOzX3QIqZ_Br7lrFLN4A5EJmG4uYwLDZvwtct-lNiLqmEMp3UovTr3qlBr1GXoMRvLRAlfPMYKipmCJ1bhPYoXyXoOhAwluAM7F24o5GIB43DjD5_dOXYniuUAa7z3ObLtJDtkbtdif3MUyrHKlv9tfrf_c87lFrfTMfYGkLpgZ6pBKz0B7S3ZtkkgNi1oUbVwN98eiZLBrs";
@@ -253,16 +255,53 @@ const TableView = () => {
     );
 };
 
+const RowsView = () => {
+    const { mockData } = useContext<any>(AppStateContext);
+    console.log(mockData);
+
+    return (
+        <div className="my-4">
+            <RowInterchangeView
+                dataSource={mockData[0]}
+                keyList={[
+                    { id: "id", label: "ID" },
+                    { id: "userId", label: "User ID" },
+                    { id: "title", label: "Title" },
+                    { id: "body", label: "Body" },
+                ]}
+            />
+            <RowInterchangeView
+                dataSource={mockData[0]}
+                keyList={[
+                    { id: "id", label: "ID" },
+                    { id: "userId", label: "User ID" },
+                    { id: "title", label: "Title" },
+                    { id: "body", label: "Body" },
+                ]}
+                variant="border"
+            />
+        </div>
+    );
+};
+
 export default function Test({ content }: Props): ReactElement {
     const [checked, setChecked] = useState(false);
     const [valueSelect, setValueSelect] = useState(["text"]);
     const [radioValue, setRadioValue] = useState<any>(["color"]);
     const [openModal, setOpenModal] = useState(false);
     const [selectedTab, setSelectedTab] = useState<any>();
+    const [mockData, setMockData] = useState<any>([]);
     const dialogRef = useRef<any>();
+
+    async function loadFakeData() {
+        const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+        const data = await res.json();
+        setMockData(data);
+    }
 
     useEffect(() => {
         DialogManager.initialDialog(dialogRef.current);
+        loadFakeData();
     }, []);
 
     const input = (
@@ -339,20 +378,6 @@ export default function Test({ content }: Props): ReactElement {
         </div>
     );
 
-    const view = (
-        <div className="my-4">
-            <RowInterchangeView
-                dataSource={{ customerId: 62 }}
-                keyList={[
-                    { id: "customerId", label: "customerId" },
-                    { id: "typeCustomer", label: "typeCustomer" },
-                    { id: "firstName", label: "firstName" },
-                    { id: "lastName", label: "lastName" },
-                ]}
-            />
-        </div>
-    );
-
     const list = (
         <div className="my-4">
             {/* <PopoverList
@@ -411,7 +436,7 @@ export default function Test({ content }: Props): ReactElement {
                 {/* {checkBox} */}
                 {/* {header} */}
                 {tab}
-                {view}
+                <RowsView />
                 {/* {list} */}
                 {loading}
                 {dot}
@@ -428,7 +453,7 @@ export default function Test({ content }: Props): ReactElement {
         { id: "CHECKBOX", label: "CHECKBOX", component: checkBox },
         { id: "HEADER", label: "HEADER", component: header },
         { id: "TAB BAR", label: "TAB BAR", component: tab },
-        { id: "VIEW", label: "VIEW", component: view },
+        { id: "VIEW", label: "VIEW", component: <RowsView /> },
         { id: "LIST", label: "LIST", component: list },
         { id: "LOADING", label: "LOADING", component: loading },
         { id: "DOT", label: "DOT", component: dot },
@@ -439,38 +464,40 @@ export default function Test({ content }: Props): ReactElement {
     };
 
     return (
-        <div className="p-5 d-flex bg-muted">
-            <DialogComponent ref={dialogRef.current} />
-            <div className="col-3 p-0 mr-4 card-container">
-                <TabBar
-                    dataSource={TAB_LIST}
-                    variant="vertical"
-                    onChange={(tab) => setSelectedTab(tab)}
-                    value={selectedTab}
-                />
+        <AppStateContext.Provider value={{ mockData }}>
+            <div className="p-5 d-flex bg-muted">
+                <DialogComponent ref={dialogRef.current} />
+                <div className="col-3 p-0 mr-4 card-container">
+                    <TabBar
+                        dataSource={TAB_LIST}
+                        variant="vertical"
+                        onChange={(tab) => setSelectedTab(tab)}
+                        value={selectedTab}
+                    />
+                </div>
+                <div className="col-9 py-5 px-5 ml-4 card-container">
+                    {selectedTab?.component ?? "N/A"}
+                    {/* <Button content="Open Modal" variant="trans" onClick={() => setOpenModal(true)} /> */}
+                </div>
+                <Modal
+                    open={openModal}
+                    onClose={() => setOpenModal(false)}
+                    onSave={() => setOpenModal(false)}
+                    title="Filter"
+                    closeIcon={false}
+                    hasCancelButton
+                    onSideClick={() => {}}
+                    size="medium"
+                    headerSide={() => (
+                        <div className="text-nowrap" style={{ width: "200px" }}>
+                            this is header side
+                        </div>
+                    )}
+                    classNameFooter="d-none"
+                >
+                    {mainContent()}
+                </Modal>
             </div>
-            <div className="col-9 py-5 px-5 ml-4 card-container">
-                {selectedTab?.component ?? "N/A"}
-                {/* <Button content="Open Modal" variant="trans" onClick={() => setOpenModal(true)} /> */}
-            </div>
-            <Modal
-                open={openModal}
-                onClose={() => setOpenModal(false)}
-                onSave={() => setOpenModal(false)}
-                title="Filter"
-                closeIcon={false}
-                hasCancelButton
-                onSideClick={() => {}}
-                size="medium"
-                headerSide={() => (
-                    <div className="text-nowrap" style={{ width: "200px" }}>
-                        this is header side
-                    </div>
-                )}
-                classNameFooter="d-none"
-            >
-                {mainContent()}
-            </Modal>
-        </div>
+        </AppStateContext.Provider>
     );
 }
