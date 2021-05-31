@@ -21,6 +21,8 @@ export type { ModalProps } from "./components/modal/Modal";
 export { default as Modal } from "./components/modal/Modal";
 export type { AvatarProps } from "./components/avatar/Avatar";
 export { default as Avatar } from "./components/avatar/Avatar";
+export type { AvatarNameProps } from "./components/avatar/AvatarName";
+export { default as AvatarName } from "./components/avatar/AvatarName";
 export type { RowInterchangeViewProps, IRowsKey } from "./components/view/RowInterchangeView";
 export { default as RowInterchangeView } from "./components/view/RowInterchangeView";
 export type { TabBarProps, ITabItem } from "./components/tab/TabBar";

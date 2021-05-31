@@ -50740,14 +50740,40 @@ function Avatar(_a) {
     return (jsxRuntime.jsx("div", __assign$2({ className: wrapperClass, style: { backgroundColor: color } }, { children: content }), void 0));
 }
 
+var AvatarName = function (_a) {
+    var user = _a.user, _b = _a.position, position = _b === void 0 ? "before" : _b, _c = _a.size, size = _c === void 0 ? "x-small" : _c, subLabel = _a.subLabel, className = _a.className, classNameText = _a.classNameText;
+    var avatar = user.avatar, fullName = user.fullName;
+    var wrapperClass = classnames("d-flex align-items-center", className);
+    var nameClass = classnames("d-flex flex-column", {
+        "mr-2": position === "before",
+        "ml-2": position === "after",
+    });
+    var nameTextClass = classnames("text-nowrap", {
+        "text-large font-weight-bold": size === "large" || size === "x-large",
+        "text-medium": size === "medium",
+        "text-small": size === "small",
+        "text-x-small": size === "x-small",
+        "text-xx-small": size === "xx-small",
+    }, classNameText);
+    var renderName = function () {
+        return (jsxRuntime.jsxs("div", __assign$2({ className: nameClass }, { children: [jsxRuntime.jsx("div", __assign$2({ className: "" + nameTextClass }, { children: fullName }), void 0),
+                subLabel && jsxRuntime.jsx("div", __assign$2({ className: "text-x-small" }, { children: subLabel }), void 0)] }), void 0));
+    };
+    return (jsxRuntime.jsxs("div", __assign$2({ className: wrapperClass }, { children: [position === "before" && renderName(), avatar && jsxRuntime.jsx(Avatar, { src: avatar, size: size }, void 0),
+            !avatar && jsxRuntime.jsx(Avatar, { text: fullName.charAt(0), size: size }, void 0), position === "after" && renderName()] }), void 0));
+};
+
 var RowInterchangeView = function (_a) {
-    var _b = _a.dataSource, dataSource = _b === void 0 ? {} : _b, _c = _a.keyList, keyList = _c === void 0 ? [] : _c, className = _a.className, getLabel = _a.getLabel, getContent = _a.getContent;
+    var _b = _a.dataSource, dataSource = _b === void 0 ? {} : _b, _c = _a.keyList, keyList = _c === void 0 ? [] : _c, getLabel = _a.getLabel, getContent = _a.getContent, _d = _a.variant, variant = _d === void 0 ? "background" : _d, className = _a.className, classNameRow = _a.classNameRow, classNameLabel = _a.classNameLabel, classNameContent = _a.classNameContent;
     var wrapperClass = classnames(className);
     return (jsxRuntime.jsx("div", __assign$2({ className: wrapperClass }, { children: keyList.map(function (row, index) {
             var _a;
-            var rowClass = classnames("d-flex align-items-center w-100 justify-content-between py-2 px-3", {
-                "bg-light-gray": index % 2,
-            });
+            var rowClass = classnames("d-flex align-items-start w-100 justify-content-between py-3 px-3", {
+                "bg-light-gray": index % 2 && variant === "background",
+                "border-top": index !== 0 && variant === "border",
+            }, classNameRow);
+            var labelClass = classnames("text-x-small w-100", classNameLabel);
+            var contentClass = classnames("w-100 text", classNameContent);
             var id = row.id, label = row.label;
             var labelView;
             var content;
@@ -50759,9 +50785,8 @@ var RowInterchangeView = function (_a) {
             if (getContent) {
                 content = getContent(id, row, dataSource);
             }
-            var contentView = jsxRuntime.jsx("label", __assign$2({ className: "d-block text" }, { children: content }), void 0);
-            return (jsxRuntime.jsxs("div", __assign$2({ className: rowClass }, { children: [jsxRuntime.jsx("div", __assign$2({ className: "w-100" }, { children: jsxRuntime.jsx("div", __assign$2({ className: "d-block text-x-small" }, { children: labelView }), void 0) }), void 0),
-                    jsxRuntime.jsx("div", __assign$2({ className: "w-100 text" }, { children: contentView }), void 0)] }), index));
+            var contentView = jsxRuntime.jsx("div", __assign$2({ className: contentClass }, { children: content }), void 0);
+            return (jsxRuntime.jsxs("div", __assign$2({ className: rowClass }, { children: [jsxRuntime.jsx("div", __assign$2({ className: labelClass }, { children: labelView }), void 0), contentView] }), index));
         }) }), void 0));
 };
 
@@ -74193,6 +74218,7 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
 }(React.Component));
 
 exports.Avatar = Avatar;
+exports.AvatarName = AvatarName;
 exports.AwesomeListComponent = AwesomeListComponent;
 exports.AwesomeTableComponent = AwesomeTableComponent;
 exports.AwesomeTableUtils = AwesomeTableUtils;

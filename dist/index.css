@@ -28508,19 +28508,19 @@ body {
   background-color: rgba(245, 245, 245, 0.9); }
 
 .border {
-  border: 1px solid #a7a7a7; }
+  border: 1px solid #ECECEC; }
 
 .border-end {
-  border-right: 1px solid #a7a7a7 !important; }
+  border-right: 1px solid #ECECEC !important; }
 
 .border-start {
-  border-left: 1px solid #a7a7a7 !important; }
+  border-left: 1px solid #ECECEC !important; }
 
 .border-bottom {
-  border-bottom: 1px solid #a7a7a7 !important; }
+  border-bottom: 1px solid #ECECEC !important; }
 
 .border-top {
-  border-top: 1px solid #a7a7a7 !important; }
+  border-top: 1px solid #ECECEC !important; }
 
 .border-primary {
   border-color: #DE0D0C !important; }
@@ -28529,7 +28529,7 @@ body {
   border: solid 3px #DE0D0C; }
 
 .border-dashed {
-  border: 1px dashed #a7a7a7; }
+  border: 1px dashed #ECECEC; }
 
 .border-line {
   border: 1px solid #d8d8d8 !important; }
@@ -28658,6 +28658,11 @@ body {
 
 .end-0 {
   right: 0px; }
+
+a {
+  color: #DE0D0C !important; }
+  a:hover {
+    color: #5e92fa !important; }
 
 /*
 // .document
@@ -29029,7 +29034,7 @@ body {
   min-height: 40px; }
 
 .d-input-text__input-container-outline {
-  border: 0.5px solid #a7a7a7 !important;
+  border: 0.5px solid #ECECEC !important;
   outline: none; }
   .d-input-text__input-container-outline:focus-within {
     outline: none !important;
@@ -29037,7 +29042,7 @@ body {
 
 .d-input-text__input-container-standard {
   border: none !important;
-  border-bottom: 0.5px solid #a7a7a7 !important;
+  border-bottom: 0.5px solid #ECECEC !important;
   outline: none;
   padding-left: 0px; }
   .d-input-text__input-container-standard:focus-within {
@@ -29056,12 +29061,12 @@ body {
 .d-input-text__prefix-container {
   padding: 10px 16px;
   background-color: #F5F5F5;
-  border-right: 0.5px solid #a7a7a7; }
+  border-right: 0.5px solid #ECECEC; }
 
 .d-input-text__suffix-container {
   padding: 10px 16px;
   background-color: #F5F5F5;
-  border-left: 0.5px solid #a7a7a7; }
+  border-left: 0.5px solid #ECECEC; }
 
 /********************************************INPUT TEXT********************************************/
 .d-input-text__input {
@@ -29108,7 +29113,7 @@ body {
     background-color: transparent !important; }
 
 .d-input-search__outline {
-  border: 0.5px solid #a7a7a7 !important;
+  border: 0.5px solid #ECECEC !important;
   outline: none; }
   .d-input-search__outline:focus-within {
     outline: none !important;
@@ -29116,7 +29121,7 @@ body {
 
 .d-input-search__standard {
   border: none !important;
-  border-bottom: 0.5px solid #a7a7a7 !important;
+  border-bottom: 0.5px solid #ECECEC !important;
   outline: none;
   padding-left: 0px; }
   .d-input-search__standard:focus-within {
@@ -29251,6 +29256,10 @@ body {
 .d-icon__badge-xxx-large {
   color: #fff;
   font-size: 10px; }
+
+.d-icon__container {
+  width: fit-content;
+  height: fit-content; }
 
 .d-icon__container-badge-long .d-icon__badge {
   top: -10px;
@@ -29709,19 +29718,19 @@ body {
   background-color: rgba(245, 245, 245, 0.9); }
 
 .border {
-  border: 1px solid #a7a7a7; }
+  border: 1px solid #ECECEC; }
 
 .border-end {
-  border-right: 1px solid #a7a7a7 !important; }
+  border-right: 1px solid #ECECEC !important; }
 
 .border-start {
-  border-left: 1px solid #a7a7a7 !important; }
+  border-left: 1px solid #ECECEC !important; }
 
 .border-bottom {
-  border-bottom: 1px solid #a7a7a7 !important; }
+  border-bottom: 1px solid #ECECEC !important; }
 
 .border-top {
-  border-top: 1px solid #a7a7a7 !important; }
+  border-top: 1px solid #ECECEC !important; }
 
 .border-primary {
   border-color: #DE0D0C !important; }
@@ -29730,7 +29739,7 @@ body {
   border: solid 3px #DE0D0C; }
 
 .border-dashed {
-  border: 1px dashed #a7a7a7; }
+  border: 1px dashed #ECECEC; }
 
 .border-line {
   border: 1px solid #d8d8d8 !important; }
@@ -29860,6 +29869,11 @@ body {
 .end-0 {
   right: 0px; }
 
+a {
+  color: #DE0D0C !important; }
+  a:hover {
+    color: #5e92fa !important; }
+
 /********************************************LABEL & CONTAINER********************************************/
 .d-select__container {
   display: flex;
@@ -29893,13 +29907,13 @@ body {
   outline: none !important; }
 
 .d-select__select-outline {
-  border: 0.5px solid #a7a7a7 !important;
+  border: 0.5px solid #ECECEC !important;
   outline: none; }
 
 .d-select__select-standard {
   border: none !important;
   outline: none;
-  border-bottom: 0.5px solid #a7a7a7 !important; }
+  border-bottom: 0.5px solid #ECECEC !important; }
 
 .d-select__error {
   border: 0.5px solid #F44336 !important; }
