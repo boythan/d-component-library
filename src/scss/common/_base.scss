@@ -149,29 +149,65 @@ body {
 // -- IMAGE
 // ----------------------------------------
 
+.image-reg-xx-small {
+    height: $image-size-xx-small;
+    object-fit: contain;
+}
+
+.image-reg-x-small {
+    height: $image-size-x-small;
+    object-fit: contain;
+}
+
 .image-reg-small {
-    height: 40px;
+    height: $image-size-small;
     object-fit: contain;
 }
 
 .image-reg-medium {
-    height: 80px;
+    height: $image-size-medium;
     object-fit: contain;
 }
 
 .image-reg-large {
-    height: 160px;
+    height: $image-size-large;
     object-fit: contain;
 }
 
-.image-square-tiny {
-    width: 30px;
-    height: 30px;
+.image-reg-x-large {
+    height: $image-size-x-large;
+    object-fit: contain;
+}
+
+.image-square-xx-small {
+    width: $image-size-xx-small;
+    height: $image-size-xx-small;
+    object-fit: cover;
+}
+
+.image-square-x-small {
+    width: $image-size-x-small;
+    height: $image-size-x-small;
     object-fit: cover;
 }
 .image-square-small {
-    width: 40px;
-    height: 40px;
+    width: $image-size-small;
+    height: $image-size-small;
+    object-fit: cover;
+}
+.image-square-medium {
+    width: $image-size-medium;
+    height: $image-size-medium;
+    object-fit: cover;
+}
+.image-square-large {
+    width: $image-size-large;
+    height: $image-size-large;
+    object-fit: cover;
+}
+.image-square-x-large {
+    width: $image-size-x-large;
+    height: $image-size-x-large;
     object-fit: cover;
 }
 
