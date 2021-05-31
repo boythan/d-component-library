@@ -17,6 +17,7 @@ export interface RowInterchangeViewProps {
     keyList: Array<IRowsKey>;
     variant?: "background" | "border";
     boldLabel?: boolean;
+    Messages?: any;
 }
 
 const RowInterchangeView: React.FC<RowInterchangeViewProps> = ({
@@ -28,6 +29,7 @@ const RowInterchangeView: React.FC<RowInterchangeViewProps> = ({
     classNameRow,
     classNameLabel,
     classNameContent,
+    Messages,
 }) => {
     const wrapperClass = ClassNames(className);
     return (
@@ -47,6 +49,9 @@ const RowInterchangeView: React.FC<RowInterchangeViewProps> = ({
                 let labelView;
                 let content;
                 labelView = label;
+                if (Messages) {
+                    labelView = Messages[label];
+                }
                 if (typeof renderLabel === "function") {
                     labelView = renderLabel(id, row, dataSource);
                 }
