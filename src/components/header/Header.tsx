@@ -53,7 +53,7 @@ const Header: React.FC<HeaderProps> = ({
                 {showCancel && (
                     <Button
                         variant="outline"
-                        content={cancelText}
+                        content={Messages ? Messages[cancelText] : cancelText}
                         onClick={() => (onCancel ? onCancel() : window.history.go("back" as any))}
                         className="mr-3"
                     />
