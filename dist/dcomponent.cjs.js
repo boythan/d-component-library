@@ -56,7 +56,7 @@ var extendStatics = function(d, b) {
     return extendStatics(d, b);
 };
 
-function __extends$2(d, b) {
+function __extends(d, b) {
     if (typeof b !== "function" && b !== null)
         throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
     extendStatics(d, b);
@@ -64,18 +64,18 @@ function __extends$2(d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 }
 
-var __assign$2 = function() {
-    __assign$2 = Object.assign || function __assign(t) {
+var __assign = function() {
+    __assign = Object.assign || function __assign(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
             s = arguments[i];
             for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
         }
         return t;
     };
-    return __assign$2.apply(this, arguments);
+    return __assign.apply(this, arguments);
 };
 
-function __rest$p(s, e) {
+function __rest$q(s, e) {
     var t = {};
     for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
         t[p] = s[p];
@@ -200,18 +200,18 @@ var classnames = createCommonjsModule(function (module) {
 }());
 });
 
-var Icon$1 = function (_a) {
-    var name = _a.name, _b = _a.size, size = _b === void 0 ? "medium" : _b, className = _a.className, _c = _a.variant, variant = _c === void 0 ? "single" : _c, badge = _a.badge, classNameContainer = _a.classNameContainer, props = __rest$p(_a, ["name", "size", "className", "variant", "badge", "classNameContainer"]);
+var Icon$2 = function (_a) {
+    var name = _a.name, _b = _a.size, size = _b === void 0 ? "medium" : _b, className = _a.className, _c = _a.variant, variant = _c === void 0 ? "single" : _c, badge = _a.badge, classNameContainer = _a.classNameContainer, props = __rest$q(_a, ["name", "size", "className", "variant", "badge", "classNameContainer"]);
     var iconClass = classnames("material-icons", "d-icon__" + size, className);
     var wrapperClass = classnames("position-relative d-icon__container", {
         "d-icon__container-badge-long": badge && (badge === null || badge === void 0 ? void 0 : badge.length) > 2,
     }, classNameContainer);
     var badgeClass = classnames("position-absolute d-icon__badge d-icon__badge-" + size);
     if (variant === "badge") {
-        return (jsxRuntime.jsxs("div", __assign$2({ className: wrapperClass }, { children: [jsxRuntime.jsx("i", __assign$2({ className: iconClass }, props, { children: name }), void 0),
-                badge && jsxRuntime.jsx("div", __assign$2({ className: badgeClass }, { children: badge }), void 0)] }), void 0));
+        return (jsxRuntime.jsxs("div", __assign({ className: wrapperClass }, { children: [jsxRuntime.jsx("i", __assign({ className: iconClass }, props, { children: name }), void 0),
+                badge && jsxRuntime.jsx("div", __assign({ className: badgeClass }, { children: badge }), void 0)] }), void 0));
     }
-    return (jsxRuntime.jsx("i", __assign$2({ className: iconClass }, props, { children: name }), void 0));
+    return (jsxRuntime.jsx("i", __assign({ className: iconClass }, props, { children: name }), void 0));
 };
 
 var InputText = function (_a) {
@@ -242,10 +242,12 @@ var InputText = function (_a) {
         }
         return (jsxRuntime.jsx("input", { value: value, onChange: onChange, className: inputClass, name: name, required: true, placeholder: placeholder, onBlur: onBlur, type: type, disabled: disabled, defaultValue: defaultValue }, key));
     };
-    return (jsxRuntime.jsxs("div", __assign$2({ className: container }, { children: [label && (jsxRuntime.jsx("label", __assign$2({ htmlFor: name, className: labelClass }, { children: jsxRuntime.jsx("span", { children: label }, void 0) }), void 0)),
-            jsxRuntime.jsxs("div", __assign$2({ className: inputContainerClass }, { children: [jsxRuntime.jsx("div", __assign$2({ className: inputPrefixClass }, { children: prefix }), void 0), renderInput(), jsxRuntime.jsx("div", __assign$2({ className: inputSuffixClass }, { children: suffix }), void 0)] }), void 0),
-            error && (jsxRuntime.jsxs("div", __assign$2({ className: "flex-center-y mt-1" }, { children: [jsxRuntime.jsx(Icon$1, { name: "error_outline", className: "text-error", size: "small" }, void 0),
-                    jsxRuntime.jsx("text", __assign$2({ className: errorTextClass }, { children: error }), void 0)] }), void 0))] }), void 0));
+    return (jsxRuntime.jsxs("div", __assign({ className: container }, { children: [label && (jsxRuntime.jsx("label", __assign({ htmlFor: name, className: labelClass }, { children: jsxRuntime.jsx("span", { children: label }, void 0) }), void 0)),
+            jsxRuntime.jsxs("div", __assign({ className: inputContainerClass }, { children: [jsxRuntime.jsx("div", __assign({ className: inputPrefixClass }, { children: prefix }), void 0),
+                    renderInput(),
+                    jsxRuntime.jsx("div", __assign({ className: inputSuffixClass }, { children: suffix }), void 0)] }), void 0),
+            error && (jsxRuntime.jsxs("div", __assign({ className: "flex-center-y mt-1" }, { children: [jsxRuntime.jsx(Icon$2, { name: "error_outline", className: "text-error", size: "small" }, void 0),
+                    jsxRuntime.jsx("text", __assign({ className: errorTextClass }, { children: error }), void 0)] }), void 0))] }), void 0));
 };
 
 function _extends$1() {
@@ -7146,7 +7148,7 @@ var Simple = function Simple() {
   }))));
 };
 
-var __rest$o = undefined && undefined.__rest || function (s, e) {
+var __rest$p = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -7169,7 +7171,7 @@ var Empty = function Empty(_a) {
       description = _a.description,
       children = _a.children,
       imageStyle = _a.imageStyle,
-      restProps = __rest$o(_a, ["className", "prefixCls", "image", "description", "children", "imageStyle"]);
+      restProps = __rest$p(_a, ["className", "prefixCls", "image", "description", "children", "imageStyle"]);
 
   var _React$useContext = React__namespace.useContext(ConfigContext),
       getPrefixCls = _React$useContext.getPrefixCls,
@@ -8153,7 +8155,11 @@ var Notice = /*#__PURE__*/function (_Component) {
 
     _classCallCheck$2(this, Notice);
 
-    _this = _super.apply(this, arguments);
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
     _this.closeTimer = null;
 
     _this.close = function (e) {
@@ -8198,7 +8204,8 @@ var Notice = /*#__PURE__*/function (_Component) {
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
-      if (this.props.duration !== prevProps.duration || this.props.updateMark !== prevProps.updateMark) {
+      if (this.props.duration !== prevProps.duration || this.props.updateMark !== prevProps.updateMark || // Visible again need reset timer
+      this.props.visible !== prevProps.visible && this.props.visible) {
         this.restartCloseTimer();
       }
     }
@@ -8261,6 +8268,7 @@ var Notice = /*#__PURE__*/function (_Component) {
 
   return Notice;
 }(React.Component);
+
 Notice.defaultProps = {
   onClose: function onClose() {},
   duration: 1.5
@@ -8326,7 +8334,11 @@ var Notification = /*#__PURE__*/function (_Component) {
 
     _classCallCheck$2(this, Notification);
 
-    _this = _super.apply(this, arguments);
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
     _this.state = {
       notices: []
     };
@@ -8476,7 +8488,8 @@ var Notification = /*#__PURE__*/function (_Component) {
       }, function (_ref5) {
         var key = _ref5.key,
             motionClassName = _ref5.className,
-            motionStyle = _ref5.style;
+            motionStyle = _ref5.style,
+            visible = _ref5.visible;
         var _this2$noticePropsMap = _this2.noticePropsMap[key],
             noticeProps = _this2$noticePropsMap.props,
             holderCallback = _this2$noticePropsMap.holderCallback;
@@ -8504,7 +8517,8 @@ var Notification = /*#__PURE__*/function (_Component) {
 
         return /*#__PURE__*/React__namespace.createElement(Notice, _extends$1({}, noticeProps, {
           className: classnames(motionClassName, noticeProps === null || noticeProps === void 0 ? void 0 : noticeProps.className),
-          style: _objectSpread2$1(_objectSpread2$1({}, motionStyle), noticeProps === null || noticeProps === void 0 ? void 0 : noticeProps.style)
+          style: _objectSpread2$1(_objectSpread2$1({}, motionStyle), noticeProps === null || noticeProps === void 0 ? void 0 : noticeProps.style),
+          visible: visible
         }));
       }));
     }
@@ -8513,6 +8527,7 @@ var Notification = /*#__PURE__*/function (_Component) {
   return Notification;
 }(React.Component);
 
+Notification.newInstance = void 0;
 Notification.defaultProps = {
   prefixCls: 'rc-notification',
   animation: 'fade',
@@ -9609,7 +9624,7 @@ function getTwoToneColor() {
 // should move it to antd main repo?
 
 setTwoToneColor('#1890ff');
-var Icon = /*#__PURE__*/React__namespace.forwardRef(function (props, ref) {
+var Icon$1 = /*#__PURE__*/React__namespace.forwardRef(function (props, ref) {
   var _classNames;
 
   var className = props.className,
@@ -9657,14 +9672,14 @@ var Icon = /*#__PURE__*/React__namespace.forwardRef(function (props, ref) {
     style: svgStyle
   }));
 });
-Icon.displayName = 'AntdIcon';
-Icon.getTwoToneColor = getTwoToneColor;
-Icon.setTwoToneColor = setTwoToneColor;
+Icon$1.displayName = 'AntdIcon';
+Icon$1.getTwoToneColor = getTwoToneColor;
+Icon$1.setTwoToneColor = setTwoToneColor;
 
 // GENERATE BY ./scripts/generate.ts
 
 var LoadingOutlined = function LoadingOutlined(props, ref) {
-  return /*#__PURE__*/React__namespace.createElement(Icon, Object.assign({}, props, {
+  return /*#__PURE__*/React__namespace.createElement(Icon$1, Object.assign({}, props, {
     ref: ref,
     icon: LoadingOutlined$2
   }));
@@ -9679,7 +9694,7 @@ var ExclamationCircleFilled$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": 
 // GENERATE BY ./scripts/generate.ts
 
 var ExclamationCircleFilled = function ExclamationCircleFilled(props, ref) {
-  return /*#__PURE__*/React__namespace.createElement(Icon, Object.assign({}, props, {
+  return /*#__PURE__*/React__namespace.createElement(Icon$1, Object.assign({}, props, {
     ref: ref,
     icon: ExclamationCircleFilled$2
   }));
@@ -9694,7 +9709,7 @@ var CloseCircleFilled$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64
 // GENERATE BY ./scripts/generate.ts
 
 var CloseCircleFilled = function CloseCircleFilled(props, ref) {
-  return /*#__PURE__*/React__namespace.createElement(Icon, Object.assign({}, props, {
+  return /*#__PURE__*/React__namespace.createElement(Icon$1, Object.assign({}, props, {
     ref: ref,
     icon: CloseCircleFilled$2
   }));
@@ -9709,7 +9724,7 @@ var CheckCircleFilled$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64
 // GENERATE BY ./scripts/generate.ts
 
 var CheckCircleFilled = function CheckCircleFilled(props, ref) {
-  return /*#__PURE__*/React__namespace.createElement(Icon, Object.assign({}, props, {
+  return /*#__PURE__*/React__namespace.createElement(Icon$1, Object.assign({}, props, {
     ref: ref,
     icon: CheckCircleFilled$2
   }));
@@ -9724,7 +9739,7 @@ var InfoCircleFilled$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 
 // GENERATE BY ./scripts/generate.ts
 
 var InfoCircleFilled = function InfoCircleFilled(props, ref) {
-  return /*#__PURE__*/React__namespace.createElement(Icon, Object.assign({}, props, {
+  return /*#__PURE__*/React__namespace.createElement(Icon$1, Object.assign({}, props, {
     ref: ref,
     icon: InfoCircleFilled$2
   }));
@@ -10027,7 +10042,7 @@ var CloseOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896
 // GENERATE BY ./scripts/generate.ts
 
 var CloseOutlined = function CloseOutlined(props, ref) {
-  return /*#__PURE__*/React__namespace.createElement(Icon, Object.assign({}, props, {
+  return /*#__PURE__*/React__namespace.createElement(Icon$1, Object.assign({}, props, {
     ref: ref,
     icon: CloseOutlined$2
   }));
@@ -10042,7 +10057,7 @@ var CheckCircleOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 
 // GENERATE BY ./scripts/generate.ts
 
 var CheckCircleOutlined = function CheckCircleOutlined(props, ref) {
-  return /*#__PURE__*/React__namespace.createElement(Icon, Object.assign({}, props, {
+  return /*#__PURE__*/React__namespace.createElement(Icon$1, Object.assign({}, props, {
     ref: ref,
     icon: CheckCircleOutlined$2
   }));
@@ -10057,7 +10072,7 @@ var CloseCircleOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 
 // GENERATE BY ./scripts/generate.ts
 
 var CloseCircleOutlined = function CloseCircleOutlined(props, ref) {
-  return /*#__PURE__*/React__namespace.createElement(Icon, Object.assign({}, props, {
+  return /*#__PURE__*/React__namespace.createElement(Icon$1, Object.assign({}, props, {
     ref: ref,
     icon: CloseCircleOutlined$2
   }));
@@ -10072,7 +10087,7 @@ var ExclamationCircleOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox"
 // GENERATE BY ./scripts/generate.ts
 
 var ExclamationCircleOutlined = function ExclamationCircleOutlined(props, ref) {
-  return /*#__PURE__*/React__namespace.createElement(Icon, Object.assign({}, props, {
+  return /*#__PURE__*/React__namespace.createElement(Icon$1, Object.assign({}, props, {
     ref: ref,
     icon: ExclamationCircleOutlined$2
   }));
@@ -10087,7 +10102,7 @@ var InfoCircleOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 6
 // GENERATE BY ./scripts/generate.ts
 
 var InfoCircleOutlined = function InfoCircleOutlined(props, ref) {
-  return /*#__PURE__*/React__namespace.createElement(Icon, Object.assign({}, props, {
+  return /*#__PURE__*/React__namespace.createElement(Icon$1, Object.assign({}, props, {
     ref: ref,
     icon: InfoCircleOutlined$2
   }));
@@ -10479,7 +10494,7 @@ var ProviderChildren = function ProviderChildren(props) {
     if (customizePrefixCls) return customizePrefixCls;
     var mergedPrefixCls = prefixCls || parentContext.getPrefixCls('');
     return suffixCls ? "".concat(mergedPrefixCls, "-").concat(suffixCls) : mergedPrefixCls;
-  }, [parentContext.getPrefixCls]);
+  }, [parentContext.getPrefixCls, props.prefixCls]);
 
   var config = _extends$1(_extends$1({}, parentContext), {
     csp: csp,
@@ -11317,7 +11332,7 @@ var propList = "".concat(attributes, " ").concat(eventsName).split(/[\s\n]+/);
 var ariaPrefix = 'aria-';
 var dataPrefix = 'data-';
 
-function match$1(key, prefix) {
+function match(key, prefix) {
   return key.indexOf(prefix) === 0;
 }
 /**
@@ -11348,8 +11363,8 @@ function pickAttrs(props) {
   var attrs = {};
   Object.keys(props).forEach(function (key) {
     if ( // Aria
-    mergedConfig.aria && (key === 'role' || match$1(key, ariaPrefix)) || // Data
-    mergedConfig.data && match$1(key, dataPrefix) || // Attr
+    mergedConfig.aria && (key === 'role' || match(key, ariaPrefix)) || // Data
+    mergedConfig.data && match(key, dataPrefix) || // Attr
     mergedConfig.attr && propList.includes(key)) {
       attrs[key] = props[key];
     }
@@ -13272,7 +13287,7 @@ function fillOptionsWithMissingValue(options, value, optionLabelProp, labelInVal
   return cloneOptions;
 }
 
-var isMobile$1 = (function () {
+var isMobile = (function () {
   if (typeof navigator === 'undefined' || typeof window === 'undefined') {
     return false;
   }
@@ -13337,8 +13352,11 @@ function useControlledState(defaultStateValue, option) {
   return [mergedValue, triggerChange];
 }
 
-function Item(props) {
+var UNDEFINED = undefined;
+
+function InternalItem(props, ref) {
   var prefixCls = props.prefixCls,
+      invalidate = props.invalidate,
       item = props.item,
       renderItem = props.renderItem,
       responsive = props.responsive,
@@ -13349,8 +13367,9 @@ function Item(props) {
       children = props.children,
       display = props.display,
       order = props.order,
-      Component = props.component,
-      restProps = _objectWithoutProperties$1(props, ["prefixCls", "item", "renderItem", "responsive", "registerSize", "itemKey", "className", "style", "children", "display", "order", "component"]);
+      _props$component = props.component,
+      Component = _props$component === void 0 ? 'div' : _props$component,
+      restProps = _objectWithoutProperties$1(props, ["prefixCls", "invalidate", "item", "renderItem", "responsive", "registerSize", "itemKey", "className", "style", "children", "display", "order", "component"]);
 
   var mergedHidden = responsive && !display; // ================================ Effect ================================
 
@@ -13364,17 +13383,32 @@ function Item(props) {
     };
   }, []); // ================================ Render ================================
 
-  var childNode = item !== undefined ? renderItem(item) : children;
+  var childNode = renderItem && item !== UNDEFINED ? renderItem(item) : children;
+  var overflowStyle;
+
+  if (!invalidate) {
+    overflowStyle = {
+      opacity: mergedHidden ? 0 : 1,
+      height: mergedHidden ? 0 : UNDEFINED,
+      overflowY: mergedHidden ? 'hidden' : UNDEFINED,
+      order: responsive ? order : UNDEFINED,
+      pointerEvents: mergedHidden ? 'none' : UNDEFINED,
+      position: mergedHidden ? 'absolute' : UNDEFINED
+    };
+  }
+
+  var overflowProps = {};
+
+  if (mergedHidden) {
+    overflowProps['aria-hidden'] = true;
+  }
+
   var itemNode = /*#__PURE__*/React__namespace.createElement(Component, _extends$1({
-    className: classnames(prefixCls, className),
-    style: _objectSpread2$1({
-      opacity: mergedHidden ? 0.2 : 1,
-      height: mergedHidden ? 0 : undefined,
-      overflowY: mergedHidden ? 'hidden' : undefined,
-      order: responsive ? order : undefined,
-      pointerEvents: mergedHidden ? 'none' : undefined
-    }, style)
-  }, restProps), childNode);
+    className: classnames(!invalidate && prefixCls, className),
+    style: _objectSpread2$1(_objectSpread2$1({}, overflowStyle), style)
+  }, overflowProps, restProps, {
+    ref: ref
+  }), childNode);
 
   if (responsive) {
     itemNode = /*#__PURE__*/React__namespace.createElement(ReactResizeObserver, {
@@ -13387,6 +13421,9 @@ function Item(props) {
 
   return itemNode;
 }
+
+var Item = /*#__PURE__*/React__namespace.forwardRef(InternalItem);
+Item.displayName = 'Item';
 
 /**
  * State generate. Return a `setState` but it will flush all state with one render to save perf.
@@ -13436,7 +13473,40 @@ function useBatchFrameState() {
   return createState;
 }
 
+var InternalRawItem = function InternalRawItem(props, ref) {
+  var context = React__namespace.useContext(OverflowContext); // Render directly when context not provided
+
+  if (!context) {
+    var _props$component = props.component,
+        Component = _props$component === void 0 ? 'div' : _props$component,
+        _restProps = _objectWithoutProperties$1(props, ["component"]);
+
+    return /*#__PURE__*/React__namespace.createElement(Component, _extends$1({}, _restProps, {
+      ref: ref
+    }));
+  }
+
+  var contextClassName = context.className,
+      restContext = _objectWithoutProperties$1(context, ["className"]);
+
+  var className = props.className,
+      restProps = _objectWithoutProperties$1(props, ["className"]); // Do not pass context to sub item to avoid multiple measure
+
+
+  return /*#__PURE__*/React__namespace.createElement(OverflowContext.Provider, {
+    value: null
+  }, /*#__PURE__*/React__namespace.createElement(Item, _extends$1({
+    ref: ref,
+    className: classnames(contextClassName, className)
+  }, restContext, restProps)));
+};
+
+var RawItem = /*#__PURE__*/React__namespace.forwardRef(InternalRawItem);
+RawItem.displayName = 'RawItem';
+
+var OverflowContext = /*#__PURE__*/React__namespace.createContext(null);
 var RESPONSIVE = 'responsive';
+var INVALIDATE = 'invalidate';
 
 function defaultRenderRest(omittedItems) {
   return "+ ".concat(omittedItems.length, " ...");
@@ -13448,28 +13518,32 @@ function Overflow(props, ref) {
       _props$data = props.data,
       data = _props$data === void 0 ? [] : _props$data,
       renderItem = props.renderItem,
+      renderRawItem = props.renderRawItem,
       itemKey = props.itemKey,
       _props$itemWidth = props.itemWidth,
       itemWidth = _props$itemWidth === void 0 ? 10 : _props$itemWidth,
+      ssr = props.ssr,
       style = props.style,
       className = props.className,
       maxCount = props.maxCount,
-      _props$renderRest = props.renderRest,
-      renderRest = _props$renderRest === void 0 ? defaultRenderRest : _props$renderRest,
-      renderItemProps = props.renderItemProps,
+      renderRest = props.renderRest,
+      renderRawRest = props.renderRawRest,
       suffix = props.suffix,
       _props$component = props.component,
       Component = _props$component === void 0 ? 'div' : _props$component,
-      _props$itemComponent = props.itemComponent,
-      itemComponent = _props$itemComponent === void 0 ? 'div' : _props$itemComponent,
-      restProps = _objectWithoutProperties$1(props, ["prefixCls", "data", "renderItem", "itemKey", "itemWidth", "style", "className", "maxCount", "renderRest", "renderItemProps", "suffix", "component", "itemComponent"]);
+      itemComponent = props.itemComponent,
+      onVisibleChange = props.onVisibleChange,
+      restProps = _objectWithoutProperties$1(props, ["prefixCls", "data", "renderItem", "renderRawItem", "itemKey", "itemWidth", "ssr", "style", "className", "maxCount", "renderRest", "renderRawRest", "suffix", "component", "itemComponent", "onVisibleChange"]);
 
   var createUseState = useBatchFrameState();
+  var fullySSR = ssr === 'full';
 
-  var _createUseState = createUseState(0),
+  var _createUseState = createUseState(null),
       _createUseState2 = _slicedToArray$3(_createUseState, 2),
       containerWidth = _createUseState2[0],
       setContainerWidth = _createUseState2[1];
+
+  var mergedContainerWidth = containerWidth || 0;
 
   var _createUseState3 = createUseState(new Map()),
       _createUseState4 = _slicedToArray$3(_createUseState3, 2),
@@ -13496,10 +13570,18 @@ function Overflow(props, ref) {
       suffixFixedStart = _useState2[0],
       setSuffixFixedStart = _useState2[1];
 
-  var _useState3 = React.useState(0),
+  var _useState3 = React.useState(null),
       _useState4 = _slicedToArray$3(_useState3, 2),
       displayCount = _useState4[0],
       setDisplayCount = _useState4[1];
+
+  var mergedDisplayCount = React__namespace.useMemo(function () {
+    if (displayCount === null && fullySSR) {
+      return Number.MAX_SAFE_INTEGER;
+    }
+
+    return displayCount || 0;
+  }, [displayCount, containerWidth]);
 
   var _useState5 = React.useState(false),
       _useState6 = _slicedToArray$3(_useState5, 2),
@@ -13511,6 +13593,7 @@ function Overflow(props, ref) {
   var mergedRestWidth = Math.max(prevRestWidth, restWidth); // ================================= Data =================================
 
   var isResponsive = data.length && maxCount === RESPONSIVE;
+  var invalidate = maxCount === INVALIDATE;
   /**
    * When is `responsive`, we will always render rest node to get the real width of it for calculation
    */
@@ -13520,7 +13603,11 @@ function Overflow(props, ref) {
     var items = data;
 
     if (isResponsive) {
-      items = data.slice(0, Math.min(data.length, containerWidth / itemWidth));
+      if (containerWidth === null && fullySSR) {
+        items = data;
+      } else {
+        items = data.slice(0, Math.min(data.length, mergedContainerWidth / itemWidth));
+      }
     } else if (typeof maxCount === 'number') {
       items = data.slice(0, maxCount);
     }
@@ -13529,11 +13616,11 @@ function Overflow(props, ref) {
   }, [data, itemWidth, containerWidth, maxCount, isResponsive]);
   var omittedItems = React.useMemo(function () {
     if (isResponsive) {
-      return data.slice(displayCount + 1);
+      return data.slice(mergedDisplayCount + 1);
     }
 
     return data.slice(mergedData.length);
-  }, [data, mergedData, isResponsive, displayCount]); // ================================= Item =================================
+  }, [data, mergedData, isResponsive, mergedDisplayCount]); // ================================= Item =================================
 
   var getKey = React.useCallback(function (item, index) {
     var _ref;
@@ -13553,6 +13640,7 @@ function Overflow(props, ref) {
 
     if (!notReady) {
       setRestReady(count < data.length - 1);
+      onVisibleChange === null || onVisibleChange === void 0 ? void 0 : onVisibleChange(count);
     }
   } // ================================= Size =================================
 
@@ -13590,7 +13678,7 @@ function Overflow(props, ref) {
   }
 
   React__namespace.useLayoutEffect(function () {
-    if (containerWidth && mergedRestWidth && mergedData) {
+    if (mergedContainerWidth && mergedRestWidth && mergedData) {
       var totalWidth = suffixWidth;
       var len = mergedData.length;
       var lastIndex = len - 1; // When data count change to 0, reset this since not loop will reach
@@ -13612,12 +13700,12 @@ function Overflow(props, ref) {
 
         totalWidth += currentItemWidth;
 
-        if (i === lastIndex - 1 && totalWidth + getItemWidth(lastIndex) <= containerWidth) {
+        if (i === lastIndex - 1 && totalWidth + getItemWidth(lastIndex) <= mergedContainerWidth) {
           // Additional check if match the end
           updateDisplayCount(lastIndex);
           setSuffixFixedStart(null);
           break;
-        } else if (totalWidth + mergedRestWidth > containerWidth) {
+        } else if (totalWidth + mergedRestWidth > mergedContainerWidth) {
           // Can not hold all the content to show rest
           updateDisplayCount(i - 1);
           setSuffixFixedStart(totalWidth - currentItemWidth - suffixWidth + restWidth);
@@ -13630,11 +13718,11 @@ function Overflow(props, ref) {
         }
       }
 
-      if (suffix && getItemWidth(0) + suffixWidth > containerWidth) {
+      if (suffix && getItemWidth(0) + suffixWidth > mergedContainerWidth) {
         setSuffixFixedStart(null);
       }
     }
-  }, [containerWidth, itemWidths, restWidth, suffixWidth, getKey, mergedData]); // ================================ Render ================================
+  }, [mergedContainerWidth, itemWidths, restWidth, suffixWidth, getKey, mergedData]); // ================================ Render ================================
 
   var displayRest = restReady && !!omittedItems.length;
   var suffixStyle = {};
@@ -13650,13 +13738,23 @@ function Overflow(props, ref) {
   var itemSharedProps = {
     prefixCls: itemPrefixCls,
     responsive: isResponsive,
-    component: itemComponent
-  };
-  var overflowNode = /*#__PURE__*/React__namespace.createElement(Component, _extends$1({
-    className: classnames(prefixCls, className),
-    style: style,
-    ref: ref
-  }, restProps), mergedData.map(function (item, index) {
+    component: itemComponent,
+    invalidate: invalidate
+  }; // >>>>> Choice render fun by `renderRawItem`
+
+  var internalRenderItemNode = renderRawItem ? function (item, index) {
+    var key = getKey(item, index);
+    return /*#__PURE__*/React__namespace.createElement(OverflowContext.Provider, {
+      key: key,
+      value: _objectSpread2$1(_objectSpread2$1({}, itemSharedProps), {}, {
+        order: index,
+        item: item,
+        itemKey: key,
+        registerSize: registerSize,
+        display: index <= mergedDisplayCount
+      })
+    }, renderRawItem(item, index));
+  } : function (item, index) {
     var key = getKey(item, index);
     return /*#__PURE__*/React__namespace.createElement(Item, _extends$1({}, itemSharedProps, {
       order: index,
@@ -13665,16 +13763,33 @@ function Overflow(props, ref) {
       renderItem: mergedRenderItem,
       itemKey: key,
       registerSize: registerSize,
-      display: index <= displayCount
-    }, renderItemProps === null || renderItemProps === void 0 ? void 0 : renderItemProps(item)));
-  }), showRest ? /*#__PURE__*/React__namespace.createElement(Item, _extends$1({}, itemSharedProps, {
-    // When not show, order should be the last
-    order: displayRest ? displayCount : Number.MAX_SAFE_INTEGER,
+      display: index <= mergedDisplayCount
+    }));
+  }; // >>>>> Rest node
+
+  var restNode;
+  var restContextProps = {
+    order: displayRest ? mergedDisplayCount : Number.MAX_SAFE_INTEGER,
     className: "".concat(itemPrefixCls, "-rest"),
     registerSize: registerOverflowSize,
     display: displayRest
-  }), typeof renderRest === 'function' ? renderRest(omittedItems) : renderRest) : null, suffix && /*#__PURE__*/React__namespace.createElement(Item, _extends$1({}, itemSharedProps, {
-    order: displayCount,
+  };
+
+  if (!renderRawRest) {
+    var mergedRenderRest = renderRest || defaultRenderRest;
+    restNode = /*#__PURE__*/React__namespace.createElement(Item, _extends$1({}, itemSharedProps, restContextProps), typeof mergedRenderRest === 'function' ? mergedRenderRest(omittedItems) : mergedRenderRest);
+  } else if (renderRawRest) {
+    restNode = /*#__PURE__*/React__namespace.createElement(OverflowContext.Provider, {
+      value: _objectSpread2$1(_objectSpread2$1({}, itemSharedProps), restContextProps)
+    }, renderRawRest(omittedItems));
+  }
+
+  var overflowNode = /*#__PURE__*/React__namespace.createElement(Component, _extends$1({
+    className: classnames(!invalidate && prefixCls, className),
+    style: style,
+    ref: ref
+  }, restProps), mergedData.map(internalRenderItemNode), showRest ? restNode : null, suffix && /*#__PURE__*/React__namespace.createElement(Item, _extends$1({}, itemSharedProps, {
+    order: mergedDisplayCount,
     className: "".concat(itemPrefixCls, "-suffix"),
     registerSize: registerSuffixSize,
     display: true,
@@ -13691,7 +13806,10 @@ function Overflow(props, ref) {
 }
 
 var ForwardOverflow = /*#__PURE__*/React__namespace.forwardRef(Overflow);
-ForwardOverflow.displayName = 'Overflow'; // Convert to generic type
+ForwardOverflow.displayName = 'Overflow';
+ForwardOverflow.Item = RawItem;
+ForwardOverflow.RESPONSIVE = RESPONSIVE;
+ForwardOverflow.INVALIDATE = INVALIDATE; // Convert to generic type
 
 var Input$1 = function Input(_ref, ref) {
   var _inputNode2, _inputNode2$props;
@@ -14693,7 +14811,7 @@ function getScrollTop(w) {
   return getScroll$1(w, true);
 }
 
-function getOffset$1(el) {
+function getOffset$2(el) {
   var pos = getClientPosition(el);
   var doc = el.ownerDocument;
   var w = doc.defaultView || doc.parentWindow;
@@ -14744,7 +14862,7 @@ var _RE_NUM_NO_PX = new RegExp("^(".concat(RE_NUM, ")(?!px)[a-z%]+$"), 'i');
 var RE_POS = /^(top|right|bottom|left)$/;
 var CURRENT_STYLE = 'currentStyle';
 var RUNTIME_STYLE = 'runtimeStyle';
-var LEFT = 'left';
+var LEFT$1 = 'left';
 var PX = 'px';
 
 function _getComputedStyleIE(elem, name) {
@@ -14763,16 +14881,16 @@ function _getComputedStyleIE(elem, name) {
   if (_RE_NUM_NO_PX.test(ret) && !RE_POS.test(name)) {
     // Remember the original values
     var style = elem.style;
-    var left = style[LEFT];
-    var rsLeft = elem[RUNTIME_STYLE][LEFT]; // prevent flashing of content
+    var left = style[LEFT$1];
+    var rsLeft = elem[RUNTIME_STYLE][LEFT$1]; // prevent flashing of content
 
-    elem[RUNTIME_STYLE][LEFT] = elem[CURRENT_STYLE][LEFT]; // Put in the new values to get a computed value out
+    elem[RUNTIME_STYLE][LEFT$1] = elem[CURRENT_STYLE][LEFT$1]; // Put in the new values to get a computed value out
 
-    style[LEFT] = name === 'fontSize' ? '1em' : ret || 0;
+    style[LEFT$1] = name === 'fontSize' ? '1em' : ret || 0;
     ret = style.pixelLeft + PX; // Revert the changed values
 
-    style[LEFT] = left;
-    elem[RUNTIME_STYLE][LEFT] = rsLeft;
+    style[LEFT$1] = left;
+    elem[RUNTIME_STYLE][LEFT$1] = rsLeft;
   }
 
   return ret === '' ? 'auto' : ret;
@@ -14825,7 +14943,7 @@ function setLeftTop(elem, offset, option) {
   }
 
   var originalTransition = '';
-  var originalOffset = getOffset$1(elem);
+  var originalOffset = getOffset$2(elem);
 
   if ('left' in offset || 'top' in offset) {
     originalTransition = getTransitionProperty(elem) || '';
@@ -14844,7 +14962,7 @@ function setLeftTop(elem, offset, option) {
 
 
   forceRelayout(elem);
-  var old = getOffset$1(elem);
+  var old = getOffset$2(elem);
   var originalStyle = {};
 
   for (var key in offset) {
@@ -14889,7 +15007,7 @@ function setLeftTop(elem, offset, option) {
 }
 
 function setTransform$1(elem, offset) {
-  var originalOffset = getOffset$1(elem);
+  var originalOffset = getOffset$2(elem);
   var originalXY = getTransformXY(elem);
   var resultXY = {
     x: originalXY.x,
@@ -14909,7 +15027,7 @@ function setTransform$1(elem, offset) {
 
 function setOffset(elem, offset, option) {
   if (option.ignoreShake) {
-    var oriOffset = getOffset$1(elem);
+    var oriOffset = getOffset$2(elem);
     var oLeft = oriOffset.left.toFixed(0);
     var oTop = oriOffset.top.toFixed(0);
     var tLeft = offset.left.toFixed(0);
@@ -15169,7 +15287,7 @@ var utils$1 = {
     if (typeof value !== 'undefined') {
       setOffset(el, value, option || {});
     } else {
-      return getOffset$1(el);
+      return getOffset$2(el);
     }
   },
   isWindow: isWindow,
@@ -15276,7 +15394,8 @@ function isAncestorFixed(element) {
   var body = doc.body;
   var parent = null;
 
-  for (parent = getParent$1$1(element); parent && parent !== body; parent = getParent$1$1(parent)) {
+  for (parent = getParent$1$1(element); // 修复元素位于 document.documentElement 下导致崩溃问题
+  parent && parent !== body && parent !== doc; parent = getParent$1$1(parent)) {
     var positionStyle = utils$1.css(parent, 'position');
 
     if (positionStyle === 'fixed') {
@@ -16376,7 +16495,7 @@ var Popup = /*#__PURE__*/React__namespace.forwardRef(function (_ref, ref) {
     serInnerVisible(visible);
 
     if (visible && mobile) {
-      setInMobile(isMobile$1());
+      setInMobile(isMobile());
     }
   }, [visible, mobile]);
   var popupNode = inMobile ? /*#__PURE__*/React__namespace.createElement(MobilePopupInner, _extends$1({}, cloneProps, {
@@ -16392,7 +16511,7 @@ Popup.displayName = 'Popup';
 
 var TriggerContext = /*#__PURE__*/React__namespace.createContext(null);
 
-function noop$3() {}
+function noop$2() {}
 
 function returnEmptyString() {
   return '';
@@ -17142,9 +17261,9 @@ function generateTrigger(PortalComponent) {
     prefixCls: 'rc-trigger-popup',
     getPopupClassNameFromAlign: returnEmptyString,
     getDocument: returnDocument,
-    onPopupVisibleChange: noop$3,
-    afterPopupVisibleChange: noop$3,
-    onPopupAlign: noop$3,
+    onPopupVisibleChange: noop$2,
+    afterPopupVisibleChange: noop$2,
+    onPopupAlign: noop$2,
     popupClassName: '',
     mouseEnterDelay: 0,
     mouseLeaveDelay: 0.1,
@@ -17544,7 +17663,7 @@ function generateSelector(config) {
 
     React.useEffect(function () {
       // Only update on the client side
-      setMobile(isMobile$1());
+      setMobile(isMobile());
     }, []); // ============================== Ref ===============================
 
     var selectorDomRef = React.useRef(null);
@@ -18436,7 +18555,7 @@ var DownOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 
 // GENERATE BY ./scripts/generate.ts
 
 var DownOutlined = function DownOutlined(props, ref) {
-  return /*#__PURE__*/React__namespace.createElement(Icon, Object.assign({}, props, {
+  return /*#__PURE__*/React__namespace.createElement(Icon$1, Object.assign({}, props, {
     ref: ref,
     icon: DownOutlined$2
   }));
@@ -18451,7 +18570,7 @@ var CheckOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896
 // GENERATE BY ./scripts/generate.ts
 
 var CheckOutlined = function CheckOutlined(props, ref) {
-  return /*#__PURE__*/React__namespace.createElement(Icon, Object.assign({}, props, {
+  return /*#__PURE__*/React__namespace.createElement(Icon$1, Object.assign({}, props, {
     ref: ref,
     icon: CheckOutlined$2
   }));
@@ -18466,7 +18585,7 @@ var SearchOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 89
 // GENERATE BY ./scripts/generate.ts
 
 var SearchOutlined = function SearchOutlined(props, ref) {
-  return /*#__PURE__*/React__namespace.createElement(Icon, Object.assign({}, props, {
+  return /*#__PURE__*/React__namespace.createElement(Icon$1, Object.assign({}, props, {
     ref: ref,
     icon: SearchOutlined$2
   }));
@@ -18567,7 +18686,7 @@ var getCurrentHeight = function getCurrentHeight(node) {
 };
 
 var skipOpacityTransition = function skipOpacityTransition(_, event) {
-  return event.propertyName === 'height';
+  return (event === null || event === void 0 ? void 0 : event.deadline) === true || event.propertyName === 'height';
 };
 
 var collapseMotion = {
@@ -18593,7 +18712,7 @@ var getTransitionName = function getTransitionName(rootPrefixCls, motion, transi
 };
 
 // TODO: 4.0 - codemod should help to change `filterOption` to support node props.
-var __rest$n = undefined && undefined.__rest || function (s, e) {
+var __rest$o = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -18622,7 +18741,7 @@ var InternalSelect = function InternalSelect(_a, ref) {
       listItemHeight = _a$listItemHeight === void 0 ? 24 : _a$listItemHeight,
       customizeSize = _a.size,
       notFoundContent = _a.notFoundContent,
-      props = __rest$n(_a, ["prefixCls", "bordered", "className", "getPopupContainer", "dropdownClassName", "listHeight", "listItemHeight", "size", "notFoundContent"]);
+      props = __rest$o(_a, ["prefixCls", "bordered", "className", "getPopupContainer", "dropdownClassName", "listHeight", "listItemHeight", "size", "notFoundContent"]);
 
   var _React$useContext = React__namespace.useContext(ConfigContext),
       getContextPopupContainer = _React$useContext.getPopupContainer,
@@ -18709,6 +18828,16 @@ function replaceElement(element, replacement, props) {
 }
 function cloneElement(element, props) {
   return replaceElement(element, element, props);
+}
+
+function getDataOrAriaProps$1(props) {
+  return Object.keys(props).reduce(function (prev, key) {
+    if ((key.substr(0, 5) === 'data-' || key.substr(0, 5) === 'aria-' || key === 'role') && key.substr(0, 7) !== 'data-__') {
+      prev[key] = props[key];
+    }
+
+    return prev;
+  }, {});
 }
 
 var responsiveMap = {
@@ -19487,7 +19616,7 @@ var RightOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896
 // GENERATE BY ./scripts/generate.ts
 
 var RightOutlined = function RightOutlined(props, ref) {
-  return /*#__PURE__*/React__namespace.createElement(Icon, Object.assign({}, props, {
+  return /*#__PURE__*/React__namespace.createElement(Icon$1, Object.assign({}, props, {
     ref: ref,
     icon: RightOutlined$2
   }));
@@ -19502,7 +19631,7 @@ var EllipsisOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 
 // GENERATE BY ./scripts/generate.ts
 
 var EllipsisOutlined = function EllipsisOutlined(props, ref) {
-  return /*#__PURE__*/React__namespace.createElement(Icon, Object.assign({}, props, {
+  return /*#__PURE__*/React__namespace.createElement(Icon$1, Object.assign({}, props, {
     ref: ref,
     icon: EllipsisOutlined$2
   }));
@@ -19517,7 +19646,7 @@ var UnreachableException = function UnreachableException(value) {
   return new Error("unreachable case: ".concat(JSON.stringify(value)));
 };
 
-var __rest$m = undefined && undefined.__rest || function (s, e) {
+var __rest$n = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -19540,7 +19669,7 @@ var ButtonGroup$1 = function ButtonGroup(props) {
     var customizePrefixCls = props.prefixCls,
         size = props.size,
         className = props.className,
-        others = __rest$m(props, ["prefixCls", "size", "className"]);
+        others = __rest$n(props, ["prefixCls", "size", "className"]);
 
     var prefixCls = getPrefixCls('btn-group', customizePrefixCls); // large => lg
     // small => sm
@@ -19876,7 +20005,7 @@ var LoadingIcon = function LoadingIcon(_ref) {
   });
 };
 
-var __rest$l = undefined && undefined.__rest || function (s, e) {
+var __rest$m = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -19983,7 +20112,7 @@ var InternalButton = function InternalButton(props, ref) {
       block = _props$block === void 0 ? false : _props$block,
       _props$htmlType = props.htmlType,
       htmlType = _props$htmlType === void 0 ? 'button' : _props$htmlType,
-      rest = __rest$l(props, ["loading", "prefixCls", "type", "danger", "shape", "size", "className", "children", "icon", "ghost", "block", "htmlType"]);
+      rest = __rest$m(props, ["loading", "prefixCls", "type", "danger", "shape", "size", "className", "children", "icon", "ghost", "block", "htmlType"]);
 
   var size = React__namespace.useContext(SizeContext);
 
@@ -20117,7 +20246,7 @@ Button$2.displayName = 'Button';
 Button$2.Group = ButtonGroup$1;
 Button$2.__ANT_BUTTON = true;
 
-var __rest$k = undefined && undefined.__rest || function (s, e) {
+var __rest$l = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -20158,7 +20287,7 @@ var DropdownButton = function DropdownButton(props) {
       buttonsRender = props.buttonsRender,
       mouseEnterDelay = props.mouseEnterDelay,
       mouseLeaveDelay = props.mouseLeaveDelay,
-      restProps = __rest$k(props, ["prefixCls", "type", "disabled", "onClick", "htmlType", "children", "className", "overlay", "trigger", "align", "visible", "onVisibleChange", "placement", "getPopupContainer", "href", "icon", "title", "buttonsRender", "mouseEnterDelay", "mouseLeaveDelay"]);
+      restProps = __rest$l(props, ["prefixCls", "type", "disabled", "onClick", "htmlType", "children", "className", "overlay", "trigger", "align", "visible", "onVisibleChange", "placement", "getPopupContainer", "href", "icon", "title", "buttonsRender", "mouseEnterDelay", "mouseLeaveDelay"]);
 
   var prefixCls = getPrefixCls('dropdown-button', customizePrefixCls);
   var dropdownProps = {
@@ -20254,12 +20383,9 @@ var Dropdown$1 = function Dropdown(props) {
     var overlayProps = overlayNode.props; // Warning if use other mode
 
     devWarning(!overlayProps.mode || overlayProps.mode === 'vertical', 'Dropdown', "mode=\"".concat(overlayProps.mode, "\" is not supported for Dropdown's Menu.")); // menu cannot be selectable in dropdown defaultly
-    // menu should be focusable in dropdown defaultly
 
     var _overlayProps$selecta = overlayProps.selectable,
         selectable = _overlayProps$selecta === void 0 ? false : _overlayProps$selecta,
-        _overlayProps$focusab = overlayProps.focusable,
-        focusable = _overlayProps$focusab === void 0 ? true : _overlayProps$focusab,
         expandIcon = overlayProps.expandIcon;
     var overlayNodeExpandIcon = typeof expandIcon !== 'undefined' && /*#__PURE__*/React__namespace.isValidElement(expandIcon) ? expandIcon : /*#__PURE__*/React__namespace.createElement("span", {
       className: "".concat(prefixCls, "-menu-submenu-arrow")
@@ -20269,7 +20395,6 @@ var Dropdown$1 = function Dropdown(props) {
     var fixedModeOverlay = typeof overlayNode.type === 'string' ? overlayNode : cloneElement(overlayNode, {
       mode: 'vertical',
       selectable: selectable,
-      focusable: focusable,
       expandIcon: overlayNodeExpandIcon
     });
     return fixedModeOverlay;
@@ -20328,31 +20453,6 @@ Dropdown$1.defaultProps = {
   mouseLeaveDelay: 0.1
 };
 
-var __extends$1 = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var MiniStoreContext = React__namespace.createContext(null);
-var Provider = /** @class */ (function (_super) {
-    __extends$1(Provider, _super);
-    function Provider() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    Provider.prototype.render = function () {
-        return (React__namespace.createElement(MiniStoreContext.Provider, { value: this.props.store }, this.props.children));
-    };
-    return Provider;
-}(React__namespace.Component));
-
 //
 
 var shallowequal = function shallowEqual(objA, objB, compare, compareContext) {
@@ -20400,445 +20500,405 @@ var shallowequal = function shallowEqual(objA, objB, compare, compareContext) {
   return true;
 };
 
-/**
- * Copyright 2015, Yahoo! Inc.
- * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
- */
-var REACT_STATICS = {
-  childContextTypes: true,
-  contextType: true,
-  contextTypes: true,
-  defaultProps: true,
-  displayName: true,
-  getDefaultProps: true,
-  getDerivedStateFromError: true,
-  getDerivedStateFromProps: true,
-  mixins: true,
-  propTypes: true,
-  type: true
-};
-var KNOWN_STATICS = {
-  name: true,
-  length: true,
-  prototype: true,
-  caller: true,
-  callee: true,
-  arguments: true,
-  arity: true
-};
-var FORWARD_REF_STATICS = {
-  '$$typeof': true,
-  render: true,
-  defaultProps: true,
-  displayName: true,
-  propTypes: true
-};
-var MEMO_STATICS = {
-  '$$typeof': true,
-  compare: true,
-  defaultProps: true,
-  displayName: true,
-  propTypes: true,
-  type: true
-};
-var TYPE_STATICS = {};
-TYPE_STATICS[reactIs.ForwardRef] = FORWARD_REF_STATICS;
-TYPE_STATICS[reactIs.Memo] = MEMO_STATICS;
+var MenuContext$1 = /*#__PURE__*/React__namespace.createContext(null);
 
-function getStatics(component) {
-  // React v16.11 and below
-  if (reactIs.isMemo(component)) {
-    return MEMO_STATICS;
-  } // React v16.12 and above
+function mergeProps(origin, target) {
+  var clone = _objectSpread2$1({}, origin);
 
+  Object.keys(target).forEach(function (key) {
+    var value = target[key];
 
-  return TYPE_STATICS[component['$$typeof']] || REACT_STATICS;
-}
-
-var defineProperty = Object.defineProperty;
-var getOwnPropertyNames = Object.getOwnPropertyNames;
-var getOwnPropertySymbols$1 = Object.getOwnPropertySymbols;
-var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
-var getPrototypeOf = Object.getPrototypeOf;
-var objectPrototype = Object.prototype;
-function hoistNonReactStatics(targetComponent, sourceComponent, blacklist) {
-  if (typeof sourceComponent !== 'string') {
-    // don't hoist over string (html) components
-    if (objectPrototype) {
-      var inheritedComponent = getPrototypeOf(sourceComponent);
-
-      if (inheritedComponent && inheritedComponent !== objectPrototype) {
-        hoistNonReactStatics(targetComponent, inheritedComponent, blacklist);
-      }
+    if (value !== undefined) {
+      clone[key] = value;
     }
-
-    var keys = getOwnPropertyNames(sourceComponent);
-
-    if (getOwnPropertySymbols$1) {
-      keys = keys.concat(getOwnPropertySymbols$1(sourceComponent));
-    }
-
-    var targetStatics = getStatics(targetComponent);
-    var sourceStatics = getStatics(sourceComponent);
-
-    for (var i = 0; i < keys.length; ++i) {
-      var key = keys[i];
-
-      if (!KNOWN_STATICS[key] && !(blacklist && blacklist[key]) && !(sourceStatics && sourceStatics[key]) && !(targetStatics && targetStatics[key])) {
-        var descriptor = getOwnPropertyDescriptor(sourceComponent, key);
-
-        try {
-          // Avoid failures from read-only properties
-          defineProperty(targetComponent, key, descriptor);
-        } catch (e) {}
-      }
-    }
-  }
-
-  return targetComponent;
+  });
+  return clone;
 }
 
-var hoistNonReactStatics_cjs = hoistNonReactStatics;
+function InheritableContextProvider(_ref) {
+  var children = _ref.children,
+      locked = _ref.locked,
+      restProps = _objectWithoutProperties$1(_ref, ["children", "locked"]);
 
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __assign$1 = (undefined && undefined.__assign) || function () {
-    __assign$1 = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign$1.apply(this, arguments);
-};
-function getDisplayName(WrappedComponent) {
-    return WrappedComponent.displayName || WrappedComponent.name || 'Component';
-}
-var defaultMapStateToProps = function () { return ({}); };
-function connect(mapStateToProps, options) {
-    if (options === void 0) { options = {}; }
-    var shouldSubscribe = !!mapStateToProps;
-    var finalMapStateToProps = mapStateToProps || defaultMapStateToProps;
-    return function wrapWithConnect(WrappedComponent) {
-        var Connect = /** @class */ (function (_super) {
-            __extends(Connect, _super);
-            function Connect(props, context) {
-                var _this = _super.call(this, props, context) || this;
-                _this.unsubscribe = null;
-                _this.handleChange = function () {
-                    if (!_this.unsubscribe) {
-                        return;
-                    }
-                    var nextState = finalMapStateToProps(_this.store.getState(), _this.props);
-                    _this.setState({ subscribed: nextState });
-                };
-                _this.store = _this.context;
-                _this.state = {
-                    subscribed: finalMapStateToProps(_this.store.getState(), props),
-                    store: _this.store,
-                    props: props,
-                };
-                return _this;
-            }
-            Connect.getDerivedStateFromProps = function (props, prevState) {
-                // using ownProps
-                if (mapStateToProps && mapStateToProps.length === 2 && props !== prevState.props) {
-                    return {
-                        subscribed: finalMapStateToProps(prevState.store.getState(), props),
-                        props: props,
-                    };
-                }
-                return { props: props };
-            };
-            Connect.prototype.componentDidMount = function () {
-                this.trySubscribe();
-            };
-            Connect.prototype.componentWillUnmount = function () {
-                this.tryUnsubscribe();
-            };
-            Connect.prototype.shouldComponentUpdate = function (nextProps, nextState) {
-                return (!shallowequal(this.props, nextProps) ||
-                    !shallowequal(this.state.subscribed, nextState.subscribed));
-            };
-            Connect.prototype.trySubscribe = function () {
-                if (shouldSubscribe) {
-                    this.unsubscribe = this.store.subscribe(this.handleChange);
-                    this.handleChange();
-                }
-            };
-            Connect.prototype.tryUnsubscribe = function () {
-                if (this.unsubscribe) {
-                    this.unsubscribe();
-                    this.unsubscribe = null;
-                }
-            };
-            Connect.prototype.render = function () {
-                var props = __assign$1(__assign$1(__assign$1({}, this.props), this.state.subscribed), { store: this.store });
-                return React__namespace.createElement(WrappedComponent, __assign$1({}, props, { ref: this.props.miniStoreForwardedRef }));
-            };
-            Connect.displayName = "Connect(" + getDisplayName(WrappedComponent) + ")";
-            Connect.contextType = MiniStoreContext;
-            return Connect;
-        }(React__namespace.Component));
-        if (options.forwardRef) {
-            var forwarded = React__namespace.forwardRef(function (props, ref) {
-                return React__namespace.createElement(Connect, __assign$1({}, props, { miniStoreForwardedRef: ref }));
-            });
-            return hoistNonReactStatics_cjs(forwarded, WrappedComponent);
-        }
-        return hoistNonReactStatics_cjs(Connect, WrappedComponent);
-    };
+  var context = React__namespace.useContext(MenuContext$1);
+  var inheritableContext = useMemo(function () {
+    return mergeProps(context, restProps);
+  }, [context, restProps], function (prev, next) {
+    return !locked && (prev[0] !== next[0] || !shallowequal(prev[1], next[1]));
+  });
+  return /*#__PURE__*/React__namespace.createElement(MenuContext$1.Provider, {
+    value: inheritableContext
+  }, children);
 }
 
-var __assign = (undefined && undefined.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-function create(initialState) {
-    var state = initialState;
-    var listeners = [];
-    function setState(partial) {
-        state = __assign(__assign({}, state), partial);
-        for (var i = 0; i < listeners.length; i++) {
-            listeners[i]();
-        }
-    }
-    function getState() {
-        return state;
-    }
-    function subscribe(listener) {
-        listeners.push(listener);
-        return function unsubscribe() {
-            var index = listeners.indexOf(listener);
-            listeners.splice(index, 1);
-        };
-    }
-    return {
-        setState: setState,
-        getState: getState,
-        subscribe: subscribe,
-    };
-}
+function useActive(eventKey, disabled, onMouseEnter, onMouseLeave) {
+  var _React$useContext = React__namespace.useContext(MenuContext$1),
+      activeKey = _React$useContext.activeKey,
+      onActive = _React$useContext.onActive,
+      onInactive = _React$useContext.onInactive;
 
-/**
- * Safe chained function
- *
- * Will only create a new function if needed,
- * otherwise will pass back existing functions or null.
- *
- * @returns {function|null}
- */
-function createChainedFunction() {
-  var args = [].slice.call(arguments, 0);
+  var ret = {
+    active: activeKey === eventKey
+  }; // Skip when disabled
 
-  if (args.length === 1) {
-    return args[0];
-  }
-
-  return function chainedFunction() {
-    for (var i = 0; i < args.length; i++) {
-      if (args[i] && args[i].apply) {
-        args[i].apply(this, arguments);
-      }
-    }
-  };
-}
-
-// MIT License from https://github.com/kaimallea/isMobile
-var applePhone = /iPhone/i;
-var appleIpod = /iPod/i;
-var appleTablet = /iPad/i;
-var androidPhone = /\bAndroid(?:.+)Mobile\b/i; // Match 'Android' AND 'Mobile'
-
-var androidTablet = /Android/i;
-var amazonPhone = /\bAndroid(?:.+)SD4930UR\b/i;
-var amazonTablet = /\bAndroid(?:.+)(?:KF[A-Z]{2,4})\b/i;
-var windowsPhone = /Windows Phone/i;
-var windowsTablet = /\bWindows(?:.+)ARM\b/i; // Match 'Windows' AND 'ARM'
-
-var otherBlackberry = /BlackBerry/i;
-var otherBlackberry10 = /BB10/i;
-var otherOpera = /Opera Mini/i;
-var otherChrome = /\b(CriOS|Chrome)(?:.+)Mobile/i;
-var otherFirefox = /Mobile(?:.+)Firefox\b/i; // Match 'Mobile' AND 'Firefox'
-
-function match(regex, userAgent) {
-  return regex.test(userAgent);
-}
-
-function isMobile(userAgent) {
-  var ua = userAgent || (typeof navigator !== 'undefined' ? navigator.userAgent : ''); // Facebook mobile app's integrated browser adds a bunch of strings that
-  // match everything. Strip it out if it exists.
-
-  var tmp = (ua || '').split('[FBAN');
-
-  if (typeof tmp[1] !== 'undefined') {
-    var _tmp = tmp;
-
-    var _tmp2 = _slicedToArray$3(_tmp, 1);
-
-    ua = _tmp2[0];
-  } // Twitter mobile app's integrated browser on iPad adds a "Twitter for
-  // iPhone" string. Same probably happens on other tablet platforms.
-  // This will confuse detection so strip it out if it exists.
-
-
-  tmp = ua.split('Twitter');
-
-  if (typeof tmp[1] !== 'undefined') {
-    var _tmp3 = tmp;
-
-    var _tmp4 = _slicedToArray$3(_tmp3, 1);
-
-    ua = _tmp4[0];
-  }
-
-  var result = {
-    apple: {
-      phone: match(applePhone, ua) && !match(windowsPhone, ua),
-      ipod: match(appleIpod, ua),
-      tablet: !match(applePhone, ua) && match(appleTablet, ua) && !match(windowsPhone, ua),
-      device: (match(applePhone, ua) || match(appleIpod, ua) || match(appleTablet, ua)) && !match(windowsPhone, ua)
-    },
-    amazon: {
-      phone: match(amazonPhone, ua),
-      tablet: !match(amazonPhone, ua) && match(amazonTablet, ua),
-      device: match(amazonPhone, ua) || match(amazonTablet, ua)
-    },
-    android: {
-      phone: !match(windowsPhone, ua) && match(amazonPhone, ua) || !match(windowsPhone, ua) && match(androidPhone, ua),
-      tablet: !match(windowsPhone, ua) && !match(amazonPhone, ua) && !match(androidPhone, ua) && (match(amazonTablet, ua) || match(androidTablet, ua)),
-      device: !match(windowsPhone, ua) && (match(amazonPhone, ua) || match(amazonTablet, ua) || match(androidPhone, ua) || match(androidTablet, ua)) || match(/\bokhttp\b/i, ua)
-    },
-    windows: {
-      phone: match(windowsPhone, ua),
-      tablet: match(windowsTablet, ua),
-      device: match(windowsPhone, ua) || match(windowsTablet, ua)
-    },
-    other: {
-      blackberry: match(otherBlackberry, ua),
-      blackberry10: match(otherBlackberry10, ua),
-      opera: match(otherOpera, ua),
-      firefox: match(otherFirefox, ua),
-      chrome: match(otherChrome, ua),
-      device: match(otherBlackberry, ua) || match(otherBlackberry10, ua) || match(otherOpera, ua) || match(otherFirefox, ua) || match(otherChrome, ua)
-    },
-    // Additional
-    any: null,
-    phone: null,
-    tablet: null
-  };
-  result.any = result.apple.device || result.android.device || result.windows.device || result.other.device; // excludes 'other' devices and ipods, targeting touchscreen phones
-
-  result.phone = result.apple.phone || result.android.phone || result.windows.phone;
-  result.tablet = result.apple.tablet || result.android.tablet || result.windows.tablet;
-  return result;
-}
-
-var defaultResult = _objectSpread2$1(_objectSpread2$1({}, isMobile()), {}, {
-  isMobile: isMobile
-});
-
-function noop$2() {}
-function getKeyFromChildrenIndex(child, menuEventKey, index) {
-  var prefix = menuEventKey || '';
-  return child.key || "".concat(prefix, "item_").concat(index);
-}
-function getMenuIdFromSubMenuEventKey(eventKey) {
-  return "".concat(eventKey, "-menu-");
-}
-function loopMenuItem(children, cb) {
-  var index = -1;
-  React__namespace.Children.forEach(children, function (c) {
-    index += 1;
-
-    if (c && c.type && c.type.isMenuItemGroup) {
-      React__namespace.Children.forEach(c.props.children, function (c2) {
-        index += 1;
-        cb(c2, index);
+  if (!disabled) {
+    ret.onMouseEnter = function (domEvent) {
+      onMouseEnter === null || onMouseEnter === void 0 ? void 0 : onMouseEnter({
+        key: eventKey,
+        domEvent: domEvent
       });
-    } else {
-      cb(c, index);
+      onActive(eventKey);
+    };
+
+    ret.onMouseLeave = function (domEvent) {
+      onMouseLeave === null || onMouseLeave === void 0 ? void 0 : onMouseLeave({
+        key: eventKey,
+        domEvent: domEvent
+      });
+      onInactive(eventKey);
+    };
+  }
+
+  return ret;
+}
+
+/**
+ * `onClick` event return `info.item` which point to react node directly.
+ * We should warning this since it will not work on FC.
+ */
+
+function warnItemProp(_ref) {
+  var item = _ref.item,
+      restInfo = _objectWithoutProperties$1(_ref, ["item"]);
+
+  Object.defineProperty(restInfo, 'item', {
+    get: function get() {
+      warningOnce(false, '`info.item` is deprecated since we will move to function component that not provides React Node instance in future.');
+      return item;
     }
   });
+  return restInfo;
 }
-function loopMenuItemRecursively(children, keys, ret) {
-  /* istanbul ignore if */
-  if (!children || ret.find) {
-    return;
+
+function Icon(_ref) {
+  var icon = _ref.icon,
+      props = _ref.props,
+      children = _ref.children;
+  var iconNode;
+
+  if (typeof icon === 'function') {
+    iconNode = /*#__PURE__*/React__namespace.createElement(icon, _objectSpread2$1({}, props));
+  } else {
+    // Compatible for origin definition
+    iconNode = icon;
   }
 
-  React__namespace.Children.forEach(children, function (c) {
-    if (c) {
-      var construct = c.type;
+  return iconNode || children || null;
+}
 
-      if (!construct || !(construct.isSubMenu || construct.isMenuItem || construct.isMenuItemGroup)) {
-        return;
-      }
+function useDirectionStyle(level) {
+  var _React$useContext = React__namespace.useContext(MenuContext$1),
+      mode = _React$useContext.mode,
+      rtl = _React$useContext.rtl,
+      inlineIndent = _React$useContext.inlineIndent;
 
-      if (keys.indexOf(c.key) !== -1) {
-        // eslint-disable-next-line no-param-reassign
-        ret.find = true;
-      } else if (c.props.children) {
-        loopMenuItemRecursively(c.props.children, keys, ret);
-      }
+  if (mode !== 'inline') {
+    return null;
+  }
+
+  var len = level;
+  return rtl ? {
+    paddingRight: len * inlineIndent
+  } : {
+    paddingLeft: len * inlineIndent
+  };
+}
+
+var EmptyList = [];
+var PathRegisterContext = /*#__PURE__*/React__namespace.createContext(null);
+function useMeasure() {
+  return React__namespace.useContext(PathRegisterContext);
+} // ========================= Path Tracker ==========================
+
+var PathTrackerContext = /*#__PURE__*/React__namespace.createContext(EmptyList);
+function useFullPath$1(eventKey) {
+  var parentKeyPath = React__namespace.useContext(PathTrackerContext);
+  return React__namespace.useMemo(function () {
+    return eventKey !== undefined ? [].concat(_toConsumableArray(parentKeyPath), [eventKey]) : parentKeyPath;
+  }, [parentKeyPath, eventKey]);
+}
+var PathUserContext = /*#__PURE__*/React__namespace.createContext(null);
+
+var IdContext = /*#__PURE__*/React__namespace.createContext(null);
+function getMenuId(uuid, eventKey) {
+  if (uuid === undefined) {
+    return null;
+  }
+
+  return "".concat(uuid, "-").concat(eventKey);
+}
+/**
+ * Get `data-menu-id`
+ */
+
+function useMenuId(eventKey) {
+  var id = React__namespace.useContext(IdContext);
+  return getMenuId(id, eventKey);
+}
+
+// We have to use class component here.
+// This should be removed from doc & api in future.
+
+var LegacyMenuItem = /*#__PURE__*/function (_React$Component) {
+  _inherits$1(LegacyMenuItem, _React$Component);
+
+  var _super = _createSuper$2(LegacyMenuItem);
+
+  function LegacyMenuItem() {
+    _classCallCheck$2(this, LegacyMenuItem);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass$2(LegacyMenuItem, [{
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          title = _this$props.title,
+          attribute = _this$props.attribute,
+          elementRef = _this$props.elementRef,
+          restProps = _objectWithoutProperties$1(_this$props, ["title", "attribute", "elementRef"]);
+
+      var passedProps = omit(restProps, ['eventKey']);
+      warningOnce(!attribute, '`attribute` of Menu.Item is deprecated. Please pass attribute directly.');
+      return /*#__PURE__*/React__namespace.createElement(ForwardOverflow.Item, _extends$1({}, attribute, {
+        title: typeof title === 'string' ? title : undefined
+      }, passedProps, {
+        ref: elementRef
+      }));
     }
+  }]);
+
+  return LegacyMenuItem;
+}(React__namespace.Component);
+/**
+ * Real Menu Item component
+ */
+
+
+var InternalMenuItem = function InternalMenuItem(props) {
+  var _classNames;
+
+  var style = props.style,
+      className = props.className,
+      eventKey = props.eventKey,
+      warnKey = props.warnKey,
+      disabled = props.disabled,
+      itemIcon = props.itemIcon,
+      children = props.children,
+      role = props.role,
+      onMouseEnter = props.onMouseEnter,
+      onMouseLeave = props.onMouseLeave,
+      onClick = props.onClick,
+      onKeyDown = props.onKeyDown,
+      onFocus = props.onFocus,
+      restProps = _objectWithoutProperties$1(props, ["style", "className", "eventKey", "warnKey", "disabled", "itemIcon", "children", "role", "onMouseEnter", "onMouseLeave", "onClick", "onKeyDown", "onFocus"]);
+
+  var domDataId = useMenuId(eventKey);
+
+  var _React$useContext = React__namespace.useContext(MenuContext$1),
+      prefixCls = _React$useContext.prefixCls,
+      onItemClick = _React$useContext.onItemClick,
+      contextDisabled = _React$useContext.disabled,
+      overflowDisabled = _React$useContext.overflowDisabled,
+      contextItemIcon = _React$useContext.itemIcon,
+      selectedKeys = _React$useContext.selectedKeys,
+      onActive = _React$useContext.onActive;
+
+  var itemCls = "".concat(prefixCls, "-item");
+  var legacyMenuItemRef = React__namespace.useRef();
+  var elementRef = React__namespace.useRef();
+  var mergedDisabled = contextDisabled || disabled;
+  var connectedKeys = useFullPath$1(eventKey); // ================================ Warn ================================
+
+  if (process.env.NODE_ENV !== 'production' && warnKey) {
+    warningOnce(false, 'MenuItem should not leave undefined `key`.');
+  } // ============================= Info =============================
+
+
+  var getEventInfo = function getEventInfo(e) {
+    return {
+      key: eventKey,
+      // Note: For legacy code is reversed which not like other antd component
+      keyPath: _toConsumableArray(connectedKeys).reverse(),
+      item: legacyMenuItemRef.current,
+      domEvent: e
+    };
+  }; // ============================= Icon =============================
+
+
+  var mergedItemIcon = itemIcon || contextItemIcon; // ============================ Active ============================
+
+  var _useActive = useActive(eventKey, mergedDisabled, onMouseEnter, onMouseLeave),
+      active = _useActive.active,
+      activeProps = _objectWithoutProperties$1(_useActive, ["active"]); // ============================ Select ============================
+
+
+  var selected = selectedKeys.includes(eventKey); // ======================== DirectionStyle ========================
+
+  var directionStyle = useDirectionStyle(connectedKeys.length); // ============================ Events ============================
+
+  var onInternalClick = function onInternalClick(e) {
+    if (mergedDisabled) {
+      return;
+    }
+
+    var info = getEventInfo(e);
+    onClick === null || onClick === void 0 ? void 0 : onClick(warnItemProp(info));
+    onItemClick(info);
+  };
+
+  var onInternalKeyDown = function onInternalKeyDown(e) {
+    onKeyDown === null || onKeyDown === void 0 ? void 0 : onKeyDown(e);
+
+    if (e.which === KeyCode.ENTER) {
+      var info = getEventInfo(e); // Legacy. Key will also trigger click event
+
+      onClick === null || onClick === void 0 ? void 0 : onClick(warnItemProp(info));
+      onItemClick(info);
+    }
+  };
+  /**
+   * Used for accessibility. Helper will focus element without key board.
+   * We should manually trigger an active
+   */
+
+
+  var onInternalFocus = function onInternalFocus(e) {
+    onActive(eventKey);
+    onFocus === null || onFocus === void 0 ? void 0 : onFocus(e);
+  }; // ============================ Render ============================
+
+
+  var optionRoleProps = {};
+
+  if (props.role === 'option') {
+    optionRoleProps['aria-selected'] = selected;
+  }
+
+  return /*#__PURE__*/React__namespace.createElement(LegacyMenuItem, _extends$1({
+    ref: legacyMenuItemRef,
+    elementRef: elementRef,
+    role: role === null ? 'none' : role || 'menuitem',
+    tabIndex: disabled ? null : -1,
+    "data-menu-id": overflowDisabled && domDataId ? null : domDataId
+  }, restProps, activeProps, optionRoleProps, {
+    component: "li",
+    "aria-disabled": disabled,
+    style: _objectSpread2$1(_objectSpread2$1({}, directionStyle), style),
+    className: classnames(itemCls, (_classNames = {}, _defineProperty$4(_classNames, "".concat(itemCls, "-active"), active), _defineProperty$4(_classNames, "".concat(itemCls, "-selected"), selected), _defineProperty$4(_classNames, "".concat(itemCls, "-disabled"), mergedDisabled), _classNames), className),
+    onClick: onInternalClick,
+    onKeyDown: onInternalKeyDown,
+    onFocus: onInternalFocus
+  }), children, /*#__PURE__*/React__namespace.createElement(Icon, {
+    props: _objectSpread2$1(_objectSpread2$1({}, props), {}, {
+      isSelected: selected
+    }),
+    icon: mergedItemIcon
+  }));
+};
+
+function MenuItem$3(props) {
+  var eventKey = props.eventKey; // ==================== Record KeyPath ====================
+
+  var measure = useMeasure();
+  var connectedKeyPath = useFullPath$1(eventKey); // eslint-disable-next-line consistent-return
+
+  React__namespace.useEffect(function () {
+    if (measure) {
+      measure.registerPath(eventKey, connectedKeyPath);
+      return function () {
+        measure.unregisterPath(eventKey, connectedKeyPath);
+      };
+    }
+  }, [connectedKeyPath]);
+
+  if (measure) {
+    return null;
+  } // ======================== Render ========================
+
+
+  return /*#__PURE__*/React__namespace.createElement(InternalMenuItem, props);
+}
+
+function parseChildren(children, keyPath) {
+  return toArray$6(children).map(function (child, index) {
+    if ( /*#__PURE__*/React__namespace.isValidElement(child)) {
+      var _child$props$eventKey, _child$props;
+
+      var key = child.key;
+      var eventKey = (_child$props$eventKey = (_child$props = child.props) === null || _child$props === void 0 ? void 0 : _child$props.eventKey) !== null && _child$props$eventKey !== void 0 ? _child$props$eventKey : key;
+      var emptyKey = eventKey === null || eventKey === undefined;
+
+      if (emptyKey) {
+        eventKey = "tmp_key-".concat([].concat(_toConsumableArray(keyPath), [index]).join('-'));
+      }
+
+      var cloneProps = {
+        key: eventKey,
+        eventKey: eventKey
+      };
+
+      if (process.env.NODE_ENV !== 'production' && emptyKey) {
+        cloneProps.warnKey = true;
+      }
+
+      return /*#__PURE__*/React__namespace.cloneElement(child, cloneProps);
+    }
+
+    return child;
   });
 }
-var menuAllProps = ['defaultSelectedKeys', 'selectedKeys', 'defaultOpenKeys', 'openKeys', 'mode', 'getPopupContainer', 'onSelect', 'onDeselect', 'onDestroy', 'openTransitionName', 'openAnimation', 'subMenuOpenDelay', 'subMenuCloseDelay', 'forceSubMenuRender', 'triggerSubMenuAction', 'level', 'selectable', 'multiple', 'onOpenChange', 'visible', 'focusable', 'defaultActiveFirst', 'prefixCls', 'inlineIndent', 'parentMenu', 'title', 'rootPrefixCls', 'eventKey', 'active', 'onItemHover', 'onTitleMouseEnter', 'onTitleMouseLeave', 'onTitleClick', 'popupAlign', 'popupOffset', 'isOpen', 'renderMenuItem', 'manualRef', 'subMenuKey', 'disabled', 'index', 'isSelected', 'store', 'activeKey', 'builtinPlacements', 'overflowedIndicator', 'motion', // the following keys found need to be removed from test regression
-'attribute', 'value', 'popupClassName', 'inlineCollapsed', 'menu', 'theme', 'itemIcon', 'expandIcon']; // ref: https://github.com/ant-design/ant-design/issues/14007
-// ref: https://bugs.chromium.org/p/chromium/issues/detail?id=360889
-// getBoundingClientRect return the full precision value, which is
-// not the same behavior as on chrome. Set the precision to 6 to
-// unify their behavior
 
-var getWidth = function getWidth(elem) {
-  var includeMargin = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-  var width = elem && typeof elem.getBoundingClientRect === 'function' && elem.getBoundingClientRect().width;
+/**
+ * Cache callback function that always return same ref instead.
+ * This is used for context optimization.
+ */
 
-  if (width) {
-    if (includeMargin) {
-      var _getComputedStyle = getComputedStyle(elem),
-          marginLeft = _getComputedStyle.marginLeft,
-          marginRight = _getComputedStyle.marginRight;
+function useMemoCallback(func) {
+  var funRef = React__namespace.useRef(func);
+  funRef.current = func;
+  var callback = React__namespace.useCallback(function () {
+    var _funRef$current;
 
-      width += +marginLeft.replace('px', '') + +marginRight.replace('px', '');
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
     }
 
-    width = +width.toFixed(6);
-  }
+    return (_funRef$current = funRef.current) === null || _funRef$current === void 0 ? void 0 : _funRef$current.call.apply(_funRef$current, [funRef].concat(args));
+  }, []);
+  return func ? callback : undefined;
+}
 
-  return width || 0;
+var InternalSubMenuList = function InternalSubMenuList(_ref, ref) {
+  var className = _ref.className,
+      children = _ref.children,
+      restProps = _objectWithoutProperties$1(_ref, ["className", "children"]);
+
+  var _React$useContext = React__namespace.useContext(MenuContext$1),
+      prefixCls = _React$useContext.prefixCls,
+      mode = _React$useContext.mode;
+
+  return /*#__PURE__*/React__namespace.createElement("ul", _extends$1({
+    className: classnames(prefixCls, "".concat(prefixCls, "-sub"), "".concat(prefixCls, "-").concat(mode === 'inline' ? 'inline' : 'vertical'), className)
+  }, restProps, {
+    "data-menu-list": true,
+    ref: ref
+  }), children);
 };
-var setStyle$1 = function setStyle(elem, styleProperty, value) {
-  if (elem && _typeof$4(elem.style) === 'object') {
-    // eslint-disable-next-line no-param-reassign
-    elem.style[styleProperty] = value;
-  }
-};
-var isMobileDevice = function isMobileDevice() {
-  return defaultResult.any;
-};
+
+var SubMenuList = /*#__PURE__*/React__namespace.forwardRef(InternalSubMenuList);
+SubMenuList.displayName = 'SubMenuList';
 
 var autoAdjustOverflow = {
   adjustX: 1,
@@ -20889,2158 +20949,1325 @@ var placementsRtl = {
   }
 };
 
-var guid = 0;
+function getMotion(mode, motion, defaultMotions) {
+  if (motion) {
+    return motion;
+  }
+
+  if (defaultMotions) {
+    return defaultMotions[mode] || defaultMotions.other;
+  }
+
+  return undefined;
+}
+
 var popupPlacementMap = {
   horizontal: 'bottomLeft',
   vertical: 'rightTop',
   'vertical-left': 'rightTop',
   'vertical-right': 'leftTop'
 };
-
-var updateDefaultActiveFirst = function updateDefaultActiveFirst(store, eventKey, defaultActiveFirst) {
-  var menuId = getMenuIdFromSubMenuEventKey(eventKey);
-  var state = store.getState();
-  store.setState({
-    defaultActiveFirst: _objectSpread2$1(_objectSpread2$1({}, state.defaultActiveFirst), {}, _defineProperty$4({}, menuId, defaultActiveFirst))
-  });
-};
-
-var SubMenu$2 = /*#__PURE__*/function (_React$Component) {
-  _inherits$1(SubMenu, _React$Component);
-
-  var _super = _createSuper$2(SubMenu);
-
-  function SubMenu(props) {
-    var _this;
-
-    _classCallCheck$2(this, SubMenu);
-
-    _this = _super.call(this, props);
-
-    _this.onDestroy = function (key) {
-      _this.props.onDestroy(key);
-    };
-    /**
-     * note:
-     *  This legacy code that `onKeyDown` is called by parent instead of dom self.
-     *  which need return code to check if this event is handled
-     */
-
-
-    _this.onKeyDown = function (e) {
-      var keyCode = e.keyCode;
-      var menu = _this.menuInstance;
-      var store = _this.props.store;
-
-      var visible = _this.getVisible();
-
-      if (keyCode === KeyCode.ENTER) {
-        _this.onTitleClick(e);
-
-        updateDefaultActiveFirst(store, _this.props.eventKey, true);
-        return true;
-      }
-
-      if (keyCode === KeyCode.RIGHT) {
-        if (visible) {
-          menu.onKeyDown(e);
-        } else {
-          _this.triggerOpenChange(true); // need to update current menu's defaultActiveFirst value
-
-
-          updateDefaultActiveFirst(store, _this.props.eventKey, true);
-        }
-
-        return true;
-      }
-
-      if (keyCode === KeyCode.LEFT) {
-        var handled;
-
-        if (visible) {
-          handled = menu.onKeyDown(e);
-        } else {
-          return undefined;
-        }
-
-        if (!handled) {
-          _this.triggerOpenChange(false);
-
-          handled = true;
-        }
-
-        return handled;
-      }
-
-      if (visible && (keyCode === KeyCode.UP || keyCode === KeyCode.DOWN)) {
-        return menu.onKeyDown(e);
-      }
-
-      return undefined;
-    };
-
-    _this.onOpenChange = function (e) {
-      _this.props.onOpenChange(e);
-    };
-
-    _this.onPopupVisibleChange = function (visible) {
-      _this.triggerOpenChange(visible, visible ? 'mouseenter' : 'mouseleave');
-    };
-
-    _this.onMouseEnter = function (e) {
-      var _this$props = _this.props,
-          key = _this$props.eventKey,
-          onMouseEnter = _this$props.onMouseEnter,
-          store = _this$props.store;
-      updateDefaultActiveFirst(store, _this.props.eventKey, false);
-      onMouseEnter({
-        key: key,
-        domEvent: e
-      });
-    };
-
-    _this.onMouseLeave = function (e) {
-      var _this$props2 = _this.props,
-          parentMenu = _this$props2.parentMenu,
-          eventKey = _this$props2.eventKey,
-          onMouseLeave = _this$props2.onMouseLeave;
-      parentMenu.subMenuInstance = _assertThisInitialized$1(_this);
-      onMouseLeave({
-        key: eventKey,
-        domEvent: e
-      });
-    };
-
-    _this.onTitleMouseEnter = function (domEvent) {
-      var _this$props3 = _this.props,
-          key = _this$props3.eventKey,
-          onItemHover = _this$props3.onItemHover,
-          onTitleMouseEnter = _this$props3.onTitleMouseEnter;
-      onItemHover({
-        key: key,
-        hover: true
-      });
-      onTitleMouseEnter({
-        key: key,
-        domEvent: domEvent
-      });
-    };
-
-    _this.onTitleMouseLeave = function (e) {
-      var _this$props4 = _this.props,
-          parentMenu = _this$props4.parentMenu,
-          eventKey = _this$props4.eventKey,
-          onItemHover = _this$props4.onItemHover,
-          onTitleMouseLeave = _this$props4.onTitleMouseLeave;
-      parentMenu.subMenuInstance = _assertThisInitialized$1(_this);
-      onItemHover({
-        key: eventKey,
-        hover: false
-      });
-      onTitleMouseLeave({
-        key: eventKey,
-        domEvent: e
-      });
-    };
-
-    _this.onTitleClick = function (e) {
-      var _assertThisInitialize = _assertThisInitialized$1(_this),
-          props = _assertThisInitialize.props;
-
-      props.onTitleClick({
-        key: props.eventKey,
-        domEvent: e
-      });
-
-      if (props.triggerSubMenuAction === 'hover') {
-        return;
-      }
-
-      _this.triggerOpenChange(!_this.getVisible(), 'click');
-
-      updateDefaultActiveFirst(props.store, _this.props.eventKey, false);
-    };
-
-    _this.onSubMenuClick = function (info) {
-      // in the case of overflowed submenu
-      // onClick is not copied over
-      if (typeof _this.props.onClick === 'function') {
-        _this.props.onClick(_this.addKeyPath(info));
-      }
-    };
-
-    _this.onSelect = function (info) {
-      _this.props.onSelect(info);
-    };
-
-    _this.onDeselect = function (info) {
-      _this.props.onDeselect(info);
-    };
-
-    _this.getPrefixCls = function () {
-      return "".concat(_this.props.rootPrefixCls, "-submenu");
-    };
-
-    _this.getActiveClassName = function () {
-      return "".concat(_this.getPrefixCls(), "-active");
-    };
-
-    _this.getDisabledClassName = function () {
-      return "".concat(_this.getPrefixCls(), "-disabled");
-    };
-
-    _this.getSelectedClassName = function () {
-      return "".concat(_this.getPrefixCls(), "-selected");
-    };
-
-    _this.getOpenClassName = function () {
-      return "".concat(_this.props.rootPrefixCls, "-submenu-open");
-    };
-
-    _this.getVisible = function () {
-      return _this.state.isOpen;
-    };
-
-    _this.getMode = function () {
-      return _this.state.mode;
-    };
-
-    _this.saveMenuInstance = function (c) {
-      // children menu instance
-      _this.menuInstance = c;
-    };
-
-    _this.addKeyPath = function (info) {
-      return _objectSpread2$1(_objectSpread2$1({}, info), {}, {
-        keyPath: (info.keyPath || []).concat(_this.props.eventKey)
-      });
-    };
-
-    _this.triggerOpenChange = function (open, type) {
-      var key = _this.props.eventKey;
-
-      var openChange = function openChange() {
-        _this.onOpenChange({
-          key: key,
-          item: _assertThisInitialized$1(_this),
-          trigger: type,
-          open: open
-        });
-      };
-
-      if (type === 'mouseenter') {
-        // make sure mouseenter happen after other menu item's mouseleave
-        _this.mouseenterTimeout = setTimeout(function () {
-          openChange();
-        }, 0);
-      } else {
-        openChange();
-      }
-    };
-
-    _this.isChildrenSelected = function () {
-      var ret = {
-        find: false
-      };
-      loopMenuItemRecursively(_this.props.children, _this.props.selectedKeys, ret);
-      return ret.find;
-    };
-
-    _this.isInlineMode = function () {
-      return _this.getMode() === 'inline';
-    };
-
-    _this.adjustWidth = function () {
-      /* istanbul ignore if */
-      if (!_this.subMenuTitle || !_this.menuInstance) {
-        return;
-      }
-
-      var popupMenu = ReactDOM__namespace.findDOMNode(_this.menuInstance);
-
-      if (popupMenu.offsetWidth >= _this.subMenuTitle.offsetWidth) {
-        return;
-      }
-      /* istanbul ignore next */
-
-
-      popupMenu.style.minWidth = "".concat(_this.subMenuTitle.offsetWidth, "px");
-    };
-
-    _this.saveSubMenuTitle = function (subMenuTitle) {
-      _this.subMenuTitle = subMenuTitle;
-    };
-
-    _this.getBaseProps = function () {
-      var _assertThisInitialize2 = _assertThisInitialized$1(_this),
-          props = _assertThisInitialize2.props;
-
-      var mergedMode = _this.getMode();
-
-      return {
-        mode: mergedMode === 'horizontal' ? 'vertical' : mergedMode,
-        visible: _this.getVisible(),
-        level: props.level + 1,
-        inlineIndent: props.inlineIndent,
-        focusable: false,
-        onClick: _this.onSubMenuClick,
-        onSelect: _this.onSelect,
-        onDeselect: _this.onDeselect,
-        onDestroy: _this.onDestroy,
-        selectedKeys: props.selectedKeys,
-        eventKey: "".concat(props.eventKey, "-menu-"),
-        openKeys: props.openKeys,
-        motion: props.motion,
-        onOpenChange: _this.onOpenChange,
-        subMenuOpenDelay: props.subMenuOpenDelay,
-        parentMenu: _assertThisInitialized$1(_this),
-        subMenuCloseDelay: props.subMenuCloseDelay,
-        forceSubMenuRender: props.forceSubMenuRender,
-        triggerSubMenuAction: props.triggerSubMenuAction,
-        builtinPlacements: props.builtinPlacements,
-        defaultActiveFirst: props.store.getState().defaultActiveFirst[getMenuIdFromSubMenuEventKey(props.eventKey)],
-        multiple: props.multiple,
-        prefixCls: props.rootPrefixCls,
-        id: _this.internalMenuId,
-        manualRef: _this.saveMenuInstance,
-        itemIcon: props.itemIcon,
-        expandIcon: props.expandIcon,
-        direction: props.direction
-      };
-    };
-
-    _this.getMotion = function (mode, visible) {
-      var _assertThisInitialize3 = _assertThisInitialized$1(_this),
-          haveRendered = _assertThisInitialize3.haveRendered;
-
-      var _this$props5 = _this.props,
-          motion = _this$props5.motion,
-          rootPrefixCls = _this$props5.rootPrefixCls; // don't show transition on first rendering (no animation for opened menu)
-      // show appear transition if it's not visible (not sure why)
-      // show appear transition if it's not inline mode
-
-      var mergedMotion = _objectSpread2$1(_objectSpread2$1({}, motion), {}, {
-        leavedClassName: "".concat(rootPrefixCls, "-hidden"),
-        removeOnLeave: false,
-        motionAppear: haveRendered || !visible || mode !== 'inline'
-      });
-
-      return mergedMotion;
-    };
-
-    var store = props.store,
-        eventKey = props.eventKey;
-
-    var _store$getState = store.getState(),
-        defaultActiveFirst = _store$getState.defaultActiveFirst;
-
-    _this.isRootMenu = false;
-    var value = false;
-
-    if (defaultActiveFirst) {
-      value = defaultActiveFirst[eventKey];
-    }
-
-    updateDefaultActiveFirst(store, eventKey, value);
-    _this.state = {
-      mode: props.mode,
-      isOpen: props.isOpen
-    };
-    return _this;
-  }
-
-  _createClass$2(SubMenu, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.componentDidUpdate();
-    }
-  }, {
-    key: "componentDidUpdate",
-    value: function componentDidUpdate() {
-      var _this2 = this;
-
-      var _this$props6 = this.props,
-          mode = _this$props6.mode,
-          parentMenu = _this$props6.parentMenu,
-          manualRef = _this$props6.manualRef,
-          isOpen = _this$props6.isOpen;
-
-      var updateState = function updateState() {
-        _this2.setState({
-          mode: mode,
-          isOpen: isOpen
-        });
-      }; // Delay sync when mode changed in case openKeys change not sync
-
-
-      var isOpenChanged = isOpen !== this.state.isOpen;
-      var isModeChanged = mode !== this.state.mode;
-
-      if (isModeChanged || isOpenChanged) {
-        wrapperRaf$1.cancel(this.updateStateRaf);
-
-        if (isModeChanged) {
-          this.updateStateRaf = wrapperRaf$1(updateState);
-        } else {
-          updateState();
-        }
-      } // invoke customized ref to expose component to mixin
-
-
-      if (manualRef) {
-        manualRef(this);
-      }
-
-      if (mode !== 'horizontal' || !(parentMenu === null || parentMenu === void 0 ? void 0 : parentMenu.isRootMenu) || !isOpen) {
-        return;
-      }
-
-      this.minWidthTimeout = setTimeout(function () {
-        return _this2.adjustWidth();
-      }, 0);
-    }
-  }, {
-    key: "componentWillUnmount",
-    value: function componentWillUnmount() {
-      var _this$props7 = this.props,
-          onDestroy = _this$props7.onDestroy,
-          eventKey = _this$props7.eventKey;
-
-      if (onDestroy) {
-        onDestroy(eventKey);
-      }
-      /* istanbul ignore if */
-
-
-      if (this.minWidthTimeout) {
-        clearTimeout(this.minWidthTimeout);
-      }
-      /* istanbul ignore if */
-
-
-      if (this.mouseenterTimeout) {
-        clearTimeout(this.mouseenterTimeout);
-      }
-
-      wrapperRaf$1.cancel(this.updateStateRaf);
-    }
-  }, {
-    key: "renderPopupMenu",
-    value: function renderPopupMenu(className, style) {
-      var baseProps = this.getBaseProps();
-      /**
-       * zombiej: Why SubPopupMenu here?
-       * Seems whatever popup or inline mode both will render SubPopupMenu.
-       * It's controlled by Trigger for popup or not.
-       */
-
-      return /*#__PURE__*/React__namespace.createElement(connected$1, _extends$1({}, baseProps, {
-        id: this.internalMenuId,
-        className: className,
-        style: style
-      }), this.props.children);
-    }
-  }, {
-    key: "renderChildren",
-    value: function renderChildren() {
-      var _this3 = this;
-
-      var baseProps = this.getBaseProps();
-      var mode = baseProps.mode,
-          visible = baseProps.visible,
-          forceSubMenuRender = baseProps.forceSubMenuRender,
-          direction = baseProps.direction; // [Legacy] getMotion must be called before `haveRendered`
-
-      var mergedMotion = this.getMotion(mode, visible);
-      this.haveRendered = true;
-      this.haveOpened = this.haveOpened || visible || forceSubMenuRender; // never rendered not planning to, don't render
-
-      if (!this.haveOpened) {
-        return /*#__PURE__*/React__namespace.createElement("div", null);
-      }
-
-      var sharedClassName = classnames("".concat(baseProps.prefixCls, "-sub"), _defineProperty$4({}, "".concat(baseProps.prefixCls, "-rtl"), direction === 'rtl'));
-
-      if (!this.isInlineMode()) {
-        return this.renderPopupMenu(sharedClassName);
-      }
-
-      return /*#__PURE__*/React__namespace.createElement(CSSMotion, _extends$1({
-        visible: baseProps.visible,
-        forceRender: forceSubMenuRender
-      }, mergedMotion), function (_ref) {
-        var className = _ref.className,
-            style = _ref.style;
-        var mergedClassName = classnames(sharedClassName, className);
-        return _this3.renderPopupMenu(mergedClassName, style);
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _classNames2, _props$parentMenu, _classNames3;
-
-      var props = _objectSpread2$1({}, this.props);
-
-      var visible = this.getVisible();
-      var prefixCls = this.getPrefixCls();
-      var inline = this.isInlineMode();
-      var mergedMode = this.getMode();
-      var className = classnames(prefixCls, "".concat(prefixCls, "-").concat(mergedMode), (_classNames2 = {}, _defineProperty$4(_classNames2, props.className, !!props.className), _defineProperty$4(_classNames2, this.getOpenClassName(), visible), _defineProperty$4(_classNames2, this.getActiveClassName(), props.active || visible && !inline), _defineProperty$4(_classNames2, this.getDisabledClassName(), props.disabled), _defineProperty$4(_classNames2, this.getSelectedClassName(), this.isChildrenSelected()), _classNames2));
-
-      if (!this.internalMenuId) {
-        if (props.eventKey) {
-          this.internalMenuId = "".concat(props.eventKey, "$Menu");
-        } else {
-          guid += 1;
-          this.internalMenuId = "$__$".concat(guid, "$Menu");
-        }
-      }
-
-      var mouseEvents = {};
-      var titleClickEvents = {};
-      var titleMouseEvents = {};
-
-      if (!props.disabled) {
-        mouseEvents = {
-          onMouseLeave: this.onMouseLeave,
-          onMouseEnter: this.onMouseEnter
-        }; // only works in title, not outer li
-
-        titleClickEvents = {
-          onClick: this.onTitleClick
-        };
-        titleMouseEvents = {
-          onMouseEnter: this.onTitleMouseEnter,
-          onMouseLeave: this.onTitleMouseLeave
-        };
-      }
-
-      var style = {};
-      var direction = props.direction;
-      var isRTL = direction === 'rtl';
-
-      if (inline) {
-        if (isRTL) {
-          style.paddingRight = props.inlineIndent * props.level;
-        } else {
-          style.paddingLeft = props.inlineIndent * props.level;
-        }
-      }
-
-      var ariaOwns = {}; // only set aria-owns when menu is open
-      // otherwise it would be an invalid aria-owns value
-      // since corresponding node cannot be found
-
-      if (this.getVisible()) {
-        ariaOwns = {
-          'aria-owns': this.internalMenuId
-        };
-      } // expand custom icon should NOT be displayed in menu with horizontal mode.
-
-
-      var icon = null;
-
-      if (mergedMode !== 'horizontal') {
-        icon = this.props.expandIcon; // ReactNode
-
-        if (typeof this.props.expandIcon === 'function') {
-          icon = /*#__PURE__*/React__namespace.createElement(this.props.expandIcon, _objectSpread2$1({}, this.props));
-        }
-      }
-
-      var title = /*#__PURE__*/React__namespace.createElement("div", _extends$1({
-        ref: this.saveSubMenuTitle,
-        style: style,
-        className: "".concat(prefixCls, "-title"),
-        role: "button"
-      }, titleMouseEvents, titleClickEvents, {
-        "aria-expanded": visible
-      }, ariaOwns, {
-        "aria-haspopup": "true",
-        title: typeof props.title === 'string' ? props.title : undefined
-      }), props.title, icon || /*#__PURE__*/React__namespace.createElement("i", {
-        className: "".concat(prefixCls, "-arrow")
-      }));
-      var children = this.renderChildren();
-      var getPopupContainer = ((_props$parentMenu = props.parentMenu) === null || _props$parentMenu === void 0 ? void 0 : _props$parentMenu.isRootMenu) ? props.parentMenu.props.getPopupContainer : function (triggerNode) {
-        return triggerNode.parentNode;
-      };
-      var popupPlacement = popupPlacementMap[mergedMode];
-      var popupAlign = props.popupOffset ? {
-        offset: props.popupOffset
-      } : {};
-      var popupClassName = classnames((_classNames3 = {}, _defineProperty$4(_classNames3, props.popupClassName, props.popupClassName && !inline), _defineProperty$4(_classNames3, "".concat(prefixCls, "-rtl"), isRTL), _classNames3));
-      var disabled = props.disabled,
-          triggerSubMenuAction = props.triggerSubMenuAction,
-          subMenuOpenDelay = props.subMenuOpenDelay,
-          forceSubMenuRender = props.forceSubMenuRender,
-          subMenuCloseDelay = props.subMenuCloseDelay,
-          builtinPlacements = props.builtinPlacements;
-      menuAllProps.forEach(function (key) {
-        return delete props[key];
-      }); // Set onClick to null, to ignore propagated onClick event
-
-      delete props.onClick;
-      var placement = isRTL ? _objectSpread2$1(_objectSpread2$1({}, placementsRtl), builtinPlacements) : _objectSpread2$1(_objectSpread2$1({}, placements), builtinPlacements);
-      delete props.direction; // [Legacy] It's a fast fix,
-      // but we should check if we can refactor this to make code more easy to understand
-
-      var baseProps = this.getBaseProps();
-      var mergedMotion = inline ? null : this.getMotion(baseProps.mode, baseProps.visible);
-      return /*#__PURE__*/React__namespace.createElement("li", _extends$1({}, props, mouseEvents, {
-        className: className,
-        role: "menuitem"
-      }), /*#__PURE__*/React__namespace.createElement(Trigger, {
-        prefixCls: prefixCls,
-        popupClassName: classnames("".concat(prefixCls, "-popup"), popupClassName),
-        getPopupContainer: getPopupContainer,
-        builtinPlacements: placement,
-        popupPlacement: popupPlacement,
-        popupVisible: inline ? false : visible,
-        popupAlign: popupAlign,
-        popup: inline ? null : children,
-        action: disabled || inline ? [] : [triggerSubMenuAction],
-        mouseEnterDelay: subMenuOpenDelay,
-        mouseLeaveDelay: subMenuCloseDelay,
-        onPopupVisibleChange: this.onPopupVisibleChange,
-        forceRender: forceSubMenuRender,
-        popupMotion: mergedMotion
-      }, title), inline ? children : null);
-    }
-  }]);
-
-  return SubMenu;
-}(React__namespace.Component);
-SubMenu$2.defaultProps = {
-  onMouseEnter: noop$2,
-  onMouseLeave: noop$2,
-  onTitleMouseEnter: noop$2,
-  onTitleMouseLeave: noop$2,
-  onTitleClick: noop$2,
-  manualRef: noop$2,
-  mode: 'vertical',
-  title: ''
-};
-var connected$2 = connect(function (_ref2, _ref3) {
-  var openKeys = _ref2.openKeys,
-      activeKey = _ref2.activeKey,
-      selectedKeys = _ref2.selectedKeys;
-  var eventKey = _ref3.eventKey,
-      subMenuKey = _ref3.subMenuKey;
-  return {
-    isOpen: openKeys.indexOf(eventKey) > -1,
-    active: activeKey[subMenuKey] === eventKey,
-    selectedKeys: selectedKeys
-  };
-})(SubMenu$2);
-connected$2.isSubMenu = true;
-
-var MENUITEM_OVERFLOWED_CLASSNAME = 'menuitem-overflowed';
-var FLOAT_PRECISION_ADJUST = 0.5;
-
-var DOMWrap = /*#__PURE__*/function (_React$Component) {
-  _inherits$1(DOMWrap, _React$Component);
-
-  var _super = _createSuper$2(DOMWrap);
-
-  function DOMWrap() {
-    var _this;
-
-    _classCallCheck$2(this, DOMWrap);
-
-    _this = _super.apply(this, arguments);
-    _this.resizeObserver = null;
-    _this.mutationObserver = null; // original scroll size of the list
-
-    _this.originalTotalWidth = 0; // copy of overflowed items
-
-    _this.overflowedItems = []; // cache item of the original items (so we can track the size and order)
-
-    _this.menuItemSizes = [];
-    _this.cancelFrameId = null;
-    _this.state = {
-      lastVisibleIndex: undefined
-    };
-    _this.childRef = /*#__PURE__*/React__namespace.createRef(); // get all valid menuItem nodes
-
-    _this.getMenuItemNodes = function () {
-      var prefixCls = _this.props.prefixCls;
-      var ul = _this.childRef.current;
-
-      if (!ul) {
-        return [];
-      } // filter out all overflowed indicator placeholder
-
-
-      return [].slice.call(ul.children).filter(function (node) {
-        return node.className.split(' ').indexOf("".concat(prefixCls, "-overflowed-submenu")) < 0;
-      });
-    };
-
-    _this.getOverflowedSubMenuItem = function (keyPrefix, overflowedItems, renderPlaceholder) {
-      var _this$props = _this.props,
-          overflowedIndicator = _this$props.overflowedIndicator,
-          level = _this$props.level,
-          mode = _this$props.mode,
-          prefixCls = _this$props.prefixCls,
-          theme = _this$props.theme;
-
-      if (level !== 1 || mode !== 'horizontal') {
-        return null;
-      } // put all the overflowed item inside a submenu
-      // with a title of overflow indicator ('...')
-
-
-      var copy = _this.props.children[0];
-
-      var _copy$props = copy.props;
-          _copy$props.children;
-          _copy$props.title;
-          var propStyle = _copy$props.style,
-          rest = _objectWithoutProperties$1(_copy$props, ["children", "title", "style"]);
-
-      var style = _objectSpread2$1({}, propStyle);
-
-      var key = "".concat(keyPrefix, "-overflowed-indicator");
-      var eventKey = "".concat(keyPrefix, "-overflowed-indicator");
-
-      if (overflowedItems.length === 0 && renderPlaceholder !== true) {
-        style = _objectSpread2$1(_objectSpread2$1({}, style), {}, {
-          display: 'none'
-        });
-      } else if (renderPlaceholder) {
-        style = _objectSpread2$1(_objectSpread2$1({}, style), {}, {
-          visibility: 'hidden',
-          // prevent from taking normal dom space
-          position: 'absolute'
-        });
-        key = "".concat(key, "-placeholder");
-        eventKey = "".concat(eventKey, "-placeholder");
-      }
-
-      var popupClassName = theme ? "".concat(prefixCls, "-").concat(theme) : '';
-      var props = {};
-      menuAllProps.forEach(function (k) {
-        if (rest[k] !== undefined) {
-          props[k] = rest[k];
-        }
-      });
-      return /*#__PURE__*/React__namespace.createElement(connected$2, _extends$1({
-        title: overflowedIndicator,
-        className: "".concat(prefixCls, "-overflowed-submenu"),
-        popupClassName: popupClassName
-      }, props, {
-        key: key,
-        eventKey: eventKey,
-        disabled: false,
-        style: style
-      }), overflowedItems);
-    }; // memorize rendered menuSize
-
-
-    _this.setChildrenWidthAndResize = function () {
-      if (_this.props.mode !== 'horizontal') {
-        return;
-      }
-
-      var ul = _this.childRef.current;
-
-      if (!ul) {
-        return;
-      }
-
-      var ulChildrenNodes = ul.children;
-
-      if (!ulChildrenNodes || ulChildrenNodes.length === 0) {
-        return;
-      }
-
-      var lastOverflowedIndicatorPlaceholder = ul.children[ulChildrenNodes.length - 1]; // need last overflowed indicator for calculating length;
-
-      setStyle$1(lastOverflowedIndicatorPlaceholder, 'display', 'inline-block');
-
-      var menuItemNodes = _this.getMenuItemNodes(); // reset display attribute for all hidden elements caused by overflow to calculate updated width
-      // and then reset to original state after width calculation
-
-
-      var overflowedItems = menuItemNodes.filter(function (c) {
-        return c.className.split(' ').indexOf(MENUITEM_OVERFLOWED_CLASSNAME) >= 0;
-      });
-      overflowedItems.forEach(function (c) {
-        setStyle$1(c, 'display', 'inline-block');
-      });
-      _this.menuItemSizes = menuItemNodes.map(function (c) {
-        return getWidth(c, true);
-      });
-      overflowedItems.forEach(function (c) {
-        setStyle$1(c, 'display', 'none');
-      });
-      _this.overflowedIndicatorWidth = getWidth(ul.children[ul.children.length - 1], true);
-      _this.originalTotalWidth = _this.menuItemSizes.reduce(function (acc, cur) {
-        return acc + cur;
-      }, 0);
-
-      _this.handleResize(); // prevent the overflowed indicator from taking space;
-
-
-      setStyle$1(lastOverflowedIndicatorPlaceholder, 'display', 'none');
-    };
-
-    _this.handleResize = function () {
-      if (_this.props.mode !== 'horizontal') {
-        return;
-      }
-
-      var ul = _this.childRef.current;
-
-      if (!ul) {
-        return;
-      }
-
-      var width = getWidth(ul);
-      _this.overflowedItems = [];
-      var currentSumWidth = 0; // index for last visible child in horizontal mode
-
-      var lastVisibleIndex; // float number comparison could be problematic
-      // e.g. 0.1 + 0.2 > 0.3 =====> true
-      // thus using FLOAT_PRECISION_ADJUST as buffer to help the situation
-
-      if (_this.originalTotalWidth > width + FLOAT_PRECISION_ADJUST) {
-        lastVisibleIndex = -1;
-
-        _this.menuItemSizes.forEach(function (liWidth) {
-          currentSumWidth += liWidth;
-
-          if (currentSumWidth + _this.overflowedIndicatorWidth <= width) {
-            lastVisibleIndex += 1;
-          }
-        });
-      }
-
-      _this.setState({
-        lastVisibleIndex: lastVisibleIndex
-      });
-    };
-
-    return _this;
-  }
-
-  _createClass$2(DOMWrap, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var _this2 = this;
-
-      this.setChildrenWidthAndResize();
-
-      if (this.props.level === 1 && this.props.mode === 'horizontal') {
-        var menuUl = this.childRef.current;
-
-        if (!menuUl) {
-          return;
-        }
-
-        this.resizeObserver = new index(function (entries) {
-          entries.forEach(function () {
-            var cancelFrameId = _this2.cancelFrameId;
-            cancelAnimationFrame(cancelFrameId);
-            _this2.cancelFrameId = requestAnimationFrame(_this2.setChildrenWidthAndResize);
-          });
-        });
-        [].slice.call(menuUl.children).concat(menuUl).forEach(function (el) {
-          _this2.resizeObserver.observe(el);
-        });
-
-        if (typeof MutationObserver !== 'undefined') {
-          this.mutationObserver = new MutationObserver(function () {
-            _this2.resizeObserver.disconnect();
-
-            [].slice.call(menuUl.children).concat(menuUl).forEach(function (el) {
-              _this2.resizeObserver.observe(el);
-            });
-
-            _this2.setChildrenWidthAndResize();
-          });
-          this.mutationObserver.observe(menuUl, {
-            attributes: false,
-            childList: true,
-            subTree: false
-          });
-        }
-      }
-    }
-  }, {
-    key: "componentWillUnmount",
-    value: function componentWillUnmount() {
-      if (this.resizeObserver) {
-        this.resizeObserver.disconnect();
-      }
-
-      if (this.mutationObserver) {
-        this.mutationObserver.disconnect();
-      }
-
-      cancelAnimationFrame(this.cancelFrameId);
-    }
-  }, {
-    key: "renderChildren",
-    value: function renderChildren(children) {
-      var _this3 = this;
-
-      // need to take care of overflowed items in horizontal mode
-      var lastVisibleIndex = this.state.lastVisibleIndex;
-      return (children || []).reduce(function (acc, childNode, index) {
-        var item = childNode;
-
-        if (_this3.props.mode === 'horizontal') {
-          var overflowed = _this3.getOverflowedSubMenuItem(childNode.props.eventKey, []);
-
-          if (lastVisibleIndex !== undefined && _this3.props.className.indexOf("".concat(_this3.props.prefixCls, "-root")) !== -1) {
-            if (index > lastVisibleIndex) {
-              item = /*#__PURE__*/React__namespace.cloneElement(childNode, // 这里修改 eventKey 是为了防止隐藏状态下还会触发 openkeys 事件
-              {
-                style: {
-                  display: 'none'
-                },
-                eventKey: "".concat(childNode.props.eventKey, "-hidden"),
-
-                /**
-                 * Legacy code. Here `className` never used:
-                 * https://github.com/react-component/menu/commit/4cd6b49fce9d116726f4ea00dda85325d6f26500#diff-e2fa48f75c2dd2318295cde428556a76R240
-                 */
-                className: "".concat(MENUITEM_OVERFLOWED_CLASSNAME)
-              });
-            }
-
-            if (index === lastVisibleIndex + 1) {
-              _this3.overflowedItems = children.slice(lastVisibleIndex + 1).map(function (c) {
-                return /*#__PURE__*/React__namespace.cloneElement(c, // children[index].key will become '.$key' in clone by default,
-                // we have to overwrite with the correct key explicitly
-                {
-                  key: c.props.eventKey,
-                  mode: 'vertical-left'
-                });
-              });
-              overflowed = _this3.getOverflowedSubMenuItem(childNode.props.eventKey, _this3.overflowedItems);
-            }
-          }
-
-          var ret = [].concat(_toConsumableArray(acc), [overflowed, item]);
-
-          if (index === children.length - 1) {
-            // need a placeholder for calculating overflowed indicator width
-            ret.push(_this3.getOverflowedSubMenuItem(childNode.props.eventKey, [], true));
-          }
-
-          return ret;
-        }
-
-        return [].concat(_toConsumableArray(acc), [item]);
-      }, []);
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this$props2 = this.props;
-          _this$props2.visible;
-          _this$props2.prefixCls;
-          _this$props2.overflowedIndicator;
-          _this$props2.mode;
-          _this$props2.level;
-          var tag = _this$props2.tag,
-          children = _this$props2.children;
-          _this$props2.theme;
-          var rest = _objectWithoutProperties$1(_this$props2, ["visible", "prefixCls", "overflowedIndicator", "mode", "level", "tag", "children", "theme"]);
-
-      var Tag = tag;
-      return /*#__PURE__*/React__namespace.createElement(Tag, _extends$1({
-        ref: this.childRef
-      }, rest), this.renderChildren(children));
-    }
-  }]);
-
-  return DOMWrap;
-}(React__namespace.Component);
-
-DOMWrap.defaultProps = {
-  tag: 'div',
-  className: ''
-};
-
-function allDisabled(arr) {
-  if (!arr.length) {
-    return true;
-  }
-
-  return arr.every(function (c) {
-    return !!c.props.disabled;
-  });
-}
-
-function updateActiveKey(store, menuId, activeKey) {
-  var state = store.getState();
-  store.setState({
-    activeKey: _objectSpread2$1(_objectSpread2$1({}, state.activeKey), {}, _defineProperty$4({}, menuId, activeKey))
-  });
-}
-
-function getEventKey(props) {
-  // when eventKey not available ,it's menu and return menu id '0-menu-'
-  return props.eventKey || '0-menu-';
-}
-
-function getActiveKey(props, originalActiveKey) {
-  var activeKey = originalActiveKey;
-  var children = props.children,
-      eventKey = props.eventKey;
-
-  if (activeKey) {
-    var found;
-    loopMenuItem(children, function (c, i) {
-      if (c && c.props && !c.props.disabled && activeKey === getKeyFromChildrenIndex(c, eventKey, i)) {
-        found = true;
-      }
-    });
-
-    if (found) {
-      return activeKey;
-    }
-  }
-
-  activeKey = null;
-
-  if (props.defaultActiveFirst) {
-    loopMenuItem(children, function (c, i) {
-      if (!activeKey && c && !c.props.disabled) {
-        activeKey = getKeyFromChildrenIndex(c, eventKey, i);
-      }
-    });
-    return activeKey;
-  }
-
-  return activeKey;
-}
-function saveRef(c) {
-  if (!c) {
-    return;
-  }
-  /* eslint-disable @typescript-eslint/no-invalid-this */
-
-
-  var index = this.instanceArray.indexOf(c);
-
-  if (index !== -1) {
-    // update component if it's already inside instanceArray
-    this.instanceArray[index] = c;
-  } else {
-    // add component if it's not in instanceArray yet;
-    this.instanceArray.push(c);
-  }
-  /* eslint-enable @typescript-eslint/no-invalid-this */
-
-}
-var SubPopupMenu = /*#__PURE__*/function (_React$Component) {
-  _inherits$1(SubPopupMenu, _React$Component);
-
-  var _super = _createSuper$2(SubPopupMenu);
-
-  function SubPopupMenu(props) {
-    var _this;
-
-    _classCallCheck$2(this, SubPopupMenu);
-
-    _this = _super.call(this, props);
-    /**
-     * all keyboard events callbacks run from here at first
-     *
-     * note:
-     *  This legacy code that `onKeyDown` is called by parent instead of dom self.
-     *  which need return code to check if this event is handled
-     */
-
-    _this.onKeyDown = function (e, callback) {
-      var keyCode = e.keyCode;
-      var handled;
-
-      _this.getFlatInstanceArray().forEach(function (obj) {
-        if (obj && obj.props.active && obj.onKeyDown) {
-          handled = obj.onKeyDown(e);
-        }
-      });
-
-      if (handled) {
-        return 1;
-      }
-
-      var activeItem = null;
-
-      if (keyCode === KeyCode.UP || keyCode === KeyCode.DOWN) {
-        activeItem = _this.step(keyCode === KeyCode.UP ? -1 : 1);
-      }
-
-      if (activeItem) {
-        e.preventDefault();
-        updateActiveKey(_this.props.store, getEventKey(_this.props), activeItem.props.eventKey);
-
-        if (typeof callback === 'function') {
-          callback(activeItem);
-        }
-
-        return 1;
-      }
-
-      return undefined;
-    };
-
-    _this.onItemHover = function (e) {
-      var key = e.key,
-          hover = e.hover;
-      updateActiveKey(_this.props.store, getEventKey(_this.props), hover ? key : null);
-    };
-
-    _this.onDeselect = function (selectInfo) {
-      _this.props.onDeselect(selectInfo);
-    };
-
-    _this.onSelect = function (selectInfo) {
-      _this.props.onSelect(selectInfo);
-    };
-
-    _this.onClick = function (e) {
-      _this.props.onClick(e);
-    };
-
-    _this.onOpenChange = function (e) {
-      _this.props.onOpenChange(e);
-    };
-
-    _this.onDestroy = function (key) {
-      /* istanbul ignore next */
-      _this.props.onDestroy(key);
-    };
-
-    _this.getFlatInstanceArray = function () {
-      return _this.instanceArray;
-    };
-
-    _this.step = function (direction) {
-      var children = _this.getFlatInstanceArray();
-
-      var activeKey = _this.props.store.getState().activeKey[getEventKey(_this.props)];
-
-      var len = children.length;
-
-      if (!len) {
-        return null;
-      }
-
-      if (direction < 0) {
-        children = children.concat().reverse();
-      } // find current activeIndex
-
-
-      var activeIndex = -1;
-      children.every(function (c, ci) {
-        if (c && c.props.eventKey === activeKey) {
-          activeIndex = ci;
-          return false;
-        }
-
-        return true;
-      });
-
-      if (!_this.props.defaultActiveFirst && activeIndex !== -1 && allDisabled(children.slice(activeIndex, len - 1))) {
-        return undefined;
-      }
-
-      var start = (activeIndex + 1) % len;
-      var i = start;
-
-      do {
-        var child = children[i];
-
-        if (!child || child.props.disabled) {
-          i = (i + 1) % len;
-        } else {
-          return child;
-        }
-      } while (i !== start);
-
-      return null;
-    };
-
-    _this.renderCommonMenuItem = function (child, i, extraProps) {
-      var state = _this.props.store.getState();
-
-      var _assertThisInitialize = _assertThisInitialized$1(_this),
-          props = _assertThisInitialize.props;
-
-      var key = getKeyFromChildrenIndex(child, props.eventKey, i);
-      var childProps = child.props; // https://github.com/ant-design/ant-design/issues/11517#issuecomment-477403055
-
-      if (!childProps || typeof child.type === 'string') {
-        return child;
-      }
-
-      var isActive = key === state.activeKey;
-
-      var newChildProps = _objectSpread2$1(_objectSpread2$1({
-        mode: childProps.mode || props.mode,
-        level: props.level,
-        inlineIndent: props.inlineIndent,
-        renderMenuItem: _this.renderMenuItem,
-        rootPrefixCls: props.prefixCls,
-        index: i,
-        parentMenu: props.parentMenu,
-        // customized ref function, need to be invoked manually in child's componentDidMount
-        manualRef: childProps.disabled ? undefined : createChainedFunction(child.ref, saveRef.bind(_assertThisInitialized$1(_this))),
-        eventKey: key,
-        active: !childProps.disabled && isActive,
-        multiple: props.multiple,
-        onClick: function onClick(e) {
-          (childProps.onClick || noop$2)(e);
-
-          _this.onClick(e);
-        },
-        onItemHover: _this.onItemHover,
-        motion: props.motion,
-        subMenuOpenDelay: props.subMenuOpenDelay,
-        subMenuCloseDelay: props.subMenuCloseDelay,
-        forceSubMenuRender: props.forceSubMenuRender,
-        onOpenChange: _this.onOpenChange,
-        onDeselect: _this.onDeselect,
-        onSelect: _this.onSelect,
-        builtinPlacements: props.builtinPlacements,
-        itemIcon: childProps.itemIcon || _this.props.itemIcon,
-        expandIcon: childProps.expandIcon || _this.props.expandIcon
-      }, extraProps), {}, {
-        direction: props.direction
-      }); // ref: https://github.com/ant-design/ant-design/issues/13943
-
-
-      if (props.mode === 'inline' || isMobileDevice()) {
-        newChildProps.triggerSubMenuAction = 'click';
-      }
-
-      return /*#__PURE__*/React__namespace.cloneElement(child, _objectSpread2$1(_objectSpread2$1({}, newChildProps), {}, {
-        key: key || i
-      }));
-    };
-
-    _this.renderMenuItem = function (c, i, subMenuKey) {
-      /* istanbul ignore if */
-      if (!c) {
-        return null;
-      }
-
-      var state = _this.props.store.getState();
-
-      var extraProps = {
-        openKeys: state.openKeys,
-        selectedKeys: state.selectedKeys,
-        triggerSubMenuAction: _this.props.triggerSubMenuAction,
-        subMenuKey: subMenuKey
-      };
-      return _this.renderCommonMenuItem(c, i, extraProps);
-    };
-
-    props.store.setState({
-      activeKey: _objectSpread2$1(_objectSpread2$1({}, props.store.getState().activeKey), {}, _defineProperty$4({}, props.eventKey, getActiveKey(props, props.activeKey)))
-    });
-    _this.instanceArray = [];
-    return _this;
-  }
-
-  _createClass$2(SubPopupMenu, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      // invoke customized ref to expose component to mixin
-      if (this.props.manualRef) {
-        this.props.manualRef(this);
-      }
-    }
-  }, {
-    key: "shouldComponentUpdate",
-    value: function shouldComponentUpdate(nextProps) {
-      return this.props.visible || nextProps.visible || this.props.className !== nextProps.className || !shallowequal(this.props.style, nextProps.style);
-    }
-  }, {
-    key: "componentDidUpdate",
-    value: function componentDidUpdate(prevProps) {
-      var props = this.props;
-      var originalActiveKey = 'activeKey' in props ? props.activeKey : props.store.getState().activeKey[getEventKey(props)];
-      var activeKey = getActiveKey(props, originalActiveKey);
-
-      if (activeKey !== originalActiveKey) {
-        updateActiveKey(props.store, getEventKey(props), activeKey);
-      } else if ('activeKey' in prevProps) {
-        // If prev activeKey is not same as current activeKey,
-        // we should set it.
-        var prevActiveKey = getActiveKey(prevProps, prevProps.activeKey);
-
-        if (activeKey !== prevActiveKey) {
-          updateActiveKey(props.store, getEventKey(props), activeKey);
-        }
-      }
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this2 = this;
-
-      var props = _extends$1({}, this.props);
-
-      this.instanceArray = [];
-      var className = classnames(props.prefixCls, props.className, "".concat(props.prefixCls, "-").concat(props.mode));
-      var domProps = {
-        className: className,
-        // role could be 'select' and by default set to menu
-        role: props.role || 'menu'
-      };
-
-      if (props.id) {
-        domProps.id = props.id;
-      }
-
-      if (props.focusable) {
-        domProps.tabIndex = 0;
-        domProps.onKeyDown = this.onKeyDown;
-      }
-
-      var prefixCls = props.prefixCls,
-          eventKey = props.eventKey,
-          visible = props.visible,
-          level = props.level,
-          mode = props.mode,
-          overflowedIndicator = props.overflowedIndicator,
-          theme = props.theme;
-      menuAllProps.forEach(function (key) {
-        return delete props[key];
-      }); // Otherwise, the propagated click event will trigger another onClick
-
-      delete props.onClick;
-      return /*#__PURE__*/React__namespace.createElement(DOMWrap, _extends$1({}, props, {
-        prefixCls: prefixCls,
-        mode: mode,
-        tag: "ul",
-        level: level,
-        theme: theme,
-        visible: visible,
-        overflowedIndicator: overflowedIndicator
-      }, domProps), toArray$6(props.children).map(function (c, i) {
-        return _this2.renderMenuItem(c, i, eventKey || '0-menu-');
-      }));
-    }
-  }]);
-
-  return SubPopupMenu;
-}(React__namespace.Component);
-SubPopupMenu.defaultProps = {
-  prefixCls: 'rc-menu',
-  className: '',
-  mode: 'vertical',
-  level: 1,
-  inlineIndent: 24,
-  visible: true,
-  focusable: true,
-  style: {},
-  manualRef: noop$2
-};
-var connected$1 = connect()(SubPopupMenu);
-
-function getMotion(_ref, _ref2, menuMode) {
+function PopupTrigger(_ref) {
   var prefixCls = _ref.prefixCls,
-      motion = _ref.motion,
-      _ref$defaultMotions = _ref.defaultMotions,
-      defaultMotions = _ref$defaultMotions === void 0 ? {} : _ref$defaultMotions,
-      openAnimation = _ref.openAnimation,
-      openTransitionName = _ref.openTransitionName;
-  var switchingModeFromInline = _ref2.switchingModeFromInline;
+      visible = _ref.visible,
+      children = _ref.children,
+      popup = _ref.popup,
+      popupClassName = _ref.popupClassName,
+      popupOffset = _ref.popupOffset,
+      disabled = _ref.disabled,
+      mode = _ref.mode,
+      onVisibleChange = _ref.onVisibleChange;
 
-  if (motion) {
-    return motion;
-  }
+  var _React$useContext = React__namespace.useContext(MenuContext$1),
+      getPopupContainer = _React$useContext.getPopupContainer,
+      rtl = _React$useContext.rtl,
+      subMenuOpenDelay = _React$useContext.subMenuOpenDelay,
+      subMenuCloseDelay = _React$useContext.subMenuCloseDelay,
+      builtinPlacements = _React$useContext.builtinPlacements,
+      triggerSubMenuAction = _React$useContext.triggerSubMenuAction,
+      forceSubMenuRender = _React$useContext.forceSubMenuRender,
+      motion = _React$useContext.motion,
+      defaultMotions = _React$useContext.defaultMotions;
 
-  if (_typeof$4(openAnimation) === 'object' && openAnimation) {
-    warningOnce(false, 'Object type of `openAnimation` is removed. Please use `motion` instead.');
-  } else if (typeof openAnimation === 'string') {
-    return {
-      motionName: "".concat(prefixCls, "-open-").concat(openAnimation)
+  var _React$useState = React__namespace.useState(false),
+      _React$useState2 = _slicedToArray$3(_React$useState, 2),
+      innerVisible = _React$useState2[0],
+      setInnerVisible = _React$useState2[1];
+
+  var placement = rtl ? _objectSpread2$1(_objectSpread2$1({}, placementsRtl), builtinPlacements) : _objectSpread2$1(_objectSpread2$1({}, placements), builtinPlacements);
+  var popupPlacement = popupPlacementMap[mode];
+  var targetMotion = getMotion(mode, motion, defaultMotions);
+
+  var mergedMotion = _objectSpread2$1(_objectSpread2$1({}, targetMotion), {}, {
+    leavedClassName: "".concat(prefixCls, "-hidden"),
+    removeOnLeave: false,
+    motionAppear: true
+  }); // Delay to change visible
+
+
+  var visibleRef = React__namespace.useRef();
+  React__namespace.useEffect(function () {
+    visibleRef.current = wrapperRaf$1(function () {
+      setInnerVisible(visible);
+    });
+    return function () {
+      wrapperRaf$1.cancel(visibleRef.current);
     };
-  }
-
-  if (openTransitionName) {
-    return {
-      motionName: openTransitionName
-    };
-  } // Default logic
-
-
-  var defaultMotion = defaultMotions[menuMode];
-
-  if (defaultMotion) {
-    return defaultMotion;
-  } // When mode switch from inline
-  // submenu should hide without animation
-
-
-  return switchingModeFromInline ? null : defaultMotions.other;
+  }, [visible]);
+  return /*#__PURE__*/React__namespace.createElement(Trigger, {
+    prefixCls: prefixCls,
+    popupClassName: classnames("".concat(prefixCls, "-popup"), _defineProperty$4({}, "".concat(prefixCls, "-rtl"), rtl), popupClassName),
+    stretch: mode === 'horizontal' ? 'minWidth' : null,
+    getPopupContainer: getPopupContainer,
+    builtinPlacements: placement,
+    popupPlacement: popupPlacement,
+    popupVisible: innerVisible,
+    popup: popup,
+    popupAlign: popupOffset && {
+      offset: popupOffset
+    },
+    action: disabled ? [] : [triggerSubMenuAction],
+    mouseEnterDelay: subMenuOpenDelay,
+    mouseLeaveDelay: subMenuCloseDelay,
+    onPopupVisibleChange: onVisibleChange,
+    forceRender: forceSubMenuRender,
+    popupMotion: mergedMotion
+  }, children);
 }
 
-var Menu$1 = /*#__PURE__*/function (_React$Component) {
-  _inherits$1(Menu, _React$Component);
+function InlineSubMenuList(_ref) {
+  var id = _ref.id,
+      open = _ref.open,
+      keyPath = _ref.keyPath,
+      children = _ref.children;
+  var fixedMode = 'inline';
 
-  var _super = _createSuper$2(Menu);
-
-  function Menu(props) {
-    var _this;
-
-    _classCallCheck$2(this, Menu);
-
-    _this = _super.call(this, props);
-
-    _this.onSelect = function (selectInfo) {
-      var _assertThisInitialize = _assertThisInitialized$1(_this),
-          props = _assertThisInitialize.props;
-
-      if (props.selectable) {
-        // root menu
-        var _this$store$getState = _this.store.getState(),
-            _selectedKeys = _this$store$getState.selectedKeys;
-
-        var selectedKey = selectInfo.key;
-
-        if (props.multiple) {
-          _selectedKeys = _selectedKeys.concat([selectedKey]);
-        } else {
-          _selectedKeys = [selectedKey];
-        }
-
-        if (!('selectedKeys' in props)) {
-          _this.store.setState({
-            selectedKeys: _selectedKeys
-          });
-        }
-
-        props.onSelect(_objectSpread2$1(_objectSpread2$1({}, selectInfo), {}, {
-          selectedKeys: _selectedKeys
-        }));
-      }
-    };
-
-    _this.onClick = function (e) {
-      var mode = _this.getRealMenuMode();
-
-      var _assertThisInitialize2 = _assertThisInitialized$1(_this),
-          store = _assertThisInitialize2.store,
-          onOpenChange = _assertThisInitialize2.props.onOpenChange;
-
-      if (mode !== 'inline' && !('openKeys' in _this.props)) {
-        // closing vertical popup submenu after click it
-        store.setState({
-          openKeys: []
-        });
-        onOpenChange([]);
-      }
-
-      _this.props.onClick(e);
-    }; // onKeyDown needs to be exposed as a instance method
-    // e.g., in rc-select, we need to navigate menu item while
-    // current active item is rc-select input box rather than the menu itself
+  var _React$useContext = React__namespace.useContext(MenuContext$1),
+      prefixCls = _React$useContext.prefixCls,
+      forceSubMenuRender = _React$useContext.forceSubMenuRender,
+      motion = _React$useContext.motion,
+      defaultMotions = _React$useContext.defaultMotions,
+      mode = _React$useContext.mode; // Always use latest mode check
 
 
-    _this.onKeyDown = function (e, callback) {
-      _this.innerMenu.getWrappedInstance().onKeyDown(e, callback);
-    };
+  var sameModeRef = React__namespace.useRef(false);
+  sameModeRef.current = mode === fixedMode; // We record `destroy` mark here since when mode change from `inline` to others.
+  // The inline list should remove when motion end.
 
-    _this.onOpenChange = function (event) {
-      var _assertThisInitialize3 = _assertThisInitialized$1(_this),
-          props = _assertThisInitialize3.props;
+  var _React$useState = React__namespace.useState(!sameModeRef.current),
+      _React$useState2 = _slicedToArray$3(_React$useState, 2),
+      destroy = _React$useState2[0],
+      setDestroy = _React$useState2[1];
 
-      var openKeys = _this.store.getState().openKeys.concat();
+  var mergedOpen = sameModeRef.current ? open : false; // ================================= Effect =================================
+  // Reset destroy state when mode change back
 
-      var changed = false;
+  React__namespace.useEffect(function () {
+    if (sameModeRef.current) {
+      setDestroy(false);
+    }
+  }, [mode]); // ================================= Render =================================
 
-      var processSingle = function processSingle(e) {
-        var oneChanged = false;
-
-        if (e.open) {
-          oneChanged = openKeys.indexOf(e.key) === -1;
-
-          if (oneChanged) {
-            openKeys.push(e.key);
-          }
-        } else {
-          var index = openKeys.indexOf(e.key);
-          oneChanged = index !== -1;
-
-          if (oneChanged) {
-            openKeys.splice(index, 1);
-          }
-        }
-
-        changed = changed || oneChanged;
-      };
-
-      if (Array.isArray(event)) {
-        // batch change call
-        event.forEach(processSingle);
-      } else {
-        processSingle(event);
-      }
-
-      if (changed) {
-        if (!('openKeys' in _this.props)) {
-          _this.store.setState({
-            openKeys: openKeys
-          });
-        }
-
-        props.onOpenChange(openKeys);
-      }
-    };
-
-    _this.onDeselect = function (selectInfo) {
-      var _assertThisInitialize4 = _assertThisInitialized$1(_this),
-          props = _assertThisInitialize4.props;
-
-      if (props.selectable) {
-        var _selectedKeys2 = _this.store.getState().selectedKeys.concat();
-
-        var selectedKey = selectInfo.key;
-
-        var index = _selectedKeys2.indexOf(selectedKey);
-
-        if (index !== -1) {
-          _selectedKeys2.splice(index, 1);
-        }
-
-        if (!('selectedKeys' in props)) {
-          _this.store.setState({
-            selectedKeys: _selectedKeys2
-          });
-        }
-
-        props.onDeselect(_objectSpread2$1(_objectSpread2$1({}, selectInfo), {}, {
-          selectedKeys: _selectedKeys2
-        }));
-      }
-    }; // Restore vertical mode when menu is collapsed responsively when mounted
-    // https://github.com/ant-design/ant-design/issues/13104
-    // TODO: not a perfect solution,
-    // looking a new way to avoid setting switchingModeFromInline in this situation
+  var mergedMotion = _objectSpread2$1({}, getMotion(fixedMode, motion, defaultMotions)); // No need appear since nest inlineCollapse changed
 
 
-    _this.onMouseEnter = function (e) {
-      _this.restoreModeVerticalFromInline();
+  if (keyPath.length > 1) {
+    mergedMotion.motionAppear = false;
+  } // Hide inline list when mode changed and motion end
 
-      var onMouseEnter = _this.props.onMouseEnter;
 
-      if (onMouseEnter) {
-        onMouseEnter(e);
-      }
-    };
+  var originOnVisibleChanged = mergedMotion.onVisibleChanged;
 
-    _this.onTransitionEnd = function (e) {
-      // when inlineCollapsed menu width animation finished
-      // https://github.com/ant-design/ant-design/issues/12864
-      var widthCollapsed = e.propertyName === 'width' && e.target === e.currentTarget; // Fix SVGElement e.target.className.indexOf is not a function
-      // https://github.com/ant-design/ant-design/issues/15699
-
-      var className = e.target.className; // SVGAnimatedString.animVal should be identical to SVGAnimatedString.baseVal,
-      // unless during an animation.
-
-      var classNameValue = Object.prototype.toString.call(className) === '[object SVGAnimatedString]' ? className.animVal : className; // Fix for <Menu style={{ width: '100%' }} />,
-      // the width transition won't trigger when menu is collapsed
-      // https://github.com/ant-design/ant-design-pro/issues/2783
-
-      var iconScaled = e.propertyName === 'font-size' && classNameValue.indexOf('anticon') >= 0;
-
-      if (widthCollapsed || iconScaled) {
-        _this.restoreModeVerticalFromInline();
-      }
-    };
-
-    _this.setInnerMenu = function (node) {
-      _this.innerMenu = node;
-    };
-
-    _this.isRootMenu = true;
-    var selectedKeys = props.defaultSelectedKeys;
-    var openKeys = props.defaultOpenKeys;
-
-    if ('selectedKeys' in props) {
-      selectedKeys = props.selectedKeys || [];
+  mergedMotion.onVisibleChanged = function (newVisible) {
+    if (!sameModeRef.current && !newVisible) {
+      setDestroy(true);
     }
 
-    if ('openKeys' in props) {
-      openKeys = props.openKeys || [];
-    }
+    return originOnVisibleChanged === null || originOnVisibleChanged === void 0 ? void 0 : originOnVisibleChanged(newVisible);
+  };
 
-    _this.store = create({
-      selectedKeys: selectedKeys,
-      openKeys: openKeys,
-      activeKey: {
-        '0-menu-': getActiveKey(props, props.activeKey)
-      }
-    });
-    _this.state = {
-      switchingModeFromInline: false,
-      prevProps: props,
-      inlineOpenKeys: [],
-      store: _this.store
-    };
-    return _this;
+  if (destroy) {
+    return null;
   }
 
-  _createClass$2(Menu, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.updateMiniStore();
-      this.updateMenuDisplay();
+  return /*#__PURE__*/React__namespace.createElement(InheritableContextProvider, {
+    mode: fixedMode,
+    locked: !sameModeRef.current
+  }, /*#__PURE__*/React__namespace.createElement(CSSMotion, _extends$1({
+    visible: mergedOpen
+  }, mergedMotion, {
+    forceRender: forceSubMenuRender,
+    removeOnLeave: false,
+    leavedClassName: "".concat(prefixCls, "-hidden")
+  }), function (_ref2) {
+    var motionClassName = _ref2.className,
+        motionStyle = _ref2.style;
+    return /*#__PURE__*/React__namespace.createElement(SubMenuList, {
+      id: id,
+      className: motionClassName,
+      style: motionStyle
+    }, children);
+  }));
+}
+
+var InternalSubMenu = function InternalSubMenu(props) {
+  var _classNames;
+
+  var style = props.style,
+      className = props.className,
+      title = props.title,
+      eventKey = props.eventKey,
+      warnKey = props.warnKey,
+      disabled = props.disabled,
+      internalPopupClose = props.internalPopupClose,
+      children = props.children,
+      itemIcon = props.itemIcon,
+      expandIcon = props.expandIcon,
+      popupClassName = props.popupClassName,
+      popupOffset = props.popupOffset,
+      onClick = props.onClick,
+      onMouseEnter = props.onMouseEnter,
+      onMouseLeave = props.onMouseLeave,
+      onTitleClick = props.onTitleClick,
+      onTitleMouseEnter = props.onTitleMouseEnter,
+      onTitleMouseLeave = props.onTitleMouseLeave,
+      restProps = _objectWithoutProperties$1(props, ["style", "className", "title", "eventKey", "warnKey", "disabled", "internalPopupClose", "children", "itemIcon", "expandIcon", "popupClassName", "popupOffset", "onClick", "onMouseEnter", "onMouseLeave", "onTitleClick", "onTitleMouseEnter", "onTitleMouseLeave"]);
+
+  var domDataId = useMenuId(eventKey);
+
+  var _React$useContext = React__namespace.useContext(MenuContext$1),
+      prefixCls = _React$useContext.prefixCls,
+      mode = _React$useContext.mode,
+      openKeys = _React$useContext.openKeys,
+      contextDisabled = _React$useContext.disabled,
+      overflowDisabled = _React$useContext.overflowDisabled,
+      activeKey = _React$useContext.activeKey,
+      selectedKeys = _React$useContext.selectedKeys,
+      contextItemIcon = _React$useContext.itemIcon,
+      contextExpandIcon = _React$useContext.expandIcon,
+      onItemClick = _React$useContext.onItemClick,
+      onOpenChange = _React$useContext.onOpenChange,
+      onActive = _React$useContext.onActive;
+
+  var _React$useContext2 = React__namespace.useContext(PathUserContext),
+      isSubPathKey = _React$useContext2.isSubPathKey;
+
+  var connectedPath = useFullPath$1();
+  var subMenuPrefixCls = "".concat(prefixCls, "-submenu");
+  var mergedDisabled = contextDisabled || disabled;
+  var elementRef = React__namespace.useRef();
+  var popupRef = React__namespace.useRef(); // ================================ Warn ================================
+
+  if (process.env.NODE_ENV !== 'production' && warnKey) {
+    warningOnce(false, 'SubMenu should not leave undefined `key`.');
+  } // ================================ Icon ================================
+
+
+  var mergedItemIcon = itemIcon || contextItemIcon;
+  var mergedExpandIcon = expandIcon || contextExpandIcon; // ================================ Open ================================
+
+  var originOpen = openKeys.includes(eventKey);
+  var open = !overflowDisabled && originOpen; // =============================== Select ===============================
+
+  var childrenSelected = isSubPathKey(selectedKeys, eventKey); // =============================== Active ===============================
+
+  var _useActive = useActive(eventKey, mergedDisabled, onTitleMouseEnter, onTitleMouseLeave),
+      active = _useActive.active,
+      activeProps = _objectWithoutProperties$1(_useActive, ["active"]); // Fallback of active check to avoid hover on menu title or disabled item
+
+
+  var _React$useState = React__namespace.useState(false),
+      _React$useState2 = _slicedToArray$3(_React$useState, 2),
+      childrenActive = _React$useState2[0],
+      setChildrenActive = _React$useState2[1];
+
+  var triggerChildrenActive = function triggerChildrenActive(newActive) {
+    if (!mergedDisabled) {
+      setChildrenActive(newActive);
     }
-  }, {
-    key: "componentDidUpdate",
-    value: function componentDidUpdate(prevProps) {
-      var _this$props = this.props,
-          siderCollapsed = _this$props.siderCollapsed,
-          inlineCollapsed = _this$props.inlineCollapsed,
-          onOpenChange = _this$props.onOpenChange;
+  };
 
-      if (!prevProps.inlineCollapsed && inlineCollapsed || !prevProps.siderCollapsed && siderCollapsed) {
-        onOpenChange([]);
-      }
+  var onInternalMouseEnter = function onInternalMouseEnter(domEvent) {
+    triggerChildrenActive(true);
+    onMouseEnter === null || onMouseEnter === void 0 ? void 0 : onMouseEnter({
+      key: eventKey,
+      domEvent: domEvent
+    });
+  };
 
-      this.updateMiniStore();
-      this.updateMenuDisplay();
+  var onInternalMouseLeave = function onInternalMouseLeave(domEvent) {
+    triggerChildrenActive(false);
+    onMouseLeave === null || onMouseLeave === void 0 ? void 0 : onMouseLeave({
+      key: eventKey,
+      domEvent: domEvent
+    });
+  };
+
+  var mergedActive = React__namespace.useMemo(function () {
+    if (active) {
+      return active;
     }
-  }, {
-    key: "updateMenuDisplay",
-    value: function updateMenuDisplay() {
-      var collapsedWidth = this.props.collapsedWidth,
-          store = this.store,
-          prevOpenKeys = this.prevOpenKeys; // https://github.com/ant-design/ant-design/issues/8587
 
-      var hideMenu = this.getInlineCollapsed() && (collapsedWidth === 0 || collapsedWidth === '0' || collapsedWidth === '0px');
-
-      if (hideMenu) {
-        this.prevOpenKeys = store.getState().openKeys.concat();
-        this.store.setState({
-          openKeys: []
-        });
-      } else if (prevOpenKeys) {
-        this.store.setState({
-          openKeys: prevOpenKeys
-        });
-        this.prevOpenKeys = null;
-      }
+    if (mode !== 'inline') {
+      return childrenActive || isSubPathKey([activeKey], eventKey);
     }
-  }, {
-    key: "getRealMenuMode",
-    value: function getRealMenuMode() {
-      var mode = this.props.mode;
-      var switchingModeFromInline = this.state.switchingModeFromInline;
-      var inlineCollapsed = this.getInlineCollapsed();
 
-      if (switchingModeFromInline && inlineCollapsed) {
-        return 'inline';
-      }
+    return false;
+  }, [mode, active, activeKey, childrenActive, eventKey, isSubPathKey]); // ========================== DirectionStyle ==========================
 
-      return inlineCollapsed ? 'vertical' : mode;
+  var directionStyle = useDirectionStyle(connectedPath.length); // =============================== Events ===============================
+  // >>>> Title click
+
+  var onInternalTitleClick = function onInternalTitleClick(e) {
+    // Skip if disabled
+    if (mergedDisabled) {
+      return;
     }
-  }, {
-    key: "getInlineCollapsed",
-    value: function getInlineCollapsed() {
-      var _this$props2 = this.props,
-          inlineCollapsed = _this$props2.inlineCollapsed,
-          siderCollapsed = _this$props2.siderCollapsed;
 
-      if (siderCollapsed !== undefined) {
-        return siderCollapsed;
-      }
+    onTitleClick === null || onTitleClick === void 0 ? void 0 : onTitleClick({
+      key: eventKey,
+      domEvent: e
+    }); // Trigger open by click when mode is `inline`
 
-      return inlineCollapsed;
+    if (mode === 'inline') {
+      onOpenChange(eventKey, !originOpen);
     }
-  }, {
-    key: "restoreModeVerticalFromInline",
-    value: function restoreModeVerticalFromInline() {
-      var switchingModeFromInline = this.state.switchingModeFromInline;
+  }; // >>>> Context for children click
 
-      if (switchingModeFromInline) {
-        this.setState({
-          switchingModeFromInline: false
-        });
-      }
+
+  var onMergedItemClick = useMemoCallback(function (info) {
+    onClick === null || onClick === void 0 ? void 0 : onClick(warnItemProp(info));
+    onItemClick(info);
+  }); // >>>>> Visible change
+
+  var onPopupVisibleChange = function onPopupVisibleChange(newVisible) {
+    if (mode !== 'inline') {
+      onOpenChange(eventKey, newVisible);
     }
-  }, {
-    key: "updateMiniStore",
-    value: function updateMiniStore() {
-      if ('selectedKeys' in this.props) {
-        this.store.setState({
-          selectedKeys: this.props.selectedKeys || []
-        });
-      }
+  };
+  /**
+   * Used for accessibility. Helper will focus element without key board.
+   * We should manually trigger an active
+   */
 
-      if ('openKeys' in this.props) {
-        this.store.setState({
-          openKeys: this.props.openKeys || []
-        });
-      }
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var props = _objectSpread2$1({}, omit(this.props, ['collapsedWidth', 'siderCollapsed', 'defaultMotions']));
 
-      var mode = this.getRealMenuMode();
-      props.className += " ".concat(props.prefixCls, "-root");
+  var onInternalFocus = function onInternalFocus() {
+    onActive(eventKey);
+  }; // =============================== Render ===============================
 
-      if (props.direction === 'rtl') {
-        props.className += " ".concat(props.prefixCls, "-rtl");
-      }
 
-      props = _objectSpread2$1(_objectSpread2$1({}, props), {}, {
-        mode: mode,
-        onClick: this.onClick,
-        onOpenChange: this.onOpenChange,
-        onDeselect: this.onDeselect,
-        onSelect: this.onSelect,
-        onMouseEnter: this.onMouseEnter,
-        onTransitionEnd: this.onTransitionEnd,
-        parentMenu: this,
-        motion: getMotion(this.props, this.state, mode)
-      });
-      delete props.openAnimation;
-      delete props.openTransitionName;
-      return /*#__PURE__*/React__namespace.createElement(Provider, {
-        store: this.store
-      }, /*#__PURE__*/React__namespace.createElement(connected$1, _extends$1({}, props, {
-        ref: this.setInnerMenu
-      }), this.props.children));
-    }
-  }], [{
-    key: "getDerivedStateFromProps",
-    value: function getDerivedStateFromProps(nextProps, prevState) {
-      var prevProps = prevState.prevProps,
-          store = prevState.store;
-      var prevStoreState = store.getState();
-      var newStoreState = {};
-      var newState = {
-        prevProps: nextProps
-      };
+  var popupId = domDataId && "".concat(domDataId, "-popup"); // >>>>> Title
 
-      if (prevProps.mode === 'inline' && nextProps.mode !== 'inline') {
-        newState.switchingModeFromInline = true;
-      }
+  var titleNode = /*#__PURE__*/React__namespace.createElement("div", _extends$1({
+    role: "menuitem",
+    style: directionStyle,
+    className: "".concat(subMenuPrefixCls, "-title"),
+    tabIndex: mergedDisabled ? null : -1,
+    ref: elementRef,
+    title: typeof title === 'string' ? title : null,
+    "data-menu-id": overflowDisabled && domDataId ? null : domDataId,
+    "aria-expanded": open,
+    "aria-haspopup": true,
+    "aria-controls": popupId,
+    "aria-disabled": mergedDisabled,
+    onClick: onInternalTitleClick,
+    onFocus: onInternalFocus
+  }, activeProps), title, /*#__PURE__*/React__namespace.createElement(Icon, {
+    icon: mode !== 'horizontal' ? mergedExpandIcon : null,
+    props: _objectSpread2$1(_objectSpread2$1({}, props), {}, {
+      isOpen: open,
+      // [Legacy] Not sure why need this mark
+      isSubMenu: true
+    })
+  }, /*#__PURE__*/React__namespace.createElement("i", {
+    className: "".concat(subMenuPrefixCls, "-arrow")
+  }))); // Cache mode if it change to `inline` which do not have popup motion
 
-      if ('openKeys' in nextProps) {
-        newStoreState.openKeys = nextProps.openKeys || [];
-      } else {
-        // [Legacy] Old code will return after `openKeys` changed.
-        // Not sure the reason, we should keep this logic still.
-        if (nextProps.inlineCollapsed && !prevProps.inlineCollapsed || nextProps.siderCollapsed && !prevProps.siderCollapsed) {
-          newState.switchingModeFromInline = true;
-          newState.inlineOpenKeys = prevStoreState.openKeys;
-          newStoreState.openKeys = [];
-        }
+  var triggerModeRef = React__namespace.useRef(mode);
 
-        if (!nextProps.inlineCollapsed && prevProps.inlineCollapsed || !nextProps.siderCollapsed && prevProps.siderCollapsed) {
-          newStoreState.openKeys = prevState.inlineOpenKeys;
-          newState.inlineOpenKeys = [];
-        }
-      }
+  if (mode !== 'inline') {
+    triggerModeRef.current = connectedPath.length > 1 ? 'vertical' : mode;
+  }
 
-      if (Object.keys(newStoreState).length) {
-        store.setState(newStoreState);
-      }
+  if (!overflowDisabled) {
+    var triggerMode = triggerModeRef.current; // Still wrap with Trigger here since we need avoid react re-mount dom node
+    // Which makes motion failed
 
-      return newState;
-    }
-  }]);
+    titleNode = /*#__PURE__*/React__namespace.createElement(PopupTrigger, {
+      mode: triggerMode,
+      prefixCls: subMenuPrefixCls,
+      visible: !internalPopupClose && open && mode !== 'inline',
+      popupClassName: popupClassName,
+      popupOffset: popupOffset,
+      popup: /*#__PURE__*/React__namespace.createElement(InheritableContextProvider // Special handle of horizontal mode
+      , {
+        mode: triggerMode === 'horizontal' ? 'vertical' : triggerMode
+      }, /*#__PURE__*/React__namespace.createElement(SubMenuList, {
+        id: popupId,
+        ref: popupRef
+      }, children)),
+      disabled: mergedDisabled,
+      onVisibleChange: onPopupVisibleChange
+    }, titleNode);
+  } // >>>>> Render
 
-  return Menu;
-}(React__namespace.Component);
 
-Menu$1.defaultProps = {
-  selectable: true,
-  onClick: noop$2,
-  onSelect: noop$2,
-  onOpenChange: noop$2,
-  onDeselect: noop$2,
-  defaultSelectedKeys: [],
-  defaultOpenKeys: [],
-  subMenuOpenDelay: 0.1,
-  subMenuCloseDelay: 0.1,
-  triggerSubMenuAction: 'hover',
-  prefixCls: 'rc-menu',
-  className: '',
-  mode: 'vertical',
-  style: {},
-  builtinPlacements: {},
-  overflowedIndicator: /*#__PURE__*/React__namespace.createElement("span", null, "\xB7\xB7\xB7")
+  return /*#__PURE__*/React__namespace.createElement(InheritableContextProvider, {
+    onItemClick: onMergedItemClick,
+    mode: mode === 'horizontal' ? 'vertical' : mode,
+    itemIcon: mergedItemIcon,
+    expandIcon: mergedExpandIcon
+  }, /*#__PURE__*/React__namespace.createElement(ForwardOverflow.Item, _extends$1({
+    role: "none"
+  }, restProps, {
+    component: "li",
+    style: style,
+    className: classnames(subMenuPrefixCls, "".concat(subMenuPrefixCls, "-").concat(mode), className, (_classNames = {}, _defineProperty$4(_classNames, "".concat(subMenuPrefixCls, "-open"), open), _defineProperty$4(_classNames, "".concat(subMenuPrefixCls, "-active"), mergedActive), _defineProperty$4(_classNames, "".concat(subMenuPrefixCls, "-selected"), childrenSelected), _defineProperty$4(_classNames, "".concat(subMenuPrefixCls, "-disabled"), mergedDisabled), _classNames)),
+    onMouseEnter: onInternalMouseEnter,
+    onMouseLeave: onInternalMouseLeave
+  }), titleNode, !overflowDisabled && /*#__PURE__*/React__namespace.createElement(InlineSubMenuList, {
+    id: popupId,
+    open: open,
+    keyPath: connectedPath
+  }, children)));
 };
 
-var MenuItem$3 = /*#__PURE__*/function (_React$Component) {
-  _inherits$1(MenuItem, _React$Component);
+function SubMenu$2(props) {
+  var eventKey = props.eventKey,
+      children = props.children;
+  var connectedKeyPath = useFullPath$1(eventKey);
+  var childList = parseChildren(children, connectedKeyPath); // ==================== Record KeyPath ====================
 
-  var _super = _createSuper$2(MenuItem);
+  var measure = useMeasure(); // eslint-disable-next-line consistent-return
 
-  function MenuItem() {
-    var _this;
+  React__namespace.useEffect(function () {
+    if (measure) {
+      measure.registerPath(eventKey, connectedKeyPath);
+      return function () {
+        measure.unregisterPath(eventKey, connectedKeyPath);
+      };
+    }
+  }, [connectedKeyPath]);
+  var renderNode; // ======================== Render ========================
 
-    _classCallCheck$2(this, MenuItem);
+  if (measure) {
+    renderNode = childList;
+  } else {
+    renderNode = /*#__PURE__*/React__namespace.createElement(InternalSubMenu, props, childList);
+  }
 
-    _this = _super.apply(this, arguments);
+  return /*#__PURE__*/React__namespace.createElement(PathTrackerContext.Provider, {
+    value: connectedKeyPath
+  }, renderNode);
+}
 
-    _this.onKeyDown = function (e) {
-      var keyCode = e.keyCode;
+function focusable(node) {
+  var includePositive = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
 
-      if (keyCode === KeyCode.ENTER) {
-        _this.onClick(e);
+  if (isVisible(node)) {
+    var nodeName = node.nodeName.toLowerCase();
+    var isFocusableElement = // Focusable element
+    ['input', 'select', 'textarea', 'button'].includes(nodeName) || // Editable element
+    node.isContentEditable || // Anchor with href element
+    nodeName === 'a' && !!node.getAttribute('href'); // Get tabIndex
 
-        return true;
+    var tabIndexAttr = node.getAttribute('tabindex');
+    var tabIndexNum = Number(tabIndexAttr); // Parse as number if validate
+
+    var tabIndex = null;
+
+    if (tabIndexAttr && !Number.isNaN(tabIndexNum)) {
+      tabIndex = tabIndexNum;
+    } else if (isFocusableElement && tabIndex === null) {
+      tabIndex = 0;
+    } // Block focusable if disabled
+
+
+    if (isFocusableElement && node.disabled) {
+      tabIndex = null;
+    }
+
+    return tabIndex !== null && (tabIndex >= 0 || includePositive && tabIndex < 0);
+  }
+
+  return false;
+}
+
+function getFocusNodeList(node) {
+  var includePositive = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+  var res = _toConsumableArray(node.querySelectorAll('*')).filter(function (child) {
+    return focusable(child, includePositive);
+  });
+
+  if (focusable(node, includePositive)) {
+    res.unshift(node);
+  }
+
+  return res;
+}
+
+var LEFT = KeyCode.LEFT,
+    RIGHT = KeyCode.RIGHT,
+    UP = KeyCode.UP,
+    DOWN = KeyCode.DOWN,
+    ENTER = KeyCode.ENTER,
+    ESC = KeyCode.ESC;
+var ArrowKeys = [UP, DOWN, LEFT, RIGHT];
+
+function getOffset$1(mode, isRootLevel, isRtl, which) {
+  var _inline, _horizontal, _vertical, _offsets$;
+
+  var prev = 'prev';
+  var next = 'next';
+  var children = 'children';
+  var parent = 'parent'; // Inline enter is special that we use unique operation
+
+  if (mode === 'inline' && which === ENTER) {
+    return {
+      inlineTrigger: true
+    };
+  }
+
+  var inline = (_inline = {}, _defineProperty$4(_inline, UP, prev), _defineProperty$4(_inline, DOWN, next), _inline);
+  var horizontal = (_horizontal = {}, _defineProperty$4(_horizontal, LEFT, isRtl ? next : prev), _defineProperty$4(_horizontal, RIGHT, isRtl ? prev : next), _defineProperty$4(_horizontal, DOWN, children), _defineProperty$4(_horizontal, ENTER, children), _horizontal);
+  var vertical = (_vertical = {}, _defineProperty$4(_vertical, UP, prev), _defineProperty$4(_vertical, DOWN, next), _defineProperty$4(_vertical, ENTER, children), _defineProperty$4(_vertical, ESC, parent), _defineProperty$4(_vertical, LEFT, isRtl ? children : parent), _defineProperty$4(_vertical, RIGHT, isRtl ? parent : children), _vertical);
+  var offsets = {
+    inline: inline,
+    horizontal: horizontal,
+    vertical: vertical,
+    inlineSub: inline,
+    horizontalSub: vertical,
+    verticalSub: vertical
+  };
+  var type = (_offsets$ = offsets["".concat(mode).concat(isRootLevel ? '' : 'Sub')]) === null || _offsets$ === void 0 ? void 0 : _offsets$[which];
+
+  switch (type) {
+    case prev:
+      return {
+        offset: -1,
+        sibling: true
+      };
+
+    case next:
+      return {
+        offset: 1,
+        sibling: true
+      };
+
+    case parent:
+      return {
+        offset: -1,
+        sibling: false
+      };
+
+    case children:
+      return {
+        offset: 1,
+        sibling: false
+      };
+
+    default:
+      return null;
+  }
+}
+
+function findContainerUL(element) {
+  var current = element;
+
+  while (current) {
+    if (current.getAttribute('data-menu-list')) {
+      return current;
+    }
+
+    current = current.parentElement;
+  } // Normally should not reach this line
+
+  /* istanbul ignore next */
+
+
+  return null;
+}
+/**
+ * Find focused element within element set provided
+ */
+
+
+function getFocusElement(activeElement, elements) {
+  var current = activeElement || document.activeElement;
+
+  while (current) {
+    if (elements.has(current)) {
+      return current;
+    }
+
+    current = current.parentElement;
+  }
+
+  return null;
+}
+/**
+ * Get focusable elements from the element set under provided container
+ */
+
+
+function getFocusableElements(container, elements) {
+  var list = getFocusNodeList(container, true);
+  return list.filter(function (ele) {
+    return elements.has(ele);
+  });
+}
+
+function getNextFocusElement(parentQueryContainer, elements, focusMenuElement) {
+  var offset = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 1;
+
+  // Key on the menu item will not get validate parent container
+  if (!parentQueryContainer) {
+    return null;
+  } // List current level menu item elements
+
+
+  var sameLevelFocusableMenuElementList = getFocusableElements(parentQueryContainer, elements); // Find next focus index
+
+  var count = sameLevelFocusableMenuElementList.length;
+  var focusIndex = sameLevelFocusableMenuElementList.findIndex(function (ele) {
+    return focusMenuElement === ele;
+  });
+
+  if (offset < 0) {
+    if (focusIndex === -1) {
+      focusIndex = count - 1;
+    } else {
+      focusIndex -= 1;
+    }
+  } else if (offset > 0) {
+    focusIndex += 1;
+  }
+
+  focusIndex = (focusIndex + count) % count; // Focus menu item
+
+  return sameLevelFocusableMenuElementList[focusIndex];
+}
+
+function useAccessibility(mode, activeKey, isRtl, id, containerRef, getKeys, getKeyPath, triggerActiveKey, triggerAccessibilityOpen, originOnKeyDown) {
+  var rafRef = React__namespace.useRef();
+  var activeRef = React__namespace.useRef();
+  activeRef.current = activeKey;
+
+  var cleanRaf = function cleanRaf() {
+    wrapperRaf$1.cancel(rafRef.current);
+  };
+
+  React__namespace.useEffect(function () {
+    return function () {
+      cleanRaf();
+    };
+  }, []);
+  return function (e) {
+    var which = e.which;
+
+    if ([].concat(ArrowKeys, [ENTER, ESC]).includes(which)) {
+      // Convert key to elements
+      var elements;
+      var key2element;
+      var element2key; // >>> Wrap as function since we use raf for some case
+
+      var refreshElements = function refreshElements() {
+        elements = new Set();
+        key2element = new Map();
+        element2key = new Map();
+        var keys = getKeys();
+        keys.forEach(function (key) {
+          var element = document.querySelector("[data-menu-id='".concat(getMenuId(id, key), "']"));
+
+          if (element) {
+            elements.add(element);
+            element2key.set(element, key);
+            key2element.set(key, element);
+          }
+        });
+        return elements;
+      };
+
+      refreshElements(); // First we should find current focused MenuItem/SubMenu element
+
+      var activeElement = key2element.get(activeKey);
+      var focusMenuElement = getFocusElement(activeElement, elements);
+      var focusMenuKey = element2key.get(focusMenuElement);
+      var offsetObj = getOffset$1(mode, getKeyPath(focusMenuKey, true).length === 1, isRtl, which); // Some mode do not have fully arrow operation like inline
+
+      if (!offsetObj) {
+        return;
+      } // Arrow prevent default to avoid page scroll
+
+
+      if (ArrowKeys.includes(which)) {
+        e.preventDefault();
       }
 
-      return undefined;
-    };
+      var tryFocus = function tryFocus(menuElement) {
+        if (menuElement) {
+          var focusTargetElement = menuElement; // Focus to link instead of menu item if possible
 
-    _this.onMouseLeave = function (e) {
-      var _this$props = _this.props,
-          eventKey = _this$props.eventKey,
-          onItemHover = _this$props.onItemHover,
-          onMouseLeave = _this$props.onMouseLeave;
-      onItemHover({
-        key: eventKey,
-        hover: false
-      });
-      onMouseLeave({
-        key: eventKey,
-        domEvent: e
-      });
-    };
+          var link = menuElement.querySelector('a');
 
-    _this.onMouseEnter = function (e) {
-      var _this$props2 = _this.props,
-          eventKey = _this$props2.eventKey,
-          onItemHover = _this$props2.onItemHover,
-          onMouseEnter = _this$props2.onMouseEnter;
-      onItemHover({
-        key: eventKey,
-        hover: true
-      });
-      onMouseEnter({
-        key: eventKey,
-        domEvent: e
-      });
-    };
+          if (link === null || link === void 0 ? void 0 : link.getAttribute('href')) {
+            focusTargetElement = link;
+          }
 
-    _this.onClick = function (e) {
-      var _this$props3 = _this.props,
-          eventKey = _this$props3.eventKey,
-          multiple = _this$props3.multiple,
-          onClick = _this$props3.onClick,
-          onSelect = _this$props3.onSelect,
-          onDeselect = _this$props3.onDeselect,
-          isSelected = _this$props3.isSelected;
-      var info = {
-        key: eventKey,
-        keyPath: [eventKey],
-        item: _assertThisInitialized$1(_this),
-        domEvent: e
+          var targetKey = element2key.get(menuElement);
+          triggerActiveKey(targetKey);
+          /**
+           * Do not `useEffect` here since `tryFocus` may trigger async
+           * which makes React sync update the `activeKey`
+           * that force render before `useRef` set the next activeKey
+           */
+
+          cleanRaf();
+          rafRef.current = wrapperRaf$1(function () {
+            if (activeRef.current === targetKey) {
+              focusTargetElement.focus();
+            }
+          });
+        }
       };
-      onClick(info);
+
+      if (offsetObj.sibling || !focusMenuElement) {
+        // ========================== Sibling ==========================
+        // Find walkable focus menu element container
+        var parentQueryContainer;
+
+        if (!focusMenuElement || mode === 'inline') {
+          parentQueryContainer = containerRef.current;
+        } else {
+          parentQueryContainer = findContainerUL(focusMenuElement);
+        } // Get next focus element
+
+
+        var targetElement = getNextFocusElement(parentQueryContainer, elements, focusMenuElement, offsetObj.offset); // Focus menu item
+
+        tryFocus(targetElement); // ======================= InlineTrigger =======================
+      } else if (offsetObj.inlineTrigger) {
+        // Inline trigger no need switch to sub menu item
+        triggerAccessibilityOpen(focusMenuKey); // =========================== Level ===========================
+      } else if (offsetObj.offset > 0) {
+        triggerAccessibilityOpen(focusMenuKey, true);
+        cleanRaf();
+        rafRef.current = wrapperRaf$1(function () {
+          // Async should resync elements
+          refreshElements();
+          var controlId = focusMenuElement.getAttribute('aria-controls');
+          var subQueryContainer = document.getElementById(controlId); // Get sub focusable menu item
+
+          var targetElement = getNextFocusElement(subQueryContainer, elements); // Focus menu item
+
+          tryFocus(targetElement);
+        }, 5);
+      } else if (offsetObj.offset < 0) {
+        var keyPath = getKeyPath(focusMenuKey, true);
+        var parentKey = keyPath[keyPath.length - 2];
+        var parentMenuElement = key2element.get(parentKey); // Focus menu item
+
+        triggerAccessibilityOpen(parentKey, false);
+        tryFocus(parentMenuElement);
+      }
+    } // Pass origin key down event
+
+
+    originOnKeyDown === null || originOnKeyDown === void 0 ? void 0 : originOnKeyDown(e);
+  };
+}
+
+var uniquePrefix = Math.random().toFixed(5).toString().slice(2);
+var internalId = 0;
+function useUUID(id) {
+  var _useMergedState = useControlledState(id, {
+    value: id
+  }),
+      _useMergedState2 = _slicedToArray$3(_useMergedState, 2),
+      uuid = _useMergedState2[0],
+      setUUID = _useMergedState2[1];
+
+  React__namespace.useEffect(function () {
+    internalId += 1;
+    var newId = process.env.NODE_ENV === 'test' ? 'test' : "".concat(uniquePrefix, "-").concat(internalId);
+    setUUID("rc-menu-uuid-".concat(newId));
+  }, []);
+  return uuid;
+}
+
+function nextSlice(callback) {
+  /* istanbul ignore next */
+  Promise.resolve().then(callback);
+}
+
+var PATH_SPLIT = '__RC_UTIL_PATH_SPLIT__';
+
+var getPathStr = function getPathStr(keyPath) {
+  return keyPath.join(PATH_SPLIT);
+};
+
+var getPathKeys = function getPathKeys(keyPathStr) {
+  return keyPathStr.split(PATH_SPLIT);
+};
+
+var OVERFLOW_KEY = 'rc-menu-more';
+function useKeyRecords() {
+  var _React$useState = React__namespace.useState({}),
+      _React$useState2 = _slicedToArray$3(_React$useState, 2),
+      internalForceUpdate = _React$useState2[1];
+
+  var key2pathRef = React.useRef(new Map());
+  var path2keyRef = React.useRef(new Map());
+
+  var _React$useState3 = React__namespace.useState([]),
+      _React$useState4 = _slicedToArray$3(_React$useState3, 2),
+      overflowKeys = _React$useState4[0],
+      setOverflowKeys = _React$useState4[1];
+
+  var updateRef = React.useRef(0);
+  var destroyRef = React.useRef(false);
+
+  var forceUpdate = function forceUpdate() {
+    if (!destroyRef.current) {
+      internalForceUpdate({});
+    }
+  };
+
+  var registerPath = React.useCallback(function (key, keyPath) {
+    // Warning for invalidate or duplicated `key`
+    if (process.env.NODE_ENV !== 'production') {
+      warningOnce(!key2pathRef.current.has(key), "Duplicated key '".concat(key, "' used in Menu by path [").concat(keyPath.join(' > '), "]"));
+    } // Fill map
+
+
+    var connectedPath = getPathStr(keyPath);
+    path2keyRef.current.set(connectedPath, key);
+    key2pathRef.current.set(key, connectedPath);
+    updateRef.current += 1;
+    var id = updateRef.current;
+    nextSlice(function () {
+      if (id === updateRef.current) {
+        forceUpdate();
+      }
+    });
+  }, []);
+  var unregisterPath = React.useCallback(function (key, keyPath) {
+    var connectedPath = getPathStr(keyPath);
+    path2keyRef.current.delete(connectedPath);
+    key2pathRef.current.delete(key);
+  }, []);
+  var refreshOverflowKeys = React.useCallback(function (keys) {
+    setOverflowKeys(keys);
+  }, []);
+  var getKeyPath = React.useCallback(function (eventKey, includeOverflow) {
+    var fullPath = key2pathRef.current.get(eventKey) || '';
+    var keys = getPathKeys(fullPath);
+
+    if (includeOverflow && overflowKeys.includes(keys[0])) {
+      keys.unshift(OVERFLOW_KEY);
+    }
+
+    return keys;
+  }, [overflowKeys]);
+  var isSubPathKey = React.useCallback(function (pathKeys, eventKey) {
+    return pathKeys.some(function (pathKey) {
+      var pathKeyList = getKeyPath(pathKey, true);
+      return pathKeyList.includes(eventKey);
+    });
+  }, [getKeyPath]);
+
+  var getKeys = function getKeys() {
+    var keys = _toConsumableArray(key2pathRef.current.keys());
+
+    if (overflowKeys.length) {
+      keys.push(OVERFLOW_KEY);
+    }
+
+    return keys;
+  };
+  /**
+   * Find current key related child path keys
+   */
+
+
+  var getSubPathKeys = React.useCallback(function (key) {
+    var connectedPath = "".concat(key2pathRef.current.get(key)).concat(PATH_SPLIT);
+    var pathKeys = new Set();
+
+    _toConsumableArray(path2keyRef.current.keys()).forEach(function (pathKey) {
+      if (pathKey.startsWith(connectedPath)) {
+        pathKeys.add(path2keyRef.current.get(pathKey));
+      }
+    });
+
+    return pathKeys;
+  }, []);
+  React__namespace.useEffect(function () {
+    return function () {
+      destroyRef.current = true;
+    };
+  }, []);
+  return {
+    // Register
+    registerPath: registerPath,
+    unregisterPath: unregisterPath,
+    refreshOverflowKeys: refreshOverflowKeys,
+    // Util
+    isSubPathKey: isSubPathKey,
+    getKeyPath: getKeyPath,
+    getKeys: getKeys,
+    getSubPathKeys: getSubPathKeys
+  };
+}
+
+/**
+ * Menu modify after refactor:
+ * ## Add
+ * - disabled
+ *
+ * ## Remove
+ * - openTransitionName
+ * - openAnimation
+ * - onDestroy
+ * - siderCollapsed: Seems antd do not use this prop (Need test in antd)
+ * - collapsedWidth: Seems this logic should be handle by antd Layout.Sider
+ */
+// optimize for render
+
+var EMPTY_LIST$1 = [];
+
+var Menu$1 = function Menu(props) {
+  var _childList$, _classNames;
+
+  var _props$prefixCls = props.prefixCls,
+      prefixCls = _props$prefixCls === void 0 ? 'rc-menu' : _props$prefixCls,
+      style = props.style,
+      className = props.className,
+      _props$tabIndex = props.tabIndex,
+      tabIndex = _props$tabIndex === void 0 ? 0 : _props$tabIndex,
+      children = props.children,
+      direction = props.direction,
+      id = props.id,
+      _props$mode = props.mode,
+      mode = _props$mode === void 0 ? 'vertical' : _props$mode,
+      inlineCollapsed = props.inlineCollapsed,
+      disabled = props.disabled,
+      disabledOverflow = props.disabledOverflow,
+      _props$subMenuOpenDel = props.subMenuOpenDelay,
+      subMenuOpenDelay = _props$subMenuOpenDel === void 0 ? 0.1 : _props$subMenuOpenDel,
+      _props$subMenuCloseDe = props.subMenuCloseDelay,
+      subMenuCloseDelay = _props$subMenuCloseDe === void 0 ? 0.1 : _props$subMenuCloseDe,
+      forceSubMenuRender = props.forceSubMenuRender,
+      defaultOpenKeys = props.defaultOpenKeys,
+      openKeys = props.openKeys,
+      activeKey = props.activeKey,
+      defaultActiveFirst = props.defaultActiveFirst,
+      _props$selectable = props.selectable,
+      selectable = _props$selectable === void 0 ? true : _props$selectable,
+      _props$multiple = props.multiple,
+      multiple = _props$multiple === void 0 ? false : _props$multiple,
+      defaultSelectedKeys = props.defaultSelectedKeys,
+      selectedKeys = props.selectedKeys,
+      onSelect = props.onSelect,
+      onDeselect = props.onDeselect,
+      _props$inlineIndent = props.inlineIndent,
+      inlineIndent = _props$inlineIndent === void 0 ? 24 : _props$inlineIndent,
+      motion = props.motion,
+      defaultMotions = props.defaultMotions,
+      _props$triggerSubMenu = props.triggerSubMenuAction,
+      triggerSubMenuAction = _props$triggerSubMenu === void 0 ? 'hover' : _props$triggerSubMenu,
+      builtinPlacements = props.builtinPlacements,
+      itemIcon = props.itemIcon,
+      expandIcon = props.expandIcon,
+      _props$overflowedIndi = props.overflowedIndicator,
+      overflowedIndicator = _props$overflowedIndi === void 0 ? '...' : _props$overflowedIndi,
+      getPopupContainer = props.getPopupContainer,
+      onClick = props.onClick,
+      onOpenChange = props.onOpenChange,
+      onKeyDown = props.onKeyDown,
+      openAnimation = props.openAnimation,
+      openTransitionName = props.openTransitionName,
+      restProps = _objectWithoutProperties$1(props, ["prefixCls", "style", "className", "tabIndex", "children", "direction", "id", "mode", "inlineCollapsed", "disabled", "disabledOverflow", "subMenuOpenDelay", "subMenuCloseDelay", "forceSubMenuRender", "defaultOpenKeys", "openKeys", "activeKey", "defaultActiveFirst", "selectable", "multiple", "defaultSelectedKeys", "selectedKeys", "onSelect", "onDeselect", "inlineIndent", "motion", "defaultMotions", "triggerSubMenuAction", "builtinPlacements", "itemIcon", "expandIcon", "overflowedIndicator", "getPopupContainer", "onClick", "onOpenChange", "onKeyDown", "openAnimation", "openTransitionName"]);
+
+  var childList = parseChildren(children, EMPTY_LIST$1);
+
+  var _React$useState = React__namespace.useState(false),
+      _React$useState2 = _slicedToArray$3(_React$useState, 2),
+      mounted = _React$useState2[0],
+      setMounted = _React$useState2[1];
+
+  var containerRef = React__namespace.useRef();
+  var uuid = useUUID(id);
+  var isRtl = direction === 'rtl'; // ========================= Warn =========================
+
+  if (process.env.NODE_ENV !== 'production') {
+    warningOnce(!openAnimation && !openTransitionName, '`openAnimation` and `openTransitionName` is removed. Please use `motion` or `defaultMotion` instead.');
+  } // ========================= Mode =========================
+
+
+  var _React$useMemo = React__namespace.useMemo(function () {
+    if ((mode === 'inline' || mode === 'vertical') && inlineCollapsed) {
+      return ['vertical', inlineCollapsed];
+    }
+
+    return [mode, false];
+  }, [mode, inlineCollapsed]),
+      _React$useMemo2 = _slicedToArray$3(_React$useMemo, 2),
+      mergedMode = _React$useMemo2[0],
+      mergedInlineCollapsed = _React$useMemo2[1]; // ====================== Responsive ======================
+
+
+  var _React$useState3 = React__namespace.useState(0),
+      _React$useState4 = _slicedToArray$3(_React$useState3, 2),
+      lastVisibleIndex = _React$useState4[0],
+      setLastVisibleIndex = _React$useState4[1];
+
+  var allVisible = lastVisibleIndex >= childList.length - 1 || mergedMode !== 'horizontal' || disabledOverflow; // ========================= Open =========================
+
+  var _useMergedState = useControlledState(defaultOpenKeys, {
+    value: openKeys,
+    postState: function postState(keys) {
+      return keys || EMPTY_LIST$1;
+    }
+  }),
+      _useMergedState2 = _slicedToArray$3(_useMergedState, 2),
+      mergedOpenKeys = _useMergedState2[0],
+      setMergedOpenKeys = _useMergedState2[1];
+
+  var triggerOpenKeys = function triggerOpenKeys(keys) {
+    setMergedOpenKeys(keys);
+    onOpenChange === null || onOpenChange === void 0 ? void 0 : onOpenChange(keys);
+  }; // >>>>> Cache & Reset open keys when inlineCollapsed changed
+
+
+  var _React$useState5 = React__namespace.useState(mergedOpenKeys),
+      _React$useState6 = _slicedToArray$3(_React$useState5, 2),
+      inlineCacheOpenKeys = _React$useState6[0],
+      setInlineCacheOpenKeys = _React$useState6[1];
+
+  var isInlineMode = mergedMode === 'inline';
+  var mountRef = React__namespace.useRef(false); // Cache
+
+  React__namespace.useEffect(function () {
+    if (isInlineMode) {
+      setInlineCacheOpenKeys(mergedOpenKeys);
+    }
+  }, [mergedOpenKeys]); // Restore
+
+  React__namespace.useEffect(function () {
+    if (!mountRef.current) {
+      mountRef.current = true;
+      return;
+    }
+
+    if (isInlineMode) {
+      setMergedOpenKeys(inlineCacheOpenKeys);
+    } else {
+      // Trigger open event in case its in control
+      triggerOpenKeys(EMPTY_LIST$1);
+    }
+  }, [isInlineMode]); // ========================= Path =========================
+
+  var _useKeyRecords = useKeyRecords(),
+      registerPath = _useKeyRecords.registerPath,
+      unregisterPath = _useKeyRecords.unregisterPath,
+      refreshOverflowKeys = _useKeyRecords.refreshOverflowKeys,
+      isSubPathKey = _useKeyRecords.isSubPathKey,
+      getKeyPath = _useKeyRecords.getKeyPath,
+      getKeys = _useKeyRecords.getKeys,
+      getSubPathKeys = _useKeyRecords.getSubPathKeys;
+
+  var registerPathContext = React__namespace.useMemo(function () {
+    return {
+      registerPath: registerPath,
+      unregisterPath: unregisterPath
+    };
+  }, [registerPath, unregisterPath]);
+  var pathUserContext = React__namespace.useMemo(function () {
+    return {
+      isSubPathKey: isSubPathKey
+    };
+  }, [isSubPathKey]);
+  React__namespace.useEffect(function () {
+    refreshOverflowKeys(allVisible ? EMPTY_LIST$1 : childList.slice(lastVisibleIndex + 1).map(function (child) {
+      return child.key;
+    }));
+  }, [lastVisibleIndex, allVisible]); // ======================== Active ========================
+
+  var _useMergedState3 = useControlledState(activeKey || defaultActiveFirst && ((_childList$ = childList[0]) === null || _childList$ === void 0 ? void 0 : _childList$.key), {
+    value: activeKey
+  }),
+      _useMergedState4 = _slicedToArray$3(_useMergedState3, 2),
+      mergedActiveKey = _useMergedState4[0],
+      setMergedActiveKey = _useMergedState4[1];
+
+  var onActive = useMemoCallback(function (key) {
+    setMergedActiveKey(key);
+  });
+  var onInactive = useMemoCallback(function () {
+    setMergedActiveKey(undefined);
+  }); // ======================== Select ========================
+  // >>>>> Select keys
+
+  var _useMergedState5 = useControlledState(defaultSelectedKeys || [], {
+    value: selectedKeys,
+    // Legacy convert key to array
+    postState: function postState(keys) {
+      if (Array.isArray(keys)) {
+        return keys;
+      }
+
+      if (keys === null || keys === undefined) {
+        return EMPTY_LIST$1;
+      }
+
+      return [keys];
+    }
+  }),
+      _useMergedState6 = _slicedToArray$3(_useMergedState5, 2),
+      mergedSelectKeys = _useMergedState6[0],
+      setMergedSelectKeys = _useMergedState6[1]; // >>>>> Trigger select
+
+
+  var triggerSelection = function triggerSelection(info) {
+    if (selectable) {
+      // Insert or Remove
+      var targetKey = info.key;
+      var exist = mergedSelectKeys.includes(targetKey);
+      var newSelectKeys;
 
       if (multiple) {
-        if (isSelected) {
-          onDeselect(info);
+        if (exist) {
+          newSelectKeys = mergedSelectKeys.filter(function (key) {
+            return key !== targetKey;
+          });
         } else {
-          onSelect(info);
+          newSelectKeys = [].concat(_toConsumableArray(mergedSelectKeys), [targetKey]);
         }
-      } else if (!isSelected) {
-        onSelect(info);
+      } else {
+        newSelectKeys = [targetKey];
       }
-    };
 
-    _this.saveNode = function (node) {
-      _this.node = node;
-    };
+      setMergedSelectKeys(newSelectKeys); // Trigger event
 
-    return _this;
-  }
-
-  _createClass$2(MenuItem, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      // invoke customized ref to expose component to mixin
-      this.callRef();
-    }
-  }, {
-    key: "componentDidUpdate",
-    value: function componentDidUpdate() {
-      this.callRef();
-    }
-  }, {
-    key: "componentWillUnmount",
-    value: function componentWillUnmount() {
-      var props = this.props;
-
-      if (props.onDestroy) {
-        props.onDestroy(props.eventKey);
-      }
-    }
-  }, {
-    key: "getPrefixCls",
-    value: function getPrefixCls() {
-      return "".concat(this.props.rootPrefixCls, "-item");
-    }
-  }, {
-    key: "getActiveClassName",
-    value: function getActiveClassName() {
-      return "".concat(this.getPrefixCls(), "-active");
-    }
-  }, {
-    key: "getSelectedClassName",
-    value: function getSelectedClassName() {
-      return "".concat(this.getPrefixCls(), "-selected");
-    }
-  }, {
-    key: "getDisabledClassName",
-    value: function getDisabledClassName() {
-      return "".concat(this.getPrefixCls(), "-disabled");
-    }
-  }, {
-    key: "callRef",
-    value: function callRef() {
-      if (this.props.manualRef) {
-        this.props.manualRef(this);
-      }
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _classNames;
-
-      var props = _objectSpread2$1({}, this.props);
-
-      var className = classnames(this.getPrefixCls(), props.className, (_classNames = {}, _defineProperty$4(_classNames, this.getActiveClassName(), !props.disabled && props.active), _defineProperty$4(_classNames, this.getSelectedClassName(), props.isSelected), _defineProperty$4(_classNames, this.getDisabledClassName(), props.disabled), _classNames));
-
-      var attrs = _objectSpread2$1(_objectSpread2$1({}, props.attribute), {}, {
-        title: typeof props.title === 'string' ? props.title : undefined,
-        className: className,
-        // set to menuitem by default
-        role: props.role || 'menuitem',
-        'aria-disabled': props.disabled
+      var selectInfo = _objectSpread2$1(_objectSpread2$1({}, info), {}, {
+        selectedKeys: newSelectKeys
       });
 
-      if (props.role === 'option') {
-        // overwrite to option
-        attrs = _objectSpread2$1(_objectSpread2$1({}, attrs), {}, {
-          role: 'option',
-          'aria-selected': props.isSelected
-        });
-      } else if (props.role === null || props.role === 'none') {
-        // sometimes we want to specify role inside <li/> element
-        // <li><a role='menuitem'>Link</a></li> would be a good example
-        // in this case the role on <li/> should be "none" to
-        // remove the implied listitem role.
-        // https://www.w3.org/TR/wai-aria-practices-1.1/examples/menubar/menubar-1/menubar-1.html
-        attrs.role = 'none';
-      } // In case that onClick/onMouseLeave/onMouseEnter is passed down from owner
-
-
-      var mouseEvent = {
-        onClick: props.disabled ? null : this.onClick,
-        onMouseLeave: props.disabled ? null : this.onMouseLeave,
-        onMouseEnter: props.disabled ? null : this.onMouseEnter
-      };
-
-      var style = _objectSpread2$1({}, props.style);
-
-      if (props.mode === 'inline') {
-        if (props.direction === 'rtl') {
-          style.paddingRight = props.inlineIndent * props.level;
-        } else {
-          style.paddingLeft = props.inlineIndent * props.level;
-        }
+      if (exist) {
+        onDeselect === null || onDeselect === void 0 ? void 0 : onDeselect(selectInfo);
+      } else {
+        onSelect === null || onSelect === void 0 ? void 0 : onSelect(selectInfo);
       }
+    } // Whatever selectable, always close it
 
-      menuAllProps.forEach(function (key) {
-        return delete props[key];
-      });
-      delete props.direction;
-      var icon = this.props.itemIcon;
 
-      if (typeof this.props.itemIcon === 'function') {
-        // TODO: This is a bug which should fixed after TS refactor
-        icon = /*#__PURE__*/React__namespace.createElement(this.props.itemIcon, this.props);
-      }
-
-      return /*#__PURE__*/React__namespace.createElement("li", _extends$1({}, omit(props, ['onClick', 'onMouseEnter', 'onMouseLeave', 'onSelect']), attrs, mouseEvent, {
-        style: style,
-        ref: this.saveNode
-      }), props.children, icon);
+    if (!multiple && mergedOpenKeys.length && mergedMode !== 'inline') {
+      triggerOpenKeys(EMPTY_LIST$1);
     }
-  }]);
+  }; // ========================= Open =========================
 
-  return MenuItem;
-}(React__namespace.Component);
-MenuItem$3.isMenuItem = true;
-MenuItem$3.defaultProps = {
-  onSelect: noop$2,
-  onMouseEnter: noop$2,
-  onMouseLeave: noop$2,
-  manualRef: noop$2
-};
-var connected = connect(function (_ref, _ref2) {
-  var activeKey = _ref.activeKey,
-      selectedKeys = _ref.selectedKeys;
-  var eventKey = _ref2.eventKey,
-      subMenuKey = _ref2.subMenuKey;
-  return {
-    active: activeKey[subMenuKey] === eventKey,
-    // selectedKeys should be array in any circumstance
-    // when it is not, we have fallback logic for https://github.com/ant-design/ant-design/issues/29430
-    isSelected: Array.isArray(selectedKeys) ? selectedKeys.indexOf(eventKey) !== -1 : selectedKeys === eventKey
+  /**
+   * Click for item. SubMenu do not have selection status
+   */
+
+
+  var onInternalClick = useMemoCallback(function (info) {
+    onClick === null || onClick === void 0 ? void 0 : onClick(warnItemProp(info));
+    triggerSelection(info);
+  });
+  var onInternalOpenChange = useMemoCallback(function (key, open) {
+    var newOpenKeys = mergedOpenKeys.filter(function (k) {
+      return k !== key;
+    });
+
+    if (open) {
+      newOpenKeys.push(key);
+    } else if (mergedMode !== 'inline') {
+      // We need find all related popup to close
+      var subPathKeys = getSubPathKeys(key);
+      newOpenKeys = newOpenKeys.filter(function (k) {
+        return !subPathKeys.has(k);
+      });
+    }
+
+    if (!shallowequal(mergedOpenKeys, newOpenKeys)) {
+      triggerOpenKeys(newOpenKeys);
+    }
+  });
+  var getInternalPopupContainer = useMemoCallback(getPopupContainer); // ==================== Accessibility =====================
+
+  var triggerAccessibilityOpen = function triggerAccessibilityOpen(key, open) {
+    var nextOpen = open !== null && open !== void 0 ? open : !mergedOpenKeys.includes(key);
+    onInternalOpenChange(key, nextOpen);
   };
-})(MenuItem$3);
 
-var MenuItemGroup = /*#__PURE__*/function (_React$Component) {
-  _inherits$1(MenuItemGroup, _React$Component);
+  var onInternalKeyDown = useAccessibility(mergedMode, mergedActiveKey, isRtl, uuid, containerRef, getKeys, getKeyPath, setMergedActiveKey, triggerAccessibilityOpen, onKeyDown); // ======================== Effect ========================
 
-  var _super = _createSuper$2(MenuItemGroup);
+  React__namespace.useEffect(function () {
+    setMounted(true);
+  }, []); // ======================== Render ========================
+  // >>>>> Children
 
-  function MenuItemGroup() {
-    var _this;
+  var wrappedChildList = mergedMode !== 'horizontal' || disabledOverflow ? childList : // Need wrap for overflow dropdown that do not response for open
+  childList.map(function (child, index) {
+    return (
+      /*#__PURE__*/
+      // Always wrap provider to avoid sub node re-mount
+      React__namespace.createElement(InheritableContextProvider, {
+        key: child.key,
+        overflowDisabled: index > lastVisibleIndex
+      }, child)
+    );
+  }); // >>>>> Container
 
-    _classCallCheck$2(this, MenuItemGroup);
+  var container = /*#__PURE__*/React__namespace.createElement(ForwardOverflow, _extends$1({
+    id: id,
+    ref: containerRef,
+    prefixCls: "".concat(prefixCls, "-overflow"),
+    component: "ul",
+    itemComponent: MenuItem$3,
+    className: classnames(prefixCls, "".concat(prefixCls, "-root"), "".concat(prefixCls, "-").concat(mergedMode), className, (_classNames = {}, _defineProperty$4(_classNames, "".concat(prefixCls, "-inline-collapsed"), mergedInlineCollapsed), _defineProperty$4(_classNames, "".concat(prefixCls, "-rtl"), isRtl), _classNames)),
+    dir: direction,
+    style: style,
+    role: "menu",
+    tabIndex: tabIndex,
+    data: wrappedChildList,
+    renderRawItem: function renderRawItem(node) {
+      return node;
+    },
+    renderRawRest: function renderRawRest(omitItems) {
+      // We use origin list since wrapped list use context to prevent open
+      var len = omitItems.length;
+      var originOmitItems = len ? childList.slice(-len) : null;
+      return /*#__PURE__*/React__namespace.createElement(SubMenu$2, {
+        eventKey: OVERFLOW_KEY,
+        title: overflowedIndicator,
+        disabled: allVisible,
+        internalPopupClose: len === 0
+      }, originOmitItems);
+    },
+    maxCount: mergedMode !== 'horizontal' || disabledOverflow ? ForwardOverflow.INVALIDATE : ForwardOverflow.RESPONSIVE,
+    ssr: "full",
+    "data-menu-list": true,
+    onVisibleChange: function onVisibleChange(newLastIndex) {
+      setLastVisibleIndex(newLastIndex);
+    },
+    onKeyDown: onInternalKeyDown
+  }, restProps)); // >>>>> Render
 
-    _this = _super.apply(this, arguments);
-
-    _this.renderInnerMenuItem = function (item) {
-      var _this$props = _this.props,
-          renderMenuItem = _this$props.renderMenuItem,
-          index = _this$props.index;
-      return renderMenuItem(item, index, _this.props.subMenuKey);
-    };
-
-    return _this;
-  }
-
-  _createClass$2(MenuItemGroup, [{
-    key: "render",
-    value: function render() {
-      var props = _extends$1({}, this.props);
-
-      var _props$className = props.className,
-          className = _props$className === void 0 ? '' : _props$className,
-          rootPrefixCls = props.rootPrefixCls;
-      var titleClassName = "".concat(rootPrefixCls, "-item-group-title");
-      var listClassName = "".concat(rootPrefixCls, "-item-group-list");
-      var title = props.title,
-          children = props.children;
-      menuAllProps.forEach(function (key) {
-        return delete props[key];
-      });
-      delete props.direction;
-      return /*#__PURE__*/React__namespace.createElement("li", _extends$1({}, props, {
-        onClick: function onClick(e) {
-          return e.stopPropagation();
-        },
-        className: "".concat(className, " ").concat(rootPrefixCls, "-item-group")
-      }), /*#__PURE__*/React__namespace.createElement("div", {
-        className: titleClassName,
-        title: typeof title === 'string' ? title : undefined
-      }, title), /*#__PURE__*/React__namespace.createElement("ul", {
-        className: listClassName
-      }, React__namespace.Children.map(children, this.renderInnerMenuItem)));
-    }
-  }]);
-
-  return MenuItemGroup;
-}(React__namespace.Component);
-
-MenuItemGroup.isMenuItemGroup = true;
-MenuItemGroup.defaultProps = {
-  disabled: true
+  return /*#__PURE__*/React__namespace.createElement(IdContext.Provider, {
+    value: uuid
+  }, /*#__PURE__*/React__namespace.createElement(InheritableContextProvider, {
+    prefixCls: prefixCls,
+    mode: mergedMode,
+    openKeys: mergedOpenKeys,
+    rtl: isRtl // Disabled
+    ,
+    disabled: disabled // Motion
+    ,
+    motion: mounted ? motion : null,
+    defaultMotions: mounted ? defaultMotions : null // Active
+    ,
+    activeKey: mergedActiveKey,
+    onActive: onActive,
+    onInactive: onInactive // Selection
+    ,
+    selectedKeys: mergedSelectKeys // Level
+    ,
+    inlineIndent: inlineIndent // Popup
+    ,
+    subMenuOpenDelay: subMenuOpenDelay,
+    subMenuCloseDelay: subMenuCloseDelay,
+    forceSubMenuRender: forceSubMenuRender,
+    builtinPlacements: builtinPlacements,
+    triggerSubMenuAction: triggerSubMenuAction,
+    getPopupContainer: getInternalPopupContainer // Icon
+    ,
+    itemIcon: itemIcon,
+    expandIcon: expandIcon // Events
+    ,
+    onItemClick: onInternalClick,
+    onOpenChange: onInternalOpenChange
+  }, /*#__PURE__*/React__namespace.createElement(PathUserContext.Provider, {
+    value: pathUserContext
+  }, container), /*#__PURE__*/React__namespace.createElement("div", {
+    style: {
+      display: 'none'
+    },
+    "aria-hidden": true
+  }, /*#__PURE__*/React__namespace.createElement(PathRegisterContext.Provider, {
+    value: registerPathContext
+  }, childList))));
 };
 
-var Divider = function Divider(_ref) {
+var InternalMenuItemGroup = function InternalMenuItemGroup(_ref) {
   var className = _ref.className,
-      rootPrefixCls = _ref.rootPrefixCls,
+      title = _ref.title;
+      _ref.eventKey;
+      var children = _ref.children,
+      restProps = _objectWithoutProperties$1(_ref, ["className", "title", "eventKey", "children"]);
+
+  var _React$useContext = React__namespace.useContext(MenuContext$1),
+      prefixCls = _React$useContext.prefixCls;
+
+  var groupPrefixCls = "".concat(prefixCls, "-item-group");
+  return /*#__PURE__*/React__namespace.createElement("li", _extends$1({}, restProps, {
+    onClick: function onClick(e) {
+      return e.stopPropagation();
+    },
+    className: classnames(groupPrefixCls, className)
+  }), /*#__PURE__*/React__namespace.createElement("div", {
+    className: "".concat(groupPrefixCls, "-title"),
+    title: typeof title === 'string' ? title : undefined
+  }, title), /*#__PURE__*/React__namespace.createElement("ul", {
+    className: "".concat(groupPrefixCls, "-list")
+  }, children));
+};
+
+function MenuItemGroup(_ref2) {
+  var children = _ref2.children,
+      props = _objectWithoutProperties$1(_ref2, ["children"]);
+
+  var connectedKeyPath = useFullPath$1(props.eventKey);
+  var childList = parseChildren(children, connectedKeyPath);
+  var measure = useMeasure();
+
+  if (measure) {
+    return childList;
+  }
+
+  return /*#__PURE__*/React__namespace.createElement(InternalMenuItemGroup, props, childList);
+}
+
+function Divider(_ref) {
+  var className = _ref.className,
       style = _ref.style;
+
+  var _React$useContext = React__namespace.useContext(MenuContext$1),
+      prefixCls = _React$useContext.prefixCls;
+
+  var measure = useMeasure();
+
+  if (measure) {
+    return null;
+  }
+
   return /*#__PURE__*/React__namespace.createElement("li", {
-    className: "".concat(className, " ").concat(rootPrefixCls, "-item-divider"),
+    className: classnames("".concat(prefixCls, "-item-divider"), className),
     style: style
   });
-};
+}
 
-Divider.defaultProps = {
-  // To fix keyboard UX.
-  disabled: true,
-  className: '',
-  style: {}
-};
+/** @private Only used for antd internal. Do not use in your production. */
 
-var MenuContext = /*#__PURE__*/React.createContext({
-  inlineCollapsed: false
-});
-
-var SubMenu$1 = /*#__PURE__*/function (_React$Component) {
-  _inherits$1(SubMenu, _React$Component);
-
-  var _super = _createSuper$2(SubMenu);
-
-  function SubMenu() {
-    _classCallCheck$2(this, SubMenu);
-
-    return _super.apply(this, arguments);
-  }
-
-  _createClass$2(SubMenu, [{
-    key: "renderTitle",
-    value: function renderTitle(inlineCollapsed) {
-      var _this$props = this.props,
-          icon = _this$props.icon,
-          title = _this$props.title,
-          level = _this$props.level,
-          rootPrefixCls = _this$props.rootPrefixCls;
-
-      if (!icon) {
-        return inlineCollapsed && level === 1 && title && typeof title === 'string' ? /*#__PURE__*/React__namespace.createElement("div", {
-          className: "".concat(rootPrefixCls, "-inline-collapsed-noicon")
-        }, title.charAt(0)) : title;
-      } // inline-collapsed.md demo 依赖 span 来隐藏文字,有 icon 属性，则内部包裹一个 span
-      // ref: https://github.com/ant-design/ant-design/pull/23456
-
-
-      var titleIsSpan = isValidElement(title) && title.type === 'span';
-      return /*#__PURE__*/React__namespace.createElement(React__namespace.Fragment, null, icon, titleIsSpan ? title : /*#__PURE__*/React__namespace.createElement("span", null, title));
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this = this;
-
-      var _this$props2 = this.props,
-          rootPrefixCls = _this$props2.rootPrefixCls,
-          popupClassName = _this$props2.popupClassName;
-      return /*#__PURE__*/React__namespace.createElement(MenuContext.Consumer, null, function (_ref) {
-        var inlineCollapsed = _ref.inlineCollapsed,
-            antdMenuTheme = _ref.antdMenuTheme;
-        return /*#__PURE__*/React__namespace.createElement(connected$2, _extends$1({}, omit(_this.props, ['icon']), {
-          title: _this.renderTitle(inlineCollapsed),
-          popupClassName: classnames(rootPrefixCls, "".concat(rootPrefixCls, "-").concat(antdMenuTheme), popupClassName)
-        }));
-      });
-    }
-  }]);
-
-  return SubMenu;
-}(React__namespace.Component);
-
-SubMenu$1.contextType = MenuContext; // fix issue:https://github.com/ant-design/ant-design/issues/8666
-
-SubMenu$1.isSubMenu = 1;
+var useFullPath = useFullPath$1;
+var ExportMenu = Menu$1;
+ExportMenu.Item = MenuItem$3;
+ExportMenu.SubMenu = SubMenu$2;
+ExportMenu.ItemGroup = MenuItemGroup;
+ExportMenu.Divider = Divider;
 
 // This icon file is generated automatically.
 var BarsOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "0 0 1024 1024", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M912 192H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM104 228a56 56 0 10112 0 56 56 0 10-112 0zm0 284a56 56 0 10112 0 56 56 0 10-112 0zm0 284a56 56 0 10112 0 56 56 0 10-112 0z" } }] }, "name": "bars", "theme": "outlined" };
@@ -23048,7 +22275,7 @@ var BarsOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "0 0 1024 1
 // GENERATE BY ./scripts/generate.ts
 
 var BarsOutlined = function BarsOutlined(props, ref) {
-  return /*#__PURE__*/React__namespace.createElement(Icon, Object.assign({}, props, {
+  return /*#__PURE__*/React__namespace.createElement(Icon$1, Object.assign({}, props, {
     ref: ref,
     icon: BarsOutlined$2
   }));
@@ -23058,12 +22285,177 @@ BarsOutlined.displayName = 'BarsOutlined';
 var BarsOutlined$1 = /*#__PURE__*/React__namespace.forwardRef(BarsOutlined);
 
 // This icon file is generated automatically.
+var CalendarOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z" } }] }, "name": "calendar", "theme": "outlined" };
+
+// GENERATE BY ./scripts/generate.ts
+
+var CalendarOutlined = function CalendarOutlined(props, ref) {
+  return /*#__PURE__*/React__namespace.createElement(Icon$1, Object.assign({}, props, {
+    ref: ref,
+    icon: CalendarOutlined$2
+  }));
+};
+
+CalendarOutlined.displayName = 'CalendarOutlined';
+var CalendarOutlined$1 = /*#__PURE__*/React__namespace.forwardRef(CalendarOutlined);
+
+// This icon file is generated automatically.
+var CaretDownFilled$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "0 0 1024 1024", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M840.4 300H183.6c-19.7 0-30.7 20.8-18.5 35l328.4 380.8c9.4 10.9 27.5 10.9 37 0L858.9 335c12.2-14.2 1.2-35-18.5-35z" } }] }, "name": "caret-down", "theme": "filled" };
+
+// GENERATE BY ./scripts/generate.ts
+
+var CaretDownFilled = function CaretDownFilled(props, ref) {
+  return /*#__PURE__*/React__namespace.createElement(Icon$1, Object.assign({}, props, {
+    ref: ref,
+    icon: CaretDownFilled$2
+  }));
+};
+
+CaretDownFilled.displayName = 'CaretDownFilled';
+var CaretDownFilled$1 = /*#__PURE__*/React__namespace.forwardRef(CaretDownFilled);
+
+// This icon file is generated automatically.
+var CaretDownOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "0 0 1024 1024", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M840.4 300H183.6c-19.7 0-30.7 20.8-18.5 35l328.4 380.8c9.4 10.9 27.5 10.9 37 0L858.9 335c12.2-14.2 1.2-35-18.5-35z" } }] }, "name": "caret-down", "theme": "outlined" };
+
+// GENERATE BY ./scripts/generate.ts
+
+var CaretDownOutlined = function CaretDownOutlined(props, ref) {
+  return /*#__PURE__*/React__namespace.createElement(Icon$1, Object.assign({}, props, {
+    ref: ref,
+    icon: CaretDownOutlined$2
+  }));
+};
+
+CaretDownOutlined.displayName = 'CaretDownOutlined';
+var CaretDownOutlined$1 = /*#__PURE__*/React__namespace.forwardRef(CaretDownOutlined);
+
+// This icon file is generated automatically.
+var CaretUpOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "0 0 1024 1024", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M858.9 689L530.5 308.2c-9.4-10.9-27.5-10.9-37 0L165.1 689c-12.2 14.2-1.2 35 18.5 35h656.8c19.7 0 30.7-20.8 18.5-35z" } }] }, "name": "caret-up", "theme": "outlined" };
+
+// GENERATE BY ./scripts/generate.ts
+
+var CaretUpOutlined = function CaretUpOutlined(props, ref) {
+  return /*#__PURE__*/React__namespace.createElement(Icon$1, Object.assign({}, props, {
+    ref: ref,
+    icon: CaretUpOutlined$2
+  }));
+};
+
+CaretUpOutlined.displayName = 'CaretUpOutlined';
+var CaretUpOutlined$1 = /*#__PURE__*/React__namespace.forwardRef(CaretUpOutlined);
+
+// This icon file is generated automatically.
+var ClockCircleOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z" } }, { "tag": "path", "attrs": { "d": "M686.7 638.6L544.1 535.5V288c0-4.4-3.6-8-8-8H488c-4.4 0-8 3.6-8 8v275.4c0 2.6 1.2 5 3.3 6.5l165.4 120.6c3.6 2.6 8.6 1.8 11.2-1.7l28.6-39c2.6-3.7 1.8-8.7-1.8-11.2z" } }] }, "name": "clock-circle", "theme": "outlined" };
+
+// GENERATE BY ./scripts/generate.ts
+
+var ClockCircleOutlined = function ClockCircleOutlined(props, ref) {
+  return /*#__PURE__*/React__namespace.createElement(Icon$1, Object.assign({}, props, {
+    ref: ref,
+    icon: ClockCircleOutlined$2
+  }));
+};
+
+ClockCircleOutlined.displayName = 'ClockCircleOutlined';
+var ClockCircleOutlined$1 = /*#__PURE__*/React__namespace.forwardRef(ClockCircleOutlined);
+
+// This icon file is generated automatically.
+var DoubleLeftOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M272.9 512l265.4-339.1c4.1-5.2.4-12.9-6.3-12.9h-77.3c-4.9 0-9.6 2.3-12.6 6.1L186.8 492.3a31.99 31.99 0 000 39.5l255.3 326.1c3 3.9 7.7 6.1 12.6 6.1H532c6.7 0 10.4-7.7 6.3-12.9L272.9 512zm304 0l265.4-339.1c4.1-5.2.4-12.9-6.3-12.9h-77.3c-4.9 0-9.6 2.3-12.6 6.1L490.8 492.3a31.99 31.99 0 000 39.5l255.3 326.1c3 3.9 7.7 6.1 12.6 6.1H836c6.7 0 10.4-7.7 6.3-12.9L576.9 512z" } }] }, "name": "double-left", "theme": "outlined" };
+
+// GENERATE BY ./scripts/generate.ts
+
+var DoubleLeftOutlined = function DoubleLeftOutlined(props, ref) {
+  return /*#__PURE__*/React__namespace.createElement(Icon$1, Object.assign({}, props, {
+    ref: ref,
+    icon: DoubleLeftOutlined$2
+  }));
+};
+
+DoubleLeftOutlined.displayName = 'DoubleLeftOutlined';
+var DoubleLeftOutlined$1 = /*#__PURE__*/React__namespace.forwardRef(DoubleLeftOutlined);
+
+// This icon file is generated automatically.
+var DoubleRightOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M533.2 492.3L277.9 166.1c-3-3.9-7.7-6.1-12.6-6.1H188c-6.7 0-10.4 7.7-6.3 12.9L447.1 512 181.7 851.1A7.98 7.98 0 00188 864h77.3c4.9 0 9.6-2.3 12.6-6.1l255.3-326.1c9.1-11.7 9.1-27.9 0-39.5zm304 0L581.9 166.1c-3-3.9-7.7-6.1-12.6-6.1H492c-6.7 0-10.4 7.7-6.3 12.9L751.1 512 485.7 851.1A7.98 7.98 0 00492 864h77.3c4.9 0 9.6-2.3 12.6-6.1l255.3-326.1c9.1-11.7 9.1-27.9 0-39.5z" } }] }, "name": "double-right", "theme": "outlined" };
+
+// GENERATE BY ./scripts/generate.ts
+
+var DoubleRightOutlined = function DoubleRightOutlined(props, ref) {
+  return /*#__PURE__*/React__namespace.createElement(Icon$1, Object.assign({}, props, {
+    ref: ref,
+    icon: DoubleRightOutlined$2
+  }));
+};
+
+DoubleRightOutlined.displayName = 'DoubleRightOutlined';
+var DoubleRightOutlined$1 = /*#__PURE__*/React__namespace.forwardRef(DoubleRightOutlined);
+
+// This icon file is generated automatically.
+var EyeInvisibleOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M942.2 486.2Q889.47 375.11 816.7 305l-50.88 50.88C807.31 395.53 843.45 447.4 874.7 512 791.5 684.2 673.4 766 512 766q-72.67 0-133.87-22.38L323 798.75Q408 838 512 838q288.3 0 430.2-300.3a60.29 60.29 0 000-51.5zm-63.57-320.64L836 122.88a8 8 0 00-11.32 0L715.31 232.2Q624.86 186 512 186q-288.3 0-430.2 300.3a60.3 60.3 0 000 51.5q56.69 119.4 136.5 191.41L112.48 835a8 8 0 000 11.31L155.17 889a8 8 0 0011.31 0l712.15-712.12a8 8 0 000-11.32zM149.3 512C232.6 339.8 350.7 258 512 258c54.54 0 104.13 9.36 149.12 28.39l-70.3 70.3a176 176 0 00-238.13 238.13l-83.42 83.42C223.1 637.49 183.3 582.28 149.3 512zm246.7 0a112.11 112.11 0 01146.2-106.69L401.31 546.2A112 112 0 01396 512z" } }, { "tag": "path", "attrs": { "d": "M508 624c-3.46 0-6.87-.16-10.25-.47l-52.82 52.82a176.09 176.09 0 00227.42-227.42l-52.82 52.82c.31 3.38.47 6.79.47 10.25a111.94 111.94 0 01-112 112z" } }] }, "name": "eye-invisible", "theme": "outlined" };
+
+// GENERATE BY ./scripts/generate.ts
+
+var EyeInvisibleOutlined = function EyeInvisibleOutlined(props, ref) {
+  return /*#__PURE__*/React__namespace.createElement(Icon$1, Object.assign({}, props, {
+    ref: ref,
+    icon: EyeInvisibleOutlined$2
+  }));
+};
+
+EyeInvisibleOutlined.displayName = 'EyeInvisibleOutlined';
+var EyeInvisibleOutlined$1 = /*#__PURE__*/React__namespace.forwardRef(EyeInvisibleOutlined);
+
+// This icon file is generated automatically.
+var EyeOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M942.2 486.2C847.4 286.5 704.1 186 512 186c-192.2 0-335.4 100.5-430.2 300.3a60.3 60.3 0 000 51.5C176.6 737.5 319.9 838 512 838c192.2 0 335.4-100.5 430.2-300.3 7.7-16.2 7.7-35 0-51.5zM512 766c-161.3 0-279.4-81.8-362.7-254C232.6 339.8 350.7 258 512 258c161.3 0 279.4 81.8 362.7 254C791.5 684.2 673.4 766 512 766zm-4-430c-97.2 0-176 78.8-176 176s78.8 176 176 176 176-78.8 176-176-78.8-176-176-176zm0 288c-61.9 0-112-50.1-112-112s50.1-112 112-112 112 50.1 112 112-50.1 112-112 112z" } }] }, "name": "eye", "theme": "outlined" };
+
+// GENERATE BY ./scripts/generate.ts
+
+var EyeOutlined = function EyeOutlined(props, ref) {
+  return /*#__PURE__*/React__namespace.createElement(Icon$1, Object.assign({}, props, {
+    ref: ref,
+    icon: EyeOutlined$2
+  }));
+};
+
+EyeOutlined.displayName = 'EyeOutlined';
+var EyeOutlined$1 = /*#__PURE__*/React__namespace.forwardRef(EyeOutlined);
+
+// This icon file is generated automatically.
+var FileOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M854.6 288.6L639.4 73.4c-6-6-14.1-9.4-22.6-9.4H192c-17.7 0-32 14.3-32 32v832c0 17.7 14.3 32 32 32h640c17.7 0 32-14.3 32-32V311.3c0-8.5-3.4-16.7-9.4-22.7zM790.2 326H602V137.8L790.2 326zm1.8 562H232V136h302v216a42 42 0 0042 42h216v494z" } }] }, "name": "file", "theme": "outlined" };
+
+// GENERATE BY ./scripts/generate.ts
+
+var FileOutlined = function FileOutlined(props, ref) {
+  return /*#__PURE__*/React__namespace.createElement(Icon$1, Object.assign({}, props, {
+    ref: ref,
+    icon: FileOutlined$2
+  }));
+};
+
+FileOutlined.displayName = 'FileOutlined';
+var FileOutlined$1 = /*#__PURE__*/React__namespace.forwardRef(FileOutlined);
+
+// This icon file is generated automatically.
+var FilterFilled$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M349 838c0 17.7 14.2 32 31.8 32h262.4c17.6 0 31.8-14.3 31.8-32V642H349v196zm531.1-684H143.9c-24.5 0-39.8 26.7-27.5 48l221.3 376h348.8l221.3-376c12.1-21.3-3.2-48-27.7-48z" } }] }, "name": "filter", "theme": "filled" };
+
+// GENERATE BY ./scripts/generate.ts
+
+var FilterFilled = function FilterFilled(props, ref) {
+  return /*#__PURE__*/React__namespace.createElement(Icon$1, Object.assign({}, props, {
+    ref: ref,
+    icon: FilterFilled$2
+  }));
+};
+
+FilterFilled.displayName = 'FilterFilled';
+var FilterFilled$1 = /*#__PURE__*/React__namespace.forwardRef(FilterFilled);
+
+// This icon file is generated automatically.
 var LeftOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 000 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z" } }] }, "name": "left", "theme": "outlined" };
 
 // GENERATE BY ./scripts/generate.ts
 
 var LeftOutlined = function LeftOutlined(props, ref) {
-  return /*#__PURE__*/React__namespace.createElement(Icon, Object.assign({}, props, {
+  return /*#__PURE__*/React__namespace.createElement(Icon$1, Object.assign({}, props, {
     ref: ref,
     icon: LeftOutlined$2
   }));
@@ -23072,7 +22464,98 @@ var LeftOutlined = function LeftOutlined(props, ref) {
 LeftOutlined.displayName = 'LeftOutlined';
 var LeftOutlined$1 = /*#__PURE__*/React__namespace.forwardRef(LeftOutlined);
 
-var __rest$j = undefined && undefined.__rest || function (s, e) {
+// This icon file is generated automatically.
+var MinusSquareOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M328 544h368c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8H328c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8z" } }, { "tag": "path", "attrs": { "d": "M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656z" } }] }, "name": "minus-square", "theme": "outlined" };
+
+// GENERATE BY ./scripts/generate.ts
+
+var MinusSquareOutlined = function MinusSquareOutlined(props, ref) {
+  return /*#__PURE__*/React__namespace.createElement(Icon$1, Object.assign({}, props, {
+    ref: ref,
+    icon: MinusSquareOutlined$2
+  }));
+};
+
+MinusSquareOutlined.displayName = 'MinusSquareOutlined';
+var MinusSquareOutlined$1 = /*#__PURE__*/React__namespace.forwardRef(MinusSquareOutlined);
+
+// This icon file is generated automatically.
+var PlusSquareOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M328 544h152v152c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V544h152c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8H544V328c0-4.4-3.6-8-8-8h-48c-4.4 0-8 3.6-8 8v152H328c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8z" } }, { "tag": "path", "attrs": { "d": "M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656z" } }] }, "name": "plus-square", "theme": "outlined" };
+
+// GENERATE BY ./scripts/generate.ts
+
+var PlusSquareOutlined = function PlusSquareOutlined(props, ref) {
+  return /*#__PURE__*/React__namespace.createElement(Icon$1, Object.assign({}, props, {
+    ref: ref,
+    icon: PlusSquareOutlined$2
+  }));
+};
+
+PlusSquareOutlined.displayName = 'PlusSquareOutlined';
+var PlusSquareOutlined$1 = /*#__PURE__*/React__namespace.forwardRef(PlusSquareOutlined);
+
+// This icon file is generated automatically.
+var SwapRightOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "0 0 1024 1024", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M873.1 596.2l-164-208A32 32 0 00684 376h-64.8c-6.7 0-10.4 7.7-6.3 13l144.3 183H152c-4.4 0-8 3.6-8 8v60c0 4.4 3.6 8 8 8h695.9c26.8 0 41.7-30.8 25.2-51.8z" } }] }, "name": "swap-right", "theme": "outlined" };
+
+// GENERATE BY ./scripts/generate.ts
+
+var SwapRightOutlined = function SwapRightOutlined(props, ref) {
+  return /*#__PURE__*/React__namespace.createElement(Icon$1, Object.assign({}, props, {
+    ref: ref,
+    icon: SwapRightOutlined$2
+  }));
+};
+
+SwapRightOutlined.displayName = 'SwapRightOutlined';
+var SwapRightOutlined$1 = /*#__PURE__*/React__namespace.forwardRef(SwapRightOutlined);
+
+var MenuContext = /*#__PURE__*/React.createContext({
+  prefixCls: '',
+  firstLevel: true,
+  inlineCollapsed: false
+});
+
+function SubMenu$1(props) {
+  var _a;
+
+  var popupClassName = props.popupClassName,
+      icon = props.icon,
+      title = props.title;
+  var context = React__namespace.useContext(MenuContext);
+  var prefixCls = context.prefixCls,
+      inlineCollapsed = context.inlineCollapsed,
+      antdMenuTheme = context.antdMenuTheme;
+  var parentPath = useFullPath();
+  var titleNode;
+
+  if (!icon) {
+    titleNode = inlineCollapsed && !parentPath.length && title && typeof title === 'string' ? /*#__PURE__*/React__namespace.createElement("div", {
+      className: "".concat(prefixCls, "-inline-collapsed-noicon")
+    }, title.charAt(0)) : /*#__PURE__*/React__namespace.createElement("span", {
+      className: "".concat(prefixCls, "-title-content")
+    }, title);
+  } else {
+    // inline-collapsed.md demo 依赖 span 来隐藏文字,有 icon 属性，则内部包裹一个 span
+    // ref: https://github.com/ant-design/ant-design/pull/23456
+    var titleIsSpan = isValidElement(title) && title.type === 'span';
+    titleNode = /*#__PURE__*/React__namespace.createElement(React__namespace.Fragment, null, cloneElement(icon, {
+      className: classnames(isValidElement(icon) ? (_a = icon.props) === null || _a === void 0 ? void 0 : _a.className : '', "".concat(prefixCls, "-item-icon"))
+    }), titleIsSpan ? title : /*#__PURE__*/React__namespace.createElement("span", {
+      className: "".concat(prefixCls, "-title-content")
+    }, title));
+  }
+
+  return /*#__PURE__*/React__namespace.createElement(MenuContext.Provider, {
+    value: _extends$1(_extends$1({}, context), {
+      firstLevel: false
+    })
+  }, /*#__PURE__*/React__namespace.createElement(SubMenu$2, _extends$1({}, omit(props, ['icon']), {
+    title: titleNode,
+    popupClassName: classnames(prefixCls, "".concat(prefixCls, "-").concat(antdMenuTheme), popupClassName)
+  })));
+}
+
+var __rest$k = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -23122,7 +22605,7 @@ var Basic = function Basic(props) {
       className = props.className,
       children = props.children,
       tagName = props.tagName,
-      others = __rest$j(props, ["prefixCls", "className", "children", "tagName"]);
+      others = __rest$k(props, ["prefixCls", "className", "children", "tagName"]);
 
   var classString = classnames(prefixCls, className);
   return /*#__PURE__*/React__namespace.createElement(tagName, _extends$1({
@@ -23146,7 +22629,7 @@ var BasicLayout = function BasicLayout(props) {
       children = props.children,
       hasSider = props.hasSider,
       Tag = props.tagName,
-      others = __rest$j(props, ["prefixCls", "className", "children", "hasSider", "tagName"]);
+      others = __rest$k(props, ["prefixCls", "className", "children", "hasSider", "tagName"]);
 
   var classString = classnames(prefixCls, (_classNames = {}, _defineProperty$4(_classNames, "".concat(prefixCls, "-has-sider"), typeof hasSider === 'boolean' ? hasSider : siders.length > 0), _defineProperty$4(_classNames, "".concat(prefixCls, "-rtl"), direction === 'rtl'), _classNames), className);
   return /*#__PURE__*/React__namespace.createElement(LayoutContext.Provider, {
@@ -23196,7 +22679,7 @@ var isNumeric = function isNumeric(value) {
   return !isNaN(parseFloat(value)) && isFinite(value);
 };
 
-var __rest$i = undefined && undefined.__rest || function (s, e) {
+var __rest$j = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -23250,7 +22733,7 @@ var Sider = /*#__PURE__*/React__namespace.forwardRef(function (_a, ref) {
       breakpoint = _a.breakpoint,
       onCollapse = _a.onCollapse,
       onBreakpoint = _a.onBreakpoint,
-      props = __rest$i(_a, ["prefixCls", "className", "trigger", "children", "defaultCollapsed", "theme", "style", "collapsible", "reverseArrow", "width", "collapsedWidth", "zeroWidthTriggerStyle", "breakpoint", "onCollapse", "onBreakpoint"]);
+      props = __rest$j(_a, ["prefixCls", "className", "trigger", "children", "defaultCollapsed", "theme", "style", "collapsible", "reverseArrow", "width", "collapsedWidth", "zeroWidthTriggerStyle", "breakpoint", "onCollapse", "onBreakpoint"]);
 
   var _useContext = React.useContext(LayoutContext),
       siderHook = _useContext.siderHook;
@@ -23386,14 +22869,13 @@ var Sider = /*#__PURE__*/React__namespace.forwardRef(function (_a, ref) {
 
   return /*#__PURE__*/React__namespace.createElement(SiderContext.Provider, {
     value: {
-      siderCollapsed: collapsed,
-      collapsedWidth: collapsedWidth
+      siderCollapsed: collapsed
     }
   }, renderSider());
 });
 Sider.displayName = 'Sider';
 
-var __rest$h = undefined && undefined.__rest || function (s, e) {
+var __rest$i = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -23419,57 +22901,56 @@ var MenuItem$2 = /*#__PURE__*/function (_React$Component) {
     _this = _super.apply(this, arguments);
 
     _this.renderItem = function (_ref) {
+      var _classNames;
+
       var siderCollapsed = _ref.siderCollapsed;
+
+      var _a;
+
+      var _this$context = _this.context,
+          prefixCls = _this$context.prefixCls,
+          firstLevel = _this$context.firstLevel,
+          inlineCollapsed = _this$context.inlineCollapsed,
+          direction = _this$context.direction;
       var _this$props = _this.props,
-          level = _this$props.level,
           className = _this$props.className,
-          children = _this$props.children,
-          rootPrefixCls = _this$props.rootPrefixCls;
+          children = _this$props.children;
 
-      var _a = _this.props,
-          title = _a.title,
-          icon = _a.icon,
-          danger = _a.danger,
-          rest = __rest$h(_a, ["title", "icon", "danger"]);
+      var _b = _this.props,
+          title = _b.title,
+          icon = _b.icon,
+          danger = _b.danger,
+          rest = __rest$i(_b, ["title", "icon", "danger"]);
 
-      return /*#__PURE__*/React__namespace.createElement(MenuContext.Consumer, null, function (_ref2) {
-        var _classNames;
+      var tooltipTitle = title;
 
-        var inlineCollapsed = _ref2.inlineCollapsed,
-            direction = _ref2.direction;
+      if (typeof title === 'undefined') {
+        tooltipTitle = firstLevel ? children : '';
+      } else if (title === false) {
+        tooltipTitle = '';
+      }
 
-        var _a;
+      var tooltipProps = {
+        title: tooltipTitle
+      };
 
-        var tooltipTitle = title;
+      if (!siderCollapsed && !inlineCollapsed) {
+        tooltipProps.title = null; // Reset `visible` to fix control mode tooltip display not correct
+        // ref: https://github.com/ant-design/ant-design/issues/16742
 
-        if (typeof title === 'undefined') {
-          tooltipTitle = level === 1 ? children : '';
-        } else if (title === false) {
-          tooltipTitle = '';
-        }
+        tooltipProps.visible = false;
+      }
 
-        var tooltipProps = {
-          title: tooltipTitle
-        };
-
-        if (!siderCollapsed && !inlineCollapsed) {
-          tooltipProps.title = null; // Reset `visible` to fix control mode tooltip display not correct
-          // ref: https://github.com/ant-design/ant-design/issues/16742
-
-          tooltipProps.visible = false;
-        }
-
-        var childrenLength = toArray$6(children).length;
-        return /*#__PURE__*/React__namespace.createElement(Tooltip, _extends$1({}, tooltipProps, {
-          placement: direction === 'rtl' ? 'left' : 'right',
-          overlayClassName: "".concat(rootPrefixCls, "-inline-collapsed-tooltip")
-        }), /*#__PURE__*/React__namespace.createElement(connected, _extends$1({}, rest, {
-          className: classnames((_classNames = {}, _defineProperty$4(_classNames, "".concat(rootPrefixCls, "-item-danger"), danger), _defineProperty$4(_classNames, "".concat(rootPrefixCls, "-item-only-child"), (icon ? childrenLength + 1 : childrenLength) === 1), _classNames), className),
-          title: title
-        }), cloneElement(icon, {
-          className: classnames(isValidElement(icon) ? (_a = icon.props) === null || _a === void 0 ? void 0 : _a.className : '', "".concat(rootPrefixCls, "-item-icon"))
-        }), _this.renderItemChildren(inlineCollapsed)));
-      });
+      var childrenLength = toArray$6(children).length;
+      return /*#__PURE__*/React__namespace.createElement(Tooltip, _extends$1({}, tooltipProps, {
+        placement: direction === 'rtl' ? 'left' : 'right',
+        overlayClassName: "".concat(prefixCls, "-inline-collapsed-tooltip")
+      }), /*#__PURE__*/React__namespace.createElement(MenuItem$3, _extends$1({}, rest, {
+        className: classnames((_classNames = {}, _defineProperty$4(_classNames, "".concat(prefixCls, "-item-danger"), danger), _defineProperty$4(_classNames, "".concat(prefixCls, "-item-only-child"), (icon ? childrenLength + 1 : childrenLength) === 1), _classNames), className),
+        title: typeof title === 'string' ? title : undefined
+      }), cloneElement(icon, {
+        className: classnames(isValidElement(icon) ? (_a = icon.props) === null || _a === void 0 ? void 0 : _a.className : '', "".concat(prefixCls, "-item-icon"))
+      }), _this.renderItemChildren(inlineCollapsed)));
     };
 
     return _this;
@@ -23478,24 +22959,26 @@ var MenuItem$2 = /*#__PURE__*/function (_React$Component) {
   _createClass$2(MenuItem, [{
     key: "renderItemChildren",
     value: function renderItemChildren(inlineCollapsed) {
+      var _this$context2 = this.context,
+          prefixCls = _this$context2.prefixCls,
+          firstLevel = _this$context2.firstLevel;
       var _this$props2 = this.props,
           icon = _this$props2.icon,
-          children = _this$props2.children,
-          level = _this$props2.level,
-          rootPrefixCls = _this$props2.rootPrefixCls; // inline-collapsed.md demo 依赖 span 来隐藏文字,有 icon 属性，则内部包裹一个 span
+          children = _this$props2.children;
+      var wrapNode = /*#__PURE__*/React__namespace.createElement("span", {
+        className: "".concat(prefixCls, "-title-content")
+      }, children); // inline-collapsed.md demo 依赖 span 来隐藏文字,有 icon 属性，则内部包裹一个 span
       // ref: https://github.com/ant-design/ant-design/pull/23456
 
       if (!icon || isValidElement(children) && children.type === 'span') {
-        if (children && inlineCollapsed && level === 1 && typeof children === 'string') {
+        if (children && inlineCollapsed && firstLevel && typeof children === 'string') {
           return /*#__PURE__*/React__namespace.createElement("div", {
-            className: "".concat(rootPrefixCls, "-inline-collapsed-noicon")
+            className: "".concat(prefixCls, "-inline-collapsed-noicon")
           }, children.charAt(0));
         }
-
-        return children;
       }
 
-      return /*#__PURE__*/React__namespace.createElement("span", null, children);
+      return wrapNode;
     }
   }, {
     key: "render",
@@ -23506,7 +22989,20 @@ var MenuItem$2 = /*#__PURE__*/function (_React$Component) {
 
   return MenuItem;
 }(React__namespace.Component);
-MenuItem$2.isMenuItem = true;
+MenuItem$2.contextType = MenuContext;
+
+var __rest$h = undefined && undefined.__rest || function (s, e) {
+  var t = {};
+
+  for (var p in s) {
+    if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
+  }
+
+  if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+    if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i])) t[p[i]] = s[p[i]];
+  }
+  return t;
+};
 
 var InternalMenu = /*#__PURE__*/function (_React$Component) {
   _inherits$1(InternalMenu, _React$Component);
@@ -23525,11 +23021,18 @@ var InternalMenu = /*#__PURE__*/function (_React$Component) {
           getPrefixCls = _ref.getPrefixCls,
           direction = _ref.direction;
       var rootPrefixCls = getPrefixCls();
-      var _this$props = _this.props,
-          customizePrefixCls = _this$props.prefixCls,
-          className = _this$props.className,
-          theme = _this$props.theme,
-          expandIcon = _this$props.expandIcon;
+
+      var _a = _this.props,
+          customizePrefixCls = _a.prefixCls,
+          className = _a.className,
+          theme = _a.theme,
+          expandIcon = _a.expandIcon,
+          restProps = __rest$h(_a, ["prefixCls", "className", "theme", "expandIcon"]);
+
+      var passedProps = omit(restProps, ['siderCollapsed', 'collapsedWidth']);
+
+      var inlineCollapsed = _this.getInlineCollapsed();
+
       var defaultMotions = {
         horizontal: {
           motionName: "".concat(rootPrefixCls, "-slide-up")
@@ -23540,16 +23043,20 @@ var InternalMenu = /*#__PURE__*/function (_React$Component) {
         }
       };
       var prefixCls = getPrefixCls('menu', customizePrefixCls);
-      var menuClassName = classnames("".concat(prefixCls, "-").concat(theme), _defineProperty$4({}, "".concat(prefixCls, "-inline-collapsed"), _this.getInlineCollapsed()), className);
+      var menuClassName = classnames("".concat(prefixCls, "-").concat(theme), className);
       return /*#__PURE__*/React__namespace.createElement(MenuContext.Provider, {
         value: {
-          inlineCollapsed: _this.getInlineCollapsed() || false,
+          prefixCls: prefixCls,
+          inlineCollapsed: inlineCollapsed || false,
           antdMenuTheme: theme,
-          direction: direction
+          direction: direction,
+          firstLevel: true
         }
-      }, /*#__PURE__*/React__namespace.createElement(Menu$1, _extends$1({
-        getPopupContainer: getPopupContainer
-      }, _this.props, {
+      }, /*#__PURE__*/React__namespace.createElement(ExportMenu, _extends$1({
+        getPopupContainer: getPopupContainer,
+        overflowedIndicator: /*#__PURE__*/React__namespace.createElement(EllipsisOutlined$1, null)
+      }, passedProps, {
+        inlineCollapsed: inlineCollapsed,
         className: menuClassName,
         prefixCls: prefixCls,
         direction: direction,
@@ -23568,9 +23075,9 @@ var InternalMenu = /*#__PURE__*/function (_React$Component) {
   _createClass$2(InternalMenu, [{
     key: "getInlineCollapsed",
     value: function getInlineCollapsed() {
-      var _this$props2 = this.props,
-          inlineCollapsed = _this$props2.inlineCollapsed,
-          siderCollapsed = _this$props2.siderCollapsed;
+      var _this$props = this.props,
+          inlineCollapsed = _this$props.inlineCollapsed,
+          siderCollapsed = _this$props.siderCollapsed;
 
       if (siderCollapsed !== undefined) {
         return siderCollapsed;
@@ -23589,9 +23096,8 @@ var InternalMenu = /*#__PURE__*/function (_React$Component) {
 }(React__namespace.Component);
 
 InternalMenu.defaultProps = {
-  className: '',
-  theme: 'light',
-  focusable: false
+  theme: 'light' // or dark
+
 }; // We should keep this as ref-able
 
 var Menu = /*#__PURE__*/function (_React$Component2) {
@@ -34592,14 +34098,14 @@ var RadioGroup$1 = /*#__PURE__*/React__namespace.forwardRef(function (props, ref
 
     var mergedSize = customizeSize || size;
     var classString = classnames(groupPrefixCls, "".concat(groupPrefixCls, "-").concat(buttonStyle), (_classNames = {}, _defineProperty$4(_classNames, "".concat(groupPrefixCls, "-").concat(mergedSize), mergedSize), _defineProperty$4(_classNames, "".concat(groupPrefixCls, "-rtl"), direction === 'rtl'), _classNames), className);
-    return /*#__PURE__*/React__namespace.createElement("div", {
+    return /*#__PURE__*/React__namespace.createElement("div", _extends$1({}, getDataOrAriaProps$1(props), {
       className: classString,
       style: style,
       onMouseEnter: onMouseEnter,
       onMouseLeave: onMouseLeave,
       id: id,
       ref: ref
-    }, childrenToRender);
+    }), childrenToRender);
   };
 
   return /*#__PURE__*/React__namespace.createElement(RadioGroupContextProvider, {
@@ -36061,36 +35567,6 @@ var TextArea = /*#__PURE__*/React__namespace.forwardRef(function (_a, ref) {
   return textareaNode;
 });
 
-// This icon file is generated automatically.
-var EyeOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M942.2 486.2C847.4 286.5 704.1 186 512 186c-192.2 0-335.4 100.5-430.2 300.3a60.3 60.3 0 000 51.5C176.6 737.5 319.9 838 512 838c192.2 0 335.4-100.5 430.2-300.3 7.7-16.2 7.7-35 0-51.5zM512 766c-161.3 0-279.4-81.8-362.7-254C232.6 339.8 350.7 258 512 258c161.3 0 279.4 81.8 362.7 254C791.5 684.2 673.4 766 512 766zm-4-430c-97.2 0-176 78.8-176 176s78.8 176 176 176 176-78.8 176-176-78.8-176-176-176zm0 288c-61.9 0-112-50.1-112-112s50.1-112 112-112 112 50.1 112 112-50.1 112-112 112z" } }] }, "name": "eye", "theme": "outlined" };
-
-// GENERATE BY ./scripts/generate.ts
-
-var EyeOutlined = function EyeOutlined(props, ref) {
-  return /*#__PURE__*/React__namespace.createElement(Icon, Object.assign({}, props, {
-    ref: ref,
-    icon: EyeOutlined$2
-  }));
-};
-
-EyeOutlined.displayName = 'EyeOutlined';
-var EyeOutlined$1 = /*#__PURE__*/React__namespace.forwardRef(EyeOutlined);
-
-// This icon file is generated automatically.
-var EyeInvisibleOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M942.2 486.2Q889.47 375.11 816.7 305l-50.88 50.88C807.31 395.53 843.45 447.4 874.7 512 791.5 684.2 673.4 766 512 766q-72.67 0-133.87-22.38L323 798.75Q408 838 512 838q288.3 0 430.2-300.3a60.29 60.29 0 000-51.5zm-63.57-320.64L836 122.88a8 8 0 00-11.32 0L715.31 232.2Q624.86 186 512 186q-288.3 0-430.2 300.3a60.3 60.3 0 000 51.5q56.69 119.4 136.5 191.41L112.48 835a8 8 0 000 11.31L155.17 889a8 8 0 0011.31 0l712.15-712.12a8 8 0 000-11.32zM149.3 512C232.6 339.8 350.7 258 512 258c54.54 0 104.13 9.36 149.12 28.39l-70.3 70.3a176 176 0 00-238.13 238.13l-83.42 83.42C223.1 637.49 183.3 582.28 149.3 512zm246.7 0a112.11 112.11 0 01146.2-106.69L401.31 546.2A112 112 0 01396 512z" } }, { "tag": "path", "attrs": { "d": "M508 624c-3.46 0-6.87-.16-10.25-.47l-52.82 52.82a176.09 176.09 0 00227.42-227.42l-52.82 52.82c.31 3.38.47 6.79.47 10.25a111.94 111.94 0 01-112 112z" } }] }, "name": "eye-invisible", "theme": "outlined" };
-
-// GENERATE BY ./scripts/generate.ts
-
-var EyeInvisibleOutlined = function EyeInvisibleOutlined(props, ref) {
-  return /*#__PURE__*/React__namespace.createElement(Icon, Object.assign({}, props, {
-    ref: ref,
-    icon: EyeInvisibleOutlined$2
-  }));
-};
-
-EyeInvisibleOutlined.displayName = 'EyeInvisibleOutlined';
-var EyeInvisibleOutlined$1 = /*#__PURE__*/React__namespace.forwardRef(EyeInvisibleOutlined);
-
 var __rest$c = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
@@ -36591,36 +36067,6 @@ function PickerTag(props) {
   }, props));
 }
 
-// This icon file is generated automatically.
-var CalendarOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z" } }] }, "name": "calendar", "theme": "outlined" };
-
-// GENERATE BY ./scripts/generate.ts
-
-var CalendarOutlined = function CalendarOutlined(props, ref) {
-  return /*#__PURE__*/React__namespace.createElement(Icon, Object.assign({}, props, {
-    ref: ref,
-    icon: CalendarOutlined$2
-  }));
-};
-
-CalendarOutlined.displayName = 'CalendarOutlined';
-var CalendarOutlined$1 = /*#__PURE__*/React__namespace.forwardRef(CalendarOutlined);
-
-// This icon file is generated automatically.
-var ClockCircleOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z" } }, { "tag": "path", "attrs": { "d": "M686.7 638.6L544.1 535.5V288c0-4.4-3.6-8-8-8H488c-4.4 0-8 3.6-8 8v275.4c0 2.6 1.2 5 3.3 6.5l165.4 120.6c3.6 2.6 8.6 1.8 11.2-1.7l28.6-39c2.6-3.7 1.8-8.7-1.8-11.2z" } }] }, "name": "clock-circle", "theme": "outlined" };
-
-// GENERATE BY ./scripts/generate.ts
-
-var ClockCircleOutlined = function ClockCircleOutlined(props, ref) {
-  return /*#__PURE__*/React__namespace.createElement(Icon, Object.assign({}, props, {
-    ref: ref,
-    icon: ClockCircleOutlined$2
-  }));
-};
-
-ClockCircleOutlined.displayName = 'ClockCircleOutlined';
-var ClockCircleOutlined$1 = /*#__PURE__*/React__namespace.forwardRef(ClockCircleOutlined);
-
 function getPlaceholder(picker, locale, customizePlaceholder) {
   if (customizePlaceholder !== undefined) {
     return customizePlaceholder;
@@ -36828,21 +36274,6 @@ function generatePicker$1(generateConfig) {
     QuarterPicker: QuarterPicker
   };
 }
-
-// This icon file is generated automatically.
-var SwapRightOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "0 0 1024 1024", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M873.1 596.2l-164-208A32 32 0 00684 376h-64.8c-6.7 0-10.4 7.7-6.3 13l144.3 183H152c-4.4 0-8 3.6-8 8v60c0 4.4 3.6 8 8 8h695.9c26.8 0 41.7-30.8 25.2-51.8z" } }] }, "name": "swap-right", "theme": "outlined" };
-
-// GENERATE BY ./scripts/generate.ts
-
-var SwapRightOutlined = function SwapRightOutlined(props, ref) {
-  return /*#__PURE__*/React__namespace.createElement(Icon, Object.assign({}, props, {
-    ref: ref,
-    icon: SwapRightOutlined$2
-  }));
-};
-
-SwapRightOutlined.displayName = 'SwapRightOutlined';
-var SwapRightOutlined$1 = /*#__PURE__*/React__namespace.forwardRef(SwapRightOutlined);
 
 var __rest$6 = undefined && undefined.__rest || function (s, e) {
   var t = {};
@@ -37090,6 +36521,30 @@ function getScrollBarSize(fresh) {
   }
 
   return cached;
+}
+
+function ensureSize(str) {
+  var match = str.match(/^(.*)px$/);
+  var value = Number(match === null || match === void 0 ? void 0 : match[1]);
+  return Number.isNaN(value) ? getScrollBarSize() : value;
+}
+
+function getTargetScrollBarSize(target) {
+  if (typeof document === 'undefined' || !target || !(target instanceof Element)) {
+    return {
+      width: 0,
+      height: 0
+    };
+  }
+
+  var _getComputedStyle = getComputedStyle(target, '::-webkit-scrollbar'),
+      width = _getComputedStyle.width,
+      height = _getComputedStyle.height;
+
+  return {
+    width: ensureSize(width),
+    height: ensureSize(height)
+  };
 }
 
 /**
@@ -41107,36 +40562,6 @@ Pagination$1.defaultProps = {
   totalBoundaryShowSizeChanger: 50
 };
 
-// This icon file is generated automatically.
-var DoubleLeftOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M272.9 512l265.4-339.1c4.1-5.2.4-12.9-6.3-12.9h-77.3c-4.9 0-9.6 2.3-12.6 6.1L186.8 492.3a31.99 31.99 0 000 39.5l255.3 326.1c3 3.9 7.7 6.1 12.6 6.1H532c6.7 0 10.4-7.7 6.3-12.9L272.9 512zm304 0l265.4-339.1c4.1-5.2.4-12.9-6.3-12.9h-77.3c-4.9 0-9.6 2.3-12.6 6.1L490.8 492.3a31.99 31.99 0 000 39.5l255.3 326.1c3 3.9 7.7 6.1 12.6 6.1H836c6.7 0 10.4-7.7 6.3-12.9L576.9 512z" } }] }, "name": "double-left", "theme": "outlined" };
-
-// GENERATE BY ./scripts/generate.ts
-
-var DoubleLeftOutlined = function DoubleLeftOutlined(props, ref) {
-  return /*#__PURE__*/React__namespace.createElement(Icon, Object.assign({}, props, {
-    ref: ref,
-    icon: DoubleLeftOutlined$2
-  }));
-};
-
-DoubleLeftOutlined.displayName = 'DoubleLeftOutlined';
-var DoubleLeftOutlined$1 = /*#__PURE__*/React__namespace.forwardRef(DoubleLeftOutlined);
-
-// This icon file is generated automatically.
-var DoubleRightOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M533.2 492.3L277.9 166.1c-3-3.9-7.7-6.1-12.6-6.1H188c-6.7 0-10.4 7.7-6.3 12.9L447.1 512 181.7 851.1A7.98 7.98 0 00188 864h77.3c4.9 0 9.6-2.3 12.6-6.1l255.3-326.1c9.1-11.7 9.1-27.9 0-39.5zm304 0L581.9 166.1c-3-3.9-7.7-6.1-12.6-6.1H492c-6.7 0-10.4 7.7-6.3 12.9L751.1 512 485.7 851.1A7.98 7.98 0 00492 864h77.3c4.9 0 9.6-2.3 12.6-6.1l255.3-326.1c9.1-11.7 9.1-27.9 0-39.5z" } }] }, "name": "double-right", "theme": "outlined" };
-
-// GENERATE BY ./scripts/generate.ts
-
-var DoubleRightOutlined = function DoubleRightOutlined(props, ref) {
-  return /*#__PURE__*/React__namespace.createElement(Icon, Object.assign({}, props, {
-    ref: ref,
-    icon: DoubleRightOutlined$2
-  }));
-};
-
-DoubleRightOutlined.displayName = 'DoubleRightOutlined';
-var DoubleRightOutlined$1 = /*#__PURE__*/React__namespace.forwardRef(DoubleRightOutlined);
-
 var MiniSelect = function MiniSelect(props) {
   return /*#__PURE__*/React__namespace.createElement(Select$1, _extends$1({
     size: "small"
@@ -42045,6 +41470,8 @@ function validateValue(val) {
   return val !== null && val !== undefined;
 }
 
+var _excluded$4 = ["colSpan", "rowSpan", "style", "className"];
+
 function isRenderCell(data) {
   return data && _typeof$4(data) === 'object' && !Array.isArray(data) && ! /*#__PURE__*/React__namespace.isValidElement(data);
 }
@@ -42125,7 +41552,7 @@ function Cell(_ref, ref) {
       cellRowSpan = _ref2.rowSpan,
       cellStyle = _ref2.style,
       cellClassName = _ref2.className,
-      restCellProps = _objectWithoutProperties$1(_ref2, ["colSpan", "rowSpan", "style", "className"]);
+      restCellProps = _objectWithoutProperties$1(_ref2, _excluded$4);
 
   var mergedColSpan = cellColSpan !== undefined ? cellColSpan : colSpan;
   var mergedRowSpan = cellRowSpan !== undefined ? cellRowSpan : rowSpan;
@@ -42385,200 +41812,6 @@ function Header$1(_ref) {
     return rowNode;
   }));
 }
-
-var INTERNAL_COL_DEFINE = 'RC_TABLE_INTERNAL_COL_DEFINE';
-function getExpandableProps(props) {
-  var expandable = props.expandable,
-      legacyExpandableConfig = _objectWithoutProperties$1(props, ["expandable"]);
-
-  if ('expandable' in props) {
-    return _objectSpread2$1(_objectSpread2$1({}, legacyExpandableConfig), expandable);
-  }
-
-  if (process.env.NODE_ENV !== 'production' && ['indentSize', 'expandedRowKeys', 'defaultExpandedRowKeys', 'defaultExpandAllRows', 'expandedRowRender', 'expandRowByClick', 'expandIcon', 'onExpand', 'onExpandedRowsChange', 'expandedRowClassName', 'expandIconColumnIndex'].some(function (prop) {
-    return prop in props;
-  })) {
-    warningOnce(false, 'expanded related props have been moved into `expandable`.');
-  }
-
-  return legacyExpandableConfig;
-}
-/**
- * Returns only data- and aria- key/value pairs
- * @param {object} props
- */
-
-function getDataAndAriaProps(props) {
-  /* eslint-disable no-param-reassign */
-  return Object.keys(props).reduce(function (memo, key) {
-    if (key.substr(0, 5) === 'data-' || key.substr(0, 5) === 'aria-') {
-      memo[key] = props[key];
-    }
-
-    return memo;
-  }, {});
-  /* eslint-enable */
-}
-
-function ColGroup(_ref) {
-  var colWidths = _ref.colWidths,
-      columns = _ref.columns,
-      columCount = _ref.columCount;
-  var cols = [];
-  var len = columCount || columns.length; // Only insert col with width & additional props
-  // Skip if rest col do not have any useful info
-
-  var mustInsert = false;
-
-  for (var i = len - 1; i >= 0; i -= 1) {
-    var width = colWidths[i];
-    var column = columns && columns[i];
-    var additionalProps = column && column[INTERNAL_COL_DEFINE];
-
-    if (width || additionalProps || mustInsert) {
-      cols.unshift( /*#__PURE__*/React__namespace.createElement("col", _extends$1({
-        key: i,
-        style: {
-          width: width,
-          minWidth: width
-        }
-      }, additionalProps)));
-      mustInsert = true;
-    }
-  }
-
-  return /*#__PURE__*/React__namespace.createElement("colgroup", null, cols);
-}
-
-function useColumnWidth(colWidths, columCount) {
-  return React.useMemo(function () {
-    var cloneColumns = [];
-
-    for (var i = 0; i < columCount; i += 1) {
-      var val = colWidths[i];
-
-      if (val !== undefined) {
-        cloneColumns[i] = val;
-      } else {
-        return null;
-      }
-    }
-
-    return cloneColumns;
-  }, [colWidths.join('_'), columCount]);
-}
-
-var FixedHeader = /*#__PURE__*/React__namespace.forwardRef(function (_ref, ref) {
-  var noData = _ref.noData,
-      columns = _ref.columns,
-      flattenColumns = _ref.flattenColumns,
-      colWidths = _ref.colWidths,
-      columCount = _ref.columCount,
-      stickyOffsets = _ref.stickyOffsets,
-      direction = _ref.direction,
-      fixHeader = _ref.fixHeader,
-      offsetHeader = _ref.offsetHeader,
-      stickyClassName = _ref.stickyClassName,
-      onScroll = _ref.onScroll,
-      maxContentScroll = _ref.maxContentScroll,
-      props = _objectWithoutProperties$1(_ref, ["noData", "columns", "flattenColumns", "colWidths", "columCount", "stickyOffsets", "direction", "fixHeader", "offsetHeader", "stickyClassName", "onScroll", "maxContentScroll"]);
-
-  var _React$useContext = React__namespace.useContext(TableContext),
-      prefixCls = _React$useContext.prefixCls,
-      scrollbarSize = _React$useContext.scrollbarSize,
-      isSticky = _React$useContext.isSticky;
-
-  var combinationScrollBarSize = isSticky && !fixHeader ? 0 : scrollbarSize; // Pass wheel to scroll event
-
-  var scrollRef = React__namespace.useRef(null);
-  var setScrollRef = React__namespace.useCallback(function (element) {
-    fillRef(ref, element);
-    fillRef(scrollRef, element);
-  }, []);
-  React__namespace.useEffect(function () {
-    var _scrollRef$current;
-
-    function onWheel(e) {
-      var currentTarget = e.currentTarget,
-          deltaX = e.deltaX;
-
-      if (deltaX) {
-        onScroll({
-          currentTarget: currentTarget,
-          scrollLeft: currentTarget.scrollLeft + deltaX
-        });
-        e.preventDefault();
-      }
-    }
-
-    (_scrollRef$current = scrollRef.current) === null || _scrollRef$current === void 0 ? void 0 : _scrollRef$current.addEventListener('wheel', onWheel);
-    return function () {
-      var _scrollRef$current2;
-
-      (_scrollRef$current2 = scrollRef.current) === null || _scrollRef$current2 === void 0 ? void 0 : _scrollRef$current2.removeEventListener('wheel', onWheel);
-    };
-  }, []); // Check if all flattenColumns has width
-
-  var allFlattenColumnsWithWidth = React__namespace.useMemo(function () {
-    return flattenColumns.every(function (column) {
-      return column.width >= 0;
-    });
-  }, [flattenColumns]); // Add scrollbar column
-
-  var lastColumn = flattenColumns[flattenColumns.length - 1];
-  var ScrollBarColumn = {
-    fixed: lastColumn ? lastColumn.fixed : null,
-    onHeaderCell: function onHeaderCell() {
-      return {
-        className: "".concat(prefixCls, "-cell-scrollbar")
-      };
-    }
-  };
-  var columnsWithScrollbar = React.useMemo(function () {
-    return combinationScrollBarSize ? [].concat(_toConsumableArray(columns), [ScrollBarColumn]) : columns;
-  }, [combinationScrollBarSize, columns]);
-  var flattenColumnsWithScrollbar = React.useMemo(function () {
-    return combinationScrollBarSize ? [].concat(_toConsumableArray(flattenColumns), [ScrollBarColumn]) : flattenColumns;
-  }, [combinationScrollBarSize, flattenColumns]); // Calculate the sticky offsets
-
-  var headerStickyOffsets = React.useMemo(function () {
-    var right = stickyOffsets.right,
-        left = stickyOffsets.left;
-    return _objectSpread2$1(_objectSpread2$1({}, stickyOffsets), {}, {
-      left: direction === 'rtl' ? [].concat(_toConsumableArray(left.map(function (width) {
-        return width + combinationScrollBarSize;
-      })), [0]) : left,
-      right: direction === 'rtl' ? right : [].concat(_toConsumableArray(right.map(function (width) {
-        return width + combinationScrollBarSize;
-      })), [0]),
-      isSticky: isSticky
-    });
-  }, [combinationScrollBarSize, stickyOffsets, isSticky]);
-  var mergedColumnWidth = useColumnWidth(colWidths, columCount);
-  return /*#__PURE__*/React__namespace.createElement("div", {
-    style: _objectSpread2$1({
-      overflow: 'hidden'
-    }, isSticky ? {
-      top: offsetHeader
-    } : {}),
-    ref: setScrollRef,
-    className: classnames("".concat(prefixCls, "-header"), _defineProperty$4({}, stickyClassName, !!stickyClassName))
-  }, /*#__PURE__*/React__namespace.createElement("table", {
-    style: {
-      tableLayout: 'fixed',
-      visibility: noData || mergedColumnWidth ? null : 'hidden'
-    }
-  }, (!noData || !maxContentScroll || allFlattenColumnsWithWidth) && /*#__PURE__*/React__namespace.createElement(ColGroup, {
-    colWidths: mergedColumnWidth ? [].concat(_toConsumableArray(mergedColumnWidth), [combinationScrollBarSize]) : [],
-    columCount: columCount + 1,
-    columns: flattenColumnsWithScrollbar
-  }), /*#__PURE__*/React__namespace.createElement(Header$1, _extends$1({}, props, {
-    stickyOffsets: headerStickyOffsets,
-    columns: columnsWithScrollbar,
-    flattenColumns: flattenColumnsWithScrollbar
-  }))));
-});
-FixedHeader.displayName = 'FixedHeader';
 
 var BodyContext = /*#__PURE__*/React__namespace.createContext(null);
 
@@ -42922,6 +42155,43 @@ function Body(_ref) {
 var MemoBody = /*#__PURE__*/React__namespace.memo(Body);
 MemoBody.displayName = 'Body';
 
+var _excluded$3 = ["expandable"];
+var INTERNAL_COL_DEFINE = 'RC_TABLE_INTERNAL_COL_DEFINE';
+function getExpandableProps(props) {
+  var expandable = props.expandable,
+      legacyExpandableConfig = _objectWithoutProperties$1(props, _excluded$3);
+
+  if ('expandable' in props) {
+    return _objectSpread2$1(_objectSpread2$1({}, legacyExpandableConfig), expandable);
+  }
+
+  if (process.env.NODE_ENV !== 'production' && ['indentSize', 'expandedRowKeys', 'defaultExpandedRowKeys', 'defaultExpandAllRows', 'expandedRowRender', 'expandRowByClick', 'expandIcon', 'onExpand', 'onExpandedRowsChange', 'expandedRowClassName', 'expandIconColumnIndex'].some(function (prop) {
+    return prop in props;
+  })) {
+    warningOnce(false, 'expanded related props have been moved into `expandable`.');
+  }
+
+  return legacyExpandableConfig;
+}
+/**
+ * Returns only data- and aria- key/value pairs
+ * @param {object} props
+ */
+
+function getDataAndAriaProps(props) {
+  /* eslint-disable no-param-reassign */
+  return Object.keys(props).reduce(function (memo, key) {
+    if (key.substr(0, 5) === 'data-' || key.substr(0, 5) === 'aria-') {
+      memo[key] = props[key];
+    }
+
+    return memo;
+  }, {});
+  /* eslint-enable */
+}
+
+var _excluded$2 = ["children"],
+    _excluded2 = ["fixed"];
 function convertChildrenToColumns(children) {
   return toArray$6(children).filter(function (node) {
     return /*#__PURE__*/React__namespace.isValidElement(node);
@@ -42930,7 +42200,7 @@ function convertChildrenToColumns(children) {
         props = _ref.props;
 
     var nodeChildren = props.children,
-        restProps = _objectWithoutProperties$1(props, ["children"]);
+        restProps = _objectWithoutProperties$1(props, _excluded$2);
 
     var column = _objectSpread2$1({
       key: key
@@ -42996,7 +42266,7 @@ function warningFixed(flattenColumns) {
 function revertForRtl(columns) {
   return columns.map(function (column) {
     var fixed = column.fixed,
-        restProps = _objectWithoutProperties$1(column, ["fixed"]); // Convert `fixed='left'` to `fixed='right'` instead
+        restProps = _objectWithoutProperties$1(column, _excluded2); // Convert `fixed='left'` to `fixed='right'` instead
 
 
     var parsedFixed = fixed;
@@ -43030,7 +42300,8 @@ function useColumns(_ref2, transformColumns) {
       expandIconColumnIndex = _ref2.expandIconColumnIndex,
       direction = _ref2.direction,
       expandRowByClick = _ref2.expandRowByClick,
-      columnWidth = _ref2.columnWidth;
+      columnWidth = _ref2.columnWidth,
+      fixed = _ref2.fixed;
   var baseColumns = React__namespace.useMemo(function () {
     return columns || convertChildrenToColumns(children);
   }, [columns, children]); // Add expand column
@@ -43041,9 +42312,19 @@ function useColumns(_ref2, transformColumns) {
 
       var expandColIndex = expandIconColumnIndex || 0;
       var prevColumn = baseColumns[expandColIndex];
+      var fixedColumn;
+
+      if ((fixed === 'left' || fixed) && !expandIconColumnIndex) {
+        fixedColumn = 'left';
+      } else if ((fixed === 'right' || fixed) && expandIconColumnIndex === baseColumns.length) {
+        fixedColumn = 'right';
+      } else {
+        fixedColumn = prevColumn ? prevColumn.fixed : null;
+      }
+
       var expandColumn = (_expandColumn = {}, _defineProperty$4(_expandColumn, INTERNAL_COL_DEFINE, {
         className: "".concat(prefixCls, "-expand-icon-col")
-      }), _defineProperty$4(_expandColumn, "title", ''), _defineProperty$4(_expandColumn, "fixed", prevColumn ? prevColumn.fixed : null), _defineProperty$4(_expandColumn, "className", "".concat(prefixCls, "-row-expand-icon-cell")), _defineProperty$4(_expandColumn, "width", columnWidth), _defineProperty$4(_expandColumn, "render", function render(_, record, index) {
+      }), _defineProperty$4(_expandColumn, "title", ''), _defineProperty$4(_expandColumn, "fixed", fixedColumn), _defineProperty$4(_expandColumn, "className", "".concat(prefixCls, "-row-expand-icon-cell")), _defineProperty$4(_expandColumn, "width", columnWidth), _defineProperty$4(_expandColumn, "render", function render(_, record, index) {
         var rowKey = getRowKey(record, index);
         var expanded = expandedKeys.has(rowKey);
         var recordExpandable = rowExpandable ? rowExpandable(record) : true;
@@ -43221,6 +42502,35 @@ function useStickyOffsets(colWidths, columnCount, direction) {
   return stickyOffsets;
 }
 
+function ColGroup(_ref) {
+  var colWidths = _ref.colWidths,
+      columns = _ref.columns,
+      columCount = _ref.columCount;
+  var cols = [];
+  var len = columCount || columns.length; // Only insert col with width & additional props
+  // Skip if rest col do not have any useful info
+
+  var mustInsert = false;
+
+  for (var i = len - 1; i >= 0; i -= 1) {
+    var width = colWidths[i];
+    var column = columns && columns[i];
+    var additionalProps = column && column[INTERNAL_COL_DEFINE];
+
+    if (width || additionalProps || mustInsert) {
+      cols.unshift( /*#__PURE__*/React__namespace.createElement("col", _extends$1({
+        key: i,
+        style: {
+          width: width
+        }
+      }, additionalProps)));
+      mustInsert = true;
+    }
+  }
+
+  return /*#__PURE__*/React__namespace.createElement("colgroup", null, cols);
+}
+
 function Panel(_ref) {
   var className = _ref.className,
       children = _ref.children;
@@ -43233,15 +42543,23 @@ function SummaryCell(_ref) {
   var className = _ref.className,
       index = _ref.index,
       children = _ref.children,
-      colSpan = _ref.colSpan,
+      _ref$colSpan = _ref.colSpan,
+      colSpan = _ref$colSpan === void 0 ? 1 : _ref$colSpan,
       rowSpan = _ref.rowSpan,
       align = _ref.align;
 
   var _React$useContext = React__namespace.useContext(TableContext),
       prefixCls = _React$useContext.prefixCls,
-      fixedInfoList = _React$useContext.fixedInfoList;
+      direction = _React$useContext.direction;
 
-  var fixedInfo = fixedInfoList[index];
+  var _React$useContext2 = React__namespace.useContext(SummaryContext),
+      scrollColumnIndex = _React$useContext2.scrollColumnIndex,
+      stickyOffsets = _React$useContext2.stickyOffsets,
+      flattenColumns = _React$useContext2.flattenColumns;
+
+  var lastIndex = index + colSpan - 1;
+  var mergedColSpan = lastIndex + 1 === scrollColumnIndex ? colSpan + 1 : colSpan;
+  var fixedInfo = getCellFixedInfo(index, index + mergedColSpan - 1, flattenColumns, stickyOffsets, direction);
   return /*#__PURE__*/React__namespace.createElement(MemoCell, _extends$1({
     className: className,
     index: index,
@@ -43254,7 +42572,7 @@ function SummaryCell(_ref) {
       return {
         children: children,
         props: {
-          colSpan: colSpan,
+          colSpan: mergedColSpan,
           rowSpan: rowSpan
         }
       };
@@ -43262,24 +42580,50 @@ function SummaryCell(_ref) {
   }, fixedInfo));
 }
 
-function FooterRow(props) {
-  return /*#__PURE__*/React__namespace.createElement("tr", props);
+var _excluded$1 = ["children"];
+function FooterRow(_ref) {
+  var children = _ref.children,
+      props = _objectWithoutProperties$1(_ref, _excluded$1);
+
+  return /*#__PURE__*/React__namespace.createElement("tr", props, children);
 }
+
+/**
+ * Syntactic sugar. Do not support HOC.
+ */
+
+function Summary(_ref) {
+  var children = _ref.children;
+  return children;
+}
+
+Summary.Row = FooterRow;
+Summary.Cell = SummaryCell;
+
+var SummaryContext = /*#__PURE__*/React__namespace.createContext({});
 
 function Footer(_ref) {
-  var children = _ref.children;
-
-  var _React$useContext = React__namespace.useContext(TableContext),
-      prefixCls = _React$useContext.prefixCls;
-
-  return /*#__PURE__*/React__namespace.createElement("tfoot", {
+  var children = _ref.children,
+      stickyOffsets = _ref.stickyOffsets,
+      flattenColumns = _ref.flattenColumns;
+  var tableContext = React__namespace.useContext(TableContext);
+  var prefixCls = tableContext.prefixCls;
+  var lastColumnIndex = flattenColumns.length - 1;
+  var scrollColumn = flattenColumns[lastColumnIndex];
+  var summaryContext = React__namespace.useMemo(function () {
+    return {
+      stickyOffsets: stickyOffsets,
+      flattenColumns: flattenColumns,
+      scrollColumnIndex: (scrollColumn === null || scrollColumn === void 0 ? void 0 : scrollColumn.scrollbar) ? lastColumnIndex : null
+    };
+  }, [scrollColumn, flattenColumns, lastColumnIndex, stickyOffsets]);
+  return /*#__PURE__*/React__namespace.createElement(SummaryContext.Provider, {
+    value: summaryContext
+  }, /*#__PURE__*/React__namespace.createElement("tfoot", {
     className: "".concat(prefixCls, "-summary")
-  }, children);
+  }, children));
 }
-var FooterComponents = {
-  Cell: SummaryCell,
-  Row: FooterRow
-};
+var FooterComponents = Summary;
 
 function renderExpandIcon$1(_ref) {
   var _classNames;
@@ -43496,6 +42840,8 @@ function useSticky(sticky, prefixCls) {
   var _ref = _typeof$4(sticky) === 'object' ? sticky : {},
       _ref$offsetHeader = _ref.offsetHeader,
       offsetHeader = _ref$offsetHeader === void 0 ? 0 : _ref$offsetHeader,
+      _ref$offsetSummary = _ref.offsetSummary,
+      offsetSummary = _ref$offsetSummary === void 0 ? 0 : _ref$offsetSummary,
       _ref$offsetScroll = _ref.offsetScroll,
       offsetScroll = _ref$offsetScroll === void 0 ? 0 : _ref$offsetScroll,
       _ref$getContainer = _ref.getContainer,
@@ -43508,13 +42854,151 @@ function useSticky(sticky, prefixCls) {
     var isSticky = !!sticky;
     return {
       isSticky: isSticky,
-      stickyClassName: isSticky ? "".concat(prefixCls, "-sticky-header") : '',
+      stickyClassName: isSticky ? "".concat(prefixCls, "-sticky-holder") : '',
       offsetHeader: offsetHeader,
+      offsetSummary: offsetSummary,
       offsetScroll: offsetScroll,
       container: container
     };
-  }, [offsetScroll, offsetHeader, prefixCls, container]);
+  }, [offsetScroll, offsetHeader, offsetSummary, prefixCls, container]);
 }
+
+var _excluded = ["className", "noData", "columns", "flattenColumns", "colWidths", "columCount", "stickyOffsets", "direction", "fixHeader", "stickyTopOffset", "stickyBottomOffset", "stickyClassName", "onScroll", "maxContentScroll", "children"];
+
+function useColumnWidth(colWidths, columCount) {
+  return React.useMemo(function () {
+    var cloneColumns = [];
+
+    for (var i = 0; i < columCount; i += 1) {
+      var val = colWidths[i];
+
+      if (val !== undefined) {
+        cloneColumns[i] = val;
+      } else {
+        return null;
+      }
+    }
+
+    return cloneColumns;
+  }, [colWidths.join('_'), columCount]);
+}
+
+var FixedHolder = /*#__PURE__*/React__namespace.forwardRef(function (_ref, ref) {
+  var className = _ref.className,
+      noData = _ref.noData,
+      columns = _ref.columns,
+      flattenColumns = _ref.flattenColumns,
+      colWidths = _ref.colWidths,
+      columCount = _ref.columCount,
+      stickyOffsets = _ref.stickyOffsets,
+      direction = _ref.direction,
+      fixHeader = _ref.fixHeader,
+      stickyTopOffset = _ref.stickyTopOffset,
+      stickyBottomOffset = _ref.stickyBottomOffset,
+      stickyClassName = _ref.stickyClassName,
+      onScroll = _ref.onScroll,
+      maxContentScroll = _ref.maxContentScroll,
+      children = _ref.children,
+      props = _objectWithoutProperties$1(_ref, _excluded);
+
+  var _React$useContext = React__namespace.useContext(TableContext),
+      prefixCls = _React$useContext.prefixCls,
+      scrollbarSize = _React$useContext.scrollbarSize,
+      isSticky = _React$useContext.isSticky;
+
+  var combinationScrollBarSize = isSticky && !fixHeader ? 0 : scrollbarSize; // Pass wheel to scroll event
+
+  var scrollRef = React__namespace.useRef(null);
+  var setScrollRef = React__namespace.useCallback(function (element) {
+    fillRef(ref, element);
+    fillRef(scrollRef, element);
+  }, []);
+  React__namespace.useEffect(function () {
+    var _scrollRef$current;
+
+    function onWheel(e) {
+      var currentTarget = e.currentTarget,
+          deltaX = e.deltaX;
+
+      if (deltaX) {
+        onScroll({
+          currentTarget: currentTarget,
+          scrollLeft: currentTarget.scrollLeft + deltaX
+        });
+        e.preventDefault();
+      }
+    }
+
+    (_scrollRef$current = scrollRef.current) === null || _scrollRef$current === void 0 ? void 0 : _scrollRef$current.addEventListener('wheel', onWheel);
+    return function () {
+      var _scrollRef$current2;
+
+      (_scrollRef$current2 = scrollRef.current) === null || _scrollRef$current2 === void 0 ? void 0 : _scrollRef$current2.removeEventListener('wheel', onWheel);
+    };
+  }, []); // Check if all flattenColumns has width
+
+  var allFlattenColumnsWithWidth = React__namespace.useMemo(function () {
+    return flattenColumns.every(function (column) {
+      return column.width >= 0;
+    });
+  }, [flattenColumns]); // Add scrollbar column
+
+  var lastColumn = flattenColumns[flattenColumns.length - 1];
+  var ScrollBarColumn = {
+    fixed: lastColumn ? lastColumn.fixed : null,
+    scrollbar: true,
+    onHeaderCell: function onHeaderCell() {
+      return {
+        className: "".concat(prefixCls, "-cell-scrollbar")
+      };
+    }
+  };
+  var columnsWithScrollbar = React.useMemo(function () {
+    return combinationScrollBarSize ? [].concat(_toConsumableArray(columns), [ScrollBarColumn]) : columns;
+  }, [combinationScrollBarSize, columns]);
+  var flattenColumnsWithScrollbar = React.useMemo(function () {
+    return combinationScrollBarSize ? [].concat(_toConsumableArray(flattenColumns), [ScrollBarColumn]) : flattenColumns;
+  }, [combinationScrollBarSize, flattenColumns]); // Calculate the sticky offsets
+
+  var headerStickyOffsets = React.useMemo(function () {
+    var right = stickyOffsets.right,
+        left = stickyOffsets.left;
+    return _objectSpread2$1(_objectSpread2$1({}, stickyOffsets), {}, {
+      left: direction === 'rtl' ? [].concat(_toConsumableArray(left.map(function (width) {
+        return width + combinationScrollBarSize;
+      })), [0]) : left,
+      right: direction === 'rtl' ? right : [].concat(_toConsumableArray(right.map(function (width) {
+        return width + combinationScrollBarSize;
+      })), [0]),
+      isSticky: isSticky
+    });
+  }, [combinationScrollBarSize, stickyOffsets, isSticky]);
+  var mergedColumnWidth = useColumnWidth(colWidths, columCount);
+  return /*#__PURE__*/React__namespace.createElement("div", {
+    style: _objectSpread2$1({
+      overflow: 'hidden'
+    }, isSticky ? {
+      top: stickyTopOffset,
+      bottom: stickyBottomOffset
+    } : {}),
+    ref: setScrollRef,
+    className: classnames(className, _defineProperty$4({}, stickyClassName, !!stickyClassName))
+  }, /*#__PURE__*/React__namespace.createElement("table", {
+    style: {
+      tableLayout: 'fixed',
+      visibility: noData || mergedColumnWidth ? null : 'hidden'
+    }
+  }, (!noData || !maxContentScroll || allFlattenColumnsWithWidth) && /*#__PURE__*/React__namespace.createElement(ColGroup, {
+    colWidths: mergedColumnWidth ? [].concat(_toConsumableArray(mergedColumnWidth), [combinationScrollBarSize]) : [],
+    columCount: columCount + 1,
+    columns: flattenColumnsWithScrollbar
+  }), children(_objectSpread2$1(_objectSpread2$1({}, props), {}, {
+    stickyOffsets: headerStickyOffsets,
+    columns: columnsWithScrollbar,
+    flattenColumns: flattenColumnsWithScrollbar
+  }))));
+});
+FixedHolder.displayName = 'FixedHolder';
 
 var EMPTY_DATA = []; // Used for customize scroll
 
@@ -43559,16 +43043,7 @@ function Table$1(props) {
       internalRefs = props.internalRefs,
       sticky = props.sticky;
   var mergedData = data || EMPTY_DATA;
-  var hasData = !!mergedData.length; // ===================== Effects ======================
-
-  var _React$useState = React__namespace.useState(0),
-      _React$useState2 = _slicedToArray$3(_React$useState, 2),
-      scrollbarSize = _React$useState2[0],
-      setScrollbarSize = _React$useState2[1];
-
-  React__namespace.useEffect(function () {
-    setScrollbarSize(getScrollBarSize());
-  }); // ===================== Warning ======================
+  var hasData = !!mergedData.length; // ===================== Warning ======================
 
   if (process.env.NODE_ENV !== 'production') {
     ['onRowClick', 'onRowDoubleClick', 'onRowContextMenu', 'onRowMouseEnter', 'onRowMouseLeave'].forEach(function (name) {
@@ -43643,7 +43118,7 @@ function Table$1(props) {
     return false;
   }, [!!expandedRowRender, mergedData]);
 
-  var _React$useState3 = React__namespace.useState(function () {
+  var _React$useState = React__namespace.useState(function () {
     if (defaultExpandedRowKeys) {
       return defaultExpandedRowKeys;
     }
@@ -43654,9 +43129,9 @@ function Table$1(props) {
 
     return [];
   }),
-      _React$useState4 = _slicedToArray$3(_React$useState3, 2),
-      innerExpandedKeys = _React$useState4[0],
-      setInnerExpandedKeys = _React$useState4[1];
+      _React$useState2 = _slicedToArray$3(_React$useState, 2),
+      innerExpandedKeys = _React$useState2[0],
+      setInnerExpandedKeys = _React$useState2[1];
 
   var mergedExpandedKeys = React__namespace.useMemo(function () {
     return new Set(expandedRowKeys || innerExpandedKeys || []);
@@ -43684,10 +43159,10 @@ function Table$1(props) {
     }
   }, [getRowKey, mergedExpandedKeys, mergedData, onExpand, onExpandedRowsChange]); // ====================== Column ======================
 
-  var _React$useState5 = React__namespace.useState(0),
-      _React$useState6 = _slicedToArray$3(_React$useState5, 2),
-      componentWidth = _React$useState6[0],
-      setComponentWidth = _React$useState6[1];
+  var _React$useState3 = React__namespace.useState(0),
+      _React$useState4 = _slicedToArray$3(_React$useState3, 2),
+      componentWidth = _React$useState4[0],
+      setComponentWidth = _React$useState4[1];
 
   var _useColumns = useColumns(_objectSpread2$1(_objectSpread2$1(_objectSpread2$1({}, props), expandableConfig), {}, {
     expandable: !!expandedRowRender,
@@ -43713,16 +43188,17 @@ function Table$1(props) {
   var fullTableRef = React__namespace.useRef();
   var scrollHeaderRef = React__namespace.useRef();
   var scrollBodyRef = React__namespace.useRef();
+  var scrollSummaryRef = React__namespace.useRef();
+
+  var _React$useState5 = React__namespace.useState(false),
+      _React$useState6 = _slicedToArray$3(_React$useState5, 2),
+      pingedLeft = _React$useState6[0],
+      setPingedLeft = _React$useState6[1];
 
   var _React$useState7 = React__namespace.useState(false),
       _React$useState8 = _slicedToArray$3(_React$useState7, 2),
-      pingedLeft = _React$useState8[0],
-      setPingedLeft = _React$useState8[1];
-
-  var _React$useState9 = React__namespace.useState(false),
-      _React$useState10 = _slicedToArray$3(_React$useState9, 2),
-      pingedRight = _React$useState10[0],
-      setPingedRight = _React$useState10[1];
+      pingedRight = _React$useState8[0],
+      setPingedRight = _React$useState8[1];
 
   var _useLayoutState = useLayoutState(new Map()),
       _useLayoutState2 = _slicedToArray$3(_useLayoutState, 2),
@@ -43739,7 +43215,7 @@ function Table$1(props) {
   }, [pureColWidths.join('_')]);
   var stickyOffsets = useStickyOffsets(colWidths, flattenColumns.length, direction);
   var fixHeader = scroll && validateValue(scroll.y);
-  var horizonScroll = scroll && validateValue(scroll.x);
+  var horizonScroll = scroll && validateValue(scroll.x) || Boolean(expandableConfig.fixed);
   var fixColumn = horizonScroll && flattenColumns.some(function (_ref2) {
     var fixed = _ref2.fixed;
     return fixed;
@@ -43750,9 +43226,14 @@ function Table$1(props) {
   var _useSticky = useSticky(sticky, prefixCls),
       isSticky = _useSticky.isSticky,
       offsetHeader = _useSticky.offsetHeader,
+      offsetSummary = _useSticky.offsetSummary,
       offsetScroll = _useSticky.offsetScroll,
       stickyClassName = _useSticky.stickyClassName,
-      container = _useSticky.container;
+      container = _useSticky.container; // Footer (Fix footer must fixed header)
+
+
+  var summaryNode = summary === null || summary === void 0 ? void 0 : summary(mergedData);
+  var fixFooter = (fixHeader || isSticky) && /*#__PURE__*/React__namespace.isValidElement(summaryNode) && summaryNode.type === Summary && summaryNode.props.fixed; // Scroll
 
   var scrollXStyle;
   var scrollYStyle;
@@ -43829,6 +43310,7 @@ function Table$1(props) {
       setScrollTarget(compareTarget);
       forceScroll(mergedScrollLeft, scrollHeaderRef.current);
       forceScroll(mergedScrollLeft, scrollBodyRef.current);
+      forceScroll(mergedScrollLeft, scrollSummaryRef.current);
       forceScroll(mergedScrollLeft, (_stickyRef$current = stickyRef.current) === null || _stickyRef$current === void 0 ? void 0 : _stickyRef$current.setScrollLeft);
     }
 
@@ -43856,8 +43338,11 @@ function Table$1(props) {
 
   var onFullTableResize = function onFullTableResize(_ref4) {
     var width = _ref4.width;
-    triggerOnScroll();
-    setComponentWidth(fullTableRef.current ? fullTableRef.current.offsetWidth : width);
+
+    if (width !== componentWidth) {
+      triggerOnScroll();
+      setComponentWidth(fullTableRef.current ? fullTableRef.current.offsetWidth : width);
+    }
   }; // Sync scroll bar when init or `horizonScroll` changed
 
 
@@ -43868,7 +43353,16 @@ function Table$1(props) {
     if (horizonScroll) {
       triggerOnScroll();
     }
-  }, [horizonScroll]); // ================== INTERNAL HOOKS ==================
+  }, [horizonScroll]); // ===================== Effects ======================
+
+  var _React$useState9 = React__namespace.useState(0),
+      _React$useState10 = _slicedToArray$3(_React$useState9, 2),
+      scrollbarSize = _React$useState10[0],
+      setScrollbarSize = _React$useState10[1];
+
+  React__namespace.useEffect(function () {
+    setScrollbarSize(getTargetScrollBarSize(scrollBodyRef.current).width);
+  }, []); // ================== INTERNAL HOOKS ==================
 
   React__namespace.useEffect(function () {
     if (internalHooks === INTERNAL_HOOKS && internalRefs) {
@@ -43939,7 +43433,6 @@ function Table$1(props) {
     }),
     columns: flattenColumns
   });
-  var footerTable = summary && /*#__PURE__*/React__namespace.createElement(Footer, null, summary(mergedData));
   var customizeScrollBody = getComponent(['body']);
 
   if (process.env.NODE_ENV !== 'production' && typeof customizeScrollBody === 'function' && hasData && !fixHeader) {
@@ -43947,6 +43440,7 @@ function Table$1(props) {
   }
 
   if (fixHeader || isSticky) {
+    // >>>>>> Fixed Header
     var bodyContent;
 
     if (typeof customizeScrollBody === 'function') {
@@ -43976,20 +43470,35 @@ function Table$1(props) {
         style: _objectSpread2$1(_objectSpread2$1({}, scrollTableStyle), {}, {
           tableLayout: mergedTableLayout
         })
-      }, bodyColGroup, bodyTable, footerTable));
-    }
+      }, bodyColGroup, bodyTable, !fixFooter && summaryNode && /*#__PURE__*/React__namespace.createElement(Footer, {
+        stickyOffsets: stickyOffsets,
+        flattenColumns: flattenColumns
+      }, summaryNode)));
+    } // Fixed holder share the props
 
-    groupTableNode = /*#__PURE__*/React__namespace.createElement(React__namespace.Fragment, null, showHeader !== false && /*#__PURE__*/React__namespace.createElement(FixedHeader, _extends$1({
+
+    var fixedHolderProps = _objectSpread2$1(_objectSpread2$1(_objectSpread2$1({
       noData: !mergedData.length,
       maxContentScroll: horizonScroll && scroll.x === 'max-content'
-    }, headerProps, columnContext, {
-      direction: direction // Fixed Props
-      ,
-      offsetHeader: offsetHeader,
+    }, headerProps), columnContext), {}, {
+      direction: direction,
       stickyClassName: stickyClassName,
-      ref: scrollHeaderRef,
       onScroll: onScroll
-    })), bodyContent, isSticky && /*#__PURE__*/React__namespace.createElement(StickyScrollBar$1, {
+    });
+
+    groupTableNode = /*#__PURE__*/React__namespace.createElement(React__namespace.Fragment, null, showHeader !== false && /*#__PURE__*/React__namespace.createElement(FixedHolder, _extends$1({}, fixedHolderProps, {
+      stickyTopOffset: offsetHeader,
+      className: "".concat(prefixCls, "-header"),
+      ref: scrollHeaderRef
+    }), function (fixedHolderPassProps) {
+      return /*#__PURE__*/React__namespace.createElement(Header$1, fixedHolderPassProps);
+    }), bodyContent, fixFooter && /*#__PURE__*/React__namespace.createElement(FixedHolder, _extends$1({}, fixedHolderProps, {
+      stickyBottomOffset: offsetSummary,
+      className: "".concat(prefixCls, "-summary"),
+      ref: scrollSummaryRef
+    }), function (fixedHolderPassProps) {
+      return /*#__PURE__*/React__namespace.createElement(Footer, fixedHolderPassProps, summaryNode);
+    }), isSticky && /*#__PURE__*/React__namespace.createElement(StickyScrollBar$1, {
       ref: stickyRef,
       offsetScroll: offsetScroll,
       scrollBodyRef: scrollBodyRef,
@@ -43997,6 +43506,7 @@ function Table$1(props) {
       container: container
     }));
   } else {
+    // >>>>>> Unique table
     groupTableNode = /*#__PURE__*/React__namespace.createElement("div", {
       style: _objectSpread2$1(_objectSpread2$1({}, scrollXStyle), scrollYStyle),
       className: classnames("".concat(prefixCls, "-content")),
@@ -44006,7 +43516,10 @@ function Table$1(props) {
       style: _objectSpread2$1(_objectSpread2$1({}, scrollTableStyle), {}, {
         tableLayout: mergedTableLayout
       })
-    }, bodyColGroup, showHeader !== false && /*#__PURE__*/React__namespace.createElement(Header$1, _extends$1({}, headerProps, columnContext)), bodyTable, footerTable));
+    }, bodyColGroup, showHeader !== false && /*#__PURE__*/React__namespace.createElement(Header$1, _extends$1({}, headerProps, columnContext)), bodyTable, summaryNode && /*#__PURE__*/React__namespace.createElement(Footer, {
+      stickyOffsets: stickyOffsets,
+      flattenColumns: flattenColumns
+    }, summaryNode)));
   }
 
   var ariaProps = getDataAndAriaProps(props);
@@ -46073,36 +45586,6 @@ function useSelection(rowSelection, config) {
   return [transformColumns, derivedSelectedKeySet];
 }
 
-// This icon file is generated automatically.
-var CaretDownOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "0 0 1024 1024", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M840.4 300H183.6c-19.7 0-30.7 20.8-18.5 35l328.4 380.8c9.4 10.9 27.5 10.9 37 0L858.9 335c12.2-14.2 1.2-35-18.5-35z" } }] }, "name": "caret-down", "theme": "outlined" };
-
-// GENERATE BY ./scripts/generate.ts
-
-var CaretDownOutlined = function CaretDownOutlined(props, ref) {
-  return /*#__PURE__*/React__namespace.createElement(Icon, Object.assign({}, props, {
-    ref: ref,
-    icon: CaretDownOutlined$2
-  }));
-};
-
-CaretDownOutlined.displayName = 'CaretDownOutlined';
-var CaretDownOutlined$1 = /*#__PURE__*/React__namespace.forwardRef(CaretDownOutlined);
-
-// This icon file is generated automatically.
-var CaretUpOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "0 0 1024 1024", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M858.9 689L530.5 308.2c-9.4-10.9-27.5-10.9-37 0L165.1 689c-12.2 14.2-1.2 35 18.5 35h656.8c19.7 0 30.7-20.8 18.5-35z" } }] }, "name": "caret-up", "theme": "outlined" };
-
-// GENERATE BY ./scripts/generate.ts
-
-var CaretUpOutlined = function CaretUpOutlined(props, ref) {
-  return /*#__PURE__*/React__namespace.createElement(Icon, Object.assign({}, props, {
-    ref: ref,
-    icon: CaretUpOutlined$2
-  }));
-};
-
-CaretUpOutlined.displayName = 'CaretUpOutlined';
-var CaretUpOutlined$1 = /*#__PURE__*/React__namespace.forwardRef(CaretUpOutlined);
-
 function getColumnKey(column, defaultKey) {
   if ('key' in column && column.key !== undefined && column.key !== null) {
     return column.key;
@@ -46243,14 +45726,14 @@ function injectSorter(prefixCls, columns, sorterSates, triggerSorter, defaultSor
         title: function title(renderProps) {
           var renderSortTitle = /*#__PURE__*/React__namespace.createElement("div", {
             className: "".concat(prefixCls, "-column-sorters")
-          }, /*#__PURE__*/React__namespace.createElement("span", null, renderColumnTitle(column.title, renderProps)), /*#__PURE__*/React__namespace.createElement("span", {
+          }, /*#__PURE__*/React__namespace.createElement("span", {
+            className: "".concat(prefixCls, "-column-title")
+          }, renderColumnTitle(column.title, renderProps)), /*#__PURE__*/React__namespace.createElement("span", {
             className: classnames("".concat(prefixCls, "-column-sorter"), _defineProperty$4({}, "".concat(prefixCls, "-column-sorter-full"), !!(upNode && downNode)))
           }, /*#__PURE__*/React__namespace.createElement("span", {
             className: "".concat(prefixCls, "-column-sorter-inner")
           }, upNode, downNode)));
-          return showSorterTooltip ? /*#__PURE__*/React__namespace.createElement(Tooltip, tooltipProps, /*#__PURE__*/React__namespace.createElement("div", {
-            className: "".concat(prefixCls, "-column-sorters-with-tooltip")
-          }, renderSortTitle)) : renderSortTitle;
+          return showSorterTooltip ? /*#__PURE__*/React__namespace.createElement(Tooltip, tooltipProps, renderSortTitle) : renderSortTitle;
         },
         onHeaderCell: function onHeaderCell(col) {
           var cell = column.onHeaderCell && column.onHeaderCell(col) || {};
@@ -46457,21 +45940,6 @@ function useFilterSorter(_ref5) {
   return [transformColumns, mergedSorterStates, columnTitleSorterProps, getSorters];
 }
 
-// This icon file is generated automatically.
-var FilterFilled$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M349 838c0 17.7 14.2 32 31.8 32h262.4c17.6 0 31.8-14.3 31.8-32V642H349v196zm531.1-684H143.9c-24.5 0-39.8 26.7-27.5 48l221.3 376h348.8l221.3-376c12.1-21.3-3.2-48-27.7-48z" } }] }, "name": "filter", "theme": "filled" };
-
-// GENERATE BY ./scripts/generate.ts
-
-var FilterFilled = function FilterFilled(props, ref) {
-  return /*#__PURE__*/React__namespace.createElement(Icon, Object.assign({}, props, {
-    ref: ref,
-    icon: FilterFilled$2
-  }));
-};
-
-FilterFilled.displayName = 'FilterFilled';
-var FilterFilled$1 = /*#__PURE__*/React__namespace.forwardRef(FilterFilled);
-
 var FilterDropdownMenuWrapper = function FilterDropdownMenuWrapper(props) {
   return /*#__PURE__*/React__namespace.createElement("div", {
     className: props.className,
@@ -46513,7 +45981,9 @@ function renderFilterItems(_ref2) {
   if (filters.length === 0) {
     // wrapped with <div /> to avoid react warning
     // https://github.com/ant-design/ant-design/issues/25979
-    return /*#__PURE__*/React__namespace.createElement("div", {
+    return /*#__PURE__*/React__namespace.createElement(MenuItem$1, {
+      key: "empty"
+    }, /*#__PURE__*/React__namespace.createElement("div", {
       style: {
         margin: '16px 0'
       }
@@ -46523,7 +45993,7 @@ function renderFilterItems(_ref2) {
       imageStyle: {
         height: 24
       }
-    }));
+    })));
   }
 
   return filters.map(function (filter, index) {
@@ -46555,7 +46025,8 @@ function renderFilterItems(_ref2) {
 function FilterDropdown(props) {
   var _a;
 
-  var prefixCls = props.prefixCls,
+  var tablePrefixCls = props.tablePrefixCls,
+      prefixCls = props.prefixCls,
       column = props.column,
       dropdownPrefixCls = props.dropdownPrefixCls,
       columnKey = props.columnKey,
@@ -46748,15 +46219,10 @@ function FilterDropdown(props) {
       direction = _React$useContext.direction;
 
   return /*#__PURE__*/React__namespace.createElement("div", {
-    className: classnames("".concat(prefixCls, "-column"))
+    className: "".concat(prefixCls, "-column")
   }, /*#__PURE__*/React__namespace.createElement("span", {
-    className: "".concat(prefixCls, "-column-title")
-  }, children), /*#__PURE__*/React__namespace.createElement("span", {
-    className: classnames("".concat(prefixCls, "-trigger-container"), _defineProperty$4({}, "".concat(prefixCls, "-trigger-container-open"), mergedVisible)),
-    onClick: function onClick(e) {
-      e.stopPropagation();
-    }
-  }, /*#__PURE__*/React__namespace.createElement(Dropdown$1, {
+    className: "".concat(tablePrefixCls, "-column-title")
+  }, children), /*#__PURE__*/React__namespace.createElement(Dropdown$1, {
     overlay: menu,
     trigger: ['click'],
     visible: mergedVisible,
@@ -46768,8 +46234,11 @@ function FilterDropdown(props) {
     tabIndex: -1,
     className: classnames("".concat(prefixCls, "-trigger"), {
       active: filtered
-    })
-  }, filterIcon))));
+    }),
+    onClick: function onClick(e) {
+      e.stopPropagation();
+    }
+  }, filterIcon)));
 }
 
 function collectFilterStates(columns, init, pos) {
@@ -46826,6 +46295,7 @@ function injectFilter(prefixCls, dropdownPrefixCls, columns, filterStates, trigg
       newColumn = _extends$1(_extends$1({}, newColumn), {
         title: function title(renderProps) {
           return /*#__PURE__*/React__namespace.createElement(FilterDropdown, {
+            tablePrefixCls: prefixCls,
             prefixCls: "".concat(prefixCls, "-filter"),
             dropdownPrefixCls: dropdownPrefixCls,
             column: newColumn,
@@ -49037,66 +48507,6 @@ Tree.defaultProps = {
 };
 Tree.TreeNode = ContextTreeNode;
 
-// This icon file is generated automatically.
-var FileOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M854.6 288.6L639.4 73.4c-6-6-14.1-9.4-22.6-9.4H192c-17.7 0-32 14.3-32 32v832c0 17.7 14.3 32 32 32h640c17.7 0 32-14.3 32-32V311.3c0-8.5-3.4-16.7-9.4-22.7zM790.2 326H602V137.8L790.2 326zm1.8 562H232V136h302v216a42 42 0 0042 42h216v494z" } }] }, "name": "file", "theme": "outlined" };
-
-// GENERATE BY ./scripts/generate.ts
-
-var FileOutlined = function FileOutlined(props, ref) {
-  return /*#__PURE__*/React__namespace.createElement(Icon, Object.assign({}, props, {
-    ref: ref,
-    icon: FileOutlined$2
-  }));
-};
-
-FileOutlined.displayName = 'FileOutlined';
-var FileOutlined$1 = /*#__PURE__*/React__namespace.forwardRef(FileOutlined);
-
-// This icon file is generated automatically.
-var MinusSquareOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M328 544h368c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8H328c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8z" } }, { "tag": "path", "attrs": { "d": "M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656z" } }] }, "name": "minus-square", "theme": "outlined" };
-
-// GENERATE BY ./scripts/generate.ts
-
-var MinusSquareOutlined = function MinusSquareOutlined(props, ref) {
-  return /*#__PURE__*/React__namespace.createElement(Icon, Object.assign({}, props, {
-    ref: ref,
-    icon: MinusSquareOutlined$2
-  }));
-};
-
-MinusSquareOutlined.displayName = 'MinusSquareOutlined';
-var MinusSquareOutlined$1 = /*#__PURE__*/React__namespace.forwardRef(MinusSquareOutlined);
-
-// This icon file is generated automatically.
-var PlusSquareOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M328 544h152v152c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V544h152c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8H544V328c0-4.4-3.6-8-8-8h-48c-4.4 0-8 3.6-8 8v152H328c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8z" } }, { "tag": "path", "attrs": { "d": "M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656z" } }] }, "name": "plus-square", "theme": "outlined" };
-
-// GENERATE BY ./scripts/generate.ts
-
-var PlusSquareOutlined = function PlusSquareOutlined(props, ref) {
-  return /*#__PURE__*/React__namespace.createElement(Icon, Object.assign({}, props, {
-    ref: ref,
-    icon: PlusSquareOutlined$2
-  }));
-};
-
-PlusSquareOutlined.displayName = 'PlusSquareOutlined';
-var PlusSquareOutlined$1 = /*#__PURE__*/React__namespace.forwardRef(PlusSquareOutlined);
-
-// This icon file is generated automatically.
-var CaretDownFilled$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "0 0 1024 1024", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M840.4 300H183.6c-19.7 0-30.7 20.8-18.5 35l328.4 380.8c9.4 10.9 27.5 10.9 37 0L858.9 335c12.2-14.2 1.2-35-18.5-35z" } }] }, "name": "caret-down", "theme": "filled" };
-
-// GENERATE BY ./scripts/generate.ts
-
-var CaretDownFilled = function CaretDownFilled(props, ref) {
-  return /*#__PURE__*/React__namespace.createElement(Icon, Object.assign({}, props, {
-    ref: ref,
-    icon: CaretDownFilled$2
-  }));
-};
-
-CaretDownFilled.displayName = 'CaretDownFilled';
-var CaretDownFilled$1 = /*#__PURE__*/React__namespace.forwardRef(CaretDownFilled);
-
 function renderSwitcherIcon(prefixCls, switcherIcon, showLine, _ref) {
   var isLeaf = _ref.isLeaf,
       expanded = _ref.expanded,
@@ -50545,12 +49955,12 @@ TreeSelect$1.SHOW_CHILD = SHOW_CHILD;
 
 var Option = Select$1.Option;
 var Select = function (_a) {
-    var className = _a.className, classNameSelect = _a.classNameSelect, _b = _a.value, value = _b === void 0 ? [] : _b, label = _a.label, _c = _a.defaultValue, defaultValue = _c === void 0 ? [] : _c, _d = _a.placeholder, placeholder = _d === void 0 ? "Please select" : _d, onChange = _a.onChange, disabled = _a.disabled, _e = _a.dataSource, dataSource = _e === void 0 ? [] : _e, error = _a.error, _f = _a.multiple, multiple = _f === void 0 ? false : _f, _g = _a.getLabel, getLabel = _g === void 0 ? function (item) { return item.label; } : _g, _h = _a.getKey, getKey = _h === void 0 ? function (item) { return item.id; } : _h, _j = _a.getValue, getValue = _j === void 0 ? function (item) { var _a; return (_a = item === null || item === void 0 ? void 0 : item.id) !== null && _a !== void 0 ? _a : null; } : _j, _k = _a.allowClear, allowClear = _k === void 0 ? true : _k, _l = _a.variant, variant = _l === void 0 ? "outline" : _l, _m = _a.hasFilter, hasFilter = _m === void 0 ? true : _m, props = __rest$p(_a, ["className", "classNameSelect", "value", "label", "defaultValue", "placeholder", "onChange", "disabled", "dataSource", "error", "multiple", "getLabel", "getKey", "getValue", "allowClear", "variant", "hasFilter"]);
+    var className = _a.className, classNameSelect = _a.classNameSelect, _b = _a.value, value = _b === void 0 ? [] : _b, label = _a.label, _c = _a.defaultValue, defaultValue = _c === void 0 ? [] : _c, _d = _a.placeholder, placeholder = _d === void 0 ? "Please select" : _d, onChange = _a.onChange, disabled = _a.disabled, _e = _a.dataSource, dataSource = _e === void 0 ? [] : _e, error = _a.error, _f = _a.multiple, multiple = _f === void 0 ? false : _f, _g = _a.getLabel, getLabel = _g === void 0 ? function (item) { return item.label; } : _g, _h = _a.getKey, getKey = _h === void 0 ? function (item) { return item.id; } : _h, _j = _a.getValue, getValue = _j === void 0 ? function (item) { var _a; return (_a = item === null || item === void 0 ? void 0 : item.id) !== null && _a !== void 0 ? _a : null; } : _j, _k = _a.allowClear, allowClear = _k === void 0 ? true : _k, _l = _a.variant, variant = _l === void 0 ? "outline" : _l, _m = _a.hasFilter, hasFilter = _m === void 0 ? true : _m, props = __rest$q(_a, ["className", "classNameSelect", "value", "label", "defaultValue", "placeholder", "onChange", "disabled", "dataSource", "error", "multiple", "getLabel", "getKey", "getValue", "allowClear", "variant", "hasFilter"]);
     var children = React.useMemo(function () {
         return dataSource.map(function (dataItem) {
             var label = getLabel(dataItem);
             var key = getKey(dataItem);
-            return (jsxRuntime.jsx(Option, __assign$2({ value: getValue(dataItem) }, { children: label }), key));
+            return (jsxRuntime.jsx(Option, __assign({ value: getValue(dataItem) }, { children: label }), key));
         });
     }, [dataSource]);
     var container = classnames("d-select__container", "d-select__container-" + variant, className);
@@ -50560,16 +49970,16 @@ var Select = function (_a) {
         "d-select__error": !!error,
     }, classNameSelect);
     var errorTextClass = classnames("text-x-small", "text-error", "ml-1");
-    return (jsxRuntime.jsxs("div", __assign$2({ className: container }, { children: [label && jsxRuntime.jsx("label", __assign$2({ className: labelClass }, { children: label }), void 0),
-            jsxRuntime.jsx(Select$1, __assign$2({}, props, { value: value, mode: multiple ? "multiple" : undefined, allowClear: allowClear, placeholder: placeholder, defaultValue: defaultValue, onChange: onChange, className: selectClass, showArrow: true, disabled: disabled, optionFilterProp: "children", filterOption: function (input, option) {
+    return (jsxRuntime.jsxs("div", __assign({ className: container }, { children: [label && jsxRuntime.jsx("label", __assign({ className: labelClass }, { children: label }), void 0),
+            jsxRuntime.jsx(Select$1, __assign({}, props, { value: value, mode: multiple ? "multiple" : undefined, allowClear: allowClear, placeholder: placeholder, defaultValue: defaultValue, onChange: onChange, className: selectClass, showArrow: true, disabled: disabled, optionFilterProp: "children", filterOption: function (input, option) {
                     if (!hasFilter) {
                         return false;
                     }
                     return (option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0 ||
                         (option.props.value && ("" + option.props.value).toLowerCase().indexOf(input.toLowerCase()) >= 0));
                 } }, { children: children }), void 0),
-            error && (jsxRuntime.jsxs("div", __assign$2({ className: "flex-center-y mt-1" }, { children: [jsxRuntime.jsx(Icon$1, { name: "error_outline", className: "text-error", size: "small" }, void 0),
-                    jsxRuntime.jsx("text", __assign$2({ className: errorTextClass }, { children: error }), void 0)] }), void 0))] }), void 0));
+            error && (jsxRuntime.jsxs("div", __assign({ className: "flex-center-y mt-1" }, { children: [jsxRuntime.jsx(Icon$2, { name: "error_outline", className: "text-error", size: "small" }, void 0),
+                    jsxRuntime.jsx("text", __assign({ className: errorTextClass }, { children: error }), void 0)] }), void 0))] }), void 0));
 };
 
 var TreeSelect = function (_a) {
@@ -50581,14 +49991,14 @@ var TreeSelect = function (_a) {
         "d-select__error": !!error,
     }, classNameSelect);
     var errorTextClass = classnames("text-x-small", "text-error", "ml-1");
-    return (jsxRuntime.jsxs("div", __assign$2({ className: container }, { children: [label && jsxRuntime.jsx("label", __assign$2({ className: labelClass }, { children: label }), void 0),
+    return (jsxRuntime.jsxs("div", __assign({ className: container }, { children: [label && jsxRuntime.jsx("label", __assign({ className: labelClass }, { children: label }), void 0),
             jsxRuntime.jsx(TreeSelect$1, { className: selectClass, disabled: disabled, treeData: dataSource, onChange: onChange, value: value, placeholder: placeholder, multiple: multiple, allowClear: allowClear }, void 0),
-            error && (jsxRuntime.jsxs("div", __assign$2({ className: "flex-center-y mt-1" }, { children: [jsxRuntime.jsx(Icon$1, { name: "error_outline", className: "text-error", size: "small" }, void 0),
-                    jsxRuntime.jsx("text", __assign$2({ className: errorTextClass }, { children: error }), void 0)] }), void 0))] }), void 0));
+            error && (jsxRuntime.jsxs("div", __assign({ className: "flex-center-y mt-1" }, { children: [jsxRuntime.jsx(Icon$2, { name: "error_outline", className: "text-error", size: "small" }, void 0),
+                    jsxRuntime.jsx("text", __assign({ className: errorTextClass }, { children: error }), void 0)] }), void 0))] }), void 0));
 };
 
 var Button = function (_a) {
-    var content = _a.content, iconName = _a.iconName, className = _a.className, classNameIcon = _a.classNameIcon, classNameIconSuffix = _a.classNameIconSuffix, onClick = _a.onClick, _b = _a.type, type = _b === void 0 ? "button" : _b, _c = _a.size, size = _c === void 0 ? "large" : _c, _d = _a.variant, variant = _d === void 0 ? "standard" : _d, _e = _a.color, color = _e === void 0 ? "primary" : _e, _f = _a.disabled, disabled = _f === void 0 ? false : _f, suffixIcon = _a.suffixIcon, props = __rest$p(_a, ["content", "iconName", "className", "classNameIcon", "classNameIconSuffix", "onClick", "type", "size", "variant", "color", "disabled", "suffixIcon"]);
+    var content = _a.content, iconName = _a.iconName, className = _a.className, classNameIcon = _a.classNameIcon, classNameIconSuffix = _a.classNameIconSuffix, onClick = _a.onClick, _b = _a.type, type = _b === void 0 ? "button" : _b, _c = _a.size, size = _c === void 0 ? "large" : _c, _d = _a.variant, variant = _d === void 0 ? "standard" : _d, _e = _a.color, color = _e === void 0 ? "primary" : _e, _f = _a.disabled, disabled = _f === void 0 ? false : _f, suffixIcon = _a.suffixIcon, props = __rest$q(_a, ["content", "iconName", "className", "classNameIcon", "classNameIconSuffix", "onClick", "type", "size", "variant", "color", "disabled", "suffixIcon"]);
     var buttonClass = classnames("text text-nowrap d-button d-button__" + size + " \n         d-button__" + variant + "-" + color, {
         "text-x-small": size === "x-small",
         "text-small font-weight-bold": variant === "trans",
@@ -50596,18 +50006,20 @@ var Button = function (_a) {
     }, className);
     var iconClass = classnames("d-block", { "mx-2": content && iconName }, classNameIcon);
     var suffixIconClass = classnames("d-block", { "mx-2": content && iconName }, classNameIconSuffix);
-    return (jsxRuntime.jsxs("button", __assign$2({ className: buttonClass, type: type, disabled: disabled, onClick: onClick }, props, { children: [iconName && jsxRuntime.jsx(Icon$1, { name: iconName, size: "large", className: iconClass }, void 0), content, suffixIcon && jsxRuntime.jsx(Icon$1, { name: suffixIcon, size: "large", className: suffixIconClass }, void 0)] }), void 0));
+    return (jsxRuntime.jsxs("button", __assign({ className: buttonClass, type: type, disabled: disabled, onClick: onClick }, props, { children: [iconName && jsxRuntime.jsx(Icon$2, { name: iconName, size: "large", className: iconClass }, void 0),
+            content,
+            suffixIcon && jsxRuntime.jsx(Icon$2, { name: suffixIcon, size: "large", className: suffixIconClass }, void 0)] }), void 0));
 };
 
 var Checkbox = function (_a) {
-    var className = _a.className, classNameInput = _a.classNameInput, classNameInputWrapper = _a.classNameInputWrapper, classNameLabel = _a.classNameLabel, id = _a.id, name = _a.name, value = _a.value, onChange = _a.onChange, label = _a.label, _b = _a.variant, variant = _b === void 0 ? "checkbox" : _b, disabled = _a.disabled, checked = _a.checked, props = __rest$p(_a, ["className", "classNameInput", "classNameInputWrapper", "classNameLabel", "id", "name", "value", "onChange", "label", "variant", "disabled", "checked"]);
+    var className = _a.className, classNameInput = _a.classNameInput, classNameInputWrapper = _a.classNameInputWrapper, classNameLabel = _a.classNameLabel, id = _a.id, name = _a.name, value = _a.value, onChange = _a.onChange, label = _a.label, _b = _a.variant, variant = _b === void 0 ? "checkbox" : _b, disabled = _a.disabled, checked = _a.checked, props = __rest$q(_a, ["className", "classNameInput", "classNameInputWrapper", "classNameLabel", "id", "name", "value", "onChange", "label", "variant", "disabled", "checked"]);
     var classContainer = classnames("checkbox__container", className);
     var classInputWrapper = classnames("checkbox__input-wrapper", "checkbox__input-wrapper-" + variant, { "checkbox__input-wrapper-disabled": disabled }, classNameInputWrapper);
     var classInput = classnames("checkbox__input", classNameInput);
     var classLabel = classnames("checkbox__label ml-3 text-nowrap", classNameLabel);
-    return (jsxRuntime.jsxs("div", __assign$2({ className: classContainer }, props, { children: [jsxRuntime.jsxs("div", __assign$2({ className: classInputWrapper }, { children: [jsxRuntime.jsx("input", { type: "checkbox", id: id, name: name, value: value, onChange: onChange, className: classInput, disabled: disabled, checked: checked }, void 0),
+    return (jsxRuntime.jsxs("div", __assign({ className: classContainer }, props, { children: [jsxRuntime.jsxs("div", __assign({ className: classInputWrapper }, { children: [jsxRuntime.jsx("input", { type: "checkbox", id: id, name: name, value: value, onChange: onChange, className: classInput, disabled: disabled, checked: checked }, void 0),
                     jsxRuntime.jsx("span", { className: "checkbox__check-mark" }, void 0)] }), void 0),
-            label && jsxRuntime.jsx("div", __assign$2({ className: classLabel }, { children: label }), void 0)] }), void 0));
+            label && jsxRuntime.jsx("div", __assign({ className: classLabel }, { children: label }), void 0)] }), void 0));
 };
 
 var CheckboxGroup = function (_a) {
@@ -50617,7 +50029,7 @@ var CheckboxGroup = function (_a) {
     React.useEffect(function () {
         setListValues(value);
     }, [value]);
-    return (jsxRuntime.jsx("div", __assign$2({ className: containerClass }, { children: dataSource.map(function (item) {
+    return (jsxRuntime.jsx("div", __assign({ className: containerClass }, { children: dataSource.map(function (item) {
             var iLabel = getLabel(item);
             var iValue = getValue(item);
             var isChecked = listValues.includes(iValue);
@@ -50645,7 +50057,7 @@ var RadioGroup = function (_a) {
     React.useEffect(function () {
         setListValues(value);
     }, [value]);
-    return (jsxRuntime.jsx("div", __assign$2({ className: containerClass }, { children: dataSource.map(function (item) {
+    return (jsxRuntime.jsx("div", __assign({ className: containerClass }, { children: dataSource.map(function (item) {
             var iLabel = getLabel(item);
             var iValue = getValue(item);
             var isChecked = listValues.includes(iValue);
@@ -50672,16 +50084,18 @@ var InputTextSearch = function (_a) {
         "d-input-search__disabled": disabled,
         "d-input-search__error": !!error,
     }, className);
-    return (jsxRuntime.jsxs("div", __assign$2({ className: container }, { children: [jsxRuntime.jsx(Icon$1, { name: "search", className: "mr-3" }, void 0),
+    return (jsxRuntime.jsxs("div", __assign({ className: container }, { children: [jsxRuntime.jsx(Icon$2, { name: "search", className: "mr-3" }, void 0),
             jsxRuntime.jsx("input", { value: value, onChange: onChange, required: true, placeholder: placeholder, onBlur: onBlur, disabled: disabled, defaultValue: defaultValue }, void 0)] }), void 0));
 };
 
 var HeaderTable = function (_a) {
-    var _b = _a.className, className = _b === void 0 ? "" : _b, _c = _a.label, label = _c === void 0 ? "" : _c, _d = _a.placeholder, placeholder = _d === void 0 ? "Search" : _d, onChangeText = _a.onChangeText, onClickNew = _a.onClickNew, onClickExport = _a.onClickExport, onClickFilter = _a.onClickFilter, customView = _a.customView;
-    return (jsxRuntime.jsxs("div", __assign$2({ className: classnames("w-100", className) }, { children: [jsxRuntime.jsxs("div", __assign$2({ className: "d-flex justify-content-between mb-3" }, { children: [jsxRuntime.jsx("div", __assign$2({ className: "h4" }, { children: label }), void 0),
-                    jsxRuntime.jsxs("div", __assign$2({ className: "d-flex" }, { children: [onClickNew && jsxRuntime.jsx(Button, { iconName: "add", content: "New", onClick: onClickNew, className: "mr-3" }, void 0),
+    var _b = _a.className, className = _b === void 0 ? "" : _b, _c = _a.label, label = _c === void 0 ? "" : _c, _d = _a.placeholder, placeholder = _d === void 0 ? "Search" : _d, onChangeText = _a.onChangeText, _e = _a.disabledSearch, disabledSearch = _e === void 0 ? false : _e, onClickNew = _a.onClickNew, onClickExport = _a.onClickExport, onClickFilter = _a.onClickFilter, customView = _a.customView;
+    return (jsxRuntime.jsxs("div", __assign({ className: classnames("w-100", className) }, { children: [jsxRuntime.jsxs("div", __assign({ className: "d-flex justify-content-between mb-3" }, { children: [jsxRuntime.jsx("div", __assign({ className: "h4" }, { children: label }), void 0),
+                    jsxRuntime.jsxs("div", __assign({ className: "d-flex" }, { children: [onClickNew && jsxRuntime.jsx(Button, { iconName: "add", content: "New", onClick: onClickNew, className: "mr-3" }, void 0),
                             onClickExport && jsxRuntime.jsx(Button, { iconName: "cloud_download", content: "Export", onClick: onClickExport }, void 0)] }), void 0)] }), void 0),
-            jsxRuntime.jsxs("div", __assign$2({ className: "flex-center-y" }, { children: [jsxRuntime.jsx(InputTextSearch, { className: "w-100 mr-3 bg-white", placeholder: placeholder, onChange: onChangeText }, void 0), customView && customView(), onClickFilter && jsxRuntime.jsx(Button, { iconName: "filter_list", onClick: onClickFilter }, void 0)] }), void 0)] }), void 0));
+            jsxRuntime.jsxs("div", __assign({ className: "flex-center-y" }, { children: [customView && customView(),
+                    jsxRuntime.jsx(InputTextSearch, { className: "w-100 mr-3 bg-white", placeholder: placeholder, onChange: onChangeText, disabled: disabledSearch }, void 0),
+                    onClickFilter && jsxRuntime.jsx(Button, { iconName: "filter_list", onClick: onClickFilter }, void 0)] }), void 0)] }), void 0));
 };
 
 var Header = function (_a) {
@@ -50690,9 +50104,10 @@ var Header = function (_a) {
         if (customLeft) {
             return customLeft();
         }
-        return jsxRuntime.jsx("h4", __assign$2({ className: "text-primary" }, { children: title }), void 0);
+        return jsxRuntime.jsx("h4", __assign({ className: "text-primary" }, { children: title }), void 0);
     };
-    return (jsxRuntime.jsxs("div", __assign$2({ className: "card-container d-common-header" }, { children: [renderLeftView(), jsxRuntime.jsxs("div", __assign$2({ className: "d-common-header__button-group" }, { children: [showCancel && (jsxRuntime.jsx(Button, { variant: "outline", content: Messages ? Messages[cancelText] : cancelText, onClick: function () { return (onCancel ? onCancel() : window.history.go("back")); }, className: "mr-3" }, void 0)),
+    return (jsxRuntime.jsxs("div", __assign({ className: "card-container d-common-header" }, { children: [renderLeftView(),
+            jsxRuntime.jsxs("div", __assign({ className: "d-common-header__button-group" }, { children: [showCancel && (jsxRuntime.jsx(Button, { variant: "outline", content: Messages ? Messages[cancelText] : cancelText, onClick: function () { return (onCancel ? onCancel() : window.history.go("back")); }, className: "mr-3" }, void 0)),
                     onDelete && (jsxRuntime.jsx(Button, { content: Messages ? Messages[deleteText] : deleteText, onClick: onDelete, iconName: "delete", className: "mr-3" }, void 0)),
                     onPrint && (jsxRuntime.jsx(Button, { content: Messages ? Messages[printText] : printText, onClick: onPrint, iconName: "print", className: "mr-3" }, void 0)),
                     onEdit && (jsxRuntime.jsx(Button, { content: Messages ? Messages[editText] : editText, onClick: onEdit, className: "mr-3", iconName: "edit" }, void 0)),
@@ -50700,18 +50115,18 @@ var Header = function (_a) {
 };
 
 function Avatar(_a) {
-    var _b = _a.size, size = _b === void 0 ? "medium" : _b, src = _a.src, alt = _a.alt, _c = _a.variant, variant = _c === void 0 ? "rounded" : _c, className = _a.className, text = _a.text, _d = _a.color, color = _d === void 0 ? "#D8D8D8" : _d, props = __rest$p(_a, ["size", "src", "alt", "variant", "className", "text", "color"]);
+    var _b = _a.size, size = _b === void 0 ? "medium" : _b, src = _a.src, alt = _a.alt, _c = _a.variant, variant = _c === void 0 ? "rounded" : _c, className = _a.className, text = _a.text, _d = _a.color, color = _d === void 0 ? "#D8D8D8" : _d, props = __rest$q(_a, ["size", "src", "alt", "variant", "className", "text", "color"]);
     var wrapperClass = classnames("d-image__container d-image__" + variant + "-" + size + " bg-" + color, { "d-flex justify-content-center align-items-center": !!text }, className);
     var imageClass = classnames("d-image__image");
     var content;
     if (text) {
         var firstLetter = text.charAt(0);
-        content = (jsxRuntime.jsx("h2", __assign$2({ className: "text-white text-center", style: { fontWeight: "normal" } }, { children: firstLetter }), void 0));
+        content = (jsxRuntime.jsx("h2", __assign({ className: "text-white text-center", style: { fontWeight: "normal" } }, { children: firstLetter }), void 0));
     }
     if (src) {
-        content = jsxRuntime.jsx("img", __assign$2({ src: src }, props, { alt: alt, className: imageClass }), void 0);
+        content = jsxRuntime.jsx("img", __assign({ src: src }, props, { alt: alt, className: imageClass }), void 0);
     }
-    return (jsxRuntime.jsx("div", __assign$2({ className: wrapperClass, style: { backgroundColor: color } }, { children: content }), void 0));
+    return (jsxRuntime.jsx("div", __assign({ className: wrapperClass, style: { backgroundColor: color } }, { children: content }), void 0));
 }
 
 var AvatarName = function (_a) {
@@ -50734,11 +50149,13 @@ var AvatarName = function (_a) {
         "text-xx-small": size === "xx-small",
     }, classNameText);
     var renderName = function () {
-        return (jsxRuntime.jsxs("div", __assign$2({ className: nameClass }, { children: [jsxRuntime.jsx("div", __assign$2({ className: "" + nameTextClass }, { children: displayName }), void 0),
-                subLabel && jsxRuntime.jsx("div", __assign$2({ className: "text-x-small" }, { children: subLabel }), void 0)] }), void 0));
+        return (jsxRuntime.jsxs("div", __assign({ className: nameClass }, { children: [jsxRuntime.jsx("div", __assign({ className: "" + nameTextClass }, { children: displayName }), void 0),
+                subLabel && jsxRuntime.jsx("div", __assign({ className: "text-x-small" }, { children: subLabel }), void 0)] }), void 0));
     };
-    return (jsxRuntime.jsxs("div", __assign$2({ className: wrapperClass }, { children: [position === "before" && renderName(), avatar && jsxRuntime.jsx(Avatar, { src: avatar, size: size }, void 0),
-            !avatar && jsxRuntime.jsx(Avatar, { text: displayName.charAt(0), size: size }, void 0), position === "after" && renderName()] }), void 0));
+    return (jsxRuntime.jsxs("div", __assign({ className: wrapperClass }, { children: [position === "before" && renderName(),
+            avatar && jsxRuntime.jsx(Avatar, { src: avatar, size: size }, void 0),
+            !avatar && jsxRuntime.jsx(Avatar, { text: displayName.charAt(0), size: size }, void 0),
+            position === "after" && renderName()] }), void 0));
 };
 
 var HeaderDetail = function (_a) {
@@ -50755,31 +50172,33 @@ var HeaderDetail = function (_a) {
     }, [status]);
     var leftView = function () {
         var titleStatus = function () {
-            return (jsxRuntime.jsxs("div", __assign$2({ className: "d-flex" }, { children: [jsxRuntime.jsx("h4", { children: title }, void 0),
-                    foundStatus && (jsxRuntime.jsx("div", __assign$2({ className: "py-1 px-2 text-center ml-3 text-white", style: { backgroundColor: foundStatus.color } }, { children: Messages[foundStatus.label] }), void 0))] }), void 0));
+            return (jsxRuntime.jsxs("div", __assign({ className: "d-flex" }, { children: [jsxRuntime.jsx("h4", { children: title }, void 0),
+                    foundStatus && (jsxRuntime.jsx("div", __assign({ className: "py-1 px-2 text-center ml-3 text-white", style: { backgroundColor: foundStatus.color } }, { children: Messages[foundStatus.label] }), void 0))] }), void 0));
         };
         var buttons = function () {
-            return (jsxRuntime.jsx("div", __assign$2({ className: "d-flex align-items-center" }, { children: listButton.map(function (button, index) {
+            return (jsxRuntime.jsx("div", __assign({ className: "d-flex align-items-center" }, { children: listButton.map(function (button, index) {
                     var buttonClass = classnames("p-0 text-gray font-weight-normal", {
                         "mx-3": index !== 0,
                     });
                     return (jsxRuntime.jsx(Button, { variant: "trans", content: Messages[button.label], iconName: button.icon, className: buttonClass, onClick: function () { return onButtonClick && onButtonClick(button); } }, void 0));
                 }) }), void 0));
         };
-        return (jsxRuntime.jsxs("div", __assign$2({ className: "d-flex flex-column" }, { children: [titleStatus(), listButton.length > 0 && buttons()] }), void 0));
+        return (jsxRuntime.jsxs("div", __assign({ className: "d-flex flex-column" }, { children: [titleStatus(),
+                listButton.length > 0 && buttons()] }), void 0));
     };
     var rightView = function () {
         if (customRight) {
             return customRight();
         }
-        return (jsxRuntime.jsxs("div", __assign$2({ className: "d-flex flex-column align-items-end" }, { children: [user && jsxRuntime.jsx(AvatarName, { user: user, className: "mb-1" }, void 0),
+        return (jsxRuntime.jsxs("div", __assign({ className: "d-flex flex-column align-items-end" }, { children: [user && jsxRuntime.jsx(AvatarName, { user: user, className: "mb-1" }, void 0),
                 created && (jsxRuntime.jsx("div", { className: "text-x-small text-gray" }, void 0))] }), void 0));
     };
-    return (jsxRuntime.jsxs("div", __assign$2({ className: "card-container d-flex align-items-center justify-content-between p-4" }, { children: [leftView(), rightView()] }), void 0));
+    return (jsxRuntime.jsxs("div", __assign({ className: "card-container d-flex align-items-center justify-content-between p-4" }, { children: [leftView(),
+            rightView()] }), void 0));
 };
 
 var Modal = function (_a) {
-    var children = _a.children, open = _a.open, _b = _a.centered, centered = _b === void 0 ? true : _b, _c = _a.closable, closable = _c === void 0 ? false : _c, onClose = _a.onClose, onSave = _a.onSave, onSideClick = _a.onSideClick, cancelAction = _a.cancelAction, width = _a.width, title = _a.title, customHeader = _a.customHeader, customFooter = _a.customFooter, customSideButton = _a.customSideButton, headerSide = _a.headerSide, _d = _a.hasCloseIcon, hasCloseIcon = _d === void 0 ? true : _d, _e = _a.hasCancelButton, hasCancelButton = _e === void 0 ? false : _e, _f = _a.saveText, saveText = _f === void 0 ? "Save" : _f, _g = _a.cancelText, cancelText = _g === void 0 ? "Cancel" : _g, _h = _a.sideText, sideText = _h === void 0 ? "Clear" : _h, size = _a.size, className = _a.className, classNameContent = _a.classNameContent, classNameFooter = _a.classNameFooter, classNameHeader = _a.classNameHeader, _j = _a.showFooter, showFooter = _j === void 0 ? true : _j, _k = _a.showHeader, showHeader = _k === void 0 ? true : _k, props = __rest$p(_a, ["children", "open", "centered", "closable", "onClose", "onSave", "onSideClick", "cancelAction", "width", "title", "customHeader", "customFooter", "customSideButton", "headerSide", "hasCloseIcon", "hasCancelButton", "saveText", "cancelText", "sideText", "size", "className", "classNameContent", "classNameFooter", "classNameHeader", "showFooter", "showHeader"]);
+    var children = _a.children, open = _a.open, _b = _a.centered, centered = _b === void 0 ? true : _b, _c = _a.closable, closable = _c === void 0 ? false : _c, onClose = _a.onClose, onSave = _a.onSave, onSideClick = _a.onSideClick, cancelAction = _a.cancelAction, width = _a.width, title = _a.title, customHeader = _a.customHeader, customFooter = _a.customFooter, customSideButton = _a.customSideButton, headerSide = _a.headerSide, _d = _a.hasCloseIcon, hasCloseIcon = _d === void 0 ? true : _d, _e = _a.hasCancelButton, hasCancelButton = _e === void 0 ? false : _e, _f = _a.saveText, saveText = _f === void 0 ? "Save" : _f, _g = _a.cancelText, cancelText = _g === void 0 ? "Cancel" : _g, _h = _a.sideText, sideText = _h === void 0 ? "Clear" : _h, size = _a.size, className = _a.className, classNameContent = _a.classNameContent, classNameFooter = _a.classNameFooter, classNameHeader = _a.classNameHeader, _j = _a.showFooter, showFooter = _j === void 0 ? true : _j, _k = _a.showHeader, showHeader = _k === void 0 ? true : _k, props = __rest$q(_a, ["children", "open", "centered", "closable", "onClose", "onSave", "onSideClick", "cancelAction", "width", "title", "customHeader", "customFooter", "customSideButton", "headerSide", "hasCloseIcon", "hasCancelButton", "saveText", "cancelText", "sideText", "size", "className", "classNameContent", "classNameFooter", "classNameHeader", "showFooter", "showHeader"]);
     var modalClass = classnames("d-modal", "d-modal__" + size, className);
     var childrenClass = classnames("d-modal__children", classNameContent);
     var headerClass = classnames("d-modal__header border-bottom py-3", { "d-flex align-items-center": !!title }, classNameHeader);
@@ -50788,12 +50207,13 @@ var Modal = function (_a) {
         var content;
         content = function () {
             return (jsxRuntime.jsxs(React__default['default'].Fragment, { children: [hasCloseIcon && jsxRuntime.jsx(Button, { iconName: "close", variant: "trans", onClick: onClose }, void 0),
-                    title && jsxRuntime.jsx("h4", __assign$2({ className: "w-100 text-center" }, { children: title }), void 0), headerSide && headerSide()] }, void 0));
+                    title && jsxRuntime.jsx("h4", __assign({ className: "w-100 text-center" }, { children: title }), void 0),
+                    headerSide && headerSide()] }, void 0));
         };
         if (customHeader) {
             content = customHeader;
         }
-        return jsxRuntime.jsx("div", __assign$2({ className: headerClass }, { children: content() }), void 0);
+        return jsxRuntime.jsx("div", __assign({ className: headerClass }, { children: content() }), void 0);
     };
     var footer = function () {
         var content;
@@ -50803,7 +50223,8 @@ var Modal = function (_a) {
             sideButton = customSideButton;
         }
         content = function () {
-            return (jsxRuntime.jsxs(React__default['default'].Fragment, { children: [(onSideClick || !!customSideButton) && sideButton(), jsxRuntime.jsxs("div", __assign$2({ className: "w-100 d-flex align-items-center justify-content-end" }, { children: [hasCancelButton && (jsxRuntime.jsx(Button, { variant: "outline", content: cancelText, className: "mr-3", onClick: function (e) {
+            return (jsxRuntime.jsxs(React__default['default'].Fragment, { children: [(onSideClick || !!customSideButton) && sideButton(),
+                    jsxRuntime.jsxs("div", __assign({ className: "w-100 d-flex align-items-center justify-content-end" }, { children: [hasCancelButton && (jsxRuntime.jsx(Button, { variant: "outline", content: cancelText, className: "mr-3", onClick: function (e) {
                                     if (cancelAction) {
                                         return cancelAction(e);
                                     }
@@ -50814,15 +50235,17 @@ var Modal = function (_a) {
         if (customFooter) {
             content = customFooter;
         }
-        return jsxRuntime.jsx("div", __assign$2({ className: footerClass }, { children: content() }), void 0);
+        return jsxRuntime.jsx("div", __assign({ className: footerClass }, { children: content() }), void 0);
     };
-    return (jsxRuntime.jsxs(Modal$1, __assign$2({ visible: open, onCancel: onClose, centered: centered, className: modalClass, closable: closable, width: width, footer: null }, props, { children: [showHeader && header(), jsxRuntime.jsx("div", __assign$2({ className: childrenClass }, { children: children }), void 0), showFooter && footer()] }), void 0));
+    return (jsxRuntime.jsxs(Modal$1, __assign({ visible: open, onCancel: onClose, centered: centered, className: modalClass, closable: closable, width: width, footer: null }, props, { children: [showHeader && header(),
+            jsxRuntime.jsx("div", __assign({ className: childrenClass }, { children: children }), void 0),
+            showFooter && footer()] }), void 0));
 };
 
 var RowInterchangeView = function (_a) {
     var _b = _a.dataSource, dataSource = _b === void 0 ? {} : _b, _c = _a.keyList, keyList = _c === void 0 ? [] : _c, _d = _a.variant, variant = _d === void 0 ? "background" : _d, _e = _a.boldLabel, boldLabel = _e === void 0 ? false : _e, className = _a.className, classNameRow = _a.classNameRow, classNameLabel = _a.classNameLabel, classNameContent = _a.classNameContent, Messages = _a.Messages;
     var wrapperClass = classnames(className);
-    return (jsxRuntime.jsx("div", __assign$2({ className: wrapperClass }, { children: keyList.map(function (row, index) {
+    return (jsxRuntime.jsx("div", __assign({ className: wrapperClass }, { children: keyList.map(function (row, index) {
             var _a;
             var rowClass = classnames("d-flex align-items-start w-100 justify-content-between py-3 px-3", {
                 "bg-light-gray": index % 2 && variant === "background",
@@ -50844,15 +50267,16 @@ var RowInterchangeView = function (_a) {
             if (typeof renderContent === "function") {
                 content = renderContent(id, row, dataSource);
             }
-            var contentView = jsxRuntime.jsx("div", __assign$2({ className: contentClass }, { children: content }), void 0);
-            return (jsxRuntime.jsxs("div", __assign$2({ className: rowClass }, { children: [jsxRuntime.jsx("div", __assign$2({ className: labelClass }, { children: labelView }), void 0), contentView] }), index));
+            var contentView = jsxRuntime.jsx("div", __assign({ className: contentClass }, { children: content }), void 0);
+            return (jsxRuntime.jsxs("div", __assign({ className: rowClass }, { children: [jsxRuntime.jsx("div", __assign({ className: labelClass }, { children: labelView }), void 0),
+                    contentView] }), index));
         }) }), void 0));
 };
 
 var TabBar = function (_a) {
     var _b = _a.dataSource, dataSource = _b === void 0 ? [] : _b, value = _a.value, onChange = _a.onChange, className = _a.className, classNameTabItem = _a.classNameTabItem, getLabel = _a.getLabel, _c = _a.variant, variant = _c === void 0 ? "horizontal" : _c;
     var wrapperClass = classnames("d-tab-bar d-tab-bar__" + variant, { "d-flex flex-wrap": variant === "horizontal" }, className);
-    return (jsxRuntime.jsx("div", __assign$2({ className: wrapperClass }, { children: dataSource.map(function (tabItem, index) {
+    return (jsxRuntime.jsx("div", __assign({ className: wrapperClass }, { children: dataSource.map(function (tabItem, index) {
             var _a, _b;
             var isSelect = (value === null || value === void 0 ? void 0 : value.id) === (tabItem === null || tabItem === void 0 ? void 0 : tabItem.id);
             var itemClass = classnames(classNameTabItem, "d-tab-bar__item text-small", {
@@ -68914,12 +68338,12 @@ if (process.env.NODE_ENV !== 'production') {
 var Loading = function (_a) {
     var className = _a.className, _b = _a.size, size = _b === void 0 ? "medium" : _b;
     var wrapperClass = classnames("spinner-border text-primary", "d-loading__" + size, className);
-    return (jsxRuntime.jsx("div", __assign$2({ className: wrapperClass, role: "status" }, { children: jsxRuntime.jsx("span", __assign$2({ className: "sr-only text-small" }, { children: "Loading..." }), void 0) }), void 0));
+    return (jsxRuntime.jsx("div", __assign({ className: wrapperClass, role: "status" }, { children: jsxRuntime.jsx("span", __assign({ className: "sr-only text-small" }, { children: "Loading..." }), void 0) }), void 0));
 };
 
 // create a component
 var EmptyView = /** @class */ (function (_super) {
-    __extends$2(EmptyView, _super);
+    __extends(EmptyView, _super);
     function EmptyView() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
@@ -68973,14 +68397,14 @@ var EmptyView = /** @class */ (function (_super) {
      * Incase change only few cases, we should use props.renderEmptyView
      */
     EmptyView.prototype.renderEmptyView = function () {
-        return jsxRuntime.jsx("div", __assign$2({ className: "text" }, { children: this.props.emptyText }), void 0);
+        return jsxRuntime.jsx("div", __assign({ className: "text" }, { children: this.props.emptyText }), void 0);
     };
     /**
      * Override incase build another EmptyView in whole system
      * Incase change only few cases, we should use props.renderFilterEmptyView
      */
     EmptyView.prototype.renderFilterEmptyView = function () {
-        return jsxRuntime.jsx("div", __assign$2({ className: "text" }, { children: this.props.filterEmptyText }), void 0);
+        return jsxRuntime.jsx("div", __assign({ className: "text" }, { children: this.props.filterEmptyText }), void 0);
     };
     /**
      * Override incase build another EmptyView in whole system
@@ -68996,7 +68420,7 @@ var EmptyView = /** @class */ (function (_super) {
      */
     // eslint-disable-next-line class-methods-use-this
     EmptyView.prototype.renderErrorView = function () {
-        return jsxRuntime.jsx("div", __assign$2({ className: "text" }, { children: "No result" }), void 0);
+        return jsxRuntime.jsx("div", __assign({ className: "text" }, { children: "No result" }), void 0);
     };
     EmptyView.prototype.render = function () {
         // If mode not set or hidden do not render EmptyView
@@ -69006,7 +68430,10 @@ var EmptyView = /** @class */ (function (_super) {
         return (
         // pointerEvents to prevent touch to EmptyView and pass through to under component.
         // But still accept its children view receive touch.
-        jsxRuntime.jsxs("div", __assign$2({ className: "d-list-empty-view" }, { children: [this.renderEmptyViewInternal(), this.renderErrorViewInternal(), this.renderProgressInternal(), this.renderFilterEmptyViewInternal()] }), void 0));
+        jsxRuntime.jsxs("div", __assign({ className: "d-list-empty-view" }, { children: [this.renderEmptyViewInternal(),
+                this.renderErrorViewInternal(),
+                this.renderProgressInternal(),
+                this.renderFilterEmptyViewInternal()] }), void 0));
     };
     EmptyView.propTypes = {
         mode: propTypes$1.any,
@@ -69095,7 +68522,7 @@ var PopoverList = function (_a) {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        pagingData.current = __assign$2(__assign$2({}, pagingData.current), { pageIndex: pagingData.current.pageIndex + 1 });
+                        pagingData.current = __assign(__assign({}, pagingData.current), { pageIndex: pagingData.current.pageIndex + 1 });
                         return [4 /*yield*/, transformer(response)];
                     case 1:
                         data = _a.sent();
@@ -69146,7 +68573,7 @@ var PopoverList = function (_a) {
         if (renderItem) {
             content = renderItem(item, index);
         }
-        return (jsxRuntime.jsx("div", __assign$2({ className: "renderItemList", onClick: function () { return onClickItemList(item, index); } }, { children: content }), index + Math.random()));
+        return (jsxRuntime.jsx("div", __assign({ className: "renderItemList", onClick: function () { return onClickItemList(item, index); } }, { children: content }), index + Math.random()));
     };
     var mainViewPopover = function () {
         if (customView) {
@@ -69163,17 +68590,17 @@ var PopoverList = function (_a) {
                 onChange && onChange(event.target.value);
             } }, void 0));
     };
-    return (jsxRuntime.jsxs("div", __assign$2({ className: wrapperClass, ref: outSideRef }, { children: [jsxRuntime.jsx("div", __assign$2({ onClick: function () { return isClickOpen && setOpenPopover(true); } }, { children: mainViewPopover() }), void 0),
-            openPopover && (jsxRuntime.jsxs("div", __assign$2({ className: "d-popover-list__dropdown" }, { children: [buttonText && (jsxRuntime.jsx("div", __assign$2({ className: "d-flex w-100 justify-content-end" }, { children: jsxRuntime.jsx(Button, { content: buttonText, iconName: buttonIconName, variant: buttonVariant, onClick: function () {
+    return (jsxRuntime.jsxs("div", __assign({ className: wrapperClass, ref: outSideRef }, { children: [jsxRuntime.jsx("div", __assign({ onClick: function () { return isClickOpen && setOpenPopover(true); } }, { children: mainViewPopover() }), void 0),
+            openPopover && (jsxRuntime.jsxs("div", __assign({ className: "d-popover-list__dropdown" }, { children: [buttonText && (jsxRuntime.jsx("div", __assign({ className: "d-flex w-100 justify-content-end" }, { children: jsxRuntime.jsx(Button, { content: buttonText, iconName: buttonIconName, variant: buttonVariant, onClick: function () {
                                 onClickCreateNewHandle();
                             } }, void 0) }), void 0)),
                     dataList.data.map(function (item, index) { return renderItemList(item, index); }),
                     jsxRuntime.jsx(EmptyView, { mode: dataList.emptyMode }, void 0),
-                    showLoadMore && (jsxRuntime.jsx(Button, __assign$2({ className: "d-popover-list__footer", onClick: function () { return onClickLoadMore(); }, variant: "trans" }, { children: loadMoreText }), void 0))] }), void 0))] }), void 0));
+                    showLoadMore && (jsxRuntime.jsx(Button, __assign({ className: "d-popover-list__footer", onClick: function () { return onClickLoadMore(); }, variant: "trans" }, { children: loadMoreText }), void 0))] }), void 0))] }), void 0));
 };
 
 var InfiniteScroll = /** @class */ (function (_super) {
-    __extends$2(InfiniteScroll, _super);
+    __extends(InfiniteScroll, _super);
     function InfiniteScroll(props) {
         var _this = _super.call(this, props) || this;
         _this.scrollListener = _this.scrollListener.bind(_this);
@@ -69339,7 +68766,7 @@ var InfiniteScroll = /** @class */ (function (_super) {
     InfiniteScroll.prototype.render = function () {
         var _this = this;
         var renderProps = this.filterProps(this.props);
-        var children = renderProps.children, element = renderProps.element, hasMore = renderProps.hasMore; renderProps.initialLoad; var isReverse = renderProps.isReverse, loader = renderProps.loader; renderProps.loadMore; renderProps.pageStart; var ref = renderProps.ref; renderProps.threshold; renderProps.useCapture; renderProps.useWindow; renderProps.getScrollParent; var props = __rest$p(renderProps, ["children", "element", "hasMore", "initialLoad", "isReverse", "loader", "loadMore", "pageStart", "ref", "threshold", "useCapture", "useWindow", "getScrollParent"]);
+        var children = renderProps.children, element = renderProps.element, hasMore = renderProps.hasMore; renderProps.initialLoad; var isReverse = renderProps.isReverse, loader = renderProps.loader; renderProps.loadMore; renderProps.pageStart; var ref = renderProps.ref; renderProps.threshold; renderProps.useCapture; renderProps.useWindow; renderProps.getScrollParent; var props = __rest$q(renderProps, ["children", "element", "hasMore", "initialLoad", "isReverse", "loader", "loadMore", "pageStart", "ref", "threshold", "useCapture", "useWindow", "getScrollParent"]);
         props.ref = function (node) {
             _this.scrollComponent = node;
             if (ref) {
@@ -69394,9 +68821,9 @@ var PagingView = function (_a) {
         return jsxRuntime.jsx("div", {}, void 0);
     }
     if (mode === MODE.ERROR) {
-        return (jsxRuntime.jsx("div", __assign$2({ className: "d-page-view__container", onClick: onClickRetry }, { children: jsxRuntime.jsx("div", __assign$2({ className: "h5" }, { children: "Error..... Click to retry!" }), void 0) }), void 0));
+        return (jsxRuntime.jsx("div", __assign({ className: "d-page-view__container", onClick: onClickRetry }, { children: jsxRuntime.jsx("div", __assign({ className: "h5" }, { children: "Error..... Click to retry!" }), void 0) }), void 0));
     }
-    return (jsxRuntime.jsx("div", __assign$2({ className: "d-page-view__container" }, { children: jsxRuntime.jsx(Loading, { size: "small" }, void 0) }), void 0));
+    return (jsxRuntime.jsx("div", __assign({ className: "d-page-view__container" }, { children: jsxRuntime.jsx(Loading, { size: "small" }, void 0) }), void 0));
 };
 
 var DEFAULT_PAGING_DATA = {
@@ -69404,7 +68831,7 @@ var DEFAULT_PAGING_DATA = {
     pageSize: 20,
 };
 var AwesomeListComponent = /** @class */ (function (_super) {
-    __extends$2(AwesomeListComponent, _super);
+    __extends(AwesomeListComponent, _super);
     function AwesomeListComponent(props) {
         var _this = _super.call(this, props) || this;
         _this.pagingRetry = function () {
@@ -69466,7 +68893,7 @@ var AwesomeListComponent = /** @class */ (function (_super) {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        this.pagingData = __assign$2(__assign$2({}, this.pagingData), { pageIndex: this.pagingData.pageIndex + 1 });
+                        this.pagingData = __assign(__assign({}, this.pagingData), { pageIndex: this.pagingData.pageIndex + 1 });
                         return [4 /*yield*/, transformer(response)];
                     case 1:
                         data = _a.sent();
@@ -69535,7 +68962,7 @@ var AwesomeListComponent = /** @class */ (function (_super) {
         var _this = this;
         var _a = this.state, data = _a.data, hasMoreData = _a.hasMoreData, loading = _a.loading, emptyMode = _a.emptyMode;
         var _b = this.props, renderItem = _b.renderItem, styleContainer = _b.styleContainer, isReverse = _b.isReverse, className = _b.className, classNameInfinityScroll = _b.classNameInfinityScroll, emptyView = _b.emptyView;
-        return (jsxRuntime.jsxs("div", __assign$2({ className: "d-awesome-list " + className, style: __assign$2({}, styleContainer) }, { children: [jsxRuntime.jsx(InfiniteScroll, __assign$2({ threshold: 1, pageStart: 0, loadMore: function () {
+        return (jsxRuntime.jsxs("div", __assign({ className: "d-awesome-list " + className, style: __assign({}, styleContainer) }, { children: [jsxRuntime.jsx(InfiniteScroll, __assign({ threshold: 1, pageStart: 0, loadMore: function () {
                         return (
                         // eslint-disable-next-line operator-linebreak
                         !loading &&
@@ -69574,7 +69001,7 @@ var AwesomeListComponent = /** @class */ (function (_super) {
 // data stubs
 var RangePicker = DatePicker.RangePicker;
 var DateInput = function (_a) {
-    var onChange = _a.onChange, onBlur = _a.onBlur, value = _a.value, disabled = _a.disabled, defaultValue = _a.defaultValue, label = _a.label, placeholder = _a.placeholder, error = _a.error, _b = _a.type, type = _b === void 0 ? "date" : _b, _c = _a.format, format = _c === void 0 ? "DD/MM/YYYY HH:mm" : _c, _d = _a.variant, variant = _d === void 0 ? "outline" : _d, _e = _a.iconError, iconError = _e === void 0 ? "error_outline" : _e, _f = _a.iconButton, iconButton = _f === void 0 ? "event" : _f, _g = _a.showTime, showTime = _g === void 0 ? false : _g, _h = _a.useButton, useButton = _h === void 0 ? false : _h, _j = _a.isRangePicker, isRangePicker = _j === void 0 ? false : _j, className = _a.className, classNameInput = _a.classNameInput, classNameButton = _a.classNameButton, classNameLabel = _a.classNameLabel, classNameError = _a.classNameError, props = __rest$p(_a, ["onChange", "onBlur", "value", "disabled", "defaultValue", "label", "placeholder", "error", "type", "format", "variant", "iconError", "iconButton", "showTime", "useButton", "isRangePicker", "className", "classNameInput", "classNameButton", "classNameLabel", "classNameError"]);
+    var onChange = _a.onChange, onBlur = _a.onBlur, value = _a.value, disabled = _a.disabled, defaultValue = _a.defaultValue, label = _a.label, placeholder = _a.placeholder, error = _a.error, _b = _a.type, type = _b === void 0 ? "date" : _b, _c = _a.format, format = _c === void 0 ? "DD/MM/YYYY HH:mm" : _c, _d = _a.variant, variant = _d === void 0 ? "outline" : _d, _e = _a.iconError, iconError = _e === void 0 ? "error_outline" : _e, _f = _a.iconButton, iconButton = _f === void 0 ? "event" : _f, _g = _a.showTime, showTime = _g === void 0 ? false : _g, _h = _a.useButton, useButton = _h === void 0 ? false : _h, _j = _a.isRangePicker, isRangePicker = _j === void 0 ? false : _j, className = _a.className, classNameInput = _a.classNameInput, classNameButton = _a.classNameButton, classNameLabel = _a.classNameLabel, classNameError = _a.classNameError, props = __rest$q(_a, ["onChange", "onBlur", "value", "disabled", "defaultValue", "label", "placeholder", "error", "type", "format", "variant", "iconError", "iconButton", "showTime", "useButton", "isRangePicker", "className", "classNameInput", "classNameButton", "classNameLabel", "classNameError"]);
     var wrapperClass = classnames("d-date-input", { "d-date-input__hide-input": useButton }, className);
     var labelClass = classnames("text-label d-block", classNameLabel);
     var datePickerClass = classnames("d-date-input__input", {
@@ -69583,13 +69010,15 @@ var DateInput = function (_a) {
     var buttonClass = classnames("d-date-input__button", classNameButton);
     var errorClass = classnames("flex-center-y mt-1", classNameError);
     var errorTextClass = classnames("text-x-small", "text-error", "ml-1");
-    var content = (jsxRuntime.jsx(DatePicker, __assign$2({}, props, { value: value, onChange: onChange, onBlur: onBlur, className: datePickerClass, disabled: disabled, defaultValue: defaultValue, picker: type, placeholder: placeholder, format: format, showTime: showTime }), void 0));
+    var content = (jsxRuntime.jsx(DatePicker, __assign({}, props, { value: value, onChange: onChange, onBlur: onBlur, className: datePickerClass, disabled: disabled, defaultValue: defaultValue, picker: type, placeholder: placeholder, format: format, showTime: showTime }), void 0));
     if (isRangePicker) {
         content = (jsxRuntime.jsx(RangePicker, { value: value, onChange: onChange, onBlur: onBlur, className: datePickerClass, disabled: disabled, defaultValue: defaultValue, picker: type, placeholder: placeholder, format: format, showTime: showTime }, void 0));
     }
-    return (jsxRuntime.jsxs("div", __assign$2({ className: wrapperClass }, { children: [label && jsxRuntime.jsx("label", __assign$2({ className: labelClass }, { children: label }), void 0),
-            jsxRuntime.jsx(Button, { className: buttonClass, iconName: iconButton }, void 0), content, error && (jsxRuntime.jsxs("div", __assign$2({ className: errorClass }, { children: [jsxRuntime.jsx(Icon$1, { name: iconError, className: "text-error", size: "small" }, void 0),
-                    jsxRuntime.jsx("text", __assign$2({ className: errorTextClass }, { children: error }), void 0)] }), void 0))] }), void 0));
+    return (jsxRuntime.jsxs("div", __assign({ className: wrapperClass }, { children: [label && jsxRuntime.jsx("label", __assign({ className: labelClass }, { children: label }), void 0),
+            jsxRuntime.jsx(Button, { className: buttonClass, iconName: iconButton }, void 0),
+            content,
+            error && (jsxRuntime.jsxs("div", __assign({ className: errorClass }, { children: [jsxRuntime.jsx(Icon$2, { name: iconError, className: "text-error", size: "small" }, void 0),
+                    jsxRuntime.jsx("text", __assign({ className: errorTextClass }, { children: error }), void 0)] }), void 0))] }), void 0));
 };
 
 var Dot = function (_a) {
@@ -70069,7 +69498,7 @@ module.exports =
 	
 	/***/ })
 	/******/ ]);
-	//# sourceMappingURL=index.js.map
+	
 
 /***/ }),
 /* 4 */
@@ -71269,7 +70698,7 @@ module.exports =
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=main.js.map
+
 });
 
 var Highlighter = unwrapExports(main);
@@ -71286,7 +70715,7 @@ var calculateDefaultExpandedRowKeys = function (data, options) {
     if (!(data && data.length)) {
         return rowKeys;
     }
-    var defaultOptions = __assign$2({ level: -1, key: "id" }, options);
+    var defaultOptions = __assign({ level: -1, key: "id" }, options);
     var level = defaultOptions.level, key = defaultOptions.key;
     if (!data[0][key]) {
         return rowKeys;
@@ -71299,7 +70728,7 @@ var calculateDefaultExpandedRowKeys = function (data, options) {
         if (currentLevel === void 0) { currentLevel = 1; }
         var keys = [];
         source.forEach(function (_a) {
-            var children = _a.children, rest = __rest$p(_a, ["children"]);
+            var children = _a.children, rest = __rest$q(_a, ["children"]);
             if (children !== null) {
                 keys.push(rest[key]);
                 if (level < 0 || (level > 0 && level > currentLevel)) {
@@ -71316,22 +70745,23 @@ var transformColumn = function (columns, baseColumn) {
     if (columns === void 0) { columns = []; }
     if (baseColumn === void 0) { baseColumn = {}; }
     return columns.map(function (_a) {
-        var title = _a.title, titleTooltip = _a.titleTooltip, dataIndex = _a.dataIndex, render = _a.render, props = __rest$p(_a, ["title", "titleTooltip", "dataIndex", "render"]);
+        var title = _a.title, titleTooltip = _a.titleTooltip, dataIndex = _a.dataIndex, render = _a.render, props = __rest$q(_a, ["title", "titleTooltip", "dataIndex", "render"]);
         // custom title
         var titleResult = title;
         if (typeof title === "function") {
             titleResult = title();
         }
         if (titleTooltip) {
-            titleResult = (jsxRuntime.jsxs(Tooltip, __assign$2({ className: "flex-center-y", zIndex: 10000, title: titleTooltip }, { children: [title, jsxRuntime.jsx(Icon$1, { name: "info", className: "ml-3" }, void 0)] }), void 0));
+            titleResult = (jsxRuntime.jsxs(Tooltip, __assign({ className: "flex-center-y", zIndex: 10000, title: titleTooltip }, { children: [title,
+                    jsxRuntime.jsx(Icon$2, { name: "info", className: "ml-3" }, void 0)] }), void 0));
         }
-        return __assign$2(__assign$2(__assign$2({}, baseColumn), { title: titleResult, dataIndex: dataIndex, render: function (data, item) {
+        return __assign(__assign(__assign({}, baseColumn), { title: titleResult, dataIndex: dataIndex, render: function (data, item) {
                 var content = data;
                 if (typeof render === "function") {
                     content = render(data, item);
                 }
                 return {
-                    children: jsxRuntime.jsx("div", __assign$2({ className: "text text-nowrap" }, { children: content }), void 0),
+                    children: jsxRuntime.jsx("div", __assign({ className: "text text-nowrap" }, { children: content }), void 0),
                     props: { "data-title": title },
                 };
             } }), props);
@@ -71403,25 +70833,25 @@ var SelectLayoutView = function (_a) {
     var renderTitleSelectLayout = function () {
         var _a;
         if (lodash.isEmpty(selectedLayout)) {
-            return (jsxRuntime.jsxs("div", __assign$2({ className: classnames("d-flex  align-items-center hover-pointer p-2", {
+            return (jsxRuntime.jsxs("div", __assign({ className: classnames("d-flex  align-items-center hover-pointer p-2", {
                     "border-right": showBorder,
-                }) }, { children: [jsxRuntime.jsx("div", __assign$2({ className: "text text-nowrap mr-2" }, { children: text }), void 0),
-                    jsxRuntime.jsx(Icon$1, { name: "arrow_drop_down", size: "large", className: "d-block" }, void 0)] }), void 0));
+                }) }, { children: [jsxRuntime.jsx("div", __assign({ className: "text text-nowrap mr-2" }, { children: text }), void 0),
+                    jsxRuntime.jsx(Icon$2, { name: "arrow_drop_down", size: "large", className: "d-block" }, void 0)] }), void 0));
         }
-        return (jsxRuntime.jsx("div", __assign$2({ id: "titleSelectShipping", className: classnames("w-100", { "border-right": showBorder }) }, { children: jsxRuntime.jsx(Button, { content: (_a = selectedLayout === null || selectedLayout === void 0 ? void 0 : selectedLayout.name) !== null && _a !== void 0 ? _a : "N/A", iconName: "visibility", suffixIcon: "arrow_drop_down", variant: "trans", color: "gray", className: "font-weight-normal" }, void 0) }), void 0));
+        return (jsxRuntime.jsx("div", __assign({ id: "titleSelectShipping", className: classnames("w-100", { "border-right": showBorder }) }, { children: jsxRuntime.jsx(Button, { content: (_a = selectedLayout === null || selectedLayout === void 0 ? void 0 : selectedLayout.name) !== null && _a !== void 0 ? _a : "N/A", iconName: "visibility", suffixIcon: "arrow_drop_down", variant: "trans", color: "gray", className: "font-weight-normal" }, void 0) }), void 0));
     };
     var renderLayoutItem = function (item) {
         var _a, _b;
         var isDefault = (_a = item === null || item === void 0 ? void 0 : item.default) !== null && _a !== void 0 ? _a : false;
-        return (jsxRuntime.jsxs("div", __assign$2({ className: "d-flex px-3 py-2" }, { children: [(_b = item === null || item === void 0 ? void 0 : item.name) !== null && _b !== void 0 ? _b : "N/A",
-                jsxRuntime.jsx("span", __assign$2({ className: "subTile2" }, { children: isDefault ? "- Default" : "" }), void 0)] }), void 0));
+        return (jsxRuntime.jsxs("div", __assign({ className: "d-flex px-3 py-2" }, { children: [(_b = item === null || item === void 0 ? void 0 : item.name) !== null && _b !== void 0 ? _b : "N/A",
+                jsxRuntime.jsx("span", __assign({ className: "subTile2" }, { children: isDefault ? "- Default" : "" }), void 0)] }), void 0));
     };
     var transformer = function (res) {
         var result = [];
         var keyArr = Object.keys(listLayout);
         keyArr.forEach(function (key) {
             if (!lodash.isEmpty(listLayout[key])) {
-                result.push(__assign$2(__assign$2({}, listLayout[key]), { name: key }));
+                result.push(__assign(__assign({}, listLayout[key]), { name: key }));
             }
         });
         return result;
@@ -71458,7 +70888,7 @@ var SelectColumnModal = function (_a) {
                 keyTable_1.forEach(function (key) {
                     var _a, _b, _c;
                     if ((_a = tableLayout_1[key]) === null || _a === void 0 ? void 0 : _a.default) {
-                        defaultLayout = __assign$2(__assign$2({}, tableLayout_1[key]), { name: key });
+                        defaultLayout = __assign(__assign({}, tableLayout_1[key]), { name: key });
                         setSelectedOption((_c = (_b = tableLayout_1 === null || tableLayout_1 === void 0 ? void 0 : tableLayout_1[key]) === null || _b === void 0 ? void 0 : _b.data) !== null && _c !== void 0 ? _c : []);
                     }
                 });
@@ -71501,7 +70931,7 @@ var SelectColumnModal = function (_a) {
                             newTableLayout_1[key] = layout_1;
                         }
                         else {
-                            newTableLayout_1[key] = __assign$2(__assign$2({}, listLayout[key]), { default: false });
+                            newTableLayout_1[key] = __assign(__assign({}, listLayout[key]), { default: false });
                         }
                     });
                     return [4 /*yield*/, LayoutTableManager.saveTableLayout(newTableLayout_1, keyTable)];
@@ -71535,7 +70965,7 @@ var SelectColumnModal = function (_a) {
                 case 1:
                     _a.sent();
                     setOpenSaveNewModal(false);
-                    setSelectedLayout(__assign$2(__assign$2({}, layout), { name: nameOfLayout }));
+                    setSelectedLayout(__assign(__assign({}, layout), { name: nameOfLayout }));
                     refreshLayout && refreshLayout();
                     return [2 /*return*/, Promise.resolve()];
             }
@@ -71550,8 +70980,8 @@ var SelectColumnModal = function (_a) {
         getLayoutTable();
     };
     var renderContentModal = function () {
-        return (jsxRuntime.jsxs("div", __assign$2({ className: "d-flex flex-column align-items-start px-5 justify-content-center" }, { children: [jsxRuntime.jsxs("h5", { children: [actionText, ":"] }, void 0),
-                jsxRuntime.jsxs("div", __assign$2({ className: "d-flex align-items-center" }, { children: [jsxRuntime.jsx(Checkbox, { value: selectAll, checked: selectAll, onChange: function () {
+        return (jsxRuntime.jsxs("div", __assign({ className: "d-flex flex-column align-items-start px-5 justify-content-center" }, { children: [jsxRuntime.jsxs("h5", { children: [actionText, ":"] }, void 0),
+                jsxRuntime.jsxs("div", __assign({ className: "d-flex align-items-center" }, { children: [jsxRuntime.jsx(Checkbox, { value: selectAll, checked: selectAll, onChange: function () {
                                 if (!selectAll) {
                                     setSelectedOption(options);
                                 }
@@ -71571,7 +71001,7 @@ var SelectColumnModal = function (_a) {
                                     });
                                 }); });
                             }, disabled: lodash.isEmpty(listLayout), iconName: "highlight_off", content: "Clear All Layout", variant: "trans", color: "red" }, void 0)] }), void 0),
-                jsxRuntime.jsx("div", __assign$2({ className: "d-flex flex-column my-4" }, { children: options.map(function (item) {
+                jsxRuntime.jsx("div", __assign({ className: "d-flex flex-column my-4" }, { children: options.map(function (item) {
                         // eslint-disable-next-line operator-linebreak
                         var isChecked = selectedOption.filter(function (obj) { return obj.dataIndex === item.dataIndex; }).length > 0;
                         return (jsxRuntime.jsx(Checkbox, { checked: isChecked, onChange: function (event) {
@@ -71594,7 +71024,7 @@ var SelectColumnModal = function (_a) {
         return (jsxRuntime.jsx(InputText, { onChange: function (event) { return setNameOfLayout(event.target.value); }, "aria-label": "Default", "aria-describedby": "inputGroup-sizing-default", placeholder: "Name Of Layout" }, void 0));
     };
     var renderFooter = function () {
-        return (jsxRuntime.jsxs("div", __assign$2({ className: "d-flex align-items-center w-100 justify-content-end" }, { children: [jsxRuntime.jsx(Button
+        return (jsxRuntime.jsxs("div", __assign({ className: "d-flex align-items-center w-100 justify-content-end" }, { children: [jsxRuntime.jsx(Button
                 // eslint-disable-next-line react/jsx-curly-brace-presence
                 , { 
                     // eslint-disable-next-line react/jsx-curly-brace-presence
@@ -71602,8 +71032,8 @@ var SelectColumnModal = function (_a) {
                 jsxRuntime.jsx(Button, { content: "Save", onClick: handleOnClickSaveNew }, void 0)] }), void 0));
     };
     return (jsxRuntime.jsxs(React__default['default'].Fragment, { children: [jsxRuntime.jsx(Button, { content: "Column", iconName: "settings", variant: "trans", onClick: function () { return setOpenOptionModal(true); }, color: "gray", className: "font-weight-normal" }, void 0),
-            jsxRuntime.jsx(Modal, __assign$2({ open: openOptionModal, onClose: function () { return setOpenOptionModal(false); }, onSave: handleOnClickSave, title: "Select Layout " + ((selectedLayout === null || selectedLayout === void 0 ? void 0 : selectedLayout.name) ? " - " + (selectedLayout === null || selectedLayout === void 0 ? void 0 : selectedLayout.name) : ""), customFooter: renderFooter, size: "medium", headerSide: renderSecondTitle }, { children: renderContentModal() }), void 0),
-            jsxRuntime.jsx(Modal, __assign$2({ open: openSaveNewModal, onClose: function () { return setOpenSaveNewModal(false); }, onSave: handleOnSaveNewLayout, centered: false }, { children: renderContentSaveNewModal() }), void 0)] }, void 0));
+            jsxRuntime.jsx(Modal, __assign({ open: openOptionModal, onClose: function () { return setOpenOptionModal(false); }, onSave: handleOnClickSave, title: "Select Layout " + ((selectedLayout === null || selectedLayout === void 0 ? void 0 : selectedLayout.name) ? " - " + (selectedLayout === null || selectedLayout === void 0 ? void 0 : selectedLayout.name) : ""), customFooter: renderFooter, size: "medium", headerSide: renderSecondTitle }, { children: renderContentModal() }), void 0),
+            jsxRuntime.jsx(Modal, __assign({ open: openSaveNewModal, onClose: function () { return setOpenSaveNewModal(false); }, onSave: handleOnSaveNewLayout, centered: false }, { children: renderContentSaveNewModal() }), void 0)] }, void 0));
 };
 
 var shims = createCommonjsModule(function (module, exports) {
@@ -73960,25 +73390,25 @@ var Resizable = Resizable_1.default;
 ResizableBox_1.default;
 
 var ResizableTitle = function (props) {
-    var onResize = props.onResize, width = props.width, restProps = __rest$p(props, ["onResize", "width"]);
+    var onResize = props.onResize, width = props.width, restProps = __rest$q(props, ["onResize", "width"]);
     if (!width) {
-        return jsxRuntime.jsx("th", __assign$2({}, restProps), void 0);
+        return jsxRuntime.jsx("th", __assign({}, restProps), void 0);
     }
-    return (jsxRuntime.jsx(Resizable, __assign$2({ width: width, height: 0, handle: (jsxRuntime.jsx("span", { className: "react-resizable-handle", onClick: function (e) {
+    return (jsxRuntime.jsx(Resizable, __assign({ width: width, height: 0, handle: (jsxRuntime.jsx("span", { className: "react-resizable-handle", onClick: function (e) {
                 e.stopPropagation();
-            } }, void 0)), onResize: onResize, draggableOpts: { enableUserSelectHack: false } }, { children: jsxRuntime.jsx("th", __assign$2({}, restProps), void 0) }), void 0));
+            } }, void 0)), onResize: onResize, draggableOpts: { enableUserSelectHack: false } }, { children: jsxRuntime.jsx("th", __assign({}, restProps), void 0) }), void 0));
 };
 
 var INIT_PAGINATION = {
     pageIndex: 1,
     pageSize: 20,
     showQuickJumper: true,
-    showTotal: function (total) { return jsxRuntime.jsx("div", __assign$2({ className: "captionText" }, { children: "Total " + total + " items" }), void 0); },
+    showTotal: function (total) { return jsxRuntime.jsx("div", __assign({ className: "captionText" }, { children: "Total " + total + " items" }), void 0); },
     pageSizeOptions: ["10", "20", "50"],
     showSizeChanger: true,
 };
 var AwesomeTableComponent = /** @class */ (function (_super) {
-    __extends$2(AwesomeTableComponent, _super);
+    __extends(AwesomeTableComponent, _super);
     function AwesomeTableComponent(props) {
         var _this = _super.call(this, props) || this;
         _this.components = {
@@ -74000,11 +73430,11 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
         _this.getColumnSearchProps = function (dataIndex) { return ({
             filterDropdown: function (_a) {
                 var setSelectedKeys = _a.setSelectedKeys, selectedKeys = _a.selectedKeys, confirm = _a.confirm, clearFilters = _a.clearFilters;
-                return (jsxRuntime.jsxs("div", __assign$2({ style: { padding: 8 } }, { children: [jsxRuntime.jsx(Input, { ref: function (node) {
+                return (jsxRuntime.jsxs("div", __assign({ style: { padding: 8 } }, { children: [jsxRuntime.jsx(Input, { ref: function (node) {
                                 _this.searchInput = node;
                             }, placeholder: "Search " + dataIndex, value: selectedKeys[0], onChange: function (e) { return setSelectedKeys(e.target.value ? [e.target.value] : []); }, onPressEnter: function () { return _this.handleSearch(selectedKeys, confirm, dataIndex); }, style: { width: 188, marginBottom: 8, display: "block" } }, void 0),
-                        jsxRuntime.jsx(Button$2, __assign$2({ type: "primary", onClick: function () { return _this.handleSearch(selectedKeys, confirm, dataIndex); }, icon: "search", size: "small", style: { width: 90, marginRight: 8 } }, { children: "Search" }), void 0),
-                        jsxRuntime.jsx(Button$2, __assign$2({ onClick: function () { return _this.handleReset(clearFilters); }, size: "small", style: { width: 90 } }, { children: "Reset" }), void 0)] }), void 0));
+                        jsxRuntime.jsx(Button$2, __assign({ type: "primary", onClick: function () { return _this.handleSearch(selectedKeys, confirm, dataIndex); }, icon: "search", size: "small", style: { width: 90, marginRight: 8 } }, { children: "Search" }), void 0),
+                        jsxRuntime.jsx(Button$2, __assign({ onClick: function () { return _this.handleReset(clearFilters); }, size: "small", style: { width: 90 } }, { children: "Reset" }), void 0)] }), void 0));
             },
             filterIcon: function (filtered) { return (
             // <Icons type="search" style={{ color: filtered ? '#1890ff' : undefined }} />
@@ -74051,7 +73481,7 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
                     var listTableLayout_1 = [];
                     var tableKey = Object.keys(tableLayout_1);
                     tableKey.forEach(function (key) {
-                        listTableLayout_1.push(__assign$2(__assign$2({}, tableLayout_1[key]), { name: key }));
+                        listTableLayout_1.push(__assign(__assign({}, tableLayout_1[key]), { name: key }));
                     });
                     var defaultLayout = listTableLayout_1.find(function (item) { return item === null || item === void 0 ? void 0 : item.default; });
                     if (!lodash.isEmpty(defaultLayout)) {
@@ -74073,7 +73503,7 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
             _this.setState(function (_a) {
                 var _b = _a.columns, columns = _b === void 0 ? [] : _b;
                 var nextColumns = __spreadArray([], columns);
-                nextColumns[index] = __assign$2(__assign$2({}, nextColumns[index]), { width: size === null || size === void 0 ? void 0 : size.width });
+                nextColumns[index] = __assign(__assign({}, nextColumns[index]), { width: size === null || size === void 0 ? void 0 : size.width });
                 return { columns: nextColumns };
             });
         }; };
@@ -74092,7 +73522,7 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
                                 newTableLayout[key] = saveLayout;
                             }
                             else {
-                                newTableLayout[key] = __assign$2(__assign$2({}, listLayout[key]), { default: false });
+                                newTableLayout[key] = __assign(__assign({}, listLayout[key]), { default: false });
                             }
                         });
                         return [4 /*yield*/, LayoutTableManager.saveTableLayout(newTableLayout, keyTableLayout)];
@@ -74114,7 +73544,7 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
             }
             _this.setState({
                 // eslint-disable-next-line react/no-access-state-in-setstate
-                pagination: __assign$2(__assign$2({}, pagination), { pageIndex: current, pageSize: pageSize }),
+                pagination: __assign(__assign({}, pagination), { pageIndex: current, pageSize: pageSize }),
                 sorter: paramSorter,
             }, function () { return _this.start(); });
         };
@@ -74202,7 +73632,7 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
         this.setState({
             loading: true,
             filteredInfo: null,
-            pagination: __assign$2(__assign$2({}, INIT_PAGINATION), paging),
+            pagination: __assign(__assign({}, INIT_PAGINATION), paging),
         }, function () { return _this.start(); });
     };
     AwesomeTableComponent.prototype.getDataList = function () {
@@ -74216,14 +73646,14 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
         var columnsResult = columns.map(function (columnParams) {
             var column = columnParams;
             if (column.filters && column.filters.length > 0) {
-                column = __assign$2(__assign$2({}, column), { filteredValue: filteredInfo && column.dataIndex ? filteredInfo[column.dataIndex] : null });
+                column = __assign(__assign({}, column), { filteredValue: filteredInfo && column.dataIndex ? filteredInfo[column.dataIndex] : null });
             }
             if (column.isSearch) {
-                column = __assign$2(__assign$2({}, column), _this.getColumnSearchProps(column.dataIndex));
+                column = __assign(__assign({}, column), _this.getColumnSearchProps(column.dataIndex));
             }
             return column;
         });
-        var columnResizable = columnsResult.map(function (col, index) { return (__assign$2(__assign$2({}, col), { onHeaderCell: function (column) { return ({
+        var columnResizable = columnsResult.map(function (col, index) { return (__assign(__assign({}, col), { onHeaderCell: function (column) { return ({
                 width: column === null || column === void 0 ? void 0 : column.width,
                 onResize: _this.handleResize(index),
             }); } })); });
@@ -74232,15 +73662,15 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
             var selectedIndex_1 = selectedColumns.map(function (item) { return item === null || item === void 0 ? void 0 : item.dataIndex; });
             columnSelected = columnResizable.filter(function (item) { return selectedIndex_1.includes(item.dataIndex); });
         }
-        var paginationResult = pagination ? __assign$2(__assign$2({}, pagination), { current: pagination.pageIndex, total: total }) : false;
+        var paginationResult = pagination ? __assign(__assign({}, pagination), { current: pagination.pageIndex, total: total }) : false;
         var wrapperClass = classnames("d-table-awesome-component", className);
-        return (jsxRuntime.jsxs("div", __assign$2({ className: wrapperClass }, { children: [showSelectColumn && (jsxRuntime.jsxs("div", __assign$2({ className: "d-table-awesome-component__select-column m-2" }, { children: [!lodash.isEmpty(tableLayoutList) && (jsxRuntime.jsx(SelectLayoutView, { listLayout: tableLayoutList, onClickItem: this.handleSelectTableLayout, selectedLayout: selectedLayout, showBorder: true }, void 0)),
+        return (jsxRuntime.jsxs("div", __assign({ className: wrapperClass }, { children: [showSelectColumn && (jsxRuntime.jsxs("div", __assign({ className: "d-table-awesome-component__select-column m-2" }, { children: [!lodash.isEmpty(tableLayoutList) && (jsxRuntime.jsx(SelectLayoutView, { listLayout: tableLayoutList, onClickItem: this.handleSelectTableLayout, selectedLayout: selectedLayout, showBorder: true }, void 0)),
                         jsxRuntime.jsx(SelectColumnModal
                         // eslint-disable-next-line react/destructuring-assignment
                         , { 
                             // eslint-disable-next-line react/destructuring-assignment
                             options: this.props.columns, setSelectedColumns: function (column) { return _this.setState({ selectedColumns: column }); }, keyTable: keyTableLayout, refreshLayout: function () { return _this.getDefaultTableLayout(); } }, void 0)] }), void 0)),
-                jsxRuntime.jsx(Table, __assign$2({ rowKey: rowKey, dataSource: data, loading: loading, onChange: this.handleTableChange, rowClassName: function () {
+                jsxRuntime.jsx(Table, __assign({ rowKey: rowKey, dataSource: data, loading: loading, onChange: this.handleTableChange, rowClassName: function () {
                         return "d-table-awesome-component__row";
                     }, pagination: paginationResult, scroll: isScroll ? { y: "1000" } : {}, tableLayout: tableLayout, bordered: true, components: this.components }, this.props, { className: "d-table-awesome-component__table " + classNameTable, 
                     // columns props always has to be in last positon in order for Resizable table to work
@@ -74284,21 +73714,24 @@ var MenuItem = function (_a) {
         "d-dropdown-menu__item-main-view": isMainView,
     });
     var iconImageView;
-    var labelView = jsxRuntime.jsx("div", __assign$2({ className: "text w-100" }, { children: Messages ? Messages[label] : label }), void 0);
+    var labelView = jsxRuntime.jsx("div", __assign({ className: "text w-100" }, { children: Messages ? Messages[label] : label }), void 0);
     var arrowView;
     if (iconName) {
-        iconImageView = jsxRuntime.jsx(Icon$1, { name: iconName, className: "d-block mr-2" }, void 0);
+        iconImageView = jsxRuntime.jsx(Icon$2, { name: iconName, className: "d-block mr-2" }, void 0);
     }
     if (image) {
         iconImageView = jsxRuntime.jsx("img", { src: image, alt: "", className: "d-block image-square-x-small mr-2" }, void 0);
     }
     if (subMenu && (subMenu === null || subMenu === void 0 ? void 0 : subMenu.length) > 0) {
-        arrowView = jsxRuntime.jsx(Icon$1, { name: "chevron_right", className: "d-block" }, void 0);
+        arrowView = jsxRuntime.jsx(Icon$2, { name: "chevron_right", className: "d-block" }, void 0);
     }
     if (isMainView) {
-        arrowView = jsxRuntime.jsx(Icon$1, { name: "expand_more", className: "d-block ml-2" }, void 0);
+        arrowView = jsxRuntime.jsx(Icon$2, { name: "expand_more", className: "d-block ml-2" }, void 0);
     }
-    return (jsxRuntime.jsxs("li", __assign$2({ className: itemClass, onClick: function () { return onClick && onClick(item); } }, { children: [iconImageView, labelView, arrowView, !isMainView && subMenu && subMenu.length > 0 && jsxRuntime.jsx(DropdownMenu, { dataSource: subMenu }, void 0)] }), "" + id));
+    return (jsxRuntime.jsxs("li", __assign({ className: itemClass, onClick: function () { return onClick && onClick(item); } }, { children: [iconImageView,
+            labelView,
+            arrowView,
+            !isMainView && subMenu && subMenu.length > 0 && jsxRuntime.jsx(DropdownMenu, { dataSource: subMenu }, void 0)] }), "" + id));
 };
 var DropdownMenu = function (_a) {
     var _b = _a.dataSource, dataSource = _b === void 0 ? [] : _b, _c = _a.onClick, onClick = _c === void 0 ? function () { } : _c, Messages = _a.Messages, className = _a.className;
@@ -74306,7 +73739,7 @@ var DropdownMenu = function (_a) {
     var list = dataSource.map(function (item, index) {
         return jsxRuntime.jsx(MenuItem, { item: item, onClick: onClick, Messages: Messages }, void 0);
     });
-    return jsxRuntime.jsx("ul", __assign$2({ className: wrapperClass }, { children: list }), void 0);
+    return jsxRuntime.jsx("ul", __assign({ className: wrapperClass }, { children: list }), void 0);
 };
 var Dropdown = function (_a) {
     var _b = _a.buttonProps, buttonProps = _b === void 0 ? { variant: "trans", iconName: "more_vert" } : _b, dataSource = _a.dataSource, onClick = _a.onClick, _c = _a.variant, variant = _c === void 0 ? "button" : _c, value = _a.value, Messages = _a.Messages, _d = _a.placeholder, placeholder = _d === void 0 ? "Select..." : _d, className = _a.className; _a.classNameMenu;
@@ -74327,7 +73760,7 @@ var Dropdown = function (_a) {
         setOpenDropdown(false);
         return onClick && onClick(item);
     };
-    var mainView = function () { return jsxRuntime.jsx(Button, __assign$2({}, buttonProps, { onClick: function () { return setOpenDropdown(!openDropdown); } }), void 0); };
+    var mainView = function () { return jsxRuntime.jsx(Button, __assign({}, buttonProps, { onClick: function () { return setOpenDropdown(!openDropdown); } }), void 0); };
     if (variant === "view") {
         mainView = function () {
             if (!value) {
@@ -74336,7 +73769,8 @@ var Dropdown = function (_a) {
             return (jsxRuntime.jsx(MenuItem, { item: value, Messages: Messages, onClick: function () { return setOpenDropdown(!openDropdown); }, isMainView: true }, void 0));
         };
     }
-    return (jsxRuntime.jsxs("div", __assign$2({ className: containerClass, ref: wrapperRef }, { children: [mainView(), jsxRuntime.jsx("div", __assign$2({ className: dropdownClass }, { children: jsxRuntime.jsx(DropdownMenu, { dataSource: dataSource, onClick: handleOnClickItem, Messages: Messages }, void 0) }), void 0)] }), void 0));
+    return (jsxRuntime.jsxs("div", __assign({ className: containerClass, ref: wrapperRef }, { children: [mainView(),
+            jsxRuntime.jsx("div", __assign({ className: dropdownClass }, { children: jsxRuntime.jsx(DropdownMenu, { dataSource: dataSource, onClick: handleOnClickItem, Messages: Messages }, void 0) }), void 0)] }), void 0));
 };
 
 exports.Avatar = Avatar;
@@ -74353,7 +73787,7 @@ exports.Dropdown = Dropdown;
 exports.Header = Header;
 exports.HeaderDetail = HeaderDetail;
 exports.HeaderTable = HeaderTable;
-exports.Icon = Icon$1;
+exports.Icon = Icon$2;
 exports.InputText = InputText;
 exports.Loading = Loading;
 exports.Modal = Modal;
