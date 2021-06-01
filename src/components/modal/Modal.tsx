@@ -19,6 +19,11 @@ export interface ModalProps extends ModalAntProps {
     saveText?: string;
     sideText?: string;
     size?: "large" | "medium" | "small";
+    classNameHeader?: string;
+    classNameFooter?: string;
+    classNameContent?: string;
+    showFooter?: boolean;
+    showHeader?: boolean;
 }
 
 const Modal: React.FC<ModalProps> = ({
@@ -31,7 +36,6 @@ const Modal: React.FC<ModalProps> = ({
     onSideClick,
     cancelAction,
     width,
-    className,
     title,
     customHeader,
     customFooter,
@@ -43,12 +47,22 @@ const Modal: React.FC<ModalProps> = ({
     cancelText = "Cancel",
     sideText = "Clear",
     size,
+    className,
+    classNameContent,
+    classNameFooter,
+    classNameHeader,
+    showFooter = true,
+    showHeader = true,
     ...props
 }) => {
     const modalClass = ClassNames("d-modal", `d-modal__${size}`, className);
-    const childrenClass = ClassNames("d-modal__children");
-    const headerClass = ClassNames("d-modal__header border-bottom py-3", { "d-flex align-items-center": !!title });
-    const footerClass = ClassNames("d-modal__footer d-flex align-items-center border-top py-3 px-3");
+    const childrenClass = ClassNames("d-modal__children", classNameContent);
+    const headerClass = ClassNames(
+        "d-modal__header border-bottom py-3",
+        { "d-flex align-items-center": !!title },
+        classNameHeader
+    );
+    const footerClass = ClassNames("d-modal__footer d-flex align-items-center border-top py-3 px-3", classNameFooter);
 
     const header = () => {
         let content;
@@ -95,7 +109,7 @@ const Modal: React.FC<ModalProps> = ({
                                 }}
                             />
                         )}
-                        <Button variant="standard" content={saveText} />
+                        <Button variant="standard" content={saveText} onClick={onSave} />
                     </div>
                 </React.Fragment>
             );
@@ -115,14 +129,13 @@ const Modal: React.FC<ModalProps> = ({
             centered={centered}
             className={modalClass}
             closable={closable}
-            onOk={onSave}
             width={width}
             footer={null}
             {...props}
         >
-            {header()}
+            {showHeader && header()}
             <div className={childrenClass}>{children}</div>
-            {footer()}
+            {showFooter && footer()}
         </ModalAnt>
     );
 };

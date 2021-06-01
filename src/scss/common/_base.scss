@@ -31,6 +31,17 @@ body {
 }
 
 // ----------------------------------------
+// -- CARD
+// ----------------------------------------
+
+.card-container {
+    background-color: $light-color;
+    box-shadow: $card-container-box-shadow;
+    width: -moz-available; /* WebKit-based browsers will ignore this. */
+    width: -webkit-fill-available;
+}
+
+// ----------------------------------------
 // -- BACKGROUND
 // ----------------------------------------
 
@@ -66,9 +77,37 @@ body {
     background-color: $light-gray-color !important;
 }
 
+@each $opacityName, $opacity in $opacity-range {
+    @each $name, $color in $basic-color {
+        .bg-#{$name}-#{$opacityName} {
+            background-color: rgba($color: $color, $alpha: $opacity);
+        }
+    }
+}
+
 // ----------------------------------------
 // -- BORDER
 // ----------------------------------------
+
+.border {
+    border: 1px solid $border-color;
+}
+
+.border-end {
+    border-right: 1px solid $border-color !important;
+}
+
+.border-start {
+    border-left: 1px solid $border-color !important;
+}
+
+.border-bottom {
+    border-bottom: 1px solid $border-color !important;
+}
+
+.border-top {
+    border-top: 1px solid $border-color !important;
+}
 
 .border-primary {
     border-color: $primary-color !important;
@@ -82,42 +121,106 @@ body {
     border: 1px dashed $border-color;
 }
 
+.border-line {
+    border: 1px solid $line-color !important;
+}
+
+.border-line-start {
+    border-left: 1px solid $line-color !important;
+}
+
+.border-line-top {
+    border-top: 1px solid $line-color !important;
+}
+
+.border-line-end {
+    border-left: 1px solid $line-color !important;
+}
+
+.border-line-bottom {
+    border-bottom: 1px solid $line-color !important;
+}
+
+.border-error {
+    border: 1px solid $error-color !important;
+}
+
 // ----------------------------------------
 // -- IMAGE
 // ----------------------------------------
 
+.image-reg-xx-small {
+    height: $image-size-xx-small;
+    object-fit: contain;
+}
+
+.image-reg-x-small {
+    height: $image-size-x-small;
+    object-fit: contain;
+}
+
 .image-reg-small {
-    height: 40px;
+    height: $image-size-small;
     object-fit: contain;
 }
 
 .image-reg-medium {
-    height: 80px;
+    height: $image-size-medium;
     object-fit: contain;
 }
 
 .image-reg-large {
-    height: 160px;
+    height: $image-size-large;
     object-fit: contain;
 }
 
-.image-square-tiny {
-    width: 30px;
-    height: 30px;
+.image-reg-x-large {
+    height: $image-size-x-large;
+    object-fit: contain;
+}
+
+.image-square-xx-small {
+    width: $image-size-xx-small;
+    height: $image-size-xx-small;
+    object-fit: cover;
+}
+
+.image-square-x-small {
+    width: $image-size-x-small;
+    height: $image-size-x-small;
     object-fit: cover;
 }
 .image-square-small {
-    width: 40px;
-    height: 40px;
+    width: $image-size-small;
+    height: $image-size-small;
+    object-fit: cover;
+}
+.image-square-medium {
+    width: $image-size-medium;
+    height: $image-size-medium;
+    object-fit: cover;
+}
+.image-square-large {
+    width: $image-size-large;
+    height: $image-size-large;
+    object-fit: cover;
+}
+.image-square-x-large {
+    width: $image-size-x-large;
+    height: $image-size-x-large;
     object-fit: cover;
 }
 
 // ----------------------------------------
-// -- HOVER
+// -- POINTER
 // ----------------------------------------
 
 .hover-pointer {
     cursor: pointer;
+}
+
+.event-none {
+    pointer-events: none;
 }
 
 // ----------------------------------------
@@ -206,4 +309,49 @@ body {
 .divider {
     width: 100%;
     border-bottom: 1px solid $light-divider-color;
+}
+
+// ----------------------------------------
+// -- PADDING & MARGIN
+// ----------------------------------------
+
+.px-0 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.py-0 {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+// ----------------------------------------
+// -- POSITION
+// ----------------------------------------
+
+.top-0 {
+    top: 0px;
+}
+
+.bottom-0 {
+    bottom: 0px;
+}
+
+.start-0 {
+    left: 0px;
+}
+
+.end-0 {
+    right: 0px;
+}
+
+// ----------------------------------------
+// -- LINK
+// ----------------------------------------
+
+a {
+    color: $link-color !important;
+    &:hover {
+        color: $link-hover-color !important;
+    }
 }

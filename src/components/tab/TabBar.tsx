@@ -5,7 +5,6 @@ import ClassNames from "classnames";
 // application
 import Button from "../button/Button";
 // data stubs
-import "./VerticalTabView.scss";
 
 export interface ITabItem {
     id: string | number;

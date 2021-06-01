@@ -1,0 +1,22 @@
+@import "../mixins/buttons";
+@import "../variables";
+
+$dot-size: (
+    "large": 16px,
+    "medium": 12px,
+    "small": 8px,
+    "x-small": 4px,
+);
+
+@each $nameSize, $size in $dot-size {
+    @each $name, $color in $basic-color {
+        .d-dot__#{$nameSize}-#{$name} {
+            background-color: $color;
+            border: none;
+            outline: none;
+            width: $size;
+            height: $size;
+            border-radius: 999px;
+        }
+    }
+}

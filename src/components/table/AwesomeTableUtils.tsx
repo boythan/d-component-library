@@ -2,20 +2,20 @@ import { Tooltip } from "antd";
 import React from "react";
 import Icon from "../icon/Icon";
 
-export const isString = (variable) => {
+export const isString = (variable: any) => {
     return typeof variable === "string";
 };
 
-export const isObject = (object) => {
+export const isObject = (object: any) => {
     return typeof object === "object";
 };
 
-export const isArray = (array) => {
+export const isArray = (array: any) => {
     return Array.isArray(array);
 };
 
-export const calculateDefaultExpandedRowKeys = function (data = [], options) {
-    const rowKeys = [];
+export const calculateDefaultExpandedRowKeys = function (data = [], options: any) {
+    const rowKeys: Array<any> = [];
     if (!(data && data.length)) {
         return rowKeys;
     }
@@ -37,8 +37,8 @@ export const calculateDefaultExpandedRowKeys = function (data = [], options) {
     }
 
     const mapRowKeys = function mapRowKeys(source = [], currentLevel = 1) {
-        let keys = [];
-        source.forEach(({ children, ...rest }) => {
+        let keys: Array<any> = [];
+        source.forEach(({ children, ...rest }: any) => {
             if (children !== null) {
                 keys.push(rest[key]);
                 if (level < 0 || (level > 0 && level > currentLevel)) {
@@ -53,13 +53,14 @@ export const calculateDefaultExpandedRowKeys = function (data = [], options) {
     return mapRowKeys(data);
 };
 
-export const transformColumn = (columns = [], baseColumn = {}) => {
-    return columns.map(({ title, titleCustom, titleTooltip, dataIndex, render, ...props }) => {
+export const transformColumn = (columns: Array<any> = [], baseColumn: any = {}): Array<any> => {
+    return columns.map(({ title, titleTooltip, dataIndex, render, ...props }: any) => {
         // custom title
-        let titleResult = title;
-        if (titleCustom) {
-            titleResult = titleCustom;
-        } else if (titleTooltip) {
+        let titleResult: any = title;
+        if (typeof title === "function") {
+            titleResult = title();
+        }
+        if (titleTooltip) {
             titleResult = (
                 <Tooltip className="flex-center-y" zIndex={10000} title={titleTooltip}>
                     {title}
@@ -72,13 +73,22 @@ export const transformColumn = (columns = [], baseColumn = {}) => {
             ...baseColumn,
             title: titleResult,
             dataIndex,
-            render: (data, item) => {
+            render: (data: any, item: any) => {
+                let content = data;
+                if (typeof render === "function") {
+                    content = render(data, item);
+                }
                 return {
-                    children: <div className="subtitle1 nowrapCellTable">{render(data, item)}</div>,
+                    children: <div className="text text-nowrap">{content}</div>,
                     props: { "data-title": title },
                 };
             },
             ...props,
         };
     });
+};
+
+export default {
+    transformColumn,
+    calculateDefaultExpandedRowKeys,
 };

@@ -16,6 +16,11 @@ export interface ModalProps extends ModalAntProps {
     saveText?: string;
     sideText?: string;
     size?: "large" | "medium" | "small";
+    classNameHeader?: string;
+    classNameFooter?: string;
+    classNameContent?: string;
+    showFooter?: boolean;
+    showHeader?: boolean;
 }
 declare const Modal: React.FC<ModalProps>;
 export default Modal;

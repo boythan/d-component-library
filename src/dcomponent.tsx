@@ -51,6 +51,12 @@ export { default as RadioGroup } from "./components/checkbox/RadioGroup";
 export type { HeaderTableProps } from "./components/header/HeaderTable";
 export { default as HeaderTable } from "./components/header/HeaderTable";
 
+export type { HeaderProps } from "./components/header/Header";
+export { default as Header } from "./components/header/Header";
+
+export type { HeaderDetailProps } from "./components/header/HeaderDetail";
+export { default as HeaderDetail } from "./components/header/HeaderDetail";
+
 /* ----------------------------------------
 // Modal
 // ---------------------------------------- */
@@ -65,11 +71,14 @@ export { default as Modal } from "./components/modal/Modal";
 export type { AvatarProps } from "./components/avatar/Avatar";
 export { default as Avatar } from "./components/avatar/Avatar";
 
+export type { AvatarNameProps } from "./components/avatar/AvatarName";
+export { default as AvatarName } from "./components/avatar/AvatarName";
+
 /* ----------------------------------------
 // RowInterchangeView
 // ---------------------------------------- */
 
-export type { RowInterchangeViewProps, RowsKey } from "./components/view/RowInterchangeView";
+export type { RowInterchangeViewProps, IRowsKey } from "./components/view/RowInterchangeView";
 export { default as RowInterchangeView } from "./components/view/RowInterchangeView";
 
 /* ----------------------------------------
@@ -95,3 +104,37 @@ export { default as AwesomeListComponent } from "./components/list/awesomeList/A
 
 export type { LoadingProps } from "./components/loading/Loading";
 export { default as Loading } from "./components/loading/Loading";
+
+/* ----------------------------------------
+// Date Input
+// ---------------------------------------- */
+
+export type { DateInputProp } from "./components/dateInput/DateInput";
+export { default as DateInput } from "./components/dateInput/DateInput";
+
+/* ----------------------------------------
+// Dot
+// ---------------------------------------- */
+
+export type { DotProps } from "./components/dot/Dot";
+export { default as Dot } from "./components/dot/Dot";
+
+/* ----------------------------------------
+// Table
+// ---------------------------------------- */
+
+export type {
+    AwesomeTableComponentProps,
+    IPaginationProps,
+    IColumnsProps,
+} from "./components/table/AwesomeTableComponent";
+export { default as AwesomeTableComponent } from "./components/table/AwesomeTableComponent";
+
+export { default as AwesomeTableUtils } from "./components/table/AwesomeTableUtils";
+
+/* ----------------------------------------
+// Dropdown
+// ---------------------------------------- */
+
+export type { DropdownProps, IDropdownMenuItemProps, DropDownMenuProps } from "./components/dropdown/Dropdown";
+export { default as Dropdown } from "./components/dropdown/Dropdown";

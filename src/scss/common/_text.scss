@@ -62,6 +62,19 @@ text,
     }
 }
 
+.text-xx-small {
+    font-family: $text-xx-small-family;
+    font-size: $text-xx-small-size;
+    line-height: $text-xx-small-height !important;
+    font-weight: $text-xx-small-weight;
+    font-style: $text-xx-small-style;
+
+    &-bold {
+        @extend .text-xx-small;
+        font-weight: $text-xx-small-weight-bold;
+    }
+}
+
 label,
 .label,
 .text-label {
@@ -84,7 +97,7 @@ label,
 }
 
 .text-gray {
-    color: $gray-color !important;
+    color: $placeholder-color !important;
 }
 
 .text-link {
@@ -109,6 +122,10 @@ label,
 
 .font-weight-bold {
     font-weight: 600 !important;
+}
+
+.font-weight-normal {
+    font-weight: 400 !important;
 }
 
 // ----------------------------------------

@@ -13,16 +13,24 @@
 }
 
 .d-tab-bar__vertical {
+    .d-button__large {
+        height: auto !important;
+    }
     .d-tab-bar__item {
         width: 100%;
         font-weight: $font-weight-normal !important;
-        border-bottom: 1px solid $light-gray-color;
-        border-top: 1px solid $light-gray-color;
-        color: $gray-color;
+        border-bottom: 1px solid $line-color;
+        // border-top: 1px solid $light-gray-color;
+        color: $text-color;
+        padding: 16px 0px;
+
         &-active {
             font-weight: $font-weight-semi-bold !important;
             background-color: $accent-color;
             color: $light-color !important;
         }
+    }
+    .d-tab-bar__item:first-child {
+        border-top: 1px solid $line-color;
     }
 }

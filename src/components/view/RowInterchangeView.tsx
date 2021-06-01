@@ -1,51 +1,69 @@
 import React from "react";
 import ClassNames from "classnames";
 
-export interface RowsKey {
+export interface IRowsKey {
     id: string | number;
     label: string | number;
+    renderLabel?: (id: IRowsKey["id"], row: IRowsKey, data: any) => any;
+    renderContent?: (id: IRowsKey["id"], row: IRowsKey, data: any) => any;
 }
 
 export interface RowInterchangeViewProps {
     className?: string;
+    classNameRow?: string;
+    classNameLabel?: string;
+    classNameContent?: string;
     dataSource: any;
-    keyList: Array<RowsKey>;
-    getLabel?: (label: RowsKey["label"], row: RowsKey, data: any) => any;
-    getContent?: (id: RowsKey["id"], row: RowsKey, data: any) => any;
+    keyList: Array<IRowsKey>;
+    variant?: "background" | "border";
+    boldLabel?: boolean;
+    Messages?: any;
 }
 
 const RowInterchangeView: React.FC<RowInterchangeViewProps> = ({
     dataSource = {},
     keyList = [],
+    variant = "background",
+    boldLabel = false,
     className,
-    getLabel,
-    getContent,
+    classNameRow,
+    classNameLabel,
+    classNameContent,
+    Messages,
 }) => {
     const wrapperClass = ClassNames(className);
     return (
         <div className={wrapperClass}>
             {keyList.map((row, index) => {
-                const rowClass = ClassNames("d-flex align-items-center w-100 justify-content-between py-2 px-3", {
-                    "bg-light-gray": index % 2,
-                });
-                const { id, label } = row;
+                const rowClass = ClassNames(
+                    "d-flex align-items-start w-100 justify-content-between py-3 px-3",
+                    {
+                        "bg-light-gray": index % 2 && variant === "background",
+                        "border-top": index !== 0 && variant === "border",
+                    },
+                    classNameRow
+                );
+                const labelClass = ClassNames("text-small w-100", { "font-weight-bold": boldLabel }, classNameLabel);
+                const contentClass = ClassNames("w-100 text", classNameContent);
+                const { id, label, renderLabel, renderContent } = row;
                 let labelView;
                 let content;
-                labelView = row.label;
-                if (getLabel) {
-                    labelView = getLabel(label, row, dataSource);
+                labelView = label;
+                if (Messages) {
+                    labelView = Messages[label];
+                }
+                if (typeof renderLabel === "function") {
+                    labelView = renderLabel(id, row, dataSource);
                 }
                 content = dataSource?.[id] ?? "N/A";
-                if (getContent) {
-                    content = getContent(id, row, dataSource);
+                if (typeof renderContent === "function") {
+                    content = renderContent(id, row, dataSource);
                 }
-                const contentView = <label className="d-block text">{content}</label>;
+                const contentView = <div className={contentClass}>{content}</div>;
                 return (
                     <div className={rowClass} key={index}>
-                        <div className="w-100">
-                            <div className="d-block text-x-small">{labelView}</div>
-                        </div>
-                        <div className="w-100 text">{contentView}</div>
+                        <div className={labelClass}>{labelView}</div>
+                        {contentView}
                     </div>
                 );
             })}

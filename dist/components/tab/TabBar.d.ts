@@ -1,5 +1,4 @@
 import React from "react";
-import "./VerticalTabView.scss";
 export interface ITabItem {
     id: string | number;
     label?: string | number;
