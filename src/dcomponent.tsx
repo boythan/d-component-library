@@ -131,3 +131,10 @@ export type {
 export { default as AwesomeTableComponent } from "./components/table/AwesomeTableComponent";
 
 export { default as AwesomeTableUtils } from "./components/table/AwesomeTableUtils";
+
+/* ----------------------------------------
+// Dropdown
+// ---------------------------------------- */
+
+export type { DropdownProps, IDropdownMenuItemProps, DropDownMenuProps } from "./components/dropdown/Dropdown";
+export { default as Dropdown } from "./components/dropdown/Dropdown";

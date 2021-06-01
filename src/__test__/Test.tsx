@@ -23,6 +23,7 @@ import DialogManager from "../components/dialog/DialogManager";
 import TableAwesomeComponent, { AwesomeTableComponentProps } from "../components/table/AwesomeTableComponent";
 import { transformColumn } from "../components/table/AwesomeTableUtils";
 import AvatarName from "../components/avatar/AvatarName";
+import Dropdown, { DropdownMenu } from "../components/dropdown/Dropdown";
 
 interface Props {
     content?: any;
@@ -34,7 +35,27 @@ const FAKE_TOKEN =
     "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5MmRhNDEwNC01NDY4LTQwY2MtODU1Ni1kZjg4NzY0OGZiOGEiLCJqdGkiOiI5ZmZlNjUwNzQwMDRmZjY1MzY4ZmEyZjAwN2ZhY2I2MGRlY2Q3NGFmZjUwOWNhNmI4ZmM3YTBhNDIyYzZmZDdlMDJlNTIwMjBiYTZjYWQ1NyIsImlhdCI6MTYyMTkzNDY3NSwibmJmIjoxNjIxOTM0Njc1LCJleHAiOjE2NTM0NzA2NzUsInN1YiI6ImY4ZjUwMjdmLTdiMTItMTFlYi05MDIyLWNlN2ZjZGYxMWQzMCIsInNjb3BlcyI6W119.QOrc-ngJFxakJNVMI2stK1L2zyBArmvtLHZtfE5OPefj8azpI2Qxlvvp_EmN_RAV-pkW5YK1qv5Lpc6SHhKR6te9GL8xw3bFbVaKbcDxvNHLkx3zhsGszXeWxt-PoVVscQ1lk5q3z3yJhlYdiOXXECPuVwSVWVV3JQo9D9e-kepjk_8-_bd-klzzP1ST3pMlm5V7-MEMYrRB3de_M3ydjhH77ZJLGNyhNWPKV0h40ysM-zUmzynnX7InpzIS26Lr9dKNw0jW69RNwCpDRAfkYX9enhGYqMyRYCWxXmgojiqVkIXOvi4Ec61QjdRJig2W3dcWwt3a_QSaabTvv6Y0Xp-NbL1dl9GsPkHQZmlMH4fYS744lK0F854Ik_4SMeQO57ZUatGxrRFvw5AF04mrSF3cblH-W419am4uXeEiOMKHfBeuzrSj5Vu8BbRiHmWwHl-H4K-nSoe2TRz6_IGuahn-4S9xiFnUOzX3QIqZ_Br7lrFLN4A5EJmG4uYwLDZvwtct-lNiLqmEMp3UovTr3qlBr1GXoMRvLRAlfPMYKipmCJ1bhPYoXyXoOhAwluAM7F24o5GIB43DjD5_dOXYniuUAa7z3ObLtJDtkbtdif3MUyrHKlv9tfrf_c87lFrfTMfYGkLpgZ6pBKz0B7S3ZtkkgNi1oUbVwN98eiZLBrs";
 const URL = "https://api-dev.mattresscity.co.th/api/backend/brand";
 const ATTRIBUTE_INPUT_TYPE = [
-    { id: "dropdown", label: "dropdown" },
+    {
+        id: "dropdown",
+        label: "dropdown",
+        iconName: "person",
+        subMenu: [
+            {
+                id: "color",
+                label: "swatchColor",
+                subMenu: [
+                    { id: "text", label: "swatchText" },
+                    { id: "image", label: "swatchImage" },
+                    { id: "color", label: "swatchColor" },
+                    { id: "color", label: "swatchColor" },
+                ],
+            },
+            { id: "color", label: "swatchColor" },
+            { id: "color", label: "swatchColor" },
+            { id: "color", label: "swatchColor" },
+            { id: "color", label: "swatchColor" },
+        ],
+    },
     { id: "text", label: "swatchText" },
     { id: "image", label: "swatchImage" },
     { id: "color", label: "swatchColor" },
@@ -257,6 +278,27 @@ const TableView = () => {
     );
 };
 
+const DropdownView = () => {
+    const [selectedDropdown, setSelectedDropdown] = useState<any>(ATTRIBUTE_INPUT_TYPE[0]);
+    return (
+        <div className="d-flex flex-column my-4">
+            <Dropdown dataSource={ATTRIBUTE_INPUT_TYPE} />
+            <Dropdown
+                dataSource={ATTRIBUTE_INPUT_TYPE}
+                variant="view"
+                value={selectedDropdown}
+                onClick={(item) => setSelectedDropdown(item)}
+            />
+            <p>
+                Almost before we knew it, we had left the ground. Thin 100 italic Almost before we knew it, we had left
+                the ground. Light 300 Almost before we knew it, we had left the ground. Light 300 italic Almost before
+                we knew it, we had left the ground. Regular 400 Almost before we knew it, we had left the ground.
+                Regular 400 italic Almost before we knew it, we had left the ground. Medium 500
+            </p>
+        </div>
+    );
+};
+
 const RowsView = () => {
     const { mockData } = useContext<any>(AppStateContext);
     console.log(mockData);
@@ -459,6 +501,7 @@ export default function Test({ content }: Props): ReactElement {
         { id: "LIST", label: "LIST", component: list },
         { id: "LOADING", label: "LOADING", component: loading },
         { id: "DOT", label: "DOT", component: dot },
+        { id: "DROPDOWN", label: "DROPDOWN", component: <DropdownView /> },
     ];
 
     const renderCustomHeader = () => {
