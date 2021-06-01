@@ -1,29 +1,29 @@
 /* eslint-disable operator-linebreak */
 import React, { ReactElement, useContext, useEffect, useRef, useState } from "react";
-import InputText from "../components/input/InputText";
-import Icon, { IconProps } from "../components/icon/Icon";
+import Avatar from "../components/avatar/Avatar";
+import AvatarName from "../components/avatar/AvatarName";
 import Button from "../components/button/Button";
-import HeaderTable from "../components/header/HeaderTable";
 import Checkbox from "../components/checkbox/Checkbox";
-import Select from "../components/select/Select";
 import CheckboxGroup from "../components/checkbox/CheckboxGroup";
 import RadioGroup from "../components/checkbox/RadioGroup";
-import Modal from "../components/modal/Modal";
-import Avatar from "../components/avatar/Avatar";
-import RowInterchangeView from "../components/view/RowInterchangeView";
-import TabBar from "../components/tab/TabBar";
-import PopoverList from "../components/list/popoverList/PopoverList";
-import Loading from "../components/loading/Loading";
-import AwesomeListComponent from "../components/list/awesomeList/AwesomeListComponent";
-import InputTextSearch from "../components/input/InputTextSearch";
 import DateInput from "../components/dateInput/DateInput";
-import Dot from "../components/dot/Dot";
 import DialogComponent from "../components/dialog/DialogComponent";
 import DialogManager from "../components/dialog/DialogManager";
+import Dot from "../components/dot/Dot";
+import Dropdown from "../components/dropdown/Dropdown";
+import Icon from "../components/icon/Icon";
+import InputText from "../components/input/InputText";
+import InputTextSearch from "../components/input/InputTextSearch";
+import AwesomeListComponent from "../components/list/awesomeList/AwesomeListComponent";
+import Loading from "../components/loading/Loading";
+import Modal from "../components/modal/Modal";
+import Select from "../components/select/Select";
+import TabBar from "../components/tab/TabBar";
 import TableAwesomeComponent, { AwesomeTableComponentProps } from "../components/table/AwesomeTableComponent";
 import { transformColumn } from "../components/table/AwesomeTableUtils";
-import AvatarName from "../components/avatar/AvatarName";
-import Dropdown, { DropdownMenu } from "../components/dropdown/Dropdown";
+import RowInterchangeView from "../components/view/RowInterchangeView";
+import { ATTRIBUTE_INPUT_TYPE } from "./TestConstant";
+import TestHeader from "./TestHeader";
 
 interface Props {
     content?: any;
@@ -34,43 +34,6 @@ const AppStateContext = React.createContext<any>({ defaultValue: null });
 const FAKE_TOKEN =
     "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5MmRhNDEwNC01NDY4LTQwY2MtODU1Ni1kZjg4NzY0OGZiOGEiLCJqdGkiOiI5ZmZlNjUwNzQwMDRmZjY1MzY4ZmEyZjAwN2ZhY2I2MGRlY2Q3NGFmZjUwOWNhNmI4ZmM3YTBhNDIyYzZmZDdlMDJlNTIwMjBiYTZjYWQ1NyIsImlhdCI6MTYyMTkzNDY3NSwibmJmIjoxNjIxOTM0Njc1LCJleHAiOjE2NTM0NzA2NzUsInN1YiI6ImY4ZjUwMjdmLTdiMTItMTFlYi05MDIyLWNlN2ZjZGYxMWQzMCIsInNjb3BlcyI6W119.QOrc-ngJFxakJNVMI2stK1L2zyBArmvtLHZtfE5OPefj8azpI2Qxlvvp_EmN_RAV-pkW5YK1qv5Lpc6SHhKR6te9GL8xw3bFbVaKbcDxvNHLkx3zhsGszXeWxt-PoVVscQ1lk5q3z3yJhlYdiOXXECPuVwSVWVV3JQo9D9e-kepjk_8-_bd-klzzP1ST3pMlm5V7-MEMYrRB3de_M3ydjhH77ZJLGNyhNWPKV0h40ysM-zUmzynnX7InpzIS26Lr9dKNw0jW69RNwCpDRAfkYX9enhGYqMyRYCWxXmgojiqVkIXOvi4Ec61QjdRJig2W3dcWwt3a_QSaabTvv6Y0Xp-NbL1dl9GsPkHQZmlMH4fYS744lK0F854Ik_4SMeQO57ZUatGxrRFvw5AF04mrSF3cblH-W419am4uXeEiOMKHfBeuzrSj5Vu8BbRiHmWwHl-H4K-nSoe2TRz6_IGuahn-4S9xiFnUOzX3QIqZ_Br7lrFLN4A5EJmG4uYwLDZvwtct-lNiLqmEMp3UovTr3qlBr1GXoMRvLRAlfPMYKipmCJ1bhPYoXyXoOhAwluAM7F24o5GIB43DjD5_dOXYniuUAa7z3ObLtJDtkbtdif3MUyrHKlv9tfrf_c87lFrfTMfYGkLpgZ6pBKz0B7S3ZtkkgNi1oUbVwN98eiZLBrs";
 const URL = "https://api-dev.mattresscity.co.th/api/backend/brand";
-const ATTRIBUTE_INPUT_TYPE = [
-    {
-        id: "dropdown",
-        label: "dropdown",
-        iconName: "person",
-        subMenu: [
-            {
-                id: "color",
-                label: "swatchColor",
-                subMenu: [
-                    { id: "text", label: "swatchText" },
-                    { id: "image", label: "swatchImage" },
-                    { id: "color", label: "swatchColor" },
-                    { id: "color", label: "swatchColor" },
-                ],
-            },
-            { id: "color", label: "swatchColor" },
-            { id: "color", label: "swatchColor" },
-            { id: "color", label: "swatchColor" },
-            { id: "color", label: "swatchColor" },
-        ],
-    },
-    { id: "text", label: "swatchText" },
-    { id: "image", label: "swatchImage" },
-    { id: "color", label: "swatchColor" },
-    { id: "color", label: "swatchColor" },
-    { id: "color", label: "swatchColor" },
-    { id: "color", label: "swatchColor" },
-    { id: "color", label: "swatchColor" },
-    { id: "color", label: "swatchColor" },
-    { id: "color", label: "swatchColor" },
-    { id: "color", label: "swatchColor" },
-    { id: "color", label: "swatchColor" },
-    { id: "color", label: "swatchColor" },
-    { id: "color", label: "swatchColor" },
-    { id: "color", label: "swatchColor" },
-];
 
 const test = (a: any, b?: any) => {
     return a;
@@ -398,18 +361,6 @@ export default function Test({ content }: Props): ReactElement {
         </React.Fragment>
     );
 
-    const header = (
-        <div className="my-4">
-            <HeaderTable
-                label="Product table"
-                onChangeText={() => {}}
-                onClickExport={() => {}}
-                onClickFilter={() => {}}
-                onClickNew={() => {}}
-            />
-        </div>
-    );
-
     const tab = (
         <div className="my-4">
             <TabBar dataSource={ATTRIBUTE_INPUT_TYPE} onChange={(tab) => setSelectedTab(tab)} value={selectedTab} />
@@ -495,7 +446,7 @@ export default function Test({ content }: Props): ReactElement {
         { id: "BUTTON", label: "BUTTON", component: <ButtonView /> },
         { id: "TABLE", label: "TABLE", component: <TableView /> },
         { id: "CHECKBOX", label: "CHECKBOX", component: checkBox },
-        { id: "HEADER", label: "HEADER", component: header },
+        { id: "HEADER", label: "HEADER", component: <TestHeader /> },
         { id: "TAB BAR", label: "TAB BAR", component: tab },
         { id: "VIEW", label: "VIEW", component: <RowsView /> },
         { id: "LIST", label: "LIST", component: list },
