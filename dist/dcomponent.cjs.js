@@ -19327,7 +19327,7 @@ var placements$1 = {
   }
 };
 
-function Dropdown$1(props, ref) {
+function Dropdown$2(props, ref) {
   var _props$arrow = props.arrow,
       arrow = _props$arrow === void 0 ? false : _props$arrow,
       _props$prefixCls = props.prefixCls,
@@ -19479,7 +19479,7 @@ function Dropdown$1(props, ref) {
   }), renderChildren());
 }
 
-var Dropdown$2 = React__namespace.forwardRef(Dropdown$1);
+var Dropdown$3 = React__namespace.forwardRef(Dropdown$2);
 
 // This icon file is generated automatically.
 var RightOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M765.7 486.8L314.9 134.7A7.97 7.97 0 00302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 000-50.4z" } }] }, "name": "right", "theme": "outlined" };
@@ -20202,7 +20202,7 @@ var DropdownButton = function DropdownButton(props) {
 
   return /*#__PURE__*/React__namespace.createElement(ButtonGroup, _extends$1({}, restProps, {
     className: classnames(prefixCls, className)
-  }), leftButtonToRender, /*#__PURE__*/React__namespace.createElement(Dropdown, dropdownProps, rightButtonToRender));
+  }), leftButtonToRender, /*#__PURE__*/React__namespace.createElement(Dropdown$1, dropdownProps, rightButtonToRender));
 };
 
 DropdownButton.__ANT_BUTTON = true;
@@ -20215,7 +20215,7 @@ DropdownButton.defaultProps = {
 
 tuple$1('topLeft', 'topCenter', 'topRight', 'bottomLeft', 'bottomCenter', 'bottomRight');
 
-var Dropdown = function Dropdown(props) {
+var Dropdown$1 = function Dropdown(props) {
   var _React$useContext = React__namespace.useContext(ConfigContext),
       getContextPopupContainer = _React$useContext.getPopupContainer,
       getPrefixCls = _React$useContext.getPrefixCls,
@@ -20306,7 +20306,7 @@ var Dropdown = function Dropdown(props) {
     alignPoint = true;
   }
 
-  return /*#__PURE__*/React__namespace.createElement(Dropdown$2, _extends$1({
+  return /*#__PURE__*/React__namespace.createElement(Dropdown$3, _extends$1({
     arrow: arrow,
     alignPoint: alignPoint
   }, props, {
@@ -20322,8 +20322,8 @@ var Dropdown = function Dropdown(props) {
   }), dropdownTrigger);
 };
 
-Dropdown.Button = DropdownButton;
-Dropdown.defaultProps = {
+Dropdown$1.Button = DropdownButton;
+Dropdown$1.defaultProps = {
   mouseEnterDelay: 0.15,
   mouseLeaveDelay: 0.1
 };
@@ -22680,7 +22680,7 @@ Menu$1.defaultProps = {
   overflowedIndicator: /*#__PURE__*/React__namespace.createElement("span", null, "\xB7\xB7\xB7")
 };
 
-var MenuItem$2 = /*#__PURE__*/function (_React$Component) {
+var MenuItem$3 = /*#__PURE__*/function (_React$Component) {
   _inherits$1(MenuItem, _React$Component);
 
   var _super = _createSuper$2(MenuItem);
@@ -22884,8 +22884,8 @@ var MenuItem$2 = /*#__PURE__*/function (_React$Component) {
 
   return MenuItem;
 }(React__namespace.Component);
-MenuItem$2.isMenuItem = true;
-MenuItem$2.defaultProps = {
+MenuItem$3.isMenuItem = true;
+MenuItem$3.defaultProps = {
   onSelect: noop$2,
   onMouseEnter: noop$2,
   onMouseLeave: noop$2,
@@ -22902,7 +22902,7 @@ var connected = connect(function (_ref, _ref2) {
     // when it is not, we have fallback logic for https://github.com/ant-design/ant-design/issues/29430
     isSelected: Array.isArray(selectedKeys) ? selectedKeys.indexOf(eventKey) !== -1 : selectedKeys === eventKey
   };
-})(MenuItem$2);
+})(MenuItem$3);
 
 var MenuItemGroup = /*#__PURE__*/function (_React$Component) {
   _inherits$1(MenuItemGroup, _React$Component);
@@ -23406,7 +23406,7 @@ var __rest$h = undefined && undefined.__rest || function (s, e) {
   return t;
 };
 
-var MenuItem$1 = /*#__PURE__*/function (_React$Component) {
+var MenuItem$2 = /*#__PURE__*/function (_React$Component) {
   _inherits$1(MenuItem, _React$Component);
 
   var _super = _createSuper$2(MenuItem);
@@ -23506,7 +23506,7 @@ var MenuItem$1 = /*#__PURE__*/function (_React$Component) {
 
   return MenuItem;
 }(React__namespace.Component);
-MenuItem$1.isMenuItem = true;
+MenuItem$2.isMenuItem = true;
 
 var InternalMenu = /*#__PURE__*/function (_React$Component) {
   _inherits$1(InternalMenu, _React$Component);
@@ -23620,7 +23620,7 @@ var Menu = /*#__PURE__*/function (_React$Component2) {
 }(React__namespace.Component);
 
 Menu.Divider = Divider;
-Menu.Item = MenuItem$1;
+Menu.Item = MenuItem$2;
 Menu.SubMenu = SubMenu$1;
 Menu.ItemGroup = MenuItemGroup;
 
@@ -45873,7 +45873,7 @@ function useSelection(rowSelection, config) {
         }));
         customizeSelections = /*#__PURE__*/React__namespace.createElement("div", {
           className: "".concat(prefixCls, "-selection-extra")
-        }, /*#__PURE__*/React__namespace.createElement(Dropdown, {
+        }, /*#__PURE__*/React__namespace.createElement(Dropdown$1, {
           overlay: menu,
           getPopupContainer: getPopupContainer
         }, /*#__PURE__*/React__namespace.createElement("span", null, /*#__PURE__*/React__namespace.createElement(DownOutlined$1, null))));
@@ -46494,7 +46494,7 @@ function useSyncState(initialValue) {
 }
 
 var SubMenu = Menu.SubMenu,
-    MenuItem = Menu.Item;
+    MenuItem$1 = Menu.Item;
 
 function hasSubMenu(filters) {
   return filters.some(function (_ref) {
@@ -46544,7 +46544,7 @@ function renderFilterItems(_ref2) {
     }
 
     var Component = filterMultiple ? Checkbox$1 : Radio;
-    return /*#__PURE__*/React__namespace.createElement(MenuItem, {
+    return /*#__PURE__*/React__namespace.createElement(MenuItem$1, {
       key: filter.value !== undefined ? key : index
     }, /*#__PURE__*/React__namespace.createElement(Component, {
       checked: filteredKeys.includes(key)
@@ -46756,7 +46756,7 @@ function FilterDropdown(props) {
     onClick: function onClick(e) {
       e.stopPropagation();
     }
-  }, /*#__PURE__*/React__namespace.createElement(Dropdown, {
+  }, /*#__PURE__*/React__namespace.createElement(Dropdown$1, {
     overlay: menu,
     trigger: ['click'],
     visible: mergedVisible,
@@ -50692,7 +50692,7 @@ var Header = function (_a) {
         }
         return jsxRuntime.jsx("h4", __assign$2({ className: "text-primary" }, { children: title }), void 0);
     };
-    return (jsxRuntime.jsxs("div", __assign$2({ className: "card-container d-common-header" }, { children: [renderLeftView(), jsxRuntime.jsxs("div", __assign$2({ className: "d-common-header__button-group" }, { children: [showCancel && (jsxRuntime.jsx(Button, { variant: "outline", content: cancelText, onClick: function () { return (onCancel ? onCancel() : window.history.go("back")); }, className: "mr-3" }, void 0)),
+    return (jsxRuntime.jsxs("div", __assign$2({ className: "card-container d-common-header" }, { children: [renderLeftView(), jsxRuntime.jsxs("div", __assign$2({ className: "d-common-header__button-group" }, { children: [showCancel && (jsxRuntime.jsx(Button, { variant: "outline", content: Messages ? Messages[cancelText] : cancelText, onClick: function () { return (onCancel ? onCancel() : window.history.go("back")); }, className: "mr-3" }, void 0)),
                     onDelete && (jsxRuntime.jsx(Button, { content: Messages ? Messages[deleteText] : deleteText, onClick: onDelete, iconName: "delete", className: "mr-3" }, void 0)),
                     onPrint && (jsxRuntime.jsx(Button, { content: Messages ? Messages[printText] : printText, onClick: onPrint, iconName: "print", className: "mr-3" }, void 0)),
                     onEdit && (jsxRuntime.jsx(Button, { content: Messages ? Messages[editText] : editText, onClick: onEdit, className: "mr-3", iconName: "edit" }, void 0)),
@@ -50820,7 +50820,7 @@ var Modal = function (_a) {
 };
 
 var RowInterchangeView = function (_a) {
-    var _b = _a.dataSource, dataSource = _b === void 0 ? {} : _b, _c = _a.keyList, keyList = _c === void 0 ? [] : _c, _d = _a.variant, variant = _d === void 0 ? "background" : _d, _e = _a.boldLabel, boldLabel = _e === void 0 ? false : _e, className = _a.className, classNameRow = _a.classNameRow, classNameLabel = _a.classNameLabel, classNameContent = _a.classNameContent;
+    var _b = _a.dataSource, dataSource = _b === void 0 ? {} : _b, _c = _a.keyList, keyList = _c === void 0 ? [] : _c, _d = _a.variant, variant = _d === void 0 ? "background" : _d, _e = _a.boldLabel, boldLabel = _e === void 0 ? false : _e, className = _a.className, classNameRow = _a.classNameRow, classNameLabel = _a.classNameLabel, classNameContent = _a.classNameContent, Messages = _a.Messages;
     var wrapperClass = classnames(className);
     return (jsxRuntime.jsx("div", __assign$2({ className: wrapperClass }, { children: keyList.map(function (row, index) {
             var _a;
@@ -50834,6 +50834,9 @@ var RowInterchangeView = function (_a) {
             var labelView;
             var content;
             labelView = label;
+            if (Messages) {
+                labelView = Messages[label];
+            }
             if (typeof renderLabel === "function") {
                 labelView = renderLabel(id, row, dataSource);
             }
@@ -74273,6 +74276,69 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
     return AwesomeTableComponent;
 }(React.Component));
 
+var MenuItem = function (_a) {
+    var item = _a.item, Messages = _a.Messages, onClick = _a.onClick, isMainView = _a.isMainView;
+    var id = item.id, iconName = item.iconName, subMenu = item.subMenu, label = item.label, image = item.image;
+    var itemClass = classnames("d-dropdown-menu__item ", {
+        "d-dropdown-menu__item-with-submenu": subMenu && (subMenu === null || subMenu === void 0 ? void 0 : subMenu.length) > 0,
+        "d-dropdown-menu__item-main-view": isMainView,
+    });
+    var iconImageView;
+    var labelView = jsxRuntime.jsx("div", __assign$2({ className: "text w-100" }, { children: Messages ? Messages[label] : label }), void 0);
+    var arrowView;
+    if (iconName) {
+        iconImageView = jsxRuntime.jsx(Icon$1, { name: iconName, className: "d-block mr-2" }, void 0);
+    }
+    if (image) {
+        iconImageView = jsxRuntime.jsx("img", { src: image, alt: "", className: "d-block image-square-x-small mr-2" }, void 0);
+    }
+    if (subMenu && (subMenu === null || subMenu === void 0 ? void 0 : subMenu.length) > 0) {
+        arrowView = jsxRuntime.jsx(Icon$1, { name: "chevron_right", className: "d-block" }, void 0);
+    }
+    if (isMainView) {
+        arrowView = jsxRuntime.jsx(Icon$1, { name: "expand_more", className: "d-block ml-2" }, void 0);
+    }
+    return (jsxRuntime.jsxs("li", __assign$2({ className: itemClass, onClick: function () { return onClick && onClick(item); } }, { children: [iconImageView, labelView, arrowView, !isMainView && subMenu && subMenu.length > 0 && jsxRuntime.jsx(DropdownMenu, { dataSource: subMenu }, void 0)] }), "" + id));
+};
+var DropdownMenu = function (_a) {
+    var _b = _a.dataSource, dataSource = _b === void 0 ? [] : _b, _c = _a.onClick, onClick = _c === void 0 ? function () { } : _c, Messages = _a.Messages, className = _a.className;
+    var wrapperClass = classnames("d-dropdown-menu__container p-0", className);
+    var list = dataSource.map(function (item, index) {
+        return jsxRuntime.jsx(MenuItem, { item: item, onClick: onClick, Messages: Messages }, void 0);
+    });
+    return jsxRuntime.jsx("ul", __assign$2({ className: wrapperClass }, { children: list }), void 0);
+};
+var Dropdown = function (_a) {
+    var _b = _a.buttonProps, buttonProps = _b === void 0 ? { variant: "trans", iconName: "more_vert" } : _b, dataSource = _a.dataSource, onClick = _a.onClick, _c = _a.variant, variant = _c === void 0 ? "button" : _c, value = _a.value, Messages = _a.Messages, _d = _a.placeholder, placeholder = _d === void 0 ? "Select..." : _d, className = _a.className; _a.classNameMenu;
+    var _e = React.useState(false), openDropdown = _e[0], setOpenDropdown = _e[1];
+    var containerClass = classnames("d-dropdown positon-relative", className);
+    var dropdownClass = classnames("d-dropdown__menu", { "d-dropdown__menu-open": openDropdown });
+    var wrapperRef = React.useRef(null);
+    React.useEffect(function () {
+        var handleOutsideClick = function (event) {
+            var isClickOutside = wrapperRef.current && !wrapperRef.current.contains(event.target);
+            if (isClickOutside) {
+                setOpenDropdown(false);
+            }
+        };
+        document.addEventListener("mousedown", handleOutsideClick);
+    }, [wrapperRef, setOpenDropdown]);
+    var handleOnClickItem = function (item) {
+        setOpenDropdown(false);
+        return onClick && onClick(item);
+    };
+    var mainView = function () { return jsxRuntime.jsx(Button, __assign$2({}, buttonProps, { onClick: function () { return setOpenDropdown(!openDropdown); } }), void 0); };
+    if (variant === "view") {
+        mainView = function () {
+            if (!value) {
+                return jsxRuntime.jsx(Button, { content: placeholder, onClick: function () { return setOpenDropdown(!openDropdown); } }, void 0);
+            }
+            return (jsxRuntime.jsx(MenuItem, { item: value, Messages: Messages, onClick: function () { return setOpenDropdown(!openDropdown); }, isMainView: true }, void 0));
+        };
+    }
+    return (jsxRuntime.jsxs("div", __assign$2({ className: containerClass, ref: wrapperRef }, { children: [mainView(), jsxRuntime.jsx("div", __assign$2({ className: dropdownClass }, { children: jsxRuntime.jsx(DropdownMenu, { dataSource: dataSource, onClick: handleOnClickItem, Messages: Messages }, void 0) }), void 0)] }), void 0));
+};
+
 exports.Avatar = Avatar;
 exports.AvatarName = AvatarName;
 exports.AwesomeListComponent = AwesomeListComponent;
@@ -74283,6 +74349,7 @@ exports.Checkbox = Checkbox;
 exports.CheckboxGroup = CheckboxGroup;
 exports.DateInput = DateInput;
 exports.Dot = Dot;
+exports.Dropdown = Dropdown;
 exports.Header = Header;
 exports.HeaderDetail = HeaderDetail;
 exports.HeaderTable = HeaderTable;

@@ -14,6 +14,7 @@ export interface RowInterchangeViewProps {
     keyList: Array<IRowsKey>;
     variant?: "background" | "border";
     boldLabel?: boolean;
+    Messages?: any;
 }
 declare const RowInterchangeView: React.FC<RowInterchangeViewProps>;
 export default RowInterchangeView;
