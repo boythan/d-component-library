@@ -50089,21 +50089,12 @@ var InputTextSearch = function (_a) {
 };
 
 var HeaderTable = function (_a) {
-<<<<<<< HEAD
-    var _b = _a.className, className = _b === void 0 ? "" : _b, _c = _a.label, label = _c === void 0 ? "" : _c, _d = _a.placeholder, placeholder = _d === void 0 ? "Search" : _d, onChangeText = _a.onChangeText, onClickNew = _a.onClickNew, onClickExport = _a.onClickExport, onClickFilter = _a.onClickFilter, customView = _a.customView;
-    return (jsxRuntime.jsxs("div", __assign({ className: classnames("w-100", className) }, { children: [jsxRuntime.jsxs("div", __assign({ className: "d-flex justify-content-between mb-3" }, { children: [jsxRuntime.jsx("div", __assign({ className: "h4" }, { children: label }), void 0),
-                    jsxRuntime.jsxs("div", __assign({ className: "d-flex" }, { children: [onClickNew && jsxRuntime.jsx(Button, { iconName: "add", content: "New", onClick: onClickNew, className: "mr-3" }, void 0),
-                            onClickExport && jsxRuntime.jsx(Button, { iconName: "cloud_download", content: "Export", onClick: onClickExport }, void 0)] }), void 0)] }), void 0),
-            jsxRuntime.jsxs("div", __assign({ className: "flex-center-y" }, { children: [jsxRuntime.jsx(InputTextSearch, { className: "w-100 mr-3 bg-white", placeholder: placeholder, onChange: onChangeText }, void 0),
-                    customView && customView(),
-=======
     var _b = _a.className, className = _b === void 0 ? "" : _b, _c = _a.label, label = _c === void 0 ? "" : _c, _d = _a.placeholder, placeholder = _d === void 0 ? "Search" : _d, onChangeText = _a.onChangeText, _e = _a.disabledSearch, disabledSearch = _e === void 0 ? false : _e, onClickNew = _a.onClickNew, onClickExport = _a.onClickExport, onClickFilter = _a.onClickFilter, customView = _a.customView;
     return (jsxRuntime.jsxs("div", __assign({ className: classnames("w-100", className) }, { children: [jsxRuntime.jsxs("div", __assign({ className: "d-flex justify-content-between mb-3" }, { children: [jsxRuntime.jsx("div", __assign({ className: "h4" }, { children: label }), void 0),
                     jsxRuntime.jsxs("div", __assign({ className: "d-flex" }, { children: [onClickNew && jsxRuntime.jsx(Button, { iconName: "add", content: "New", onClick: onClickNew, className: "mr-3" }, void 0),
                             onClickExport && jsxRuntime.jsx(Button, { iconName: "cloud_download", content: "Export", onClick: onClickExport }, void 0)] }), void 0)] }), void 0),
             jsxRuntime.jsxs("div", __assign({ className: "flex-center-y" }, { children: [customView && customView(),
                     jsxRuntime.jsx(InputTextSearch, { className: "w-100 mr-3 bg-white", placeholder: placeholder, onChange: onChangeText, disabled: disabledSearch }, void 0),
->>>>>>> 8f614814be6045684a744018fe5ff2b0ed4e381f
                     onClickFilter && jsxRuntime.jsx(Button, { iconName: "filter_list", onClick: onClickFilter }, void 0)] }), void 0)] }), void 0));
 };
 
@@ -70764,11 +70755,7 @@ var transformColumn = function (columns, baseColumn) {
             titleResult = (jsxRuntime.jsxs(Tooltip, __assign({ className: "flex-center-y", zIndex: 10000, title: titleTooltip }, { children: [title,
                     jsxRuntime.jsx(Icon$2, { name: "info", className: "ml-3" }, void 0)] }), void 0));
         }
-<<<<<<< HEAD
         return __assign(__assign(__assign({}, baseColumn), { title: titleResult, align: "center", dataIndex: dataIndex, render: function (data, item) {
-=======
-        return __assign(__assign(__assign({}, baseColumn), { title: titleResult, dataIndex: dataIndex, render: function (data, item) {
->>>>>>> 8f614814be6045684a744018fe5ff2b0ed4e381f
                 var content = data;
                 if (typeof render === "function") {
                     content = render(data, item);
