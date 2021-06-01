@@ -203,7 +203,7 @@ var InputText = function (_a) {
         "d-none": !suffix,
         "border-0": disabled,
     });
-    var textAreaClass = classnames("d-input-area__input", {
+    var textAreaClass = classnames("text-x-small", "d-input-area__input", {
         "d-input-text__error": !!error,
     });
     var errorTextClass = classnames("text-x-small", "text-error", "ml-1");

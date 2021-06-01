@@ -28,7 +28,6 @@ export interface InputTextProps extends InputHTMLAttributes<any> {
     disabled?: boolean;
     prefix?: any;
     suffix?: any;
-
 }
 
 const InputText = ({
@@ -79,7 +78,7 @@ const InputText = ({
         "border-0": disabled,
     });
 
-    const textAreaClass = classname("d-input-area__input", {
+    const textAreaClass = classname("text-x-small", "d-input-area__input", {
         "d-input-text__error": !!error,
     });
 
