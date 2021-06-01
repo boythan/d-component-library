@@ -29,13 +29,13 @@ export default {
         external(),
         resolve(),
         // scss(),
+        bundleScss({ exclusive: false }),
         postcss({
             // extract: true,
             // Or with custom file name, it will generate file relative to bundle.js in v3
 
             extract: path.resolve("dist/index.css"),
         }),
-        bundleScss(),
         typescript({
             rollupCommonJSResolveHack: true,
             exclude: "**/__tests__/**",
