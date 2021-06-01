@@ -70755,7 +70755,7 @@ var transformColumn = function (columns, baseColumn) {
             titleResult = (jsxRuntime.jsxs(Tooltip, __assign({ className: "flex-center-y", zIndex: 10000, title: titleTooltip }, { children: [title,
                     jsxRuntime.jsx(Icon$2, { name: "info", className: "ml-3" }, void 0)] }), void 0));
         }
-        return __assign(__assign(__assign({}, baseColumn), { title: titleResult, dataIndex: dataIndex, render: function (data, item) {
+        return __assign(__assign(__assign({}, baseColumn), { title: titleResult, align: "center", dataIndex: dataIndex, render: function (data, item) {
                 var content = data;
                 if (typeof render === "function") {
                     content = render(data, item);
