@@ -15,6 +15,7 @@ import PopoverList from "../components/list/popoverList/PopoverList";
 import Loading from "../components/loading/Loading";
 import AwesomeListComponent from "../components/list/awesomeList/AwesomeListComponent";
 import InputTextSearch from "../components/input/InputTextSearch";
+import TreeSelect from "../components/select/TreeSelect";
 
 interface Props {
     content?: any;
@@ -114,7 +115,7 @@ export default function Test({ content }: Props): ReactElement {
 
         const input = (
             <div className="my-4">
-                <InputText label="Input Text" placeholder="Please enter" className="mt-3" />
+                {/* <InputText label="Input Text" placeholder="Please enter" className="mt-3" />
                 <InputText label="Input Text" placeholder="Please enter" className="mt-3" error="Error Text" />
                 <InputText label="Input Text" placeholder="Please enter" className="mt-3" disabled />
                 <InputText label="Input Text" placeholder="Please enter" className="mt-3" suffix="$" />
@@ -122,7 +123,7 @@ export default function Test({ content }: Props): ReactElement {
                 <InputText label="Input Text" placeholder="Please enter" multiple className="mt-3" />
                 <InputText label="Input Text" placeholder="Please enter" multiple className="mt-3" error="Error Text" />
                 <InputText label="Input Text" placeholder="Please enter" multiple className="mt-3" disabled />
-                <InputTextSearch placeholder="Please enter" className="mt-3" />
+                <InputTextSearch placeholder="Please enter" className="mt-3" /> */}
 
                 <Select
                     dataSource={ATTRIBUTE_INPUT_TYPE}
@@ -130,6 +131,15 @@ export default function Test({ content }: Props): ReactElement {
                     className="mt-4"
                     value={valueSelect}
                     onChange={setValueSelect}
+                    multiple
+                />
+                <TreeSelect
+                    dataSource={ATTRIBUTE_INPUT_TYPE}
+                    label="Select"
+                    className="mt-4"
+                    value={valueSelect}
+                    onChange={setValueSelect}
+                    multiple
                 />
             </div>
         );
@@ -267,7 +277,7 @@ export default function Test({ content }: Props): ReactElement {
         return (
             <React.Fragment>
                 {avatar}
-                {/* {input} */}
+                {input}
                 {/* {button} */}
                 {/* {checkBox} */}
                 {/* {header} */}
