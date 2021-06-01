@@ -4,20 +4,20 @@ import React from "react";
 import Icon from "../icon/Icon";
 
 export interface TreeSelectProps {
-    className: string;
-    classNameSelect: string;
+    className?: string;
+    classNameSelect?: string;
 
     value: any[];
-    label: string;
-    placeholder: string;
-    onChange: any;
-    disabled: boolean;
-    dataSource: any[];
-    error: string;
-    multiple: boolean;
+    label?: string;
+    placeholder?: string;
+    onChange?: any;
+    disabled?: boolean;
+    dataSource?: any[];
+    error?: string;
+    multiple?: boolean;
 
-    allowClear: boolean;
-    variant: "outline" | "standard";
+    allowClear?: boolean;
+    variant?: "outline" | "standard";
 }
 
 const TreeSelect = ({

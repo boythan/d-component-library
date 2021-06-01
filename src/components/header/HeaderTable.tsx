@@ -9,6 +9,8 @@ export interface HeaderTableProps {
     onChangeText: any;
 
     placeholder?: string;
+    disabledSearch?: boolean;
+
     onClickNew?: any;
     onClickExport?: any;
     onClickFilter?: any;
@@ -17,8 +19,11 @@ export interface HeaderTableProps {
 const HeaderTable = ({
     className = "",
     label = "",
+
     placeholder = "Search",
     onChangeText,
+    disabledSearch = false,
+
     onClickNew,
     onClickExport,
     onClickFilter,
@@ -34,8 +39,13 @@ const HeaderTable = ({
                 </div>
             </div>
             <div className="flex-center-y">
-                <InputTextSearch className="w-100 mr-3 bg-white" placeholder={placeholder} onChange={onChangeText} />
                 {customView && customView()}
+                <InputTextSearch
+                    className="w-100 mr-3 bg-white"
+                    placeholder={placeholder}
+                    onChange={onChangeText}
+                    disabled={disabledSearch}
+                />
                 {onClickFilter && <Button iconName="filter_list" onClick={onClickFilter} />}
             </div>
         </div>
