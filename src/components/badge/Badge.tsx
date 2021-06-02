@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { CSSProperties } from "react";
 import ClassNames from "classnames";
 import Dot, { DotProps } from "../dot/Dot";
@@ -17,6 +19,7 @@ export interface BadgeProps {
     size?: IconProps["size"];
     style?: CSSProperties;
     badgeStyle?: CSSProperties;
+    onClick?: () => any;
 }
 
 const Badge: React.FC<BadgeProps> = ({
@@ -30,6 +33,7 @@ const Badge: React.FC<BadgeProps> = ({
     size = "medium",
     style,
     badgeStyle,
+    onClick,
 }) => {
     const wrapperClass = ClassNames(`d-badge__container d-badge__container-${variant}`, className);
     const badgeWrapperClass = ClassNames("d-badge__badge-wrapper", { "rounded-circle": shape === "round" });
@@ -54,7 +58,7 @@ const Badge: React.FC<BadgeProps> = ({
         content = children();
     }
     return (
-        <div className={wrapperClass} style={style}>
+        <div className={wrapperClass} style={style} onClick={onClick}>
             <div className={badgeWrapperClass}>{badge}</div>
             {content}
         </div>
