@@ -1,6 +1,7 @@
 @import "../variables";
 
 .d-dropdown {
+    width: fit-content;
     button:active,
     button:focus {
         border: 1px solid $accent-color !important;
@@ -19,7 +20,9 @@
         opacity: 1;
         top: auto;
         left: auto;
-        z-index: 10;
+        right: auto;
+        bottom: auto;
+        z-index: 20;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -59,7 +62,7 @@
 }
 
 .d-dropdown-menu__item {
-    padding: 10px 10px;
+    padding: 8px 8px;
     width: 100%;
     display: flex;
     align-items: center;
@@ -73,4 +76,10 @@
 .d-dropdown-menu__item-main-view {
     width: fit-content;
     background-color: $light-gray-color;
+    height: 40px;
+    padding: 0px 10px;
+    .d-dropdown-menu__item-label {
+        font-weight: bold;
+        margin: 0 10px;
+    }
 }

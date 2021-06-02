@@ -1,3 +1,5 @@
+import { DropdownProps } from "../../components/dropdown/Dropdown";
+
 // eslint-disable-next-line import/prefer-default-export
 export const ATTRIBUTE_INPUT_TYPE = [
     {
@@ -35,4 +37,19 @@ export const ATTRIBUTE_INPUT_TYPE = [
     { id: "color", label: "swatchColor" },
     { id: "color", label: "swatchColor" },
     { id: "color", label: "swatchColor" },
+];
+
+export const LANGUAGES: DropdownProps["dataSource"] = [
+    {
+        id: "thai",
+        label: "Thai",
+        iconName: "person",
+        image: "./images/languages/language-1.png",
+    },
+    {
+        id: "eng",
+        label: "English",
+        iconName: "person",
+        image: "./images/languages/language-3.png",
+    },
 ];

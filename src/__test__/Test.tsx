@@ -24,6 +24,7 @@ import TestHeader from "./components/TestHeader";
 import TestTable from "./components/TestTable";
 import { ATTRIBUTE_INPUT_TYPE } from "./data/TestConstant";
 import TestBadge from "./components/badge/TestBadge";
+import TestDropdown from "./components/test_dropdown/TestDropdown";
 
 interface Props {
     content?: any;
@@ -117,16 +118,6 @@ const AvatarIconView = () => {
                 <Icon size="xxx-large" className="mx-3" name="photo_camera" />
             </div>
             <div className="d-flex align-items-center my-4">
-                <div className="w-100" style={{ height: "5px" }}>
-                    <Icon size="small" className="mx-3" name="photo_camera" variant="badge" badge="5" />
-                </div>
-                <Icon size="medium" className="mx-3" name="photo_camera" variant="badge" badge="66" />
-                <Icon size="large" className="mx-3" name="photo_camera" variant="badge" badge="99+" />
-                <Icon size="x-large" className="mx-3" name="chat_bubble" variant="badge" badge="3" />
-                <Icon size="xx-large" className="mx-3" name="photo_camera" variant="badge" badge="9" />
-                <Icon size="xxx-large" className="mx-3" name="photo_camera" variant="badge" />
-            </div>
-            <div className="d-flex align-items-center my-4">
                 <AvatarName
                     user={{
                         fullName: "Amanda",
@@ -187,28 +178,6 @@ const ButtonView = () => (
         </div>
     </div>
 );
-
-const DropdownView = () => {
-    const [selectedDropdown, setSelectedDropdown] = useState<any>(ATTRIBUTE_INPUT_TYPE[0]);
-    return (
-        <div className="d-flex flex-column my-4">
-            <Dropdown dataSource={ATTRIBUTE_INPUT_TYPE} />
-            <Dropdown
-                dataSource={ATTRIBUTE_INPUT_TYPE}
-                variant="view"
-                value={selectedDropdown}
-                onClick={(item) => setSelectedDropdown(item)}
-            />
-            <p>
-                Almost before we knew it, we had left the ground. Thin 100 italic Almost before we knew it, we had left
-                the ground. Light 300 Almost before we knew it, we had left the ground. Light 300 italic Almost before
-                we knew it, we had left the ground. Regular 400 Almost before we knew it, we had left the ground.
-                Regular 400 italic Almost before we knew it, we had left the ground. Medium 500
-            </p>
-        </div>
-    );
-};
-
 const RowsView = () => {
     const { mockData } = useContext<any>(AppStateContext);
     console.log(mockData);
@@ -403,7 +372,7 @@ export default function Test({ content }: Props): ReactElement {
         { id: "LIST", label: "LIST", component: list },
         { id: "LOADING", label: "LOADING", component: loading },
         { id: "DOT", label: "DOT", component: dot },
-        { id: "DROPDOWN", label: "DROPDOWN", component: <DropdownView /> },
+        { id: "DROPDOWN", label: "DROPDOWN", component: <TestDropdown /> },
         { id: "BADGE", label: "BADGE", component: <TestBadge /> },
     ];
 

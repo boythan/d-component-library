@@ -4,27 +4,4 @@
     .d-icon__#{$name} {
         font-size: $size;
     }
-    .d-icon__badge {
-        top: -10px;
-        right: 3px;
-        padding: 1px 5px;
-        border-radius: 999px;
-        border: 2px solid white;
-        background-color: $badge-color;
-    }
-    .d-icon__badge-#{$name} {
-        color: $light-color;
-        font-size: $text-xx-small-size;
-    }
-}
-.d-icon__container {
-    width: fit-content;
-    height: fit-content;
-}
-.d-icon__container-badge-long {
-    .d-icon__badge {
-        top: -10px;
-        right: -10px;
-        padding: 1px 5px;
-    }
 }

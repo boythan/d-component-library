@@ -1,4 +1,4 @@
-import { jsxs, jsx } from 'react/jsx-runtime';
+import { jsx, jsxs } from 'react/jsx-runtime';
 import * as React from 'react';
 import React__default, { createContext, useRef, useState, useEffect, useLayoutEffect as useLayoutEffect$1, Component, useContext, useMemo as useMemo$1, useCallback, forwardRef, useImperativeHandle, isValidElement as isValidElement$1, cloneElement as cloneElement$1 } from 'react';
 import * as ReactDOM from 'react-dom';
@@ -172,16 +172,8 @@ var classnames = createCommonjsModule(function (module) {
 });
 
 var Icon$2 = function (_a) {
-    var name = _a.name, _b = _a.size, size = _b === void 0 ? "medium" : _b, className = _a.className, _c = _a.variant, variant = _c === void 0 ? "single" : _c, badge = _a.badge, classNameContainer = _a.classNameContainer, props = __rest$q(_a, ["name", "size", "className", "variant", "badge", "classNameContainer"]);
+    var name = _a.name, _b = _a.size, size = _b === void 0 ? "medium" : _b, className = _a.className, props = __rest$q(_a, ["name", "size", "className"]);
     var iconClass = classnames("material-icons", "d-icon__" + size, className);
-    var wrapperClass = classnames("position-relative d-icon__container", {
-        "d-icon__container-badge-long": badge && (badge === null || badge === void 0 ? void 0 : badge.length) > 2,
-    }, classNameContainer);
-    var badgeClass = classnames("position-absolute d-icon__badge d-icon__badge-" + size);
-    if (variant === "badge") {
-        return (jsxs("div", __assign({ className: wrapperClass }, { children: [jsx("i", __assign({ className: iconClass }, props, { children: name }), void 0),
-                badge && jsx("div", __assign({ className: badgeClass }, { children: badge }), void 0)] }), void 0));
-    }
     return (jsx("i", __assign({ className: iconClass }, props, { children: name }), void 0));
 };
 
@@ -50172,12 +50164,12 @@ var Modal = function (_a) {
     var children = _a.children, open = _a.open, _b = _a.centered, centered = _b === void 0 ? true : _b, _c = _a.closable, closable = _c === void 0 ? false : _c, onClose = _a.onClose, onSave = _a.onSave, onSideClick = _a.onSideClick, cancelAction = _a.cancelAction, width = _a.width, title = _a.title, customHeader = _a.customHeader, customFooter = _a.customFooter, customSideButton = _a.customSideButton, headerSide = _a.headerSide, _d = _a.hasCloseIcon, hasCloseIcon = _d === void 0 ? true : _d, _e = _a.hasCancelButton, hasCancelButton = _e === void 0 ? false : _e, _f = _a.saveText, saveText = _f === void 0 ? "Save" : _f, _g = _a.cancelText, cancelText = _g === void 0 ? "Cancel" : _g, _h = _a.sideText, sideText = _h === void 0 ? "Clear" : _h, size = _a.size, className = _a.className, classNameContent = _a.classNameContent, classNameFooter = _a.classNameFooter, classNameHeader = _a.classNameHeader, _j = _a.showFooter, showFooter = _j === void 0 ? true : _j, _k = _a.showHeader, showHeader = _k === void 0 ? true : _k, props = __rest$q(_a, ["children", "open", "centered", "closable", "onClose", "onSave", "onSideClick", "cancelAction", "width", "title", "customHeader", "customFooter", "customSideButton", "headerSide", "hasCloseIcon", "hasCancelButton", "saveText", "cancelText", "sideText", "size", "className", "classNameContent", "classNameFooter", "classNameHeader", "showFooter", "showHeader"]);
     var modalClass = classnames("d-modal", "d-modal__" + size, className);
     var childrenClass = classnames("d-modal__children", classNameContent);
-    var headerClass = classnames("d-modal__header border-bottom py-3", { "d-flex align-items-center": !!title }, classNameHeader);
+    var headerClass = classnames("d-modal__header border-bottom ", { "d-flex align-items-center": !!title }, classNameHeader);
     var footerClass = classnames("d-modal__footer d-flex align-items-center border-top py-3 px-3", classNameFooter);
     var header = function () {
         var content;
         content = function () {
-            return (jsxs(React__default.Fragment, { children: [hasCloseIcon && jsx(Button, { iconName: "close", variant: "trans", onClick: onClose }, void 0),
+            return (jsxs(React__default.Fragment, { children: [hasCloseIcon && (jsx(Button, { iconName: "close", variant: "trans", onClick: onClose, className: "d-modal__header-close-icon" }, void 0)),
                     title && jsx("h4", __assign({ className: "w-100 text-center" }, { children: title }), void 0),
                     headerSide && headerSide()] }, void 0));
         };
@@ -68993,9 +68985,9 @@ var DateInput = function (_a) {
 };
 
 var Dot = function (_a) {
-    var _b = _a.size, size = _b === void 0 ? "small" : _b, _c = _a.color, color = _c === void 0 ? "green" : _c, className = _a.className;
+    var _b = _a.size, size = _b === void 0 ? "small" : _b, _c = _a.color, color = _c === void 0 ? "green" : _c, className = _a.className, style = _a.style;
     var dotClass = classnames("d-dot_container", "d-dot__" + size + "-" + color, className);
-    return jsx("div", { className: dotClass }, void 0);
+    return jsx("div", { className: dotClass, style: style }, void 0);
 };
 
 var main = createCommonjsModule(function (module) {
@@ -70950,42 +70942,44 @@ var SelectColumnModal = function (_a) {
         setSelectedOption(filterOption);
         getLayoutTable();
     };
+    var onClickClearAll = function () {
+        return DialogManager.showConfirm("Confirm", "Are you sure want to delete all Layout?", function () { return __awaiter(void 0, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, LayoutTableManager.clearTableLayout(keyTable)];
+                    case 1:
+                        _a.sent();
+                        setListLayout({});
+                        setSelectedLayout({});
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+    };
+    var onClickSelectAll = function () {
+        if (!selectAll) {
+            setSelectedOption(options);
+        }
+        setSelectAll(!selectAll);
+    };
     var renderContentModal = function () {
-        return (jsxs("div", __assign({ className: "d-flex flex-column align-items-start px-5 justify-content-center" }, { children: [jsxs("h5", { children: [actionText, ":"] }, void 0),
-                jsxs("div", __assign({ className: "d-flex align-items-center" }, { children: [jsx(Checkbox, { value: selectAll, checked: selectAll, onChange: function () {
-                                if (!selectAll) {
-                                    setSelectedOption(options);
-                                }
-                                setSelectAll(!selectAll);
-                            }, color: "primary", label: selectAllText }, void 0),
-                        jsx(Button, { onClick: function () {
-                                return DialogManager.showConfirm("Confirm", "Are you sure want to delete all Layout?", function () { return __awaiter(void 0, void 0, void 0, function () {
-                                    return __generator(this, function (_a) {
-                                        switch (_a.label) {
-                                            case 0: return [4 /*yield*/, LayoutTableManager.clearTableLayout(keyTable)];
-                                            case 1:
-                                                _a.sent();
-                                                setListLayout({});
-                                                setSelectedLayout({});
-                                                return [2 /*return*/];
-                                        }
-                                    });
-                                }); });
-                            }, disabled: lodash.isEmpty(listLayout), iconName: "highlight_off", content: "Clear All Layout", variant: "trans", color: "red" }, void 0)] }), void 0),
-                jsx("div", __assign({ className: "d-flex flex-column my-4" }, { children: options.map(function (item) {
+        return (jsxs("div", __assign({ className: "d-flex flex-column align-items-start justify-content-center" }, { children: [jsxs("h5", { children: [actionText, ":"] }, void 0),
+                jsxs("div", __assign({ className: "d-flex align-items-center" }, { children: [jsx(Checkbox, { value: selectAll, checked: selectAll, onChange: onClickSelectAll, color: "primary", label: selectAllText }, void 0),
+                        jsx(Button, { onClick: onClickClearAll, disabled: lodash.isEmpty(listLayout), iconName: "highlight_off", content: "Clear All Layout", variant: "trans", color: "red" }, void 0)] }), void 0),
+                jsx("div", __assign({ className: "row my-4 w-100" }, { children: options.map(function (item) {
                         // eslint-disable-next-line operator-linebreak
-                        var isChecked = selectedOption.filter(function (obj) { return obj.dataIndex === item.dataIndex; }).length > 0;
-                        return (jsx(Checkbox, { checked: isChecked, onChange: function (event) {
-                                var _a, _b;
-                                if (isChecked) {
-                                    removeItemFromSelected((_a = event === null || event === void 0 ? void 0 : event.target) === null || _a === void 0 ? void 0 : _a.value);
-                                }
-                                else {
-                                    addItemToSelected((_b = event === null || event === void 0 ? void 0 : event.target) === null || _b === void 0 ? void 0 : _b.value);
-                                }
-                            }, value: item === null || item === void 0 ? void 0 : item.dataIndex, 
-                            // eslint-disable-next-line react/no-children-prop
-                            label: (item === null || item === void 0 ? void 0 : item.title) && (item === null || item === void 0 ? void 0 : item.title), className: "my-2" }, void 0));
+                        var isChecked = !!selectedOption.find(function (obj) { return obj.id === item.id; });
+                        return (jsx("div", __assign({ className: "col-sm-6" }, { children: jsx(Checkbox, { checked: isChecked, onChange: function (event) {
+                                    var _a, _b;
+                                    if (isChecked) {
+                                        removeItemFromSelected((_a = event === null || event === void 0 ? void 0 : event.target) === null || _a === void 0 ? void 0 : _a.value);
+                                    }
+                                    else {
+                                        addItemToSelected((_b = event === null || event === void 0 ? void 0 : event.target) === null || _b === void 0 ? void 0 : _b.value);
+                                    }
+                                }, value: item === null || item === void 0 ? void 0 : item.id, 
+                                // eslint-disable-next-line react/no-children-prop
+                                label: (item === null || item === void 0 ? void 0 : item.title) && (item === null || item === void 0 ? void 0 : item.title), className: "my-2" }, void 0) }), void 0));
                     }) }), void 0)] }), void 0));
     };
     var renderSecondTitle = function () {
@@ -71004,7 +70998,7 @@ var SelectColumnModal = function (_a) {
     };
     return (jsxs(React__default.Fragment, { children: [jsx(Button, { content: "Column", iconName: "settings", variant: "trans", onClick: function () { return setOpenOptionModal(true); }, color: "gray", className: "font-weight-normal" }, void 0),
             jsx(Modal, __assign({ open: openOptionModal, onClose: function () { return setOpenOptionModal(false); }, onSave: handleOnClickSave, title: "Select Layout " + ((selectedLayout === null || selectedLayout === void 0 ? void 0 : selectedLayout.name) ? " - " + (selectedLayout === null || selectedLayout === void 0 ? void 0 : selectedLayout.name) : ""), customFooter: renderFooter, size: "medium", headerSide: renderSecondTitle }, { children: renderContentModal() }), void 0),
-            jsx(Modal, __assign({ open: openSaveNewModal, onClose: function () { return setOpenSaveNewModal(false); }, onSave: handleOnSaveNewLayout, centered: false }, { children: renderContentSaveNewModal() }), void 0)] }, void 0));
+            jsx(Modal, __assign({ open: openSaveNewModal, onClose: function () { return setOpenSaveNewModal(false); }, onSave: handleOnSaveNewLayout }, { children: renderContentSaveNewModal() }), void 0)] }, void 0));
 };
 
 var shims = createCommonjsModule(function (module, exports) {
@@ -73469,15 +73463,17 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
             }
         };
         /** ************************************************** TABLE CONTROL *************************************************** */
-        _this.handleResize = function (index) { return function (e, _a) {
-            var size = _a.size;
-            _this.setState(function (_a) {
-                var _b = _a.columns, columns = _b === void 0 ? [] : _b;
-                var nextColumns = __spreadArray([], columns);
-                nextColumns[index] = __assign(__assign({}, nextColumns[index]), { width: size === null || size === void 0 ? void 0 : size.width });
-                return { columns: nextColumns };
-            });
-        }; };
+        _this.handleResize = function (index) {
+            return function (e, _a) {
+                var size = _a.size;
+                _this.setState(function (_a) {
+                    var _b = _a.columns, columns = _b === void 0 ? [] : _b;
+                    var nextColumns = __spreadArray([], columns);
+                    nextColumns[index] = __assign(__assign({}, nextColumns[index]), { width: size === null || size === void 0 ? void 0 : size.width });
+                    return { columns: nextColumns };
+                });
+            };
+        };
         _this.handleSelectTableLayout = function (item) { return __awaiter(_this, void 0, void 0, function () {
             var keyTableLayout, listLayout, saveLayout, newTableLayout, listLayoutKey;
             return __generator(this, function (_a) {
@@ -73609,12 +73605,12 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
     AwesomeTableComponent.prototype.getDataList = function () {
         return this.state.data;
     };
-    /** ************************************************** RENDER *************************************************** */
-    AwesomeTableComponent.prototype.render = function () {
+    AwesomeTableComponent.prototype.getColumns = function () {
         var _this = this;
-        var _a = this.state, filteredInfo = _a.filteredInfo, total = _a.total, pagination = _a.pagination, _b = _a.columns, columns = _b === void 0 ? [] : _b, _c = _a.selectedColumns, selectedColumns = _c === void 0 ? [] : _c, tableLayoutList = _a.tableLayoutList, selectedLayout = _a.selectedLayout, data = _a.data, loading = _a.loading;
-        var _d = this.props, rowKey = _d.rowKey, isScroll = _d.isScroll, classNameTable = _d.classNameTable, tableLayout = _d.tableLayout, showSelectColumn = _d.showSelectColumn, keyTableLayout = _d.keyTableLayout, className = _d.className;
-        var columnsResult = columns.map(function (columnParams) {
+        var _a = this.state, filteredInfo = _a.filteredInfo, _b = _a.columns, columns = _b === void 0 ? [] : _b, _c = _a.selectedColumns, selectedColumns = _c === void 0 ? [] : _c;
+        var showSelectColumn = this.props.showSelectColumn;
+        var columnsTransformed = transformColumn(columns);
+        var columnsSearchFilter = columnsTransformed.map(function (columnParams) {
             var column = columnParams;
             if (column.filters && column.filters.length > 0) {
                 column = __assign(__assign({}, column), { filteredValue: filteredInfo && column.dataIndex ? filteredInfo[column.dataIndex] : null });
@@ -73624,15 +73620,23 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
             }
             return column;
         });
-        var columnResizable = columnsResult.map(function (col, index) { return (__assign(__assign({}, col), { onHeaderCell: function (column) { return ({
+        var columnsResizable = columnsSearchFilter.map(function (col, index) { return (__assign(__assign({}, col), { onHeaderCell: function (column) { return ({
                 width: column === null || column === void 0 ? void 0 : column.width,
                 onResize: _this.handleResize(index),
             }); } })); });
-        var columnSelected = columnResizable;
+        var columnsSelected = columnsResizable;
         if (showSelectColumn) {
             var selectedIndex_1 = selectedColumns.map(function (item) { return item === null || item === void 0 ? void 0 : item.dataIndex; });
-            columnSelected = columnResizable.filter(function (item) { return selectedIndex_1.includes(item.dataIndex); });
+            columnsSelected = columnsResizable.filter(function (item) { return selectedIndex_1.includes(item.dataIndex); });
         }
+        return columnsSelected;
+    };
+    /** ************************************************** RENDER *************************************************** */
+    AwesomeTableComponent.prototype.render = function () {
+        var _this = this;
+        var _a = this.state, total = _a.total, pagination = _a.pagination, tableLayoutList = _a.tableLayoutList, selectedLayout = _a.selectedLayout, data = _a.data, loading = _a.loading;
+        // eslint-disable-next-line operator-linebreak
+        var _b = this.props, rowKey = _b.rowKey, isScroll = _b.isScroll, classNameTable = _b.classNameTable, tableLayout = _b.tableLayout, showSelectColumn = _b.showSelectColumn, keyTableLayout = _b.keyTableLayout, className = _b.className;
         var paginationResult = pagination ? __assign(__assign({}, pagination), { current: pagination.pageIndex, total: total }) : false;
         var wrapperClass = classnames("d-table-awesome-component", className);
         return (jsxs("div", __assign({ className: wrapperClass }, { children: [showSelectColumn && (jsxs("div", __assign({ className: "d-table-awesome-component__select-column m-2" }, { children: [!lodash.isEmpty(tableLayoutList) && (jsx(SelectLayoutView, { listLayout: tableLayoutList, onClickItem: this.handleSelectTableLayout, selectedLayout: selectedLayout, showBorder: true }, void 0)),
@@ -73644,8 +73648,8 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
                 jsx(Table, __assign({ rowKey: rowKey, dataSource: data, loading: loading, onChange: this.handleTableChange, rowClassName: function () {
                         return "d-table-awesome-component__row";
                     }, pagination: paginationResult, scroll: isScroll ? { y: "1000" } : {}, tableLayout: tableLayout, bordered: true, components: this.components }, this.props, { className: "d-table-awesome-component__table " + classNameTable, 
-                    // columns props always has to be in last positon in order for Resizable table to work
-                    columns: columnSelected }), void 0)] }), void 0));
+                    // columns props always has to be in last position in order for Resizable table to work
+                    columns: this.getColumns() }), void 0)] }), void 0));
     };
     AwesomeTableComponent.defaultProps = {
         rowKey: function (item) {
@@ -73685,7 +73689,7 @@ var MenuItem = function (_a) {
         "d-dropdown-menu__item-main-view": isMainView,
     });
     var iconImageView;
-    var labelView = jsx("div", __assign({ className: "text w-100" }, { children: Messages ? Messages[label] : label }), void 0);
+    var labelView = jsx("div", __assign({ className: "w-100 text d-dropdown-menu__item-label" }, { children: Messages ? Messages[label] : label }), void 0);
     var arrowView;
     if (iconName) {
         iconImageView = jsx(Icon$2, { name: iconName, className: "d-block mr-2" }, void 0);
@@ -73744,5 +73748,29 @@ var Dropdown = function (_a) {
             jsx("div", __assign({ className: dropdownClass }, { children: jsx(DropdownMenu, { dataSource: dataSource, onClick: handleOnClickItem, Messages: Messages }, void 0) }), void 0)] }), void 0));
 };
 
-export { Avatar, AvatarName, AwesomeListComponent, AwesomeTableComponent, AwesomeTableUtils, Button, Checkbox, CheckboxGroup, DateInput, Dot, Dropdown, Header, HeaderDetail, HeaderTable, Icon$2 as Icon, InputText, Loading, Modal, PopoverList, RadioGroup, RowInterchangeView, Select, TabBar, TreeSelect };
+var Badge = function (_a) {
+    var children = _a.children, _b = _a.variant, variant = _b === void 0 ? "dot" : _b, _c = _a.shape, shape = _c === void 0 ? "round" : _c, index = _a.index, _d = _a.dotProps, dotProps = _d === void 0 ? {} : _d, className = _a.className, _e = _a.color, color = _e === void 0 ? "secondary" : _e, _f = _a.size, size = _f === void 0 ? "medium" : _f, style = _a.style, badgeStyle = _a.badgeStyle, onClick = _a.onClick;
+    var wrapperClass = classnames("d-badge__container d-badge__container-" + variant, className);
+    var badgeWrapperClass = classnames("d-badge__badge-wrapper", { "rounded-circle": shape === "round" });
+    var badgeIndexClass = classnames("d-badge__badge-index-" + size + "-" + color);
+    var content = children;
+    var badge = jsx(Dot, __assign({}, dotProps, { color: color, size: size, style: badgeStyle }), void 0);
+    if (variant === "index") {
+        var display = index;
+        badge = jsx("div", {}, void 0);
+        if (typeof index === "number") {
+            display = index.toString();
+        }
+        if (display) {
+            badge = (jsx("div", __assign({ className: badgeIndexClass, style: badgeStyle }, { children: display }), void 0));
+        }
+    }
+    if (typeof children === "function") {
+        content = children();
+    }
+    return (jsxs("div", __assign({ className: wrapperClass, style: style, onClick: onClick }, { children: [jsx("div", __assign({ className: badgeWrapperClass }, { children: badge }), void 0),
+            content] }), void 0));
+};
+
+export { Avatar, AvatarName, AwesomeListComponent, AwesomeTableComponent, AwesomeTableUtils, Badge, Button, Checkbox, CheckboxGroup, DateInput, Dot, Dropdown, Header, HeaderDetail, HeaderTable, Icon$2 as Icon, InputText, Loading, Modal, PopoverList, RadioGroup, RowInterchangeView, Select, TabBar, TreeSelect };
 //# sourceMappingURL=dcomponent.es.js.map

@@ -77,11 +77,14 @@ export type { AvatarNameProps } from "./components/avatar/AvatarName";
 export { default as AvatarName } from "./components/avatar/AvatarName";
 
 /* ----------------------------------------
-// RowInterchangeView
+// View
 // ---------------------------------------- */
 
 export type { RowInterchangeViewProps, IRowsKey } from "./components/view/RowInterchangeView";
 export { default as RowInterchangeView } from "./components/view/RowInterchangeView";
+
+export type { ViewRowProps } from "./components/view/ViewRow";
+export { default as ViewRow } from "./components/view/ViewRow";
 
 /* ----------------------------------------
 // TabBar
@@ -151,3 +154,10 @@ export { default as TimeUtils } from "./utils/TimeUtils";
 export { default as ObjectUtils } from "./utils/ObjectUtils";
 export { default as MapUtils } from "./utils/MapUtils";
 export { default as ImageUtils } from "./utils/ImageUtils";
+
+/* ----------------------------------------
+// Badge
+// ---------------------------------------- */
+
+export type { BadgeProps } from "./components/badge/Badge";
+export { default as Badge } from "./components/badge/Badge";

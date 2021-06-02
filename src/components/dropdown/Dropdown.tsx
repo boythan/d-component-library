@@ -52,7 +52,7 @@ const MenuItem = ({
         "d-dropdown-menu__item-main-view": isMainView,
     });
     let iconImageView;
-    const labelView = <div className="text w-100">{Messages ? Messages[label] : label}</div>;
+    const labelView = <div className="w-100 text d-dropdown-menu__item-label">{Messages ? Messages[label] : label}</div>;
     let arrowView;
     if (iconName) {
         iconImageView = <Icon name={iconName} className="d-block mr-2" />;

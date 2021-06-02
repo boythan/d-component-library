@@ -46,3 +46,5 @@ export { default as AwesomeTableComponent } from "./components/table/AwesomeTabl
 export { default as AwesomeTableUtils } from "./components/table/AwesomeTableUtils";
 export type { DropdownProps, IDropdownMenuItemProps, DropDownMenuProps } from "./components/dropdown/Dropdown";
 export { default as Dropdown } from "./components/dropdown/Dropdown";
+export type { BadgeProps } from "./components/badge/Badge";
+export { default as Badge } from "./components/badge/Badge";
