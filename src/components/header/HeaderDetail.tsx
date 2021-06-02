@@ -2,6 +2,7 @@ import React, { useMemo } from "react";
 import ClassNames from "classnames";
 import Button from "../button/Button";
 import AvatarName, { IUserBasic } from "../avatar/AvatarName";
+import TimeUtils from "../../utils/TimeUtils";
 
 export interface IStatusItem {
     id: string;
@@ -26,6 +27,7 @@ export interface HeaderDetailProps {
     user?: IUserBasic;
     customRight?: () => React.ReactNode;
     onButtonClick?: (item: IButtonItem) => void;
+    customCreated?: (props?: any) => any;
     Messages?: any;
 }
 
@@ -40,6 +42,7 @@ const HeaderDetail: React.FC<HeaderDetailProps> = ({
     created,
     user,
     customRight,
+    customCreated,
     onButtonClick,
     Messages,
 }) => {
@@ -96,6 +99,18 @@ const HeaderDetail: React.FC<HeaderDetailProps> = ({
         );
     };
 
+    let createdView = (
+        <div className="text-x-small text-gray">
+            {`${Messages.createdOn} ${TimeUtils.convertMiliToDate(created as any)} ${
+                Messages.at
+            } ${TimeUtils.convertMiliToTime(created as any)}`}
+        </div>
+    );
+
+    if (customCreated) {
+        createdView = customCreated(created);
+    }
+
     const rightView = () => {
         if (customRight) {
             return customRight();
@@ -103,13 +118,7 @@ const HeaderDetail: React.FC<HeaderDetailProps> = ({
         return (
             <div className="d-flex flex-column align-items-end">
                 {user && <AvatarName user={user} className="mb-1" />}
-                {created && (
-                    <div className="text-x-small text-gray">
-                        {/* {`${Messages.createdOn} ${TimeUtils.convertMiliToDate(created)} ${
-                            Messages.at
-                        } ${TimeUtils.convertMiliToTime(created)}`} */}
-                    </div>
-                )}
+                {(created || customCreated) && createdView}
             </div>
         );
     };
