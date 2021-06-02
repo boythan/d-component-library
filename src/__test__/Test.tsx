@@ -3,14 +3,10 @@ import React, { ReactElement, useContext, useEffect, useRef, useState } from "re
 import Avatar from "../components/avatar/Avatar";
 import AvatarName from "../components/avatar/AvatarName";
 import Button from "../components/button/Button";
-import Checkbox from "../components/checkbox/Checkbox";
-import CheckboxGroup from "../components/checkbox/CheckboxGroup";
-import RadioGroup from "../components/checkbox/RadioGroup";
 import DateInput from "../components/dateInput/DateInput";
 import DialogComponent from "../components/dialog/DialogComponent";
 import DialogManager from "../components/dialog/DialogManager";
 import Dot from "../components/dot/Dot";
-import Dropdown from "../components/dropdown/Dropdown";
 import Icon from "../components/icon/Icon";
 import InputText from "../components/input/InputText";
 import InputTextSearch from "../components/input/InputTextSearch";
@@ -20,11 +16,12 @@ import Modal from "../components/modal/Modal";
 import Select from "../components/select/Select";
 import TabBar from "../components/tab/TabBar";
 import RowInterchangeView from "../components/view/RowInterchangeView";
+import TestBadge from "./components/badge/TestBadge";
 import TestHeader from "./components/TestHeader";
 import TestTable from "./components/TestTable";
-import { ATTRIBUTE_INPUT_TYPE } from "./data/TestConstant";
-import TestBadge from "./components/badge/TestBadge";
+import TestCheckbox from "./components/test_checkbox/TestCheckbox";
 import TestDropdown from "./components/test_dropdown/TestDropdown";
+import { ATTRIBUTE_INPUT_TYPE } from "./data/TestConstant";
 
 interface Props {
     content?: any;
@@ -180,7 +177,6 @@ const ButtonView = () => (
 );
 const RowsView = () => {
     const { mockData } = useContext<any>(AppStateContext);
-    console.log(mockData);
 
     return (
         <div className="my-4">
@@ -208,9 +204,7 @@ const RowsView = () => {
 };
 
 export default function Test({ content }: Props): ReactElement {
-    const [checked, setChecked] = useState(false);
-    const [valueSelect, setValueSelect] = useState(["text"]);
-    const [radioValue, setRadioValue] = useState<any>(["color"]);
+    const [valueSelect, setValueSelect] = useState([ATTRIBUTE_INPUT_TYPE[0]]);
     const [openModal, setOpenModal] = useState(false);
     const [selectedTab, setSelectedTab] = useState<any>();
     const [mockData, setMockData] = useState<any>([]);
@@ -252,31 +246,6 @@ export default function Test({ content }: Props): ReactElement {
         </div>
     );
 
-    const checkBox = (
-        <React.Fragment>
-            <div className="my-5">
-                <Checkbox value="123" variant="radio" label="Label value 1" />
-                <Checkbox value="123" variant="checkbox" label="Label value 1" />
-                <Checkbox value="123" variant="checkbox" label="Label value 1" disabled />
-            </div>
-            <div className="my-5">
-                <CheckboxGroup
-                    dataSource={ATTRIBUTE_INPUT_TYPE}
-                    value={valueSelect}
-                    onChange={(value) => setValueSelect(value)}
-                />
-            </div>
-            <div className="my-5">
-                <RadioGroup
-                    dataSource={ATTRIBUTE_INPUT_TYPE}
-                    value={radioValue}
-                    onChange={(value) => setRadioValue(value)}
-                    getDisabledItem={(item) => item?.id === "color"}
-                />
-            </div>
-        </React.Fragment>
-    );
-
     const tab = (
         <div className="my-4">
             <TabBar dataSource={ATTRIBUTE_INPUT_TYPE} onChange={(tab) => setSelectedTab(tab)} value={selectedTab} />
@@ -315,7 +284,6 @@ export default function Test({ content }: Props): ReactElement {
                 transformer={async (res) => {
                     // const data = JSON.stringify(res);
                     const data = await res.json();
-                    console.log({ data });
                     return data as any;
                 }}
                 renderItem={(item, index) => <div>{item?.id}</div>}
@@ -365,7 +333,7 @@ export default function Test({ content }: Props): ReactElement {
         { id: "DATE", label: "DATE", component: <Date /> },
         { id: "BUTTON", label: "BUTTON", component: <ButtonView /> },
         { id: "TABLE", label: "TABLE", component: <TestTable /> },
-        { id: "CHECKBOX", label: "CHECKBOX", component: checkBox },
+        { id: "CHECKBOX", label: "CHECKBOX", component: <TestCheckbox /> },
         { id: "HEADER", label: "HEADER", component: <TestHeader /> },
         { id: "TAB BAR", label: "TAB BAR", component: tab },
         { id: "VIEW", label: "VIEW", component: <RowsView /> },
