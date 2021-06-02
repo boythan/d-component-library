@@ -1,12 +1,6 @@
 @import "../mixins/buttons";
 @import "../variables";
 
-$dot-size: (
-    "large": 16px,
-    "medium": 12px,
-    "small": 8px,
-    "x-small": 4px,
-);
 
 @each $nameSize, $size in $dot-size {
     @each $name, $color in $basic-color {
