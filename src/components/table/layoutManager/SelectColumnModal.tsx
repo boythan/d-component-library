@@ -1,10 +1,9 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable no-unused-expressions */
 // react
-// import { Checkbox } from "antd";
 import ClassNames from "classnames";
 // third-party
-import _, { isEmpty } from "lodash";
+import _ from "lodash";
 import React, { useEffect, useState } from "react";
 // application
 import Button from "../../button/Button";
@@ -179,7 +178,7 @@ const SelectColumnModal = ({
     };
 
     const handleOnSaveNewLayout = async () => {
-        if (isEmpty(nameOfLayout)) {
+        if (_.isEmpty(nameOfLayout)) {
             return Promise.reject();
         }
         const selected = selectedOption.map((item: any) => ({

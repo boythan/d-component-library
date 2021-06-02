@@ -1,4 +1,4 @@
-import _, { every, includes, reverse } from "lodash";
+import _ from "lodash";
 
 const getValueFromStringKey = (object: any, keyString: string) => {
     const keyList = keyString.split(".");
@@ -15,7 +15,7 @@ const getValueFromStringKey = (object: any, keyString: string) => {
 
 const setValueFromStringKey = (object: any, keyString: string, value: any) => {
     const keyList = keyString.split(".");
-    reverse(keyList);
+    _.reverse(keyList);
     let objectResult: any = {};
 
     if (keyList.length === 0) {
@@ -123,7 +123,7 @@ function combineAllArray(arr: any[]): any[] {
 
 function compareTwoStringArray(array1: string[], array2: string[]) {
     if (!array1 || !array2 || array1.length !== array2.length) return false;
-    return every(array1, (item) => includes(array2, item));
+    return _.every(array1, (item) => _.includes(array2, item));
 }
 
 /**
@@ -132,7 +132,7 @@ function compareTwoStringArray(array1: string[], array2: string[]) {
  * @param {small array} array2
  */
 function arrayIsContainArray(array1: string[], array2: string[]) {
-    return every(array2, (item) => includes(array1, item));
+    return _.every(array2, (item) => _.includes(array1, item));
 }
 
 export default {

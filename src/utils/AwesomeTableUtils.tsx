@@ -1,7 +1,6 @@
 import { Tooltip } from "antd";
 import React from "react";
 import Icon from "../components/icon/Icon";
-import StringUtils from "./StringUtils";
 
 export const isString = (variable: any) => {
     return typeof variable === "string";
