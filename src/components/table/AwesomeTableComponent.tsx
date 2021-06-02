@@ -12,7 +12,7 @@ import ClassNames from "classnames";
 import _ from "lodash";
 import React, { Component } from "react";
 import Highlighter from "react-highlight-words";
-import { isArray, isString, transformColumn } from "./AwesomeTableUtils";
+import { isArray, isString, transformColumn } from "../../utils/AwesomeTableUtils";
 // data stubs
 import LayoutTableManager from "./layoutManager/LayoutTableManager";
 import SelectColumnModal, { SelectLayoutView } from "./layoutManager/SelectColumnModal";

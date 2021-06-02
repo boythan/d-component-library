@@ -28,7 +28,8 @@
     "node-sass": "^6.0.0",
     "react-highlight-words": "^0.17.0",
     "react-resizable": "^3.0.1",
-    "web-vitals": "^1.0.1"
+    "web-vitals": "^1.0.1",
+    "query-string": "6.12.1"
   },
   "scripts": {
     "build": "rollup -c",

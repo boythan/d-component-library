@@ -1,4 +1,6 @@
 import "./scss/index.scss";
+import AwesomeTableUtils from "./utils/AwesomeTableUtils";
+import StringUtils from "./utils/StringUtils";
 
 /* ----------------------------------------
 // Input
@@ -130,11 +132,22 @@ export type {
 } from "./components/table/AwesomeTableComponent";
 export { default as AwesomeTableComponent } from "./components/table/AwesomeTableComponent";
 
-export { default as AwesomeTableUtils } from "./components/table/AwesomeTableUtils";
-
 /* ----------------------------------------
 // Dropdown
 // ---------------------------------------- */
 
 export type { DropdownProps, IDropdownMenuItemProps, DropDownMenuProps } from "./components/dropdown/Dropdown";
 export { default as Dropdown } from "./components/dropdown/Dropdown";
+
+/* ----------------------------------------
+// Utils
+// ---------------------------------------- */
+
+export { default as AwesomeTableUtils } from "./utils/AwesomeTableUtils";
+export { default as StringUtils } from "./utils/StringUtils";
+export { default as UrlUtils } from "./utils/UrlUtils";
+export { default as TreeDataUtils } from "./utils/TreeDataUtils";
+export { default as TimeUtils } from "./utils/TimeUtils";
+export { default as ObjectUtils } from "./utils/ObjectUtils";
+export { default as MapUtils } from "./utils/MapUtils";
+export { default as ImageUtils } from "./utils/ImageUtils";
