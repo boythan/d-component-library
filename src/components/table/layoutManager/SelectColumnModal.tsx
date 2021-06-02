@@ -3,7 +3,7 @@
 // react
 import React, { useState, useEffect } from "react";
 // third-party
-import _ from "lodash";
+import _, { every } from "lodash";
 // import { Checkbox } from "antd";
 import ClassNames from "classnames";
 // application
@@ -40,11 +40,6 @@ export const SelectLayoutView = ({
         }
         return (
             <div id="titleSelectShipping" className={ClassNames("w-100", { "border-right": showBorder })}>
-                {/* <Icon name="visibility" />
-                <text className="mx-2 text-nowrap" style={{ color: "rgba(0, 0, 0, 0.56)" }}>
-                    {selectedLayout?.name ?? "N/A"}
-                </text>
-                <Icon name="arrow_drop_down" size="large" /> */}
                 <Button
                     content={selectedLayout?.name ?? "N/A"}
                     iconName="visibility"
@@ -75,6 +70,7 @@ export const SelectLayoutView = ({
         });
         return result;
     };
+
     return (
         <PopoverList
             source={() => Promise.resolve()}
@@ -204,35 +200,35 @@ const SelectColumnModal = ({
         getLayoutTable();
     };
 
+    const onClickClearAll = () => {
+        return DialogManager.showConfirm("Confirm", "Are you sure want to delete all Layout?", async () => {
+            await LayoutTableManager.clearTableLayout(keyTable);
+            setListLayout({});
+            setSelectedLayout({});
+        });
+    };
+
+    const onClickSelectAll = () => {
+        if (!selectAll) {
+            setSelectedOption(options);
+        }
+        setSelectAll(!selectAll);
+    };
+
     const renderContentModal = () => {
         return (
-            <div className="d-flex flex-column align-items-start px-5 justify-content-center">
+            <div className="d-flex flex-column align-items-start justify-content-center">
                 <h5>{actionText}:</h5>
                 <div className="d-flex align-items-center">
                     <Checkbox
                         value={selectAll as any}
                         checked={selectAll}
-                        onChange={() => {
-                            if (!selectAll) {
-                                setSelectedOption(options);
-                            }
-                            setSelectAll(!selectAll);
-                        }}
+                        onChange={onClickSelectAll}
                         color="primary"
                         label={selectAllText}
                     />
                     <Button
-                        onClick={() => {
-                            return DialogManager.showConfirm(
-                                "Confirm",
-                                "Are you sure want to delete all Layout?",
-                                async () => {
-                                    await LayoutTableManager.clearTableLayout(keyTable);
-                                    setListLayout({});
-                                    setSelectedLayout({});
-                                }
-                            );
-                        }}
+                        onClick={onClickClearAll}
                         disabled={_.isEmpty(listLayout)}
                         iconName="highlight_off"
                         content="Clear All Layout"
@@ -240,26 +236,28 @@ const SelectColumnModal = ({
                         color="red"
                     />
                 </div>
-                <div className="d-flex flex-column my-4">
+                <div className="row my-4 w-100">
                     {options.map((item: any) => {
                         // eslint-disable-next-line operator-linebreak
-                        const isChecked =
-                            selectedOption.filter((obj: any) => obj.dataIndex === item.dataIndex).length > 0;
+                        const isChecked = !!selectedOption.find((obj: any) => obj.id === item.id);
+
                         return (
-                            <Checkbox
-                                checked={isChecked}
-                                onChange={(event) => {
-                                    if (isChecked) {
-                                        removeItemFromSelected(event?.target?.value);
-                                    } else {
-                                        addItemToSelected(event?.target?.value);
-                                    }
-                                }}
-                                value={item?.dataIndex}
-                                // eslint-disable-next-line react/no-children-prop
-                                label={item?.title && item?.title}
-                                className="my-2"
-                            />
+                            <div className="col-sm-6">
+                                <Checkbox
+                                    checked={isChecked}
+                                    onChange={(event) => {
+                                        if (isChecked) {
+                                            removeItemFromSelected(event?.target?.value);
+                                        } else {
+                                            addItemToSelected(event?.target?.value);
+                                        }
+                                    }}
+                                    value={item?.id}
+                                    // eslint-disable-next-line react/no-children-prop
+                                    label={item?.title && item?.title}
+                                    className="my-2"
+                                />
+                            </div>
                         );
                     })}
                 </div>
@@ -325,12 +323,7 @@ const SelectColumnModal = ({
             >
                 {renderContentModal()}
             </Modal>
-            <Modal
-                open={openSaveNewModal}
-                onClose={() => setOpenSaveNewModal(false)}
-                onSave={handleOnSaveNewLayout}
-                centered={false}
-            >
+            <Modal open={openSaveNewModal} onClose={() => setOpenSaveNewModal(false)} onSave={handleOnSaveNewLayout}>
                 {renderContentSaveNewModal()}
             </Modal>
         </React.Fragment>

@@ -19,10 +19,9 @@ import Loading from "../components/loading/Loading";
 import Modal from "../components/modal/Modal";
 import Select from "../components/select/Select";
 import TabBar from "../components/tab/TabBar";
-import TableAwesomeComponent, { AwesomeTableComponentProps } from "../components/table/AwesomeTableComponent";
-import { transformColumn } from "../components/table/AwesomeTableUtils";
 import RowInterchangeView from "../components/view/RowInterchangeView";
 import TestHeader from "./components/TestHeader";
+import TestTable from "./components/TestTable";
 import { ATTRIBUTE_INPUT_TYPE } from "./data/TestConstant";
 
 interface Props {
@@ -187,59 +186,6 @@ const ButtonView = () => (
         </div>
     </div>
 );
-
-const TableView = () => {
-    const columns: AwesomeTableComponentProps["columns"] = [
-        {
-            title: () => <h5>ID</h5>,
-            dataIndex: "id",
-        },
-        {
-            title: "Label",
-            align: "center",
-            dataIndex: "label",
-        },
-    ];
-    return (
-        <div className="d-flex my-4">
-            <TableAwesomeComponent
-                source={(paging) => {
-                    // return fetch(URL, {
-                    //     method: "*GET",
-                    //     mode: "cors", // no-cors, *cors, same-origin
-                    //     cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-                    //     credentials: "same-origin", // include, *same-origin, omit
-                    //     headers: new Headers({
-                    //         Authorization: `Bearer ${FAKE_TOKEN}`,
-                    //         "Content-Type": "application/json",
-                    //         Accept: "application/json",
-                    //         Host: "api-dev.mattresscity.co.th",
-                    //         language: "th",
-                    //     }),
-                    //     body: JSON.stringify({
-                    //         page: paging.pageIndex,
-                    //         per_page: paging.pageSize,
-                    //     }),
-                    //     // body: `page=${paging.pageIndex}&per_page=${paging.pageSize}`,
-                    //     redirect: "follow", // manual, *follow, error
-                    //     referrerPolicy: "no-referrer",
-                    // });
-                    return Promise.resolve();
-                }}
-                transformer={(res) => ATTRIBUTE_INPUT_TYPE}
-                columns={transformColumn(columns)}
-                showSelectColumn
-                keyTableLayout="TEST TABLE"
-                rowSelection={{
-                    onChange: (selectedKey, selectedRow) => {
-                        console.log({ selectedKey });
-                        console.log({ selectedRow });
-                    },
-                }}
-            />
-        </div>
-    );
-};
 
 const DropdownView = () => {
     const [selectedDropdown, setSelectedDropdown] = useState<any>(ATTRIBUTE_INPUT_TYPE[0]);
@@ -444,7 +390,7 @@ export default function Test({ content }: Props): ReactElement {
         { id: "INPUT", label: "INPUT", component: input },
         { id: "DATE", label: "DATE", component: <Date /> },
         { id: "BUTTON", label: "BUTTON", component: <ButtonView /> },
-        { id: "TABLE", label: "TABLE", component: <TableView /> },
+        { id: "TABLE", label: "TABLE", component: <TestTable /> },
         { id: "CHECKBOX", label: "CHECKBOX", component: checkBox },
         { id: "HEADER", label: "HEADER", component: <TestHeader /> },
         { id: "TAB BAR", label: "TAB BAR", component: tab },
