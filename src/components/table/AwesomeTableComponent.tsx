@@ -43,6 +43,7 @@ export interface AwesomeTableComponentProps extends TableProps<any> {
     source: (pagination: IPaginationProps, sorter?: any) => Promise<any>;
     transformer: (res: any) => Array<any>;
     columns: IColumnsProps;
+    baseColumnProps: any;
 
     rowKey?: (item: any) => any;
     renderFooter?: TableProps<any>["footer"];
@@ -96,6 +97,7 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
 
         // eslint-disable-next-line react/default-props-match-prop-types
         columns: [],
+        baseColumnProps: {},
         isPagination: true,
         defaultPagination: null,
         isScroll: true,
@@ -137,8 +139,8 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
             pagination: this.getDefaultPagination(),
             sorter: null,
 
-            columns: transformColumn(props.columns),
-            selectedColumns: props.columns,
+            columns: transformColumn(props.columns, props.baseColumnProps),
+            selectedColumns: transformColumn(props.columns, props.baseColumnProps),
             tableLayoutList: {},
             selectedLayout: null,
         };
@@ -167,7 +169,7 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
     UNSAFE_componentWillReceiveProps(nextProps: any) {
         const { columns } = this.props;
         if (nextProps?.columns !== columns) {
-            this.setState({ columns: transformColumn(nextProps.columns) });
+            this.setState({ columns: transformColumn(nextProps.columns, nextProps.baseColumnProps) });
         }
     }
 
