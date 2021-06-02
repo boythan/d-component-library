@@ -25,6 +25,7 @@ import RowInterchangeView from "../components/view/RowInterchangeView";
 import TestHeader from "./components/TestHeader";
 import { ATTRIBUTE_INPUT_TYPE } from "./data/TestConstant";
 import TestBadge from "./components/badge/TestBadge";
+import TestDropdown from "./components/test_dropdown/TestDropdown";
 
 interface Props {
     content?: any;
@@ -242,27 +243,6 @@ const TableView = () => {
     );
 };
 
-const DropdownView = () => {
-    const [selectedDropdown, setSelectedDropdown] = useState<any>(ATTRIBUTE_INPUT_TYPE[0]);
-    return (
-        <div className="d-flex flex-column my-4">
-            <Dropdown dataSource={ATTRIBUTE_INPUT_TYPE} />
-            <Dropdown
-                dataSource={ATTRIBUTE_INPUT_TYPE}
-                variant="view"
-                value={selectedDropdown}
-                onClick={(item) => setSelectedDropdown(item)}
-            />
-            <p>
-                Almost before we knew it, we had left the ground. Thin 100 italic Almost before we knew it, we had left
-                the ground. Light 300 Almost before we knew it, we had left the ground. Light 300 italic Almost before
-                we knew it, we had left the ground. Regular 400 Almost before we knew it, we had left the ground.
-                Regular 400 italic Almost before we knew it, we had left the ground. Medium 500
-            </p>
-        </div>
-    );
-};
-
 const RowsView = () => {
     const { mockData } = useContext<any>(AppStateContext);
     console.log(mockData);
@@ -457,7 +437,7 @@ export default function Test({ content }: Props): ReactElement {
         { id: "LIST", label: "LIST", component: list },
         { id: "LOADING", label: "LOADING", component: loading },
         { id: "DOT", label: "DOT", component: dot },
-        { id: "DROPDOWN", label: "DROPDOWN", component: <DropdownView /> },
+        { id: "DROPDOWN", label: "DROPDOWN", component: <TestDropdown /> },
         { id: "BADGE", label: "BADGE", component: <TestBadge /> },
     ];
 
