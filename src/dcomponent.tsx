@@ -75,11 +75,14 @@ export type { AvatarNameProps } from "./components/avatar/AvatarName";
 export { default as AvatarName } from "./components/avatar/AvatarName";
 
 /* ----------------------------------------
-// RowInterchangeView
+// View
 // ---------------------------------------- */
 
 export type { RowInterchangeViewProps, IRowsKey } from "./components/view/RowInterchangeView";
 export { default as RowInterchangeView } from "./components/view/RowInterchangeView";
+
+export type { ViewRowProps } from "./components/view/ViewRow";
+export { default as ViewRow } from "./components/view/ViewRow";
 
 /* ----------------------------------------
 // TabBar
