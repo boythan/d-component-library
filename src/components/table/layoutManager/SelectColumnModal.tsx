@@ -3,8 +3,7 @@
 // react
 import React, { useState, useEffect } from "react";
 // third-party
-import _, { every, isEmpty } from "lodash";
-// import { Checkbox } from "antd";
+import _ from "lodash";
 import ClassNames from "classnames";
 // application
 import Button from "../../button/Button";
@@ -179,7 +178,7 @@ const SelectColumnModal = ({
     };
 
     const handleOnSaveNewLayout = async () => {
-        if (isEmpty(nameOfLayout)) {
+        if (_.isEmpty(nameOfLayout)) {
             return Promise.reject();
         }
         const selected = selectedOption.map((item: any) => ({
