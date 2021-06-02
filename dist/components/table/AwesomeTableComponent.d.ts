@@ -8,6 +8,7 @@ export interface AwesomeTableComponentProps extends TableProps<any> {
     source: (pagination: IPaginationProps, sorter?: any) => Promise<any>;
     transformer: (res: any) => Array<any>;
     columns: IColumnsProps;
+    baseColumnProps: any;
     rowKey?: (item: any) => any;
     renderFooter?: TableProps<any>["footer"];
     setCurrentPage?: (paging?: any) => void;
@@ -39,6 +40,7 @@ declare class AwesomeTableComponent extends Component<AwesomeTableComponentProps
         source: Promise<never[]>;
         transformer: (response: any) => any;
         columns: never[];
+        baseColumnProps: {};
         isPagination: boolean;
         defaultPagination: null;
         isScroll: boolean;

@@ -21,6 +21,7 @@ export interface HeaderDetailProps {
     user?: IUserBasic;
     customRight?: () => React.ReactNode;
     onButtonClick?: (item: IButtonItem) => void;
+    customCreated?: (props?: any) => any;
     Messages?: any;
 }
 declare const HeaderDetail: React.FC<HeaderDetailProps>;

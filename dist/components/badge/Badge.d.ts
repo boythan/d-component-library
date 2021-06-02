@@ -1,10 +1,10 @@
 import React, { CSSProperties } from "react";
-import { DotProps } from "../dot/Dot";
 import { ButtonProps } from "../button/Button";
-import { IconProps } from "../../../dist/components/icon/Icon.d";
+import { DotProps } from "../dot/Dot";
+import { IconProps } from "../icon/Icon";
 export interface BadgeProps {
     [key: string]: any;
-    children: any;
+    children?: any;
     variant?: "dot" | "index";
     shape?: "round" | "square";
     index?: string | number;

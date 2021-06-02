@@ -49050,7 +49050,7 @@ function isCheckDisabled(node) {
   return node.disabled || node.disableCheckbox || node.checkable === false;
 }
 
-function getLevel(_ref) {
+function getLevel$1(_ref) {
   var parent = _ref.parent;
   var level = 0;
   var current = parent;
@@ -49092,7 +49092,7 @@ function flattenOptions(options) {
     return {
       key: node.data.key,
       data: node.data,
-      level: getLevel(node)
+      level: getLevel$1(node)
     };
   });
 }
@@ -50015,58 +50015,67 @@ var Checkbox = function (_a) {
 };
 
 var CheckboxGroup = function (_a) {
-    var dataSource = _a.dataSource, className = _a.className, _b = _a.getLabel, getLabel = _b === void 0 ? function (item) { return item === null || item === void 0 ? void 0 : item.label; } : _b, _c = _a.getValue, getValue = _c === void 0 ? function (item) { return item === null || item === void 0 ? void 0 : item.id; } : _c, _d = _a.value, value = _d === void 0 ? [] : _d, onChange = _a.onChange, getDisabledItem = _a.getDisabledItem;
-    var containerClass = classnames("d-checkbox-group", className);
-    var _e = React.useState([]), listValues = _e[0], setListValues = _e[1];
-    React.useEffect(function () {
-        setListValues(value);
-    }, [value]);
+    var dataSource = _a.dataSource, className = _a.className, classNameItem = _a.classNameItem, _b = _a.getLabel, getLabel = _b === void 0 ? function (item) { return item === null || item === void 0 ? void 0 : item.label; } : _b, _c = _a.getValue, getValue = _c === void 0 ? function (item) { return item === null || item === void 0 ? void 0 : item.id; } : _c, _d = _a.value, value = _d === void 0 ? [] : _d, onChange = _a.onChange, getDisabledItem = _a.getDisabledItem, _e = _a.numberOfColumns, numberOfColumns = _e === void 0 ? "3" : _e;
+    var containerClass = classnames("d-checkbox-group d-flex flex-wrap", className);
     return (jsxRuntime.jsx("div", __assign({ className: containerClass }, { children: dataSource.map(function (item) {
             var iLabel = getLabel(item);
             var iValue = getValue(item);
-            var isChecked = listValues.includes(iValue);
+            var listId = value.map(function (i) { return getValue(i); });
+            var isChecked = listId.includes(iValue);
             var isDisabled = (getDisabledItem && getDisabledItem(item)) || false;
-            return (jsxRuntime.jsx(Checkbox, { label: iLabel, value: iValue, onChange: function (event) {
+            var itemClass = classnames("my-3", {
+                "col-12": numberOfColumns === "1",
+            }, {
+                "col-6": numberOfColumns === "2",
+            }, {
+                "col-4": numberOfColumns === "3",
+            }, {
+                "col-3": numberOfColumns === "4",
+            }, {
+                col: numberOfColumns === "5",
+            }, {
+                "col-2": numberOfColumns === "6",
+            }, classNameItem);
+            return (jsxRuntime.jsx(Checkbox, { label: iLabel, value: item, onChange: function (event) {
                     var isPush = event.target.checked;
-                    var changeValue = event.target.value;
-                    var clone = __spreadArray([], listValues);
+                    var clone = __spreadArray([], value);
                     if (isPush) {
-                        clone.push(iValue);
+                        clone.push(item);
                     }
                     else {
-                        clone = listValues.filter(function (i) { return i !== changeValue; });
+                        clone = value.filter(function (i) {
+                            return getValue(i) !== getValue(item);
+                        });
                     }
-                    setListValues(clone);
                     onChange && onChange(clone);
-                }, checked: isChecked, disabled: isDisabled }, void 0));
+                }, checked: isChecked, disabled: isDisabled, className: itemClass }, iValue));
         }) }), void 0));
 };
 
 var RadioGroup = function (_a) {
-    var dataSource = _a.dataSource, className = _a.className, _b = _a.getLabel, getLabel = _b === void 0 ? function (item) { return item === null || item === void 0 ? void 0 : item.label; } : _b, _c = _a.getValue, getValue = _c === void 0 ? function (item) { return item === null || item === void 0 ? void 0 : item.id; } : _c, getDisabledItem = _a.getDisabledItem, _d = _a.value, value = _d === void 0 ? [] : _d, onChange = _a.onChange;
-    var containerClass = classnames("d-checkbox-group", className);
-    var _e = React.useState([]), listValues = _e[0], setListValues = _e[1];
-    React.useEffect(function () {
-        setListValues(value);
-    }, [value]);
+    var dataSource = _a.dataSource, className = _a.className, classNameItem = _a.classNameItem, _b = _a.getLabel, getLabel = _b === void 0 ? function (item) { return item === null || item === void 0 ? void 0 : item.label; } : _b, _c = _a.getValue, getValue = _c === void 0 ? function (item) { return item === null || item === void 0 ? void 0 : item.id; } : _c, getDisabledItem = _a.getDisabledItem, value = _a.value, onChange = _a.onChange, _d = _a.numberOfColumns, numberOfColumns = _d === void 0 ? "3" : _d;
+    var containerClass = classnames("d-checkbox-group d-flex flex-wrap", className);
     return (jsxRuntime.jsx("div", __assign({ className: containerClass }, { children: dataSource.map(function (item) {
             var iLabel = getLabel(item);
             var iValue = getValue(item);
-            var isChecked = listValues.includes(iValue);
+            var isChecked = getValue(item) === getValue(value);
             var isDisabled = (getDisabledItem && getDisabledItem(item)) || false;
+            var itemClass = classnames("my-3", {
+                "col-12": numberOfColumns === "1",
+            }, {
+                "col-6": numberOfColumns === "2",
+            }, {
+                "col-4": numberOfColumns === "3",
+            }, {
+                "col-3": numberOfColumns === "4",
+            }, {
+                col: numberOfColumns === "5",
+            }, {
+                "col-2": numberOfColumns === "6",
+            }, classNameItem);
             return (jsxRuntime.jsx(Checkbox, { label: iLabel, value: iValue, onChange: function (event) {
-                    var isPush = event.target.checked;
-                    var changeValue = event.target.value;
-                    var clone;
-                    if (isPush) {
-                        clone = [changeValue];
-                    }
-                    else {
-                        clone = listValues.filter(function (i) { return i !== changeValue; });
-                    }
-                    setListValues(clone);
-                    onChange && onChange(clone);
-                }, checked: isChecked, variant: "radio", disabled: isDisabled }, void 0));
+                    onChange && onChange(item);
+                }, checked: isChecked, variant: "radio", disabled: isDisabled, className: itemClass }, void 0));
         }) }), void 0));
 };
 
@@ -50150,11 +50159,116 @@ var AvatarName = function (_a) {
             position === "after" && renderName()] }), void 0));
 };
 
+// eslint-disable-next-line import/no-extraneous-dependencies
+var DATE_TIME_FORMAT = "DD/MM/YYYY HH:mm";
+var TIME_FORMAT = "HH:mm";
+var DATE_FORMAT = "DD/MM/YYYY";
+// react-datepicker format
+var DATE_TIME_INPUT_FORMAT = "dd/MM/yyyy HH:mm";
+var DATE_INPUT_FORMAT = "dd/MM/yyyy";
+var MONTH_INPUT_FORMAT = "mm/yyyy";
+var YEAR_INPUT_FORMAT = "yyyy";
+// ant design date picker format
+var ANT_DATE_TIME_INPUT_FORMAT = "DD/MM/YYYY HH:mm";
+var ANT_DATE_INPUT_FORMAT = "DD/MM/YYYY";
+var ANT_MONTH_INPUT_FORMAT = "MM/YYYY";
+var ANT_YEAR_INPUT_FORMAT = "YYYY";
+var MONTH_MILISECOND = 30 * 24 * 60 * 60 * 1000;
+var WEEK_MILISECOND = 7 * 24 * 60 * 60 * 1000;
+var DAY_MILISECOND = 24 * 60 * 60 * 1000;
+var convertMilitoMinutes = function (miliSeconds) {
+    if (!miliSeconds)
+        return 0;
+    return miliSeconds / (1000 * 60);
+};
+var convertMinutesToMili = function (minutes) {
+    if (!minutes)
+        return;
+    // eslint-disable-next-line consistent-return
+    return minutes * 60 * 1000;
+};
+var convertMiliToDateTime = function (timeInMillis, lang) {
+    if (lang === void 0) { lang = "en"; }
+    var date = new Date(timeInMillis);
+    if (lang === "th") {
+        return date ? moment(date).add("years", 543).format(DATE_TIME_FORMAT) : "";
+    }
+    return date ? moment(date).format(DATE_TIME_FORMAT) : "";
+};
+var convertDateTimeToMili = function (dateTime) {
+    var date = new Date(dateTime);
+    return date.getTime();
+};
+var convertMiliToDate = function (timeInMillis, lang) {
+    if (lang === void 0) { lang = "en"; }
+    var date = new Date(timeInMillis);
+    if (lang === "th") {
+        return date ? moment(date).add("years", 543).format(DATE_FORMAT) : "";
+    }
+    return date ? moment(date).format(DATE_FORMAT) : "";
+};
+var convertMiliToTime = function (timeInMillis) {
+    var date = new Date(timeInMillis);
+    return date ? moment(date).format(TIME_FORMAT) : "";
+};
+var convertMiliToDateWithFormat = function (timeInMillis, FORMAT) {
+    var date = new Date(timeInMillis);
+    return date ? moment(date).format(FORMAT) : "";
+};
+var convertToDefaultInputFormat = function (timeMili) {
+    return convertMiliToDateWithFormat(timeMili, "YYYY-MM-DDTHH:mm");
+};
+function calculateMonthDifferent(d1, d2) {
+    var date1 = new Date(d1);
+    var date2 = new Date(d2);
+    var months;
+    months = (date1.getFullYear() - date2.getFullYear()) * 12;
+    months += date1.getMonth();
+    months -= date2.getMonth();
+    return months <= 0 ? 0 : months;
+}
+function calculateWeekDifferent(d1, d2) {
+    var diff = (d1 - d2) / 1000;
+    diff /= 60 * 60 * 24 * 7;
+    return Math.abs(Math.round(diff));
+}
+function calculateDayDifferent(d1, d2) {
+    var diff = (d1 - d2) / 1000;
+    diff /= 60 * 60 * 24;
+    return Math.abs(Math.round(diff));
+}
+var TimeUtils = {
+    convertToDefaultInputFormat: convertToDefaultInputFormat,
+    convertMiliToDateWithFormat: convertMiliToDateWithFormat,
+    convertMiliToTime: convertMiliToTime,
+    convertMiliToDate: convertMiliToDate,
+    convertMilitoMinutes: convertMilitoMinutes,
+    convertMinutesToMili: convertMinutesToMili,
+    convertMiliToDateTime: convertMiliToDateTime,
+    convertDateTimeToMili: convertDateTimeToMili,
+    calculateMonthDifferent: calculateMonthDifferent,
+    calculateWeekDifferent: calculateWeekDifferent,
+    calculateDayDifferent: calculateDayDifferent,
+    MONTH_MILISECOND: MONTH_MILISECOND,
+    WEEK_MILISECOND: WEEK_MILISECOND,
+    DAY_MILISECOND: DAY_MILISECOND,
+    DATE_FORMAT: DATE_FORMAT,
+    DATE_TIME_FORMAT: DATE_TIME_FORMAT,
+    DATE_INPUT_FORMAT: DATE_INPUT_FORMAT,
+    DATE_TIME_INPUT_FORMAT: DATE_TIME_INPUT_FORMAT,
+    MONTH_INPUT_FORMAT: MONTH_INPUT_FORMAT,
+    YEAR_INPUT_FORMAT: YEAR_INPUT_FORMAT,
+    ANT_DATE_TIME_INPUT_FORMAT: ANT_DATE_TIME_INPUT_FORMAT,
+    ANT_DATE_INPUT_FORMAT: ANT_DATE_INPUT_FORMAT,
+    ANT_MONTH_INPUT_FORMAT: ANT_MONTH_INPUT_FORMAT,
+    ANT_YEAR_INPUT_FORMAT: ANT_YEAR_INPUT_FORMAT,
+};
+
 var HeaderDetail = function (_a) {
     var title = _a.title, status = _a.status, _b = _a.listStatus, listStatus = _b === void 0 ? [] : _b, _c = _a.listButton, listButton = _c === void 0 ? [
         { id: "print", icon: "print", label: "print" },
         { id: "cancel", icon: "cancel", label: "cancel" },
-    ] : _c, created = _a.created, user = _a.user, customRight = _a.customRight, onButtonClick = _a.onButtonClick, Messages = _a.Messages;
+    ] : _c, created = _a.created, user = _a.user, customRight = _a.customRight, customCreated = _a.customCreated, onButtonClick = _a.onButtonClick, Messages = _a.Messages;
     var foundStatus = React.useMemo(function () {
         var result = null;
         if (status && listStatus.length > 0) {
@@ -50178,12 +50292,16 @@ var HeaderDetail = function (_a) {
         return (jsxRuntime.jsxs("div", __assign({ className: "d-flex flex-column" }, { children: [titleStatus(),
                 listButton.length > 0 && buttons()] }), void 0));
     };
+    var createdView = (jsxRuntime.jsx("div", __assign({ className: "text-x-small text-gray" }, { children: Messages.createdOn + " " + TimeUtils.convertMiliToDate(created) + " " + Messages.at + " " + TimeUtils.convertMiliToTime(created) }), void 0));
+    if (customCreated) {
+        createdView = customCreated(created);
+    }
     var rightView = function () {
         if (customRight) {
             return customRight();
         }
         return (jsxRuntime.jsxs("div", __assign({ className: "d-flex flex-column align-items-end" }, { children: [user && jsxRuntime.jsx(AvatarName, { user: user, className: "mb-1" }, void 0),
-                created && (jsxRuntime.jsx("div", { className: "text-x-small text-gray" }, void 0))] }), void 0));
+                (created || customCreated) && createdView] }), void 0));
     };
     return (jsxRuntime.jsxs("div", __assign({ className: "card-container d-flex align-items-center justify-content-between p-4" }, { children: [leftView(),
             rightView()] }), void 0));
@@ -50263,6 +50381,28 @@ var RowInterchangeView = function (_a) {
             return (jsxRuntime.jsxs("div", __assign({ className: rowClass }, { children: [jsxRuntime.jsx("div", __assign({ className: labelClass }, { children: labelView }), void 0),
                     contentView] }), index));
         }) }), void 0));
+};
+
+var ViewRow = function (_a) {
+    var className = _a.className, classNameLabel = _a.classNameLabel, classNameContent = _a.classNameContent, style = _a.style, styleContent = _a.styleContent, _b = _a.styleLabel, styleLabel = _b === void 0 ? {} : _b, _c = _a.width, width = _c === void 0 ? "100%" : _c, label = _a.label, _d = _a.center, center = _d === void 0 ? true : _d, children = _a.children;
+    var wrapperClass = classnames("d-flex", {
+        "w-50": width === "50%",
+        "w-25": width === "25%",
+        "align-items-center": center,
+    }, className);
+    var labelClass = classnames("d-block text-nowrap text-bold p-0", {
+        "col-2": width === "100%",
+        "col-4": width === "50%",
+        "col-8": width === "25%",
+        "align-items-center": center,
+    }, classNameLabel);
+    var contentClass = classnames("col-10 p-0", classNameContent);
+    var content = children;
+    if (typeof children === "function") {
+        content = children();
+    }
+    return (jsxRuntime.jsxs("div", __assign({ className: wrapperClass, style: style }, { children: [label && (jsxRuntime.jsx("label", __assign({ className: labelClass, style: styleLabel }, { children: label }), void 0)),
+            jsxRuntime.jsx("div", __assign({ className: contentClass, style: styleContent }, { children: content }), void 0)] }), void 0));
 };
 
 var TabBar = function (_a) {
@@ -70736,7 +70876,7 @@ var calculateDefaultExpandedRowKeys = function (data, options) {
 var transformColumn = function (columns, baseColumn) {
     if (columns === void 0) { columns = []; }
     if (baseColumn === void 0) { baseColumn = {}; }
-    return columns.map(function (_a) {
+    return columns.map(function (_a, index) {
         var title = _a.title, titleTooltip = _a.titleTooltip, dataIndex = _a.dataIndex, render = _a.render, props = __rest$q(_a, ["title", "titleTooltip", "dataIndex", "render"]);
         // custom title
         var titleResult = title;
@@ -70747,7 +70887,7 @@ var transformColumn = function (columns, baseColumn) {
             titleResult = (jsxRuntime.jsxs(Tooltip, __assign({ className: "flex-center-y", zIndex: 10000, title: titleTooltip }, { children: [title,
                     jsxRuntime.jsx(Icon$2, { name: "info", className: "ml-3" }, void 0)] }), void 0));
         }
-        return __assign(__assign(__assign({}, baseColumn), { title: titleResult, align: "center", dataIndex: dataIndex, render: function (data, item) {
+        return __assign(__assign(__assign({}, baseColumn), { id: "" + index, title: titleResult, align: "center", dataIndex: dataIndex, render: function (data, item) {
                 var content = data;
                 if (typeof render === "function") {
                     content = render(data, item);
@@ -70897,11 +71037,11 @@ var SelectColumnModal = function (_a) {
         }
     }, [selectedOption, openOptionModal]);
     var removeItemFromSelected = function (selectedItem) {
-        var clone = selectedOption.filter(function (item) { return item.dataIndex !== selectedItem; });
+        var clone = selectedOption.filter(function (item) { return item.id !== selectedItem; });
         setSelectedOption(clone);
     };
     var addItemToSelected = function (selectedItem) {
-        var addedItem = options.find(function (obj) { return obj.dataIndex === selectedItem; });
+        var addedItem = options.find(function (obj) { return obj.id === selectedItem; });
         var clone = __spreadArray(__spreadArray([], selectedOption), [addedItem]);
         setSelectedOption(clone);
     };
@@ -70912,8 +71052,7 @@ var SelectColumnModal = function (_a) {
                 case 0:
                     if (!!lodash.isEmpty(selectedLayout)) return [3 /*break*/, 2];
                     selected = selectedOption.map(function (item) { return ({
-                        dataIndex: item.dataIndex,
-                        id: Math.random(),
+                        id: item.id,
                     }); });
                     layout_1 = { data: selected, default: true };
                     newTableLayout_1 = {};
@@ -70948,9 +71087,11 @@ var SelectColumnModal = function (_a) {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
+                    if (lodash.isEmpty(nameOfLayout)) {
+                        return [2 /*return*/, Promise.reject()];
+                    }
                     selected = selectedOption.map(function (item) { return ({
-                        dataIndex: item.dataIndex,
-                        id: Math.random(),
+                        id: item.id,
                     }); });
                     layout = { data: selected, default: false };
                     return [4 /*yield*/, LayoutTableManager.saveNewLayout(layout, keyTable, nameOfLayout)];
@@ -70965,8 +71106,8 @@ var SelectColumnModal = function (_a) {
     }); };
     var onSelectLayout = function (item) {
         var _a, _b;
-        var layoutIndex = (_b = (_a = item === null || item === void 0 ? void 0 : item.data) === null || _a === void 0 ? void 0 : _a.map(function (item) { return item === null || item === void 0 ? void 0 : item.dataIndex; })) !== null && _b !== void 0 ? _b : [];
-        var filterOption = options.filter(function (item) { return layoutIndex.includes(item === null || item === void 0 ? void 0 : item.dataIndex); });
+        var layoutIndex = (_b = (_a = item === null || item === void 0 ? void 0 : item.data) === null || _a === void 0 ? void 0 : _a.map(function (item) { return item === null || item === void 0 ? void 0 : item.id; })) !== null && _b !== void 0 ? _b : [];
+        var filterOption = options.filter(function (item) { return layoutIndex.includes(item === null || item === void 0 ? void 0 : item.id); });
         setSelectedLayout(item);
         setSelectedOption(filterOption);
         getLayoutTable();
@@ -70998,6 +71139,7 @@ var SelectColumnModal = function (_a) {
                 jsxRuntime.jsx("div", __assign({ className: "row my-4 w-100" }, { children: options.map(function (item) {
                         // eslint-disable-next-line operator-linebreak
                         var isChecked = !!selectedOption.find(function (obj) { return obj.id === item.id; });
+                        var label = typeof (item === null || item === void 0 ? void 0 : item.title) === "function" ? item === null || item === void 0 ? void 0 : item.title() : item === null || item === void 0 ? void 0 : item.title;
                         return (jsxRuntime.jsx("div", __assign({ className: "col-sm-6" }, { children: jsxRuntime.jsx(Checkbox, { checked: isChecked, onChange: function (event) {
                                     var _a, _b;
                                     if (isChecked) {
@@ -71008,7 +71150,7 @@ var SelectColumnModal = function (_a) {
                                     }
                                 }, value: item === null || item === void 0 ? void 0 : item.id, 
                                 // eslint-disable-next-line react/no-children-prop
-                                label: (item === null || item === void 0 ? void 0 : item.title) && (item === null || item === void 0 ? void 0 : item.title), className: "my-2" }, void 0) }), void 0));
+                                label: label, className: "my-2" }, void 0) }), void 0));
                     }) }), void 0)] }), void 0));
     };
     var renderSecondTitle = function () {
@@ -73468,7 +73610,8 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
         };
         _this.getDefaultTableLayout = function () {
             var _a;
-            var _b = _this.props, keyTableLayout = _b.keyTableLayout, showSelectColumn = _b.showSelectColumn, columns = _b.columns;
+            var _b = _this.props, keyTableLayout = _b.keyTableLayout, showSelectColumn = _b.showSelectColumn;
+            var columns = _this.state.columns;
             if (keyTableLayout && showSelectColumn) {
                 var tableLayout_1 = LayoutTableManager.getLayout(keyTableLayout);
                 if (!lodash.isEmpty(tableLayout_1)) {
@@ -73479,9 +73622,9 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
                     });
                     var defaultLayout = listTableLayout_1.find(function (item) { return item === null || item === void 0 ? void 0 : item.default; });
                     if (!lodash.isEmpty(defaultLayout)) {
-                        var defaultIndex_1 = (_a = defaultLayout === null || defaultLayout === void 0 ? void 0 : defaultLayout.data) === null || _a === void 0 ? void 0 : _a.map(function (item) { return item === null || item === void 0 ? void 0 : item.dataIndex; });
+                        var defaultIndex_1 = (_a = defaultLayout === null || defaultLayout === void 0 ? void 0 : defaultLayout.data) === null || _a === void 0 ? void 0 : _a.map(function (item) { return item === null || item === void 0 ? void 0 : item.id; });
                         // eslint-disable-next-line operator-linebreak
-                        var defaultColumns = columns && columns.filter(function (item) { return defaultIndex_1.includes(item === null || item === void 0 ? void 0 : item.dataIndex); });
+                        var defaultColumns = columns && columns.filter(function (item) { return defaultIndex_1.includes(item === null || item === void 0 ? void 0 : item.id); });
                         _this.setState({
                             selectedColumns: defaultColumns,
                             tableLayoutList: tableLayout_1,
@@ -73553,8 +73696,8 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
             filteredInfo: null,
             pagination: _this.getDefaultPagination(),
             sorter: null,
-            columns: props.columns,
-            selectedColumns: props.columns,
+            columns: transformColumn(props.columns, props.baseColumnProps),
+            selectedColumns: transformColumn(props.columns, props.baseColumnProps),
             tableLayoutList: {},
             selectedLayout: null,
         };
@@ -73570,7 +73713,7 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
     AwesomeTableComponent.prototype.UNSAFE_componentWillReceiveProps = function (nextProps) {
         var columns = this.props.columns;
         if ((nextProps === null || nextProps === void 0 ? void 0 : nextProps.columns) !== columns) {
-            this.setState({ columns: nextProps.columns });
+            this.setState({ columns: transformColumn(nextProps.columns, nextProps.baseColumnProps) });
         }
     };
     AwesomeTableComponent.prototype.componentWillUnmount = function () {
@@ -73638,8 +73781,7 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
         var _this = this;
         var _a = this.state, filteredInfo = _a.filteredInfo, _b = _a.columns, columns = _b === void 0 ? [] : _b, _c = _a.selectedColumns, selectedColumns = _c === void 0 ? [] : _c;
         var showSelectColumn = this.props.showSelectColumn;
-        var columnsTransformed = transformColumn(columns);
-        var columnsSearchFilter = columnsTransformed.map(function (columnParams) {
+        var columnsSearchFilter = columns.map(function (columnParams) {
             var column = columnParams;
             if (column.filters && column.filters.length > 0) {
                 column = __assign(__assign({}, column), { filteredValue: filteredInfo && column.dataIndex ? filteredInfo[column.dataIndex] : null });
@@ -73655,15 +73797,15 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
             }); } })); });
         var columnsSelected = columnsResizable;
         if (showSelectColumn) {
-            var selectedIndex_1 = selectedColumns.map(function (item) { return item === null || item === void 0 ? void 0 : item.dataIndex; });
-            columnsSelected = columnsResizable.filter(function (item) { return selectedIndex_1.includes(item.dataIndex); });
+            var selectedIndex_1 = selectedColumns.map(function (item) { return item === null || item === void 0 ? void 0 : item.id; });
+            columnsSelected = columnsResizable.filter(function (item) { return selectedIndex_1.includes(item.id); });
         }
         return columnsSelected;
     };
     /** ************************************************** RENDER *************************************************** */
     AwesomeTableComponent.prototype.render = function () {
         var _this = this;
-        var _a = this.state, total = _a.total, pagination = _a.pagination, tableLayoutList = _a.tableLayoutList, selectedLayout = _a.selectedLayout, data = _a.data, loading = _a.loading;
+        var _a = this.state, total = _a.total, pagination = _a.pagination, tableLayoutList = _a.tableLayoutList, selectedLayout = _a.selectedLayout, data = _a.data, loading = _a.loading, columns = _a.columns;
         // eslint-disable-next-line operator-linebreak
         var _b = this.props, rowKey = _b.rowKey, isScroll = _b.isScroll, classNameTable = _b.classNameTable, tableLayout = _b.tableLayout, showSelectColumn = _b.showSelectColumn, keyTableLayout = _b.keyTableLayout, className = _b.className;
         var paginationResult = pagination ? __assign(__assign({}, pagination), { current: pagination.pageIndex, total: total }) : false;
@@ -73673,7 +73815,7 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
                         // eslint-disable-next-line react/destructuring-assignment
                         , { 
                             // eslint-disable-next-line react/destructuring-assignment
-                            options: this.props.columns, setSelectedColumns: function (column) { return _this.setState({ selectedColumns: column }); }, keyTable: keyTableLayout, refreshLayout: function () { return _this.getDefaultTableLayout(); } }, void 0)] }), void 0)),
+                            options: columns, setSelectedColumns: function (column) { return _this.setState({ selectedColumns: column }); }, keyTable: keyTableLayout, refreshLayout: function () { return _this.getDefaultTableLayout(); } }, void 0)] }), void 0)),
                 jsxRuntime.jsx(Table, __assign({ rowKey: rowKey, dataSource: data, loading: loading, onChange: this.handleTableChange, rowClassName: function () {
                         return "d-table-awesome-component__row";
                     }, pagination: paginationResult, scroll: isScroll ? { y: "1000" } : {}, tableLayout: tableLayout, bordered: true, components: this.components }, this.props, { className: "d-table-awesome-component__table " + classNameTable, 
@@ -73695,6 +73837,7 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
         },
         // eslint-disable-next-line react/default-props-match-prop-types
         columns: [],
+        baseColumnProps: {},
         isPagination: true,
         defaultPagination: null,
         isScroll: true,
@@ -73777,6 +73920,1235 @@ var Dropdown = function (_a) {
             jsxRuntime.jsx("div", __assign({ className: dropdownClass }, { children: jsxRuntime.jsx(DropdownMenu, { dataSource: dataSource, onClick: handleOnClickItem, Messages: Messages }, void 0) }), void 0)] }), void 0));
 };
 
+/* eslint-disable implicit-arrow-linebreak */
+var moneyFormat = function (n) {
+    return "" + (n
+        ? Number(n)
+            .toFixed(0)
+            .replace(/./g, function (c, i, a) { return (i > 0 && c !== "." && (a.length - i) % 3 === 0 ? "," + c : c); })
+        : "0");
+};
+var moneyFormatFixed2 = function (n) {
+    return "" + (n
+        ? Number(n)
+            .toFixed(2)
+            .replace(/./g, function (c, i, a) { return (i > 0 && c !== "." && (a.length - i) % 3 === 0 ? "," + c : c); })
+        : "0");
+};
+var moneyThaiFormat = function (number) {
+    if (!number) {
+        return "\u0E3F" + 0;
+    }
+    if (number < 0) {
+        return "\u0E3F-" + moneyFormat("" + Math.abs(number));
+    }
+    return "\u0E3F" + moneyFormat(number);
+};
+var moneyThaiFormatFixed2 = function (number) {
+    if (!number) {
+        return "\u0E3F" + 0;
+    }
+    return "\u0E3F" + moneyFormatFixed2(number);
+};
+var isAllDigit = function (string) {
+    return /^\d+$/.test(string);
+};
+var validateEmail = function (email) {
+    var re = /\S+@\S+\.\S+/;
+    return re.test(email);
+};
+var isEnglishAlphabet = function (text) {
+    var regular = /^[a-zA-Z0-9$@$!%*?&#^-_. +--]+$/;
+    return regular.test(text);
+};
+function convertCsvJSON(csv) {
+    var lines = lodash.split(csv, "\n");
+    var result = [];
+    var headers = lodash.split(lines[0], ",");
+    var _loop_1 = function (i) {
+        var validObject = false;
+        // eslint-disable-next-line no-continue
+        if (!lines[i])
+            return "continue";
+        var objectItem = {};
+        var currentline = lines[i].split(",");
+        headers.forEach(function (header, index) {
+            var _a;
+            var currentHeader = header.replace(/\W/g, "");
+            var currentLineIndex = currentline[index];
+            var currentValue = (_a = currentline[index]) === null || _a === void 0 ? void 0 : _a.replace(/\W/g, "");
+            if (currentLineIndex.includes("-")) {
+                currentValue = "-" + currentValue;
+            }
+            if (!lodash.isEmpty(currentValue)) {
+                validObject = true;
+                objectItem[currentHeader] = currentValue;
+            }
+        });
+        if (validObject) {
+            result.push(objectItem);
+        }
+    };
+    // eslint-disable-next-line no-plusplus
+    for (var i = 1; i < lines.length; i++) {
+        _loop_1(i);
+    }
+    return result;
+}
+var getExtensionFromFilename = function (filename) {
+    if (!filename) {
+        return "";
+    }
+    // eslint-disable-next-line no-bitwise
+    return filename === null || filename === void 0 ? void 0 : filename.slice((((filename === null || filename === void 0 ? void 0 : filename.lastIndexOf(".")) - 1) >>> 0) + 2);
+};
+function generateCode(length) {
+    var result = "";
+    var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    var charactersLength = characters.length;
+    // eslint-disable-next-line no-plusplus
+    for (var i = 0; i < length; i++) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+}
+function getRandomNumber(min, max) {
+    // eslint-disable-next-line no-param-reassign
+    min = Math.ceil(min);
+    // eslint-disable-next-line no-param-reassign
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min;
+}
+function getRandomColor() {
+    var letters = "0123456789ABCDEF";
+    var color = "#";
+    // eslint-disable-next-line no-plusplus
+    for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+function getFullNameStore(store) {
+    var _a, _b;
+    if (!store) {
+        return "N/A";
+    }
+    return ((_a = store === null || store === void 0 ? void 0 : store.name) !== null && _a !== void 0 ? _a : "") + " - " + ((_b = store === null || store === void 0 ? void 0 : store.code) !== null && _b !== void 0 ? _b : "");
+}
+function getUniqueID() {
+    return Math.random().toString(36).substr(2, 9);
+}
+function removeAllSpace(str) {
+    if (lodash.isEmpty(str))
+        return "";
+    return str.replace(/\s/g, "");
+}
+function removeAllEnterAndSpace(str) {
+    if (lodash.isEmpty(str))
+        return "";
+    var convertArray = lodash.split(str, "\n");
+    var filterArray = convertArray.map(function (string) { return string.replace(/\s/g, ""); });
+    return lodash.join(filterArray, "\n");
+}
+function convertToNumber(string) {
+    if (string === void 0) { string = ""; }
+    var value = string.replace(/\D+/g, "");
+    if (!value) {
+        return "";
+    }
+    // eslint-disable-next-line radix
+    return parseInt(value);
+}
+function stripHtml(html) {
+    var tmp = document.createElement("DIV");
+    tmp.innerHTML = html;
+    return tmp.textContent || tmp.innerText || "";
+}
+function validURL(str) {
+    var pattern = new RegExp("^(https?:\\/\\/)?" + // protocol
+        "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
+        "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
+        "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
+        "(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
+        "(\\#[-a-z\\d_]*)?$", "i"); // fragment locator
+    return !!pattern.test(str);
+}
+function getYouTubeVideoId(url) {
+    var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    var match = url.match(regExp);
+    return match && match[2].length === 11 ? match[2] : null;
+}
+function mapWatchToEmbedYouTube(url) {
+    var videoId = getYouTubeVideoId(url);
+    if (videoId) {
+        return "https://www.youtube.com/embed/" + videoId;
+    }
+    return url;
+}
+var StringUtils = {
+    moneyFormat: moneyFormat,
+    moneyThaiFormat: moneyThaiFormat,
+    isAllDigit: isAllDigit,
+    validateEmail: validateEmail,
+    moneyThaiFormatFixed2: moneyThaiFormatFixed2,
+    convertCsvJSON: convertCsvJSON,
+    getExtensionFromFilename: getExtensionFromFilename,
+    generateCode: generateCode,
+    getRandomNumber: getRandomNumber,
+    getRandomColor: getRandomColor,
+    getFullNameStore: getFullNameStore,
+    getUniqueID: getUniqueID,
+    removeAllSpace: removeAllSpace,
+    removeAllEnterAndSpace: removeAllEnterAndSpace,
+    convertToNumber: convertToNumber,
+    stripHtml: stripHtml,
+    validURL: validURL,
+    isEnglishAlphabet: isEnglishAlphabet,
+    mapWatchToEmbedYouTube: mapWatchToEmbedYouTube,
+};
+
+var strictUriEncode = str => encodeURIComponent(str).replace(/[!'()*]/g, x => `%${x.charCodeAt(0).toString(16).toUpperCase()}`);
+
+var token = '%[a-f0-9]{2}';
+var singleMatcher = new RegExp(token, 'gi');
+var multiMatcher = new RegExp('(' + token + ')+', 'gi');
+
+function decodeComponents(components, split) {
+	try {
+		// Try to decode the entire string first
+		return decodeURIComponent(components.join(''));
+	} catch (err) {
+		// Do nothing
+	}
+
+	if (components.length === 1) {
+		return components;
+	}
+
+	split = split || 1;
+
+	// Split the array in 2 parts
+	var left = components.slice(0, split);
+	var right = components.slice(split);
+
+	return Array.prototype.concat.call([], decodeComponents(left), decodeComponents(right));
+}
+
+function decode(input) {
+	try {
+		return decodeURIComponent(input);
+	} catch (err) {
+		var tokens = input.match(singleMatcher);
+
+		for (var i = 1; i < tokens.length; i++) {
+			input = decodeComponents(tokens, i).join('');
+
+			tokens = input.match(singleMatcher);
+		}
+
+		return input;
+	}
+}
+
+function customDecodeURIComponent(input) {
+	// Keep track of all the replacements and prefill the map with the `BOM`
+	var replaceMap = {
+		'%FE%FF': '\uFFFD\uFFFD',
+		'%FF%FE': '\uFFFD\uFFFD'
+	};
+
+	var match = multiMatcher.exec(input);
+	while (match) {
+		try {
+			// Decode as big chunks as possible
+			replaceMap[match[0]] = decodeURIComponent(match[0]);
+		} catch (err) {
+			var result = decode(match[0]);
+
+			if (result !== match[0]) {
+				replaceMap[match[0]] = result;
+			}
+		}
+
+		match = multiMatcher.exec(input);
+	}
+
+	// Add `%C2` at the end of the map to make sure it does not replace the combinator before everything else
+	replaceMap['%C2'] = '\uFFFD';
+
+	var entries = Object.keys(replaceMap);
+
+	for (var i = 0; i < entries.length; i++) {
+		// Replace all decoded components
+		var key = entries[i];
+		input = input.replace(new RegExp(key, 'g'), replaceMap[key]);
+	}
+
+	return input;
+}
+
+var decodeUriComponent = function (encodedURI) {
+	if (typeof encodedURI !== 'string') {
+		throw new TypeError('Expected `encodedURI` to be of type `string`, got `' + typeof encodedURI + '`');
+	}
+
+	try {
+		encodedURI = encodedURI.replace(/\+/g, ' ');
+
+		// Try the built in decoder first
+		return decodeURIComponent(encodedURI);
+	} catch (err) {
+		// Fallback to a more advanced decoder
+		return customDecodeURIComponent(encodedURI);
+	}
+};
+
+var splitOnFirst = (string, separator) => {
+	if (!(typeof string === 'string' && typeof separator === 'string')) {
+		throw new TypeError('Expected the arguments to be of type `string`');
+	}
+
+	if (separator === '') {
+		return [string];
+	}
+
+	const separatorIndex = string.indexOf(separator);
+
+	if (separatorIndex === -1) {
+		return [string];
+	}
+
+	return [
+		string.slice(0, separatorIndex),
+		string.slice(separatorIndex + separator.length)
+	];
+};
+
+var queryString = createCommonjsModule(function (module, exports) {
+
+
+
+
+const isNullOrUndefined = value => value === null || value === undefined;
+
+function encoderForArrayFormat(options) {
+	switch (options.arrayFormat) {
+		case 'index':
+			return key => (result, value) => {
+				const index = result.length;
+
+				if (
+					value === undefined ||
+					(options.skipNull && value === null) ||
+					(options.skipEmptyString && value === '')
+				) {
+					return result;
+				}
+
+				if (value === null) {
+					return [...result, [encode(key, options), '[', index, ']'].join('')];
+				}
+
+				return [
+					...result,
+					[encode(key, options), '[', encode(index, options), ']=', encode(value, options)].join('')
+				];
+			};
+
+		case 'bracket':
+			return key => (result, value) => {
+				if (
+					value === undefined ||
+					(options.skipNull && value === null) ||
+					(options.skipEmptyString && value === '')
+				) {
+					return result;
+				}
+
+				if (value === null) {
+					return [...result, [encode(key, options), '[]'].join('')];
+				}
+
+				return [...result, [encode(key, options), '[]=', encode(value, options)].join('')];
+			};
+
+		case 'comma':
+		case 'separator':
+			return key => (result, value) => {
+				if (value === null || value === undefined || value.length === 0) {
+					return result;
+				}
+
+				if (result.length === 0) {
+					return [[encode(key, options), '=', encode(value, options)].join('')];
+				}
+
+				return [[result, encode(value, options)].join(options.arrayFormatSeparator)];
+			};
+
+		default:
+			return key => (result, value) => {
+				if (
+					value === undefined ||
+					(options.skipNull && value === null) ||
+					(options.skipEmptyString && value === '')
+				) {
+					return result;
+				}
+
+				if (value === null) {
+					return [...result, encode(key, options)];
+				}
+
+				return [...result, [encode(key, options), '=', encode(value, options)].join('')];
+			};
+	}
+}
+
+function parserForArrayFormat(options) {
+	let result;
+
+	switch (options.arrayFormat) {
+		case 'index':
+			return (key, value, accumulator) => {
+				result = /\[(\d*)\]$/.exec(key);
+
+				key = key.replace(/\[\d*\]$/, '');
+
+				if (!result) {
+					accumulator[key] = value;
+					return;
+				}
+
+				if (accumulator[key] === undefined) {
+					accumulator[key] = {};
+				}
+
+				accumulator[key][result[1]] = value;
+			};
+
+		case 'bracket':
+			return (key, value, accumulator) => {
+				result = /(\[\])$/.exec(key);
+				key = key.replace(/\[\]$/, '');
+
+				if (!result) {
+					accumulator[key] = value;
+					return;
+				}
+
+				if (accumulator[key] === undefined) {
+					accumulator[key] = [value];
+					return;
+				}
+
+				accumulator[key] = [].concat(accumulator[key], value);
+			};
+
+		case 'comma':
+		case 'separator':
+			return (key, value, accumulator) => {
+				const isArray = typeof value === 'string' && value.split('').indexOf(options.arrayFormatSeparator) > -1;
+				const newValue = isArray ? value.split(options.arrayFormatSeparator).map(item => decode(item, options)) : value === null ? value : decode(value, options);
+				accumulator[key] = newValue;
+			};
+
+		default:
+			return (key, value, accumulator) => {
+				if (accumulator[key] === undefined) {
+					accumulator[key] = value;
+					return;
+				}
+
+				accumulator[key] = [].concat(accumulator[key], value);
+			};
+	}
+}
+
+function validateArrayFormatSeparator(value) {
+	if (typeof value !== 'string' || value.length !== 1) {
+		throw new TypeError('arrayFormatSeparator must be single character string');
+	}
+}
+
+function encode(value, options) {
+	if (options.encode) {
+		return options.strict ? strictUriEncode(value) : encodeURIComponent(value);
+	}
+
+	return value;
+}
+
+function decode(value, options) {
+	if (options.decode) {
+		return decodeUriComponent(value);
+	}
+
+	return value;
+}
+
+function keysSorter(input) {
+	if (Array.isArray(input)) {
+		return input.sort();
+	}
+
+	if (typeof input === 'object') {
+		return keysSorter(Object.keys(input))
+			.sort((a, b) => Number(a) - Number(b))
+			.map(key => input[key]);
+	}
+
+	return input;
+}
+
+function removeHash(input) {
+	const hashStart = input.indexOf('#');
+	if (hashStart !== -1) {
+		input = input.slice(0, hashStart);
+	}
+
+	return input;
+}
+
+function getHash(url) {
+	let hash = '';
+	const hashStart = url.indexOf('#');
+	if (hashStart !== -1) {
+		hash = url.slice(hashStart);
+	}
+
+	return hash;
+}
+
+function extract(input) {
+	input = removeHash(input);
+	const queryStart = input.indexOf('?');
+	if (queryStart === -1) {
+		return '';
+	}
+
+	return input.slice(queryStart + 1);
+}
+
+function parseValue(value, options) {
+	if (options.parseNumbers && !Number.isNaN(Number(value)) && (typeof value === 'string' && value.trim() !== '')) {
+		value = Number(value);
+	} else if (options.parseBooleans && value !== null && (value.toLowerCase() === 'true' || value.toLowerCase() === 'false')) {
+		value = value.toLowerCase() === 'true';
+	}
+
+	return value;
+}
+
+function parse(input, options) {
+	options = Object.assign({
+		decode: true,
+		sort: true,
+		arrayFormat: 'none',
+		arrayFormatSeparator: ',',
+		parseNumbers: false,
+		parseBooleans: false
+	}, options);
+
+	validateArrayFormatSeparator(options.arrayFormatSeparator);
+
+	const formatter = parserForArrayFormat(options);
+
+	// Create an object with no prototype
+	const ret = Object.create(null);
+
+	if (typeof input !== 'string') {
+		return ret;
+	}
+
+	input = input.trim().replace(/^[?#&]/, '');
+
+	if (!input) {
+		return ret;
+	}
+
+	for (const param of input.split('&')) {
+		let [key, value] = splitOnFirst(options.decode ? param.replace(/\+/g, ' ') : param, '=');
+
+		// Missing `=` should be `null`:
+		// http://w3.org/TR/2012/WD-url-20120524/#collect-url-parameters
+		value = value === undefined ? null : ['comma', 'separator'].includes(options.arrayFormat) ? value : decode(value, options);
+		formatter(decode(key, options), value, ret);
+	}
+
+	for (const key of Object.keys(ret)) {
+		const value = ret[key];
+		if (typeof value === 'object' && value !== null) {
+			for (const k of Object.keys(value)) {
+				value[k] = parseValue(value[k], options);
+			}
+		} else {
+			ret[key] = parseValue(value, options);
+		}
+	}
+
+	if (options.sort === false) {
+		return ret;
+	}
+
+	return (options.sort === true ? Object.keys(ret).sort() : Object.keys(ret).sort(options.sort)).reduce((result, key) => {
+		const value = ret[key];
+		if (Boolean(value) && typeof value === 'object' && !Array.isArray(value)) {
+			// Sort object keys, not values
+			result[key] = keysSorter(value);
+		} else {
+			result[key] = value;
+		}
+
+		return result;
+	}, Object.create(null));
+}
+
+exports.extract = extract;
+exports.parse = parse;
+
+exports.stringify = (object, options) => {
+	if (!object) {
+		return '';
+	}
+
+	options = Object.assign({
+		encode: true,
+		strict: true,
+		arrayFormat: 'none',
+		arrayFormatSeparator: ','
+	}, options);
+
+	validateArrayFormatSeparator(options.arrayFormatSeparator);
+
+	const shouldFilter = key => (
+		(options.skipNull && isNullOrUndefined(object[key])) ||
+		(options.skipEmptyString && object[key] === '')
+	);
+
+	const formatter = encoderForArrayFormat(options);
+
+	const objectCopy = {};
+
+	for (const key of Object.keys(object)) {
+		if (!shouldFilter(key)) {
+			objectCopy[key] = object[key];
+		}
+	}
+
+	const keys = Object.keys(objectCopy);
+
+	if (options.sort !== false) {
+		keys.sort(options.sort);
+	}
+
+	return keys.map(key => {
+		const value = object[key];
+
+		if (value === undefined) {
+			return '';
+		}
+
+		if (value === null) {
+			return encode(key, options);
+		}
+
+		if (Array.isArray(value)) {
+			return value
+				.reduce(formatter(key), [])
+				.join('&');
+		}
+
+		return encode(key, options) + '=' + encode(value, options);
+	}).filter(x => x.length > 0).join('&');
+};
+
+exports.parseUrl = (input, options) => {
+	return {
+		url: removeHash(input).split('?')[0] || '',
+		query: parse(extract(input), options)
+	};
+};
+
+exports.stringifyUrl = (input, options) => {
+	const url = removeHash(input.url).split('?')[0] || '';
+	const queryFromUrl = exports.extract(input.url);
+	const parsedQueryFromUrl = exports.parse(queryFromUrl);
+	const hash = getHash(input.url);
+	const query = Object.assign(parsedQueryFromUrl, input.query);
+	let queryString = exports.stringify(query, options);
+	if (queryString) {
+		queryString = `?${queryString}`;
+	}
+
+	return `${url}${queryString}${hash}`;
+};
+});
+queryString.extract;
+queryString.parse;
+queryString.stringify;
+queryString.parseUrl;
+queryString.stringifyUrl;
+
+var getParams = function (url) {
+    var params = {};
+    var parser = document.createElement("a");
+    parser.href = url;
+    var query = parser.search.substring(1);
+    var vars = query.split("&");
+    // eslint-disable-next-line no-plusplus
+    for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split("=");
+        params[pair[0]] = decodeURIComponent(pair[1]);
+    }
+    return params;
+};
+var addUrlParam = function (search, key, val) {
+    var newParam = key + "=" + val;
+    var params = "&" + newParam;
+    // If the “search” string exists, then build params from it
+    if (search) {
+        // Try to replace an existance instance
+        params = search.replace(new RegExp("([?&])" + key + "[^&]*"), "$1" + newParam);
+        // If nothing was replaced, then add the new param to the end
+        if (params === search) {
+            if (lodash.includes(search, "?")) {
+                params += "&" + newParam;
+            }
+            else {
+                params += "?" + newParam;
+            }
+        }
+    }
+    return params;
+};
+var getParamFromUrl = function (key) {
+    if (typeof key !== "string") {
+        // eslint-disable-next-line no-throw-literal
+        throw "Key is not a string";
+    }
+    var urlString = window.location.href;
+    var url = new URL(urlString);
+    var param = url.searchParams.get(key);
+    return param;
+};
+//* *************************************USE FOR NEW UPDATE PARAMS********************************************** */
+var addQuery = function (newQuery) {
+    if (newQuery === void 0) { newQuery = {}; }
+    var currentPath = window.location.origin + window.location.pathname;
+    var query = queryString.parseUrl(window.location.href).query;
+    var resultQuery = __assign(__assign({}, query), newQuery);
+    window.open(queryString.stringifyUrl({ url: currentPath, query: resultQuery }), "_self");
+};
+var replaceQuery = function (query) {
+    if (query === void 0) { query = {}; }
+    var currentPath = window.location.origin + window.location.pathname;
+    window.open(queryString.stringifyUrl({ url: currentPath, query: query }), "_self");
+};
+var removeQuery = function (queryKey) {
+    var currentPath = window.location.origin + window.location.pathname;
+    var query = queryString.parseUrl(window.location.href).query;
+    delete query[queryKey];
+    window.open(queryString.stringifyUrl({ url: currentPath, query: query }), "_self");
+};
+var clearQuery = function () {
+    var currentPath = window.location.origin + window.location.pathname;
+    window.open(currentPath, "_self");
+};
+var getQuery = function () {
+    var query = queryString.parseUrl(window.location.href).query;
+    return query;
+};
+var UrlUtils = {
+    getParams: getParams,
+    addUrlParam: addUrlParam,
+    getParamFromUrl: getParamFromUrl,
+    addQuery: addQuery,
+    replaceQuery: replaceQuery,
+    removeQuery: removeQuery,
+    clearQuery: clearQuery,
+    getQuery: getQuery,
+};
+
+var mapListDataToTree = function (list) {
+    if (list === void 0) { list = []; }
+    var map = {};
+    var node = {};
+    var roots = [];
+    var i = 0;
+    try {
+        for (i = 0; i < list.length; i += 1) {
+            map[list[i].id] = i; // initialize the map
+        }
+        for (i = 0; i < list.length; i += 1) {
+            node = list[i];
+            // if (node.parent_id && list[map[node.parent_id]]) {
+            if (node.parent_id) {
+                // if you have dangling branches check that map[node.parentId] exists
+                if (!list[map[node.parent_id]]) {
+                    // eslint-disable-next-line no-throw-literal
+                    throw "dont have Parent NODE (" + node.parent_id + ") of nodeid " + node.id;
+                }
+                list[map[node.parent_id]].children.push(node);
+            }
+            else {
+                roots.push(node);
+            }
+        }
+    }
+    catch (err) {
+        console.log(err);
+    }
+    return roots;
+};
+var getAllSiblings = function (nodeId, dataList) {
+    if (dataList === void 0) { dataList = []; }
+    var currentNode = dataList.find(function (item) { return item.id === nodeId; });
+    var allSibling = [];
+    if (currentNode.parent_id) {
+        allSibling = dataList.filter(function (item) { return item.parent_id && item.parent_id === currentNode.parent_id; });
+    }
+    else {
+        allSibling = dataList.filter(function (item) { return !item.parent_id; });
+    }
+    return lodash.sortBy(allSibling, function (item) { return item.priority; });
+};
+var getAllSiblingCategory = function (nodeId, dataList) {
+    if (dataList === void 0) { dataList = []; }
+    var currentNode = dataList.find(function (item) { return item.id === nodeId; });
+    var allSibling = [];
+    if (currentNode.parent_id) {
+        allSibling = dataList.filter(function (item) { return item.parent_id && item.parent_id === currentNode.parent_id; });
+    }
+    else {
+        allSibling = dataList.filter(function (item) { return !item.parent_id; });
+    }
+    return lodash.sortBy(allSibling, function (item) { return item.position; });
+};
+var getAllChild = function (nodeId, dataList) {
+    if (dataList === void 0) { dataList = []; }
+    var childNodes = dataList.filter(function (item) { return item.parent_id === nodeId; });
+    return lodash.sortBy(childNodes, function (item) { return item.priority; });
+};
+var getAllChildCategory = function (nodeId, dataList) {
+    if (dataList === void 0) { dataList = []; }
+    var childNodes = dataList.filter(function (item) { return (item === null || item === void 0 ? void 0 : item.parent_id) === nodeId; });
+    return lodash.sortBy(childNodes, function (item) { return item.position; });
+};
+var isLeafNode = function (nodeId, dataList) {
+    if (dataList === void 0) { dataList = []; }
+    var children = getAllChild(nodeId, dataList);
+    return children.length === 0;
+};
+var isRootNode = function (nodeId, dataList) {
+    if (dataList === void 0) { dataList = []; }
+    var currentNode = dataList.filter(function (item) { return item.id === nodeId; });
+    return !currentNode.parent_id;
+};
+var getAllChildAndSubChild = function (nodeId, dataList) {
+    if (dataList === void 0) { dataList = []; }
+    var childNodes = dataList.filter(function (item) { return (item === null || item === void 0 ? void 0 : item.parent_id) === nodeId; });
+    if (lodash.isEmpty(childNodes)) {
+        return [];
+    }
+    var result = __spreadArray([], childNodes);
+    childNodes.forEach(function (item) {
+        var subChildNode = getAllChildAndSubChild(item === null || item === void 0 ? void 0 : item.id, dataList);
+        if (!lodash.isEmpty(subChildNode)) {
+            result = __spreadArray(__spreadArray([], result), subChildNode);
+        }
+    });
+    return result;
+};
+var searchNode = function (findId, checkNode) {
+    var _a, _b;
+    if (findId === (checkNode === null || checkNode === void 0 ? void 0 : checkNode.id)) {
+        return checkNode;
+    }
+    if (((_a = checkNode === null || checkNode === void 0 ? void 0 : checkNode.children) === null || _a === void 0 ? void 0 : _a.length) > 0) {
+        var result = null;
+        var i = void 0;
+        // eslint-disable-next-line no-plusplus
+        for (i = 0; result == null && i < checkNode.children.length; i++) {
+            result = searchNode(findId, (_b = checkNode === null || checkNode === void 0 ? void 0 : checkNode.children) === null || _b === void 0 ? void 0 : _b[i]);
+        }
+        return result;
+    }
+    return null;
+};
+var searchNodeFromTreeList = function (nodeId, treeList) {
+    if (treeList === void 0) { treeList = []; }
+    var i;
+    var result = null;
+    // eslint-disable-next-line no-plusplus
+    for (i = 0; result == null && i < treeList.length; i++) {
+        result = searchNode(nodeId, treeList[i]);
+    }
+    return result;
+};
+var getLevel = function (obj) {
+    var depth = 0;
+    if (obj.children) {
+        obj.children.forEach(function (d) {
+            var tmpDepth = getLevel(d);
+            if (tmpDepth > depth) {
+                depth = tmpDepth;
+            }
+        });
+    }
+    return 1 + depth;
+};
+var getLevelOfNode = function (nodeId, treeList) {
+    if (treeList === void 0) { treeList = []; }
+    var nodeItem = searchNodeFromTreeList(nodeId, treeList);
+    return getLevel(nodeItem);
+};
+var TreeDataUtils = {
+    getAllSiblings: getAllSiblings,
+    getAllChild: getAllChild,
+    isLeafNode: isLeafNode,
+    isRootNode: isRootNode,
+    mapListDataToTree: mapListDataToTree,
+    getAllSiblingCategory: getAllSiblingCategory,
+    getAllChildCategory: getAllChildCategory,
+    getAllChildAndSubChild: getAllChildAndSubChild,
+    getLevelOfNode: getLevelOfNode,
+};
+
+var getValueFromStringKey = function (object, keyString) {
+    var keyList = keyString.split(".");
+    if (keyList.length === 0) {
+        return object[keyString];
+    }
+    var objectResult = object;
+    keyList.forEach(function (key) {
+        objectResult = objectResult === null || objectResult === void 0 ? void 0 : objectResult[key];
+    });
+    return objectResult;
+};
+var setValueFromStringKey = function (object, keyString, value) {
+    var keyList = keyString.split(".");
+    lodash.reverse(keyList);
+    var objectResult = {};
+    if (keyList.length === 0) {
+        objectResult[keyString] = value;
+        return objectResult;
+    }
+    keyList.forEach(function (key, index) {
+        var _a;
+        if (index === 0) {
+            objectResult[key] = value;
+        }
+        else {
+            objectResult = (_a = {}, _a[key] = objectResult, _a);
+        }
+    });
+    return __assign(__assign({}, object), objectResult);
+};
+var mapFieldsLangsCTS = function (dataClient, KEYS_LANG) {
+    if (dataClient === void 0) { dataClient = {}; }
+    if (KEYS_LANG === void 0) { KEYS_LANG = []; }
+    var dataResult = {};
+    KEYS_LANG.forEach(function (fields) {
+        dataResult = setValueFromStringKey(dataResult, fields.keyServer, dataClient[fields.keyClient]);
+    });
+    return dataResult;
+};
+var mapFieldsLangsSTC = function (dataServer, KEYS_LANG) {
+    if (KEYS_LANG === void 0) { KEYS_LANG = []; }
+    var dataResult = {};
+    KEYS_LANG.forEach(function (fields) {
+        dataResult[fields.keyClient] = getValueFromStringKey(dataServer, fields.keyServer);
+    });
+    return dataResult;
+};
+var mapObjectToArray = function (object) {
+    if (!object) {
+        return [];
+    }
+    var arrayResult = [];
+    Object.keys(object).forEach(function (key) { return arrayResult.push(__assign({ id: key }, object[key])); });
+    return arrayResult;
+};
+var mapArrayToObject = function (array, getKey) {
+    if (getKey === void 0) { getKey = function (item) { return item.id; }; }
+    if (!array || array.length === 0) {
+        return {};
+    }
+    var objectResult = {};
+    array.forEach(function (arrayItem) {
+        var key = getKey(arrayItem);
+        objectResult[key] = arrayItem;
+    });
+    return objectResult;
+};
+var findItemFromId = function (list, id) {
+    var _a;
+    if (list === void 0) { list = []; }
+    if (!list || list.length === 0) {
+        return {};
+    }
+    return (_a = lodash.filter(list, function (pro) { return pro.id === id; })) === null || _a === void 0 ? void 0 : _a[0];
+};
+var removeItemFromId = function (list, id) {
+    if (list === void 0) { list = []; }
+    if (!list || list.length === 0) {
+        return [];
+    }
+    return lodash.filter(list, function (pro) { return pro.id !== id; });
+};
+var sliceArrayToMui = function (bigArray, numberOfItem) {
+    if (bigArray === void 0) { bigArray = []; }
+    if (numberOfItem === void 0) { numberOfItem = 10; }
+    var arrayOfArrays = [];
+    for (var i = 0; i < bigArray.length; i += numberOfItem) {
+        arrayOfArrays.push(bigArray.slice(i, i + numberOfItem));
+    }
+    return arrayOfArrays;
+};
+var arrayMove = function (arr, oldIndex, newIndex) {
+    if (newIndex >= arr.length) {
+        var k = newIndex - arr.length + 1;
+        // eslint-disable-next-line no-plusplus
+        while (k--) {
+            arr.push(undefined);
+        }
+    }
+    arr.splice(newIndex, 0, arr.splice(oldIndex, 1)[0]);
+    return arr; // for testing
+};
+function combineAllArray(arr) {
+    if (!arr || arr.length === 0)
+        return [];
+    if (arr.length === 1) {
+        return arr[0];
+    }
+    var result = [];
+    var allCasesOfRest = combineAllArray(arr.slice(1));
+    for (var i = 0; i < allCasesOfRest.length; i += 1) {
+        for (var j = 0; j < arr[0].length; j += 1) {
+            result.push(arr[0][j].concat(allCasesOfRest[i]));
+        }
+    }
+    return result;
+}
+function compareTwoStringArray(array1, array2) {
+    if (!array1 || !array2 || array1.length !== array2.length)
+        return false;
+    return lodash.every(array1, function (item) { return lodash.includes(array2, item); });
+}
+/**
+ *
+ * @param {big array} array1
+ * @param {small array} array2
+ */
+function arrayIsContainArray(array1, array2) {
+    return lodash.every(array2, function (item) { return lodash.includes(array1, item); });
+}
+var ObjectUtils = {
+    getValueFromStringKey: getValueFromStringKey,
+    mapObjectToArray: mapObjectToArray,
+    findItemFromId: findItemFromId,
+    removeItemFromId: removeItemFromId,
+    sliceArrayToMui: sliceArrayToMui,
+    arrayMove: arrayMove,
+    mapArrayToObject: mapArrayToObject,
+    combineAllArray: combineAllArray,
+    compareTwoStringArray: compareTwoStringArray,
+    setValueFromStringKey: setValueFromStringKey,
+    mapFieldsLangsCTS: mapFieldsLangsCTS,
+    mapFieldsLangsSTC: mapFieldsLangsSTC,
+    arrayIsContainArray: arrayIsContainArray,
+};
+
+var toRadians = function (number) { return (number * Math.PI) / 180; };
+var calculateGreatCircleDistance = function (locationA, locationZ) {
+    var lat1 = locationA.latitude;
+    var lon1 = locationA.longitude;
+    var lat2 = locationZ.latitude;
+    var lon2 = locationZ.longitude;
+    // DOCUMENTATION: http://www.movable-type.co.uk/scripts/latlong.html
+    var p1 = toRadians(lat1);
+    var p2 = toRadians(lat2);
+    var deltagamma = toRadians(lon2 - lon1);
+    var R = 6371e3; // gives d in metres
+    var d = Math.acos(Math.sin(p1) * Math.sin(p2) + Math.cos(p1) * Math.cos(p2) * Math.cos(deltagamma)) * R;
+    return isNaN(d) ? 0 : d;
+};
+var kalman = function (location, lastLocation, constant) {
+    var accuracy = Math.max(location.accuracy, 1);
+    var result = __assign(__assign({}, location), lastLocation);
+    if (!lastLocation) {
+        result.variance = accuracy * accuracy;
+    }
+    else {
+        var timestampInc = location.time.getTime() - lastLocation.time.getTime();
+        if (timestampInc > 0) {
+            // We can tune the velocity and particularly the coefficient at the end
+            var velocity = (calculateGreatCircleDistance(location, lastLocation) / timestampInc) * constant;
+            result.variance += (timestampInc * velocity * velocity) / 1000;
+        }
+        var k = result.variance / (result.variance + accuracy * accuracy);
+        result.latitude += k * (location.latitude - lastLocation.latitude);
+        result.longitude += k * (location.longitude - lastLocation.longitude);
+        // eslint-disable-next-line operator-assignment
+        result.variance = (1 - k) * result.variance;
+    }
+    return __assign(__assign({}, location), lodash.pick(result, ["latitude", "longitude", "variance"]));
+};
+var runKalmanOnLocations = function (rawData, kalmanConstant) {
+    if (kalmanConstant === void 0) { kalmanConstant = 1000; }
+    var lastLocation;
+    return rawData
+        .map(function (location) { return (__assign(__assign({}, location), { time: new Date(location.time) })); })
+        .map(function (location) {
+        lastLocation = kalman(location, lastLocation, kalmanConstant);
+        return lastLocation;
+    });
+};
+var getLatLngString = function (location) {
+    if (!location) {
+        return null;
+    }
+    return location.latitude + "," + location.longitude;
+};
+var getStaticImageMap = function (latlng, googleKey) {
+    return "https://maps.googleapis.com/maps/api/staticmap?center=" + latlng + "&zoom=17&markers=color:pink%7Clabel:o%7Csize=100*100%7C" + latlng + "&size=1000x1000&key=" + googleKey;
+};
+var MapUtils = { runKalmanOnLocations: runKalmanOnLocations, calculateGreatCircleDistance: calculateGreatCircleDistance, getStaticImageMap: getStaticImageMap, getLatLngString: getLatLngString };
+
+var getBase64ImageFromUrl = function (imageUrl) { return __awaiter(void 0, void 0, void 0, function () {
+    var proxyurl, res, blob;
+    var _this = this;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                if (!imageUrl || lodash.isEmpty(imageUrl)) {
+                    // eslint-disable-next-line prefer-promise-reject-errors
+                    return [2 /*return*/, Promise.reject("Url is empty!")];
+                }
+                proxyurl = "https://cors-anywhere.herokuapp.com/";
+                return [4 /*yield*/, fetch(proxyurl + imageUrl)];
+            case 1:
+                res = _a.sent();
+                return [4 /*yield*/, res.blob()];
+            case 2:
+                blob = _a.sent();
+                return [2 /*return*/, new Promise(function (resolve, reject) {
+                        var reader = new FileReader();
+                        reader.addEventListener("load", function () {
+                            resolve(reader.result);
+                        }, false);
+                        reader.onerror = function () {
+                            // eslint-disable-next-line prefer-promise-reject-errors
+                            return reject(_this);
+                        };
+                        reader.readAsDataURL(blob);
+                    })];
+        }
+    });
+}); };
+var getBase64ImageInImageData = function (imageUrl) { return __awaiter(void 0, void 0, void 0, function () {
+    var base64String, jpgBase64;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                if (!imageUrl || lodash.isEmpty(imageUrl)) {
+                    return [2 /*return*/, ""];
+                }
+                return [4 /*yield*/, getBase64ImageFromUrl(imageUrl)];
+            case 1:
+                base64String = _a.sent();
+                jpgBase64 = base64String.replace("data:application/octet-stream;base64", "data:image/jpg;base64");
+                return [2 /*return*/, jpgBase64];
+        }
+    });
+}); };
+var getBase64ListFromUrls = function (imageUrls) { return __awaiter(void 0, void 0, void 0, function () {
+    var base64List, index, base64String, jpgBase64;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                base64List = [];
+                index = 0;
+                _a.label = 1;
+            case 1:
+                if (!(index < imageUrls.length)) return [3 /*break*/, 4];
+                return [4 /*yield*/, getBase64ImageFromUrl(imageUrls[index])];
+            case 2:
+                base64String = _a.sent();
+                jpgBase64 = base64String.replace("data:application/octet-stream;base64", "data:image/jpg;base64");
+                base64List.push(jpgBase64);
+                _a.label = 3;
+            case 3:
+                index++;
+                return [3 /*break*/, 1];
+            case 4: return [2 /*return*/, base64List];
+        }
+    });
+}); };
+function getBase64FromLocal(img, callback) {
+    var reader = new FileReader();
+    reader.addEventListener("load", function () { return callback(reader.result); });
+    reader.readAsDataURL(img);
+}
+function downloadImages(mediaUrls) {
+    return __awaiter(this, void 0, void 0, function () {
+        var index, mediaUrl, response, buffer, url, link;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    index = 0;
+                    _a.label = 1;
+                case 1:
+                    if (!(index <= mediaUrls.length)) return [3 /*break*/, 5];
+                    mediaUrl = mediaUrls[index];
+                    return [4 /*yield*/, fetch(mediaUrl, { method: "GET", headers: {} })];
+                case 2:
+                    response = _a.sent();
+                    return [4 /*yield*/, response.arrayBuffer()];
+                case 3:
+                    buffer = _a.sent();
+                    url = window.URL.createObjectURL(new Blob([buffer]));
+                    link = document.createElement("a");
+                    link.href = url;
+                    link.setAttribute("download", "image.png");
+                    document.body.appendChild(link);
+                    link.click();
+                    _a.label = 4;
+                case 4:
+                    index += 1;
+                    return [3 /*break*/, 1];
+                case 5: return [2 /*return*/];
+            }
+        });
+    });
+}
+function getImageSer(url, width, height, fit) {
+    if (lodash.isEmpty(url)) {
+        return "images/default.png";
+    }
+    var urlResult = url + "?";
+    if (width) {
+        urlResult += "w=" + width;
+    }
+    if (height) {
+        urlResult += "&h=" + height;
+    }
+    if (fit) {
+        urlResult += "&fit=crop";
+    }
+    return urlResult;
+}
+var ImageUtils = {
+    getBase64ImageFromUrl: getBase64ImageFromUrl,
+    getBase64ListFromUrls: getBase64ListFromUrls,
+    getBase64FromLocal: getBase64FromLocal,
+    getBase64ImageInImageData: getBase64ImageInImageData,
+    downloadImages: downloadImages,
+    getImageSer: getImageSer,
+};
+
 var Badge = function (_a) {
     var children = _a.children, _b = _a.variant, variant = _b === void 0 ? "dot" : _b, _c = _a.shape, shape = _c === void 0 ? "round" : _c, index = _a.index, _d = _a.dotProps, dotProps = _d === void 0 ? {} : _d, className = _a.className, _e = _a.color, color = _e === void 0 ? "secondary" : _e, _f = _a.size, size = _f === void 0 ? "medium" : _f, style = _a.style, badgeStyle = _a.badgeStyle, onClick = _a.onClick;
     var wrapperClass = classnames("d-badge__container d-badge__container-" + variant, className);
@@ -73817,13 +75189,21 @@ exports.Header = Header;
 exports.HeaderDetail = HeaderDetail;
 exports.HeaderTable = HeaderTable;
 exports.Icon = Icon$2;
+exports.ImageUtils = ImageUtils;
 exports.InputText = InputText;
 exports.Loading = Loading;
+exports.MapUtils = MapUtils;
 exports.Modal = Modal;
+exports.ObjectUtils = ObjectUtils;
 exports.PopoverList = PopoverList;
 exports.RadioGroup = RadioGroup;
 exports.RowInterchangeView = RowInterchangeView;
 exports.Select = Select;
+exports.StringUtils = StringUtils;
 exports.TabBar = TabBar;
+exports.TimeUtils = TimeUtils;
+exports.TreeDataUtils = TreeDataUtils;
 exports.TreeSelect = TreeSelect;
+exports.UrlUtils = UrlUtils;
+exports.ViewRow = ViewRow;
 //# sourceMappingURL=dcomponent.cjs.js.map

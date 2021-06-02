@@ -1,20 +1,20 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable no-unused-expressions */
 // react
-import React, { useState, useEffect } from "react";
+import ClassNames from "classnames";
 // third-party
 import _ from "lodash";
-import ClassNames from "classnames";
+import React, { useEffect, useState } from "react";
 // application
 import Button from "../../button/Button";
 import Checkbox from "../../checkbox/Checkbox";
-import InputText from "../../input/InputText";
-import Modal from "../../modal/Modal";
-import PopoverList from "../../list/popoverList/PopoverList";
+import DialogManager from "../../dialog/DialogManager";
 import Icon from "../../icon/Icon";
+import InputText from "../../input/InputText";
+import PopoverList from "../../list/popoverList/PopoverList";
+import Modal from "../../modal/Modal";
 // data stubs
 import LayoutTableManager from "./LayoutTableManager";
-import DialogManager from "../../dialog/DialogManager";
 
 export const SelectLayoutView = ({
     onClickItem,

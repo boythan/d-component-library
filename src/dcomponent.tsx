@@ -1,6 +1,4 @@
 import "./scss/index.scss";
-import AwesomeTableUtils from "./utils/AwesomeTableUtils";
-import StringUtils from "./utils/StringUtils";
 
 /* ----------------------------------------
 // Input

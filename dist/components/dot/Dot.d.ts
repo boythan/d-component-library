@@ -1,6 +1,6 @@
 import React, { CSSProperties } from "react";
 import { ButtonProps } from "../button/Button";
-import { IconProps } from "../../../dist/components/icon/Icon.d";
+import { IconProps } from '../icon/Icon';
 export interface DotProps {
     color?: ButtonProps["color"];
     size?: IconProps["size"];
