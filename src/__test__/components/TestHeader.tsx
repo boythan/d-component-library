@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import HeaderTable from "../components/header/HeaderTable";
-import { Select } from "../dcomponent";
-import { ATTRIBUTE_INPUT_TYPE } from "./TestConstant";
+import HeaderTable from "../../components/header/HeaderTable";
+import Select from "../../components/select/Select";
+import { ATTRIBUTE_INPUT_TYPE } from "../data/TestConstant";
 
 const TestHeader = () => {
     const [valueSelect, setValueSelect] = useState();
