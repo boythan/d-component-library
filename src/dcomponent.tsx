@@ -138,3 +138,10 @@ export { default as AwesomeTableUtils } from "./components/table/AwesomeTableUti
 
 export type { DropdownProps, IDropdownMenuItemProps, DropDownMenuProps } from "./components/dropdown/Dropdown";
 export { default as Dropdown } from "./components/dropdown/Dropdown";
+
+/* ----------------------------------------
+// Badge
+// ---------------------------------------- */
+
+export type { BadgeProps } from "./components/badge/Badge";
+export { default as Badge } from "./components/badge/Badge";
