@@ -1,6 +1,7 @@
 import { Tooltip } from "antd";
 import React from "react";
-import Icon from "../icon/Icon";
+import Icon from "../components/icon/Icon";
+import StringUtils from "./StringUtils";
 
 export const isString = (variable: any) => {
     return typeof variable === "string";
@@ -54,7 +55,7 @@ export const calculateDefaultExpandedRowKeys = function (data = [], options: any
 };
 
 export const transformColumn = (columns: Array<any> = [], baseColumn: any = {}): Array<any> => {
-    return columns.map(({ title, titleTooltip, dataIndex, render, ...props }: any) => {
+    return columns.map(({ title, titleTooltip, dataIndex, render, ...props }: any, index: number) => {
         // custom title
         let titleResult: any = title;
         if (typeof title === "function") {
@@ -71,6 +72,7 @@ export const transformColumn = (columns: Array<any> = [], baseColumn: any = {}):
 
         return {
             ...baseColumn,
+            id: `${index}`,
             title: titleResult,
             align: "center",
             dataIndex,

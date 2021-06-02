@@ -12,7 +12,7 @@ import ClassNames from "classnames";
 import _ from "lodash";
 import React, { Component } from "react";
 import Highlighter from "react-highlight-words";
-import { isArray, isString, transformColumn } from "./AwesomeTableUtils";
+import { isArray, isString, transformColumn } from "../../utils/AwesomeTableUtils";
 // data stubs
 import LayoutTableManager from "./layoutManager/LayoutTableManager";
 import SelectColumnModal, { SelectLayoutView } from "./layoutManager/SelectColumnModal";
@@ -137,7 +137,7 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
             pagination: this.getDefaultPagination(),
             sorter: null,
 
-            columns: props.columns,
+            columns: transformColumn(props.columns),
             selectedColumns: props.columns,
             tableLayoutList: {},
             selectedLayout: null,
@@ -167,7 +167,7 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
     UNSAFE_componentWillReceiveProps(nextProps: any) {
         const { columns } = this.props;
         if (nextProps?.columns !== columns) {
-            this.setState({ columns: nextProps.columns });
+            this.setState({ columns: transformColumn(nextProps.columns) });
         }
     }
 
@@ -252,7 +252,8 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
     };
 
     getDefaultTableLayout = () => {
-        const { keyTableLayout, showSelectColumn, columns } = this.props;
+        const { keyTableLayout, showSelectColumn } = this.props;
+        const { columns } = this.state;
         if (keyTableLayout && showSelectColumn) {
             const tableLayout = LayoutTableManager.getLayout(keyTableLayout);
             if (!_.isEmpty(tableLayout)) {
@@ -263,10 +264,9 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
                 });
                 const defaultLayout = listTableLayout.find((item: any) => item?.default);
                 if (!_.isEmpty(defaultLayout)) {
-                    const defaultIndex = defaultLayout?.data?.map((item: any) => item?.dataIndex);
+                    const defaultIndex = defaultLayout?.data?.map((item: any) => item?.id);
                     // eslint-disable-next-line operator-linebreak
-                    const defaultColumns =
-                        columns && columns.filter((item: any) => defaultIndex.includes(item?.dataIndex));
+                    const defaultColumns = columns && columns.filter((item: any) => defaultIndex.includes(item?.id));
                     this.setState({
                         selectedColumns: defaultColumns,
                         tableLayoutList: tableLayout,
@@ -400,9 +400,7 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
         const { filteredInfo, columns = [], selectedColumns = [] } = this.state;
         const { showSelectColumn } = this.props;
 
-        const columnsTransformed = transformColumn(columns);
-
-        const columnsSearchFilter = columnsTransformed.map((columnParams: any) => {
+        const columnsSearchFilter = columns.map((columnParams: any) => {
             let column = columnParams;
             if (column.filters && column.filters.length > 0) {
                 column = {
@@ -431,8 +429,8 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
         let columnsSelected = columnsResizable;
 
         if (showSelectColumn) {
-            const selectedIndex = selectedColumns.map((item: any) => item?.dataIndex);
-            columnsSelected = columnsResizable.filter((item: any) => selectedIndex.includes(item.dataIndex));
+            const selectedIndex = selectedColumns.map((item: any) => item?.id);
+            columnsSelected = columnsResizable.filter((item: any) => selectedIndex.includes(item.id));
         }
         return columnsSelected;
     }
@@ -440,7 +438,7 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
     /** ************************************************** RENDER *************************************************** */
 
     render() {
-        const { total, pagination, tableLayoutList, selectedLayout, data, loading } = this.state;
+        const { total, pagination, tableLayoutList, selectedLayout, data, loading, columns } = this.state;
 
         // eslint-disable-next-line operator-linebreak
         const { rowKey, isScroll, classNameTable, tableLayout, showSelectColumn, keyTableLayout, className } =
@@ -463,7 +461,7 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
                         )}
                         <SelectColumnModal
                             // eslint-disable-next-line react/destructuring-assignment
-                            options={this.props.columns}
+                            options={columns}
                             setSelectedColumns={(column: any) => this.setState({ selectedColumns: column })}
                             keyTable={keyTableLayout}
                             refreshLayout={() => this.getDefaultTableLayout()}

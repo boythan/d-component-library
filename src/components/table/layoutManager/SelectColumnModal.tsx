@@ -3,7 +3,7 @@
 // react
 import React, { useState, useEffect } from "react";
 // third-party
-import _, { every } from "lodash";
+import _, { every, isEmpty } from "lodash";
 // import { Checkbox } from "antd";
 import ClassNames from "classnames";
 // application
@@ -140,12 +140,12 @@ const SelectColumnModal = ({
     }, [selectedOption, openOptionModal]);
 
     const removeItemFromSelected = (selectedItem: any) => {
-        const clone = selectedOption.filter((item: any) => item.dataIndex !== selectedItem);
+        const clone = selectedOption.filter((item: any) => item.id !== selectedItem);
         setSelectedOption(clone);
     };
 
     const addItemToSelected = (selectedItem: any) => {
-        const addedItem = options.find((obj: any) => obj.dataIndex === selectedItem);
+        const addedItem = options.find((obj: any) => obj.id === selectedItem);
         const clone = [...selectedOption, addedItem];
         setSelectedOption(clone);
     };
@@ -154,8 +154,7 @@ const SelectColumnModal = ({
         if (!_.isEmpty(selectedLayout)) {
             // const storagedLayout = LayoutTableManager.getLayout(selectedLayout?.name)
             const selected = selectedOption.map((item: any) => ({
-                dataIndex: item.dataIndex,
-                id: Math.random(),
+                id: item.id,
             }));
             const layout = { data: selected, default: true };
             const newTableLayout: any = {};
@@ -180,9 +179,11 @@ const SelectColumnModal = ({
     };
 
     const handleOnSaveNewLayout = async () => {
+        if (isEmpty(nameOfLayout)) {
+            return Promise.reject();
+        }
         const selected = selectedOption.map((item: any) => ({
-            dataIndex: item.dataIndex,
-            id: Math.random(),
+            id: item.id,
         }));
         const layout = { data: selected, default: false };
         await LayoutTableManager.saveNewLayout(layout, keyTable, nameOfLayout);
@@ -193,8 +194,8 @@ const SelectColumnModal = ({
     };
 
     const onSelectLayout = (item: any) => {
-        const layoutIndex = item?.data?.map((item: any) => item?.dataIndex) ?? [];
-        const filterOption = options.filter((item: any) => layoutIndex.includes(item?.dataIndex));
+        const layoutIndex = item?.data?.map((item: any) => item?.id) ?? [];
+        const filterOption = options.filter((item: any) => layoutIndex.includes(item?.id));
         setSelectedLayout(item);
         setSelectedOption(filterOption);
         getLayoutTable();
@@ -240,7 +241,7 @@ const SelectColumnModal = ({
                     {options.map((item: any) => {
                         // eslint-disable-next-line operator-linebreak
                         const isChecked = !!selectedOption.find((obj: any) => obj.id === item.id);
-
+                        const label = typeof item?.title === "function" ? item?.title() : item?.title;
                         return (
                             <div className="col-sm-6">
                                 <Checkbox
@@ -254,7 +255,7 @@ const SelectColumnModal = ({
                                     }}
                                     value={item?.id}
                                     // eslint-disable-next-line react/no-children-prop
-                                    label={item?.title && item?.title}
+                                    label={label}
                                     className="my-2"
                                 />
                             </div>
