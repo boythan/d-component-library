@@ -22,8 +22,8 @@ import TabBar from "../components/tab/TabBar";
 import TableAwesomeComponent, { AwesomeTableComponentProps } from "../components/table/AwesomeTableComponent";
 import { transformColumn } from "../components/table/AwesomeTableUtils";
 import RowInterchangeView from "../components/view/RowInterchangeView";
-import { ATTRIBUTE_INPUT_TYPE } from "./TestConstant";
-import TestHeader from "./TestHeader";
+import TestHeader from "./components/TestHeader";
+import { ATTRIBUTE_INPUT_TYPE } from "./data/TestConstant";
 
 interface Props {
     content?: any;
