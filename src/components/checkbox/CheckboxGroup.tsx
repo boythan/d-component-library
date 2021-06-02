@@ -38,7 +38,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
                 const isChecked = listId.includes(iValue);
                 const isDisabled = ((getDisabledItem && getDisabledItem(item)) as any) || false;
                 const itemClass = ClassNames(
-                    "my-3",
+                    "my-3 p-0",
                     {
                         "col-12": numberOfColumns === "1",
                     },

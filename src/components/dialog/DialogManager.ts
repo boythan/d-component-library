@@ -10,16 +10,16 @@ export default {
         this.currentDialog = refDialog;
     },
 
-    showConfirm(title: any, message: any, handleOnOk: any) {
+    showConfirm(title?: any, message?: any, handleOnOk?: any) {
         this.currentDialog.showConfirm(title, message, handleOnOk);
     },
-    showWarning(title: any, message: any, handleOnOk: any) {
+    showWarning(title?: any, message?: any, handleOnOk?: any) {
         this.currentDialog.showWarning(title, message, handleOnOk);
     },
-    showInfo(title: any, message: any, handleOnOk: any) {
+    showInfo(title?: any, message?: any, handleOnOk?: any) {
         this.currentDialog.showInfo(title, message, handleOnOk);
     },
-    showError(title: any, message: any, handleOnOk: any) {
+    showError(title?: any, message?: any, handleOnOk?: any) {
         this.currentDialog.showError(title, message, handleOnOk);
     },
 };
