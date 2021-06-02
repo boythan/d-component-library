@@ -161,3 +161,10 @@ export { default as ImageUtils } from "./utils/ImageUtils";
 
 export type { BadgeProps } from "./components/badge/Badge";
 export { default as Badge } from "./components/badge/Badge";
+
+/* ----------------------------------------
+// Dialog
+// ---------------------------------------- */
+
+export { default as DialogComponent } from "./components/dialog/DialogComponent";
+export { default as DialogManager } from "./components/dialog/DialogManager";
