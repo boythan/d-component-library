@@ -81,7 +81,7 @@ export const transformColumn = (columns: Array<any> = [], baseColumn: any = {}):
                     content = render(data, item);
                 }
                 return {
-                    children: <div className="text text-nowrap">{content}</div>,
+                    children: content,
                     props: { "data-title": title },
                 };
             },
