@@ -1,3 +1,4 @@
+import { DropdownProps } from "../../components/dropdown/Dropdown";
 export declare const ATTRIBUTE_INPUT_TYPE: ({
     id: string;
     label: string;
@@ -20,3 +21,4 @@ export declare const ATTRIBUTE_INPUT_TYPE: ({
     iconName?: undefined;
     subMenu?: undefined;
 })[];
+export declare const LANGUAGES: DropdownProps["dataSource"];

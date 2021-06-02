@@ -92,6 +92,7 @@ declare class AwesomeTableComponent extends Component<AwesomeTableComponentProps
     refreshData(): void;
     refreshKeepPaging(paging: any): void;
     getDataList(): any[];
+    getColumns(): any[];
     /** ************************************************** RENDER *************************************************** */
     render(): JSX.Element;
 }
