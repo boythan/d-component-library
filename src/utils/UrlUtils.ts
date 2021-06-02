@@ -1,4 +1,4 @@
-import { includes } from "lodash";
+import _ from "lodash";
 import queryString from "query-string";
 
 const getParams = function (url: string) {
@@ -24,7 +24,7 @@ const addUrlParam = (search: string, key: string, val: any) => {
         params = search.replace(new RegExp(`([?&])${key}[^&]*`), `$1${newParam}`);
         // If nothing was replaced, then add the new param to the end
         if (params === search) {
-            if (includes(search, "?")) {
+            if (_.includes(search, "?")) {
                 params += `&${newParam}`;
             } else {
                 params += `?${newParam}`;
