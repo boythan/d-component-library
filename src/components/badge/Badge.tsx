@@ -9,7 +9,7 @@ import { IconProps } from "../../../dist/components/icon/Icon.d";
 
 export interface BadgeProps {
     [key: string]: any;
-    children: any;
+    children?: any;
     variant?: "dot" | "index";
     shape?: "round" | "square";
     index?: string | number;
