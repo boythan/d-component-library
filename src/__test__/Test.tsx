@@ -24,6 +24,7 @@ import { transformColumn } from "../components/table/AwesomeTableUtils";
 import RowInterchangeView from "../components/view/RowInterchangeView";
 import TestHeader from "./components/TestHeader";
 import { ATTRIBUTE_INPUT_TYPE } from "./data/TestConstant";
+import TestBadge from "./components/badge/TestBadge";
 
 interface Props {
     content?: any;
@@ -418,6 +419,10 @@ export default function Test({ content }: Props): ReactElement {
     const dot = (
         <div className="my-4 d-flex align-items-center">
             <Dot />
+            <Dot />
+            <Dot />
+            <Dot size="xx-large" />
+            <Dot size="xxx-large" />
         </div>
     );
 
@@ -453,6 +458,7 @@ export default function Test({ content }: Props): ReactElement {
         { id: "LOADING", label: "LOADING", component: loading },
         { id: "DOT", label: "DOT", component: dot },
         { id: "DROPDOWN", label: "DROPDOWN", component: <DropdownView /> },
+        { id: "BADGE", label: "BADGE", component: <TestBadge /> },
     ];
 
     const renderCustomHeader = () => {

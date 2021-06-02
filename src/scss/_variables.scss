@@ -777,17 +777,49 @@
    // ----------------------------------------
    // -- .icon
    // ----------------------------------------
+      $icon-base-size:  16px;
+      $icon-size:(
+         "xx-small":$icon-base-size - 6px,
+         "x-small":$icon-base-size - 4px,
+         "small":$icon-base-size - 2px,
+         "medium":$icon-base-size,
+         "large":$icon-base-size + 2px,
+         "x-large":$icon-base-size+10px,
+         "xx-large":$icon-base-size+20px,
+         "xxx-large":$icon-base-size+30px,
+      );
 
-   $icon-size:(
-      "xx-small":$text-xx-small-size,
-      "x-small":$text-x-small-size,
-      "small":$text-small-size,
-      "medium":$text-medium-size,
-      "large":$text-medium-size,
-      "x-large":$text-medium-size+10px,
-      "xx-large":$text-medium-size+20px,
-      "xxx-large":$text-medium-size+30px,
-   );
+   // ----------------------------------------
+   // -- .dot
+   // ----------------------------------------
+
+      $dot-base-size:   12px;
+      $dot-size: (
+         "xxx-large": $dot-base-size + 8px,
+         "xx-large": $dot-base-size + 6px,
+         "x-large": $dot-base-size + 4px,
+         "large": $dot-base-size + 2px,
+         "medium": $dot-base-size,
+         "small": $dot-base-size - 2px,
+         "x-small":$dot-base-size - 4px,
+         "xx-small":$dot-base-size - 6px,
+      );
+
+   // ----------------------------------------
+   // -- .badge
+   // ----------------------------------------
+
+      $badge-base-size:   14px;
+      $badge-size: (
+         "xxx-large": $badge-base-size + 8px,
+         "xx-large": $badge-base-size + 6px,
+         "x-large": $badge-base-size + 4px,
+         "large": $badge-base-size + 2px,
+         "medium": $badge-base-size,
+         "small": $badge-base-size - 2px,
+         "x-small":$badge-base-size - 4px,
+         "xx-small":$badge-base-size - 6px,
+      );
 
    $badge-color:                       $primary-color                 !default;
 
