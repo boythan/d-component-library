@@ -1,11 +1,10 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React, { CSSProperties } from "react";
 import ClassNames from "classnames";
-import Dot, { DotProps } from "../dot/Dot";
+import React, { CSSProperties } from "react";
 import { ButtonProps } from "../button/Button";
-import { AvatarProps } from "../avatar/Avatar";
-import { IconProps } from "../../../dist/components/icon/Icon.d";
+import Dot, { DotProps } from "../dot/Dot";
+import { IconProps } from "../icon/Icon";
 
 export interface BadgeProps {
     [key: string]: any;
