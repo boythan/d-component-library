@@ -1,4 +1,4 @@
-import { isEmpty, sortBy } from "lodash";
+import _ from "lodash";
 
 const mapListDataToTree = (list: any[] = []) => {
     const map: any = {};
@@ -39,7 +39,7 @@ const getAllSiblings = (nodeId: string, dataList: any[] = []) => {
     } else {
         allSibling = dataList.filter((item) => !item.parent_id);
     }
-    return sortBy(allSibling, (item) => item.priority);
+    return _.sortBy(allSibling, (item) => item.priority);
 };
 
 const getAllSiblingCategory = (nodeId: string, dataList: any[] = []) => {
@@ -50,17 +50,17 @@ const getAllSiblingCategory = (nodeId: string, dataList: any[] = []) => {
     } else {
         allSibling = dataList.filter((item) => !item.parent_id);
     }
-    return sortBy(allSibling, (item) => item.position);
+    return _.sortBy(allSibling, (item) => item.position);
 };
 
 const getAllChild = (nodeId: string, dataList: any[] = []) => {
     const childNodes = dataList.filter((item) => item.parent_id === nodeId);
-    return sortBy(childNodes, (item) => item.priority);
+    return _.sortBy(childNodes, (item) => item.priority);
 };
 
 const getAllChildCategory = (nodeId: string, dataList: any[] = []) => {
     const childNodes = dataList.filter((item) => item?.parent_id === nodeId);
-    return sortBy(childNodes, (item) => item.position);
+    return _.sortBy(childNodes, (item) => item.position);
 };
 
 const isLeafNode = (nodeId: string, dataList: any[] = []) => {
@@ -75,13 +75,13 @@ const isRootNode = (nodeId: string, dataList: any[] = []) => {
 
 const getAllChildAndSubChild = (nodeId: string, dataList: any[] = []) => {
     const childNodes = dataList.filter((item) => item?.parent_id === nodeId);
-    if (isEmpty(childNodes)) {
+    if (_.isEmpty(childNodes)) {
         return [];
     }
     let result = [...childNodes];
     childNodes.forEach((item) => {
         const subChildNode = getAllChildAndSubChild(item?.id, dataList);
-        if (!isEmpty(subChildNode)) {
+        if (!_.isEmpty(subChildNode)) {
             result = [...result, ...subChildNode];
         }
     });

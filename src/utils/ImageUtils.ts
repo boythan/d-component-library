@@ -1,4 +1,4 @@
-import _, { isEmpty } from "lodash";
+import _ from "lodash";
 
 const getBase64ImageFromUrl = async (imageUrl: string) => {
     if (!imageUrl || _.isEmpty(imageUrl)) {
@@ -73,7 +73,7 @@ async function downloadImages(mediaUrls: any[]) {
 }
 
 function getImageSer(url: string, width: any, height: any, fit: boolean) {
-    if (isEmpty(url)) {
+    if (_.isEmpty(url)) {
         return "images/default.png";
     }
     let urlResult = `${url}?`;
