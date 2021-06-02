@@ -73696,8 +73696,8 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
             filteredInfo: null,
             pagination: _this.getDefaultPagination(),
             sorter: null,
-            columns: transformColumn(props.columns),
-            selectedColumns: props.columns,
+            columns: transformColumn(props.columns, props.baseColumnProps),
+            selectedColumns: transformColumn(props.columns, props.baseColumnProps),
             tableLayoutList: {},
             selectedLayout: null,
         };
@@ -73713,7 +73713,7 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
     AwesomeTableComponent.prototype.UNSAFE_componentWillReceiveProps = function (nextProps) {
         var columns = this.props.columns;
         if ((nextProps === null || nextProps === void 0 ? void 0 : nextProps.columns) !== columns) {
-            this.setState({ columns: transformColumn(nextProps.columns) });
+            this.setState({ columns: transformColumn(nextProps.columns, nextProps.baseColumnProps) });
         }
     };
     AwesomeTableComponent.prototype.componentWillUnmount = function () {
@@ -73837,6 +73837,7 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
         },
         // eslint-disable-next-line react/default-props-match-prop-types
         columns: [],
+        baseColumnProps: {},
         isPagination: true,
         defaultPagination: null,
         isScroll: true,
