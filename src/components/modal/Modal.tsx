@@ -58,7 +58,7 @@ const Modal: React.FC<ModalProps> = ({
     const modalClass = ClassNames("d-modal", `d-modal__${size}`, className);
     const childrenClass = ClassNames("d-modal__children", classNameContent);
     const headerClass = ClassNames(
-        "d-modal__header border-bottom py-3",
+        "d-modal__header border-bottom ",
         { "d-flex align-items-center": !!title },
         classNameHeader
     );
@@ -69,7 +69,14 @@ const Modal: React.FC<ModalProps> = ({
         content = () => {
             return (
                 <React.Fragment>
-                    {hasCloseIcon && <Button iconName="close" variant="trans" onClick={onClose} />}
+                    {hasCloseIcon && (
+                        <Button
+                            iconName="close"
+                            variant="trans"
+                            onClick={onClose}
+                            className="d-modal__header-close-icon"
+                        />
+                    )}
                     {title && <h4 className="w-100 text-center">{title}</h4>}
                     {headerSide && headerSide()}
                 </React.Fragment>

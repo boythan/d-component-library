@@ -6,13 +6,13 @@
 /* eslint-disable react/sort-comp */
 // react
 import { SearchOutlined } from "@ant-design/icons";
-import { Button, Input, Table, TablePaginationConfig, TableProps, TableColumnType } from "antd";
+import { Button, Input, Table, TablePaginationConfig, TableProps } from "antd";
 // third-party
 import ClassNames from "classnames";
 import _ from "lodash";
 import React, { Component } from "react";
 import Highlighter from "react-highlight-words";
-import { isArray, isString } from "./AwesomeTableUtils";
+import { isArray, isString, transformColumn } from "./AwesomeTableUtils";
 // data stubs
 import LayoutTableManager from "./layoutManager/LayoutTableManager";
 import SelectColumnModal, { SelectLayoutView } from "./layoutManager/SelectColumnModal";
@@ -278,16 +278,17 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
     };
 
     /** ************************************************** TABLE CONTROL *************************************************** */
-
-    handleResize = (index: any) => (e: any, { size }: any) => {
-        this.setState(({ columns = [] }) => {
-            const nextColumns = [...columns];
-            nextColumns[index] = {
-                ...nextColumns[index],
-                width: size?.width,
-            };
-            return { columns: nextColumns };
-        });
+    handleResize = (index: any) => {
+        return (e: any, { size }: any) => {
+            this.setState(({ columns = [] }) => {
+                const nextColumns = [...columns];
+                nextColumns[index] = {
+                    ...nextColumns[index],
+                    width: size?.width,
+                };
+                return { columns: nextColumns };
+            });
+        };
     };
 
     handleSelectTableLayout = async (item: any) => {
@@ -395,32 +396,13 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
         return this.state.data;
     }
 
-    /** ************************************************** RENDER *************************************************** */
+    getColumns() {
+        const { filteredInfo, columns = [], selectedColumns = [] } = this.state;
+        const { showSelectColumn } = this.props;
 
-    render() {
-        const {
-            filteredInfo,
-            total,
-            pagination,
-            columns = [],
-            selectedColumns = [],
-            tableLayoutList,
-            selectedLayout,
-            data,
-            loading,
-        } = this.state;
+        const columnsTransformed = transformColumn(columns);
 
-        const {
-            rowKey,
-            isScroll,
-            classNameTable,
-            tableLayout,
-            showSelectColumn,
-            keyTableLayout,
-            className,
-        } = this.props;
-
-        const columnsResult = columns.map((columnParams: any) => {
+        const columnsSearchFilter = columnsTransformed.map((columnParams: any) => {
             let column = columnParams;
             if (column.filters && column.filters.length > 0) {
                 column = {
@@ -438,7 +420,7 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
             return column;
         });
 
-        const columnResizable = columnsResult.map((col: any, index: number) => ({
+        const columnsResizable = columnsSearchFilter.map((col: any, index: number) => ({
             ...col,
             onHeaderCell: (column: any) => ({
                 width: column?.width,
@@ -446,12 +428,23 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
             }),
         }));
 
-        let columnSelected = columnResizable;
+        let columnsSelected = columnsResizable;
 
         if (showSelectColumn) {
             const selectedIndex = selectedColumns.map((item: any) => item?.dataIndex);
-            columnSelected = columnResizable.filter((item: any) => selectedIndex.includes(item.dataIndex));
+            columnsSelected = columnsResizable.filter((item: any) => selectedIndex.includes(item.dataIndex));
         }
+        return columnsSelected;
+    }
+
+    /** ************************************************** RENDER *************************************************** */
+
+    render() {
+        const { total, pagination, tableLayoutList, selectedLayout, data, loading } = this.state;
+
+        // eslint-disable-next-line operator-linebreak
+        const { rowKey, isScroll, classNameTable, tableLayout, showSelectColumn, keyTableLayout, className } =
+            this.props;
 
         const paginationResult = pagination ? { ...pagination, current: pagination.pageIndex, total } : false;
 
@@ -492,8 +485,8 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
                     components={this.components}
                     {...this.props}
                     className={`d-table-awesome-component__table ${classNameTable}`}
-                    // columns props always has to be in last positon in order for Resizable table to work
-                    columns={columnSelected}
+                    // columns props always has to be in last position in order for Resizable table to work
+                    columns={this.getColumns()}
                 />
             </div>
         );
