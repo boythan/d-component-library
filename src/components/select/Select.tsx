@@ -85,6 +85,7 @@ const Select = ({
                 onChange={onChange}
                 className={selectClass}
                 showArrow
+                suffixIcon={<Icon name="expand_more" />}
                 disabled={disabled}
                 optionFilterProp="children"
                 filterOption={(input: any, option: any) => {

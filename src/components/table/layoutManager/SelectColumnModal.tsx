@@ -242,7 +242,7 @@ const SelectColumnModal = ({
                         const isChecked = !!selectedOption.find((obj: any) => obj.id === item.id);
                         const label = typeof item?.title === "function" ? item?.title() : item?.title;
                         return (
-                            <div className="col-sm-6">
+                            <div className="col-sm-6 mt-3">
                                 <Checkbox
                                     checked={isChecked}
                                     onChange={(event) => {

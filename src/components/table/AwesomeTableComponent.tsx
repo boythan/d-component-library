@@ -163,7 +163,7 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
 
     componentDidMount() {
         this.start();
-        this.getDefaultTableLayout();
+        this.setDefaultTableLayout();
     }
 
     UNSAFE_componentWillReceiveProps(nextProps: any) {
@@ -253,29 +253,29 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
         this.setState({ searchText: "" });
     };
 
-    getDefaultTableLayout = () => {
+    setDefaultTableLayout = () => {
         const { keyTableLayout, showSelectColumn } = this.props;
         const { columns } = this.state;
-        if (keyTableLayout && showSelectColumn) {
-            const tableLayout = LayoutTableManager.getLayout(keyTableLayout);
-            if (!_.isEmpty(tableLayout)) {
-                const listTableLayout: any = [];
-                const tableKey = Object.keys(tableLayout);
-                tableKey.forEach((key) => {
-                    listTableLayout.push({ ...tableLayout[key], name: key });
-                });
-                const defaultLayout = listTableLayout.find((item: any) => item?.default);
-                if (!_.isEmpty(defaultLayout)) {
-                    const defaultIndex = defaultLayout?.data?.map((item: any) => item?.id);
-                    // eslint-disable-next-line operator-linebreak
-                    const defaultColumns = columns && columns.filter((item: any) => defaultIndex.includes(item?.id));
-                    this.setState({
-                        selectedColumns: defaultColumns,
-                        tableLayoutList: tableLayout,
-                        selectedLayout: defaultLayout,
-                    });
-                }
-            }
+        if (!keyTableLayout || !showSelectColumn) return;
+
+        const tableLayout = LayoutTableManager.getLayout(keyTableLayout);
+        if (_.isEmpty(tableLayout)) return;
+
+        const listTableLayout: any = [];
+        const tableKey = Object.keys(tableLayout);
+        tableKey.forEach((key) => {
+            listTableLayout.push({ ...tableLayout[key], name: key });
+        });
+        const defaultLayout = listTableLayout.find((item: any) => item?.default);
+        if (!_.isEmpty(defaultLayout)) {
+            const defaultIndex = defaultLayout?.data?.map((item: any) => item?.id);
+            // eslint-disable-next-line operator-linebreak
+            const defaultColumns = columns && columns.filter((item: any) => defaultIndex.includes(item?.id));
+            this.setState({
+                selectedColumns: defaultColumns,
+                tableLayoutList: tableLayout,
+                selectedLayout: defaultLayout,
+            });
         }
     };
 
@@ -307,7 +307,7 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
             }
         });
         await LayoutTableManager.saveTableLayout(newTableLayout, keyTableLayout);
-        this.getDefaultTableLayout();
+        this.setDefaultTableLayout();
     };
 
     handleTableChange = (paging: IPaginationProps, filters: any, sorter: any) => {
@@ -466,7 +466,7 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
                             options={columns}
                             setSelectedColumns={(column: any) => this.setState({ selectedColumns: column })}
                             keyTable={keyTableLayout}
-                            refreshLayout={() => this.getDefaultTableLayout()}
+                            refreshLayout={() => this.setDefaultTableLayout()}
                         />
                     </div>
                 )}
@@ -475,9 +475,7 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
                     dataSource={data}
                     loading={loading}
                     onChange={this.handleTableChange}
-                    rowClassName={() => {
-                        return "d-table-awesome-component__row";
-                    }}
+                    rowClassName={() => "d-table-awesome-component__row"}
                     pagination={paginationResult}
                     scroll={isScroll ? { y: "1000" } : {}}
                     tableLayout={tableLayout}

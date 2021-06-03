@@ -18,6 +18,7 @@ import TabBar from "../components/tab/TabBar";
 import RowInterchangeView from "../components/view/RowInterchangeView";
 import TestBadge from "./components/badge/TestBadge";
 import TestHeader from "./components/TestHeader";
+import TestInput from "./components/TestInput";
 import TestTable from "./components/TestTable";
 import TestCheckbox from "./components/test_checkbox/TestCheckbox";
 import TestDropdown from "./components/test_dropdown/TestDropdown";
@@ -221,31 +222,6 @@ export default function Test({ content }: Props): ReactElement {
         loadFakeData();
     }, []);
 
-    const input = (
-        <div className="my-4">
-            <input type="datetime-local" onChange={(e) => console.log(e?.target?.value)} />
-            <input type="color" onChange={(value) => console.log({ value })} />
-            <input type="image" alt="" src="./logo192.png" onChange={(value) => console.log({ value })} />
-            <InputText label="Input Text" placeholder="Please enter" className="mt-3" type="number" />
-            <InputText label="Input Text" placeholder="Please enter" className="mt-3" error="Error Text" />
-            <InputText label="Input Text" placeholder="Please enter" className="mt-3" disabled />
-            <InputText label="Input Text" placeholder="Please enter" className="mt-3" suffix="$" />
-            <InputText label="Input Text" placeholder="Please enter" className="mt-3" prefix="$" />
-            <InputText label="Input Text" placeholder="Please enter" multiple className="mt-3" />
-            <InputText label="Input Text" placeholder="Please enter" multiple className="mt-3" error="Error Text" />
-            <InputText label="Input Text" placeholder="Please enter" multiple className="mt-3" disabled />
-            <InputTextSearch placeholder="Please enter" className="mt-3" />
-
-            <Select
-                dataSource={ATTRIBUTE_INPUT_TYPE}
-                label="Select"
-                className="mt-4"
-                value={valueSelect}
-                onChange={setValueSelect}
-            />
-        </div>
-    );
-
     const tab = (
         <div className="my-4">
             <TabBar dataSource={ATTRIBUTE_INPUT_TYPE} onChange={(tab) => setSelectedTab(tab)} value={selectedTab} />
@@ -329,7 +305,7 @@ export default function Test({ content }: Props): ReactElement {
     };
     const TAB_LIST = [
         { id: "AVATAR", label: "AVATAR", component: <AvatarIconView /> },
-        { id: "INPUT", label: "INPUT", component: input },
+        { id: "INPUT", label: "INPUT", component: <TestInput /> },
         { id: "DATE", label: "DATE", component: <Date /> },
         { id: "BUTTON", label: "BUTTON", component: <ButtonView /> },
         { id: "TABLE", label: "TABLE", component: <TestTable /> },
