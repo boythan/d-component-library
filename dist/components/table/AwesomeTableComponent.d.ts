@@ -84,7 +84,7 @@ declare class AwesomeTableComponent extends Component<AwesomeTableComponentProps
     };
     handleSearch: (selectedKeys: any, confirm: any, dataIndex: any) => void;
     handleReset: (clearFilters: any) => void;
-    getDefaultTableLayout: () => void;
+    setDefaultTableLayout: () => void;
     /** ************************************************** TABLE CONTROL *************************************************** */
     handleResize: (index: any) => (e: any, { size }: any) => void;
     handleSelectTableLayout: (item: any) => Promise<void>;

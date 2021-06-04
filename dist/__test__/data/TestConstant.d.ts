@@ -21,4 +21,8 @@ export declare const ATTRIBUTE_INPUT_TYPE: ({
     iconName?: undefined;
     subMenu?: undefined;
 })[];
+export declare const SELECT_DATA: {
+    id: string;
+    label: string;
+}[];
 export declare const LANGUAGES: DropdownProps["dataSource"];
