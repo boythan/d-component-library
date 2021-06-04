@@ -3,7 +3,7 @@ import ClassNames from "classnames";
 import ObjectUtils from "../../utils/ObjectUtils";
 
 export interface IRowsKey {
-    id: string | number;
+    id: string;
     label: string | number;
     renderLabel?: (id: IRowsKey["id"], data: any, row?: IRowsKey) => any;
     renderContent?: (id: IRowsKey["id"], data: any, row?: IRowsKey) => any;
@@ -37,8 +37,9 @@ const RowInterchangeView: React.FC<RowInterchangeViewProps> = ({
         <div className={wrapperClass}>
             {keyList.map((row, index) => {
                 const rowClass = ClassNames(
-                    "d-flex align-items-start w-100 justify-content-between py-3 px-3",
+                    "d-flex align-items-start w-100 justify-content-between py-3",
                     {
+                        "px-3": variant === "background",
                         "bg-light-gray": index % 2 && variant === "background",
                         "border-top": index !== 0 && variant === "border",
                         "border-top-dashed": index !== 0 && variant === "dashed",
