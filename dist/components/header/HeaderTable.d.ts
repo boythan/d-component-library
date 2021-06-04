@@ -9,6 +9,7 @@ export interface HeaderTableProps {
     onClickExport?: any;
     onClickFilter?: any;
     customView?: any;
+    isFiltered?: boolean;
 }
-declare const HeaderTable: ({ className, label, placeholder, onChangeText, disabledSearch, onClickNew, onClickExport, onClickFilter, customView, }: HeaderTableProps) => JSX.Element;
+declare const HeaderTable: ({ className, label, placeholder, onChangeText, disabledSearch, onClickNew, onClickExport, onClickFilter, customView, isFiltered, }: HeaderTableProps) => JSX.Element;
 export default HeaderTable;

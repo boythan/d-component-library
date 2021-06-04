@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Header from "../../components/header/Header";
 import HeaderTable from "../../components/header/HeaderTable";
 import Select from "../../components/select/Select";
 import { ATTRIBUTE_INPUT_TYPE } from "../data/TestConstant";
@@ -25,6 +26,8 @@ const TestHeader = () => {
                     />
                 )}
             />
+
+            <Header title="Header example" />
         </div>
     );
 };

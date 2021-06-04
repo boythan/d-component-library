@@ -39220,7 +39220,7 @@ var Content = /*#__PURE__*/React__namespace.forwardRef(function (props, ref) {
 });
 Content.displayName = 'Content';
 
-function Dialog(props) {
+function Dialog$1(props) {
   var _props$prefixCls = props.prefixCls,
       prefixCls = _props$prefixCls === void 0 ? 'rc-dialog' : _props$prefixCls,
       zIndex = props.zIndex,
@@ -39433,7 +39433,7 @@ var DialogWrap = function DialogWrap(props) {
   }, [visible]); // 渲染在当前 dom 里；
 
   if (getContainer === false) {
-    return /*#__PURE__*/React__namespace.createElement(Dialog, _extends$1({}, props, {
+    return /*#__PURE__*/React__namespace.createElement(Dialog$1, _extends$1({}, props, {
       getOpenCount: function getOpenCount() {
         return 2;
       } // 不对 body 做任何操作。。
@@ -39451,7 +39451,7 @@ var DialogWrap = function DialogWrap(props) {
     forceRender: forceRender,
     getContainer: getContainer
   }, function (childProps) {
-    return /*#__PURE__*/React__namespace.createElement(Dialog, _extends$1({}, props, {
+    return /*#__PURE__*/React__namespace.createElement(Dialog$1, _extends$1({}, props, {
       destroyOnClose: destroyOnClose,
       afterClose: function afterClose() {
         _afterClose === null || _afterClose === void 0 ? void 0 : _afterClose();
@@ -49963,7 +49963,7 @@ var Select = function (_a) {
     }, classNameSelect);
     var errorTextClass = classnames("text-x-small", "text-error", "ml-1");
     return (jsxRuntime.jsxs("div", __assign({ className: container }, { children: [label && jsxRuntime.jsx("label", __assign({ className: labelClass }, { children: label }), void 0),
-            jsxRuntime.jsx(Select$1, __assign({}, props, { value: value, mode: multiple ? "multiple" : undefined, allowClear: allowClear, placeholder: placeholder, defaultValue: defaultValue, onChange: onChange, className: selectClass, showArrow: true, disabled: disabled, optionFilterProp: "children", filterOption: function (input, option) {
+            jsxRuntime.jsx(Select$1, __assign({}, props, { value: value, mode: multiple ? "multiple" : undefined, allowClear: allowClear, placeholder: placeholder, defaultValue: defaultValue, onChange: onChange, className: selectClass, showArrow: true, suffixIcon: jsxRuntime.jsx(Icon$2, { name: "expand_more" }, void 0), disabled: disabled, optionFilterProp: "children", filterOption: function (input, option) {
                     if (!hasFilter) {
                         return false;
                     }
@@ -50023,7 +50023,7 @@ var CheckboxGroup = function (_a) {
             var listId = value.map(function (i) { return getValue(i); });
             var isChecked = listId.includes(iValue);
             var isDisabled = (getDisabledItem && getDisabledItem(item)) || false;
-            var itemClass = classnames("my-3", {
+            var itemClass = classnames("my-3 p-0", {
                 "col-12": numberOfColumns === "1",
             }, {
                 "col-6": numberOfColumns === "2",
@@ -50079,6 +50079,36 @@ var RadioGroup = function (_a) {
         }) }), void 0));
 };
 
+var Dot = function (_a) {
+    var _b = _a.size, size = _b === void 0 ? "small" : _b, _c = _a.color, color = _c === void 0 ? "green" : _c, className = _a.className, style = _a.style;
+    var dotClass = classnames("d-dot_container", "d-dot__" + size + "-" + color, className);
+    return jsxRuntime.jsx("div", { className: dotClass, style: style }, void 0);
+};
+
+var Badge = function (_a) {
+    var children = _a.children, _b = _a.variant, variant = _b === void 0 ? "dot" : _b, _c = _a.shape, shape = _c === void 0 ? "round" : _c, index = _a.index, _d = _a.dotProps, dotProps = _d === void 0 ? {} : _d, className = _a.className, _e = _a.color, color = _e === void 0 ? "secondary" : _e, _f = _a.size, size = _f === void 0 ? "medium" : _f, style = _a.style, badgeStyle = _a.badgeStyle, onClick = _a.onClick;
+    var wrapperClass = classnames("d-badge__container d-badge__container-" + variant, className);
+    var badgeWrapperClass = classnames("d-badge__badge-wrapper", { "rounded-circle": shape === "round" });
+    var badgeIndexClass = classnames("d-badge__badge-index-" + size + "-" + color);
+    var content = children;
+    var badge = jsxRuntime.jsx(Dot, __assign({}, dotProps, { color: color, size: size, style: badgeStyle }), void 0);
+    if (variant === "index") {
+        var display = index;
+        badge = jsxRuntime.jsx("div", {}, void 0);
+        if (typeof index === "number") {
+            display = index.toString();
+        }
+        if (display) {
+            badge = (jsxRuntime.jsx("div", __assign({ className: badgeIndexClass, style: badgeStyle }, { children: display }), void 0));
+        }
+    }
+    if (typeof children === "function") {
+        content = children();
+    }
+    return (jsxRuntime.jsxs("div", __assign({ className: wrapperClass, style: style, onClick: onClick }, { children: [jsxRuntime.jsx("div", __assign({ className: badgeWrapperClass }, { children: badge }), void 0),
+            content] }), void 0));
+};
+
 var InputTextSearch = function (_a) {
     var className = _a.className, _b = _a.variant, variant = _b === void 0 ? "outline" : _b, value = _a.value, defaultValue = _a.defaultValue, error = _a.error, placeholder = _a.placeholder, disabled = _a.disabled, onChange = _a.onChange, onBlur = _a.onBlur;
     var container = classnames("d-input-search", "d-input-search__" + variant, {
@@ -50090,13 +50120,17 @@ var InputTextSearch = function (_a) {
 };
 
 var HeaderTable = function (_a) {
-    var _b = _a.className, className = _b === void 0 ? "" : _b, _c = _a.label, label = _c === void 0 ? "" : _c, _d = _a.placeholder, placeholder = _d === void 0 ? "Search" : _d, onChangeText = _a.onChangeText, _e = _a.disabledSearch, disabledSearch = _e === void 0 ? false : _e, onClickNew = _a.onClickNew, onClickExport = _a.onClickExport, onClickFilter = _a.onClickFilter, customView = _a.customView;
+    var _b = _a.className, className = _b === void 0 ? "" : _b, _c = _a.label, label = _c === void 0 ? "" : _c, _d = _a.placeholder, placeholder = _d === void 0 ? "Search" : _d, onChangeText = _a.onChangeText, _e = _a.disabledSearch, disabledSearch = _e === void 0 ? false : _e, onClickNew = _a.onClickNew, onClickExport = _a.onClickExport, onClickFilter = _a.onClickFilter, customView = _a.customView, _f = _a.isFiltered, isFiltered = _f === void 0 ? false : _f;
+    var button = jsxRuntime.jsx(Button, { iconName: "filter_list", onClick: onClickFilter }, void 0);
+    if (isFiltered) {
+        button = (jsxRuntime.jsx(Badge, __assign({ color: "secondary" }, { children: jsxRuntime.jsx(Button, { iconName: "filter_list", onClick: onClickFilter }, void 0) }), void 0));
+    }
     return (jsxRuntime.jsxs("div", __assign({ className: classnames("w-100", className) }, { children: [jsxRuntime.jsxs("div", __assign({ className: "d-flex justify-content-between mb-3" }, { children: [jsxRuntime.jsx("div", __assign({ className: "h4" }, { children: label }), void 0),
                     jsxRuntime.jsxs("div", __assign({ className: "d-flex" }, { children: [onClickNew && jsxRuntime.jsx(Button, { iconName: "add", content: "New", onClick: onClickNew, className: "mr-3" }, void 0),
                             onClickExport && jsxRuntime.jsx(Button, { iconName: "cloud_download", content: "Export", onClick: onClickExport }, void 0)] }), void 0)] }), void 0),
             jsxRuntime.jsxs("div", __assign({ className: "flex-center-y" }, { children: [customView && customView(),
                     jsxRuntime.jsx(InputTextSearch, { className: "w-100 mr-3 bg-white", placeholder: placeholder, onChange: onChangeText, disabled: disabledSearch }, void 0),
-                    onClickFilter && jsxRuntime.jsx(Button, { iconName: "filter_list", onClick: onClickFilter }, void 0)] }), void 0)] }), void 0));
+                    onClickFilter && button] }), void 0)] }), void 0));
 };
 
 var Header = function (_a) {
@@ -69153,12 +69187,6 @@ var DateInput = function (_a) {
                     jsxRuntime.jsx("text", __assign({ className: errorTextClass }, { children: error }), void 0)] }), void 0))] }), void 0));
 };
 
-var Dot = function (_a) {
-    var _b = _a.size, size = _b === void 0 ? "small" : _b, _c = _a.color, color = _c === void 0 ? "green" : _c, className = _a.className, style = _a.style;
-    var dotClass = classnames("d-dot_container", "d-dot__" + size + "-" + color, className);
-    return jsxRuntime.jsx("div", { className: dotClass, style: style }, void 0);
-};
-
 var main = createCommonjsModule(function (module) {
 module.exports =
 /******/ (function(modules) { // webpackBootstrap
@@ -70893,7 +70921,7 @@ var transformColumn = function (columns, baseColumn) {
                     content = render(data, item);
                 }
                 return {
-                    children: jsxRuntime.jsx("div", __assign({ className: "text text-nowrap" }, { children: content }), void 0),
+                    children: content,
                     props: { "data-title": title },
                 };
             } }), props);
@@ -71140,7 +71168,7 @@ var SelectColumnModal = function (_a) {
                         // eslint-disable-next-line operator-linebreak
                         var isChecked = !!selectedOption.find(function (obj) { return obj.id === item.id; });
                         var label = typeof (item === null || item === void 0 ? void 0 : item.title) === "function" ? item === null || item === void 0 ? void 0 : item.title() : item === null || item === void 0 ? void 0 : item.title;
-                        return (jsxRuntime.jsx("div", __assign({ className: "col-sm-6" }, { children: jsxRuntime.jsx(Checkbox, { checked: isChecked, onChange: function (event) {
+                        return (jsxRuntime.jsx("div", __assign({ className: "col-sm-6 mt-3" }, { children: jsxRuntime.jsx(Checkbox, { checked: isChecked, onChange: function (event) {
                                     var _a, _b;
                                     if (isChecked) {
                                         removeItemFromSelected((_a = event === null || event === void 0 ? void 0 : event.target) === null || _a === void 0 ? void 0 : _a.value);
@@ -73608,30 +73636,30 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
             clearFilters();
             _this.setState({ searchText: "" });
         };
-        _this.getDefaultTableLayout = function () {
+        _this.setDefaultTableLayout = function () {
             var _a;
             var _b = _this.props, keyTableLayout = _b.keyTableLayout, showSelectColumn = _b.showSelectColumn;
             var columns = _this.state.columns;
-            if (keyTableLayout && showSelectColumn) {
-                var tableLayout_1 = LayoutTableManager.getLayout(keyTableLayout);
-                if (!lodash.isEmpty(tableLayout_1)) {
-                    var listTableLayout_1 = [];
-                    var tableKey = Object.keys(tableLayout_1);
-                    tableKey.forEach(function (key) {
-                        listTableLayout_1.push(__assign(__assign({}, tableLayout_1[key]), { name: key }));
-                    });
-                    var defaultLayout = listTableLayout_1.find(function (item) { return item === null || item === void 0 ? void 0 : item.default; });
-                    if (!lodash.isEmpty(defaultLayout)) {
-                        var defaultIndex_1 = (_a = defaultLayout === null || defaultLayout === void 0 ? void 0 : defaultLayout.data) === null || _a === void 0 ? void 0 : _a.map(function (item) { return item === null || item === void 0 ? void 0 : item.id; });
-                        // eslint-disable-next-line operator-linebreak
-                        var defaultColumns = columns && columns.filter(function (item) { return defaultIndex_1.includes(item === null || item === void 0 ? void 0 : item.id); });
-                        _this.setState({
-                            selectedColumns: defaultColumns,
-                            tableLayoutList: tableLayout_1,
-                            selectedLayout: defaultLayout,
-                        });
-                    }
-                }
+            if (!keyTableLayout || !showSelectColumn)
+                return;
+            var tableLayout = LayoutTableManager.getLayout(keyTableLayout);
+            if (lodash.isEmpty(tableLayout))
+                return;
+            var listTableLayout = [];
+            var tableKey = Object.keys(tableLayout);
+            tableKey.forEach(function (key) {
+                listTableLayout.push(__assign(__assign({}, tableLayout[key]), { name: key }));
+            });
+            var defaultLayout = listTableLayout.find(function (item) { return item === null || item === void 0 ? void 0 : item.default; });
+            if (!lodash.isEmpty(defaultLayout)) {
+                var defaultIndex_1 = (_a = defaultLayout === null || defaultLayout === void 0 ? void 0 : defaultLayout.data) === null || _a === void 0 ? void 0 : _a.map(function (item) { return item === null || item === void 0 ? void 0 : item.id; });
+                // eslint-disable-next-line operator-linebreak
+                var defaultColumns = columns && columns.filter(function (item) { return defaultIndex_1.includes(item === null || item === void 0 ? void 0 : item.id); });
+                _this.setState({
+                    selectedColumns: defaultColumns,
+                    tableLayoutList: tableLayout,
+                    selectedLayout: defaultLayout,
+                });
             }
         };
         /** ************************************************** TABLE CONTROL *************************************************** */
@@ -73667,7 +73695,7 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
                         return [4 /*yield*/, LayoutTableManager.saveTableLayout(newTableLayout, keyTableLayout)];
                     case 1:
                         _a.sent();
-                        this.getDefaultTableLayout();
+                        this.setDefaultTableLayout();
                         return [2 /*return*/];
                 }
             });
@@ -73708,7 +73736,7 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
     };
     AwesomeTableComponent.prototype.componentDidMount = function () {
         this.start();
-        this.getDefaultTableLayout();
+        this.setDefaultTableLayout();
     };
     AwesomeTableComponent.prototype.UNSAFE_componentWillReceiveProps = function (nextProps) {
         var columns = this.props.columns;
@@ -73815,10 +73843,8 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
                         // eslint-disable-next-line react/destructuring-assignment
                         , { 
                             // eslint-disable-next-line react/destructuring-assignment
-                            options: columns, setSelectedColumns: function (column) { return _this.setState({ selectedColumns: column }); }, keyTable: keyTableLayout, refreshLayout: function () { return _this.getDefaultTableLayout(); } }, void 0)] }), void 0)),
-                jsxRuntime.jsx(Table, __assign({ rowKey: rowKey, dataSource: data, loading: loading, onChange: this.handleTableChange, rowClassName: function () {
-                        return "d-table-awesome-component__row";
-                    }, pagination: paginationResult, scroll: isScroll ? { y: "1000" } : {}, tableLayout: tableLayout, bordered: true, components: this.components }, this.props, { className: "d-table-awesome-component__table " + classNameTable, 
+                            options: columns, setSelectedColumns: function (column) { return _this.setState({ selectedColumns: column }); }, keyTable: keyTableLayout, refreshLayout: function () { return _this.setDefaultTableLayout(); } }, void 0)] }), void 0)),
+                jsxRuntime.jsx(Table, __assign({ rowKey: rowKey, dataSource: data, loading: loading, onChange: this.handleTableChange, rowClassName: function () { return "d-table-awesome-component__row"; }, pagination: paginationResult, scroll: isScroll ? { y: "1000" } : {}, tableLayout: tableLayout, bordered: true, components: this.components }, this.props, { className: "d-table-awesome-component__table " + classNameTable, 
                     // columns props always has to be in last position in order for Resizable table to work
                     columns: this.getColumns() }), void 0)] }), void 0));
     };
@@ -75149,29 +75175,45 @@ var ImageUtils = {
     getImageSer: getImageSer,
 };
 
-var Badge = function (_a) {
-    var children = _a.children, _b = _a.variant, variant = _b === void 0 ? "dot" : _b, _c = _a.shape, shape = _c === void 0 ? "round" : _c, index = _a.index, _d = _a.dotProps, dotProps = _d === void 0 ? {} : _d, className = _a.className, _e = _a.color, color = _e === void 0 ? "secondary" : _e, _f = _a.size, size = _f === void 0 ? "medium" : _f, style = _a.style, badgeStyle = _a.badgeStyle, onClick = _a.onClick;
-    var wrapperClass = classnames("d-badge__container d-badge__container-" + variant, className);
-    var badgeWrapperClass = classnames("d-badge__badge-wrapper", { "rounded-circle": shape === "round" });
-    var badgeIndexClass = classnames("d-badge__badge-index-" + size + "-" + color);
-    var content = children;
-    var badge = jsxRuntime.jsx(Dot, __assign({}, dotProps, { color: color, size: size, style: badgeStyle }), void 0);
-    if (variant === "index") {
-        var display = index;
-        badge = jsxRuntime.jsx("div", {}, void 0);
-        if (typeof index === "number") {
-            display = index.toString();
-        }
-        if (display) {
-            badge = (jsxRuntime.jsx("div", __assign({ className: badgeIndexClass, style: badgeStyle }, { children: display }), void 0));
-        }
-    }
-    if (typeof children === "function") {
-        content = children();
-    }
-    return (jsxRuntime.jsxs("div", __assign({ className: wrapperClass, style: style, onClick: onClick }, { children: [jsxRuntime.jsx("div", __assign({ className: badgeWrapperClass }, { children: badge }), void 0),
-            content] }), void 0));
+// application
+// data stubs
+var Dialog = function (props, ref) {
+    var _a = Modal$1.useModal(), modal = _a[0], contextHolder = _a[1];
+    React.useImperativeHandle(ref, function () { return ({
+        showConfirm: function (title, content, onOk, onCancel) {
+            modal.confirm({
+                title: title,
+                content: jsxRuntime.jsx("div", { children: content }, void 0),
+                onOk: onOk,
+                onCancel: onCancel,
+                // centered: true,
+            });
+        },
+        showWarning: function (title, content, onOk) {
+            modal.warning({
+                title: title,
+                content: jsxRuntime.jsx("div", { children: content }, void 0),
+                onOk: onOk,
+            });
+        },
+        showInfo: function (title, content, onOk) {
+            modal.info({
+                title: title,
+                content: jsxRuntime.jsx("div", { children: content }, void 0),
+                onOk: onOk,
+            });
+        },
+        showError: function (title, content, onOk) {
+            modal.error({
+                title: title,
+                content: jsxRuntime.jsx("div", { children: content }, void 0),
+                onOk: onOk,
+            });
+        },
+    }); });
+    return jsxRuntime.jsx(React__default['default'].Fragment, { children: contextHolder }, void 0);
 };
+var DialogComponent = React.forwardRef(Dialog);
 
 exports.Avatar = Avatar;
 exports.AvatarName = AvatarName;
@@ -75183,6 +75225,8 @@ exports.Button = Button;
 exports.Checkbox = Checkbox;
 exports.CheckboxGroup = CheckboxGroup;
 exports.DateInput = DateInput;
+exports.DialogComponent = DialogComponent;
+exports.DialogManager = DialogManager;
 exports.Dot = Dot;
 exports.Dropdown = Dropdown;
 exports.Header = Header;
