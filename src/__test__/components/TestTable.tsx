@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Button from "../../components/button/Button";
+import HeaderTable from "../../components/header/HeaderTable";
 import AwesomeTableComponent, { AwesomeTableComponentProps } from "../../components/table/AwesomeTableComponent";
 import { ATTRIBUTE_INPUT_TYPE } from "../data/TestConstant";
 
@@ -37,7 +38,8 @@ const TestTable = () => {
         },
     ];
     return (
-        <div className="d-flex my-4">
+        <div className="my-4">
+            <HeaderTable label="Test Table" onChangeText={() => {}} onClickFilter={() => {}} />
             <AwesomeTableComponent
                 source={(paging) => {
                     return Promise.resolve(ATTRIBUTE_INPUT_TYPE);
