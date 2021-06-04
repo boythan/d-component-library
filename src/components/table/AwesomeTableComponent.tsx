@@ -50,6 +50,9 @@ export interface AwesomeTableComponentProps extends TableProps<any> {
     setCurrentPage?: (paging?: any) => void;
     getTotalItems?: (res: any) => number;
 
+    onSelectionView?: (props?: any) => React.ReactNode;
+    selectingRows?: Array<any>;
+
     isScroll?: boolean;
     isPagination?: boolean;
     defaultPagination?: IPaginationProps;
@@ -330,7 +333,7 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
     };
 
     start() {
-        const { source, transformer } = this.props;
+        const { source, transformer, getTotalItems } = this.props;
         const { pagination, sorter } = this.state;
 
         source(pagination as any, sorter)
@@ -352,7 +355,7 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
                 this.setState({
                     data,
                     loading: false,
-                    total: response?.data?.data?.pagination?.items ?? 0,
+                    total: (getTotalItems && getTotalItems(response)) || 0,
                 });
             })
             .catch(() => {
@@ -443,16 +446,33 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
         const { total, pagination, tableLayoutList, selectedLayout, data, loading, columns } = this.state;
 
         // eslint-disable-next-line operator-linebreak
-        const { rowKey, isScroll, classNameTable, tableLayout, showSelectColumn, keyTableLayout, className } =
-            this.props;
+        const {
+            rowKey,
+            isScroll,
+            classNameTable,
+            tableLayout,
+            showSelectColumn,
+            keyTableLayout,
+            className,
+            rowSelection,
+            onSelectionView,
+            selectingRows,
+        } = this.props;
+        const showSelectionView = onSelectionView && selectingRows && selectingRows?.length > 0;
+        const showFuncRow = showSelectColumn || showSelectionView;
 
         const paginationResult = pagination ? { ...pagination, current: pagination.pageIndex, total } : false;
 
         const wrapperClass = ClassNames("d-table-awesome-component", className);
+        const funcRowClass = ClassNames("d-table-awesome-component__select-column my-2 w-100", {
+            "d-flex justify-content-between align-items-center my-3": showSelectionView,
+        });
+
         return (
             <div className={wrapperClass}>
-                {showSelectColumn && (
-                    <div className="d-table-awesome-component__select-column m-2">
+                {showFuncRow && (
+                    <div className={funcRowClass}>
+                        {showSelectionView && onSelectionView && onSelectionView(selectingRows)}
                         {!_.isEmpty(tableLayoutList) && (
                             <SelectLayoutView
                                 listLayout={tableLayoutList}

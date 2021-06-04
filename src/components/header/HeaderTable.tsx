@@ -1,6 +1,6 @@
 import ClassNames from "classnames";
 import React from "react";
-import Badge from "../badge/Badge";
+import Badge, { BadgeProps } from "../badge/Badge";
 import Button from "../button/Button";
 import InputTextSearch from "../input/InputTextSearch";
 
@@ -19,6 +19,7 @@ export interface HeaderTableProps {
     customView?: any;
 
     isFiltered?: boolean;
+    badgeColor?: BadgeProps["color"];
 }
 const HeaderTable = ({
     className = "",
@@ -34,11 +35,12 @@ const HeaderTable = ({
     onClickImport,
     customView,
     isFiltered = false,
+    badgeColor = "secondary",
 }: HeaderTableProps) => {
     let button = <Button iconName="filter_list" onClick={onClickFilter} />;
     if (isFiltered) {
         button = (
-            <Badge color="secondary">
+            <Badge color={badgeColor}>
                 <Button iconName="filter_list" onClick={onClickFilter} />
             </Badge>
         );
