@@ -15,6 +15,7 @@ export interface HeaderTableProps {
     onClickNew?: any;
     onClickExport?: any;
     onClickFilter?: any;
+    onClickImport?: any;
     customView?: any;
 
     isFiltered?: boolean;
@@ -31,6 +32,7 @@ const HeaderTable = ({
     onClickNew,
     onClickExport,
     onClickFilter,
+    onClickImport,
     customView,
     isFiltered = false,
     badgeColor = "secondary",
@@ -49,11 +51,14 @@ const HeaderTable = ({
                 <div className="h4">{label}</div>
                 <div className="d-flex">
                     {onClickNew && <Button iconName="add" content="New" onClick={onClickNew} className="mr-3" />}
+                    {onClickImport && (
+                        <Button iconName="cloud_upload" content="Import" onClick={onClickImport} className="mr-3" />
+                    )}
                     {onClickExport && <Button iconName="cloud_download" content="Export" onClick={onClickExport} />}
                 </div>
             </div>
             <div className="flex-center-y">
-                {customView && customView()}
+                {customView && <div className="header-table__custom-view-container">{customView()}</div>}
                 <InputTextSearch
                     className="w-100 mr-3 bg-white"
                     placeholder={placeholder}

@@ -14,16 +14,12 @@ const TestHeader = () => {
                 onChangeText={() => {}}
                 onClickExport={() => {}}
                 onClickFilter={() => {}}
+                onClickImport={() => {}}
                 onClickNew={() => {}}
                 disabledSearch={!valueSelect}
                 isFiltered
                 customView={() => (
-                    <Select
-                        dataSource={ATTRIBUTE_INPUT_TYPE}
-                        value={valueSelect}
-                        onChange={setValueSelect}
-                        className="mr-3"
-                    />
+                    <Select dataSource={ATTRIBUTE_INPUT_TYPE} value={valueSelect} onChange={setValueSelect} />
                 )}
             />
 

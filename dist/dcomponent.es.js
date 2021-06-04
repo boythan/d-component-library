@@ -50091,15 +50091,16 @@ var InputTextSearch = function (_a) {
 };
 
 var HeaderTable = function (_a) {
-    var _b = _a.className, className = _b === void 0 ? "" : _b, _c = _a.label, label = _c === void 0 ? "" : _c, _d = _a.placeholder, placeholder = _d === void 0 ? "Search" : _d, onChangeText = _a.onChangeText, _e = _a.disabledSearch, disabledSearch = _e === void 0 ? false : _e, onClickNew = _a.onClickNew, onClickExport = _a.onClickExport, onClickFilter = _a.onClickFilter, customView = _a.customView, _f = _a.isFiltered, isFiltered = _f === void 0 ? false : _f;
+    var _b = _a.className, className = _b === void 0 ? "" : _b, _c = _a.label, label = _c === void 0 ? "" : _c, _d = _a.placeholder, placeholder = _d === void 0 ? "Search" : _d, onChangeText = _a.onChangeText, _e = _a.disabledSearch, disabledSearch = _e === void 0 ? false : _e, onClickNew = _a.onClickNew, onClickExport = _a.onClickExport, onClickFilter = _a.onClickFilter, onClickImport = _a.onClickImport, customView = _a.customView, _f = _a.isFiltered, isFiltered = _f === void 0 ? false : _f, _g = _a.badgeColor, badgeColor = _g === void 0 ? "secondary" : _g;
     var button = jsx(Button, { iconName: "filter_list", onClick: onClickFilter }, void 0);
     if (isFiltered) {
-        button = (jsx(Badge, __assign({ color: "secondary" }, { children: jsx(Button, { iconName: "filter_list", onClick: onClickFilter }, void 0) }), void 0));
+        button = (jsx(Badge, __assign({ color: badgeColor }, { children: jsx(Button, { iconName: "filter_list", onClick: onClickFilter }, void 0) }), void 0));
     }
     return (jsxs("div", __assign({ className: classnames("w-100", className) }, { children: [jsxs("div", __assign({ className: "d-flex justify-content-between mb-3" }, { children: [jsx("div", __assign({ className: "h4" }, { children: label }), void 0),
                     jsxs("div", __assign({ className: "d-flex" }, { children: [onClickNew && jsx(Button, { iconName: "add", content: "New", onClick: onClickNew, className: "mr-3" }, void 0),
+                            onClickImport && (jsx(Button, { iconName: "cloud_upload", content: "Import", onClick: onClickImport, className: "mr-3" }, void 0)),
                             onClickExport && jsx(Button, { iconName: "cloud_download", content: "Export", onClick: onClickExport }, void 0)] }), void 0)] }), void 0),
-            jsxs("div", __assign({ className: "flex-center-y" }, { children: [customView && customView(),
+            jsxs("div", __assign({ className: "flex-center-y" }, { children: [customView && jsx("div", __assign({ className: "header-table__custom-view-container" }, { children: customView() }), void 0),
                     jsx(InputTextSearch, { className: "w-100 mr-3 bg-white", placeholder: placeholder, onChange: onChangeText, disabled: disabledSearch }, void 0),
                     onClickFilter && button] }), void 0)] }), void 0));
 };
@@ -73810,8 +73811,8 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
         var showFuncRow = showSelectColumn || showSelectionView;
         var paginationResult = pagination ? __assign(__assign({}, pagination), { current: pagination.pageIndex, total: total }) : false;
         var wrapperClass = classnames("d-table-awesome-component", className);
-        var funcRowClass = classnames("d-table-awesome-component__select-column m-2 w-100", {
-            "d-flex justify-content-between align-items-center mb-3": showSelectionView,
+        var funcRowClass = classnames("d-table-awesome-component__select-column my-2 w-100", {
+            "d-flex justify-content-between align-items-center my-3": showSelectionView,
         });
         return (jsxs("div", __assign({ className: wrapperClass }, { children: [showFuncRow && (jsxs("div", __assign({ className: funcRowClass }, { children: [showSelectionView && onSelectionView && onSelectionView(selectingRows),
                         !lodash.isEmpty(tableLayoutList) && (jsx(SelectLayoutView, { listLayout: tableLayoutList, onClickItem: this.handleSelectTableLayout, selectedLayout: selectedLayout, showBorder: true }, void 0)),

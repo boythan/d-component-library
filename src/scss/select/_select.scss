@@ -53,6 +53,7 @@
         box-shadow: none !important;
     }
     .ant-select-selection-item {
+        max-width: 90%;
         @extend .text-x-small;
         @extend .flex-center-y;
     }
