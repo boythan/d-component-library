@@ -1,5 +1,5 @@
 import { Input, TablePaginationConfig, TableProps } from "antd";
-import { Component } from "react";
+import React, { Component } from "react";
 export interface IPaginationProps extends TablePaginationConfig {
     pageIndex?: number;
 }
@@ -13,6 +13,8 @@ export interface AwesomeTableComponentProps extends TableProps<any> {
     renderFooter?: TableProps<any>["footer"];
     setCurrentPage?: (paging?: any) => void;
     getTotalItems?: (res: any) => number;
+    onSelectionView?: (props?: any) => React.ReactNode;
+    selectingRows?: Array<any>;
     isScroll?: boolean;
     isPagination?: boolean;
     defaultPagination?: IPaginationProps;

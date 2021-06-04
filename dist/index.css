@@ -32537,8 +32537,8 @@ h6,
   top: -3px; }
 
 .d-badge__container-index .d-badge__badge-wrapper {
-  right: -10px;
-  top: -10px; }
+  right: -8px;
+  top: -8px; }
 
 .d-badge__badge-index-xxx-large-primary {
   background-color: #DE0D0C;
@@ -32548,7 +32548,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 22px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-xxx-large-secondary {
   background-color: #DE0D0C;
@@ -32558,7 +32561,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 22px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-xxx-large-green {
   background-color: #33963D;
@@ -32568,7 +32574,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 22px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-xxx-large-red {
   background-color: #F44336;
@@ -32578,7 +32587,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 22px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-xxx-large-yellow {
   background-color: #FAC256;
@@ -32588,7 +32600,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 22px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-xxx-large-blue {
   background-color: #17a2b8;
@@ -32598,7 +32613,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 22px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-xxx-large-gray {
   background-color: #A7A7A7;
@@ -32608,7 +32626,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 22px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-xxx-large-dark {
   background-color: #3d464d;
@@ -32618,7 +32639,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 22px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-xxx-large-light {
   background-color: #fff;
@@ -32628,7 +32652,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 22px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-xxx-large-error {
   background-color: #F44336;
@@ -32638,7 +32665,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 22px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-xxx-large-success {
   background-color: #33963D;
@@ -32648,7 +32678,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 22px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-xxx-large-warning {
   background-color: #FAC256;
@@ -32658,7 +32691,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 22px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-xxx-large-muted {
   background-color: #F5F5F5;
@@ -32668,7 +32704,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 22px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-xx-large-primary {
   background-color: #DE0D0C;
@@ -32678,7 +32717,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 20px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-xx-large-secondary {
   background-color: #DE0D0C;
@@ -32688,7 +32730,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 20px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-xx-large-green {
   background-color: #33963D;
@@ -32698,7 +32743,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 20px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-xx-large-red {
   background-color: #F44336;
@@ -32708,7 +32756,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 20px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-xx-large-yellow {
   background-color: #FAC256;
@@ -32718,7 +32769,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 20px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-xx-large-blue {
   background-color: #17a2b8;
@@ -32728,7 +32782,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 20px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-xx-large-gray {
   background-color: #A7A7A7;
@@ -32738,7 +32795,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 20px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-xx-large-dark {
   background-color: #3d464d;
@@ -32748,7 +32808,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 20px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-xx-large-light {
   background-color: #fff;
@@ -32758,7 +32821,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 20px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-xx-large-error {
   background-color: #F44336;
@@ -32768,7 +32834,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 20px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-xx-large-success {
   background-color: #33963D;
@@ -32778,7 +32847,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 20px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-xx-large-warning {
   background-color: #FAC256;
@@ -32788,7 +32860,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 20px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-xx-large-muted {
   background-color: #F5F5F5;
@@ -32798,7 +32873,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 20px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-x-large-primary {
   background-color: #DE0D0C;
@@ -32808,7 +32886,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 18px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-x-large-secondary {
   background-color: #DE0D0C;
@@ -32818,7 +32899,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 18px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-x-large-green {
   background-color: #33963D;
@@ -32828,7 +32912,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 18px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-x-large-red {
   background-color: #F44336;
@@ -32838,7 +32925,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 18px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-x-large-yellow {
   background-color: #FAC256;
@@ -32848,7 +32938,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 18px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-x-large-blue {
   background-color: #17a2b8;
@@ -32858,7 +32951,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 18px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-x-large-gray {
   background-color: #A7A7A7;
@@ -32868,7 +32964,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 18px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-x-large-dark {
   background-color: #3d464d;
@@ -32878,7 +32977,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 18px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-x-large-light {
   background-color: #fff;
@@ -32888,7 +32990,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 18px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-x-large-error {
   background-color: #F44336;
@@ -32898,7 +33003,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 18px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-x-large-success {
   background-color: #33963D;
@@ -32908,7 +33016,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 18px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-x-large-warning {
   background-color: #FAC256;
@@ -32918,7 +33029,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 18px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-x-large-muted {
   background-color: #F5F5F5;
@@ -32928,7 +33042,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 18px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-large-primary {
   background-color: #DE0D0C;
@@ -32938,7 +33055,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 16px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-large-secondary {
   background-color: #DE0D0C;
@@ -32948,7 +33068,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 16px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-large-green {
   background-color: #33963D;
@@ -32958,7 +33081,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 16px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-large-red {
   background-color: #F44336;
@@ -32968,7 +33094,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 16px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-large-yellow {
   background-color: #FAC256;
@@ -32978,7 +33107,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 16px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-large-blue {
   background-color: #17a2b8;
@@ -32988,7 +33120,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 16px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-large-gray {
   background-color: #A7A7A7;
@@ -32998,7 +33133,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 16px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-large-dark {
   background-color: #3d464d;
@@ -33008,7 +33146,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 16px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-large-light {
   background-color: #fff;
@@ -33018,7 +33159,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 16px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-large-error {
   background-color: #F44336;
@@ -33028,7 +33172,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 16px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-large-success {
   background-color: #33963D;
@@ -33038,7 +33185,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 16px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-large-warning {
   background-color: #FAC256;
@@ -33048,7 +33198,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 16px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-large-muted {
   background-color: #F5F5F5;
@@ -33058,7 +33211,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 16px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-medium-primary {
   background-color: #DE0D0C;
@@ -33068,7 +33224,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 14px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-medium-secondary {
   background-color: #DE0D0C;
@@ -33078,7 +33237,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 14px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-medium-green {
   background-color: #33963D;
@@ -33088,7 +33250,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 14px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-medium-red {
   background-color: #F44336;
@@ -33098,7 +33263,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 14px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-medium-yellow {
   background-color: #FAC256;
@@ -33108,7 +33276,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 14px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-medium-blue {
   background-color: #17a2b8;
@@ -33118,7 +33289,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 14px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-medium-gray {
   background-color: #A7A7A7;
@@ -33128,7 +33302,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 14px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-medium-dark {
   background-color: #3d464d;
@@ -33138,7 +33315,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 14px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-medium-light {
   background-color: #fff;
@@ -33148,7 +33328,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 14px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-medium-error {
   background-color: #F44336;
@@ -33158,7 +33341,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 14px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-medium-success {
   background-color: #33963D;
@@ -33168,7 +33354,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 14px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-medium-warning {
   background-color: #FAC256;
@@ -33178,7 +33367,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 14px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-medium-muted {
   background-color: #F5F5F5;
@@ -33188,7 +33380,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 14px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-small-primary {
   background-color: #DE0D0C;
@@ -33198,7 +33393,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 12px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-small-secondary {
   background-color: #DE0D0C;
@@ -33208,7 +33406,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 12px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-small-green {
   background-color: #33963D;
@@ -33218,7 +33419,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 12px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-small-red {
   background-color: #F44336;
@@ -33228,7 +33432,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 12px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-small-yellow {
   background-color: #FAC256;
@@ -33238,7 +33445,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 12px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-small-blue {
   background-color: #17a2b8;
@@ -33248,7 +33458,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 12px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-small-gray {
   background-color: #A7A7A7;
@@ -33258,7 +33471,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 12px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-small-dark {
   background-color: #3d464d;
@@ -33268,7 +33484,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 12px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-small-light {
   background-color: #fff;
@@ -33278,7 +33497,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 12px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-small-error {
   background-color: #F44336;
@@ -33288,7 +33510,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 12px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-small-success {
   background-color: #33963D;
@@ -33298,7 +33523,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 12px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-small-warning {
   background-color: #FAC256;
@@ -33308,7 +33536,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 12px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-small-muted {
   background-color: #F5F5F5;
@@ -33318,7 +33549,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 12px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-x-small-primary {
   background-color: #DE0D0C;
@@ -33328,7 +33562,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 10px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-x-small-secondary {
   background-color: #DE0D0C;
@@ -33338,7 +33575,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 10px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-x-small-green {
   background-color: #33963D;
@@ -33348,7 +33588,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 10px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-x-small-red {
   background-color: #F44336;
@@ -33358,7 +33601,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 10px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-x-small-yellow {
   background-color: #FAC256;
@@ -33368,7 +33614,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 10px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-x-small-blue {
   background-color: #17a2b8;
@@ -33378,7 +33627,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 10px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-x-small-gray {
   background-color: #A7A7A7;
@@ -33388,7 +33640,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 10px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-x-small-dark {
   background-color: #3d464d;
@@ -33398,7 +33653,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 10px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-x-small-light {
   background-color: #fff;
@@ -33408,7 +33666,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 10px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-x-small-error {
   background-color: #F44336;
@@ -33418,7 +33679,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 10px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-x-small-success {
   background-color: #33963D;
@@ -33428,7 +33692,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 10px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-x-small-warning {
   background-color: #FAC256;
@@ -33438,7 +33705,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 10px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-x-small-muted {
   background-color: #F5F5F5;
@@ -33448,7 +33718,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 10px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-xx-small-primary {
   background-color: #DE0D0C;
@@ -33458,7 +33731,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 8px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-xx-small-secondary {
   background-color: #DE0D0C;
@@ -33468,7 +33744,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 8px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-xx-small-green {
   background-color: #33963D;
@@ -33478,7 +33757,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 8px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-xx-small-red {
   background-color: #F44336;
@@ -33488,7 +33770,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 8px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-xx-small-yellow {
   background-color: #FAC256;
@@ -33498,7 +33783,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 8px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-xx-small-blue {
   background-color: #17a2b8;
@@ -33508,7 +33796,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 8px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-xx-small-gray {
   background-color: #A7A7A7;
@@ -33518,7 +33809,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 8px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-xx-small-dark {
   background-color: #3d464d;
@@ -33528,7 +33822,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 8px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-xx-small-light {
   background-color: #fff;
@@ -33538,7 +33835,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 8px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-xx-small-error {
   background-color: #F44336;
@@ -33548,7 +33848,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 8px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-xx-small-success {
   background-color: #33963D;
@@ -33558,7 +33861,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 8px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-xx-small-warning {
   background-color: #FAC256;
@@ -33568,7 +33874,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 8px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .d-badge__badge-index-xx-small-muted {
   background-color: #F5F5F5;
@@ -33578,7 +33887,10 @@ h6,
   border-radius: 50%;
   text-align: center;
   line-height: 8px !important;
-  font-size: 8px; }
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .react-resizable {
   position: relative;

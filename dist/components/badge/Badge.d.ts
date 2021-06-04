@@ -7,7 +7,7 @@ export interface BadgeProps {
     children?: any;
     variant?: "dot" | "index";
     shape?: "round" | "square";
-    index?: string | number;
+    index?: any;
     dotProps?: DotProps;
     className?: string;
     color?: ButtonProps["color"];

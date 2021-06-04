@@ -73720,11 +73720,10 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
     };
     AwesomeTableComponent.prototype.start = function () {
         var _this = this;
-        var _a = this.props, source = _a.source, transformer = _a.transformer;
+        var _a = this.props, source = _a.source, transformer = _a.transformer, getTotalItems = _a.getTotalItems;
         var _b = this.state, pagination = _b.pagination, sorter = _b.sorter;
         source(pagination, sorter)
             .then(function (response) {
-            var _a, _b, _c, _d;
             var data = transformer(response);
             if (!isArray(data)) {
                 // eslint-disable-next-line no-throw-literal
@@ -73740,7 +73739,7 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
             _this.setState({
                 data: data,
                 loading: false,
-                total: (_d = (_c = (_b = (_a = response === null || response === void 0 ? void 0 : response.data) === null || _a === void 0 ? void 0 : _a.data) === null || _b === void 0 ? void 0 : _b.pagination) === null || _c === void 0 ? void 0 : _c.items) !== null && _d !== void 0 ? _d : 0,
+                total: (getTotalItems && getTotalItems(response)) || 0,
             });
         })
             .catch(function () {
@@ -73806,10 +73805,16 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
         var _this = this;
         var _a = this.state, total = _a.total, pagination = _a.pagination, tableLayoutList = _a.tableLayoutList, selectedLayout = _a.selectedLayout, data = _a.data, loading = _a.loading, columns = _a.columns;
         // eslint-disable-next-line operator-linebreak
-        var _b = this.props, rowKey = _b.rowKey, isScroll = _b.isScroll, classNameTable = _b.classNameTable, tableLayout = _b.tableLayout, showSelectColumn = _b.showSelectColumn, keyTableLayout = _b.keyTableLayout, className = _b.className;
+        var _b = this.props, rowKey = _b.rowKey, isScroll = _b.isScroll, classNameTable = _b.classNameTable, tableLayout = _b.tableLayout, showSelectColumn = _b.showSelectColumn, keyTableLayout = _b.keyTableLayout, className = _b.className; _b.rowSelection; var onSelectionView = _b.onSelectionView, selectingRows = _b.selectingRows;
+        var showSelectionView = onSelectionView && selectingRows && (selectingRows === null || selectingRows === void 0 ? void 0 : selectingRows.length) > 0;
+        var showFuncRow = showSelectColumn || showSelectionView;
         var paginationResult = pagination ? __assign(__assign({}, pagination), { current: pagination.pageIndex, total: total }) : false;
         var wrapperClass = classnames("d-table-awesome-component", className);
-        return (jsxs("div", __assign({ className: wrapperClass }, { children: [showSelectColumn && (jsxs("div", __assign({ className: "d-table-awesome-component__select-column m-2" }, { children: [!lodash.isEmpty(tableLayoutList) && (jsx(SelectLayoutView, { listLayout: tableLayoutList, onClickItem: this.handleSelectTableLayout, selectedLayout: selectedLayout, showBorder: true }, void 0)),
+        var funcRowClass = classnames("d-table-awesome-component__select-column m-2 w-100", {
+            "d-flex justify-content-between align-items-center mb-3": showSelectionView,
+        });
+        return (jsxs("div", __assign({ className: wrapperClass }, { children: [showFuncRow && (jsxs("div", __assign({ className: funcRowClass }, { children: [showSelectionView && onSelectionView && onSelectionView(selectingRows),
+                        !lodash.isEmpty(tableLayoutList) && (jsx(SelectLayoutView, { listLayout: tableLayoutList, onClickItem: this.handleSelectTableLayout, selectedLayout: selectedLayout, showBorder: true }, void 0)),
                         jsx(SelectColumnModal
                         // eslint-disable-next-line react/destructuring-assignment
                         , { 

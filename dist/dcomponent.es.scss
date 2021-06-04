@@ -62929,8 +62929,8 @@ h6,
 
 .d-badge__container-index {
     .d-badge__badge-wrapper {
-        right: -10px;
-        top: -10px;
+        right: -8px;
+        top: -8px;
     }
 }
 
@@ -62946,6 +62946,9 @@ h6,
             text-align: center;
             line-height: $size !important;
             font-size: $text-xx-small-size - 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
     }
 }
