@@ -1,11 +1,12 @@
 import React from "react";
 import ClassNames from "classnames";
+import ObjectUtils from "../../utils/ObjectUtils";
 
 export interface IRowsKey {
     id: string | number;
     label: string | number;
-    renderLabel?: (id: IRowsKey["id"], row: IRowsKey, data: any) => any;
-    renderContent?: (id: IRowsKey["id"], row: IRowsKey, data: any) => any;
+    renderLabel?: (id: IRowsKey["id"], data: any, row?: IRowsKey) => any;
+    renderContent?: (id: IRowsKey["id"], data: any, row?: IRowsKey) => any;
 }
 
 export interface RowInterchangeViewProps {
@@ -15,7 +16,7 @@ export interface RowInterchangeViewProps {
     classNameContent?: string;
     dataSource: any;
     keyList: Array<IRowsKey>;
-    variant?: "background" | "border";
+    variant?: "background" | "border" | "dashed";
     boldLabel?: boolean;
     Messages?: any;
 }
@@ -40,6 +41,7 @@ const RowInterchangeView: React.FC<RowInterchangeViewProps> = ({
                     {
                         "bg-light-gray": index % 2 && variant === "background",
                         "border-top": index !== 0 && variant === "border",
+                        "border-top-dashed": index !== 0 && variant === "dashed",
                     },
                     classNameRow
                 );
@@ -53,11 +55,14 @@ const RowInterchangeView: React.FC<RowInterchangeViewProps> = ({
                     labelView = Messages[label];
                 }
                 if (typeof renderLabel === "function") {
-                    labelView = renderLabel(id, row, dataSource);
+                    labelView = renderLabel(id, dataSource, row);
                 }
                 content = dataSource?.[id] ?? "N/A";
+                if (typeof id === "string" && id.includes(".")) {
+                    content = ObjectUtils.getValueFromStringKey(dataSource, id);
+                }
                 if (typeof renderContent === "function") {
-                    content = renderContent(id, row, dataSource);
+                    content = renderContent(id, dataSource, row);
                 }
                 const contentView = <div className={contentClass}>{content}</div>;
                 return (
