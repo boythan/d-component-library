@@ -44217,6 +44217,7 @@ a {
         box-shadow: none !important;
     }
     .ant-select-selection-item {
+        max-width: 90%;
         @extend .text-x-small;
         @extend .flex-center-y;
     }
@@ -58314,6 +58315,12 @@ h6,
         display: flex;
         align-items: center;
     }
+}
+
+.header-table__custom-view-container {
+    margin-right: 12px;
+    min-width: 180px;
+    max-width: 180px;
 }
 
 
