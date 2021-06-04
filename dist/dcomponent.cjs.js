@@ -50387,78 +50387,6 @@ var Modal = function (_a) {
             showFooter && footer()] }), void 0));
 };
 
-var RowInterchangeView = function (_a) {
-    var _b = _a.dataSource, dataSource = _b === void 0 ? {} : _b, _c = _a.keyList, keyList = _c === void 0 ? [] : _c, _d = _a.variant, variant = _d === void 0 ? "background" : _d, _e = _a.boldLabel, boldLabel = _e === void 0 ? false : _e, className = _a.className, classNameRow = _a.classNameRow, classNameLabel = _a.classNameLabel, classNameContent = _a.classNameContent, Messages = _a.Messages;
-    var wrapperClass = classnames(className);
-    return (jsxRuntime.jsx("div", __assign({ className: wrapperClass }, { children: keyList.map(function (row, index) {
-            var _a;
-            var rowClass = classnames("d-flex align-items-start w-100 justify-content-between py-3 px-3", {
-                "bg-light-gray": index % 2 && variant === "background",
-                "border-top": index !== 0 && variant === "border",
-            }, classNameRow);
-            var labelClass = classnames("text-small w-100", { "font-weight-bold": boldLabel }, classNameLabel);
-            var contentClass = classnames("w-100 text", classNameContent);
-            var id = row.id, label = row.label, renderLabel = row.renderLabel, renderContent = row.renderContent;
-            var labelView;
-            var content;
-            labelView = label;
-            if (Messages) {
-                labelView = Messages[label];
-            }
-            if (typeof renderLabel === "function") {
-                labelView = renderLabel(id, row, dataSource);
-            }
-            content = (_a = dataSource === null || dataSource === void 0 ? void 0 : dataSource[id]) !== null && _a !== void 0 ? _a : "N/A";
-            if (typeof renderContent === "function") {
-                content = renderContent(id, row, dataSource);
-            }
-            var contentView = jsxRuntime.jsx("div", __assign({ className: contentClass }, { children: content }), void 0);
-            return (jsxRuntime.jsxs("div", __assign({ className: rowClass }, { children: [jsxRuntime.jsx("div", __assign({ className: labelClass }, { children: labelView }), void 0),
-                    contentView] }), index));
-        }) }), void 0));
-};
-
-var ViewRow = function (_a) {
-    var className = _a.className, classNameLabel = _a.classNameLabel, classNameContent = _a.classNameContent, style = _a.style, styleContent = _a.styleContent, _b = _a.styleLabel, styleLabel = _b === void 0 ? {} : _b, _c = _a.width, width = _c === void 0 ? "100%" : _c, label = _a.label, _d = _a.center, center = _d === void 0 ? true : _d, children = _a.children;
-    var wrapperClass = classnames("d-flex", {
-        "w-50": width === "50%",
-        "w-25": width === "25%",
-        "align-items-center": center,
-    }, className);
-    var labelClass = classnames("d-block text-nowrap text-bold p-0", {
-        "col-2": width === "100%",
-        "col-4": width === "50%",
-        "col-8": width === "25%",
-        "align-items-center": center,
-    }, classNameLabel);
-    var contentClass = classnames("col-10 p-0", classNameContent);
-    var content = children;
-    if (typeof children === "function") {
-        content = children();
-    }
-    return (jsxRuntime.jsxs("div", __assign({ className: wrapperClass, style: style }, { children: [label && (jsxRuntime.jsx("label", __assign({ className: labelClass, style: styleLabel }, { children: label }), void 0)),
-            jsxRuntime.jsx("div", __assign({ className: contentClass, style: styleContent }, { children: content }), void 0)] }), void 0));
-};
-
-var TabBar = function (_a) {
-    var _b = _a.dataSource, dataSource = _b === void 0 ? [] : _b, value = _a.value, onChange = _a.onChange, className = _a.className, classNameTabItem = _a.classNameTabItem, getLabel = _a.getLabel, _c = _a.variant, variant = _c === void 0 ? "horizontal" : _c;
-    var wrapperClass = classnames("d-tab-bar d-tab-bar__" + variant, { "d-flex flex-wrap": variant === "horizontal" }, className);
-    return (jsxRuntime.jsx("div", __assign({ className: wrapperClass }, { children: dataSource.map(function (tabItem, index) {
-            var _a, _b;
-            var isSelect = (value === null || value === void 0 ? void 0 : value.id) === (tabItem === null || tabItem === void 0 ? void 0 : tabItem.id);
-            var itemClass = classnames(classNameTabItem, "d-tab-bar__item text-small", {
-                // "d-tab-bar__item-active text-primary": isSelect,
-                "d-tab-bar__item-active": isSelect,
-            });
-            var label = (_a = tabItem === null || tabItem === void 0 ? void 0 : tabItem.label) !== null && _a !== void 0 ? _a : "N/A";
-            var icon = (_b = tabItem === null || tabItem === void 0 ? void 0 : tabItem.iconName) !== null && _b !== void 0 ? _b : undefined;
-            if (getLabel) {
-                label = getLabel(tabItem);
-            }
-            return (jsxRuntime.jsx(Button, { className: itemClass, onClick: function () { return onChange && onChange(tabItem); }, variant: "trans", content: label, iconName: icon }, index));
-        }) }), void 0));
-};
-
 var lodash = createCommonjsModule(function (module, exports) {
 (function() {
 
@@ -67649,6 +67577,228 @@ var lodash = createCommonjsModule(function (module, exports) {
 }.call(commonjsGlobal));
 });
 
+var getValueFromStringKey = function (object, keyString) {
+    var keyList = keyString.split(".");
+    if (keyList.length === 0) {
+        return object[keyString];
+    }
+    var objectResult = object;
+    keyList.forEach(function (key) {
+        objectResult = objectResult === null || objectResult === void 0 ? void 0 : objectResult[key];
+    });
+    return objectResult;
+};
+var setValueFromStringKey = function (object, keyString, value) {
+    var keyList = keyString.split(".");
+    lodash.reverse(keyList);
+    var objectResult = {};
+    if (keyList.length === 0) {
+        objectResult[keyString] = value;
+        return objectResult;
+    }
+    keyList.forEach(function (key, index) {
+        var _a;
+        if (index === 0) {
+            objectResult[key] = value;
+        }
+        else {
+            objectResult = (_a = {}, _a[key] = objectResult, _a);
+        }
+    });
+    return __assign(__assign({}, object), objectResult);
+};
+var mapFieldsLangsCTS = function (dataClient, KEYS_LANG) {
+    if (dataClient === void 0) { dataClient = {}; }
+    if (KEYS_LANG === void 0) { KEYS_LANG = []; }
+    var dataResult = {};
+    KEYS_LANG.forEach(function (fields) {
+        dataResult = setValueFromStringKey(dataResult, fields.keyServer, dataClient[fields.keyClient]);
+    });
+    return dataResult;
+};
+var mapFieldsLangsSTC = function (dataServer, KEYS_LANG) {
+    if (KEYS_LANG === void 0) { KEYS_LANG = []; }
+    var dataResult = {};
+    KEYS_LANG.forEach(function (fields) {
+        dataResult[fields.keyClient] = getValueFromStringKey(dataServer, fields.keyServer);
+    });
+    return dataResult;
+};
+var mapObjectToArray = function (object) {
+    if (!object) {
+        return [];
+    }
+    var arrayResult = [];
+    Object.keys(object).forEach(function (key) { return arrayResult.push(__assign({ id: key }, object[key])); });
+    return arrayResult;
+};
+var mapArrayToObject = function (array, getKey) {
+    if (getKey === void 0) { getKey = function (item) { return item.id; }; }
+    if (!array || array.length === 0) {
+        return {};
+    }
+    var objectResult = {};
+    array.forEach(function (arrayItem) {
+        var key = getKey(arrayItem);
+        objectResult[key] = arrayItem;
+    });
+    return objectResult;
+};
+var findItemFromId = function (list, id) {
+    var _a;
+    if (list === void 0) { list = []; }
+    if (!list || list.length === 0) {
+        return {};
+    }
+    return (_a = lodash.filter(list, function (pro) { return pro.id === id; })) === null || _a === void 0 ? void 0 : _a[0];
+};
+var removeItemFromId = function (list, id) {
+    if (list === void 0) { list = []; }
+    if (!list || list.length === 0) {
+        return [];
+    }
+    return lodash.filter(list, function (pro) { return pro.id !== id; });
+};
+var sliceArrayToMui = function (bigArray, numberOfItem) {
+    if (bigArray === void 0) { bigArray = []; }
+    if (numberOfItem === void 0) { numberOfItem = 10; }
+    var arrayOfArrays = [];
+    for (var i = 0; i < bigArray.length; i += numberOfItem) {
+        arrayOfArrays.push(bigArray.slice(i, i + numberOfItem));
+    }
+    return arrayOfArrays;
+};
+var arrayMove = function (arr, oldIndex, newIndex) {
+    if (newIndex >= arr.length) {
+        var k = newIndex - arr.length + 1;
+        // eslint-disable-next-line no-plusplus
+        while (k--) {
+            arr.push(undefined);
+        }
+    }
+    arr.splice(newIndex, 0, arr.splice(oldIndex, 1)[0]);
+    return arr; // for testing
+};
+function combineAllArray(arr) {
+    if (!arr || arr.length === 0)
+        return [];
+    if (arr.length === 1) {
+        return arr[0];
+    }
+    var result = [];
+    var allCasesOfRest = combineAllArray(arr.slice(1));
+    for (var i = 0; i < allCasesOfRest.length; i += 1) {
+        for (var j = 0; j < arr[0].length; j += 1) {
+            result.push(arr[0][j].concat(allCasesOfRest[i]));
+        }
+    }
+    return result;
+}
+function compareTwoStringArray(array1, array2) {
+    if (!array1 || !array2 || array1.length !== array2.length)
+        return false;
+    return lodash.every(array1, function (item) { return lodash.includes(array2, item); });
+}
+/**
+ *
+ * @param {big array} array1
+ * @param {small array} array2
+ */
+function arrayIsContainArray(array1, array2) {
+    return lodash.every(array2, function (item) { return lodash.includes(array1, item); });
+}
+var ObjectUtils = {
+    getValueFromStringKey: getValueFromStringKey,
+    mapObjectToArray: mapObjectToArray,
+    findItemFromId: findItemFromId,
+    removeItemFromId: removeItemFromId,
+    sliceArrayToMui: sliceArrayToMui,
+    arrayMove: arrayMove,
+    mapArrayToObject: mapArrayToObject,
+    combineAllArray: combineAllArray,
+    compareTwoStringArray: compareTwoStringArray,
+    setValueFromStringKey: setValueFromStringKey,
+    mapFieldsLangsCTS: mapFieldsLangsCTS,
+    mapFieldsLangsSTC: mapFieldsLangsSTC,
+    arrayIsContainArray: arrayIsContainArray,
+};
+
+var RowInterchangeView = function (_a) {
+    var _b = _a.dataSource, dataSource = _b === void 0 ? {} : _b, _c = _a.keyList, keyList = _c === void 0 ? [] : _c, _d = _a.variant, variant = _d === void 0 ? "background" : _d, _e = _a.boldLabel, boldLabel = _e === void 0 ? false : _e, className = _a.className, classNameRow = _a.classNameRow, classNameLabel = _a.classNameLabel, classNameContent = _a.classNameContent, Messages = _a.Messages;
+    var wrapperClass = classnames(className);
+    return (jsxRuntime.jsx("div", __assign({ className: wrapperClass }, { children: keyList.map(function (row, index) {
+            var _a;
+            var rowClass = classnames("d-flex align-items-start w-100 justify-content-between py-3 px-3", {
+                "bg-light-gray": index % 2 && variant === "background",
+                "border-top": index !== 0 && variant === "border",
+                "border-top-dashed": index !== 0 && variant === "dashed",
+            }, classNameRow);
+            var labelClass = classnames("text-small w-100", { "font-weight-bold": boldLabel }, classNameLabel);
+            var contentClass = classnames("w-100 text", classNameContent);
+            var id = row.id, label = row.label, renderLabel = row.renderLabel, renderContent = row.renderContent;
+            var labelView;
+            var content;
+            labelView = label;
+            if (Messages) {
+                labelView = Messages[label];
+            }
+            if (typeof renderLabel === "function") {
+                labelView = renderLabel(id, dataSource, row);
+            }
+            content = (_a = dataSource === null || dataSource === void 0 ? void 0 : dataSource[id]) !== null && _a !== void 0 ? _a : "N/A";
+            if (typeof id === "string" && id.includes(".")) {
+                content = ObjectUtils.getValueFromStringKey(dataSource, id);
+            }
+            if (typeof renderContent === "function") {
+                content = renderContent(id, dataSource, row);
+            }
+            var contentView = jsxRuntime.jsx("div", __assign({ className: contentClass }, { children: content }), void 0);
+            return (jsxRuntime.jsxs("div", __assign({ className: rowClass }, { children: [jsxRuntime.jsx("div", __assign({ className: labelClass }, { children: labelView }), void 0),
+                    contentView] }), index));
+        }) }), void 0));
+};
+
+var ViewRow = function (_a) {
+    var className = _a.className, classNameLabel = _a.classNameLabel, classNameContent = _a.classNameContent, style = _a.style, styleContent = _a.styleContent, _b = _a.styleLabel, styleLabel = _b === void 0 ? {} : _b, _c = _a.width, width = _c === void 0 ? "100%" : _c, label = _a.label, _d = _a.center, center = _d === void 0 ? true : _d, children = _a.children;
+    var wrapperClass = classnames("d-flex", {
+        "w-50": width === "50%",
+        "w-25": width === "25%",
+        "align-items-center": center,
+    }, className);
+    var labelClass = classnames("d-block text-nowrap text-bold p-0", {
+        "col-2": width === "100%",
+        "col-4": width === "50%",
+        "col-8": width === "25%",
+        "align-items-center": center,
+    }, classNameLabel);
+    var contentClass = classnames("col-10 p-0", classNameContent);
+    var content = children;
+    if (typeof children === "function") {
+        content = children();
+    }
+    return (jsxRuntime.jsxs("div", __assign({ className: wrapperClass, style: style }, { children: [label && (jsxRuntime.jsx("label", __assign({ className: labelClass, style: styleLabel }, { children: label }), void 0)),
+            jsxRuntime.jsx("div", __assign({ className: contentClass, style: styleContent }, { children: content }), void 0)] }), void 0));
+};
+
+var TabBar = function (_a) {
+    var _b = _a.dataSource, dataSource = _b === void 0 ? [] : _b, value = _a.value, onChange = _a.onChange, className = _a.className, classNameTabItem = _a.classNameTabItem, getLabel = _a.getLabel, _c = _a.variant, variant = _c === void 0 ? "horizontal" : _c;
+    var wrapperClass = classnames("d-tab-bar d-tab-bar__" + variant, { "d-flex flex-wrap": variant === "horizontal" }, className);
+    return (jsxRuntime.jsx("div", __assign({ className: wrapperClass }, { children: dataSource.map(function (tabItem, index) {
+            var _a, _b;
+            var isSelect = (value === null || value === void 0 ? void 0 : value.id) === (tabItem === null || tabItem === void 0 ? void 0 : tabItem.id);
+            var itemClass = classnames(classNameTabItem, "d-tab-bar__item text-small", {
+                // "d-tab-bar__item-active text-primary": isSelect,
+                "d-tab-bar__item-active": isSelect,
+            });
+            var label = (_a = tabItem === null || tabItem === void 0 ? void 0 : tabItem.label) !== null && _a !== void 0 ? _a : "N/A";
+            var icon = (_b = tabItem === null || tabItem === void 0 ? void 0 : tabItem.iconName) !== null && _b !== void 0 ? _b : undefined;
+            if (getLabel) {
+                label = getLabel(tabItem);
+            }
+            return (jsxRuntime.jsx(Button, { className: itemClass, onClick: function () { return onChange && onChange(tabItem); }, variant: "trans", content: label, iconName: icon }, index));
+        }) }), void 0));
+};
+
 var MODE = {
     HIDDEN: 0,
     EMPTY: 1,
@@ -74845,152 +74995,6 @@ var TreeDataUtils = {
     getAllChildCategory: getAllChildCategory,
     getAllChildAndSubChild: getAllChildAndSubChild,
     getLevelOfNode: getLevelOfNode,
-};
-
-var getValueFromStringKey = function (object, keyString) {
-    var keyList = keyString.split(".");
-    if (keyList.length === 0) {
-        return object[keyString];
-    }
-    var objectResult = object;
-    keyList.forEach(function (key) {
-        objectResult = objectResult === null || objectResult === void 0 ? void 0 : objectResult[key];
-    });
-    return objectResult;
-};
-var setValueFromStringKey = function (object, keyString, value) {
-    var keyList = keyString.split(".");
-    lodash.reverse(keyList);
-    var objectResult = {};
-    if (keyList.length === 0) {
-        objectResult[keyString] = value;
-        return objectResult;
-    }
-    keyList.forEach(function (key, index) {
-        var _a;
-        if (index === 0) {
-            objectResult[key] = value;
-        }
-        else {
-            objectResult = (_a = {}, _a[key] = objectResult, _a);
-        }
-    });
-    return __assign(__assign({}, object), objectResult);
-};
-var mapFieldsLangsCTS = function (dataClient, KEYS_LANG) {
-    if (dataClient === void 0) { dataClient = {}; }
-    if (KEYS_LANG === void 0) { KEYS_LANG = []; }
-    var dataResult = {};
-    KEYS_LANG.forEach(function (fields) {
-        dataResult = setValueFromStringKey(dataResult, fields.keyServer, dataClient[fields.keyClient]);
-    });
-    return dataResult;
-};
-var mapFieldsLangsSTC = function (dataServer, KEYS_LANG) {
-    if (KEYS_LANG === void 0) { KEYS_LANG = []; }
-    var dataResult = {};
-    KEYS_LANG.forEach(function (fields) {
-        dataResult[fields.keyClient] = getValueFromStringKey(dataServer, fields.keyServer);
-    });
-    return dataResult;
-};
-var mapObjectToArray = function (object) {
-    if (!object) {
-        return [];
-    }
-    var arrayResult = [];
-    Object.keys(object).forEach(function (key) { return arrayResult.push(__assign({ id: key }, object[key])); });
-    return arrayResult;
-};
-var mapArrayToObject = function (array, getKey) {
-    if (getKey === void 0) { getKey = function (item) { return item.id; }; }
-    if (!array || array.length === 0) {
-        return {};
-    }
-    var objectResult = {};
-    array.forEach(function (arrayItem) {
-        var key = getKey(arrayItem);
-        objectResult[key] = arrayItem;
-    });
-    return objectResult;
-};
-var findItemFromId = function (list, id) {
-    var _a;
-    if (list === void 0) { list = []; }
-    if (!list || list.length === 0) {
-        return {};
-    }
-    return (_a = lodash.filter(list, function (pro) { return pro.id === id; })) === null || _a === void 0 ? void 0 : _a[0];
-};
-var removeItemFromId = function (list, id) {
-    if (list === void 0) { list = []; }
-    if (!list || list.length === 0) {
-        return [];
-    }
-    return lodash.filter(list, function (pro) { return pro.id !== id; });
-};
-var sliceArrayToMui = function (bigArray, numberOfItem) {
-    if (bigArray === void 0) { bigArray = []; }
-    if (numberOfItem === void 0) { numberOfItem = 10; }
-    var arrayOfArrays = [];
-    for (var i = 0; i < bigArray.length; i += numberOfItem) {
-        arrayOfArrays.push(bigArray.slice(i, i + numberOfItem));
-    }
-    return arrayOfArrays;
-};
-var arrayMove = function (arr, oldIndex, newIndex) {
-    if (newIndex >= arr.length) {
-        var k = newIndex - arr.length + 1;
-        // eslint-disable-next-line no-plusplus
-        while (k--) {
-            arr.push(undefined);
-        }
-    }
-    arr.splice(newIndex, 0, arr.splice(oldIndex, 1)[0]);
-    return arr; // for testing
-};
-function combineAllArray(arr) {
-    if (!arr || arr.length === 0)
-        return [];
-    if (arr.length === 1) {
-        return arr[0];
-    }
-    var result = [];
-    var allCasesOfRest = combineAllArray(arr.slice(1));
-    for (var i = 0; i < allCasesOfRest.length; i += 1) {
-        for (var j = 0; j < arr[0].length; j += 1) {
-            result.push(arr[0][j].concat(allCasesOfRest[i]));
-        }
-    }
-    return result;
-}
-function compareTwoStringArray(array1, array2) {
-    if (!array1 || !array2 || array1.length !== array2.length)
-        return false;
-    return lodash.every(array1, function (item) { return lodash.includes(array2, item); });
-}
-/**
- *
- * @param {big array} array1
- * @param {small array} array2
- */
-function arrayIsContainArray(array1, array2) {
-    return lodash.every(array2, function (item) { return lodash.includes(array1, item); });
-}
-var ObjectUtils = {
-    getValueFromStringKey: getValueFromStringKey,
-    mapObjectToArray: mapObjectToArray,
-    findItemFromId: findItemFromId,
-    removeItemFromId: removeItemFromId,
-    sliceArrayToMui: sliceArrayToMui,
-    arrayMove: arrayMove,
-    mapArrayToObject: mapArrayToObject,
-    combineAllArray: combineAllArray,
-    compareTwoStringArray: compareTwoStringArray,
-    setValueFromStringKey: setValueFromStringKey,
-    mapFieldsLangsCTS: mapFieldsLangsCTS,
-    mapFieldsLangsSTC: mapFieldsLangsSTC,
-    arrayIsContainArray: arrayIsContainArray,
 };
 
 var toRadians = function (number) { return (number * Math.PI) / 180; };

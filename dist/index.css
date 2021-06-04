@@ -28531,6 +28531,9 @@ body {
 .border-dashed {
   border: 1px dashed #ECECEC; }
 
+.border-top-dashed {
+  border-top: 1px dashed #ECECEC; }
+
 .border-line {
   border: 1px solid #d8d8d8 !important; }
 
@@ -29667,6 +29670,9 @@ body {
 
 .border-dashed {
   border: 1px dashed #ECECEC; }
+
+.border-top-dashed {
+  border-top: 1px dashed #ECECEC; }
 
 .border-line {
   border: 1px solid #d8d8d8 !important; }
