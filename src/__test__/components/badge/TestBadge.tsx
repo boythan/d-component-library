@@ -10,10 +10,10 @@ const TestBadge = () => {
     return (
         <div>
             <div className="p-5 d-flex">
-                <Badge className="mx-3">
+                <Badge className="mx-3" size="xx-small">
                     <Icon name="comment" size="small" />
                 </Badge>
-                <Badge className="mx-3">
+                <Badge className="mx-3" size="x-small">
                     <Icon name="comment" />
                 </Badge>
                 <Badge className="mx-3">
@@ -25,13 +25,13 @@ const TestBadge = () => {
                 <Badge className="mx-3" variant="index" index={20}>
                     <Icon name="comment" size="small" />
                 </Badge>
-                <Badge className="mx-3" variant="index" index="+99" size="x-large">
+                <Badge className="mx-3" variant="index" index="+99" size="medium">
                     <Icon name="comment" />
                 </Badge>
                 <Badge className="mx-3" variant="index" index="+99" size="x-large">
                     <Icon name="comment" size="x-large" />
                 </Badge>
-                <Badge className="mx-3" variant="index">
+                <Badge className="mx-3" variant="index" size="xx-large" index={99}>
                     <Icon name="comment" size="xx-large" />
                 </Badge>
             </div>
