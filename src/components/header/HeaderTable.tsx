@@ -1,5 +1,6 @@
 import ClassNames from "classnames";
 import React from "react";
+import Badge from "../badge/Badge";
 import Button from "../button/Button";
 import InputTextSearch from "../input/InputTextSearch";
 
@@ -15,6 +16,8 @@ export interface HeaderTableProps {
     onClickExport?: any;
     onClickFilter?: any;
     customView?: any;
+
+    isFiltered?: boolean;
 }
 const HeaderTable = ({
     className = "",
@@ -28,7 +31,16 @@ const HeaderTable = ({
     onClickExport,
     onClickFilter,
     customView,
+    isFiltered = false,
 }: HeaderTableProps) => {
+    let button = <Button iconName="filter_list" onClick={onClickFilter} />;
+    if (isFiltered) {
+        button = (
+            <Badge color="secondary">
+                <Button iconName="filter_list" onClick={onClickFilter} />
+            </Badge>
+        );
+    }
     return (
         <div className={ClassNames("w-100", className)}>
             <div className="d-flex justify-content-between mb-3">
@@ -46,7 +58,7 @@ const HeaderTable = ({
                     onChange={onChangeText}
                     disabled={disabledSearch}
                 />
-                {onClickFilter && <Button iconName="filter_list" onClick={onClickFilter} />}
+                {onClickFilter && button}
             </div>
         </div>
     );

@@ -15,6 +15,7 @@ const TestHeader = () => {
                 onClickFilter={() => {}}
                 onClickNew={() => {}}
                 disabledSearch={!valueSelect}
+                isFiltered
                 customView={() => (
                     <Select
                         dataSource={ATTRIBUTE_INPUT_TYPE}
