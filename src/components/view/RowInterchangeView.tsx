@@ -1,4 +1,4 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 import ClassNames from "classnames";
 import ObjectUtils from "../../utils/ObjectUtils";
 
@@ -16,9 +16,12 @@ export interface RowInterchangeViewProps {
     classNameContent?: string;
     dataSource: any;
     keyList: Array<IRowsKey>;
-    variant?: "background" | "border" | "dashed";
+    variant?: "background" | "border" | "dashed" | "none";
     boldLabel?: boolean;
     Messages?: any;
+    style?: CSSProperties;
+    styleContent?: CSSProperties;
+    styleLabel?: CSSProperties;
 }
 
 const RowInterchangeView: React.FC<RowInterchangeViewProps> = ({
@@ -31,6 +34,9 @@ const RowInterchangeView: React.FC<RowInterchangeViewProps> = ({
     classNameLabel,
     classNameContent,
     Messages,
+    style,
+    styleLabel,
+    styleContent,
 }) => {
     const wrapperClass = ClassNames(className);
     return (
@@ -65,10 +71,16 @@ const RowInterchangeView: React.FC<RowInterchangeViewProps> = ({
                 if (typeof renderContent === "function") {
                     content = renderContent(id, dataSource, row);
                 }
-                const contentView = <div className={contentClass}>{content}</div>;
+                const contentView = (
+                    <div className={contentClass} style={styleContent}>
+                        {content}
+                    </div>
+                );
                 return (
-                    <div className={rowClass} key={index}>
-                        <div className={labelClass}>{labelView}</div>
+                    <div className={rowClass} key={id + index} style={style}>
+                        <div className={labelClass} style={styleLabel}>
+                            {labelView}
+                        </div>
                         {contentView}
                     </div>
                 );
