@@ -84,6 +84,9 @@ export { default as RowInterchangeView } from "./components/view/RowInterchangeV
 export type { ViewRowProps } from "./components/view/ViewRow";
 export { default as ViewRow } from "./components/view/ViewRow";
 
+export type { ViewTextareaProps } from "./components/view/ViewTextarea";
+export { default as ViewTextarea } from "./components/view/ViewTextarea";
+
 /* ----------------------------------------
 // TabBar
 // ---------------------------------------- */
