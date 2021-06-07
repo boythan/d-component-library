@@ -75394,6 +75394,58 @@ var Progress = {
     },
 };
 
+var showError = function (content, action, title) {
+    if (title === void 0) { title = "Error"; }
+    api.open({
+        message: title,
+        description: content,
+        icon: jsxRuntime.jsx("i", __assign({ className: "material-icons text-danger" }, { children: "report" }), void 0),
+        style: { border: "1px solid red" },
+        onClick: function () {
+            action && action();
+        },
+        placement: "bottomRight",
+    });
+};
+var showWarning = function (content, action, title) {
+    if (title === void 0) { title = "Warning"; }
+    api.open({
+        message: title,
+        description: content,
+        icon: jsxRuntime.jsx("i", __assign({ className: "material-icons text-warning" }, { children: "warning" }), void 0),
+        onClick: function () {
+            action && action();
+        },
+        placement: "bottomRight",
+    });
+};
+var showSuccess = function (content, action, title) {
+    if (title === void 0) { title = "Success"; }
+    api.open({
+        message: title,
+        description: content,
+        icon: jsxRuntime.jsx("i", __assign({ className: "material-icons text-success" }, { children: "check_circle" }), void 0),
+        onClick: function () {
+            action && action();
+        },
+        placement: "bottomRight",
+    });
+};
+var showInfo = function (content, action, title) {
+    if (title === void 0) { title = "Info"; }
+    api.open({
+        message: title,
+        description: content,
+        icon: jsxRuntime.jsx("i", __assign({ className: "material-icons text-primary" }, { children: "info" }), void 0),
+        onClick: function () {
+            action && action();
+        },
+        duration: 10,
+        placement: "bottomRight",
+    });
+};
+var Notifications = { showError: showError, showInfo: showInfo, showSuccess: showSuccess, showWarning: showWarning };
+
 exports.Avatar = Avatar;
 exports.AvatarName = AvatarName;
 exports.AwesomeListComponent = AwesomeListComponent;
@@ -75417,6 +75469,7 @@ exports.InputText = InputText;
 exports.Loading = Loading;
 exports.MapUtils = MapUtils;
 exports.Modal = Modal;
+exports.Notifications = Notifications;
 exports.ObjectUtils = ObjectUtils;
 exports.PopoverList = PopoverList;
 exports.Progress = Progress;

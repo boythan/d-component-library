@@ -75365,5 +75365,57 @@ var Progress = {
     },
 };
 
-export { Avatar, AvatarName, AwesomeListComponent, AwesomeTableComponent, AwesomeTableUtils, Badge, Button, Checkbox, CheckboxGroup, DateInput, DialogComponent, DialogManager, Dot, Dropdown, Header, HeaderDetail, HeaderTable, Icon$2 as Icon, ImageUtils, InputText, Loading, MapUtils, Modal, ObjectUtils, PopoverList, Progress, ProgressComponent, RadioGroup, RowInterchangeView, Select, StringUtils, TabBar, TimeUtils, TreeDataUtils, TreeSelect, UrlUtils, ViewRow, ViewTextarea };
+var showError = function (content, action, title) {
+    if (title === void 0) { title = "Error"; }
+    api.open({
+        message: title,
+        description: content,
+        icon: jsx("i", __assign({ className: "material-icons text-danger" }, { children: "report" }), void 0),
+        style: { border: "1px solid red" },
+        onClick: function () {
+            action && action();
+        },
+        placement: "bottomRight",
+    });
+};
+var showWarning = function (content, action, title) {
+    if (title === void 0) { title = "Warning"; }
+    api.open({
+        message: title,
+        description: content,
+        icon: jsx("i", __assign({ className: "material-icons text-warning" }, { children: "warning" }), void 0),
+        onClick: function () {
+            action && action();
+        },
+        placement: "bottomRight",
+    });
+};
+var showSuccess = function (content, action, title) {
+    if (title === void 0) { title = "Success"; }
+    api.open({
+        message: title,
+        description: content,
+        icon: jsx("i", __assign({ className: "material-icons text-success" }, { children: "check_circle" }), void 0),
+        onClick: function () {
+            action && action();
+        },
+        placement: "bottomRight",
+    });
+};
+var showInfo = function (content, action, title) {
+    if (title === void 0) { title = "Info"; }
+    api.open({
+        message: title,
+        description: content,
+        icon: jsx("i", __assign({ className: "material-icons text-primary" }, { children: "info" }), void 0),
+        onClick: function () {
+            action && action();
+        },
+        duration: 10,
+        placement: "bottomRight",
+    });
+};
+var Notifications = { showError: showError, showInfo: showInfo, showSuccess: showSuccess, showWarning: showWarning };
+
+export { Avatar, AvatarName, AwesomeListComponent, AwesomeTableComponent, AwesomeTableUtils, Badge, Button, Checkbox, CheckboxGroup, DateInput, DialogComponent, DialogManager, Dot, Dropdown, Header, HeaderDetail, HeaderTable, Icon$2 as Icon, ImageUtils, InputText, Loading, MapUtils, Modal, Notifications, ObjectUtils, PopoverList, Progress, ProgressComponent, RadioGroup, RowInterchangeView, Select, StringUtils, TabBar, TimeUtils, TreeDataUtils, TreeSelect, UrlUtils, ViewRow, ViewTextarea };
 //# sourceMappingURL=dcomponent.es.js.map
