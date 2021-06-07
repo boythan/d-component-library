@@ -75394,49 +75394,70 @@ var Progress = {
     },
 };
 
-var showError = function (content, action, title) {
-    if (title === void 0) { title = "Error"; }
+var en = {
+    error: "Error",
+    success: "Success",
+    info: "Info",
+    warning: "Warning",
+};
+
+var th = {
+    error: "ผิดพลาด",
+    success: "สำเร็จ",
+    info: "ข้อมูล",
+    warning: "คำเตือน",
+};
+
+var _a;
+var Languages = {
+    en: en,
+    th: th,
+};
+var currentLang = (_a = document.documentElement.lang) !== null && _a !== void 0 ? _a : "en";
+var Messages = Languages[currentLang];
+
+var showError = function (content, action) {
     api.open({
-        message: title,
+        message: Messages.error,
         description: content,
-        icon: jsxRuntime.jsx("i", __assign({ className: "material-icons text-danger" }, { children: "report" }), void 0),
-        style: { border: "1px solid red" },
+        icon: jsxRuntime.jsx(Icon$2, { name: "report", className: "text-danger", size: "large" }, void 0),
+        closeIcon: jsxRuntime.jsx(Icon$2, { name: "close" }, void 0),
         onClick: function () {
             action && action();
         },
         placement: "bottomRight",
     });
 };
-var showWarning = function (content, action, title) {
-    if (title === void 0) { title = "Warning"; }
+var showWarning = function (content, action) {
     api.open({
-        message: title,
+        message: Messages.warning,
         description: content,
-        icon: jsxRuntime.jsx("i", __assign({ className: "material-icons text-warning" }, { children: "warning" }), void 0),
+        icon: jsxRuntime.jsx(Icon$2, { name: "warning", className: "text-warning", size: "large" }, void 0),
+        closeIcon: jsxRuntime.jsx(Icon$2, { name: "close" }, void 0),
         onClick: function () {
             action && action();
         },
         placement: "bottomRight",
     });
 };
-var showSuccess = function (content, action, title) {
-    if (title === void 0) { title = "Success"; }
+var showSuccess = function (content, action) {
     api.open({
-        message: title,
+        message: Messages.success,
         description: content,
-        icon: jsxRuntime.jsx("i", __assign({ className: "material-icons text-success" }, { children: "check_circle" }), void 0),
+        icon: jsxRuntime.jsx(Icon$2, { name: "check_circle", className: "text-success", size: "large" }, void 0),
+        closeIcon: jsxRuntime.jsx(Icon$2, { name: "close" }, void 0),
         onClick: function () {
             action && action();
         },
         placement: "bottomRight",
     });
 };
-var showInfo = function (content, action, title) {
-    if (title === void 0) { title = "Info"; }
+var showInfo = function (content, action) {
     api.open({
-        message: title,
+        message: Messages.info,
         description: content,
-        icon: jsxRuntime.jsx("i", __assign({ className: "material-icons text-primary" }, { children: "info" }), void 0),
+        icon: jsxRuntime.jsx(Icon$2, { name: "info", className: "text-primary", size: "large" }, void 0),
+        closeIcon: jsxRuntime.jsx(Icon$2, { name: "close" }, void 0),
         onClick: function () {
             action && action();
         },
