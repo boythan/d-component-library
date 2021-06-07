@@ -25,6 +25,7 @@ import TestTable from "./components/TestTable";
 import TestCheckbox from "./components/test_checkbox/TestCheckbox";
 import TestDropdown from "./components/test_dropdown/TestDropdown";
 import TestProgress from "./components/test_progress/TestProgress";
+import TestNotification from "./components/test_notification/TestNotification";
 import TestUtils from "./components/test_util/TestUtils";
 import TestView from "./components/test_view/TestView";
 import { ATTRIBUTE_INPUT_TYPE } from "./data/TestConstant";
@@ -301,6 +302,7 @@ export default function Test({ content }: Props): ReactElement {
         { id: "BADGE", label: "BADGE", component: <TestBadge /> },
         { id: "UTIL", label: "UTIL", component: <TestUtils /> },
         { id: "PROGRESS", label: "PROGRESS", component: <TestProgress /> },
+        { id: "NOTIFICATION", label: "NOTIFICATION", component: <TestNotification /> },
     ];
 
     return (

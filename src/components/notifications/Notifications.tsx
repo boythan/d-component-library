@@ -2,13 +2,15 @@
 /* eslint-disable react/jsx-filename-extension */
 import React from "react";
 import { notification } from "antd";
+import Icon from "../icon/Icon";
+import Messages from "../../language/Messages";
 
-const showError = (content: any, action: any, title = "Error") => {
+const showError = (content: any, action?: any) => {
     notification.open({
-        message: title,
+        message: Messages.error,
         description: content,
-        icon: <i className="material-icons text-danger">report</i>,
-        style: { border: "1px solid red" },
+        icon: <Icon name="report" className="text-danger" size="large" />,
+        closeIcon: <Icon name="close" />,
         onClick: () => {
             action && action();
         },
@@ -16,12 +18,12 @@ const showError = (content: any, action: any, title = "Error") => {
     });
 };
 
-const showWarning = (content: any, action: any, title = "Warning") => {
+const showWarning = (content: any, action?: any) => {
     notification.open({
-        message: title,
+        message: Messages.warning,
         description: content,
-        icon: <i className="material-icons text-warning">warning</i>,
-
+        icon: <Icon name="warning" className="text-warning" size="large" />,
+        closeIcon: <Icon name="close" />,
         onClick: () => {
             action && action();
         },
@@ -29,11 +31,12 @@ const showWarning = (content: any, action: any, title = "Warning") => {
     });
 };
 
-const showSuccess = (content: any, action: any, title = "Success") => {
+const showSuccess = (content: any, action?: any) => {
     notification.open({
-        message: title,
+        message: Messages.success,
         description: content,
-        icon: <i className="material-icons text-success">check_circle</i>,
+        icon: <Icon name="check_circle" className="text-success" size="large" />,
+        closeIcon: <Icon name="close" />,
         onClick: () => {
             action && action();
         },
@@ -41,11 +44,12 @@ const showSuccess = (content: any, action: any, title = "Success") => {
     });
 };
 
-const showInfo = (content: any, action: any, title = "Info") => {
+const showInfo = (content: any, action?: any) => {
     notification.open({
-        message: title,
+        message: Messages.info,
         description: content,
-        icon: <i className="material-icons text-primary">info</i>,
+        icon: <Icon name="info" className="text-primary" size="large" />,
+        closeIcon: <Icon name="close" />,
         onClick: () => {
             action && action();
         },
