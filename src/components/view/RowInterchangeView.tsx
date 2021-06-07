@@ -1,11 +1,12 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 import ClassNames from "classnames";
+import ObjectUtils from "../../utils/ObjectUtils";
 
 export interface IRowsKey {
-    id: string | number;
+    id: string;
     label: string | number;
-    renderLabel?: (id: IRowsKey["id"], row: IRowsKey, data: any) => any;
-    renderContent?: (id: IRowsKey["id"], row: IRowsKey, data: any) => any;
+    renderLabel?: (id: IRowsKey["id"], data: any, row?: IRowsKey) => any;
+    renderContent?: (id: IRowsKey["id"], data: any, row?: IRowsKey) => any;
 }
 
 export interface RowInterchangeViewProps {
@@ -15,9 +16,12 @@ export interface RowInterchangeViewProps {
     classNameContent?: string;
     dataSource: any;
     keyList: Array<IRowsKey>;
-    variant?: "background" | "border";
+    variant?: "background" | "border" | "dashed" | "none";
     boldLabel?: boolean;
     Messages?: any;
+    style?: CSSProperties;
+    styleContent?: CSSProperties;
+    styleLabel?: CSSProperties;
 }
 
 const RowInterchangeView: React.FC<RowInterchangeViewProps> = ({
@@ -30,16 +34,21 @@ const RowInterchangeView: React.FC<RowInterchangeViewProps> = ({
     classNameLabel,
     classNameContent,
     Messages,
+    style,
+    styleLabel,
+    styleContent,
 }) => {
     const wrapperClass = ClassNames(className);
     return (
         <div className={wrapperClass}>
             {keyList.map((row, index) => {
                 const rowClass = ClassNames(
-                    "d-flex align-items-start w-100 justify-content-between py-3 px-3",
+                    "d-flex align-items-start w-100 justify-content-between py-3",
                     {
+                        "px-3": variant === "background",
                         "bg-light-gray": index % 2 && variant === "background",
                         "border-top": index !== 0 && variant === "border",
+                        "border-top-dashed": index !== 0 && variant === "dashed",
                     },
                     classNameRow
                 );
@@ -53,16 +62,25 @@ const RowInterchangeView: React.FC<RowInterchangeViewProps> = ({
                     labelView = Messages[label];
                 }
                 if (typeof renderLabel === "function") {
-                    labelView = renderLabel(id, row, dataSource);
+                    labelView = renderLabel(id, dataSource, row);
                 }
                 content = dataSource?.[id] ?? "N/A";
-                if (typeof renderContent === "function") {
-                    content = renderContent(id, row, dataSource);
+                if (typeof id === "string" && id.includes(".")) {
+                    content = ObjectUtils.getValueFromStringKey(dataSource, id);
                 }
-                const contentView = <div className={contentClass}>{content}</div>;
+                if (typeof renderContent === "function") {
+                    content = renderContent(id, dataSource, row);
+                }
+                const contentView = (
+                    <div className={contentClass} style={styleContent}>
+                        {content}
+                    </div>
+                );
                 return (
-                    <div className={rowClass} key={index}>
-                        <div className={labelClass}>{labelView}</div>
+                    <div className={rowClass} key={id + index} style={style}>
+                        <div className={labelClass} style={styleLabel}>
+                            {labelView}
+                        </div>
                         {contentView}
                     </div>
                 );

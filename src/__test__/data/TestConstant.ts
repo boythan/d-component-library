@@ -6,6 +6,14 @@ export const ATTRIBUTE_INPUT_TYPE = [
         id: "dropdown",
         label: "dropdown",
         iconName: "person",
+        subObject: {
+            name: "Test",
+            id: "test",
+            children: {
+                name: "children",
+                id: "children",
+            },
+        },
         subMenu: [
             {
                 id: "color",

@@ -2,8 +2,8 @@ import React from "react";
 export interface IRowsKey {
     id: string | number;
     label: string | number;
-    renderLabel?: (id: IRowsKey["id"], row: IRowsKey, data: any) => any;
-    renderContent?: (id: IRowsKey["id"], row: IRowsKey, data: any) => any;
+    renderLabel?: (id: IRowsKey["id"], data: any, row?: IRowsKey) => any;
+    renderContent?: (id: IRowsKey["id"], data: any, row?: IRowsKey) => any;
 }
 export interface RowInterchangeViewProps {
     className?: string;
@@ -12,7 +12,7 @@ export interface RowInterchangeViewProps {
     classNameContent?: string;
     dataSource: any;
     keyList: Array<IRowsKey>;
-    variant?: "background" | "border";
+    variant?: "background" | "border" | "dashed";
     boldLabel?: boolean;
     Messages?: any;
 }

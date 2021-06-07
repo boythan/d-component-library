@@ -22,6 +22,7 @@ import TestInput from "./components/TestInput";
 import TestTable from "./components/TestTable";
 import TestCheckbox from "./components/test_checkbox/TestCheckbox";
 import TestDropdown from "./components/test_dropdown/TestDropdown";
+import TestView from "./components/test_view/TestView";
 import { ATTRIBUTE_INPUT_TYPE } from "./data/TestConstant";
 
 interface Props {
@@ -176,33 +177,6 @@ const ButtonView = () => (
         </div>
     </div>
 );
-const RowsView = () => {
-    const { mockData } = useContext<any>(AppStateContext);
-
-    return (
-        <div className="my-4">
-            <RowInterchangeView
-                dataSource={mockData[0]}
-                keyList={[
-                    { id: "id", label: "ID" },
-                    { id: "userId", label: "User ID" },
-                    { id: "title", label: "Title" },
-                    { id: "body", label: "Body" },
-                ]}
-            />
-            <RowInterchangeView
-                dataSource={mockData[0]}
-                keyList={[
-                    { id: "id", label: "ID" },
-                    { id: "userId", label: "User ID" },
-                    { id: "title", label: "Title" },
-                    { id: "body", label: "Body" },
-                ]}
-                variant="border"
-            />
-        </div>
-    );
-};
 
 export default function Test({ content }: Props): ReactElement {
     const [valueSelect, setValueSelect] = useState([ATTRIBUTE_INPUT_TYPE[0]]);
@@ -295,7 +269,7 @@ export default function Test({ content }: Props): ReactElement {
                 {/* {checkBox} */}
                 {/* {header} */}
                 {tab}
-                <RowsView />
+                <TestView />
                 {/* {list} */}
                 {loading}
                 {dot}
@@ -312,7 +286,7 @@ export default function Test({ content }: Props): ReactElement {
         { id: "CHECKBOX", label: "CHECKBOX", component: <TestCheckbox /> },
         { id: "HEADER", label: "HEADER", component: <TestHeader /> },
         { id: "TAB BAR", label: "TAB BAR", component: tab },
-        { id: "VIEW", label: "VIEW", component: <RowsView /> },
+        { id: "VIEW", label: "VIEW", component: <TestView /> },
         { id: "LIST", label: "LIST", component: list },
         { id: "LOADING", label: "LOADING", component: loading },
         { id: "DOT", label: "DOT", component: dot },
