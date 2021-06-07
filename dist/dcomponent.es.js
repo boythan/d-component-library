@@ -67695,11 +67695,12 @@ var ObjectUtils = {
 };
 
 var RowInterchangeView = function (_a) {
-    var _b = _a.dataSource, dataSource = _b === void 0 ? {} : _b, _c = _a.keyList, keyList = _c === void 0 ? [] : _c, _d = _a.variant, variant = _d === void 0 ? "background" : _d, _e = _a.boldLabel, boldLabel = _e === void 0 ? false : _e, className = _a.className, classNameRow = _a.classNameRow, classNameLabel = _a.classNameLabel, classNameContent = _a.classNameContent, Messages = _a.Messages;
+    var _b = _a.dataSource, dataSource = _b === void 0 ? {} : _b, _c = _a.keyList, keyList = _c === void 0 ? [] : _c, _d = _a.variant, variant = _d === void 0 ? "background" : _d, _e = _a.boldLabel, boldLabel = _e === void 0 ? false : _e, className = _a.className, classNameRow = _a.classNameRow, classNameLabel = _a.classNameLabel, classNameContent = _a.classNameContent, Messages = _a.Messages, style = _a.style, styleLabel = _a.styleLabel, styleContent = _a.styleContent;
     var wrapperClass = classnames(className);
     return (jsx("div", __assign({ className: wrapperClass }, { children: keyList.map(function (row, index) {
             var _a;
-            var rowClass = classnames("d-flex align-items-start w-100 justify-content-between py-3 px-3", {
+            var rowClass = classnames("d-flex align-items-start w-100 justify-content-between py-3", {
+                "px-3": variant === "background",
                 "bg-light-gray": index % 2 && variant === "background",
                 "border-top": index !== 0 && variant === "border",
                 "border-top-dashed": index !== 0 && variant === "dashed",
@@ -67723,9 +67724,9 @@ var RowInterchangeView = function (_a) {
             if (typeof renderContent === "function") {
                 content = renderContent(id, dataSource, row);
             }
-            var contentView = jsx("div", __assign({ className: contentClass }, { children: content }), void 0);
-            return (jsxs("div", __assign({ className: rowClass }, { children: [jsx("div", __assign({ className: labelClass }, { children: labelView }), void 0),
-                    contentView] }), index));
+            var contentView = (jsx("div", __assign({ className: contentClass, style: styleContent }, { children: content }), void 0));
+            return (jsxs("div", __assign({ className: rowClass, style: style }, { children: [jsx("div", __assign({ className: labelClass, style: styleLabel }, { children: labelView }), void 0),
+                    contentView] }), id + index));
         }) }), void 0));
 };
 
@@ -67749,6 +67750,36 @@ var ViewRow = function (_a) {
     }
     return (jsxs("div", __assign({ className: wrapperClass, style: style }, { children: [label && (jsx("label", __assign({ className: labelClass, style: styleLabel }, { children: label }), void 0)),
             jsx("div", __assign({ className: contentClass, style: styleContent }, { children: content }), void 0)] }), void 0));
+};
+
+var ViewTextarea = function (_a) {
+    var children = _a.children, className = _a.className, style = _a.style, _b = _a.showLessText, showLessText = _b === void 0 ? "showLess" : _b, _c = _a.showMoreText, showMoreText = _c === void 0 ? "showMore" : _c, _d = _a.limitedLength, limitedLength = _d === void 0 ? 200 : _d;
+    var _e = useState(false), expanding = _e[0], setExpanding = _e[1];
+    var contentLength = useMemo$1(function () {
+        return children.length;
+    }, [children]);
+    var isOverFollow = useMemo$1(function () {
+        return contentLength > limitedLength;
+    }, [contentLength, limitedLength]);
+    var contentRef = useRef(null);
+    useRef(null);
+    var isShowMore = isOverFollow && !expanding;
+    var isShowLess = isOverFollow && expanding;
+    // classNames
+    var wrapperClass = classnames("d-view-textarea text-small", className);
+    var contentClass = classnames("d-view-textarea__content", {
+        "text-nowrap": isOverFollow && !expanding,
+        // "d-inline-block": !expanding,
+    }, className);
+    useEffect(function () {
+        setTimeout(function () {
+            var _a;
+            console.log("Content Height", (_a = contentRef.current) === null || _a === void 0 ? void 0 : _a.offsetHeight);
+        }, 200);
+    }, [children]);
+    return (jsxs("div", __assign({ className: wrapperClass, style: style }, { children: [jsxs("div", __assign({ className: contentClass, ref: function (ref) { return (contentRef.current = ref); } }, { children: [children,
+                    isShowLess && (jsx("span", __assign({ className: "d-view-textarea__show-more text-primary hover-pointer", onClick: function () { return setExpanding(false); } }, { children: showLessText }), void 0))] }), void 0),
+            isShowMore && (jsx("span", __assign({ className: "d-view-textarea__show-more text-primary hover-pointer", onClick: function () { return setExpanding(true); } }, { children: showMoreText }), void 0))] }), void 0));
 };
 
 var TabBar = function (_a) {
@@ -75196,5 +75227,5 @@ var Dialog = function (props, ref) {
 };
 var DialogComponent = forwardRef(Dialog);
 
-export { Avatar, AvatarName, AwesomeListComponent, AwesomeTableComponent, AwesomeTableUtils, Badge, Button, Checkbox, CheckboxGroup, DateInput, DialogComponent, DialogManager, Dot, Dropdown, Header, HeaderDetail, HeaderTable, Icon$2 as Icon, ImageUtils, InputText, Loading, MapUtils, Modal, ObjectUtils, PopoverList, RadioGroup, RowInterchangeView, Select, StringUtils, TabBar, TimeUtils, TreeDataUtils, TreeSelect, UrlUtils, ViewRow };
+export { Avatar, AvatarName, AwesomeListComponent, AwesomeTableComponent, AwesomeTableUtils, Badge, Button, Checkbox, CheckboxGroup, DateInput, DialogComponent, DialogManager, Dot, Dropdown, Header, HeaderDetail, HeaderTable, Icon$2 as Icon, ImageUtils, InputText, Loading, MapUtils, Modal, ObjectUtils, PopoverList, RadioGroup, RowInterchangeView, Select, StringUtils, TabBar, TimeUtils, TreeDataUtils, TreeSelect, UrlUtils, ViewRow, ViewTextarea };
 //# sourceMappingURL=dcomponent.es.js.map

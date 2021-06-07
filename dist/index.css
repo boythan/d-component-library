@@ -29864,15 +29864,15 @@ a {
   min-height: 40px !important;
   box-shadow: none !important; }
 
-.d-select__select .ant-select-selection-item {
-  max-width: 90%; }
-
 .d-select__select .ant-select-selection-placeholder {
   left: 16px; }
 
 .d-select__select input {
   border-radius: 0px !important;
   outline: none !important; }
+
+.ant-select-single .ant-select-selection-item {
+  max-width: 90%; }
 
 .d-select__select-outline {
   border: 0.5px solid #ECECEC !important;
@@ -33905,6 +33905,10 @@ h6,
   display: flex;
   align-items: center;
   justify-content: center; }
+
+/* ----------------------------------------
+// view
+// ---------------------------------------- */
 
 .react-resizable {
   position: relative;
