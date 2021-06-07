@@ -61,3 +61,5 @@ export type { BadgeProps } from "./components/badge/Badge";
 export { default as Badge } from "./components/badge/Badge";
 export { default as DialogComponent } from "./components/dialog/DialogComponent";
 export { default as DialogManager } from "./components/dialog/DialogManager";
+export { default as ProgressComponent } from "./components/progress/ProgressComponent";
+export { default as Progress } from "./components/progress/Progress";
