@@ -5,7 +5,7 @@ import { Modal } from "antd";
 import Loading from "../loading/Loading";
 
 export interface IProgressFunctionProps {
-    method: Promise<any>;
+    method: (props?: any) => Promise<any>;
     params: any;
 }
 
@@ -19,7 +19,7 @@ export interface IResponseAPI {
 
 export interface ProgressComponentProps {
     Messages?: any;
-    onSuccess?: (res: IResponseAPI) => any;
+    onSuccess?: (res?: Array<IResponseAPI>) => any;
     promiseFunction?: Array<IProgressFunctionProps>;
 }
 
@@ -64,7 +64,7 @@ class ProgressComponent extends Component<ProgressComponentProps, any> {
             return taskItem;
         });
         const task = Promise.all(promiseAll);
-        task.then((result: IResponseAPI) => {
+        task.then((result: any) => {
             if (result) {
                 if (result.request && result.data && result.data.responseData && result.data.responseData.error) {
                     this.setError(result.data.responseData.error);
