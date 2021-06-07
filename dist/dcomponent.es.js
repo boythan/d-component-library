@@ -75246,5 +75246,114 @@ var Dialog = function (props, ref) {
 };
 var DialogComponent = forwardRef(Dialog);
 
-export { Avatar, AvatarName, AwesomeListComponent, AwesomeTableComponent, AwesomeTableUtils, Badge, Button, Checkbox, CheckboxGroup, DateInput, DialogComponent, DialogManager, Dot, Dropdown, Header, HeaderDetail, HeaderTable, Icon$2 as Icon, ImageUtils, InputText, Loading, MapUtils, Modal, ObjectUtils, PopoverList, RadioGroup, RowInterchangeView, Select, StringUtils, TabBar, TimeUtils, TreeDataUtils, TreeSelect, UrlUtils, ViewRow, ViewTextarea };
+var ProgressComponent = /** @class */ (function (_super) {
+    __extends(ProgressComponent, _super);
+    function ProgressComponent(props) {
+        var _this = _super.call(this, props) || this;
+        _this.show = function (promiseFunction, onSuccess, handleError) {
+            _this.setState({
+                open: true,
+                promiseFunction: promiseFunction,
+                onSuccess: onSuccess,
+                handleError: handleError,
+                error: false,
+            }, function () { return _this.loadData(); });
+        };
+        _this.loadData = function () {
+            var _a = _this.state, promiseFunction = _a.promiseFunction, onSuccess = _a.onSuccess;
+            var Messages = _this.props.Messages;
+            var promiseAll = promiseFunction.map(function (pro) {
+                var taskItem;
+                if (!lodash.isArray(pro.params))
+                    taskItem = pro.method(pro.params);
+                else
+                    taskItem = pro.method.apply(pro, pro.params);
+                return taskItem;
+            });
+            var task = Promise.all(promiseAll);
+            task.then(function (result) {
+                var _a, _b;
+                if (result) {
+                    if (result.request && result.data && result.data.responseData && result.data.responseData.error) {
+                        _this.setError(result.data.responseData.error);
+                        return;
+                    }
+                    var resStatus = (_a = result === null || result === void 0 ? void 0 : result.data) === null || _a === void 0 ? void 0 : _a.status;
+                    if (resStatus === 400) {
+                        _this.setError({ message: (_b = result === null || result === void 0 ? void 0 : result.data) === null || _b === void 0 ? void 0 : _b.message });
+                        return;
+                    }
+                    // Success
+                    _this.dismiss();
+                    onSuccess && onSuccess(result);
+                }
+                else {
+                    _this.setError({
+                        message: Messages ? Messages.error : "Error",
+                    });
+                }
+            }).catch(function (error) {
+                if (_this.unmounted) {
+                    throw error;
+                }
+                _this.setError(error);
+            });
+        };
+        _this.setError = function (error) {
+            var handleError = _this.state.handleError;
+            if (handleError && handleError(error)) {
+                _this.dismiss();
+                return;
+            }
+            if (error && error.response && error.response.data) {
+                _this.setState({ error: error.response.data });
+                return;
+            }
+            _this.setState({ error: error });
+        };
+        _this.dismiss = function () {
+            _this.setState({ open: false });
+        };
+        _this.onClickRetry = function () {
+            _this.setState({ error: false }, function () { return _this.loadData(); });
+        };
+        _this.renderLoadingView = function () {
+            return jsx(Loading, {}, void 0);
+        };
+        _this.renderErrorView = function () {
+            var error = _this.state.error;
+            var Messages = _this.props.Messages;
+            return (jsxs("div", __assign({ className: "progress__error-container" }, { children: [jsx("h4", { children: Messages ? Messages.error : "Error" }, void 0),
+                    jsx("h5", __assign({ className: "mt-3" }, { children: error.message }), void 0),
+                    jsxs("div", __assign({ className: "progress__error-footer" }, { children: [jsx("button", __assign({ onClick: _this.dismiss, className: "btn btn-light mr-3", type: "button" }, { children: Messages ? Messages.cancel : "Cancel" }), void 0),
+                            jsx("button", __assign({ className: "btn btn-primary", onClick: _this.onClickRetry, type: "button" }, { children: Messages ? Messages.retry : "Retry" }), void 0)] }), void 0)] }), void 0));
+        };
+        _this.state = {
+            open: false,
+            error: false,
+        };
+        return _this;
+    }
+    ProgressComponent.prototype.render = function () {
+        var _a = this.state, open = _a.open, error = _a.error;
+        return (jsxs(Modal$1, __assign({ visible: open, onCancel: this.dismiss, destroyOnClose: true, className: "progress__container", closable: false, footer: null }, { children: [!error && this.renderLoadingView(),
+                error && this.renderErrorView()] }), void 0));
+    };
+    return ProgressComponent;
+}(Component));
+
+/* eslint-disable no-unused-expressions */
+var Progress = {
+    currentProgress: null,
+    initialProgress: function (refProgress) {
+        this.currentProgress = refProgress;
+    },
+    show: function (promiseFunction, onSuccess, onError, handleError) {
+        this.currentProgress &&
+            this.currentProgress.show &&
+            this.currentProgress.show(promiseFunction, onSuccess, onError, handleError);
+    },
+};
+
+export { Avatar, AvatarName, AwesomeListComponent, AwesomeTableComponent, AwesomeTableUtils, Badge, Button, Checkbox, CheckboxGroup, DateInput, DialogComponent, DialogManager, Dot, Dropdown, Header, HeaderDetail, HeaderTable, Icon$2 as Icon, ImageUtils, InputText, Loading, MapUtils, Modal, ObjectUtils, PopoverList, Progress, ProgressComponent, RadioGroup, RowInterchangeView, Select, StringUtils, TabBar, TimeUtils, TreeDataUtils, TreeSelect, UrlUtils, ViewRow, ViewTextarea };
 //# sourceMappingURL=dcomponent.es.js.map

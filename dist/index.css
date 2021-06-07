@@ -20566,7 +20566,7 @@ textarea.ant-mentions {
   border-radius: 4px 4px 0 0; }
 
 .ant-modal-body {
-  padding: 0px !important;
+  padding: 24px !important;
   font-size: 14px;
   line-height: 1.5;
   word-wrap: break-word; }
@@ -30842,6 +30842,9 @@ h6,
   max-height: 800px;
   overflow-y: scroll; }
 
+.d-modal .ant-modal-body {
+  padding: 0px !important; }
+
 .d-modal__header-close-icon {
   padding: 24px !important; }
 
@@ -33909,6 +33912,24 @@ h6,
 /* ----------------------------------------
 // view
 // ---------------------------------------- */
+/* ----------------------------------------
+// progress
+// ---------------------------------------- */
+.progress__container {
+  border-radius: 1rem;
+  height: 80vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.progress__error-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem; }
+
+.progress__error-container {
+  min-width: 50vw; }
 
 .react-resizable {
   position: relative;
