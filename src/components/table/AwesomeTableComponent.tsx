@@ -1,9 +1,7 @@
 /* eslint-disable react/destructuring-assignment */
-/* eslint-disable react/no-access-state-in-setstate */
-/* eslint-disable react/static-property-placement */
-/* eslint-disable max-len */
 /* eslint-disable camelcase */
 /* eslint-disable react/sort-comp */
+/* eslint-disable react/static-property-placement */
 // react
 import { SearchOutlined } from "@ant-design/icons";
 import { Button, Input, Table, TablePaginationConfig, TableProps } from "antd";
@@ -93,7 +91,7 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
             if (isString(item)) return item;
             return Math.random();
         },
-        source: Promise.resolve([]),
+        source: () => Promise.resolve([]),
         transformer: (response: any) => {
             return response;
         },
@@ -180,7 +178,7 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
         this.unmounted = true;
     }
 
-    /** **************************************************HANDLE SEARCH FUNCTION *************************************************** */
+    /** ***************************************HANDLE SEARCH FUNCTION ********************************************** */
 
     getColumnSearchProps = (dataIndex: any) => ({
         filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters }: any) => (
@@ -282,7 +280,7 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
         }
     };
 
-    /** ************************************************** TABLE CONTROL *************************************************** */
+    /** *************************************** TABLE CONTROL *********************************************** */
     handleResize = (index: any) => {
         return (e: any, { size }: any) => {
             this.setState(({ columns = [] }) => {
@@ -344,6 +342,7 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
                     throw "Data is not an array";
                 }
 
+                // eslint-disable-next-line react/destructuring-assignment
                 if (_.isEmpty(data) && this.state.data.length === 0) {
                     this.setState({
                         data: [],
@@ -369,7 +368,7 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
             {
                 loading: true,
                 filteredInfo: null,
-                // eslint-disable-next-line no-nested-ternary
+                // eslint-disable-next-line react/destructuring-assignment
                 pagination: this.props.isPagination ? INIT_PAGINATION : false,
             },
             () => this.start()
@@ -454,7 +453,6 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
             showSelectColumn,
             keyTableLayout,
             className,
-            rowSelection,
             onSelectionView,
             selectingRows,
         } = this.props;

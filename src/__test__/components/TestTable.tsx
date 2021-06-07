@@ -6,6 +6,7 @@ import { ATTRIBUTE_INPUT_TYPE } from "../data/TestConstant";
 
 const TestTable = () => {
     const [selectingRows, setSelectingRows] = useState<any>([]);
+    const [dataSource, setDataSource] = useState(ATTRIBUTE_INPUT_TYPE);
     const columns: AwesomeTableComponentProps["columns"] = [
         {
             title: () => <h5>ID</h5>,
@@ -37,6 +38,13 @@ const TestTable = () => {
             dataIndex: "label",
         },
     ];
+
+    const onClickRemove = () => {
+        const result = [...dataSource];
+        result.length = dataSource.length - 1;
+        setDataSource(result);
+    };
+
     return (
         <div className="my-4">
             <HeaderTable label="Test Table" onChangeText={() => {}} onClickFilter={() => {}} />
@@ -61,6 +69,9 @@ const TestTable = () => {
                 getTotalItems={(res) => res?.length}
                 isPagination={false}
             />
+
+            <AwesomeTableComponent columns={columns} showSelectColumn dataSource={dataSource} />
+            <Button content="Remove" onClick={onClickRemove} />
         </div>
     );
 };
