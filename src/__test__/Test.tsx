@@ -22,6 +22,7 @@ import TestInput from "./components/TestInput";
 import TestTable from "./components/TestTable";
 import TestCheckbox from "./components/test_checkbox/TestCheckbox";
 import TestDropdown from "./components/test_dropdown/TestDropdown";
+import TestUtils from "./components/test_util/TestUtils";
 import TestView from "./components/test_view/TestView";
 import { ATTRIBUTE_INPUT_TYPE } from "./data/TestConstant";
 
@@ -292,6 +293,7 @@ export default function Test({ content }: Props): ReactElement {
         { id: "DOT", label: "DOT", component: dot },
         { id: "DROPDOWN", label: "DROPDOWN", component: <TestDropdown /> },
         { id: "BADGE", label: "BADGE", component: <TestBadge /> },
+        { id: "UTIL", label: "UTIL", component: <TestUtils /> },
     ];
 
     const renderCustomHeader = () => {

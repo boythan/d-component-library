@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import moment from "moment";
+import moment, { unitOfTime, MomentInput } from "moment";
 
 const DATE_TIME_FORMAT = "DD/MM/YYYY HH:mm";
 const TIME_FORMAT = "HH:mm";
@@ -19,18 +19,18 @@ const MONTH_MILISECOND = 30 * 24 * 60 * 60 * 1000;
 const WEEK_MILISECOND = 7 * 24 * 60 * 60 * 1000;
 const DAY_MILISECOND = 24 * 60 * 60 * 1000;
 
-const convertMilitoMinutes = (miliSeconds: number) => {
+const convertMiliToMinutes = (miliSeconds: any) => {
     if (!miliSeconds) return 0;
     return miliSeconds / (1000 * 60);
 };
 
-const convertMinutesToMili = (minutes: number) => {
+const convertMinutesToMili = (minutes: any) => {
     if (!minutes) return;
 
     // eslint-disable-next-line consistent-return
     return minutes * 60 * 1000;
 };
-const convertMiliToDateTime = (timeInMillis: number, lang: string = "en") => {
+const convertMiliToDateTime = (timeInMillis: any, lang: string = "en") => {
     const date = new Date(timeInMillis);
     if (lang === "th") {
         return date ? moment(date).add("years", 543).format(DATE_TIME_FORMAT) : "";
@@ -38,12 +38,12 @@ const convertMiliToDateTime = (timeInMillis: number, lang: string = "en") => {
     return date ? moment(date).format(DATE_TIME_FORMAT) : "";
 };
 
-const convertDateTimeToMili = (dateTime: string) => {
+const convertDateTimeToMili = (dateTime: any) => {
     const date = new Date(dateTime);
     return date.getTime();
 };
 
-const convertMiliToDate = (timeInMillis: number, lang: string = "en") => {
+const convertMiliToDate = (timeInMillis: any, lang: string = "en") => {
     const date = new Date(timeInMillis);
     if (lang === "th") {
         return date ? moment(date).add("years", 543).format(DATE_FORMAT) : "";
@@ -51,18 +51,18 @@ const convertMiliToDate = (timeInMillis: number, lang: string = "en") => {
     return date ? moment(date).format(DATE_FORMAT) : "";
 };
 
-const convertMiliToTime = (timeInMillis: number) => {
+const convertMiliToTime = (timeInMillis: any) => {
     const date = new Date(timeInMillis);
 
     return date ? moment(date).format(TIME_FORMAT) : "";
 };
 
-const convertMiliToDateWithFormat = (timeInMillis: number, FORMAT: string) => {
+const convertMiliToDateWithFormat = (timeInMillis: any, FORMAT: string) => {
     const date = new Date(timeInMillis);
     return date ? moment(date).format(FORMAT) : "";
 };
 
-const convertToDefaultInputFormat = (timeMili: number) => {
+const convertToDefaultInputFormat = (timeMili: any) => {
     return convertMiliToDateWithFormat(timeMili, "YYYY-MM-DDTHH:mm");
 };
 
@@ -88,18 +88,38 @@ function calculateDayDifferent(d1: number, d2: number) {
     return Math.abs(Math.round(diff));
 }
 
+function calculateTimeDifferent(moment1: MomentInput, moment2: MomentInput, type: unitOfTime.Diff = "day") {
+    // type accept : years, months, weeks, days, hours, minutes, and seconds
+    const start = moment(moment1);
+    const end = moment(moment2);
+    return end.diff(start, type);
+}
+
+function convertRangeDateToArray(date1: MomentInput, date2: MomentInput) {
+    let start = moment(date1);
+    const end = moment(date2);
+    const dates = [];
+    while (start <= end) {
+        dates.push(start.toString());
+        start = start.add(1, "days");
+    }
+    return dates;
+}
+
 export default {
     convertToDefaultInputFormat,
     convertMiliToDateWithFormat,
     convertMiliToTime,
     convertMiliToDate,
-    convertMilitoMinutes,
+    convertMiliToMinutes,
     convertMinutesToMili,
     convertMiliToDateTime,
     convertDateTimeToMili,
     calculateMonthDifferent,
     calculateWeekDifferent,
     calculateDayDifferent,
+    calculateTimeDifferent,
+    convertRangeDateToArray,
     MONTH_MILISECOND,
     WEEK_MILISECOND,
     DAY_MILISECOND,
