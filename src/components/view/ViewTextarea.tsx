@@ -9,7 +9,6 @@ export interface ViewTextareaProps {
     children: string;
     className?: string;
     style?: CSSProperties;
-    Messages?: any;
     showMoreText?: string;
     showLessText?: string;
     limitedLength?: number;

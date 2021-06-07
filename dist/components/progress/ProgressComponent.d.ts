@@ -15,7 +15,6 @@ export interface IResponseAPI {
     status?: any;
 }
 export interface ProgressComponentProps {
-    Messages?: any;
     onSuccess?: (res?: Array<IResponseAPI>) => any;
     promiseFunction?: Array<IProgressFunctionProps> | IProgressFunctionProps;
 }

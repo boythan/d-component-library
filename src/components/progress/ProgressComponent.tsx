@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import _ from "lodash";
 import { Modal } from "antd";
 import Loading from "../loading/Loading";
+import Messages from "../../language/Messages";
 
 export interface IProgressFunctionProps {
     method: (props?: any) => Promise<any>;
@@ -116,17 +117,16 @@ class ProgressComponent extends Component<ProgressComponentProps, any> {
 
     renderErrorView = () => {
         const { error } = this.state;
-        const { Messages } = this.props;
         return (
             <div className="progress__error-container">
-                <h4>{Messages ? Messages.error : "Error"}</h4>
+                <h4>{Messages.error}</h4>
                 <h5 className="mt-3">{error.message}</h5>
                 <div className="progress__error-footer">
                     <button onClick={this.dismiss} className="btn btn-light mr-3" type="button">
-                        {Messages ? Messages.cancel : "Cancel"}
+                        {Messages.cancel}
                     </button>
                     <button className="btn btn-primary" onClick={this.onClickRetry} type="button">
-                        {Messages ? Messages.retry : "Retry"}
+                        {Messages.retry}
                     </button>
                 </div>
             </div>
