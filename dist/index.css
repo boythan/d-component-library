@@ -29871,9 +29871,6 @@ a {
   border-radius: 0px !important;
   outline: none !important; }
 
-.ant-select-single .ant-select-selection-item {
-  max-width: 90%; }
-
 .d-select__select-outline {
   border: 0.5px solid #ECECEC !important;
   outline: none; }
