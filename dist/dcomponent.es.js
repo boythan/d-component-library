@@ -74835,6 +74835,16 @@ var getParamFromUrl = function (key) {
     var param = url.searchParams.get(key);
     return param;
 };
+var pushState = function (key, value) {
+    var url = new URL(window.location);
+    url.searchParams.set(key, value);
+    window.history.pushState({ key: value }, "", url);
+};
+var replaceState = function (key, value) {
+    var url = new URL(window.location);
+    url.searchParams.set(key, value);
+    window.history.replaceState({ key: value }, "", url);
+};
 //* *************************************USE FOR NEW UPDATE PARAMS********************************************** */
 var addQuery = function (newQuery) {
     if (newQuery === void 0) { newQuery = {}; }
@@ -74871,6 +74881,8 @@ var UrlUtils = {
     removeQuery: removeQuery,
     clearQuery: clearQuery,
     getQuery: getQuery,
+    pushState: pushState,
+    replaceState: replaceState,
 };
 
 var mapListDataToTree = function (list) {
