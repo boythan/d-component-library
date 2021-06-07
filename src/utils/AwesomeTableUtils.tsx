@@ -75,10 +75,10 @@ export const transformColumn = (columns: Array<any> = [], baseColumn: any = {}):
             title: titleResult,
             align: "center",
             dataIndex,
-            render: (data: any, item: any) => {
+            render: (data: any, item: any, index: number) => {
                 let content = data;
                 if (typeof render === "function") {
-                    content = render(data, item);
+                    content = render(data, item, index);
                 }
                 return {
                     children: content,

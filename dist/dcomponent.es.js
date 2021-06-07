@@ -71087,10 +71087,10 @@ var transformColumn = function (columns, baseColumn) {
             titleResult = (jsxs(Tooltip, __assign({ className: "flex-center-y", zIndex: 10000, title: titleTooltip }, { children: [title,
                     jsx(Icon$2, { name: "info", className: "ml-3" }, void 0)] }), void 0));
         }
-        return __assign(__assign(__assign({}, baseColumn), { id: "" + index, title: titleResult, align: "center", dataIndex: dataIndex, render: function (data, item) {
+        return __assign(__assign(__assign({}, baseColumn), { id: "" + index, title: titleResult, align: "center", dataIndex: dataIndex, render: function (data, item, index) {
                 var content = data;
                 if (typeof render === "function") {
-                    content = render(data, item);
+                    content = render(data, item, index);
                 }
                 return {
                     children: content,
