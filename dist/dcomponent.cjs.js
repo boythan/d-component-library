@@ -50211,7 +50211,7 @@ var ANT_YEAR_INPUT_FORMAT = "YYYY";
 var MONTH_MILISECOND = 30 * 24 * 60 * 60 * 1000;
 var WEEK_MILISECOND = 7 * 24 * 60 * 60 * 1000;
 var DAY_MILISECOND = 24 * 60 * 60 * 1000;
-var convertMilitoMinutes = function (miliSeconds) {
+var convertMiliToMinutes = function (miliSeconds) {
     if (!miliSeconds)
         return 0;
     return miliSeconds / (1000 * 60);
@@ -50272,18 +50272,37 @@ function calculateDayDifferent(d1, d2) {
     diff /= 60 * 60 * 24;
     return Math.abs(Math.round(diff));
 }
+function calculateTimeDifferent(moment1, moment2, type) {
+    if (type === void 0) { type = "day"; }
+    // type accept : years, months, weeks, days, hours, minutes, and seconds
+    var start = moment(moment1);
+    var end = moment(moment2);
+    return end.diff(start, type);
+}
+function convertRangeDateToArray(date1, date2) {
+    var start = moment(date1);
+    var end = moment(date2);
+    var dates = [];
+    while (start <= end) {
+        dates.push(start.toString());
+        start = start.add(1, "days");
+    }
+    return dates;
+}
 var TimeUtils = {
     convertToDefaultInputFormat: convertToDefaultInputFormat,
     convertMiliToDateWithFormat: convertMiliToDateWithFormat,
     convertMiliToTime: convertMiliToTime,
     convertMiliToDate: convertMiliToDate,
-    convertMilitoMinutes: convertMilitoMinutes,
+    convertMiliToMinutes: convertMiliToMinutes,
     convertMinutesToMili: convertMinutesToMili,
     convertMiliToDateTime: convertMiliToDateTime,
     convertDateTimeToMili: convertDateTimeToMili,
     calculateMonthDifferent: calculateMonthDifferent,
     calculateWeekDifferent: calculateWeekDifferent,
     calculateDayDifferent: calculateDayDifferent,
+    calculateTimeDifferent: calculateTimeDifferent,
+    convertRangeDateToArray: convertRangeDateToArray,
     MONTH_MILISECOND: MONTH_MILISECOND,
     WEEK_MILISECOND: WEEK_MILISECOND,
     DAY_MILISECOND: DAY_MILISECOND,
