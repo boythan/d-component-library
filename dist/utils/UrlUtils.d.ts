@@ -8,5 +8,7 @@ declare const _default: {
     removeQuery: (queryKey: string) => void;
     clearQuery: () => void;
     getQuery: () => queryString.ParsedQuery<string>;
+    pushState: (key: any, value: any) => void;
+    replaceState: (key: any, value: any) => void;
 };
 export default _default;

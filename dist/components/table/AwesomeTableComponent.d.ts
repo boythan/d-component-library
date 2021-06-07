@@ -39,7 +39,7 @@ export interface AwesomeTableComponentState {
 declare class AwesomeTableComponent extends Component<AwesomeTableComponentProps, AwesomeTableComponentState> {
     static defaultProps: {
         rowKey: (item: any) => any;
-        source: Promise<never[]>;
+        source: () => Promise<never[]>;
         transformer: (response: any) => any;
         columns: never[];
         baseColumnProps: {};
@@ -76,7 +76,7 @@ declare class AwesomeTableComponent extends Component<AwesomeTableComponentProps
     componentDidMount(): void;
     UNSAFE_componentWillReceiveProps(nextProps: any): void;
     componentWillUnmount(): void;
-    /** **************************************************HANDLE SEARCH FUNCTION *************************************************** */
+    /** ***************************************HANDLE SEARCH FUNCTION ********************************************** */
     getColumnSearchProps: (dataIndex: any) => {
         filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters }: any) => JSX.Element;
         filterIcon: (filtered: any) => JSX.Element;
@@ -87,7 +87,7 @@ declare class AwesomeTableComponent extends Component<AwesomeTableComponentProps
     handleSearch: (selectedKeys: any, confirm: any, dataIndex: any) => void;
     handleReset: (clearFilters: any) => void;
     setDefaultTableLayout: () => void;
-    /** ************************************************** TABLE CONTROL *************************************************** */
+    /** *************************************** TABLE CONTROL *********************************************** */
     handleResize: (index: any) => (e: any, { size }: any) => void;
     handleSelectTableLayout: (item: any) => Promise<void>;
     handleTableChange: (paging: IPaginationProps, filters: any, sorter: any) => void;

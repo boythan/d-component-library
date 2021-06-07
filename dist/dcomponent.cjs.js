@@ -73791,7 +73791,7 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
             }
             return INIT_PAGINATION;
         };
-        /** **************************************************HANDLE SEARCH FUNCTION *************************************************** */
+        /** ***************************************HANDLE SEARCH FUNCTION ********************************************** */
         _this.getColumnSearchProps = function (dataIndex) { return ({
             filterDropdown: function (_a) {
                 var setSelectedKeys = _a.setSelectedKeys, selectedKeys = _a.selectedKeys, confirm = _a.confirm, clearFilters = _a.clearFilters;
@@ -73863,7 +73863,7 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
                 });
             }
         };
-        /** ************************************************** TABLE CONTROL *************************************************** */
+        /** *************************************** TABLE CONTROL *********************************************** */
         _this.handleResize = function (index) {
             return function (e, _a) {
                 var size = _a.size;
@@ -73959,6 +73959,7 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
                 // eslint-disable-next-line no-throw-literal
                 throw "Data is not an array";
             }
+            // eslint-disable-next-line react/destructuring-assignment
             if (lodash.isEmpty(data) && _this.state.data.length === 0) {
                 _this.setState({
                     data: [],
@@ -73983,7 +73984,7 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
         this.setState({
             loading: true,
             filteredInfo: null,
-            // eslint-disable-next-line no-nested-ternary
+            // eslint-disable-next-line react/destructuring-assignment
             pagination: this.props.isPagination ? INIT_PAGINATION : false,
         }, function () { return _this.start(); });
     };
@@ -74035,7 +74036,7 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
         var _this = this;
         var _a = this.state, total = _a.total, pagination = _a.pagination, tableLayoutList = _a.tableLayoutList, selectedLayout = _a.selectedLayout, data = _a.data, loading = _a.loading, columns = _a.columns;
         // eslint-disable-next-line operator-linebreak
-        var _b = this.props, rowKey = _b.rowKey, isScroll = _b.isScroll, classNameTable = _b.classNameTable, tableLayout = _b.tableLayout, showSelectColumn = _b.showSelectColumn, keyTableLayout = _b.keyTableLayout, className = _b.className; _b.rowSelection; var onSelectionView = _b.onSelectionView, selectingRows = _b.selectingRows;
+        var _b = this.props, rowKey = _b.rowKey, isScroll = _b.isScroll, classNameTable = _b.classNameTable, tableLayout = _b.tableLayout, showSelectColumn = _b.showSelectColumn, keyTableLayout = _b.keyTableLayout, className = _b.className, onSelectionView = _b.onSelectionView, selectingRows = _b.selectingRows;
         var showSelectionView = onSelectionView && selectingRows && (selectingRows === null || selectingRows === void 0 ? void 0 : selectingRows.length) > 0;
         var showFuncRow = showSelectColumn || showSelectionView;
         var paginationResult = pagination ? __assign(__assign({}, pagination), { current: pagination.pageIndex, total: total }) : false;
@@ -74063,7 +74064,7 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
                 return item;
             return Math.random();
         },
-        source: Promise.resolve([]),
+        source: function () { return Promise.resolve([]); },
         transformer: function (response) {
             return response;
         },
@@ -74864,6 +74865,16 @@ var getParamFromUrl = function (key) {
     var param = url.searchParams.get(key);
     return param;
 };
+var pushState = function (key, value) {
+    var url = new URL(window.location);
+    url.searchParams.set(key, value);
+    window.history.pushState({ key: value }, "", url);
+};
+var replaceState = function (key, value) {
+    var url = new URL(window.location);
+    url.searchParams.set(key, value);
+    window.history.replaceState({ key: value }, "", url);
+};
 //* *************************************USE FOR NEW UPDATE PARAMS********************************************** */
 var addQuery = function (newQuery) {
     if (newQuery === void 0) { newQuery = {}; }
@@ -74900,6 +74911,8 @@ var UrlUtils = {
     removeQuery: removeQuery,
     clearQuery: clearQuery,
     getQuery: getQuery,
+    pushState: pushState,
+    replaceState: replaceState,
 };
 
 var mapListDataToTree = function (list) {
