@@ -44,6 +44,19 @@ const getParamFromUrl = (key: string) => {
     const param = url.searchParams.get(key);
     return param;
 };
+
+const pushState = (key: any, value: any) => {
+    const url = new URL(window.location as any);
+    url.searchParams.set(key, value);
+    window.history.pushState({ key: value }, "", url as any);
+};
+
+const replaceState = (key: any, value: any) => {
+    const url = new URL(window.location as any);
+    url.searchParams.set(key, value);
+    window.history.replaceState({ key: value }, "", url as any);
+};
+
 //* *************************************USE FOR NEW UPDATE PARAMS********************************************** */
 
 const addQuery = (newQuery = {}) => {
@@ -84,4 +97,6 @@ export default {
     removeQuery,
     clearQuery,
     getQuery,
+    pushState,
+    replaceState,
 };
