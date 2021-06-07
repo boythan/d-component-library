@@ -75301,33 +75301,30 @@ var ProgressComponent = /** @class */ (function (_super) {
                 error: false,
             }, function () { return _this.loadData(); });
         };
+        _this.generatePromiseFunction = function (promiseFunc) {
+            var taskItem;
+            if (!lodash.isArray(promiseFunc.params))
+                taskItem = promiseFunc.method(promiseFunc.params);
+            else
+                taskItem = promiseFunc.method.apply(promiseFunc, promiseFunc.params);
+            return taskItem;
+        };
         _this.loadData = function () {
             var _a = _this.state, promiseFunction = _a.promiseFunction, onSuccess = _a.onSuccess;
             var Messages = _this.props.Messages;
-            var promiseAll = promiseFunction.map(function (pro) {
-                var taskItem;
-                if (!lodash.isArray(pro.params))
-                    taskItem = pro.method(pro.params);
-                else
-                    taskItem = pro.method.apply(pro, pro.params);
-                return taskItem;
-            });
+            var promiseAll;
+            var isArrayFunction = lodash.isArray(promiseFunction);
+            if (isArrayFunction) {
+                promiseAll = promiseFunction.map(function (pro) { return _this.generatePromiseFunction(pro); });
+            }
+            else {
+                promiseAll = [_this.generatePromiseFunction(promiseFunction)];
+            }
             var task = Promise.all(promiseAll);
             task.then(function (result) {
-                var _a, _b;
                 if (result) {
-                    if (result.request && result.data && result.data.responseData && result.data.responseData.error) {
-                        _this.setError(result.data.responseData.error);
-                        return;
-                    }
-                    var resStatus = (_a = result === null || result === void 0 ? void 0 : result.data) === null || _a === void 0 ? void 0 : _a.status;
-                    if (resStatus === 400) {
-                        _this.setError({ message: (_b = result === null || result === void 0 ? void 0 : result.data) === null || _b === void 0 ? void 0 : _b.message });
-                        return;
-                    }
-                    // Success
                     _this.dismiss();
-                    onSuccess && onSuccess(result);
+                    onSuccess && onSuccess(isArrayFunction ? result : result === null || result === void 0 ? void 0 : result[0]);
                 }
                 else {
                     _this.setError({
