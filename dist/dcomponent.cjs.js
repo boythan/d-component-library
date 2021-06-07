@@ -67724,11 +67724,12 @@ var ObjectUtils = {
 };
 
 var RowInterchangeView = function (_a) {
-    var _b = _a.dataSource, dataSource = _b === void 0 ? {} : _b, _c = _a.keyList, keyList = _c === void 0 ? [] : _c, _d = _a.variant, variant = _d === void 0 ? "background" : _d, _e = _a.boldLabel, boldLabel = _e === void 0 ? false : _e, className = _a.className, classNameRow = _a.classNameRow, classNameLabel = _a.classNameLabel, classNameContent = _a.classNameContent, Messages = _a.Messages;
+    var _b = _a.dataSource, dataSource = _b === void 0 ? {} : _b, _c = _a.keyList, keyList = _c === void 0 ? [] : _c, _d = _a.variant, variant = _d === void 0 ? "background" : _d, _e = _a.boldLabel, boldLabel = _e === void 0 ? false : _e, className = _a.className, classNameRow = _a.classNameRow, classNameLabel = _a.classNameLabel, classNameContent = _a.classNameContent, Messages = _a.Messages, style = _a.style, styleLabel = _a.styleLabel, styleContent = _a.styleContent;
     var wrapperClass = classnames(className);
     return (jsxRuntime.jsx("div", __assign({ className: wrapperClass }, { children: keyList.map(function (row, index) {
             var _a;
-            var rowClass = classnames("d-flex align-items-start w-100 justify-content-between py-3 px-3", {
+            var rowClass = classnames("d-flex align-items-start w-100 justify-content-between py-3", {
+                "px-3": variant === "background",
                 "bg-light-gray": index % 2 && variant === "background",
                 "border-top": index !== 0 && variant === "border",
                 "border-top-dashed": index !== 0 && variant === "dashed",
@@ -67752,9 +67753,9 @@ var RowInterchangeView = function (_a) {
             if (typeof renderContent === "function") {
                 content = renderContent(id, dataSource, row);
             }
-            var contentView = jsxRuntime.jsx("div", __assign({ className: contentClass }, { children: content }), void 0);
-            return (jsxRuntime.jsxs("div", __assign({ className: rowClass }, { children: [jsxRuntime.jsx("div", __assign({ className: labelClass }, { children: labelView }), void 0),
-                    contentView] }), index));
+            var contentView = (jsxRuntime.jsx("div", __assign({ className: contentClass, style: styleContent }, { children: content }), void 0));
+            return (jsxRuntime.jsxs("div", __assign({ className: rowClass, style: style }, { children: [jsxRuntime.jsx("div", __assign({ className: labelClass, style: styleLabel }, { children: labelView }), void 0),
+                    contentView] }), id + index));
         }) }), void 0));
 };
 
@@ -67778,6 +67779,36 @@ var ViewRow = function (_a) {
     }
     return (jsxRuntime.jsxs("div", __assign({ className: wrapperClass, style: style }, { children: [label && (jsxRuntime.jsx("label", __assign({ className: labelClass, style: styleLabel }, { children: label }), void 0)),
             jsxRuntime.jsx("div", __assign({ className: contentClass, style: styleContent }, { children: content }), void 0)] }), void 0));
+};
+
+var ViewTextarea = function (_a) {
+    var children = _a.children, className = _a.className, style = _a.style, _b = _a.showLessText, showLessText = _b === void 0 ? "showLess" : _b, _c = _a.showMoreText, showMoreText = _c === void 0 ? "showMore" : _c, _d = _a.limitedLength, limitedLength = _d === void 0 ? 200 : _d;
+    var _e = React.useState(false), expanding = _e[0], setExpanding = _e[1];
+    var contentLength = React.useMemo(function () {
+        return children.length;
+    }, [children]);
+    var isOverFollow = React.useMemo(function () {
+        return contentLength > limitedLength;
+    }, [contentLength, limitedLength]);
+    var contentRef = React.useRef(null);
+    React.useRef(null);
+    var isShowMore = isOverFollow && !expanding;
+    var isShowLess = isOverFollow && expanding;
+    // classNames
+    var wrapperClass = classnames("d-view-textarea text-small", className);
+    var contentClass = classnames("d-view-textarea__content", {
+        "text-nowrap": isOverFollow && !expanding,
+        // "d-inline-block": !expanding,
+    }, className);
+    React.useEffect(function () {
+        setTimeout(function () {
+            var _a;
+            console.log("Content Height", (_a = contentRef.current) === null || _a === void 0 ? void 0 : _a.offsetHeight);
+        }, 200);
+    }, [children]);
+    return (jsxRuntime.jsxs("div", __assign({ className: wrapperClass, style: style }, { children: [jsxRuntime.jsxs("div", __assign({ className: contentClass, ref: function (ref) { return (contentRef.current = ref); } }, { children: [children,
+                    isShowLess && (jsxRuntime.jsx("span", __assign({ className: "d-view-textarea__show-more text-primary hover-pointer", onClick: function () { return setExpanding(false); } }, { children: showLessText }), void 0))] }), void 0),
+            isShowMore && (jsxRuntime.jsx("span", __assign({ className: "d-view-textarea__show-more text-primary hover-pointer", onClick: function () { return setExpanding(true); } }, { children: showMoreText }), void 0))] }), void 0));
 };
 
 var TabBar = function (_a) {
@@ -75260,4 +75291,5 @@ exports.TreeDataUtils = TreeDataUtils;
 exports.TreeSelect = TreeSelect;
 exports.UrlUtils = UrlUtils;
 exports.ViewRow = ViewRow;
+exports.ViewTextarea = ViewTextarea;
 //# sourceMappingURL=dcomponent.cjs.js.map

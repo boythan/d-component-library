@@ -31,6 +31,8 @@ export type { RowInterchangeViewProps, IRowsKey } from "./components/view/RowInt
 export { default as RowInterchangeView } from "./components/view/RowInterchangeView";
 export type { ViewRowProps } from "./components/view/ViewRow";
 export { default as ViewRow } from "./components/view/ViewRow";
+export type { ViewTextareaProps } from "./components/view/ViewTextarea";
+export { default as ViewTextarea } from "./components/view/ViewTextarea";
 export type { TabBarProps, ITabItem } from "./components/tab/TabBar";
 export { default as TabBar } from "./components/tab/TabBar";
 export type { PopoverListProps } from "./components/list/popoverList/PopoverList";
