@@ -13,15 +13,18 @@ import InputTextSearch from "../components/input/InputTextSearch";
 import AwesomeListComponent from "../components/list/awesomeList/AwesomeListComponent";
 import Loading from "../components/loading/Loading";
 import Modal from "../components/modal/Modal";
+import Progress from "../components/progress/Progress";
 import Select from "../components/select/Select";
 import TabBar from "../components/tab/TabBar";
 import RowInterchangeView from "../components/view/RowInterchangeView";
+import { ProgressComponent } from "../dcomponent";
 import TestBadge from "./components/badge/TestBadge";
 import TestHeader from "./components/TestHeader";
 import TestInput from "./components/TestInput";
 import TestTable from "./components/TestTable";
 import TestCheckbox from "./components/test_checkbox/TestCheckbox";
 import TestDropdown from "./components/test_dropdown/TestDropdown";
+import TestProgress from "./components/test_progress/TestProgress";
 import TestUtils from "./components/test_util/TestUtils";
 import TestView from "./components/test_view/TestView";
 import { ATTRIBUTE_INPUT_TYPE } from "./data/TestConstant";
@@ -185,6 +188,7 @@ export default function Test({ content }: Props): ReactElement {
     const [selectedTab, setSelectedTab] = useState<any>();
     const [mockData, setMockData] = useState<any>([]);
     const dialogRef = useRef<any>();
+    const progressRef = useRef<any>();
 
     async function loadFakeData() {
         const res = await fetch("https://jsonplaceholder.typicode.com/posts");
@@ -194,6 +198,8 @@ export default function Test({ content }: Props): ReactElement {
 
     useEffect(() => {
         DialogManager.initialDialog(dialogRef.current);
+        Progress.initialProgress(progressRef.current);
+        console.log("progressRef.current", progressRef.current);
         loadFakeData();
     }, []);
 
@@ -294,16 +300,18 @@ export default function Test({ content }: Props): ReactElement {
         { id: "DROPDOWN", label: "DROPDOWN", component: <TestDropdown /> },
         { id: "BADGE", label: "BADGE", component: <TestBadge /> },
         { id: "UTIL", label: "UTIL", component: <TestUtils /> },
+        { id: "PROGRESS", label: "PROGRESS", component: <TestProgress /> },
     ];
-
-    const renderCustomHeader = () => {
-        return <div>header</div>;
-    };
 
     return (
         <AppStateContext.Provider value={{ mockData }}>
             <div className="p-5 d-flex bg-muted">
                 <DialogComponent ref={dialogRef.current} />
+                <ProgressComponent
+                    ref={(ref) => {
+                        progressRef.current = ref;
+                    }}
+                />
                 <div className="col-3 p-0 mr-4 card-container">
                     <TabBar
                         dataSource={TAB_LIST}

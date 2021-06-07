@@ -20,7 +20,7 @@ export interface IResponseAPI {
 export interface ProgressComponentProps {
     Messages?: any;
     onSuccess?: (res?: Array<IResponseAPI>) => any;
-    promiseFunction?: Array<IProgressFunctionProps>;
+    promiseFunction?: Array<IProgressFunctionProps> | IProgressFunctionProps;
 }
 
 export interface ProgressComponentState {}
@@ -53,33 +53,29 @@ class ProgressComponent extends Component<ProgressComponentProps, any> {
         );
     };
 
+    generatePromiseFunction = (promiseFunc: IProgressFunctionProps) => {
+        let taskItem;
+        if (!_.isArray(promiseFunc.params)) taskItem = promiseFunc.method(promiseFunc.params);
+        else taskItem = promiseFunc.method(...promiseFunc.params);
+        return taskItem;
+    };
+
     loadData = () => {
         const { promiseFunction, onSuccess } = this.state;
         const { Messages } = this.props;
-        const promiseAll = promiseFunction.map((pro: any) => {
-            let taskItem;
-            if (!_.isArray(pro.params)) taskItem = pro.method(pro.params);
-            else taskItem = pro.method(...pro.params);
+        let promiseAll;
+        const isArrayFunction = _.isArray(promiseFunction);
+        if (isArrayFunction) {
+            promiseAll = promiseFunction.map((pro: any) => this.generatePromiseFunction(pro));
+        } else {
+            promiseAll = [this.generatePromiseFunction(promiseFunction)];
+        }
 
-            return taskItem;
-        });
         const task = Promise.all(promiseAll);
         task.then((result: any) => {
             if (result) {
-                if (result.request && result.data && result.data.responseData && result.data.responseData.error) {
-                    this.setError(result.data.responseData.error);
-                    return;
-                }
-
-                const resStatus = result?.data?.status;
-
-                if (resStatus === 400) {
-                    this.setError({ message: result?.data?.message });
-                    return;
-                }
-                // Success
                 this.dismiss();
-                onSuccess && onSuccess(result);
+                onSuccess && onSuccess(isArrayFunction ? result : result?.[0]);
             } else {
                 this.setError({
                     message: Messages ? Messages.error : "Error",
