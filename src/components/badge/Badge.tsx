@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import ClassNames from "classnames";
+import _ from "lodash";
 import React, { CSSProperties } from "react";
 import { ButtonProps } from "../button/Button";
 import Dot, { DotProps } from "../dot/Dot";
@@ -13,12 +14,13 @@ export interface BadgeProps {
     shape?: "round" | "square";
     index?: any;
     dotProps?: DotProps;
-    className?: string;
     color?: ButtonProps["color"];
     size?: IconProps["size"];
     style?: CSSProperties;
     badgeStyle?: CSSProperties;
     onClick?: () => any;
+    className?: string;
+    classNameBadge?: string;
 }
 
 const Badge: React.FC<BadgeProps> = ({
@@ -28,6 +30,7 @@ const Badge: React.FC<BadgeProps> = ({
     index,
     dotProps = {},
     className,
+    classNameBadge,
     color = "secondary",
     size = "medium",
     style,
@@ -35,7 +38,11 @@ const Badge: React.FC<BadgeProps> = ({
     onClick,
 }) => {
     const wrapperClass = ClassNames(`d-badge__container d-badge__container-${variant}`, className);
-    const badgeWrapperClass = ClassNames("d-badge__badge-wrapper", { "rounded-circle": shape === "round" });
+    const badgeWrapperClass = ClassNames(
+        "d-badge__badge-wrapper",
+        { "rounded-circle": shape === "round" },
+        classNameBadge
+    );
     const badgeIndexClass = ClassNames(`d-badge__badge-index-${size}-${color}`);
     let content = children;
     let badge = <Dot {...dotProps} color={color} size={size} style={badgeStyle} />;
@@ -56,9 +63,13 @@ const Badge: React.FC<BadgeProps> = ({
     if (typeof children === "function") {
         content = children();
     }
+    const badgeView = <div className={badgeWrapperClass}>{badge}</div>;
+    if (_.isEmpty(content)) {
+        return badgeView;
+    }
     return (
         <div className={wrapperClass} style={style} onClick={onClick}>
-            <div className={badgeWrapperClass}>{badge}</div>
+            {badgeView}
             {content}
         </div>
     );
