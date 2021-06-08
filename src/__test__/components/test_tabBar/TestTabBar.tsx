@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Badge from "../../../components/badge/Badge";
 import TabBar from "../../../components/tab/TabBar";
-import { ATTRIBUTE_INPUT_TYPE } from "../../data/TestConstant";
+import { ATTRIBUTE_INPUT_TYPE, SELECT_DATA } from "../../data/TestConstant";
 
 export interface TestTabBarProps {
     [key: string]: any;
@@ -12,7 +12,7 @@ const TestTabBar: React.FC<TestTabBarProps> = ({ id }) => {
     return (
         <div className="my-4">
             <TabBar
-                dataSource={ATTRIBUTE_INPUT_TYPE}
+                dataSource={SELECT_DATA}
                 onChange={(tab) => setSelectedTab(tab)}
                 value={selectedTab}
                 // tabBarItemProps={(item, isActive) => {

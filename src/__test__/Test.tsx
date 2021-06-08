@@ -175,6 +175,7 @@ const ButtonView = () => (
             <Button content="Button" className="my-3" size="x-small" variant="outline" />
         </div>
         <div className="d-flex flex-column ml-5">
+            <Button variant="trans">dgdgdgdg</Button>
             <Button content="Icon Button" iconName="home" />
             <Button content="Icon Button" iconName="home" suffixIcon="home" variant="trans" />
             <Button content="Icon Button" className="my-3" iconName="home" variant="outline" />
