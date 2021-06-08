@@ -5,6 +5,8 @@ declare const Messages: {
     warning: string;
     cancel: string;
     retry: string;
+    showMore: string;
+    showLess: string;
 } | {
     error: string;
     success: string;
@@ -12,5 +14,7 @@ declare const Messages: {
     warning: string;
     cancel: string;
     retry: string;
+    showMore: string;
+    showLess: string;
 };
 export default Messages;

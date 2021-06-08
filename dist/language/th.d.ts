@@ -5,5 +5,7 @@ declare const _default: {
     warning: string;
     cancel: string;
     retry: string;
+    showMore: string;
+    showLess: string;
 };
 export default _default;

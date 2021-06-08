@@ -67806,8 +67806,38 @@ var ViewRow = function (_a) {
             jsxRuntime.jsx("div", __assign({ className: contentClass, style: styleContent }, { children: content }), void 0)] }), void 0));
 };
 
+var en = {
+    error: "Error",
+    success: "Success",
+    info: "Info",
+    warning: "Warning",
+    cancel: "Cancel",
+    retry: "Retry",
+    showMore: "Show More",
+    showLess: "Show Less",
+};
+
+var th = {
+    error: "ผิดพลาด",
+    success: "สำเร็จ",
+    info: "ข้อมูล",
+    warning: "คำเตือน",
+    cancel: "ยกเลิก",
+    retry: "ลองอีกครั้ง",
+    showMore: "Show More",
+    showLess: "Show Less",
+};
+
+var _a;
+var Languages = {
+    en: en,
+    th: th,
+};
+var currentLang = (_a = document.documentElement.lang) !== null && _a !== void 0 ? _a : "en";
+var Messages = Languages[currentLang];
+
 var ViewTextarea = function (_a) {
-    var children = _a.children, className = _a.className, style = _a.style, _b = _a.showLessText, showLessText = _b === void 0 ? "showLess" : _b, _c = _a.showMoreText, showMoreText = _c === void 0 ? "showMore" : _c, _d = _a.limitedLength, limitedLength = _d === void 0 ? 200 : _d;
+    var children = _a.children, className = _a.className, classNameContent = _a.classNameContent, classNameShowMore = _a.classNameShowMore, classNameShowLess = _a.classNameShowLess, style = _a.style, _b = _a.showLessText, showLessText = _b === void 0 ? Messages.showLess : _b, _c = _a.showMoreText, showMoreText = _c === void 0 ? Messages.showMore : _c, _d = _a.limitedLength, limitedLength = _d === void 0 ? 200 : _d;
     var _e = React.useState(false), expanding = _e[0], setExpanding = _e[1];
     var contentLength = React.useMemo(function () {
         return children.length;
@@ -67820,11 +67850,14 @@ var ViewTextarea = function (_a) {
     var isShowMore = isOverFollow && !expanding;
     var isShowLess = isOverFollow && expanding;
     // classNames
-    var wrapperClass = classnames("d-view-textarea text-small", className);
+    var wrapperClass = classnames("d-view-textarea text-small text-start", className);
     var contentClass = classnames("d-view-textarea__content", {
         "text-nowrap": isOverFollow && !expanding,
         // "d-inline-block": !expanding,
-    }, className);
+    }, classNameContent);
+    var showClass = "d-view-textarea__show-more text-secondary hover-pointer text-x-small";
+    var showMoreClass = classnames(showClass, classNameShowMore);
+    var showLessClass = classnames(showClass, classNameShowLess);
     React.useEffect(function () {
         setTimeout(function () {
             var _a;
@@ -67832,13 +67865,13 @@ var ViewTextarea = function (_a) {
         }, 200);
     }, [children]);
     return (jsxRuntime.jsxs("div", __assign({ className: wrapperClass, style: style }, { children: [jsxRuntime.jsxs("div", __assign({ className: contentClass, ref: function (ref) { return (contentRef.current = ref); } }, { children: [children,
-                    isShowLess && (jsxRuntime.jsx("span", __assign({ className: "d-view-textarea__show-more text-primary hover-pointer", onClick: function () { return setExpanding(false); } }, { children: showLessText }), void 0))] }), void 0),
-            isShowMore && (jsxRuntime.jsx("span", __assign({ className: "d-view-textarea__show-more text-primary hover-pointer", onClick: function () { return setExpanding(true); } }, { children: showMoreText }), void 0))] }), void 0));
+                    isShowLess && (jsxRuntime.jsx("span", __assign({ className: showLessClass, onClick: function () { return setExpanding(false); } }, { children: " " + showLessText }), void 0))] }), void 0),
+            isShowMore && (jsxRuntime.jsx("span", __assign({ className: showMoreClass, onClick: function () { return setExpanding(true); } }, { children: showMoreText }), void 0))] }), void 0));
 };
 
 var TabBar = function (_a) {
     var _b = _a.dataSource, dataSource = _b === void 0 ? [] : _b, value = _a.value, onChange = _a.onChange, className = _a.className, classNameTabItem = _a.classNameTabItem, getLabel = _a.getLabel, _c = _a.variant, variant = _c === void 0 ? "horizontal" : _c, tabBarItemProps = _a.tabBarItemProps, _d = _a.isScroll, isScroll = _d === void 0 ? false : _d, _e = _a.minWidthTabItem, minWidthTabItem = _e === void 0 ? "200px" : _e;
-    var wrapperClass = classnames("d-tab-bar d-tab-bar__" + variant + " w-100", {
+    var wrapperClass = classnames("d-tab-bar d-tab-bar__" + variant, {
         "d-flex ": variant === "horizontal",
         "flex-wrap": !isScroll && variant === "horizontal",
     }, className);
@@ -75300,32 +75333,6 @@ var Dialog = function (props, ref) {
     return jsxRuntime.jsx(React__default['default'].Fragment, { children: contextHolder }, void 0);
 };
 var DialogComponent = React.forwardRef(Dialog);
-
-var en = {
-    error: "Error",
-    success: "Success",
-    info: "Info",
-    warning: "Warning",
-    cancel: "Cancel",
-    retry: "Retry",
-};
-
-var th = {
-    error: "ผิดพลาด",
-    success: "สำเร็จ",
-    info: "ข้อมูล",
-    warning: "คำเตือน",
-    cancel: "ยกเลิก",
-    retry: "ลองอีกครั้ง",
-};
-
-var _a;
-var Languages = {
-    en: en,
-    th: th,
-};
-var currentLang = (_a = document.documentElement.lang) !== null && _a !== void 0 ? _a : "en";
-var Messages = Languages[currentLang];
 
 var ProgressComponent = /** @class */ (function (_super) {
     __extends(ProgressComponent, _super);
