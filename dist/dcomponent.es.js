@@ -75259,6 +75259,32 @@ var Dialog = function (props, ref) {
 };
 var DialogComponent = forwardRef(Dialog);
 
+var en = {
+    error: "Error",
+    success: "Success",
+    info: "Info",
+    warning: "Warning",
+    cancel: "Cancel",
+    retry: "Retry",
+};
+
+var th = {
+    error: "ผิดพลาด",
+    success: "สำเร็จ",
+    info: "ข้อมูล",
+    warning: "คำเตือน",
+    cancel: "ยกเลิก",
+    retry: "ลองอีกครั้ง",
+};
+
+var _a;
+var Languages = {
+    en: en,
+    th: th,
+};
+var currentLang = (_a = document.documentElement.lang) !== null && _a !== void 0 ? _a : "en";
+var Messages = Languages[currentLang];
+
 var ProgressComponent = /** @class */ (function (_super) {
     __extends(ProgressComponent, _super);
     function ProgressComponent(props) {
@@ -75332,11 +75358,10 @@ var ProgressComponent = /** @class */ (function (_super) {
         };
         _this.renderErrorView = function () {
             var error = _this.state.error;
-            var Messages = _this.props.Messages;
-            return (jsxs("div", __assign({ className: "progress__error-container" }, { children: [jsx("h4", { children: Messages ? Messages.error : "Error" }, void 0),
+            return (jsxs("div", __assign({ className: "progress__error-container" }, { children: [jsx("h4", { children: Messages.error }, void 0),
                     jsx("h5", __assign({ className: "mt-3" }, { children: error.message }), void 0),
-                    jsxs("div", __assign({ className: "progress__error-footer" }, { children: [jsx("button", __assign({ onClick: _this.dismiss, className: "btn btn-light mr-3", type: "button" }, { children: Messages ? Messages.cancel : "Cancel" }), void 0),
-                            jsx("button", __assign({ className: "btn btn-primary", onClick: _this.onClickRetry, type: "button" }, { children: Messages ? Messages.retry : "Retry" }), void 0)] }), void 0)] }), void 0));
+                    jsxs("div", __assign({ className: "progress__error-footer" }, { children: [jsx("button", __assign({ onClick: _this.dismiss, className: "btn btn-light mr-3", type: "button" }, { children: Messages.cancel }), void 0),
+                            jsx("button", __assign({ className: "btn btn-primary", onClick: _this.onClickRetry, type: "button" }, { children: Messages.retry }), void 0)] }), void 0)] }), void 0));
         };
         _this.state = {
             open: false,
@@ -75364,28 +75389,6 @@ var Progress = {
             this.currentProgress.show(promiseFunction, onSuccess, onError, handleError);
     },
 };
-
-var en = {
-    error: "Error",
-    success: "Success",
-    info: "Info",
-    warning: "Warning",
-};
-
-var th = {
-    error: "ผิดพลาด",
-    success: "สำเร็จ",
-    info: "ข้อมูล",
-    warning: "คำเตือน",
-};
-
-var _a;
-var Languages = {
-    en: en,
-    th: th,
-};
-var currentLang = (_a = document.documentElement.lang) !== null && _a !== void 0 ? _a : "en";
-var Messages = Languages[currentLang];
 
 var showError = function (content, action) {
     api.open({

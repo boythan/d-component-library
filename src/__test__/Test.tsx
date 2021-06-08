@@ -138,7 +138,6 @@ const Date = () => {
     return (
         <div className="my-4">
             <div className="w-100 my-3 d-flex align-items-start">
-                <InputText label="Date" className="mr-3 w-100" error="Text Error" />
                 <DateInput variant="outline" className="ml-3 w-100" label="Range Date" />
             </div>
             <div className="w-100 my-3 d-flex align-items-start">
@@ -324,7 +323,7 @@ export default function Test({ content }: Props): ReactElement {
                 </div>
                 <div className="col-9 py-5 px-5 ml-4 card-container">
                     {selectedTab?.component ?? "N/A"}
-                    <Button content="Open Modal" variant="trans" onClick={() => setOpenModal(true)} />
+                    {/* <Button content="Open Modal" variant="trans" onClick={() => setOpenModal(true)} /> */}
                 </div>
                 <Modal
                     open={openModal}

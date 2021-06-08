@@ -3,5 +3,7 @@ declare const _default: {
     success: string;
     info: string;
     warning: string;
+    cancel: string;
+    retry: string;
 };
 export default _default;
