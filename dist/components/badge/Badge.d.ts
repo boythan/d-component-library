@@ -9,12 +9,13 @@ export interface BadgeProps {
     shape?: "round" | "square";
     index?: any;
     dotProps?: DotProps;
-    className?: string;
     color?: ButtonProps["color"];
     size?: IconProps["size"];
     style?: CSSProperties;
     badgeStyle?: CSSProperties;
     onClick?: () => any;
+    className?: string;
+    classNameBadge?: string;
 }
 declare const Badge: React.FC<BadgeProps>;
 export default Badge;

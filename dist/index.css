@@ -30959,11 +30959,19 @@ h6,
 // ---------------------------------------- */
 .d-tab-bar__horizontal .d-tab-bar__item {
   font-weight: 400 !important;
-  color: #A7A7A7; }
+  color: #A7A7A7;
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+  transition: all 0.3s ease-in; }
   .d-tab-bar__horizontal .d-tab-bar__item-active {
     font-weight: 600 !important;
     border-bottom: 3px solid #DE0D0C;
     color: #DE0D0C !important; }
+
+.d-tab-bar__horizontal::-webkit-scrollbar {
+  display: none; }
 
 .d-tab-bar__vertical .d-button__large {
   height: auto !important; }

@@ -10,6 +10,8 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
     variant?: "standard" | "outline" | "trans";
     color?: "primary" | "secondary" | "green" | "red" | "yellow" | "blue" | "gray" | "dark" | "light" | "error" | "success" | "warning" | "muted";
     suffixIcon?: string;
+    suffixElement?: () => React.ReactNode;
+    prefixElement?: () => React.ReactNode;
 }
 declare const Button: React.FC<ButtonProps>;
 export default Button;
