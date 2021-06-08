@@ -40,7 +40,7 @@ const TabBar: React.FC<TabBarProps> = ({
     minWidthTabItem = "200px",
 }) => {
     const wrapperClass = ClassNames(
-        `d-tab-bar d-tab-bar__${variant} w-100`,
+        `d-tab-bar d-tab-bar__${variant}`,
         {
             "d-flex ": variant === "horizontal",
             "flex-wrap": !isScroll && variant === "horizontal",
