@@ -46,6 +46,7 @@ const Button: React.FC<ButtonProps> = ({
     suffixIcon,
     suffixElement,
     prefixElement,
+    children,
     ...props
 }) => {
     const buttonClass = ClassNames(
@@ -54,16 +55,17 @@ const Button: React.FC<ButtonProps> = ({
         {
             "text-x-small": size === "x-small",
             "text-small font-weight-bold": variant === "trans",
-            "d-button__icon": iconName && !content,
+            "d-button__icon": iconName && !content && !children,
         },
         className
     );
-    const iconClass = ClassNames("d-block", { "mx-2": content && iconName }, classNameIcon);
-    const suffixIconClass = ClassNames("d-block", { "mx-2": content && iconName }, classNameIconSuffix);
+    const iconClass = ClassNames("d-block", { "mx-2": (content || children) && iconName }, classNameIcon);
+    const suffixIconClass = ClassNames("d-block", { "mx-2": (content || children) && iconName }, classNameIconSuffix);
     return (
         <button className={buttonClass} type={type} disabled={disabled} onClick={onClick} {...props}>
             {prefixElement && prefixElement()}
             {iconName && <Icon name={iconName} size="large" className={iconClass} />}
+            {children}
             {content}
             {suffixIcon && <Icon name={suffixIcon} size="large" className={suffixIconClass} />}
             {suffixElement && suffixElement()}
