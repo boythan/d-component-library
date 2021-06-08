@@ -29,6 +29,7 @@ import TestNotification from "./components/test_notification/TestNotification";
 import TestUtils from "./components/test_util/TestUtils";
 import TestView from "./components/test_view/TestView";
 import { ATTRIBUTE_INPUT_TYPE } from "./data/TestConstant";
+import TestTabBar from "./components/test_tabBar/TestTabBar";
 
 interface Props {
     content?: any;
@@ -203,18 +204,6 @@ export default function Test({ content }: Props): ReactElement {
         loadFakeData();
     }, []);
 
-    const tab = (
-        <div className="my-4">
-            <TabBar dataSource={ATTRIBUTE_INPUT_TYPE} onChange={(tab) => setSelectedTab(tab)} value={selectedTab} />
-            <TabBar
-                dataSource={ATTRIBUTE_INPUT_TYPE}
-                onChange={(tab) => setSelectedTab(tab)}
-                value={selectedTab}
-                variant="vertical"
-            />
-        </div>
-    );
-
     const list = (
         <div className="my-4">
             {/* <PopoverList
@@ -275,7 +264,7 @@ export default function Test({ content }: Props): ReactElement {
                 <ButtonView />
                 {/* {checkBox} */}
                 {/* {header} */}
-                {tab}
+                <TestTabBar />
                 <TestView />
                 {/* {list} */}
                 {loading}
@@ -292,7 +281,7 @@ export default function Test({ content }: Props): ReactElement {
         { id: "TABLE", label: "TABLE", component: <TestTable /> },
         { id: "CHECKBOX", label: "CHECKBOX", component: <TestCheckbox /> },
         { id: "HEADER", label: "HEADER", component: <TestHeader /> },
-        { id: "TAB BAR", label: "TAB BAR", component: tab },
+        { id: "TAB BAR", label: "TAB BAR", component: <TestTabBar /> },
         { id: "VIEW", label: "VIEW", component: <TestView /> },
         { id: "LIST", label: "LIST", component: list },
         { id: "LOADING", label: "LOADING", component: loading },
