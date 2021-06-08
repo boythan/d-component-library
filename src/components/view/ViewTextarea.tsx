@@ -3,23 +3,30 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { CSSProperties, LegacyRef, useEffect, useMemo, useRef, useState } from "react";
 import ClassNames from "classnames";
+import Messages from "../../language/Messages";
 
 export interface ViewTextareaProps {
     [key: string]: any;
     children: string;
-    className?: string;
     style?: CSSProperties;
     showMoreText?: string;
     showLessText?: string;
     limitedLength?: number;
+    className?: string;
+    classNameContent?: string;
+    classNameShowMore?: string;
+    classNameShowLess?: string;
 }
 
 const ViewTextarea: React.FC<ViewTextareaProps> = ({
     children,
     className,
+    classNameContent,
+    classNameShowMore,
+    classNameShowLess,
     style,
-    showLessText = "showLess",
-    showMoreText = "showMore",
+    showLessText = Messages.showLess,
+    showMoreText = Messages.showMore,
     limitedLength = 200,
 }) => {
     const [expanding, setExpanding] = useState(false);
@@ -38,15 +45,18 @@ const ViewTextarea: React.FC<ViewTextareaProps> = ({
 
     // classNames
 
-    const wrapperClass = ClassNames("d-view-textarea text-small", className);
+    const wrapperClass = ClassNames("d-view-textarea text-small text-start", className);
     const contentClass = ClassNames(
         "d-view-textarea__content",
         {
             "text-nowrap": isOverFollow && !expanding,
             // "d-inline-block": !expanding,
         },
-        className
+        classNameContent
     );
+    const showClass = "d-view-textarea__show-more text-secondary hover-pointer text-x-small";
+    const showMoreClass = ClassNames(showClass, classNameShowMore);
+    const showLessClass = ClassNames(showClass, classNameShowLess);
 
     useEffect(() => {
         setTimeout(() => {
@@ -59,19 +69,13 @@ const ViewTextarea: React.FC<ViewTextareaProps> = ({
             <div className={contentClass} ref={(ref) => (contentRef.current = ref)}>
                 {children}
                 {isShowLess && (
-                    <span
-                        className="d-view-textarea__show-more text-primary hover-pointer"
-                        onClick={() => setExpanding(false)}
-                    >
-                        {showLessText}
+                    <span className={showLessClass} onClick={() => setExpanding(false)}>
+                        {` ${showLessText}`}
                     </span>
                 )}
             </div>
             {isShowMore && (
-                <span
-                    className="d-view-textarea__show-more text-primary hover-pointer"
-                    onClick={() => setExpanding(true)}
-                >
+                <span className={showMoreClass} onClick={() => setExpanding(true)}>
                     {showMoreText}
                 </span>
             )}

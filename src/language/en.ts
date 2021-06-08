@@ -5,4 +5,6 @@ export default {
     warning: "Warning",
     cancel: "Cancel",
     retry: "Retry",
+    showMore: "Show More",
+    showLess: "Show Less",
 };

@@ -1,7 +1,9 @@
+/* eslint-disable max-len */
 import React, { useState } from "react";
 import Button from "../../components/button/Button";
 import HeaderTable from "../../components/header/HeaderTable";
 import AwesomeTableComponent, { AwesomeTableComponentProps } from "../../components/table/AwesomeTableComponent";
+import ViewTextarea from "../../components/view/ViewTextarea";
 import { ATTRIBUTE_INPUT_TYPE } from "../data/TestConstant";
 
 const TestTable = () => {
@@ -16,6 +18,20 @@ const TestTable = () => {
             title: "Label",
             align: "center",
             dataIndex: "label",
+            width: 300,
+            render: (label) => {
+                return (
+                    <div>
+                        <ViewTextarea limitedLength={20}>
+                            {`This is Ant Design's internal standard for evaluating design quality. Based on the assumption that
+                "everyone is pursuing happiness at work", we have added the two values of "Meaningfulness" and "Growth"
+                on the basis of "Certainty" and "Naturalness" to guide each designer towards better judgment and
+                decision-making.`}
+                            {/* {label} */}
+                        </ViewTextarea>
+                    </div>
+                );
+            },
         },
         {
             title: "Name",
@@ -68,6 +84,7 @@ const TestTable = () => {
                 pagination={{ pageSize: 5, pageSizeOptions: ["5", "10", "15"] }}
                 getTotalItems={(res) => res?.length}
                 isPagination={false}
+                tableLayout="fixed"
             />
 
             <AwesomeTableComponent columns={columns} showSelectColumn dataSource={dataSource} />

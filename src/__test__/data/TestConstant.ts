@@ -31,7 +31,7 @@ export const ATTRIBUTE_INPUT_TYPE = [
             { id: "color", label: "swatchColor" },
         ],
     },
-    { id: "text", label: "swatchText swatchText swatchText" },
+    { id: "text", label: "swatchText swatchText swatchText  swatchText  swatchText  swatchText" },
     { id: "image", label: "swatchImage" },
     { id: "color", label: "swatchColor" },
     { id: "color", label: "swatchColor" },

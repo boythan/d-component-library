@@ -5,4 +5,6 @@ export default {
     warning: "คำเตือน",
     cancel: "ยกเลิก",
     retry: "ลองอีกครั้ง",
+    showMore: "Show More",
+    showLess: "Show Less",
 };
