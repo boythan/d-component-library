@@ -27,6 +27,8 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
         | "warning"
         | "muted";
     suffixIcon?: string;
+    suffixElement?: () => React.ReactNode;
+    prefixElement?: () => React.ReactNode;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -42,6 +44,8 @@ const Button: React.FC<ButtonProps> = ({
     color = "primary",
     disabled = false,
     suffixIcon,
+    suffixElement,
+    prefixElement,
     ...props
 }) => {
     const buttonClass = ClassNames(
@@ -58,9 +62,11 @@ const Button: React.FC<ButtonProps> = ({
     const suffixIconClass = ClassNames("d-block", { "mx-2": content && iconName }, classNameIconSuffix);
     return (
         <button className={buttonClass} type={type} disabled={disabled} onClick={onClick} {...props}>
+            {prefixElement && prefixElement()}
             {iconName && <Icon name={iconName} size="large" className={iconClass} />}
             {content}
             {suffixIcon && <Icon name={suffixIcon} size="large" className={suffixIconClass} />}
+            {suffixElement && suffixElement()}
         </button>
     );
 };
