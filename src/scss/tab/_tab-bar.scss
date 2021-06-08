@@ -1,17 +1,16 @@
 @import "../variables";
 
 .d-tab-bar__horizontal {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
     .d-tab-bar__item {
         font-weight: $font-weight-normal !important;
         color: $gray-color;
-        -ms-overflow-style: none; /* IE and Edge */
-        scrollbar-width: none; /* Firefox */
-        &-active {
-            font-weight: $font-weight-semi-bold !important;
-            border-bottom: 3px solid $accent-color;
-            color: $accent-color !important;
-        }
-        transition: all 0.3s ease-in;
+    }
+    .d-tab-bar__item-active {
+        font-weight: $font-weight-semi-bold !important;
+        border-bottom: 3px solid $accent-color;
+        color: $accent-color !important;
     }
 }
 

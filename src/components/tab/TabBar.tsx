@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable max-len */
 // react
 import React from "react";
@@ -20,11 +22,11 @@ export interface TabBarProps {
     getLabel?: (item: ITabItem) => any;
     value?: ITabItem | null;
     className?: string;
-    classNameTabItem?: string;
+    classNameItem?: string;
     variant?: "horizontal" | "vertical";
     tabBarItemProps?: (item: ITabItem, active?: boolean) => React.HTMLAttributes<HTMLDivElement> & ButtonProps; // remember to return min-width for tab item in order for scroll in horizontal mode to work
     isScroll?: boolean;
-    minWidthTabItem?: string;
+    minWidthItem?: string;
 }
 
 const TabBar: React.FC<TabBarProps> = ({
@@ -32,12 +34,12 @@ const TabBar: React.FC<TabBarProps> = ({
     value,
     onChange,
     className,
-    classNameTabItem,
+    classNameItem,
     getLabel,
     variant = "horizontal",
     tabBarItemProps,
     isScroll = false,
-    minWidthTabItem = "200px",
+    minWidthItem = "200px",
 }) => {
     const wrapperClass = ClassNames(
         `d-tab-bar d-tab-bar__${variant}`,
@@ -52,9 +54,13 @@ const TabBar: React.FC<TabBarProps> = ({
         <div className={wrapperClass} style={{ overflowX: activateScroll ? "scroll" : undefined }}>
             {dataSource.map((tabItem, index) => {
                 const isSelect = value?.id === tabItem?.id;
-                const itemClass = ClassNames(classNameTabItem, "d-tab-bar__item text-small", {
-                    "d-tab-bar__item-active": isSelect,
-                });
+                const itemClass = ClassNames(
+                    "d-tab-bar__item text-small",
+                    {
+                        "d-tab-bar__item-active": isSelect,
+                    },
+                    classNameItem
+                );
                 let label = tabItem?.label ?? "N/A";
                 const icon = tabItem?.iconName ?? undefined;
 
@@ -71,11 +77,12 @@ const TabBar: React.FC<TabBarProps> = ({
                         onClick={() => onChange && onChange(tabItem)}
                         key={index}
                         variant="trans"
-                        content={label as any}
                         iconName={icon}
-                        style={{ minWidth: activateScroll ? minWidthTabItem : undefined }}
+                        style={{ minWidth: activateScroll ? minWidthItem : undefined }}
                         {...buttonProps}
-                    />
+                    >
+                        {label}
+                    </Button>
                 );
             })}
         </div>
