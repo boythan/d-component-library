@@ -41,7 +41,7 @@ export interface AwesomeTableComponentProps extends TableProps<any> {
     source: (pagination: IPaginationProps, sorter?: any) => Promise<any>;
     transformer: (res: any) => Array<any>;
     columns: IColumnsProps;
-    baseColumnProps: any;
+    baseColumnProps?: any;
 
     rowKey?: (item: any) => any;
     renderFooter?: TableProps<any>["footer"];
@@ -102,6 +102,7 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
         isPagination: true,
         defaultPagination: null,
         isScroll: true,
+        border: true,
         classNameTable: "",
 
         setCurrentPage: (page: any) => {
@@ -455,13 +456,18 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
             className,
             onSelectionView,
             selectingRows,
+            bordered = true,
         } = this.props;
         const showSelectionView = onSelectionView && selectingRows && selectingRows?.length > 0;
         const showFuncRow = showSelectColumn || showSelectionView;
 
         const paginationResult = pagination ? { ...pagination, current: pagination.pageIndex, total } : false;
 
-        const wrapperClass = ClassNames("d-table-awesome-component", className);
+        const wrapperClass = ClassNames(
+            "d-table-awesome-component",
+            { "d-table-awesome-component__no-border": !bordered },
+            className
+        );
         const funcRowClass = ClassNames("d-table-awesome-component__select-column my-2 w-100", {
             "d-flex justify-content-between align-items-center my-3": showSelectionView,
         });
@@ -497,7 +503,7 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
                     pagination={paginationResult}
                     scroll={isScroll ? { y: "1000" } : {}}
                     tableLayout={tableLayout}
-                    bordered
+                    bordered={bordered}
                     components={this.components}
                     {...this.props}
                     className={`d-table-awesome-component__table ${classNameTable}`}

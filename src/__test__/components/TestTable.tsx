@@ -13,30 +13,32 @@ const TestTable = () => {
         {
             title: () => <h5>ID</h5>,
             dataIndex: "id",
-        },
-        {
-            title: "Label",
-            align: "center",
-            dataIndex: "label",
             width: 300,
-            render: (label) => {
-                return (
-                    <div>
-                        <ViewTextarea limitedLength={20}>
-                            {`This is Ant Design's internal standard for evaluating design quality. Based on the assumption that
-                "everyone is pursuing happiness at work", we have added the two values of "Meaningfulness" and "Growth"
-                on the basis of "Certainty" and "Naturalness" to guide each designer towards better judgment and
-                decision-making.`}
-                            {/* {label} */}
-                        </ViewTextarea>
-                    </div>
-                );
-            },
         },
+        // {
+        //     title: "Label",
+        //     align: "center",
+        //     dataIndex: "label",
+        //     width: 300,
+        //     render: (label) => {
+        //         return (
+        //             <div>
+        //                 <ViewTextarea limitedLength={20}>
+        //                     {`This is Ant Design's internal standard for evaluating design quality. Based on the assumption that
+        //         "everyone is pursuing happiness at work", we have added the two values of "Meaningfulness" and "Growth"
+        //         on the basis of "Certainty" and "Naturalness" to guide each designer towards better judgment and
+        //         decision-making.`}
+        //                     {/* {label} */}
+        //                 </ViewTextarea>
+        //             </div>
+        //         );
+        //     },
+        // },
         {
             title: "Name",
             align: "center",
             dataIndex: "label",
+            width: 300,
         },
         {
             title: "Age",
@@ -85,9 +87,10 @@ const TestTable = () => {
                 getTotalItems={(res) => res?.length}
                 isPagination={false}
                 tableLayout="fixed"
+                bordered={false}
             />
 
-            <AwesomeTableComponent columns={columns} showSelectColumn dataSource={dataSource} />
+            <AwesomeTableComponent columns={columns} showSelectColumn dataSource={dataSource} tableLayout="fixed" />
             <Button content="Remove" onClick={onClickRemove} />
         </div>
     );
