@@ -16,8 +16,8 @@ export interface ITabItem {
     [key: string]: any;
 }
 
-export interface TabBarProps {
-    dataSource: Array<ITabItem>;
+export interface TabBarProps<T extends ITabItem> {
+    dataSource: Array<T>;
     onChange?: (item: ITabItem) => void;
     getLabel?: (item: ITabItem) => any;
     value?: ITabItem | null;
@@ -29,7 +29,7 @@ export interface TabBarProps {
     minWidthItem?: string;
 }
 
-const TabBar: React.FC<TabBarProps> = ({
+const TabBar: React.FC<TabBarProps<ITabItem>> = ({
     dataSource = [],
     value,
     onChange,
