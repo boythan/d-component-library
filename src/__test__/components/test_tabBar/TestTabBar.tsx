@@ -1,9 +1,15 @@
 import React, { useState } from "react";
 import Badge from "../../../components/badge/Badge";
-import TabBar from "../../../components/tab/TabBar";
+import TabBar, { TabBarProps, ITabItem } from "../../../components/tab/TabBar";
 import { ATTRIBUTE_INPUT_TYPE, SELECT_DATA } from "../../data/TestConstant";
 
-export interface TestTabBarProps {
+interface NewTabBarItemsProps extends ITabItem {
+    name?: string;
+    subTitle?: string;
+    iconName?: string;
+}
+
+export interface TestTabBarProps extends Omit<TabBarProps<NewTabBarItemsProps>, "dataSource"> {
     [key: string]: any;
 }
 
