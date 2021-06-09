@@ -10,7 +10,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
     classNameIcon?: string;
     classNameIconSuffix?: string;
     disabled?: boolean;
-    size?: "large" | "medium" | "small" | "x-small";
+    size?: "large" | "medium" | "small" | "x-small" | "auto" | "fit-content";
     variant?: "standard" | "outline" | "trans";
     color?:
         | "primary"
@@ -55,7 +55,7 @@ const Button: React.FC<ButtonProps> = ({
         {
             "text-x-small": size === "x-small",
             "text-small font-weight-bold": variant === "trans",
-            "d-button__icon": iconName && !content && !children,
+            [`d-button__icon-${size}`]: iconName && !content && !children,
         },
         className
     );

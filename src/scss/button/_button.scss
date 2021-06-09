@@ -30,6 +30,12 @@ $button-variant: ("outline", "standard", "trans");
 .d-button__x-small {
     @include btn-x-small();
 }
+.d-button__auto {
+    @include btn-auto();
+}
+.d-button__fit-content {
+    @include btn-fit-content();
+}
 //variant
 
 @each $var in $button-variant {
@@ -105,5 +111,27 @@ $button-variant: ("outline", "standard", "trans");
 
 .d-button__icon {
     min-width: auto;
-    padding: 0px 12px !important;
+    padding: 0px 12px;
+}
+
+// button icon
+
+.d-button__icon-large {
+    min-width: auto;
+    padding: 0px 12px;
+}
+
+.d-button__icon-medium {
+    min-width: auto;
+    padding: 0px 10px;
+}
+
+.d-button__icon-small {
+    min-width: auto;
+    padding: 0px 8px;
+}
+
+.d-button__icon-x-small {
+    min-width: auto;
+    padding: 0px 4px;
 }
