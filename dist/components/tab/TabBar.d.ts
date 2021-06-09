@@ -6,17 +6,17 @@ export interface ITabItem {
     iconName?: string;
     [key: string]: any;
 }
-export interface TabBarProps {
-    dataSource: Array<ITabItem>;
+export interface TabBarProps<T extends ITabItem> {
+    dataSource: Array<T>;
     onChange?: (item: ITabItem) => void;
     getLabel?: (item: ITabItem) => any;
     value?: ITabItem | null;
     className?: string;
-    classNameTabItem?: string;
+    classNameItem?: string;
     variant?: "horizontal" | "vertical";
     tabBarItemProps?: (item: ITabItem, active?: boolean) => React.HTMLAttributes<HTMLDivElement> & ButtonProps;
     isScroll?: boolean;
-    minWidthTabItem?: string;
+    minWidthItem?: string;
 }
-declare const TabBar: React.FC<TabBarProps>;
+declare const TabBar: React.FC<TabBarProps<ITabItem>>;
 export default TabBar;

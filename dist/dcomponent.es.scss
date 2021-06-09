@@ -47124,6 +47124,16 @@ h6,
     }
 }
 
+@mixin btn-auto() {
+    height: auto;
+    width: auto;
+}
+
+@mixin btn-fit-content() {
+    height: fit-content;
+    width: fit-content;
+}
+
 @mixin button-variant-color(
     $bg,
     $font,
@@ -48922,6 +48932,12 @@ $button-variant: ("outline", "standard", "trans");
 .d-button__x-small {
     @include btn-x-small();
 }
+.d-button__auto {
+    @include btn-auto();
+}
+.d-button__fit-content {
+    @include btn-fit-content();
+}
 //variant
 
 @each $var in $button-variant {
@@ -48997,7 +49013,37 @@ $button-variant: ("outline", "standard", "trans");
 
 .d-button__icon {
     min-width: auto;
-    padding: 0px 12px !important;
+    padding: 0px 12px;
+}
+
+// button icon
+
+.d-button__icon-large {
+    min-width: auto;
+    padding: 0px 12px;
+}
+
+.d-button__icon-medium {
+    min-width: auto;
+    padding: 0px 10px;
+}
+
+.d-button__icon-small {
+    min-width: auto;
+    padding: 0px 8px;
+}
+
+.d-button__icon-x-small {
+    min-width: auto;
+    padding: 0px 4px;
+}
+
+.d-button__icon-fit-content {
+    min-width: auto;
+}
+
+.d-button__icon-auto {
+    min-width: auto;
 }
 
 
@@ -51690,17 +51736,16 @@ $avatar-variant: ("rounded", "square");
 
 
 .d-tab-bar__horizontal {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
     .d-tab-bar__item {
         font-weight: $font-weight-normal !important;
         color: $gray-color;
-        -ms-overflow-style: none; /* IE and Edge */
-        scrollbar-width: none; /* Firefox */
-        &-active {
-            font-weight: $font-weight-semi-bold !important;
-            border-bottom: 3px solid $accent-color;
-            color: $accent-color !important;
-        }
-        transition: all 0.3s ease-in;
+    }
+    .d-tab-bar__item-active {
+        font-weight: $font-weight-semi-bold !important;
+        border-bottom: 3px solid $accent-color;
+        color: $accent-color !important;
     }
 }
 
@@ -56469,6 +56514,16 @@ h6,
     &.btn-svg-icon {
         width: calc(1.5rem + 2px);
     }
+}
+
+@mixin btn-auto() {
+    height: auto;
+    width: auto;
+}
+
+@mixin btn-fit-content() {
+    height: fit-content;
+    width: fit-content;
 }
 
 @mixin button-variant-color(

@@ -49961,16 +49961,19 @@ var TreeSelect = function (_a) {
 };
 
 var Button = function (_a) {
-    var content = _a.content, iconName = _a.iconName, className = _a.className, classNameIcon = _a.classNameIcon, classNameIconSuffix = _a.classNameIconSuffix, onClick = _a.onClick, _b = _a.type, type = _b === void 0 ? "button" : _b, _c = _a.size, size = _c === void 0 ? "large" : _c, _d = _a.variant, variant = _d === void 0 ? "standard" : _d, _e = _a.color, color = _e === void 0 ? "primary" : _e, _f = _a.disabled, disabled = _f === void 0 ? false : _f, suffixIcon = _a.suffixIcon, suffixElement = _a.suffixElement, prefixElement = _a.prefixElement, props = __rest$q(_a, ["content", "iconName", "className", "classNameIcon", "classNameIconSuffix", "onClick", "type", "size", "variant", "color", "disabled", "suffixIcon", "suffixElement", "prefixElement"]);
-    var buttonClass = classnames("text text-nowrap d-button d-button__" + size + " \n         d-button__" + variant + "-" + color, {
-        "text-x-small": size === "x-small",
-        "text-small font-weight-bold": variant === "trans",
-        "d-button__icon": iconName && !content,
-    }, className);
-    var iconClass = classnames("d-block", { "mx-2": content && iconName }, classNameIcon);
-    var suffixIconClass = classnames("d-block", { "mx-2": content && iconName }, classNameIconSuffix);
+    var _b;
+    var content = _a.content, iconName = _a.iconName, className = _a.className, classNameIcon = _a.classNameIcon, classNameIconSuffix = _a.classNameIconSuffix, onClick = _a.onClick, _c = _a.type, type = _c === void 0 ? "button" : _c, _d = _a.size, size = _d === void 0 ? "large" : _d, _e = _a.variant, variant = _e === void 0 ? "standard" : _e, _f = _a.color, color = _f === void 0 ? "primary" : _f, _g = _a.disabled, disabled = _g === void 0 ? false : _g, suffixIcon = _a.suffixIcon, suffixElement = _a.suffixElement, prefixElement = _a.prefixElement, children = _a.children, props = __rest$q(_a, ["content", "iconName", "className", "classNameIcon", "classNameIconSuffix", "onClick", "type", "size", "variant", "color", "disabled", "suffixIcon", "suffixElement", "prefixElement", "children"]);
+    var buttonClass = classnames("text text-nowrap d-button d-button__" + size + " \n         d-button__" + variant + "-" + color, (_b = {
+            "text-x-small": size === "x-small",
+            "text-small font-weight-bold": variant === "trans"
+        },
+        _b["d-button__icon-" + size] = iconName && !content && !children,
+        _b), className);
+    var iconClass = classnames("d-block", { "mx-2": (content || children) && iconName }, classNameIcon);
+    var suffixIconClass = classnames("d-block", { "mx-2": (content || children) && iconName }, classNameIconSuffix);
     return (jsxs("button", __assign({ className: buttonClass, type: type, disabled: disabled, onClick: onClick }, props, { children: [prefixElement && prefixElement(),
             iconName && jsx(Icon$2, { name: iconName, size: "large", className: iconClass }, void 0),
+            children,
             content,
             suffixIcon && jsx(Icon$2, { name: suffixIcon, size: "large", className: suffixIconClass }, void 0),
             suffixElement && suffixElement()] }), void 0));
@@ -67302,14 +67305,14 @@ var HeaderTable = function (_a) {
 };
 
 var Header = function (_a) {
-    var Messages = _a.Messages, title = _a.title, _b = _a.saveText, saveText = _b === void 0 ? "save" : _b, _c = _a.cancelText, cancelText = _c === void 0 ? "back" : _c, _d = _a.deleteText, deleteText = _d === void 0 ? "delete" : _d, _e = _a.printText, printText = _e === void 0 ? "print" : _e, _f = _a.editText, editText = _f === void 0 ? "edit" : _f, onCancel = _a.onCancel, onSave = _a.onSave, onDelete = _a.onDelete, onPrint = _a.onPrint, onEdit = _a.onEdit, disabledSave = _a.disabledSave, customLeft = _a.customLeft, _g = _a.showCancel, showCancel = _g === void 0 ? true : _g;
+    var Messages = _a.Messages, title = _a.title, _b = _a.saveText, saveText = _b === void 0 ? "Save" : _b, _c = _a.cancelText, cancelText = _c === void 0 ? "Back" : _c, _d = _a.deleteText, deleteText = _d === void 0 ? "Delete" : _d, _e = _a.printText, printText = _e === void 0 ? "Print" : _e, _f = _a.editText, editText = _f === void 0 ? "Edit" : _f, onCancel = _a.onCancel, onSave = _a.onSave, onDelete = _a.onDelete, onPrint = _a.onPrint, onEdit = _a.onEdit, disabledSave = _a.disabledSave, customLeft = _a.customLeft, _g = _a.showCancel, showCancel = _g === void 0 ? true : _g, className = _a.className;
     var renderLeftView = function () {
         if (customLeft) {
             return customLeft();
         }
         return jsx("h4", __assign({ className: "text-primary" }, { children: title }), void 0);
     };
-    return (jsxs("div", __assign({ className: "card-container d-common-header" }, { children: [renderLeftView(),
+    return (jsxs("div", __assign({ className: "card-container d-common-header " + className }, { children: [renderLeftView(),
             jsxs("div", __assign({ className: "d-common-header__button-group" }, { children: [showCancel && (jsx(Button, { variant: "outline", content: Messages ? Messages[cancelText] : cancelText, onClick: function () { return (onCancel ? onCancel() : window.history.go("back")); }, className: "mr-3" }, void 0)),
                     onDelete && (jsx(Button, { content: Messages ? Messages[deleteText] : deleteText, onClick: onDelete, iconName: "delete", className: "mr-3" }, void 0)),
                     onPrint && (jsx(Button, { content: Messages ? Messages[printText] : printText, onClick: onPrint, iconName: "print", className: "mr-3" }, void 0)),
@@ -67526,6 +67529,27 @@ var HeaderDetail = function (_a) {
     };
     return (jsxs("div", __assign({ className: "card-container d-flex align-items-center justify-content-between p-4" }, { children: [leftView(),
             rightView()] }), void 0));
+};
+
+var HeaderBlock = function (_a) {
+    var title = _a.title, className = _a.className, style = _a.style, classNameTitle = _a.classNameTitle, styleTitle = _a.styleTitle, _b = _a.showLine, showLine = _b === void 0 ? true : _b, showArrow = _a.showArrow, customRight = _a.customRight, _c = _a.arrowProps, arrowProps = _c === void 0 ? {} : _c, _d = _a.lineColor, lineColor = _d === void 0 ? "gray" : _d, _e = _a.arrowColor, arrowColor = _e === void 0 ? "gray" : _e, onPrevious = _a.onPrevious, onNext = _a.onNext;
+    var wrapperClass = classnames("w-100 d-flex align-items-center py-3 text-nowrap", className);
+    var titleClass = classnames("text-bold", classNameTitle);
+    var lineClass = classnames("border border-" + lineColor + " w-100 ml-4", { "mr-4": showArrow || customRight });
+    var rightSide = function () {
+        var content;
+        if (showArrow) {
+            content = (jsxs("div", __assign({ className: "d-flex align-items-center" }, { children: [jsx(Button, __assign({ iconName: "chevron_left", variant: "outline", onClick: onPrevious, className: "mr-3 px-1", size: "fit-content", color: arrowColor }, arrowProps), void 0),
+                    jsx(Button, __assign({ iconName: "chevron_right", variant: "outline", onClick: onNext, className: "px-1", size: "fit-content", color: arrowColor }, arrowProps), void 0)] }), void 0));
+        }
+        if (customRight) {
+            content = customRight;
+        }
+        return content;
+    };
+    return (jsxs("div", __assign({ className: wrapperClass, style: style }, { children: [jsx("div", __assign({ className: titleClass, style: styleTitle }, { children: title }), void 0),
+            showLine && jsx("div", { className: lineClass }, void 0),
+            rightSide()] }), void 0));
 };
 
 var Modal = function (_a) {
@@ -67841,7 +67865,7 @@ var ViewTextarea = function (_a) {
 };
 
 var TabBar = function (_a) {
-    var _b = _a.dataSource, dataSource = _b === void 0 ? [] : _b, value = _a.value, onChange = _a.onChange, className = _a.className, classNameTabItem = _a.classNameTabItem, getLabel = _a.getLabel, _c = _a.variant, variant = _c === void 0 ? "horizontal" : _c, tabBarItemProps = _a.tabBarItemProps, _d = _a.isScroll, isScroll = _d === void 0 ? false : _d, _e = _a.minWidthTabItem, minWidthTabItem = _e === void 0 ? "200px" : _e;
+    var _b = _a.dataSource, dataSource = _b === void 0 ? [] : _b, value = _a.value, onChange = _a.onChange, className = _a.className, classNameItem = _a.classNameItem, getLabel = _a.getLabel, _c = _a.variant, variant = _c === void 0 ? "horizontal" : _c, tabBarItemProps = _a.tabBarItemProps, _d = _a.isScroll, isScroll = _d === void 0 ? false : _d, _e = _a.minWidthItem, minWidthItem = _e === void 0 ? "200px" : _e;
     var wrapperClass = classnames("d-tab-bar d-tab-bar__" + variant, {
         "d-flex ": variant === "horizontal",
         "flex-wrap": !isScroll && variant === "horizontal",
@@ -67850,9 +67874,9 @@ var TabBar = function (_a) {
     return (jsx("div", __assign({ className: wrapperClass, style: { overflowX: activateScroll ? "scroll" : undefined } }, { children: dataSource.map(function (tabItem, index) {
             var _a, _b;
             var isSelect = (value === null || value === void 0 ? void 0 : value.id) === (tabItem === null || tabItem === void 0 ? void 0 : tabItem.id);
-            var itemClass = classnames(classNameTabItem, "d-tab-bar__item text-small", {
+            var itemClass = classnames("d-tab-bar__item text-small", {
                 "d-tab-bar__item-active": isSelect,
-            });
+            }, classNameItem);
             var label = (_a = tabItem === null || tabItem === void 0 ? void 0 : tabItem.label) !== null && _a !== void 0 ? _a : "N/A";
             var icon = (_b = tabItem === null || tabItem === void 0 ? void 0 : tabItem.iconName) !== null && _b !== void 0 ? _b : undefined;
             if (getLabel) {
@@ -67862,7 +67886,7 @@ var TabBar = function (_a) {
             if (tabBarItemProps) {
                 buttonProps = tabBarItemProps(tabItem, isSelect);
             }
-            return (jsx(Button, __assign({ className: itemClass, onClick: function () { return onChange && onChange(tabItem); }, variant: "trans", content: label, iconName: icon, style: { minWidth: activateScroll ? minWidthTabItem : undefined } }, buttonProps), index));
+            return (jsx(Button, __assign({ className: itemClass, onClick: function () { return onChange && onChange(tabItem); }, variant: "trans", iconName: icon, style: { minWidth: activateScroll ? minWidthItem : undefined } }, buttonProps, { children: label }), index));
         }) }), void 0));
 };
 
@@ -75461,5 +75485,5 @@ var showInfo = function (content, action) {
 };
 var Notifications = { showError: showError, showInfo: showInfo, showSuccess: showSuccess, showWarning: showWarning };
 
-export { Avatar, AvatarName, AwesomeListComponent, AwesomeTableComponent, AwesomeTableUtils, Badge, Button, Checkbox, CheckboxGroup, DateInput, DialogComponent, DialogManager, Dot, Dropdown, Header, HeaderDetail, HeaderTable, Icon$2 as Icon, ImageUtils, InputText, Loading, MapUtils, Modal, Notifications, ObjectUtils, PopoverList, Progress, ProgressComponent, RadioGroup, RowInterchangeView, Select, StringUtils, TabBar, TimeUtils, TreeDataUtils, TreeSelect, UrlUtils, ViewRow, ViewTextarea };
+export { Avatar, AvatarName, AwesomeListComponent, AwesomeTableComponent, AwesomeTableUtils, Badge, Button, Checkbox, CheckboxGroup, DateInput, DialogComponent, DialogManager, Dot, Dropdown, Header, HeaderBlock, HeaderDetail, HeaderTable, Icon$2 as Icon, ImageUtils, InputText, Loading, MapUtils, Modal, Notifications, ObjectUtils, PopoverList, Progress, ProgressComponent, RadioGroup, RowInterchangeView, Select, StringUtils, TabBar, TimeUtils, TreeDataUtils, TreeSelect, UrlUtils, ViewRow, ViewTextarea };
 //# sourceMappingURL=dcomponent.es.js.map

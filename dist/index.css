@@ -30121,6 +30121,14 @@ h6,
   .d-button__x-small.btn-svg-icon {
     width: calc(1.5rem + 2px); }
 
+.d-button__auto {
+  height: auto;
+  width: auto; }
+
+.d-button__fit-content {
+  height: fit-content;
+  width: fit-content; }
+
 .d-button__outline-primary {
   border: 1px solid #DE0D0C;
   background-color: #fff;
@@ -30773,7 +30781,29 @@ h6,
 
 .d-button__icon {
   min-width: auto;
-  padding: 0px 12px !important; }
+  padding: 0px 12px; }
+
+.d-button__icon-large {
+  min-width: auto;
+  padding: 0px 12px; }
+
+.d-button__icon-medium {
+  min-width: auto;
+  padding: 0px 10px; }
+
+.d-button__icon-small {
+  min-width: auto;
+  padding: 0px 8px; }
+
+.d-button__icon-x-small {
+  min-width: auto;
+  padding: 0px 4px; }
+
+.d-button__icon-fit-content {
+  min-width: auto; }
+
+.d-button__icon-auto {
+  min-width: auto; }
 
 /* ----------------------------------------
 // Checkbox
@@ -30969,14 +30999,14 @@ h6,
 /* ----------------------------------------
 // tab-bar
 // ---------------------------------------- */
-.d-tab-bar__horizontal .d-tab-bar__item {
-  font-weight: 400 !important;
-  color: #A7A7A7;
+.d-tab-bar__horizontal {
   -ms-overflow-style: none;
   /* IE and Edge */
   scrollbar-width: none;
-  /* Firefox */
-  transition: all 0.3s ease-in; }
+  /* Firefox */ }
+  .d-tab-bar__horizontal .d-tab-bar__item {
+    font-weight: 400 !important;
+    color: #A7A7A7; }
   .d-tab-bar__horizontal .d-tab-bar__item-active {
     font-weight: 600 !important;
     border-bottom: 3px solid #DE0D0C;
