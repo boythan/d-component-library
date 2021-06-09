@@ -30,6 +30,7 @@ import TestUtils from "./components/test_util/TestUtils";
 import TestView from "./components/test_view/TestView";
 import { ATTRIBUTE_INPUT_TYPE } from "./data/TestConstant";
 import TestTabBar from "./components/test_tabBar/TestTabBar";
+import TestButton from "./components/test_button/TestButton";
 
 interface Props {
     content?: any;
@@ -155,35 +156,6 @@ const Date = () => {
     );
 };
 
-const ButtonView = () => (
-    <div className="d-flex my-4">
-        <div className="d-flex flex-column mr-5">
-            <Button content="Button" color="gray" variant="outline" className="text-underline text-secondary" />
-            <Button content="Button" color="gray" variant="standard" />
-            <Button content="Button" color="muted" variant="standard" />
-            <Button content="Button" color="green" variant="trans" />
-            <Button content="Button" variant="trans" className="my-3" />
-            <Button content="Disabled Button" className="my-3" disabled />
-            <Button content="Button" className="my-3" size="medium" color="error" />
-            <Button content="Button" className="my-3" size="small" color="success" />
-            <Button content="Button" className="my-3" size="x-small" />
-        </div>
-        <div className="d-flex flex-column mx-5">
-            <Button content="Button" variant="outline" className="my-3" disabled />
-            <Button content="Button" className="my-3" size="medium" variant="outline" />
-            <Button content="Button" className="my-3" size="small" variant="outline" />
-            <Button content="Button" className="my-3" size="x-small" variant="outline" />
-        </div>
-        <div className="d-flex flex-column ml-5">
-            <Button variant="trans">dgdgdgdg</Button>
-            <Button content="Icon Button" iconName="home" />
-            <Button content="Icon Button" iconName="home" suffixIcon="home" variant="trans" />
-            <Button content="Icon Button" className="my-3" iconName="home" variant="outline" />
-            <Button className="my-3" iconName="home" variant="outline" />
-        </div>
-    </div>
-);
-
 export default function Test({ content }: Props): ReactElement {
     const [valueSelect, setValueSelect] = useState([ATTRIBUTE_INPUT_TYPE[0]]);
     const [openModal, setOpenModal] = useState(false);
@@ -262,7 +234,7 @@ export default function Test({ content }: Props): ReactElement {
                 <AvatarIconView />
                 {/* {input} */}
                 <Date />
-                <ButtonView />
+                <TestButton />
                 {/* {checkBox} */}
                 {/* {header} */}
                 <TestTabBar />
@@ -278,7 +250,7 @@ export default function Test({ content }: Props): ReactElement {
         { id: "AVATAR", label: "AVATAR", component: <AvatarIconView /> },
         { id: "INPUT", label: "INPUT", component: <TestInput /> },
         { id: "DATE", label: "DATE", component: <Date /> },
-        { id: "BUTTON", label: "BUTTON", component: <ButtonView /> },
+        { id: "BUTTON", label: "BUTTON", component: <TestButton /> },
         { id: "TABLE", label: "TABLE", component: <TestTable /> },
         { id: "CHECKBOX", label: "CHECKBOX", component: <TestCheckbox /> },
         { id: "HEADER", label: "HEADER", component: <TestHeader /> },
