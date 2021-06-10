@@ -32,7 +32,8 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "build": "rollup -c",
+    "build-cp-variable": "cp -v src/scss/_variables.scss dist/_variables.scss ",
+    "build": "rollup -c && npm run build-cp-variable",
     "build-watch": "rollup -c -w",
     "start-demo": "cd demo-site && npm run start",
     "i-all": "npm i && cd demo-site && npm i",
