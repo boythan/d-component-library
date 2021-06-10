@@ -1,15 +1,21 @@
 @import "../variables";
 
 .d-tab-bar__horizontal {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
     .d-tab-bar__item {
         font-weight: $font-weight-normal !important;
         color: $gray-color;
-        &-active {
-            font-weight: $font-weight-semi-bold !important;
-            border-bottom: 3px solid $accent-color;
-            color: $accent-color !important;
-        }
     }
+    .d-tab-bar__item-active {
+        font-weight: $font-weight-semi-bold !important;
+        border-bottom: 3px solid $accent-color;
+        color: $accent-color !important;
+    }
+}
+
+.d-tab-bar__horizontal::-webkit-scrollbar {
+    display: none;
 }
 
 .d-tab-bar__vertical {

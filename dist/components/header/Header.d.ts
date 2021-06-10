@@ -15,6 +15,7 @@ export interface HeaderProps {
     customLeft?: () => React.ReactNode;
     showCancel?: boolean;
     Messages?: any;
+    className?: string;
 }
 declare const Header: React.FC<HeaderProps>;
 export default Header;

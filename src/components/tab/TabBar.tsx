@@ -1,9 +1,12 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable max-len */
 // react
 import React from "react";
 // third-party
 import ClassNames from "classnames";
 // application
-import Button from "../button/Button";
+import Button, { ButtonProps } from "../button/Button";
 // data stubs
 
 export interface ITabItem {
@@ -13,43 +16,60 @@ export interface ITabItem {
     [key: string]: any;
 }
 
-export interface TabBarProps {
-    dataSource: Array<ITabItem>;
+export interface TabBarProps<T extends ITabItem> {
+    dataSource: Array<T>;
     onChange?: (item: ITabItem) => void;
     getLabel?: (item: ITabItem) => any;
     value?: ITabItem | null;
     className?: string;
-    classNameTabItem?: string;
+    classNameItem?: string;
     variant?: "horizontal" | "vertical";
+    tabBarItemProps?: (item: ITabItem, active?: boolean) => React.HTMLAttributes<HTMLDivElement> & ButtonProps; // remember to return min-width for tab item in order for scroll in horizontal mode to work
+    isScroll?: boolean;
+    minWidthItem?: string;
 }
 
-const TabBar: React.FC<TabBarProps> = ({
+const TabBar: React.FC<TabBarProps<ITabItem>> = ({
     dataSource = [],
     value,
     onChange,
     className,
-    classNameTabItem,
+    classNameItem,
     getLabel,
     variant = "horizontal",
+    tabBarItemProps,
+    isScroll = false,
+    minWidthItem = "200px",
 }) => {
     const wrapperClass = ClassNames(
         `d-tab-bar d-tab-bar__${variant}`,
-        { "d-flex flex-wrap": variant === "horizontal" },
+        {
+            "d-flex ": variant === "horizontal",
+            "flex-wrap": !isScroll && variant === "horizontal",
+        },
         className
     );
+    const activateScroll = isScroll && variant === "horizontal";
     return (
-        <div className={wrapperClass}>
+        <div className={wrapperClass} style={{ overflowX: activateScroll ? "scroll" : undefined }}>
             {dataSource.map((tabItem, index) => {
                 const isSelect = value?.id === tabItem?.id;
-                const itemClass = ClassNames(classNameTabItem, "d-tab-bar__item text-small", {
-                    // "d-tab-bar__item-active text-primary": isSelect,
-                    "d-tab-bar__item-active": isSelect,
-                });
+                const itemClass = ClassNames(
+                    "d-tab-bar__item text-small",
+                    {
+                        "d-tab-bar__item-active": isSelect,
+                    },
+                    classNameItem
+                );
                 let label = tabItem?.label ?? "N/A";
                 const icon = tabItem?.iconName ?? undefined;
 
                 if (getLabel) {
                     label = getLabel(tabItem);
+                }
+                let buttonProps: any = {};
+                if (tabBarItemProps) {
+                    buttonProps = tabBarItemProps(tabItem, isSelect);
                 }
                 return (
                     <Button
@@ -57,9 +77,12 @@ const TabBar: React.FC<TabBarProps> = ({
                         onClick={() => onChange && onChange(tabItem)}
                         key={index}
                         variant="trans"
-                        content={label as any}
                         iconName={icon}
-                    />
+                        style={{ minWidth: activateScroll ? minWidthItem : undefined }}
+                        {...buttonProps}
+                    >
+                        {label}
+                    </Button>
                 );
             })}
         </div>

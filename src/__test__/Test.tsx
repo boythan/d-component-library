@@ -29,6 +29,9 @@ import TestNotification from "./components/test_notification/TestNotification";
 import TestUtils from "./components/test_util/TestUtils";
 import TestView from "./components/test_view/TestView";
 import { ATTRIBUTE_INPUT_TYPE } from "./data/TestConstant";
+import TestTabBar from "./components/test_tabBar/TestTabBar";
+import TestButton from "./components/test_button/TestButton";
+import TestAvatarIcon from "./components/test_avatar_icon/TestAvatarIcon";
 
 interface Props {
     content?: any;
@@ -42,96 +45,6 @@ const URL = "https://api-dev.mattresscity.co.th/api/backend/brand";
 
 const test = (a: any, b?: any) => {
     return a;
-};
-
-const AvatarIconView = () => {
-    return (
-        <React.Fragment>
-            <div className="d-flex align-items-center my-3">
-                <Avatar
-                    src="https://c4.wallpaperflare.com/wallpaper/462/200/955/face-women-model-portrait-wallpaper-preview.jpg"
-                    size="x-large"
-                    className="mx-3"
-                />
-                <Avatar
-                    src="https://c4.wallpaperflare.com/wallpaper/462/200/955/face-women-model-portrait-wallpaper-preview.jpg"
-                    size="large"
-                    className="mx-3"
-                />
-                <Avatar
-                    src="https://c4.wallpaperflare.com/wallpaper/462/200/955/face-women-model-portrait-wallpaper-preview.jpg"
-                    size="medium"
-                    className="mx-3"
-                />
-                <Avatar
-                    src="https://c4.wallpaperflare.com/wallpaper/462/200/955/face-women-model-portrait-wallpaper-preview.jpg"
-                    size="small"
-                    className="mx-3"
-                />
-                <Avatar
-                    src="https://c4.wallpaperflare.com/wallpaper/462/200/955/face-women-model-portrait-wallpaper-preview.jpg"
-                    size="x-small"
-                    className="mx-3"
-                />
-                <Avatar
-                    src="https://c4.wallpaperflare.com/wallpaper/462/200/955/face-women-model-portrait-wallpaper-preview.jpg"
-                    size="xx-small"
-                    className="mx-3"
-                />
-            </div>
-            <div className="d-flex align-items-center my-3">
-                <Avatar
-                    src="https://c4.wallpaperflare.com/wallpaper/462/200/955/face-women-model-portrait-wallpaper-preview.jpg"
-                    size="x-large"
-                    className="mx-3"
-                    variant="square"
-                />
-                <Avatar
-                    src="https://c4.wallpaperflare.com/wallpaper/462/200/955/face-women-model-portrait-wallpaper-preview.jpg"
-                    size="large"
-                    className="mx-3"
-                    variant="square"
-                />
-                <Avatar
-                    src="https://c4.wallpaperflare.com/wallpaper/462/200/955/face-women-model-portrait-wallpaper-preview.jpg"
-                    size="medium"
-                    className="mx-3"
-                    variant="square"
-                />
-                <Avatar
-                    src="https://c4.wallpaperflare.com/wallpaper/462/200/955/face-women-model-portrait-wallpaper-preview.jpg"
-                    size="small"
-                    className="mx-3"
-                    variant="square"
-                />
-                <Avatar
-                    src="https://c4.wallpaperflare.com/wallpaper/462/200/955/face-women-model-portrait-wallpaper-preview.jpg"
-                    size="x-small"
-                    className="mx-3"
-                    variant="square"
-                />
-            </div>
-            <div className="d-flex align-items-center my-4">
-                <Avatar size="small" className="mx-3" text="Joker" />
-                <Avatar size="medium" className="mx-3" variant="square" text="Batman" />
-            </div>
-            <div className="d-flex align-items-center my-4">
-                <Icon size="large" className="mx-3" name="photo_camera" />
-                <Icon size="x-large" className="mx-3" name="photo_camera" />
-                <Icon size="xx-large" className="mx-3" name="photo_camera" />
-                <Icon size="xxx-large" className="mx-3" name="photo_camera" />
-            </div>
-            <div className="d-flex align-items-center my-4">
-                <AvatarName
-                    user={{
-                        fullName: "Amanda",
-                    }}
-                    subLabel="Actress"
-                    size="x-large"
-                />
-            </div>
-        </React.Fragment>
-    );
 };
 
 const Date = () => {
@@ -154,34 +67,6 @@ const Date = () => {
     );
 };
 
-const ButtonView = () => (
-    <div className="d-flex my-4">
-        <div className="d-flex flex-column mr-5">
-            <Button content="Button" color="gray" variant="outline" className="text-underline text-secondary" />
-            <Button content="Button" color="gray" variant="standard" />
-            <Button content="Button" color="muted" variant="standard" />
-            <Button content="Button" color="green" variant="trans" />
-            <Button content="Button" variant="trans" className="my-3" />
-            <Button content="Disabled Button" className="my-3" disabled />
-            <Button content="Button" className="my-3" size="medium" color="error" />
-            <Button content="Button" className="my-3" size="small" color="success" />
-            <Button content="Button" className="my-3" size="x-small" />
-        </div>
-        <div className="d-flex flex-column mx-5">
-            <Button content="Button" variant="outline" className="my-3" disabled />
-            <Button content="Button" className="my-3" size="medium" variant="outline" />
-            <Button content="Button" className="my-3" size="small" variant="outline" />
-            <Button content="Button" className="my-3" size="x-small" variant="outline" />
-        </div>
-        <div className="d-flex flex-column ml-5">
-            <Button content="Icon Button" iconName="home" />
-            <Button content="Icon Button" iconName="home" suffixIcon="home" variant="trans" />
-            <Button content="Icon Button" className="my-3" iconName="home" variant="outline" />
-            <Button className="my-3" iconName="home" variant="outline" />
-        </div>
-    </div>
-);
-
 export default function Test({ content }: Props): ReactElement {
     const [valueSelect, setValueSelect] = useState([ATTRIBUTE_INPUT_TYPE[0]]);
     const [openModal, setOpenModal] = useState(false);
@@ -202,18 +87,6 @@ export default function Test({ content }: Props): ReactElement {
         console.log("progressRef.current", progressRef.current);
         loadFakeData();
     }, []);
-
-    const tab = (
-        <div className="my-4">
-            <TabBar dataSource={ATTRIBUTE_INPUT_TYPE} onChange={(tab) => setSelectedTab(tab)} value={selectedTab} />
-            <TabBar
-                dataSource={ATTRIBUTE_INPUT_TYPE}
-                onChange={(tab) => setSelectedTab(tab)}
-                value={selectedTab}
-                variant="vertical"
-            />
-        </div>
-    );
 
     const list = (
         <div className="my-4">
@@ -269,13 +142,13 @@ export default function Test({ content }: Props): ReactElement {
     const mainContent = () => {
         return (
             <React.Fragment>
-                <AvatarIconView />
+                <TestAvatarIcon />
                 {/* {input} */}
                 <Date />
-                <ButtonView />
+                <TestButton />
                 {/* {checkBox} */}
                 {/* {header} */}
-                {tab}
+                <TestTabBar />
                 <TestView />
                 {/* {list} */}
                 {loading}
@@ -285,14 +158,14 @@ export default function Test({ content }: Props): ReactElement {
         );
     };
     const TAB_LIST = [
-        { id: "AVATAR", label: "AVATAR", component: <AvatarIconView /> },
+        { id: "AVATAR", label: "AVATAR", component: <TestAvatarIcon /> },
         { id: "INPUT", label: "INPUT", component: <TestInput /> },
         { id: "DATE", label: "DATE", component: <Date /> },
-        { id: "BUTTON", label: "BUTTON", component: <ButtonView /> },
+        { id: "BUTTON", label: "BUTTON", component: <TestButton /> },
         { id: "TABLE", label: "TABLE", component: <TestTable /> },
         { id: "CHECKBOX", label: "CHECKBOX", component: <TestCheckbox /> },
         { id: "HEADER", label: "HEADER", component: <TestHeader /> },
-        { id: "TAB BAR", label: "TAB BAR", component: tab },
+        { id: "TAB BAR", label: "TAB BAR", component: <TestTabBar /> },
         { id: "VIEW", label: "VIEW", component: <TestView /> },
         { id: "LIST", label: "LIST", component: list },
         { id: "LOADING", label: "LOADING", component: loading },

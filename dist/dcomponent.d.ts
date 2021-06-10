@@ -21,6 +21,8 @@ export type { HeaderProps } from "./components/header/Header";
 export { default as Header } from "./components/header/Header";
 export type { HeaderDetailProps } from "./components/header/HeaderDetail";
 export { default as HeaderDetail } from "./components/header/HeaderDetail";
+export type { HeaderBlockProps } from "./components/header/HeaderBlock";
+export { default as HeaderBlock } from "./components/header/HeaderBlock";
 export type { ModalProps } from "./components/modal/Modal";
 export { default as Modal } from "./components/modal/Modal";
 export type { AvatarProps } from "./components/avatar/Avatar";

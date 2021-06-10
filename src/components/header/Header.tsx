@@ -21,16 +21,17 @@ export interface HeaderProps {
     customLeft?: () => React.ReactNode;
     showCancel?: boolean;
     Messages?: any;
+    className?: string;
 }
 
 const Header: React.FC<HeaderProps> = ({
     Messages,
     title,
-    saveText = "save",
-    cancelText = "back",
-    deleteText = "delete",
-    printText = "print",
-    editText = "edit",
+    saveText = "Save",
+    cancelText = "Back",
+    deleteText = "Delete",
+    printText = "Print",
+    editText = "Edit",
     onCancel,
     onSave,
     onDelete,
@@ -39,6 +40,7 @@ const Header: React.FC<HeaderProps> = ({
     disabledSave,
     customLeft,
     showCancel = true,
+    className,
 }) => {
     const renderLeftView = () => {
         if (customLeft) {
@@ -47,7 +49,7 @@ const Header: React.FC<HeaderProps> = ({
         return <h4 className="text-primary">{title}</h4>;
     };
     return (
-        <div className="card-container d-common-header">
+        <div className={`card-container d-common-header ${className}`}>
             {renderLeftView()}
             <div className="d-common-header__button-group">
                 {showCancel && (

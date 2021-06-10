@@ -43,6 +43,16 @@
     }
 }
 
+@mixin btn-auto() {
+    height: auto;
+    width: auto;
+}
+
+@mixin btn-fit-content() {
+    height: fit-content;
+    width: fit-content;
+}
+
 @mixin button-variant-color(
     $bg,
     $font,

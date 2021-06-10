@@ -49961,17 +49961,22 @@ var TreeSelect = function (_a) {
 };
 
 var Button = function (_a) {
-    var content = _a.content, iconName = _a.iconName, className = _a.className, classNameIcon = _a.classNameIcon, classNameIconSuffix = _a.classNameIconSuffix, onClick = _a.onClick, _b = _a.type, type = _b === void 0 ? "button" : _b, _c = _a.size, size = _c === void 0 ? "large" : _c, _d = _a.variant, variant = _d === void 0 ? "standard" : _d, _e = _a.color, color = _e === void 0 ? "primary" : _e, _f = _a.disabled, disabled = _f === void 0 ? false : _f, suffixIcon = _a.suffixIcon, props = __rest$q(_a, ["content", "iconName", "className", "classNameIcon", "classNameIconSuffix", "onClick", "type", "size", "variant", "color", "disabled", "suffixIcon"]);
-    var buttonClass = classnames("text text-nowrap d-button d-button__" + size + " \n         d-button__" + variant + "-" + color, {
-        "text-x-small": size === "x-small",
-        "text-small font-weight-bold": variant === "trans",
-        "d-button__icon": iconName && !content,
-    }, className);
-    var iconClass = classnames("d-block", { "mx-2": content && iconName }, classNameIcon);
-    var suffixIconClass = classnames("d-block", { "mx-2": content && iconName }, classNameIconSuffix);
-    return (jsxs("button", __assign({ className: buttonClass, type: type, disabled: disabled, onClick: onClick }, props, { children: [iconName && jsx(Icon$2, { name: iconName, size: "large", className: iconClass }, void 0),
+    var _b;
+    var content = _a.content, iconName = _a.iconName, className = _a.className, classNameIcon = _a.classNameIcon, classNameIconSuffix = _a.classNameIconSuffix, onClick = _a.onClick, _c = _a.type, type = _c === void 0 ? "button" : _c, _d = _a.size, size = _d === void 0 ? "large" : _d, _e = _a.variant, variant = _e === void 0 ? "standard" : _e, _f = _a.color, color = _f === void 0 ? "primary" : _f, _g = _a.disabled, disabled = _g === void 0 ? false : _g, suffixIcon = _a.suffixIcon, suffixElement = _a.suffixElement, prefixElement = _a.prefixElement, children = _a.children, props = __rest$q(_a, ["content", "iconName", "className", "classNameIcon", "classNameIconSuffix", "onClick", "type", "size", "variant", "color", "disabled", "suffixIcon", "suffixElement", "prefixElement", "children"]);
+    var buttonClass = classnames("text text-nowrap d-button d-button__" + size + " \n         d-button__" + variant + "-" + color, (_b = {
+            "text-x-small": size === "x-small",
+            "text-small font-weight-bold": variant === "trans"
+        },
+        _b["d-button__icon-" + size] = iconName && !content && !children,
+        _b), className);
+    var iconClass = classnames("d-block", { "mx-2": (content || children) && iconName }, classNameIcon);
+    var suffixIconClass = classnames("d-block", { "mx-2": (content || children) && iconName }, classNameIconSuffix);
+    return (jsxs("button", __assign({ className: buttonClass, type: type, disabled: disabled, onClick: onClick }, props, { children: [prefixElement && prefixElement(),
+            iconName && jsx(Icon$2, { name: iconName, size: "large", className: iconClass }, void 0),
+            children,
             content,
-            suffixIcon && jsx(Icon$2, { name: suffixIcon, size: "large", className: suffixIconClass }, void 0)] }), void 0));
+            suffixIcon && jsx(Icon$2, { name: suffixIcon, size: "large", className: suffixIconClass }, void 0),
+            suffixElement && suffixElement()] }), void 0));
 };
 
 var Checkbox = function (_a) {
@@ -50048,333 +50053,6 @@ var RadioGroup = function (_a) {
                     onChange && onChange(item);
                 }, checked: isChecked, variant: "radio", disabled: isDisabled, className: itemClass }, void 0));
         }) }), void 0));
-};
-
-var Dot = function (_a) {
-    var _b = _a.size, size = _b === void 0 ? "small" : _b, _c = _a.color, color = _c === void 0 ? "green" : _c, className = _a.className, style = _a.style;
-    var dotClass = classnames("d-dot_container", "d-dot__" + size + "-" + color, className);
-    return jsx("div", { className: dotClass, style: style }, void 0);
-};
-
-var Badge = function (_a) {
-    var children = _a.children, _b = _a.variant, variant = _b === void 0 ? "dot" : _b, _c = _a.shape, shape = _c === void 0 ? "round" : _c, index = _a.index, _d = _a.dotProps, dotProps = _d === void 0 ? {} : _d, className = _a.className, _e = _a.color, color = _e === void 0 ? "secondary" : _e, _f = _a.size, size = _f === void 0 ? "medium" : _f, style = _a.style, badgeStyle = _a.badgeStyle, onClick = _a.onClick;
-    var wrapperClass = classnames("d-badge__container d-badge__container-" + variant, className);
-    var badgeWrapperClass = classnames("d-badge__badge-wrapper", { "rounded-circle": shape === "round" });
-    var badgeIndexClass = classnames("d-badge__badge-index-" + size + "-" + color);
-    var content = children;
-    var badge = jsx(Dot, __assign({}, dotProps, { color: color, size: size, style: badgeStyle }), void 0);
-    if (variant === "index") {
-        var display = index;
-        badge = jsx("div", {}, void 0);
-        if (typeof index === "number") {
-            display = index.toString();
-        }
-        if (display) {
-            badge = (jsx("div", __assign({ className: badgeIndexClass, style: badgeStyle }, { children: display }), void 0));
-        }
-    }
-    if (typeof children === "function") {
-        content = children();
-    }
-    return (jsxs("div", __assign({ className: wrapperClass, style: style, onClick: onClick }, { children: [jsx("div", __assign({ className: badgeWrapperClass }, { children: badge }), void 0),
-            content] }), void 0));
-};
-
-var InputTextSearch = function (_a) {
-    var className = _a.className, _b = _a.variant, variant = _b === void 0 ? "outline" : _b, value = _a.value, defaultValue = _a.defaultValue, error = _a.error, placeholder = _a.placeholder, disabled = _a.disabled, onChange = _a.onChange, onBlur = _a.onBlur;
-    var container = classnames("d-input-search", "d-input-search__" + variant, {
-        "d-input-search__disabled": disabled,
-        "d-input-search__error": !!error,
-    }, className);
-    return (jsxs("div", __assign({ className: container }, { children: [jsx(Icon$2, { name: "search", className: "mr-3" }, void 0),
-            jsx("input", { value: value, onChange: onChange, required: true, placeholder: placeholder, onBlur: onBlur, disabled: disabled, defaultValue: defaultValue }, void 0)] }), void 0));
-};
-
-var HeaderTable = function (_a) {
-    var _b = _a.className, className = _b === void 0 ? "" : _b, _c = _a.label, label = _c === void 0 ? "" : _c, _d = _a.placeholder, placeholder = _d === void 0 ? "Search" : _d, onChangeText = _a.onChangeText, _e = _a.disabledSearch, disabledSearch = _e === void 0 ? false : _e, onClickNew = _a.onClickNew, onClickExport = _a.onClickExport, onClickFilter = _a.onClickFilter, onClickImport = _a.onClickImport, customView = _a.customView, _f = _a.isFiltered, isFiltered = _f === void 0 ? false : _f, _g = _a.badgeColor, badgeColor = _g === void 0 ? "secondary" : _g;
-    var button = jsx(Button, { iconName: "filter_list", onClick: onClickFilter }, void 0);
-    if (isFiltered) {
-        button = (jsx(Badge, __assign({ color: badgeColor }, { children: jsx(Button, { iconName: "filter_list", onClick: onClickFilter }, void 0) }), void 0));
-    }
-    return (jsxs("div", __assign({ className: classnames("w-100", className) }, { children: [jsxs("div", __assign({ className: "d-flex justify-content-between mb-3" }, { children: [jsx("div", __assign({ className: "h4" }, { children: label }), void 0),
-                    jsxs("div", __assign({ className: "d-flex" }, { children: [onClickNew && jsx(Button, { iconName: "add", content: "New", onClick: onClickNew, className: "mr-3" }, void 0),
-                            onClickImport && (jsx(Button, { iconName: "cloud_upload", content: "Import", onClick: onClickImport, className: "mr-3" }, void 0)),
-                            onClickExport && jsx(Button, { iconName: "cloud_download", content: "Export", onClick: onClickExport }, void 0)] }), void 0)] }), void 0),
-            jsxs("div", __assign({ className: "flex-center-y" }, { children: [customView && jsx("div", __assign({ className: "header-table__custom-view-container" }, { children: customView() }), void 0),
-                    jsx(InputTextSearch, { className: "w-100 mr-3 bg-white", placeholder: placeholder, onChange: onChangeText, disabled: disabledSearch }, void 0),
-                    onClickFilter && button] }), void 0)] }), void 0));
-};
-
-var Header = function (_a) {
-    var Messages = _a.Messages, title = _a.title, _b = _a.saveText, saveText = _b === void 0 ? "save" : _b, _c = _a.cancelText, cancelText = _c === void 0 ? "back" : _c, _d = _a.deleteText, deleteText = _d === void 0 ? "delete" : _d, _e = _a.printText, printText = _e === void 0 ? "print" : _e, _f = _a.editText, editText = _f === void 0 ? "edit" : _f, onCancel = _a.onCancel, onSave = _a.onSave, onDelete = _a.onDelete, onPrint = _a.onPrint, onEdit = _a.onEdit, disabledSave = _a.disabledSave, customLeft = _a.customLeft, _g = _a.showCancel, showCancel = _g === void 0 ? true : _g;
-    var renderLeftView = function () {
-        if (customLeft) {
-            return customLeft();
-        }
-        return jsx("h4", __assign({ className: "text-primary" }, { children: title }), void 0);
-    };
-    return (jsxs("div", __assign({ className: "card-container d-common-header" }, { children: [renderLeftView(),
-            jsxs("div", __assign({ className: "d-common-header__button-group" }, { children: [showCancel && (jsx(Button, { variant: "outline", content: Messages ? Messages[cancelText] : cancelText, onClick: function () { return (onCancel ? onCancel() : window.history.go("back")); }, className: "mr-3" }, void 0)),
-                    onDelete && (jsx(Button, { content: Messages ? Messages[deleteText] : deleteText, onClick: onDelete, iconName: "delete", className: "mr-3" }, void 0)),
-                    onPrint && (jsx(Button, { content: Messages ? Messages[printText] : printText, onClick: onPrint, iconName: "print", className: "mr-3" }, void 0)),
-                    onEdit && (jsx(Button, { content: Messages ? Messages[editText] : editText, onClick: onEdit, className: "mr-3", iconName: "edit" }, void 0)),
-                    onSave && (jsx(Button, { content: Messages ? Messages[saveText] : saveText, onClick: onSave, disabled: disabledSave }, void 0))] }), void 0)] }), void 0));
-};
-
-function Avatar(_a) {
-    var _b = _a.size, size = _b === void 0 ? "medium" : _b, src = _a.src, alt = _a.alt, _c = _a.variant, variant = _c === void 0 ? "rounded" : _c, className = _a.className, text = _a.text, _d = _a.color, color = _d === void 0 ? "#D8D8D8" : _d, props = __rest$q(_a, ["size", "src", "alt", "variant", "className", "text", "color"]);
-    var wrapperClass = classnames("d-image__container d-image__" + variant + "-" + size + " bg-" + color, { "d-flex justify-content-center align-items-center": !!text }, className);
-    var imageClass = classnames("d-image__image");
-    var content;
-    if (text) {
-        var firstLetter = text.charAt(0);
-        content = (jsx("h2", __assign({ className: "text-white text-center", style: { fontWeight: "normal" } }, { children: firstLetter }), void 0));
-    }
-    if (src) {
-        content = jsx("img", __assign({ src: src }, props, { alt: alt, className: imageClass }), void 0);
-    }
-    return (jsx("div", __assign({ className: wrapperClass, style: { backgroundColor: color } }, { children: content }), void 0));
-}
-
-var AvatarName = function (_a) {
-    var user = _a.user, _b = _a.position, position = _b === void 0 ? "before" : _b, _c = _a.size, size = _c === void 0 ? "x-small" : _c, subLabel = _a.subLabel, className = _a.className, classNameText = _a.classNameText;
-    var avatar = user.avatar, fullName = user.fullName, _d = user.name, name = _d === void 0 ? "" : _d;
-    var displayName = name;
-    if (fullName) {
-        displayName = fullName;
-    }
-    var wrapperClass = classnames("d-flex align-items-center", className);
-    var nameClass = classnames("d-flex flex-column", {
-        "mr-2": position === "before",
-        "ml-2": position === "after",
-    });
-    var nameTextClass = classnames("text-nowrap", {
-        "text-large font-weight-bold": size === "large" || size === "x-large",
-        "text-medium": size === "medium",
-        "text-small": size === "small",
-        "text-x-small": size === "x-small",
-        "text-xx-small": size === "xx-small",
-    }, classNameText);
-    var renderName = function () {
-        return (jsxs("div", __assign({ className: nameClass }, { children: [jsx("div", __assign({ className: "" + nameTextClass }, { children: displayName }), void 0),
-                subLabel && jsx("div", __assign({ className: "text-x-small" }, { children: subLabel }), void 0)] }), void 0));
-    };
-    return (jsxs("div", __assign({ className: wrapperClass }, { children: [position === "before" && renderName(),
-            avatar && jsx(Avatar, { src: avatar, size: size }, void 0),
-            !avatar && jsx(Avatar, { text: displayName.charAt(0), size: size }, void 0),
-            position === "after" && renderName()] }), void 0));
-};
-
-// eslint-disable-next-line import/no-extraneous-dependencies
-var DATE_TIME_FORMAT = "DD/MM/YYYY HH:mm";
-var TIME_FORMAT = "HH:mm";
-var DATE_FORMAT = "DD/MM/YYYY";
-// react-datepicker format
-var DATE_TIME_INPUT_FORMAT = "dd/MM/yyyy HH:mm";
-var DATE_INPUT_FORMAT = "dd/MM/yyyy";
-var MONTH_INPUT_FORMAT = "mm/yyyy";
-var YEAR_INPUT_FORMAT = "yyyy";
-// ant design date picker format
-var ANT_DATE_TIME_INPUT_FORMAT = "DD/MM/YYYY HH:mm";
-var ANT_DATE_INPUT_FORMAT = "DD/MM/YYYY";
-var ANT_MONTH_INPUT_FORMAT = "MM/YYYY";
-var ANT_YEAR_INPUT_FORMAT = "YYYY";
-var MONTH_MILISECOND = 30 * 24 * 60 * 60 * 1000;
-var WEEK_MILISECOND = 7 * 24 * 60 * 60 * 1000;
-var DAY_MILISECOND = 24 * 60 * 60 * 1000;
-var convertMiliToMinutes = function (miliSeconds) {
-    if (!miliSeconds)
-        return 0;
-    return miliSeconds / (1000 * 60);
-};
-var convertMinutesToMili = function (minutes) {
-    if (!minutes)
-        return;
-    // eslint-disable-next-line consistent-return
-    return minutes * 60 * 1000;
-};
-var convertMiliToDateTime = function (timeInMillis, lang) {
-    if (lang === void 0) { lang = "en"; }
-    var date = new Date(timeInMillis);
-    if (lang === "th") {
-        return date ? moment(date).add("years", 543).format(DATE_TIME_FORMAT) : "";
-    }
-    return date ? moment(date).format(DATE_TIME_FORMAT) : "";
-};
-var convertDateTimeToMili = function (dateTime) {
-    var date = new Date(dateTime);
-    return date.getTime();
-};
-var convertMiliToDate = function (timeInMillis, lang) {
-    if (lang === void 0) { lang = "en"; }
-    var date = new Date(timeInMillis);
-    if (lang === "th") {
-        return date ? moment(date).add("years", 543).format(DATE_FORMAT) : "";
-    }
-    return date ? moment(date).format(DATE_FORMAT) : "";
-};
-var convertMiliToTime = function (timeInMillis) {
-    var date = new Date(timeInMillis);
-    return date ? moment(date).format(TIME_FORMAT) : "";
-};
-var convertMiliToDateWithFormat = function (timeInMillis, FORMAT) {
-    var date = new Date(timeInMillis);
-    return date ? moment(date).format(FORMAT) : "";
-};
-var convertToDefaultInputFormat = function (timeMili) {
-    return convertMiliToDateWithFormat(timeMili, "YYYY-MM-DDTHH:mm");
-};
-function calculateMonthDifferent(d1, d2) {
-    var date1 = new Date(d1);
-    var date2 = new Date(d2);
-    var months;
-    months = (date1.getFullYear() - date2.getFullYear()) * 12;
-    months += date1.getMonth();
-    months -= date2.getMonth();
-    return months <= 0 ? 0 : months;
-}
-function calculateWeekDifferent(d1, d2) {
-    var diff = (d1 - d2) / 1000;
-    diff /= 60 * 60 * 24 * 7;
-    return Math.abs(Math.round(diff));
-}
-function calculateDayDifferent(d1, d2) {
-    var diff = (d1 - d2) / 1000;
-    diff /= 60 * 60 * 24;
-    return Math.abs(Math.round(diff));
-}
-function calculateTimeDifferent(moment1, moment2, type) {
-    if (type === void 0) { type = "day"; }
-    // type accept : years, months, weeks, days, hours, minutes, and seconds
-    var start = moment(moment1);
-    var end = moment(moment2);
-    return end.diff(start, type);
-}
-function convertRangeDateToArray(date1, date2) {
-    var start = moment(date1);
-    var end = moment(date2);
-    var dates = [];
-    while (start <= end) {
-        dates.push(start.toString());
-        start = start.add(1, "days");
-    }
-    return dates;
-}
-var TimeUtils = {
-    convertToDefaultInputFormat: convertToDefaultInputFormat,
-    convertMiliToDateWithFormat: convertMiliToDateWithFormat,
-    convertMiliToTime: convertMiliToTime,
-    convertMiliToDate: convertMiliToDate,
-    convertMiliToMinutes: convertMiliToMinutes,
-    convertMinutesToMili: convertMinutesToMili,
-    convertMiliToDateTime: convertMiliToDateTime,
-    convertDateTimeToMili: convertDateTimeToMili,
-    calculateMonthDifferent: calculateMonthDifferent,
-    calculateWeekDifferent: calculateWeekDifferent,
-    calculateDayDifferent: calculateDayDifferent,
-    calculateTimeDifferent: calculateTimeDifferent,
-    convertRangeDateToArray: convertRangeDateToArray,
-    MONTH_MILISECOND: MONTH_MILISECOND,
-    WEEK_MILISECOND: WEEK_MILISECOND,
-    DAY_MILISECOND: DAY_MILISECOND,
-    DATE_FORMAT: DATE_FORMAT,
-    DATE_TIME_FORMAT: DATE_TIME_FORMAT,
-    DATE_INPUT_FORMAT: DATE_INPUT_FORMAT,
-    DATE_TIME_INPUT_FORMAT: DATE_TIME_INPUT_FORMAT,
-    MONTH_INPUT_FORMAT: MONTH_INPUT_FORMAT,
-    YEAR_INPUT_FORMAT: YEAR_INPUT_FORMAT,
-    ANT_DATE_TIME_INPUT_FORMAT: ANT_DATE_TIME_INPUT_FORMAT,
-    ANT_DATE_INPUT_FORMAT: ANT_DATE_INPUT_FORMAT,
-    ANT_MONTH_INPUT_FORMAT: ANT_MONTH_INPUT_FORMAT,
-    ANT_YEAR_INPUT_FORMAT: ANT_YEAR_INPUT_FORMAT,
-};
-
-var HeaderDetail = function (_a) {
-    var title = _a.title, status = _a.status, _b = _a.listStatus, listStatus = _b === void 0 ? [] : _b, _c = _a.listButton, listButton = _c === void 0 ? [
-        { id: "print", icon: "print", label: "print" },
-        { id: "cancel", icon: "cancel", label: "cancel" },
-    ] : _c, created = _a.created, user = _a.user, customRight = _a.customRight, customCreated = _a.customCreated, onButtonClick = _a.onButtonClick, Messages = _a.Messages;
-    var foundStatus = useMemo$1(function () {
-        var result = null;
-        if (status && listStatus.length > 0) {
-            result = listStatus.find(function (item) { return (item === null || item === void 0 ? void 0 : item.id) === status; });
-        }
-        return result;
-    }, [status]);
-    var leftView = function () {
-        var titleStatus = function () {
-            return (jsxs("div", __assign({ className: "d-flex" }, { children: [jsx("h4", { children: title }, void 0),
-                    foundStatus && (jsx("div", __assign({ className: "py-1 px-2 text-center ml-3 text-white", style: { backgroundColor: foundStatus.color } }, { children: Messages[foundStatus.label] }), void 0))] }), void 0));
-        };
-        var buttons = function () {
-            return (jsx("div", __assign({ className: "d-flex align-items-center" }, { children: listButton.map(function (button, index) {
-                    var buttonClass = classnames("p-0 text-gray font-weight-normal", {
-                        "mx-3": index !== 0,
-                    });
-                    return (jsx(Button, { variant: "trans", content: Messages[button.label], iconName: button.icon, className: buttonClass, onClick: function () { return onButtonClick && onButtonClick(button); } }, void 0));
-                }) }), void 0));
-        };
-        return (jsxs("div", __assign({ className: "d-flex flex-column" }, { children: [titleStatus(),
-                listButton.length > 0 && buttons()] }), void 0));
-    };
-    var createdView = (jsx("div", __assign({ className: "text-x-small text-gray" }, { children: Messages.createdOn + " " + TimeUtils.convertMiliToDate(created) + " " + Messages.at + " " + TimeUtils.convertMiliToTime(created) }), void 0));
-    if (customCreated) {
-        createdView = customCreated(created);
-    }
-    var rightView = function () {
-        if (customRight) {
-            return customRight();
-        }
-        return (jsxs("div", __assign({ className: "d-flex flex-column align-items-end" }, { children: [user && jsx(AvatarName, { user: user, className: "mb-1" }, void 0),
-                (created || customCreated) && createdView] }), void 0));
-    };
-    return (jsxs("div", __assign({ className: "card-container d-flex align-items-center justify-content-between p-4" }, { children: [leftView(),
-            rightView()] }), void 0));
-};
-
-var Modal = function (_a) {
-    var children = _a.children, open = _a.open, _b = _a.centered, centered = _b === void 0 ? true : _b, _c = _a.closable, closable = _c === void 0 ? false : _c, onClose = _a.onClose, onSave = _a.onSave, onSideClick = _a.onSideClick, cancelAction = _a.cancelAction, width = _a.width, title = _a.title, customHeader = _a.customHeader, customFooter = _a.customFooter, customSideButton = _a.customSideButton, headerSide = _a.headerSide, _d = _a.hasCloseIcon, hasCloseIcon = _d === void 0 ? true : _d, _e = _a.hasCancelButton, hasCancelButton = _e === void 0 ? false : _e, _f = _a.saveText, saveText = _f === void 0 ? "Save" : _f, _g = _a.cancelText, cancelText = _g === void 0 ? "Cancel" : _g, _h = _a.sideText, sideText = _h === void 0 ? "Clear" : _h, size = _a.size, className = _a.className, classNameContent = _a.classNameContent, classNameFooter = _a.classNameFooter, classNameHeader = _a.classNameHeader, _j = _a.showFooter, showFooter = _j === void 0 ? true : _j, _k = _a.showHeader, showHeader = _k === void 0 ? true : _k, props = __rest$q(_a, ["children", "open", "centered", "closable", "onClose", "onSave", "onSideClick", "cancelAction", "width", "title", "customHeader", "customFooter", "customSideButton", "headerSide", "hasCloseIcon", "hasCancelButton", "saveText", "cancelText", "sideText", "size", "className", "classNameContent", "classNameFooter", "classNameHeader", "showFooter", "showHeader"]);
-    var modalClass = classnames("d-modal", "d-modal__" + size, className);
-    var childrenClass = classnames("d-modal__children", classNameContent);
-    var headerClass = classnames("d-modal__header border-bottom ", { "d-flex align-items-center": !!title }, classNameHeader);
-    var footerClass = classnames("d-modal__footer d-flex align-items-center border-top py-3 px-3", classNameFooter);
-    var header = function () {
-        var content;
-        content = function () {
-            return (jsxs(React__default.Fragment, { children: [hasCloseIcon && (jsx(Button, { iconName: "close", variant: "trans", onClick: onClose, className: "d-modal__header-close-icon" }, void 0)),
-                    title && jsx("h4", __assign({ className: "w-100 text-center" }, { children: title }), void 0),
-                    headerSide && headerSide()] }, void 0));
-        };
-        if (customHeader) {
-            content = customHeader;
-        }
-        return jsx("div", __assign({ className: headerClass }, { children: content() }), void 0);
-    };
-    var footer = function () {
-        var content;
-        var sideButton;
-        sideButton = function () { return jsx(Button, { variant: "trans", content: sideText, onClick: onSideClick }, void 0); };
-        if (customSideButton) {
-            sideButton = customSideButton;
-        }
-        content = function () {
-            return (jsxs(React__default.Fragment, { children: [(onSideClick || !!customSideButton) && sideButton(),
-                    jsxs("div", __assign({ className: "w-100 d-flex align-items-center justify-content-end" }, { children: [hasCancelButton && (jsx(Button, { variant: "outline", content: cancelText, className: "mr-3", onClick: function (e) {
-                                    if (cancelAction) {
-                                        return cancelAction(e);
-                                    }
-                                    return onClose && onClose(e);
-                                } }, void 0)),
-                            jsx(Button, { variant: "standard", content: saveText, onClick: onSave }, void 0)] }), void 0)] }, void 0));
-        };
-        if (customFooter) {
-            content = customFooter;
-        }
-        return jsx("div", __assign({ className: footerClass }, { children: content() }), void 0);
-    };
-    return (jsxs(Modal$1, __assign({ visible: open, onCancel: onClose, centered: centered, className: modalClass, closable: closable, width: width, footer: null }, props, { children: [showHeader && header(),
-            jsx("div", __assign({ className: childrenClass }, { children: children }), void 0),
-            showFooter && footer()] }), void 0));
 };
 
 var lodash = createCommonjsModule(function (module, exports) {
@@ -67567,6 +67245,358 @@ var lodash = createCommonjsModule(function (module, exports) {
 }.call(commonjsGlobal));
 });
 
+var Dot = function (_a) {
+    var _b = _a.size, size = _b === void 0 ? "small" : _b, _c = _a.color, color = _c === void 0 ? "green" : _c, className = _a.className, style = _a.style;
+    var dotClass = classnames("d-dot_container", "d-dot__" + size + "-" + color, className);
+    return jsx("div", { className: dotClass, style: style }, void 0);
+};
+
+var Badge = function (_a) {
+    var children = _a.children, _b = _a.variant, variant = _b === void 0 ? "dot" : _b, _c = _a.shape, shape = _c === void 0 ? "round" : _c, index = _a.index, _d = _a.dotProps, dotProps = _d === void 0 ? {} : _d, className = _a.className, classNameBadge = _a.classNameBadge, _e = _a.color, color = _e === void 0 ? "secondary" : _e, _f = _a.size, size = _f === void 0 ? "medium" : _f, style = _a.style, badgeStyle = _a.badgeStyle, onClick = _a.onClick;
+    var wrapperClass = classnames("d-badge__container d-badge__container-" + variant, className);
+    var badgeWrapperClass = classnames("d-badge__badge-wrapper", { "rounded-circle": shape === "round" }, classNameBadge);
+    var badgeIndexClass = classnames("d-badge__badge-index-" + size + "-" + color);
+    var content = children;
+    var badge = jsx(Dot, __assign({}, dotProps, { color: color, size: size, style: badgeStyle }), void 0);
+    if (variant === "index") {
+        var display = index;
+        badge = jsx("div", {}, void 0);
+        if (typeof index === "number") {
+            display = index.toString();
+        }
+        if (display) {
+            badge = (jsx("div", __assign({ className: badgeIndexClass, style: badgeStyle }, { children: display }), void 0));
+        }
+    }
+    if (typeof children === "function") {
+        content = children();
+    }
+    var badgeView = jsx("div", __assign({ className: badgeWrapperClass }, { children: badge }), void 0);
+    if (lodash.isEmpty(content)) {
+        return badgeView;
+    }
+    return (jsxs("div", __assign({ className: wrapperClass, style: style, onClick: onClick }, { children: [badgeView,
+            content] }), void 0));
+};
+
+var InputTextSearch = function (_a) {
+    var className = _a.className, _b = _a.variant, variant = _b === void 0 ? "outline" : _b, value = _a.value, defaultValue = _a.defaultValue, error = _a.error, placeholder = _a.placeholder, disabled = _a.disabled, onChange = _a.onChange, onBlur = _a.onBlur;
+    var container = classnames("d-input-search", "d-input-search__" + variant, {
+        "d-input-search__disabled": disabled,
+        "d-input-search__error": !!error,
+    }, className);
+    return (jsxs("div", __assign({ className: container }, { children: [jsx(Icon$2, { name: "search", className: "mr-3" }, void 0),
+            jsx("input", { value: value, onChange: onChange, required: true, placeholder: placeholder, onBlur: onBlur, disabled: disabled, defaultValue: defaultValue }, void 0)] }), void 0));
+};
+
+var HeaderTable = function (_a) {
+    var _b = _a.className, className = _b === void 0 ? "" : _b, _c = _a.label, label = _c === void 0 ? "" : _c, _d = _a.placeholder, placeholder = _d === void 0 ? "Search" : _d, onChangeText = _a.onChangeText, _e = _a.disabledSearch, disabledSearch = _e === void 0 ? false : _e, onClickNew = _a.onClickNew, onClickExport = _a.onClickExport, onClickFilter = _a.onClickFilter, onClickImport = _a.onClickImport, customView = _a.customView, _f = _a.isFiltered, isFiltered = _f === void 0 ? false : _f, _g = _a.badgeColor, badgeColor = _g === void 0 ? "secondary" : _g;
+    var button = jsx(Button, { iconName: "filter_list", onClick: onClickFilter }, void 0);
+    if (isFiltered) {
+        button = (jsx(Badge, __assign({ color: badgeColor }, { children: jsx(Button, { iconName: "filter_list", onClick: onClickFilter }, void 0) }), void 0));
+    }
+    return (jsxs("div", __assign({ className: classnames("w-100", className) }, { children: [jsxs("div", __assign({ className: "d-flex justify-content-between mb-3" }, { children: [jsx("div", __assign({ className: "h4" }, { children: label }), void 0),
+                    jsxs("div", __assign({ className: "d-flex" }, { children: [onClickNew && jsx(Button, { iconName: "add", content: "New", onClick: onClickNew, className: "mr-3" }, void 0),
+                            onClickImport && (jsx(Button, { iconName: "cloud_upload", content: "Import", onClick: onClickImport, className: "mr-3" }, void 0)),
+                            onClickExport && jsx(Button, { iconName: "cloud_download", content: "Export", onClick: onClickExport }, void 0)] }), void 0)] }), void 0),
+            jsxs("div", __assign({ className: "flex-center-y" }, { children: [customView && jsx("div", __assign({ className: "header-table__custom-view-container" }, { children: customView() }), void 0),
+                    jsx(InputTextSearch, { className: "w-100 mr-3 bg-white", placeholder: placeholder, onChange: onChangeText, disabled: disabledSearch }, void 0),
+                    onClickFilter && button] }), void 0)] }), void 0));
+};
+
+var Header = function (_a) {
+    var Messages = _a.Messages, title = _a.title, _b = _a.saveText, saveText = _b === void 0 ? "Save" : _b, _c = _a.cancelText, cancelText = _c === void 0 ? "Back" : _c, _d = _a.deleteText, deleteText = _d === void 0 ? "Delete" : _d, _e = _a.printText, printText = _e === void 0 ? "Print" : _e, _f = _a.editText, editText = _f === void 0 ? "Edit" : _f, onCancel = _a.onCancel, onSave = _a.onSave, onDelete = _a.onDelete, onPrint = _a.onPrint, onEdit = _a.onEdit, disabledSave = _a.disabledSave, customLeft = _a.customLeft, _g = _a.showCancel, showCancel = _g === void 0 ? true : _g, className = _a.className;
+    var renderLeftView = function () {
+        if (customLeft) {
+            return customLeft();
+        }
+        return jsx("h4", __assign({ className: "text-primary" }, { children: title }), void 0);
+    };
+    return (jsxs("div", __assign({ className: "card-container d-common-header " + className }, { children: [renderLeftView(),
+            jsxs("div", __assign({ className: "d-common-header__button-group" }, { children: [showCancel && (jsx(Button, { variant: "outline", content: Messages ? Messages[cancelText] : cancelText, onClick: function () { return (onCancel ? onCancel() : window.history.go("back")); }, className: "mr-3" }, void 0)),
+                    onDelete && (jsx(Button, { content: Messages ? Messages[deleteText] : deleteText, onClick: onDelete, iconName: "delete", className: "mr-3" }, void 0)),
+                    onPrint && (jsx(Button, { content: Messages ? Messages[printText] : printText, onClick: onPrint, iconName: "print", className: "mr-3" }, void 0)),
+                    onEdit && (jsx(Button, { content: Messages ? Messages[editText] : editText, onClick: onEdit, className: "mr-3", iconName: "edit" }, void 0)),
+                    onSave && (jsx(Button, { content: Messages ? Messages[saveText] : saveText, onClick: onSave, disabled: disabledSave }, void 0))] }), void 0)] }), void 0));
+};
+
+function Avatar(_a) {
+    var _b = _a.size, size = _b === void 0 ? "medium" : _b, src = _a.src, alt = _a.alt, _c = _a.variant, variant = _c === void 0 ? "rounded" : _c, className = _a.className, text = _a.text, _d = _a.color, color = _d === void 0 ? "#D8D8D8" : _d, props = __rest$q(_a, ["size", "src", "alt", "variant", "className", "text", "color"]);
+    var wrapperClass = classnames("d-image__container d-image__" + variant + "-" + size + " bg-" + color, { "d-flex justify-content-center align-items-center": !!text }, className);
+    var imageClass = classnames("d-image__image");
+    var content;
+    if (text) {
+        var firstLetter = text.charAt(0);
+        content = (jsx("h2", __assign({ className: "text-white text-center", style: { fontWeight: "normal" } }, { children: firstLetter }), void 0));
+    }
+    if (src) {
+        content = jsx("img", __assign({ src: src }, props, { alt: alt, className: imageClass }), void 0);
+    }
+    return (jsx("div", __assign({ className: wrapperClass, style: { backgroundColor: color } }, { children: content }), void 0));
+}
+
+var AvatarName = function (_a) {
+    var user = _a.user, _b = _a.position, position = _b === void 0 ? "before" : _b, _c = _a.size, size = _c === void 0 ? "x-small" : _c, subLabel = _a.subLabel, className = _a.className, classNameText = _a.classNameText;
+    var avatar = user.avatar, fullName = user.fullName, _d = user.name, name = _d === void 0 ? "" : _d;
+    var displayName = name;
+    if (fullName) {
+        displayName = fullName;
+    }
+    var wrapperClass = classnames("d-flex align-items-center", className);
+    var nameClass = classnames("d-flex flex-column", {
+        "mr-2": position === "before",
+        "ml-2": position === "after",
+    });
+    var nameTextClass = classnames("text-nowrap", {
+        "text-large font-weight-bold": size === "large" || size === "x-large",
+        "text-medium": size === "medium",
+        "text-small": size === "small",
+        "text-x-small": size === "x-small",
+        "text-xx-small": size === "xx-small",
+    }, classNameText);
+    var renderName = function () {
+        return (jsxs("div", __assign({ className: nameClass }, { children: [jsx("div", __assign({ className: "" + nameTextClass }, { children: displayName }), void 0),
+                subLabel && jsx("div", __assign({ className: "text-x-small" }, { children: subLabel }), void 0)] }), void 0));
+    };
+    return (jsxs("div", __assign({ className: wrapperClass }, { children: [position === "before" && renderName(),
+            avatar && jsx(Avatar, { src: avatar, size: size }, void 0),
+            !avatar && jsx(Avatar, { text: displayName.charAt(0), size: size }, void 0),
+            position === "after" && renderName()] }), void 0));
+};
+
+// eslint-disable-next-line import/no-extraneous-dependencies
+var DATE_TIME_FORMAT = "DD/MM/YYYY HH:mm";
+var TIME_FORMAT = "HH:mm";
+var DATE_FORMAT = "DD/MM/YYYY";
+// react-datepicker format
+var DATE_TIME_INPUT_FORMAT = "dd/MM/yyyy HH:mm";
+var DATE_INPUT_FORMAT = "dd/MM/yyyy";
+var MONTH_INPUT_FORMAT = "mm/yyyy";
+var YEAR_INPUT_FORMAT = "yyyy";
+// ant design date picker format
+var ANT_DATE_TIME_INPUT_FORMAT = "DD/MM/YYYY HH:mm";
+var ANT_DATE_INPUT_FORMAT = "DD/MM/YYYY";
+var ANT_MONTH_INPUT_FORMAT = "MM/YYYY";
+var ANT_YEAR_INPUT_FORMAT = "YYYY";
+var MONTH_MILISECOND = 30 * 24 * 60 * 60 * 1000;
+var WEEK_MILISECOND = 7 * 24 * 60 * 60 * 1000;
+var DAY_MILISECOND = 24 * 60 * 60 * 1000;
+var convertMiliToMinutes = function (miliSeconds) {
+    if (!miliSeconds)
+        return 0;
+    return miliSeconds / (1000 * 60);
+};
+var convertMinutesToMili = function (minutes) {
+    if (!minutes)
+        return;
+    // eslint-disable-next-line consistent-return
+    return minutes * 60 * 1000;
+};
+var convertMiliToDateTime = function (timeInMillis, lang) {
+    if (lang === void 0) { lang = "en"; }
+    var date = new Date(timeInMillis);
+    if (lang === "th") {
+        return date ? moment(date).add("years", 543).format(DATE_TIME_FORMAT) : "";
+    }
+    return date ? moment(date).format(DATE_TIME_FORMAT) : "";
+};
+var convertDateTimeToMili = function (dateTime) {
+    var date = new Date(dateTime);
+    return date.getTime();
+};
+var convertMiliToDate = function (timeInMillis, lang) {
+    if (lang === void 0) { lang = "en"; }
+    var date = new Date(timeInMillis);
+    if (lang === "th") {
+        return date ? moment(date).add("years", 543).format(DATE_FORMAT) : "";
+    }
+    return date ? moment(date).format(DATE_FORMAT) : "";
+};
+var convertMiliToTime = function (timeInMillis) {
+    var date = new Date(timeInMillis);
+    return date ? moment(date).format(TIME_FORMAT) : "";
+};
+var convertMiliToDateWithFormat = function (timeInMillis, FORMAT) {
+    var date = new Date(timeInMillis);
+    return date ? moment(date).format(FORMAT) : "";
+};
+var convertToDefaultInputFormat = function (timeMili) {
+    return convertMiliToDateWithFormat(timeMili, "YYYY-MM-DDTHH:mm");
+};
+function calculateMonthDifferent(d1, d2) {
+    var date1 = new Date(d1);
+    var date2 = new Date(d2);
+    var months;
+    months = (date1.getFullYear() - date2.getFullYear()) * 12;
+    months += date1.getMonth();
+    months -= date2.getMonth();
+    return months <= 0 ? 0 : months;
+}
+function calculateWeekDifferent(d1, d2) {
+    var diff = (d1 - d2) / 1000;
+    diff /= 60 * 60 * 24 * 7;
+    return Math.abs(Math.round(diff));
+}
+function calculateDayDifferent(d1, d2) {
+    var diff = (d1 - d2) / 1000;
+    diff /= 60 * 60 * 24;
+    return Math.abs(Math.round(diff));
+}
+function calculateTimeDifferent(moment1, moment2, type) {
+    if (type === void 0) { type = "day"; }
+    // type accept : years, months, weeks, days, hours, minutes, and seconds
+    var start = moment(moment1);
+    var end = moment(moment2);
+    return end.diff(start, type);
+}
+function convertRangeDateToArray(date1, date2) {
+    var start = moment(date1);
+    var end = moment(date2);
+    var dates = [];
+    while (start <= end) {
+        dates.push(start.toString());
+        start = start.add(1, "days");
+    }
+    return dates;
+}
+var TimeUtils = {
+    convertToDefaultInputFormat: convertToDefaultInputFormat,
+    convertMiliToDateWithFormat: convertMiliToDateWithFormat,
+    convertMiliToTime: convertMiliToTime,
+    convertMiliToDate: convertMiliToDate,
+    convertMiliToMinutes: convertMiliToMinutes,
+    convertMinutesToMili: convertMinutesToMili,
+    convertMiliToDateTime: convertMiliToDateTime,
+    convertDateTimeToMili: convertDateTimeToMili,
+    calculateMonthDifferent: calculateMonthDifferent,
+    calculateWeekDifferent: calculateWeekDifferent,
+    calculateDayDifferent: calculateDayDifferent,
+    calculateTimeDifferent: calculateTimeDifferent,
+    convertRangeDateToArray: convertRangeDateToArray,
+    MONTH_MILISECOND: MONTH_MILISECOND,
+    WEEK_MILISECOND: WEEK_MILISECOND,
+    DAY_MILISECOND: DAY_MILISECOND,
+    DATE_FORMAT: DATE_FORMAT,
+    DATE_TIME_FORMAT: DATE_TIME_FORMAT,
+    DATE_INPUT_FORMAT: DATE_INPUT_FORMAT,
+    DATE_TIME_INPUT_FORMAT: DATE_TIME_INPUT_FORMAT,
+    MONTH_INPUT_FORMAT: MONTH_INPUT_FORMAT,
+    YEAR_INPUT_FORMAT: YEAR_INPUT_FORMAT,
+    ANT_DATE_TIME_INPUT_FORMAT: ANT_DATE_TIME_INPUT_FORMAT,
+    ANT_DATE_INPUT_FORMAT: ANT_DATE_INPUT_FORMAT,
+    ANT_MONTH_INPUT_FORMAT: ANT_MONTH_INPUT_FORMAT,
+    ANT_YEAR_INPUT_FORMAT: ANT_YEAR_INPUT_FORMAT,
+};
+
+var HeaderDetail = function (_a) {
+    var title = _a.title, status = _a.status, _b = _a.listStatus, listStatus = _b === void 0 ? [] : _b, _c = _a.listButton, listButton = _c === void 0 ? [
+        { id: "print", icon: "print", label: "print" },
+        { id: "cancel", icon: "cancel", label: "cancel" },
+    ] : _c, created = _a.created, user = _a.user, customRight = _a.customRight, customCreated = _a.customCreated, onButtonClick = _a.onButtonClick, Messages = _a.Messages;
+    var foundStatus = useMemo$1(function () {
+        var result = null;
+        if (status && listStatus.length > 0) {
+            result = listStatus.find(function (item) { return (item === null || item === void 0 ? void 0 : item.id) === status; });
+        }
+        return result;
+    }, [status]);
+    var leftView = function () {
+        var titleStatus = function () {
+            return (jsxs("div", __assign({ className: "d-flex" }, { children: [jsx("h4", { children: title }, void 0),
+                    foundStatus && (jsx("div", __assign({ className: "py-1 px-2 text-center ml-3 text-white", style: { backgroundColor: foundStatus.color } }, { children: Messages[foundStatus.label] }), void 0))] }), void 0));
+        };
+        var buttons = function () {
+            return (jsx("div", __assign({ className: "d-flex align-items-center" }, { children: listButton.map(function (button, index) {
+                    var buttonClass = classnames("p-0 text-gray font-weight-normal", {
+                        "mx-3": index !== 0,
+                    });
+                    return (jsx(Button, { variant: "trans", content: Messages[button.label], iconName: button.icon, className: buttonClass, onClick: function () { return onButtonClick && onButtonClick(button); } }, void 0));
+                }) }), void 0));
+        };
+        return (jsxs("div", __assign({ className: "d-flex flex-column" }, { children: [titleStatus(),
+                listButton.length > 0 && buttons()] }), void 0));
+    };
+    var createdView = (jsx("div", __assign({ className: "text-x-small text-gray" }, { children: Messages.createdOn + " " + TimeUtils.convertMiliToDate(created) + " " + Messages.at + " " + TimeUtils.convertMiliToTime(created) }), void 0));
+    if (customCreated) {
+        createdView = customCreated(created);
+    }
+    var rightView = function () {
+        if (customRight) {
+            return customRight();
+        }
+        return (jsxs("div", __assign({ className: "d-flex flex-column align-items-end" }, { children: [user && jsx(AvatarName, { user: user, className: "mb-1" }, void 0),
+                (created || customCreated) && createdView] }), void 0));
+    };
+    return (jsxs("div", __assign({ className: "card-container d-flex align-items-center justify-content-between p-4" }, { children: [leftView(),
+            rightView()] }), void 0));
+};
+
+var HeaderBlock = function (_a) {
+    var title = _a.title, className = _a.className, style = _a.style, classNameTitle = _a.classNameTitle, styleTitle = _a.styleTitle, _b = _a.showLine, showLine = _b === void 0 ? true : _b, showArrow = _a.showArrow, customRight = _a.customRight, _c = _a.arrowProps, arrowProps = _c === void 0 ? {} : _c, _d = _a.lineColor, lineColor = _d === void 0 ? "gray" : _d, _e = _a.arrowColor, arrowColor = _e === void 0 ? "gray" : _e, onPrevious = _a.onPrevious, onNext = _a.onNext;
+    var wrapperClass = classnames("w-100 d-flex align-items-center py-3 text-nowrap", className);
+    var titleClass = classnames("text-bold", classNameTitle);
+    var lineClass = classnames("border border-" + lineColor + " w-100 ml-4", { "mr-4": showArrow || customRight });
+    var rightSide = function () {
+        var content;
+        if (showArrow) {
+            content = (jsxs("div", __assign({ className: "d-flex align-items-center" }, { children: [jsx(Button, __assign({ iconName: "chevron_left", variant: "outline", onClick: onPrevious, className: "mr-3 px-1", size: "fit-content", color: arrowColor }, arrowProps), void 0),
+                    jsx(Button, __assign({ iconName: "chevron_right", variant: "outline", onClick: onNext, className: "px-1", size: "fit-content", color: arrowColor }, arrowProps), void 0)] }), void 0));
+        }
+        if (customRight) {
+            content = customRight;
+        }
+        return content;
+    };
+    return (jsxs("div", __assign({ className: wrapperClass, style: style }, { children: [jsx("div", __assign({ className: titleClass, style: styleTitle }, { children: title }), void 0),
+            showLine && jsx("div", { className: lineClass }, void 0),
+            rightSide()] }), void 0));
+};
+
+var Modal = function (_a) {
+    var children = _a.children, open = _a.open, _b = _a.centered, centered = _b === void 0 ? true : _b, _c = _a.closable, closable = _c === void 0 ? false : _c, onClose = _a.onClose, onSave = _a.onSave, onSideClick = _a.onSideClick, cancelAction = _a.cancelAction, width = _a.width, title = _a.title, customHeader = _a.customHeader, customFooter = _a.customFooter, customSideButton = _a.customSideButton, headerSide = _a.headerSide, _d = _a.hasCloseIcon, hasCloseIcon = _d === void 0 ? true : _d, _e = _a.hasCancelButton, hasCancelButton = _e === void 0 ? false : _e, _f = _a.saveText, saveText = _f === void 0 ? "Save" : _f, _g = _a.cancelText, cancelText = _g === void 0 ? "Cancel" : _g, _h = _a.sideText, sideText = _h === void 0 ? "Clear" : _h, size = _a.size, className = _a.className, classNameContent = _a.classNameContent, classNameFooter = _a.classNameFooter, classNameHeader = _a.classNameHeader, _j = _a.showFooter, showFooter = _j === void 0 ? true : _j, _k = _a.showHeader, showHeader = _k === void 0 ? true : _k, props = __rest$q(_a, ["children", "open", "centered", "closable", "onClose", "onSave", "onSideClick", "cancelAction", "width", "title", "customHeader", "customFooter", "customSideButton", "headerSide", "hasCloseIcon", "hasCancelButton", "saveText", "cancelText", "sideText", "size", "className", "classNameContent", "classNameFooter", "classNameHeader", "showFooter", "showHeader"]);
+    var modalClass = classnames("d-modal", "d-modal__" + size, className);
+    var childrenClass = classnames("d-modal__children", classNameContent);
+    var headerClass = classnames("d-modal__header border-bottom ", { "d-flex align-items-center": !!title }, classNameHeader);
+    var footerClass = classnames("d-modal__footer d-flex align-items-center border-top py-3 px-3", classNameFooter);
+    var header = function () {
+        var content;
+        content = function () {
+            return (jsxs(React__default.Fragment, { children: [hasCloseIcon && (jsx(Button, { iconName: "close", variant: "trans", onClick: onClose, className: "d-modal__header-close-icon" }, void 0)),
+                    title && jsx("h4", __assign({ className: "w-100 text-center" }, { children: title }), void 0),
+                    headerSide && headerSide()] }, void 0));
+        };
+        if (customHeader) {
+            content = customHeader;
+        }
+        return jsx("div", __assign({ className: headerClass }, { children: content() }), void 0);
+    };
+    var footer = function () {
+        var content;
+        var sideButton;
+        sideButton = function () { return jsx(Button, { variant: "trans", content: sideText, onClick: onSideClick }, void 0); };
+        if (customSideButton) {
+            sideButton = customSideButton;
+        }
+        content = function () {
+            return (jsxs(React__default.Fragment, { children: [(onSideClick || !!customSideButton) && sideButton(),
+                    jsxs("div", __assign({ className: "w-100 d-flex align-items-center justify-content-end" }, { children: [hasCancelButton && (jsx(Button, { variant: "outline", content: cancelText, className: "mr-3", onClick: function (e) {
+                                    if (cancelAction) {
+                                        return cancelAction(e);
+                                    }
+                                    return onClose && onClose(e);
+                                } }, void 0)),
+                            jsx(Button, { variant: "standard", content: saveText, onClick: onSave }, void 0)] }), void 0)] }, void 0));
+        };
+        if (customFooter) {
+            content = customFooter;
+        }
+        return jsx("div", __assign({ className: footerClass }, { children: content() }), void 0);
+    };
+    return (jsxs(Modal$1, __assign({ visible: open, onCancel: onClose, centered: centered, className: modalClass, closable: closable, width: width, footer: null }, props, { children: [showHeader && header(),
+            jsx("div", __assign({ className: childrenClass }, { children: children }), void 0),
+            showFooter && footer()] }), void 0));
+};
+
 var getValueFromStringKey = function (object, keyString) {
     var keyList = keyString.split(".");
     if (keyList.length === 0) {
@@ -67771,8 +67801,38 @@ var ViewRow = function (_a) {
             jsx("div", __assign({ className: contentClass, style: styleContent }, { children: content }), void 0)] }), void 0));
 };
 
+var en = {
+    error: "Error",
+    success: "Success",
+    info: "Info",
+    warning: "Warning",
+    cancel: "Cancel",
+    retry: "Retry",
+    showMore: "Show More",
+    showLess: "Show Less",
+};
+
+var th = {
+    error: "ผิดพลาด",
+    success: "สำเร็จ",
+    info: "ข้อมูล",
+    warning: "คำเตือน",
+    cancel: "ยกเลิก",
+    retry: "ลองอีกครั้ง",
+    showMore: "Show More",
+    showLess: "Show Less",
+};
+
+var _a;
+var Languages = {
+    en: en,
+    th: th,
+};
+var currentLang = (_a = document.documentElement.lang) !== null && _a !== void 0 ? _a : "en";
+var Messages = Languages[currentLang];
+
 var ViewTextarea = function (_a) {
-    var children = _a.children, className = _a.className, style = _a.style, _b = _a.showLessText, showLessText = _b === void 0 ? "showLess" : _b, _c = _a.showMoreText, showMoreText = _c === void 0 ? "showMore" : _c, _d = _a.limitedLength, limitedLength = _d === void 0 ? 200 : _d;
+    var children = _a.children, className = _a.className, classNameContent = _a.classNameContent, classNameShowMore = _a.classNameShowMore, classNameShowLess = _a.classNameShowLess, style = _a.style, _b = _a.showLessText, showLessText = _b === void 0 ? Messages.showLess : _b, _c = _a.showMoreText, showMoreText = _c === void 0 ? Messages.showMore : _c, _d = _a.limitedLength, limitedLength = _d === void 0 ? 200 : _d;
     var _e = useState(false), expanding = _e[0], setExpanding = _e[1];
     var contentLength = useMemo$1(function () {
         return children.length;
@@ -67785,11 +67845,14 @@ var ViewTextarea = function (_a) {
     var isShowMore = isOverFollow && !expanding;
     var isShowLess = isOverFollow && expanding;
     // classNames
-    var wrapperClass = classnames("d-view-textarea text-small", className);
+    var wrapperClass = classnames("d-view-textarea text-small text-start", className);
     var contentClass = classnames("d-view-textarea__content", {
         "text-nowrap": isOverFollow && !expanding,
         // "d-inline-block": !expanding,
-    }, className);
+    }, classNameContent);
+    var showClass = "d-view-textarea__show-more text-secondary hover-pointer text-x-small";
+    var showMoreClass = classnames(showClass, classNameShowMore);
+    var showLessClass = classnames(showClass, classNameShowLess);
     useEffect(function () {
         setTimeout(function () {
             var _a;
@@ -67797,26 +67860,33 @@ var ViewTextarea = function (_a) {
         }, 200);
     }, [children]);
     return (jsxs("div", __assign({ className: wrapperClass, style: style }, { children: [jsxs("div", __assign({ className: contentClass, ref: function (ref) { return (contentRef.current = ref); } }, { children: [children,
-                    isShowLess && (jsx("span", __assign({ className: "d-view-textarea__show-more text-primary hover-pointer", onClick: function () { return setExpanding(false); } }, { children: showLessText }), void 0))] }), void 0),
-            isShowMore && (jsx("span", __assign({ className: "d-view-textarea__show-more text-primary hover-pointer", onClick: function () { return setExpanding(true); } }, { children: showMoreText }), void 0))] }), void 0));
+                    isShowLess && (jsx("span", __assign({ className: showLessClass, onClick: function () { return setExpanding(false); } }, { children: " " + showLessText }), void 0))] }), void 0),
+            isShowMore && (jsx("span", __assign({ className: showMoreClass, onClick: function () { return setExpanding(true); } }, { children: showMoreText }), void 0))] }), void 0));
 };
 
 var TabBar = function (_a) {
-    var _b = _a.dataSource, dataSource = _b === void 0 ? [] : _b, value = _a.value, onChange = _a.onChange, className = _a.className, classNameTabItem = _a.classNameTabItem, getLabel = _a.getLabel, _c = _a.variant, variant = _c === void 0 ? "horizontal" : _c;
-    var wrapperClass = classnames("d-tab-bar d-tab-bar__" + variant, { "d-flex flex-wrap": variant === "horizontal" }, className);
-    return (jsx("div", __assign({ className: wrapperClass }, { children: dataSource.map(function (tabItem, index) {
+    var _b = _a.dataSource, dataSource = _b === void 0 ? [] : _b, value = _a.value, onChange = _a.onChange, className = _a.className, classNameItem = _a.classNameItem, getLabel = _a.getLabel, _c = _a.variant, variant = _c === void 0 ? "horizontal" : _c, tabBarItemProps = _a.tabBarItemProps, _d = _a.isScroll, isScroll = _d === void 0 ? false : _d, _e = _a.minWidthItem, minWidthItem = _e === void 0 ? "200px" : _e;
+    var wrapperClass = classnames("d-tab-bar d-tab-bar__" + variant, {
+        "d-flex ": variant === "horizontal",
+        "flex-wrap": !isScroll && variant === "horizontal",
+    }, className);
+    var activateScroll = isScroll && variant === "horizontal";
+    return (jsx("div", __assign({ className: wrapperClass, style: { overflowX: activateScroll ? "scroll" : undefined } }, { children: dataSource.map(function (tabItem, index) {
             var _a, _b;
             var isSelect = (value === null || value === void 0 ? void 0 : value.id) === (tabItem === null || tabItem === void 0 ? void 0 : tabItem.id);
-            var itemClass = classnames(classNameTabItem, "d-tab-bar__item text-small", {
-                // "d-tab-bar__item-active text-primary": isSelect,
+            var itemClass = classnames("d-tab-bar__item text-small", {
                 "d-tab-bar__item-active": isSelect,
-            });
+            }, classNameItem);
             var label = (_a = tabItem === null || tabItem === void 0 ? void 0 : tabItem.label) !== null && _a !== void 0 ? _a : "N/A";
             var icon = (_b = tabItem === null || tabItem === void 0 ? void 0 : tabItem.iconName) !== null && _b !== void 0 ? _b : undefined;
             if (getLabel) {
                 label = getLabel(tabItem);
             }
-            return (jsx(Button, { className: itemClass, onClick: function () { return onChange && onChange(tabItem); }, variant: "trans", content: label, iconName: icon }, index));
+            var buttonProps = {};
+            if (tabBarItemProps) {
+                buttonProps = tabBarItemProps(tabItem, isSelect);
+            }
+            return (jsx(Button, __assign({ className: itemClass, onClick: function () { return onChange && onChange(tabItem); }, variant: "trans", iconName: icon, style: { minWidth: activateScroll ? minWidthItem : undefined } }, buttonProps, { children: label }), index));
         }) }), void 0));
 };
 
@@ -75259,32 +75329,6 @@ var Dialog = function (props, ref) {
 };
 var DialogComponent = forwardRef(Dialog);
 
-var en = {
-    error: "Error",
-    success: "Success",
-    info: "Info",
-    warning: "Warning",
-    cancel: "Cancel",
-    retry: "Retry",
-};
-
-var th = {
-    error: "ผิดพลาด",
-    success: "สำเร็จ",
-    info: "ข้อมูล",
-    warning: "คำเตือน",
-    cancel: "ยกเลิก",
-    retry: "ลองอีกครั้ง",
-};
-
-var _a;
-var Languages = {
-    en: en,
-    th: th,
-};
-var currentLang = (_a = document.documentElement.lang) !== null && _a !== void 0 ? _a : "en";
-var Messages = Languages[currentLang];
-
 var ProgressComponent = /** @class */ (function (_super) {
     __extends(ProgressComponent, _super);
     function ProgressComponent(props) {
@@ -75441,5 +75485,5 @@ var showInfo = function (content, action) {
 };
 var Notifications = { showError: showError, showInfo: showInfo, showSuccess: showSuccess, showWarning: showWarning };
 
-export { Avatar, AvatarName, AwesomeListComponent, AwesomeTableComponent, AwesomeTableUtils, Badge, Button, Checkbox, CheckboxGroup, DateInput, DialogComponent, DialogManager, Dot, Dropdown, Header, HeaderDetail, HeaderTable, Icon$2 as Icon, ImageUtils, InputText, Loading, MapUtils, Modal, Notifications, ObjectUtils, PopoverList, Progress, ProgressComponent, RadioGroup, RowInterchangeView, Select, StringUtils, TabBar, TimeUtils, TreeDataUtils, TreeSelect, UrlUtils, ViewRow, ViewTextarea };
+export { Avatar, AvatarName, AwesomeListComponent, AwesomeTableComponent, AwesomeTableUtils, Badge, Button, Checkbox, CheckboxGroup, DateInput, DialogComponent, DialogManager, Dot, Dropdown, Header, HeaderBlock, HeaderDetail, HeaderTable, Icon$2 as Icon, ImageUtils, InputText, Loading, MapUtils, Modal, Notifications, ObjectUtils, PopoverList, Progress, ProgressComponent, RadioGroup, RowInterchangeView, Select, StringUtils, TabBar, TimeUtils, TreeDataUtils, TreeSelect, UrlUtils, ViewRow, ViewTextarea };
 //# sourceMappingURL=dcomponent.es.js.map

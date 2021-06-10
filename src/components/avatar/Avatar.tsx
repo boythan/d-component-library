@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import React, { ReactElement } from "react";
 import ClassNames from "classnames";
 
@@ -6,6 +7,8 @@ export interface AvatarProps extends React.ImgHTMLAttributes<HTMLImageElement> {
     variant?: "rounded" | "square";
     text?: string;
     color?: string;
+    classNameImage?: string;
+    classNameLetter?: string;
 }
 
 export default function Avatar({
@@ -14,6 +17,8 @@ export default function Avatar({
     alt,
     variant = "rounded",
     className,
+    classNameImage,
+    classNameLetter,
     text,
     color = "#D8D8D8",
     ...props
@@ -23,14 +28,27 @@ export default function Avatar({
         { "d-flex justify-content-center align-items-center": !!text },
         className
     );
-    const imageClass = ClassNames("d-image__image");
+    const imageClass = ClassNames("d-image__image", classNameImage);
+    const letterClass = ClassNames(
+        "text-white text-center font-weight-normal",
+        {
+            h1: size === "medium",
+            h3: size === "small",
+            h4: size === "x-small",
+            h5: size === "xx-small",
+        },
+        classNameLetter
+    );
     let content;
     if (text) {
         const firstLetter = text.charAt(0);
         content = (
-            <h2 className="text-white text-center" style={{ fontWeight: "normal" }}>
+            <div
+                className={letterClass}
+                style={{ fontSize: size === "large" ? "56px" : size === "x-large" ? "80px" : undefined }}
+            >
                 {firstLetter}
-            </h2>
+            </div>
         );
     }
     if (src) {
