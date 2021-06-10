@@ -67290,12 +67290,12 @@ var InputTextSearch = function (_a) {
 };
 
 var HeaderTable = function (_a) {
-    var _b = _a.className, className = _b === void 0 ? "" : _b, _c = _a.label, label = _c === void 0 ? "" : _c, _d = _a.placeholder, placeholder = _d === void 0 ? "Search" : _d, onChangeText = _a.onChangeText, _e = _a.disabledSearch, disabledSearch = _e === void 0 ? false : _e, onClickNew = _a.onClickNew, onClickExport = _a.onClickExport, onClickFilter = _a.onClickFilter, onClickImport = _a.onClickImport, customView = _a.customView, _f = _a.isFiltered, isFiltered = _f === void 0 ? false : _f, _g = _a.badgeColor, badgeColor = _g === void 0 ? "secondary" : _g;
+    var _b = _a.className, className = _b === void 0 ? "" : _b, classNameTop = _a.classNameTop, style = _a.style, _c = _a.label, label = _c === void 0 ? "" : _c, _d = _a.placeholder, placeholder = _d === void 0 ? "Search" : _d, onChangeText = _a.onChangeText, _e = _a.disabledSearch, disabledSearch = _e === void 0 ? false : _e, onClickNew = _a.onClickNew, onClickExport = _a.onClickExport, onClickFilter = _a.onClickFilter, onClickImport = _a.onClickImport, customView = _a.customView, _f = _a.isFiltered, isFiltered = _f === void 0 ? false : _f, _g = _a.badgeColor, badgeColor = _g === void 0 ? "secondary" : _g;
     var button = jsx(Button, { iconName: "filter_list", onClick: onClickFilter }, void 0);
     if (isFiltered) {
         button = (jsx(Badge, __assign({ color: badgeColor }, { children: jsx(Button, { iconName: "filter_list", onClick: onClickFilter }, void 0) }), void 0));
     }
-    return (jsxs("div", __assign({ className: classnames("w-100", className) }, { children: [jsxs("div", __assign({ className: "d-flex justify-content-between mb-3" }, { children: [jsx("div", __assign({ className: "h4" }, { children: label }), void 0),
+    return (jsxs("div", __assign({ className: classnames("w-100", className), style: style }, { children: [jsxs("div", __assign({ className: classnames("d-flex justify-content-between mb-3", classNameTop) }, { children: [jsx("div", __assign({ className: "h4" }, { children: label }), void 0),
                     jsxs("div", __assign({ className: "d-flex" }, { children: [onClickNew && jsx(Button, { iconName: "add", content: "New", onClick: onClickNew, className: "mr-3" }, void 0),
                             onClickImport && (jsx(Button, { iconName: "cloud_upload", content: "Import", onClick: onClickImport, className: "mr-3" }, void 0)),
                             onClickExport && jsx(Button, { iconName: "cloud_download", content: "Export", onClick: onClickExport }, void 0)] }), void 0)] }), void 0),
@@ -67342,7 +67342,7 @@ function Avatar(_a) {
 }
 
 var AvatarName = function (_a) {
-    var user = _a.user, _b = _a.position, position = _b === void 0 ? "before" : _b, _c = _a.size, size = _c === void 0 ? "x-small" : _c, subLabel = _a.subLabel, className = _a.className, classNameText = _a.classNameText;
+    var user = _a.user, _b = _a.position, position = _b === void 0 ? "after" : _b, _c = _a.size, size = _c === void 0 ? "x-small" : _c, subLabel = _a.subLabel, className = _a.className, classNameText = _a.classNameText;
     var avatar = user.avatar, fullName = user.fullName, _d = user.name, name = _d === void 0 ? "" : _d;
     var displayName = name;
     if (fullName) {
@@ -67354,15 +67354,24 @@ var AvatarName = function (_a) {
         "ml-2": position === "after",
     });
     var nameTextClass = classnames("text-nowrap", {
-        "text-large font-weight-bold": size === "large" || size === "x-large",
-        "text-medium": size === "medium",
-        "text-small": size === "small",
-        "text-x-small": size === "x-small",
-        "text-xx-small": size === "xx-small",
+        "h1 font-weight-normal": size === "large",
+        "h3 font-weight-normal": size === "medium",
+        "text-medium": size === "small",
+        "text-small": size === "x-small",
+        "text-x-small": size === "xx-small",
     }, classNameText);
+    var subTextClass = classnames({
+        "text-large": size === "large",
+        "text-medium": size === "medium",
+        "text-x-small": size === "small",
+        "text-xx-small": size === "x-small" || size === "xx-small",
+    });
     var renderName = function () {
-        return (jsxs("div", __assign({ className: nameClass }, { children: [jsx("div", __assign({ className: "" + nameTextClass }, { children: displayName }), void 0),
-                subLabel && jsx("div", __assign({ className: "text-x-small" }, { children: subLabel }), void 0)] }), void 0));
+        return (jsxs("div", __assign({ className: nameClass }, { children: [jsx("div", __assign({ className: "" + nameTextClass, style: {
+                        fontSize: size === "x-large" ? "56px" : undefined,
+                        lineHeight: size === "x-large" ? "70px" : undefined,
+                    } }, { children: displayName }), void 0),
+                subLabel && (jsx("div", __assign({ className: subTextClass, style: { fontSize: size === "x-large" ? "32px" : undefined } }, { children: subLabel }), void 0))] }), void 0));
     };
     return (jsxs("div", __assign({ className: wrapperClass }, { children: [position === "before" && renderName(),
             avatar && jsx(Avatar, { src: avatar, size: size }, void 0),

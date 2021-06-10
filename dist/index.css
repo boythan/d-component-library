@@ -28638,7 +28638,11 @@ body {
   align-items: center; }
 
 .hide-scroll-bar-y {
-  overflow-y: scroll; }
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */ }
 
 .hide-scroll-bar-y::-webkit-scrollbar {
   width: 0px;
@@ -28646,7 +28650,11 @@ body {
   /* make scrollbar transparent */ }
 
 .hide-scroll-bar-x {
-  overflow-x: scroll; }
+  overflow-x: scroll;
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */ }
 
 .hide-scroll-bar-x::-webkit-scrollbar {
   width: 0px;
@@ -28654,12 +28662,22 @@ body {
   /* make scrollbar transparent */ }
 
 .hide-scroll-bar {
-  overflow: scroll; }
+  overflow: scroll;
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */ }
 
 .hide-scroll-bar::-webkit-scrollbar {
   width: 0px;
   background: transparent;
   /* make scrollbar transparent */ }
+
+.overflow-x {
+  overflow-x: scroll; }
+
+.overflow-y {
+  overflow-y: scroll; }
 
 .opacity-3 {
   opacity: 30%; }
@@ -28687,6 +28705,14 @@ body {
 .py-0 {
   padding-top: 0 !important;
   padding-bottom: 0 !important; }
+
+.mx-0 {
+  margin-left: 0 !important;
+  margin-right: 0 !important; }
+
+.my-0 {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important; }
 
 .top-0 {
   top: 0px; }
@@ -29778,7 +29804,11 @@ body {
   align-items: center; }
 
 .hide-scroll-bar-y {
-  overflow-y: scroll; }
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */ }
 
 .hide-scroll-bar-y::-webkit-scrollbar {
   width: 0px;
@@ -29786,7 +29816,11 @@ body {
   /* make scrollbar transparent */ }
 
 .hide-scroll-bar-x {
-  overflow-x: scroll; }
+  overflow-x: scroll;
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */ }
 
 .hide-scroll-bar-x::-webkit-scrollbar {
   width: 0px;
@@ -29794,12 +29828,22 @@ body {
   /* make scrollbar transparent */ }
 
 .hide-scroll-bar {
-  overflow: scroll; }
+  overflow: scroll;
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */ }
 
 .hide-scroll-bar::-webkit-scrollbar {
   width: 0px;
   background: transparent;
   /* make scrollbar transparent */ }
+
+.overflow-x {
+  overflow-x: scroll; }
+
+.overflow-y {
+  overflow-y: scroll; }
 
 .opacity-3 {
   opacity: 30%; }
@@ -29827,6 +29871,14 @@ body {
 .py-0 {
   padding-top: 0 !important;
   padding-bottom: 0 !important; }
+
+.mx-0 {
+  margin-left: 0 !important;
+  margin-right: 0 !important; }
+
+.my-0 {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important; }
 
 .top-0 {
   top: 0px; }
