@@ -67321,13 +67321,19 @@ var Header = function (_a) {
 };
 
 function Avatar(_a) {
-    var _b = _a.size, size = _b === void 0 ? "medium" : _b, src = _a.src, alt = _a.alt, _c = _a.variant, variant = _c === void 0 ? "rounded" : _c, className = _a.className, text = _a.text, _d = _a.color, color = _d === void 0 ? "#D8D8D8" : _d, props = __rest$q(_a, ["size", "src", "alt", "variant", "className", "text", "color"]);
+    var _b = _a.size, size = _b === void 0 ? "medium" : _b, src = _a.src, alt = _a.alt, _c = _a.variant, variant = _c === void 0 ? "rounded" : _c, className = _a.className, classNameImage = _a.classNameImage, classNameLetter = _a.classNameLetter, text = _a.text, _d = _a.color, color = _d === void 0 ? "#D8D8D8" : _d, props = __rest$q(_a, ["size", "src", "alt", "variant", "className", "classNameImage", "classNameLetter", "text", "color"]);
     var wrapperClass = classnames("d-image__container d-image__" + variant + "-" + size + " bg-" + color, { "d-flex justify-content-center align-items-center": !!text }, className);
-    var imageClass = classnames("d-image__image");
+    var imageClass = classnames("d-image__image", classNameImage);
+    var letterClass = classnames("text-white text-center font-weight-normal", {
+        h1: size === "medium",
+        h3: size === "small",
+        h4: size === "x-small",
+        h5: size === "xx-small",
+    }, classNameLetter);
     var content;
     if (text) {
         var firstLetter = text.charAt(0);
-        content = (jsx("h2", __assign({ className: "text-white text-center", style: { fontWeight: "normal" } }, { children: firstLetter }), void 0));
+        content = (jsx("div", __assign({ className: letterClass, style: { fontSize: size === "large" ? "56px" : size === "x-large" ? "80px" : undefined } }, { children: firstLetter }), void 0));
     }
     if (src) {
         content = jsx("img", __assign({ src: src }, props, { alt: alt, className: imageClass }), void 0);
@@ -74077,11 +74083,11 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
         var _this = this;
         var _a = this.state, total = _a.total, pagination = _a.pagination, tableLayoutList = _a.tableLayoutList, selectedLayout = _a.selectedLayout, data = _a.data, loading = _a.loading, columns = _a.columns;
         // eslint-disable-next-line operator-linebreak
-        var _b = this.props, rowKey = _b.rowKey, isScroll = _b.isScroll, classNameTable = _b.classNameTable, tableLayout = _b.tableLayout, showSelectColumn = _b.showSelectColumn, keyTableLayout = _b.keyTableLayout, className = _b.className, onSelectionView = _b.onSelectionView, selectingRows = _b.selectingRows;
+        var _b = this.props, rowKey = _b.rowKey, isScroll = _b.isScroll, classNameTable = _b.classNameTable, tableLayout = _b.tableLayout, showSelectColumn = _b.showSelectColumn, keyTableLayout = _b.keyTableLayout, className = _b.className, onSelectionView = _b.onSelectionView, selectingRows = _b.selectingRows, _c = _b.bordered, bordered = _c === void 0 ? true : _c;
         var showSelectionView = onSelectionView && selectingRows && (selectingRows === null || selectingRows === void 0 ? void 0 : selectingRows.length) > 0;
         var showFuncRow = showSelectColumn || showSelectionView;
         var paginationResult = pagination ? __assign(__assign({}, pagination), { current: pagination.pageIndex, total: total }) : false;
-        var wrapperClass = classnames("d-table-awesome-component", className);
+        var wrapperClass = classnames("d-table-awesome-component", { "d-table-awesome-component__no-border": !bordered }, className);
         var funcRowClass = classnames("d-table-awesome-component__select-column my-2 w-100", {
             "d-flex justify-content-between align-items-center my-3": showSelectionView,
         });
@@ -74092,7 +74098,7 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
                         , { 
                             // eslint-disable-next-line react/destructuring-assignment
                             options: columns, setSelectedColumns: function (column) { return _this.setState({ selectedColumns: column }); }, keyTable: keyTableLayout, refreshLayout: function () { return _this.setDefaultTableLayout(); } }, void 0)] }), void 0)),
-                jsx(Table, __assign({ rowKey: rowKey, dataSource: data, loading: loading, onChange: this.handleTableChange, rowClassName: function () { return "d-table-awesome-component__row"; }, pagination: paginationResult, scroll: isScroll ? { y: "1000" } : {}, tableLayout: tableLayout, bordered: true, components: this.components }, this.props, { className: "d-table-awesome-component__table " + classNameTable, 
+                jsx(Table, __assign({ rowKey: rowKey, dataSource: data, loading: loading, onChange: this.handleTableChange, rowClassName: function () { return "d-table-awesome-component__row"; }, pagination: paginationResult, scroll: isScroll ? { y: "1000" } : {}, tableLayout: tableLayout, bordered: bordered, components: this.components }, this.props, { className: "d-table-awesome-component__table " + classNameTable, 
                     // columns props always has to be in last position in order for Resizable table to work
                     columns: this.getColumns() }), void 0)] }), void 0));
     };
@@ -74115,6 +74121,7 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
         isPagination: true,
         defaultPagination: null,
         isScroll: true,
+        border: true,
         classNameTable: "",
         setCurrentPage: function (page) {
             return page;

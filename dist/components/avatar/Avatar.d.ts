@@ -4,5 +4,7 @@ export interface AvatarProps extends React.ImgHTMLAttributes<HTMLImageElement> {
     variant?: "rounded" | "square";
     text?: string;
     color?: string;
+    classNameImage?: string;
+    classNameLetter?: string;
 }
-export default function Avatar({ size, src, alt, variant, className, text, color, ...props }: AvatarProps): ReactElement;
+export default function Avatar({ size, src, alt, variant, className, classNameImage, classNameLetter, text, color, ...props }: AvatarProps): ReactElement;
