@@ -15,17 +15,18 @@ const TestHeader = () => {
     return (
         <div className="bg-muted">
             <HeaderTable
-                label="Product table"
+                // label="Product table"
                 onChangeText={() => {}}
-                onClickExport={() => {}}
                 onClickFilter={() => {}}
-                onClickImport={() => {}}
-                onClickNew={() => {}}
+                // onClickExport={() => {}}
+                // onClickImport={() => {}}
+                // onClickNew={() => {}}
                 disabledSearch={!valueSelect}
                 isFiltered
                 customView={() => (
                     <Select dataSource={ATTRIBUTE_INPUT_TYPE} value={valueSelect} onChange={setValueSelect} />
                 )}
+                classNameTop="my-0"
             />
 
             <Header title="Header example" />
