@@ -45,7 +45,8 @@ const AvatarName: React.FC<AvatarNameProps> = ({
             "h1 font-weight-normal": size === "large",
             "h3 font-weight-normal": size === "medium",
             "text-medium": size === "small",
-            "text-small": size === "x-small" || size === "xx-small",
+            "text-small": size === "x-small",
+            "text-x-small": size === "xx-small",
         },
         classNameText
     );
@@ -60,7 +61,13 @@ const AvatarName: React.FC<AvatarNameProps> = ({
     const renderName = () => {
         return (
             <div className={nameClass}>
-                <div className={`${nameTextClass}`} style={{ fontSize: size === "x-large" ? "56px" : undefined }}>
+                <div
+                    className={`${nameTextClass}`}
+                    style={{
+                        fontSize: size === "x-large" ? "56px" : undefined,
+                        lineHeight: size === "x-large" ? "70px" : undefined,
+                    }}
+                >
                     {displayName}
                 </div>
                 {subLabel && (
