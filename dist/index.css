@@ -32252,6 +32252,9 @@ h6,
     margin: 0 !important;
     padding: 16px 0; }
 
+.d-table-awesome-component__no-border .ant-table-thead > tr > th:not(:last-child):not(.ant-table-selection-column):not(.ant-table-row-expand-icon-cell):not([colspan])::before {
+  opacity: 0; }
+
 .d-table-awesome-component__row .ant-table-cell-with-append {
   display: flex;
   flex-direction: row;
