@@ -96,13 +96,54 @@ const TestAvatarIcon: React.FC<TestAvatarIconProps> = ({ id }) => {
                 <Icon size="xx-large" className="mx-3" name="photo_camera" />
                 <Icon size="xxx-large" className="mx-3" name="photo_camera" />
             </div>
-            <div className="d-flex align-items-center my-4">
+            <div className="d-flex flex-column my-4">
                 <AvatarName
                     user={{
-                        fullName: "Amanda",
+                        fullName: "X-large",
                     }}
-                    subLabel="Actress"
+                    subLabel="X-large"
                     size="x-large"
+                    className="my-3"
+                />
+                <AvatarName
+                    user={{
+                        fullName: "Large",
+                    }}
+                    subLabel="Large"
+                    size="large"
+                    className="my-3"
+                />
+                <AvatarName
+                    user={{
+                        fullName: "Medium",
+                    }}
+                    subLabel="Medium"
+                    size="medium"
+                    className="my-3"
+                />
+                <AvatarName
+                    user={{
+                        fullName: "Small",
+                    }}
+                    subLabel="Small"
+                    size="small"
+                    className="my-3"
+                />
+                <AvatarName
+                    user={{
+                        fullName: "X-small",
+                    }}
+                    subLabel="X-small"
+                    size="x-small"
+                    className="my-3"
+                />
+                <AvatarName
+                    user={{
+                        fullName: "Xx-small",
+                    }}
+                    subLabel="Xx-small"
+                    size="xx-small"
+                    className="my-3"
                 />
             </div>
         </React.Fragment>
