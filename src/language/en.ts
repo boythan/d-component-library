@@ -7,4 +7,9 @@ export default {
     retry: "Retry",
     showMore: "Show More",
     showLess: "Show Less",
+    save: "Save",
+    back: "Back",
+    delete: "Delete",
+    print: "Print",
+    edit: "Edit",
 };

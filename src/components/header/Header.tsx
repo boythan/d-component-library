@@ -1,6 +1,7 @@
 // react
 // third-party
 import React from "react";
+import Messages from "../../language/Messages";
 // application
 import Button from "../button/Button";
 // data stubs
@@ -25,13 +26,12 @@ export interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({
-    Messages,
     title,
-    saveText = "Save",
-    cancelText = "Back",
-    deleteText = "Delete",
-    printText = "Print",
-    editText = "Edit",
+    saveText = Messages.save,
+    cancelText = Messages.back,
+    deleteText = Messages.delete,
+    printText = Messages.print,
+    editText = Messages.edit,
     onCancel,
     onSave,
     onDelete,
@@ -55,42 +55,15 @@ const Header: React.FC<HeaderProps> = ({
                 {showCancel && (
                     <Button
                         variant="outline"
-                        content={Messages ? Messages[cancelText] : cancelText}
+                        content={cancelText}
                         onClick={() => (onCancel ? onCancel() : window.history.go("back" as any))}
                         className="mr-3"
                     />
                 )}
-                {onDelete && (
-                    <Button
-                        content={Messages ? Messages[deleteText] : deleteText}
-                        onClick={onDelete}
-                        iconName="delete"
-                        className="mr-3"
-                    />
-                )}
-                {onPrint && (
-                    <Button
-                        content={Messages ? Messages[printText] : printText}
-                        onClick={onPrint}
-                        iconName="print"
-                        className="mr-3"
-                    />
-                )}
-                {onEdit && (
-                    <Button
-                        content={Messages ? Messages[editText] : editText}
-                        onClick={onEdit}
-                        className="mr-3"
-                        iconName="edit"
-                    />
-                )}
-                {onSave && (
-                    <Button
-                        content={Messages ? Messages[saveText] : saveText}
-                        onClick={onSave}
-                        disabled={disabledSave}
-                    />
-                )}
+                {onDelete && <Button content={deleteText} onClick={onDelete} iconName="delete" className="mr-3" />}
+                {onPrint && <Button content={printText} onClick={onPrint} iconName="print" className="mr-3" />}
+                {onEdit && <Button content={editText} onClick={onEdit} className="mr-3" iconName="edit" />}
+                {onSave && <Button content={saveText} onClick={onSave} disabled={disabledSave} />}
             </div>
         </div>
     );

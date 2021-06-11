@@ -5,6 +5,11 @@ export default {
     warning: "คำเตือน",
     cancel: "ยกเลิก",
     retry: "ลองอีกครั้ง",
+    save: "บันทึก",
+    edit: "แก้ไข",
+    delete: "ลบทิ้ง",
+    print: "พิมพ์",
+    back: "Back",
     showMore: "Show More",
     showLess: "Show Less",
 };
