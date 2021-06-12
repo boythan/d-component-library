@@ -32,6 +32,7 @@ import { ATTRIBUTE_INPUT_TYPE } from "./data/TestConstant";
 import TestTabBar from "./components/test_tabBar/TestTabBar";
 import TestButton from "./components/test_button/TestButton";
 import TestAvatarIcon from "./components/test_avatar_icon/TestAvatarIcon";
+import TestCard from "./components/test_card/TestCard";
 
 interface Props {
     content?: any;
@@ -131,11 +132,15 @@ export default function Test({ content }: Props): ReactElement {
 
     const dot = (
         <div className="my-4 d-flex align-items-center">
-            <Dot />
-            <Dot />
-            <Dot />
-            <Dot size="xx-large" />
-            <Dot size="xxx-large" />
+            <Dot>123</Dot>
+            <Dot size="xx-small" />
+            <Dot size="x-small" />
+            <Dot size="small">99+</Dot>
+            <Dot size="medium">99+</Dot>
+            <Dot size="large">99+</Dot>
+            <Dot size="x-large">99+</Dot>
+            <Dot size="xx-large">99+</Dot>
+            <Dot size="xxx-large">99+</Dot>
         </div>
     );
 
@@ -175,6 +180,7 @@ export default function Test({ content }: Props): ReactElement {
         { id: "UTIL", label: "UTIL", component: <TestUtils /> },
         { id: "PROGRESS", label: "PROGRESS", component: <TestProgress /> },
         { id: "NOTIFICATION", label: "NOTIFICATION", component: <TestNotification /> },
+        { id: "CARD", label: "CARD", component: <TestCard /> },
     ];
 
     return (
