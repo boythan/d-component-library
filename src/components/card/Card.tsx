@@ -37,7 +37,7 @@ const Card: React.FC<CardProps> = ({
     buttonProps,
 }) => {
     const wrapClass = ClassNames("card-container p-4", className);
-    const headerClass = ClassNames("flex-center-y w-100 justify-content-between mb-3", classNameHeader);
+    const headerClass = ClassNames("d-flex w-100 justify-content-between mb-3", classNameHeader);
     const titleWrapper = ClassNames("flex-center-y");
     const indexClass = ClassNames("text-xx-small bg-secondary text-white ml-1 text-center", classNameIndex);
     const buttonClass = ClassNames("text-secondary p-0", classNameButton);
