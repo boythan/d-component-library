@@ -4,7 +4,16 @@
 /* eslint-disable react/static-property-placement */
 // react
 import { SearchOutlined } from "@ant-design/icons";
-import { Button, Input, Table, TablePaginationConfig, TableProps } from "antd";
+import {
+    Button,
+    Input,
+    Table,
+    TablePaginationConfig,
+    TableProps,
+    TableColumnType,
+    TableColumnsType,
+    TableColumnGroupType,
+} from "antd";
 // third-party
 import ClassNames from "classnames";
 import _ from "lodash";
@@ -35,7 +44,11 @@ export interface IPaginationProps extends TablePaginationConfig {
     // showSizeChanger?: boolean;
 }
 
-export type IColumnsProps = TableProps<any>["columns"];
+interface MyTableColumnType extends TableColumnType<any> {
+    columnId?: string;
+}
+
+export type IColumnsProps = (TableColumnGroupType<any> | MyTableColumnType)[];
 
 export interface AwesomeTableComponentProps extends TableProps<any> {
     source: (pagination: IPaginationProps, sorter?: any) => Promise<any>;
