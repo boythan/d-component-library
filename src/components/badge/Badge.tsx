@@ -33,19 +33,28 @@ const Badge: React.FC<BadgeProps> = ({
     classNameBadge,
     color = "secondary",
     size = "medium",
-    style,
+    style = {},
     badgeStyle,
     onClick,
 }) => {
+    let content = children;
+    if (typeof children === "function") {
+        content = children();
+    }
+    let badge = <Dot {...dotProps} color={color} size={size} style={badgeStyle} />;
+
+    // className
     const wrapperClass = ClassNames(`d-badge__container d-badge__container-${variant}`, className);
     const badgeWrapperClass = ClassNames(
         "d-badge__badge-wrapper",
-        { "rounded-circle": shape === "round" },
+        {
+            "rounded-circle": shape === "round",
+            "position-absolute": !_.isEmpty(content),
+        },
         classNameBadge
     );
     const badgeIndexClass = ClassNames(`d-badge__badge-index-${size}-${color}`);
-    let content = children;
-    let badge = <Dot {...dotProps} color={color} size={size} style={badgeStyle} />;
+
     if (variant === "index") {
         let display = index;
         badge = <div />;
@@ -60,13 +69,9 @@ const Badge: React.FC<BadgeProps> = ({
             );
         }
     }
-    if (typeof children === "function") {
-        content = children();
-    }
+
     const badgeView = <div className={badgeWrapperClass}>{badge}</div>;
-    if (_.isEmpty(content)) {
-        return badgeView;
-    }
+
     return (
         <div className={wrapperClass} style={style} onClick={onClick}>
             {badgeView}
