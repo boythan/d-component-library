@@ -1,5 +1,5 @@
 // react
-import React, { InputHTMLAttributes } from "react";
+import React, { CSSProperties, InputHTMLAttributes } from "react";
 
 // third-party
 import classname from "classnames";
@@ -13,6 +13,9 @@ export interface InputTextProps extends InputHTMLAttributes<any> {
     className?: string;
     classNameInput?: string;
     classNameInputContainer?: string;
+    styleInput?: CSSProperties;
+    styleInputContainer?: CSSProperties;
+    styleLabel?: CSSProperties;
 
     variant?: "standard" | "outline";
     multiple?: boolean;
@@ -34,6 +37,10 @@ const InputText = ({
     className,
     classNameInput,
     classNameInputContainer,
+    style,
+    styleInput,
+    styleInputContainer,
+    styleLabel,
 
     variant = "outline", // standard || outline
     multiple,
@@ -78,9 +85,14 @@ const InputText = ({
         "border-0": disabled,
     });
 
-    const textAreaClass = classname("text-x-small", "d-input-area__input", {
-        "d-input-text__error": !!error,
-    });
+    const textAreaClass = classname(
+        "text-x-small",
+        "d-input-area__input",
+        {
+            "d-input-text__error": !!error,
+        },
+        classNameInput
+    );
 
     const errorTextClass = classname("text-x-small", "text-error", "ml-1");
 
@@ -97,6 +109,7 @@ const InputText = ({
                     disabled={disabled}
                     defaultValue={defaultValue}
                     placeholder={placeholder}
+                    style={styleInput}
                 />
             );
         }
@@ -113,18 +126,19 @@ const InputText = ({
                 type={type}
                 disabled={disabled}
                 defaultValue={defaultValue}
+                style={styleInput}
             />
         );
     };
 
     return (
-        <div className={container}>
+        <div className={container} style={style}>
             {label && (
-                <label htmlFor={name} className={labelClass}>
+                <label htmlFor={name} className={labelClass} style={styleLabel}>
                     <span>{label}</span>
                 </label>
             )}
-            <div className={inputContainerClass}>
+            <div className={inputContainerClass} style={styleInputContainer}>
                 <div className={inputPrefixClass}>{prefix}</div>
                 {renderInput()}
                 <div className={inputSuffixClass}>{suffix}</div>
