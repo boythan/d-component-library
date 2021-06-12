@@ -49934,12 +49934,13 @@ var Select = function (_a) {
     }, classNameSelect);
     var errorTextClass = classnames("text-x-small", "text-error", "ml-1");
     return (jsxs("div", __assign({ className: container }, { children: [label && jsx("label", __assign({ className: labelClass }, { children: label }), void 0),
-            jsx(Select$1, __assign({}, props, { value: value, mode: multiple ? "multiple" : undefined, allowClear: allowClear, placeholder: placeholder, defaultValue: defaultValue, onChange: onChange, className: selectClass, showArrow: true, suffixIcon: jsx(Icon$2, { name: "expand_more" }, void 0), disabled: disabled, optionFilterProp: "children", filterOption: function (input, option) {
+            jsx(Select$1, __assign({ mode: multiple ? "multiple" : undefined }, props, { value: value, allowClear: allowClear, placeholder: placeholder, defaultValue: defaultValue, onChange: onChange, className: selectClass, showArrow: true, suffixIcon: jsx(Icon$2, { name: "expand_more" }, void 0), disabled: disabled, optionFilterProp: "children", filterOption: function (input, option) {
+                    var _a = option.props, children = _a.children, value = _a.value;
                     if (!hasFilter) {
                         return false;
                     }
-                    return (option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0 ||
-                        (option.props.value && ("" + option.props.value).toLowerCase().indexOf(input.toLowerCase()) >= 0));
+                    return ((children && children.toLowerCase().indexOf(input.toLowerCase()) >= 0) ||
+                        (value && ("" + value).toLowerCase().indexOf(input.toLowerCase()) >= 0));
                 } }, { children: children }), void 0),
             error && (jsxs("div", __assign({ className: "flex-center-y mt-1" }, { children: [jsx(Icon$2, { name: "error_outline", className: "text-error", size: "small" }, void 0),
                     jsx("text", __assign({ className: errorTextClass }, { children: error }), void 0)] }), void 0))] }), void 0));
