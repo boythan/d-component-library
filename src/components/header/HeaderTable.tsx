@@ -1,12 +1,14 @@
 import ClassNames from "classnames";
-import React from "react";
+import React, { CSSProperties } from "react";
 import Badge, { BadgeProps } from "../badge/Badge";
 import Button from "../button/Button";
 import InputTextSearch from "../input/InputTextSearch";
 
 export interface HeaderTableProps {
     className?: string;
-    label: string;
+    classNameTop?: string;
+    style?: CSSProperties;
+    label?: string;
     onChangeText: any;
 
     placeholder?: string;
@@ -23,6 +25,8 @@ export interface HeaderTableProps {
 }
 const HeaderTable = ({
     className = "",
+    classNameTop,
+    style,
     label = "",
 
     placeholder = "Search",
@@ -46,8 +50,8 @@ const HeaderTable = ({
         );
     }
     return (
-        <div className={ClassNames("w-100", className)}>
-            <div className="d-flex justify-content-between mb-3">
+        <div className={ClassNames("w-100", className)} style={style}>
+            <div className={ClassNames("d-flex justify-content-between mb-3", classNameTop)}>
                 <div className="h4">{label}</div>
                 <div className="d-flex">
                     {onClickNew && <Button iconName="add" content="New" onClick={onClickNew} className="mr-3" />}

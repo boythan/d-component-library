@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import React from "react";
 import ClassNames from "classnames";
 import Avatar, { AvatarProps } from "./Avatar";
@@ -21,7 +22,7 @@ export interface AvatarNameProps {
 
 const AvatarName: React.FC<AvatarNameProps> = ({
     user,
-    position = "before",
+    position = "after",
     size = "x-small",
     subLabel,
     className,
@@ -41,20 +42,39 @@ const AvatarName: React.FC<AvatarNameProps> = ({
     const nameTextClass = ClassNames(
         "text-nowrap",
         {
-            "text-large font-weight-bold": size === "large" || size === "x-large",
-            "text-medium": size === "medium",
-            "text-small": size === "small",
-            "text-x-small": size === "x-small",
-            "text-xx-small": size === "xx-small",
+            "h1 font-weight-normal": size === "large",
+            "h3 font-weight-normal": size === "medium",
+            "text-medium": size === "small",
+            "text-small": size === "x-small",
+            "text-x-small": size === "xx-small",
         },
         classNameText
     );
 
+    const subTextClass = ClassNames({
+        "text-large": size === "large",
+        "text-medium": size === "medium",
+        "text-x-small": size === "small",
+        "text-xx-small": size === "x-small" || size === "xx-small",
+    });
+
     const renderName = () => {
         return (
             <div className={nameClass}>
-                <div className={`${nameTextClass}`}>{displayName}</div>
-                {subLabel && <div className="text-x-small">{subLabel}</div>}
+                <div
+                    className={`${nameTextClass}`}
+                    style={{
+                        fontSize: size === "x-large" ? "56px" : undefined,
+                        lineHeight: size === "x-large" ? "70px" : undefined,
+                    }}
+                >
+                    {displayName}
+                </div>
+                {subLabel && (
+                    <div className={subTextClass} style={{ fontSize: size === "x-large" ? "32px" : undefined }}>
+                        {subLabel}
+                    </div>
+                )}
             </div>
         );
     };

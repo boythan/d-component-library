@@ -7,6 +7,11 @@ declare const Messages: {
     retry: string;
     showMore: string;
     showLess: string;
+    save: string;
+    back: string;
+    delete: string;
+    print: string;
+    edit: string;
 } | {
     error: string;
     success: string;
@@ -14,6 +19,11 @@ declare const Messages: {
     warning: string;
     cancel: string;
     retry: string;
+    save: string;
+    edit: string;
+    delete: string;
+    print: string;
+    back: string;
     showMore: string;
     showLess: string;
 };
