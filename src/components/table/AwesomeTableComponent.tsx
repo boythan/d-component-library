@@ -47,8 +47,11 @@ export interface IPaginationProps extends TablePaginationConfig {
 interface MyTableColumnType extends TableColumnType<any> {
     columnId?: string;
 }
+interface MyTableColumnGroupType extends TableColumnGroupType<any> {
+    columnId?: string;
+}
 
-export type IColumnsProps = (TableColumnGroupType<any> | MyTableColumnType)[];
+export type IColumnsProps = (MyTableColumnGroupType | MyTableColumnType)[];
 
 export interface AwesomeTableComponentProps extends TableProps<any> {
     source: (pagination: IPaginationProps, sorter?: any) => Promise<any>;
