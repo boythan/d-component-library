@@ -40,6 +40,9 @@ export default {
             rollupCommonJSResolveHack: true,
             exclude: "**/__tests__/**",
             clean: true,
+            tsconfigOverride: {
+                exclude: ["node_modules", "dist", "src/__test__/**/*"],
+            },
         }),
         commonjs({
             include: ["node_modules/**"],
