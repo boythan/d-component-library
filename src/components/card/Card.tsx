@@ -4,7 +4,7 @@ import Button, { ButtonProps } from "../button/Button";
 import Badge from "../badge/Badge";
 
 export interface CardProps {
-    children: React.ReactChild;
+    children?: any;
     className?: string;
     title?: string;
     sideText?: string;
