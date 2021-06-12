@@ -1,7 +1,9 @@
+@import "../variables";
+
 .collapse-view-container,
 .ant-collapse {
     .ant-collapse-header {
-        background-color: rgba(230, 230, 230, 0.7);
+        background-color: $bg-muted-color;
         border-radius: 0px !important;
         display: flex;
         align-items: center;
@@ -10,7 +12,7 @@
 }
 
 .collapse-view__header {
-    background-color: rgba(230, 230, 230, 0.7);
+    background-color: $bg-muted-color;
     display: flex;
     justify-content: space-between;
     padding: 1rem;

@@ -34493,6 +34493,41 @@ h6,
 /* ----------------------------------------
 // view
 // ---------------------------------------- */
+.collapse-view-container,
+.ant-collapse {
+  border-radius: 0px !important; }
+  .collapse-view-container .ant-collapse-header,
+  .ant-collapse .ant-collapse-header {
+    background-color: #F5F5F5;
+    border-radius: 0px !important;
+    display: flex;
+    align-items: center; }
+
+.collapse-view__header {
+  background-color: #F5F5F5;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  align-items: center; }
+  .collapse-view__header :hover {
+    cursor: pointer; }
+
+.collapse-view__header-title {
+  font-weight: 500 !important; }
+
+.collapse-view-container .ant-collapse-header {
+  position: relative; }
+  .collapse-view-container .ant-collapse-header_custom-right-view-extra {
+    position: absolute;
+    z-index: 1;
+    right: 35px !important;
+    bottom: 13px !important; }
+  .collapse-view-container .ant-collapse-header_custom-right-view {
+    position: absolute;
+    z-index: 1;
+    right: 35px !important;
+    bottom: 13px !important; }
+
 /* ----------------------------------------
 // progress
 // ---------------------------------------- */
