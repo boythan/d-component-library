@@ -1,7 +1,7 @@
 import React from "react";
 import { ButtonProps } from "../button/Button";
 export interface CardProps {
-    children: React.ReactChild;
+    children?: any;
     className?: string;
     title?: string;
     sideText?: string;

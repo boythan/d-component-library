@@ -36944,7 +36944,7 @@ var PortalWrapper = /*#__PURE__*/function (_React$Component) {
   return PortalWrapper;
 }(React.Component);
 
-function useForceUpdate() {
+function useForceUpdate$1() {
   var _React$useReducer = React.useReducer(function (x) {
     return x + 1;
   }, 0),
@@ -45914,7 +45914,7 @@ var FilterDropdownMenuWrapper = function FilterDropdownMenuWrapper(props) {
 
 function useSyncState(initialValue) {
   var ref = React.useRef(initialValue);
-  var forceUpdate = useForceUpdate();
+  var forceUpdate = useForceUpdate$1();
   return [function () {
     return ref.current;
   }, function (newValue) {
@@ -75515,7 +75515,7 @@ var Notifications = { showError: showError, showInfo: showInfo, showSuccess: sho
 var Card = function (_a) {
     var children = _a.children, className = _a.className, title = _a.title, sideText = _a.sideText, onClick = _a.onClick, index = _a.index, subTitle = _a.subTitle, classNameButton = _a.classNameButton, classNameIndex = _a.classNameIndex, classNameHeader = _a.classNameHeader, customHeader = _a.customHeader, customLeft = _a.customLeft, customRight = _a.customRight, buttonProps = _a.buttonProps;
     var wrapClass = classnames("card-container p-4", className);
-    var headerClass = classnames("flex-center-y w-100 justify-content-between mb-3", classNameHeader);
+    var headerClass = classnames("d-flex w-100 justify-content-between mb-3", classNameHeader);
     var titleWrapper = classnames("flex-center-y");
     classnames("text-xx-small bg-secondary text-white ml-1 text-center", classNameIndex);
     var buttonClass = classnames("text-secondary p-0", classNameButton);
@@ -75547,5 +75547,30 @@ var Card = function (_a) {
             children] }), void 0));
 };
 
-export { Avatar, AvatarName, AwesomeListComponent, AwesomeTableComponent, AwesomeTableUtils, Badge, Button, Card, Checkbox, CheckboxGroup, DateInput, DialogComponent, DialogManager, Dot, Dropdown, Header, HeaderBlock, HeaderDetail, HeaderTable, Icon$2 as Icon, ImageUtils, InputText, Loading, MapUtils, Modal, Notifications, ObjectUtils, PopoverList, Progress, ProgressComponent, RadioGroup, RowInterchangeView, Select, StringUtils, TabBar, TimeUtils, TreeDataUtils, TreeSelect, UrlUtils, ViewRow, ViewTextarea };
+function useFirstTime() {
+    var ref = useRef(true);
+    useEffect(function () {
+        ref.current = false;
+    }, []);
+    return ref.current;
+}
+
+/* eslint-disable no-unused-expressions */
+function useForceUpdate() {
+    var _a = useState(0), setTick = _a[1];
+    var update = useCallback(function () {
+        setTick(function (tick) { return tick + 1; });
+    }, []);
+    return update;
+}
+
+function usePrevious(value) {
+    var ref = useRef();
+    useEffect(function () {
+        ref.current = value;
+    });
+    return ref.current;
+}
+
+export { Avatar, AvatarName, AwesomeListComponent, AwesomeTableComponent, AwesomeTableUtils, Badge, Button, Card, Checkbox, CheckboxGroup, DateInput, DialogComponent, DialogManager, Dot, Dropdown, Header, HeaderBlock, HeaderDetail, HeaderTable, Icon$2 as Icon, ImageUtils, InputText, Loading, MapUtils, Modal, Notifications, ObjectUtils, PopoverList, Progress, ProgressComponent, RadioGroup, RowInterchangeView, Select, StringUtils, TabBar, TimeUtils, TreeDataUtils, TreeSelect, UrlUtils, ViewRow, ViewTextarea, useFirstTime, useForceUpdate, usePrevious };
 //# sourceMappingURL=dcomponent.es.js.map

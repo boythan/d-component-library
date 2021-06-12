@@ -68,3 +68,6 @@ export { default as Progress } from "./components/progress/Progress";
 export { default as Notifications } from "./components/notifications/Notifications";
 export type { CardProps } from "./components/card/Card";
 export { default as Card } from "./components/card/Card";
+export { default as useFirstTime } from "./hooks/useFirstTime";
+export { default as useForceUpdate } from "./hooks/useForceUpdate";
+export { default as usePrevious } from "./hooks/usePrevious";
