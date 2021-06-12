@@ -7,5 +7,10 @@ declare const _default: {
     retry: string;
     showMore: string;
     showLess: string;
+    save: string;
+    back: string;
+    delete: string;
+    print: string;
+    edit: string;
 };
 export default _default;

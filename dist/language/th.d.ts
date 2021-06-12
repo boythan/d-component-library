@@ -5,6 +5,11 @@ declare const _default: {
     warning: string;
     cancel: string;
     retry: string;
+    save: string;
+    edit: string;
+    delete: string;
+    print: string;
+    back: string;
     showMore: string;
     showLess: string;
 };

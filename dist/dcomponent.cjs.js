@@ -67275,18 +67275,25 @@ var lodash = createCommonjsModule(function (module, exports) {
 });
 
 var Dot = function (_a) {
-    var _b = _a.size, size = _b === void 0 ? "small" : _b, _c = _a.color, color = _c === void 0 ? "green" : _c, className = _a.className, style = _a.style;
+    var _b = _a.size, size = _b === void 0 ? "small" : _b, _c = _a.color, color = _c === void 0 ? "green" : _c, className = _a.className, style = _a.style, children = _a.children;
     var dotClass = classnames("d-dot_container", "d-dot__" + size + "-" + color, className);
-    return jsxRuntime.jsx("div", { className: dotClass, style: style }, void 0);
+    return (jsxRuntime.jsx("div", __assign({ className: dotClass, style: style }, { children: children }), void 0));
 };
 
 var Badge = function (_a) {
-    var children = _a.children, _b = _a.variant, variant = _b === void 0 ? "dot" : _b, _c = _a.shape, shape = _c === void 0 ? "round" : _c, index = _a.index, _d = _a.dotProps, dotProps = _d === void 0 ? {} : _d, className = _a.className, classNameBadge = _a.classNameBadge, _e = _a.color, color = _e === void 0 ? "secondary" : _e, _f = _a.size, size = _f === void 0 ? "medium" : _f, style = _a.style, badgeStyle = _a.badgeStyle, onClick = _a.onClick;
-    var wrapperClass = classnames("d-badge__container d-badge__container-" + variant, className);
-    var badgeWrapperClass = classnames("d-badge__badge-wrapper", { "rounded-circle": shape === "round" }, classNameBadge);
-    var badgeIndexClass = classnames("d-badge__badge-index-" + size + "-" + color);
+    var children = _a.children, _b = _a.variant, variant = _b === void 0 ? "dot" : _b, _c = _a.shape, shape = _c === void 0 ? "round" : _c, index = _a.index, _d = _a.dotProps, dotProps = _d === void 0 ? {} : _d, className = _a.className, classNameBadge = _a.classNameBadge, _e = _a.color, color = _e === void 0 ? "secondary" : _e, _f = _a.size, size = _f === void 0 ? "medium" : _f, _g = _a.style, style = _g === void 0 ? {} : _g, badgeStyle = _a.badgeStyle, onClick = _a.onClick;
     var content = children;
+    if (typeof children === "function") {
+        content = children();
+    }
     var badge = jsxRuntime.jsx(Dot, __assign({}, dotProps, { color: color, size: size, style: badgeStyle }), void 0);
+    // className
+    var wrapperClass = classnames("d-badge__container d-badge__container-" + variant, className);
+    var badgeWrapperClass = classnames("d-badge__badge-wrapper", {
+        "rounded-circle": shape === "round",
+        "position-absolute": !lodash.isEmpty(content),
+    }, classNameBadge);
+    var badgeIndexClass = classnames("d-badge__badge-index-" + size + "-" + color);
     if (variant === "index") {
         var display = index;
         badge = jsxRuntime.jsx("div", {}, void 0);
@@ -67297,13 +67304,7 @@ var Badge = function (_a) {
             badge = (jsxRuntime.jsx("div", __assign({ className: badgeIndexClass, style: badgeStyle }, { children: display }), void 0));
         }
     }
-    if (typeof children === "function") {
-        content = children();
-    }
     var badgeView = jsxRuntime.jsx("div", __assign({ className: badgeWrapperClass }, { children: badge }), void 0);
-    if (lodash.isEmpty(content)) {
-        return badgeView;
-    }
     return (jsxRuntime.jsxs("div", __assign({ className: wrapperClass, style: style, onClick: onClick }, { children: [badgeView,
             content] }), void 0));
 };
@@ -67333,8 +67334,48 @@ var HeaderTable = function (_a) {
                     onClickFilter && button] }), void 0)] }), void 0));
 };
 
+var en = {
+    error: "Error",
+    success: "Success",
+    info: "Info",
+    warning: "Warning",
+    cancel: "Cancel",
+    retry: "Retry",
+    showMore: "Show More",
+    showLess: "Show Less",
+    save: "Save",
+    back: "Back",
+    delete: "Delete",
+    print: "Print",
+    edit: "Edit",
+};
+
+var th = {
+    error: "ผิดพลาด",
+    success: "สำเร็จ",
+    info: "ข้อมูล",
+    warning: "คำเตือน",
+    cancel: "ยกเลิก",
+    retry: "ลองอีกครั้ง",
+    save: "บันทึก",
+    edit: "แก้ไข",
+    delete: "ลบทิ้ง",
+    print: "พิมพ์",
+    back: "Back",
+    showMore: "Show More",
+    showLess: "Show Less",
+};
+
+var _a;
+var Languages = {
+    en: en,
+    th: th,
+};
+var currentLang = (_a = document.documentElement.lang) !== null && _a !== void 0 ? _a : "en";
+var Messages = Languages[currentLang];
+
 var Header = function (_a) {
-    var Messages = _a.Messages, title = _a.title, _b = _a.saveText, saveText = _b === void 0 ? "Save" : _b, _c = _a.cancelText, cancelText = _c === void 0 ? "Back" : _c, _d = _a.deleteText, deleteText = _d === void 0 ? "Delete" : _d, _e = _a.printText, printText = _e === void 0 ? "Print" : _e, _f = _a.editText, editText = _f === void 0 ? "Edit" : _f, onCancel = _a.onCancel, onSave = _a.onSave, onDelete = _a.onDelete, onPrint = _a.onPrint, onEdit = _a.onEdit, disabledSave = _a.disabledSave, customLeft = _a.customLeft, _g = _a.showCancel, showCancel = _g === void 0 ? true : _g, className = _a.className;
+    var title = _a.title, _b = _a.saveText, saveText = _b === void 0 ? Messages.save : _b, _c = _a.cancelText, cancelText = _c === void 0 ? Messages.back : _c, _d = _a.deleteText, deleteText = _d === void 0 ? Messages.delete : _d, _e = _a.printText, printText = _e === void 0 ? Messages.print : _e, _f = _a.editText, editText = _f === void 0 ? Messages.edit : _f, onCancel = _a.onCancel, onSave = _a.onSave, onDelete = _a.onDelete, onPrint = _a.onPrint, onEdit = _a.onEdit, disabledSave = _a.disabledSave, customLeft = _a.customLeft, _g = _a.showCancel, showCancel = _g === void 0 ? true : _g, className = _a.className;
     var renderLeftView = function () {
         if (customLeft) {
             return customLeft();
@@ -67342,11 +67383,11 @@ var Header = function (_a) {
         return jsxRuntime.jsx("h4", __assign({ className: "text-primary" }, { children: title }), void 0);
     };
     return (jsxRuntime.jsxs("div", __assign({ className: "card-container d-common-header " + className }, { children: [renderLeftView(),
-            jsxRuntime.jsxs("div", __assign({ className: "d-common-header__button-group" }, { children: [showCancel && (jsxRuntime.jsx(Button, { variant: "outline", content: Messages ? Messages[cancelText] : cancelText, onClick: function () { return (onCancel ? onCancel() : window.history.go("back")); }, className: "mr-3" }, void 0)),
-                    onDelete && (jsxRuntime.jsx(Button, { content: Messages ? Messages[deleteText] : deleteText, onClick: onDelete, iconName: "delete", className: "mr-3" }, void 0)),
-                    onPrint && (jsxRuntime.jsx(Button, { content: Messages ? Messages[printText] : printText, onClick: onPrint, iconName: "print", className: "mr-3" }, void 0)),
-                    onEdit && (jsxRuntime.jsx(Button, { content: Messages ? Messages[editText] : editText, onClick: onEdit, className: "mr-3", iconName: "edit" }, void 0)),
-                    onSave && (jsxRuntime.jsx(Button, { content: Messages ? Messages[saveText] : saveText, onClick: onSave, disabled: disabledSave }, void 0))] }), void 0)] }), void 0));
+            jsxRuntime.jsxs("div", __assign({ className: "d-common-header__button-group" }, { children: [showCancel && (jsxRuntime.jsx(Button, { variant: "outline", content: cancelText, onClick: function () { return (onCancel ? onCancel() : window.history.go("back")); }, className: "mr-3" }, void 0)),
+                    onDelete && jsxRuntime.jsx(Button, { content: deleteText, onClick: onDelete, iconName: "delete", className: "mr-3" }, void 0),
+                    onPrint && jsxRuntime.jsx(Button, { content: printText, onClick: onPrint, iconName: "print", className: "mr-3" }, void 0),
+                    onEdit && jsxRuntime.jsx(Button, { content: editText, onClick: onEdit, className: "mr-3", iconName: "edit" }, void 0),
+                    onSave && jsxRuntime.jsx(Button, { content: saveText, onClick: onSave, disabled: disabledSave }, void 0)] }), void 0)] }), void 0));
 };
 
 function Avatar(_a) {
@@ -67844,36 +67885,6 @@ var ViewRow = function (_a) {
     return (jsxRuntime.jsxs("div", __assign({ className: wrapperClass, style: style }, { children: [label && (jsxRuntime.jsx("label", __assign({ className: labelClass, style: styleLabel }, { children: label }), void 0)),
             jsxRuntime.jsx("div", __assign({ className: contentClass, style: styleContent }, { children: content }), void 0)] }), void 0));
 };
-
-var en = {
-    error: "Error",
-    success: "Success",
-    info: "Info",
-    warning: "Warning",
-    cancel: "Cancel",
-    retry: "Retry",
-    showMore: "Show More",
-    showLess: "Show Less",
-};
-
-var th = {
-    error: "ผิดพลาด",
-    success: "สำเร็จ",
-    info: "ข้อมูล",
-    warning: "คำเตือน",
-    cancel: "ยกเลิก",
-    retry: "ลองอีกครั้ง",
-    showMore: "Show More",
-    showLess: "Show Less",
-};
-
-var _a;
-var Languages = {
-    en: en,
-    th: th,
-};
-var currentLang = (_a = document.documentElement.lang) !== null && _a !== void 0 ? _a : "en";
-var Messages = Languages[currentLang];
 
 var ViewTextarea = function (_a) {
     var children = _a.children, className = _a.className, classNameContent = _a.classNameContent, classNameShowMore = _a.classNameShowMore, classNameShowLess = _a.classNameShowLess, style = _a.style, _b = _a.showLessText, showLessText = _b === void 0 ? Messages.showLess : _b, _c = _a.showMoreText, showMoreText = _c === void 0 ? Messages.showMore : _c, _d = _a.limitedLength, limitedLength = _d === void 0 ? 200 : _d;
@@ -75530,6 +75541,41 @@ var showInfo = function (content, action) {
 };
 var Notifications = { showError: showError, showInfo: showInfo, showSuccess: showSuccess, showWarning: showWarning };
 
+var Card = function (_a) {
+    var children = _a.children, className = _a.className, title = _a.title, sideText = _a.sideText, onClick = _a.onClick, index = _a.index, subTitle = _a.subTitle, classNameButton = _a.classNameButton, classNameIndex = _a.classNameIndex, classNameHeader = _a.classNameHeader, customHeader = _a.customHeader, customLeft = _a.customLeft, customRight = _a.customRight, buttonProps = _a.buttonProps;
+    var wrapClass = classnames("card-container p-4", className);
+    var headerClass = classnames("flex-center-y w-100 justify-content-between mb-3", classNameHeader);
+    var titleWrapper = classnames("flex-center-y");
+    classnames("text-xx-small bg-secondary text-white ml-1 text-center", classNameIndex);
+    var buttonClass = classnames("text-secondary p-0", classNameButton);
+    var header = function () {
+        if (customHeader) {
+            return customHeader;
+        }
+        var leftSide = function () {
+            if (customLeft) {
+                return customLeft;
+            }
+            return (jsxRuntime.jsxs("div", { children: [jsxRuntime.jsxs("div", __assign({ className: titleWrapper }, { children: [jsxRuntime.jsx("div", __assign({ className: "text-medium-bold" }, { children: title }), void 0),
+                            index && jsxRuntime.jsx(Badge, { variant: "index", index: index, size: "xx-large", className: "ml-2" }, void 0)] }), void 0),
+                    subTitle && jsxRuntime.jsx("div", __assign({ className: "text-x-small" }, { children: subTitle }), void 0)] }, void 0));
+        };
+        var rightSide = function () {
+            if (customRight) {
+                return customRight;
+            }
+            if (sideText) {
+                return (jsxRuntime.jsx(Button, __assign({ content: sideText, variant: "trans", className: buttonClass, onClick: onClick, size: "x-small" }, buttonProps), void 0));
+            }
+            return jsxRuntime.jsx("div", {}, void 0);
+        };
+        return (jsxRuntime.jsxs("div", __assign({ className: headerClass }, { children: [leftSide(),
+                rightSide()] }), void 0));
+    };
+    return (jsxRuntime.jsxs("div", __assign({ className: wrapClass }, { children: [header(),
+            children] }), void 0));
+};
+
 exports.Avatar = Avatar;
 exports.AvatarName = AvatarName;
 exports.AwesomeListComponent = AwesomeListComponent;
@@ -75537,6 +75583,7 @@ exports.AwesomeTableComponent = AwesomeTableComponent;
 exports.AwesomeTableUtils = AwesomeTableUtils;
 exports.Badge = Badge;
 exports.Button = Button;
+exports.Card = Card;
 exports.Checkbox = Checkbox;
 exports.CheckboxGroup = CheckboxGroup;
 exports.DateInput = DateInput;

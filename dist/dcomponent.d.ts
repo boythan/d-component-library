@@ -66,3 +66,5 @@ export { default as DialogManager } from "./components/dialog/DialogManager";
 export { default as ProgressComponent } from "./components/progress/ProgressComponent";
 export { default as Progress } from "./components/progress/Progress";
 export { default as Notifications } from "./components/notifications/Notifications";
+export type { CardProps } from "./components/card/Card";
+export { default as Card } from "./components/card/Card";
