@@ -27,6 +27,15 @@ const TestInput = () => {
                 onChange={setValueSelect}
                 multiple
             />
+
+            <Select
+                dataSource={SELECT_DATA}
+                label="Select Tags"
+                className="mt-4"
+                value={valueSelect}
+                onChange={setValueSelect}
+                mode="tags"
+            />
         </div>
     );
 };
