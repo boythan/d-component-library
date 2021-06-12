@@ -76,9 +76,9 @@ const Select = ({
         <div className={container}>
             {label && <label className={labelClass}>{label}</label>}
             <SelectAnt
+                mode={multiple ? "multiple" : undefined}
                 {...props}
                 value={value}
-                mode={multiple ? "multiple" : undefined}
                 allowClear={allowClear}
                 placeholder={placeholder}
                 defaultValue={defaultValue}
@@ -89,12 +89,13 @@ const Select = ({
                 disabled={disabled}
                 optionFilterProp="children"
                 filterOption={(input: any, option: any) => {
+                    const { children, value } = option.props;
                     if (!hasFilter) {
                         return false;
                     }
                     return (
-                        option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0 ||
-                        (option.props.value && `${option.props.value}`.toLowerCase().indexOf(input.toLowerCase()) >= 0)
+                        (children && children.toLowerCase().indexOf(input.toLowerCase()) >= 0) ||
+                        (value && `${value}`.toLowerCase().indexOf(input.toLowerCase()) >= 0)
                     );
                 }}
             >
