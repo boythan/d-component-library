@@ -1,9 +1,12 @@
-import { Input, TablePaginationConfig, TableProps } from "antd";
+import { Input, TablePaginationConfig, TableProps, TableColumnType, TableColumnGroupType } from "antd";
 import React, { Component } from "react";
 export interface IPaginationProps extends TablePaginationConfig {
     pageIndex?: number;
 }
-export declare type IColumnsProps = TableProps<any>["columns"];
+interface MyTableColumnType extends TableColumnType<any> {
+    columnId?: string;
+}
+export declare type IColumnsProps = (TableColumnGroupType<any> | MyTableColumnType)[];
 export interface AwesomeTableComponentProps extends TableProps<any> {
     source: (pagination: IPaginationProps, sorter?: any) => Promise<any>;
     transformer: (res: any) => Array<any>;
