@@ -3,7 +3,7 @@ import ClassNames from "classnames";
 import Button, { ButtonProps } from "../button/Button";
 import Badge from "../badge/Badge";
 
-interface CardProps {
+export interface CardProps {
     children: React.ReactChild;
     className?: string;
     title?: string;

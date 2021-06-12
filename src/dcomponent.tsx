@@ -185,3 +185,10 @@ export { default as Progress } from "./components/progress/Progress";
 // ---------------------------------------- */
 
 export { default as Notifications } from "./components/notifications/Notifications";
+
+/* ----------------------------------------
+// Card
+// ---------------------------------------- */
+
+export type { CardProps } from "./components/card/Card";
+export { default as Card } from "./components/card/Card";
