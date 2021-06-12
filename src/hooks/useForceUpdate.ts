@@ -2,7 +2,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import useFirstTime from "./useFirstTime";
 
-function useForceUpdate() {
+export function useForceUpdate() {
     const [, setTick] = useState(0);
     const update = useCallback(() => {
         setTick((tick) => tick + 1);

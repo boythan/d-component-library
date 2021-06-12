@@ -2,14 +2,17 @@
 import React, { useState } from "react";
 import Button from "../../components/button/Button";
 import HeaderTable from "../../components/header/HeaderTable";
-import AwesomeTableComponent, { AwesomeTableComponentProps } from "../../components/table/AwesomeTableComponent";
+import AwesomeTableComponent, {
+    AwesomeTableComponentProps,
+    IColumnsProps,
+} from "../../components/table/AwesomeTableComponent";
 import ViewTextarea from "../../components/view/ViewTextarea";
 import { ATTRIBUTE_INPUT_TYPE } from "../data/TestConstant";
 
 const TestTable = () => {
     const [selectingRows, setSelectingRows] = useState<any>([]);
     const [dataSource, setDataSource] = useState(ATTRIBUTE_INPUT_TYPE);
-    const columns: AwesomeTableComponentProps["columns"] = [
+    const columns: IColumnsProps = [
         {
             title: () => <h5>ID</h5>,
             dataIndex: "id",
