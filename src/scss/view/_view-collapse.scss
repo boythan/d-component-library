@@ -1,0 +1,46 @@
+@import "../variables";
+
+.collapse-view-container,
+.ant-collapse {
+    .ant-collapse-header {
+        background-color: $bg-muted-color;
+        border-radius: 0px !important;
+        display: flex;
+        align-items: center;
+    }
+    border-radius: 0px !important;
+}
+
+.collapse-view__header {
+    background-color: $bg-muted-color;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    align-items: center;
+
+    :hover {
+        cursor: pointer;
+    }
+}
+
+.collapse-view__header-title {
+    font-weight: 500 !important;
+}
+
+.collapse-view-container {
+    .ant-collapse-header {
+        position: relative;
+        &_custom-right-view-extra {
+            position: absolute;
+            z-index: 1;
+            right: 35px !important;
+            bottom: 13px !important;
+        }
+        &_custom-right-view {
+            position: absolute;
+            z-index: 1;
+            right: 35px !important;
+            bottom: 13px !important;
+        }
+    }
+}
