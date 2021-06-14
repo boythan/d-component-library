@@ -510,7 +510,8 @@
         $input-color-error:         $error-color                              !default;
 
         //padding
-        $input-padding: 10px 16px;
+        $input-padding:          10px 16px                                       !default;
+        $input-color-padding:    8px 16px                                        !default;
 
         //border
         $input-border:          0.5px solid $border-color                      !default;
