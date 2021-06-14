@@ -93,6 +93,9 @@ export { default as ViewRow } from "./components/view/ViewRow";
 export type { ViewTextareaProps } from "./components/view/ViewTextarea";
 export { default as ViewTextarea } from "./components/view/ViewTextarea";
 
+export type { ViewCollapseProps } from "./components/view/ViewCollapse";
+export { default as ViewCollapse } from "./components/view/ViewCollapse";
+
 /* ----------------------------------------
 // TabBar
 // ---------------------------------------- */
