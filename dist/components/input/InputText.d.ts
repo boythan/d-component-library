@@ -1,8 +1,11 @@
-import { InputHTMLAttributes } from "react";
+import { CSSProperties, InputHTMLAttributes } from "react";
 export interface InputTextProps extends InputHTMLAttributes<any> {
     className?: string;
     classNameInput?: string;
     classNameInputContainer?: string;
+    styleInput?: CSSProperties;
+    styleInputContainer?: CSSProperties;
+    styleLabel?: CSSProperties;
     variant?: "standard" | "outline";
     multiple?: boolean;
     defaultValue?: string;
@@ -18,5 +21,5 @@ export interface InputTextProps extends InputHTMLAttributes<any> {
     prefix?: any;
     suffix?: any;
 }
-declare const InputText: ({ className, classNameInput, classNameInputContainer, variant, multiple, value, defaultValue, error, name, label, key, placeholder, type, rows, cols, disabled, prefix, suffix, onChange, onBlur, }: InputTextProps) => JSX.Element;
+declare const InputText: ({ className, classNameInput, classNameInputContainer, style, styleInput, styleInputContainer, styleLabel, variant, multiple, value, defaultValue, error, name, label, key, placeholder, type, rows, cols, disabled, prefix, suffix, onChange, onBlur, }: InputTextProps) => JSX.Element;
 export default InputText;

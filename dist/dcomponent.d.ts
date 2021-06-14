@@ -1,6 +1,8 @@
 import "./scss/index.scss";
 export type { InputTextProps } from "./components/input/InputText";
 export { default as InputText } from "./components/input/InputText";
+export type { InputTextSearchProps } from "./components/input/InputTextSearch";
+export { default as InputTextSearch } from "./components/input/InputTextSearch";
 export type { IconProps } from "./components/icon/Icon";
 export { default as Icon } from "./components/icon/Icon";
 export type { SelectProps } from "./components/select/Select";

@@ -178,7 +178,7 @@ var Icon$2 = function (_a) {
 };
 
 var InputText = function (_a) {
-    var className = _a.className, classNameInput = _a.classNameInput, classNameInputContainer = _a.classNameInputContainer, _b = _a.variant, variant = _b === void 0 ? "outline" : _b, // standard || outline
+    var className = _a.className, classNameInput = _a.classNameInput, classNameInputContainer = _a.classNameInputContainer, style = _a.style, styleInput = _a.styleInput, styleInputContainer = _a.styleInputContainer, styleLabel = _a.styleLabel, _b = _a.variant, variant = _b === void 0 ? "outline" : _b, // standard || outline
     multiple = _a.multiple, value = _a.value, defaultValue = _a.defaultValue, error = _a.error, name = _a.name, label = _a.label, key = _a.key, placeholder = _a.placeholder, type = _a.type, _c = _a.rows, rows = _c === void 0 ? 5 : _c, cols = _a.cols, disabled = _a.disabled, prefix = _a.prefix, suffix = _a.suffix, onChange = _a.onChange, onBlur = _a.onBlur;
     var container = classnames("d-input-text__container", className);
     var labelClass = classnames("text-label");
@@ -197,20 +197,30 @@ var InputText = function (_a) {
     });
     var textAreaClass = classnames("text-x-small", "d-input-area__input", {
         "d-input-text__error": !!error,
-    });
+    }, classNameInput);
     var errorTextClass = classnames("text-x-small", "text-error", "ml-1");
     var renderInput = function () {
         if (multiple) {
-            return (jsx("textarea", { value: value, onChange: onChange, rows: rows, name: name, className: textAreaClass, cols: cols, disabled: disabled, defaultValue: defaultValue, placeholder: placeholder }, void 0));
+            return (jsx("textarea", { value: value, onChange: onChange, rows: rows, name: name, className: textAreaClass, cols: cols, disabled: disabled, defaultValue: defaultValue, placeholder: placeholder, style: styleInput }, void 0));
         }
-        return (jsx("input", { value: value, onChange: onChange, className: inputClass, name: name, required: true, placeholder: placeholder, onBlur: onBlur, type: type, disabled: disabled, defaultValue: defaultValue }, key));
+        return (jsx("input", { value: value, onChange: onChange, className: inputClass, name: name, required: true, placeholder: placeholder, onBlur: onBlur, type: type, disabled: disabled, defaultValue: defaultValue, style: styleInput }, key));
     };
-    return (jsxs("div", __assign({ className: container }, { children: [label && (jsx("label", __assign({ htmlFor: name, className: labelClass }, { children: jsx("span", { children: label }, void 0) }), void 0)),
-            jsxs("div", __assign({ className: inputContainerClass }, { children: [jsx("div", __assign({ className: inputPrefixClass }, { children: prefix }), void 0),
+    return (jsxs("div", __assign({ className: container, style: style }, { children: [label && (jsx("label", __assign({ htmlFor: name, className: labelClass, style: styleLabel }, { children: jsx("span", { children: label }, void 0) }), void 0)),
+            jsxs("div", __assign({ className: inputContainerClass, style: styleInputContainer }, { children: [jsx("div", __assign({ className: inputPrefixClass }, { children: prefix }), void 0),
                     renderInput(),
                     jsx("div", __assign({ className: inputSuffixClass }, { children: suffix }), void 0)] }), void 0),
             error && (jsxs("div", __assign({ className: "flex-center-y mt-1" }, { children: [jsx(Icon$2, { name: "error_outline", className: "text-error", size: "small" }, void 0),
                     jsx("text", __assign({ className: errorTextClass }, { children: error }), void 0)] }), void 0))] }), void 0));
+};
+
+var InputTextSearch = function (_a) {
+    var className = _a.className, _b = _a.variant, variant = _b === void 0 ? "outline" : _b, value = _a.value, defaultValue = _a.defaultValue, error = _a.error, placeholder = _a.placeholder, disabled = _a.disabled, onChange = _a.onChange, onBlur = _a.onBlur;
+    var container = classnames("d-input-search", "d-input-search__" + variant, {
+        "d-input-search__disabled": disabled,
+        "d-input-search__error": !!error,
+    }, className);
+    return (jsxs("div", __assign({ className: container }, { children: [jsx(Icon$2, { name: "search", className: "mr-3" }, void 0),
+            jsx("input", { value: value, onChange: onChange, required: true, placeholder: placeholder, onBlur: onBlur, disabled: disabled, defaultValue: defaultValue }, void 0)] }), void 0));
 };
 
 function _extends$1() {
@@ -49997,8 +50007,7 @@ var CheckboxGroup = function (_a) {
     return (jsx("div", __assign({ className: containerClass }, { children: dataSource.map(function (item) {
             var iLabel = getLabel(item);
             var iValue = getValue(item);
-            var listId = value.map(function (i) { return getValue(i); });
-            var isChecked = listId.includes(iValue);
+            var isChecked = value.includes(iValue);
             var isDisabled = (getDisabledItem && getDisabledItem(item)) || false;
             var itemClass = classnames("my-3 p-0", {
                 "col-12": numberOfColumns === "1",
@@ -50013,15 +50022,15 @@ var CheckboxGroup = function (_a) {
             }, {
                 "col-2": numberOfColumns === "6",
             }, classNameItem);
-            return (jsx(Checkbox, { label: iLabel, value: item, onChange: function (event) {
+            return (jsx(Checkbox, { label: iLabel, value: getValue(item), onChange: function (event) {
                     var isPush = event.target.checked;
                     var clone = __spreadArray([], value);
                     if (isPush) {
-                        clone.push(item);
+                        clone.push(getValue(item));
                     }
                     else {
                         clone = value.filter(function (i) {
-                            return getValue(i) !== getValue(item);
+                            return i !== getValue(item);
                         });
                     }
                     onChange && onChange(clone);
@@ -50034,8 +50043,7 @@ var RadioGroup = function (_a) {
     var containerClass = classnames("d-checkbox-group d-flex flex-wrap", className);
     return (jsx("div", __assign({ className: containerClass }, { children: dataSource.map(function (item) {
             var iLabel = getLabel(item);
-            var iValue = getValue(item);
-            var isChecked = getValue(item) === getValue(value);
+            var isChecked = getValue(item) === value;
             var isDisabled = (getDisabledItem && getDisabledItem(item)) || false;
             var itemClass = classnames("my-3", {
                 "col-12": numberOfColumns === "1",
@@ -50050,8 +50058,8 @@ var RadioGroup = function (_a) {
             }, {
                 "col-2": numberOfColumns === "6",
             }, classNameItem);
-            return (jsx(Checkbox, { label: iLabel, value: iValue, onChange: function (event) {
-                    onChange && onChange(item);
+            return (jsx(Checkbox, { label: iLabel, value: value, onChange: function (event) {
+                    onChange && onChange(getValue(item));
                 }, checked: isChecked, variant: "radio", disabled: isDisabled, className: itemClass }, void 0));
         }) }), void 0));
 };
@@ -67281,16 +67289,6 @@ var Badge = function (_a) {
             content] }), void 0));
 };
 
-var InputTextSearch = function (_a) {
-    var className = _a.className, _b = _a.variant, variant = _b === void 0 ? "outline" : _b, value = _a.value, defaultValue = _a.defaultValue, error = _a.error, placeholder = _a.placeholder, disabled = _a.disabled, onChange = _a.onChange, onBlur = _a.onBlur;
-    var container = classnames("d-input-search", "d-input-search__" + variant, {
-        "d-input-search__disabled": disabled,
-        "d-input-search__error": !!error,
-    }, className);
-    return (jsxs("div", __assign({ className: container }, { children: [jsx(Icon$2, { name: "search", className: "mr-3" }, void 0),
-            jsx("input", { value: value, onChange: onChange, required: true, placeholder: placeholder, onBlur: onBlur, disabled: disabled, defaultValue: defaultValue }, void 0)] }), void 0));
-};
-
 var HeaderTable = function (_a) {
     var _b = _a.className, className = _b === void 0 ? "" : _b, classNameTop = _a.classNameTop, style = _a.style, _c = _a.label, label = _c === void 0 ? "" : _c, _d = _a.placeholder, placeholder = _d === void 0 ? "Search" : _d, onChangeText = _a.onChangeText, _e = _a.disabledSearch, disabledSearch = _e === void 0 ? false : _e, onClickNew = _a.onClickNew, onClickExport = _a.onClickExport, onClickFilter = _a.onClickFilter, onClickImport = _a.onClickImport, customView = _a.customView, _f = _a.isFiltered, isFiltered = _f === void 0 ? false : _f, _g = _a.badgeColor, badgeColor = _g === void 0 ? "secondary" : _g;
     var button = jsx(Button, { iconName: "filter_list", onClick: onClickFilter }, void 0);
@@ -75573,5 +75571,5 @@ function usePrevious(value) {
     return ref.current;
 }
 
-export { Avatar, AvatarName, AwesomeListComponent, AwesomeTableComponent, AwesomeTableUtils, Badge, Button, Card, Checkbox, CheckboxGroup, DateInput, DialogComponent, DialogManager, Dot, Dropdown, Header, HeaderBlock, HeaderDetail, HeaderTable, Icon$2 as Icon, ImageUtils, InputText, Loading, MapUtils, Modal, Notifications, ObjectUtils, PopoverList, Progress, ProgressComponent, RadioGroup, RowInterchangeView, Select, StringUtils, TabBar, TimeUtils, TreeDataUtils, TreeSelect, UrlUtils, ViewRow, ViewTextarea, useFirstTime, useForceUpdate, usePrevious };
+export { Avatar, AvatarName, AwesomeListComponent, AwesomeTableComponent, AwesomeTableUtils, Badge, Button, Card, Checkbox, CheckboxGroup, DateInput, DialogComponent, DialogManager, Dot, Dropdown, Header, HeaderBlock, HeaderDetail, HeaderTable, Icon$2 as Icon, ImageUtils, InputText, InputTextSearch, Loading, MapUtils, Modal, Notifications, ObjectUtils, PopoverList, Progress, ProgressComponent, RadioGroup, RowInterchangeView, Select, StringUtils, TabBar, TimeUtils, TreeDataUtils, TreeSelect, UrlUtils, ViewRow, ViewTextarea, useFirstTime, useForceUpdate, usePrevious };
 //# sourceMappingURL=dcomponent.es.js.map

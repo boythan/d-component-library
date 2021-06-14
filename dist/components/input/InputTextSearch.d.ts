@@ -1,5 +1,5 @@
 /// <reference types="react" />
-export interface InputTextProps {
+export interface InputTextSearchProps {
     className?: string;
     variant?: "standard" | "outline";
     value?: string;
@@ -10,5 +10,5 @@ export interface InputTextProps {
     onChange?: any;
     onBlur?: any;
 }
-declare const InputTextSearch: ({ className, variant, value, defaultValue, error, placeholder, disabled, onChange, onBlur, }: InputTextProps) => JSX.Element;
+declare const InputTextSearch: ({ className, variant, value, defaultValue, error, placeholder, disabled, onChange, onBlur, }: InputTextSearchProps) => JSX.Element;
 export default InputTextSearch;
