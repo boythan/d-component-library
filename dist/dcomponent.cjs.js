@@ -252,6 +252,28 @@ var InputTextSearch = function (_a) {
             jsxRuntime.jsx("input", { value: value, onChange: onChange, required: true, placeholder: placeholder, onBlur: onBlur, disabled: disabled, defaultValue: defaultValue }, void 0)] }), void 0));
 };
 
+var InputColor = function (_a) {
+    var className = _a.className, classNameInput = _a.classNameInput, classNameInputContainer = _a.classNameInputContainer, style = _a.style, styleInput = _a.styleInput, styleInputContainer = _a.styleInputContainer, styleLabel = _a.styleLabel, _b = _a.variant, variant = _b === void 0 ? "outline" : _b, // standard || outline
+    value = _a.value, defaultValue = _a.defaultValue, error = _a.error, name = _a.name, label = _a.label, key = _a.key, placeholder = _a.placeholder, disabled = _a.disabled, onChange = _a.onChange, onBlur = _a.onBlur;
+    var container = classnames("d-input-color__container", className);
+    var labelClass = classnames("text-label");
+    var inputClass = classnames("d-input-color__input", classNameInput);
+    var inputContainerClass = classnames("d-input-color__input-container", "d-input-text__input-container-" + variant, {
+        "d-input-text__input-container-disabled": disabled,
+        "d-input-text__error": !!error,
+    }, classNameInputContainer);
+    var inputValueClass = classnames("text-x-small", "ml-1");
+    var errorTextClass = classnames("text-x-small", "text-error", "ml-1");
+    var renderInput = function () {
+        return (jsxRuntime.jsx("input", { value: value, onChange: onChange, className: inputClass, name: name, required: true, placeholder: placeholder, onBlur: onBlur, disabled: disabled, defaultValue: defaultValue, style: styleInput, type: "color" }, key));
+    };
+    return (jsxRuntime.jsxs("div", __assign({ className: container, style: style }, { children: [label && (jsxRuntime.jsx("label", __assign({ htmlFor: name, className: labelClass, style: styleLabel }, { children: jsxRuntime.jsx("span", { children: label }, void 0) }), void 0)),
+            jsxRuntime.jsxs("div", __assign({ className: inputContainerClass, style: styleInputContainer }, { children: [renderInput(),
+                    jsxRuntime.jsx("div", __assign({ className: inputValueClass }, { children: value }), void 0)] }), void 0),
+            error && (jsxRuntime.jsxs("div", __assign({ className: "flex-center-y mt-1" }, { children: [jsxRuntime.jsx(Icon$2, { name: "error_outline", className: "text-error", size: "small" }, void 0),
+                    jsxRuntime.jsx("text", __assign({ className: errorTextClass }, { children: error }), void 0)] }), void 0))] }), void 0));
+};
+
 function _extends$1() {
   _extends$1 = Object.assign || function (target) {
     for (var i = 1; i < arguments.length; i++) {
@@ -76081,6 +76103,7 @@ exports.HeaderDetail = HeaderDetail;
 exports.HeaderTable = HeaderTable;
 exports.Icon = Icon$2;
 exports.ImageUtils = ImageUtils;
+exports.InputColor = InputColor;
 exports.InputText = InputText;
 exports.InputTextSearch = InputTextSearch;
 exports.Loading = Loading;

@@ -223,6 +223,28 @@ var InputTextSearch = function (_a) {
             jsx("input", { value: value, onChange: onChange, required: true, placeholder: placeholder, onBlur: onBlur, disabled: disabled, defaultValue: defaultValue }, void 0)] }), void 0));
 };
 
+var InputColor = function (_a) {
+    var className = _a.className, classNameInput = _a.classNameInput, classNameInputContainer = _a.classNameInputContainer, style = _a.style, styleInput = _a.styleInput, styleInputContainer = _a.styleInputContainer, styleLabel = _a.styleLabel, _b = _a.variant, variant = _b === void 0 ? "outline" : _b, // standard || outline
+    value = _a.value, defaultValue = _a.defaultValue, error = _a.error, name = _a.name, label = _a.label, key = _a.key, placeholder = _a.placeholder, disabled = _a.disabled, onChange = _a.onChange, onBlur = _a.onBlur;
+    var container = classnames("d-input-color__container", className);
+    var labelClass = classnames("text-label");
+    var inputClass = classnames("d-input-color__input", classNameInput);
+    var inputContainerClass = classnames("d-input-color__input-container", "d-input-text__input-container-" + variant, {
+        "d-input-text__input-container-disabled": disabled,
+        "d-input-text__error": !!error,
+    }, classNameInputContainer);
+    var inputValueClass = classnames("text-x-small", "ml-1");
+    var errorTextClass = classnames("text-x-small", "text-error", "ml-1");
+    var renderInput = function () {
+        return (jsx("input", { value: value, onChange: onChange, className: inputClass, name: name, required: true, placeholder: placeholder, onBlur: onBlur, disabled: disabled, defaultValue: defaultValue, style: styleInput, type: "color" }, key));
+    };
+    return (jsxs("div", __assign({ className: container, style: style }, { children: [label && (jsx("label", __assign({ htmlFor: name, className: labelClass, style: styleLabel }, { children: jsx("span", { children: label }, void 0) }), void 0)),
+            jsxs("div", __assign({ className: inputContainerClass, style: styleInputContainer }, { children: [renderInput(),
+                    jsx("div", __assign({ className: inputValueClass }, { children: value }), void 0)] }), void 0),
+            error && (jsxs("div", __assign({ className: "flex-center-y mt-1" }, { children: [jsx(Icon$2, { name: "error_outline", className: "text-error", size: "small" }, void 0),
+                    jsx("text", __assign({ className: errorTextClass }, { children: error }), void 0)] }), void 0))] }), void 0));
+};
+
 function _extends$1() {
   _extends$1 = Object.assign || function (target) {
     for (var i = 1; i < arguments.length; i++) {
@@ -76031,5 +76053,5 @@ function usePrevious(value) {
     return ref.current;
 }
 
-export { Avatar, AvatarName, AwesomeListComponent, AwesomeTableComponent, AwesomeTableUtils, Badge, Button, Card, Checkbox, CheckboxGroup, DateInput, DialogComponent, DialogManager, Dot, Dropdown, Header, HeaderBlock, HeaderDetail, HeaderTable, Icon$2 as Icon, ImageUtils, InputText, InputTextSearch, Loading, MapUtils, Modal, Notifications, ObjectUtils, PopoverList, Progress, ProgressComponent, RadioGroup, RowInterchangeView, Select, StringUtils, TabBar, TimeUtils, TreeDataUtils, TreeSelect, UrlUtils, ViewCollapse, ViewRow, ViewTextarea, useFirstTime, useForceUpdate, usePrevious };
+export { Avatar, AvatarName, AwesomeListComponent, AwesomeTableComponent, AwesomeTableUtils, Badge, Button, Card, Checkbox, CheckboxGroup, DateInput, DialogComponent, DialogManager, Dot, Dropdown, Header, HeaderBlock, HeaderDetail, HeaderTable, Icon$2 as Icon, ImageUtils, InputColor, InputText, InputTextSearch, Loading, MapUtils, Modal, Notifications, ObjectUtils, PopoverList, Progress, ProgressComponent, RadioGroup, RowInterchangeView, Select, StringUtils, TabBar, TimeUtils, TreeDataUtils, TreeSelect, UrlUtils, ViewCollapse, ViewRow, ViewTextarea, useFirstTime, useForceUpdate, usePrevious };
 //# sourceMappingURL=dcomponent.es.js.map
