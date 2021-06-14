@@ -10,10 +10,8 @@ export interface TestCheckboxProps {
 
 const TestCheckbox: React.FC<TestCheckboxProps> = ({ id }) => {
     const [checked, setChecked] = useState(false);
-    const [valueSelect, setValueSelect] = useState([ATTRIBUTE_INPUT_TYPE[0]]);
+    const [valueSelect, setValueSelect] = useState([ATTRIBUTE_INPUT_TYPE[0].id]);
     const [radioValue, setRadioValue] = useState<any>(ATTRIBUTE_INPUT_TYPE[0]);
-    console.log({ valueSelect });
-    console.log({ radioValue });
     return (
         <React.Fragment>
             <div className="my-5">

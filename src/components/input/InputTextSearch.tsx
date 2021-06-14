@@ -9,7 +9,7 @@ import classname from "classnames";
 // data stubs
 import Icon from "../icon/Icon";
 
-export interface InputTextProps {
+export interface InputTextSearchProps {
     className?: string;
 
     variant?: "standard" | "outline";
@@ -37,7 +37,7 @@ const InputTextSearch = ({
 
     onChange,
     onBlur,
-}: InputTextProps) => {
+}: InputTextSearchProps) => {
     const container = classname(
         "d-input-search",
         `d-input-search__${variant}`,

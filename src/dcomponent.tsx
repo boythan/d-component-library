@@ -7,6 +7,9 @@ import "./scss/index.scss";
 export type { InputTextProps } from "./components/input/InputText";
 export { default as InputText } from "./components/input/InputText";
 
+export type { InputTextSearchProps } from "./components/input/InputTextSearch";
+export { default as InputTextSearch } from "./components/input/InputTextSearch";
+
 /* ----------------------------------------
 // Icon
 // ---------------------------------------- */
