@@ -67839,6 +67839,8 @@ var Languages = {
 };
 var currentLang = (_a = document.documentElement.lang) !== null && _a !== void 0 ? _a : "en";
 var Messages = Languages[currentLang];
+console.log({ Messages: Messages });
+console.log({ currentLang: currentLang });
 
 var Header = function (_a) {
     var title = _a.title, _b = _a.saveText, saveText = _b === void 0 ? Messages.save : _b, _c = _a.cancelText, cancelText = _c === void 0 ? Messages.back : _c, _d = _a.deleteText, deleteText = _d === void 0 ? Messages.delete : _d, _e = _a.printText, printText = _e === void 0 ? Messages.print : _e, _f = _a.editText, editText = _f === void 0 ? Messages.edit : _f, onCancel = _a.onCancel, onSave = _a.onSave, onDelete = _a.onDelete, onPrint = _a.onPrint, onEdit = _a.onEdit, disabledSave = _a.disabledSave, customLeft = _a.customLeft, _g = _a.showCancel, showCancel = _g === void 0 ? true : _g, className = _a.className;
@@ -76073,6 +76075,19 @@ function useForceUpdate() {
     }, []);
     return update;
 }
+var useForceUpdateConstraint = function (constraint) {
+    var _a = React.useState(true), isUpdate = _a[0], setUpdate = _a[1];
+    var isFirstTime = useFirstTime();
+    React.useEffect(function () {
+        if (isFirstTime)
+            return;
+        setUpdate(false);
+    }, [constraint]);
+    React.useEffect(function () {
+        !isUpdate && setUpdate(true);
+    }, [isUpdate]);
+    return isUpdate;
+};
 
 function usePrevious(value) {
     var ref = React.useRef();
@@ -76128,5 +76143,6 @@ exports.ViewRow = ViewRow;
 exports.ViewTextarea = ViewTextarea;
 exports.useFirstTime = useFirstTime;
 exports.useForceUpdate = useForceUpdate;
+exports.useForceUpdateConstraint = useForceUpdateConstraint;
 exports.usePrevious = usePrevious;
 //# sourceMappingURL=dcomponent.cjs.js.map
