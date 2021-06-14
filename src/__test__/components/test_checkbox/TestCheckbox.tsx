@@ -22,6 +22,7 @@ const TestCheckbox: React.FC<TestCheckboxProps> = ({ id }) => {
 
             <div className="my-5">
                 <CheckboxGroup
+                    label="Checkbox group label"
                     dataSource={ATTRIBUTE_INPUT_TYPE}
                     value={valueSelect}
                     onChange={(value) => {
@@ -32,6 +33,7 @@ const TestCheckbox: React.FC<TestCheckboxProps> = ({ id }) => {
             </div>
             <div className="my-5">
                 <CheckboxGroup
+                    label="Checkbox group label"
                     dataSource={ATTRIBUTE_INPUT_TYPE}
                     value={valueSelect}
                     onChange={(value) => {
@@ -42,6 +44,7 @@ const TestCheckbox: React.FC<TestCheckboxProps> = ({ id }) => {
             </div>
             <div className="my-5">
                 <CheckboxGroup
+                    label="Checkbox group label"
                     dataSource={ATTRIBUTE_INPUT_TYPE}
                     value={valueSelect}
                     onChange={(value) => {
@@ -82,6 +85,7 @@ const TestCheckbox: React.FC<TestCheckboxProps> = ({ id }) => {
             </div>
             <div className="my-5">
                 <RadioGroup
+                    label="Radio group label"
                     dataSource={ATTRIBUTE_INPUT_TYPE}
                     value={radioValue}
                     onChange={(value) => setRadioValue(value)}

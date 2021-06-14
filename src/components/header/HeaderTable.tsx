@@ -54,11 +54,13 @@ const HeaderTable = ({
             <div className={ClassNames("d-flex justify-content-between mb-3", classNameTop)}>
                 <div className="h4">{label}</div>
                 <div className="d-flex">
-                    {onClickNew && <Button iconName="add" content="New" onClick={onClickNew} className="mr-3" />}
+                    {onClickNew && <Button iconName="add" content="New" onClick={onClickNew} className="ml-3" />}
                     {onClickImport && (
-                        <Button iconName="cloud_upload" content="Import" onClick={onClickImport} className="mr-3" />
+                        <Button iconName="cloud_upload" content="Import" onClick={onClickImport} className="ml-3" />
                     )}
-                    {onClickExport && <Button iconName="cloud_download" content="Export" onClick={onClickExport} />}
+                    {onClickExport && (
+                        <Button iconName="cloud_download" content="Export" onClick={onClickExport} className="ml-3" />
+                    )}
                 </div>
             </div>
             <div className="flex-center-y">
