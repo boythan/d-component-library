@@ -50498,66 +50498,70 @@ var Checkbox = function (_a) {
 };
 
 var CheckboxGroup = function (_a) {
-    var dataSource = _a.dataSource, className = _a.className, classNameItem = _a.classNameItem, _b = _a.getLabel, getLabel = _b === void 0 ? function (item) { return item === null || item === void 0 ? void 0 : item.label; } : _b, _c = _a.getValue, getValue = _c === void 0 ? function (item) { return item === null || item === void 0 ? void 0 : item.id; } : _c, _d = _a.value, value = _d === void 0 ? [] : _d, onChange = _a.onChange, getDisabledItem = _a.getDisabledItem, _e = _a.numberOfColumns, numberOfColumns = _e === void 0 ? "3" : _e;
-    var containerClass = classnames("d-checkbox-group d-flex flex-wrap", className);
-    return (jsxRuntime.jsx("div", __assign({ className: containerClass }, { children: dataSource.map(function (item) {
-            var iLabel = getLabel(item);
-            var iValue = getValue(item);
-            var isChecked = value.includes(iValue);
-            var isDisabled = (getDisabledItem && getDisabledItem(item)) || false;
-            var itemClass = classnames("my-3 p-0", {
-                "col-12": numberOfColumns === "1",
-            }, {
-                "col-6": numberOfColumns === "2",
-            }, {
-                "col-4": numberOfColumns === "3",
-            }, {
-                "col-3": numberOfColumns === "4",
-            }, {
-                col: numberOfColumns === "5",
-            }, {
-                "col-2": numberOfColumns === "6",
-            }, classNameItem);
-            return (jsxRuntime.jsx(Checkbox, { label: iLabel, value: getValue(item), onChange: function (event) {
-                    var isPush = event.target.checked;
-                    var clone = __spreadArray([], value);
-                    if (isPush) {
-                        clone.push(getValue(item));
-                    }
-                    else {
-                        clone = value.filter(function (i) {
-                            return i !== getValue(item);
-                        });
-                    }
-                    onChange && onChange(clone);
-                }, checked: isChecked, disabled: isDisabled, className: itemClass }, iValue));
-        }) }), void 0));
+    var dataSource = _a.dataSource, className = _a.className, classNameItem = _a.classNameItem, _b = _a.getLabel, getLabel = _b === void 0 ? function (item) { return item === null || item === void 0 ? void 0 : item.label; } : _b, _c = _a.getValue, getValue = _c === void 0 ? function (item) { return item === null || item === void 0 ? void 0 : item.id; } : _c, _d = _a.value, value = _d === void 0 ? [] : _d, onChange = _a.onChange, getDisabledItem = _a.getDisabledItem, _e = _a.numberOfColumns, numberOfColumns = _e === void 0 ? "3" : _e, label = _a.label;
+    var containerClass = classnames(className);
+    var groupContainerClass = classnames("d-checkbox-group d-flex flex-wrap", className);
+    return (jsxRuntime.jsxs("div", __assign({ className: containerClass }, { children: [jsxRuntime.jsx("label", { children: label }, void 0),
+            jsxRuntime.jsx("div", __assign({ className: groupContainerClass }, { children: dataSource.map(function (item) {
+                    var iLabel = getLabel(item);
+                    var iValue = getValue(item);
+                    var isChecked = value.includes(iValue);
+                    var isDisabled = (getDisabledItem && getDisabledItem(item)) || false;
+                    var itemClass = classnames("my-3 p-0", {
+                        "col-12": numberOfColumns === "1",
+                    }, {
+                        "col-6": numberOfColumns === "2",
+                    }, {
+                        "col-4": numberOfColumns === "3",
+                    }, {
+                        "col-3": numberOfColumns === "4",
+                    }, {
+                        col: numberOfColumns === "5",
+                    }, {
+                        "col-2": numberOfColumns === "6",
+                    }, classNameItem);
+                    return (jsxRuntime.jsx(Checkbox, { label: iLabel, value: getValue(item), onChange: function (event) {
+                            var isPush = event.target.checked;
+                            var clone = __spreadArray([], value);
+                            if (isPush) {
+                                clone.push(getValue(item));
+                            }
+                            else {
+                                clone = value.filter(function (i) {
+                                    return i !== getValue(item);
+                                });
+                            }
+                            onChange && onChange(clone);
+                        }, checked: isChecked, disabled: isDisabled, className: itemClass }, iValue));
+                }) }), void 0)] }), void 0));
 };
 
 var RadioGroup = function (_a) {
-    var dataSource = _a.dataSource, className = _a.className, classNameItem = _a.classNameItem, _b = _a.getLabel, getLabel = _b === void 0 ? function (item) { return item === null || item === void 0 ? void 0 : item.label; } : _b, _c = _a.getValue, getValue = _c === void 0 ? function (item) { return item === null || item === void 0 ? void 0 : item.id; } : _c, getDisabledItem = _a.getDisabledItem, value = _a.value, onChange = _a.onChange, _d = _a.numberOfColumns, numberOfColumns = _d === void 0 ? "3" : _d;
-    var containerClass = classnames("d-checkbox-group d-flex flex-wrap", className);
-    return (jsxRuntime.jsx("div", __assign({ className: containerClass }, { children: dataSource.map(function (item) {
-            var iLabel = getLabel(item);
-            var isChecked = getValue(item) === value;
-            var isDisabled = (getDisabledItem && getDisabledItem(item)) || false;
-            var itemClass = classnames("my-3", {
-                "col-12": numberOfColumns === "1",
-            }, {
-                "col-6": numberOfColumns === "2",
-            }, {
-                "col-4": numberOfColumns === "3",
-            }, {
-                "col-3": numberOfColumns === "4",
-            }, {
-                col: numberOfColumns === "5",
-            }, {
-                "col-2": numberOfColumns === "6",
-            }, classNameItem);
-            return (jsxRuntime.jsx(Checkbox, { label: iLabel, value: value, onChange: function (event) {
-                    onChange && onChange(getValue(item));
-                }, checked: isChecked, variant: "radio", disabled: isDisabled, className: itemClass }, void 0));
-        }) }), void 0));
+    var dataSource = _a.dataSource, className = _a.className, classNameItem = _a.classNameItem, _b = _a.getLabel, getLabel = _b === void 0 ? function (item) { return item === null || item === void 0 ? void 0 : item.label; } : _b, _c = _a.getValue, getValue = _c === void 0 ? function (item) { return item === null || item === void 0 ? void 0 : item.id; } : _c, getDisabledItem = _a.getDisabledItem, value = _a.value, onChange = _a.onChange, _d = _a.numberOfColumns, numberOfColumns = _d === void 0 ? "3" : _d, label = _a.label;
+    var containerClass = classnames(className);
+    var groupContainerClass = classnames("d-flex flex-wrap", className);
+    return (jsxRuntime.jsxs("div", __assign({ className: containerClass }, { children: [jsxRuntime.jsx("label", { children: label }, void 0),
+            jsxRuntime.jsx("div", __assign({ className: groupContainerClass }, { children: dataSource.map(function (item) {
+                    var iLabel = getLabel(item);
+                    var isChecked = getValue(item) === value;
+                    var isDisabled = (getDisabledItem && getDisabledItem(item)) || false;
+                    var itemClass = classnames("my-3", {
+                        "col-12": numberOfColumns === "1",
+                    }, {
+                        "col-6": numberOfColumns === "2",
+                    }, {
+                        "col-4": numberOfColumns === "3",
+                    }, {
+                        "col-3": numberOfColumns === "4",
+                    }, {
+                        col: numberOfColumns === "5",
+                    }, {
+                        "col-2": numberOfColumns === "6",
+                    }, classNameItem);
+                    return (jsxRuntime.jsx(Checkbox, { label: iLabel, value: value, onChange: function (event) {
+                            onChange && onChange(getValue(item));
+                        }, checked: isChecked, variant: "radio", disabled: isDisabled, className: itemClass }, void 0));
+                }) }), void 0)] }), void 0));
 };
 
 var lodash = createCommonjsModule(function (module, exports) {
@@ -67792,9 +67796,9 @@ var HeaderTable = function (_a) {
         button = (jsxRuntime.jsx(Badge, __assign({ color: badgeColor }, { children: jsxRuntime.jsx(Button, { iconName: "filter_list", onClick: onClickFilter }, void 0) }), void 0));
     }
     return (jsxRuntime.jsxs("div", __assign({ className: classnames("w-100", className), style: style }, { children: [jsxRuntime.jsxs("div", __assign({ className: classnames("d-flex justify-content-between mb-3", classNameTop) }, { children: [jsxRuntime.jsx("div", __assign({ className: "h4" }, { children: label }), void 0),
-                    jsxRuntime.jsxs("div", __assign({ className: "d-flex" }, { children: [onClickNew && jsxRuntime.jsx(Button, { iconName: "add", content: "New", onClick: onClickNew, className: "mr-3" }, void 0),
-                            onClickImport && (jsxRuntime.jsx(Button, { iconName: "cloud_upload", content: "Import", onClick: onClickImport, className: "mr-3" }, void 0)),
-                            onClickExport && jsxRuntime.jsx(Button, { iconName: "cloud_download", content: "Export", onClick: onClickExport }, void 0)] }), void 0)] }), void 0),
+                    jsxRuntime.jsxs("div", __assign({ className: "d-flex" }, { children: [onClickNew && jsxRuntime.jsx(Button, { iconName: "add", content: "New", onClick: onClickNew, className: "ml-3" }, void 0),
+                            onClickImport && (jsxRuntime.jsx(Button, { iconName: "cloud_upload", content: "Import", onClick: onClickImport, className: "ml-3" }, void 0)),
+                            onClickExport && (jsxRuntime.jsx(Button, { iconName: "cloud_download", content: "Export", onClick: onClickExport, className: "ml-3" }, void 0))] }), void 0)] }), void 0),
             jsxRuntime.jsxs("div", __assign({ className: "flex-center-y" }, { children: [customView && jsxRuntime.jsx("div", __assign({ className: "header-table__custom-view-container" }, { children: customView() }), void 0),
                     jsxRuntime.jsx(InputTextSearch, { className: "w-100 mr-3 bg-white", placeholder: placeholder, onChange: onChangeText, disabled: disabledSearch }, void 0),
                     onClickFilter && button] }), void 0)] }), void 0));

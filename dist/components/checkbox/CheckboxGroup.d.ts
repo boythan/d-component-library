@@ -1,6 +1,7 @@
 import React from "react";
 export interface CheckboxGroupProps {
     dataSource: Array<any>;
+    label?: any;
     className?: string;
     classNameItem?: string;
     getLabel?: React.FC;

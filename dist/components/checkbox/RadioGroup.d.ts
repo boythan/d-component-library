@@ -1,6 +1,7 @@
 import React from "react";
 export interface RadioGroupProps {
     dataSource: Array<any>;
+    label?: any;
     className?: string;
     classNameItem?: string;
     getLabel?: (item: any) => any;
