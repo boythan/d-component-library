@@ -4,7 +4,7 @@ import classNames from "classnames";
 import { Collapse } from "antd";
 import { CaretRightOutlined } from "@ant-design/icons";
 
-interface ViewCollapseProps {
+export interface ViewCollapseProps {
     label: string;
     children: any;
     className?: any;

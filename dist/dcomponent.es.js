@@ -178,7 +178,7 @@ var Icon$2 = function (_a) {
 };
 
 var InputText = function (_a) {
-    var className = _a.className, classNameInput = _a.classNameInput, classNameInputContainer = _a.classNameInputContainer, _b = _a.variant, variant = _b === void 0 ? "outline" : _b, // standard || outline
+    var className = _a.className, classNameInput = _a.classNameInput, classNameInputContainer = _a.classNameInputContainer, style = _a.style, styleInput = _a.styleInput, styleInputContainer = _a.styleInputContainer, styleLabel = _a.styleLabel, _b = _a.variant, variant = _b === void 0 ? "outline" : _b, // standard || outline
     multiple = _a.multiple, value = _a.value, defaultValue = _a.defaultValue, error = _a.error, name = _a.name, label = _a.label, key = _a.key, placeholder = _a.placeholder, type = _a.type, _c = _a.rows, rows = _c === void 0 ? 5 : _c, cols = _a.cols, disabled = _a.disabled, prefix = _a.prefix, suffix = _a.suffix, onChange = _a.onChange, onBlur = _a.onBlur;
     var container = classnames("d-input-text__container", className);
     var labelClass = classnames("text-label");
@@ -197,18 +197,50 @@ var InputText = function (_a) {
     });
     var textAreaClass = classnames("text-x-small", "d-input-area__input", {
         "d-input-text__error": !!error,
-    });
+    }, classNameInput);
     var errorTextClass = classnames("text-x-small", "text-error", "ml-1");
     var renderInput = function () {
         if (multiple) {
-            return (jsx("textarea", { value: value, onChange: onChange, rows: rows, name: name, className: textAreaClass, cols: cols, disabled: disabled, defaultValue: defaultValue, placeholder: placeholder }, void 0));
+            return (jsx("textarea", { value: value, onChange: onChange, rows: rows, name: name, className: textAreaClass, cols: cols, disabled: disabled, defaultValue: defaultValue, placeholder: placeholder, style: styleInput }, void 0));
         }
-        return (jsx("input", { value: value, onChange: onChange, className: inputClass, name: name, required: true, placeholder: placeholder, onBlur: onBlur, type: type, disabled: disabled, defaultValue: defaultValue }, key));
+        return (jsx("input", { value: value, onChange: onChange, className: inputClass, name: name, required: true, placeholder: placeholder, onBlur: onBlur, type: type, disabled: disabled, defaultValue: defaultValue, style: styleInput }, key));
     };
-    return (jsxs("div", __assign({ className: container }, { children: [label && (jsx("label", __assign({ htmlFor: name, className: labelClass }, { children: jsx("span", { children: label }, void 0) }), void 0)),
-            jsxs("div", __assign({ className: inputContainerClass }, { children: [jsx("div", __assign({ className: inputPrefixClass }, { children: prefix }), void 0),
+    return (jsxs("div", __assign({ className: container, style: style }, { children: [label && (jsx("label", __assign({ htmlFor: name, className: labelClass, style: styleLabel }, { children: jsx("span", { children: label }, void 0) }), void 0)),
+            jsxs("div", __assign({ className: inputContainerClass, style: styleInputContainer }, { children: [jsx("div", __assign({ className: inputPrefixClass }, { children: prefix }), void 0),
                     renderInput(),
                     jsx("div", __assign({ className: inputSuffixClass }, { children: suffix }), void 0)] }), void 0),
+            error && (jsxs("div", __assign({ className: "flex-center-y mt-1" }, { children: [jsx(Icon$2, { name: "error_outline", className: "text-error", size: "small" }, void 0),
+                    jsx("text", __assign({ className: errorTextClass }, { children: error }), void 0)] }), void 0))] }), void 0));
+};
+
+var InputTextSearch = function (_a) {
+    var className = _a.className, _b = _a.variant, variant = _b === void 0 ? "outline" : _b, value = _a.value, defaultValue = _a.defaultValue, error = _a.error, placeholder = _a.placeholder, disabled = _a.disabled, onChange = _a.onChange, onBlur = _a.onBlur;
+    var container = classnames("d-input-search", "d-input-search__" + variant, {
+        "d-input-search__disabled": disabled,
+        "d-input-search__error": !!error,
+    }, className);
+    return (jsxs("div", __assign({ className: container }, { children: [jsx(Icon$2, { name: "search", className: "mr-3" }, void 0),
+            jsx("input", { value: value, onChange: onChange, required: true, placeholder: placeholder, onBlur: onBlur, disabled: disabled, defaultValue: defaultValue }, void 0)] }), void 0));
+};
+
+var InputColor = function (_a) {
+    var className = _a.className, classNameInput = _a.classNameInput, classNameInputContainer = _a.classNameInputContainer, style = _a.style, styleInput = _a.styleInput, styleInputContainer = _a.styleInputContainer, styleLabel = _a.styleLabel, _b = _a.variant, variant = _b === void 0 ? "outline" : _b, // standard || outline
+    value = _a.value, defaultValue = _a.defaultValue, error = _a.error, name = _a.name, label = _a.label, key = _a.key, placeholder = _a.placeholder, disabled = _a.disabled, onChange = _a.onChange, onBlur = _a.onBlur;
+    var container = classnames("d-input-color__container", className);
+    var labelClass = classnames("text-label");
+    var inputClass = classnames("d-input-color__input", classNameInput);
+    var inputContainerClass = classnames("d-input-color__input-container", "d-input-text__input-container-" + variant, {
+        "d-input-text__input-container-disabled": disabled,
+        "d-input-text__error": !!error,
+    }, classNameInputContainer);
+    var inputValueClass = classnames("text-x-small", "ml-1");
+    var errorTextClass = classnames("text-x-small", "text-error", "ml-1");
+    var renderInput = function () {
+        return (jsx("input", { value: value, onChange: onChange, className: inputClass, name: name, required: true, placeholder: placeholder, onBlur: onBlur, disabled: disabled, defaultValue: defaultValue, style: styleInput, type: "color" }, key));
+    };
+    return (jsxs("div", __assign({ className: container, style: style }, { children: [label && (jsx("label", __assign({ htmlFor: name, className: labelClass, style: styleLabel }, { children: jsx("span", { children: label }, void 0) }), void 0)),
+            jsxs("div", __assign({ className: inputContainerClass, style: styleInputContainer }, { children: [renderInput(),
+                    jsx("div", __assign({ className: inputValueClass }, { children: value }), void 0)] }), void 0),
             error && (jsxs("div", __assign({ className: "flex-center-y mt-1" }, { children: [jsx(Icon$2, { name: "error_outline", className: "text-error", size: "small" }, void 0),
                     jsx("text", __assign({ className: errorTextClass }, { children: error }), void 0)] }), void 0))] }), void 0));
 };
@@ -22293,6 +22325,21 @@ CaretDownOutlined.displayName = 'CaretDownOutlined';
 var CaretDownOutlined$1 = /*#__PURE__*/React.forwardRef(CaretDownOutlined);
 
 // This icon file is generated automatically.
+var CaretRightOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "0 0 1024 1024", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M715.8 493.5L335 165.1c-14.2-12.2-35-1.2-35 18.5v656.8c0 19.7 20.8 30.7 35 18.5l380.8-328.4c10.9-9.4 10.9-27.6 0-37z" } }] }, "name": "caret-right", "theme": "outlined" };
+
+// GENERATE BY ./scripts/generate.ts
+
+var CaretRightOutlined = function CaretRightOutlined(props, ref) {
+  return /*#__PURE__*/React.createElement(Icon$1, Object.assign({}, props, {
+    ref: ref,
+    icon: CaretRightOutlined$2
+  }));
+};
+
+CaretRightOutlined.displayName = 'CaretRightOutlined';
+var CaretRightOutlined$1 = /*#__PURE__*/React.forwardRef(CaretRightOutlined);
+
+// This icon file is generated automatically.
 var CaretUpOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "0 0 1024 1024", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M858.9 689L530.5 308.2c-9.4-10.9-27.5-10.9-37 0L165.1 689c-12.2 14.2-1.2 35 18.5 35h656.8c19.7 0 30.7-20.8 18.5-35z" } }] }, "name": "caret-up", "theme": "outlined" };
 
 // GENERATE BY ./scripts/generate.ts
@@ -34129,6 +34176,436 @@ var canUseDocElement = function canUseDocElement() {
   return canUseDom() && window.document.documentElement;
 };
 
+var PanelContent = /*#__PURE__*/React.forwardRef(function (props, ref) {
+  var _classnames;
+
+  var prefixCls = props.prefixCls,
+      forceRender = props.forceRender,
+      className = props.className,
+      style = props.style,
+      children = props.children,
+      isActive = props.isActive,
+      role = props.role;
+
+  var _React$useState = React.useState(isActive || forceRender),
+      _React$useState2 = _slicedToArray$3(_React$useState, 2),
+      rendered = _React$useState2[0],
+      setRendered = _React$useState2[1];
+
+  React.useEffect(function () {
+    if (forceRender || isActive) {
+      setRendered(true);
+    }
+  }, [forceRender, isActive]);
+
+  if (!rendered) {
+    return null;
+  }
+
+  return /*#__PURE__*/React.createElement("div", {
+    ref: ref,
+    className: classnames("".concat(prefixCls, "-content"), (_classnames = {}, _defineProperty$4(_classnames, "".concat(prefixCls, "-content-active"), isActive), _defineProperty$4(_classnames, "".concat(prefixCls, "-content-inactive"), !isActive), _classnames), className),
+    style: style,
+    role: role
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "".concat(prefixCls, "-content-box")
+  }, children));
+});
+PanelContent.displayName = 'PanelContent';
+
+var CollapsePanel$1 = /*#__PURE__*/function (_React$Component) {
+  _inherits$1(CollapsePanel, _React$Component);
+
+  var _super = _createSuper$2(CollapsePanel);
+
+  function CollapsePanel() {
+    var _this;
+
+    _classCallCheck$2(this, CollapsePanel);
+
+    _this = _super.apply(this, arguments);
+
+    _this.handleItemClick = function () {
+      var _this$props = _this.props,
+          onItemClick = _this$props.onItemClick,
+          panelKey = _this$props.panelKey;
+
+      if (typeof onItemClick === 'function') {
+        onItemClick(panelKey);
+      }
+    };
+
+    _this.handleKeyPress = function (e) {
+      if (e.key === 'Enter' || e.keyCode === 13 || e.which === 13) {
+        _this.handleItemClick();
+      }
+    };
+
+    return _this;
+  }
+
+  _createClass$2(CollapsePanel, [{
+    key: "shouldComponentUpdate",
+    value: function shouldComponentUpdate(nextProps) {
+      return !shallowequal(this.props, nextProps);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _classNames,
+          _classNames2,
+          _this2 = this;
+
+      var _this$props2 = this.props,
+          className = _this$props2.className,
+          id = _this$props2.id,
+          style = _this$props2.style,
+          prefixCls = _this$props2.prefixCls,
+          header = _this$props2.header,
+          headerClass = _this$props2.headerClass,
+          children = _this$props2.children,
+          isActive = _this$props2.isActive,
+          showArrow = _this$props2.showArrow,
+          destroyInactivePanel = _this$props2.destroyInactivePanel,
+          accordion = _this$props2.accordion,
+          forceRender = _this$props2.forceRender,
+          openMotion = _this$props2.openMotion,
+          expandIcon = _this$props2.expandIcon,
+          extra = _this$props2.extra,
+          collapsible = _this$props2.collapsible;
+      var disabled = collapsible === 'disabled';
+      var headerCls = classnames("".concat(prefixCls, "-header"), (_classNames = {}, _defineProperty$4(_classNames, headerClass, headerClass), _defineProperty$4(_classNames, "".concat(prefixCls, "-header-collapsible-only"), collapsible === 'header'), _classNames));
+      var itemCls = classnames((_classNames2 = {}, _defineProperty$4(_classNames2, "".concat(prefixCls, "-item"), true), _defineProperty$4(_classNames2, "".concat(prefixCls, "-item-active"), isActive), _defineProperty$4(_classNames2, "".concat(prefixCls, "-item-disabled"), disabled), _classNames2), className);
+      var icon = /*#__PURE__*/React.createElement("i", {
+        className: "arrow"
+      });
+
+      if (showArrow && typeof expandIcon === 'function') {
+        icon = expandIcon(this.props);
+      }
+
+      return /*#__PURE__*/React.createElement("div", {
+        className: itemCls,
+        style: style,
+        id: id
+      }, /*#__PURE__*/React.createElement("div", {
+        className: headerCls,
+        onClick: function onClick() {
+          return collapsible !== 'header' && _this2.handleItemClick();
+        },
+        role: accordion ? 'tab' : 'button',
+        tabIndex: disabled ? -1 : 0,
+        "aria-expanded": isActive,
+        onKeyPress: this.handleKeyPress
+      }, showArrow && icon, collapsible === 'header' ? /*#__PURE__*/React.createElement("span", {
+        onClick: this.handleItemClick,
+        className: "".concat(prefixCls, "-header-text")
+      }, header) : header, extra && /*#__PURE__*/React.createElement("div", {
+        className: "".concat(prefixCls, "-extra")
+      }, extra)), /*#__PURE__*/React.createElement(CSSMotion, _extends$1({
+        visible: isActive,
+        leavedClassName: "".concat(prefixCls, "-content-hidden")
+      }, openMotion, {
+        forceRender: forceRender,
+        removeOnLeave: destroyInactivePanel
+      }), function (_ref, ref) {
+        var motionClassName = _ref.className,
+            motionStyle = _ref.style;
+        return /*#__PURE__*/React.createElement(PanelContent, {
+          ref: ref,
+          prefixCls: prefixCls,
+          className: motionClassName,
+          style: motionStyle,
+          isActive: isActive,
+          forceRender: forceRender,
+          role: accordion ? 'tabpanel' : null
+        }, children);
+      }));
+    }
+  }]);
+
+  return CollapsePanel;
+}(React.Component);
+
+CollapsePanel$1.defaultProps = {
+  showArrow: true,
+  isActive: false,
+  onItemClick: function onItemClick() {},
+  headerClass: '',
+  forceRender: false
+};
+
+function getActiveKeysArray(activeKey) {
+  var currentActiveKey = activeKey;
+
+  if (!Array.isArray(currentActiveKey)) {
+    var activeKeyType = _typeof$4(currentActiveKey);
+
+    currentActiveKey = activeKeyType === 'number' || activeKeyType === 'string' ? [currentActiveKey] : [];
+  }
+
+  return currentActiveKey.map(function (key) {
+    return String(key);
+  });
+}
+
+var Collapse$1 = /*#__PURE__*/function (_React$Component) {
+  _inherits$1(Collapse, _React$Component);
+
+  var _super = _createSuper$2(Collapse);
+
+  function Collapse(props) {
+    var _this;
+
+    _classCallCheck$2(this, Collapse);
+
+    _this = _super.call(this, props);
+
+    _this.onClickItem = function (key) {
+      var activeKey = _this.state.activeKey;
+
+      if (_this.props.accordion) {
+        activeKey = activeKey[0] === key ? [] : [key];
+      } else {
+        activeKey = _toConsumableArray(activeKey);
+        var index = activeKey.indexOf(key);
+        var isActive = index > -1;
+
+        if (isActive) {
+          // remove active state
+          activeKey.splice(index, 1);
+        } else {
+          activeKey.push(key);
+        }
+      }
+
+      _this.setActiveKey(activeKey);
+    };
+
+    _this.getNewChild = function (child, index) {
+      if (!child) return null;
+      var activeKey = _this.state.activeKey;
+      var _this$props = _this.props,
+          prefixCls = _this$props.prefixCls,
+          openMotion = _this$props.openMotion,
+          accordion = _this$props.accordion,
+          rootDestroyInactivePanel = _this$props.destroyInactivePanel,
+          expandIcon = _this$props.expandIcon,
+          collapsible = _this$props.collapsible; // If there is no key provide, use the panel order as default key
+
+      var key = child.key || String(index);
+      var _child$props = child.props,
+          header = _child$props.header,
+          headerClass = _child$props.headerClass,
+          destroyInactivePanel = _child$props.destroyInactivePanel,
+          childCollapsible = _child$props.collapsible;
+      var isActive = false;
+
+      if (accordion) {
+        isActive = activeKey[0] === key;
+      } else {
+        isActive = activeKey.indexOf(key) > -1;
+      }
+
+      var mergeCollapsible = childCollapsible !== null && childCollapsible !== void 0 ? childCollapsible : collapsible;
+      var props = {
+        key: key,
+        panelKey: key,
+        header: header,
+        headerClass: headerClass,
+        isActive: isActive,
+        prefixCls: prefixCls,
+        destroyInactivePanel: destroyInactivePanel !== null && destroyInactivePanel !== void 0 ? destroyInactivePanel : rootDestroyInactivePanel,
+        openMotion: openMotion,
+        accordion: accordion,
+        children: child.props.children,
+        onItemClick: mergeCollapsible === 'disabled' ? null : _this.onClickItem,
+        expandIcon: expandIcon,
+        collapsible: mergeCollapsible
+      }; // https://github.com/ant-design/ant-design/issues/20479
+
+      if (typeof child.type === 'string') {
+        return child;
+      }
+
+      return /*#__PURE__*/React.cloneElement(child, props);
+    };
+
+    _this.getItems = function () {
+      var children = _this.props.children;
+      return toArray$6(children).map(_this.getNewChild);
+    };
+
+    _this.setActiveKey = function (activeKey) {
+      if (!('activeKey' in _this.props)) {
+        _this.setState({
+          activeKey: activeKey
+        });
+      }
+
+      _this.props.onChange(_this.props.accordion ? activeKey[0] : activeKey);
+    };
+
+    var activeKey = props.activeKey,
+        defaultActiveKey = props.defaultActiveKey;
+    var currentActiveKey = defaultActiveKey;
+
+    if ('activeKey' in props) {
+      currentActiveKey = activeKey;
+    }
+
+    _this.state = {
+      activeKey: getActiveKeysArray(currentActiveKey)
+    };
+    return _this;
+  }
+
+  _createClass$2(Collapse, [{
+    key: "shouldComponentUpdate",
+    value: function shouldComponentUpdate(nextProps, nextState) {
+      return !shallowequal(this.props, nextProps) || !shallowequal(this.state, nextState);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _classNames;
+
+      var _this$props2 = this.props,
+          prefixCls = _this$props2.prefixCls,
+          className = _this$props2.className,
+          style = _this$props2.style,
+          accordion = _this$props2.accordion;
+      var collapseClassName = classnames((_classNames = {}, _defineProperty$4(_classNames, prefixCls, true), _defineProperty$4(_classNames, className, !!className), _classNames));
+      return /*#__PURE__*/React.createElement("div", {
+        className: collapseClassName,
+        style: style,
+        role: accordion ? 'tablist' : null
+      }, this.getItems());
+    }
+  }], [{
+    key: "getDerivedStateFromProps",
+    value: function getDerivedStateFromProps(nextProps) {
+      var newState = {};
+
+      if ('activeKey' in nextProps) {
+        newState.activeKey = getActiveKeysArray(nextProps.activeKey);
+      }
+
+      return newState;
+    }
+  }]);
+
+  return Collapse;
+}(React.Component);
+
+Collapse$1.defaultProps = {
+  prefixCls: 'rc-collapse',
+  onChange: function onChange() {},
+  accordion: false,
+  destroyInactivePanel: false
+};
+Collapse$1.Panel = CollapsePanel$1;
+
+var CollapsePanel = function CollapsePanel(props) {
+  devWarning(!('disabled' in props), 'Collapse.Panel', '`disabled` is deprecated. Please use `collapsible="disabled"` instead.');
+
+  var _React$useContext = React.useContext(ConfigContext),
+      getPrefixCls = _React$useContext.getPrefixCls;
+
+  var customizePrefixCls = props.prefixCls,
+      _props$className = props.className,
+      className = _props$className === void 0 ? '' : _props$className,
+      _props$showArrow = props.showArrow,
+      showArrow = _props$showArrow === void 0 ? true : _props$showArrow;
+  var prefixCls = getPrefixCls('collapse', customizePrefixCls);
+  var collapsePanelClassName = classnames(_defineProperty$4({}, "".concat(prefixCls, "-no-arrow"), !showArrow), className);
+  return /*#__PURE__*/React.createElement(Collapse$1.Panel, _extends$1({}, props, {
+    prefixCls: prefixCls,
+    className: collapsePanelClassName
+  }));
+};
+
+var Collapse = function Collapse(props) {
+  var _classNames;
+
+  var _React$useContext = React.useContext(ConfigContext),
+      getPrefixCls = _React$useContext.getPrefixCls,
+      direction = _React$useContext.direction;
+
+  var customizePrefixCls = props.prefixCls,
+      _props$className = props.className,
+      className = _props$className === void 0 ? '' : _props$className,
+      _props$bordered = props.bordered,
+      bordered = _props$bordered === void 0 ? true : _props$bordered,
+      ghost = props.ghost;
+  var prefixCls = getPrefixCls('collapse', customizePrefixCls);
+
+  var getIconPosition = function getIconPosition() {
+    var expandIconPosition = props.expandIconPosition;
+
+    if (expandIconPosition !== undefined) {
+      return expandIconPosition;
+    }
+
+    return direction === 'rtl' ? 'right' : 'left';
+  };
+
+  var renderExpandIcon = function renderExpandIcon() {
+    var panelProps = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    var expandIcon = props.expandIcon;
+    var icon = expandIcon ? expandIcon(panelProps) : /*#__PURE__*/React.createElement(RightOutlined$1, {
+      rotate: panelProps.isActive ? 90 : undefined
+    });
+    return cloneElement(icon, function () {
+      return {
+        className: classnames(icon.props.className, "".concat(prefixCls, "-arrow"))
+      };
+    });
+  };
+
+  var iconPosition = getIconPosition();
+  var collapseClassName = classnames((_classNames = {}, _defineProperty$4(_classNames, "".concat(prefixCls, "-borderless"), !bordered), _defineProperty$4(_classNames, "".concat(prefixCls, "-icon-position-").concat(iconPosition), true), _defineProperty$4(_classNames, "".concat(prefixCls, "-rtl"), direction === 'rtl'), _defineProperty$4(_classNames, "".concat(prefixCls, "-ghost"), !!ghost), _classNames), className);
+
+  var openMotion = _extends$1(_extends$1({}, collapseMotion), {
+    motionAppear: false,
+    leavedClassName: "".concat(prefixCls, "-content-hidden")
+  });
+
+  var getItems = function getItems() {
+    var children = props.children;
+    return toArray$6(children).map(function (child, index) {
+      var _a;
+
+      if ((_a = child.props) === null || _a === void 0 ? void 0 : _a.disabled) {
+        var key = child.key || String(index);
+        var _child$props = child.props,
+            disabled = _child$props.disabled,
+            collapsible = _child$props.collapsible;
+
+        var childProps = _extends$1(_extends$1({}, omit(child.props, ['disabled'])), {
+          key: key,
+          collapsible: collapsible !== null && collapsible !== void 0 ? collapsible : disabled ? 'disabled' : undefined
+        });
+
+        return cloneElement(child, childProps);
+      }
+
+      return child;
+    });
+  };
+
+  return /*#__PURE__*/React.createElement(Collapse$1, _extends$1({
+    openMotion: openMotion
+  }, props, {
+    bordered: bordered,
+    expandIcon: renderExpandIcon,
+    prefixCls: prefixCls,
+    className: collapseClassName
+  }), getItems());
+};
+
+Collapse.Panel = CollapsePanel;
+
 /**
  * Gets the timestamp of the number of milliseconds that have elapsed since
  * the Unix epoch (1 January 1970 00:00:00 UTC).
@@ -42494,7 +42971,7 @@ function ColGroup(_ref) {
   return /*#__PURE__*/React.createElement("colgroup", null, cols);
 }
 
-function Panel(_ref) {
+function Panel$1(_ref) {
   var className = _ref.className,
       children = _ref.children;
   return /*#__PURE__*/React.createElement("div", {
@@ -43498,11 +43975,11 @@ function Table$1(props) {
       stickyOffsets: stickyOffsets,
       mergedExpandedKeys: mergedExpandedKeys
     })
-  }, title && /*#__PURE__*/React.createElement(Panel, {
+  }, title && /*#__PURE__*/React.createElement(Panel$1, {
     className: "".concat(prefixCls, "-title")
   }, title(mergedData)), /*#__PURE__*/React.createElement("div", {
     className: "".concat(prefixCls, "-container")
-  }, groupTableNode), footer && /*#__PURE__*/React.createElement(Panel, {
+  }, groupTableNode), footer && /*#__PURE__*/React.createElement(Panel$1, {
     className: "".concat(prefixCls, "-footer")
   }, footer(mergedData))));
 
@@ -49997,8 +50474,7 @@ var CheckboxGroup = function (_a) {
     return (jsx("div", __assign({ className: containerClass }, { children: dataSource.map(function (item) {
             var iLabel = getLabel(item);
             var iValue = getValue(item);
-            var listId = value.map(function (i) { return getValue(i); });
-            var isChecked = listId.includes(iValue);
+            var isChecked = value.includes(iValue);
             var isDisabled = (getDisabledItem && getDisabledItem(item)) || false;
             var itemClass = classnames("my-3 p-0", {
                 "col-12": numberOfColumns === "1",
@@ -50013,15 +50489,15 @@ var CheckboxGroup = function (_a) {
             }, {
                 "col-2": numberOfColumns === "6",
             }, classNameItem);
-            return (jsx(Checkbox, { label: iLabel, value: item, onChange: function (event) {
+            return (jsx(Checkbox, { label: iLabel, value: getValue(item), onChange: function (event) {
                     var isPush = event.target.checked;
                     var clone = __spreadArray([], value);
                     if (isPush) {
-                        clone.push(item);
+                        clone.push(getValue(item));
                     }
                     else {
                         clone = value.filter(function (i) {
-                            return getValue(i) !== getValue(item);
+                            return i !== getValue(item);
                         });
                     }
                     onChange && onChange(clone);
@@ -50034,8 +50510,7 @@ var RadioGroup = function (_a) {
     var containerClass = classnames("d-checkbox-group d-flex flex-wrap", className);
     return (jsx("div", __assign({ className: containerClass }, { children: dataSource.map(function (item) {
             var iLabel = getLabel(item);
-            var iValue = getValue(item);
-            var isChecked = getValue(item) === getValue(value);
+            var isChecked = getValue(item) === value;
             var isDisabled = (getDisabledItem && getDisabledItem(item)) || false;
             var itemClass = classnames("my-3", {
                 "col-12": numberOfColumns === "1",
@@ -50050,8 +50525,8 @@ var RadioGroup = function (_a) {
             }, {
                 "col-2": numberOfColumns === "6",
             }, classNameItem);
-            return (jsx(Checkbox, { label: iLabel, value: iValue, onChange: function (event) {
-                    onChange && onChange(item);
+            return (jsx(Checkbox, { label: iLabel, value: value, onChange: function (event) {
+                    onChange && onChange(getValue(item));
                 }, checked: isChecked, variant: "radio", disabled: isDisabled, className: itemClass }, void 0));
         }) }), void 0));
 };
@@ -67281,16 +67756,6 @@ var Badge = function (_a) {
             content] }), void 0));
 };
 
-var InputTextSearch = function (_a) {
-    var className = _a.className, _b = _a.variant, variant = _b === void 0 ? "outline" : _b, value = _a.value, defaultValue = _a.defaultValue, error = _a.error, placeholder = _a.placeholder, disabled = _a.disabled, onChange = _a.onChange, onBlur = _a.onBlur;
-    var container = classnames("d-input-search", "d-input-search__" + variant, {
-        "d-input-search__disabled": disabled,
-        "d-input-search__error": !!error,
-    }, className);
-    return (jsxs("div", __assign({ className: container }, { children: [jsx(Icon$2, { name: "search", className: "mr-3" }, void 0),
-            jsx("input", { value: value, onChange: onChange, required: true, placeholder: placeholder, onBlur: onBlur, disabled: disabled, defaultValue: defaultValue }, void 0)] }), void 0));
-};
-
 var HeaderTable = function (_a) {
     var _b = _a.className, className = _b === void 0 ? "" : _b, classNameTop = _a.classNameTop, style = _a.style, _c = _a.label, label = _c === void 0 ? "" : _c, _d = _a.placeholder, placeholder = _d === void 0 ? "Search" : _d, onChangeText = _a.onChangeText, _e = _a.disabledSearch, disabledSearch = _e === void 0 ? false : _e, onClickNew = _a.onClickNew, onClickExport = _a.onClickExport, onClickFilter = _a.onClickFilter, onClickImport = _a.onClickImport, customView = _a.customView, _f = _a.isFiltered, isFiltered = _f === void 0 ? false : _f, _g = _a.badgeColor, badgeColor = _g === void 0 ? "secondary" : _g;
     var button = jsx(Button, { iconName: "filter_list", onClick: onClickFilter }, void 0);
@@ -67889,6 +68354,21 @@ var ViewTextarea = function (_a) {
     return (jsxs("div", __assign({ className: wrapperClass, style: style }, { children: [jsxs("div", __assign({ className: contentClass, ref: function (ref) { return (contentRef.current = ref); } }, { children: [children,
                     isShowLess && (jsx("span", __assign({ className: showLessClass, onClick: function () { return setExpanding(false); } }, { children: " " + showLessText }), void 0))] }), void 0),
             isShowMore && (jsx("span", __assign({ className: showMoreClass, onClick: function () { return setExpanding(true); } }, { children: showMoreText }), void 0))] }), void 0));
+};
+
+var Panel = Collapse.Panel;
+var ViewCollapse = function (_a) {
+    var _b = _a.label, label = _b === void 0 ? "Title" : _b, children = _a.children, className = _a.className, _c = _a.defaultOpen, defaultOpen = _c === void 0 ? 1 : _c, extra = _a.extra, customLeftView = _a.customLeftView;
+    var classContainerName = classnames("card-container collapse-view-container", className);
+    var customRightViewClass = classnames({
+        "ant-collapse-header_custom-right-view-extra": !!extra,
+        "ant-collapse-header_custom-right-view": !extra,
+    });
+    return (jsx(Collapse, __assign({ className: classContainerName, defaultActiveKey: defaultOpen, expandIconPosition: "right", expandIcon: function (_a) {
+            var isActive = _a.isActive;
+            return jsx(CaretRightOutlined$1, { rotate: isActive ? 90 : 0 }, void 0);
+        } }, { children: jsx(Panel, __assign({ header: jsxs("div", { children: [customLeftView && jsx("div", __assign({ className: customRightViewClass }, { children: customLeftView }), void 0),
+                    jsx("h5", __assign({ className: "collapse-view__header-title" }, { children: label }), void 0)] }, void 0), extra: extra }, { children: children }), "1") }), void 0));
 };
 
 var TabBar = function (_a) {
@@ -75573,5 +76053,5 @@ function usePrevious(value) {
     return ref.current;
 }
 
-export { Avatar, AvatarName, AwesomeListComponent, AwesomeTableComponent, AwesomeTableUtils, Badge, Button, Card, Checkbox, CheckboxGroup, DateInput, DialogComponent, DialogManager, Dot, Dropdown, Header, HeaderBlock, HeaderDetail, HeaderTable, Icon$2 as Icon, ImageUtils, InputText, Loading, MapUtils, Modal, Notifications, ObjectUtils, PopoverList, Progress, ProgressComponent, RadioGroup, RowInterchangeView, Select, StringUtils, TabBar, TimeUtils, TreeDataUtils, TreeSelect, UrlUtils, ViewRow, ViewTextarea, useFirstTime, useForceUpdate, usePrevious };
+export { Avatar, AvatarName, AwesomeListComponent, AwesomeTableComponent, AwesomeTableUtils, Badge, Button, Card, Checkbox, CheckboxGroup, DateInput, DialogComponent, DialogManager, Dot, Dropdown, Header, HeaderBlock, HeaderDetail, HeaderTable, Icon$2 as Icon, ImageUtils, InputColor, InputText, InputTextSearch, Loading, MapUtils, Modal, Notifications, ObjectUtils, PopoverList, Progress, ProgressComponent, RadioGroup, RowInterchangeView, Select, StringUtils, TabBar, TimeUtils, TreeDataUtils, TreeSelect, UrlUtils, ViewCollapse, ViewRow, ViewTextarea, useFirstTime, useForceUpdate, usePrevious };
 //# sourceMappingURL=dcomponent.es.js.map

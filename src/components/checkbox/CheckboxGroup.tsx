@@ -34,8 +34,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
             {dataSource.map((item) => {
                 const iLabel = getLabel(item);
                 const iValue: any = getValue(item);
-                const listId = value.map((i) => getValue(i));
-                const isChecked = listId.includes(iValue);
+                const isChecked = value.includes(iValue);
                 const isDisabled = ((getDisabledItem && getDisabledItem(item)) as any) || false;
                 const itemClass = ClassNames(
                     "my-3 p-0",
@@ -63,15 +62,15 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
                 return (
                     <Checkbox
                         label={iLabel}
-                        value={item}
+                        value={getValue(item)}
                         onChange={(event) => {
                             const isPush = event.target.checked;
                             let clone = [...value];
                             if (isPush) {
-                                clone.push(item);
+                                clone.push(getValue(item));
                             } else {
                                 clone = value.filter((i: any) => {
-                                    return getValue(i) !== getValue(item);
+                                    return i !== getValue(item);
                                 });
                             }
                             onChange && onChange(clone);

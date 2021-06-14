@@ -7,6 +7,12 @@ import "./scss/index.scss";
 export type { InputTextProps } from "./components/input/InputText";
 export { default as InputText } from "./components/input/InputText";
 
+export type { InputTextSearchProps } from "./components/input/InputTextSearch";
+export { default as InputTextSearch } from "./components/input/InputTextSearch";
+
+export type { InputColorProps } from "./components/input/InputColor";
+export { default as InputColor } from "./components/input/InputColor";
+
 /* ----------------------------------------
 // Icon
 // ---------------------------------------- */
@@ -89,6 +95,9 @@ export { default as ViewRow } from "./components/view/ViewRow";
 
 export type { ViewTextareaProps } from "./components/view/ViewTextarea";
 export { default as ViewTextarea } from "./components/view/ViewTextarea";
+
+export type { ViewCollapseProps } from "./components/view/ViewCollapse";
+export { default as ViewCollapse } from "./components/view/ViewCollapse";
 
 /* ----------------------------------------
 // TabBar

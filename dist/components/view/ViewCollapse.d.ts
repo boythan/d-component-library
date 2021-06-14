@@ -1,5 +1,5 @@
 /// <reference types="react" />
-interface ViewCollapseProps {
+export interface ViewCollapseProps {
     label: string;
     children: any;
     className?: any;

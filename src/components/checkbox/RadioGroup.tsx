@@ -32,8 +32,7 @@ const RadioGroup: React.FC<RadioGroupProps> = ({
         <div className={containerClass}>
             {dataSource.map((item) => {
                 const iLabel = getLabel(item);
-                const iValue: any = getValue(item);
-                const isChecked = getValue(item) === getValue(value);
+                const isChecked = getValue(item) === value;
                 const isDisabled = ((getDisabledItem && getDisabledItem(item)) as any) || false;
                 const itemClass = ClassNames(
                     "my-3",
@@ -60,9 +59,9 @@ const RadioGroup: React.FC<RadioGroupProps> = ({
                 return (
                     <Checkbox
                         label={iLabel}
-                        value={iValue}
+                        value={value}
                         onChange={(event) => {
-                            onChange && onChange(item);
+                            onChange && onChange(getValue(item));
                         }}
                         checked={isChecked}
                         variant="radio"

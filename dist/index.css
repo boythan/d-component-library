@@ -29201,6 +29201,26 @@ a {
   background-color: #F5F5F5 !important;
   border: none !important; }
 
+.d-input-color__container {
+  display: flex;
+  flex-direction: column; }
+
+.d-input-color__input-container {
+  min-height: 40px;
+  padding: 5px 16px;
+  display: flex;
+  flex-direction: row;
+  align-items: center; }
+
+.d-input-color__input {
+  border-radius: 0px !important;
+  outline: none !important;
+  width: 23px;
+  height: 25px;
+  border: none !important;
+  padding: 0px !important;
+  background-color: transparent !important; }
+
 /* ----------------------------------------
 // Icon
 // ---------------------------------------- */
