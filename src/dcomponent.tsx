@@ -10,6 +10,9 @@ export { default as InputText } from "./components/input/InputText";
 export type { InputTextSearchProps } from "./components/input/InputTextSearch";
 export { default as InputTextSearch } from "./components/input/InputTextSearch";
 
+export type { InputColorProps } from "./components/input/InputColor";
+export { default as InputColor } from "./components/input/InputColor";
+
 /* ----------------------------------------
 // Icon
 // ---------------------------------------- */
