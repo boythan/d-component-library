@@ -11,5 +11,7 @@ const Languages = {
 
 const currentLang: ILanguage["language"] = (document.documentElement.lang as ILanguage["language"]) ?? "en";
 const Messages = Languages[currentLang];
+console.log({ Messages });
+console.log({ currentLang });
 
 export default Messages;
