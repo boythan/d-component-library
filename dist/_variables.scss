@@ -511,7 +511,7 @@
 
         //padding
         $input-padding:          10px 16px                                       !default;
-        $input-color-padding:    8px 16px                                        !default;
+        $input-padding-color:    5px 16px                                        !default;
 
         //border
         $input-border:          0.5px solid $border-color                      !default;
@@ -519,7 +519,9 @@
         $input-border-error:    0.5px solid $error-color                       !default;
 
         //height
-        $input-height:           40px                             !default;
+        $input-height:                 40px                             !default;
+        $input-height-color:           25px                             !default;
+        $input-width-color:            23px                             !default;
 
    // ----------------------------------------
    // -- .input-check
