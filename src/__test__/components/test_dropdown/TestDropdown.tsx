@@ -22,7 +22,10 @@ const TestDropdown: React.FC<TestDropdownProps> = ({ id }) => {
                 dataSource={LANGUAGES}
                 variant="view"
                 value={selectedLanguages}
-                onClick={(lang) => setSelectedLanguages(lang)}
+                onClick={(lang) => {
+                    setSelectedLanguages(lang);
+                    document.documentElement.lang = lang.id as string;
+                }}
             />
             <p>
                 Almost before we knew it, we had left the ground. Thin 100 italic Almost before we knew it, we had left

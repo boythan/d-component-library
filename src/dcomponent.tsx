@@ -199,4 +199,5 @@ export { default as Card } from "./components/card/Card";
 
 export { default as useFirstTime } from "./hooks/useFirstTime";
 export { default as useForceUpdate } from "./hooks/useForceUpdate";
+export { useForceUpdateConstraint } from "./hooks/useForceUpdate";
 export { default as usePrevious } from "./hooks/usePrevious";
