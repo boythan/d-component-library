@@ -32882,39 +32882,29 @@ h6,
 // dropdown
 // ---------------------------------------- */
 .d-dropdown {
-  width: fit-content; }
+  width: fit-content;
+  position: relative !important;
+  overflow: visible; }
   .d-dropdown button:active,
   .d-dropdown button:focus {
     border: 1px solid #DE0D0C !important; }
-  .d-dropdown .d-dropdown__menu {
-    opacity: 0;
-    position: absolute;
-    top: -1000px;
-    left: -1000px;
-    transition: all 0.3s ease-in;
-    background-color: #fff; }
-  .d-dropdown .d-dropdown__menu-open {
-    position: absolute;
-    opacity: 1;
-    top: auto;
-    left: auto;
-    right: auto;
-    bottom: auto;
-    z-index: 20;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05); }
 
 .d-dropdown-menu__container {
+  position: absolute;
+  z-index: 20;
   background-color: #fff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+  list-style-type: none;
+  list-style: none;
   display: flex;
   flex-direction: column;
   justify-content: center;
   list-style: none;
-  min-width: 200px; }
+  transition: all 0.3s ease-in;
+  padding: 16px;
+  min-width: 150px; }
   .d-dropdown-menu__container .d-dropdown-menu__item-with-submenu {
-    position: relative; }
+    position: relative !important; }
     .d-dropdown-menu__container .d-dropdown-menu__item-with-submenu .d-dropdown-menu__container {
       position: absolute;
       right: -1000px;
@@ -32923,16 +32913,37 @@ h6,
       transition: opacity 0.3s ease-in-out; }
     .d-dropdown-menu__container .d-dropdown-menu__item-with-submenu:hover .d-dropdown-menu__container {
       position: absolute;
-      right: -100%;
-      top: 0;
       opacity: 1;
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05); }
+
+.d-dropdown-menu__container-right-edge {
+  left: -200%;
+  top: auto;
+  right: auto;
+  bottom: auto; }
+  .d-dropdown-menu__container-right-edge .d-dropdown-menu__item-with-submenu:hover .d-dropdown-menu__container {
+    top: 0;
+    right: auto;
+    bottom: auto;
+    left: -125%; }
+
+.d-dropdown-menu__container-left-edge {
+  left: auto;
+  top: auto;
+  right: auto;
+  bottom: auto; }
+  .d-dropdown-menu__container-left-edge .d-dropdown-menu__item-with-submenu:hover .d-dropdown-menu__container {
+    top: 0;
+    right: -125%;
+    bottom: auto;
+    left: auto; }
 
 .d-dropdown-menu__item {
   padding: 8px 8px;
   width: 100%;
   display: flex;
-  align-items: center; }
+  align-items: center;
+  height: 40px; }
   .d-dropdown-menu__item:hover {
     cursor: pointer;
     background-color: whitesmoke; }

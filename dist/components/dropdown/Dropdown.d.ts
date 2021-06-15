@@ -17,6 +17,7 @@ export interface DropDownMenuProps {
     onClick?: (item: IDropdownMenuItemProps) => void;
     Messages?: any;
     className?: string;
+    position?: "left-edge" | "right-edge";
 }
 export interface DropdownProps extends DropDownMenuProps {
     [key: string]: any;
@@ -26,6 +27,7 @@ export interface DropdownProps extends DropDownMenuProps {
     placeholder?: string;
     className?: string;
     classNameMenu?: string;
+    position?: "left-edge" | "right-edge";
 }
 export declare const DropdownMenu: React.FC<DropDownMenuProps>;
 declare const Dropdown: React.FC<DropdownProps>;

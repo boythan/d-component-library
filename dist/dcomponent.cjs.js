@@ -68113,7 +68113,7 @@ var Modal = function (_a) {
     var children = _a.children, open = _a.open, _b = _a.centered, centered = _b === void 0 ? true : _b, _c = _a.closable, closable = _c === void 0 ? false : _c, onClose = _a.onClose, onSave = _a.onSave, onSideClick = _a.onSideClick, cancelAction = _a.cancelAction, width = _a.width, title = _a.title, customHeader = _a.customHeader, customFooter = _a.customFooter, customSideButton = _a.customSideButton, headerSide = _a.headerSide, _d = _a.hasCloseIcon, hasCloseIcon = _d === void 0 ? true : _d, _e = _a.hasCancelButton, hasCancelButton = _e === void 0 ? false : _e, _f = _a.saveText, saveText = _f === void 0 ? "Save" : _f, _g = _a.cancelText, cancelText = _g === void 0 ? "Cancel" : _g, _h = _a.sideText, sideText = _h === void 0 ? "Clear" : _h, size = _a.size, className = _a.className, classNameContent = _a.classNameContent, classNameFooter = _a.classNameFooter, classNameHeader = _a.classNameHeader, _j = _a.showFooter, showFooter = _j === void 0 ? true : _j, _k = _a.showHeader, showHeader = _k === void 0 ? true : _k, props = __rest$q(_a, ["children", "open", "centered", "closable", "onClose", "onSave", "onSideClick", "cancelAction", "width", "title", "customHeader", "customFooter", "customSideButton", "headerSide", "hasCloseIcon", "hasCancelButton", "saveText", "cancelText", "sideText", "size", "className", "classNameContent", "classNameFooter", "classNameHeader", "showFooter", "showHeader"]);
     var modalClass = classnames("d-modal", "d-modal__" + size, className);
     var childrenClass = classnames("d-modal__children", classNameContent);
-    var headerClass = classnames("d-modal__header border-bottom ", { "d-flex align-items-center": !!title }, classNameHeader);
+    var headerClass = classnames("d-modal__header border-bottom py-2", { "d-flex align-items-center": !!title }, classNameHeader);
     var footerClass = classnames("d-modal__footer d-flex align-items-center border-top py-3 px-3", classNameFooter);
     var header = function () {
         var content;
@@ -74678,7 +74678,7 @@ var MenuItem = function (_a) {
         "d-dropdown-menu__item-main-view": isMainView,
     });
     var iconImageView;
-    var labelView = jsxRuntime.jsx("div", __assign({ className: "w-100 text d-dropdown-menu__item-label" }, { children: Messages ? Messages[label] : label }), void 0);
+    var labelView = (jsxRuntime.jsx("div", __assign({ className: "w-100 text d-dropdown-menu__item-label" }, { children: Messages ? Messages[label] : label }), void 0));
     var arrowView;
     if (iconName) {
         iconImageView = jsxRuntime.jsx(Icon$2, { name: iconName, className: "d-block mr-2" }, void 0);
@@ -74698,18 +74698,17 @@ var MenuItem = function (_a) {
             !isMainView && subMenu && subMenu.length > 0 && jsxRuntime.jsx(DropdownMenu, { dataSource: subMenu }, void 0)] }), "" + id));
 };
 var DropdownMenu = function (_a) {
-    var _b = _a.dataSource, dataSource = _b === void 0 ? [] : _b, _c = _a.onClick, onClick = _c === void 0 ? function () { } : _c, Messages = _a.Messages, className = _a.className;
-    var wrapperClass = classnames("d-dropdown-menu__container p-0", className);
+    var _b = _a.dataSource, dataSource = _b === void 0 ? [] : _b, _c = _a.onClick, onClick = _c === void 0 ? function () { } : _c, Messages = _a.Messages, className = _a.className, position = _a.position;
+    var wrapperClass = classnames("d-dropdown-menu__container d-dropdown-menu__container-" + position, className);
     var list = dataSource.map(function (item, index) {
         return jsxRuntime.jsx(MenuItem, { item: item, onClick: onClick, Messages: Messages }, void 0);
     });
     return jsxRuntime.jsx("ul", __assign({ className: wrapperClass }, { children: list }), void 0);
 };
 var Dropdown = function (_a) {
-    var _b = _a.buttonProps, buttonProps = _b === void 0 ? { variant: "trans", iconName: "more_vert" } : _b, dataSource = _a.dataSource, onClick = _a.onClick, _c = _a.variant, variant = _c === void 0 ? "button" : _c, value = _a.value, Messages = _a.Messages, _d = _a.placeholder, placeholder = _d === void 0 ? "Select..." : _d, className = _a.className; _a.classNameMenu;
-    var _e = React.useState(false), openDropdown = _e[0], setOpenDropdown = _e[1];
+    var _b = _a.buttonProps, buttonProps = _b === void 0 ? { variant: "trans", iconName: "more_vert" } : _b, dataSource = _a.dataSource, onClick = _a.onClick, _c = _a.variant, variant = _c === void 0 ? "button" : _c, value = _a.value, Messages = _a.Messages, _d = _a.placeholder, placeholder = _d === void 0 ? "Select..." : _d, className = _a.className; _a.classNameMenu; var _e = _a.position, position = _e === void 0 ? "right-edge" : _e;
+    var _f = React.useState(false), openDropdown = _f[0], setOpenDropdown = _f[1];
     var containerClass = classnames("d-dropdown positon-relative", className);
-    var dropdownClass = classnames("d-dropdown__menu", { "d-dropdown__menu-open": openDropdown });
     var wrapperRef = React.useRef(null);
     React.useEffect(function () {
         var handleOutsideClick = function (event) {
@@ -74734,7 +74733,7 @@ var Dropdown = function (_a) {
         };
     }
     return (jsxRuntime.jsxs("div", __assign({ className: containerClass, ref: wrapperRef }, { children: [mainView(),
-            jsxRuntime.jsx("div", __assign({ className: dropdownClass }, { children: jsxRuntime.jsx(DropdownMenu, { dataSource: dataSource, onClick: handleOnClickItem, Messages: Messages }, void 0) }), void 0)] }), void 0));
+            openDropdown && (jsxRuntime.jsx(DropdownMenu, { dataSource: dataSource, onClick: handleOnClickItem, Messages: Messages, position: position }, void 0))] }), void 0));
 };
 
 /* eslint-disable implicit-arrow-linebreak */
