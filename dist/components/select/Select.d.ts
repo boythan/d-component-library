@@ -1,7 +1,7 @@
 /// <reference types="react" />
 import { SelectProps as SelectAntProps } from "antd/es/select";
 export interface SelectProps extends SelectAntProps<any> {
-    [key: string]: any;
+    classNameSelect?: string;
     label?: string;
     dataSource: Array<any>;
     error?: any;

@@ -1,6 +1,6 @@
 import { Component } from "react";
 export interface IProgressFunctionProps {
-    method: (props?: any) => Promise<any>;
+    method: (props?: any, paging?: any, index?: any) => Promise<any>;
     params: any;
 }
 export interface IResponseAPI {
