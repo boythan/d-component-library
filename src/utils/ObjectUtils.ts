@@ -135,6 +135,25 @@ function arrayIsContainArray(array1: string[], array2: string[]) {
     return _.every(array2, (item) => _.includes(array1, item));
 }
 
+const updateArrayById = (arrays = [], newItem: any) => {
+    if (!newItem) {
+        return arrays;
+    }
+    return arrays.map((item: any) => {
+        if (item?.id === newItem?.id) {
+            return newItem;
+        }
+        return item;
+    });
+};
+
+const removeArrayById = (arrays: Array<any> = [], id: any) => {
+    if (_.isEmpty(id)) {
+        return arrays;
+    }
+    return _.filter([...arrays], (item: any) => id !== item?.id);
+};
+
 export default {
     getValueFromStringKey,
     mapObjectToArray,
@@ -149,4 +168,6 @@ export default {
     mapFieldsLangsCTS,
     mapFieldsLangsSTC,
     arrayIsContainArray,
+    updateArrayById,
+    removeArrayById,
 };
