@@ -68255,6 +68255,25 @@ function compareTwoStringArray(array1, array2) {
 function arrayIsContainArray(array1, array2) {
     return lodash.every(array2, function (item) { return lodash.includes(array1, item); });
 }
+var updateArrayById = function (arrays, newItem) {
+    if (arrays === void 0) { arrays = []; }
+    if (!newItem) {
+        return arrays;
+    }
+    return arrays.map(function (item) {
+        if ((item === null || item === void 0 ? void 0 : item.id) === (newItem === null || newItem === void 0 ? void 0 : newItem.id)) {
+            return newItem;
+        }
+        return item;
+    });
+};
+var removeArrayById = function (arrays, id) {
+    if (arrays === void 0) { arrays = []; }
+    if (lodash.isEmpty(id)) {
+        return arrays;
+    }
+    return lodash.filter(__spreadArray([], arrays), function (item) { return id !== (item === null || item === void 0 ? void 0 : item.id); });
+};
 var ObjectUtils = {
     getValueFromStringKey: getValueFromStringKey,
     mapObjectToArray: mapObjectToArray,
@@ -68269,6 +68288,8 @@ var ObjectUtils = {
     mapFieldsLangsCTS: mapFieldsLangsCTS,
     mapFieldsLangsSTC: mapFieldsLangsSTC,
     arrayIsContainArray: arrayIsContainArray,
+    updateArrayById: updateArrayById,
+    removeArrayById: removeArrayById,
 };
 
 var RowInterchangeView = function (_a) {
