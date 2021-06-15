@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import React, { useState } from "react";
+import { Dropdown as DropdownAnt } from "antd";
 import Button from "../../components/button/Button";
 import HeaderTable from "../../components/header/HeaderTable";
 import AwesomeTableComponent, {
@@ -8,6 +9,7 @@ import AwesomeTableComponent, {
 } from "../../components/table/AwesomeTableComponent";
 import ViewTextarea from "../../components/view/ViewTextarea";
 import { ATTRIBUTE_INPUT_TYPE } from "../data/TestConstant";
+import Dropdown from "../../components/dropdown/Dropdown";
 
 const TestTable = () => {
     const [selectingRows, setSelectingRows] = useState<any>([]);
@@ -17,6 +19,9 @@ const TestTable = () => {
             title: () => <h5>ID</h5>,
             dataIndex: "id",
             width: 300,
+            render: () => {
+                return <Dropdown dataSource={ATTRIBUTE_INPUT_TYPE} position="left-edge" />;
+            },
         },
         // {
         //     title: "Label",
@@ -58,6 +63,13 @@ const TestTable = () => {
             align: "center",
             dataIndex: "label",
         },
+        {
+            title: "Action",
+            align: "center",
+            render: () => {
+                return <Dropdown dataSource={ATTRIBUTE_INPUT_TYPE} />;
+            },
+        },
     ];
 
     const onClickRemove = () => {
@@ -79,13 +91,13 @@ const TestTable = () => {
                 keyTableLayout="TEST TABLE"
                 rowSelection={{ onChange: (value) => setSelectingRows(value) }}
                 selectingRows={selectingRows}
-                onSelectionView={() => {
-                    return (
-                        <div>
-                            <Button variant="outline" content="Approve All" />
-                        </div>
-                    );
-                }}
+                // onSelectionView={() => {
+                //     return (
+                //         <div>
+                //             <Button variant="outline" content="Approve All" />
+                //         </div>
+                //     );
+                // }}
                 pagination={{ pageSize: 5, pageSizeOptions: ["5", "10", "15"] }}
                 getTotalItems={(res) => res?.length}
                 isPagination={false}

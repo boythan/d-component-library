@@ -202,7 +202,7 @@ export default function Test({ content }: Props): ReactElement {
                 </div>
                 <div className="col-9 py-5 px-5 ml-4 card-container">
                     {selectedTab?.component ?? "N/A"}
-                    {/* <Button content="Open Modal" variant="trans" onClick={() => setOpenModal(true)} /> */}
+                    <Button content="Open Modal" variant="trans" onClick={() => setOpenModal(true)} />
                 </div>
                 <Modal
                     open={openModal}

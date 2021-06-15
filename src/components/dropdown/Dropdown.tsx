@@ -23,6 +23,7 @@ export interface DropDownMenuProps {
     onClick?: (item: IDropdownMenuItemProps) => void;
     Messages?: any;
     className?: string;
+    position?: "left-edge" | "right-edge";
 }
 
 export interface DropdownProps extends DropDownMenuProps {
@@ -33,6 +34,7 @@ export interface DropdownProps extends DropDownMenuProps {
     placeholder?: string;
     className?: string;
     classNameMenu?: string;
+    position?: "left-edge" | "right-edge";
 }
 
 const MenuItem = ({
@@ -52,7 +54,9 @@ const MenuItem = ({
         "d-dropdown-menu__item-main-view": isMainView,
     });
     let iconImageView;
-    const labelView = <div className="w-100 text d-dropdown-menu__item-label">{Messages ? Messages[label] : label}</div>;
+    const labelView = (
+        <div className="w-100 text d-dropdown-menu__item-label">{Messages ? Messages[label] : label}</div>
+    );
     let arrowView;
     if (iconName) {
         iconImageView = <Icon name={iconName} className="d-block mr-2" />;
@@ -81,8 +85,9 @@ export const DropdownMenu: React.FC<DropDownMenuProps> = ({
     onClick = () => {},
     Messages,
     className,
+    position,
 }) => {
-    const wrapperClass = ClassNames("d-dropdown-menu__container p-0", className);
+    const wrapperClass = ClassNames(`d-dropdown-menu__container d-dropdown-menu__container-${position}`, className);
     const list = dataSource.map((item, index) => {
         return <MenuItem item={item} onClick={onClick} Messages={Messages} />;
     });
@@ -100,10 +105,10 @@ const Dropdown: React.FC<DropdownProps> = ({
     placeholder = "Select...",
     className,
     classNameMenu,
+    position = "right-edge",
 }) => {
     const [openDropdown, setOpenDropdown] = useState(false);
     const containerClass = ClassNames("d-dropdown positon-relative", className);
-    const dropdownClass = ClassNames("d-dropdown__menu", { "d-dropdown__menu-open": openDropdown });
 
     const wrapperRef = useRef<HTMLDivElement>(null);
 
@@ -139,9 +144,14 @@ const Dropdown: React.FC<DropdownProps> = ({
     return (
         <div className={containerClass} ref={wrapperRef}>
             {mainView()}
-            <div className={dropdownClass}>
-                <DropdownMenu dataSource={dataSource} onClick={handleOnClickItem} Messages={Messages} />
-            </div>
+            {openDropdown && (
+                <DropdownMenu
+                    dataSource={dataSource}
+                    onClick={handleOnClickItem}
+                    Messages={Messages}
+                    position={position}
+                />
+            )}
         </div>
     );
 };
