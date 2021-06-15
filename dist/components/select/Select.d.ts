@@ -6,6 +6,7 @@ export interface SelectProps extends SelectAntProps<any> {
     dataSource: Array<any>;
     error?: any;
     variant?: "outline" | "standard";
+    name?: string;
     getLabel?: (item: any) => any;
     getKey?: (item: any) => any;
     getValue?: (item: any) => any;
