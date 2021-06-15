@@ -7,7 +7,7 @@ import React, { useMemo } from "react";
 import Icon from "../icon/Icon";
 
 export interface SelectProps extends SelectAntProps<any> {
-    [key: string]: any;
+    classNameSelect?: string;
     label?: string;
     dataSource: Array<any>;
     error?: any;
