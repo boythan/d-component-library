@@ -165,7 +165,6 @@ export default function Test({ content }: Props): ReactElement {
     const TAB_LIST = [
         { id: "AVATAR", label: "AVATAR", component: <TestAvatarIcon /> },
         { id: "INPUT", label: "INPUT", component: <TestInput /> },
-        { id: "DATE", label: "DATE", component: <Date /> },
         { id: "BUTTON", label: "BUTTON", component: <TestButton /> },
         { id: "TABLE", label: "TABLE", component: <TestTable /> },
         { id: "CHECKBOX", label: "CHECKBOX", component: <TestCheckbox /> },
