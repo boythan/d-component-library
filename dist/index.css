@@ -27906,7 +27906,7 @@ text-bold,
 
 .text-x-small, .text-x-small-bold, label,
 .label,
-.text-label, .d-input-search > input, .d-select__select .ant-select-selection-item, .d-select__select .ant-select-selection-search, .d-select__select .ant-select-selection-placeholder, .d-select__select input, .d-table-awesome-component .ant-table-thead > tr > th, .d-table-awesome-component .ant-pagination-total-text, .d-table-awesome-component .ant-pagination-item-link, .d-table-awesome-component .ant-pagination-options-quick-jumper input, .d-table-awesome-component .ant-pagination-item,
+.text-label, .d-input-search > input, .d-select__select .ant-select-selection-item, .d-select__select .ant-select-selection-search, .d-select__select .ant-select-selection-placeholder, .d-select__select input, .d-date-input .ant-picker-input > input, .d-table-awesome-component .ant-table-thead > tr > th, .d-table-awesome-component .ant-pagination-total-text, .d-table-awesome-component .ant-pagination-item-link, .d-table-awesome-component .ant-pagination-options-quick-jumper input, .d-table-awesome-component .ant-pagination-item,
 .d-table-awesome-component .ant-select-selection-item {
   font-family: "Poppins", "sans-serif";
   font-size: 12px;
@@ -30009,7 +30009,7 @@ text-bold,
 
 .text-x-small, .text-x-small-bold, label,
 .label,
-.text-label, .d-input-search > input, .d-select__select .ant-select-selection-item, .d-select__select .ant-select-selection-search, .d-select__select .ant-select-selection-placeholder, .d-select__select input, .d-table-awesome-component .ant-table-thead > tr > th, .d-table-awesome-component .ant-pagination-total-text, .d-table-awesome-component .ant-pagination-item-link, .d-table-awesome-component .ant-pagination-options-quick-jumper input, .d-table-awesome-component .ant-pagination-item,
+.text-label, .d-input-search > input, .d-select__select .ant-select-selection-item, .d-select__select .ant-select-selection-search, .d-select__select .ant-select-selection-placeholder, .d-select__select input, .d-date-input .ant-picker-input > input, .d-table-awesome-component .ant-table-thead > tr > th, .d-table-awesome-component .ant-pagination-total-text, .d-table-awesome-component .ant-pagination-item-link, .d-table-awesome-component .ant-pagination-options-quick-jumper input, .d-table-awesome-component .ant-pagination-item,
 .d-table-awesome-component .ant-select-selection-item {
   font-family: "Poppins", "sans-serif";
   font-size: 12px;
@@ -31238,9 +31238,200 @@ h6,
 /* ----------------------------------------
 // date input
 // ---------------------------------------- */
+/*
+// text
+*/
+.text-large, .text-large-bold {
+  font-family: "Poppins", "sans-serif";
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 400;
+  font-style: normal; }
+  .text-large-bold {
+    font-weight: 600; }
+
+.text-medium, .text-medium-bold {
+  font-family: "Poppins", "sans-serif";
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 400;
+  font-style: normal; }
+  .text-medium-bold {
+    font-weight: 600; }
+
+text,
+.text,
+.text-small,
+text-bold,
+.text-bold,
+.text-small-bold,
+.ant-select-item-option,
+.d-table-awesome-component__row td {
+  font-family: "Poppins", "sans-serif";
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  font-style: normal; }
+  text-bold,
+  .text-bold,
+  .text-small-bold {
+    font-weight: 600; }
+
+.text-x-small, .text-x-small-bold, label,
+.label,
+.text-label, .d-input-search > input, .d-select__select .ant-select-selection-item, .d-select__select .ant-select-selection-search, .d-select__select .ant-select-selection-placeholder, .d-select__select input, .d-date-input .ant-picker-input > input, .d-table-awesome-component .ant-table-thead > tr > th, .d-table-awesome-component .ant-pagination-total-text, .d-table-awesome-component .ant-pagination-item-link, .d-table-awesome-component .ant-pagination-options-quick-jumper input, .d-table-awesome-component .ant-pagination-item,
+.d-table-awesome-component .ant-select-selection-item {
+  font-family: "Poppins", "sans-serif";
+  font-size: 12px;
+  line-height: 16px !important;
+  font-weight: 400;
+  font-style: normal; }
+  .text-x-small-bold, label,
+  .label,
+  .text-label {
+    font-weight: 600; }
+
+.text-xx-small, .text-xx-small-bold, .d-badge__badge-index-xxx-large-primary, .d-badge__badge-index-xxx-large-secondary, .d-badge__badge-index-xxx-large-green, .d-badge__badge-index-xxx-large-red, .d-badge__badge-index-xxx-large-yellow, .d-badge__badge-index-xxx-large-blue, .d-badge__badge-index-xxx-large-gray, .d-badge__badge-index-xxx-large-dark, .d-badge__badge-index-xxx-large-light, .d-badge__badge-index-xxx-large-error, .d-badge__badge-index-xxx-large-success, .d-badge__badge-index-xxx-large-warning, .d-badge__badge-index-xxx-large-muted, .d-badge__badge-index-xx-large-primary, .d-badge__badge-index-xx-large-secondary, .d-badge__badge-index-xx-large-green, .d-badge__badge-index-xx-large-red, .d-badge__badge-index-xx-large-yellow, .d-badge__badge-index-xx-large-blue, .d-badge__badge-index-xx-large-gray, .d-badge__badge-index-xx-large-dark, .d-badge__badge-index-xx-large-light, .d-badge__badge-index-xx-large-error, .d-badge__badge-index-xx-large-success, .d-badge__badge-index-xx-large-warning, .d-badge__badge-index-xx-large-muted, .d-badge__badge-index-x-large-primary, .d-badge__badge-index-x-large-secondary, .d-badge__badge-index-x-large-green, .d-badge__badge-index-x-large-red, .d-badge__badge-index-x-large-yellow, .d-badge__badge-index-x-large-blue, .d-badge__badge-index-x-large-gray, .d-badge__badge-index-x-large-dark, .d-badge__badge-index-x-large-light, .d-badge__badge-index-x-large-error, .d-badge__badge-index-x-large-success, .d-badge__badge-index-x-large-warning, .d-badge__badge-index-x-large-muted, .d-badge__badge-index-large-primary, .d-badge__badge-index-large-secondary, .d-badge__badge-index-large-green, .d-badge__badge-index-large-red, .d-badge__badge-index-large-yellow, .d-badge__badge-index-large-blue, .d-badge__badge-index-large-gray, .d-badge__badge-index-large-dark, .d-badge__badge-index-large-light, .d-badge__badge-index-large-error, .d-badge__badge-index-large-success, .d-badge__badge-index-large-warning, .d-badge__badge-index-large-muted, .d-badge__badge-index-medium-primary, .d-badge__badge-index-medium-secondary, .d-badge__badge-index-medium-green, .d-badge__badge-index-medium-red, .d-badge__badge-index-medium-yellow, .d-badge__badge-index-medium-blue, .d-badge__badge-index-medium-gray, .d-badge__badge-index-medium-dark, .d-badge__badge-index-medium-light, .d-badge__badge-index-medium-error, .d-badge__badge-index-medium-success, .d-badge__badge-index-medium-warning, .d-badge__badge-index-medium-muted, .d-badge__badge-index-small-primary, .d-badge__badge-index-small-secondary, .d-badge__badge-index-small-green, .d-badge__badge-index-small-red, .d-badge__badge-index-small-yellow, .d-badge__badge-index-small-blue, .d-badge__badge-index-small-gray, .d-badge__badge-index-small-dark, .d-badge__badge-index-small-light, .d-badge__badge-index-small-error, .d-badge__badge-index-small-success, .d-badge__badge-index-small-warning, .d-badge__badge-index-small-muted, .d-badge__badge-index-x-small-primary, .d-badge__badge-index-x-small-secondary, .d-badge__badge-index-x-small-green, .d-badge__badge-index-x-small-red, .d-badge__badge-index-x-small-yellow, .d-badge__badge-index-x-small-blue, .d-badge__badge-index-x-small-gray, .d-badge__badge-index-x-small-dark, .d-badge__badge-index-x-small-light, .d-badge__badge-index-x-small-error, .d-badge__badge-index-x-small-success, .d-badge__badge-index-x-small-warning, .d-badge__badge-index-x-small-muted, .d-badge__badge-index-xx-small-primary, .d-badge__badge-index-xx-small-secondary, .d-badge__badge-index-xx-small-green, .d-badge__badge-index-xx-small-red, .d-badge__badge-index-xx-small-yellow, .d-badge__badge-index-xx-small-blue, .d-badge__badge-index-xx-small-gray, .d-badge__badge-index-xx-small-dark, .d-badge__badge-index-xx-small-light, .d-badge__badge-index-xx-small-error, .d-badge__badge-index-xx-small-success, .d-badge__badge-index-xx-small-warning, .d-badge__badge-index-xx-small-muted {
+  font-family: "Poppins", "sans-serif";
+  font-size: 10px;
+  line-height: 14px !important;
+  font-weight: 400;
+  font-style: normal; }
+  .text-xx-small-bold {
+    font-weight: 600; }
+
+label,
+.label,
+.text-label {
+  color: rgba(0, 0, 0, 0.9); }
+
+.text-nowrap {
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important; }
+
+.text-primary {
+  color: #DE0D0C !important; }
+
+.text-secondary {
+  color: #DE0D0C !important; }
+
+.text-gray {
+  color: #a7a7a7 !important; }
+
+.text-link {
+  color: #DE0D0C; }
+
+.text-center {
+  text-align: center; }
+
+.text-start {
+  text-align: start; }
+
+.text-end {
+  text-align: end; }
+
+.text-underline {
+  text-decoration: underline !important; }
+
+.text-error {
+  color: #F44336 !important; }
+
+.font-weight-bold {
+  font-weight: 600 !important; }
+
+.font-weight-normal {
+  font-weight: 400 !important; }
+
+.p-large {
+  font-family: "Poppins", "sans-serif";
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 400;
+  font-style: normal; }
+
+p,
+.p,
+.p-medium {
+  font-family: "Poppins", "sans-serif";
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  font-style: normal; }
+
+.p-small {
+  font-family: "Poppins", "sans-serif";
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  font-style: normal; }
+
+h0,
+.h0 {
+  font-family: "Poppins", "sans-serif";
+  font-size: 40px;
+  line-height: 52px;
+  font-weight: 600;
+  font-style: normal;
+  margin-bottom: 0rem !important; }
+
+h1,
+.h1 {
+  font-family: "Poppins", "sans-serif";
+  font-size: 34px;
+  line-height: 40px;
+  font-weight: 600;
+  font-style: normal;
+  margin-bottom: 0rem !important; }
+
+h2,
+.h2 {
+  font-family: "Poppins", "sans-serif";
+  font-size: 28px;
+  line-height: 36px;
+  font-weight: 600;
+  font-style: normal;
+  margin-bottom: 0rem !important; }
+
+h3,
+.h3 {
+  font-family: "Poppins", "sans-serif";
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
+  font-style: normal;
+  margin-bottom: 0rem !important; }
+
+h4,
+.h4 {
+  font-family: "Poppins", "sans-serif";
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 600;
+  font-style: normal;
+  margin-bottom: 0rem !important; }
+
+h5,
+.h5 {
+  font-family: "Poppins", "sans-serif";
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+  font-style: normal;
+  margin-bottom: 0rem !important; }
+
+h6,
+.h6 {
+  font-family: "Poppins", "sans-serif";
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  font-style: normal;
+  margin-bottom: 0rem !important; }
+
 .d-date-input .d-date-input__no-out-line {
   border: 0px solid white !important;
-  border-bottom: 1px solid #b8b8b8 !important; }
+  border-bottom: 0.5px solid #ECECEC !important; }
 
 .d-date-input .d-date-input__input {
   width: 100%;
@@ -31249,9 +31440,14 @@ h6,
 .d-date-input .d-date-input__label {
   margin-bottom: 25px; }
 
+.d-date-input .ant-picker {
+  border-radius: 0px !important; }
+
 .d-date-input .ant-picker:hover,
 .d-date-input .ant-picker-focused {
-  border: 1px solid #DE0D0C; }
+  border: 0.5px solid #041b47 !important;
+  outline: none !important;
+  box-shadow: none !important; }
 
 .d-date-input .d-date-input__button {
   display: none; }
@@ -31324,7 +31520,7 @@ text-bold,
 
 .text-x-small, .text-x-small-bold, label,
 .label,
-.text-label, .d-input-search > input, .d-select__select .ant-select-selection-item, .d-select__select .ant-select-selection-search, .d-select__select .ant-select-selection-placeholder, .d-select__select input, .d-table-awesome-component .ant-table-thead > tr > th, .d-table-awesome-component .ant-pagination-total-text, .d-table-awesome-component .ant-pagination-item-link, .d-table-awesome-component .ant-pagination-options-quick-jumper input, .d-table-awesome-component .ant-pagination-item,
+.text-label, .d-input-search > input, .d-select__select .ant-select-selection-item, .d-select__select .ant-select-selection-search, .d-select__select .ant-select-selection-placeholder, .d-select__select input, .d-date-input .ant-picker-input > input, .d-table-awesome-component .ant-table-thead > tr > th, .d-table-awesome-component .ant-pagination-total-text, .d-table-awesome-component .ant-pagination-item-link, .d-table-awesome-component .ant-pagination-options-quick-jumper input, .d-table-awesome-component .ant-pagination-item,
 .d-table-awesome-component .ant-select-selection-item {
   font-family: "Poppins", "sans-serif";
   font-size: 12px;
@@ -33001,7 +33197,7 @@ text-bold,
 
 .text-x-small, .text-x-small-bold, label,
 .label,
-.text-label, .d-input-search > input, .d-select__select .ant-select-selection-item, .d-select__select .ant-select-selection-search, .d-select__select .ant-select-selection-placeholder, .d-select__select input, .d-table-awesome-component .ant-table-thead > tr > th, .d-table-awesome-component .ant-pagination-total-text, .d-table-awesome-component .ant-pagination-item-link, .d-table-awesome-component .ant-pagination-options-quick-jumper input, .d-table-awesome-component .ant-pagination-item,
+.text-label, .d-input-search > input, .d-select__select .ant-select-selection-item, .d-select__select .ant-select-selection-search, .d-select__select .ant-select-selection-placeholder, .d-select__select input, .d-date-input .ant-picker-input > input, .d-table-awesome-component .ant-table-thead > tr > th, .d-table-awesome-component .ant-pagination-total-text, .d-table-awesome-component .ant-pagination-item-link, .d-table-awesome-component .ant-pagination-options-quick-jumper input, .d-table-awesome-component .ant-pagination-item,
 .d-table-awesome-component .ant-select-selection-item {
   font-family: "Poppins", "sans-serif";
   font-size: 12px;
