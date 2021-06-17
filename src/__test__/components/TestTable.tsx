@@ -64,6 +64,11 @@ const TestTable = () => {
             dataIndex: "label",
         },
         {
+            title: "DOB Test",
+            align: "center",
+            dataIndex: "label",
+        },
+        {
             title: "Action",
             align: "center",
             render: () => {
@@ -91,21 +96,21 @@ const TestTable = () => {
                 keyTableLayout="TEST TABLE"
                 rowSelection={{ onChange: (value) => setSelectingRows(value) }}
                 selectingRows={selectingRows}
-                // onSelectionView={() => {
-                //     return (
-                //         <div>
-                //             <Button variant="outline" content="Approve All" />
-                //         </div>
-                //     );
-                // }}
+                onSelectionView={() => {
+                    return (
+                        <div>
+                            <Button variant="outline" content="Approve All" />
+                        </div>
+                    );
+                }}
                 pagination={{ pageSize: 5, pageSizeOptions: ["5", "10", "15"] }}
                 getTotalItems={(res) => res?.length}
                 isPagination={false}
-                tableLayout="fixed"
+                tableLayout="auto"
                 bordered={false}
             />
 
-            <AwesomeTableComponent columns={columns} showSelectColumn dataSource={dataSource} tableLayout="fixed" />
+            <AwesomeTableComponent columns={columns} showSelectColumn dataSource={dataSource} tableLayout="auto" />
             <Button content="Remove" onClick={onClickRemove} />
         </div>
     );
