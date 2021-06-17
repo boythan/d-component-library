@@ -45,16 +45,20 @@ const getParamFromUrl = (key: string) => {
     return param;
 };
 
-const pushState = (key: any, value: any) => {
+const pushState = (obj: { [key: string]: any }) => {
     const url = new URL(window.location as any);
-    url.searchParams.set(key, value);
-    window.history.pushState({ key: value }, "", url as any);
+    Object.keys(obj).forEach((key) => {
+        url.searchParams.set(key, obj[key]);
+        window.history.pushState({ key: [obj[key]] }, "", url as any);
+    });
 };
 
-const replaceState = (key: any, value: any) => {
+const replaceState = (obj: { [key: string]: any }) => {
     const url = new URL(window.location as any);
-    url.searchParams.set(key, value);
-    window.history.replaceState({ key: value }, "", url as any);
+    Object.keys(obj).forEach((key) => {
+        url.searchParams.set(key, obj[key]);
+        window.history.replaceState({ key: [obj[key]] }, "", url as any);
+    });
 };
 
 //* *************************************USE FOR NEW UPDATE PARAMS********************************************** */
