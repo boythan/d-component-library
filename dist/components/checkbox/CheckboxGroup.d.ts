@@ -4,8 +4,8 @@ export interface CheckboxGroupProps {
     label?: any;
     className?: string;
     classNameItem?: string;
-    getLabel?: React.FC;
-    getValue?: React.FC;
+    getLabel?: (item: any) => any;
+    getValue?: (item: any) => any;
     value?: Array<any>;
     defaultValue?: Array<any>;
     onChange?: (values: Array<any>) => void;
