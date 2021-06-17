@@ -75529,17 +75529,25 @@ var getParamFromUrl = function (key) {
 };
 var pushState = function (obj) {
     var url = new URL(window.location);
+    if (lodash.isEmpty(obj)) {
+        var originUrl = window.location.href.substring(window.location.href.lastIndexOf("/") + 1).split("?")[0];
+        return window.history.pushState("", "", ("/" + originUrl));
+    }
     Object.keys(obj).forEach(function (key) {
         url.searchParams.set(key, obj[key]);
-        window.history.pushState({ key: [obj[key]] }, "", url);
     });
+    return window.history.pushState("", "", url);
 };
 var replaceState = function (obj) {
     var url = new URL(window.location);
+    if (lodash.isEmpty(obj)) {
+        var originUrl = window.location.href.substring(window.location.href.lastIndexOf("/") + 1).split("?")[0];
+        return window.history.replaceState("", "", ("/" + originUrl));
+    }
     Object.keys(obj).forEach(function (key) {
         url.searchParams.set(key, obj[key]);
-        window.history.replaceState({ key: [obj[key]] }, "", url);
     });
+    return window.history.replaceState("", "", url);
 };
 //* *************************************USE FOR NEW UPDATE PARAMS********************************************** */
 var addQuery = function (newQuery) {
