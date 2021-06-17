@@ -1,3 +1,4 @@
+/* eslint-disable prefer-template */
 import _ from "lodash";
 import queryString from "query-string";
 
@@ -47,18 +48,26 @@ const getParamFromUrl = (key: string) => {
 
 const pushState = (obj: { [key: string]: any }) => {
     const url = new URL(window.location as any);
+    if (_.isEmpty(obj)) {
+        const originUrl = window.location.href.substring(window.location.href.lastIndexOf("/") + 1).split("?")[0];
+        return window.history.pushState("", "", ("/" + originUrl) as any);
+    }
     Object.keys(obj).forEach((key) => {
         url.searchParams.set(key, obj[key]);
-        window.history.pushState({ key: [obj[key]] }, "", url as any);
     });
+    return window.history.pushState("", "", url as any);
 };
 
 const replaceState = (obj: { [key: string]: any }) => {
     const url = new URL(window.location as any);
+    if (_.isEmpty(obj)) {
+        const originUrl = window.location.href.substring(window.location.href.lastIndexOf("/") + 1).split("?")[0];
+        return window.history.replaceState("", "", ("/" + originUrl) as any);
+    }
     Object.keys(obj).forEach((key) => {
         url.searchParams.set(key, obj[key]);
-        window.history.replaceState({ key: [obj[key]] }, "", url as any);
     });
+    return window.history.replaceState("", "", url as any);
 };
 
 //* *************************************USE FOR NEW UPDATE PARAMS********************************************** */
