@@ -74678,12 +74678,12 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
             "d-flex justify-content-between align-items-center my-3": showSelectionView,
         });
         return (jsxs("div", __assign({ className: wrapperClass }, { children: [showFuncRow && (jsxs("div", __assign({ className: funcRowClass }, { children: [showSelectionView && onSelectionView && onSelectionView(selectingRows),
-                        !lodash.isEmpty(tableLayoutList) && (jsx(SelectLayoutView, { listLayout: tableLayoutList, onClickItem: this.handleSelectTableLayout, selectedLayout: selectedLayout, showBorder: true }, void 0)),
-                        jsx(SelectColumnModal
-                        // eslint-disable-next-line react/destructuring-assignment
-                        , { 
-                            // eslint-disable-next-line react/destructuring-assignment
-                            options: columns, setSelectedColumns: function (column) { return _this.setState({ selectedColumns: column }); }, keyTable: keyTableLayout, refreshLayout: function () { return _this.setDefaultTableLayout(); } }, void 0)] }), void 0)),
+                        jsxs("div", __assign({ className: "flex-center-y" }, { children: [!lodash.isEmpty(tableLayoutList) && (jsx(SelectLayoutView, { listLayout: tableLayoutList, onClickItem: this.handleSelectTableLayout, selectedLayout: selectedLayout, showBorder: true }, void 0)),
+                                jsx(SelectColumnModal
+                                // eslint-disable-next-line react/destructuring-assignment
+                                , { 
+                                    // eslint-disable-next-line react/destructuring-assignment
+                                    options: columns, setSelectedColumns: function (column) { return _this.setState({ selectedColumns: column }); }, keyTable: keyTableLayout, refreshLayout: function () { return _this.setDefaultTableLayout(); } }, void 0)] }), void 0)] }), void 0)),
                 jsx(Table, __assign({ rowKey: rowKey, dataSource: data, loading: loading, onChange: this.handleTableChange, rowClassName: function () { return "d-table-awesome-component__row"; }, pagination: paginationResult, scroll: isScroll ? { y: "1000" } : {}, tableLayout: tableLayout, bordered: bordered, components: this.components }, this.props, { className: "d-table-awesome-component__table " + classNameTable, 
                     // columns props always has to be in last position in order for Resizable table to work
                     columns: this.getColumns() }), void 0)] }), void 0));
@@ -75498,15 +75498,19 @@ var getParamFromUrl = function (key) {
     var param = url.searchParams.get(key);
     return param;
 };
-var pushState = function (key, value) {
+var pushState = function (obj) {
     var url = new URL(window.location);
-    url.searchParams.set(key, value);
-    window.history.pushState({ key: value }, "", url);
+    Object.keys(obj).forEach(function (key) {
+        url.searchParams.set(key, obj[key]);
+        window.history.pushState({ key: [obj[key]] }, "", url);
+    });
 };
-var replaceState = function (key, value) {
+var replaceState = function (obj) {
     var url = new URL(window.location);
-    url.searchParams.set(key, value);
-    window.history.replaceState({ key: value }, "", url);
+    Object.keys(obj).forEach(function (key) {
+        url.searchParams.set(key, obj[key]);
+        window.history.replaceState({ key: [obj[key]] }, "", url);
+    });
 };
 //* *************************************USE FOR NEW UPDATE PARAMS********************************************** */
 var addQuery = function (newQuery) {
