@@ -6,6 +6,7 @@ import ViewCollapse from "../../components/view/ViewCollapse";
 import { Select } from "../../dcomponent";
 import { ATTRIBUTE_INPUT_TYPE, SELECT_DATA } from "../data/TestConstant";
 import SelectInfinity from "../../components/select/SelectInfinity";
+import DateInput from "../../components/dateInput/DateInput";
 
 const TestInput = () => {
     const [valueSelect, setValueSelect] = useState([]);
@@ -38,6 +39,18 @@ const TestInput = () => {
                     }}
                 />
                 <InputColor label="Input color" error="Color Require!" />
+            </ViewCollapse>
+
+            <ViewCollapse label="Input Date" className="mt-3" defaultOpen={false}>
+                <DateInput variant="outline" className="w-100" label="Range Date" />
+                <DateInput
+                    variant="outline"
+                    className="mt-3 w-100"
+                    label="Range Date"
+                    useButton
+                    onChange={(value) => console.log({ value })}
+                    isRangePicker
+                />
             </ViewCollapse>
 
             <ViewCollapse label="Select" className="mt-3" defaultOpen={false}>
