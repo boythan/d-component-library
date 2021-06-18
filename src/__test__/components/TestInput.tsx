@@ -11,7 +11,7 @@ import DateInput from "../../components/dateInput/DateInput";
 const TestInput = () => {
     const [valueSelect, setValueSelect] = useState([]);
     const [valueTextInput, setValueTextInput] = useState([]);
-    const [valueSelectInfinity, setValueSelectInfinity] = useState([]);
+    const [valueSelectInfinity, setValueSelectInfinity] = useState<any>();
 
     return (
         <div className="my-4">
@@ -82,11 +82,17 @@ const TestInput = () => {
                     transformer={async (res) => {
                         // const data = JSON.stringify(res);
                         const data = await res.json();
-                        const cloneData = data.map((item: any = {}) => ({ ...item, label: item?.title }));
+                        const cloneData = data.map((item: any = {}) => ({
+                            ...item,
+                            label: item?.title,
+                            value: item?.title,
+                            key: item?.id,
+                        }));
                         return cloneData as any;
                     }}
                     value={valueSelectInfinity}
                     onChange={setValueSelectInfinity}
+                    mode="multiple"
                 />
             </ViewCollapse>
         </div>

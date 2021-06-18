@@ -2,7 +2,8 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import _ from "lodash";
-import React, { ElementRef, useImperativeHandle, useRef } from "react";
+import React, { ElementRef, useImperativeHandle, useRef, useState } from "react";
+import Icon from "../icon/Icon";
 import AwesomeListComponent, { AwesomeListComponentProps, IPaging } from "../list/awesomeList/AwesomeListComponent";
 import Select, { SelectProps } from "./Select";
 
@@ -35,6 +36,7 @@ const SelectInfinity: React.ForwardRefRenderFunction<SelectInfinityMethod, Selec
     const listRef = useRef<ElementRef<typeof AwesomeListComponent>>(null);
     const selectRef = useRef<React.ElementRef<typeof Select>>(null);
     const textSearch = useRef();
+    const [valueObj, setValueObj] = useState<Array<any>>([]);
 
     const refreshList = () => {
         // @ts-ignore
@@ -52,7 +54,7 @@ const SelectInfinity: React.ForwardRefRenderFunction<SelectInfinityMethod, Selec
         refreshList();
     }, 400);
 
-    const renderTagItemSelect = (item: any, index: any) => {
+    const renderItemDropdown = (item: any, index: any) => {
         const label = getLabel(item);
         const itemValue = getValue(item);
         return (
@@ -61,13 +63,18 @@ const SelectInfinity: React.ForwardRefRenderFunction<SelectInfinityMethod, Selec
                 onClick={() => {
                     if (mode === "tags" || mode === "multiple") {
                         let clone: Array<any> = [...value];
+                        let cloneObj: Array<any> = [...valueObj];
                         if (clone.includes(itemValue)) {
                             clone = clone?.filter((i: any) => i !== itemValue);
+                            cloneObj = cloneObj.filter((i: any) => i?.id !== itemValue);
                         } else {
                             clone.push(itemValue);
+                            cloneObj.push(item);
                         }
+                        setValueObj(cloneObj);
                         onChange && onChange(clone, null as any);
                     } else {
+                        setValueObj([item]);
                         onChange && onChange([itemValue], null as any);
                     }
                     if (mode !== "tags" && mode !== "multiple") {
@@ -86,7 +93,7 @@ const SelectInfinity: React.ForwardRefRenderFunction<SelectInfinityMethod, Selec
             <div style={{ height: "250px" }}>
                 <AwesomeListComponent
                     ref={listRef}
-                    renderItem={renderTagItemSelect}
+                    renderItem={renderItemDropdown}
                     isPaging
                     transformer={transformer}
                     source={(paging) => {
@@ -101,25 +108,45 @@ const SelectInfinity: React.ForwardRefRenderFunction<SelectInfinityMethod, Selec
         );
     };
 
+    const onRemoveItem = (id: any) => {
+        const clone = value.filter((i: any) => i !== id);
+        const cloneObj = valueObj.filter((i) => i?.id !== id);
+        setValueObj(cloneObj);
+        onChange && onChange(clone, null as any);
+    };
     const customTagRender = (props: any) => {
         console.log({ props });
         const tagValue = props?.value ?? null;
+        let foundItem = null;
         if (tagValue) {
-            const item = value?.find((i: any) => i === tagValue);
+            foundItem = valueObj?.find((i: any) => i?.id === tagValue);
         }
-        return <div>this is tag</div>;
+        if (!foundItem) {
+            return <div />;
+        }
+        return (
+            <div
+                className="py-1 text-white text-x-small px-2 bg-secondary flex-center-y mx-1"
+                style={{ width: "110px" }}
+            >
+                <div className="text-nowrap w-100">{getLabel(foundItem)}</div>
+                <Icon name="close" size="x-small" className="hover-pointer" onClick={() => onRemoveItem(tagValue)} />
+            </div>
+        );
     };
+
     return (
         <Select
-            className={className}
-            value={value}
             showSearch
+            className={className}
+            value={!mode ? getLabel(valueObj[0]) : value}
             ref={selectRef}
             onSearch={onChangeTextSearch}
             dropdownRender={renderDropDown}
             onChange={onChange}
             mode={mode}
-            // tagRender={customTagRender}
+            hasFilter={false}
+            tagRender={customTagRender}
             {...props}
         />
     );
