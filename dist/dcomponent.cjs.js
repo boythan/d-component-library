@@ -69907,14 +69907,14 @@ var RowInterchangeView = function (_a) {
                 labelView = Messages[label];
             }
             if (typeof renderLabel === "function") {
-                labelView = renderLabel(id, dataSource, row);
+                labelView = renderLabel({ id: id, data: dataSource, row: row });
             }
             content = (_a = dataSource === null || dataSource === void 0 ? void 0 : dataSource[id]) !== null && _a !== void 0 ? _a : "N/A";
             if (typeof id === "string" && id.includes(".")) {
                 content = ObjectUtils.getValueFromStringKey(dataSource, id);
             }
             if (typeof renderContent === "function") {
-                content = renderContent(id, dataSource, row);
+                content = renderContent({ id: id, data: dataSource, row: row });
             }
             var contentView = (jsxRuntime.jsx("div", __assign({ className: contentClass, style: styleContent }, { children: content }), void 0));
             return (jsxRuntime.jsxs("div", __assign({ className: rowClass, style: style }, { children: [jsxRuntime.jsx("div", __assign({ className: labelClass, style: styleLabel }, { children: labelView }), void 0),
@@ -69945,7 +69945,7 @@ var ViewRow = function (_a) {
 };
 
 var ViewTextarea = function (_a) {
-    var children = _a.children, className = _a.className, classNameContent = _a.classNameContent, classNameShowMore = _a.classNameShowMore, classNameShowLess = _a.classNameShowLess, style = _a.style, _b = _a.showLessText, showLessText = _b === void 0 ? Messages.showLess : _b, _c = _a.showMoreText, showMoreText = _c === void 0 ? Messages.showMore : _c, _d = _a.limitedLength, limitedLength = _d === void 0 ? 200 : _d;
+    var children = _a.children, className = _a.className, classNameContent = _a.classNameContent, classNameShowMore = _a.classNameShowMore, classNameShowLess = _a.classNameShowLess, style = _a.style, _b = _a.showLessText, showLessText = _b === void 0 ? Messages.showLess : _b, _c = _a.showMoreText, showMoreText = _c === void 0 ? Messages.showMore : _c, _d = _a.limitedLength, limitedLength = _d === void 0 ? 200 : _d, width = _a.width;
     var _e = React.useState(false), expanding = _e[0], setExpanding = _e[1];
     var contentLength = React.useMemo(function () {
         return children.length;
@@ -69954,7 +69954,7 @@ var ViewTextarea = function (_a) {
         return contentLength > limitedLength;
     }, [contentLength, limitedLength]);
     var contentRef = React.useRef(null);
-    React.useRef(null);
+    var wrapperRef = React.useRef(null);
     var isShowMore = isOverFollow && !expanding;
     var isShowLess = isOverFollow && expanding;
     // classNames
@@ -69972,9 +69972,15 @@ var ViewTextarea = function (_a) {
             console.log("Content Height", (_a = contentRef.current) === null || _a === void 0 ? void 0 : _a.offsetHeight);
         }, 200);
     }, [children]);
-    return (jsxRuntime.jsxs("div", __assign({ className: wrapperClass, style: style }, { children: [jsxRuntime.jsxs("div", __assign({ className: contentClass, ref: function (ref) { return (contentRef.current = ref); } }, { children: [children,
-                    isShowLess && (jsxRuntime.jsx("span", __assign({ className: showLessClass, onClick: function () { return setExpanding(false); } }, { children: " " + showLessText }), void 0))] }), void 0),
-            isShowMore && (jsxRuntime.jsx("span", __assign({ className: showMoreClass, onClick: function () { return setExpanding(true); } }, { children: showMoreText }), void 0))] }), void 0));
+    return (jsxRuntime.jsxs("div", __assign({ className: wrapperClass, style: style, ref: wrapperRef }, { children: [jsxRuntime.jsxs("div", __assign({ className: contentClass, ref: function (ref) { return (contentRef.current = ref); } }, { children: [children,
+                    isShowLess && (jsxRuntime.jsx("span", __assign({ className: showLessClass, onClick: function () {
+                            setExpanding(false);
+                            wrapperRef.current && wrapperRef.current.setAttribute("style", "width:" + width + "px");
+                        } }, { children: " " + showLessText }), void 0))] }), void 0),
+            isShowMore && (jsxRuntime.jsx("span", __assign({ className: showMoreClass, onClick: function () {
+                    setExpanding(true);
+                    wrapperRef.current && wrapperRef.current.setAttribute("style", "width:100%");
+                } }, { children: showMoreText }), void 0))] }), void 0));
 };
 
 var Panel = Collapse.Panel;

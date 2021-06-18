@@ -2,8 +2,16 @@ import React, { CSSProperties } from "react";
 export interface IRowsKey<T> {
     id: keyof T;
     label: string | number;
-    renderLabel?: (id: IRowsKey<T>["id"], data: any, row?: IRowsKey<T>) => any;
-    renderContent?: (id: IRowsKey<T>["id"], data: any, row?: IRowsKey<T>) => any;
+    renderLabel?: (props: {
+        id: IRowsKey<T>["id"];
+        data: any;
+        row?: IRowsKey<T>;
+    }) => any;
+    renderContent?: (props: {
+        id: IRowsKey<T>["id"];
+        data: any;
+        row?: IRowsKey<T>;
+    }) => any;
 }
 export interface RowInterchangeViewProps {
     className?: string;

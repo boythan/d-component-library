@@ -28688,6 +28688,9 @@ body {
 .opacity-7 {
   opacity: 70%; }
 
+.w-fit-content {
+  width: fit-content; }
+
 .width-fit-content {
   width: fit-content; }
 
@@ -29873,6 +29876,9 @@ body {
 
 .opacity-7 {
   opacity: 70%; }
+
+.w-fit-content {
+  width: fit-content; }
 
 .width-fit-content {
   width: fit-content; }
