@@ -26,7 +26,7 @@ const ViewTextarea: React.FC<ViewTextareaProps> = ({
     classNameContent,
     classNameShowMore,
     classNameShowLess,
-    style,
+    style = {},
     showLessText = Messages.showLess,
     showMoreText = Messages.showMore,
     limitedLength = 200,
@@ -68,7 +68,7 @@ const ViewTextarea: React.FC<ViewTextareaProps> = ({
     }, [children]);
 
     return (
-        <div className={wrapperClass} style={style} ref={wrapperRef}>
+        <div className={wrapperClass} style={{ ...style, width }} ref={wrapperRef}>
             <div className={contentClass} ref={(ref) => (contentRef.current = ref)}>
                 {children}
                 {isShowLess && (
