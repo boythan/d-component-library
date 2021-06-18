@@ -2,10 +2,11 @@
 import _ from "lodash";
 import queryString from "query-string";
 
-const getParams = function (url: string) {
+const getParams = function (url?: string) {
     const params: any = {};
     const parser = document.createElement("a");
-    parser.href = url;
+    const currentUrl = document.location.href;
+    parser.href = url || currentUrl;
     const query = parser.search.substring(1);
     const vars = query.split("&");
     // eslint-disable-next-line no-plusplus
