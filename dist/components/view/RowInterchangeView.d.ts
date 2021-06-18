@@ -1,9 +1,9 @@
 import React, { CSSProperties } from "react";
-export interface IRowsKey {
-    id: string;
+export interface IRowsKey<T> {
+    id: keyof T;
     label: string | number;
-    renderLabel?: (id: IRowsKey["id"], data: any, row?: IRowsKey) => any;
-    renderContent?: (id: IRowsKey["id"], data: any, row?: IRowsKey) => any;
+    renderLabel?: (id: IRowsKey<T>["id"], data: any, row?: IRowsKey<T>) => any;
+    renderContent?: (id: IRowsKey<T>["id"], data: any, row?: IRowsKey<T>) => any;
 }
 export interface RowInterchangeViewProps {
     className?: string;
@@ -11,7 +11,7 @@ export interface RowInterchangeViewProps {
     classNameLabel?: string;
     classNameContent?: string;
     dataSource: any;
-    keyList: Array<IRowsKey>;
+    keyList: Array<IRowsKey<any>>;
     variant?: "background" | "border" | "dashed" | "none";
     boldLabel?: boolean;
     Messages?: any;

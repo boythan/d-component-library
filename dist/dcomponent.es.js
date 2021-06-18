@@ -69889,7 +69889,7 @@ var RowInterchangeView = function (_a) {
             }
             var contentView = (jsx("div", __assign({ className: contentClass, style: styleContent }, { children: content }), void 0));
             return (jsxs("div", __assign({ className: rowClass, style: style }, { children: [jsx("div", __assign({ className: labelClass, style: styleLabel }, { children: labelView }), void 0),
-                    contentView] }), id + index));
+                    contentView] }), id + " + " + index));
         }) }), void 0));
 };
 
