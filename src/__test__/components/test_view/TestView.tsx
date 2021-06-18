@@ -57,11 +57,8 @@ const TestView: React.FC<TestRowInterChagneProps> = ({ id }) => {
                     ]}
                     variant="border"
                 />
-                <ViewTextarea>
-                    {`This is Ant Design's internal standard for evaluating design quality. Based on the assumption that
-                "everyone is pursuing happiness at work", we have added the two values of "Meaningfulness" and "Growth"
-                on the basis of "Certainty" and "Naturalness" to guide each designer towards better judgment and
-                decision-making.`}
+                <ViewTextarea limitedLength={30} width={200}>
+                    {`This is Ant Design's internal standard for evaluating design quality. Based on the assumption . `}
                 </ViewTextarea>
                 <ViewTimeline dataSource={ATTRIBUTE_INPUT_TYPE} getContent={(item) => item?.label} />
             </ViewCollapse>
