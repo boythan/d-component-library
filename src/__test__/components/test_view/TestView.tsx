@@ -20,7 +20,20 @@ const TestView: React.FC<TestRowInterChagneProps> = ({ id }) => {
                         { id: "label", label: "Label" },
                         { id: "iconName", label: "Icon" },
                         { id: "subObject.name", label: "Sub Name" },
-                        { id: "subObject.children.name", label: "Sub Children" },
+                        {
+                            id: "subObject.children.name",
+                            label: "Sub Children",
+                            renderContent: ({ id, data }) => {
+                                console.log(data[id]);
+                                return (
+                                    <div className="d-flex flex-column">
+                                        <div className="py-3">{data.id}</div>
+                                        <div className="py-3">{data.id}</div>
+                                        <div className="py-3">{data.id}</div>
+                                    </div>
+                                );
+                            },
+                        },
                     ]}
                 />
                 <RowInterchangeView
