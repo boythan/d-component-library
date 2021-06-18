@@ -75,7 +75,7 @@ var __assign = function() {
     return __assign.apply(this, arguments);
 };
 
-function __rest$q(s, e) {
+function __rest$s(s, e) {
     var t = {};
     for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
         t[p] = s[p];
@@ -201,7 +201,7 @@ var classnames = createCommonjsModule(function (module) {
 });
 
 var Icon$2 = function (_a) {
-    var name = _a.name, _b = _a.size, size = _b === void 0 ? "medium" : _b, className = _a.className, props = __rest$q(_a, ["name", "size", "className"]);
+    var name = _a.name, _b = _a.size, size = _b === void 0 ? "medium" : _b, className = _a.className, props = __rest$s(_a, ["name", "size", "className"]);
     var iconClass = classnames("material-icons", "d-icon__" + size, className);
     return (jsxRuntime.jsx("i", __assign({ className: iconClass }, props, { children: name }), void 0));
 };
@@ -7172,7 +7172,7 @@ var Simple = function Simple() {
   }))));
 };
 
-var __rest$p = undefined && undefined.__rest || function (s, e) {
+var __rest$r = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -7195,7 +7195,7 @@ var Empty = function Empty(_a) {
       description = _a.description,
       children = _a.children,
       imageStyle = _a.imageStyle,
-      restProps = __rest$p(_a, ["className", "prefixCls", "image", "description", "children", "imageStyle"]);
+      restProps = __rest$r(_a, ["className", "prefixCls", "image", "description", "children", "imageStyle"]);
 
   var _React$useContext = React__namespace.useContext(ConfigContext),
       getPrefixCls = _React$useContext.getPrefixCls,
@@ -18736,7 +18736,7 @@ var getTransitionName = function getTransitionName(rootPrefixCls, motion, transi
 };
 
 // TODO: 4.0 - codemod should help to change `filterOption` to support node props.
-var __rest$o = undefined && undefined.__rest || function (s, e) {
+var __rest$q = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -18765,7 +18765,7 @@ var InternalSelect = function InternalSelect(_a, ref) {
       listItemHeight = _a$listItemHeight === void 0 ? 24 : _a$listItemHeight,
       customizeSize = _a.size,
       notFoundContent = _a.notFoundContent,
-      props = __rest$o(_a, ["prefixCls", "bordered", "className", "getPopupContainer", "dropdownClassName", "listHeight", "listItemHeight", "size", "notFoundContent"]);
+      props = __rest$q(_a, ["prefixCls", "bordered", "className", "getPopupContainer", "dropdownClassName", "listHeight", "listItemHeight", "size", "notFoundContent"]);
 
   var _React$useContext = React__namespace.useContext(ConfigContext),
       getContextPopupContainer = _React$useContext.getPopupContainer,
@@ -19670,7 +19670,7 @@ var UnreachableException = function UnreachableException(value) {
   return new Error("unreachable case: ".concat(JSON.stringify(value)));
 };
 
-var __rest$n = undefined && undefined.__rest || function (s, e) {
+var __rest$p = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -19693,7 +19693,7 @@ var ButtonGroup$1 = function ButtonGroup(props) {
     var customizePrefixCls = props.prefixCls,
         size = props.size,
         className = props.className,
-        others = __rest$n(props, ["prefixCls", "size", "className"]);
+        others = __rest$p(props, ["prefixCls", "size", "className"]);
 
     var prefixCls = getPrefixCls('btn-group', customizePrefixCls); // large => lg
     // small => sm
@@ -20029,7 +20029,7 @@ var LoadingIcon = function LoadingIcon(_ref) {
   });
 };
 
-var __rest$m = undefined && undefined.__rest || function (s, e) {
+var __rest$o = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -20136,7 +20136,7 @@ var InternalButton = function InternalButton(props, ref) {
       block = _props$block === void 0 ? false : _props$block,
       _props$htmlType = props.htmlType,
       htmlType = _props$htmlType === void 0 ? 'button' : _props$htmlType,
-      rest = __rest$m(props, ["loading", "prefixCls", "type", "danger", "shape", "size", "className", "children", "icon", "ghost", "block", "htmlType"]);
+      rest = __rest$o(props, ["loading", "prefixCls", "type", "danger", "shape", "size", "className", "children", "icon", "ghost", "block", "htmlType"]);
 
   var size = React__namespace.useContext(SizeContext);
 
@@ -20270,7 +20270,7 @@ Button$2.displayName = 'Button';
 Button$2.Group = ButtonGroup$1;
 Button$2.__ANT_BUTTON = true;
 
-var __rest$l = undefined && undefined.__rest || function (s, e) {
+var __rest$n = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -20311,7 +20311,7 @@ var DropdownButton = function DropdownButton(props) {
       buttonsRender = props.buttonsRender,
       mouseEnterDelay = props.mouseEnterDelay,
       mouseLeaveDelay = props.mouseLeaveDelay,
-      restProps = __rest$l(props, ["prefixCls", "type", "disabled", "onClick", "htmlType", "children", "className", "overlay", "trigger", "align", "visible", "onVisibleChange", "placement", "getPopupContainer", "href", "icon", "title", "buttonsRender", "mouseEnterDelay", "mouseLeaveDelay"]);
+      restProps = __rest$n(props, ["prefixCls", "type", "disabled", "onClick", "htmlType", "children", "className", "overlay", "trigger", "align", "visible", "onVisibleChange", "placement", "getPopupContainer", "href", "icon", "title", "buttonsRender", "mouseEnterDelay", "mouseLeaveDelay"]);
 
   var prefixCls = getPrefixCls('dropdown-button', customizePrefixCls);
   var dropdownProps = {
@@ -22594,7 +22594,7 @@ function SubMenu$1(props) {
   })));
 }
 
-var __rest$k = undefined && undefined.__rest || function (s, e) {
+var __rest$m = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -22644,7 +22644,7 @@ var Basic = function Basic(props) {
       className = props.className,
       children = props.children,
       tagName = props.tagName,
-      others = __rest$k(props, ["prefixCls", "className", "children", "tagName"]);
+      others = __rest$m(props, ["prefixCls", "className", "children", "tagName"]);
 
   var classString = classnames(prefixCls, className);
   return /*#__PURE__*/React__namespace.createElement(tagName, _extends$1({
@@ -22668,7 +22668,7 @@ var BasicLayout = function BasicLayout(props) {
       children = props.children,
       hasSider = props.hasSider,
       Tag = props.tagName,
-      others = __rest$k(props, ["prefixCls", "className", "children", "hasSider", "tagName"]);
+      others = __rest$m(props, ["prefixCls", "className", "children", "hasSider", "tagName"]);
 
   var classString = classnames(prefixCls, (_classNames = {}, _defineProperty$4(_classNames, "".concat(prefixCls, "-has-sider"), typeof hasSider === 'boolean' ? hasSider : siders.length > 0), _defineProperty$4(_classNames, "".concat(prefixCls, "-rtl"), direction === 'rtl'), _classNames), className);
   return /*#__PURE__*/React__namespace.createElement(LayoutContext.Provider, {
@@ -22718,7 +22718,7 @@ var isNumeric = function isNumeric(value) {
   return !isNaN(parseFloat(value)) && isFinite(value);
 };
 
-var __rest$j = undefined && undefined.__rest || function (s, e) {
+var __rest$l = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -22772,7 +22772,7 @@ var Sider = /*#__PURE__*/React__namespace.forwardRef(function (_a, ref) {
       breakpoint = _a.breakpoint,
       onCollapse = _a.onCollapse,
       onBreakpoint = _a.onBreakpoint,
-      props = __rest$j(_a, ["prefixCls", "className", "trigger", "children", "defaultCollapsed", "theme", "style", "collapsible", "reverseArrow", "width", "collapsedWidth", "zeroWidthTriggerStyle", "breakpoint", "onCollapse", "onBreakpoint"]);
+      props = __rest$l(_a, ["prefixCls", "className", "trigger", "children", "defaultCollapsed", "theme", "style", "collapsible", "reverseArrow", "width", "collapsedWidth", "zeroWidthTriggerStyle", "breakpoint", "onCollapse", "onBreakpoint"]);
 
   var _useContext = React.useContext(LayoutContext),
       siderHook = _useContext.siderHook;
@@ -22914,7 +22914,7 @@ var Sider = /*#__PURE__*/React__namespace.forwardRef(function (_a, ref) {
 });
 Sider.displayName = 'Sider';
 
-var __rest$i = undefined && undefined.__rest || function (s, e) {
+var __rest$k = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -22959,7 +22959,7 @@ var MenuItem$2 = /*#__PURE__*/function (_React$Component) {
           title = _b.title,
           icon = _b.icon,
           danger = _b.danger,
-          rest = __rest$i(_b, ["title", "icon", "danger"]);
+          rest = __rest$k(_b, ["title", "icon", "danger"]);
 
       var tooltipTitle = title;
 
@@ -23030,7 +23030,7 @@ var MenuItem$2 = /*#__PURE__*/function (_React$Component) {
 }(React__namespace.Component);
 MenuItem$2.contextType = MenuContext;
 
-var __rest$h = undefined && undefined.__rest || function (s, e) {
+var __rest$j = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -23066,7 +23066,7 @@ var InternalMenu = /*#__PURE__*/function (_React$Component) {
           className = _a.className,
           theme = _a.theme,
           expandIcon = _a.expandIcon,
-          restProps = __rest$h(_a, ["prefixCls", "className", "theme", "expandIcon"]);
+          restProps = __rest$j(_a, ["prefixCls", "className", "theme", "expandIcon"]);
 
       var passedProps = omit(restProps, ['siderCollapsed', 'collapsedWidth']);
 
@@ -33985,7 +33985,7 @@ Checkbox$3.defaultProps = {
 var RadioGroupContext = /*#__PURE__*/React__namespace.createContext(null);
 var RadioGroupContextProvider = RadioGroupContext.Provider;
 
-var __rest$g = undefined && undefined.__rest || function (s, e) {
+var __rest$i = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -34024,7 +34024,7 @@ var InternalRadio = function InternalRadio(props, ref) {
       className = props.className,
       children = props.children,
       style = props.style,
-      restProps = __rest$g(props, ["prefixCls", "className", "children", "style"]);
+      restProps = __rest$i(props, ["prefixCls", "className", "children", "style"]);
 
   var prefixCls = getPrefixCls('radio', customizePrefixCls);
 
@@ -34158,7 +34158,7 @@ var RadioGroup$1 = /*#__PURE__*/React__namespace.forwardRef(function (props, ref
 });
 var Group$2 = /*#__PURE__*/React__namespace.memo(RadioGroup$1);
 
-var __rest$f = undefined && undefined.__rest || function (s, e) {
+var __rest$h = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -34178,7 +34178,7 @@ var RadioButton = function RadioButton(props, ref) {
       getPrefixCls = _React$useContext.getPrefixCls;
 
   var customizePrefixCls = props.prefixCls,
-      radioProps = __rest$f(props, ["prefixCls"]);
+      radioProps = __rest$h(props, ["prefixCls"]);
 
   var prefixCls = getPrefixCls('radio-button', customizePrefixCls);
 
@@ -35361,7 +35361,7 @@ var Group$1 = function Group(props) {
   });
 };
 
-var __rest$e = undefined && undefined.__rest || function (s, e) {
+var __rest$g = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -35388,7 +35388,7 @@ var Search = /*#__PURE__*/React__namespace.forwardRef(function (props, ref) {
       disabled = props.disabled,
       customOnSearch = props.onSearch,
       customOnChange = props.onChange,
-      restProps = __rest$e(props, ["prefixCls", "inputPrefixCls", "className", "size", "suffix", "enterButton", "addonAfter", "loading", "disabled", "onSearch", "onChange"]);
+      restProps = __rest$g(props, ["prefixCls", "inputPrefixCls", "className", "size", "suffix", "enterButton", "addonAfter", "loading", "disabled", "onSearch", "onChange"]);
 
   var _React$useContext = React__namespace.useContext(ConfigContext),
       getPrefixCls = _React$useContext.getPrefixCls,
@@ -35856,7 +35856,7 @@ var TextArea$1 = /*#__PURE__*/function (_React$Component) {
   return TextArea;
 }(React__namespace.Component);
 
-var __rest$d = undefined && undefined.__rest || function (s, e) {
+var __rest$f = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -35888,7 +35888,7 @@ var TextArea = /*#__PURE__*/React__namespace.forwardRef(function (_a, ref) {
       onCompositionStart = _a.onCompositionStart,
       onCompositionEnd = _a.onCompositionEnd,
       onChange = _a.onChange,
-      props = __rest$d(_a, ["prefixCls", "bordered", "showCount", "maxLength", "className", "style", "size", "onCompositionStart", "onCompositionEnd", "onChange"]);
+      props = __rest$f(_a, ["prefixCls", "bordered", "showCount", "maxLength", "className", "style", "size", "onCompositionStart", "onCompositionEnd", "onChange"]);
 
   var _React$useContext = React__namespace.useContext(ConfigContext),
       getPrefixCls = _React$useContext.getPrefixCls,
@@ -36036,7 +36036,7 @@ var TextArea = /*#__PURE__*/React__namespace.forwardRef(function (_a, ref) {
   return textareaNode;
 });
 
-var __rest$c = undefined && undefined.__rest || function (s, e) {
+var __rest$e = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -36098,7 +36098,7 @@ var Password = /*#__PURE__*/React__namespace.forwardRef(function (props, ref) {
         customizeInputPrefixCls = props.inputPrefixCls,
         size = props.size,
         visibilityToggle = props.visibilityToggle,
-        restProps = __rest$c(props, ["className", "prefixCls", "inputPrefixCls", "size", "visibilityToggle"]);
+        restProps = __rest$e(props, ["className", "prefixCls", "inputPrefixCls", "size", "visibilityToggle"]);
 
     var inputPrefixCls = getPrefixCls('input', customizeInputPrefixCls);
     var prefixCls = getPrefixCls('input-password', customizePrefixCls);
@@ -36137,7 +36137,7 @@ Input.Search = Search;
 Input.TextArea = TextArea;
 Input.Password = Password;
 
-var __rest$b = undefined && undefined.__rest || function (s, e) {
+var __rest$d = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -36160,7 +36160,7 @@ var InternalCheckboxGroup = function InternalCheckboxGroup(_a, ref) {
       className = _a.className,
       style = _a.style,
       onChange = _a.onChange,
-      restProps = __rest$b(_a, ["defaultValue", "children", "options", "prefixCls", "className", "style", "onChange"]);
+      restProps = __rest$d(_a, ["defaultValue", "children", "options", "prefixCls", "className", "style", "onChange"]);
 
   var _React$useContext = React__namespace.useContext(ConfigContext),
       getPrefixCls = _React$useContext.getPrefixCls,
@@ -36280,7 +36280,7 @@ var InternalCheckboxGroup = function InternalCheckboxGroup(_a, ref) {
 var CheckboxGroup$1 = /*#__PURE__*/React__namespace.forwardRef(InternalCheckboxGroup);
 var Group = /*#__PURE__*/React__namespace.memo(CheckboxGroup$1);
 
-var __rest$a = undefined && undefined.__rest || function (s, e) {
+var __rest$c = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -36306,7 +36306,7 @@ var InternalCheckbox = function InternalCheckbox(_a, ref) {
       onMouseLeave = _a.onMouseLeave,
       _a$skipGroup = _a.skipGroup,
       skipGroup = _a$skipGroup === void 0 ? false : _a$skipGroup,
-      restProps = __rest$a(_a, ["prefixCls", "className", "children", "indeterminate", "style", "onMouseEnter", "onMouseLeave", "skipGroup"]);
+      restProps = __rest$c(_a, ["prefixCls", "className", "children", "indeterminate", "style", "onMouseEnter", "onMouseLeave", "skipGroup"]);
 
   var _React$useContext = React__namespace.useContext(ConfigContext),
       getPrefixCls = _React$useContext.getPrefixCls,
@@ -36387,7 +36387,7 @@ function PickerButton(props) {
   }, props));
 }
 
-var __rest$9 = undefined && undefined.__rest || function (s, e) {
+var __rest$b = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -36408,7 +36408,7 @@ var CheckableTag = function CheckableTag(_a) {
       checked = _a.checked,
       onChange = _a.onChange,
       onClick = _a.onClick,
-      restProps = __rest$9(_a, ["prefixCls", "className", "checked", "onChange", "onClick"]);
+      restProps = __rest$b(_a, ["prefixCls", "className", "checked", "onChange", "onClick"]);
 
   var _React$useContext = React__namespace.useContext(ConfigContext),
       getPrefixCls = _React$useContext.getPrefixCls;
@@ -36426,7 +36426,7 @@ var CheckableTag = function CheckableTag(_a) {
   }));
 };
 
-var __rest$8 = undefined && undefined.__rest || function (s, e) {
+var __rest$a = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -36454,7 +36454,7 @@ var InternalTag = function InternalTag(_a, ref) {
       closeIcon = _a.closeIcon,
       _a$closable = _a.closable,
       closable = _a$closable === void 0 ? false : _a$closable,
-      props = __rest$8(_a, ["prefixCls", "className", "style", "children", "icon", "color", "onClose", "closeIcon", "closable"]);
+      props = __rest$a(_a, ["prefixCls", "className", "style", "children", "icon", "color", "onClose", "closeIcon", "closable"]);
 
   var _React$useContext = React__namespace.useContext(ConfigContext),
       getPrefixCls = _React$useContext.getPrefixCls,
@@ -36587,7 +36587,7 @@ function getRangePlaceholder(picker, locale, customizePlaceholder) {
   return locale.lang.rangePlaceholder;
 }
 
-var __rest$7 = undefined && undefined.__rest || function (s, e) {
+var __rest$9 = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -36642,7 +36642,7 @@ function generatePicker$1(generateConfig) {
               _a$bordered = _a.bordered,
               bordered = _a$bordered === void 0 ? true : _a$bordered,
               placeholder = _a.placeholder,
-              restProps = __rest$7(_a, ["prefixCls", "getPopupContainer", "className", "size", "bordered", "placeholder"]);
+              restProps = __rest$9(_a, ["prefixCls", "getPopupContainer", "className", "size", "bordered", "placeholder"]);
 
           var _this$props = _this.props,
               format = _this$props.format,
@@ -36744,7 +36744,7 @@ function generatePicker$1(generateConfig) {
   };
 }
 
-var __rest$6 = undefined && undefined.__rest || function (s, e) {
+var __rest$8 = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -36798,7 +36798,7 @@ function generateRangePicker(generateConfig) {
             _a$bordered = _a.bordered,
             bordered = _a$bordered === void 0 ? true : _a$bordered,
             placeholder = _a.placeholder,
-            restProps = __rest$6(_a, ["prefixCls", "getPopupContainer", "className", "size", "bordered", "placeholder"]);
+            restProps = __rest$8(_a, ["prefixCls", "getPopupContainer", "className", "size", "bordered", "placeholder"]);
 
         var _this$props = _this.props,
             format = _this$props.format,
@@ -39940,7 +39940,7 @@ var DialogWrap = function DialogWrap(props) {
 
 DialogWrap.displayName = 'Dialog';
 
-var __rest$5 = undefined && undefined.__rest || function (s, e) {
+var __rest$7 = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -40040,7 +40040,7 @@ var Spin = /*#__PURE__*/function (_React$Component) {
           tip = _a.tip,
           wrapperClassName = _a.wrapperClassName,
           style = _a.style,
-          restProps = __rest$5(_a, ["prefixCls", "className", "size", "tip", "wrapperClassName", "style"]);
+          restProps = __rest$7(_a, ["prefixCls", "className", "size", "tip", "wrapperClassName", "style"]);
 
       var spinning = _this.state.spinning;
       var prefixCls = getPrefixCls('spin', customizePrefixCls);
@@ -41039,7 +41039,7 @@ var MiniSelect = function MiniSelect(props) {
 
 MiniSelect.Option = Select$2.Option;
 
-var __rest$4 = undefined && undefined.__rest || function (s, e) {
+var __rest$6 = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -41058,7 +41058,7 @@ var Pagination = function Pagination(_a) {
       className = _a.className,
       size = _a.size,
       customLocale = _a.locale,
-      restProps = __rest$4(_a, ["prefixCls", "selectPrefixCls", "className", "size", "locale"]);
+      restProps = __rest$6(_a, ["prefixCls", "selectPrefixCls", "className", "size", "locale"]);
 
   var _useBreakpoint = useBreakpoint(),
       xs = _useBreakpoint.xs;
@@ -41420,7 +41420,7 @@ var HookModal = function HookModal(_ref, ref) {
 
 var HookModal$1 = /*#__PURE__*/React__namespace.forwardRef(HookModal);
 
-var __rest$3 = undefined && undefined.__rest || function (s, e) {
+var __rest$5 = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -41480,7 +41480,7 @@ function confirm(config) {
     var okText = _a.okText,
         cancelText = _a.cancelText,
         customizePrefixCls = _a.prefixCls,
-        props = __rest$3(_a, ["okText", "cancelText", "prefixCls"]);
+        props = __rest$5(_a, ["okText", "cancelText", "prefixCls"]);
     /**
      * https://github.com/ant-design/ant-design/issues/23623
      *
@@ -41687,7 +41687,7 @@ function useModal() {
   })];
 }
 
-var __rest$2 = undefined && undefined.__rest || function (s, e) {
+var __rest$4 = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -41760,7 +41760,7 @@ var Modal$2 = function Modal(props) {
       closeIcon = props.closeIcon,
       _props$focusTriggerAf = props.focusTriggerAfterClose,
       focusTriggerAfterClose = _props$focusTriggerAf === void 0 ? true : _props$focusTriggerAf,
-      restProps = __rest$2(props, ["prefixCls", "footer", "visible", "wrapClassName", "centered", "getContainer", "closeIcon", "focusTriggerAfterClose"]);
+      restProps = __rest$4(props, ["prefixCls", "footer", "visible", "wrapClassName", "centered", "getContainer", "closeIcon", "focusTriggerAfterClose"]);
 
   var prefixCls = getPrefixCls('modal', customizePrefixCls);
   var rootPrefixCls = getPrefixCls();
@@ -44073,7 +44073,7 @@ Table$1.defaultProps = {
   }
 };
 
-var __rest$1 = undefined && undefined.__rest || function (s, e) {
+var __rest$3 = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -44127,7 +44127,7 @@ function usePagination(total, pagination, onChange) {
   var _a = pagination && _typeof$4(pagination) === 'object' ? pagination : {},
       _a$total = _a.total,
       paginationTotal = _a$total === void 0 ? 0 : _a$total,
-      paginationObj = __rest$1(_a, ["total"]);
+      paginationObj = __rest$3(_a, ["total"]);
 
   var _useState = React.useState(function () {
     return {
@@ -50309,7 +50309,7 @@ TreeSelect$2.SHOW_ALL = SHOW_ALL;
 TreeSelect$2.SHOW_PARENT = SHOW_PARENT;
 TreeSelect$2.SHOW_CHILD = SHOW_CHILD;
 
-var __rest = undefined && undefined.__rest || function (s, e) {
+var __rest$2 = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -50346,7 +50346,7 @@ var InternalTreeSelect = function InternalTreeSelect(_a, ref) {
       transitionName = _a.transitionName,
       _a$choiceTransitionNa = _a.choiceTransitionName,
       choiceTransitionName = _a$choiceTransitionNa === void 0 ? '' : _a$choiceTransitionNa,
-      props = __rest(_a, ["prefixCls", "size", "bordered", "className", "treeCheckable", "multiple", "listHeight", "listItemHeight", "notFoundContent", "switcherIcon", "treeLine", "getPopupContainer", "dropdownClassName", "treeIcon", "transitionName", "choiceTransitionName"]);
+      props = __rest$2(_a, ["prefixCls", "size", "bordered", "className", "treeCheckable", "multiple", "listHeight", "listItemHeight", "notFoundContent", "switcherIcon", "treeLine", "getPopupContainer", "dropdownClassName", "treeIcon", "transitionName", "choiceTransitionName"]);
 
   var _React$useContext = React__namespace.useContext(ConfigContext),
       getContextPopupContainer = _React$useContext.getPopupContainer,
@@ -50422,9 +50422,143 @@ TreeSelect$1.SHOW_ALL = SHOW_ALL;
 TreeSelect$1.SHOW_PARENT = SHOW_PARENT;
 TreeSelect$1.SHOW_CHILD = SHOW_CHILD;
 
+var __rest$1 = undefined && undefined.__rest || function (s, e) {
+  var t = {};
+
+  for (var p in s) {
+    if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
+  }
+
+  if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+    if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i])) t[p[i]] = s[p[i]];
+  }
+  return t;
+};
+
+var TimelineItem = function TimelineItem(_a) {
+  var _classNames, _classNames2;
+
+  var customizePrefixCls = _a.prefixCls,
+      className = _a.className,
+      _a$color = _a.color,
+      color = _a$color === void 0 ? 'blue' : _a$color,
+      dot = _a.dot,
+      _a$pending = _a.pending,
+      pending = _a$pending === void 0 ? false : _a$pending;
+      _a.position;
+      var label = _a.label,
+      children = _a.children,
+      restProps = __rest$1(_a, ["prefixCls", "className", "color", "dot", "pending", "position", "label", "children"]);
+
+  var _React$useContext = React__namespace.useContext(ConfigContext),
+      getPrefixCls = _React$useContext.getPrefixCls;
+
+  var prefixCls = getPrefixCls('timeline', customizePrefixCls);
+  var itemClassName = classnames((_classNames = {}, _defineProperty$4(_classNames, "".concat(prefixCls, "-item"), true), _defineProperty$4(_classNames, "".concat(prefixCls, "-item-pending"), pending), _classNames), className);
+  var dotClassName = classnames((_classNames2 = {}, _defineProperty$4(_classNames2, "".concat(prefixCls, "-item-head"), true), _defineProperty$4(_classNames2, "".concat(prefixCls, "-item-head-custom"), !!dot), _defineProperty$4(_classNames2, "".concat(prefixCls, "-item-head-").concat(color), true), _classNames2));
+  return /*#__PURE__*/React__namespace.createElement("li", _extends$1({}, restProps, {
+    className: itemClassName
+  }), label && /*#__PURE__*/React__namespace.createElement("div", {
+    className: "".concat(prefixCls, "-item-label")
+  }, label), /*#__PURE__*/React__namespace.createElement("div", {
+    className: "".concat(prefixCls, "-item-tail")
+  }), /*#__PURE__*/React__namespace.createElement("div", {
+    className: dotClassName,
+    style: {
+      borderColor: /blue|red|green|gray/.test(color || '') ? undefined : color
+    }
+  }, dot), /*#__PURE__*/React__namespace.createElement("div", {
+    className: "".concat(prefixCls, "-item-content")
+  }, children));
+};
+
+var __rest = undefined && undefined.__rest || function (s, e) {
+  var t = {};
+
+  for (var p in s) {
+    if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
+  }
+
+  if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+    if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i])) t[p[i]] = s[p[i]];
+  }
+  return t;
+};
+
+var Timeline = function Timeline(props) {
+  var _classNames;
+
+  var _React$useContext = React__namespace.useContext(ConfigContext),
+      getPrefixCls = _React$useContext.getPrefixCls,
+      direction = _React$useContext.direction;
+
+  var customizePrefixCls = props.prefixCls,
+      _props$pending = props.pending,
+      pending = _props$pending === void 0 ? null : _props$pending,
+      pendingDot = props.pendingDot,
+      children = props.children,
+      className = props.className,
+      _props$reverse = props.reverse,
+      reverse = _props$reverse === void 0 ? false : _props$reverse,
+      _props$mode = props.mode,
+      mode = _props$mode === void 0 ? '' : _props$mode,
+      restProps = __rest(props, ["prefixCls", "pending", "pendingDot", "children", "className", "reverse", "mode"]);
+
+  var prefixCls = getPrefixCls('timeline', customizePrefixCls);
+  var pendingNode = typeof pending === 'boolean' ? null : pending;
+  var pendingItem = pending ? /*#__PURE__*/React__namespace.createElement(TimelineItem, {
+    pending: !!pending,
+    dot: pendingDot || /*#__PURE__*/React__namespace.createElement(LoadingOutlined$1, null)
+  }, pendingNode) : null;
+  var timeLineItems = React__namespace.Children.toArray(children);
+  timeLineItems.push(pendingItem);
+
+  if (reverse) {
+    timeLineItems.reverse();
+  }
+
+  var getPositionCls = function getPositionCls(ele, idx) {
+    if (mode === 'alternate') {
+      if (ele.props.position === 'right') return "".concat(prefixCls, "-item-right");
+      if (ele.props.position === 'left') return "".concat(prefixCls, "-item-left");
+      return idx % 2 === 0 ? "".concat(prefixCls, "-item-left") : "".concat(prefixCls, "-item-right");
+    }
+
+    if (mode === 'left') return "".concat(prefixCls, "-item-left");
+    if (mode === 'right') return "".concat(prefixCls, "-item-right");
+    if (ele.props.position === 'right') return "".concat(prefixCls, "-item-right");
+    return '';
+  }; // Remove falsy items
+
+
+  var truthyItems = timeLineItems.filter(function (item) {
+    return !!item;
+  });
+  var itemsCount = React__namespace.Children.count(truthyItems);
+  var lastCls = "".concat(prefixCls, "-item-last");
+  var items = React__namespace.Children.map(truthyItems, function (ele, idx) {
+    var pendingClass = idx === itemsCount - 2 ? lastCls : '';
+    var readyClass = idx === itemsCount - 1 ? lastCls : '';
+    return cloneElement(ele, {
+      className: classnames([ele.props.className, !reverse && !!pending ? pendingClass : readyClass, getPositionCls(ele, idx)])
+    });
+  });
+  var hasLabelItem = timeLineItems.some(function (item) {
+    var _a;
+
+    return !!((_a = item === null || item === void 0 ? void 0 : item.props) === null || _a === void 0 ? void 0 : _a.label);
+  });
+  var classString = classnames(prefixCls, (_classNames = {}, _defineProperty$4(_classNames, "".concat(prefixCls, "-pending"), !!pending), _defineProperty$4(_classNames, "".concat(prefixCls, "-reverse"), !!reverse), _defineProperty$4(_classNames, "".concat(prefixCls, "-").concat(mode), !!mode && !hasLabelItem), _defineProperty$4(_classNames, "".concat(prefixCls, "-label"), hasLabelItem), _defineProperty$4(_classNames, "".concat(prefixCls, "-rtl"), direction === 'rtl'), _classNames), className);
+  return /*#__PURE__*/React__namespace.createElement("ul", _extends$1({}, restProps, {
+    className: classString
+  }), items);
+};
+
+Timeline.Item = TimelineItem;
+
 var Option = Select$2.Option;
 var Select = function (_a, ref) {
-    var className = _a.className, classNameSelect = _a.classNameSelect, _b = _a.value, value = _b === void 0 ? [] : _b, label = _a.label, _c = _a.defaultValue, defaultValue = _c === void 0 ? [] : _c, _d = _a.placeholder, placeholder = _d === void 0 ? "Please select" : _d, onChange = _a.onChange, disabled = _a.disabled, _e = _a.dataSource, dataSource = _e === void 0 ? [] : _e, error = _a.error, _f = _a.multiple, multiple = _f === void 0 ? false : _f, _g = _a.getLabel, getLabel = _g === void 0 ? function (item) { return item.label; } : _g, _h = _a.getKey, getKey = _h === void 0 ? function (item) { return item.id; } : _h, _j = _a.getValue, getValue = _j === void 0 ? function (item) { var _a; return (_a = item === null || item === void 0 ? void 0 : item.id) !== null && _a !== void 0 ? _a : null; } : _j, _k = _a.allowClear, allowClear = _k === void 0 ? true : _k, _l = _a.variant, variant = _l === void 0 ? "outline" : _l, _m = _a.hasFilter, hasFilter = _m === void 0 ? true : _m, props = __rest$q(_a, ["className", "classNameSelect", "value", "label", "defaultValue", "placeholder", "onChange", "disabled", "dataSource", "error", "multiple", "getLabel", "getKey", "getValue", "allowClear", "variant", "hasFilter"]);
+    var className = _a.className, classNameSelect = _a.classNameSelect, _b = _a.value, value = _b === void 0 ? [] : _b, label = _a.label, _c = _a.defaultValue, defaultValue = _c === void 0 ? [] : _c, _d = _a.placeholder, placeholder = _d === void 0 ? "Please select" : _d, onChange = _a.onChange, disabled = _a.disabled, _e = _a.dataSource, dataSource = _e === void 0 ? [] : _e, error = _a.error, _f = _a.multiple, multiple = _f === void 0 ? false : _f, _g = _a.getLabel, getLabel = _g === void 0 ? function (item) { return item.label; } : _g, _h = _a.getKey, getKey = _h === void 0 ? function (item) { return item.id; } : _h, _j = _a.getValue, getValue = _j === void 0 ? function (item) { var _a; return (_a = item === null || item === void 0 ? void 0 : item.id) !== null && _a !== void 0 ? _a : null; } : _j, _k = _a.allowClear, allowClear = _k === void 0 ? true : _k, _l = _a.variant, variant = _l === void 0 ? "outline" : _l, _m = _a.hasFilter, hasFilter = _m === void 0 ? true : _m, props = __rest$s(_a, ["className", "classNameSelect", "value", "label", "defaultValue", "placeholder", "onChange", "disabled", "dataSource", "error", "multiple", "getLabel", "getKey", "getValue", "allowClear", "variant", "hasFilter"]);
     var children = React.useMemo(function () {
         return dataSource.map(function (dataItem) {
             var label = getLabel(dataItem);
@@ -68683,7 +68817,7 @@ var InfiniteScroll = /** @class */ (function (_super) {
     InfiniteScroll.prototype.render = function () {
         var _this = this;
         var renderProps = this.filterProps(this.props);
-        var children = renderProps.children, element = renderProps.element, hasMore = renderProps.hasMore; renderProps.initialLoad; var isReverse = renderProps.isReverse, loader = renderProps.loader; renderProps.loadMore; renderProps.pageStart; var ref = renderProps.ref; renderProps.threshold; renderProps.useCapture; renderProps.useWindow; renderProps.getScrollParent; var props = __rest$q(renderProps, ["children", "element", "hasMore", "initialLoad", "isReverse", "loader", "loadMore", "pageStart", "ref", "threshold", "useCapture", "useWindow", "getScrollParent"]);
+        var children = renderProps.children, element = renderProps.element, hasMore = renderProps.hasMore; renderProps.initialLoad; var isReverse = renderProps.isReverse, loader = renderProps.loader; renderProps.loadMore; renderProps.pageStart; var ref = renderProps.ref; renderProps.threshold; renderProps.useCapture; renderProps.useWindow; renderProps.getScrollParent; var props = __rest$s(renderProps, ["children", "element", "hasMore", "initialLoad", "isReverse", "loader", "loadMore", "pageStart", "ref", "threshold", "useCapture", "useWindow", "getScrollParent"]);
         props.ref = function (node) {
             _this.scrollComponent = node;
             if (ref) {
@@ -69037,7 +69171,7 @@ var AwesomeListComponent = /** @class */ (function (_super) {
 }(React.Component));
 
 var SelectInfinity = function (_a, ref) {
-    var _b = _a.source, source = _b === void 0 ? function () { return Promise.resolve(); } : _b, transformer = _a.transformer, _c = _a.getKey, getKey = _c === void 0 ? function (item) { return item === null || item === void 0 ? void 0 : item.id; } : _c, _d = _a.getLabel, getLabel = _d === void 0 ? function (item) { return item === null || item === void 0 ? void 0 : item.label; } : _d, _e = _a.getValue, getValue = _e === void 0 ? function (item) { var _a; return (_a = item === null || item === void 0 ? void 0 : item.id) !== null && _a !== void 0 ? _a : null; } : _e, pagingProps = _a.pagingProps, _f = _a.value, value = _f === void 0 ? [] : _f, onChange = _a.onChange, className = _a.className, mode = _a.mode, props = __rest$q(_a, ["source", "transformer", "getKey", "getLabel", "getValue", "pagingProps", "value", "onChange", "className", "mode"]);
+    var _b = _a.source, source = _b === void 0 ? function () { return Promise.resolve(); } : _b, transformer = _a.transformer, _c = _a.getKey, getKey = _c === void 0 ? function (item) { return item === null || item === void 0 ? void 0 : item.id; } : _c, _d = _a.getLabel, getLabel = _d === void 0 ? function (item) { return item === null || item === void 0 ? void 0 : item.label; } : _d, _e = _a.getValue, getValue = _e === void 0 ? function (item) { var _a; return (_a = item === null || item === void 0 ? void 0 : item.id) !== null && _a !== void 0 ? _a : null; } : _e, pagingProps = _a.pagingProps, _f = _a.value, value = _f === void 0 ? [] : _f, onChange = _a.onChange, className = _a.className, mode = _a.mode, props = __rest$s(_a, ["source", "transformer", "getKey", "getLabel", "getValue", "pagingProps", "value", "onChange", "className", "mode"]);
     var listRef = React.useRef(null);
     var selectRef = React.useRef(null);
     var textSearch = React.useRef();
@@ -69090,7 +69224,7 @@ var SelectInfinity$1 = React__default['default'].forwardRef(SelectInfinity);
 
 var Button = function (_a) {
     var _b;
-    var content = _a.content, iconName = _a.iconName, className = _a.className, classNameIcon = _a.classNameIcon, classNameIconSuffix = _a.classNameIconSuffix, onClick = _a.onClick, _c = _a.type, type = _c === void 0 ? "button" : _c, _d = _a.size, size = _d === void 0 ? "large" : _d, _e = _a.variant, variant = _e === void 0 ? "standard" : _e, _f = _a.color, color = _f === void 0 ? "primary" : _f, _g = _a.disabled, disabled = _g === void 0 ? false : _g, suffixIcon = _a.suffixIcon, suffixElement = _a.suffixElement, prefixElement = _a.prefixElement, children = _a.children, props = __rest$q(_a, ["content", "iconName", "className", "classNameIcon", "classNameIconSuffix", "onClick", "type", "size", "variant", "color", "disabled", "suffixIcon", "suffixElement", "prefixElement", "children"]);
+    var content = _a.content, iconName = _a.iconName, className = _a.className, classNameIcon = _a.classNameIcon, classNameIconSuffix = _a.classNameIconSuffix, onClick = _a.onClick, _c = _a.type, type = _c === void 0 ? "button" : _c, _d = _a.size, size = _d === void 0 ? "large" : _d, _e = _a.variant, variant = _e === void 0 ? "standard" : _e, _f = _a.color, color = _f === void 0 ? "primary" : _f, _g = _a.disabled, disabled = _g === void 0 ? false : _g, suffixIcon = _a.suffixIcon, suffixElement = _a.suffixElement, prefixElement = _a.prefixElement, children = _a.children, props = __rest$s(_a, ["content", "iconName", "className", "classNameIcon", "classNameIconSuffix", "onClick", "type", "size", "variant", "color", "disabled", "suffixIcon", "suffixElement", "prefixElement", "children"]);
     var buttonClass = classnames("text text-nowrap d-button d-button__" + size + " \n         d-button__" + variant + "-" + color, (_b = {
             "text-x-small": size === "x-small",
             "text-small font-weight-bold": variant === "trans"
@@ -69108,7 +69242,7 @@ var Button = function (_a) {
 };
 
 var Checkbox = function (_a) {
-    var className = _a.className, classNameInput = _a.classNameInput, classNameInputWrapper = _a.classNameInputWrapper, classNameLabel = _a.classNameLabel, id = _a.id, name = _a.name, value = _a.value, onChange = _a.onChange, label = _a.label, _b = _a.variant, variant = _b === void 0 ? "checkbox" : _b, disabled = _a.disabled, checked = _a.checked, props = __rest$q(_a, ["className", "classNameInput", "classNameInputWrapper", "classNameLabel", "id", "name", "value", "onChange", "label", "variant", "disabled", "checked"]);
+    var className = _a.className, classNameInput = _a.classNameInput, classNameInputWrapper = _a.classNameInputWrapper, classNameLabel = _a.classNameLabel, id = _a.id, name = _a.name, value = _a.value, onChange = _a.onChange, label = _a.label, _b = _a.variant, variant = _b === void 0 ? "checkbox" : _b, disabled = _a.disabled, checked = _a.checked, props = __rest$s(_a, ["className", "classNameInput", "classNameInputWrapper", "classNameLabel", "id", "name", "value", "onChange", "label", "variant", "disabled", "checked"]);
     var classContainer = classnames("checkbox__container", className);
     var classInputWrapper = classnames("checkbox__input-wrapper", "checkbox__input-wrapper-" + variant, { "checkbox__input-wrapper-disabled": disabled }, classNameInputWrapper);
     var classInput = classnames("checkbox__input", classNameInput);
@@ -69294,7 +69428,7 @@ var Header = function (_a) {
 };
 
 function Avatar(_a) {
-    var _b = _a.size, size = _b === void 0 ? "medium" : _b, src = _a.src, alt = _a.alt, _c = _a.variant, variant = _c === void 0 ? "rounded" : _c, className = _a.className, classNameImage = _a.classNameImage, classNameLetter = _a.classNameLetter, text = _a.text, _d = _a.color, color = _d === void 0 ? "#D8D8D8" : _d, props = __rest$q(_a, ["size", "src", "alt", "variant", "className", "classNameImage", "classNameLetter", "text", "color"]);
+    var _b = _a.size, size = _b === void 0 ? "medium" : _b, src = _a.src, alt = _a.alt, _c = _a.variant, variant = _c === void 0 ? "rounded" : _c, className = _a.className, classNameImage = _a.classNameImage, classNameLetter = _a.classNameLetter, text = _a.text, _d = _a.color, color = _d === void 0 ? "#D8D8D8" : _d, props = __rest$s(_a, ["size", "src", "alt", "variant", "className", "classNameImage", "classNameLetter", "text", "color"]);
     var wrapperClass = classnames("d-image__container d-image__" + variant + "-" + size + " bg-" + color, { "d-flex justify-content-center align-items-center": !!text }, className);
     var imageClass = classnames("d-image__image", classNameImage);
     var letterClass = classnames("text-white text-center font-weight-normal", {
@@ -69541,7 +69675,7 @@ var HeaderBlock = function (_a) {
 };
 
 var Modal = function (_a) {
-    var children = _a.children, open = _a.open, _b = _a.centered, centered = _b === void 0 ? true : _b, _c = _a.closable, closable = _c === void 0 ? false : _c, onClose = _a.onClose, onSave = _a.onSave, onSideClick = _a.onSideClick, cancelAction = _a.cancelAction, width = _a.width, title = _a.title, customHeader = _a.customHeader, customFooter = _a.customFooter, customSideButton = _a.customSideButton, headerSide = _a.headerSide, _d = _a.hasCloseIcon, hasCloseIcon = _d === void 0 ? true : _d, _e = _a.hasCancelButton, hasCancelButton = _e === void 0 ? false : _e, _f = _a.saveText, saveText = _f === void 0 ? "Save" : _f, _g = _a.cancelText, cancelText = _g === void 0 ? "Cancel" : _g, _h = _a.sideText, sideText = _h === void 0 ? "Clear" : _h, size = _a.size, className = _a.className, classNameContent = _a.classNameContent, classNameFooter = _a.classNameFooter, classNameHeader = _a.classNameHeader, _j = _a.showFooter, showFooter = _j === void 0 ? true : _j, _k = _a.showHeader, showHeader = _k === void 0 ? true : _k, props = __rest$q(_a, ["children", "open", "centered", "closable", "onClose", "onSave", "onSideClick", "cancelAction", "width", "title", "customHeader", "customFooter", "customSideButton", "headerSide", "hasCloseIcon", "hasCancelButton", "saveText", "cancelText", "sideText", "size", "className", "classNameContent", "classNameFooter", "classNameHeader", "showFooter", "showHeader"]);
+    var children = _a.children, open = _a.open, _b = _a.centered, centered = _b === void 0 ? true : _b, _c = _a.closable, closable = _c === void 0 ? false : _c, onClose = _a.onClose, onSave = _a.onSave, onSideClick = _a.onSideClick, cancelAction = _a.cancelAction, width = _a.width, title = _a.title, customHeader = _a.customHeader, customFooter = _a.customFooter, customSideButton = _a.customSideButton, headerSide = _a.headerSide, _d = _a.hasCloseIcon, hasCloseIcon = _d === void 0 ? true : _d, _e = _a.hasCancelButton, hasCancelButton = _e === void 0 ? false : _e, _f = _a.saveText, saveText = _f === void 0 ? "Save" : _f, _g = _a.cancelText, cancelText = _g === void 0 ? "Cancel" : _g, _h = _a.sideText, sideText = _h === void 0 ? "Clear" : _h, size = _a.size, className = _a.className, classNameContent = _a.classNameContent, classNameFooter = _a.classNameFooter, classNameHeader = _a.classNameHeader, _j = _a.showFooter, showFooter = _j === void 0 ? true : _j, _k = _a.showHeader, showHeader = _k === void 0 ? true : _k, props = __rest$s(_a, ["children", "open", "centered", "closable", "onClose", "onSave", "onSideClick", "cancelAction", "width", "title", "customHeader", "customFooter", "customSideButton", "headerSide", "hasCloseIcon", "hasCancelButton", "saveText", "cancelText", "sideText", "size", "className", "classNameContent", "classNameFooter", "classNameHeader", "showFooter", "showHeader"]);
     var modalClass = classnames("d-modal", "d-modal__" + size, className);
     var childrenClass = classnames("d-modal__children", classNameContent);
     var headerClass = classnames("d-modal__header border-bottom py-2", { "d-flex align-items-center": !!title }, classNameHeader);
@@ -69858,6 +69992,21 @@ var ViewCollapse = function (_a) {
                     jsxRuntime.jsx("h5", __assign({ className: "collapse-view__header-title" }, { children: label }), void 0)] }, void 0), extra: extra }, { children: children }), "1") }), void 0));
 };
 
+var ViewTimeline = function (_a) {
+    var _b = _a.dataSource, dataSource = _b === void 0 ? [] : _b, customView = _a.customView, className = _a.className, classNameLabel = _a.classNameLabel, _c = _a.getLabel, getLabel = _c === void 0 ? function (item) { var _a; return (_a = item === null || item === void 0 ? void 0 : item.label) !== null && _a !== void 0 ? _a : "N/A"; } : _c, getContent = _a.getContent;
+    var wrapperClass = classnames("py-3 px-4 timeline-view__wrapper", className);
+    return (jsxRuntime.jsx(Timeline, __assign({ className: wrapperClass }, { children: dataSource.map(function (data) {
+            var label = getLabel && getLabel(data);
+            var content = getContent && getContent(data);
+            var mainView = (jsxRuntime.jsxs("div", __assign({ className: "text-small" }, { children: [label && jsxRuntime.jsx("div", __assign({ className: "text-small-bold " + classNameLabel }, { children: label }), void 0),
+                    content] }), void 0));
+            if (customView) {
+                mainView = customView(data);
+            }
+            return jsxRuntime.jsx(Timeline.Item, { children: mainView }, void 0);
+        }) }), void 0));
+};
+
 var TabBar = function (_a) {
     var _b = _a.dataSource, dataSource = _b === void 0 ? [] : _b, value = _a.value, onChange = _a.onChange, className = _a.className, classNameItem = _a.classNameItem, getLabel = _a.getLabel, _c = _a.variant, variant = _c === void 0 ? "horizontal" : _c, tabBarItemProps = _a.tabBarItemProps, _d = _a.isScroll, isScroll = _d === void 0 ? false : _d, _e = _a.minWidthItem, minWidthItem = _e === void 0 ? "200px" : _e;
     var wrapperClass = classnames("d-tab-bar d-tab-bar__" + variant, {
@@ -70030,7 +70179,7 @@ var PopoverList = function (_a) {
 // data stubs
 var RangePicker = DatePicker.RangePicker;
 var DateInput = function (_a) {
-    var onChange = _a.onChange, onBlur = _a.onBlur, value = _a.value, disabled = _a.disabled, defaultValue = _a.defaultValue, label = _a.label, placeholder = _a.placeholder, error = _a.error, _b = _a.type, type = _b === void 0 ? "date" : _b, _c = _a.format, format = _c === void 0 ? "DD/MM/YYYY HH:mm" : _c, _d = _a.variant, variant = _d === void 0 ? "outline" : _d, _e = _a.iconError, iconError = _e === void 0 ? "error_outline" : _e, _f = _a.iconButton, iconButton = _f === void 0 ? "event" : _f, _g = _a.showTime, showTime = _g === void 0 ? false : _g, _h = _a.useButton, useButton = _h === void 0 ? false : _h, _j = _a.isRangePicker, isRangePicker = _j === void 0 ? false : _j, className = _a.className, classNameInput = _a.classNameInput, classNameButton = _a.classNameButton, classNameLabel = _a.classNameLabel, classNameError = _a.classNameError, props = __rest$q(_a, ["onChange", "onBlur", "value", "disabled", "defaultValue", "label", "placeholder", "error", "type", "format", "variant", "iconError", "iconButton", "showTime", "useButton", "isRangePicker", "className", "classNameInput", "classNameButton", "classNameLabel", "classNameError"]);
+    var onChange = _a.onChange, onBlur = _a.onBlur, value = _a.value, disabled = _a.disabled, defaultValue = _a.defaultValue, label = _a.label, placeholder = _a.placeholder, error = _a.error, _b = _a.type, type = _b === void 0 ? "date" : _b, _c = _a.format, format = _c === void 0 ? "DD/MM/YYYY HH:mm" : _c, _d = _a.variant, variant = _d === void 0 ? "outline" : _d, _e = _a.iconError, iconError = _e === void 0 ? "error_outline" : _e, _f = _a.iconButton, iconButton = _f === void 0 ? "event" : _f, _g = _a.showTime, showTime = _g === void 0 ? false : _g, _h = _a.useButton, useButton = _h === void 0 ? false : _h, _j = _a.isRangePicker, isRangePicker = _j === void 0 ? false : _j, className = _a.className, classNameInput = _a.classNameInput, classNameButton = _a.classNameButton, classNameLabel = _a.classNameLabel, classNameError = _a.classNameError, props = __rest$s(_a, ["onChange", "onBlur", "value", "disabled", "defaultValue", "label", "placeholder", "error", "type", "format", "variant", "iconError", "iconButton", "showTime", "useButton", "isRangePicker", "className", "classNameInput", "classNameButton", "classNameLabel", "classNameError"]);
     var wrapperClass = classnames("d-date-input", { "d-date-input__hide-input": useButton }, className);
     var labelClass = classnames("text-label d-block", classNameLabel);
     var datePickerClass = classnames("d-date-input__input", {
@@ -71751,7 +71900,7 @@ var calculateDefaultExpandedRowKeys = function (data, options) {
         if (currentLevel === void 0) { currentLevel = 1; }
         var keys = [];
         source.forEach(function (_a) {
-            var children = _a.children, rest = __rest$q(_a, ["children"]);
+            var children = _a.children, rest = __rest$s(_a, ["children"]);
             if (children !== null) {
                 keys.push(rest[key]);
                 if (level < 0 || (level > 0 && level > currentLevel)) {
@@ -71768,7 +71917,7 @@ var transformColumn = function (columns, baseColumn) {
     if (columns === void 0) { columns = []; }
     if (baseColumn === void 0) { baseColumn = {}; }
     return columns.map(function (_a, index) {
-        var title = _a.title, titleTooltip = _a.titleTooltip, dataIndex = _a.dataIndex, render = _a.render, props = __rest$q(_a, ["title", "titleTooltip", "dataIndex", "render"]);
+        var title = _a.title, titleTooltip = _a.titleTooltip, dataIndex = _a.dataIndex, render = _a.render, props = __rest$s(_a, ["title", "titleTooltip", "dataIndex", "render"]);
         // custom title
         var titleResult = title;
         if (typeof title === "function") {
@@ -74417,7 +74566,7 @@ var Resizable = Resizable_1.default;
 ResizableBox_1.default;
 
 var ResizableTitle = function (props) {
-    var onResize = props.onResize, width = props.width, restProps = __rest$q(props, ["onResize", "width"]);
+    var onResize = props.onResize, width = props.width, restProps = __rest$s(props, ["onResize", "width"]);
     if (!width) {
         return jsxRuntime.jsx("th", __assign({}, restProps), void 0);
     }
@@ -74980,6 +75129,7 @@ function mapWatchToEmbedYouTube(url) {
     }
     return url;
 }
+var phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 var StringUtils = {
     moneyFormat: moneyFormat,
     moneyThaiFormat: moneyThaiFormat,
@@ -75000,6 +75150,7 @@ var StringUtils = {
     validURL: validURL,
     isEnglishAlphabet: isEnglishAlphabet,
     mapWatchToEmbedYouTube: mapWatchToEmbedYouTube,
+    phoneRegExp: phoneRegExp,
 };
 
 var strictUriEncode = str => encodeURIComponent(str).replace(/[!'()*]/g, x => `%${x.charCodeAt(0).toString(16).toUpperCase()}`);
@@ -75488,7 +75639,8 @@ queryString.stringifyUrl;
 var getParams = function (url) {
     var params = {};
     var parser = document.createElement("a");
-    parser.href = url;
+    var currentUrl = document.location.href;
+    parser.href = url || currentUrl;
     var query = parser.search.substring(1);
     var vars = query.split("&");
     // eslint-disable-next-line no-plusplus
@@ -76236,6 +76388,7 @@ exports.UrlUtils = UrlUtils;
 exports.ViewCollapse = ViewCollapse;
 exports.ViewRow = ViewRow;
 exports.ViewTextarea = ViewTextarea;
+exports.ViewTimeline = ViewTimeline;
 exports.useFirstTime = useFirstTime;
 exports.useForceUpdate = useForceUpdate;
 exports.useForceUpdateConstraint = useForceUpdateConstraint;

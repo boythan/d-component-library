@@ -1,6 +1,6 @@
 import queryString from "query-string";
 declare const _default: {
-    getParams: (url: string) => any;
+    getParams: (url?: string | undefined) => any;
     addUrlParam: (search: string, key: string, val: any) => string;
     getParamFromUrl: (key: string) => string | null;
     addQuery: (newQuery?: {}) => void;

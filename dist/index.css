@@ -34755,6 +34755,10 @@ h6,
     right: 35px !important;
     bottom: 13px !important; }
 
+.timeline-view__wrapper .ant-timeline-item-head-blue {
+  background-color: #3d464d !important;
+  border-color: #3d464d !important; }
+
 /* ----------------------------------------
 // progress
 // ---------------------------------------- */
