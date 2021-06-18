@@ -2,11 +2,11 @@ import React, { CSSProperties } from "react";
 import ClassNames from "classnames";
 import ObjectUtils from "../../utils/ObjectUtils";
 
-export interface IRowsKey {
-    id: string;
+export interface IRowsKey<T> {
+    id: keyof T;
     label: string | number;
-    renderLabel?: (id: IRowsKey["id"], data: any, row?: IRowsKey) => any;
-    renderContent?: (id: IRowsKey["id"], data: any, row?: IRowsKey) => any;
+    renderLabel?: (id: IRowsKey<T>["id"], data: any, row?: IRowsKey<T>) => any;
+    renderContent?: (id: IRowsKey<T>["id"], data: any, row?: IRowsKey<T>) => any;
 }
 
 export interface RowInterchangeViewProps {
@@ -15,7 +15,7 @@ export interface RowInterchangeViewProps {
     classNameLabel?: string;
     classNameContent?: string;
     dataSource: any;
-    keyList: Array<IRowsKey>;
+    keyList: Array<IRowsKey<any>>;
     variant?: "background" | "border" | "dashed" | "none";
     boldLabel?: boolean;
     Messages?: any;
@@ -77,7 +77,7 @@ const RowInterchangeView: React.FC<RowInterchangeViewProps> = ({
                     </div>
                 );
                 return (
-                    <div className={rowClass} key={id + index} style={style}>
+                    <div className={rowClass} key={`${id as string} + ${index}`} style={style}>
                         <div className={labelClass} style={styleLabel}>
                             {labelView}
                         </div>
