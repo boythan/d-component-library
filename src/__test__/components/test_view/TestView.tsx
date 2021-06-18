@@ -2,6 +2,7 @@ import React from "react";
 import RowInterchangeView from "../../../components/view/RowInterchangeView";
 import ViewCollapse from "../../../components/view/ViewCollapse";
 import ViewTextarea from "../../../components/view/ViewTextarea";
+import ViewTimeline from "../../../components/view/ViewTimeline";
 import { ATTRIBUTE_INPUT_TYPE } from "../../data/TestConstant";
 
 export interface TestRowInterChagneProps {
@@ -49,6 +50,7 @@ const TestView: React.FC<TestRowInterChagneProps> = ({ id }) => {
                 on the basis of "Certainty" and "Naturalness" to guide each designer towards better judgment and
                 decision-making.`}
                 </ViewTextarea>
+                <ViewTimeline dataSource={ATTRIBUTE_INPUT_TYPE} getContent={(item) => item?.label} />
             </ViewCollapse>
         </div>
     );

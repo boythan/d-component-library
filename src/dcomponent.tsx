@@ -102,6 +102,9 @@ export { default as ViewTextarea } from "./components/view/ViewTextarea";
 export type { ViewCollapseProps } from "./components/view/ViewCollapse";
 export { default as ViewCollapse } from "./components/view/ViewCollapse";
 
+export type { ViewTimelineProps } from "./components/view/ViewTimeline";
+export { default as ViewTimeline } from "./components/view/ViewTimeline";
+
 /* ----------------------------------------
 // TabBar
 // ---------------------------------------- */
