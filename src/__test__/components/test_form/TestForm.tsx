@@ -1,10 +1,10 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React from "react";
 import { useFormik } from "formik";
+import React, { useState } from "react";
 import Form, { IFormItemData } from "../../../components/form/Form";
-import Messages from "../../../language/Messages";
 import Notifications from "../../../components/notifications/Notifications";
 import SelectInfinity from "../../../components/select/SelectInfinity";
+import Messages from "../../../language/Messages";
 
 export interface ITestFormProps {
     [key: string]: any;
@@ -113,13 +113,14 @@ const FORM_WITH_CUSTOM_ITEM: IFormItemData<IEmployeePrivacyInfo>[] = [
 ];
 
 const TestForm: React.FC<ITestFormProps> = ({ id }) => {
+    const [formState, setFormState] = useState<any>({});
     const formik = useFormik<IEmployeePrivacyInfo>({
         initialValues: {},
         onSubmit: () => {},
     });
     return (
         <div className="">
-            <div className="h3"> Form with validate before change: </div>
+            <div className="h3 my-2"> Form with validate before change: </div>
             <Form
                 Messages={Messages}
                 dataSource={FORM_DATA}
@@ -127,13 +128,22 @@ const TestForm: React.FC<ITestFormProps> = ({ id }) => {
                 getRowClass={(i) => (i === 3 ? "w-50 pr-1" : "")}
                 className="my-4"
             />
-            <div className="h3"> Form with custom form item: </div>
+            <div className="h3 my-2"> Form with custom form item: </div>
             <Form
                 Messages={Messages}
                 dataSource={FORM_WITH_CUSTOM_ITEM}
                 formik={formik as any}
                 getRowClass={(i) => (i === 3 ? "w-50 pr-1" : "")}
                 className="my-4"
+            />
+            <div className="h3 my-2"> Form not using formik: </div>
+            <Form
+                Messages={Messages}
+                dataSource={FORM_WITH_CUSTOM_ITEM}
+                getRowClass={(i) => (i === 3 ? "w-50 pr-1" : "")}
+                className="my-4"
+                value={formState}
+                onChange={(key, value) => setFormState({ ...formState, [key]: value })}
             />
         </div>
     );
