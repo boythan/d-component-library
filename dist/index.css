@@ -30169,9 +30169,9 @@ h6,
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 56px;
   width: fit-content;
-  border: none; }
+  border: none;
+  min-width: 56px; }
   .d-button i {
     text-decoration: none !important; }
 
@@ -30221,8 +30221,8 @@ h6,
     background-color: rgba(222, 13, 12, 0.05);
     color: #c60c0b; }
   .d-button__outline-primary:disabled {
-    border: 1px solid rgba(222, 13, 12, 0.3);
-    color: rgba(222, 13, 12, 0.3);
+    border: 1px solid rgba(222, 13, 12, 0.6);
+    color: rgba(222, 13, 12, 0.6);
     background-color: #fff; }
 
 .d-button__outline-secondary {
@@ -30239,8 +30239,8 @@ h6,
     background-color: rgba(222, 13, 12, 0.05);
     color: #c60c0b; }
   .d-button__outline-secondary:disabled {
-    border: 1px solid rgba(222, 13, 12, 0.3);
-    color: rgba(222, 13, 12, 0.3);
+    border: 1px solid rgba(222, 13, 12, 0.6);
+    color: rgba(222, 13, 12, 0.6);
     background-color: #fff; }
 
 .d-button__outline-green {
@@ -30257,8 +30257,8 @@ h6,
     background-color: rgba(51, 150, 61, 0.05);
     color: #2d8335; }
   .d-button__outline-green:disabled {
-    border: 1px solid rgba(222, 13, 12, 0.3);
-    color: rgba(222, 13, 12, 0.3);
+    border: 1px solid rgba(51, 150, 61, 0.6);
+    color: rgba(51, 150, 61, 0.6);
     background-color: #fff; }
 
 .d-button__outline-red {
@@ -30275,8 +30275,8 @@ h6,
     background-color: rgba(244, 67, 54, 0.05);
     color: #f32c1e; }
   .d-button__outline-red:disabled {
-    border: 1px solid rgba(222, 13, 12, 0.3);
-    color: rgba(222, 13, 12, 0.3);
+    border: 1px solid rgba(244, 67, 54, 0.6);
+    color: rgba(244, 67, 54, 0.6);
     background-color: #fff; }
 
 .d-button__outline-yellow {
@@ -30293,8 +30293,8 @@ h6,
     background-color: rgba(250, 194, 86, 0.05);
     color: #f9b93d; }
   .d-button__outline-yellow:disabled {
-    border: 1px solid rgba(222, 13, 12, 0.3);
-    color: rgba(222, 13, 12, 0.3);
+    border: 1px solid rgba(250, 194, 86, 0.6);
+    color: rgba(250, 194, 86, 0.6);
     background-color: #fff; }
 
 .d-button__outline-blue {
@@ -30311,8 +30311,8 @@ h6,
     background-color: rgba(23, 162, 184, 0.05);
     color: #148ea1; }
   .d-button__outline-blue:disabled {
-    border: 1px solid rgba(222, 13, 12, 0.3);
-    color: rgba(222, 13, 12, 0.3);
+    border: 1px solid rgba(23, 162, 184, 0.6);
+    color: rgba(23, 162, 184, 0.6);
     background-color: #fff; }
 
 .d-button__outline-gray {
@@ -30329,8 +30329,8 @@ h6,
     background-color: rgba(167, 167, 167, 0.05);
     color: #9a9a9a; }
   .d-button__outline-gray:disabled {
-    border: 1px solid rgba(222, 13, 12, 0.3);
-    color: rgba(222, 13, 12, 0.3);
+    border: 1px solid rgba(167, 167, 167, 0.6);
+    color: rgba(167, 167, 167, 0.6);
     background-color: #fff; }
 
 .d-button__outline-dark {
@@ -30347,8 +30347,8 @@ h6,
     background-color: rgba(61, 70, 77, 0.05);
     color: #32393f; }
   .d-button__outline-dark:disabled {
-    border: 1px solid rgba(222, 13, 12, 0.3);
-    color: rgba(222, 13, 12, 0.3);
+    border: 1px solid rgba(61, 70, 77, 0.6);
+    color: rgba(61, 70, 77, 0.6);
     background-color: #fff; }
 
 .d-button__outline-light {
@@ -30365,8 +30365,8 @@ h6,
     background-color: rgba(255, 255, 255, 0.05);
     color: #f2f2f2; }
   .d-button__outline-light:disabled {
-    border: 1px solid rgba(222, 13, 12, 0.3);
-    color: rgba(222, 13, 12, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.6);
     background-color: #fff; }
 
 .d-button__outline-error {
@@ -30383,8 +30383,8 @@ h6,
     background-color: rgba(244, 67, 54, 0.05);
     color: #f32c1e; }
   .d-button__outline-error:disabled {
-    border: 1px solid rgba(222, 13, 12, 0.3);
-    color: rgba(222, 13, 12, 0.3);
+    border: 1px solid rgba(244, 67, 54, 0.6);
+    color: rgba(244, 67, 54, 0.6);
     background-color: #fff; }
 
 .d-button__outline-success {
@@ -30401,8 +30401,8 @@ h6,
     background-color: rgba(51, 150, 61, 0.05);
     color: #2d8335; }
   .d-button__outline-success:disabled {
-    border: 1px solid rgba(222, 13, 12, 0.3);
-    color: rgba(222, 13, 12, 0.3);
+    border: 1px solid rgba(51, 150, 61, 0.6);
+    color: rgba(51, 150, 61, 0.6);
     background-color: #fff; }
 
 .d-button__outline-warning {
@@ -30419,8 +30419,8 @@ h6,
     background-color: rgba(250, 194, 86, 0.05);
     color: #f9b93d; }
   .d-button__outline-warning:disabled {
-    border: 1px solid rgba(222, 13, 12, 0.3);
-    color: rgba(222, 13, 12, 0.3);
+    border: 1px solid rgba(250, 194, 86, 0.6);
+    color: rgba(250, 194, 86, 0.6);
     background-color: #fff; }
 
 .d-button__outline-muted {
@@ -30437,8 +30437,8 @@ h6,
     background-color: rgba(245, 245, 245, 0.05);
     color: #e8e8e8; }
   .d-button__outline-muted:disabled {
-    border: 1px solid rgba(222, 13, 12, 0.3);
-    color: rgba(222, 13, 12, 0.3);
+    border: 1px solid rgba(245, 245, 245, 0.6);
+    color: rgba(245, 245, 245, 0.6);
     background-color: #fff; }
 
 .d-button__standard-primary {
@@ -30455,7 +30455,8 @@ h6,
     background-color: rgba(222, 13, 12, 0.9); }
   .d-button__standard-primary:disabled {
     border: 1px solid rgba(222, 13, 12, 0.3);
-    background-color: rgba(222, 13, 12, 0.3) !important; }
+    background-color: rgba(222, 13, 12, 0.3) !important;
+    color: #fff; }
 
 .d-button__standard-secondary {
   background-color: #DE0D0C;
@@ -30471,7 +30472,8 @@ h6,
     background-color: rgba(222, 13, 12, 0.9); }
   .d-button__standard-secondary:disabled {
     border: 1px solid rgba(222, 13, 12, 0.3);
-    background-color: rgba(222, 13, 12, 0.3) !important; }
+    background-color: rgba(222, 13, 12, 0.3) !important;
+    color: #fff; }
 
 .d-button__standard-green {
   background-color: #33963D;
@@ -30487,7 +30489,8 @@ h6,
     background-color: rgba(51, 150, 61, 0.9); }
   .d-button__standard-green:disabled {
     border: 1px solid rgba(222, 13, 12, 0.3);
-    background-color: rgba(222, 13, 12, 0.3) !important; }
+    background-color: rgba(222, 13, 12, 0.3) !important;
+    color: #fff; }
 
 .d-button__standard-red {
   background-color: #F44336;
@@ -30503,7 +30506,8 @@ h6,
     background-color: rgba(244, 67, 54, 0.9); }
   .d-button__standard-red:disabled {
     border: 1px solid rgba(222, 13, 12, 0.3);
-    background-color: rgba(222, 13, 12, 0.3) !important; }
+    background-color: rgba(222, 13, 12, 0.3) !important;
+    color: #fff; }
 
 .d-button__standard-yellow {
   background-color: #FAC256;
@@ -30519,7 +30523,8 @@ h6,
     background-color: rgba(250, 194, 86, 0.9); }
   .d-button__standard-yellow:disabled {
     border: 1px solid rgba(222, 13, 12, 0.3);
-    background-color: rgba(222, 13, 12, 0.3) !important; }
+    background-color: rgba(222, 13, 12, 0.3) !important;
+    color: #fff; }
 
 .d-button__standard-blue {
   background-color: #17a2b8;
@@ -30535,7 +30540,8 @@ h6,
     background-color: rgba(23, 162, 184, 0.9); }
   .d-button__standard-blue:disabled {
     border: 1px solid rgba(222, 13, 12, 0.3);
-    background-color: rgba(222, 13, 12, 0.3) !important; }
+    background-color: rgba(222, 13, 12, 0.3) !important;
+    color: #fff; }
 
 .d-button__standard-gray {
   background-color: #A7A7A7;
@@ -30551,7 +30557,8 @@ h6,
     background-color: rgba(167, 167, 167, 0.9); }
   .d-button__standard-gray:disabled {
     border: 1px solid rgba(222, 13, 12, 0.3);
-    background-color: rgba(222, 13, 12, 0.3) !important; }
+    background-color: rgba(222, 13, 12, 0.3) !important;
+    color: #fff; }
 
 .d-button__standard-dark {
   background-color: #3d464d;
@@ -30567,7 +30574,8 @@ h6,
     background-color: rgba(61, 70, 77, 0.9); }
   .d-button__standard-dark:disabled {
     border: 1px solid rgba(222, 13, 12, 0.3);
-    background-color: rgba(222, 13, 12, 0.3) !important; }
+    background-color: rgba(222, 13, 12, 0.3) !important;
+    color: #fff; }
 
 .d-button__standard-light {
   background-color: #fff;
@@ -30583,7 +30591,8 @@ h6,
     background-color: rgba(255, 255, 255, 0.9); }
   .d-button__standard-light:disabled {
     border: 1px solid rgba(222, 13, 12, 0.3);
-    background-color: rgba(222, 13, 12, 0.3) !important; }
+    background-color: rgba(222, 13, 12, 0.3) !important;
+    color: #fff; }
 
 .d-button__standard-error {
   background-color: #F44336;
@@ -30599,7 +30608,8 @@ h6,
     background-color: rgba(244, 67, 54, 0.9); }
   .d-button__standard-error:disabled {
     border: 1px solid rgba(222, 13, 12, 0.3);
-    background-color: rgba(222, 13, 12, 0.3) !important; }
+    background-color: rgba(222, 13, 12, 0.3) !important;
+    color: #fff; }
 
 .d-button__standard-success {
   background-color: #33963D;
@@ -30615,7 +30625,8 @@ h6,
     background-color: rgba(51, 150, 61, 0.9); }
   .d-button__standard-success:disabled {
     border: 1px solid rgba(222, 13, 12, 0.3);
-    background-color: rgba(222, 13, 12, 0.3) !important; }
+    background-color: rgba(222, 13, 12, 0.3) !important;
+    color: #fff; }
 
 .d-button__standard-warning {
   background-color: #FAC256;
@@ -30631,7 +30642,8 @@ h6,
     background-color: rgba(250, 194, 86, 0.9); }
   .d-button__standard-warning:disabled {
     border: 1px solid rgba(222, 13, 12, 0.3);
-    background-color: rgba(222, 13, 12, 0.3) !important; }
+    background-color: rgba(222, 13, 12, 0.3) !important;
+    color: #fff; }
 
 .d-button__standard-muted {
   background-color: #F5F5F5;
@@ -30647,7 +30659,8 @@ h6,
     background-color: rgba(245, 245, 245, 0.9); }
   .d-button__standard-muted:disabled {
     border: 1px solid rgba(222, 13, 12, 0.3);
-    background-color: rgba(222, 13, 12, 0.3) !important; }
+    background-color: rgba(222, 13, 12, 0.3) !important;
+    color: #fff; }
 
 .d-button__trans-primary {
   background-color: transparent;
@@ -30663,7 +30676,7 @@ h6,
   .d-button__trans-primary:hover {
     background-color: whitesmoke; }
   .d-button__trans-primary:disabled {
-    color: rgba(222, 13, 12, 0.3); }
+    color: rgba(222, 13, 12, 0.6); }
 
 .d-button__trans-secondary {
   background-color: transparent;
@@ -30679,7 +30692,7 @@ h6,
   .d-button__trans-secondary:hover {
     background-color: whitesmoke; }
   .d-button__trans-secondary:disabled {
-    color: rgba(222, 13, 12, 0.3); }
+    color: rgba(222, 13, 12, 0.6); }
 
 .d-button__trans-green {
   background-color: transparent;
@@ -30695,7 +30708,7 @@ h6,
   .d-button__trans-green:hover {
     background-color: whitesmoke; }
   .d-button__trans-green:disabled {
-    color: rgba(222, 13, 12, 0.3); }
+    color: rgba(51, 150, 61, 0.6); }
 
 .d-button__trans-red {
   background-color: transparent;
@@ -30711,7 +30724,7 @@ h6,
   .d-button__trans-red:hover {
     background-color: whitesmoke; }
   .d-button__trans-red:disabled {
-    color: rgba(222, 13, 12, 0.3); }
+    color: rgba(244, 67, 54, 0.6); }
 
 .d-button__trans-yellow {
   background-color: transparent;
@@ -30727,7 +30740,7 @@ h6,
   .d-button__trans-yellow:hover {
     background-color: whitesmoke; }
   .d-button__trans-yellow:disabled {
-    color: rgba(222, 13, 12, 0.3); }
+    color: rgba(250, 194, 86, 0.6); }
 
 .d-button__trans-blue {
   background-color: transparent;
@@ -30743,7 +30756,7 @@ h6,
   .d-button__trans-blue:hover {
     background-color: whitesmoke; }
   .d-button__trans-blue:disabled {
-    color: rgba(222, 13, 12, 0.3); }
+    color: rgba(23, 162, 184, 0.6); }
 
 .d-button__trans-gray {
   background-color: transparent;
@@ -30759,7 +30772,7 @@ h6,
   .d-button__trans-gray:hover {
     background-color: whitesmoke; }
   .d-button__trans-gray:disabled {
-    color: rgba(222, 13, 12, 0.3); }
+    color: rgba(167, 167, 167, 0.6); }
 
 .d-button__trans-dark {
   background-color: transparent;
@@ -30775,7 +30788,7 @@ h6,
   .d-button__trans-dark:hover {
     background-color: whitesmoke; }
   .d-button__trans-dark:disabled {
-    color: rgba(222, 13, 12, 0.3); }
+    color: rgba(61, 70, 77, 0.6); }
 
 .d-button__trans-light {
   background-color: transparent;
@@ -30791,7 +30804,7 @@ h6,
   .d-button__trans-light:hover {
     background-color: whitesmoke; }
   .d-button__trans-light:disabled {
-    color: rgba(222, 13, 12, 0.3); }
+    color: rgba(255, 255, 255, 0.6); }
 
 .d-button__trans-error {
   background-color: transparent;
@@ -30807,7 +30820,7 @@ h6,
   .d-button__trans-error:hover {
     background-color: whitesmoke; }
   .d-button__trans-error:disabled {
-    color: rgba(222, 13, 12, 0.3); }
+    color: rgba(244, 67, 54, 0.6); }
 
 .d-button__trans-success {
   background-color: transparent;
@@ -30823,7 +30836,7 @@ h6,
   .d-button__trans-success:hover {
     background-color: whitesmoke; }
   .d-button__trans-success:disabled {
-    color: rgba(222, 13, 12, 0.3); }
+    color: rgba(51, 150, 61, 0.6); }
 
 .d-button__trans-warning {
   background-color: transparent;
@@ -30839,7 +30852,7 @@ h6,
   .d-button__trans-warning:hover {
     background-color: whitesmoke; }
   .d-button__trans-warning:disabled {
-    color: rgba(222, 13, 12, 0.3); }
+    color: rgba(250, 194, 86, 0.6); }
 
 .d-button__trans-muted {
   background-color: transparent;
@@ -30855,7 +30868,7 @@ h6,
   .d-button__trans-muted:hover {
     background-color: whitesmoke; }
   .d-button__trans-muted:disabled {
-    color: rgba(222, 13, 12, 0.3); }
+    color: rgba(245, 245, 245, 0.6); }
 
 .d-button__icon {
   min-width: auto;
@@ -33103,8 +33116,9 @@ h6,
   justify-content: center;
   list-style: none;
   transition: all 0.3s ease-in;
-  padding: 16px;
-  min-width: 150px; }
+  padding: 16px 0px;
+  min-width: 150px;
+  width: 100%; }
   .d-dropdown-menu__container .d-dropdown-menu__item-with-submenu {
     position: relative !important; }
     .d-dropdown-menu__container .d-dropdown-menu__item-with-submenu .d-dropdown-menu__container {
@@ -33119,15 +33133,15 @@ h6,
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05); }
 
 .d-dropdown-menu__container-right-edge {
-  left: -200%;
+  left: auto;
   top: auto;
-  right: auto;
+  right: 0;
   bottom: auto; }
   .d-dropdown-menu__container-right-edge .d-dropdown-menu__item-with-submenu:hover .d-dropdown-menu__container {
     top: 0;
-    right: auto;
     bottom: auto;
-    left: -125%; }
+    left: auto;
+    right: 100%; }
 
 .d-dropdown-menu__container-left-edge {
   left: auto;
@@ -33136,12 +33150,12 @@ h6,
   bottom: auto; }
   .d-dropdown-menu__container-left-edge .d-dropdown-menu__item-with-submenu:hover .d-dropdown-menu__container {
     top: 0;
-    right: -125%;
     bottom: auto;
-    left: auto; }
+    left: auto;
+    right: -100%; }
 
 .d-dropdown-menu__item {
-  padding: 8px 8px;
+  padding: 16px 8px;
   width: 100%;
   display: flex;
   align-items: center;
@@ -33152,9 +33166,10 @@ h6,
 
 .d-dropdown-menu__item-main-view {
   width: fit-content;
+  min-width: 150px;
   background-color: whitesmoke;
   height: 40px;
-  padding: 0px 10px; }
+  padding: 0px 8px; }
   .d-dropdown-menu__item-main-view .d-dropdown-menu__item-label {
     font-weight: bold;
     margin: 0 10px; }

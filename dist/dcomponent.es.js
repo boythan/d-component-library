@@ -6602,7 +6602,7 @@ var FormProvider = function FormProvider(_ref) {
   }, children);
 };
 
-var Form = function Form(_ref, ref) {
+var Form$1 = function Form(_ref, ref) {
   var name = _ref.name,
       initialValues = _ref.initialValues,
       fields = _ref.fields,
@@ -6727,7 +6727,7 @@ var Form = function Form(_ref, ref) {
   }), wrapperNode);
 };
 
-var InternalForm = /*#__PURE__*/React.forwardRef(Form);
+var InternalForm = /*#__PURE__*/React.forwardRef(Form$1);
 var RefForm = InternalForm;
 RefForm.FormProvider = FormProvider;
 RefForm.Field = WrapperField;
@@ -69146,6 +69146,7 @@ var SelectInfinity = function (_a, ref) {
     var listRef = useRef(null);
     var selectRef = useRef(null);
     var textSearch = useRef();
+    var _g = useState([]), valueObj = _g[0], setValueObj = _g[1];
     var refreshList = function () {
         // @ts-ignore
         return listRef.current && listRef.current.refresh();
@@ -69159,21 +69160,26 @@ var SelectInfinity = function (_a, ref) {
         textSearch.current = text;
         refreshList();
     }, 400);
-    var renderTagItemSelect = function (item, index) {
+    var renderItemDropdown = function (item, index) {
         var label = getLabel(item);
         var itemValue = getValue(item);
         return (jsx("div", __assign({ className: "py-3 px-3 hover-pointer", onClick: function () {
                 if (mode === "tags" || mode === "multiple") {
                     var clone = __spreadArray([], value);
+                    var cloneObj = __spreadArray([], valueObj);
                     if (clone.includes(itemValue)) {
                         clone = clone === null || clone === void 0 ? void 0 : clone.filter(function (i) { return i !== itemValue; });
+                        cloneObj = cloneObj.filter(function (i) { return (i === null || i === void 0 ? void 0 : i.id) !== itemValue; });
                     }
                     else {
                         clone.push(itemValue);
+                        cloneObj.push(item);
                     }
+                    setValueObj(cloneObj);
                     onChange && onChange(clone, null);
                 }
                 else {
+                    setValueObj([item]);
                     onChange && onChange([itemValue], null);
                 }
                 if (mode !== "tags" && mode !== "multiple") {
@@ -69182,14 +69188,34 @@ var SelectInfinity = function (_a, ref) {
             } }, { children: jsx("div", __assign({ className: "text-small" }, { children: label }), void 0) }), getKey(item)));
     };
     var renderDropDown = function () {
-        return (jsx("div", __assign({ style: { height: "250px" } }, { children: jsx(AwesomeListComponent, { ref: listRef, renderItem: renderTagItemSelect, isPaging: true, transformer: transformer, source: function (paging) {
+        return (jsx("div", __assign({ style: { height: "250px" } }, { children: jsx(AwesomeListComponent, { ref: listRef, renderItem: renderItemDropdown, isPaging: true, transformer: transformer, source: function (paging) {
                     var params = {
                         search: textSearch.current,
                     };
                     return source && source(params, paging);
                 }, pagingProps: pagingProps }, void 0) }), void 0));
     };
-    return (jsx(Select$1, __assign({ className: className, value: value, showSearch: true, ref: selectRef, onSearch: onChangeTextSearch, dropdownRender: renderDropDown, onChange: onChange, mode: mode }, props), void 0));
+    var onRemoveItem = function (id) {
+        var clone = value.filter(function (i) { return i !== id; });
+        var cloneObj = valueObj.filter(function (i) { return (i === null || i === void 0 ? void 0 : i.id) !== id; });
+        setValueObj(cloneObj);
+        onChange && onChange(clone, null);
+    };
+    var customTagRender = function (props) {
+        var _a;
+        console.log({ props: props });
+        var tagValue = (_a = props === null || props === void 0 ? void 0 : props.value) !== null && _a !== void 0 ? _a : null;
+        var foundItem = null;
+        if (tagValue) {
+            foundItem = valueObj === null || valueObj === void 0 ? void 0 : valueObj.find(function (i) { return (i === null || i === void 0 ? void 0 : i.id) === tagValue; });
+        }
+        if (!foundItem) {
+            return jsx("div", {}, void 0);
+        }
+        return (jsxs("div", __assign({ className: "py-1 text-white text-x-small px-2 bg-secondary flex-center-y mx-1", style: { width: "110px" } }, { children: [jsx("div", __assign({ className: "text-nowrap w-100" }, { children: getLabel(foundItem) }), void 0),
+                jsx(Icon$2, { name: "close", size: "x-small", className: "hover-pointer", onClick: function () { return onRemoveItem(tagValue); } }, void 0)] }), void 0));
+    };
+    return (jsx(Select$1, __assign({ showSearch: true, className: className, value: !mode ? getLabel(valueObj[0]) : value, ref: selectRef, onSearch: onChangeTextSearch, dropdownRender: renderDropDown, onChange: onChange, mode: mode, hasFilter: false, tagRender: customTagRender }, props), void 0));
 };
 var SelectInfinity$1 = React__default.forwardRef(SelectInfinity);
 
@@ -69916,8 +69942,8 @@ var ViewRow = function (_a) {
 };
 
 var ViewTextarea = function (_a) {
-    var children = _a.children, className = _a.className, classNameContent = _a.classNameContent, classNameShowMore = _a.classNameShowMore, classNameShowLess = _a.classNameShowLess, style = _a.style, _b = _a.showLessText, showLessText = _b === void 0 ? Messages.showLess : _b, _c = _a.showMoreText, showMoreText = _c === void 0 ? Messages.showMore : _c, _d = _a.limitedLength, limitedLength = _d === void 0 ? 200 : _d, width = _a.width;
-    var _e = useState(false), expanding = _e[0], setExpanding = _e[1];
+    var children = _a.children, className = _a.className, classNameContent = _a.classNameContent, classNameShowMore = _a.classNameShowMore, classNameShowLess = _a.classNameShowLess, _b = _a.style, style = _b === void 0 ? {} : _b, _c = _a.showLessText, showLessText = _c === void 0 ? Messages.showLess : _c, _d = _a.showMoreText, showMoreText = _d === void 0 ? Messages.showMore : _d, _e = _a.limitedLength, limitedLength = _e === void 0 ? 200 : _e, width = _a.width;
+    var _f = useState(false), expanding = _f[0], setExpanding = _f[1];
     var contentLength = useMemo$1(function () {
         return children.length;
     }, [children]);
@@ -69943,7 +69969,7 @@ var ViewTextarea = function (_a) {
             console.log("Content Height", (_a = contentRef.current) === null || _a === void 0 ? void 0 : _a.offsetHeight);
         }, 200);
     }, [children]);
-    return (jsxs("div", __assign({ className: wrapperClass, style: style, ref: wrapperRef }, { children: [jsxs("div", __assign({ className: contentClass, ref: function (ref) { return (contentRef.current = ref); } }, { children: [children,
+    return (jsxs("div", __assign({ className: wrapperClass, style: __assign(__assign({}, style), { width: width }), ref: wrapperRef }, { children: [jsxs("div", __assign({ className: contentClass, ref: function (ref) { return (contentRef.current = ref); } }, { children: [children,
                     isShowLess && (jsx("span", __assign({ className: showLessClass, onClick: function () {
                             setExpanding(false);
                             wrapperRef.current && wrapperRef.current.setAttribute("style", "width:" + width + "px");
@@ -74897,7 +74923,7 @@ var MenuItem = function (_a) {
     if (isMainView) {
         arrowView = jsx(Icon$2, { name: "expand_more", className: "d-block ml-2" }, void 0);
     }
-    return (jsxs("li", __assign({ className: itemClass, onClick: function () { return onClick && onClick(item); } }, { children: [iconImageView,
+    return (jsxs("div", __assign({ className: itemClass, onClick: function () { return onClick && onClick(item); } }, { children: [iconImageView,
             labelView,
             arrowView,
             !isMainView && subMenu && subMenu.length > 0 && jsx(DropdownMenu, { dataSource: subMenu }, void 0)] }), "" + id));
@@ -74908,7 +74934,7 @@ var DropdownMenu = function (_a) {
     var list = dataSource.map(function (item, index) {
         return jsx(MenuItem, { item: item, onClick: onClick, Messages: Messages }, void 0);
     });
-    return jsx("ul", __assign({ className: wrapperClass }, { children: list }), void 0);
+    return jsx("div", __assign({ className: wrapperClass }, { children: list }), void 0);
 };
 var Dropdown = function (_a) {
     var _b = _a.buttonProps, buttonProps = _b === void 0 ? { variant: "trans", iconName: "more_vert" } : _b, dataSource = _a.dataSource, onClick = _a.onClick, _c = _a.variant, variant = _c === void 0 ? "button" : _c, value = _a.value, Messages = _a.Messages, _d = _a.placeholder, placeholder = _d === void 0 ? "Select..." : _d, className = _a.className; _a.classNameMenu; var _e = _a.position, position = _e === void 0 ? "right-edge" : _e;
@@ -74928,7 +74954,7 @@ var Dropdown = function (_a) {
         setOpenDropdown(false);
         return onClick && onClick(item);
     };
-    var mainView = function () { return jsx(Button, __assign({}, buttonProps, { onClick: function () { return setOpenDropdown(!openDropdown); } }), void 0); };
+    var mainView = function () { return (jsx(Button, __assign({}, buttonProps, { onClick: function () { return setOpenDropdown(!openDropdown); } }), void 0)); };
     if (variant === "view") {
         mainView = function () {
             if (!value) {
@@ -74938,7 +74964,7 @@ var Dropdown = function (_a) {
         };
     }
     return (jsxs("div", __assign({ className: containerClass, ref: wrapperRef }, { children: [mainView(),
-            openDropdown && (jsx(DropdownMenu, { dataSource: dataSource, onClick: handleOnClickItem, Messages: Messages, position: position }, void 0))] }), void 0));
+            openDropdown && (jsx(DropdownMenu, { dataSource: dataSource, onClick: handleOnClickItem, Messages: Messages, position: variant === "view" ? undefined : position }, void 0))] }), void 0));
 };
 
 /* eslint-disable implicit-arrow-linebreak */
@@ -76320,5 +76346,182 @@ function usePrevious(value) {
     return ref.current;
 }
 
-export { Avatar, AvatarName, AwesomeListComponent, AwesomeTableComponent, AwesomeTableUtils, Badge, Button, Card, Checkbox, CheckboxGroup, DateInput, DialogComponent, DialogManager, Dot, Dropdown, Header, HeaderBlock, HeaderDetail, HeaderTable, Icon$2 as Icon, ImageUtils, InputColor, InputText, InputTextSearch, Loading, MapUtils, Modal, Notifications, ObjectUtils, PopoverList, Progress, ProgressComponent, RadioGroup, RowInterchangeView, Select$1 as Select, SelectInfinity$1 as SelectInfinity, StringUtils, TabBar, TimeUtils, TreeDataUtils, TreeSelect, UrlUtils, ViewCollapse, ViewRow, ViewTextarea, ViewTimeline, useFirstTime, useForceUpdate, useForceUpdateConstraint, usePrevious };
+var getDefaultValue = function (type) {
+    switch (type) {
+        case "checkbox":
+        case "radio":
+        case "multi-select":
+        case "select":
+            return [];
+        case "date":
+        case "date-range":
+            return null;
+        default:
+            return "";
+    }
+};
+function FormItem(_a) {
+    var onChange = _a.onChange, data = _a.data, value = _a.value, Messages = _a.Messages, className = _a.className, error = _a.error;
+    var key = data.key, type = data.type, label = data.label, _b = data.dataSource, dataSource = _b === void 0 ? [] : _b, getLabel = data.getLabel, getValue = data.getValue, rows = data.rows, inputType = data.inputType;
+    var itemLabel = (Messages === null || Messages === void 0 ? void 0 : Messages[label]) || label;
+    if (type === "date-range") {
+        var transValue = null;
+        if (Array.isArray(value)) {
+            transValue = value.map(function (item) { return moment(item); });
+        }
+        return (jsx(DateInput, { value: transValue, onChange: function (value) {
+                var clone = null;
+                if (Array.isArray(value)) {
+                    clone = value.map(function (item) { return moment(item).valueOf(); });
+                }
+                onChange(key, clone);
+            }, label: Messages[label] || label, className: className, isRangePicker: true, error: error }, void 0));
+    }
+    if (type === "date") {
+        var transValue = null;
+        if (value) {
+            transValue = moment(value);
+        }
+        return (jsx(DateInput, { value: transValue, onChange: function (value) {
+                var clone = null;
+                if (value) {
+                    clone = moment(value).valueOf();
+                }
+                onChange(key, clone);
+            }, label: itemLabel, className: className, error: error }, void 0));
+    }
+    if (type === "checkbox") {
+        return (jsx(CheckboxGroup, { dataSource: dataSource, value: value, onChange: function (value) { return onChange(key, value); }, label: itemLabel, className: className }, void 0));
+    }
+    if (type === "radio") {
+        return (jsx(RadioGroup, { dataSource: dataSource, value: value, onChange: function (value) { return onChange(key, value); }, label: itemLabel, className: className }, void 0));
+    }
+    if (type === "select") {
+        return (jsx(Select$1, { dataSource: dataSource, value: value, onChange: function (value) { return onChange(key, value); }, className: className, label: itemLabel, getLabel: function (item) { return (getLabel ? getLabel(item) : Messages[item === null || item === void 0 ? void 0 : item.label]); }, getValue: function (item) { return (getValue ? getValue(item) : item === null || item === void 0 ? void 0 : item.id); }, error: error }, void 0));
+    }
+    if (type === "textarea") {
+        return (jsx(InputText, { label: itemLabel, onChange: function (e) { var _a; return onChange(key, (_a = e === null || e === void 0 ? void 0 : e.target) === null || _a === void 0 ? void 0 : _a.value); }, value: value, className: className, error: error, multiple: true, rows: rows }, void 0));
+    }
+    return (jsx(InputText, { label: itemLabel, onChange: function (e) { var _a; return onChange(key, (_a = e === null || e === void 0 ? void 0 : e.target) === null || _a === void 0 ? void 0 : _a.value); }, value: value, className: className, error: error, type: inputType }, void 0));
+}
+var Form = function (_a) {
+    var dataSource = _a.dataSource, Messages = _a.Messages, formik = _a.formik, value = _a.value, className = _a.className, _b = _a.error, error = _b === void 0 ? {} : _b, onChange = _a.onChange, classNameRow = _a.classNameRow;
+    var transformData = useMemo$1(function () {
+        var clone = [];
+        var groupData = lodash.groupBy(dataSource, function (item) { return item === null || item === void 0 ? void 0 : item.rowsId; });
+        Object.keys(groupData).forEach(function (key) {
+            clone.push(groupData[key]);
+        });
+        return clone;
+    }, [dataSource]);
+    var formValue = useMemo$1(function () {
+        var _a;
+        if (formik) {
+            return (_a = formik === null || formik === void 0 ? void 0 : formik.values) !== null && _a !== void 0 ? _a : {};
+        }
+        return value;
+    }, [value, formik === null || formik === void 0 ? void 0 : formik.values]);
+    var formError = useMemo$1(function () {
+        var _a;
+        if (formik) {
+            return (_a = formik === null || formik === void 0 ? void 0 : formik.errors) !== null && _a !== void 0 ? _a : {};
+        }
+        return error;
+    }, [formik]);
+    var onChangeState = function (_a) {
+        var key = _a.key, value = _a.value, onValidate = _a.onValidate;
+        var validate = true;
+        if (onValidate) {
+            validate = onValidate({ key: key, value: value });
+            if (!validate) {
+                return;
+            }
+        }
+        if (formik) {
+            formik.setFieldValue(key, value);
+        }
+        // eslint-disable-next-line no-unused-expressions
+        onChange && onChange(key, value);
+    };
+    var wrapperClass = classnames("w-100", className);
+    return (jsx("div", __assign({ className: wrapperClass }, { children: transformData &&
+            (transformData === null || transformData === void 0 ? void 0 : transformData.length) > 0 &&
+            (transformData === null || transformData === void 0 ? void 0 : transformData.map(function (rows, i) {
+                var hasError = false;
+                var rowView = jsx("div", {}, void 0);
+                var setRowClass;
+                if (rows && (rows === null || rows === void 0 ? void 0 : rows.length) > 0) {
+                    rowView = rows.map(function (item, index) {
+                        var _a, _b;
+                        var render = item.render, key = item.key, type = item.type, className = item.className, getElementClass = item.getElementClass, getItemClass = item.getItemClass, elementClass = item.elementClass, classNameRow = item.classNameRow, onChangeValidate = item.onChangeValidate;
+                        var valueItem = formValue[key] || getDefaultValue(type);
+                        var errorItem = (_a = formError === null || formError === void 0 ? void 0 : formError[key]) !== null && _a !== void 0 ? _a : null;
+                        var errorLabel = errorItem ? (_b = Messages === null || Messages === void 0 ? void 0 : Messages[errorItem]) !== null && _b !== void 0 ? _b : errorItem : null;
+                        if (errorLabel) {
+                            hasError = true;
+                        }
+                        var itemClass = classnames("w-100", {
+                            "mr-3": (rows === null || rows === void 0 ? void 0 : rows.length) > 1 && index === 0,
+                            "mx-3": (rows === null || rows === void 0 ? void 0 : rows.length) > 1 && index > 0 && index < (rows === null || rows === void 0 ? void 0 : rows.length),
+                            "ml-3": (rows === null || rows === void 0 ? void 0 : rows.length) > 1 && index === (rows === null || rows === void 0 ? void 0 : rows.length) - 1,
+                        }, className);
+                        if (getItemClass) {
+                            itemClass = getItemClass({
+                                value: valueItem,
+                                error: errorItem,
+                                key: key,
+                                index: index,
+                                rows: rows,
+                            });
+                        }
+                        var content = (jsx(FormItem, { data: item, onChange: function (key, value) {
+                                return onChangeState({ key: key, value: value, onValidate: onChangeValidate });
+                            }, value: valueItem, Messages: Messages, className: itemClass, error: errorLabel }, void 0));
+                        if (React__default.isValidElement(render)) {
+                            content = React__default.cloneElement(render, {
+                                onChange: function (key, value) {
+                                    return onChangeState({ key: key, value: value, onValidate: onChangeValidate });
+                                },
+                                value: valueItem,
+                                className: itemClass,
+                            });
+                        }
+                        if (typeof render === "function") {
+                            content = render({
+                                value: valueItem,
+                                onChange: function (key, value) {
+                                    return onChangeState({ key: key, value: value, onValidate: onChangeValidate });
+                                },
+                                className: itemClass,
+                                key: key,
+                            });
+                        }
+                        var itemWrapperClass = classnames("w-100 py-2 d-flex", elementClass);
+                        if (getElementClass) {
+                            itemWrapperClass = getElementClass({
+                                value: valueItem,
+                                error: errorItem,
+                                key: key,
+                                index: index,
+                                rows: rows,
+                            });
+                        }
+                        if (classNameRow) {
+                            setRowClass = classNameRow;
+                        }
+                        return jsx("div", __assign({ className: itemWrapperClass }, { children: content }), void 0);
+                    });
+                }
+                var rowClass = classnames("d-flex w-100 my-2", {
+                    "align-items-center": !hasError,
+                    // "border-top": i !== 0,
+                }, classNameRow);
+                if (setRowClass) {
+                    rowClass = setRowClass;
+                }
+                return jsx("div", __assign({ className: rowClass }, { children: rowView }), void 0);
+            })) }), void 0));
+};
+
+export { Avatar, AvatarName, AwesomeListComponent, AwesomeTableComponent, AwesomeTableUtils, Badge, Button, Card, Checkbox, CheckboxGroup, DateInput, DialogComponent, DialogManager, Dot, Dropdown, Form, FormItem, Header, HeaderBlock, HeaderDetail, HeaderTable, Icon$2 as Icon, ImageUtils, InputColor, InputText, InputTextSearch, Loading, MapUtils, Modal, Notifications, ObjectUtils, PopoverList, Progress, ProgressComponent, RadioGroup, RowInterchangeView, Select$1 as Select, SelectInfinity$1 as SelectInfinity, StringUtils, TabBar, TimeUtils, TreeDataUtils, TreeSelect, UrlUtils, ViewCollapse, ViewRow, ViewTextarea, ViewTimeline, useFirstTime, useForceUpdate, useForceUpdateConstraint, usePrevious };
 //# sourceMappingURL=dcomponent.es.js.map

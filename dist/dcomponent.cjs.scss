@@ -470,7 +470,7 @@
 
       // transparent
          // default
-         $btn-trans-bg-color:          #eeeeee                 !default;
+         $btn-trans-bg-color:          transparent               !default;
          $btn-trans-font-color:        $dark-color               !default;
          $btn-trans-icon-color:        $dark-color               !default;
          // hover
@@ -479,11 +479,12 @@
          $btn-trans-hover-icon-color:  $btn-light-hover-font-color !default;
          // active
          $btn-trans-active-bg-color:   #e5e5e5                     !default;
-         $btn-trans-active-font-color: $btn-light-hover-font-color !default;
-         $btn-trans-active-icon-color: $btn-light-hover-icon-color !default;
+         $btn-trans-active-font-color: $btn-light-hover-font-color   !default;
+         $btn-trans-active-icon-color: $btn-light-hover-icon-color   !default;
 
       //height
       $btn-base-height:                36px               !default;
+      $btn-min-width:                  56px               !default;
 
    // ----------------------------------------
    // -- .card
@@ -832,13 +833,24 @@
 
    $badge-color:                       $primary-color                 !default;
 
+
+   // ----------------------------------------
+   // -- .badge
+   // ----------------------------------------
+
+   $dropdown-min-width:                150px                          !default;
+   $dropdown-height:                   $btn-base-height + 4px         !default;
+   $dropdown-focus-outline:            $accent-color                  !default;
+   $dropdown-main-view-bg:             $light-gray-color              !default;
+   $dropdown-hover-color:              $light-gray-color              !default;
+
   // ----------------------------------------
    // -- .custom variable
    // ---------------------------------------- 
    $primary:                            $accent-color                 !default;
    $input-color:                        #3D464D                     !default;
    $common-image-size:                  12rem                         !default;
-   $disabled-color:                     rgba($accent-color,0.3)         !default;
+   $disabled-color:                     rgba($accent-color,0.3)       !default;
    
 
 /* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
@@ -27688,7 +27700,7 @@ div.ant-typography-edit-content {
 
       // transparent
          // default
-         $btn-trans-bg-color:          #eeeeee                 !default;
+         $btn-trans-bg-color:          transparent               !default;
          $btn-trans-font-color:        $dark-color               !default;
          $btn-trans-icon-color:        $dark-color               !default;
          // hover
@@ -27697,11 +27709,12 @@ div.ant-typography-edit-content {
          $btn-trans-hover-icon-color:  $btn-light-hover-font-color !default;
          // active
          $btn-trans-active-bg-color:   #e5e5e5                     !default;
-         $btn-trans-active-font-color: $btn-light-hover-font-color !default;
-         $btn-trans-active-icon-color: $btn-light-hover-icon-color !default;
+         $btn-trans-active-font-color: $btn-light-hover-font-color   !default;
+         $btn-trans-active-icon-color: $btn-light-hover-icon-color   !default;
 
       //height
       $btn-base-height:                36px               !default;
+      $btn-min-width:                  56px               !default;
 
    // ----------------------------------------
    // -- .card
@@ -28050,13 +28063,24 @@ div.ant-typography-edit-content {
 
    $badge-color:                       $primary-color                 !default;
 
+
+   // ----------------------------------------
+   // -- .badge
+   // ----------------------------------------
+
+   $dropdown-min-width:                150px                          !default;
+   $dropdown-height:                   $btn-base-height + 4px         !default;
+   $dropdown-focus-outline:            $accent-color                  !default;
+   $dropdown-main-view-bg:             $light-gray-color              !default;
+   $dropdown-hover-color:              $light-gray-color              !default;
+
   // ----------------------------------------
    // -- .custom variable
    // ---------------------------------------- 
    $primary:                            $accent-color                 !default;
    $input-color:                        #3D464D                     !default;
    $common-image-size:                  12rem                         !default;
-   $disabled-color:                     rgba($accent-color,0.3)         !default;
+   $disabled-color:                     rgba($accent-color,0.3)       !default;
    
 
 /* ----------------------------------------
@@ -28532,7 +28556,7 @@ div.ant-typography-edit-content {
 
       // transparent
          // default
-         $btn-trans-bg-color:          #eeeeee                 !default;
+         $btn-trans-bg-color:          transparent               !default;
          $btn-trans-font-color:        $dark-color               !default;
          $btn-trans-icon-color:        $dark-color               !default;
          // hover
@@ -28541,11 +28565,12 @@ div.ant-typography-edit-content {
          $btn-trans-hover-icon-color:  $btn-light-hover-font-color !default;
          // active
          $btn-trans-active-bg-color:   #e5e5e5                     !default;
-         $btn-trans-active-font-color: $btn-light-hover-font-color !default;
-         $btn-trans-active-icon-color: $btn-light-hover-icon-color !default;
+         $btn-trans-active-font-color: $btn-light-hover-font-color   !default;
+         $btn-trans-active-icon-color: $btn-light-hover-icon-color   !default;
 
       //height
       $btn-base-height:                36px               !default;
+      $btn-min-width:                  56px               !default;
 
    // ----------------------------------------
    // -- .card
@@ -28894,13 +28919,24 @@ div.ant-typography-edit-content {
 
    $badge-color:                       $primary-color                 !default;
 
+
+   // ----------------------------------------
+   // -- .badge
+   // ----------------------------------------
+
+   $dropdown-min-width:                150px                          !default;
+   $dropdown-height:                   $btn-base-height + 4px         !default;
+   $dropdown-focus-outline:            $accent-color                  !default;
+   $dropdown-main-view-bg:             $light-gray-color              !default;
+   $dropdown-hover-color:              $light-gray-color              !default;
+
   // ----------------------------------------
    // -- .custom variable
    // ---------------------------------------- 
    $primary:                            $accent-color                 !default;
    $input-color:                        #3D464D                     !default;
    $common-image-size:                  12rem                         !default;
-   $disabled-color:                     rgba($accent-color,0.3)         !default;
+   $disabled-color:                     rgba($accent-color,0.3)       !default;
    
 
 // ----------------------------------------
@@ -29369,7 +29405,7 @@ div.ant-typography-edit-content {
 
       // transparent
          // default
-         $btn-trans-bg-color:          #eeeeee                 !default;
+         $btn-trans-bg-color:          transparent               !default;
          $btn-trans-font-color:        $dark-color               !default;
          $btn-trans-icon-color:        $dark-color               !default;
          // hover
@@ -29378,11 +29414,12 @@ div.ant-typography-edit-content {
          $btn-trans-hover-icon-color:  $btn-light-hover-font-color !default;
          // active
          $btn-trans-active-bg-color:   #e5e5e5                     !default;
-         $btn-trans-active-font-color: $btn-light-hover-font-color !default;
-         $btn-trans-active-icon-color: $btn-light-hover-icon-color !default;
+         $btn-trans-active-font-color: $btn-light-hover-font-color   !default;
+         $btn-trans-active-icon-color: $btn-light-hover-icon-color   !default;
 
       //height
       $btn-base-height:                36px               !default;
+      $btn-min-width:                  56px               !default;
 
    // ----------------------------------------
    // -- .card
@@ -29731,13 +29768,24 @@ div.ant-typography-edit-content {
 
    $badge-color:                       $primary-color                 !default;
 
+
+   // ----------------------------------------
+   // -- .badge
+   // ----------------------------------------
+
+   $dropdown-min-width:                150px                          !default;
+   $dropdown-height:                   $btn-base-height + 4px         !default;
+   $dropdown-focus-outline:            $accent-color                  !default;
+   $dropdown-main-view-bg:             $light-gray-color              !default;
+   $dropdown-hover-color:              $light-gray-color              !default;
+
   // ----------------------------------------
    // -- .custom variable
    // ---------------------------------------- 
    $primary:                            $accent-color                 !default;
    $input-color:                        #3D464D                     !default;
    $common-image-size:                  12rem                         !default;
-   $disabled-color:                     rgba($accent-color,0.3)         !default;
+   $disabled-color:                     rgba($accent-color,0.3)       !default;
    
 
 
@@ -30505,7 +30553,7 @@ h6,
 
       // transparent
          // default
-         $btn-trans-bg-color:          #eeeeee                 !default;
+         $btn-trans-bg-color:          transparent               !default;
          $btn-trans-font-color:        $dark-color               !default;
          $btn-trans-icon-color:        $dark-color               !default;
          // hover
@@ -30514,11 +30562,12 @@ h6,
          $btn-trans-hover-icon-color:  $btn-light-hover-font-color !default;
          // active
          $btn-trans-active-bg-color:   #e5e5e5                     !default;
-         $btn-trans-active-font-color: $btn-light-hover-font-color !default;
-         $btn-trans-active-icon-color: $btn-light-hover-icon-color !default;
+         $btn-trans-active-font-color: $btn-light-hover-font-color   !default;
+         $btn-trans-active-icon-color: $btn-light-hover-icon-color   !default;
 
       //height
       $btn-base-height:                36px               !default;
+      $btn-min-width:                  56px               !default;
 
    // ----------------------------------------
    // -- .card
@@ -30867,13 +30916,24 @@ h6,
 
    $badge-color:                       $primary-color                 !default;
 
+
+   // ----------------------------------------
+   // -- .badge
+   // ----------------------------------------
+
+   $dropdown-min-width:                150px                          !default;
+   $dropdown-height:                   $btn-base-height + 4px         !default;
+   $dropdown-focus-outline:            $accent-color                  !default;
+   $dropdown-main-view-bg:             $light-gray-color              !default;
+   $dropdown-hover-color:              $light-gray-color              !default;
+
   // ----------------------------------------
    // -- .custom variable
    // ---------------------------------------- 
    $primary:                            $accent-color                 !default;
    $input-color:                        #3D464D                     !default;
    $common-image-size:                  12rem                         !default;
-   $disabled-color:                     rgba($accent-color,0.3)         !default;
+   $disabled-color:                     rgba($accent-color,0.3)       !default;
    
 
 
@@ -31386,7 +31446,7 @@ h6,
 
       // transparent
          // default
-         $btn-trans-bg-color:          #eeeeee                 !default;
+         $btn-trans-bg-color:          transparent               !default;
          $btn-trans-font-color:        $dark-color               !default;
          $btn-trans-icon-color:        $dark-color               !default;
          // hover
@@ -31395,11 +31455,12 @@ h6,
          $btn-trans-hover-icon-color:  $btn-light-hover-font-color !default;
          // active
          $btn-trans-active-bg-color:   #e5e5e5                     !default;
-         $btn-trans-active-font-color: $btn-light-hover-font-color !default;
-         $btn-trans-active-icon-color: $btn-light-hover-icon-color !default;
+         $btn-trans-active-font-color: $btn-light-hover-font-color   !default;
+         $btn-trans-active-icon-color: $btn-light-hover-icon-color   !default;
 
       //height
       $btn-base-height:                36px               !default;
+      $btn-min-width:                  56px               !default;
 
    // ----------------------------------------
    // -- .card
@@ -31748,13 +31809,24 @@ h6,
 
    $badge-color:                       $primary-color                 !default;
 
+
+   // ----------------------------------------
+   // -- .badge
+   // ----------------------------------------
+
+   $dropdown-min-width:                150px                          !default;
+   $dropdown-height:                   $btn-base-height + 4px         !default;
+   $dropdown-focus-outline:            $accent-color                  !default;
+   $dropdown-main-view-bg:             $light-gray-color              !default;
+   $dropdown-hover-color:              $light-gray-color              !default;
+
   // ----------------------------------------
    // -- .custom variable
    // ---------------------------------------- 
    $primary:                            $accent-color                 !default;
    $input-color:                        #3D464D                     !default;
    $common-image-size:                  12rem                         !default;
-   $disabled-color:                     rgba($accent-color,0.3)         !default;
+   $disabled-color:                     rgba($accent-color,0.3)       !default;
    
 
 // ----------------------------------------
@@ -32223,7 +32295,7 @@ h6,
 
       // transparent
          // default
-         $btn-trans-bg-color:          #eeeeee                 !default;
+         $btn-trans-bg-color:          transparent               !default;
          $btn-trans-font-color:        $dark-color               !default;
          $btn-trans-icon-color:        $dark-color               !default;
          // hover
@@ -32232,11 +32304,12 @@ h6,
          $btn-trans-hover-icon-color:  $btn-light-hover-font-color !default;
          // active
          $btn-trans-active-bg-color:   #e5e5e5                     !default;
-         $btn-trans-active-font-color: $btn-light-hover-font-color !default;
-         $btn-trans-active-icon-color: $btn-light-hover-icon-color !default;
+         $btn-trans-active-font-color: $btn-light-hover-font-color   !default;
+         $btn-trans-active-icon-color: $btn-light-hover-icon-color   !default;
 
       //height
       $btn-base-height:                36px               !default;
+      $btn-min-width:                  56px               !default;
 
    // ----------------------------------------
    // -- .card
@@ -32585,13 +32658,24 @@ h6,
 
    $badge-color:                       $primary-color                 !default;
 
+
+   // ----------------------------------------
+   // -- .badge
+   // ----------------------------------------
+
+   $dropdown-min-width:                150px                          !default;
+   $dropdown-height:                   $btn-base-height + 4px         !default;
+   $dropdown-focus-outline:            $accent-color                  !default;
+   $dropdown-main-view-bg:             $light-gray-color              !default;
+   $dropdown-hover-color:              $light-gray-color              !default;
+
   // ----------------------------------------
    // -- .custom variable
    // ---------------------------------------- 
    $primary:                            $accent-color                 !default;
    $input-color:                        #3D464D                     !default;
    $common-image-size:                  12rem                         !default;
-   $disabled-color:                     rgba($accent-color,0.3)         !default;
+   $disabled-color:                     rgba($accent-color,0.3)       !default;
    
 
 
@@ -33512,7 +33596,7 @@ a {
 
       // transparent
          // default
-         $btn-trans-bg-color:          #eeeeee                 !default;
+         $btn-trans-bg-color:          transparent               !default;
          $btn-trans-font-color:        $dark-color               !default;
          $btn-trans-icon-color:        $dark-color               !default;
          // hover
@@ -33521,11 +33605,12 @@ a {
          $btn-trans-hover-icon-color:  $btn-light-hover-font-color !default;
          // active
          $btn-trans-active-bg-color:   #e5e5e5                     !default;
-         $btn-trans-active-font-color: $btn-light-hover-font-color !default;
-         $btn-trans-active-icon-color: $btn-light-hover-icon-color !default;
+         $btn-trans-active-font-color: $btn-light-hover-font-color   !default;
+         $btn-trans-active-icon-color: $btn-light-hover-icon-color   !default;
 
       //height
       $btn-base-height:                36px               !default;
+      $btn-min-width:                  56px               !default;
 
    // ----------------------------------------
    // -- .card
@@ -33874,13 +33959,24 @@ a {
 
    $badge-color:                       $primary-color                 !default;
 
+
+   // ----------------------------------------
+   // -- .badge
+   // ----------------------------------------
+
+   $dropdown-min-width:                150px                          !default;
+   $dropdown-height:                   $btn-base-height + 4px         !default;
+   $dropdown-focus-outline:            $accent-color                  !default;
+   $dropdown-main-view-bg:             $light-gray-color              !default;
+   $dropdown-hover-color:              $light-gray-color              !default;
+
   // ----------------------------------------
    // -- .custom variable
    // ---------------------------------------- 
    $primary:                            $accent-color                 !default;
    $input-color:                        #3D464D                     !default;
    $common-image-size:                  12rem                         !default;
-   $disabled-color:                     rgba($accent-color,0.3)         !default;
+   $disabled-color:                     rgba($accent-color,0.3)       !default;
    
 
 // ----------------------------------------
@@ -34349,7 +34445,7 @@ a {
 
       // transparent
          // default
-         $btn-trans-bg-color:          #eeeeee                 !default;
+         $btn-trans-bg-color:          transparent               !default;
          $btn-trans-font-color:        $dark-color               !default;
          $btn-trans-icon-color:        $dark-color               !default;
          // hover
@@ -34358,11 +34454,12 @@ a {
          $btn-trans-hover-icon-color:  $btn-light-hover-font-color !default;
          // active
          $btn-trans-active-bg-color:   #e5e5e5                     !default;
-         $btn-trans-active-font-color: $btn-light-hover-font-color !default;
-         $btn-trans-active-icon-color: $btn-light-hover-icon-color !default;
+         $btn-trans-active-font-color: $btn-light-hover-font-color   !default;
+         $btn-trans-active-icon-color: $btn-light-hover-icon-color   !default;
 
       //height
       $btn-base-height:                36px               !default;
+      $btn-min-width:                  56px               !default;
 
    // ----------------------------------------
    // -- .card
@@ -34711,13 +34808,24 @@ a {
 
    $badge-color:                       $primary-color                 !default;
 
+
+   // ----------------------------------------
+   // -- .badge
+   // ----------------------------------------
+
+   $dropdown-min-width:                150px                          !default;
+   $dropdown-height:                   $btn-base-height + 4px         !default;
+   $dropdown-focus-outline:            $accent-color                  !default;
+   $dropdown-main-view-bg:             $light-gray-color              !default;
+   $dropdown-hover-color:              $light-gray-color              !default;
+
   // ----------------------------------------
    // -- .custom variable
    // ---------------------------------------- 
    $primary:                            $accent-color                 !default;
    $input-color:                        #3D464D                     !default;
    $common-image-size:                  12rem                         !default;
-   $disabled-color:                     rgba($accent-color,0.3)         !default;
+   $disabled-color:                     rgba($accent-color,0.3)       !default;
    
 
 
@@ -35220,7 +35328,7 @@ a {
 
       // transparent
          // default
-         $btn-trans-bg-color:          #eeeeee                 !default;
+         $btn-trans-bg-color:          transparent               !default;
          $btn-trans-font-color:        $dark-color               !default;
          $btn-trans-icon-color:        $dark-color               !default;
          // hover
@@ -35229,11 +35337,12 @@ a {
          $btn-trans-hover-icon-color:  $btn-light-hover-font-color !default;
          // active
          $btn-trans-active-bg-color:   #e5e5e5                     !default;
-         $btn-trans-active-font-color: $btn-light-hover-font-color !default;
-         $btn-trans-active-icon-color: $btn-light-hover-icon-color !default;
+         $btn-trans-active-font-color: $btn-light-hover-font-color   !default;
+         $btn-trans-active-icon-color: $btn-light-hover-icon-color   !default;
 
       //height
       $btn-base-height:                36px               !default;
+      $btn-min-width:                  56px               !default;
 
    // ----------------------------------------
    // -- .card
@@ -35582,13 +35691,24 @@ a {
 
    $badge-color:                       $primary-color                 !default;
 
+
+   // ----------------------------------------
+   // -- .badge
+   // ----------------------------------------
+
+   $dropdown-min-width:                150px                          !default;
+   $dropdown-height:                   $btn-base-height + 4px         !default;
+   $dropdown-focus-outline:            $accent-color                  !default;
+   $dropdown-main-view-bg:             $light-gray-color              !default;
+   $dropdown-hover-color:              $light-gray-color              !default;
+
   // ----------------------------------------
    // -- .custom variable
    // ---------------------------------------- 
    $primary:                            $accent-color                 !default;
    $input-color:                        #3D464D                     !default;
    $common-image-size:                  12rem                         !default;
-   $disabled-color:                     rgba($accent-color,0.3)         !default;
+   $disabled-color:                     rgba($accent-color,0.3)       !default;
    
 
 
@@ -36063,7 +36183,7 @@ a {
 
       // transparent
          // default
-         $btn-trans-bg-color:          #eeeeee                 !default;
+         $btn-trans-bg-color:          transparent               !default;
          $btn-trans-font-color:        $dark-color               !default;
          $btn-trans-icon-color:        $dark-color               !default;
          // hover
@@ -36072,11 +36192,12 @@ a {
          $btn-trans-hover-icon-color:  $btn-light-hover-font-color !default;
          // active
          $btn-trans-active-bg-color:   #e5e5e5                     !default;
-         $btn-trans-active-font-color: $btn-light-hover-font-color !default;
-         $btn-trans-active-icon-color: $btn-light-hover-icon-color !default;
+         $btn-trans-active-font-color: $btn-light-hover-font-color   !default;
+         $btn-trans-active-icon-color: $btn-light-hover-icon-color   !default;
 
       //height
       $btn-base-height:                36px               !default;
+      $btn-min-width:                  56px               !default;
 
    // ----------------------------------------
    // -- .card
@@ -36425,13 +36546,24 @@ a {
 
    $badge-color:                       $primary-color                 !default;
 
+
+   // ----------------------------------------
+   // -- .badge
+   // ----------------------------------------
+
+   $dropdown-min-width:                150px                          !default;
+   $dropdown-height:                   $btn-base-height + 4px         !default;
+   $dropdown-focus-outline:            $accent-color                  !default;
+   $dropdown-main-view-bg:             $light-gray-color              !default;
+   $dropdown-hover-color:              $light-gray-color              !default;
+
   // ----------------------------------------
    // -- .custom variable
    // ---------------------------------------- 
    $primary:                            $accent-color                 !default;
    $input-color:                        #3D464D                     !default;
    $common-image-size:                  12rem                         !default;
-   $disabled-color:                     rgba($accent-color,0.3)         !default;
+   $disabled-color:                     rgba($accent-color,0.3)       !default;
    
 
 
@@ -37064,7 +37196,7 @@ a {
 
       // transparent
          // default
-         $btn-trans-bg-color:          #eeeeee                 !default;
+         $btn-trans-bg-color:          transparent               !default;
          $btn-trans-font-color:        $dark-color               !default;
          $btn-trans-icon-color:        $dark-color               !default;
          // hover
@@ -37073,11 +37205,12 @@ a {
          $btn-trans-hover-icon-color:  $btn-light-hover-font-color !default;
          // active
          $btn-trans-active-bg-color:   #e5e5e5                     !default;
-         $btn-trans-active-font-color: $btn-light-hover-font-color !default;
-         $btn-trans-active-icon-color: $btn-light-hover-icon-color !default;
+         $btn-trans-active-font-color: $btn-light-hover-font-color   !default;
+         $btn-trans-active-icon-color: $btn-light-hover-icon-color   !default;
 
       //height
       $btn-base-height:                36px               !default;
+      $btn-min-width:                  56px               !default;
 
    // ----------------------------------------
    // -- .card
@@ -37426,13 +37559,24 @@ a {
 
    $badge-color:                       $primary-color                 !default;
 
+
+   // ----------------------------------------
+   // -- .badge
+   // ----------------------------------------
+
+   $dropdown-min-width:                150px                          !default;
+   $dropdown-height:                   $btn-base-height + 4px         !default;
+   $dropdown-focus-outline:            $accent-color                  !default;
+   $dropdown-main-view-bg:             $light-gray-color              !default;
+   $dropdown-hover-color:              $light-gray-color              !default;
+
   // ----------------------------------------
    // -- .custom variable
    // ---------------------------------------- 
    $primary:                            $accent-color                 !default;
    $input-color:                        #3D464D                     !default;
    $common-image-size:                  12rem                         !default;
-   $disabled-color:                     rgba($accent-color,0.3)         !default;
+   $disabled-color:                     rgba($accent-color,0.3)       !default;
    
 
 // ----------------------------------------
@@ -37901,7 +38045,7 @@ a {
 
       // transparent
          // default
-         $btn-trans-bg-color:          #eeeeee                 !default;
+         $btn-trans-bg-color:          transparent               !default;
          $btn-trans-font-color:        $dark-color               !default;
          $btn-trans-icon-color:        $dark-color               !default;
          // hover
@@ -37910,11 +38054,12 @@ a {
          $btn-trans-hover-icon-color:  $btn-light-hover-font-color !default;
          // active
          $btn-trans-active-bg-color:   #e5e5e5                     !default;
-         $btn-trans-active-font-color: $btn-light-hover-font-color !default;
-         $btn-trans-active-icon-color: $btn-light-hover-icon-color !default;
+         $btn-trans-active-font-color: $btn-light-hover-font-color   !default;
+         $btn-trans-active-icon-color: $btn-light-hover-icon-color   !default;
 
       //height
       $btn-base-height:                36px               !default;
+      $btn-min-width:                  56px               !default;
 
    // ----------------------------------------
    // -- .card
@@ -38263,13 +38408,24 @@ a {
 
    $badge-color:                       $primary-color                 !default;
 
+
+   // ----------------------------------------
+   // -- .badge
+   // ----------------------------------------
+
+   $dropdown-min-width:                150px                          !default;
+   $dropdown-height:                   $btn-base-height + 4px         !default;
+   $dropdown-focus-outline:            $accent-color                  !default;
+   $dropdown-main-view-bg:             $light-gray-color              !default;
+   $dropdown-hover-color:              $light-gray-color              !default;
+
   // ----------------------------------------
    // -- .custom variable
    // ---------------------------------------- 
    $primary:                            $accent-color                 !default;
    $input-color:                        #3D464D                     !default;
    $common-image-size:                  12rem                         !default;
-   $disabled-color:                     rgba($accent-color,0.3)         !default;
+   $disabled-color:                     rgba($accent-color,0.3)       !default;
    
 
 
@@ -38815,7 +38971,7 @@ a {
 
       // transparent
          // default
-         $btn-trans-bg-color:          #eeeeee                 !default;
+         $btn-trans-bg-color:          transparent               !default;
          $btn-trans-font-color:        $dark-color               !default;
          $btn-trans-icon-color:        $dark-color               !default;
          // hover
@@ -38824,11 +38980,12 @@ a {
          $btn-trans-hover-icon-color:  $btn-light-hover-font-color !default;
          // active
          $btn-trans-active-bg-color:   #e5e5e5                     !default;
-         $btn-trans-active-font-color: $btn-light-hover-font-color !default;
-         $btn-trans-active-icon-color: $btn-light-hover-icon-color !default;
+         $btn-trans-active-font-color: $btn-light-hover-font-color   !default;
+         $btn-trans-active-icon-color: $btn-light-hover-icon-color   !default;
 
       //height
       $btn-base-height:                36px               !default;
+      $btn-min-width:                  56px               !default;
 
    // ----------------------------------------
    // -- .card
@@ -39177,13 +39334,24 @@ a {
 
    $badge-color:                       $primary-color                 !default;
 
+
+   // ----------------------------------------
+   // -- .badge
+   // ----------------------------------------
+
+   $dropdown-min-width:                150px                          !default;
+   $dropdown-height:                   $btn-base-height + 4px         !default;
+   $dropdown-focus-outline:            $accent-color                  !default;
+   $dropdown-main-view-bg:             $light-gray-color              !default;
+   $dropdown-hover-color:              $light-gray-color              !default;
+
   // ----------------------------------------
    // -- .custom variable
    // ---------------------------------------- 
    $primary:                            $accent-color                 !default;
    $input-color:                        #3D464D                     !default;
    $common-image-size:                  12rem                         !default;
-   $disabled-color:                     rgba($accent-color,0.3)         !default;
+   $disabled-color:                     rgba($accent-color,0.3)       !default;
    
 
 @mixin only-ie() {
@@ -39402,7 +39570,7 @@ $width-side-bar: 250px;
     }
 
     .topbar-dropdown__btn {
-        background-color: $btn-trans-bg-color;
+        background-color: #eeeeee;
         height: $height-content-nav-bar !important;
         margin-right: 1rem;
     }
@@ -39965,7 +40133,7 @@ $sides: ("top", "right", "bottom", "left");
 
       // transparent
          // default
-         $btn-trans-bg-color:          #eeeeee                 !default;
+         $btn-trans-bg-color:          transparent               !default;
          $btn-trans-font-color:        $dark-color               !default;
          $btn-trans-icon-color:        $dark-color               !default;
          // hover
@@ -39974,11 +40142,12 @@ $sides: ("top", "right", "bottom", "left");
          $btn-trans-hover-icon-color:  $btn-light-hover-font-color !default;
          // active
          $btn-trans-active-bg-color:   #e5e5e5                     !default;
-         $btn-trans-active-font-color: $btn-light-hover-font-color !default;
-         $btn-trans-active-icon-color: $btn-light-hover-icon-color !default;
+         $btn-trans-active-font-color: $btn-light-hover-font-color   !default;
+         $btn-trans-active-icon-color: $btn-light-hover-icon-color   !default;
 
       //height
       $btn-base-height:                36px               !default;
+      $btn-min-width:                  56px               !default;
 
    // ----------------------------------------
    // -- .card
@@ -40327,13 +40496,24 @@ $sides: ("top", "right", "bottom", "left");
 
    $badge-color:                       $primary-color                 !default;
 
+
+   // ----------------------------------------
+   // -- .badge
+   // ----------------------------------------
+
+   $dropdown-min-width:                150px                          !default;
+   $dropdown-height:                   $btn-base-height + 4px         !default;
+   $dropdown-focus-outline:            $accent-color                  !default;
+   $dropdown-main-view-bg:             $light-gray-color              !default;
+   $dropdown-hover-color:              $light-gray-color              !default;
+
   // ----------------------------------------
    // -- .custom variable
    // ---------------------------------------- 
    $primary:                            $accent-color                 !default;
    $input-color:                        #3D464D                     !default;
    $common-image-size:                  12rem                         !default;
-   $disabled-color:                     rgba($accent-color,0.3)         !default;
+   $disabled-color:                     rgba($accent-color,0.3)       !default;
    
 
 
@@ -40942,7 +41122,7 @@ $sides: ("top", "right", "bottom", "left");
 
       // transparent
          // default
-         $btn-trans-bg-color:          #eeeeee                 !default;
+         $btn-trans-bg-color:          transparent               !default;
          $btn-trans-font-color:        $dark-color               !default;
          $btn-trans-icon-color:        $dark-color               !default;
          // hover
@@ -40951,11 +41131,12 @@ $sides: ("top", "right", "bottom", "left");
          $btn-trans-hover-icon-color:  $btn-light-hover-font-color !default;
          // active
          $btn-trans-active-bg-color:   #e5e5e5                     !default;
-         $btn-trans-active-font-color: $btn-light-hover-font-color !default;
-         $btn-trans-active-icon-color: $btn-light-hover-icon-color !default;
+         $btn-trans-active-font-color: $btn-light-hover-font-color   !default;
+         $btn-trans-active-icon-color: $btn-light-hover-icon-color   !default;
 
       //height
       $btn-base-height:                36px               !default;
+      $btn-min-width:                  56px               !default;
 
    // ----------------------------------------
    // -- .card
@@ -41304,13 +41485,24 @@ $sides: ("top", "right", "bottom", "left");
 
    $badge-color:                       $primary-color                 !default;
 
+
+   // ----------------------------------------
+   // -- .badge
+   // ----------------------------------------
+
+   $dropdown-min-width:                150px                          !default;
+   $dropdown-height:                   $btn-base-height + 4px         !default;
+   $dropdown-focus-outline:            $accent-color                  !default;
+   $dropdown-main-view-bg:             $light-gray-color              !default;
+   $dropdown-hover-color:              $light-gray-color              !default;
+
   // ----------------------------------------
    // -- .custom variable
    // ---------------------------------------- 
    $primary:                            $accent-color                 !default;
    $input-color:                        #3D464D                     !default;
    $common-image-size:                  12rem                         !default;
-   $disabled-color:                     rgba($accent-color,0.3)         !default;
+   $disabled-color:                     rgba($accent-color,0.3)       !default;
    
 
 
@@ -41806,7 +41998,7 @@ $sides: ("top", "right", "bottom", "left");
 
       // transparent
          // default
-         $btn-trans-bg-color:          #eeeeee                 !default;
+         $btn-trans-bg-color:          transparent               !default;
          $btn-trans-font-color:        $dark-color               !default;
          $btn-trans-icon-color:        $dark-color               !default;
          // hover
@@ -41815,11 +42007,12 @@ $sides: ("top", "right", "bottom", "left");
          $btn-trans-hover-icon-color:  $btn-light-hover-font-color !default;
          // active
          $btn-trans-active-bg-color:   #e5e5e5                     !default;
-         $btn-trans-active-font-color: $btn-light-hover-font-color !default;
-         $btn-trans-active-icon-color: $btn-light-hover-icon-color !default;
+         $btn-trans-active-font-color: $btn-light-hover-font-color   !default;
+         $btn-trans-active-icon-color: $btn-light-hover-icon-color   !default;
 
       //height
       $btn-base-height:                36px               !default;
+      $btn-min-width:                  56px               !default;
 
    // ----------------------------------------
    // -- .card
@@ -42168,13 +42361,24 @@ $sides: ("top", "right", "bottom", "left");
 
    $badge-color:                       $primary-color                 !default;
 
+
+   // ----------------------------------------
+   // -- .badge
+   // ----------------------------------------
+
+   $dropdown-min-width:                150px                          !default;
+   $dropdown-height:                   $btn-base-height + 4px         !default;
+   $dropdown-focus-outline:            $accent-color                  !default;
+   $dropdown-main-view-bg:             $light-gray-color              !default;
+   $dropdown-hover-color:              $light-gray-color              !default;
+
   // ----------------------------------------
    // -- .custom variable
    // ---------------------------------------- 
    $primary:                            $accent-color                 !default;
    $input-color:                        #3D464D                     !default;
    $common-image-size:                  12rem                         !default;
-   $disabled-color:                     rgba($accent-color,0.3)         !default;
+   $disabled-color:                     rgba($accent-color,0.3)       !default;
    
 
 
@@ -42655,7 +42859,7 @@ $sides: ("top", "right", "bottom", "left");
 
       // transparent
          // default
-         $btn-trans-bg-color:          #eeeeee                 !default;
+         $btn-trans-bg-color:          transparent               !default;
          $btn-trans-font-color:        $dark-color               !default;
          $btn-trans-icon-color:        $dark-color               !default;
          // hover
@@ -42664,11 +42868,12 @@ $sides: ("top", "right", "bottom", "left");
          $btn-trans-hover-icon-color:  $btn-light-hover-font-color !default;
          // active
          $btn-trans-active-bg-color:   #e5e5e5                     !default;
-         $btn-trans-active-font-color: $btn-light-hover-font-color !default;
-         $btn-trans-active-icon-color: $btn-light-hover-icon-color !default;
+         $btn-trans-active-font-color: $btn-light-hover-font-color   !default;
+         $btn-trans-active-icon-color: $btn-light-hover-icon-color   !default;
 
       //height
       $btn-base-height:                36px               !default;
+      $btn-min-width:                  56px               !default;
 
    // ----------------------------------------
    // -- .card
@@ -43017,13 +43222,24 @@ $sides: ("top", "right", "bottom", "left");
 
    $badge-color:                       $primary-color                 !default;
 
+
+   // ----------------------------------------
+   // -- .badge
+   // ----------------------------------------
+
+   $dropdown-min-width:                150px                          !default;
+   $dropdown-height:                   $btn-base-height + 4px         !default;
+   $dropdown-focus-outline:            $accent-color                  !default;
+   $dropdown-main-view-bg:             $light-gray-color              !default;
+   $dropdown-hover-color:              $light-gray-color              !default;
+
   // ----------------------------------------
    // -- .custom variable
    // ---------------------------------------- 
    $primary:                            $accent-color                 !default;
    $input-color:                        #3D464D                     !default;
    $common-image-size:                  12rem                         !default;
-   $disabled-color:                     rgba($accent-color,0.3)         !default;
+   $disabled-color:                     rgba($accent-color,0.3)       !default;
    
 
 /*
@@ -43495,7 +43711,7 @@ $sides: ("top", "right", "bottom", "left");
 
       // transparent
          // default
-         $btn-trans-bg-color:          #eeeeee                 !default;
+         $btn-trans-bg-color:          transparent               !default;
          $btn-trans-font-color:        $dark-color               !default;
          $btn-trans-icon-color:        $dark-color               !default;
          // hover
@@ -43504,11 +43720,12 @@ $sides: ("top", "right", "bottom", "left");
          $btn-trans-hover-icon-color:  $btn-light-hover-font-color !default;
          // active
          $btn-trans-active-bg-color:   #e5e5e5                     !default;
-         $btn-trans-active-font-color: $btn-light-hover-font-color !default;
-         $btn-trans-active-icon-color: $btn-light-hover-icon-color !default;
+         $btn-trans-active-font-color: $btn-light-hover-font-color   !default;
+         $btn-trans-active-icon-color: $btn-light-hover-icon-color   !default;
 
       //height
       $btn-base-height:                36px               !default;
+      $btn-min-width:                  56px               !default;
 
    // ----------------------------------------
    // -- .card
@@ -43857,13 +44074,24 @@ $sides: ("top", "right", "bottom", "left");
 
    $badge-color:                       $primary-color                 !default;
 
+
+   // ----------------------------------------
+   // -- .badge
+   // ----------------------------------------
+
+   $dropdown-min-width:                150px                          !default;
+   $dropdown-height:                   $btn-base-height + 4px         !default;
+   $dropdown-focus-outline:            $accent-color                  !default;
+   $dropdown-main-view-bg:             $light-gray-color              !default;
+   $dropdown-hover-color:              $light-gray-color              !default;
+
   // ----------------------------------------
    // -- .custom variable
    // ---------------------------------------- 
    $primary:                            $accent-color                 !default;
    $input-color:                        #3D464D                     !default;
    $common-image-size:                  12rem                         !default;
-   $disabled-color:                     rgba($accent-color,0.3)         !default;
+   $disabled-color:                     rgba($accent-color,0.3)       !default;
    
 
 // ----------------------------------------
@@ -44332,7 +44560,7 @@ $sides: ("top", "right", "bottom", "left");
 
       // transparent
          // default
-         $btn-trans-bg-color:          #eeeeee                 !default;
+         $btn-trans-bg-color:          transparent               !default;
          $btn-trans-font-color:        $dark-color               !default;
          $btn-trans-icon-color:        $dark-color               !default;
          // hover
@@ -44341,11 +44569,12 @@ $sides: ("top", "right", "bottom", "left");
          $btn-trans-hover-icon-color:  $btn-light-hover-font-color !default;
          // active
          $btn-trans-active-bg-color:   #e5e5e5                     !default;
-         $btn-trans-active-font-color: $btn-light-hover-font-color !default;
-         $btn-trans-active-icon-color: $btn-light-hover-icon-color !default;
+         $btn-trans-active-font-color: $btn-light-hover-font-color   !default;
+         $btn-trans-active-icon-color: $btn-light-hover-icon-color   !default;
 
       //height
       $btn-base-height:                36px               !default;
+      $btn-min-width:                  56px               !default;
 
    // ----------------------------------------
    // -- .card
@@ -44694,13 +44923,24 @@ $sides: ("top", "right", "bottom", "left");
 
    $badge-color:                       $primary-color                 !default;
 
+
+   // ----------------------------------------
+   // -- .badge
+   // ----------------------------------------
+
+   $dropdown-min-width:                150px                          !default;
+   $dropdown-height:                   $btn-base-height + 4px         !default;
+   $dropdown-focus-outline:            $accent-color                  !default;
+   $dropdown-main-view-bg:             $light-gray-color              !default;
+   $dropdown-hover-color:              $light-gray-color              !default;
+
   // ----------------------------------------
    // -- .custom variable
    // ---------------------------------------- 
    $primary:                            $accent-color                 !default;
    $input-color:                        #3D464D                     !default;
    $common-image-size:                  12rem                         !default;
-   $disabled-color:                     rgba($accent-color,0.3)         !default;
+   $disabled-color:                     rgba($accent-color,0.3)       !default;
    
 
 
@@ -45718,7 +45958,7 @@ a {
 
       // transparent
          // default
-         $btn-trans-bg-color:          #eeeeee                 !default;
+         $btn-trans-bg-color:          transparent               !default;
          $btn-trans-font-color:        $dark-color               !default;
          $btn-trans-icon-color:        $dark-color               !default;
          // hover
@@ -45727,11 +45967,12 @@ a {
          $btn-trans-hover-icon-color:  $btn-light-hover-font-color !default;
          // active
          $btn-trans-active-bg-color:   #e5e5e5                     !default;
-         $btn-trans-active-font-color: $btn-light-hover-font-color !default;
-         $btn-trans-active-icon-color: $btn-light-hover-icon-color !default;
+         $btn-trans-active-font-color: $btn-light-hover-font-color   !default;
+         $btn-trans-active-icon-color: $btn-light-hover-icon-color   !default;
 
       //height
       $btn-base-height:                36px               !default;
+      $btn-min-width:                  56px               !default;
 
    // ----------------------------------------
    // -- .card
@@ -46080,13 +46321,24 @@ a {
 
    $badge-color:                       $primary-color                 !default;
 
+
+   // ----------------------------------------
+   // -- .badge
+   // ----------------------------------------
+
+   $dropdown-min-width:                150px                          !default;
+   $dropdown-height:                   $btn-base-height + 4px         !default;
+   $dropdown-focus-outline:            $accent-color                  !default;
+   $dropdown-main-view-bg:             $light-gray-color              !default;
+   $dropdown-hover-color:              $light-gray-color              !default;
+
   // ----------------------------------------
    // -- .custom variable
    // ---------------------------------------- 
    $primary:                            $accent-color                 !default;
    $input-color:                        #3D464D                     !default;
    $common-image-size:                  12rem                         !default;
-   $disabled-color:                     rgba($accent-color,0.3)         !default;
+   $disabled-color:                     rgba($accent-color,0.3)       !default;
    
 
 /*
@@ -46558,7 +46810,7 @@ a {
 
       // transparent
          // default
-         $btn-trans-bg-color:          #eeeeee                 !default;
+         $btn-trans-bg-color:          transparent               !default;
          $btn-trans-font-color:        $dark-color               !default;
          $btn-trans-icon-color:        $dark-color               !default;
          // hover
@@ -46567,11 +46819,12 @@ a {
          $btn-trans-hover-icon-color:  $btn-light-hover-font-color !default;
          // active
          $btn-trans-active-bg-color:   #e5e5e5                     !default;
-         $btn-trans-active-font-color: $btn-light-hover-font-color !default;
-         $btn-trans-active-icon-color: $btn-light-hover-icon-color !default;
+         $btn-trans-active-font-color: $btn-light-hover-font-color   !default;
+         $btn-trans-active-icon-color: $btn-light-hover-icon-color   !default;
 
       //height
       $btn-base-height:                36px               !default;
+      $btn-min-width:                  56px               !default;
 
    // ----------------------------------------
    // -- .card
@@ -46920,13 +47173,24 @@ a {
 
    $badge-color:                       $primary-color                 !default;
 
+
+   // ----------------------------------------
+   // -- .badge
+   // ----------------------------------------
+
+   $dropdown-min-width:                150px                          !default;
+   $dropdown-height:                   $btn-base-height + 4px         !default;
+   $dropdown-focus-outline:            $accent-color                  !default;
+   $dropdown-main-view-bg:             $light-gray-color              !default;
+   $dropdown-hover-color:              $light-gray-color              !default;
+
   // ----------------------------------------
    // -- .custom variable
    // ---------------------------------------- 
    $primary:                            $accent-color                 !default;
    $input-color:                        #3D464D                     !default;
    $common-image-size:                  12rem                         !default;
-   $disabled-color:                     rgba($accent-color,0.3)         !default;
+   $disabled-color:                     rgba($accent-color,0.3)       !default;
    
 
 // ----------------------------------------
@@ -47395,7 +47659,7 @@ a {
 
       // transparent
          // default
-         $btn-trans-bg-color:          #eeeeee                 !default;
+         $btn-trans-bg-color:          transparent               !default;
          $btn-trans-font-color:        $dark-color               !default;
          $btn-trans-icon-color:        $dark-color               !default;
          // hover
@@ -47404,11 +47668,12 @@ a {
          $btn-trans-hover-icon-color:  $btn-light-hover-font-color !default;
          // active
          $btn-trans-active-bg-color:   #e5e5e5                     !default;
-         $btn-trans-active-font-color: $btn-light-hover-font-color !default;
-         $btn-trans-active-icon-color: $btn-light-hover-icon-color !default;
+         $btn-trans-active-font-color: $btn-light-hover-font-color   !default;
+         $btn-trans-active-icon-color: $btn-light-hover-icon-color   !default;
 
       //height
       $btn-base-height:                36px               !default;
+      $btn-min-width:                  56px               !default;
 
    // ----------------------------------------
    // -- .card
@@ -47757,13 +48022,24 @@ a {
 
    $badge-color:                       $primary-color                 !default;
 
+
+   // ----------------------------------------
+   // -- .badge
+   // ----------------------------------------
+
+   $dropdown-min-width:                150px                          !default;
+   $dropdown-height:                   $btn-base-height + 4px         !default;
+   $dropdown-focus-outline:            $accent-color                  !default;
+   $dropdown-main-view-bg:             $light-gray-color              !default;
+   $dropdown-hover-color:              $light-gray-color              !default;
+
   // ----------------------------------------
    // -- .custom variable
    // ---------------------------------------- 
    $primary:                            $accent-color                 !default;
    $input-color:                        #3D464D                     !default;
    $common-image-size:                  12rem                         !default;
-   $disabled-color:                     rgba($accent-color,0.3)         !default;
+   $disabled-color:                     rgba($accent-color,0.3)       !default;
    
 
 
@@ -48648,7 +48924,7 @@ h6,
 
       // transparent
          // default
-         $btn-trans-bg-color:          #eeeeee                 !default;
+         $btn-trans-bg-color:          transparent               !default;
          $btn-trans-font-color:        $dark-color               !default;
          $btn-trans-icon-color:        $dark-color               !default;
          // hover
@@ -48657,11 +48933,12 @@ h6,
          $btn-trans-hover-icon-color:  $btn-light-hover-font-color !default;
          // active
          $btn-trans-active-bg-color:   #e5e5e5                     !default;
-         $btn-trans-active-font-color: $btn-light-hover-font-color !default;
-         $btn-trans-active-icon-color: $btn-light-hover-icon-color !default;
+         $btn-trans-active-font-color: $btn-light-hover-font-color   !default;
+         $btn-trans-active-icon-color: $btn-light-hover-icon-color   !default;
 
       //height
       $btn-base-height:                36px               !default;
+      $btn-min-width:                  56px               !default;
 
    // ----------------------------------------
    // -- .card
@@ -49010,13 +49287,24 @@ h6,
 
    $badge-color:                       $primary-color                 !default;
 
+
+   // ----------------------------------------
+   // -- .badge
+   // ----------------------------------------
+
+   $dropdown-min-width:                150px                          !default;
+   $dropdown-height:                   $btn-base-height + 4px         !default;
+   $dropdown-focus-outline:            $accent-color                  !default;
+   $dropdown-main-view-bg:             $light-gray-color              !default;
+   $dropdown-hover-color:              $light-gray-color              !default;
+
   // ----------------------------------------
    // -- .custom variable
    // ---------------------------------------- 
    $primary:                            $accent-color                 !default;
    $input-color:                        #3D464D                     !default;
    $common-image-size:                  12rem                         !default;
-   $disabled-color:                     rgba($accent-color,0.3)         !default;
+   $disabled-color:                     rgba($accent-color,0.3)       !default;
    
 
 // ----------------------------------------
@@ -49485,7 +49773,7 @@ h6,
 
       // transparent
          // default
-         $btn-trans-bg-color:          #eeeeee                 !default;
+         $btn-trans-bg-color:          transparent               !default;
          $btn-trans-font-color:        $dark-color               !default;
          $btn-trans-icon-color:        $dark-color               !default;
          // hover
@@ -49494,11 +49782,12 @@ h6,
          $btn-trans-hover-icon-color:  $btn-light-hover-font-color !default;
          // active
          $btn-trans-active-bg-color:   #e5e5e5                     !default;
-         $btn-trans-active-font-color: $btn-light-hover-font-color !default;
-         $btn-trans-active-icon-color: $btn-light-hover-icon-color !default;
+         $btn-trans-active-font-color: $btn-light-hover-font-color   !default;
+         $btn-trans-active-icon-color: $btn-light-hover-icon-color   !default;
 
       //height
       $btn-base-height:                36px               !default;
+      $btn-min-width:                  56px               !default;
 
    // ----------------------------------------
    // -- .card
@@ -49847,13 +50136,24 @@ h6,
 
    $badge-color:                       $primary-color                 !default;
 
+
+   // ----------------------------------------
+   // -- .badge
+   // ----------------------------------------
+
+   $dropdown-min-width:                150px                          !default;
+   $dropdown-height:                   $btn-base-height + 4px         !default;
+   $dropdown-focus-outline:            $accent-color                  !default;
+   $dropdown-main-view-bg:             $light-gray-color              !default;
+   $dropdown-hover-color:              $light-gray-color              !default;
+
   // ----------------------------------------
    // -- .custom variable
    // ---------------------------------------- 
    $primary:                            $accent-color                 !default;
    $input-color:                        #3D464D                     !default;
    $common-image-size:                  12rem                         !default;
-   $disabled-color:                     rgba($accent-color,0.3)         !default;
+   $disabled-color:                     rgba($accent-color,0.3)       !default;
    
 
 
@@ -49898,9 +50198,9 @@ $button-variant: ("outline", "standard", "trans");
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 56px;
     width: fit-content;
     border: none;
+    min-width: $btn-min-width;
     i {
         text-decoration: none !important;
     }
@@ -49931,7 +50231,7 @@ $button-variant: ("outline", "standard", "trans");
     @each $name, $color in $basic-color {
         .d-button__#{$var}-#{$name} {
             @if ($var == "trans") {
-                background-color: transparent;
+                background-color: $btn-trans-bg-color;
                 color: $color;
                 border: none;
                 outline: none;
@@ -49947,12 +50247,12 @@ $button-variant: ("outline", "standard", "trans");
                     background-color: $light-gray-color;
                 }
                 &:disabled {
-                    color: $disabled-color;
+                    color: rgba($color, 0.6);
                 }
             }
             @if ($var == "outline") {
                 border: 1px solid $color;
-                background-color: $light-color;
+                background-color: $btn-outline-bg-color;
                 color: $color;
                 &:active {
                     outline: none !important;
@@ -49969,8 +50269,8 @@ $button-variant: ("outline", "standard", "trans");
                     // color: $light-color;
                 }
                 &:disabled {
-                    border: 1px solid rgba($accent-color, 0.3);
-                    color: rgba($accent-color, 0.3);
+                    border: 1px solid rgba($color, 0.6);
+                    color: rgba($color, 0.6);
                     background-color: $light-color;
                 }
             }
@@ -49992,6 +50292,7 @@ $button-variant: ("outline", "standard", "trans");
                 &:disabled {
                     border: 1px solid rgba($accent-color, 0.3);
                     background-color: $disabled-color !important;
+                    color: set-text-color($disabled-color);
                 }
             }
         }
@@ -50504,7 +50805,7 @@ $button-variant: ("outline", "standard", "trans");
 
       // transparent
          // default
-         $btn-trans-bg-color:          #eeeeee                 !default;
+         $btn-trans-bg-color:          transparent               !default;
          $btn-trans-font-color:        $dark-color               !default;
          $btn-trans-icon-color:        $dark-color               !default;
          // hover
@@ -50513,11 +50814,12 @@ $button-variant: ("outline", "standard", "trans");
          $btn-trans-hover-icon-color:  $btn-light-hover-font-color !default;
          // active
          $btn-trans-active-bg-color:   #e5e5e5                     !default;
-         $btn-trans-active-font-color: $btn-light-hover-font-color !default;
-         $btn-trans-active-icon-color: $btn-light-hover-icon-color !default;
+         $btn-trans-active-font-color: $btn-light-hover-font-color   !default;
+         $btn-trans-active-icon-color: $btn-light-hover-icon-color   !default;
 
       //height
       $btn-base-height:                36px               !default;
+      $btn-min-width:                  56px               !default;
 
    // ----------------------------------------
    // -- .card
@@ -50866,13 +51168,24 @@ $button-variant: ("outline", "standard", "trans");
 
    $badge-color:                       $primary-color                 !default;
 
+
+   // ----------------------------------------
+   // -- .badge
+   // ----------------------------------------
+
+   $dropdown-min-width:                150px                          !default;
+   $dropdown-height:                   $btn-base-height + 4px         !default;
+   $dropdown-focus-outline:            $accent-color                  !default;
+   $dropdown-main-view-bg:             $light-gray-color              !default;
+   $dropdown-hover-color:              $light-gray-color              !default;
+
   // ----------------------------------------
    // -- .custom variable
    // ---------------------------------------- 
    $primary:                            $accent-color                 !default;
    $input-color:                        #3D464D                     !default;
    $common-image-size:                  12rem                         !default;
-   $disabled-color:                     rgba($accent-color,0.3)         !default;
+   $disabled-color:                     rgba($accent-color,0.3)       !default;
    
 
 
@@ -51484,7 +51797,7 @@ $button-variant: ("outline", "standard", "trans");
 
       // transparent
          // default
-         $btn-trans-bg-color:          #eeeeee                 !default;
+         $btn-trans-bg-color:          transparent               !default;
          $btn-trans-font-color:        $dark-color               !default;
          $btn-trans-icon-color:        $dark-color               !default;
          // hover
@@ -51493,11 +51806,12 @@ $button-variant: ("outline", "standard", "trans");
          $btn-trans-hover-icon-color:  $btn-light-hover-font-color !default;
          // active
          $btn-trans-active-bg-color:   #e5e5e5                     !default;
-         $btn-trans-active-font-color: $btn-light-hover-font-color !default;
-         $btn-trans-active-icon-color: $btn-light-hover-icon-color !default;
+         $btn-trans-active-font-color: $btn-light-hover-font-color   !default;
+         $btn-trans-active-icon-color: $btn-light-hover-icon-color   !default;
 
       //height
       $btn-base-height:                36px               !default;
+      $btn-min-width:                  56px               !default;
 
    // ----------------------------------------
    // -- .card
@@ -51846,13 +52160,24 @@ $button-variant: ("outline", "standard", "trans");
 
    $badge-color:                       $primary-color                 !default;
 
+
+   // ----------------------------------------
+   // -- .badge
+   // ----------------------------------------
+
+   $dropdown-min-width:                150px                          !default;
+   $dropdown-height:                   $btn-base-height + 4px         !default;
+   $dropdown-focus-outline:            $accent-color                  !default;
+   $dropdown-main-view-bg:             $light-gray-color              !default;
+   $dropdown-hover-color:              $light-gray-color              !default;
+
   // ----------------------------------------
    // -- .custom variable
    // ---------------------------------------- 
    $primary:                            $accent-color                 !default;
    $input-color:                        #3D464D                     !default;
    $common-image-size:                  12rem                         !default;
-   $disabled-color:                     rgba($accent-color,0.3)         !default;
+   $disabled-color:                     rgba($accent-color,0.3)       !default;
    
 
 
@@ -52359,7 +52684,7 @@ $avatar-variant: ("rounded", "square");
 
       // transparent
          // default
-         $btn-trans-bg-color:          #eeeeee                 !default;
+         $btn-trans-bg-color:          transparent               !default;
          $btn-trans-font-color:        $dark-color               !default;
          $btn-trans-icon-color:        $dark-color               !default;
          // hover
@@ -52368,11 +52693,12 @@ $avatar-variant: ("rounded", "square");
          $btn-trans-hover-icon-color:  $btn-light-hover-font-color !default;
          // active
          $btn-trans-active-bg-color:   #e5e5e5                     !default;
-         $btn-trans-active-font-color: $btn-light-hover-font-color !default;
-         $btn-trans-active-icon-color: $btn-light-hover-icon-color !default;
+         $btn-trans-active-font-color: $btn-light-hover-font-color   !default;
+         $btn-trans-active-icon-color: $btn-light-hover-icon-color   !default;
 
       //height
       $btn-base-height:                36px               !default;
+      $btn-min-width:                  56px               !default;
 
    // ----------------------------------------
    // -- .card
@@ -52721,13 +53047,24 @@ $avatar-variant: ("rounded", "square");
 
    $badge-color:                       $primary-color                 !default;
 
+
+   // ----------------------------------------
+   // -- .badge
+   // ----------------------------------------
+
+   $dropdown-min-width:                150px                          !default;
+   $dropdown-height:                   $btn-base-height + 4px         !default;
+   $dropdown-focus-outline:            $accent-color                  !default;
+   $dropdown-main-view-bg:             $light-gray-color              !default;
+   $dropdown-hover-color:              $light-gray-color              !default;
+
   // ----------------------------------------
    // -- .custom variable
    // ---------------------------------------- 
    $primary:                            $accent-color                 !default;
    $input-color:                        #3D464D                     !default;
    $common-image-size:                  12rem                         !default;
-   $disabled-color:                     rgba($accent-color,0.3)         !default;
+   $disabled-color:                     rgba($accent-color,0.3)       !default;
    
 
 
@@ -53243,7 +53580,7 @@ $avatar-variant: ("rounded", "square");
 
       // transparent
          // default
-         $btn-trans-bg-color:          #eeeeee                 !default;
+         $btn-trans-bg-color:          transparent               !default;
          $btn-trans-font-color:        $dark-color               !default;
          $btn-trans-icon-color:        $dark-color               !default;
          // hover
@@ -53252,11 +53589,12 @@ $avatar-variant: ("rounded", "square");
          $btn-trans-hover-icon-color:  $btn-light-hover-font-color !default;
          // active
          $btn-trans-active-bg-color:   #e5e5e5                     !default;
-         $btn-trans-active-font-color: $btn-light-hover-font-color !default;
-         $btn-trans-active-icon-color: $btn-light-hover-icon-color !default;
+         $btn-trans-active-font-color: $btn-light-hover-font-color   !default;
+         $btn-trans-active-icon-color: $btn-light-hover-icon-color   !default;
 
       //height
       $btn-base-height:                36px               !default;
+      $btn-min-width:                  56px               !default;
 
    // ----------------------------------------
    // -- .card
@@ -53605,13 +53943,24 @@ $avatar-variant: ("rounded", "square");
 
    $badge-color:                       $primary-color                 !default;
 
+
+   // ----------------------------------------
+   // -- .badge
+   // ----------------------------------------
+
+   $dropdown-min-width:                150px                          !default;
+   $dropdown-height:                   $btn-base-height + 4px         !default;
+   $dropdown-focus-outline:            $accent-color                  !default;
+   $dropdown-main-view-bg:             $light-gray-color              !default;
+   $dropdown-hover-color:              $light-gray-color              !default;
+
   // ----------------------------------------
    // -- .custom variable
    // ---------------------------------------- 
    $primary:                            $accent-color                 !default;
    $input-color:                        #3D464D                     !default;
    $common-image-size:                  12rem                         !default;
-   $disabled-color:                     rgba($accent-color,0.3)         !default;
+   $disabled-color:                     rgba($accent-color,0.3)       !default;
    
 
 
@@ -54243,7 +54592,7 @@ $avatar-variant: ("rounded", "square");
 
       // transparent
          // default
-         $btn-trans-bg-color:          #eeeeee                 !default;
+         $btn-trans-bg-color:          transparent               !default;
          $btn-trans-font-color:        $dark-color               !default;
          $btn-trans-icon-color:        $dark-color               !default;
          // hover
@@ -54252,11 +54601,12 @@ $avatar-variant: ("rounded", "square");
          $btn-trans-hover-icon-color:  $btn-light-hover-font-color !default;
          // active
          $btn-trans-active-bg-color:   #e5e5e5                     !default;
-         $btn-trans-active-font-color: $btn-light-hover-font-color !default;
-         $btn-trans-active-icon-color: $btn-light-hover-icon-color !default;
+         $btn-trans-active-font-color: $btn-light-hover-font-color   !default;
+         $btn-trans-active-icon-color: $btn-light-hover-icon-color   !default;
 
       //height
       $btn-base-height:                36px               !default;
+      $btn-min-width:                  56px               !default;
 
    // ----------------------------------------
    // -- .card
@@ -54605,13 +54955,24 @@ $avatar-variant: ("rounded", "square");
 
    $badge-color:                       $primary-color                 !default;
 
+
+   // ----------------------------------------
+   // -- .badge
+   // ----------------------------------------
+
+   $dropdown-min-width:                150px                          !default;
+   $dropdown-height:                   $btn-base-height + 4px         !default;
+   $dropdown-focus-outline:            $accent-color                  !default;
+   $dropdown-main-view-bg:             $light-gray-color              !default;
+   $dropdown-hover-color:              $light-gray-color              !default;
+
   // ----------------------------------------
    // -- .custom variable
    // ---------------------------------------- 
    $primary:                            $accent-color                 !default;
    $input-color:                        #3D464D                     !default;
    $common-image-size:                  12rem                         !default;
-   $disabled-color:                     rgba($accent-color,0.3)         !default;
+   $disabled-color:                     rgba($accent-color,0.3)       !default;
    
 
 /*
@@ -55083,7 +55444,7 @@ $avatar-variant: ("rounded", "square");
 
       // transparent
          // default
-         $btn-trans-bg-color:          #eeeeee                 !default;
+         $btn-trans-bg-color:          transparent               !default;
          $btn-trans-font-color:        $dark-color               !default;
          $btn-trans-icon-color:        $dark-color               !default;
          // hover
@@ -55092,11 +55453,12 @@ $avatar-variant: ("rounded", "square");
          $btn-trans-hover-icon-color:  $btn-light-hover-font-color !default;
          // active
          $btn-trans-active-bg-color:   #e5e5e5                     !default;
-         $btn-trans-active-font-color: $btn-light-hover-font-color !default;
-         $btn-trans-active-icon-color: $btn-light-hover-icon-color !default;
+         $btn-trans-active-font-color: $btn-light-hover-font-color   !default;
+         $btn-trans-active-icon-color: $btn-light-hover-icon-color   !default;
 
       //height
       $btn-base-height:                36px               !default;
+      $btn-min-width:                  56px               !default;
 
    // ----------------------------------------
    // -- .card
@@ -55445,13 +55807,24 @@ $avatar-variant: ("rounded", "square");
 
    $badge-color:                       $primary-color                 !default;
 
+
+   // ----------------------------------------
+   // -- .badge
+   // ----------------------------------------
+
+   $dropdown-min-width:                150px                          !default;
+   $dropdown-height:                   $btn-base-height + 4px         !default;
+   $dropdown-focus-outline:            $accent-color                  !default;
+   $dropdown-main-view-bg:             $light-gray-color              !default;
+   $dropdown-hover-color:              $light-gray-color              !default;
+
   // ----------------------------------------
    // -- .custom variable
    // ---------------------------------------- 
    $primary:                            $accent-color                 !default;
    $input-color:                        #3D464D                     !default;
    $common-image-size:                  12rem                         !default;
-   $disabled-color:                     rgba($accent-color,0.3)         !default;
+   $disabled-color:                     rgba($accent-color,0.3)       !default;
    
 
 // ----------------------------------------
@@ -55920,7 +56293,7 @@ $avatar-variant: ("rounded", "square");
 
       // transparent
          // default
-         $btn-trans-bg-color:          #eeeeee                 !default;
+         $btn-trans-bg-color:          transparent               !default;
          $btn-trans-font-color:        $dark-color               !default;
          $btn-trans-icon-color:        $dark-color               !default;
          // hover
@@ -55929,11 +56302,12 @@ $avatar-variant: ("rounded", "square");
          $btn-trans-hover-icon-color:  $btn-light-hover-font-color !default;
          // active
          $btn-trans-active-bg-color:   #e5e5e5                     !default;
-         $btn-trans-active-font-color: $btn-light-hover-font-color !default;
-         $btn-trans-active-icon-color: $btn-light-hover-icon-color !default;
+         $btn-trans-active-font-color: $btn-light-hover-font-color   !default;
+         $btn-trans-active-icon-color: $btn-light-hover-icon-color   !default;
 
       //height
       $btn-base-height:                36px               !default;
+      $btn-min-width:                  56px               !default;
 
    // ----------------------------------------
    // -- .card
@@ -56282,13 +56656,24 @@ $avatar-variant: ("rounded", "square");
 
    $badge-color:                       $primary-color                 !default;
 
+
+   // ----------------------------------------
+   // -- .badge
+   // ----------------------------------------
+
+   $dropdown-min-width:                150px                          !default;
+   $dropdown-height:                   $btn-base-height + 4px         !default;
+   $dropdown-focus-outline:            $accent-color                  !default;
+   $dropdown-main-view-bg:             $light-gray-color              !default;
+   $dropdown-hover-color:              $light-gray-color              !default;
+
   // ----------------------------------------
    // -- .custom variable
    // ---------------------------------------- 
    $primary:                            $accent-color                 !default;
    $input-color:                        #3D464D                     !default;
    $common-image-size:                  12rem                         !default;
-   $disabled-color:                     rgba($accent-color,0.3)         !default;
+   $disabled-color:                     rgba($accent-color,0.3)       !default;
    
 
 
@@ -57124,7 +57509,7 @@ h6,
 
       // transparent
          // default
-         $btn-trans-bg-color:          #eeeeee                 !default;
+         $btn-trans-bg-color:          transparent               !default;
          $btn-trans-font-color:        $dark-color               !default;
          $btn-trans-icon-color:        $dark-color               !default;
          // hover
@@ -57133,11 +57518,12 @@ h6,
          $btn-trans-hover-icon-color:  $btn-light-hover-font-color !default;
          // active
          $btn-trans-active-bg-color:   #e5e5e5                     !default;
-         $btn-trans-active-font-color: $btn-light-hover-font-color !default;
-         $btn-trans-active-icon-color: $btn-light-hover-icon-color !default;
+         $btn-trans-active-font-color: $btn-light-hover-font-color   !default;
+         $btn-trans-active-icon-color: $btn-light-hover-icon-color   !default;
 
       //height
       $btn-base-height:                36px               !default;
+      $btn-min-width:                  56px               !default;
 
    // ----------------------------------------
    // -- .card
@@ -57486,13 +57872,24 @@ h6,
 
    $badge-color:                       $primary-color                 !default;
 
+
+   // ----------------------------------------
+   // -- .badge
+   // ----------------------------------------
+
+   $dropdown-min-width:                150px                          !default;
+   $dropdown-height:                   $btn-base-height + 4px         !default;
+   $dropdown-focus-outline:            $accent-color                  !default;
+   $dropdown-main-view-bg:             $light-gray-color              !default;
+   $dropdown-hover-color:              $light-gray-color              !default;
+
   // ----------------------------------------
    // -- .custom variable
    // ---------------------------------------- 
    $primary:                            $accent-color                 !default;
    $input-color:                        #3D464D                     !default;
    $common-image-size:                  12rem                         !default;
-   $disabled-color:                     rgba($accent-color,0.3)         !default;
+   $disabled-color:                     rgba($accent-color,0.3)       !default;
    
 
 /*
@@ -57964,7 +58361,7 @@ h6,
 
       // transparent
          // default
-         $btn-trans-bg-color:          #eeeeee                 !default;
+         $btn-trans-bg-color:          transparent               !default;
          $btn-trans-font-color:        $dark-color               !default;
          $btn-trans-icon-color:        $dark-color               !default;
          // hover
@@ -57973,11 +58370,12 @@ h6,
          $btn-trans-hover-icon-color:  $btn-light-hover-font-color !default;
          // active
          $btn-trans-active-bg-color:   #e5e5e5                     !default;
-         $btn-trans-active-font-color: $btn-light-hover-font-color !default;
-         $btn-trans-active-icon-color: $btn-light-hover-icon-color !default;
+         $btn-trans-active-font-color: $btn-light-hover-font-color   !default;
+         $btn-trans-active-icon-color: $btn-light-hover-icon-color   !default;
 
       //height
       $btn-base-height:                36px               !default;
+      $btn-min-width:                  56px               !default;
 
    // ----------------------------------------
    // -- .card
@@ -58326,13 +58724,24 @@ h6,
 
    $badge-color:                       $primary-color                 !default;
 
+
+   // ----------------------------------------
+   // -- .badge
+   // ----------------------------------------
+
+   $dropdown-min-width:                150px                          !default;
+   $dropdown-height:                   $btn-base-height + 4px         !default;
+   $dropdown-focus-outline:            $accent-color                  !default;
+   $dropdown-main-view-bg:             $light-gray-color              !default;
+   $dropdown-hover-color:              $light-gray-color              !default;
+
   // ----------------------------------------
    // -- .custom variable
    // ---------------------------------------- 
    $primary:                            $accent-color                 !default;
    $input-color:                        #3D464D                     !default;
    $common-image-size:                  12rem                         !default;
-   $disabled-color:                     rgba($accent-color,0.3)         !default;
+   $disabled-color:                     rgba($accent-color,0.3)       !default;
    
 
 // ----------------------------------------
@@ -58801,7 +59210,7 @@ h6,
 
       // transparent
          // default
-         $btn-trans-bg-color:          #eeeeee                 !default;
+         $btn-trans-bg-color:          transparent               !default;
          $btn-trans-font-color:        $dark-color               !default;
          $btn-trans-icon-color:        $dark-color               !default;
          // hover
@@ -58810,11 +59219,12 @@ h6,
          $btn-trans-hover-icon-color:  $btn-light-hover-font-color !default;
          // active
          $btn-trans-active-bg-color:   #e5e5e5                     !default;
-         $btn-trans-active-font-color: $btn-light-hover-font-color !default;
-         $btn-trans-active-icon-color: $btn-light-hover-icon-color !default;
+         $btn-trans-active-font-color: $btn-light-hover-font-color   !default;
+         $btn-trans-active-icon-color: $btn-light-hover-icon-color   !default;
 
       //height
       $btn-base-height:                36px               !default;
+      $btn-min-width:                  56px               !default;
 
    // ----------------------------------------
    // -- .card
@@ -59163,13 +59573,24 @@ h6,
 
    $badge-color:                       $primary-color                 !default;
 
+
+   // ----------------------------------------
+   // -- .badge
+   // ----------------------------------------
+
+   $dropdown-min-width:                150px                          !default;
+   $dropdown-height:                   $btn-base-height + 4px         !default;
+   $dropdown-focus-outline:            $accent-color                  !default;
+   $dropdown-main-view-bg:             $light-gray-color              !default;
+   $dropdown-hover-color:              $light-gray-color              !default;
+
   // ----------------------------------------
    // -- .custom variable
    // ---------------------------------------- 
    $primary:                            $accent-color                 !default;
    $input-color:                        #3D464D                     !default;
    $common-image-size:                  12rem                         !default;
-   $disabled-color:                     rgba($accent-color,0.3)         !default;
+   $disabled-color:                     rgba($accent-color,0.3)       !default;
    
 
 
@@ -60054,7 +60475,7 @@ h6,
 
       // transparent
          // default
-         $btn-trans-bg-color:          #eeeeee                 !default;
+         $btn-trans-bg-color:          transparent               !default;
          $btn-trans-font-color:        $dark-color               !default;
          $btn-trans-icon-color:        $dark-color               !default;
          // hover
@@ -60063,11 +60484,12 @@ h6,
          $btn-trans-hover-icon-color:  $btn-light-hover-font-color !default;
          // active
          $btn-trans-active-bg-color:   #e5e5e5                     !default;
-         $btn-trans-active-font-color: $btn-light-hover-font-color !default;
-         $btn-trans-active-icon-color: $btn-light-hover-icon-color !default;
+         $btn-trans-active-font-color: $btn-light-hover-font-color   !default;
+         $btn-trans-active-icon-color: $btn-light-hover-icon-color   !default;
 
       //height
       $btn-base-height:                36px               !default;
+      $btn-min-width:                  56px               !default;
 
    // ----------------------------------------
    // -- .card
@@ -60416,13 +60838,24 @@ h6,
 
    $badge-color:                       $primary-color                 !default;
 
+
+   // ----------------------------------------
+   // -- .badge
+   // ----------------------------------------
+
+   $dropdown-min-width:                150px                          !default;
+   $dropdown-height:                   $btn-base-height + 4px         !default;
+   $dropdown-focus-outline:            $accent-color                  !default;
+   $dropdown-main-view-bg:             $light-gray-color              !default;
+   $dropdown-hover-color:              $light-gray-color              !default;
+
   // ----------------------------------------
    // -- .custom variable
    // ---------------------------------------- 
    $primary:                            $accent-color                 !default;
    $input-color:                        #3D464D                     !default;
    $common-image-size:                  12rem                         !default;
-   $disabled-color:                     rgba($accent-color,0.3)         !default;
+   $disabled-color:                     rgba($accent-color,0.3)       !default;
    
 
 // ----------------------------------------
@@ -60891,7 +61324,7 @@ h6,
 
       // transparent
          // default
-         $btn-trans-bg-color:          #eeeeee                 !default;
+         $btn-trans-bg-color:          transparent               !default;
          $btn-trans-font-color:        $dark-color               !default;
          $btn-trans-icon-color:        $dark-color               !default;
          // hover
@@ -60900,11 +61333,12 @@ h6,
          $btn-trans-hover-icon-color:  $btn-light-hover-font-color !default;
          // active
          $btn-trans-active-bg-color:   #e5e5e5                     !default;
-         $btn-trans-active-font-color: $btn-light-hover-font-color !default;
-         $btn-trans-active-icon-color: $btn-light-hover-icon-color !default;
+         $btn-trans-active-font-color: $btn-light-hover-font-color   !default;
+         $btn-trans-active-icon-color: $btn-light-hover-icon-color   !default;
 
       //height
       $btn-base-height:                36px               !default;
+      $btn-min-width:                  56px               !default;
 
    // ----------------------------------------
    // -- .card
@@ -61253,13 +61687,24 @@ h6,
 
    $badge-color:                       $primary-color                 !default;
 
+
+   // ----------------------------------------
+   // -- .badge
+   // ----------------------------------------
+
+   $dropdown-min-width:                150px                          !default;
+   $dropdown-height:                   $btn-base-height + 4px         !default;
+   $dropdown-focus-outline:            $accent-color                  !default;
+   $dropdown-main-view-bg:             $light-gray-color              !default;
+   $dropdown-hover-color:              $light-gray-color              !default;
+
   // ----------------------------------------
    // -- .custom variable
    // ---------------------------------------- 
    $primary:                            $accent-color                 !default;
    $input-color:                        #3D464D                     !default;
    $common-image-size:                  12rem                         !default;
-   $disabled-color:                     rgba($accent-color,0.3)         !default;
+   $disabled-color:                     rgba($accent-color,0.3)       !default;
    
 
 
@@ -61791,7 +62236,7 @@ h6,
 
       // transparent
          // default
-         $btn-trans-bg-color:          #eeeeee                 !default;
+         $btn-trans-bg-color:          transparent               !default;
          $btn-trans-font-color:        $dark-color               !default;
          $btn-trans-icon-color:        $dark-color               !default;
          // hover
@@ -61800,11 +62245,12 @@ h6,
          $btn-trans-hover-icon-color:  $btn-light-hover-font-color !default;
          // active
          $btn-trans-active-bg-color:   #e5e5e5                     !default;
-         $btn-trans-active-font-color: $btn-light-hover-font-color !default;
-         $btn-trans-active-icon-color: $btn-light-hover-icon-color !default;
+         $btn-trans-active-font-color: $btn-light-hover-font-color   !default;
+         $btn-trans-active-icon-color: $btn-light-hover-icon-color   !default;
 
       //height
       $btn-base-height:                36px               !default;
+      $btn-min-width:                  56px               !default;
 
    // ----------------------------------------
    // -- .card
@@ -62153,13 +62599,24 @@ h6,
 
    $badge-color:                       $primary-color                 !default;
 
+
+   // ----------------------------------------
+   // -- .badge
+   // ----------------------------------------
+
+   $dropdown-min-width:                150px                          !default;
+   $dropdown-height:                   $btn-base-height + 4px         !default;
+   $dropdown-focus-outline:            $accent-color                  !default;
+   $dropdown-main-view-bg:             $light-gray-color              !default;
+   $dropdown-hover-color:              $light-gray-color              !default;
+
   // ----------------------------------------
    // -- .custom variable
    // ---------------------------------------- 
    $primary:                            $accent-color                 !default;
    $input-color:                        #3D464D                     !default;
    $common-image-size:                  12rem                         !default;
-   $disabled-color:                     rgba($accent-color,0.3)         !default;
+   $disabled-color:                     rgba($accent-color,0.3)       !default;
    
 
 
@@ -62780,7 +63237,7 @@ h6,
 
       // transparent
          // default
-         $btn-trans-bg-color:          #eeeeee                 !default;
+         $btn-trans-bg-color:          transparent               !default;
          $btn-trans-font-color:        $dark-color               !default;
          $btn-trans-icon-color:        $dark-color               !default;
          // hover
@@ -62789,11 +63246,12 @@ h6,
          $btn-trans-hover-icon-color:  $btn-light-hover-font-color !default;
          // active
          $btn-trans-active-bg-color:   #e5e5e5                     !default;
-         $btn-trans-active-font-color: $btn-light-hover-font-color !default;
-         $btn-trans-active-icon-color: $btn-light-hover-icon-color !default;
+         $btn-trans-active-font-color: $btn-light-hover-font-color   !default;
+         $btn-trans-active-icon-color: $btn-light-hover-icon-color   !default;
 
       //height
       $btn-base-height:                36px               !default;
+      $btn-min-width:                  56px               !default;
 
    // ----------------------------------------
    // -- .card
@@ -63142,13 +63600,24 @@ h6,
 
    $badge-color:                       $primary-color                 !default;
 
+
+   // ----------------------------------------
+   // -- .badge
+   // ----------------------------------------
+
+   $dropdown-min-width:                150px                          !default;
+   $dropdown-height:                   $btn-base-height + 4px         !default;
+   $dropdown-focus-outline:            $accent-color                  !default;
+   $dropdown-main-view-bg:             $light-gray-color              !default;
+   $dropdown-hover-color:              $light-gray-color              !default;
+
   // ----------------------------------------
    // -- .custom variable
    // ---------------------------------------- 
    $primary:                            $accent-color                 !default;
    $input-color:                        #3D464D                     !default;
    $common-image-size:                  12rem                         !default;
-   $disabled-color:                     rgba($accent-color,0.3)         !default;
+   $disabled-color:                     rgba($accent-color,0.3)       !default;
    
 
 
@@ -63158,7 +63627,7 @@ h6,
     overflow: visible;
     button:active,
     button:focus {
-        border: 1px solid $accent-color !important;
+        border: 1px solid $dropdown-focus-outline !important;
     }
 }
 
@@ -63177,8 +63646,9 @@ h6,
     list-style: none;
 
     transition: all 0.3s ease-in;
-    padding: 16px;
-    min-width: 150px;
+    padding: 16px 0px;
+    min-width: $dropdown-min-width;
+    width: 100%;
 
     .d-dropdown-menu__item-with-submenu {
         position: relative !important;
@@ -63192,7 +63662,6 @@ h6,
         &:hover {
             .d-dropdown-menu__container {
                 position: absolute;
-
                 opacity: 1;
                 box-shadow: $card-container-box-shadow;
             }
@@ -63201,18 +63670,18 @@ h6,
 }
 
 .d-dropdown-menu__container-right-edge {
-    left: -200%;
+    left: auto;
     top: auto;
-    right: auto;
+    right: 0;
     bottom: auto;
 
     .d-dropdown-menu__item-with-submenu {
         &:hover {
             .d-dropdown-menu__container {
                 top: 0;
-                right: auto;
                 bottom: auto;
-                left: -125%;
+                left: auto;
+                right: 100%;
             }
         }
     }
@@ -63223,37 +63692,36 @@ h6,
     top: auto;
     right: auto;
     bottom: auto;
-
     .d-dropdown-menu__item-with-submenu {
         &:hover {
             .d-dropdown-menu__container {
                 top: 0;
-                right: -125%;
                 bottom: auto;
                 left: auto;
+                right: -100%;
             }
         }
     }
 }
 
 .d-dropdown-menu__item {
-    padding: 8px 8px;
+    padding: 16px 8px;
     width: 100%;
     display: flex;
     align-items: center;
-    height: 40px;
-    // justify-content: center;
+    height: $dropdown-height;
     &:hover {
         cursor: pointer;
-        background-color: $light-gray-color;
+        background-color: $dropdown-hover-color;
     }
 }
 
 .d-dropdown-menu__item-main-view {
     width: fit-content;
-    background-color: $light-gray-color;
-    height: 40px;
-    padding: 0px 10px;
+    min-width: $dropdown-min-width;
+    background-color: $dropdown-main-view-bg;
+    height: $dropdown-height;
+    padding: 0px 8px;
     .d-dropdown-menu__item-label {
         font-weight: bold;
         margin: 0 10px;
@@ -63731,7 +64199,7 @@ h6,
 
       // transparent
          // default
-         $btn-trans-bg-color:          #eeeeee                 !default;
+         $btn-trans-bg-color:          transparent               !default;
          $btn-trans-font-color:        $dark-color               !default;
          $btn-trans-icon-color:        $dark-color               !default;
          // hover
@@ -63740,11 +64208,12 @@ h6,
          $btn-trans-hover-icon-color:  $btn-light-hover-font-color !default;
          // active
          $btn-trans-active-bg-color:   #e5e5e5                     !default;
-         $btn-trans-active-font-color: $btn-light-hover-font-color !default;
-         $btn-trans-active-icon-color: $btn-light-hover-icon-color !default;
+         $btn-trans-active-font-color: $btn-light-hover-font-color   !default;
+         $btn-trans-active-icon-color: $btn-light-hover-icon-color   !default;
 
       //height
       $btn-base-height:                36px               !default;
+      $btn-min-width:                  56px               !default;
 
    // ----------------------------------------
    // -- .card
@@ -64093,13 +64562,24 @@ h6,
 
    $badge-color:                       $primary-color                 !default;
 
+
+   // ----------------------------------------
+   // -- .badge
+   // ----------------------------------------
+
+   $dropdown-min-width:                150px                          !default;
+   $dropdown-height:                   $btn-base-height + 4px         !default;
+   $dropdown-focus-outline:            $accent-color                  !default;
+   $dropdown-main-view-bg:             $light-gray-color              !default;
+   $dropdown-hover-color:              $light-gray-color              !default;
+
   // ----------------------------------------
    // -- .custom variable
    // ---------------------------------------- 
    $primary:                            $accent-color                 !default;
    $input-color:                        #3D464D                     !default;
    $common-image-size:                  12rem                         !default;
-   $disabled-color:                     rgba($accent-color,0.3)         !default;
+   $disabled-color:                     rgba($accent-color,0.3)       !default;
    
 
 /*
@@ -64571,7 +65051,7 @@ h6,
 
       // transparent
          // default
-         $btn-trans-bg-color:          #eeeeee                 !default;
+         $btn-trans-bg-color:          transparent               !default;
          $btn-trans-font-color:        $dark-color               !default;
          $btn-trans-icon-color:        $dark-color               !default;
          // hover
@@ -64580,11 +65060,12 @@ h6,
          $btn-trans-hover-icon-color:  $btn-light-hover-font-color !default;
          // active
          $btn-trans-active-bg-color:   #e5e5e5                     !default;
-         $btn-trans-active-font-color: $btn-light-hover-font-color !default;
-         $btn-trans-active-icon-color: $btn-light-hover-icon-color !default;
+         $btn-trans-active-font-color: $btn-light-hover-font-color   !default;
+         $btn-trans-active-icon-color: $btn-light-hover-icon-color   !default;
 
       //height
       $btn-base-height:                36px               !default;
+      $btn-min-width:                  56px               !default;
 
    // ----------------------------------------
    // -- .card
@@ -64933,13 +65414,24 @@ h6,
 
    $badge-color:                       $primary-color                 !default;
 
+
+   // ----------------------------------------
+   // -- .badge
+   // ----------------------------------------
+
+   $dropdown-min-width:                150px                          !default;
+   $dropdown-height:                   $btn-base-height + 4px         !default;
+   $dropdown-focus-outline:            $accent-color                  !default;
+   $dropdown-main-view-bg:             $light-gray-color              !default;
+   $dropdown-hover-color:              $light-gray-color              !default;
+
   // ----------------------------------------
    // -- .custom variable
    // ---------------------------------------- 
    $primary:                            $accent-color                 !default;
    $input-color:                        #3D464D                     !default;
    $common-image-size:                  12rem                         !default;
-   $disabled-color:                     rgba($accent-color,0.3)         !default;
+   $disabled-color:                     rgba($accent-color,0.3)       !default;
    
 
 // ----------------------------------------
@@ -65408,7 +65900,7 @@ h6,
 
       // transparent
          // default
-         $btn-trans-bg-color:          #eeeeee                 !default;
+         $btn-trans-bg-color:          transparent               !default;
          $btn-trans-font-color:        $dark-color               !default;
          $btn-trans-icon-color:        $dark-color               !default;
          // hover
@@ -65417,11 +65909,12 @@ h6,
          $btn-trans-hover-icon-color:  $btn-light-hover-font-color !default;
          // active
          $btn-trans-active-bg-color:   #e5e5e5                     !default;
-         $btn-trans-active-font-color: $btn-light-hover-font-color !default;
-         $btn-trans-active-icon-color: $btn-light-hover-icon-color !default;
+         $btn-trans-active-font-color: $btn-light-hover-font-color   !default;
+         $btn-trans-active-icon-color: $btn-light-hover-icon-color   !default;
 
       //height
       $btn-base-height:                36px               !default;
+      $btn-min-width:                  56px               !default;
 
    // ----------------------------------------
    // -- .card
@@ -65770,13 +66263,24 @@ h6,
 
    $badge-color:                       $primary-color                 !default;
 
+
+   // ----------------------------------------
+   // -- .badge
+   // ----------------------------------------
+
+   $dropdown-min-width:                150px                          !default;
+   $dropdown-height:                   $btn-base-height + 4px         !default;
+   $dropdown-focus-outline:            $accent-color                  !default;
+   $dropdown-main-view-bg:             $light-gray-color              !default;
+   $dropdown-hover-color:              $light-gray-color              !default;
+
   // ----------------------------------------
    // -- .custom variable
    // ---------------------------------------- 
    $primary:                            $accent-color                 !default;
    $input-color:                        #3D464D                     !default;
    $common-image-size:                  12rem                         !default;
-   $disabled-color:                     rgba($accent-color,0.3)         !default;
+   $disabled-color:                     rgba($accent-color,0.3)       !default;
    
 
 
@@ -66541,7 +67045,7 @@ h6,
 
       // transparent
          // default
-         $btn-trans-bg-color:          #eeeeee                 !default;
+         $btn-trans-bg-color:          transparent               !default;
          $btn-trans-font-color:        $dark-color               !default;
          $btn-trans-icon-color:        $dark-color               !default;
          // hover
@@ -66550,11 +67054,12 @@ h6,
          $btn-trans-hover-icon-color:  $btn-light-hover-font-color !default;
          // active
          $btn-trans-active-bg-color:   #e5e5e5                     !default;
-         $btn-trans-active-font-color: $btn-light-hover-font-color !default;
-         $btn-trans-active-icon-color: $btn-light-hover-icon-color !default;
+         $btn-trans-active-font-color: $btn-light-hover-font-color   !default;
+         $btn-trans-active-icon-color: $btn-light-hover-icon-color   !default;
 
       //height
       $btn-base-height:                36px               !default;
+      $btn-min-width:                  56px               !default;
 
    // ----------------------------------------
    // -- .card
@@ -66903,13 +67408,24 @@ h6,
 
    $badge-color:                       $primary-color                 !default;
 
+
+   // ----------------------------------------
+   // -- .badge
+   // ----------------------------------------
+
+   $dropdown-min-width:                150px                          !default;
+   $dropdown-height:                   $btn-base-height + 4px         !default;
+   $dropdown-focus-outline:            $accent-color                  !default;
+   $dropdown-main-view-bg:             $light-gray-color              !default;
+   $dropdown-hover-color:              $light-gray-color              !default;
+
   // ----------------------------------------
    // -- .custom variable
    // ---------------------------------------- 
    $primary:                            $accent-color                 !default;
    $input-color:                        #3D464D                     !default;
    $common-image-size:                  12rem                         !default;
-   $disabled-color:                     rgba($accent-color,0.3)         !default;
+   $disabled-color:                     rgba($accent-color,0.3)       !default;
    
 
 
@@ -67473,7 +67989,7 @@ h6,
 
       // transparent
          // default
-         $btn-trans-bg-color:          #eeeeee                 !default;
+         $btn-trans-bg-color:          transparent               !default;
          $btn-trans-font-color:        $dark-color               !default;
          $btn-trans-icon-color:        $dark-color               !default;
          // hover
@@ -67482,11 +67998,12 @@ h6,
          $btn-trans-hover-icon-color:  $btn-light-hover-font-color !default;
          // active
          $btn-trans-active-bg-color:   #e5e5e5                     !default;
-         $btn-trans-active-font-color: $btn-light-hover-font-color !default;
-         $btn-trans-active-icon-color: $btn-light-hover-icon-color !default;
+         $btn-trans-active-font-color: $btn-light-hover-font-color   !default;
+         $btn-trans-active-icon-color: $btn-light-hover-icon-color   !default;
 
       //height
       $btn-base-height:                36px               !default;
+      $btn-min-width:                  56px               !default;
 
    // ----------------------------------------
    // -- .card
@@ -67835,13 +68352,24 @@ h6,
 
    $badge-color:                       $primary-color                 !default;
 
+
+   // ----------------------------------------
+   // -- .badge
+   // ----------------------------------------
+
+   $dropdown-min-width:                150px                          !default;
+   $dropdown-height:                   $btn-base-height + 4px         !default;
+   $dropdown-focus-outline:            $accent-color                  !default;
+   $dropdown-main-view-bg:             $light-gray-color              !default;
+   $dropdown-hover-color:              $light-gray-color              !default;
+
   // ----------------------------------------
    // -- .custom variable
    // ---------------------------------------- 
    $primary:                            $accent-color                 !default;
    $input-color:                        #3D464D                     !default;
    $common-image-size:                  12rem                         !default;
-   $disabled-color:                     rgba($accent-color,0.3)         !default;
+   $disabled-color:                     rgba($accent-color,0.3)       !default;
    
 
 
