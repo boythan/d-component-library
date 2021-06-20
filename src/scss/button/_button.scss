@@ -9,9 +9,9 @@ $button-variant: ("outline", "standard", "trans");
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 56px;
     width: fit-content;
     border: none;
+    min-width: $btn-min-width;
     i {
         text-decoration: none !important;
     }
@@ -42,7 +42,7 @@ $button-variant: ("outline", "standard", "trans");
     @each $name, $color in $basic-color {
         .d-button__#{$var}-#{$name} {
             @if ($var == "trans") {
-                background-color: transparent;
+                background-color: $btn-trans-bg-color;
                 color: $color;
                 border: none;
                 outline: none;
@@ -58,12 +58,12 @@ $button-variant: ("outline", "standard", "trans");
                     background-color: $light-gray-color;
                 }
                 &:disabled {
-                    color: $disabled-color;
+                    color: rgba($color, 0.6);
                 }
             }
             @if ($var == "outline") {
                 border: 1px solid $color;
-                background-color: $light-color;
+                background-color: $btn-outline-bg-color;
                 color: $color;
                 &:active {
                     outline: none !important;
@@ -80,8 +80,8 @@ $button-variant: ("outline", "standard", "trans");
                     // color: $light-color;
                 }
                 &:disabled {
-                    border: 1px solid rgba($accent-color, 0.3);
-                    color: rgba($accent-color, 0.3);
+                    border: 1px solid rgba($color, 0.6);
+                    color: rgba($color, 0.6);
                     background-color: $light-color;
                 }
             }
@@ -103,6 +103,7 @@ $button-variant: ("outline", "standard", "trans");
                 &:disabled {
                     border: 1px solid rgba($accent-color, 0.3);
                     background-color: $disabled-color !important;
+                    color: set-text-color($disabled-color);
                 }
             }
         }
