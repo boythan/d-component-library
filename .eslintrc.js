@@ -72,5 +72,8 @@ module.exports = {
         "arrow-body-style": [0],
         "comma-dangle": [0],
         "react/no-unused-state": [0],
+        "operator-linebreak": [0],
+        "implicit-arrow-linebreak": [0],
+        "react/jsx-curly-newline": [0],
     },
 };
