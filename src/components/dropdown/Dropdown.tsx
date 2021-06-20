@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { useEffect, useRef, useState } from "react";
@@ -71,12 +72,12 @@ const MenuItem = ({
         arrowView = <Icon name="expand_more" className="d-block ml-2" />;
     }
     return (
-        <li className={itemClass} onClick={() => onClick && onClick(item)} key={`${id}`}>
+        <div className={itemClass} onClick={() => onClick && onClick(item)} key={`${id}`}>
             {iconImageView}
             {labelView}
             {arrowView}
             {!isMainView && subMenu && subMenu.length > 0 && <DropdownMenu dataSource={subMenu} />}
-        </li>
+        </div>
     );
 };
 
@@ -92,7 +93,7 @@ export const DropdownMenu: React.FC<DropDownMenuProps> = ({
         return <MenuItem item={item} onClick={onClick} Messages={Messages} />;
     });
 
-    return <ul className={wrapperClass}>{list}</ul>;
+    return <div className={wrapperClass}>{list}</div>;
 };
 
 const Dropdown: React.FC<DropdownProps> = ({
@@ -130,7 +131,9 @@ const Dropdown: React.FC<DropdownProps> = ({
     const getLabelValue = (value: IDropdownMenuItemProps) => {
         return Messages ? Messages[value?.label] : value?.label;
     };
-    let mainView: any = () => <Button {...buttonProps} onClick={() => setOpenDropdown(!openDropdown)} />;
+    let mainView: any = () => (
+        <Button {...buttonProps} onClick={() => setOpenDropdown(!openDropdown)} />
+    );
     if (variant === "view") {
         mainView = () => {
             if (!value) {
@@ -149,7 +152,7 @@ const Dropdown: React.FC<DropdownProps> = ({
                     dataSource={dataSource}
                     onClick={handleOnClickItem}
                     Messages={Messages}
-                    position={position}
+                    position={variant === "view" ? undefined : position}
                 />
             )}
         </div>

@@ -11,7 +11,7 @@ const TestDropdown: React.FC<TestDropdownProps> = ({ id }) => {
     const [selectedLanguages, setSelectedLanguages] = useState<any>(LANGUAGES[0]);
     return (
         <div className="d-flex flex-column my-4">
-            <Dropdown dataSource={ATTRIBUTE_INPUT_TYPE} />
+            <Dropdown dataSource={ATTRIBUTE_INPUT_TYPE} position="left-edge" />
             <Dropdown
                 dataSource={ATTRIBUTE_INPUT_TYPE}
                 variant="view"
