@@ -33,6 +33,7 @@ import TestTabBar from "./components/test_tabBar/TestTabBar";
 import TestButton from "./components/test_button/TestButton";
 import TestAvatarIcon from "./components/test_avatar_icon/TestAvatarIcon";
 import TestCard from "./components/test_card/TestCard";
+import TestForm from "./components/test_form/TestForm";
 
 interface Props {
     content?: any;
@@ -180,6 +181,7 @@ export default function Test({ content }: Props): ReactElement {
         { id: "PROGRESS", label: "PROGRESS", component: <TestProgress /> },
         { id: "NOTIFICATION", label: "NOTIFICATION", component: <TestNotification /> },
         { id: "CARD", label: "CARD", component: <TestCard /> },
+        { id: "FORM", label: "FORM", component: <TestForm /> },
     ];
 
     return (
@@ -201,7 +203,7 @@ export default function Test({ content }: Props): ReactElement {
                 </div>
                 <div className="col-9 py-5 px-5 ml-4 card-container">
                     {selectedTab?.component ?? "N/A"}
-                    <Button content="Open Modal" variant="trans" onClick={() => setOpenModal(true)} />
+                    {/* <Button content="Open Modal" variant="trans" onClick={() => setOpenModal(true)} /> */}
                 </div>
                 <Modal
                     open={openModal}

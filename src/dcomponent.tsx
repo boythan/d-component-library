@@ -216,3 +216,17 @@ export { default as useFirstTime } from "./hooks/useFirstTime";
 export { default as useForceUpdate } from "./hooks/useForceUpdate";
 export { useForceUpdateConstraint } from "./hooks/useForceUpdate";
 export { default as usePrevious } from "./hooks/usePrevious";
+
+/* ----------------------------------------
+// Form
+// ---------------------------------------- */
+
+export type {
+    IFormItemData,
+    IFormItemDataRender,
+    IFormItemProps,
+    IFormItemType,
+    IFormProps,
+} from "./components/form/Form";
+export { default as Form } from "./components/form/Form";
+export { FormItem } from "./components/form/Form";
