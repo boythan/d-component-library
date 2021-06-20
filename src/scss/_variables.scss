@@ -464,7 +464,7 @@
 
       // transparent
          // default
-         $btn-trans-bg-color:          #eeeeee                 !default;
+         $btn-trans-bg-color:          transparent               !default;
          $btn-trans-font-color:        $dark-color               !default;
          $btn-trans-icon-color:        $dark-color               !default;
          // hover
@@ -473,11 +473,12 @@
          $btn-trans-hover-icon-color:  $btn-light-hover-font-color !default;
          // active
          $btn-trans-active-bg-color:   #e5e5e5                     !default;
-         $btn-trans-active-font-color: $btn-light-hover-font-color !default;
-         $btn-trans-active-icon-color: $btn-light-hover-icon-color !default;
+         $btn-trans-active-font-color: $btn-light-hover-font-color   !default;
+         $btn-trans-active-icon-color: $btn-light-hover-icon-color   !default;
 
       //height
       $btn-base-height:                36px               !default;
+      $btn-min-width:                  56px               !default;
 
    // ----------------------------------------
    // -- .card
@@ -826,11 +827,22 @@
 
    $badge-color:                       $primary-color                 !default;
 
+
+   // ----------------------------------------
+   // -- .badge
+   // ----------------------------------------
+
+   $dropdown-min-width:                150px                          !default;
+   $dropdown-height:                   $btn-base-height + 4px         !default;
+   $dropdown-focus-outline:            $accent-color                  !default;
+   $dropdown-main-view-bg:             $light-gray-color              !default;
+   $dropdown-hover-color:              $light-gray-color              !default;
+
   // ----------------------------------------
    // -- .custom variable
    // ---------------------------------------- 
    $primary:                            $accent-color                 !default;
    $input-color:                        #3D464D                     !default;
    $common-image-size:                  12rem                         !default;
-   $disabled-color:                     rgba($accent-color,0.3)         !default;
+   $disabled-color:                     rgba($accent-color,0.3)       !default;
    
