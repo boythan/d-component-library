@@ -76390,8 +76390,8 @@ var getDefaultValue = function (type) {
     }
 };
 function FormItem(_a) {
-    var onChange = _a.onChange, data = _a.data, value = _a.value, Messages = _a.Messages, className = _a.className, error = _a.error;
-    var key = data.key, type = data.type, label = data.label, _b = data.dataSource, dataSource = _b === void 0 ? [] : _b, getLabel = data.getLabel, getValue = data.getValue, rows = data.rows, inputType = data.inputType;
+    var onChange = _a.onChange, data = _a.data, _b = _a.value, value = _b === void 0 ? {} : _b, Messages = _a.Messages, className = _a.className, error = _a.error;
+    var key = data.key, type = data.type, label = data.label, _c = data.dataSource, dataSource = _c === void 0 ? [] : _c, getLabel = data.getLabel, getValue = data.getValue, rows = data.rows, inputType = data.inputType;
     var itemLabel = (Messages === null || Messages === void 0 ? void 0 : Messages[label]) || label;
     if (type === "date-range") {
         var transValue = null;
@@ -76483,7 +76483,7 @@ var Form = function (_a) {
                     rowView = rows.map(function (item, index) {
                         var _a, _b;
                         var render = item.render, key = item.key, type = item.type, className = item.className, getElementClass = item.getElementClass, getItemClass = item.getItemClass, elementClass = item.elementClass, classNameRow = item.classNameRow, onChangeValidate = item.onChangeValidate;
-                        var valueItem = formValue[key] || getDefaultValue(type);
+                        var valueItem = (formValue === null || formValue === void 0 ? void 0 : formValue[key]) || getDefaultValue(type);
                         var errorItem = (_a = formError === null || formError === void 0 ? void 0 : formError[key]) !== null && _a !== void 0 ? _a : null;
                         var errorLabel = errorItem ? (_b = Messages === null || Messages === void 0 ? void 0 : Messages[errorItem]) !== null && _b !== void 0 ? _b : errorItem : null;
                         if (errorLabel) {
@@ -76508,11 +76508,12 @@ var Form = function (_a) {
                             }, value: valueItem, Messages: Messages, className: itemClass, error: errorLabel }, void 0));
                         if (React__default['default'].isValidElement(render)) {
                             content = React__default['default'].cloneElement(render, {
-                                onChange: function (key, value) {
+                                onChange: function (value) {
                                     return onChangeState({ key: key, value: value, onValidate: onChangeValidate });
                                 },
                                 value: valueItem,
                                 className: itemClass,
+                                error: errorLabel,
                             });
                         }
                         if (typeof render === "function") {
