@@ -309,10 +309,11 @@ const Form: React.FC<IFormProps> = ({
                             );
                             if (React.isValidElement(render)) {
                                 content = React.cloneElement(render, {
-                                    onChange: (key: any, value: any) =>
+                                    onChange: (value: any) =>
                                         onChangeState({ key, value, onValidate: onChangeValidate }),
                                     value: valueItem,
                                     className: itemClass,
+                                    error: errorLabel,
                                 });
                             }
                             if (typeof render === "function") {
