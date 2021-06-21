@@ -86,7 +86,7 @@ export const getDefaultValue = (type?: IFormItemType) => {
     }
 };
 
-export function FormItem({ onChange, data, value, Messages, className, error }: IFormItemProps) {
+export function FormItem({ onChange, data, value = {}, Messages, className, error }: IFormItemProps) {
     const { key, type, label, dataSource = [], getLabel, getValue, rows, inputType } = data;
     const itemLabel = Messages?.[label as any] || label;
     if (type === "date-range") {
@@ -269,7 +269,7 @@ const Form: React.FC<IFormProps> = ({
                                 classNameRow,
                                 onChangeValidate,
                             } = item;
-                            const valueItem = formValue[key] || getDefaultValue(type);
+                            const valueItem = formValue?.[key] || getDefaultValue(type);
                             const errorItem = formError?.[key] ?? null;
                             const errorLabel = errorItem ? Messages?.[errorItem] ?? errorItem : null;
                             if (errorLabel) {
