@@ -77,6 +77,16 @@ const Select = ({
             {label && <label className={labelClass}>{label}</label>}
             <SelectAnt
                 mode={multiple ? "multiple" : undefined}
+                filterOption={(input: any, option: any) => {
+                    const { children, value } = option.props;
+                    if (!hasFilter) {
+                        return true;
+                    }
+                    return (
+                        (children && children.toLowerCase().indexOf(input.toLowerCase()) >= 0) ||
+                        (value && `${value}`.toLowerCase().indexOf(input.toLowerCase()) >= 0)
+                    );
+                }}
                 {...props}
                 value={value}
                 allowClear={allowClear}
@@ -88,16 +98,6 @@ const Select = ({
                 suffixIcon={<Icon name="expand_more" />}
                 disabled={disabled}
                 optionFilterProp="children"
-                filterOption={(input: any, option: any) => {
-                    const { children, value } = option.props;
-                    if (!hasFilter) {
-                        return false;
-                    }
-                    return (
-                        (children && children.toLowerCase().indexOf(input.toLowerCase()) >= 0) ||
-                        (value && `${value}`.toLowerCase().indexOf(input.toLowerCase()) >= 0)
-                    );
-                }}
             >
                 {children}
             </SelectAnt>
