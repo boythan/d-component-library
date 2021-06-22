@@ -75,7 +75,7 @@ var __assign = function() {
     return __assign.apply(this, arguments);
 };
 
-function __rest$q(s, e) {
+function __rest$s(s, e) {
     var t = {};
     for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
         t[p] = s[p];
@@ -201,7 +201,7 @@ var classnames = createCommonjsModule(function (module) {
 });
 
 var Icon$2 = function (_a) {
-    var name = _a.name, _b = _a.size, size = _b === void 0 ? "medium" : _b, className = _a.className, props = __rest$q(_a, ["name", "size", "className"]);
+    var name = _a.name, _b = _a.size, size = _b === void 0 ? "medium" : _b, className = _a.className, props = __rest$s(_a, ["name", "size", "className"]);
     var iconClass = classnames("material-icons", "d-icon__" + size, className);
     return (jsxRuntime.jsx("i", __assign({ className: iconClass }, props, { children: name }), void 0));
 };
@@ -6631,7 +6631,7 @@ var FormProvider = function FormProvider(_ref) {
   }, children);
 };
 
-var Form = function Form(_ref, ref) {
+var Form$1 = function Form(_ref, ref) {
   var name = _ref.name,
       initialValues = _ref.initialValues,
       fields = _ref.fields,
@@ -6756,7 +6756,7 @@ var Form = function Form(_ref, ref) {
   }), wrapperNode);
 };
 
-var InternalForm = /*#__PURE__*/React__namespace.forwardRef(Form);
+var InternalForm = /*#__PURE__*/React__namespace.forwardRef(Form$1);
 var RefForm = InternalForm;
 RefForm.FormProvider = FormProvider;
 RefForm.Field = WrapperField;
@@ -7172,7 +7172,7 @@ var Simple = function Simple() {
   }))));
 };
 
-var __rest$p = undefined && undefined.__rest || function (s, e) {
+var __rest$r = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -7195,7 +7195,7 @@ var Empty = function Empty(_a) {
       description = _a.description,
       children = _a.children,
       imageStyle = _a.imageStyle,
-      restProps = __rest$p(_a, ["className", "prefixCls", "image", "description", "children", "imageStyle"]);
+      restProps = __rest$r(_a, ["className", "prefixCls", "image", "description", "children", "imageStyle"]);
 
   var _React$useContext = React__namespace.useContext(ConfigContext),
       getPrefixCls = _React$useContext.getPrefixCls,
@@ -18534,7 +18534,7 @@ var RefSelect$1 = generateSelector({
  * we have to wrap an class component to handle this.
  */
 
-var Select$2 = /*#__PURE__*/function (_React$Component) {
+var Select$3 = /*#__PURE__*/function (_React$Component) {
   _inherits$1(Select, _React$Component);
 
   var _super = _createSuper$2(Select);
@@ -18570,8 +18570,8 @@ var Select$2 = /*#__PURE__*/function (_React$Component) {
   return Select;
 }(React__namespace.Component);
 
-Select$2.Option = Option$1;
-Select$2.OptGroup = OptGroup;
+Select$3.Option = Option$1;
+Select$3.OptGroup = OptGroup;
 
 // This icon file is generated automatically.
 var DownOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z" } }] }, "name": "down", "theme": "outlined" };
@@ -18736,7 +18736,7 @@ var getTransitionName = function getTransitionName(rootPrefixCls, motion, transi
 };
 
 // TODO: 4.0 - codemod should help to change `filterOption` to support node props.
-var __rest$o = undefined && undefined.__rest || function (s, e) {
+var __rest$q = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -18765,7 +18765,7 @@ var InternalSelect = function InternalSelect(_a, ref) {
       listItemHeight = _a$listItemHeight === void 0 ? 24 : _a$listItemHeight,
       customizeSize = _a.size,
       notFoundContent = _a.notFoundContent,
-      props = __rest$o(_a, ["prefixCls", "bordered", "className", "getPopupContainer", "dropdownClassName", "listHeight", "listItemHeight", "size", "notFoundContent"]);
+      props = __rest$q(_a, ["prefixCls", "bordered", "className", "getPopupContainer", "dropdownClassName", "listHeight", "listItemHeight", "size", "notFoundContent"]);
 
   var _React$useContext = React__namespace.useContext(ConfigContext),
       getContextPopupContainer = _React$useContext.getPopupContainer,
@@ -18817,7 +18817,7 @@ var InternalSelect = function InternalSelect(_a, ref) {
   var rcSelectRtlDropDownClassName = classnames(dropdownClassName, _defineProperty$4({}, "".concat(prefixCls, "-dropdown-").concat(direction), direction === 'rtl'));
   var mergedSize = customizeSize || size;
   var mergedClassName = classnames((_classNames2 = {}, _defineProperty$4(_classNames2, "".concat(prefixCls, "-lg"), mergedSize === 'large'), _defineProperty$4(_classNames2, "".concat(prefixCls, "-sm"), mergedSize === 'small'), _defineProperty$4(_classNames2, "".concat(prefixCls, "-rtl"), direction === 'rtl'), _defineProperty$4(_classNames2, "".concat(prefixCls, "-borderless"), !bordered), _classNames2), className);
-  return /*#__PURE__*/React__namespace.createElement(Select$2, _extends$1({
+  return /*#__PURE__*/React__namespace.createElement(Select$3, _extends$1({
     ref: ref,
     virtual: virtual,
     dropdownMatchSelectWidth: dropdownMatchSelectWidth
@@ -18840,10 +18840,10 @@ var InternalSelect = function InternalSelect(_a, ref) {
 };
 
 var SelectRef = /*#__PURE__*/React__namespace.forwardRef(InternalSelect);
-var Select$1 = SelectRef;
-Select$1.SECRET_COMBOBOX_MODE_DO_NOT_USE = SECRET_COMBOBOX_MODE_DO_NOT_USE;
-Select$1.Option = Option$1;
-Select$1.OptGroup = OptGroup;
+var Select$2 = SelectRef;
+Select$2.SECRET_COMBOBOX_MODE_DO_NOT_USE = SECRET_COMBOBOX_MODE_DO_NOT_USE;
+Select$2.Option = Option$1;
+Select$2.OptGroup = OptGroup;
 
 var isValidElement = React__namespace.isValidElement;
 function replaceElement(element, replacement, props) {
@@ -19670,7 +19670,7 @@ var UnreachableException = function UnreachableException(value) {
   return new Error("unreachable case: ".concat(JSON.stringify(value)));
 };
 
-var __rest$n = undefined && undefined.__rest || function (s, e) {
+var __rest$p = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -19693,7 +19693,7 @@ var ButtonGroup$1 = function ButtonGroup(props) {
     var customizePrefixCls = props.prefixCls,
         size = props.size,
         className = props.className,
-        others = __rest$n(props, ["prefixCls", "size", "className"]);
+        others = __rest$p(props, ["prefixCls", "size", "className"]);
 
     var prefixCls = getPrefixCls('btn-group', customizePrefixCls); // large => lg
     // small => sm
@@ -20029,7 +20029,7 @@ var LoadingIcon = function LoadingIcon(_ref) {
   });
 };
 
-var __rest$m = undefined && undefined.__rest || function (s, e) {
+var __rest$o = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -20136,7 +20136,7 @@ var InternalButton = function InternalButton(props, ref) {
       block = _props$block === void 0 ? false : _props$block,
       _props$htmlType = props.htmlType,
       htmlType = _props$htmlType === void 0 ? 'button' : _props$htmlType,
-      rest = __rest$m(props, ["loading", "prefixCls", "type", "danger", "shape", "size", "className", "children", "icon", "ghost", "block", "htmlType"]);
+      rest = __rest$o(props, ["loading", "prefixCls", "type", "danger", "shape", "size", "className", "children", "icon", "ghost", "block", "htmlType"]);
 
   var size = React__namespace.useContext(SizeContext);
 
@@ -20270,7 +20270,7 @@ Button$2.displayName = 'Button';
 Button$2.Group = ButtonGroup$1;
 Button$2.__ANT_BUTTON = true;
 
-var __rest$l = undefined && undefined.__rest || function (s, e) {
+var __rest$n = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -20311,7 +20311,7 @@ var DropdownButton = function DropdownButton(props) {
       buttonsRender = props.buttonsRender,
       mouseEnterDelay = props.mouseEnterDelay,
       mouseLeaveDelay = props.mouseLeaveDelay,
-      restProps = __rest$l(props, ["prefixCls", "type", "disabled", "onClick", "htmlType", "children", "className", "overlay", "trigger", "align", "visible", "onVisibleChange", "placement", "getPopupContainer", "href", "icon", "title", "buttonsRender", "mouseEnterDelay", "mouseLeaveDelay"]);
+      restProps = __rest$n(props, ["prefixCls", "type", "disabled", "onClick", "htmlType", "children", "className", "overlay", "trigger", "align", "visible", "onVisibleChange", "placement", "getPopupContainer", "href", "icon", "title", "buttonsRender", "mouseEnterDelay", "mouseLeaveDelay"]);
 
   var prefixCls = getPrefixCls('dropdown-button', customizePrefixCls);
   var dropdownProps = {
@@ -22594,7 +22594,7 @@ function SubMenu$1(props) {
   })));
 }
 
-var __rest$k = undefined && undefined.__rest || function (s, e) {
+var __rest$m = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -22644,7 +22644,7 @@ var Basic = function Basic(props) {
       className = props.className,
       children = props.children,
       tagName = props.tagName,
-      others = __rest$k(props, ["prefixCls", "className", "children", "tagName"]);
+      others = __rest$m(props, ["prefixCls", "className", "children", "tagName"]);
 
   var classString = classnames(prefixCls, className);
   return /*#__PURE__*/React__namespace.createElement(tagName, _extends$1({
@@ -22668,7 +22668,7 @@ var BasicLayout = function BasicLayout(props) {
       children = props.children,
       hasSider = props.hasSider,
       Tag = props.tagName,
-      others = __rest$k(props, ["prefixCls", "className", "children", "hasSider", "tagName"]);
+      others = __rest$m(props, ["prefixCls", "className", "children", "hasSider", "tagName"]);
 
   var classString = classnames(prefixCls, (_classNames = {}, _defineProperty$4(_classNames, "".concat(prefixCls, "-has-sider"), typeof hasSider === 'boolean' ? hasSider : siders.length > 0), _defineProperty$4(_classNames, "".concat(prefixCls, "-rtl"), direction === 'rtl'), _classNames), className);
   return /*#__PURE__*/React__namespace.createElement(LayoutContext.Provider, {
@@ -22718,7 +22718,7 @@ var isNumeric = function isNumeric(value) {
   return !isNaN(parseFloat(value)) && isFinite(value);
 };
 
-var __rest$j = undefined && undefined.__rest || function (s, e) {
+var __rest$l = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -22772,7 +22772,7 @@ var Sider = /*#__PURE__*/React__namespace.forwardRef(function (_a, ref) {
       breakpoint = _a.breakpoint,
       onCollapse = _a.onCollapse,
       onBreakpoint = _a.onBreakpoint,
-      props = __rest$j(_a, ["prefixCls", "className", "trigger", "children", "defaultCollapsed", "theme", "style", "collapsible", "reverseArrow", "width", "collapsedWidth", "zeroWidthTriggerStyle", "breakpoint", "onCollapse", "onBreakpoint"]);
+      props = __rest$l(_a, ["prefixCls", "className", "trigger", "children", "defaultCollapsed", "theme", "style", "collapsible", "reverseArrow", "width", "collapsedWidth", "zeroWidthTriggerStyle", "breakpoint", "onCollapse", "onBreakpoint"]);
 
   var _useContext = React.useContext(LayoutContext),
       siderHook = _useContext.siderHook;
@@ -22914,7 +22914,7 @@ var Sider = /*#__PURE__*/React__namespace.forwardRef(function (_a, ref) {
 });
 Sider.displayName = 'Sider';
 
-var __rest$i = undefined && undefined.__rest || function (s, e) {
+var __rest$k = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -22959,7 +22959,7 @@ var MenuItem$2 = /*#__PURE__*/function (_React$Component) {
           title = _b.title,
           icon = _b.icon,
           danger = _b.danger,
-          rest = __rest$i(_b, ["title", "icon", "danger"]);
+          rest = __rest$k(_b, ["title", "icon", "danger"]);
 
       var tooltipTitle = title;
 
@@ -23030,7 +23030,7 @@ var MenuItem$2 = /*#__PURE__*/function (_React$Component) {
 }(React__namespace.Component);
 MenuItem$2.contextType = MenuContext;
 
-var __rest$h = undefined && undefined.__rest || function (s, e) {
+var __rest$j = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -23066,7 +23066,7 @@ var InternalMenu = /*#__PURE__*/function (_React$Component) {
           className = _a.className,
           theme = _a.theme,
           expandIcon = _a.expandIcon,
-          restProps = __rest$h(_a, ["prefixCls", "className", "theme", "expandIcon"]);
+          restProps = __rest$j(_a, ["prefixCls", "className", "theme", "expandIcon"]);
 
       var passedProps = omit(restProps, ['siderCollapsed', 'collapsedWidth']);
 
@@ -33985,7 +33985,7 @@ Checkbox$3.defaultProps = {
 var RadioGroupContext = /*#__PURE__*/React__namespace.createContext(null);
 var RadioGroupContextProvider = RadioGroupContext.Provider;
 
-var __rest$g = undefined && undefined.__rest || function (s, e) {
+var __rest$i = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -34024,7 +34024,7 @@ var InternalRadio = function InternalRadio(props, ref) {
       className = props.className,
       children = props.children,
       style = props.style,
-      restProps = __rest$g(props, ["prefixCls", "className", "children", "style"]);
+      restProps = __rest$i(props, ["prefixCls", "className", "children", "style"]);
 
   var prefixCls = getPrefixCls('radio', customizePrefixCls);
 
@@ -34158,7 +34158,7 @@ var RadioGroup$1 = /*#__PURE__*/React__namespace.forwardRef(function (props, ref
 });
 var Group$2 = /*#__PURE__*/React__namespace.memo(RadioGroup$1);
 
-var __rest$f = undefined && undefined.__rest || function (s, e) {
+var __rest$h = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -34178,7 +34178,7 @@ var RadioButton = function RadioButton(props, ref) {
       getPrefixCls = _React$useContext.getPrefixCls;
 
   var customizePrefixCls = props.prefixCls,
-      radioProps = __rest$f(props, ["prefixCls"]);
+      radioProps = __rest$h(props, ["prefixCls"]);
 
   var prefixCls = getPrefixCls('radio-button', customizePrefixCls);
 
@@ -35361,7 +35361,7 @@ var Group$1 = function Group(props) {
   });
 };
 
-var __rest$e = undefined && undefined.__rest || function (s, e) {
+var __rest$g = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -35388,7 +35388,7 @@ var Search = /*#__PURE__*/React__namespace.forwardRef(function (props, ref) {
       disabled = props.disabled,
       customOnSearch = props.onSearch,
       customOnChange = props.onChange,
-      restProps = __rest$e(props, ["prefixCls", "inputPrefixCls", "className", "size", "suffix", "enterButton", "addonAfter", "loading", "disabled", "onSearch", "onChange"]);
+      restProps = __rest$g(props, ["prefixCls", "inputPrefixCls", "className", "size", "suffix", "enterButton", "addonAfter", "loading", "disabled", "onSearch", "onChange"]);
 
   var _React$useContext = React__namespace.useContext(ConfigContext),
       getPrefixCls = _React$useContext.getPrefixCls,
@@ -35856,7 +35856,7 @@ var TextArea$1 = /*#__PURE__*/function (_React$Component) {
   return TextArea;
 }(React__namespace.Component);
 
-var __rest$d = undefined && undefined.__rest || function (s, e) {
+var __rest$f = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -35888,7 +35888,7 @@ var TextArea = /*#__PURE__*/React__namespace.forwardRef(function (_a, ref) {
       onCompositionStart = _a.onCompositionStart,
       onCompositionEnd = _a.onCompositionEnd,
       onChange = _a.onChange,
-      props = __rest$d(_a, ["prefixCls", "bordered", "showCount", "maxLength", "className", "style", "size", "onCompositionStart", "onCompositionEnd", "onChange"]);
+      props = __rest$f(_a, ["prefixCls", "bordered", "showCount", "maxLength", "className", "style", "size", "onCompositionStart", "onCompositionEnd", "onChange"]);
 
   var _React$useContext = React__namespace.useContext(ConfigContext),
       getPrefixCls = _React$useContext.getPrefixCls,
@@ -36036,7 +36036,7 @@ var TextArea = /*#__PURE__*/React__namespace.forwardRef(function (_a, ref) {
   return textareaNode;
 });
 
-var __rest$c = undefined && undefined.__rest || function (s, e) {
+var __rest$e = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -36098,7 +36098,7 @@ var Password = /*#__PURE__*/React__namespace.forwardRef(function (props, ref) {
         customizeInputPrefixCls = props.inputPrefixCls,
         size = props.size,
         visibilityToggle = props.visibilityToggle,
-        restProps = __rest$c(props, ["className", "prefixCls", "inputPrefixCls", "size", "visibilityToggle"]);
+        restProps = __rest$e(props, ["className", "prefixCls", "inputPrefixCls", "size", "visibilityToggle"]);
 
     var inputPrefixCls = getPrefixCls('input', customizeInputPrefixCls);
     var prefixCls = getPrefixCls('input-password', customizePrefixCls);
@@ -36137,7 +36137,7 @@ Input.Search = Search;
 Input.TextArea = TextArea;
 Input.Password = Password;
 
-var __rest$b = undefined && undefined.__rest || function (s, e) {
+var __rest$d = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -36160,7 +36160,7 @@ var InternalCheckboxGroup = function InternalCheckboxGroup(_a, ref) {
       className = _a.className,
       style = _a.style,
       onChange = _a.onChange,
-      restProps = __rest$b(_a, ["defaultValue", "children", "options", "prefixCls", "className", "style", "onChange"]);
+      restProps = __rest$d(_a, ["defaultValue", "children", "options", "prefixCls", "className", "style", "onChange"]);
 
   var _React$useContext = React__namespace.useContext(ConfigContext),
       getPrefixCls = _React$useContext.getPrefixCls,
@@ -36280,7 +36280,7 @@ var InternalCheckboxGroup = function InternalCheckboxGroup(_a, ref) {
 var CheckboxGroup$1 = /*#__PURE__*/React__namespace.forwardRef(InternalCheckboxGroup);
 var Group = /*#__PURE__*/React__namespace.memo(CheckboxGroup$1);
 
-var __rest$a = undefined && undefined.__rest || function (s, e) {
+var __rest$c = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -36306,7 +36306,7 @@ var InternalCheckbox = function InternalCheckbox(_a, ref) {
       onMouseLeave = _a.onMouseLeave,
       _a$skipGroup = _a.skipGroup,
       skipGroup = _a$skipGroup === void 0 ? false : _a$skipGroup,
-      restProps = __rest$a(_a, ["prefixCls", "className", "children", "indeterminate", "style", "onMouseEnter", "onMouseLeave", "skipGroup"]);
+      restProps = __rest$c(_a, ["prefixCls", "className", "children", "indeterminate", "style", "onMouseEnter", "onMouseLeave", "skipGroup"]);
 
   var _React$useContext = React__namespace.useContext(ConfigContext),
       getPrefixCls = _React$useContext.getPrefixCls,
@@ -36387,7 +36387,7 @@ function PickerButton(props) {
   }, props));
 }
 
-var __rest$9 = undefined && undefined.__rest || function (s, e) {
+var __rest$b = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -36408,7 +36408,7 @@ var CheckableTag = function CheckableTag(_a) {
       checked = _a.checked,
       onChange = _a.onChange,
       onClick = _a.onClick,
-      restProps = __rest$9(_a, ["prefixCls", "className", "checked", "onChange", "onClick"]);
+      restProps = __rest$b(_a, ["prefixCls", "className", "checked", "onChange", "onClick"]);
 
   var _React$useContext = React__namespace.useContext(ConfigContext),
       getPrefixCls = _React$useContext.getPrefixCls;
@@ -36426,7 +36426,7 @@ var CheckableTag = function CheckableTag(_a) {
   }));
 };
 
-var __rest$8 = undefined && undefined.__rest || function (s, e) {
+var __rest$a = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -36454,7 +36454,7 @@ var InternalTag = function InternalTag(_a, ref) {
       closeIcon = _a.closeIcon,
       _a$closable = _a.closable,
       closable = _a$closable === void 0 ? false : _a$closable,
-      props = __rest$8(_a, ["prefixCls", "className", "style", "children", "icon", "color", "onClose", "closeIcon", "closable"]);
+      props = __rest$a(_a, ["prefixCls", "className", "style", "children", "icon", "color", "onClose", "closeIcon", "closable"]);
 
   var _React$useContext = React__namespace.useContext(ConfigContext),
       getPrefixCls = _React$useContext.getPrefixCls,
@@ -36587,7 +36587,7 @@ function getRangePlaceholder(picker, locale, customizePlaceholder) {
   return locale.lang.rangePlaceholder;
 }
 
-var __rest$7 = undefined && undefined.__rest || function (s, e) {
+var __rest$9 = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -36642,7 +36642,7 @@ function generatePicker$1(generateConfig) {
               _a$bordered = _a.bordered,
               bordered = _a$bordered === void 0 ? true : _a$bordered,
               placeholder = _a.placeholder,
-              restProps = __rest$7(_a, ["prefixCls", "getPopupContainer", "className", "size", "bordered", "placeholder"]);
+              restProps = __rest$9(_a, ["prefixCls", "getPopupContainer", "className", "size", "bordered", "placeholder"]);
 
           var _this$props = _this.props,
               format = _this$props.format,
@@ -36744,7 +36744,7 @@ function generatePicker$1(generateConfig) {
   };
 }
 
-var __rest$6 = undefined && undefined.__rest || function (s, e) {
+var __rest$8 = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -36798,7 +36798,7 @@ function generateRangePicker(generateConfig) {
             _a$bordered = _a.bordered,
             bordered = _a$bordered === void 0 ? true : _a$bordered,
             placeholder = _a.placeholder,
-            restProps = __rest$6(_a, ["prefixCls", "getPopupContainer", "className", "size", "bordered", "placeholder"]);
+            restProps = __rest$8(_a, ["prefixCls", "getPopupContainer", "className", "size", "bordered", "placeholder"]);
 
         var _this$props = _this.props,
             format = _this$props.format,
@@ -39940,7 +39940,7 @@ var DialogWrap = function DialogWrap(props) {
 
 DialogWrap.displayName = 'Dialog';
 
-var __rest$5 = undefined && undefined.__rest || function (s, e) {
+var __rest$7 = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -40040,7 +40040,7 @@ var Spin = /*#__PURE__*/function (_React$Component) {
           tip = _a.tip,
           wrapperClassName = _a.wrapperClassName,
           style = _a.style,
-          restProps = __rest$5(_a, ["prefixCls", "className", "size", "tip", "wrapperClassName", "style"]);
+          restProps = __rest$7(_a, ["prefixCls", "className", "size", "tip", "wrapperClassName", "style"]);
 
       var spinning = _this.state.spinning;
       var prefixCls = getPrefixCls('spin', customizePrefixCls);
@@ -41032,14 +41032,14 @@ Pagination$1.defaultProps = {
 };
 
 var MiniSelect = function MiniSelect(props) {
-  return /*#__PURE__*/React__namespace.createElement(Select$1, _extends$1({
+  return /*#__PURE__*/React__namespace.createElement(Select$2, _extends$1({
     size: "small"
   }, props));
 };
 
-MiniSelect.Option = Select$1.Option;
+MiniSelect.Option = Select$2.Option;
 
-var __rest$4 = undefined && undefined.__rest || function (s, e) {
+var __rest$6 = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -41058,7 +41058,7 @@ var Pagination = function Pagination(_a) {
       className = _a.className,
       size = _a.size,
       customLocale = _a.locale,
-      restProps = __rest$4(_a, ["prefixCls", "selectPrefixCls", "className", "size", "locale"]);
+      restProps = __rest$6(_a, ["prefixCls", "selectPrefixCls", "className", "size", "locale"]);
 
   var _useBreakpoint = useBreakpoint(),
       xs = _useBreakpoint.xs;
@@ -41128,7 +41128,7 @@ var Pagination = function Pagination(_a) {
       selectPrefixCls: selectPrefixCls
     }, getIconsProps(), {
       className: extendedClassName,
-      selectComponentClass: isSmall ? MiniSelect : Select$1,
+      selectComponentClass: isSmall ? MiniSelect : Select$2,
       locale: locale
     }));
   };
@@ -41420,7 +41420,7 @@ var HookModal = function HookModal(_ref, ref) {
 
 var HookModal$1 = /*#__PURE__*/React__namespace.forwardRef(HookModal);
 
-var __rest$3 = undefined && undefined.__rest || function (s, e) {
+var __rest$5 = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -41480,7 +41480,7 @@ function confirm(config) {
     var okText = _a.okText,
         cancelText = _a.cancelText,
         customizePrefixCls = _a.prefixCls,
-        props = __rest$3(_a, ["okText", "cancelText", "prefixCls"]);
+        props = __rest$5(_a, ["okText", "cancelText", "prefixCls"]);
     /**
      * https://github.com/ant-design/ant-design/issues/23623
      *
@@ -41687,7 +41687,7 @@ function useModal() {
   })];
 }
 
-var __rest$2 = undefined && undefined.__rest || function (s, e) {
+var __rest$4 = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -41760,7 +41760,7 @@ var Modal$2 = function Modal(props) {
       closeIcon = props.closeIcon,
       _props$focusTriggerAf = props.focusTriggerAfterClose,
       focusTriggerAfterClose = _props$focusTriggerAf === void 0 ? true : _props$focusTriggerAf,
-      restProps = __rest$2(props, ["prefixCls", "footer", "visible", "wrapClassName", "centered", "getContainer", "closeIcon", "focusTriggerAfterClose"]);
+      restProps = __rest$4(props, ["prefixCls", "footer", "visible", "wrapClassName", "centered", "getContainer", "closeIcon", "focusTriggerAfterClose"]);
 
   var prefixCls = getPrefixCls('modal', customizePrefixCls);
   var rootPrefixCls = getPrefixCls();
@@ -44073,7 +44073,7 @@ Table$1.defaultProps = {
   }
 };
 
-var __rest$1 = undefined && undefined.__rest || function (s, e) {
+var __rest$3 = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -44127,7 +44127,7 @@ function usePagination(total, pagination, onChange) {
   var _a = pagination && _typeof$4(pagination) === 'object' ? pagination : {},
       _a$total = _a.total,
       paginationTotal = _a$total === void 0 ? 0 : _a$total,
-      paginationObj = __rest$1(_a, ["total"]);
+      paginationObj = __rest$3(_a, ["total"]);
 
   var _useState = React.useState(function () {
     return {
@@ -50309,7 +50309,7 @@ TreeSelect$2.SHOW_ALL = SHOW_ALL;
 TreeSelect$2.SHOW_PARENT = SHOW_PARENT;
 TreeSelect$2.SHOW_CHILD = SHOW_CHILD;
 
-var __rest = undefined && undefined.__rest || function (s, e) {
+var __rest$2 = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -50346,7 +50346,7 @@ var InternalTreeSelect = function InternalTreeSelect(_a, ref) {
       transitionName = _a.transitionName,
       _a$choiceTransitionNa = _a.choiceTransitionName,
       choiceTransitionName = _a$choiceTransitionNa === void 0 ? '' : _a$choiceTransitionNa,
-      props = __rest(_a, ["prefixCls", "size", "bordered", "className", "treeCheckable", "multiple", "listHeight", "listItemHeight", "notFoundContent", "switcherIcon", "treeLine", "getPopupContainer", "dropdownClassName", "treeIcon", "transitionName", "choiceTransitionName"]);
+      props = __rest$2(_a, ["prefixCls", "size", "bordered", "className", "treeCheckable", "multiple", "listHeight", "listItemHeight", "notFoundContent", "switcherIcon", "treeLine", "getPopupContainer", "dropdownClassName", "treeIcon", "transitionName", "choiceTransitionName"]);
 
   var _React$useContext = React__namespace.useContext(ConfigContext),
       getContextPopupContainer = _React$useContext.getPopupContainer,
@@ -50422,9 +50422,143 @@ TreeSelect$1.SHOW_ALL = SHOW_ALL;
 TreeSelect$1.SHOW_PARENT = SHOW_PARENT;
 TreeSelect$1.SHOW_CHILD = SHOW_CHILD;
 
-var Option = Select$1.Option;
-var Select = function (_a) {
-    var className = _a.className, classNameSelect = _a.classNameSelect, _b = _a.value, value = _b === void 0 ? [] : _b, label = _a.label, _c = _a.defaultValue, defaultValue = _c === void 0 ? [] : _c, _d = _a.placeholder, placeholder = _d === void 0 ? "Please select" : _d, onChange = _a.onChange, disabled = _a.disabled, _e = _a.dataSource, dataSource = _e === void 0 ? [] : _e, error = _a.error, _f = _a.multiple, multiple = _f === void 0 ? false : _f, _g = _a.getLabel, getLabel = _g === void 0 ? function (item) { return item.label; } : _g, _h = _a.getKey, getKey = _h === void 0 ? function (item) { return item.id; } : _h, _j = _a.getValue, getValue = _j === void 0 ? function (item) { var _a; return (_a = item === null || item === void 0 ? void 0 : item.id) !== null && _a !== void 0 ? _a : null; } : _j, _k = _a.allowClear, allowClear = _k === void 0 ? true : _k, _l = _a.variant, variant = _l === void 0 ? "outline" : _l, _m = _a.hasFilter, hasFilter = _m === void 0 ? true : _m, props = __rest$q(_a, ["className", "classNameSelect", "value", "label", "defaultValue", "placeholder", "onChange", "disabled", "dataSource", "error", "multiple", "getLabel", "getKey", "getValue", "allowClear", "variant", "hasFilter"]);
+var __rest$1 = undefined && undefined.__rest || function (s, e) {
+  var t = {};
+
+  for (var p in s) {
+    if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
+  }
+
+  if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+    if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i])) t[p[i]] = s[p[i]];
+  }
+  return t;
+};
+
+var TimelineItem = function TimelineItem(_a) {
+  var _classNames, _classNames2;
+
+  var customizePrefixCls = _a.prefixCls,
+      className = _a.className,
+      _a$color = _a.color,
+      color = _a$color === void 0 ? 'blue' : _a$color,
+      dot = _a.dot,
+      _a$pending = _a.pending,
+      pending = _a$pending === void 0 ? false : _a$pending;
+      _a.position;
+      var label = _a.label,
+      children = _a.children,
+      restProps = __rest$1(_a, ["prefixCls", "className", "color", "dot", "pending", "position", "label", "children"]);
+
+  var _React$useContext = React__namespace.useContext(ConfigContext),
+      getPrefixCls = _React$useContext.getPrefixCls;
+
+  var prefixCls = getPrefixCls('timeline', customizePrefixCls);
+  var itemClassName = classnames((_classNames = {}, _defineProperty$4(_classNames, "".concat(prefixCls, "-item"), true), _defineProperty$4(_classNames, "".concat(prefixCls, "-item-pending"), pending), _classNames), className);
+  var dotClassName = classnames((_classNames2 = {}, _defineProperty$4(_classNames2, "".concat(prefixCls, "-item-head"), true), _defineProperty$4(_classNames2, "".concat(prefixCls, "-item-head-custom"), !!dot), _defineProperty$4(_classNames2, "".concat(prefixCls, "-item-head-").concat(color), true), _classNames2));
+  return /*#__PURE__*/React__namespace.createElement("li", _extends$1({}, restProps, {
+    className: itemClassName
+  }), label && /*#__PURE__*/React__namespace.createElement("div", {
+    className: "".concat(prefixCls, "-item-label")
+  }, label), /*#__PURE__*/React__namespace.createElement("div", {
+    className: "".concat(prefixCls, "-item-tail")
+  }), /*#__PURE__*/React__namespace.createElement("div", {
+    className: dotClassName,
+    style: {
+      borderColor: /blue|red|green|gray/.test(color || '') ? undefined : color
+    }
+  }, dot), /*#__PURE__*/React__namespace.createElement("div", {
+    className: "".concat(prefixCls, "-item-content")
+  }, children));
+};
+
+var __rest = undefined && undefined.__rest || function (s, e) {
+  var t = {};
+
+  for (var p in s) {
+    if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
+  }
+
+  if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+    if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i])) t[p[i]] = s[p[i]];
+  }
+  return t;
+};
+
+var Timeline = function Timeline(props) {
+  var _classNames;
+
+  var _React$useContext = React__namespace.useContext(ConfigContext),
+      getPrefixCls = _React$useContext.getPrefixCls,
+      direction = _React$useContext.direction;
+
+  var customizePrefixCls = props.prefixCls,
+      _props$pending = props.pending,
+      pending = _props$pending === void 0 ? null : _props$pending,
+      pendingDot = props.pendingDot,
+      children = props.children,
+      className = props.className,
+      _props$reverse = props.reverse,
+      reverse = _props$reverse === void 0 ? false : _props$reverse,
+      _props$mode = props.mode,
+      mode = _props$mode === void 0 ? '' : _props$mode,
+      restProps = __rest(props, ["prefixCls", "pending", "pendingDot", "children", "className", "reverse", "mode"]);
+
+  var prefixCls = getPrefixCls('timeline', customizePrefixCls);
+  var pendingNode = typeof pending === 'boolean' ? null : pending;
+  var pendingItem = pending ? /*#__PURE__*/React__namespace.createElement(TimelineItem, {
+    pending: !!pending,
+    dot: pendingDot || /*#__PURE__*/React__namespace.createElement(LoadingOutlined$1, null)
+  }, pendingNode) : null;
+  var timeLineItems = React__namespace.Children.toArray(children);
+  timeLineItems.push(pendingItem);
+
+  if (reverse) {
+    timeLineItems.reverse();
+  }
+
+  var getPositionCls = function getPositionCls(ele, idx) {
+    if (mode === 'alternate') {
+      if (ele.props.position === 'right') return "".concat(prefixCls, "-item-right");
+      if (ele.props.position === 'left') return "".concat(prefixCls, "-item-left");
+      return idx % 2 === 0 ? "".concat(prefixCls, "-item-left") : "".concat(prefixCls, "-item-right");
+    }
+
+    if (mode === 'left') return "".concat(prefixCls, "-item-left");
+    if (mode === 'right') return "".concat(prefixCls, "-item-right");
+    if (ele.props.position === 'right') return "".concat(prefixCls, "-item-right");
+    return '';
+  }; // Remove falsy items
+
+
+  var truthyItems = timeLineItems.filter(function (item) {
+    return !!item;
+  });
+  var itemsCount = React__namespace.Children.count(truthyItems);
+  var lastCls = "".concat(prefixCls, "-item-last");
+  var items = React__namespace.Children.map(truthyItems, function (ele, idx) {
+    var pendingClass = idx === itemsCount - 2 ? lastCls : '';
+    var readyClass = idx === itemsCount - 1 ? lastCls : '';
+    return cloneElement(ele, {
+      className: classnames([ele.props.className, !reverse && !!pending ? pendingClass : readyClass, getPositionCls(ele, idx)])
+    });
+  });
+  var hasLabelItem = timeLineItems.some(function (item) {
+    var _a;
+
+    return !!((_a = item === null || item === void 0 ? void 0 : item.props) === null || _a === void 0 ? void 0 : _a.label);
+  });
+  var classString = classnames(prefixCls, (_classNames = {}, _defineProperty$4(_classNames, "".concat(prefixCls, "-pending"), !!pending), _defineProperty$4(_classNames, "".concat(prefixCls, "-reverse"), !!reverse), _defineProperty$4(_classNames, "".concat(prefixCls, "-").concat(mode), !!mode && !hasLabelItem), _defineProperty$4(_classNames, "".concat(prefixCls, "-label"), hasLabelItem), _defineProperty$4(_classNames, "".concat(prefixCls, "-rtl"), direction === 'rtl'), _classNames), className);
+  return /*#__PURE__*/React__namespace.createElement("ul", _extends$1({}, restProps, {
+    className: classString
+  }), items);
+};
+
+Timeline.Item = TimelineItem;
+
+var Option = Select$2.Option;
+var Select = function (_a, ref) {
+    var className = _a.className, classNameSelect = _a.classNameSelect, _b = _a.value, value = _b === void 0 ? [] : _b, label = _a.label, _c = _a.defaultValue, defaultValue = _c === void 0 ? [] : _c, _d = _a.placeholder, placeholder = _d === void 0 ? "Please select" : _d, onChange = _a.onChange, disabled = _a.disabled, _e = _a.dataSource, dataSource = _e === void 0 ? [] : _e, error = _a.error, _f = _a.multiple, multiple = _f === void 0 ? false : _f, _g = _a.getLabel, getLabel = _g === void 0 ? function (item) { return item.label; } : _g, _h = _a.getKey, getKey = _h === void 0 ? function (item) { return item.id; } : _h, _j = _a.getValue, getValue = _j === void 0 ? function (item) { var _a; return (_a = item === null || item === void 0 ? void 0 : item.id) !== null && _a !== void 0 ? _a : null; } : _j, _k = _a.allowClear, allowClear = _k === void 0 ? true : _k, _l = _a.variant, variant = _l === void 0 ? "outline" : _l, _m = _a.hasFilter, hasFilter = _m === void 0 ? true : _m, props = __rest$s(_a, ["className", "classNameSelect", "value", "label", "defaultValue", "placeholder", "onChange", "disabled", "dataSource", "error", "multiple", "getLabel", "getKey", "getValue", "allowClear", "variant", "hasFilter"]);
     var children = React.useMemo(function () {
         return dataSource.map(function (dataItem) {
             var label = getLabel(dataItem);
@@ -50432,6 +50566,11 @@ var Select = function (_a) {
             return (jsxRuntime.jsx(Option, __assign({ value: getValue(dataItem) }, { children: label }), key));
         });
     }, [dataSource]);
+    var selectRef = React.useRef(null);
+    React.useImperativeHandle(ref, function () { return ({
+        onBlur: function () { return selectRef.current && selectRef.current.blur(); },
+        onFocus: function () { return selectRef.current && selectRef.current.focus(); },
+    }); });
     var container = classnames("d-select__container", "d-select__container-" + variant, className);
     var labelClass = classnames("text-label");
     var selectClass = classnames("d-select__select", "d-select__select-" + variant, {
@@ -50440,7 +50579,7 @@ var Select = function (_a) {
     }, classNameSelect);
     var errorTextClass = classnames("text-x-small", "text-error", "ml-1");
     return (jsxRuntime.jsxs("div", __assign({ className: container }, { children: [label && jsxRuntime.jsx("label", __assign({ className: labelClass }, { children: label }), void 0),
-            jsxRuntime.jsx(Select$1, __assign({ mode: multiple ? "multiple" : undefined }, props, { value: value, allowClear: allowClear, placeholder: placeholder, defaultValue: defaultValue, onChange: onChange, className: selectClass, showArrow: true, suffixIcon: jsxRuntime.jsx(Icon$2, { name: "expand_more" }, void 0), disabled: disabled, optionFilterProp: "children", filterOption: function (input, option) {
+            jsxRuntime.jsx(Select$2, __assign({ mode: multiple ? "multiple" : undefined }, props, { ref: selectRef, value: value, allowClear: allowClear, placeholder: placeholder, defaultValue: defaultValue, onChange: onChange, className: selectClass, showArrow: true, suffixIcon: jsxRuntime.jsx(Icon$2, { name: "expand_more" }, void 0), disabled: disabled, optionFilterProp: "children", filterOption: function (input, option) {
                     var _a = option.props, children = _a.children, value = _a.value;
                     if (!hasFilter) {
                         return false;
@@ -50451,6 +50590,7 @@ var Select = function (_a) {
             error && (jsxRuntime.jsxs("div", __assign({ className: "flex-center-y mt-1" }, { children: [jsxRuntime.jsx(Icon$2, { name: "error_outline", className: "text-error", size: "small" }, void 0),
                     jsxRuntime.jsx("text", __assign({ className: errorTextClass }, { children: error }), void 0)] }), void 0))] }), void 0));
 };
+var Select$1 = React__default['default'].forwardRef(Select);
 
 var TreeSelect = function (_a) {
     var className = _a.className, classNameSelect = _a.classNameSelect, _b = _a.value, value = _b === void 0 ? [] : _b, label = _a.label, _c = _a.placeholder, placeholder = _c === void 0 ? "Please select" : _c, onChange = _a.onChange, disabled = _a.disabled, _d = _a.dataSource, dataSource = _d === void 0 ? [] : _d, error = _a.error, _e = _a.multiple, multiple = _e === void 0 ? false : _e, _f = _a.allowClear, allowClear = _f === void 0 ? true : _f, _g = _a.variant, variant = _g === void 0 ? "outline" : _g;
@@ -50465,103 +50605,6 @@ var TreeSelect = function (_a) {
             jsxRuntime.jsx(TreeSelect$1, { className: selectClass, disabled: disabled, treeData: dataSource, onChange: onChange, value: value, placeholder: placeholder, multiple: multiple, allowClear: allowClear }, void 0),
             error && (jsxRuntime.jsxs("div", __assign({ className: "flex-center-y mt-1" }, { children: [jsxRuntime.jsx(Icon$2, { name: "error_outline", className: "text-error", size: "small" }, void 0),
                     jsxRuntime.jsx("text", __assign({ className: errorTextClass }, { children: error }), void 0)] }), void 0))] }), void 0));
-};
-
-var Button = function (_a) {
-    var _b;
-    var content = _a.content, iconName = _a.iconName, className = _a.className, classNameIcon = _a.classNameIcon, classNameIconSuffix = _a.classNameIconSuffix, onClick = _a.onClick, _c = _a.type, type = _c === void 0 ? "button" : _c, _d = _a.size, size = _d === void 0 ? "large" : _d, _e = _a.variant, variant = _e === void 0 ? "standard" : _e, _f = _a.color, color = _f === void 0 ? "primary" : _f, _g = _a.disabled, disabled = _g === void 0 ? false : _g, suffixIcon = _a.suffixIcon, suffixElement = _a.suffixElement, prefixElement = _a.prefixElement, children = _a.children, props = __rest$q(_a, ["content", "iconName", "className", "classNameIcon", "classNameIconSuffix", "onClick", "type", "size", "variant", "color", "disabled", "suffixIcon", "suffixElement", "prefixElement", "children"]);
-    var buttonClass = classnames("text text-nowrap d-button d-button__" + size + " \n         d-button__" + variant + "-" + color, (_b = {
-            "text-x-small": size === "x-small",
-            "text-small font-weight-bold": variant === "trans"
-        },
-        _b["d-button__icon-" + size] = iconName && !content && !children,
-        _b), className);
-    var iconClass = classnames("d-block", { "mx-2": (content || children) && iconName }, classNameIcon);
-    var suffixIconClass = classnames("d-block", { "mx-2": (content || children) && iconName }, classNameIconSuffix);
-    return (jsxRuntime.jsxs("button", __assign({ className: buttonClass, type: type, disabled: disabled, onClick: onClick }, props, { children: [prefixElement && prefixElement(),
-            iconName && jsxRuntime.jsx(Icon$2, { name: iconName, size: "large", className: iconClass }, void 0),
-            children,
-            content,
-            suffixIcon && jsxRuntime.jsx(Icon$2, { name: suffixIcon, size: "large", className: suffixIconClass }, void 0),
-            suffixElement && suffixElement()] }), void 0));
-};
-
-var Checkbox = function (_a) {
-    var className = _a.className, classNameInput = _a.classNameInput, classNameInputWrapper = _a.classNameInputWrapper, classNameLabel = _a.classNameLabel, id = _a.id, name = _a.name, value = _a.value, onChange = _a.onChange, label = _a.label, _b = _a.variant, variant = _b === void 0 ? "checkbox" : _b, disabled = _a.disabled, checked = _a.checked, props = __rest$q(_a, ["className", "classNameInput", "classNameInputWrapper", "classNameLabel", "id", "name", "value", "onChange", "label", "variant", "disabled", "checked"]);
-    var classContainer = classnames("checkbox__container", className);
-    var classInputWrapper = classnames("checkbox__input-wrapper", "checkbox__input-wrapper-" + variant, { "checkbox__input-wrapper-disabled": disabled }, classNameInputWrapper);
-    var classInput = classnames("checkbox__input", classNameInput);
-    var classLabel = classnames("checkbox__label ml-3 text-nowrap", classNameLabel);
-    return (jsxRuntime.jsxs("div", __assign({ className: classContainer }, props, { children: [jsxRuntime.jsxs("div", __assign({ className: classInputWrapper }, { children: [jsxRuntime.jsx("input", { type: "checkbox", id: id, name: name, value: value, onChange: onChange, className: classInput, disabled: disabled, checked: checked }, void 0),
-                    jsxRuntime.jsx("span", { className: "checkbox__check-mark" }, void 0)] }), void 0),
-            label && jsxRuntime.jsx("div", __assign({ className: classLabel }, { children: label }), void 0)] }), void 0));
-};
-
-var CheckboxGroup = function (_a) {
-    var dataSource = _a.dataSource, className = _a.className, classNameItem = _a.classNameItem, _b = _a.getLabel, getLabel = _b === void 0 ? function (item) { return item === null || item === void 0 ? void 0 : item.label; } : _b, _c = _a.getValue, getValue = _c === void 0 ? function (item) { return item === null || item === void 0 ? void 0 : item.id; } : _c, _d = _a.value, value = _d === void 0 ? [] : _d, onChange = _a.onChange, getDisabledItem = _a.getDisabledItem, _e = _a.numberOfColumns, numberOfColumns = _e === void 0 ? "3" : _e, label = _a.label;
-    var containerClass = classnames(className);
-    var groupContainerClass = classnames("d-checkbox-group d-flex flex-wrap", className);
-    return (jsxRuntime.jsxs("div", __assign({ className: containerClass }, { children: [jsxRuntime.jsx("label", { children: label }, void 0),
-            jsxRuntime.jsx("div", __assign({ className: groupContainerClass }, { children: dataSource.map(function (item) {
-                    var iLabel = getLabel(item);
-                    var iValue = getValue(item);
-                    var isChecked = value.includes(iValue);
-                    var isDisabled = (getDisabledItem && getDisabledItem(item)) || false;
-                    var itemClass = classnames("my-3 p-0", {
-                        "col-12": numberOfColumns === "1",
-                    }, {
-                        "col-6": numberOfColumns === "2",
-                    }, {
-                        "col-4": numberOfColumns === "3",
-                    }, {
-                        "col-3": numberOfColumns === "4",
-                    }, {
-                        col: numberOfColumns === "5",
-                    }, {
-                        "col-2": numberOfColumns === "6",
-                    }, classNameItem);
-                    return (jsxRuntime.jsx(Checkbox, { label: iLabel, value: getValue(item), onChange: function (event) {
-                            var isPush = event.target.checked;
-                            var clone = __spreadArray([], value);
-                            if (isPush) {
-                                clone.push(getValue(item));
-                            }
-                            else {
-                                clone = value.filter(function (i) {
-                                    return i !== getValue(item);
-                                });
-                            }
-                            onChange && onChange(clone);
-                        }, checked: isChecked, disabled: isDisabled, className: itemClass }, iValue));
-                }) }), void 0)] }), void 0));
-};
-
-var RadioGroup = function (_a) {
-    var dataSource = _a.dataSource, className = _a.className, classNameItem = _a.classNameItem, _b = _a.getLabel, getLabel = _b === void 0 ? function (item) { return item === null || item === void 0 ? void 0 : item.label; } : _b, _c = _a.getValue, getValue = _c === void 0 ? function (item) { return item === null || item === void 0 ? void 0 : item.id; } : _c, getDisabledItem = _a.getDisabledItem, value = _a.value, onChange = _a.onChange, _d = _a.numberOfColumns, numberOfColumns = _d === void 0 ? "3" : _d, label = _a.label;
-    var containerClass = classnames(className);
-    var groupContainerClass = classnames("d-flex flex-wrap", className);
-    return (jsxRuntime.jsxs("div", __assign({ className: containerClass }, { children: [jsxRuntime.jsx("label", { children: label }, void 0),
-            jsxRuntime.jsx("div", __assign({ className: groupContainerClass }, { children: dataSource.map(function (item) {
-                    var iLabel = getLabel(item);
-                    var isChecked = getValue(item) === value;
-                    var isDisabled = (getDisabledItem && getDisabledItem(item)) || false;
-                    var itemClass = classnames("my-3", {
-                        "col-12": numberOfColumns === "1",
-                    }, {
-                        "col-6": numberOfColumns === "2",
-                    }, {
-                        "col-4": numberOfColumns === "3",
-                    }, {
-                        "col-3": numberOfColumns === "4",
-                    }, {
-                        col: numberOfColumns === "5",
-                    }, {
-                        "col-2": numberOfColumns === "6",
-                    }, classNameItem);
-                    return (jsxRuntime.jsx(Checkbox, { label: iLabel, value: value, onChange: function (event) {
-                            onChange && onChange(getValue(item));
-                        }, checked: isChecked, variant: "radio", disabled: isDisabled, className: itemClass }, void 0));
-                }) }), void 0)] }), void 0));
 };
 
 var lodash = createCommonjsModule(function (module, exports) {
@@ -67754,692 +67797,6 @@ var lodash = createCommonjsModule(function (module, exports) {
 }.call(commonjsGlobal));
 });
 
-var Dot = function (_a) {
-    var _b = _a.size, size = _b === void 0 ? "small" : _b, _c = _a.color, color = _c === void 0 ? "green" : _c, className = _a.className, style = _a.style, children = _a.children;
-    var dotClass = classnames("d-dot_container", "d-dot__" + size + "-" + color, className);
-    return (jsxRuntime.jsx("div", __assign({ className: dotClass, style: style }, { children: children }), void 0));
-};
-
-var Badge = function (_a) {
-    var children = _a.children, _b = _a.variant, variant = _b === void 0 ? "dot" : _b, _c = _a.shape, shape = _c === void 0 ? "round" : _c, index = _a.index, _d = _a.dotProps, dotProps = _d === void 0 ? {} : _d, className = _a.className, classNameBadge = _a.classNameBadge, _e = _a.color, color = _e === void 0 ? "secondary" : _e, _f = _a.size, size = _f === void 0 ? "medium" : _f, _g = _a.style, style = _g === void 0 ? {} : _g, badgeStyle = _a.badgeStyle, onClick = _a.onClick;
-    var content = children;
-    if (typeof children === "function") {
-        content = children();
-    }
-    var badge = jsxRuntime.jsx(Dot, __assign({}, dotProps, { color: color, size: size, style: badgeStyle }), void 0);
-    // className
-    var wrapperClass = classnames("d-badge__container d-badge__container-" + variant, className);
-    var badgeWrapperClass = classnames("d-badge__badge-wrapper", {
-        "rounded-circle": shape === "round",
-        "position-absolute": !lodash.isEmpty(content),
-    }, classNameBadge);
-    var badgeIndexClass = classnames("d-badge__badge-index-" + size + "-" + color);
-    if (variant === "index") {
-        var display = index;
-        badge = jsxRuntime.jsx("div", {}, void 0);
-        if (typeof index === "number") {
-            display = index.toString();
-        }
-        if (display) {
-            badge = (jsxRuntime.jsx("div", __assign({ className: badgeIndexClass, style: badgeStyle }, { children: display }), void 0));
-        }
-    }
-    var badgeView = jsxRuntime.jsx("div", __assign({ className: badgeWrapperClass }, { children: badge }), void 0);
-    return (jsxRuntime.jsxs("div", __assign({ className: wrapperClass, style: style, onClick: onClick }, { children: [badgeView,
-            content] }), void 0));
-};
-
-var HeaderTable = function (_a) {
-    var _b = _a.className, className = _b === void 0 ? "" : _b, classNameTop = _a.classNameTop, style = _a.style, _c = _a.label, label = _c === void 0 ? "" : _c, _d = _a.placeholder, placeholder = _d === void 0 ? "Search" : _d, onChangeText = _a.onChangeText, _e = _a.disabledSearch, disabledSearch = _e === void 0 ? false : _e, onClickNew = _a.onClickNew, onClickExport = _a.onClickExport, onClickFilter = _a.onClickFilter, onClickImport = _a.onClickImport, customView = _a.customView, _f = _a.isFiltered, isFiltered = _f === void 0 ? false : _f, _g = _a.badgeColor, badgeColor = _g === void 0 ? "secondary" : _g;
-    var button = jsxRuntime.jsx(Button, { iconName: "filter_list", onClick: onClickFilter }, void 0);
-    if (isFiltered) {
-        button = (jsxRuntime.jsx(Badge, __assign({ color: badgeColor }, { children: jsxRuntime.jsx(Button, { iconName: "filter_list", onClick: onClickFilter }, void 0) }), void 0));
-    }
-    return (jsxRuntime.jsxs("div", __assign({ className: classnames("w-100", className), style: style }, { children: [jsxRuntime.jsxs("div", __assign({ className: classnames("d-flex justify-content-between mb-3", classNameTop) }, { children: [jsxRuntime.jsx("div", __assign({ className: "h4" }, { children: label }), void 0),
-                    jsxRuntime.jsxs("div", __assign({ className: "d-flex" }, { children: [onClickNew && jsxRuntime.jsx(Button, { iconName: "add", content: "New", onClick: onClickNew, className: "ml-3" }, void 0),
-                            onClickImport && (jsxRuntime.jsx(Button, { iconName: "cloud_upload", content: "Import", onClick: onClickImport, className: "ml-3" }, void 0)),
-                            onClickExport && (jsxRuntime.jsx(Button, { iconName: "cloud_download", content: "Export", onClick: onClickExport, className: "ml-3" }, void 0))] }), void 0)] }), void 0),
-            jsxRuntime.jsxs("div", __assign({ className: "flex-center-y" }, { children: [customView && jsxRuntime.jsx("div", __assign({ className: "header-table__custom-view-container" }, { children: customView() }), void 0),
-                    jsxRuntime.jsx(InputTextSearch, { className: "w-100 mr-3 bg-white", placeholder: placeholder, onChange: onChangeText, disabled: disabledSearch }, void 0),
-                    onClickFilter && button] }), void 0)] }), void 0));
-};
-
-var en = {
-    error: "Error",
-    success: "Success",
-    info: "Info",
-    warning: "Warning",
-    cancel: "Cancel",
-    retry: "Retry",
-    showMore: "Show More",
-    showLess: "Show Less",
-    save: "Save",
-    back: "Back",
-    delete: "Delete",
-    print: "Print",
-    edit: "Edit",
-};
-
-var th = {
-    error: "ผิดพลาด",
-    success: "สำเร็จ",
-    info: "ข้อมูล",
-    warning: "คำเตือน",
-    cancel: "ยกเลิก",
-    retry: "ลองอีกครั้ง",
-    save: "บันทึก",
-    edit: "แก้ไข",
-    delete: "ลบทิ้ง",
-    print: "พิมพ์",
-    back: "Back",
-    showMore: "Show More",
-    showLess: "Show Less",
-};
-
-var _a;
-var Languages = {
-    en: en,
-    th: th,
-};
-var currentLang = (_a = document.documentElement.lang) !== null && _a !== void 0 ? _a : "en";
-var Messages = Languages[currentLang];
-console.log({ Messages: Messages });
-console.log({ currentLang: currentLang });
-
-var Header = function (_a) {
-    var title = _a.title, _b = _a.saveText, saveText = _b === void 0 ? Messages.save : _b, _c = _a.cancelText, cancelText = _c === void 0 ? Messages.back : _c, _d = _a.deleteText, deleteText = _d === void 0 ? Messages.delete : _d, _e = _a.printText, printText = _e === void 0 ? Messages.print : _e, _f = _a.editText, editText = _f === void 0 ? Messages.edit : _f, onCancel = _a.onCancel, onSave = _a.onSave, onDelete = _a.onDelete, onPrint = _a.onPrint, onEdit = _a.onEdit, disabledSave = _a.disabledSave, customLeft = _a.customLeft, _g = _a.showCancel, showCancel = _g === void 0 ? true : _g, className = _a.className;
-    var renderLeftView = function () {
-        if (customLeft) {
-            return customLeft();
-        }
-        return jsxRuntime.jsx("h4", __assign({ className: "text-primary" }, { children: title }), void 0);
-    };
-    return (jsxRuntime.jsxs("div", __assign({ className: "card-container d-common-header " + className }, { children: [renderLeftView(),
-            jsxRuntime.jsxs("div", __assign({ className: "d-common-header__button-group" }, { children: [showCancel && (jsxRuntime.jsx(Button, { variant: "outline", content: cancelText, onClick: function () { return (onCancel ? onCancel() : window.history.go("back")); }, className: "mr-3" }, void 0)),
-                    onDelete && jsxRuntime.jsx(Button, { content: deleteText, onClick: onDelete, iconName: "delete", className: "mr-3" }, void 0),
-                    onPrint && jsxRuntime.jsx(Button, { content: printText, onClick: onPrint, iconName: "print", className: "mr-3" }, void 0),
-                    onEdit && jsxRuntime.jsx(Button, { content: editText, onClick: onEdit, className: "mr-3", iconName: "edit" }, void 0),
-                    onSave && jsxRuntime.jsx(Button, { content: saveText, onClick: onSave, disabled: disabledSave }, void 0)] }), void 0)] }), void 0));
-};
-
-function Avatar(_a) {
-    var _b = _a.size, size = _b === void 0 ? "medium" : _b, src = _a.src, alt = _a.alt, _c = _a.variant, variant = _c === void 0 ? "rounded" : _c, className = _a.className, classNameImage = _a.classNameImage, classNameLetter = _a.classNameLetter, text = _a.text, _d = _a.color, color = _d === void 0 ? "#D8D8D8" : _d, props = __rest$q(_a, ["size", "src", "alt", "variant", "className", "classNameImage", "classNameLetter", "text", "color"]);
-    var wrapperClass = classnames("d-image__container d-image__" + variant + "-" + size + " bg-" + color, { "d-flex justify-content-center align-items-center": !!text }, className);
-    var imageClass = classnames("d-image__image", classNameImage);
-    var letterClass = classnames("text-white text-center font-weight-normal", {
-        h1: size === "medium",
-        h3: size === "small",
-        h4: size === "x-small",
-        h5: size === "xx-small",
-    }, classNameLetter);
-    var content;
-    if (text) {
-        var firstLetter = text.charAt(0);
-        content = (jsxRuntime.jsx("div", __assign({ className: letterClass, style: { fontSize: size === "large" ? "56px" : size === "x-large" ? "80px" : undefined } }, { children: firstLetter }), void 0));
-    }
-    if (src) {
-        content = jsxRuntime.jsx("img", __assign({ src: src }, props, { alt: alt, className: imageClass }), void 0);
-    }
-    return (jsxRuntime.jsx("div", __assign({ className: wrapperClass, style: { backgroundColor: color } }, { children: content }), void 0));
-}
-
-var AvatarName = function (_a) {
-    var user = _a.user, _b = _a.position, position = _b === void 0 ? "after" : _b, _c = _a.size, size = _c === void 0 ? "x-small" : _c, subLabel = _a.subLabel, className = _a.className, classNameText = _a.classNameText;
-    var avatar = user.avatar, fullName = user.fullName, _d = user.name, name = _d === void 0 ? "" : _d;
-    var displayName = name;
-    if (fullName) {
-        displayName = fullName;
-    }
-    var wrapperClass = classnames("d-flex align-items-center", className);
-    var nameClass = classnames("d-flex flex-column", {
-        "mr-2": position === "before",
-        "ml-2": position === "after",
-    });
-    var nameTextClass = classnames("text-nowrap", {
-        "h1 font-weight-normal": size === "large",
-        "h3 font-weight-normal": size === "medium",
-        "text-medium": size === "small",
-        "text-small": size === "x-small",
-        "text-x-small": size === "xx-small",
-    }, classNameText);
-    var subTextClass = classnames({
-        "text-large": size === "large",
-        "text-medium": size === "medium",
-        "text-x-small": size === "small",
-        "text-xx-small": size === "x-small" || size === "xx-small",
-    });
-    var renderName = function () {
-        return (jsxRuntime.jsxs("div", __assign({ className: nameClass }, { children: [jsxRuntime.jsx("div", __assign({ className: "" + nameTextClass, style: {
-                        fontSize: size === "x-large" ? "56px" : undefined,
-                        lineHeight: size === "x-large" ? "70px" : undefined,
-                    } }, { children: displayName }), void 0),
-                subLabel && (jsxRuntime.jsx("div", __assign({ className: subTextClass, style: { fontSize: size === "x-large" ? "32px" : undefined } }, { children: subLabel }), void 0))] }), void 0));
-    };
-    return (jsxRuntime.jsxs("div", __assign({ className: wrapperClass }, { children: [position === "before" && renderName(),
-            avatar && jsxRuntime.jsx(Avatar, { src: avatar, size: size }, void 0),
-            !avatar && jsxRuntime.jsx(Avatar, { text: displayName.charAt(0), size: size }, void 0),
-            position === "after" && renderName()] }), void 0));
-};
-
-// eslint-disable-next-line import/no-extraneous-dependencies
-var DATE_TIME_FORMAT = "DD/MM/YYYY HH:mm";
-var TIME_FORMAT = "HH:mm";
-var DATE_FORMAT = "DD/MM/YYYY";
-// react-datepicker format
-var DATE_TIME_INPUT_FORMAT = "dd/MM/yyyy HH:mm";
-var DATE_INPUT_FORMAT = "dd/MM/yyyy";
-var MONTH_INPUT_FORMAT = "mm/yyyy";
-var YEAR_INPUT_FORMAT = "yyyy";
-// ant design date picker format
-var ANT_DATE_TIME_INPUT_FORMAT = "DD/MM/YYYY HH:mm";
-var ANT_DATE_INPUT_FORMAT = "DD/MM/YYYY";
-var ANT_MONTH_INPUT_FORMAT = "MM/YYYY";
-var ANT_YEAR_INPUT_FORMAT = "YYYY";
-var MONTH_MILISECOND = 30 * 24 * 60 * 60 * 1000;
-var WEEK_MILISECOND = 7 * 24 * 60 * 60 * 1000;
-var DAY_MILISECOND = 24 * 60 * 60 * 1000;
-var convertMiliToMinutes = function (miliSeconds) {
-    if (!miliSeconds)
-        return 0;
-    return miliSeconds / (1000 * 60);
-};
-var convertMinutesToMili = function (minutes) {
-    if (!minutes)
-        return;
-    // eslint-disable-next-line consistent-return
-    return minutes * 60 * 1000;
-};
-var convertMiliToDateTime = function (timeInMillis, lang) {
-    if (lang === void 0) { lang = "en"; }
-    var date = new Date(timeInMillis);
-    if (lang === "th") {
-        return date ? moment(date).add("years", 543).format(DATE_TIME_FORMAT) : "";
-    }
-    return date ? moment(date).format(DATE_TIME_FORMAT) : "";
-};
-var convertDateTimeToMili = function (dateTime) {
-    var date = new Date(dateTime);
-    return date.getTime();
-};
-var convertMiliToDate = function (timeInMillis, lang) {
-    if (lang === void 0) { lang = "en"; }
-    var date = new Date(timeInMillis);
-    if (lang === "th") {
-        return date ? moment(date).add("years", 543).format(DATE_FORMAT) : "";
-    }
-    return date ? moment(date).format(DATE_FORMAT) : "";
-};
-var convertMiliToTime = function (timeInMillis) {
-    var date = new Date(timeInMillis);
-    return date ? moment(date).format(TIME_FORMAT) : "";
-};
-var convertMiliToDateWithFormat = function (timeInMillis, FORMAT) {
-    var date = new Date(timeInMillis);
-    return date ? moment(date).format(FORMAT) : "";
-};
-var convertToDefaultInputFormat = function (timeMili) {
-    return convertMiliToDateWithFormat(timeMili, "YYYY-MM-DDTHH:mm");
-};
-function calculateMonthDifferent(d1, d2) {
-    var date1 = new Date(d1);
-    var date2 = new Date(d2);
-    var months;
-    months = (date1.getFullYear() - date2.getFullYear()) * 12;
-    months += date1.getMonth();
-    months -= date2.getMonth();
-    return months <= 0 ? 0 : months;
-}
-function calculateWeekDifferent(d1, d2) {
-    var diff = (d1 - d2) / 1000;
-    diff /= 60 * 60 * 24 * 7;
-    return Math.abs(Math.round(diff));
-}
-function calculateDayDifferent(d1, d2) {
-    var diff = (d1 - d2) / 1000;
-    diff /= 60 * 60 * 24;
-    return Math.abs(Math.round(diff));
-}
-function calculateTimeDifferent(moment1, moment2, type) {
-    if (type === void 0) { type = "day"; }
-    // type accept : years, months, weeks, days, hours, minutes, and seconds
-    var start = moment(moment1);
-    var end = moment(moment2);
-    return end.diff(start, type);
-}
-function convertRangeDateToArray(date1, date2) {
-    var start = moment(date1);
-    var end = moment(date2);
-    var dates = [];
-    while (start <= end) {
-        dates.push(start.toString());
-        start = start.add(1, "days");
-    }
-    return dates;
-}
-var TimeUtils = {
-    convertToDefaultInputFormat: convertToDefaultInputFormat,
-    convertMiliToDateWithFormat: convertMiliToDateWithFormat,
-    convertMiliToTime: convertMiliToTime,
-    convertMiliToDate: convertMiliToDate,
-    convertMiliToMinutes: convertMiliToMinutes,
-    convertMinutesToMili: convertMinutesToMili,
-    convertMiliToDateTime: convertMiliToDateTime,
-    convertDateTimeToMili: convertDateTimeToMili,
-    calculateMonthDifferent: calculateMonthDifferent,
-    calculateWeekDifferent: calculateWeekDifferent,
-    calculateDayDifferent: calculateDayDifferent,
-    calculateTimeDifferent: calculateTimeDifferent,
-    convertRangeDateToArray: convertRangeDateToArray,
-    MONTH_MILISECOND: MONTH_MILISECOND,
-    WEEK_MILISECOND: WEEK_MILISECOND,
-    DAY_MILISECOND: DAY_MILISECOND,
-    DATE_FORMAT: DATE_FORMAT,
-    DATE_TIME_FORMAT: DATE_TIME_FORMAT,
-    DATE_INPUT_FORMAT: DATE_INPUT_FORMAT,
-    DATE_TIME_INPUT_FORMAT: DATE_TIME_INPUT_FORMAT,
-    MONTH_INPUT_FORMAT: MONTH_INPUT_FORMAT,
-    YEAR_INPUT_FORMAT: YEAR_INPUT_FORMAT,
-    ANT_DATE_TIME_INPUT_FORMAT: ANT_DATE_TIME_INPUT_FORMAT,
-    ANT_DATE_INPUT_FORMAT: ANT_DATE_INPUT_FORMAT,
-    ANT_MONTH_INPUT_FORMAT: ANT_MONTH_INPUT_FORMAT,
-    ANT_YEAR_INPUT_FORMAT: ANT_YEAR_INPUT_FORMAT,
-};
-
-var HeaderDetail = function (_a) {
-    var title = _a.title, status = _a.status, _b = _a.listStatus, listStatus = _b === void 0 ? [] : _b, _c = _a.listButton, listButton = _c === void 0 ? [
-        { id: "print", icon: "print", label: "print" },
-        { id: "cancel", icon: "cancel", label: "cancel" },
-    ] : _c, created = _a.created, user = _a.user, customRight = _a.customRight, customCreated = _a.customCreated, onButtonClick = _a.onButtonClick, Messages = _a.Messages;
-    var foundStatus = React.useMemo(function () {
-        var result = null;
-        if (status && listStatus.length > 0) {
-            result = listStatus.find(function (item) { return (item === null || item === void 0 ? void 0 : item.id) === status; });
-        }
-        return result;
-    }, [status]);
-    var leftView = function () {
-        var titleStatus = function () {
-            return (jsxRuntime.jsxs("div", __assign({ className: "d-flex" }, { children: [jsxRuntime.jsx("h4", { children: title }, void 0),
-                    foundStatus && (jsxRuntime.jsx("div", __assign({ className: "py-1 px-2 text-center ml-3 text-white", style: { backgroundColor: foundStatus.color } }, { children: Messages[foundStatus.label] }), void 0))] }), void 0));
-        };
-        var buttons = function () {
-            return (jsxRuntime.jsx("div", __assign({ className: "d-flex align-items-center" }, { children: listButton.map(function (button, index) {
-                    var buttonClass = classnames("p-0 text-gray font-weight-normal", {
-                        "mx-3": index !== 0,
-                    });
-                    return (jsxRuntime.jsx(Button, { variant: "trans", content: Messages[button.label], iconName: button.icon, className: buttonClass, onClick: function () { return onButtonClick && onButtonClick(button); } }, void 0));
-                }) }), void 0));
-        };
-        return (jsxRuntime.jsxs("div", __assign({ className: "d-flex flex-column" }, { children: [titleStatus(),
-                listButton.length > 0 && buttons()] }), void 0));
-    };
-    var createdView = (jsxRuntime.jsx("div", __assign({ className: "text-x-small text-gray" }, { children: Messages.createdOn + " " + TimeUtils.convertMiliToDate(created) + " " + Messages.at + " " + TimeUtils.convertMiliToTime(created) }), void 0));
-    if (customCreated) {
-        createdView = customCreated(created);
-    }
-    var rightView = function () {
-        if (customRight) {
-            return customRight();
-        }
-        return (jsxRuntime.jsxs("div", __assign({ className: "d-flex flex-column align-items-end" }, { children: [user && jsxRuntime.jsx(AvatarName, { user: user, className: "mb-1" }, void 0),
-                (created || customCreated) && createdView] }), void 0));
-    };
-    return (jsxRuntime.jsxs("div", __assign({ className: "card-container d-flex align-items-center justify-content-between p-4" }, { children: [leftView(),
-            rightView()] }), void 0));
-};
-
-var HeaderBlock = function (_a) {
-    var title = _a.title, className = _a.className, style = _a.style, classNameTitle = _a.classNameTitle, styleTitle = _a.styleTitle, _b = _a.showLine, showLine = _b === void 0 ? true : _b, showArrow = _a.showArrow, customRight = _a.customRight, _c = _a.arrowProps, arrowProps = _c === void 0 ? {} : _c, _d = _a.lineColor, lineColor = _d === void 0 ? "gray" : _d, _e = _a.arrowColor, arrowColor = _e === void 0 ? "gray" : _e, onPrevious = _a.onPrevious, onNext = _a.onNext;
-    var wrapperClass = classnames("w-100 d-flex align-items-center py-3 text-nowrap", className);
-    var titleClass = classnames("text-bold", classNameTitle);
-    var lineClass = classnames("border border-" + lineColor + " w-100 ml-4", { "mr-4": showArrow || customRight });
-    var rightSide = function () {
-        var content;
-        if (showArrow) {
-            content = (jsxRuntime.jsxs("div", __assign({ className: "d-flex align-items-center" }, { children: [jsxRuntime.jsx(Button, __assign({ iconName: "chevron_left", variant: "outline", onClick: onPrevious, className: "mr-3 px-1", size: "fit-content", color: arrowColor }, arrowProps), void 0),
-                    jsxRuntime.jsx(Button, __assign({ iconName: "chevron_right", variant: "outline", onClick: onNext, className: "px-1", size: "fit-content", color: arrowColor }, arrowProps), void 0)] }), void 0));
-        }
-        if (customRight) {
-            content = customRight;
-        }
-        return content;
-    };
-    return (jsxRuntime.jsxs("div", __assign({ className: wrapperClass, style: style }, { children: [jsxRuntime.jsx("div", __assign({ className: titleClass, style: styleTitle }, { children: title }), void 0),
-            showLine && jsxRuntime.jsx("div", { className: lineClass }, void 0),
-            rightSide()] }), void 0));
-};
-
-var Modal = function (_a) {
-    var children = _a.children, open = _a.open, _b = _a.centered, centered = _b === void 0 ? true : _b, _c = _a.closable, closable = _c === void 0 ? false : _c, onClose = _a.onClose, onSave = _a.onSave, onSideClick = _a.onSideClick, cancelAction = _a.cancelAction, width = _a.width, title = _a.title, customHeader = _a.customHeader, customFooter = _a.customFooter, customSideButton = _a.customSideButton, headerSide = _a.headerSide, _d = _a.hasCloseIcon, hasCloseIcon = _d === void 0 ? true : _d, _e = _a.hasCancelButton, hasCancelButton = _e === void 0 ? false : _e, _f = _a.saveText, saveText = _f === void 0 ? "Save" : _f, _g = _a.cancelText, cancelText = _g === void 0 ? "Cancel" : _g, _h = _a.sideText, sideText = _h === void 0 ? "Clear" : _h, size = _a.size, className = _a.className, classNameContent = _a.classNameContent, classNameFooter = _a.classNameFooter, classNameHeader = _a.classNameHeader, _j = _a.showFooter, showFooter = _j === void 0 ? true : _j, _k = _a.showHeader, showHeader = _k === void 0 ? true : _k, props = __rest$q(_a, ["children", "open", "centered", "closable", "onClose", "onSave", "onSideClick", "cancelAction", "width", "title", "customHeader", "customFooter", "customSideButton", "headerSide", "hasCloseIcon", "hasCancelButton", "saveText", "cancelText", "sideText", "size", "className", "classNameContent", "classNameFooter", "classNameHeader", "showFooter", "showHeader"]);
-    var modalClass = classnames("d-modal", "d-modal__" + size, className);
-    var childrenClass = classnames("d-modal__children", classNameContent);
-    var headerClass = classnames("d-modal__header border-bottom ", { "d-flex align-items-center": !!title }, classNameHeader);
-    var footerClass = classnames("d-modal__footer d-flex align-items-center border-top py-3 px-3", classNameFooter);
-    var header = function () {
-        var content;
-        content = function () {
-            return (jsxRuntime.jsxs(React__default['default'].Fragment, { children: [hasCloseIcon && (jsxRuntime.jsx(Button, { iconName: "close", variant: "trans", onClick: onClose, className: "d-modal__header-close-icon" }, void 0)),
-                    title && jsxRuntime.jsx("h4", __assign({ className: "w-100 text-center" }, { children: title }), void 0),
-                    headerSide && headerSide()] }, void 0));
-        };
-        if (customHeader) {
-            content = customHeader;
-        }
-        return jsxRuntime.jsx("div", __assign({ className: headerClass }, { children: content() }), void 0);
-    };
-    var footer = function () {
-        var content;
-        var sideButton;
-        sideButton = function () { return jsxRuntime.jsx(Button, { variant: "trans", content: sideText, onClick: onSideClick }, void 0); };
-        if (customSideButton) {
-            sideButton = customSideButton;
-        }
-        content = function () {
-            return (jsxRuntime.jsxs(React__default['default'].Fragment, { children: [(onSideClick || !!customSideButton) && sideButton(),
-                    jsxRuntime.jsxs("div", __assign({ className: "w-100 d-flex align-items-center justify-content-end" }, { children: [hasCancelButton && (jsxRuntime.jsx(Button, { variant: "outline", content: cancelText, className: "mr-3", onClick: function (e) {
-                                    if (cancelAction) {
-                                        return cancelAction(e);
-                                    }
-                                    return onClose && onClose(e);
-                                } }, void 0)),
-                            jsxRuntime.jsx(Button, { variant: "standard", content: saveText, onClick: onSave }, void 0)] }), void 0)] }, void 0));
-        };
-        if (customFooter) {
-            content = customFooter;
-        }
-        return jsxRuntime.jsx("div", __assign({ className: footerClass }, { children: content() }), void 0);
-    };
-    return (jsxRuntime.jsxs(Modal$1, __assign({ visible: open, onCancel: onClose, centered: centered, className: modalClass, closable: closable, width: width, footer: null }, props, { children: [showHeader && header(),
-            jsxRuntime.jsx("div", __assign({ className: childrenClass }, { children: children }), void 0),
-            showFooter && footer()] }), void 0));
-};
-
-var getValueFromStringKey = function (object, keyString) {
-    var keyList = keyString.split(".");
-    if (keyList.length === 0) {
-        return object[keyString];
-    }
-    var objectResult = object;
-    keyList.forEach(function (key) {
-        objectResult = objectResult === null || objectResult === void 0 ? void 0 : objectResult[key];
-    });
-    return objectResult;
-};
-var setValueFromStringKey = function (object, keyString, value) {
-    var keyList = keyString.split(".");
-    lodash.reverse(keyList);
-    var objectResult = {};
-    if (keyList.length === 0) {
-        objectResult[keyString] = value;
-        return objectResult;
-    }
-    keyList.forEach(function (key, index) {
-        var _a;
-        if (index === 0) {
-            objectResult[key] = value;
-        }
-        else {
-            objectResult = (_a = {}, _a[key] = objectResult, _a);
-        }
-    });
-    return __assign(__assign({}, object), objectResult);
-};
-var mapFieldsLangsCTS = function (dataClient, KEYS_LANG) {
-    if (dataClient === void 0) { dataClient = {}; }
-    if (KEYS_LANG === void 0) { KEYS_LANG = []; }
-    var dataResult = {};
-    KEYS_LANG.forEach(function (fields) {
-        dataResult = setValueFromStringKey(dataResult, fields.keyServer, dataClient[fields.keyClient]);
-    });
-    return dataResult;
-};
-var mapFieldsLangsSTC = function (dataServer, KEYS_LANG) {
-    if (KEYS_LANG === void 0) { KEYS_LANG = []; }
-    var dataResult = {};
-    KEYS_LANG.forEach(function (fields) {
-        dataResult[fields.keyClient] = getValueFromStringKey(dataServer, fields.keyServer);
-    });
-    return dataResult;
-};
-var mapObjectToArray = function (object) {
-    if (!object) {
-        return [];
-    }
-    var arrayResult = [];
-    Object.keys(object).forEach(function (key) { return arrayResult.push(__assign({ id: key }, object[key])); });
-    return arrayResult;
-};
-var mapArrayToObject = function (array, getKey) {
-    if (getKey === void 0) { getKey = function (item) { return item.id; }; }
-    if (!array || array.length === 0) {
-        return {};
-    }
-    var objectResult = {};
-    array.forEach(function (arrayItem) {
-        var key = getKey(arrayItem);
-        objectResult[key] = arrayItem;
-    });
-    return objectResult;
-};
-var findItemFromId = function (list, id) {
-    var _a;
-    if (list === void 0) { list = []; }
-    if (!list || list.length === 0) {
-        return {};
-    }
-    return (_a = lodash.filter(list, function (pro) { return pro.id === id; })) === null || _a === void 0 ? void 0 : _a[0];
-};
-var removeItemFromId = function (list, id) {
-    if (list === void 0) { list = []; }
-    if (!list || list.length === 0) {
-        return [];
-    }
-    return lodash.filter(list, function (pro) { return pro.id !== id; });
-};
-var sliceArrayToMui = function (bigArray, numberOfItem) {
-    if (bigArray === void 0) { bigArray = []; }
-    if (numberOfItem === void 0) { numberOfItem = 10; }
-    var arrayOfArrays = [];
-    for (var i = 0; i < bigArray.length; i += numberOfItem) {
-        arrayOfArrays.push(bigArray.slice(i, i + numberOfItem));
-    }
-    return arrayOfArrays;
-};
-var arrayMove = function (arr, oldIndex, newIndex) {
-    if (newIndex >= arr.length) {
-        var k = newIndex - arr.length + 1;
-        // eslint-disable-next-line no-plusplus
-        while (k--) {
-            arr.push(undefined);
-        }
-    }
-    arr.splice(newIndex, 0, arr.splice(oldIndex, 1)[0]);
-    return arr; // for testing
-};
-function combineAllArray(arr) {
-    if (!arr || arr.length === 0)
-        return [];
-    if (arr.length === 1) {
-        return arr[0];
-    }
-    var result = [];
-    var allCasesOfRest = combineAllArray(arr.slice(1));
-    for (var i = 0; i < allCasesOfRest.length; i += 1) {
-        for (var j = 0; j < arr[0].length; j += 1) {
-            result.push(arr[0][j].concat(allCasesOfRest[i]));
-        }
-    }
-    return result;
-}
-function compareTwoStringArray(array1, array2) {
-    if (!array1 || !array2 || array1.length !== array2.length)
-        return false;
-    return lodash.every(array1, function (item) { return lodash.includes(array2, item); });
-}
-/**
- *
- * @param {big array} array1
- * @param {small array} array2
- */
-function arrayIsContainArray(array1, array2) {
-    return lodash.every(array2, function (item) { return lodash.includes(array1, item); });
-}
-var ObjectUtils = {
-    getValueFromStringKey: getValueFromStringKey,
-    mapObjectToArray: mapObjectToArray,
-    findItemFromId: findItemFromId,
-    removeItemFromId: removeItemFromId,
-    sliceArrayToMui: sliceArrayToMui,
-    arrayMove: arrayMove,
-    mapArrayToObject: mapArrayToObject,
-    combineAllArray: combineAllArray,
-    compareTwoStringArray: compareTwoStringArray,
-    setValueFromStringKey: setValueFromStringKey,
-    mapFieldsLangsCTS: mapFieldsLangsCTS,
-    mapFieldsLangsSTC: mapFieldsLangsSTC,
-    arrayIsContainArray: arrayIsContainArray,
-};
-
-var RowInterchangeView = function (_a) {
-    var _b = _a.dataSource, dataSource = _b === void 0 ? {} : _b, _c = _a.keyList, keyList = _c === void 0 ? [] : _c, _d = _a.variant, variant = _d === void 0 ? "background" : _d, _e = _a.boldLabel, boldLabel = _e === void 0 ? false : _e, className = _a.className, classNameRow = _a.classNameRow, classNameLabel = _a.classNameLabel, classNameContent = _a.classNameContent, Messages = _a.Messages, style = _a.style, styleLabel = _a.styleLabel, styleContent = _a.styleContent;
-    var wrapperClass = classnames(className);
-    return (jsxRuntime.jsx("div", __assign({ className: wrapperClass }, { children: keyList.map(function (row, index) {
-            var _a;
-            var rowClass = classnames("d-flex align-items-start w-100 justify-content-between py-3", {
-                "px-3": variant === "background",
-                "bg-light-gray": index % 2 && variant === "background",
-                "border-top": index !== 0 && variant === "border",
-                "border-top-dashed": index !== 0 && variant === "dashed",
-            }, classNameRow);
-            var labelClass = classnames("text-small w-100", { "font-weight-bold": boldLabel }, classNameLabel);
-            var contentClass = classnames("w-100 text", classNameContent);
-            var id = row.id, label = row.label, renderLabel = row.renderLabel, renderContent = row.renderContent;
-            var labelView;
-            var content;
-            labelView = label;
-            if (Messages) {
-                labelView = Messages[label];
-            }
-            if (typeof renderLabel === "function") {
-                labelView = renderLabel(id, dataSource, row);
-            }
-            content = (_a = dataSource === null || dataSource === void 0 ? void 0 : dataSource[id]) !== null && _a !== void 0 ? _a : "N/A";
-            if (typeof id === "string" && id.includes(".")) {
-                content = ObjectUtils.getValueFromStringKey(dataSource, id);
-            }
-            if (typeof renderContent === "function") {
-                content = renderContent(id, dataSource, row);
-            }
-            var contentView = (jsxRuntime.jsx("div", __assign({ className: contentClass, style: styleContent }, { children: content }), void 0));
-            return (jsxRuntime.jsxs("div", __assign({ className: rowClass, style: style }, { children: [jsxRuntime.jsx("div", __assign({ className: labelClass, style: styleLabel }, { children: labelView }), void 0),
-                    contentView] }), id + index));
-        }) }), void 0));
-};
-
-var ViewRow = function (_a) {
-    var className = _a.className, classNameLabel = _a.classNameLabel, classNameContent = _a.classNameContent, style = _a.style, styleContent = _a.styleContent, _b = _a.styleLabel, styleLabel = _b === void 0 ? {} : _b, _c = _a.width, width = _c === void 0 ? "100%" : _c, label = _a.label, _d = _a.center, center = _d === void 0 ? true : _d, children = _a.children;
-    var wrapperClass = classnames("d-flex", {
-        "w-50": width === "50%",
-        "w-25": width === "25%",
-        "align-items-center": center,
-    }, className);
-    var labelClass = classnames("d-block text-nowrap text-bold p-0", {
-        "col-2": width === "100%",
-        "col-4": width === "50%",
-        "col-8": width === "25%",
-        "align-items-center": center,
-    }, classNameLabel);
-    var contentClass = classnames("col-10 p-0", classNameContent);
-    var content = children;
-    if (typeof children === "function") {
-        content = children();
-    }
-    return (jsxRuntime.jsxs("div", __assign({ className: wrapperClass, style: style }, { children: [label && (jsxRuntime.jsx("label", __assign({ className: labelClass, style: styleLabel }, { children: label }), void 0)),
-            jsxRuntime.jsx("div", __assign({ className: contentClass, style: styleContent }, { children: content }), void 0)] }), void 0));
-};
-
-var ViewTextarea = function (_a) {
-    var children = _a.children, className = _a.className, classNameContent = _a.classNameContent, classNameShowMore = _a.classNameShowMore, classNameShowLess = _a.classNameShowLess, style = _a.style, _b = _a.showLessText, showLessText = _b === void 0 ? Messages.showLess : _b, _c = _a.showMoreText, showMoreText = _c === void 0 ? Messages.showMore : _c, _d = _a.limitedLength, limitedLength = _d === void 0 ? 200 : _d;
-    var _e = React.useState(false), expanding = _e[0], setExpanding = _e[1];
-    var contentLength = React.useMemo(function () {
-        return children.length;
-    }, [children]);
-    var isOverFollow = React.useMemo(function () {
-        return contentLength > limitedLength;
-    }, [contentLength, limitedLength]);
-    var contentRef = React.useRef(null);
-    React.useRef(null);
-    var isShowMore = isOverFollow && !expanding;
-    var isShowLess = isOverFollow && expanding;
-    // classNames
-    var wrapperClass = classnames("d-view-textarea text-small text-start", className);
-    var contentClass = classnames("d-view-textarea__content", {
-        "text-nowrap": isOverFollow && !expanding,
-        // "d-inline-block": !expanding,
-    }, classNameContent);
-    var showClass = "d-view-textarea__show-more text-secondary hover-pointer text-x-small";
-    var showMoreClass = classnames(showClass, classNameShowMore);
-    var showLessClass = classnames(showClass, classNameShowLess);
-    React.useEffect(function () {
-        setTimeout(function () {
-            var _a;
-            console.log("Content Height", (_a = contentRef.current) === null || _a === void 0 ? void 0 : _a.offsetHeight);
-        }, 200);
-    }, [children]);
-    return (jsxRuntime.jsxs("div", __assign({ className: wrapperClass, style: style }, { children: [jsxRuntime.jsxs("div", __assign({ className: contentClass, ref: function (ref) { return (contentRef.current = ref); } }, { children: [children,
-                    isShowLess && (jsxRuntime.jsx("span", __assign({ className: showLessClass, onClick: function () { return setExpanding(false); } }, { children: " " + showLessText }), void 0))] }), void 0),
-            isShowMore && (jsxRuntime.jsx("span", __assign({ className: showMoreClass, onClick: function () { return setExpanding(true); } }, { children: showMoreText }), void 0))] }), void 0));
-};
-
-var Panel = Collapse.Panel;
-var ViewCollapse = function (_a) {
-    var _b = _a.label, label = _b === void 0 ? "Title" : _b, children = _a.children, className = _a.className, _c = _a.defaultOpen, defaultOpen = _c === void 0 ? 1 : _c, extra = _a.extra, customLeftView = _a.customLeftView;
-    var classContainerName = classnames("card-container collapse-view-container", className);
-    var customRightViewClass = classnames({
-        "ant-collapse-header_custom-right-view-extra": !!extra,
-        "ant-collapse-header_custom-right-view": !extra,
-    });
-    return (jsxRuntime.jsx(Collapse, __assign({ className: classContainerName, defaultActiveKey: defaultOpen, expandIconPosition: "right", expandIcon: function (_a) {
-            var isActive = _a.isActive;
-            return jsxRuntime.jsx(CaretRightOutlined$1, { rotate: isActive ? 90 : 0 }, void 0);
-        } }, { children: jsxRuntime.jsx(Panel, __assign({ header: jsxRuntime.jsxs("div", { children: [customLeftView && jsxRuntime.jsx("div", __assign({ className: customRightViewClass }, { children: customLeftView }), void 0),
-                    jsxRuntime.jsx("h5", __assign({ className: "collapse-view__header-title" }, { children: label }), void 0)] }, void 0), extra: extra }, { children: children }), "1") }), void 0));
-};
-
-var TabBar = function (_a) {
-    var _b = _a.dataSource, dataSource = _b === void 0 ? [] : _b, value = _a.value, onChange = _a.onChange, className = _a.className, classNameItem = _a.classNameItem, getLabel = _a.getLabel, _c = _a.variant, variant = _c === void 0 ? "horizontal" : _c, tabBarItemProps = _a.tabBarItemProps, _d = _a.isScroll, isScroll = _d === void 0 ? false : _d, _e = _a.minWidthItem, minWidthItem = _e === void 0 ? "200px" : _e;
-    var wrapperClass = classnames("d-tab-bar d-tab-bar__" + variant, {
-        "d-flex ": variant === "horizontal",
-        "flex-wrap": !isScroll && variant === "horizontal",
-    }, className);
-    var activateScroll = isScroll && variant === "horizontal";
-    return (jsxRuntime.jsx("div", __assign({ className: wrapperClass, style: { overflowX: activateScroll ? "scroll" : undefined } }, { children: dataSource.map(function (tabItem, index) {
-            var _a, _b;
-            var isSelect = (value === null || value === void 0 ? void 0 : value.id) === (tabItem === null || tabItem === void 0 ? void 0 : tabItem.id);
-            var itemClass = classnames("d-tab-bar__item text-small", {
-                "d-tab-bar__item-active": isSelect,
-            }, classNameItem);
-            var label = (_a = tabItem === null || tabItem === void 0 ? void 0 : tabItem.label) !== null && _a !== void 0 ? _a : "N/A";
-            var icon = (_b = tabItem === null || tabItem === void 0 ? void 0 : tabItem.iconName) !== null && _b !== void 0 ? _b : undefined;
-            if (getLabel) {
-                label = getLabel(tabItem);
-            }
-            var buttonProps = {};
-            if (tabBarItemProps) {
-                buttonProps = tabBarItemProps(tabItem, isSelect);
-            }
-            return (jsxRuntime.jsx(Button, __assign({ className: itemClass, onClick: function () { return onChange && onChange(tabItem); }, variant: "trans", iconName: icon, style: { minWidth: activateScroll ? minWidthItem : undefined } }, buttonProps, { children: label }), index));
-        }) }), void 0));
-};
-
-var MODE = {
-    HIDDEN: 0,
-    EMPTY: 1,
-    PROGRESS: 2,
-    ERROR: 3,
-    FILTER_EMPTY: 4,
-};
-
 /*
 object-assign
 (c) Sindre Sorhus
@@ -69285,268 +68642,12 @@ if (process.env.NODE_ENV !== 'production') {
 }
 });
 
-var Loading = function (_a) {
-    var className = _a.className, _b = _a.size, size = _b === void 0 ? "medium" : _b;
-    var wrapperClass = classnames("spinner-border text-primary", "d-loading__" + size, className);
-    return (jsxRuntime.jsx("div", __assign({ className: wrapperClass, role: "status" }, { children: jsxRuntime.jsx("span", __assign({ className: "sr-only text-small" }, { children: "Loading..." }), void 0) }), void 0));
-};
-
-// create a component
-var EmptyView = /** @class */ (function (_super) {
-    __extends(EmptyView, _super);
-    function EmptyView() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    EmptyView.prototype.retryInternal = function () {
-        if (this.props.retry) {
-            this.props.retry();
-        }
-    };
-    /**
-     * Should not be override this method
-     */
-    EmptyView.prototype.renderProgressInternal = function () {
-        if (this.props.mode === MODE.PROGRESS) {
-            if (!this.props.renderProgress) {
-                return this.renderProgress();
-            }
-            return this.props.renderProgress();
-        }
-        return null;
-    };
-    /**
-     * Should not be override this method
-     */
-    EmptyView.prototype.renderFilterEmptyViewInternal = function () {
-        if (this.props.mode !== MODE.FILTER_EMPTY)
-            return null;
-        return this.props.renderFilterEmptyView ? this.props.renderFilterEmptyView() : this.renderFilterEmptyView();
-    };
-    /**
-     * Should not be override this method
-     */
-    EmptyView.prototype.renderEmptyViewInternal = function () {
-        if (this.props.mode !== MODE.EMPTY)
-            return null;
-        return this.props.renderEmptyView ? this.props.renderEmptyView() : this.renderEmptyView();
-    };
-    /**
-     * Should not be override this method
-     */
-    EmptyView.prototype.renderErrorViewInternal = function () {
-        if (this.props.mode === MODE.ERROR) {
-            if (!this.props.renderErrorView) {
-                return this.renderErrorView();
-            }
-            return this.props.renderErrorView();
-        }
-        return null;
-    };
-    /**
-     * Override incase build another EmptyView in whole system
-     * Incase change only few cases, we should use props.renderEmptyView
-     */
-    EmptyView.prototype.renderEmptyView = function () {
-        return jsxRuntime.jsx("div", __assign({ className: "text" }, { children: this.props.emptyText }), void 0);
-    };
-    /**
-     * Override incase build another EmptyView in whole system
-     * Incase change only few cases, we should use props.renderFilterEmptyView
-     */
-    EmptyView.prototype.renderFilterEmptyView = function () {
-        return jsxRuntime.jsx("div", __assign({ className: "text" }, { children: this.props.filterEmptyText }), void 0);
-    };
-    /**
-     * Override incase build another EmptyView in whole system
-     * Incase change only few cases, we should use props.renderProgress
-     */
-    // eslint-disable-next-line class-methods-use-this
-    EmptyView.prototype.renderProgress = function () {
-        return jsxRuntime.jsx(Loading, { size: "large" }, void 0);
-    };
-    /**
-     * Override incase build another EmptyView in whole system
-     * Incase change only few cases, we should use props.renderErrorView
-     */
-    // eslint-disable-next-line class-methods-use-this
-    EmptyView.prototype.renderErrorView = function () {
-        return jsxRuntime.jsx("div", __assign({ className: "text" }, { children: "No result" }), void 0);
-    };
-    EmptyView.prototype.render = function () {
-        // If mode not set or hidden do not render EmptyView
-        if (!this.props.mode || this.props.mode === MODE.HIDDEN)
-            return null;
-        // Render EmptyView coresponds with it's mode
-        return (
-        // pointerEvents to prevent touch to EmptyView and pass through to under component.
-        // But still accept its children view receive touch.
-        jsxRuntime.jsxs("div", __assign({ className: "d-list-empty-view" }, { children: [this.renderEmptyViewInternal(),
-                this.renderErrorViewInternal(),
-                this.renderProgressInternal(),
-                this.renderFilterEmptyViewInternal()] }), void 0));
-    };
-    EmptyView.propTypes = {
-        mode: propTypes$1.any,
-        renderEmptyView: propTypes$1.func,
-        renderProgress: propTypes$1.func,
-        renderErrorView: propTypes$1.func,
-        retry: propTypes$1.func,
-        emptyText: propTypes$1.string,
-        filterEmptyText: propTypes$1.string,
-    };
-    EmptyView.defaultProps = {
-        mode: MODE.HIDDEN,
-        renderEmptyView: null,
-        renderProgress: null,
-        renderErrorView: null,
-        retry: null,
-        emptyText: "No result",
-        filterEmptyText: "No filter results",
-    };
-    return EmptyView;
-}(React.Component));
-
-var DEFAULT_PAGING_DATA$1 = {
-    pageIndex: 1,
-    pageSize: 10,
-};
-var DEFAULT_DATA_LIST = {
-    data: [],
-    emptyMode: MODE.PROGRESS,
-    refreshing: false,
-};
-var PopoverList = function (_a) {
-    var source = _a.source, transformer = _a.transformer, renderItem = _a.renderItem, setRef = _a.setRef, onChange = _a.onChange, customView = _a.customView, onClickItem = _a.onClickItem, onCreateNew = _a.onCreateNew, buttonText = _a.buttonText, _b = _a.buttonVariant, buttonVariant = _b === void 0 ? "trans" : _b, buttonIconName = _a.buttonIconName, _c = _a.isClickOpen, isClickOpen = _c === void 0 ? true : _c; _a.placeHolder; var _e = _a.loadMoreText, loadMoreText = _e === void 0 ? "Load More" : _e, className = _a.className;
-    var _f = React.useState(DEFAULT_DATA_LIST), dataList = _f[0], setDataList = _f[1];
-    var _g = React.useState(false), openPopover = _g[0], setOpenPopover = _g[1];
-    var _h = React.useState(false), showLoadMore = _h[0], setShowLoadMore = _h[1];
-    var wrapperClass = classnames("d-popover-list", className);
-    var pagingData = React.useRef(DEFAULT_PAGING_DATA$1);
-    var noMoreData = React.useRef(false);
-    var listRef = React.useRef({ refresh: function () { return refresh(); } });
-    var outSideRef = React.useRef();
-    var isArray = function (array) {
-        return Array.isArray(array);
-    };
-    var isNoMoreData = function (newData) {
-        if (!newData || !isArray(newData))
-            return true;
-        return pagingData ? newData.length < pagingData.current.pageSize : false;
-    };
-    var handleClick = function (e) {
-        var _a;
-        if ((_a = outSideRef === null || outSideRef === void 0 ? void 0 : outSideRef.current) === null || _a === void 0 ? void 0 : _a.contains(e.target)) {
-            // inside click
-            // console.log("click inside");
-            return;
-        }
-        // outside click
-        setOpenPopover(false);
-    };
-    React.useEffect(function () {
-        // add when mounted
-        document.addEventListener("mousedown", handleClick);
-        // return function to be called when unmounted
-        return function () {
-            document.removeEventListener("mousedown", handleClick);
-        };
-    }, []);
-    React.useEffect(function () {
-        setRef && setRef(listRef.current);
-        onLoadData();
-    }, []);
-    var refresh = function () {
-        noMoreData.current = false;
-        pagingData.current = DEFAULT_PAGING_DATA$1;
-        onLoadData();
-    };
-    function onLoadData() {
-        var _this = this;
-        if (noMoreData.current) {
-            setShowLoadMore(false);
-            return;
-        }
-        source(pagingData.current)
-            .then(function (response) { return __awaiter(_this, void 0, void 0, function () {
-            var data, newData;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        pagingData.current = __assign(__assign({}, pagingData.current), { pageIndex: pagingData.current.pageIndex + 1 });
-                        return [4 /*yield*/, transformer(response)];
-                    case 1:
-                        data = _a.sent();
-                        noMoreData.current = isNoMoreData(data);
-                        if (!noMoreData.current) {
-                            setShowLoadMore(true);
-                        }
-                        else {
-                            setShowLoadMore(false);
-                        }
-                        if (!isArray(data)) {
-                            // eslint-disable-next-line no-throw-literal
-                            throw "Data is not an array";
-                        }
-                        if (lodash.isEmpty(data) && dataList.data.length === 0) {
-                            setDataList({
-                                data: [],
-                                emptyMode: MODE.EMPTY,
-                                refreshing: false,
-                            });
-                            return [2 /*return*/];
-                        }
-                        newData = dataList.data.concat(data);
-                        setDataList({
-                            data: newData,
-                            emptyMode: MODE.HIDDEN,
-                            refreshing: false,
-                        });
-                        return [2 /*return*/];
-                }
-            });
-        }); })
-            .catch(function () { });
-    }
-    var onClickLoadMore = function () {
-        onLoadData();
-    };
-    var onClickItemList = function (item, index) {
-        setOpenPopover(false);
-        onClickItem && onClickItem(item, index);
-    };
-    var onClickCreateNewHandle = function () {
-        setOpenPopover(false);
-        onCreateNew && onCreateNew();
-    };
-    var renderItemList = function (item, index) {
-        var content = (item === null || item === void 0 ? void 0 : item.name) || (item === null || item === void 0 ? void 0 : item.label);
-        if (renderItem) {
-            content = renderItem(item, index);
-        }
-        return (jsxRuntime.jsx("div", __assign({ className: "renderItemList", onClick: function () { return onClickItemList(item, index); } }, { children: content }), index + Math.random()));
-    };
-    var mainViewPopover = function () {
-        if (customView) {
-            if (typeof customView === "function") {
-                return customView();
-            }
-            return customView;
-        }
-        return (jsxRuntime.jsx(InputTextSearch, { onChange: function (event) {
-                if (!event.target.value.trim()) {
-                    return;
-                }
-                !isClickOpen && setOpenPopover(true);
-                onChange && onChange(event.target.value);
-            } }, void 0));
-    };
-    return (jsxRuntime.jsxs("div", __assign({ className: wrapperClass, ref: outSideRef }, { children: [jsxRuntime.jsx("div", __assign({ onClick: function () { return isClickOpen && setOpenPopover(true); } }, { children: mainViewPopover() }), void 0),
-            openPopover && (jsxRuntime.jsxs("div", __assign({ className: "d-popover-list__dropdown" }, { children: [buttonText && (jsxRuntime.jsx("div", __assign({ className: "d-flex w-100 justify-content-end" }, { children: jsxRuntime.jsx(Button, { content: buttonText, iconName: buttonIconName, variant: buttonVariant, onClick: function () {
-                                onClickCreateNewHandle();
-                            } }, void 0) }), void 0)),
-                    dataList.data.map(function (item, index) { return renderItemList(item, index); }),
-                    jsxRuntime.jsx(EmptyView, { mode: dataList.emptyMode }, void 0),
-                    showLoadMore && (jsxRuntime.jsx(Button, __assign({ className: "d-popover-list__footer", onClick: function () { return onClickLoadMore(); }, variant: "trans" }, { children: loadMoreText }), void 0))] }), void 0))] }), void 0));
+var MODE = {
+    HIDDEN: 0,
+    EMPTY: 1,
+    PROGRESS: 2,
+    ERROR: 3,
+    FILTER_EMPTY: 4,
 };
 
 var InfiniteScroll = /** @class */ (function (_super) {
@@ -69716,7 +68817,7 @@ var InfiniteScroll = /** @class */ (function (_super) {
     InfiniteScroll.prototype.render = function () {
         var _this = this;
         var renderProps = this.filterProps(this.props);
-        var children = renderProps.children, element = renderProps.element, hasMore = renderProps.hasMore; renderProps.initialLoad; var isReverse = renderProps.isReverse, loader = renderProps.loader; renderProps.loadMore; renderProps.pageStart; var ref = renderProps.ref; renderProps.threshold; renderProps.useCapture; renderProps.useWindow; renderProps.getScrollParent; var props = __rest$q(renderProps, ["children", "element", "hasMore", "initialLoad", "isReverse", "loader", "loadMore", "pageStart", "ref", "threshold", "useCapture", "useWindow", "getScrollParent"]);
+        var children = renderProps.children, element = renderProps.element, hasMore = renderProps.hasMore; renderProps.initialLoad; var isReverse = renderProps.isReverse, loader = renderProps.loader; renderProps.loadMore; renderProps.pageStart; var ref = renderProps.ref; renderProps.threshold; renderProps.useCapture; renderProps.useWindow; renderProps.getScrollParent; var props = __rest$s(renderProps, ["children", "element", "hasMore", "initialLoad", "isReverse", "loader", "loadMore", "pageStart", "ref", "threshold", "useCapture", "useWindow", "getScrollParent"]);
         props.ref = function (node) {
             _this.scrollComponent = node;
             if (ref) {
@@ -69765,6 +68866,12 @@ var InfiniteScroll = /** @class */ (function (_super) {
     return InfiniteScroll;
 }(React.Component));
 
+var Loading = function (_a) {
+    var className = _a.className, _b = _a.size, size = _b === void 0 ? "medium" : _b;
+    var wrapperClass = classnames("spinner-border text-primary", "d-loading__" + size, className);
+    return (jsxRuntime.jsx("div", __assign({ className: wrapperClass, role: "status" }, { children: jsxRuntime.jsx("span", __assign({ className: "sr-only text-small" }, { children: "Loading..." }), void 0) }), void 0));
+};
+
 var PagingView = function (_a) {
     var mode = _a.mode, onClickRetry = _a.onClickRetry;
     if (mode === MODE.HIDDEN) {
@@ -69776,7 +68883,122 @@ var PagingView = function (_a) {
     return (jsxRuntime.jsx("div", __assign({ className: "d-page-view__container" }, { children: jsxRuntime.jsx(Loading, { size: "small" }, void 0) }), void 0));
 };
 
-var DEFAULT_PAGING_DATA = {
+// create a component
+var EmptyView = /** @class */ (function (_super) {
+    __extends(EmptyView, _super);
+    function EmptyView() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    EmptyView.prototype.retryInternal = function () {
+        if (this.props.retry) {
+            this.props.retry();
+        }
+    };
+    /**
+     * Should not be override this method
+     */
+    EmptyView.prototype.renderProgressInternal = function () {
+        if (this.props.mode === MODE.PROGRESS) {
+            if (!this.props.renderProgress) {
+                return this.renderProgress();
+            }
+            return this.props.renderProgress();
+        }
+        return null;
+    };
+    /**
+     * Should not be override this method
+     */
+    EmptyView.prototype.renderFilterEmptyViewInternal = function () {
+        if (this.props.mode !== MODE.FILTER_EMPTY)
+            return null;
+        return this.props.renderFilterEmptyView ? this.props.renderFilterEmptyView() : this.renderFilterEmptyView();
+    };
+    /**
+     * Should not be override this method
+     */
+    EmptyView.prototype.renderEmptyViewInternal = function () {
+        if (this.props.mode !== MODE.EMPTY)
+            return null;
+        return this.props.renderEmptyView ? this.props.renderEmptyView() : this.renderEmptyView();
+    };
+    /**
+     * Should not be override this method
+     */
+    EmptyView.prototype.renderErrorViewInternal = function () {
+        if (this.props.mode === MODE.ERROR) {
+            if (!this.props.renderErrorView) {
+                return this.renderErrorView();
+            }
+            return this.props.renderErrorView();
+        }
+        return null;
+    };
+    /**
+     * Override incase build another EmptyView in whole system
+     * Incase change only few cases, we should use props.renderEmptyView
+     */
+    EmptyView.prototype.renderEmptyView = function () {
+        return jsxRuntime.jsx("div", __assign({ className: "text" }, { children: this.props.emptyText }), void 0);
+    };
+    /**
+     * Override incase build another EmptyView in whole system
+     * Incase change only few cases, we should use props.renderFilterEmptyView
+     */
+    EmptyView.prototype.renderFilterEmptyView = function () {
+        return jsxRuntime.jsx("div", __assign({ className: "text" }, { children: this.props.filterEmptyText }), void 0);
+    };
+    /**
+     * Override incase build another EmptyView in whole system
+     * Incase change only few cases, we should use props.renderProgress
+     */
+    // eslint-disable-next-line class-methods-use-this
+    EmptyView.prototype.renderProgress = function () {
+        return jsxRuntime.jsx(Loading, { size: "large" }, void 0);
+    };
+    /**
+     * Override incase build another EmptyView in whole system
+     * Incase change only few cases, we should use props.renderErrorView
+     */
+    // eslint-disable-next-line class-methods-use-this
+    EmptyView.prototype.renderErrorView = function () {
+        return jsxRuntime.jsx("div", __assign({ className: "text" }, { children: "No result" }), void 0);
+    };
+    EmptyView.prototype.render = function () {
+        // If mode not set or hidden do not render EmptyView
+        if (!this.props.mode || this.props.mode === MODE.HIDDEN)
+            return null;
+        // Render EmptyView coresponds with it's mode
+        return (
+        // pointerEvents to prevent touch to EmptyView and pass through to under component.
+        // But still accept its children view receive touch.
+        jsxRuntime.jsxs("div", __assign({ className: "d-list-empty-view" }, { children: [this.renderEmptyViewInternal(),
+                this.renderErrorViewInternal(),
+                this.renderProgressInternal(),
+                this.renderFilterEmptyViewInternal()] }), void 0));
+    };
+    EmptyView.propTypes = {
+        mode: propTypes$1.any,
+        renderEmptyView: propTypes$1.func,
+        renderProgress: propTypes$1.func,
+        renderErrorView: propTypes$1.func,
+        retry: propTypes$1.func,
+        emptyText: propTypes$1.string,
+        filterEmptyText: propTypes$1.string,
+    };
+    EmptyView.defaultProps = {
+        mode: MODE.HIDDEN,
+        renderEmptyView: null,
+        renderProgress: null,
+        renderErrorView: null,
+        retry: null,
+        emptyText: "No result",
+        filterEmptyText: "No filter results",
+    };
+    return EmptyView;
+}(React.Component));
+
+var DEFAULT_PAGING_DATA$1 = {
     pageIndex: 1,
     pageSize: 20,
 };
@@ -69835,7 +69057,7 @@ var AwesomeListComponent = /** @class */ (function (_super) {
          * if the first load in paging list, construct to pagingData,
          */
         if (!this.pagingData) {
-            this.pagingData = pagingProps || DEFAULT_PAGING_DATA;
+            this.pagingData = pagingProps || DEFAULT_PAGING_DATA$1;
         }
         source(this.pagingData)
             .then(function (response) { return __awaiter(_this, void 0, void 0, function () {
@@ -69877,7 +69099,7 @@ var AwesomeListComponent = /** @class */ (function (_super) {
              * if the first loading
              * display emptyView with error mode
              */
-            if (_this.pagingData.pageIndex === DEFAULT_PAGING_DATA.pageIndex) {
+            if (_this.pagingData.pageIndex === DEFAULT_PAGING_DATA$1.pageIndex) {
                 _this.setState({
                     emptyMode: MODE.ERROR,
                     data: [],
@@ -69948,10 +69170,1048 @@ var AwesomeListComponent = /** @class */ (function (_super) {
     return AwesomeListComponent;
 }(React.Component));
 
+var SelectInfinity = function (_a, ref) {
+    var _b = _a.source, source = _b === void 0 ? function () { return Promise.resolve(); } : _b, transformer = _a.transformer, _c = _a.getKey, getKey = _c === void 0 ? function (item) { return item === null || item === void 0 ? void 0 : item.id; } : _c, _d = _a.getLabel, getLabel = _d === void 0 ? function (item) { return item === null || item === void 0 ? void 0 : item.label; } : _d, _e = _a.getValue, getValue = _e === void 0 ? function (item) { var _a; return (_a = item === null || item === void 0 ? void 0 : item.id) !== null && _a !== void 0 ? _a : null; } : _e, pagingProps = _a.pagingProps, _f = _a.value, value = _f === void 0 ? [] : _f, onChange = _a.onChange, className = _a.className, mode = _a.mode, props = __rest$s(_a, ["source", "transformer", "getKey", "getLabel", "getValue", "pagingProps", "value", "onChange", "className", "mode"]);
+    var listRef = React.useRef(null);
+    var selectRef = React.useRef(null);
+    var textSearch = React.useRef();
+    var _g = React.useState([]), valueObj = _g[0], setValueObj = _g[1];
+    var refreshList = function () {
+        // @ts-ignore
+        return listRef.current && listRef.current.refresh();
+    };
+    React.useImperativeHandle(ref, function () { return ({
+        onRefresh: function () { return refreshList(); },
+        onBlur: function () { return selectRef.current && selectRef.current.onBlur(); },
+        onFocus: function () { return selectRef.current && selectRef.current.onFocus(); },
+    }); });
+    var onChangeTextSearch = lodash.debounce(function (text) {
+        textSearch.current = text;
+        refreshList();
+    }, 400);
+    var renderItemDropdown = function (item, index) {
+        var label = getLabel(item);
+        var itemValue = getValue(item);
+        return (jsxRuntime.jsx("div", __assign({ className: "py-3 px-3 hover-pointer", onClick: function () {
+                if (mode === "tags" || mode === "multiple") {
+                    var clone = __spreadArray([], value);
+                    var cloneObj = __spreadArray([], valueObj);
+                    if (clone.includes(itemValue)) {
+                        clone = clone === null || clone === void 0 ? void 0 : clone.filter(function (i) { return i !== itemValue; });
+                        cloneObj = cloneObj.filter(function (i) { return (i === null || i === void 0 ? void 0 : i.id) !== itemValue; });
+                    }
+                    else {
+                        clone.push(itemValue);
+                        cloneObj.push(item);
+                    }
+                    setValueObj(cloneObj);
+                    onChange && onChange(clone, null);
+                }
+                else {
+                    setValueObj([item]);
+                    onChange && onChange([itemValue], null);
+                }
+                if (mode !== "tags" && mode !== "multiple") {
+                    selectRef.current && selectRef.current.onBlur();
+                }
+            } }, { children: jsxRuntime.jsx("div", __assign({ className: "text-small" }, { children: label }), void 0) }), getKey(item)));
+    };
+    var renderDropDown = function () {
+        return (jsxRuntime.jsx("div", __assign({ style: { height: "250px" } }, { children: jsxRuntime.jsx(AwesomeListComponent, { ref: listRef, renderItem: renderItemDropdown, isPaging: true, transformer: transformer, source: function (paging) {
+                    var params = {
+                        search: textSearch.current,
+                    };
+                    return source && source(params, paging);
+                }, pagingProps: pagingProps }, void 0) }), void 0));
+    };
+    var onRemoveItem = function (id) {
+        var clone = value.filter(function (i) { return i !== id; });
+        var cloneObj = valueObj.filter(function (i) { return (i === null || i === void 0 ? void 0 : i.id) !== id; });
+        setValueObj(cloneObj);
+        onChange && onChange(clone, null);
+    };
+    var customTagRender = function (props) {
+        var _a;
+        console.log({ props: props });
+        var tagValue = (_a = props === null || props === void 0 ? void 0 : props.value) !== null && _a !== void 0 ? _a : null;
+        var foundItem = null;
+        if (tagValue) {
+            foundItem = valueObj === null || valueObj === void 0 ? void 0 : valueObj.find(function (i) { return (i === null || i === void 0 ? void 0 : i.id) === tagValue; });
+        }
+        if (!foundItem) {
+            return jsxRuntime.jsx("div", {}, void 0);
+        }
+        return (jsxRuntime.jsxs("div", __assign({ className: "py-1 text-white text-x-small px-2 bg-secondary flex-center-y mx-1", style: { width: "110px" } }, { children: [jsxRuntime.jsx("div", __assign({ className: "text-nowrap w-100" }, { children: getLabel(foundItem) }), void 0),
+                jsxRuntime.jsx(Icon$2, { name: "close", size: "x-small", className: "hover-pointer", onClick: function () { return onRemoveItem(tagValue); } }, void 0)] }), void 0));
+    };
+    return (jsxRuntime.jsx(Select$1, __assign({ showSearch: true, className: className, value: !mode ? getLabel(valueObj[0]) : value, ref: selectRef, onSearch: onChangeTextSearch, dropdownRender: renderDropDown, onChange: onChange, mode: mode, hasFilter: false, tagRender: customTagRender }, props), void 0));
+};
+var SelectInfinity$1 = React__default['default'].forwardRef(SelectInfinity);
+
+var Button = function (_a) {
+    var _b;
+    var content = _a.content, iconName = _a.iconName, className = _a.className, classNameIcon = _a.classNameIcon, classNameIconSuffix = _a.classNameIconSuffix, onClick = _a.onClick, _c = _a.type, type = _c === void 0 ? "button" : _c, _d = _a.size, size = _d === void 0 ? "large" : _d, _e = _a.variant, variant = _e === void 0 ? "standard" : _e, _f = _a.color, color = _f === void 0 ? "primary" : _f, _g = _a.disabled, disabled = _g === void 0 ? false : _g, suffixIcon = _a.suffixIcon, suffixElement = _a.suffixElement, prefixElement = _a.prefixElement, children = _a.children, props = __rest$s(_a, ["content", "iconName", "className", "classNameIcon", "classNameIconSuffix", "onClick", "type", "size", "variant", "color", "disabled", "suffixIcon", "suffixElement", "prefixElement", "children"]);
+    var buttonClass = classnames("text text-nowrap d-button d-button__" + size + " \n         d-button__" + variant + "-" + color, (_b = {
+            "text-x-small": size === "x-small",
+            "text-small font-weight-bold": variant === "trans"
+        },
+        _b["d-button__icon-" + size] = iconName && !content && !children,
+        _b), className);
+    var iconClass = classnames("d-block", { "mx-2": (content || children) && iconName }, classNameIcon);
+    var suffixIconClass = classnames("d-block", { "mx-2": (content || children) && iconName }, classNameIconSuffix);
+    return (jsxRuntime.jsxs("button", __assign({ className: buttonClass, type: type, disabled: disabled, onClick: onClick }, props, { children: [prefixElement && prefixElement(),
+            iconName && jsxRuntime.jsx(Icon$2, { name: iconName, size: "large", className: iconClass }, void 0),
+            children,
+            content,
+            suffixIcon && jsxRuntime.jsx(Icon$2, { name: suffixIcon, size: "large", className: suffixIconClass }, void 0),
+            suffixElement && suffixElement()] }), void 0));
+};
+
+var Checkbox = function (_a) {
+    var className = _a.className, classNameInput = _a.classNameInput, classNameInputWrapper = _a.classNameInputWrapper, classNameLabel = _a.classNameLabel, id = _a.id, name = _a.name, value = _a.value, onChange = _a.onChange, label = _a.label, _b = _a.variant, variant = _b === void 0 ? "checkbox" : _b, disabled = _a.disabled, checked = _a.checked, props = __rest$s(_a, ["className", "classNameInput", "classNameInputWrapper", "classNameLabel", "id", "name", "value", "onChange", "label", "variant", "disabled", "checked"]);
+    var classContainer = classnames("checkbox__container", className);
+    var classInputWrapper = classnames("checkbox__input-wrapper", "checkbox__input-wrapper-" + variant, { "checkbox__input-wrapper-disabled": disabled }, classNameInputWrapper);
+    var classInput = classnames("checkbox__input", classNameInput);
+    var classLabel = classnames("checkbox__label ml-3 text-nowrap", classNameLabel);
+    return (jsxRuntime.jsxs("div", __assign({ className: classContainer }, props, { children: [jsxRuntime.jsxs("div", __assign({ className: classInputWrapper }, { children: [jsxRuntime.jsx("input", { type: "checkbox", id: id, name: name, value: value, onChange: onChange, className: classInput, disabled: disabled, checked: checked }, void 0),
+                    jsxRuntime.jsx("span", { className: "checkbox__check-mark" }, void 0)] }), void 0),
+            label && jsxRuntime.jsx("div", __assign({ className: classLabel }, { children: label }), void 0)] }), void 0));
+};
+
+var CheckboxGroup = function (_a) {
+    var dataSource = _a.dataSource, className = _a.className, classNameItem = _a.classNameItem, _b = _a.getLabel, getLabel = _b === void 0 ? function (item) { return item === null || item === void 0 ? void 0 : item.label; } : _b, _c = _a.getValue, getValue = _c === void 0 ? function (item) { return item === null || item === void 0 ? void 0 : item.id; } : _c, _d = _a.value, value = _d === void 0 ? [] : _d, onChange = _a.onChange, getDisabledItem = _a.getDisabledItem, _e = _a.numberOfColumns, numberOfColumns = _e === void 0 ? "3" : _e, label = _a.label;
+    var containerClass = classnames(className);
+    var groupContainerClass = classnames("d-checkbox-group d-flex flex-wrap", className);
+    return (jsxRuntime.jsxs("div", __assign({ className: containerClass }, { children: [jsxRuntime.jsx("label", { children: label }, void 0),
+            jsxRuntime.jsx("div", __assign({ className: groupContainerClass }, { children: dataSource.map(function (item) {
+                    var iLabel = getLabel(item);
+                    var iValue = getValue(item);
+                    var isChecked = value.includes(iValue);
+                    var isDisabled = (getDisabledItem && getDisabledItem(item)) || false;
+                    var itemClass = classnames("my-3 p-0", {
+                        "col-12": numberOfColumns === "1",
+                    }, {
+                        "col-6": numberOfColumns === "2",
+                    }, {
+                        "col-4": numberOfColumns === "3",
+                    }, {
+                        "col-3": numberOfColumns === "4",
+                    }, {
+                        col: numberOfColumns === "5",
+                    }, {
+                        "col-2": numberOfColumns === "6",
+                    }, classNameItem);
+                    return (jsxRuntime.jsx(Checkbox, { label: iLabel, value: getValue(item), onChange: function (event) {
+                            var isPush = event.target.checked;
+                            var clone = __spreadArray([], value);
+                            if (isPush) {
+                                clone.push(getValue(item));
+                            }
+                            else {
+                                clone = value.filter(function (i) {
+                                    return i !== getValue(item);
+                                });
+                            }
+                            onChange && onChange(clone);
+                        }, checked: isChecked, disabled: isDisabled, className: itemClass }, iValue));
+                }) }), void 0)] }), void 0));
+};
+
+var RadioGroup = function (_a) {
+    var dataSource = _a.dataSource, className = _a.className, classNameItem = _a.classNameItem, _b = _a.getLabel, getLabel = _b === void 0 ? function (item) { return item === null || item === void 0 ? void 0 : item.label; } : _b, _c = _a.getValue, getValue = _c === void 0 ? function (item) { return item === null || item === void 0 ? void 0 : item.id; } : _c, getDisabledItem = _a.getDisabledItem, value = _a.value, onChange = _a.onChange, _d = _a.numberOfColumns, numberOfColumns = _d === void 0 ? "3" : _d, label = _a.label;
+    var containerClass = classnames(className);
+    var groupContainerClass = classnames("d-flex flex-wrap", className);
+    return (jsxRuntime.jsxs("div", __assign({ className: containerClass }, { children: [jsxRuntime.jsx("label", { children: label }, void 0),
+            jsxRuntime.jsx("div", __assign({ className: groupContainerClass }, { children: dataSource.map(function (item) {
+                    var iLabel = getLabel(item);
+                    var isChecked = getValue(item) === value;
+                    var isDisabled = (getDisabledItem && getDisabledItem(item)) || false;
+                    var itemClass = classnames("my-3", {
+                        "col-12": numberOfColumns === "1",
+                    }, {
+                        "col-6": numberOfColumns === "2",
+                    }, {
+                        "col-4": numberOfColumns === "3",
+                    }, {
+                        "col-3": numberOfColumns === "4",
+                    }, {
+                        col: numberOfColumns === "5",
+                    }, {
+                        "col-2": numberOfColumns === "6",
+                    }, classNameItem);
+                    return (jsxRuntime.jsx(Checkbox, { label: iLabel, value: value, onChange: function (event) {
+                            onChange && onChange(getValue(item));
+                        }, checked: isChecked, variant: "radio", disabled: isDisabled, className: itemClass }, void 0));
+                }) }), void 0)] }), void 0));
+};
+
+var Dot = function (_a) {
+    var _b = _a.size, size = _b === void 0 ? "small" : _b, _c = _a.color, color = _c === void 0 ? "green" : _c, className = _a.className, style = _a.style, children = _a.children;
+    var dotClass = classnames("d-dot_container", "d-dot__" + size + "-" + color, className);
+    return (jsxRuntime.jsx("div", __assign({ className: dotClass, style: style }, { children: children }), void 0));
+};
+
+var Badge = function (_a) {
+    var children = _a.children, _b = _a.variant, variant = _b === void 0 ? "dot" : _b, _c = _a.shape, shape = _c === void 0 ? "round" : _c, index = _a.index, _d = _a.dotProps, dotProps = _d === void 0 ? {} : _d, className = _a.className, classNameBadge = _a.classNameBadge, _e = _a.color, color = _e === void 0 ? "secondary" : _e, _f = _a.size, size = _f === void 0 ? "medium" : _f, _g = _a.style, style = _g === void 0 ? {} : _g, badgeStyle = _a.badgeStyle, onClick = _a.onClick;
+    var content = children;
+    if (typeof children === "function") {
+        content = children();
+    }
+    var badge = jsxRuntime.jsx(Dot, __assign({}, dotProps, { color: color, size: size, style: badgeStyle }), void 0);
+    // className
+    var wrapperClass = classnames("d-badge__container d-badge__container-" + variant, className);
+    var badgeWrapperClass = classnames("d-badge__badge-wrapper", {
+        "rounded-circle": shape === "round",
+        "position-absolute": !lodash.isEmpty(content),
+    }, classNameBadge);
+    var badgeIndexClass = classnames("d-badge__badge-index-" + size + "-" + color);
+    if (variant === "index") {
+        var display = index;
+        badge = jsxRuntime.jsx("div", {}, void 0);
+        if (typeof index === "number") {
+            display = index.toString();
+        }
+        if (display) {
+            badge = (jsxRuntime.jsx("div", __assign({ className: badgeIndexClass, style: badgeStyle }, { children: display }), void 0));
+        }
+    }
+    var badgeView = jsxRuntime.jsx("div", __assign({ className: badgeWrapperClass }, { children: badge }), void 0);
+    return (jsxRuntime.jsxs("div", __assign({ className: wrapperClass, style: style, onClick: onClick }, { children: [badgeView,
+            content] }), void 0));
+};
+
+var HeaderTable = function (_a) {
+    var _b = _a.className, className = _b === void 0 ? "" : _b, classNameTop = _a.classNameTop, style = _a.style, _c = _a.label, label = _c === void 0 ? "" : _c, _d = _a.placeholder, placeholder = _d === void 0 ? "Search" : _d, onChangeText = _a.onChangeText, _e = _a.disabledSearch, disabledSearch = _e === void 0 ? false : _e, onClickNew = _a.onClickNew, onClickExport = _a.onClickExport, onClickFilter = _a.onClickFilter, onClickImport = _a.onClickImport, customView = _a.customView, _f = _a.isFiltered, isFiltered = _f === void 0 ? false : _f, _g = _a.badgeColor, badgeColor = _g === void 0 ? "secondary" : _g;
+    var button = jsxRuntime.jsx(Button, { iconName: "filter_list", onClick: onClickFilter }, void 0);
+    if (isFiltered) {
+        button = (jsxRuntime.jsx(Badge, __assign({ color: badgeColor }, { children: jsxRuntime.jsx(Button, { iconName: "filter_list", onClick: onClickFilter }, void 0) }), void 0));
+    }
+    return (jsxRuntime.jsxs("div", __assign({ className: classnames("w-100", className), style: style }, { children: [jsxRuntime.jsxs("div", __assign({ className: classnames("d-flex justify-content-between mb-3", classNameTop) }, { children: [jsxRuntime.jsx("div", __assign({ className: "h4" }, { children: label }), void 0),
+                    jsxRuntime.jsxs("div", __assign({ className: "d-flex" }, { children: [onClickNew && jsxRuntime.jsx(Button, { iconName: "add", content: "New", onClick: onClickNew, className: "ml-3" }, void 0),
+                            onClickImport && (jsxRuntime.jsx(Button, { iconName: "cloud_upload", content: "Import", onClick: onClickImport, className: "ml-3" }, void 0)),
+                            onClickExport && (jsxRuntime.jsx(Button, { iconName: "cloud_download", content: "Export", onClick: onClickExport, className: "ml-3" }, void 0))] }), void 0)] }), void 0),
+            jsxRuntime.jsxs("div", __assign({ className: "flex-center-y" }, { children: [customView && jsxRuntime.jsx("div", __assign({ className: "header-table__custom-view-container" }, { children: customView() }), void 0),
+                    jsxRuntime.jsx(InputTextSearch, { className: "w-100 mr-3 bg-white", placeholder: placeholder, onChange: onChangeText, disabled: disabledSearch }, void 0),
+                    onClickFilter && button] }), void 0)] }), void 0));
+};
+
+var en = {
+    error: "Error",
+    success: "Success",
+    info: "Info",
+    warning: "Warning",
+    cancel: "Cancel",
+    retry: "Retry",
+    showMore: "Show More",
+    showLess: "Show Less",
+    save: "Save",
+    back: "Back",
+    delete: "Delete",
+    print: "Print",
+    edit: "Edit",
+};
+
+var th = {
+    error: "ผิดพลาด",
+    success: "สำเร็จ",
+    info: "ข้อมูล",
+    warning: "คำเตือน",
+    cancel: "ยกเลิก",
+    retry: "ลองอีกครั้ง",
+    save: "บันทึก",
+    edit: "แก้ไข",
+    delete: "ลบทิ้ง",
+    print: "พิมพ์",
+    back: "Back",
+    showMore: "Show More",
+    showLess: "Show Less",
+};
+
+var _a;
+var Languages = {
+    en: en,
+    th: th,
+};
+var currentLang = (_a = document.documentElement.lang) !== null && _a !== void 0 ? _a : "en";
+var Messages = Languages[currentLang];
+console.log({ Messages: Messages });
+console.log({ currentLang: currentLang });
+
+var Header = function (_a) {
+    var title = _a.title, _b = _a.saveText, saveText = _b === void 0 ? Messages.save : _b, _c = _a.cancelText, cancelText = _c === void 0 ? Messages.back : _c, _d = _a.deleteText, deleteText = _d === void 0 ? Messages.delete : _d, _e = _a.printText, printText = _e === void 0 ? Messages.print : _e, _f = _a.editText, editText = _f === void 0 ? Messages.edit : _f, onCancel = _a.onCancel, onSave = _a.onSave, onDelete = _a.onDelete, onPrint = _a.onPrint, onEdit = _a.onEdit, disabledSave = _a.disabledSave, customLeft = _a.customLeft, _g = _a.showCancel, showCancel = _g === void 0 ? true : _g, className = _a.className;
+    var renderLeftView = function () {
+        if (customLeft) {
+            return customLeft();
+        }
+        return jsxRuntime.jsx("h4", __assign({ className: "text-primary" }, { children: title }), void 0);
+    };
+    return (jsxRuntime.jsxs("div", __assign({ className: "card-container d-common-header " + className }, { children: [renderLeftView(),
+            jsxRuntime.jsxs("div", __assign({ className: "d-common-header__button-group" }, { children: [showCancel && (jsxRuntime.jsx(Button, { variant: "outline", content: cancelText, onClick: function () { return (onCancel ? onCancel() : window.history.go("back")); }, className: "mr-3" }, void 0)),
+                    onDelete && jsxRuntime.jsx(Button, { content: deleteText, onClick: onDelete, iconName: "delete", className: "mr-3" }, void 0),
+                    onPrint && jsxRuntime.jsx(Button, { content: printText, onClick: onPrint, iconName: "print", className: "mr-3" }, void 0),
+                    onEdit && jsxRuntime.jsx(Button, { content: editText, onClick: onEdit, className: "mr-3", iconName: "edit" }, void 0),
+                    onSave && jsxRuntime.jsx(Button, { content: saveText, onClick: onSave, disabled: disabledSave }, void 0)] }), void 0)] }), void 0));
+};
+
+function Avatar(_a) {
+    var _b = _a.size, size = _b === void 0 ? "medium" : _b, src = _a.src, alt = _a.alt, _c = _a.variant, variant = _c === void 0 ? "rounded" : _c, className = _a.className, classNameImage = _a.classNameImage, classNameLetter = _a.classNameLetter, text = _a.text, _d = _a.color, color = _d === void 0 ? "#D8D8D8" : _d, props = __rest$s(_a, ["size", "src", "alt", "variant", "className", "classNameImage", "classNameLetter", "text", "color"]);
+    var wrapperClass = classnames("d-image__container d-image__" + variant + "-" + size + " bg-" + color, { "d-flex justify-content-center align-items-center": !!text }, className);
+    var imageClass = classnames("d-image__image", classNameImage);
+    var letterClass = classnames("text-white text-center font-weight-normal", {
+        h1: size === "medium",
+        h3: size === "small",
+        h4: size === "x-small",
+        h5: size === "xx-small",
+    }, classNameLetter);
+    var content;
+    if (text) {
+        var firstLetter = text.charAt(0);
+        content = (jsxRuntime.jsx("div", __assign({ className: letterClass, style: { fontSize: size === "large" ? "56px" : size === "x-large" ? "80px" : undefined } }, { children: firstLetter }), void 0));
+    }
+    if (src) {
+        content = jsxRuntime.jsx("img", __assign({ src: src }, props, { alt: alt, className: imageClass }), void 0);
+    }
+    return (jsxRuntime.jsx("div", __assign({ className: wrapperClass, style: { backgroundColor: color } }, { children: content }), void 0));
+}
+
+var AvatarName = function (_a) {
+    var user = _a.user, _b = _a.position, position = _b === void 0 ? "after" : _b, _c = _a.size, size = _c === void 0 ? "x-small" : _c, subLabel = _a.subLabel, className = _a.className, classNameText = _a.classNameText;
+    var avatar = user.avatar, fullName = user.fullName, _d = user.name, name = _d === void 0 ? "" : _d;
+    var displayName = name;
+    if (fullName) {
+        displayName = fullName;
+    }
+    var wrapperClass = classnames("d-flex align-items-center", className);
+    var nameClass = classnames("d-flex flex-column", {
+        "mr-2": position === "before",
+        "ml-2": position === "after",
+    });
+    var nameTextClass = classnames("text-nowrap", {
+        "h1 font-weight-normal": size === "large",
+        "h3 font-weight-normal": size === "medium",
+        "text-medium": size === "small",
+        "text-small": size === "x-small",
+        "text-x-small": size === "xx-small",
+    }, classNameText);
+    var subTextClass = classnames({
+        "text-large": size === "large",
+        "text-medium": size === "medium",
+        "text-x-small": size === "small",
+        "text-xx-small": size === "x-small" || size === "xx-small",
+    });
+    var renderName = function () {
+        return (jsxRuntime.jsxs("div", __assign({ className: nameClass }, { children: [jsxRuntime.jsx("div", __assign({ className: "" + nameTextClass, style: {
+                        fontSize: size === "x-large" ? "56px" : undefined,
+                        lineHeight: size === "x-large" ? "70px" : undefined,
+                    } }, { children: displayName }), void 0),
+                subLabel && (jsxRuntime.jsx("div", __assign({ className: subTextClass, style: { fontSize: size === "x-large" ? "32px" : undefined } }, { children: subLabel }), void 0))] }), void 0));
+    };
+    return (jsxRuntime.jsxs("div", __assign({ className: wrapperClass }, { children: [position === "before" && renderName(),
+            avatar && jsxRuntime.jsx(Avatar, { src: avatar, size: size }, void 0),
+            !avatar && jsxRuntime.jsx(Avatar, { text: displayName.charAt(0), size: size }, void 0),
+            position === "after" && renderName()] }), void 0));
+};
+
+// eslint-disable-next-line import/no-extraneous-dependencies
+var DATE_TIME_FORMAT = "DD/MM/YYYY HH:mm";
+var TIME_FORMAT = "HH:mm";
+var DATE_FORMAT = "DD/MM/YYYY";
+// react-datepicker format
+var DATE_TIME_INPUT_FORMAT = "dd/MM/yyyy HH:mm";
+var DATE_INPUT_FORMAT = "dd/MM/yyyy";
+var MONTH_INPUT_FORMAT = "mm/yyyy";
+var YEAR_INPUT_FORMAT = "yyyy";
+// ant design date picker format
+var ANT_DATE_TIME_INPUT_FORMAT = "DD/MM/YYYY HH:mm";
+var ANT_DATE_INPUT_FORMAT = "DD/MM/YYYY";
+var ANT_MONTH_INPUT_FORMAT = "MM/YYYY";
+var ANT_YEAR_INPUT_FORMAT = "YYYY";
+var MONTH_MILISECOND = 30 * 24 * 60 * 60 * 1000;
+var WEEK_MILISECOND = 7 * 24 * 60 * 60 * 1000;
+var DAY_MILISECOND = 24 * 60 * 60 * 1000;
+var convertMiliToMinutes = function (miliSeconds) {
+    if (!miliSeconds)
+        return 0;
+    return miliSeconds / (1000 * 60);
+};
+var convertMinutesToMili = function (minutes) {
+    if (!minutes)
+        return;
+    // eslint-disable-next-line consistent-return
+    return minutes * 60 * 1000;
+};
+var convertMiliToDateTime = function (timeInMillis, lang) {
+    if (lang === void 0) { lang = "en"; }
+    var date = new Date(timeInMillis);
+    if (lang === "th") {
+        return date ? moment(date).add("years", 543).format(DATE_TIME_FORMAT) : "";
+    }
+    return date ? moment(date).format(DATE_TIME_FORMAT) : "";
+};
+var convertDateTimeToMili = function (dateTime) {
+    var date = new Date(dateTime);
+    return date.getTime();
+};
+var convertMiliToDate = function (timeInMillis, lang) {
+    if (lang === void 0) { lang = "en"; }
+    var date = new Date(timeInMillis);
+    if (lang === "th") {
+        return date ? moment(date).add("years", 543).format(DATE_FORMAT) : "";
+    }
+    return date ? moment(date).format(DATE_FORMAT) : "";
+};
+var convertMiliToTime = function (timeInMillis) {
+    var date = new Date(timeInMillis);
+    return date ? moment(date).format(TIME_FORMAT) : "";
+};
+var convertMiliToDateWithFormat = function (timeInMillis, FORMAT) {
+    var date = new Date(timeInMillis);
+    return date ? moment(date).format(FORMAT) : "";
+};
+var convertToDefaultInputFormat = function (timeMili) {
+    return convertMiliToDateWithFormat(timeMili, "YYYY-MM-DDTHH:mm");
+};
+function calculateMonthDifferent(d1, d2) {
+    var date1 = new Date(d1);
+    var date2 = new Date(d2);
+    var months;
+    months = (date1.getFullYear() - date2.getFullYear()) * 12;
+    months += date1.getMonth();
+    months -= date2.getMonth();
+    return months <= 0 ? 0 : months;
+}
+function calculateWeekDifferent(d1, d2) {
+    var diff = (d1 - d2) / 1000;
+    diff /= 60 * 60 * 24 * 7;
+    return Math.abs(Math.round(diff));
+}
+function calculateDayDifferent(d1, d2) {
+    var diff = (d1 - d2) / 1000;
+    diff /= 60 * 60 * 24;
+    return Math.abs(Math.round(diff));
+}
+function calculateTimeDifferent(moment1, moment2, type) {
+    if (type === void 0) { type = "day"; }
+    // type accept : years, months, weeks, days, hours, minutes, and seconds
+    var start = moment(moment1);
+    var end = moment(moment2);
+    return end.diff(start, type);
+}
+function convertRangeDateToArray(date1, date2) {
+    var start = moment(date1);
+    var end = moment(date2);
+    var dates = [];
+    while (start <= end) {
+        dates.push(start.toString());
+        start = start.add(1, "days");
+    }
+    return dates;
+}
+var TimeUtils = {
+    convertToDefaultInputFormat: convertToDefaultInputFormat,
+    convertMiliToDateWithFormat: convertMiliToDateWithFormat,
+    convertMiliToTime: convertMiliToTime,
+    convertMiliToDate: convertMiliToDate,
+    convertMiliToMinutes: convertMiliToMinutes,
+    convertMinutesToMili: convertMinutesToMili,
+    convertMiliToDateTime: convertMiliToDateTime,
+    convertDateTimeToMili: convertDateTimeToMili,
+    calculateMonthDifferent: calculateMonthDifferent,
+    calculateWeekDifferent: calculateWeekDifferent,
+    calculateDayDifferent: calculateDayDifferent,
+    calculateTimeDifferent: calculateTimeDifferent,
+    convertRangeDateToArray: convertRangeDateToArray,
+    MONTH_MILISECOND: MONTH_MILISECOND,
+    WEEK_MILISECOND: WEEK_MILISECOND,
+    DAY_MILISECOND: DAY_MILISECOND,
+    DATE_FORMAT: DATE_FORMAT,
+    DATE_TIME_FORMAT: DATE_TIME_FORMAT,
+    DATE_INPUT_FORMAT: DATE_INPUT_FORMAT,
+    DATE_TIME_INPUT_FORMAT: DATE_TIME_INPUT_FORMAT,
+    MONTH_INPUT_FORMAT: MONTH_INPUT_FORMAT,
+    YEAR_INPUT_FORMAT: YEAR_INPUT_FORMAT,
+    ANT_DATE_TIME_INPUT_FORMAT: ANT_DATE_TIME_INPUT_FORMAT,
+    ANT_DATE_INPUT_FORMAT: ANT_DATE_INPUT_FORMAT,
+    ANT_MONTH_INPUT_FORMAT: ANT_MONTH_INPUT_FORMAT,
+    ANT_YEAR_INPUT_FORMAT: ANT_YEAR_INPUT_FORMAT,
+};
+
+var HeaderDetail = function (_a) {
+    var title = _a.title, status = _a.status, _b = _a.listStatus, listStatus = _b === void 0 ? [] : _b, _c = _a.listButton, listButton = _c === void 0 ? [
+        { id: "print", icon: "print", label: "print" },
+        { id: "cancel", icon: "cancel", label: "cancel" },
+    ] : _c, created = _a.created, user = _a.user, customRight = _a.customRight, customCreated = _a.customCreated, onButtonClick = _a.onButtonClick, Messages = _a.Messages;
+    var foundStatus = React.useMemo(function () {
+        var result = null;
+        if (status && listStatus.length > 0) {
+            result = listStatus.find(function (item) { return (item === null || item === void 0 ? void 0 : item.id) === status; });
+        }
+        return result;
+    }, [status]);
+    var leftView = function () {
+        var titleStatus = function () {
+            return (jsxRuntime.jsxs("div", __assign({ className: "d-flex" }, { children: [jsxRuntime.jsx("h4", { children: title }, void 0),
+                    foundStatus && (jsxRuntime.jsx("div", __assign({ className: "py-1 px-2 text-center ml-3 text-white", style: { backgroundColor: foundStatus.color } }, { children: Messages[foundStatus.label] }), void 0))] }), void 0));
+        };
+        var buttons = function () {
+            return (jsxRuntime.jsx("div", __assign({ className: "d-flex align-items-center" }, { children: listButton.map(function (button, index) {
+                    var buttonClass = classnames("p-0 text-gray font-weight-normal", {
+                        "mx-3": index !== 0,
+                    });
+                    return (jsxRuntime.jsx(Button, { variant: "trans", content: Messages[button.label], iconName: button.icon, className: buttonClass, onClick: function () { return onButtonClick && onButtonClick(button); } }, void 0));
+                }) }), void 0));
+        };
+        return (jsxRuntime.jsxs("div", __assign({ className: "d-flex flex-column" }, { children: [titleStatus(),
+                listButton.length > 0 && buttons()] }), void 0));
+    };
+    var createdView = (jsxRuntime.jsx("div", __assign({ className: "text-x-small text-gray" }, { children: Messages.createdOn + " " + TimeUtils.convertMiliToDate(created) + " " + Messages.at + " " + TimeUtils.convertMiliToTime(created) }), void 0));
+    if (customCreated) {
+        createdView = customCreated(created);
+    }
+    var rightView = function () {
+        if (customRight) {
+            return customRight();
+        }
+        return (jsxRuntime.jsxs("div", __assign({ className: "d-flex flex-column align-items-end" }, { children: [user && jsxRuntime.jsx(AvatarName, { user: user, className: "mb-1" }, void 0),
+                (created || customCreated) && createdView] }), void 0));
+    };
+    return (jsxRuntime.jsxs("div", __assign({ className: "card-container d-flex align-items-center justify-content-between p-4" }, { children: [leftView(),
+            rightView()] }), void 0));
+};
+
+var HeaderBlock = function (_a) {
+    var title = _a.title, className = _a.className, style = _a.style, classNameTitle = _a.classNameTitle, styleTitle = _a.styleTitle, _b = _a.showLine, showLine = _b === void 0 ? true : _b, showArrow = _a.showArrow, customRight = _a.customRight, _c = _a.arrowProps, arrowProps = _c === void 0 ? {} : _c, _d = _a.lineColor, lineColor = _d === void 0 ? "gray" : _d, _e = _a.arrowColor, arrowColor = _e === void 0 ? "gray" : _e, onPrevious = _a.onPrevious, onNext = _a.onNext;
+    var wrapperClass = classnames("w-100 d-flex align-items-center py-3 text-nowrap", className);
+    var titleClass = classnames("text-bold", classNameTitle);
+    var lineClass = classnames("border border-" + lineColor + " w-100 ml-4", { "mr-4": showArrow || customRight });
+    var rightSide = function () {
+        var content;
+        if (showArrow) {
+            content = (jsxRuntime.jsxs("div", __assign({ className: "d-flex align-items-center" }, { children: [jsxRuntime.jsx(Button, __assign({ iconName: "chevron_left", variant: "outline", onClick: onPrevious, className: "mr-3 px-1", size: "fit-content", color: arrowColor }, arrowProps), void 0),
+                    jsxRuntime.jsx(Button, __assign({ iconName: "chevron_right", variant: "outline", onClick: onNext, className: "px-1", size: "fit-content", color: arrowColor }, arrowProps), void 0)] }), void 0));
+        }
+        if (customRight) {
+            content = customRight;
+        }
+        return content;
+    };
+    return (jsxRuntime.jsxs("div", __assign({ className: wrapperClass, style: style }, { children: [jsxRuntime.jsx("div", __assign({ className: titleClass, style: styleTitle }, { children: title }), void 0),
+            showLine && jsxRuntime.jsx("div", { className: lineClass }, void 0),
+            rightSide()] }), void 0));
+};
+
+var Modal = function (_a) {
+    var children = _a.children, open = _a.open, _b = _a.centered, centered = _b === void 0 ? true : _b, _c = _a.closable, closable = _c === void 0 ? false : _c, onClose = _a.onClose, onSave = _a.onSave, onSideClick = _a.onSideClick, cancelAction = _a.cancelAction, width = _a.width, title = _a.title, customHeader = _a.customHeader, customFooter = _a.customFooter, customSideButton = _a.customSideButton, headerSide = _a.headerSide, _d = _a.hasCloseIcon, hasCloseIcon = _d === void 0 ? true : _d, _e = _a.hasCancelButton, hasCancelButton = _e === void 0 ? false : _e, _f = _a.saveText, saveText = _f === void 0 ? "Save" : _f, _g = _a.cancelText, cancelText = _g === void 0 ? "Cancel" : _g, _h = _a.sideText, sideText = _h === void 0 ? "Clear" : _h, size = _a.size, className = _a.className, classNameContent = _a.classNameContent, classNameFooter = _a.classNameFooter, classNameHeader = _a.classNameHeader, _j = _a.showFooter, showFooter = _j === void 0 ? true : _j, _k = _a.showHeader, showHeader = _k === void 0 ? true : _k, props = __rest$s(_a, ["children", "open", "centered", "closable", "onClose", "onSave", "onSideClick", "cancelAction", "width", "title", "customHeader", "customFooter", "customSideButton", "headerSide", "hasCloseIcon", "hasCancelButton", "saveText", "cancelText", "sideText", "size", "className", "classNameContent", "classNameFooter", "classNameHeader", "showFooter", "showHeader"]);
+    var modalClass = classnames("d-modal", "d-modal__" + size, className);
+    var childrenClass = classnames("d-modal__children", classNameContent);
+    var headerClass = classnames("d-modal__header border-bottom py-2", { "d-flex align-items-center": !!title }, classNameHeader);
+    var footerClass = classnames("d-modal__footer d-flex align-items-center border-top py-3 px-3", classNameFooter);
+    var header = function () {
+        var content;
+        content = function () {
+            return (jsxRuntime.jsxs(React__default['default'].Fragment, { children: [hasCloseIcon && (jsxRuntime.jsx(Button, { iconName: "close", variant: "trans", onClick: onClose, className: "d-modal__header-close-icon" }, void 0)),
+                    title && jsxRuntime.jsx("h4", __assign({ className: "w-100 text-center" }, { children: title }), void 0),
+                    headerSide && headerSide()] }, void 0));
+        };
+        if (customHeader) {
+            content = customHeader;
+        }
+        return jsxRuntime.jsx("div", __assign({ className: headerClass }, { children: content() }), void 0);
+    };
+    var footer = function () {
+        var content;
+        var sideButton;
+        sideButton = function () { return jsxRuntime.jsx(Button, { variant: "trans", content: sideText, onClick: onSideClick }, void 0); };
+        if (customSideButton) {
+            sideButton = customSideButton;
+        }
+        content = function () {
+            return (jsxRuntime.jsxs(React__default['default'].Fragment, { children: [(onSideClick || !!customSideButton) && sideButton(),
+                    jsxRuntime.jsxs("div", __assign({ className: "w-100 d-flex align-items-center justify-content-end" }, { children: [hasCancelButton && (jsxRuntime.jsx(Button, { variant: "outline", content: cancelText, className: "mr-3", onClick: function (e) {
+                                    if (cancelAction) {
+                                        return cancelAction(e);
+                                    }
+                                    return onClose && onClose(e);
+                                } }, void 0)),
+                            jsxRuntime.jsx(Button, { variant: "standard", content: saveText, onClick: onSave }, void 0)] }), void 0)] }, void 0));
+        };
+        if (customFooter) {
+            content = customFooter;
+        }
+        return jsxRuntime.jsx("div", __assign({ className: footerClass }, { children: content() }), void 0);
+    };
+    return (jsxRuntime.jsxs(Modal$1, __assign({ visible: open, onCancel: onClose, centered: centered, className: modalClass, closable: closable, width: width, footer: null }, props, { children: [showHeader && header(),
+            jsxRuntime.jsx("div", __assign({ className: childrenClass }, { children: children }), void 0),
+            showFooter && footer()] }), void 0));
+};
+
+var getValueFromStringKey = function (object, keyString) {
+    var keyList = keyString.split(".");
+    if (keyList.length === 0) {
+        return object[keyString];
+    }
+    var objectResult = object;
+    keyList.forEach(function (key) {
+        objectResult = objectResult === null || objectResult === void 0 ? void 0 : objectResult[key];
+    });
+    return objectResult;
+};
+var setValueFromStringKey = function (object, keyString, value) {
+    var keyList = keyString.split(".");
+    lodash.reverse(keyList);
+    var objectResult = {};
+    if (keyList.length === 0) {
+        objectResult[keyString] = value;
+        return objectResult;
+    }
+    keyList.forEach(function (key, index) {
+        var _a;
+        if (index === 0) {
+            objectResult[key] = value;
+        }
+        else {
+            objectResult = (_a = {}, _a[key] = objectResult, _a);
+        }
+    });
+    return __assign(__assign({}, object), objectResult);
+};
+var mapFieldsLangsCTS = function (dataClient, KEYS_LANG) {
+    if (dataClient === void 0) { dataClient = {}; }
+    if (KEYS_LANG === void 0) { KEYS_LANG = []; }
+    var dataResult = {};
+    KEYS_LANG.forEach(function (fields) {
+        dataResult = setValueFromStringKey(dataResult, fields.keyServer, dataClient[fields.keyClient]);
+    });
+    return dataResult;
+};
+var mapFieldsLangsSTC = function (dataServer, KEYS_LANG) {
+    if (KEYS_LANG === void 0) { KEYS_LANG = []; }
+    var dataResult = {};
+    KEYS_LANG.forEach(function (fields) {
+        dataResult[fields.keyClient] = getValueFromStringKey(dataServer, fields.keyServer);
+    });
+    return dataResult;
+};
+var mapObjectToArray = function (object) {
+    if (!object) {
+        return [];
+    }
+    var arrayResult = [];
+    Object.keys(object).forEach(function (key) { return arrayResult.push(__assign({ id: key }, object[key])); });
+    return arrayResult;
+};
+var mapArrayToObject = function (array, getKey) {
+    if (getKey === void 0) { getKey = function (item) { return item.id; }; }
+    if (!array || array.length === 0) {
+        return {};
+    }
+    var objectResult = {};
+    array.forEach(function (arrayItem) {
+        var key = getKey(arrayItem);
+        objectResult[key] = arrayItem;
+    });
+    return objectResult;
+};
+var findItemFromId = function (list, id) {
+    var _a;
+    if (list === void 0) { list = []; }
+    if (!list || list.length === 0) {
+        return {};
+    }
+    return (_a = lodash.filter(list, function (pro) { return pro.id === id; })) === null || _a === void 0 ? void 0 : _a[0];
+};
+var removeItemFromId = function (list, id) {
+    if (list === void 0) { list = []; }
+    if (!list || list.length === 0) {
+        return [];
+    }
+    return lodash.filter(list, function (pro) { return pro.id !== id; });
+};
+var sliceArrayToMui = function (bigArray, numberOfItem) {
+    if (bigArray === void 0) { bigArray = []; }
+    if (numberOfItem === void 0) { numberOfItem = 10; }
+    var arrayOfArrays = [];
+    for (var i = 0; i < bigArray.length; i += numberOfItem) {
+        arrayOfArrays.push(bigArray.slice(i, i + numberOfItem));
+    }
+    return arrayOfArrays;
+};
+var arrayMove = function (arr, oldIndex, newIndex) {
+    if (newIndex >= arr.length) {
+        var k = newIndex - arr.length + 1;
+        // eslint-disable-next-line no-plusplus
+        while (k--) {
+            arr.push(undefined);
+        }
+    }
+    arr.splice(newIndex, 0, arr.splice(oldIndex, 1)[0]);
+    return arr; // for testing
+};
+function combineAllArray(arr) {
+    if (!arr || arr.length === 0)
+        return [];
+    if (arr.length === 1) {
+        return arr[0];
+    }
+    var result = [];
+    var allCasesOfRest = combineAllArray(arr.slice(1));
+    for (var i = 0; i < allCasesOfRest.length; i += 1) {
+        for (var j = 0; j < arr[0].length; j += 1) {
+            result.push(arr[0][j].concat(allCasesOfRest[i]));
+        }
+    }
+    return result;
+}
+function compareTwoStringArray(array1, array2) {
+    if (!array1 || !array2 || array1.length !== array2.length)
+        return false;
+    return lodash.every(array1, function (item) { return lodash.includes(array2, item); });
+}
+/**
+ *
+ * @param {big array} array1
+ * @param {small array} array2
+ */
+function arrayIsContainArray(array1, array2) {
+    return lodash.every(array2, function (item) { return lodash.includes(array1, item); });
+}
+var updateArrayById = function (arrays, newItem) {
+    if (arrays === void 0) { arrays = []; }
+    if (!newItem) {
+        return arrays;
+    }
+    return arrays.map(function (item) {
+        if ((item === null || item === void 0 ? void 0 : item.id) === (newItem === null || newItem === void 0 ? void 0 : newItem.id)) {
+            return newItem;
+        }
+        return item;
+    });
+};
+var removeArrayById = function (arrays, id) {
+    if (arrays === void 0) { arrays = []; }
+    if (lodash.isEmpty(id)) {
+        return arrays;
+    }
+    return lodash.filter(__spreadArray([], arrays), function (item) { return id !== (item === null || item === void 0 ? void 0 : item.id); });
+};
+var ObjectUtils = {
+    getValueFromStringKey: getValueFromStringKey,
+    mapObjectToArray: mapObjectToArray,
+    findItemFromId: findItemFromId,
+    removeItemFromId: removeItemFromId,
+    sliceArrayToMui: sliceArrayToMui,
+    arrayMove: arrayMove,
+    mapArrayToObject: mapArrayToObject,
+    combineAllArray: combineAllArray,
+    compareTwoStringArray: compareTwoStringArray,
+    setValueFromStringKey: setValueFromStringKey,
+    mapFieldsLangsCTS: mapFieldsLangsCTS,
+    mapFieldsLangsSTC: mapFieldsLangsSTC,
+    arrayIsContainArray: arrayIsContainArray,
+    updateArrayById: updateArrayById,
+    removeArrayById: removeArrayById,
+};
+
+var RowInterchangeView = function (_a) {
+    var _b = _a.dataSource, dataSource = _b === void 0 ? {} : _b, _c = _a.keyList, keyList = _c === void 0 ? [] : _c, _d = _a.variant, variant = _d === void 0 ? "background" : _d, _e = _a.boldLabel, boldLabel = _e === void 0 ? false : _e, className = _a.className, classNameRow = _a.classNameRow, classNameLabel = _a.classNameLabel, classNameContent = _a.classNameContent, Messages = _a.Messages, style = _a.style, styleLabel = _a.styleLabel, styleContent = _a.styleContent;
+    var wrapperClass = classnames(className);
+    return (jsxRuntime.jsx("div", __assign({ className: wrapperClass }, { children: keyList.map(function (row, index) {
+            var _a;
+            var rowClass = classnames("d-flex align-items-start w-100 justify-content-between py-3", {
+                "px-3": variant === "background",
+                "bg-light-gray": index % 2 && variant === "background",
+                "border-top": index !== 0 && variant === "border",
+                "border-top-dashed": index !== 0 && variant === "dashed",
+            }, classNameRow);
+            var labelClass = classnames("text-small w-100", { "font-weight-bold": boldLabel }, classNameLabel);
+            var contentClass = classnames("w-100 text", classNameContent);
+            var id = row.id, label = row.label, renderLabel = row.renderLabel, renderContent = row.renderContent;
+            var labelView;
+            var content;
+            labelView = label;
+            if (Messages) {
+                labelView = Messages[label];
+            }
+            if (typeof renderLabel === "function") {
+                labelView = renderLabel({ id: id, data: dataSource, row: row });
+            }
+            content = (_a = dataSource === null || dataSource === void 0 ? void 0 : dataSource[id]) !== null && _a !== void 0 ? _a : "N/A";
+            if (typeof id === "string" && id.includes(".")) {
+                content = ObjectUtils.getValueFromStringKey(dataSource, id);
+            }
+            if (typeof renderContent === "function") {
+                content = renderContent({ id: id, data: dataSource, row: row });
+            }
+            var contentView = (jsxRuntime.jsx("div", __assign({ className: contentClass, style: styleContent }, { children: content }), void 0));
+            return (jsxRuntime.jsxs("div", __assign({ className: rowClass, style: style }, { children: [jsxRuntime.jsx("div", __assign({ className: labelClass, style: styleLabel }, { children: labelView }), void 0),
+                    contentView] }), id + " + " + index));
+        }) }), void 0));
+};
+
+var ViewRow = function (_a) {
+    var className = _a.className, classNameLabel = _a.classNameLabel, classNameContent = _a.classNameContent, style = _a.style, styleContent = _a.styleContent, _b = _a.styleLabel, styleLabel = _b === void 0 ? {} : _b, _c = _a.width, width = _c === void 0 ? "100%" : _c, label = _a.label, _d = _a.center, center = _d === void 0 ? true : _d, children = _a.children;
+    var wrapperClass = classnames("d-flex", {
+        "w-50": width === "50%",
+        "w-25": width === "25%",
+        "align-items-center": center,
+    }, className);
+    var labelClass = classnames("d-block text-nowrap text-bold p-0", {
+        "col-2": width === "100%",
+        "col-4": width === "50%",
+        "col-8": width === "25%",
+        "align-items-center": center,
+    }, classNameLabel);
+    var contentClass = classnames("col-10 p-0", classNameContent);
+    var content = children;
+    if (typeof children === "function") {
+        content = children();
+    }
+    return (jsxRuntime.jsxs("div", __assign({ className: wrapperClass, style: style }, { children: [label && (jsxRuntime.jsx("label", __assign({ className: labelClass, style: styleLabel }, { children: label }), void 0)),
+            jsxRuntime.jsx("div", __assign({ className: contentClass, style: styleContent }, { children: content }), void 0)] }), void 0));
+};
+
+var ViewTextarea = function (_a) {
+    var children = _a.children, className = _a.className, classNameContent = _a.classNameContent, classNameShowMore = _a.classNameShowMore, classNameShowLess = _a.classNameShowLess, _b = _a.style, style = _b === void 0 ? {} : _b, _c = _a.showLessText, showLessText = _c === void 0 ? Messages.showLess : _c, _d = _a.showMoreText, showMoreText = _d === void 0 ? Messages.showMore : _d, _e = _a.limitedLength, limitedLength = _e === void 0 ? 200 : _e, width = _a.width;
+    var _f = React.useState(false), expanding = _f[0], setExpanding = _f[1];
+    var contentLength = React.useMemo(function () {
+        return children.length;
+    }, [children]);
+    var isOverFollow = React.useMemo(function () {
+        return contentLength > limitedLength;
+    }, [contentLength, limitedLength]);
+    var contentRef = React.useRef(null);
+    var wrapperRef = React.useRef(null);
+    var isShowMore = isOverFollow && !expanding;
+    var isShowLess = isOverFollow && expanding;
+    // classNames
+    var wrapperClass = classnames("d-view-textarea text-small text-start", className);
+    var contentClass = classnames("d-view-textarea__content", {
+        "text-nowrap": isOverFollow && !expanding,
+        // "d-inline-block": !expanding,
+    }, classNameContent);
+    var showClass = "d-view-textarea__show-more text-secondary hover-pointer text-x-small";
+    var showMoreClass = classnames(showClass, classNameShowMore);
+    var showLessClass = classnames(showClass, classNameShowLess);
+    React.useEffect(function () {
+        setTimeout(function () {
+            var _a;
+            console.log("Content Height", (_a = contentRef.current) === null || _a === void 0 ? void 0 : _a.offsetHeight);
+        }, 200);
+    }, [children]);
+    return (jsxRuntime.jsxs("div", __assign({ className: wrapperClass, style: __assign(__assign({}, style), { maxWidth: width }), ref: wrapperRef }, { children: [jsxRuntime.jsxs("div", __assign({ className: contentClass, ref: function (ref) { return (contentRef.current = ref); } }, { children: [children,
+                    isShowLess && (jsxRuntime.jsx("span", __assign({ className: showLessClass, onClick: function () {
+                            setExpanding(false);
+                            wrapperRef.current && wrapperRef.current.setAttribute("style", "width:" + width + "px");
+                        } }, { children: " " + showLessText }), void 0))] }), void 0),
+            isShowMore && (jsxRuntime.jsx("span", __assign({ className: showMoreClass, onClick: function () {
+                    setExpanding(true);
+                    wrapperRef.current && wrapperRef.current.setAttribute("style", "width:100%");
+                } }, { children: showMoreText }), void 0))] }), void 0));
+};
+
+var Panel = Collapse.Panel;
+var ViewCollapse = function (_a) {
+    var _b = _a.label, label = _b === void 0 ? "Title" : _b, children = _a.children, className = _a.className, _c = _a.defaultOpen, defaultOpen = _c === void 0 ? 1 : _c, extra = _a.extra, customLeftView = _a.customLeftView;
+    var classContainerName = classnames("card-container collapse-view-container", className);
+    var customRightViewClass = classnames({
+        "ant-collapse-header_custom-right-view-extra": !!extra,
+        "ant-collapse-header_custom-right-view": !extra,
+    });
+    return (jsxRuntime.jsx(Collapse, __assign({ className: classContainerName, defaultActiveKey: defaultOpen, expandIconPosition: "right", expandIcon: function (_a) {
+            var isActive = _a.isActive;
+            return jsxRuntime.jsx(CaretRightOutlined$1, { rotate: isActive ? 90 : 0 }, void 0);
+        } }, { children: jsxRuntime.jsx(Panel, __assign({ header: jsxRuntime.jsxs("div", { children: [customLeftView && jsxRuntime.jsx("div", __assign({ className: customRightViewClass }, { children: customLeftView }), void 0),
+                    jsxRuntime.jsx("h5", __assign({ className: "collapse-view__header-title" }, { children: label }), void 0)] }, void 0), extra: extra }, { children: children }), "1") }), void 0));
+};
+
+var ViewTimeline = function (_a) {
+    var _b = _a.dataSource, dataSource = _b === void 0 ? [] : _b, customView = _a.customView, className = _a.className, classNameLabel = _a.classNameLabel, _c = _a.getLabel, getLabel = _c === void 0 ? function (item) { var _a; return (_a = item === null || item === void 0 ? void 0 : item.label) !== null && _a !== void 0 ? _a : "N/A"; } : _c, getContent = _a.getContent;
+    var wrapperClass = classnames("py-3 px-4 timeline-view__wrapper", className);
+    return (jsxRuntime.jsx(Timeline, __assign({ className: wrapperClass }, { children: dataSource.map(function (data) {
+            var label = getLabel && getLabel(data);
+            var content = getContent && getContent(data);
+            var mainView = (jsxRuntime.jsxs("div", __assign({ className: "text-small" }, { children: [label && jsxRuntime.jsx("div", __assign({ className: "text-small-bold " + classNameLabel }, { children: label }), void 0),
+                    content] }), void 0));
+            if (customView) {
+                mainView = customView(data);
+            }
+            return jsxRuntime.jsx(Timeline.Item, { children: mainView }, void 0);
+        }) }), void 0));
+};
+
+var TabBar = function (_a) {
+    var _b = _a.dataSource, dataSource = _b === void 0 ? [] : _b, value = _a.value, className = _a.className, classNameItem = _a.classNameItem, _c = _a.variant, variant = _c === void 0 ? "horizontal" : _c, onChange = _a.onChange, getLabel = _a.getLabel, getItemProps = _a.getItemProps, _d = _a.isScroll, isScroll = _d === void 0 ? false : _d, _e = _a.minWidthItem, minWidthItem = _e === void 0 ? 200 : _e;
+    var wrapperClass = classnames("d-tab-bar d-tab-bar__" + variant, {
+        "d-flex ": variant === "horizontal",
+        "flex-wrap": !isScroll && variant === "horizontal",
+    }, className);
+    var activateScroll = isScroll && variant === "horizontal";
+    return (jsxRuntime.jsx("div", __assign({ className: wrapperClass, style: { overflowX: activateScroll ? "scroll" : undefined } }, { children: dataSource.map(function (tabItem, index) {
+            var _a, _b;
+            var isSelect = (value === null || value === void 0 ? void 0 : value.id) === (tabItem === null || tabItem === void 0 ? void 0 : tabItem.id);
+            var itemClass = classnames("d-tab-bar__item text-small", {
+                "d-tab-bar__item-active": isSelect,
+            }, classNameItem);
+            var label = (_a = tabItem === null || tabItem === void 0 ? void 0 : tabItem.label) !== null && _a !== void 0 ? _a : "N/A";
+            var icon = (_b = tabItem === null || tabItem === void 0 ? void 0 : tabItem.iconName) !== null && _b !== void 0 ? _b : undefined;
+            if (getLabel) {
+                label = getLabel(tabItem);
+            }
+            var buttonProps = {};
+            if (getItemProps) {
+                buttonProps = getItemProps({ item: tabItem, isActive: isSelect });
+            }
+            return (jsxRuntime.jsx(Button, __assign({ className: itemClass, onClick: function () { return onChange && onChange(tabItem); }, variant: "trans", iconName: icon, style: { minWidth: activateScroll ? minWidthItem + "px" : undefined } }, buttonProps, { children: label }), index));
+        }) }), void 0));
+};
+
+var DEFAULT_PAGING_DATA = {
+    pageIndex: 1,
+    pageSize: 10,
+};
+var DEFAULT_DATA_LIST = {
+    data: [],
+    emptyMode: MODE.PROGRESS,
+    refreshing: false,
+};
+var PopoverList = function (_a) {
+    var source = _a.source, transformer = _a.transformer, renderItem = _a.renderItem, setRef = _a.setRef, onChange = _a.onChange, customView = _a.customView, onClickItem = _a.onClickItem, onCreateNew = _a.onCreateNew, buttonText = _a.buttonText, _b = _a.buttonVariant, buttonVariant = _b === void 0 ? "trans" : _b, buttonIconName = _a.buttonIconName, _c = _a.isClickOpen, isClickOpen = _c === void 0 ? true : _c; _a.placeHolder; var _e = _a.loadMoreText, loadMoreText = _e === void 0 ? "Load More" : _e, className = _a.className;
+    var _f = React.useState(DEFAULT_DATA_LIST), dataList = _f[0], setDataList = _f[1];
+    var _g = React.useState(false), openPopover = _g[0], setOpenPopover = _g[1];
+    var _h = React.useState(false), showLoadMore = _h[0], setShowLoadMore = _h[1];
+    var wrapperClass = classnames("d-popover-list", className);
+    var pagingData = React.useRef(DEFAULT_PAGING_DATA);
+    var noMoreData = React.useRef(false);
+    var listRef = React.useRef({ refresh: function () { return refresh(); } });
+    var outSideRef = React.useRef();
+    var isArray = function (array) {
+        return Array.isArray(array);
+    };
+    var isNoMoreData = function (newData) {
+        if (!newData || !isArray(newData))
+            return true;
+        return pagingData ? newData.length < pagingData.current.pageSize : false;
+    };
+    var handleClick = function (e) {
+        var _a;
+        if ((_a = outSideRef === null || outSideRef === void 0 ? void 0 : outSideRef.current) === null || _a === void 0 ? void 0 : _a.contains(e.target)) {
+            // inside click
+            // console.log("click inside");
+            return;
+        }
+        // outside click
+        setOpenPopover(false);
+    };
+    React.useEffect(function () {
+        // add when mounted
+        document.addEventListener("mousedown", handleClick);
+        // return function to be called when unmounted
+        return function () {
+            document.removeEventListener("mousedown", handleClick);
+        };
+    }, []);
+    React.useEffect(function () {
+        setRef && setRef(listRef.current);
+        onLoadData();
+    }, []);
+    var refresh = function () {
+        noMoreData.current = false;
+        pagingData.current = DEFAULT_PAGING_DATA;
+        onLoadData();
+    };
+    function onLoadData() {
+        var _this = this;
+        if (noMoreData.current) {
+            setShowLoadMore(false);
+            return;
+        }
+        source(pagingData.current)
+            .then(function (response) { return __awaiter(_this, void 0, void 0, function () {
+            var data, newData;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        pagingData.current = __assign(__assign({}, pagingData.current), { pageIndex: pagingData.current.pageIndex + 1 });
+                        return [4 /*yield*/, transformer(response)];
+                    case 1:
+                        data = _a.sent();
+                        noMoreData.current = isNoMoreData(data);
+                        if (!noMoreData.current) {
+                            setShowLoadMore(true);
+                        }
+                        else {
+                            setShowLoadMore(false);
+                        }
+                        if (!isArray(data)) {
+                            // eslint-disable-next-line no-throw-literal
+                            throw "Data is not an array";
+                        }
+                        if (lodash.isEmpty(data) && dataList.data.length === 0) {
+                            setDataList({
+                                data: [],
+                                emptyMode: MODE.EMPTY,
+                                refreshing: false,
+                            });
+                            return [2 /*return*/];
+                        }
+                        newData = dataList.data.concat(data);
+                        setDataList({
+                            data: newData,
+                            emptyMode: MODE.HIDDEN,
+                            refreshing: false,
+                        });
+                        return [2 /*return*/];
+                }
+            });
+        }); })
+            .catch(function () { });
+    }
+    var onClickLoadMore = function () {
+        onLoadData();
+    };
+    var onClickItemList = function (item, index) {
+        setOpenPopover(false);
+        onClickItem && onClickItem(item, index);
+    };
+    var onClickCreateNewHandle = function () {
+        setOpenPopover(false);
+        onCreateNew && onCreateNew();
+    };
+    var renderItemList = function (item, index) {
+        var content = (item === null || item === void 0 ? void 0 : item.name) || (item === null || item === void 0 ? void 0 : item.label);
+        if (renderItem) {
+            content = renderItem(item, index);
+        }
+        return (jsxRuntime.jsx("div", __assign({ className: "renderItemList", onClick: function () { return onClickItemList(item, index); } }, { children: content }), index + Math.random()));
+    };
+    var mainViewPopover = function () {
+        if (customView) {
+            if (typeof customView === "function") {
+                return customView();
+            }
+            return customView;
+        }
+        return (jsxRuntime.jsx(InputTextSearch, { onChange: function (event) {
+                if (!event.target.value.trim()) {
+                    return;
+                }
+                !isClickOpen && setOpenPopover(true);
+                onChange && onChange(event.target.value);
+            } }, void 0));
+    };
+    return (jsxRuntime.jsxs("div", __assign({ className: wrapperClass, ref: outSideRef }, { children: [jsxRuntime.jsx("div", __assign({ onClick: function () { return isClickOpen && setOpenPopover(true); } }, { children: mainViewPopover() }), void 0),
+            openPopover && (jsxRuntime.jsxs("div", __assign({ className: "d-popover-list__dropdown" }, { children: [buttonText && (jsxRuntime.jsx("div", __assign({ className: "d-flex w-100 justify-content-end" }, { children: jsxRuntime.jsx(Button, { content: buttonText, iconName: buttonIconName, variant: buttonVariant, onClick: function () {
+                                onClickCreateNewHandle();
+                            } }, void 0) }), void 0)),
+                    dataList.data.map(function (item, index) { return renderItemList(item, index); }),
+                    jsxRuntime.jsx(EmptyView, { mode: dataList.emptyMode }, void 0),
+                    showLoadMore && (jsxRuntime.jsx(Button, __assign({ className: "d-popover-list__footer", onClick: function () { return onClickLoadMore(); }, variant: "trans" }, { children: loadMoreText }), void 0))] }), void 0))] }), void 0));
+};
+
 // data stubs
 var RangePicker = DatePicker.RangePicker;
 var DateInput = function (_a) {
-    var onChange = _a.onChange, onBlur = _a.onBlur, value = _a.value, disabled = _a.disabled, defaultValue = _a.defaultValue, label = _a.label, placeholder = _a.placeholder, error = _a.error, _b = _a.type, type = _b === void 0 ? "date" : _b, _c = _a.format, format = _c === void 0 ? "DD/MM/YYYY HH:mm" : _c, _d = _a.variant, variant = _d === void 0 ? "outline" : _d, _e = _a.iconError, iconError = _e === void 0 ? "error_outline" : _e, _f = _a.iconButton, iconButton = _f === void 0 ? "event" : _f, _g = _a.showTime, showTime = _g === void 0 ? false : _g, _h = _a.useButton, useButton = _h === void 0 ? false : _h, _j = _a.isRangePicker, isRangePicker = _j === void 0 ? false : _j, className = _a.className, classNameInput = _a.classNameInput, classNameButton = _a.classNameButton, classNameLabel = _a.classNameLabel, classNameError = _a.classNameError, props = __rest$q(_a, ["onChange", "onBlur", "value", "disabled", "defaultValue", "label", "placeholder", "error", "type", "format", "variant", "iconError", "iconButton", "showTime", "useButton", "isRangePicker", "className", "classNameInput", "classNameButton", "classNameLabel", "classNameError"]);
+    var onChange = _a.onChange, onBlur = _a.onBlur, value = _a.value, disabled = _a.disabled, defaultValue = _a.defaultValue, label = _a.label, placeholder = _a.placeholder, error = _a.error, _b = _a.type, type = _b === void 0 ? "date" : _b, _c = _a.format, format = _c === void 0 ? "DD/MM/YYYY HH:mm" : _c, _d = _a.variant, variant = _d === void 0 ? "outline" : _d, _e = _a.iconError, iconError = _e === void 0 ? "error_outline" : _e, _f = _a.iconButton, iconButton = _f === void 0 ? "event" : _f, _g = _a.showTime, showTime = _g === void 0 ? false : _g, _h = _a.useButton, useButton = _h === void 0 ? false : _h, _j = _a.isRangePicker, isRangePicker = _j === void 0 ? false : _j, className = _a.className, classNameInput = _a.classNameInput, classNameButton = _a.classNameButton, classNameLabel = _a.classNameLabel, classNameError = _a.classNameError, props = __rest$s(_a, ["onChange", "onBlur", "value", "disabled", "defaultValue", "label", "placeholder", "error", "type", "format", "variant", "iconError", "iconButton", "showTime", "useButton", "isRangePicker", "className", "classNameInput", "classNameButton", "classNameLabel", "classNameError"]);
     var wrapperClass = classnames("d-date-input", { "d-date-input__hide-input": useButton }, className);
     var labelClass = classnames("text-label d-block", classNameLabel);
     var datePickerClass = classnames("d-date-input__input", {
@@ -71672,7 +71932,7 @@ var calculateDefaultExpandedRowKeys = function (data, options) {
         if (currentLevel === void 0) { currentLevel = 1; }
         var keys = [];
         source.forEach(function (_a) {
-            var children = _a.children, rest = __rest$q(_a, ["children"]);
+            var children = _a.children, rest = __rest$s(_a, ["children"]);
             if (children !== null) {
                 keys.push(rest[key]);
                 if (level < 0 || (level > 0 && level > currentLevel)) {
@@ -71689,7 +71949,7 @@ var transformColumn = function (columns, baseColumn) {
     if (columns === void 0) { columns = []; }
     if (baseColumn === void 0) { baseColumn = {}; }
     return columns.map(function (_a, index) {
-        var title = _a.title, titleTooltip = _a.titleTooltip, dataIndex = _a.dataIndex, render = _a.render, props = __rest$q(_a, ["title", "titleTooltip", "dataIndex", "render"]);
+        var title = _a.title, titleTooltip = _a.titleTooltip, dataIndex = _a.dataIndex, render = _a.render, props = __rest$s(_a, ["title", "titleTooltip", "dataIndex", "render"]);
         // custom title
         var titleResult = title;
         if (typeof title === "function") {
@@ -74338,7 +74598,7 @@ var Resizable = Resizable_1.default;
 ResizableBox_1.default;
 
 var ResizableTitle = function (props) {
-    var onResize = props.onResize, width = props.width, restProps = __rest$q(props, ["onResize", "width"]);
+    var onResize = props.onResize, width = props.width, restProps = __rest$s(props, ["onResize", "width"]);
     if (!width) {
         return jsxRuntime.jsx("th", __assign({}, restProps), void 0);
     }
@@ -74628,12 +74888,12 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
             "d-flex justify-content-between align-items-center my-3": showSelectionView,
         });
         return (jsxRuntime.jsxs("div", __assign({ className: wrapperClass }, { children: [showFuncRow && (jsxRuntime.jsxs("div", __assign({ className: funcRowClass }, { children: [showSelectionView && onSelectionView && onSelectionView(selectingRows),
-                        !lodash.isEmpty(tableLayoutList) && (jsxRuntime.jsx(SelectLayoutView, { listLayout: tableLayoutList, onClickItem: this.handleSelectTableLayout, selectedLayout: selectedLayout, showBorder: true }, void 0)),
-                        jsxRuntime.jsx(SelectColumnModal
-                        // eslint-disable-next-line react/destructuring-assignment
-                        , { 
-                            // eslint-disable-next-line react/destructuring-assignment
-                            options: columns, setSelectedColumns: function (column) { return _this.setState({ selectedColumns: column }); }, keyTable: keyTableLayout, refreshLayout: function () { return _this.setDefaultTableLayout(); } }, void 0)] }), void 0)),
+                        jsxRuntime.jsxs("div", __assign({ className: "flex-center-y" }, { children: [!lodash.isEmpty(tableLayoutList) && (jsxRuntime.jsx(SelectLayoutView, { listLayout: tableLayoutList, onClickItem: this.handleSelectTableLayout, selectedLayout: selectedLayout, showBorder: true }, void 0)),
+                                jsxRuntime.jsx(SelectColumnModal
+                                // eslint-disable-next-line react/destructuring-assignment
+                                , { 
+                                    // eslint-disable-next-line react/destructuring-assignment
+                                    options: columns, setSelectedColumns: function (column) { return _this.setState({ selectedColumns: column }); }, keyTable: keyTableLayout, refreshLayout: function () { return _this.setDefaultTableLayout(); } }, void 0)] }), void 0)] }), void 0)),
                 jsxRuntime.jsx(Table, __assign({ rowKey: rowKey, dataSource: data, loading: loading, onChange: this.handleTableChange, rowClassName: function () { return "d-table-awesome-component__row"; }, pagination: paginationResult, scroll: isScroll ? { y: "1000" } : {}, tableLayout: tableLayout, bordered: bordered, components: this.components }, this.props, { className: "d-table-awesome-component__table " + classNameTable, 
                     // columns props always has to be in last position in order for Resizable table to work
                     columns: this.getColumns() }), void 0)] }), void 0));
@@ -74678,7 +74938,7 @@ var MenuItem = function (_a) {
         "d-dropdown-menu__item-main-view": isMainView,
     });
     var iconImageView;
-    var labelView = jsxRuntime.jsx("div", __assign({ className: "w-100 text d-dropdown-menu__item-label" }, { children: Messages ? Messages[label] : label }), void 0);
+    var labelView = (jsxRuntime.jsx("div", __assign({ className: "w-100 text d-dropdown-menu__item-label" }, { children: Messages ? Messages[label] : label }), void 0));
     var arrowView;
     if (iconName) {
         iconImageView = jsxRuntime.jsx(Icon$2, { name: iconName, className: "d-block mr-2" }, void 0);
@@ -74692,24 +74952,23 @@ var MenuItem = function (_a) {
     if (isMainView) {
         arrowView = jsxRuntime.jsx(Icon$2, { name: "expand_more", className: "d-block ml-2" }, void 0);
     }
-    return (jsxRuntime.jsxs("li", __assign({ className: itemClass, onClick: function () { return onClick && onClick(item); } }, { children: [iconImageView,
+    return (jsxRuntime.jsxs("div", __assign({ className: itemClass, onClick: function () { return onClick && onClick(item); } }, { children: [iconImageView,
             labelView,
             arrowView,
             !isMainView && subMenu && subMenu.length > 0 && jsxRuntime.jsx(DropdownMenu, { dataSource: subMenu }, void 0)] }), "" + id));
 };
 var DropdownMenu = function (_a) {
-    var _b = _a.dataSource, dataSource = _b === void 0 ? [] : _b, _c = _a.onClick, onClick = _c === void 0 ? function () { } : _c, Messages = _a.Messages, className = _a.className;
-    var wrapperClass = classnames("d-dropdown-menu__container p-0", className);
+    var _b = _a.dataSource, dataSource = _b === void 0 ? [] : _b, _c = _a.onClick, onClick = _c === void 0 ? function () { } : _c, Messages = _a.Messages, className = _a.className, position = _a.position;
+    var wrapperClass = classnames("d-dropdown-menu__container d-dropdown-menu__container-" + position, className);
     var list = dataSource.map(function (item, index) {
         return jsxRuntime.jsx(MenuItem, { item: item, onClick: onClick, Messages: Messages }, void 0);
     });
-    return jsxRuntime.jsx("ul", __assign({ className: wrapperClass }, { children: list }), void 0);
+    return jsxRuntime.jsx("div", __assign({ className: wrapperClass }, { children: list }), void 0);
 };
 var Dropdown = function (_a) {
-    var _b = _a.buttonProps, buttonProps = _b === void 0 ? { variant: "trans", iconName: "more_vert" } : _b, dataSource = _a.dataSource, onClick = _a.onClick, _c = _a.variant, variant = _c === void 0 ? "button" : _c, value = _a.value, Messages = _a.Messages, _d = _a.placeholder, placeholder = _d === void 0 ? "Select..." : _d, className = _a.className; _a.classNameMenu;
-    var _e = React.useState(false), openDropdown = _e[0], setOpenDropdown = _e[1];
+    var _b = _a.buttonProps, buttonProps = _b === void 0 ? { variant: "trans", iconName: "more_vert" } : _b, dataSource = _a.dataSource, onClick = _a.onClick, _c = _a.variant, variant = _c === void 0 ? "button" : _c, value = _a.value, Messages = _a.Messages, _d = _a.placeholder, placeholder = _d === void 0 ? "Select..." : _d, className = _a.className; _a.classNameMenu; var _e = _a.position, position = _e === void 0 ? "right-edge" : _e;
+    var _f = React.useState(false), openDropdown = _f[0], setOpenDropdown = _f[1];
     var containerClass = classnames("d-dropdown positon-relative", className);
-    var dropdownClass = classnames("d-dropdown__menu", { "d-dropdown__menu-open": openDropdown });
     var wrapperRef = React.useRef(null);
     React.useEffect(function () {
         var handleOutsideClick = function (event) {
@@ -74724,7 +74983,7 @@ var Dropdown = function (_a) {
         setOpenDropdown(false);
         return onClick && onClick(item);
     };
-    var mainView = function () { return jsxRuntime.jsx(Button, __assign({}, buttonProps, { onClick: function () { return setOpenDropdown(!openDropdown); } }), void 0); };
+    var mainView = function () { return (jsxRuntime.jsx(Button, __assign({}, buttonProps, { onClick: function () { return setOpenDropdown(!openDropdown); } }), void 0)); };
     if (variant === "view") {
         mainView = function () {
             if (!value) {
@@ -74734,7 +74993,7 @@ var Dropdown = function (_a) {
         };
     }
     return (jsxRuntime.jsxs("div", __assign({ className: containerClass, ref: wrapperRef }, { children: [mainView(),
-            jsxRuntime.jsx("div", __assign({ className: dropdownClass }, { children: jsxRuntime.jsx(DropdownMenu, { dataSource: dataSource, onClick: handleOnClickItem, Messages: Messages }, void 0) }), void 0)] }), void 0));
+            openDropdown && (jsxRuntime.jsx(DropdownMenu, { dataSource: dataSource, onClick: handleOnClickItem, Messages: Messages, position: variant === "view" ? undefined : position }, void 0))] }), void 0));
 };
 
 /* eslint-disable implicit-arrow-linebreak */
@@ -74902,6 +75161,7 @@ function mapWatchToEmbedYouTube(url) {
     }
     return url;
 }
+var phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 var StringUtils = {
     moneyFormat: moneyFormat,
     moneyThaiFormat: moneyThaiFormat,
@@ -74922,6 +75182,7 @@ var StringUtils = {
     validURL: validURL,
     isEnglishAlphabet: isEnglishAlphabet,
     mapWatchToEmbedYouTube: mapWatchToEmbedYouTube,
+    phoneRegExp: phoneRegExp,
 };
 
 var strictUriEncode = str => encodeURIComponent(str).replace(/[!'()*]/g, x => `%${x.charCodeAt(0).toString(16).toUpperCase()}`);
@@ -75410,7 +75671,8 @@ queryString.stringifyUrl;
 var getParams = function (url) {
     var params = {};
     var parser = document.createElement("a");
-    parser.href = url;
+    var currentUrl = document.location.href;
+    parser.href = url || currentUrl;
     var query = parser.search.substring(1);
     var vars = query.split("&");
     // eslint-disable-next-line no-plusplus
@@ -75449,15 +75711,27 @@ var getParamFromUrl = function (key) {
     var param = url.searchParams.get(key);
     return param;
 };
-var pushState = function (key, value) {
+var pushState = function (obj) {
     var url = new URL(window.location);
-    url.searchParams.set(key, value);
-    window.history.pushState({ key: value }, "", url);
+    if (lodash.isEmpty(obj)) {
+        var originUrl = window.location.href.substring(window.location.href.lastIndexOf("/") + 1).split("?")[0];
+        return window.history.pushState("", "", ("/" + originUrl));
+    }
+    Object.keys(obj).forEach(function (key) {
+        url.searchParams.set(key, obj[key]);
+    });
+    return window.history.pushState("", "", url);
 };
-var replaceState = function (key, value) {
+var replaceState = function (obj) {
     var url = new URL(window.location);
-    url.searchParams.set(key, value);
-    window.history.replaceState({ key: value }, "", url);
+    if (lodash.isEmpty(obj)) {
+        var originUrl = window.location.href.substring(window.location.href.lastIndexOf("/") + 1).split("?")[0];
+        return window.history.replaceState("", "", ("/" + originUrl));
+    }
+    Object.keys(obj).forEach(function (key) {
+        url.searchParams.set(key, obj[key]);
+    });
+    return window.history.replaceState("", "", url);
 };
 //* *************************************USE FOR NEW UPDATE PARAMS********************************************** */
 var addQuery = function (newQuery) {
@@ -76101,6 +76375,184 @@ function usePrevious(value) {
     return ref.current;
 }
 
+var getDefaultValue = function (type) {
+    switch (type) {
+        case "checkbox":
+        case "radio":
+        case "multi-select":
+        case "select":
+            return [];
+        case "date":
+        case "date-range":
+            return null;
+        default:
+            return "";
+    }
+};
+function FormItem(_a) {
+    var onChange = _a.onChange, data = _a.data, _b = _a.value, value = _b === void 0 ? {} : _b, Messages = _a.Messages, className = _a.className, error = _a.error;
+    var key = data.key, type = data.type, label = data.label, _c = data.dataSource, dataSource = _c === void 0 ? [] : _c, getLabel = data.getLabel, getValue = data.getValue, rows = data.rows, inputType = data.inputType;
+    var itemLabel = (Messages === null || Messages === void 0 ? void 0 : Messages[label]) || label;
+    if (type === "date-range") {
+        var transValue = null;
+        if (Array.isArray(value)) {
+            transValue = value.map(function (item) { return moment(item); });
+        }
+        return (jsxRuntime.jsx(DateInput, { value: transValue, onChange: function (value) {
+                var clone = null;
+                if (Array.isArray(value)) {
+                    clone = value.map(function (item) { return moment(item).valueOf(); });
+                }
+                onChange(key, clone);
+            }, label: Messages[label] || label, className: className, isRangePicker: true, error: error }, void 0));
+    }
+    if (type === "date") {
+        var transValue = null;
+        if (value) {
+            transValue = moment(value);
+        }
+        return (jsxRuntime.jsx(DateInput, { value: transValue, onChange: function (value) {
+                var clone = null;
+                if (value) {
+                    clone = moment(value).valueOf();
+                }
+                onChange(key, clone);
+            }, label: itemLabel, className: className, error: error }, void 0));
+    }
+    if (type === "checkbox") {
+        return (jsxRuntime.jsx(CheckboxGroup, { dataSource: dataSource, value: value, onChange: function (value) { return onChange(key, value); }, label: itemLabel, className: className }, void 0));
+    }
+    if (type === "radio") {
+        return (jsxRuntime.jsx(RadioGroup, { dataSource: dataSource, value: value, onChange: function (value) { return onChange(key, value); }, label: itemLabel, className: className }, void 0));
+    }
+    if (type === "select") {
+        return (jsxRuntime.jsx(Select$1, { dataSource: dataSource, value: value, onChange: function (value) { return onChange(key, value); }, className: className, label: itemLabel, getLabel: function (item) { return (getLabel ? getLabel(item) : Messages[item === null || item === void 0 ? void 0 : item.label]); }, getValue: function (item) { return (getValue ? getValue(item) : item === null || item === void 0 ? void 0 : item.id); }, error: error }, void 0));
+    }
+    if (type === "textarea") {
+        return (jsxRuntime.jsx(InputText, { label: itemLabel, onChange: function (e) { var _a; return onChange(key, (_a = e === null || e === void 0 ? void 0 : e.target) === null || _a === void 0 ? void 0 : _a.value); }, value: value, className: className, error: error, multiple: true, rows: rows }, void 0));
+    }
+    return (jsxRuntime.jsx(InputText, { label: itemLabel, onChange: function (e) { var _a; return onChange(key, (_a = e === null || e === void 0 ? void 0 : e.target) === null || _a === void 0 ? void 0 : _a.value); }, value: value, className: className, error: error, type: inputType }, void 0));
+}
+var Form = function (_a) {
+    var dataSource = _a.dataSource, Messages = _a.Messages, formik = _a.formik, value = _a.value, className = _a.className, _b = _a.error, error = _b === void 0 ? {} : _b, onChange = _a.onChange, classNameRow = _a.classNameRow;
+    var transformData = React.useMemo(function () {
+        var clone = [];
+        var groupData = lodash.groupBy(dataSource, function (item) { return item === null || item === void 0 ? void 0 : item.rowsId; });
+        Object.keys(groupData).forEach(function (key) {
+            clone.push(groupData[key]);
+        });
+        return clone;
+    }, [dataSource]);
+    var formValue = React.useMemo(function () {
+        var _a;
+        if (formik) {
+            return (_a = formik === null || formik === void 0 ? void 0 : formik.values) !== null && _a !== void 0 ? _a : {};
+        }
+        return value;
+    }, [value, formik === null || formik === void 0 ? void 0 : formik.values]);
+    var formError = React.useMemo(function () {
+        var _a;
+        if (formik) {
+            return (_a = formik === null || formik === void 0 ? void 0 : formik.errors) !== null && _a !== void 0 ? _a : {};
+        }
+        return error;
+    }, [formik]);
+    var onChangeState = function (_a) {
+        var key = _a.key, value = _a.value, onValidate = _a.onValidate;
+        var validate = true;
+        if (onValidate) {
+            validate = onValidate({ key: key, value: value });
+            if (!validate) {
+                return;
+            }
+        }
+        if (formik) {
+            formik.setFieldValue(key, value);
+        }
+        // eslint-disable-next-line no-unused-expressions
+        onChange && onChange(key, value);
+    };
+    var wrapperClass = classnames("w-100", className);
+    return (jsxRuntime.jsx("div", __assign({ className: wrapperClass }, { children: transformData &&
+            (transformData === null || transformData === void 0 ? void 0 : transformData.length) > 0 &&
+            (transformData === null || transformData === void 0 ? void 0 : transformData.map(function (rows, i) {
+                var hasError = false;
+                var rowView = jsxRuntime.jsx("div", {}, void 0);
+                var setRowClass;
+                if (rows && (rows === null || rows === void 0 ? void 0 : rows.length) > 0) {
+                    rowView = rows.map(function (item, index) {
+                        var _a, _b;
+                        var render = item.render, key = item.key, type = item.type, className = item.className, getElementClass = item.getElementClass, getItemClass = item.getItemClass, elementClass = item.elementClass, classNameRow = item.classNameRow, onChangeValidate = item.onChangeValidate;
+                        var valueItem = (formValue === null || formValue === void 0 ? void 0 : formValue[key]) || getDefaultValue(type);
+                        var errorItem = (_a = formError === null || formError === void 0 ? void 0 : formError[key]) !== null && _a !== void 0 ? _a : null;
+                        var errorLabel = errorItem ? (_b = Messages === null || Messages === void 0 ? void 0 : Messages[errorItem]) !== null && _b !== void 0 ? _b : errorItem : null;
+                        if (errorLabel) {
+                            hasError = true;
+                        }
+                        var itemClass = classnames("w-100", {
+                            "mr-3": (rows === null || rows === void 0 ? void 0 : rows.length) > 1 && index === 0,
+                            "mx-3": (rows === null || rows === void 0 ? void 0 : rows.length) > 1 && index > 0 && index < (rows === null || rows === void 0 ? void 0 : rows.length),
+                            "ml-3": (rows === null || rows === void 0 ? void 0 : rows.length) > 1 && index === (rows === null || rows === void 0 ? void 0 : rows.length) - 1,
+                        }, className);
+                        if (getItemClass) {
+                            itemClass = getItemClass({
+                                value: valueItem,
+                                error: errorItem,
+                                key: key,
+                                index: index,
+                                rows: rows,
+                            });
+                        }
+                        var content = (jsxRuntime.jsx(FormItem, { data: item, onChange: function (key, value) {
+                                return onChangeState({ key: key, value: value, onValidate: onChangeValidate });
+                            }, value: valueItem, Messages: Messages, className: itemClass, error: errorLabel }, void 0));
+                        if (React__default['default'].isValidElement(render)) {
+                            content = React__default['default'].cloneElement(render, {
+                                onChange: function (value) {
+                                    return onChangeState({ key: key, value: value, onValidate: onChangeValidate });
+                                },
+                                value: valueItem,
+                                className: itemClass,
+                                error: errorLabel,
+                            });
+                        }
+                        if (typeof render === "function") {
+                            content = render({
+                                value: valueItem,
+                                onChange: function (key, value) {
+                                    return onChangeState({ key: key, value: value, onValidate: onChangeValidate });
+                                },
+                                className: itemClass,
+                                key: key,
+                            });
+                        }
+                        var itemWrapperClass = classnames("w-100 py-2 d-flex", elementClass);
+                        if (getElementClass) {
+                            itemWrapperClass = getElementClass({
+                                value: valueItem,
+                                error: errorItem,
+                                key: key,
+                                index: index,
+                                rows: rows,
+                            });
+                        }
+                        if (classNameRow) {
+                            setRowClass = classNameRow;
+                        }
+                        return jsxRuntime.jsx("div", __assign({ className: itemWrapperClass }, { children: content }), void 0);
+                    });
+                }
+                var rowClass = classnames("d-flex w-100 my-2", {
+                    "align-items-center": !hasError,
+                    // "border-top": i !== 0,
+                }, classNameRow);
+                if (setRowClass) {
+                    rowClass = setRowClass;
+                }
+                return jsxRuntime.jsx("div", __assign({ className: rowClass }, { children: rowView }), void 0);
+            })) }), void 0));
+};
+
 exports.Avatar = Avatar;
 exports.AvatarName = AvatarName;
 exports.AwesomeListComponent = AwesomeListComponent;
@@ -76116,6 +76568,8 @@ exports.DialogComponent = DialogComponent;
 exports.DialogManager = DialogManager;
 exports.Dot = Dot;
 exports.Dropdown = Dropdown;
+exports.Form = Form;
+exports.FormItem = FormItem;
 exports.Header = Header;
 exports.HeaderBlock = HeaderBlock;
 exports.HeaderDetail = HeaderDetail;
@@ -76135,7 +76589,8 @@ exports.Progress = Progress;
 exports.ProgressComponent = ProgressComponent;
 exports.RadioGroup = RadioGroup;
 exports.RowInterchangeView = RowInterchangeView;
-exports.Select = Select;
+exports.Select = Select$1;
+exports.SelectInfinity = SelectInfinity$1;
 exports.StringUtils = StringUtils;
 exports.TabBar = TabBar;
 exports.TimeUtils = TimeUtils;
@@ -76145,6 +76600,7 @@ exports.UrlUtils = UrlUtils;
 exports.ViewCollapse = ViewCollapse;
 exports.ViewRow = ViewRow;
 exports.ViewTextarea = ViewTextarea;
+exports.ViewTimeline = ViewTimeline;
 exports.useFirstTime = useFirstTime;
 exports.useForceUpdate = useForceUpdate;
 exports.useForceUpdateConstraint = useForceUpdateConstraint;

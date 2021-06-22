@@ -30,5 +30,6 @@ declare const _default: {
     validURL: typeof validURL;
     isEnglishAlphabet: (text: string) => boolean;
     mapWatchToEmbedYouTube: typeof mapWatchToEmbedYouTube;
+    phoneRegExp: RegExp;
 };
 export default _default;

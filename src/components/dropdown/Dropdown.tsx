@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { useEffect, useRef, useState } from "react";
@@ -23,6 +24,7 @@ export interface DropDownMenuProps {
     onClick?: (item: IDropdownMenuItemProps) => void;
     Messages?: any;
     className?: string;
+    position?: "left-edge" | "right-edge";
 }
 
 export interface DropdownProps extends DropDownMenuProps {
@@ -33,6 +35,7 @@ export interface DropdownProps extends DropDownMenuProps {
     placeholder?: string;
     className?: string;
     classNameMenu?: string;
+    position?: "left-edge" | "right-edge";
 }
 
 const MenuItem = ({
@@ -52,7 +55,9 @@ const MenuItem = ({
         "d-dropdown-menu__item-main-view": isMainView,
     });
     let iconImageView;
-    const labelView = <div className="w-100 text d-dropdown-menu__item-label">{Messages ? Messages[label] : label}</div>;
+    const labelView = (
+        <div className="w-100 text d-dropdown-menu__item-label">{Messages ? Messages[label] : label}</div>
+    );
     let arrowView;
     if (iconName) {
         iconImageView = <Icon name={iconName} className="d-block mr-2" />;
@@ -67,12 +72,12 @@ const MenuItem = ({
         arrowView = <Icon name="expand_more" className="d-block ml-2" />;
     }
     return (
-        <li className={itemClass} onClick={() => onClick && onClick(item)} key={`${id}`}>
+        <div className={itemClass} onClick={() => onClick && onClick(item)} key={`${id}`}>
             {iconImageView}
             {labelView}
             {arrowView}
             {!isMainView && subMenu && subMenu.length > 0 && <DropdownMenu dataSource={subMenu} />}
-        </li>
+        </div>
     );
 };
 
@@ -81,13 +86,14 @@ export const DropdownMenu: React.FC<DropDownMenuProps> = ({
     onClick = () => {},
     Messages,
     className,
+    position,
 }) => {
-    const wrapperClass = ClassNames("d-dropdown-menu__container p-0", className);
+    const wrapperClass = ClassNames(`d-dropdown-menu__container d-dropdown-menu__container-${position}`, className);
     const list = dataSource.map((item, index) => {
         return <MenuItem item={item} onClick={onClick} Messages={Messages} />;
     });
 
-    return <ul className={wrapperClass}>{list}</ul>;
+    return <div className={wrapperClass}>{list}</div>;
 };
 
 const Dropdown: React.FC<DropdownProps> = ({
@@ -100,10 +106,10 @@ const Dropdown: React.FC<DropdownProps> = ({
     placeholder = "Select...",
     className,
     classNameMenu,
+    position = "right-edge",
 }) => {
     const [openDropdown, setOpenDropdown] = useState(false);
     const containerClass = ClassNames("d-dropdown positon-relative", className);
-    const dropdownClass = ClassNames("d-dropdown__menu", { "d-dropdown__menu-open": openDropdown });
 
     const wrapperRef = useRef<HTMLDivElement>(null);
 
@@ -125,7 +131,9 @@ const Dropdown: React.FC<DropdownProps> = ({
     const getLabelValue = (value: IDropdownMenuItemProps) => {
         return Messages ? Messages[value?.label] : value?.label;
     };
-    let mainView: any = () => <Button {...buttonProps} onClick={() => setOpenDropdown(!openDropdown)} />;
+    let mainView: any = () => (
+        <Button {...buttonProps} onClick={() => setOpenDropdown(!openDropdown)} />
+    );
     if (variant === "view") {
         mainView = () => {
             if (!value) {
@@ -139,9 +147,14 @@ const Dropdown: React.FC<DropdownProps> = ({
     return (
         <div className={containerClass} ref={wrapperRef}>
             {mainView()}
-            <div className={dropdownClass}>
-                <DropdownMenu dataSource={dataSource} onClick={handleOnClickItem} Messages={Messages} />
-            </div>
+            {openDropdown && (
+                <DropdownMenu
+                    dataSource={dataSource}
+                    onClick={handleOnClickItem}
+                    Messages={Messages}
+                    position={variant === "view" ? undefined : position}
+                />
+            )}
         </div>
     );
 };

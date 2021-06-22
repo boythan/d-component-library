@@ -4,11 +4,14 @@ import InputTextSearch from "../../components/input/InputTextSearch";
 import InputColor from "../../components/input/InputColor";
 import ViewCollapse from "../../components/view/ViewCollapse";
 import { Select } from "../../dcomponent";
-import { SELECT_DATA } from "../data/TestConstant";
+import { ATTRIBUTE_INPUT_TYPE, SELECT_DATA } from "../data/TestConstant";
+import SelectInfinity from "../../components/select/SelectInfinity";
+import DateInput from "../../components/dateInput/DateInput";
 
 const TestInput = () => {
     const [valueSelect, setValueSelect] = useState([]);
     const [valueTextInput, setValueTextInput] = useState([]);
+    const [valueSelectInfinity, setValueSelectInfinity] = useState<any>();
 
     return (
         <div className="my-4">
@@ -38,6 +41,18 @@ const TestInput = () => {
                 <InputColor label="Input color" error="Color Require!" />
             </ViewCollapse>
 
+            <ViewCollapse label="Input Date" className="mt-3" defaultOpen={false}>
+                <DateInput variant="outline" className="w-100" label="Range Date" />
+                <DateInput
+                    variant="outline"
+                    className="mt-3 w-100"
+                    label="Range Date"
+                    useButton
+                    onChange={(value) => console.log({ value })}
+                    isRangePicker
+                />
+            </ViewCollapse>
+
             <ViewCollapse label="Select" className="mt-3" defaultOpen={false}>
                 <Select
                     dataSource={SELECT_DATA}
@@ -55,6 +70,29 @@ const TestInput = () => {
                     value={valueSelect}
                     onChange={setValueSelect}
                     mode="tags"
+                    getValue={(item) => item.id}
+                />
+                <SelectInfinity
+                    label="Select Infinity"
+                    className="my-4"
+                    source={async (paging) => {
+                        // const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+                        return fetch("https://jsonplaceholder.typicode.com/posts");
+                    }}
+                    transformer={async (res) => {
+                        // const data = JSON.stringify(res);
+                        const data = await res.json();
+                        const cloneData = data.map((item: any = {}) => ({
+                            ...item,
+                            label: item?.title,
+                            value: item?.title,
+                            key: item?.id,
+                        }));
+                        return cloneData as any;
+                    }}
+                    value={valueSelectInfinity}
+                    onChange={setValueSelectInfinity}
+                    mode="multiple"
                 />
             </ViewCollapse>
         </div>

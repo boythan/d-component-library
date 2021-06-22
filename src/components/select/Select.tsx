@@ -2,16 +2,17 @@
 /* eslint-disable operator-linebreak */
 import { Select as SelectAnt } from "antd";
 import { SelectProps as SelectAntProps } from "antd/es/select";
-import classname from "classnames";
-import React, { useMemo } from "react";
+import ClassName from "classnames";
+import React, { useImperativeHandle, useMemo, useRef } from "react";
 import Icon from "../icon/Icon";
 
 export interface SelectProps extends SelectAntProps<any> {
-    [key: string]: any;
+    classNameSelect?: string;
     label?: string;
-    dataSource: Array<any>;
+    dataSource?: Array<any>;
     error?: any;
     variant?: "outline" | "standard";
+    name?: string;
 
     getLabel?: (item: any) => any;
     getKey?: (item: any) => any;
@@ -20,30 +21,38 @@ export interface SelectProps extends SelectAntProps<any> {
     hasFilter?: boolean;
     multiple?: boolean;
 }
+export interface SelectMethod {
+    onBlur: () => void;
+    onFocus: () => void;
+}
+
 const { Option } = SelectAnt;
-const Select = ({
-    className,
-    classNameSelect,
+const Select: React.ForwardRefRenderFunction<SelectMethod, SelectProps> = (
+    {
+        className,
+        classNameSelect,
 
-    value = [],
-    label,
-    defaultValue = [],
-    placeholder = "Please select",
-    onChange,
-    disabled,
-    dataSource = [],
-    error,
-    multiple = false,
+        value = [],
+        label,
+        defaultValue = [],
+        placeholder = "Please select",
+        onChange,
+        disabled,
+        dataSource = [],
+        error,
+        multiple = false,
 
-    getLabel = (item: any) => item.label,
-    getKey = (item: any) => item.id,
-    getValue = (item: any) => item?.id ?? null,
+        getLabel = (item: any) => item.label,
+        getKey = (item: any) => item.id,
+        getValue = (item: any) => item?.id ?? null,
 
-    allowClear = true,
-    variant = "outline",
-    hasFilter = true,
-    ...props
-}: SelectProps) => {
+        allowClear = true,
+        variant = "outline",
+        hasFilter = true,
+        ...props
+    }: SelectProps,
+    ref
+) => {
     const children = useMemo(
         () =>
             dataSource.map((dataItem: any) => {
@@ -57,11 +66,17 @@ const Select = ({
             }),
         [dataSource]
     );
+    const selectRef = useRef<React.ElementRef<typeof SelectAnt>>(null);
 
-    const container = classname("d-select__container", `d-select__container-${variant}`, className);
-    const labelClass = classname("text-label");
+    useImperativeHandle(ref, () => ({
+        onBlur: () => selectRef.current && selectRef.current.blur(),
+        onFocus: () => selectRef.current && selectRef.current.focus(),
+    }));
 
-    const selectClass = classname(
+    const container = ClassName("d-select__container", `d-select__container-${variant}`, className);
+    const labelClass = ClassName("text-label");
+
+    const selectClass = ClassName(
         "d-select__select",
         `d-select__select-${variant}`,
         {
@@ -71,7 +86,7 @@ const Select = ({
         classNameSelect
     );
 
-    const errorTextClass = classname("text-x-small", "text-error", "ml-1");
+    const errorTextClass = ClassName("text-x-small", "text-error", "ml-1");
     return (
         <div className={container}>
             {label && <label className={labelClass}>{label}</label>}
@@ -88,6 +103,7 @@ const Select = ({
                     );
                 }}
                 {...props}
+                ref={selectRef}
                 value={value}
                 allowClear={allowClear}
                 placeholder={placeholder}
@@ -111,4 +127,4 @@ const Select = ({
     );
 };
 
-export default Select;
+export default React.forwardRef(Select);

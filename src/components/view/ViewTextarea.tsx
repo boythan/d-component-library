@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 /* eslint-disable no-return-assign */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
@@ -16,6 +17,7 @@ export interface ViewTextareaProps {
     classNameContent?: string;
     classNameShowMore?: string;
     classNameShowLess?: string;
+    width?: number;
 }
 
 const ViewTextarea: React.FC<ViewTextareaProps> = ({
@@ -24,10 +26,11 @@ const ViewTextarea: React.FC<ViewTextareaProps> = ({
     classNameContent,
     classNameShowMore,
     classNameShowLess,
-    style,
+    style = {},
     showLessText = Messages.showLess,
     showMoreText = Messages.showMore,
     limitedLength = 200,
+    width,
 }) => {
     const [expanding, setExpanding] = useState(false);
     const contentLength = useMemo(() => {
@@ -65,17 +68,29 @@ const ViewTextarea: React.FC<ViewTextareaProps> = ({
     }, [children]);
 
     return (
-        <div className={wrapperClass} style={style}>
+        <div className={wrapperClass} style={{ ...style, maxWidth: width }} ref={wrapperRef}>
             <div className={contentClass} ref={(ref) => (contentRef.current = ref)}>
                 {children}
                 {isShowLess && (
-                    <span className={showLessClass} onClick={() => setExpanding(false)}>
+                    <span
+                        className={showLessClass}
+                        onClick={() => {
+                            setExpanding(false);
+                            wrapperRef.current && wrapperRef.current.setAttribute("style", `width:${width}px`);
+                        }}
+                    >
                         {` ${showLessText}`}
                     </span>
                 )}
             </div>
             {isShowMore && (
-                <span className={showMoreClass} onClick={() => setExpanding(true)}>
+                <span
+                    className={showMoreClass}
+                    onClick={() => {
+                        setExpanding(true);
+                        wrapperRef.current && wrapperRef.current.setAttribute("style", "width:100%");
+                    }}
+                >
                     {showMoreText}
                 </span>
             )}

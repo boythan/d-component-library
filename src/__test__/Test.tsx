@@ -33,6 +33,7 @@ import TestTabBar from "./components/test_tabBar/TestTabBar";
 import TestButton from "./components/test_button/TestButton";
 import TestAvatarIcon from "./components/test_avatar_icon/TestAvatarIcon";
 import TestCard from "./components/test_card/TestCard";
+import TestForm from "./components/test_form/TestForm";
 
 interface Props {
     content?: any;
@@ -165,7 +166,6 @@ export default function Test({ content }: Props): ReactElement {
     const TAB_LIST = [
         { id: "AVATAR", label: "AVATAR", component: <TestAvatarIcon /> },
         { id: "INPUT", label: "INPUT", component: <TestInput /> },
-        { id: "DATE", label: "DATE", component: <Date /> },
         { id: "BUTTON", label: "BUTTON", component: <TestButton /> },
         { id: "TABLE", label: "TABLE", component: <TestTable /> },
         { id: "CHECKBOX", label: "CHECKBOX", component: <TestCheckbox /> },
@@ -181,6 +181,7 @@ export default function Test({ content }: Props): ReactElement {
         { id: "PROGRESS", label: "PROGRESS", component: <TestProgress /> },
         { id: "NOTIFICATION", label: "NOTIFICATION", component: <TestNotification /> },
         { id: "CARD", label: "CARD", component: <TestCard /> },
+        { id: "FORM", label: "FORM", component: <TestForm /> },
     ];
 
     return (
@@ -192,12 +193,25 @@ export default function Test({ content }: Props): ReactElement {
                         progressRef.current = ref;
                     }}
                 />
-                <div className="col-3 p-0 mr-4 card-container">
+                <div className="col-3 p-0 mr-4 card-container" style={{ height: "fit-content" }}>
                     <TabBar
                         dataSource={TAB_LIST}
                         variant="vertical"
                         onChange={(tab) => setSelectedTab(tab)}
                         value={selectedTab}
+                        // getItemProps={({ item, isActive }) => {
+                        //     if (isActive) {
+                        //         return {
+                        //             style: {
+                        //                 borderLeft: "3px solid red",
+                        //                 borderBottom: "1px solid rgba(0,0,0,0.2)",
+                        //                 backgroundColor: "#F5F5F5",
+                        //                 color: "red",
+                        //             },
+                        //         };
+                        //     }
+                        //     return {};
+                        // }}
                     />
                 </div>
                 <div className="col-9 py-5 px-5 ml-4 card-container">

@@ -1,10 +1,12 @@
+/* eslint-disable prefer-template */
 import _ from "lodash";
 import queryString from "query-string";
 
-const getParams = function (url: string) {
+const getParams = function (url?: string) {
     const params: any = {};
     const parser = document.createElement("a");
-    parser.href = url;
+    const currentUrl = document.location.href;
+    parser.href = url || currentUrl;
     const query = parser.search.substring(1);
     const vars = query.split("&");
     // eslint-disable-next-line no-plusplus
@@ -45,16 +47,28 @@ const getParamFromUrl = (key: string) => {
     return param;
 };
 
-const pushState = (key: any, value: any) => {
+const pushState = (obj: { [key: string]: any }) => {
     const url = new URL(window.location as any);
-    url.searchParams.set(key, value);
-    window.history.pushState({ key: value }, "", url as any);
+    if (_.isEmpty(obj)) {
+        const originUrl = window.location.href.substring(window.location.href.lastIndexOf("/") + 1).split("?")[0];
+        return window.history.pushState("", "", ("/" + originUrl) as any);
+    }
+    Object.keys(obj).forEach((key) => {
+        url.searchParams.set(key, obj[key]);
+    });
+    return window.history.pushState("", "", url as any);
 };
 
-const replaceState = (key: any, value: any) => {
+const replaceState = (obj: { [key: string]: any }) => {
     const url = new URL(window.location as any);
-    url.searchParams.set(key, value);
-    window.history.replaceState({ key: value }, "", url as any);
+    if (_.isEmpty(obj)) {
+        const originUrl = window.location.href.substring(window.location.href.lastIndexOf("/") + 1).split("?")[0];
+        return window.history.replaceState("", "", ("/" + originUrl) as any);
+    }
+    Object.keys(obj).forEach((key) => {
+        url.searchParams.set(key, obj[key]);
+    });
+    return window.history.replaceState("", "", url as any);
 };
 
 //* *************************************USE FOR NEW UPDATE PARAMS********************************************** */

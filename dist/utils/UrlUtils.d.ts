@@ -1,6 +1,6 @@
 import queryString from "query-string";
 declare const _default: {
-    getParams: (url: string) => any;
+    getParams: (url?: string | undefined) => any;
     addUrlParam: (search: string, key: string, val: any) => string;
     getParamFromUrl: (key: string) => string | null;
     addQuery: (newQuery?: {}) => void;
@@ -8,7 +8,11 @@ declare const _default: {
     removeQuery: (queryKey: string) => void;
     clearQuery: () => void;
     getQuery: () => queryString.ParsedQuery<string>;
-    pushState: (key: any, value: any) => void;
-    replaceState: (key: any, value: any) => void;
+    pushState: (obj: {
+        [key: string]: any;
+    }) => void;
+    replaceState: (obj: {
+        [key: string]: any;
+    }) => void;
 };
 export default _default;

@@ -11,7 +11,7 @@ import InfiniteScroll from "./InfiniteScroll";
 import PagingView from "./PagingView";
 import EmptyView from "../shared/EmptyView";
 
-interface IPaging {
+export interface IPaging {
     pageIndex: number;
     pageSize: number;
 }

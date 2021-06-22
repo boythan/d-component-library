@@ -20,5 +20,7 @@ declare const _default: {
     mapFieldsLangsCTS: (dataClient?: any, KEYS_LANG?: never[]) => {};
     mapFieldsLangsSTC: (dataServer: any, KEYS_LANG?: never[]) => any;
     arrayIsContainArray: typeof arrayIsContainArray;
+    updateArrayById: (arrays: never[] | undefined, newItem: any) => any[];
+    removeArrayById: (arrays: any[] | undefined, id: any) => any[];
 };
 export default _default;

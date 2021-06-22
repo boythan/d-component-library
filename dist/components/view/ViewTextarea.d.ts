@@ -10,6 +10,7 @@ export interface ViewTextareaProps {
     classNameContent?: string;
     classNameShowMore?: string;
     classNameShowLess?: string;
+    width?: number;
 }
 declare const ViewTextarea: React.FC<ViewTextareaProps>;
 export default ViewTextarea;

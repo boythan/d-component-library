@@ -10,7 +10,7 @@
     .d-tab-bar__item-active {
         font-weight: $font-weight-semi-bold !important;
         border-bottom: 3px solid $accent-color;
-        color: $accent-color !important;
+        color: $accent-color;
     }
 }
 
@@ -33,10 +33,11 @@
         &-active {
             font-weight: $font-weight-semi-bold !important;
             background-color: $accent-color;
-            color: $light-color !important;
+            color: $light-color;
         }
     }
-    .d-tab-bar__item:first-child {
-        border-top: 1px solid $line-color;
+
+    .d-tab-bar__item:last-child {
+        border: none;
     }
 }

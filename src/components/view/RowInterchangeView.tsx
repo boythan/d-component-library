@@ -2,11 +2,11 @@ import React, { CSSProperties } from "react";
 import ClassNames from "classnames";
 import ObjectUtils from "../../utils/ObjectUtils";
 
-export interface IRowsKey {
-    id: string;
+export interface IRowsKey<T> {
+    id: keyof T;
     label: string | number;
-    renderLabel?: (id: IRowsKey["id"], data: any, row?: IRowsKey) => any;
-    renderContent?: (id: IRowsKey["id"], data: any, row?: IRowsKey) => any;
+    renderLabel?: (props: { id: IRowsKey<T>["id"]; data: any; row?: IRowsKey<T> }) => any;
+    renderContent?: (props: { id: IRowsKey<T>["id"]; data: any; row?: IRowsKey<T> }) => any;
 }
 
 export interface RowInterchangeViewProps {
@@ -15,7 +15,7 @@ export interface RowInterchangeViewProps {
     classNameLabel?: string;
     classNameContent?: string;
     dataSource: any;
-    keyList: Array<IRowsKey>;
+    keyList: Array<IRowsKey<any>>;
     variant?: "background" | "border" | "dashed" | "none";
     boldLabel?: boolean;
     Messages?: any;
@@ -62,14 +62,14 @@ const RowInterchangeView: React.FC<RowInterchangeViewProps> = ({
                     labelView = Messages[label];
                 }
                 if (typeof renderLabel === "function") {
-                    labelView = renderLabel(id, dataSource, row);
+                    labelView = renderLabel({ id, data: dataSource, row });
                 }
                 content = dataSource?.[id] ?? "N/A";
                 if (typeof id === "string" && id.includes(".")) {
                     content = ObjectUtils.getValueFromStringKey(dataSource, id);
                 }
                 if (typeof renderContent === "function") {
-                    content = renderContent(id, dataSource, row);
+                    content = renderContent({ id, data: dataSource, row });
                 }
                 const contentView = (
                     <div className={contentClass} style={styleContent}>
@@ -77,7 +77,7 @@ const RowInterchangeView: React.FC<RowInterchangeViewProps> = ({
                     </div>
                 );
                 return (
-                    <div className={rowClass} key={id + index} style={style}>
+                    <div className={rowClass} key={`${id as string} + ${index}`} style={style}>
                         <div className={labelClass} style={styleLabel}>
                             {labelView}
                         </div>

@@ -20,26 +20,31 @@ export interface TabBarProps<T extends ITabItem> {
     dataSource: Array<T>;
     onChange?: (item: ITabItem) => void;
     getLabel?: (item: ITabItem) => any;
+    getItemProps?: (props: {
+        item: ITabItem;
+        isActive?: boolean;
+        index?: any;
+        className?: string;
+    }) => React.HTMLAttributes<HTMLDivElement> & ButtonProps; // remember to return min-width for tab item in order for scroll in horizontal mode to work
     value?: ITabItem | null;
     className?: string;
     classNameItem?: string;
     variant?: "horizontal" | "vertical";
-    tabBarItemProps?: (item: ITabItem, active?: boolean) => React.HTMLAttributes<HTMLDivElement> & ButtonProps; // remember to return min-width for tab item in order for scroll in horizontal mode to work
     isScroll?: boolean;
-    minWidthItem?: string;
+    minWidthItem?: string | number;
 }
 
 const TabBar: React.FC<TabBarProps<ITabItem>> = ({
     dataSource = [],
     value,
-    onChange,
     className,
     classNameItem,
-    getLabel,
     variant = "horizontal",
-    tabBarItemProps,
+    onChange,
+    getLabel,
+    getItemProps,
     isScroll = false,
-    minWidthItem = "200px",
+    minWidthItem = 200,
 }) => {
     const wrapperClass = ClassNames(
         `d-tab-bar d-tab-bar__${variant}`,
@@ -68,8 +73,8 @@ const TabBar: React.FC<TabBarProps<ITabItem>> = ({
                     label = getLabel(tabItem);
                 }
                 let buttonProps: any = {};
-                if (tabBarItemProps) {
-                    buttonProps = tabBarItemProps(tabItem, isSelect);
+                if (getItemProps) {
+                    buttonProps = getItemProps({ item: tabItem, isActive: isSelect, index, className: itemClass });
                 }
                 return (
                     <Button
@@ -78,7 +83,7 @@ const TabBar: React.FC<TabBarProps<ITabItem>> = ({
                         key={index}
                         variant="trans"
                         iconName={icon}
-                        style={{ minWidth: activateScroll ? minWidthItem : undefined }}
+                        style={{ minWidth: activateScroll ? `${minWidthItem}px` : undefined }}
                         {...buttonProps}
                     >
                         {label}

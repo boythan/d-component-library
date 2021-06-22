@@ -493,21 +493,23 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
                 {showFuncRow && (
                     <div className={funcRowClass}>
                         {showSelectionView && onSelectionView && onSelectionView(selectingRows)}
-                        {!_.isEmpty(tableLayoutList) && (
-                            <SelectLayoutView
-                                listLayout={tableLayoutList}
-                                onClickItem={this.handleSelectTableLayout}
-                                selectedLayout={selectedLayout}
-                                showBorder
+                        <div className="flex-center-y">
+                            {!_.isEmpty(tableLayoutList) && (
+                                <SelectLayoutView
+                                    listLayout={tableLayoutList}
+                                    onClickItem={this.handleSelectTableLayout}
+                                    selectedLayout={selectedLayout}
+                                    showBorder
+                                />
+                            )}
+                            <SelectColumnModal
+                                // eslint-disable-next-line react/destructuring-assignment
+                                options={columns}
+                                setSelectedColumns={(column: any) => this.setState({ selectedColumns: column })}
+                                keyTable={keyTableLayout}
+                                refreshLayout={() => this.setDefaultTableLayout()}
                             />
-                        )}
-                        <SelectColumnModal
-                            // eslint-disable-next-line react/destructuring-assignment
-                            options={columns}
-                            setSelectedColumns={(column: any) => this.setState({ selectedColumns: column })}
-                            keyTable={keyTableLayout}
-                            refreshLayout={() => this.setDefaultTableLayout()}
-                        />
+                        </div>
                     </div>
                 )}
                 <Table

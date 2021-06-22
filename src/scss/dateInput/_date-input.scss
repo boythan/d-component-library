@@ -1,9 +1,10 @@
 @import "../variables";
+@import "../common/text";
 
 .d-date-input {
     .d-date-input__no-out-line {
         border: 0px solid white !important;
-        border-bottom: 1px solid #b8b8b8 !important;
+        border-bottom: $input-border !important;
     }
     .d-date-input__input {
         width: 100%;
@@ -12,12 +13,23 @@
     .d-date-input__label {
         margin-bottom: 25px;
     }
+    .ant-picker {
+        border-radius: $border-radius !important;
+    }
     .ant-picker:hover,
     .ant-picker-focused {
-        border: 1px solid $accent-color;
+        border: $input-border-focus !important;
+        outline: none !important;
+        box-shadow: none !important;
     }
     .d-date-input__button {
         display: none;
+    }
+
+    .ant-picker-input {
+        > input {
+            @extend .text-x-small;
+        }
     }
 }
 
