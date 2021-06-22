@@ -13,6 +13,8 @@ export interface TabBarProps<T extends ITabItem> {
     getItemProps?: (props: {
         item: ITabItem;
         isActive?: boolean;
+        index?: any;
+        className?: string;
     }) => React.HTMLAttributes<HTMLDivElement> & ButtonProps;
     value?: ITabItem | null;
     className?: string;

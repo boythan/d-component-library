@@ -50550,14 +50550,14 @@ var Select = function (_a, ref) {
     }, classNameSelect);
     var errorTextClass = classnames("text-x-small", "text-error", "ml-1");
     return (jsxs("div", __assign({ className: container }, { children: [label && jsx("label", __assign({ className: labelClass }, { children: label }), void 0),
-            jsx(Select$2, __assign({ mode: multiple ? "multiple" : undefined }, props, { ref: selectRef, value: value, allowClear: allowClear, placeholder: placeholder, defaultValue: defaultValue, onChange: onChange, className: selectClass, showArrow: true, suffixIcon: jsx(Icon$2, { name: "expand_more" }, void 0), disabled: disabled, optionFilterProp: "children", filterOption: function (input, option) {
+            jsx(Select$2, __assign({ mode: multiple ? "multiple" : undefined, filterOption: function (input, option) {
                     var _a = option.props, children = _a.children, value = _a.value;
                     if (!hasFilter) {
-                        return false;
+                        return true;
                     }
                     return ((children && children.toLowerCase().indexOf(input.toLowerCase()) >= 0) ||
                         (value && ("" + value).toLowerCase().indexOf(input.toLowerCase()) >= 0));
-                } }, { children: children }), void 0),
+                } }, props, { ref: selectRef, value: value, allowClear: allowClear, placeholder: placeholder, defaultValue: defaultValue, onChange: onChange, className: selectClass, showArrow: true, suffixIcon: jsx(Icon$2, { name: "expand_more" }, void 0), disabled: disabled, optionFilterProp: "children" }, { children: children }), void 0),
             error && (jsxs("div", __assign({ className: "flex-center-y mt-1" }, { children: [jsx(Icon$2, { name: "error_outline", className: "text-error", size: "small" }, void 0),
                     jsx("text", __assign({ className: errorTextClass }, { children: error }), void 0)] }), void 0))] }), void 0));
 };
@@ -69982,17 +69982,12 @@ var ViewTextarea = function (_a) {
 
 var Panel = Collapse.Panel;
 var ViewCollapse = function (_a) {
-    var _b = _a.label, label = _b === void 0 ? "Title" : _b, children = _a.children, className = _a.className, _c = _a.defaultOpen, defaultOpen = _c === void 0 ? 1 : _c, extra = _a.extra, customLeftView = _a.customLeftView;
+    var _b = _a.label, label = _b === void 0 ? "Title" : _b, children = _a.children, className = _a.className, _c = _a.defaultOpen, defaultOpen = _c === void 0 ? 1 : _c, extra = _a.extra;
     var classContainerName = classnames("card-container collapse-view-container", className);
-    var customRightViewClass = classnames({
-        "ant-collapse-header_custom-right-view-extra": !!extra,
-        "ant-collapse-header_custom-right-view": !extra,
-    });
     return (jsx(Collapse, __assign({ className: classContainerName, defaultActiveKey: defaultOpen, expandIconPosition: "right", expandIcon: function (_a) {
             var isActive = _a.isActive;
             return jsx(CaretRightOutlined$1, { rotate: isActive ? 90 : 0 }, void 0);
-        } }, { children: jsx(Panel, __assign({ header: jsxs("div", { children: [customLeftView && jsx("div", __assign({ className: customRightViewClass }, { children: customLeftView }), void 0),
-                    jsx("h5", __assign({ className: "collapse-view__header-title" }, { children: label }), void 0)] }, void 0), extra: extra }, { children: children }), "1") }), void 0));
+        } }, { children: jsx(Panel, __assign({ header: jsx("h5", __assign({ className: "collapse-view__header-title" }, { children: label }), void 0), extra: extra }, { children: children }), "1") }), void 0));
 };
 
 var ViewTimeline = function (_a) {
@@ -70030,7 +70025,7 @@ var TabBar = function (_a) {
             }
             var buttonProps = {};
             if (getItemProps) {
-                buttonProps = getItemProps({ item: tabItem, isActive: isSelect });
+                buttonProps = getItemProps({ item: tabItem, isActive: isSelect, index: index, className: itemClass });
             }
             return (jsx(Button, __assign({ className: itemClass, onClick: function () { return onChange && onChange(tabItem); }, variant: "trans", iconName: icon, style: { minWidth: activateScroll ? minWidthItem + "px" : undefined } }, buttonProps, { children: label }), index));
         }) }), void 0));
