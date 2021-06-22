@@ -69932,7 +69932,7 @@ var ViewRow = function (_a) {
         "col-8": width === "25%",
         "align-items-center": center,
     }, classNameLabel);
-    var contentClass = classnames("col-10 p-0", classNameContent);
+    var contentClass = classnames("col p-0", classNameContent);
     var content = children;
     if (typeof children === "function") {
         content = children();
