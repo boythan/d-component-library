@@ -19865,7 +19865,7 @@ span.ant-radio + * {
     font-size: 14px;
     font-variant: initial;
     background-color: #fff;
-    border-radius: 4px;
+    border-radius: 0px;
     outline: none;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     pointer-events: auto !important;
@@ -53078,7 +53078,7 @@ $avatar-variant: ("rounded", "square");
     .d-tab-bar__item-active {
         font-weight: $font-weight-semi-bold !important;
         border-bottom: 3px solid $accent-color;
-        color: $accent-color !important;
+        color: $accent-color;
     }
 }
 
@@ -53101,11 +53101,12 @@ $avatar-variant: ("rounded", "square");
         &-active {
             font-weight: $font-weight-semi-bold !important;
             background-color: $accent-color;
-            color: $light-color !important;
+            color: $light-color;
         }
     }
-    .d-tab-bar__item:first-child {
-        border-top: 1px solid $line-color;
+
+    .d-tab-bar__item:last-child {
+        border: none;
     }
 }
 

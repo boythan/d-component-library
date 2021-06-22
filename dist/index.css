@@ -22608,7 +22608,7 @@ span.ant-radio + * {
   font-size: 14px;
   font-variant: initial;
   background-color: #fff;
-  border-radius: 4px;
+  border-radius: 0px;
   outline: none;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   pointer-events: auto !important; }
@@ -31101,7 +31101,7 @@ h6,
   .d-tab-bar__horizontal .d-tab-bar__item-active {
     font-weight: 600 !important;
     border-bottom: 3px solid #DE0D0C;
-    color: #DE0D0C !important; }
+    color: #DE0D0C; }
 
 .d-tab-bar__horizontal::-webkit-scrollbar {
   display: none; }
@@ -31118,10 +31118,10 @@ h6,
   .d-tab-bar__vertical .d-tab-bar__item-active {
     font-weight: 600 !important;
     background-color: #DE0D0C;
-    color: #fff !important; }
+    color: #fff; }
 
-.d-tab-bar__vertical .d-tab-bar__item:first-child {
-  border-top: 1px solid #d8d8d8; }
+.d-tab-bar__vertical .d-tab-bar__item:last-child {
+  border: none; }
 
 /* ----------------------------------------
 // list

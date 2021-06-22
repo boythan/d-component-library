@@ -1,11 +1,10 @@
 /// <reference types="react" />
 export interface ViewCollapseProps {
-    label: string;
+    label: any;
     children: any;
     className?: any;
-    customLeftView?: any;
     defaultOpen?: any;
     extra?: boolean;
 }
-declare const ViewCollapse: ({ label, children, className, defaultOpen, extra, customLeftView, }: ViewCollapseProps) => JSX.Element;
+declare const ViewCollapse: ({ label, children, className, defaultOpen, extra }: ViewCollapseProps) => JSX.Element;
 export default ViewCollapse;
