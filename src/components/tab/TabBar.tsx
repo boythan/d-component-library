@@ -23,6 +23,8 @@ export interface TabBarProps<T extends ITabItem> {
     getItemProps?: (props: {
         item: ITabItem;
         isActive?: boolean;
+        index?: any;
+        className?: string;
     }) => React.HTMLAttributes<HTMLDivElement> & ButtonProps; // remember to return min-width for tab item in order for scroll in horizontal mode to work
     value?: ITabItem | null;
     className?: string;
@@ -72,7 +74,7 @@ const TabBar: React.FC<TabBarProps<ITabItem>> = ({
                 }
                 let buttonProps: any = {};
                 if (getItemProps) {
-                    buttonProps = getItemProps({ item: tabItem, isActive: isSelect });
+                    buttonProps = getItemProps({ item: tabItem, isActive: isSelect, index, className: itemClass });
                 }
                 return (
                     <Button

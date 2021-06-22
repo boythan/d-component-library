@@ -193,12 +193,25 @@ export default function Test({ content }: Props): ReactElement {
                         progressRef.current = ref;
                     }}
                 />
-                <div className="col-3 p-0 mr-4 card-container">
+                <div className="col-3 p-0 mr-4 card-container" style={{ height: "fit-content" }}>
                     <TabBar
                         dataSource={TAB_LIST}
                         variant="vertical"
                         onChange={(tab) => setSelectedTab(tab)}
                         value={selectedTab}
+                        // getItemProps={({ item, isActive }) => {
+                        //     if (isActive) {
+                        //         return {
+                        //             style: {
+                        //                 borderLeft: "3px solid red",
+                        //                 borderBottom: "1px solid rgba(0,0,0,0.2)",
+                        //                 backgroundColor: "#F5F5F5",
+                        //                 color: "red",
+                        //             },
+                        //         };
+                        //     }
+                        //     return {};
+                        // }}
                     />
                 </div>
                 <div className="col-9 py-5 px-5 ml-4 card-container">
