@@ -69969,7 +69969,7 @@ var ViewTextarea = function (_a) {
             console.log("Content Height", (_a = contentRef.current) === null || _a === void 0 ? void 0 : _a.offsetHeight);
         }, 200);
     }, [children]);
-    return (jsxs("div", __assign({ className: wrapperClass, style: __assign(__assign({}, style), { width: width }), ref: wrapperRef }, { children: [jsxs("div", __assign({ className: contentClass, ref: function (ref) { return (contentRef.current = ref); } }, { children: [children,
+    return (jsxs("div", __assign({ className: wrapperClass, style: __assign(__assign({}, style), { maxWidth: width }), ref: wrapperRef }, { children: [jsxs("div", __assign({ className: contentClass, ref: function (ref) { return (contentRef.current = ref); } }, { children: [children,
                     isShowLess && (jsx("span", __assign({ className: showLessClass, onClick: function () {
                             setExpanding(false);
                             wrapperRef.current && wrapperRef.current.setAttribute("style", "width:" + width + "px");
@@ -70011,7 +70011,7 @@ var ViewTimeline = function (_a) {
 };
 
 var TabBar = function (_a) {
-    var _b = _a.dataSource, dataSource = _b === void 0 ? [] : _b, value = _a.value, onChange = _a.onChange, className = _a.className, classNameItem = _a.classNameItem, getLabel = _a.getLabel, _c = _a.variant, variant = _c === void 0 ? "horizontal" : _c, tabBarItemProps = _a.tabBarItemProps, _d = _a.isScroll, isScroll = _d === void 0 ? false : _d, _e = _a.minWidthItem, minWidthItem = _e === void 0 ? "200px" : _e;
+    var _b = _a.dataSource, dataSource = _b === void 0 ? [] : _b, value = _a.value, className = _a.className, classNameItem = _a.classNameItem, _c = _a.variant, variant = _c === void 0 ? "horizontal" : _c, onChange = _a.onChange, getLabel = _a.getLabel, getItemProps = _a.getItemProps, _d = _a.isScroll, isScroll = _d === void 0 ? false : _d, _e = _a.minWidthItem, minWidthItem = _e === void 0 ? 200 : _e;
     var wrapperClass = classnames("d-tab-bar d-tab-bar__" + variant, {
         "d-flex ": variant === "horizontal",
         "flex-wrap": !isScroll && variant === "horizontal",
@@ -70029,10 +70029,10 @@ var TabBar = function (_a) {
                 label = getLabel(tabItem);
             }
             var buttonProps = {};
-            if (tabBarItemProps) {
-                buttonProps = tabBarItemProps(tabItem, isSelect);
+            if (getItemProps) {
+                buttonProps = getItemProps({ item: tabItem, isActive: isSelect });
             }
-            return (jsx(Button, __assign({ className: itemClass, onClick: function () { return onChange && onChange(tabItem); }, variant: "trans", iconName: icon, style: { minWidth: activateScroll ? minWidthItem : undefined } }, buttonProps, { children: label }), index));
+            return (jsx(Button, __assign({ className: itemClass, onClick: function () { return onChange && onChange(tabItem); }, variant: "trans", iconName: icon, style: { minWidth: activateScroll ? minWidthItem + "px" : undefined } }, buttonProps, { children: label }), index));
         }) }), void 0));
 };
 

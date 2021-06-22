@@ -10,13 +10,16 @@ export interface TabBarProps<T extends ITabItem> {
     dataSource: Array<T>;
     onChange?: (item: ITabItem) => void;
     getLabel?: (item: ITabItem) => any;
+    getItemProps?: (props: {
+        item: ITabItem;
+        isActive?: boolean;
+    }) => React.HTMLAttributes<HTMLDivElement> & ButtonProps;
     value?: ITabItem | null;
     className?: string;
     classNameItem?: string;
     variant?: "horizontal" | "vertical";
-    tabBarItemProps?: (item: ITabItem, active?: boolean) => React.HTMLAttributes<HTMLDivElement> & ButtonProps;
     isScroll?: boolean;
-    minWidthItem?: string;
+    minWidthItem?: string | number;
 }
 declare const TabBar: React.FC<TabBarProps<ITabItem>>;
 export default TabBar;
