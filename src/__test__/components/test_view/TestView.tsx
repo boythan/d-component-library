@@ -57,7 +57,7 @@ const TestView: React.FC<TestRowInterChagneProps> = ({ id }) => {
                     ]}
                     variant="border"
                 />
-                <ViewTextarea limitedLength={30} width={300}>
+                <ViewTextarea limitedLength={60} width={600}>
                     {`This is Ant Design's internal standard for evaluating design quality. Based on the assumption . `}
                 </ViewTextarea>
                 <ViewTimeline dataSource={ATTRIBUTE_INPUT_TYPE} getContent={(item) => item?.label} />
