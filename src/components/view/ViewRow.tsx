@@ -45,7 +45,7 @@ const ViewRow: React.FC<ViewRowProps> = ({
         },
         classNameLabel
     );
-    const contentClass = ClassName("col-10 p-0", classNameContent);
+    const contentClass = ClassName("col p-0", classNameContent);
 
     let content = children;
     if (typeof children === "function") {
