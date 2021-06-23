@@ -15,8 +15,9 @@ const TestDropdown: React.FC<TestDropdownProps> = ({ id }) => {
             <Dropdown
                 dataSource={ATTRIBUTE_INPUT_TYPE}
                 variant="view"
-                value={selectedDropdown}
+                // value={selectedDropdown}
                 onClick={(item) => setSelectedDropdown(item)}
+                buttonProps={{ iconName: "add", style: { minWidth: "200px" } }}
             />
             <Dropdown
                 dataSource={LANGUAGES}

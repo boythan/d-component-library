@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import React, { useEffect, useRef, useState } from "react";
+import React, { CSSProperties, useEffect, useRef, useState } from "react";
 import ClassNames from "classnames";
 import Icon from "../icon/Icon";
 import Button, { ButtonProps } from "../button/Button";
@@ -36,6 +36,7 @@ export interface DropdownProps extends DropDownMenuProps {
     className?: string;
     classNameMenu?: string;
     position?: "left-edge" | "right-edge";
+    style?: CSSProperties;
 }
 
 const MenuItem = ({
@@ -107,9 +108,10 @@ const Dropdown: React.FC<DropdownProps> = ({
     className,
     classNameMenu,
     position = "right-edge",
+    style,
 }) => {
     const [openDropdown, setOpenDropdown] = useState(false);
-    const containerClass = ClassNames("d-dropdown positon-relative", className);
+    const containerClass = ClassNames("flex-center-y justify-content-center", className);
 
     const wrapperRef = useRef<HTMLDivElement>(null);
 
@@ -131,13 +133,11 @@ const Dropdown: React.FC<DropdownProps> = ({
     const getLabelValue = (value: IDropdownMenuItemProps) => {
         return Messages ? Messages[value?.label] : value?.label;
     };
-    let mainView: any = () => (
-        <Button {...buttonProps} onClick={() => setOpenDropdown(!openDropdown)} />
-    );
+    let mainView: any = () => <Button {...buttonProps} onClick={() => setOpenDropdown(!openDropdown)} />;
     if (variant === "view") {
         mainView = () => {
             if (!value) {
-                return <Button content={placeholder} onClick={() => setOpenDropdown(!openDropdown)} />;
+                return <Button content={placeholder} {...buttonProps} onClick={() => setOpenDropdown(!openDropdown)} />;
             }
             return (
                 <MenuItem item={value} Messages={Messages} onClick={() => setOpenDropdown(!openDropdown)} isMainView />
@@ -145,16 +145,18 @@ const Dropdown: React.FC<DropdownProps> = ({
         };
     }
     return (
-        <div className={containerClass} ref={wrapperRef}>
-            {mainView()}
-            {openDropdown && (
-                <DropdownMenu
-                    dataSource={dataSource}
-                    onClick={handleOnClickItem}
-                    Messages={Messages}
-                    position={variant === "view" ? undefined : position}
-                />
-            )}
+        <div className={containerClass} ref={wrapperRef} style={style}>
+            <div className="d-dropdown  position-relative">
+                {mainView()}
+                {openDropdown && (
+                    <DropdownMenu
+                        dataSource={dataSource}
+                        onClick={handleOnClickItem}
+                        Messages={Messages}
+                        position={variant === "view" ? undefined : position}
+                    />
+                )}
+            </div>
         </div>
     );
 };
