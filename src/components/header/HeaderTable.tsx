@@ -10,6 +10,7 @@ export interface HeaderTableProps {
     style?: CSSProperties;
     label?: string;
     onChangeText: any;
+    onSubmitSearch: any;
 
     placeholder?: string;
     disabledSearch?: boolean;
@@ -32,6 +33,7 @@ const HeaderTable = ({
     placeholder = "Search",
     onChangeText,
     disabledSearch = false,
+    onSubmitSearch,
 
     onClickNew,
     onClickExport,
@@ -70,6 +72,7 @@ const HeaderTable = ({
                     placeholder={placeholder}
                     onChange={onChangeText}
                     disabled={disabledSearch}
+                    onSubmit={onSubmitSearch}
                 />
                 {onClickFilter && button}
             </div>

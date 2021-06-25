@@ -24,6 +24,7 @@ export interface InputTextSearchProps {
 
     onChange?: any;
     onBlur?: any;
+    onSubmit?: any;
 }
 
 const InputTextSearch = ({
@@ -37,6 +38,7 @@ const InputTextSearch = ({
 
     onChange,
     onBlur,
+    onSubmit,
 }: InputTextSearchProps) => {
     const container = classname(
         "d-input-search",
@@ -59,6 +61,7 @@ const InputTextSearch = ({
                 onBlur={onBlur}
                 disabled={disabled}
                 defaultValue={defaultValue}
+                onSubmit={onSubmit}
             />
         </div>
     );
