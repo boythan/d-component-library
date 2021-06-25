@@ -46,7 +46,7 @@ var __assign = function() {
     return __assign.apply(this, arguments);
 };
 
-function __rest$s(s, e) {
+function __rest$t(s, e) {
     var t = {};
     for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
         t[p] = s[p];
@@ -96,10 +96,14 @@ function __generator(thisArg, body) {
     }
 }
 
-function __spreadArray(to, from) {
-    for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
-        to[j] = from[i];
-    return to;
+function __spreadArray(to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || from);
 }
 
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
@@ -172,7 +176,7 @@ var classnames = createCommonjsModule(function (module) {
 });
 
 var Icon$2 = function (_a) {
-    var name = _a.name, _b = _a.size, size = _b === void 0 ? "medium" : _b, className = _a.className, props = __rest$s(_a, ["name", "size", "className"]);
+    var name = _a.name, _b = _a.size, size = _b === void 0 ? "medium" : _b, className = _a.className, props = __rest$t(_a, ["name", "size", "className"]);
     var iconClass = classnames("material-icons", "d-icon__" + size, className);
     return (jsx("i", __assign({ className: iconClass }, props, { children: name }), void 0));
 };
@@ -205,22 +209,21 @@ var InputText = function (_a) {
         }
         return (jsx("input", { value: value, onChange: onChange, className: inputClass, name: name, required: true, placeholder: placeholder, onBlur: onBlur, type: type, disabled: disabled, defaultValue: defaultValue, style: styleInput }, key));
     };
-    return (jsxs("div", __assign({ className: container, style: style }, { children: [label && (jsx("label", __assign({ htmlFor: name, className: labelClass, style: styleLabel }, { children: jsx("span", { children: label }, void 0) }), void 0)),
-            jsxs("div", __assign({ className: inputContainerClass, style: styleInputContainer }, { children: [jsx("div", __assign({ className: inputPrefixClass }, { children: prefix }), void 0),
-                    renderInput(),
-                    jsx("div", __assign({ className: inputSuffixClass }, { children: suffix }), void 0)] }), void 0),
-            error && (jsxs("div", __assign({ className: "flex-center-y mt-1" }, { children: [jsx(Icon$2, { name: "error_outline", className: "text-error", size: "small" }, void 0),
-                    jsx("text", __assign({ className: errorTextClass }, { children: error }), void 0)] }), void 0))] }), void 0));
+    return (jsxs("div", __assign({ className: container, style: style }, { children: [label && (jsx("label", __assign({ htmlFor: name, className: labelClass, style: styleLabel }, { children: jsx("span", { children: label }, void 0) }), void 0)), jsxs("div", __assign({ className: inputContainerClass, style: styleInputContainer }, { children: [jsx("div", __assign({ className: inputPrefixClass }, { children: prefix }), void 0), renderInput(), jsx("div", __assign({ className: inputSuffixClass }, { children: suffix }), void 0)] }), void 0), error && (jsxs("div", __assign({ className: "flex-center-y mt-1" }, { children: [jsx(Icon$2, { name: "error_outline", className: "text-error", size: "small" }, void 0), jsx("text", __assign({ className: errorTextClass }, { children: error }), void 0)] }), void 0))] }), void 0));
 };
 
 var InputTextSearch = function (_a) {
-    var className = _a.className, _b = _a.variant, variant = _b === void 0 ? "outline" : _b, value = _a.value, defaultValue = _a.defaultValue, error = _a.error, placeholder = _a.placeholder, disabled = _a.disabled, onChange = _a.onChange, onBlur = _a.onBlur;
+    var className = _a.className, _b = _a.variant, variant = _b === void 0 ? "outline" : _b, value = _a.value, defaultValue = _a.defaultValue, error = _a.error, placeholder = _a.placeholder, disabled = _a.disabled, onChange = _a.onChange, onBlur = _a.onBlur, onSubmit = _a.onSubmit;
     var container = classnames("d-input-search", "d-input-search__" + variant, {
         "d-input-search__disabled": disabled,
         "d-input-search__error": !!error,
     }, className);
-    return (jsxs("div", __assign({ className: container }, { children: [jsx(Icon$2, { name: "search", className: "mr-3" }, void 0),
-            jsx("input", { value: value, onChange: onChange, required: true, placeholder: placeholder, onBlur: onBlur, disabled: disabled, defaultValue: defaultValue }, void 0)] }), void 0));
+    return (jsxs("div", __assign({ className: container }, { children: [jsx(Icon$2, { name: "search", className: "mr-3" }, void 0), jsx("input", { value: value, onChange: onChange, required: true, placeholder: placeholder, onBlur: onBlur, disabled: disabled, defaultValue: defaultValue, onKeyUp: function (event) {
+                    if (event.key === "Enter") {
+                        // eslint-disable-next-line no-unused-expressions
+                        onSubmit && onSubmit();
+                    }
+                } }, void 0)] }), void 0));
 };
 
 var InputColor = function (_a) {
@@ -238,15 +241,11 @@ var InputColor = function (_a) {
     var renderInput = function () {
         return (jsx("input", { value: value, onChange: onChange, className: inputClass, name: name, required: true, placeholder: placeholder, onBlur: onBlur, disabled: disabled, defaultValue: defaultValue, style: styleInput, type: "color" }, key));
     };
-    return (jsxs("div", __assign({ className: container, style: style }, { children: [label && (jsx("label", __assign({ htmlFor: name, className: labelClass, style: styleLabel }, { children: jsx("span", { children: label }, void 0) }), void 0)),
-            jsxs("div", __assign({ className: inputContainerClass, style: styleInputContainer }, { children: [renderInput(),
-                    jsx("div", __assign({ className: inputValueClass }, { children: value }), void 0)] }), void 0),
-            error && (jsxs("div", __assign({ className: "flex-center-y mt-1" }, { children: [jsx(Icon$2, { name: "error_outline", className: "text-error", size: "small" }, void 0),
-                    jsx("text", __assign({ className: errorTextClass }, { children: error }), void 0)] }), void 0))] }), void 0));
+    return (jsxs("div", __assign({ className: container, style: style }, { children: [label && (jsx("label", __assign({ htmlFor: name, className: labelClass, style: styleLabel }, { children: jsx("span", { children: label }, void 0) }), void 0)), jsxs("div", __assign({ className: inputContainerClass, style: styleInputContainer }, { children: [renderInput(), jsx("div", __assign({ className: inputValueClass }, { children: value }), void 0)] }), void 0), error && (jsxs("div", __assign({ className: "flex-center-y mt-1" }, { children: [jsx(Icon$2, { name: "error_outline", className: "text-error", size: "small" }, void 0), jsx("text", __assign({ className: errorTextClass }, { children: error }), void 0)] }), void 0))] }), void 0));
 };
 
-function _extends$1() {
-  _extends$1 = Object.assign || function (target) {
+function _extends$2() {
+  _extends$2 = Object.assign || function (target) {
     for (var i = 1; i < arguments.length; i++) {
       var source = arguments[i];
 
@@ -260,7 +259,7 @@ function _extends$1() {
     return target;
   };
 
-  return _extends$1.apply(this, arguments);
+  return _extends$2.apply(this, arguments);
 }
 
 function _defineProperty$4(obj, key, value) {
@@ -2819,8 +2818,8 @@ function _asyncToGenerator(fn) {
   };
 }
 
-function _extends() {
-  _extends = Object.assign || function (target) {
+function _extends$1() {
+  _extends$1 = Object.assign || function (target) {
     for (var i = 1; i < arguments.length; i++) {
       var source = arguments[i];
 
@@ -2834,7 +2833,7 @@ function _extends() {
     return target;
   };
 
-  return _extends.apply(this, arguments);
+  return _extends$1.apply(this, arguments);
 }
 
 function _inheritsLoose(subClass, superClass) {
@@ -3167,7 +3166,7 @@ function deepMerge(target, source) {
         var value = source[s];
 
         if (typeof value === 'object' && typeof target[s] === 'object') {
-          target[s] = _extends({}, target[s], value);
+          target[s] = _extends$1({}, target[s], value);
         } else {
           target[s] = value;
         }
@@ -4056,7 +4055,7 @@ Schema.prototype = {
 
         if (typeof rule.transform === 'function') {
           if (source === source_) {
-            source = _extends({}, source);
+            source = _extends$1({}, source);
           }
 
           value = source[z] = rule.transform(value);
@@ -4067,7 +4066,7 @@ Schema.prototype = {
             validator: rule
           };
         } else {
-          rule = _extends({}, rule);
+          rule = _extends$1({}, rule);
         }
 
         rule.validator = _this.getValidationMethod(rule);
@@ -4096,7 +4095,7 @@ Schema.prototype = {
       rule.field = data.field;
 
       function addFullfield(key, schema) {
-        return _extends({}, schema, {
+        return _extends$1({}, schema, {
           fullField: rule.fullField + "." + key
         });
       }
@@ -4153,7 +4152,7 @@ Schema.prototype = {
             }
           }
 
-          fieldsSchema = _extends({}, fieldsSchema, data.rule.fields);
+          fieldsSchema = _extends$1({}, fieldsSchema, data.rule.fields);
 
           for (var f in fieldsSchema) {
             if (fieldsSchema.hasOwnProperty(f)) {
@@ -5400,7 +5399,7 @@ function WrapperField(_ref4) {
     warningOnce(false, '`preserve` should not apply on Form.List fields.');
   }
 
-  return /*#__PURE__*/React.createElement(Field, _extends$1({
+  return /*#__PURE__*/React.createElement(Field, _extends$2({
     key: key,
     name: namePath
   }, restProps, {
@@ -5545,7 +5544,7 @@ var List$1 = function List(_ref) {
 };
 
 function _iterableToArrayLimit$3(arr, i) {
-  var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]);
+  var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
 
   if (_i == null) return;
   var _arr = [];
@@ -6711,7 +6710,7 @@ var Form$1 = function Form(_ref, ref) {
     return wrapperNode;
   }
 
-  return /*#__PURE__*/React.createElement(Component, _extends$1({}, restProps, {
+  return /*#__PURE__*/React.createElement(Component, _extends$2({}, restProps, {
     onSubmit: function onSubmit(event) {
       event.preventDefault();
       event.stopPropagation();
@@ -6800,7 +6799,7 @@ var locale$1 = {
 };
 
 var locale = {
-  lang: _extends$1({
+  lang: _extends$2({
     placeholder: 'Select date',
     yearPlaceholder: 'Select year',
     quarterPlaceholder: 'Select quarter',
@@ -6811,7 +6810,7 @@ var locale = {
     rangeMonthPlaceholder: ['Start month', 'End month'],
     rangeWeekPlaceholder: ['Start week', 'End week']
   }, locale$2),
-  timePickerLocale: _extends$1({}, locale$1)
+  timePickerLocale: _extends$2({}, locale$1)
 }; // All settings at:
 
 /* eslint-disable no-template-curly-in-string */
@@ -6940,13 +6939,13 @@ var localeValues = {
   }
 };
 
-var runtimeLocale = _extends$1({}, localeValues.Modal);
+var runtimeLocale = _extends$2({}, localeValues.Modal);
 
 function changeConfirmLocale(newLocale) {
   if (newLocale) {
-    runtimeLocale = _extends$1(_extends$1({}, runtimeLocale), newLocale);
+    runtimeLocale = _extends$2(_extends$2({}, runtimeLocale), newLocale);
   } else {
-    runtimeLocale = _extends$1({}, localeValues.Modal);
+    runtimeLocale = _extends$2({}, localeValues.Modal);
   }
 }
 function getConfirmLocale() {
@@ -6999,7 +6998,7 @@ var LocaleProvider = /*#__PURE__*/function (_React$Component) {
           locale = _this$props.locale,
           children = _this$props.children;
       return /*#__PURE__*/React.createElement(LocaleContext.Provider, {
-        value: _extends$1(_extends$1({}, locale), {
+        value: _extends$2(_extends$2({}, locale), {
           exist: true
         })
       }, children);
@@ -7029,10 +7028,10 @@ var LocaleReceiver = /*#__PURE__*/function (_React$Component) {
       var _this$props = this.props,
           componentName = _this$props.componentName,
           defaultLocale = _this$props.defaultLocale;
-      var locale = defaultLocale || localeValues[componentName || 'global'];
+      var locale = defaultLocale || localeValues[componentName !== null && componentName !== void 0 ? componentName : 'global'];
       var antLocale = this.context;
       var localeFromContext = componentName && antLocale ? antLocale[componentName] : {};
-      return _extends$1(_extends$1({}, typeof locale === 'function' ? locale() : locale), localeFromContext || {});
+      return _extends$2(_extends$2({}, locale instanceof Function ? locale() : locale), localeFromContext || {});
     }
   }, {
     key: "getLocaleCode",
@@ -7143,7 +7142,7 @@ var Simple = function Simple() {
   }))));
 };
 
-var __rest$r = undefined && undefined.__rest || function (s, e) {
+var __rest$s = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -7166,7 +7165,7 @@ var Empty = function Empty(_a) {
       description = _a.description,
       children = _a.children,
       imageStyle = _a.imageStyle,
-      restProps = __rest$r(_a, ["className", "prefixCls", "image", "description", "children", "imageStyle"]);
+      restProps = __rest$s(_a, ["className", "prefixCls", "image", "description", "children", "imageStyle"]);
 
   var _React$useContext = React.useContext(ConfigContext),
       getPrefixCls = _React$useContext.getPrefixCls,
@@ -7191,7 +7190,7 @@ var Empty = function Empty(_a) {
       imageNode = image;
     }
 
-    return /*#__PURE__*/React.createElement("div", _extends$1({
+    return /*#__PURE__*/React.createElement("div", _extends$2({
       className: classnames(prefixCls, (_classNames = {}, _defineProperty$4(_classNames, "".concat(prefixCls, "-normal"), image === simpleEmptyImg), _defineProperty$4(_classNames, "".concat(prefixCls, "-rtl"), direction === 'rtl'), _classNames), className)
     }, restProps), /*#__PURE__*/React.createElement("div", {
       className: "".concat(prefixCls, "-image"),
@@ -8090,7 +8089,7 @@ function genCSSMotionList(transitionSupport) {
               eventProps = _objectWithoutProperties$1(_ref2, ["status"]);
 
           var visible = status === STATUS_ADD || status === STATUS_KEEP;
-          return /*#__PURE__*/React.createElement(CSSMotion$1, _extends$1({}, motionProps, {
+          return /*#__PURE__*/React.createElement(CSSMotion$1, _extends$2({}, motionProps, {
             key: eventProps.key,
             visible: visible,
             eventProps: eventProps,
@@ -8237,7 +8236,7 @@ var Notice = /*#__PURE__*/function (_Component) {
 
         return acc;
       }, {});
-      var node = /*#__PURE__*/React.createElement("div", _extends$1({
+      var node = /*#__PURE__*/React.createElement("div", _extends$2({
         className: classnames(componentClass, className, _defineProperty$4({}, "".concat(componentClass, "-closable"), closable)),
         style: style,
         onMouseEnter: this.clearCloseTimer,
@@ -8283,7 +8282,7 @@ function useNotification(notificationInstance) {
       var key = props.key;
 
       if (div && (!createdRef.current[key] || firstMount)) {
-        var noticeEle = /*#__PURE__*/React.createElement(Notice, _extends$1({}, props, {
+        var noticeEle = /*#__PURE__*/React.createElement(Notice, _extends$2({}, props, {
           holder: div
         }));
         createdRef.current[key] = noticeEle;
@@ -8510,7 +8509,7 @@ var Notification = /*#__PURE__*/function (_Component) {
           });
         }
 
-        return /*#__PURE__*/React.createElement(Notice, _extends$1({}, noticeProps, {
+        return /*#__PURE__*/React.createElement(Notice, _extends$2({}, noticeProps, {
           className: classnames(motionClassName, noticeProps === null || noticeProps === void 0 ? void 0 : noticeProps.className),
           style: _objectSpread2$1(_objectSpread2$1({}, motionStyle), noticeProps === null || noticeProps === void 0 ? void 0 : noticeProps.style),
           visible: visible
@@ -8578,13 +8577,13 @@ Notification.newInstance = function newNotificationInstance(properties, callback
 
 
   if (process.env.NODE_ENV === 'test' && properties.TEST_RENDER) {
-    properties.TEST_RENDER( /*#__PURE__*/React.createElement(Notification, _extends$1({}, props, {
+    properties.TEST_RENDER( /*#__PURE__*/React.createElement(Notification, _extends$2({}, props, {
       ref: ref
     })));
     return;
   }
 
-  ReactDOM__default.render( /*#__PURE__*/React.createElement(Notification, _extends$1({}, props, {
+  ReactDOM__default.render( /*#__PURE__*/React.createElement(Notification, _extends$2({}, props, {
     ref: ref
   })), div);
 };
@@ -9774,14 +9773,14 @@ function createUseMessage(getRcNotificationInstance, getRCNoticeProps) {
           return resolve(true);
         };
 
-        getRcNotificationInstance(_extends$1(_extends$1({}, args), {
+        getRcNotificationInstance(_extends$2(_extends$2({}, args), {
           prefixCls: mergedPrefixCls,
           rootPrefixCls: rootPrefixCls
         }), function (_ref) {
           var prefixCls = _ref.prefixCls,
               instance = _ref.instance;
           innerInstance = instance;
-          hookNotify(getRCNoticeProps(_extends$1(_extends$1({}, args), {
+          hookNotify(getRCNoticeProps(_extends$2(_extends$2({}, args), {
             key: target,
             onClose: callback
           }), prefixCls));
@@ -9961,7 +9960,7 @@ function notice$1(args) {
     getRCNotificationInstance(args, function (_ref) {
       var prefixCls = _ref.prefixCls,
           instance = _ref.instance;
-      instance.notice(getRCNoticeProps$1(_extends$1(_extends$1({}, args), {
+      instance.notice(getRCNoticeProps$1(_extends$2(_extends$2({}, args), {
         key: target,
         onClose: callback
       }), prefixCls));
@@ -10007,7 +10006,7 @@ var api$1 = {
 function attachTypeApi(originalApi, type) {
   originalApi[type] = function (content, duration, onClose) {
     if (isArgsProps(content)) {
-      return originalApi.open(_extends$1(_extends$1({}, content), {
+      return originalApi.open(_extends$2(_extends$2({}, content), {
         type: type
       }));
     }
@@ -10126,7 +10125,7 @@ function createUseNotification(getNotificationInstance, getRCNoticeProps) {
     function notify(args) {
       var customizePrefixCls = args.prefixCls;
       var mergedPrefixCls = getPrefixCls('notification', customizePrefixCls);
-      getNotificationInstance(_extends$1(_extends$1({}, args), {
+      getNotificationInstance(_extends$2(_extends$2({}, args), {
         prefixCls: mergedPrefixCls
       }), function (_ref) {
         var prefixCls = _ref.prefixCls,
@@ -10141,7 +10140,7 @@ function createUseNotification(getNotificationInstance, getRCNoticeProps) {
     hookApiRef.current.open = notify;
     ['success', 'info', 'warning', 'error'].forEach(function (type) {
       hookApiRef.current[type] = function (args) {
-        return hookApiRef.current.open(_extends$1(_extends$1({}, args), {
+        return hookApiRef.current.open(_extends$2(_extends$2({}, args), {
           type: type
         }));
       };
@@ -10420,7 +10419,7 @@ var api = {
 };
 ['success', 'info', 'warning', 'error'].forEach(function (type) {
   api[type] = function (args) {
-    return api.open(_extends$1(_extends$1({}, args), {
+    return api.open(_extends$2(_extends$2({}, args), {
       type: type
     }));
   };
@@ -10491,7 +10490,7 @@ var ProviderChildren = function ProviderChildren(props) {
     return suffixCls ? "".concat(mergedPrefixCls, "-").concat(suffixCls) : mergedPrefixCls;
   }, [parentContext.getPrefixCls, props.prefixCls]);
 
-  var config = _extends$1(_extends$1({}, parentContext), {
+  var config = _extends$2(_extends$2({}, parentContext), {
     csp: csp,
     autoInsertSpaceInButton: autoInsertSpaceInButton,
     locale: locale || legacyLocale,
@@ -10536,7 +10535,7 @@ var ProviderChildren = function ProviderChildren(props) {
   }
 
   if (form && form.validateMessages) {
-    validateMessages = _extends$1(_extends$1({}, validateMessages), form.validateMessages);
+    validateMessages = _extends$2(_extends$2({}, validateMessages), form.validateMessages);
   }
 
   if (Object.keys(validateMessages).length > 0) {
@@ -10582,7 +10581,7 @@ var ConfigProvider = function ConfigProvider(props) {
   }, [props.direction]);
   return /*#__PURE__*/React.createElement(LocaleReceiver, null, function (_, __, legacyLocale) {
     return /*#__PURE__*/React.createElement(ConfigConsumer, null, function (context) {
-      return /*#__PURE__*/React.createElement(ProviderChildren, _extends$1({
+      return /*#__PURE__*/React.createElement(ProviderChildren, _extends$2({
         parentContext: context,
         legacyLocale: legacyLocale
       }, props));
@@ -11367,7 +11366,7 @@ function pickAttrs(props) {
   return attrs;
 }
 
-function ownKeys$2(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function ownKeys$2(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread$1(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$2(Object(source), true).forEach(function (key) { _defineProperty$3(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$2(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -11441,7 +11440,7 @@ function _possibleConstructorReturn(self, call) { if (call && (_typeof$3(call) =
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _isNativeReflectConstruct$1() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct$1() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 var MIN_SIZE = 20;
@@ -11460,7 +11459,11 @@ var ScrollBar = /*#__PURE__*/function (_React$Component) {
 
     _classCallCheck$1(this, ScrollBar);
 
-    _this = _super.apply(this, arguments);
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
     _this.moveRaf = null;
     _this.scrollbarRef = /*#__PURE__*/React.createRef();
     _this.thumbRef = /*#__PURE__*/React.createRef();
@@ -11493,8 +11496,7 @@ var ScrollBar = /*#__PURE__*/function (_React$Component) {
     _this.onContainerMouseDown = function (e) {
       e.stopPropagation();
       e.preventDefault();
-    }; // ======================= Clean =======================
-
+    };
 
     _this.patchEvents = function () {
       window.addEventListener('mousemove', _this.onMouseMove);
@@ -11518,8 +11520,7 @@ var ScrollBar = /*#__PURE__*/function (_React$Component) {
       _this.thumbRef.current.removeEventListener('touchend', _this.onMouseUp);
 
       wrapperRaf$1.cancel(_this.moveRaf);
-    }; // ======================= Thumb =======================
-
+    };
 
     _this.onMouseDown = function (e) {
       var onStartMove = _this.props.onStartMove;
@@ -11572,8 +11573,7 @@ var ScrollBar = /*#__PURE__*/function (_React$Component) {
       onStopMove();
 
       _this.removeEvents();
-    }; // ===================== Calculate =====================
-
+    };
 
     _this.getSpinHeight = function () {
       var _this$props = _this.props,
@@ -11613,20 +11613,13 @@ var ScrollBar = /*#__PURE__*/function (_React$Component) {
 
       var ptg = scrollTop / enableScrollRange;
       return ptg * enableHeightRange;
-    }; // Not show scrollbar when height is large thane scrollHeight
+    };
 
-
-    _this.getVisible = function () {
-      var visible = _this.state.visible;
+    _this.showScroll = function () {
       var _this$props3 = _this.props,
           height = _this$props3.height,
           scrollHeight = _this$props3.scrollHeight;
-
-      if (height >= scrollHeight) {
-        return false;
-      }
-
-      return visible;
+      return scrollHeight > height;
     };
 
     return _this;
@@ -11650,26 +11643,29 @@ var ScrollBar = /*#__PURE__*/function (_React$Component) {
     value: function componentWillUnmount() {
       this.removeEvents();
       clearTimeout(this.visibleTimeout);
-    } // ====================== Render =======================
-
+    }
   }, {
     key: "render",
-    value: function render() {
-      var dragging = this.state.dragging;
+    value: // ====================== Render =======================
+    function render() {
+      var _this$state2 = this.state,
+          dragging = _this$state2.dragging,
+          visible = _this$state2.visible;
       var prefixCls = this.props.prefixCls;
       var spinHeight = this.getSpinHeight();
       var top = this.getTop();
-      var visible = this.getVisible();
+      var canScroll = this.showScroll();
+      var mergedVisible = canScroll && visible;
       return /*#__PURE__*/React.createElement("div", {
         ref: this.scrollbarRef,
-        className: "".concat(prefixCls, "-scrollbar"),
+        className: classnames("".concat(prefixCls, "-scrollbar"), _defineProperty$2({}, "".concat(prefixCls, "-scrollbar-show"), canScroll)),
         style: {
           width: 8,
           top: 0,
           bottom: 0,
           right: 0,
           position: 'absolute',
-          display: visible ? null : 'none'
+          display: mergedVisible ? null : 'none'
         },
         onMouseDown: this.onContainerMouseDown,
         onMouseMove: this.delayHidden
@@ -11733,6 +11729,7 @@ var CacheMap = /*#__PURE__*/function () {
   function CacheMap() {
     _classCallCheck(this, CacheMap);
 
+    this.maps = void 0;
     this.maps = {};
     this.maps.prototype = null;
   }
@@ -11760,7 +11757,7 @@ function _unsupportedIterableToArray$2(o, minLen) { if (!o) return; if (typeof o
 
 function _arrayLikeToArray$2(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-function _iterableToArrayLimit$2(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+function _iterableToArrayLimit$2(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles$2(arr) { if (Array.isArray(arr)) return arr; }
 function useHeights(getKey, onItemAdd, onItemRemove) {
@@ -11998,7 +11995,7 @@ function _unsupportedIterableToArray$1(o, minLen) { if (!o) return; if (typeof o
 
 function _arrayLikeToArray$1(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-function _iterableToArrayLimit$1(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+function _iterableToArrayLimit$1(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles$1(arr) { if (Array.isArray(arr)) return arr; }
 function useDiffItem(data, getKey, onDiff) {
@@ -12175,7 +12172,11 @@ function useMobileTouchMove(inVirtual, listRef, callback) {
   }, [inVirtual]);
 }
 
-function ownKeys$1(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+var _excluded$5 = ["prefixCls", "className", "height", "itemHeight", "fullHeight", "style", "data", "children", "itemKey", "virtual", "component", "onScroll"];
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function ownKeys$1(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$1(Object(source), true).forEach(function (key) { _defineProperty$1(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$1(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -12189,7 +12190,7 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
@@ -12217,7 +12218,7 @@ function RawList(props, ref) {
       _props$component = props.component,
       Component = _props$component === void 0 ? 'div' : _props$component,
       onScroll = props.onScroll,
-      restProps = _objectWithoutProperties(props, ["prefixCls", "className", "height", "itemHeight", "fullHeight", "style", "data", "children", "itemKey", "virtual", "component", "onScroll"]); // ================================= MISC =================================
+      restProps = _objectWithoutProperties(props, _excluded$5); // ================================= MISC =================================
 
 
   var useVirtual = !!(virtual !== false && height && itemHeight);
@@ -12300,6 +12301,7 @@ function RawList(props, ref) {
     } // Always use virtual scroll bar in avoid shaking
 
 
+    // Always use virtual scroll bar in avoid shaking
     if (!inVirtual) {
       var _fillerInnerRef$curre;
 
@@ -12323,12 +12325,14 @@ function RawList(props, ref) {
       var cacheHeight = heights.get(key);
       var currentItemBottom = itemTop + (cacheHeight === undefined ? itemHeight : cacheHeight); // Check item top in the range
 
+      // Check item top in the range
       if (currentItemBottom >= scrollTop && startIndex === undefined) {
         startIndex = i;
         startOffset = itemTop;
       } // Check item bottom in the range. We will render additional one item for motion usage
 
 
+      // Check item bottom in the range. We will render additional one item for motion usage
       if (currentItemBottom > scrollTop + height && endIndex === undefined) {
         endIndex = i;
       }
@@ -12339,6 +12343,9 @@ function RawList(props, ref) {
     /* istanbul ignore next */
 
 
+    // Fallback to normal if not match. This code should never reach
+
+    /* istanbul ignore next */
     if (startIndex === undefined) {
       startIndex = 0;
       startOffset = 0;
@@ -12349,6 +12356,7 @@ function RawList(props, ref) {
     } // Give cache to improve scroll experience
 
 
+    // Give cache to improve scroll experience
     endIndex = Math.min(endIndex + 1, mergedData.length);
     return {
       scrollHeight: itemTop,
@@ -12468,7 +12476,7 @@ function RawList(props, ref) {
     }
   }
 
-  return /*#__PURE__*/React.createElement("div", Object.assign({
+  return /*#__PURE__*/React.createElement("div", _extends({
     style: _objectSpread(_objectSpread({}, style), {}, {
       position: 'relative'
     }),
@@ -12760,7 +12768,7 @@ var OptionList$1 = function OptionList(_ref, ref) {
         children = itemData.children;
     var attrs = pickAttrs(itemData, true);
     var mergedLabel = childrenAsData ? children : label;
-    return item ? /*#__PURE__*/React.createElement("div", _extends$1({
+    return item ? /*#__PURE__*/React.createElement("div", _extends$2({
       "aria-label": typeof mergedLabel === 'string' ? mergedLabel : null
     }, attrs, {
       key: index,
@@ -12826,7 +12834,7 @@ var OptionList$1 = function OptionList(_ref, ref) {
       optionTitle = title;
     }
 
-    return /*#__PURE__*/React.createElement("div", _extends$1({}, otherProps, {
+    return /*#__PURE__*/React.createElement("div", _extends$2({}, otherProps, {
       "aria-selected": selected,
       className: optionClassName,
       title: optionTitle,
@@ -13398,7 +13406,7 @@ function InternalItem(props, ref) {
     overflowProps['aria-hidden'] = true;
   }
 
-  var itemNode = /*#__PURE__*/React.createElement(Component, _extends$1({
+  var itemNode = /*#__PURE__*/React.createElement(Component, _extends$2({
     className: classnames(!invalidate && prefixCls, className),
     style: _objectSpread2$1(_objectSpread2$1({}, overflowStyle), style)
   }, overflowProps, restProps, {
@@ -13476,7 +13484,7 @@ var InternalRawItem = function InternalRawItem(props, ref) {
         Component = _props$component === void 0 ? 'div' : _props$component,
         _restProps = _objectWithoutProperties$1(props, ["component"]);
 
-    return /*#__PURE__*/React.createElement(Component, _extends$1({}, _restProps, {
+    return /*#__PURE__*/React.createElement(Component, _extends$2({}, _restProps, {
       ref: ref
     }));
   }
@@ -13490,7 +13498,7 @@ var InternalRawItem = function InternalRawItem(props, ref) {
 
   return /*#__PURE__*/React.createElement(OverflowContext.Provider, {
     value: null
-  }, /*#__PURE__*/React.createElement(Item, _extends$1({
+  }, /*#__PURE__*/React.createElement(Item, _extends$2({
     ref: ref,
     className: classnames(contextClassName, className)
   }, restContext, restProps)));
@@ -13695,7 +13703,9 @@ function Overflow(props, ref) {
 
         totalWidth += currentItemWidth;
 
-        if (i === lastIndex - 1 && totalWidth + getItemWidth(lastIndex) <= mergedContainerWidth) {
+        if ( // Only one means `totalWidth` is the final width
+        lastIndex === 0 && totalWidth <= mergedContainerWidth || // Last two width will be the final width
+        i === lastIndex - 1 && totalWidth + getItemWidth(lastIndex) <= mergedContainerWidth) {
           // Additional check if match the end
           updateDisplayCount(lastIndex);
           setSuffixFixedStart(null);
@@ -13704,11 +13714,6 @@ function Overflow(props, ref) {
           // Can not hold all the content to show rest
           updateDisplayCount(i - 1);
           setSuffixFixedStart(totalWidth - currentItemWidth - suffixWidth + restWidth);
-          break;
-        } else if (i === lastIndex) {
-          // Reach the end
-          updateDisplayCount(lastIndex);
-          setSuffixFixedStart(totalWidth - suffixWidth);
           break;
         }
       }
@@ -13751,7 +13756,7 @@ function Overflow(props, ref) {
     }, renderRawItem(item, index));
   } : function (item, index) {
     var key = getKey(item, index);
-    return /*#__PURE__*/React.createElement(Item, _extends$1({}, itemSharedProps, {
+    return /*#__PURE__*/React.createElement(Item, _extends$2({}, itemSharedProps, {
       order: index,
       key: key,
       item: item,
@@ -13772,18 +13777,18 @@ function Overflow(props, ref) {
 
   if (!renderRawRest) {
     var mergedRenderRest = renderRest || defaultRenderRest;
-    restNode = /*#__PURE__*/React.createElement(Item, _extends$1({}, itemSharedProps, restContextProps), typeof mergedRenderRest === 'function' ? mergedRenderRest(omittedItems) : mergedRenderRest);
+    restNode = /*#__PURE__*/React.createElement(Item, _extends$2({}, itemSharedProps, restContextProps), typeof mergedRenderRest === 'function' ? mergedRenderRest(omittedItems) : mergedRenderRest);
   } else if (renderRawRest) {
     restNode = /*#__PURE__*/React.createElement(OverflowContext.Provider, {
       value: _objectSpread2$1(_objectSpread2$1({}, itemSharedProps), restContextProps)
     }, renderRawRest(omittedItems));
   }
 
-  var overflowNode = /*#__PURE__*/React.createElement(Component, _extends$1({
+  var overflowNode = /*#__PURE__*/React.createElement(Component, _extends$2({
     className: classnames(!invalidate && prefixCls, className),
     style: style,
     ref: ref
-  }, restProps), mergedData.map(internalRenderItemNode), showRest ? restNode : null, suffix && /*#__PURE__*/React.createElement(Item, _extends$1({}, itemSharedProps, {
+  }, restProps), mergedData.map(internalRenderItemNode), showRest ? restNode : null, suffix && /*#__PURE__*/React.createElement(Item, _extends$2({}, itemSharedProps, {
     order: mergedDisplayCount,
     className: "".concat(itemPrefixCls, "-suffix"),
     registerSize: registerSuffixSize,
@@ -14353,7 +14358,7 @@ var Selector = function Selector(props, ref) {
     onInputCompositionStart: onInputCompositionStart,
     onInputCompositionEnd: onInputCompositionEnd
   };
-  var selectNode = multiple ? /*#__PURE__*/React.createElement(SelectSelector, _extends$1({}, props, sharedProps)) : /*#__PURE__*/React.createElement(SingleSelector, _extends$1({}, props, sharedProps));
+  var selectNode = multiple ? /*#__PURE__*/React.createElement(SelectSelector, _extends$2({}, props, sharedProps)) : /*#__PURE__*/React.createElement(SingleSelector, _extends$2({}, props, sharedProps));
   return /*#__PURE__*/React.createElement("div", {
     ref: domRef,
     className: "".concat(prefixCls, "-selector"),
@@ -14484,7 +14489,7 @@ function Mask$1(props) {
     }));
   }
 
-  return /*#__PURE__*/React.createElement(CSSMotion, _extends$1({}, motion, {
+  return /*#__PURE__*/React.createElement(CSSMotion, _extends$2({}, motion, {
     visible: visible,
     removeOnLeave: true
   }), function (_ref) {
@@ -16374,7 +16379,7 @@ var PopupInner = /*#__PURE__*/React.forwardRef(function (props, ref) {
     }, children);
   }
 
-  return /*#__PURE__*/React.createElement(CSSMotion, _extends$1({
+  return /*#__PURE__*/React.createElement(CSSMotion, _extends$2({
     visible: visible,
     ref: elementRef,
     leavedClassName: "".concat(prefixCls, "-hidden")
@@ -16448,7 +16453,7 @@ var MobilePopupInner = /*#__PURE__*/React.forwardRef(function (props, ref) {
     childNode = popupRender(childNode);
   }
 
-  return /*#__PURE__*/React.createElement(CSSMotion, _extends$1({
+  return /*#__PURE__*/React.createElement(CSSMotion, _extends$2({
     visible: visible,
     ref: elementRef,
     removeOnLeave: true
@@ -16493,10 +16498,10 @@ var Popup = /*#__PURE__*/React.forwardRef(function (_ref, ref) {
       setInMobile(isMobile());
     }
   }, [visible, mobile]);
-  var popupNode = inMobile ? /*#__PURE__*/React.createElement(MobilePopupInner, _extends$1({}, cloneProps, {
+  var popupNode = inMobile ? /*#__PURE__*/React.createElement(MobilePopupInner, _extends$2({}, cloneProps, {
     mobile: mobile,
     ref: ref
-  })) : /*#__PURE__*/React.createElement(PopupInner, _extends$1({}, cloneProps, {
+  })) : /*#__PURE__*/React.createElement(PopupInner, _extends$2({}, cloneProps, {
     ref: ref
   })); // We can use fragment directly but this may failed some selector usage. Keep as origin logic
 
@@ -16772,7 +16777,7 @@ function generateTrigger(PortalComponent) {
 
         mouseProps.onMouseDown = _this.onPopupMouseDown;
         mouseProps.onTouchStart = _this.onPopupMouseDown;
-        return /*#__PURE__*/React.createElement(Popup, _extends$1({
+        return /*#__PURE__*/React.createElement(Popup, _extends$2({
           prefixCls: prefixCls,
           destroyPopupOnHide: destroyPopupOnHide,
           visible: popupVisible,
@@ -16861,6 +16866,9 @@ function generateTrigger(PortalComponent) {
         }
       };
 
+      _this.triggerContextValue = {
+        onPopupMouseDown: _this.onPopupMouseDown
+      };
       var popupVisible;
 
       if ('popupVisible' in props) {
@@ -17228,9 +17236,7 @@ function generateTrigger(PortalComponent) {
         }
 
         return /*#__PURE__*/React.createElement(TriggerContext.Provider, {
-          value: {
-            onPopupMouseDown: this.onPopupMouseDown
-          }
+          value: this.triggerContextValue
         }, trigger, portal);
       }
     }], [{
@@ -17338,7 +17344,8 @@ var SelectTrigger = function SelectTrigger(props, ref) {
       getPopupContainer = props.getPopupContainer,
       empty = props.empty,
       getTriggerDOMNode = props.getTriggerDOMNode,
-      restProps = _objectWithoutProperties$1(props, ["prefixCls", "disabled", "visible", "children", "popupElement", "containerWidth", "animation", "transitionName", "dropdownStyle", "dropdownClassName", "direction", "dropdownMatchSelectWidth", "dropdownRender", "dropdownAlign", "getPopupContainer", "empty", "getTriggerDOMNode"]);
+      onPopupVisibleChange = props.onPopupVisibleChange,
+      restProps = _objectWithoutProperties$1(props, ["prefixCls", "disabled", "visible", "children", "popupElement", "containerWidth", "animation", "transitionName", "dropdownStyle", "dropdownClassName", "direction", "dropdownMatchSelectWidth", "dropdownRender", "dropdownAlign", "getPopupContainer", "empty", "getTriggerDOMNode", "onPopupVisibleChange"]);
 
   var dropdownPrefixCls = "".concat(prefixCls, "-dropdown");
   var popupNode = popupElement;
@@ -17372,9 +17379,9 @@ var SelectTrigger = function SelectTrigger(props, ref) {
     popupStyle.width = containerWidth;
   }
 
-  return /*#__PURE__*/React.createElement(Trigger, _extends$1({}, restProps, {
-    showAction: [],
-    hideAction: [],
+  return /*#__PURE__*/React.createElement(Trigger, _extends$2({}, restProps, {
+    showAction: onPopupVisibleChange ? ['click'] : [],
+    hideAction: onPopupVisibleChange ? ['click'] : [],
     popupPlacement: direction === 'rtl' ? 'bottomRight' : 'bottomLeft',
     builtinPlacements: builtInPlacements,
     prefixCls: dropdownPrefixCls,
@@ -17387,7 +17394,8 @@ var SelectTrigger = function SelectTrigger(props, ref) {
     getPopupContainer: getPopupContainer,
     popupClassName: classnames(dropdownClassName, _defineProperty$4({}, "".concat(dropdownPrefixCls, "-empty"), empty)),
     popupStyle: popupStyle,
-    getTriggerDOMNode: getTriggerDOMNode
+    getTriggerDOMNode: getTriggerDOMNode,
+    onPopupVisibleChange: onPopupVisibleChange
   }), children);
 };
 
@@ -17436,9 +17444,6 @@ function useDelayReset() {
 function useSelectTriggerControl(elements, open, triggerOpen) {
   var propsRef = React.useRef(null);
   propsRef.current = {
-    elements: elements.filter(function (e) {
-      return e;
-    }),
     open: open,
     triggerOpen: triggerOpen
   };
@@ -17450,7 +17455,9 @@ function useSelectTriggerControl(elements, open, triggerOpen) {
         target = event.composedPath()[0] || target;
       }
 
-      if (propsRef.current.open && propsRef.current.elements.every(function (element) {
+      if (propsRef.current.open && elements().filter(function (element) {
+        return element;
+      }).every(function (element) {
         return !element.contains(target) && element !== target;
       })) {
         // Should trigger close
@@ -17574,6 +17581,7 @@ function generateSelector(config) {
         backfill = props.backfill;
         props.tabIndex;
         var getInputElement = props.getInputElement,
+        getRawInputElement = props.getRawInputElement,
         getPopupContainer = props.getPopupContainer,
         _props$listHeight = props.listHeight,
         listHeight = _props$listHeight === void 0 ? 200 : _props$listHeight,
@@ -17605,7 +17613,7 @@ function generateSelector(config) {
         onClear = props.onClear,
         _props$internalProps = props.internalProps,
         internalProps = _props$internalProps === void 0 ? {} : _props$internalProps,
-        restProps = _objectWithoutProperties$1(props, ["prefixCls", "className", "id", "open", "defaultOpen", "options", "children", "mode", "value", "defaultValue", "labelInValue", "showSearch", "inputValue", "searchValue", "filterOption", "filterSort", "optionFilterProp", "autoClearSearchValue", "onSearch", "allowClear", "clearIcon", "showArrow", "inputIcon", "menuItemSelectedIcon", "disabled", "loading", "defaultActiveFirstOption", "notFoundContent", "optionLabelProp", "backfill", "tabIndex", "getInputElement", "getPopupContainer", "listHeight", "listItemHeight", "animation", "transitionName", "virtual", "dropdownStyle", "dropdownClassName", "dropdownMatchSelectWidth", "dropdownRender", "dropdownAlign", "showAction", "direction", "tokenSeparators", "tagRender", "onPopupScroll", "onDropdownVisibleChange", "onFocus", "onBlur", "onKeyUp", "onKeyDown", "onMouseDown", "onChange", "onSelect", "onDeselect", "onClear", "internalProps"]);
+        restProps = _objectWithoutProperties$1(props, ["prefixCls", "className", "id", "open", "defaultOpen", "options", "children", "mode", "value", "defaultValue", "labelInValue", "showSearch", "inputValue", "searchValue", "filterOption", "filterSort", "optionFilterProp", "autoClearSearchValue", "onSearch", "allowClear", "clearIcon", "showArrow", "inputIcon", "menuItemSelectedIcon", "disabled", "loading", "defaultActiveFirstOption", "notFoundContent", "optionLabelProp", "backfill", "tabIndex", "getInputElement", "getRawInputElement", "getPopupContainer", "listHeight", "listItemHeight", "animation", "transitionName", "virtual", "dropdownStyle", "dropdownClassName", "dropdownMatchSelectWidth", "dropdownRender", "dropdownAlign", "showAction", "direction", "tokenSeparators", "tagRender", "onPopupScroll", "onDropdownVisibleChange", "onFocus", "onBlur", "onKeyUp", "onKeyDown", "onMouseDown", "onChange", "onSelect", "onDeselect", "onClear", "internalProps"]);
 
     var useInternalProps = internalProps.mark === INTERNAL_PROPS_MARK;
     var domProps = omitDOMProps ? omitDOMProps(restProps) : restProps;
@@ -17927,7 +17935,9 @@ function generateSelector(config) {
     // Only works in `combobox`
 
 
-    var customizeInputElement = mode === 'combobox' && getInputElement && getInputElement() || null; // ============================== Open ==============================
+    var customizeInputElement = mode === 'combobox' && typeof getInputElement === 'function' && getInputElement() || null; // Used for customize replacement for `rc-cascader`
+
+    var customizeRawInputElement = typeof getRawInputElement === 'function' && getRawInputElement(); // ============================== Open ==============================
 
     var _useMergedState3 = useControlledState(undefined, {
       defaultValue: defaultOpen,
@@ -17957,9 +17967,22 @@ function generateSelector(config) {
           onDropdownVisibleChange(nextOpen);
         }
       }
-    };
+    }; // Used for raw custom input trigger
 
-    useSelectTriggerControl([containerRef.current, triggerRef.current && triggerRef.current.getPopupElement()], triggerOpen, onToggleOpen); // ============================= Search =============================
+
+    var onTriggerVisibleChange;
+
+    if (customizeRawInputElement) {
+      onTriggerVisibleChange = function onTriggerVisibleChange(newOpen) {
+        onToggleOpen(newOpen);
+      };
+    }
+
+    useSelectTriggerControl(function () {
+      var _triggerRef$current;
+
+      return [containerRef.current, (_triggerRef$current = triggerRef.current) === null || _triggerRef$current === void 0 ? void 0 : _triggerRef$current.getPopupElement()];
+    }, triggerOpen, onToggleOpen); // ============================= Search =============================
 
     var triggerSearch = function triggerSearch(searchText, fromTyping, isCompositing) {
       var ret = true;
@@ -18170,8 +18193,10 @@ function generateSelector(config) {
     }, []);
 
     var onInternalMouseDown = function onInternalMouseDown(event) {
+      var _triggerRef$current2;
+
       var target = event.target;
-      var popupElement = triggerRef.current && triggerRef.current.getPopupElement(); // We should give focus back to selector if clicked item is not focusable
+      var popupElement = (_triggerRef$current2 = triggerRef.current) === null || _triggerRef$current2 === void 0 ? void 0 : _triggerRef$current2.getPopupElement(); // We should give focus back to selector if clicked item is not focusable
 
       if (popupElement && popupElement.contains(target)) {
         var timeoutId = setTimeout(function () {
@@ -18238,9 +18263,11 @@ function generateSelector(config) {
 
     useLayoutEffect(function () {
       if (triggerOpen) {
-        var newWidth = Math.ceil(containerRef.current.offsetWidth);
+        var _containerRef$current;
 
-        if (containerWidth !== newWidth) {
+        var newWidth = Math.ceil((_containerRef$current = containerRef.current) === null || _containerRef$current === void 0 ? void 0 : _containerRef$current.offsetWidth);
+
+        if (containerWidth !== newWidth && !Number.isNaN(newWidth)) {
           setContainerWidth(newWidth);
         }
       }
@@ -18318,25 +18345,7 @@ function generateSelector(config) {
 
 
     var mergedClassName = classnames(prefixCls, className, (_classNames2 = {}, _defineProperty$4(_classNames2, "".concat(prefixCls, "-focused"), mockFocused), _defineProperty$4(_classNames2, "".concat(prefixCls, "-multiple"), isMultiple), _defineProperty$4(_classNames2, "".concat(prefixCls, "-single"), !isMultiple), _defineProperty$4(_classNames2, "".concat(prefixCls, "-allow-clear"), allowClear), _defineProperty$4(_classNames2, "".concat(prefixCls, "-show-arrow"), mergedShowArrow), _defineProperty$4(_classNames2, "".concat(prefixCls, "-disabled"), disabled), _defineProperty$4(_classNames2, "".concat(prefixCls, "-loading"), loading), _defineProperty$4(_classNames2, "".concat(prefixCls, "-open"), mergedOpen), _defineProperty$4(_classNames2, "".concat(prefixCls, "-customize-input"), customizeInputElement), _defineProperty$4(_classNames2, "".concat(prefixCls, "-show-search"), mergedShowSearch), _classNames2));
-    return /*#__PURE__*/React.createElement("div", _extends$1({
-      className: mergedClassName
-    }, domProps, {
-      ref: containerRef,
-      onMouseDown: onInternalMouseDown,
-      onKeyDown: onInternalKeyDown,
-      onKeyUp: onInternalKeyUp,
-      onFocus: onContainerFocus,
-      onBlur: onContainerBlur
-    }), mockFocused && !mergedOpen && /*#__PURE__*/React.createElement("span", {
-      style: {
-        width: 0,
-        height: 0,
-        display: 'flex',
-        overflow: 'hidden',
-        opacity: 0
-      },
-      "aria-live": "polite"
-    }, "".concat(mergedRawValue.join(', '))), /*#__PURE__*/React.createElement(RefSelectTrigger, {
+    var selectorNode = /*#__PURE__*/React.createElement(RefSelectTrigger, {
       ref: triggerRef,
       disabled: disabled,
       prefixCls: prefixCls,
@@ -18355,8 +18364,11 @@ function generateSelector(config) {
       empty: !mergedOptions.length,
       getTriggerDOMNode: function getTriggerDOMNode() {
         return selectorDomRef.current;
-      }
-    }, /*#__PURE__*/React.createElement(ForwardSelector, _extends$1({}, props, {
+      },
+      onPopupVisibleChange: onTriggerVisibleChange
+    }, customizeRawInputElement ? /*#__PURE__*/React.cloneElement(customizeRawInputElement, {
+      ref: composeRef(selectorDomRef, customizeRawInputElement.props.ref)
+    }) : /*#__PURE__*/React.createElement(ForwardSelector, _extends$2({}, props, {
       domRef: selectorDomRef,
       prefixCls: prefixCls,
       inputElement: customizeInputElement,
@@ -18376,7 +18388,31 @@ function generateSelector(config) {
       onSearchSubmit: onSearchSubmit,
       onSelect: onInternalSelectionSelect,
       tokenWithEnter: tokenWithEnter
-    }))), arrowNode, clearNode);
+    }))); // Render raw
+
+    if (customizeRawInputElement) {
+      return selectorNode;
+    }
+
+    return /*#__PURE__*/React.createElement("div", _extends$2({
+      className: mergedClassName
+    }, domProps, {
+      ref: containerRef,
+      onMouseDown: onInternalMouseDown,
+      onKeyDown: onInternalKeyDown,
+      onKeyUp: onInternalKeyUp,
+      onFocus: onContainerFocus,
+      onBlur: onContainerBlur
+    }), mockFocused && !mergedOpen && /*#__PURE__*/React.createElement("span", {
+      style: {
+        width: 0,
+        height: 0,
+        display: 'flex',
+        overflow: 'hidden',
+        opacity: 0
+      },
+      "aria-live": "polite"
+    }, "".concat(mergedRawValue.join(', '))), selectorNode, arrowNode, clearNode);
   }
 
   var RefSelect = /*#__PURE__*/React.forwardRef(Select);
@@ -18532,7 +18568,7 @@ var Select$3 = /*#__PURE__*/function (_React$Component) {
   _createClass$2(Select, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/React.createElement(RefSelect$1, _extends$1({
+      return /*#__PURE__*/React.createElement(RefSelect$1, _extends$2({
         ref: this.selectRef
       }, this.props));
     }
@@ -18707,7 +18743,7 @@ var getTransitionName = function getTransitionName(rootPrefixCls, motion, transi
 };
 
 // TODO: 4.0 - codemod should help to change `filterOption` to support node props.
-var __rest$q = undefined && undefined.__rest || function (s, e) {
+var __rest$r = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
   for (var p in s) {
@@ -18736,7 +18772,7 @@ var InternalSelect = function InternalSelect(_a, ref) {
       listItemHeight = _a$listItemHeight === void 0 ? 24 : _a$listItemHeight,
       customizeSize = _a.size,
       notFoundContent = _a.notFoundContent,
-      props = __rest$q(_a, ["prefixCls", "bordered", "className", "getPopupContainer", "dropdownClassName", "listHeight", "listItemHeight", "size", "notFoundContent"]);
+      props = __rest$r(_a, ["prefixCls", "bordered", "className", "getPopupContainer", "dropdownClassName", "listHeight", "listItemHeight", "size", "notFoundContent"]);
 
   var _React$useContext = React.useContext(ConfigContext),
       getContextPopupContainer = _React$useContext.getPopupContainer,
@@ -18775,7 +18811,7 @@ var InternalSelect = function InternalSelect(_a, ref) {
   } // ===================== Icons =====================
 
 
-  var _getIcons = getIcons(_extends$1(_extends$1({}, props), {
+  var _getIcons = getIcons(_extends$2(_extends$2({}, props), {
     multiple: isMultiple,
     prefixCls: prefixCls
   })),
@@ -18788,7 +18824,7 @@ var InternalSelect = function InternalSelect(_a, ref) {
   var rcSelectRtlDropDownClassName = classnames(dropdownClassName, _defineProperty$4({}, "".concat(prefixCls, "-dropdown-").concat(direction), direction === 'rtl'));
   var mergedSize = customizeSize || size;
   var mergedClassName = classnames((_classNames2 = {}, _defineProperty$4(_classNames2, "".concat(prefixCls, "-lg"), mergedSize === 'large'), _defineProperty$4(_classNames2, "".concat(prefixCls, "-sm"), mergedSize === 'small'), _defineProperty$4(_classNames2, "".concat(prefixCls, "-rtl"), direction === 'rtl'), _defineProperty$4(_classNames2, "".concat(prefixCls, "-borderless"), !bordered), _classNames2), className);
-  return /*#__PURE__*/React.createElement(Select$3, _extends$1({
+  return /*#__PURE__*/React.createElement(Select$3, _extends$2({
     ref: ref,
     virtual: virtual,
     dropdownMatchSelectWidth: dropdownMatchSelectWidth
@@ -18885,7 +18921,7 @@ var responsiveObserve = {
       var listener = function listener(_ref) {
         var matches = _ref.matches;
 
-        _this2.dispatch(_extends$1(_extends$1({}, screens), _defineProperty$4({}, screen, matches)));
+        _this2.dispatch(_extends$2(_extends$2({}, screens), _defineProperty$4({}, screen, matches)));
       };
 
       var mql = window.matchMedia(matchMediaQuery);
@@ -19076,7 +19112,7 @@ var Tooltip$1 = function Tooltip(props, ref) {
     autoDestroy = keepParent === false;
   }
 
-  return /*#__PURE__*/React.createElement(Trigger, _extends$1({
+  return /*#__PURE__*/React.createElement(Trigger, _extends$2({
     popupClassName: overlayClassName,
     prefixCls: prefixCls,
     popup: getPopupElement,
@@ -19116,7 +19152,7 @@ function getOverflowOptions(autoAdjustOverflow) {
     return autoAdjustOverflow ? autoAdjustOverflowEnabled : autoAdjustOverflowDisabled;
   }
 
-  return _extends$1(_extends$1({}, autoAdjustOverflowDisabled), autoAdjustOverflow);
+  return _extends$2(_extends$2({}, autoAdjustOverflowDisabled), autoAdjustOverflow);
 }
 function getPlacements(config) {
   var _config$arrowWidth = config.arrowWidth,
@@ -19177,10 +19213,10 @@ function getPlacements(config) {
     }
   };
   Object.keys(placementMap).forEach(function (key) {
-    placementMap[key] = config.arrowPointAtCenter ? _extends$1(_extends$1({}, placementMap[key]), {
+    placementMap[key] = config.arrowPointAtCenter ? _extends$2(_extends$2({}, placementMap[key]), {
       overflow: getOverflowOptions(autoAdjustOverflow),
       targetOffset: targetOffset$1
-    }) : _extends$1(_extends$1({}, placements$2[key]), {
+    }) : _extends$2(_extends$2({}, placements$2[key]), {
       overflow: getOverflowOptions(autoAdjustOverflow)
     });
     placementMap[key].ignoreShake = true;
@@ -19201,10 +19237,23 @@ var PresetStatusColorTypes = tuple$1('success', 'processing', 'error', 'default'
 
 var PresetColorTypes = tuple$1('pink', 'red', 'yellow', 'orange', 'cyan', 'green', 'blue', 'purple', 'geekblue', 'magenta', 'volcano', 'gold', 'lime');
 
+var __rest$q = undefined && undefined.__rest || function (s, e) {
+  var t = {};
+
+  for (var p in s) {
+    if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
+  }
+
+  if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+    if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i])) t[p[i]] = s[p[i]];
+  }
+  return t;
+};
+
 var splitObject = function splitObject(obj, keys) {
   var picked = {};
 
-  var omitted = _extends$1({}, obj);
+  var omitted = _extends$2({}, obj);
 
   keys.forEach(function (key) {
     if (obj && key in obj) {
@@ -19232,14 +19281,14 @@ function getDisabledCompatibleChildren(element, prefixCls) {
         picked = _splitObject.picked,
         omitted = _splitObject.omitted;
 
-    var spanStyle = _extends$1(_extends$1({
+    var spanStyle = _extends$2(_extends$2({
       display: 'inline-block'
     }, picked), {
       cursor: 'not-allowed',
       width: element.props.block ? '100%' : null
     });
 
-    var buttonStyle = _extends$1(_extends$1({}, omitted), {
+    var buttonStyle = _extends$2(_extends$2({}, omitted), {
       pointerEvents: 'none'
     });
 
@@ -19343,9 +19392,11 @@ var Tooltip = /*#__PURE__*/React.forwardRef(function (props, ref) {
     return overlay || title || '';
   };
 
+  var getPopupContainer = props.getPopupContainer,
+      otherProps = __rest$q(props, ["getPopupContainer"]);
+
   var customizePrefixCls = props.prefixCls,
       openClassName = props.openClassName,
-      getPopupContainer = props.getPopupContainer,
       getTooltipContainer = props.getTooltipContainer,
       overlayClassName = props.overlayClassName,
       color = props.color,
@@ -19367,7 +19418,7 @@ var Tooltip = /*#__PURE__*/React.forwardRef(function (props, ref) {
   var arrowContentStyle;
 
   if (color && !PresetColorRegex$1.test(color)) {
-    formattedOverlayInnerStyle = _extends$1(_extends$1({}, overlayInnerStyle), {
+    formattedOverlayInnerStyle = _extends$2(_extends$2({}, overlayInnerStyle), {
       background: color
     });
     arrowContentStyle = {
@@ -19375,7 +19426,7 @@ var Tooltip = /*#__PURE__*/React.forwardRef(function (props, ref) {
     };
   }
 
-  return /*#__PURE__*/React.createElement(Tooltip$2, _extends$1({}, props, {
+  return /*#__PURE__*/React.createElement(Tooltip$2, _extends$2({}, otherProps, {
     prefixCls: prefixCls,
     overlayClassName: customOverlayClassName,
     getTooltipContainer: getPopupContainer || getTooltipContainer || getContextPopupContainer,
@@ -19690,7 +19741,7 @@ var ButtonGroup$1 = function ButtonGroup(props) {
     }
 
     var classes = classnames(prefixCls, (_classNames = {}, _defineProperty$4(_classNames, "".concat(prefixCls, "-").concat(sizeCls), sizeCls), _defineProperty$4(_classNames, "".concat(prefixCls, "-rtl"), direction === 'rtl'), _classNames), className);
-    return /*#__PURE__*/React.createElement("div", _extends$1({}, others, {
+    return /*#__PURE__*/React.createElement("div", _extends$2({}, others, {
       className: classes
     }));
   });
@@ -20021,6 +20072,10 @@ function isString$1(str) {
 
 function isUnborderedButtonType(type) {
   return type === 'text' || type === 'link';
+}
+
+function isReactFragment(node) {
+  return /*#__PURE__*/React.isValidElement(node) && node.type === React.Fragment;
 } // Insert one space between two chinese characters automatically.
 
 
@@ -20039,10 +20094,10 @@ function insertSpace(child, needInserted) {
   }
 
   if (typeof child === 'string') {
-    if (isTwoCNChar(child)) {
-      child = child.split('').join(SPACE);
-    }
+    return isTwoCNChar(child) ? /*#__PURE__*/React.createElement("span", null, child.split('').join(SPACE)) : /*#__PURE__*/React.createElement("span", null, child);
+  }
 
+  if (isReactFragment(child)) {
     return /*#__PURE__*/React.createElement("span", null, child);
   }
 
@@ -20215,14 +20270,14 @@ var InternalButton = function InternalButton(props, ref) {
   var linkButtonRestProps = omit(rest, ['navigate']);
 
   if (linkButtonRestProps.href !== undefined) {
-    return /*#__PURE__*/React.createElement("a", _extends$1({}, linkButtonRestProps, {
+    return /*#__PURE__*/React.createElement("a", _extends$2({}, linkButtonRestProps, {
       className: classes,
       onClick: handleClick,
       ref: buttonRef
     }), iconNode, kids);
   }
 
-  var buttonNode = /*#__PURE__*/React.createElement("button", _extends$1({}, rest, {
+  var buttonNode = /*#__PURE__*/React.createElement("button", _extends$2({}, rest, {
     type: htmlType,
     className: classes,
     onClick: handleClick,
@@ -20324,7 +20379,7 @@ var DropdownButton = function DropdownButton(props) {
       leftButtonToRender = _buttonsRender2[0],
       rightButtonToRender = _buttonsRender2[1];
 
-  return /*#__PURE__*/React.createElement(ButtonGroup, _extends$1({}, restProps, {
+  return /*#__PURE__*/React.createElement(ButtonGroup, _extends$2({}, restProps, {
     className: classnames(prefixCls, className)
   }), leftButtonToRender, /*#__PURE__*/React.createElement(Dropdown$1, dropdownProps, rightButtonToRender));
 };
@@ -20426,7 +20481,7 @@ var Dropdown$1 = function Dropdown(props) {
     alignPoint = true;
   }
 
-  return /*#__PURE__*/React.createElement(Dropdown$3, _extends$1({
+  return /*#__PURE__*/React.createElement(Dropdown$3, _extends$2({
     arrow: arrow,
     alignPoint: alignPoint
   }, props, {
@@ -20666,7 +20721,7 @@ var LegacyMenuItem = /*#__PURE__*/function (_React$Component) {
 
       var passedProps = omit(restProps, ['eventKey']);
       warningOnce(!attribute, '`attribute` of Menu.Item is deprecated. Please pass attribute directly.');
-      return /*#__PURE__*/React.createElement(ForwardOverflow.Item, _extends$1({}, attribute, {
+      return /*#__PURE__*/React.createElement(ForwardOverflow.Item, _extends$2({}, attribute, {
         title: typeof title === 'string' ? title : undefined
       }, passedProps, {
         ref: elementRef
@@ -20781,7 +20836,7 @@ var InternalMenuItem = function InternalMenuItem(props) {
     optionRoleProps['aria-selected'] = selected;
   }
 
-  return /*#__PURE__*/React.createElement(LegacyMenuItem, _extends$1({
+  return /*#__PURE__*/React.createElement(LegacyMenuItem, _extends$2({
     ref: legacyMenuItemRef,
     elementRef: elementRef,
     role: role === null ? 'none' : role || 'menuitem',
@@ -20884,7 +20939,7 @@ var InternalSubMenuList = function InternalSubMenuList(_ref, ref) {
       prefixCls = _React$useContext.prefixCls,
       mode = _React$useContext.mode;
 
-  return /*#__PURE__*/React.createElement("ul", _extends$1({
+  return /*#__PURE__*/React.createElement("ul", _extends$2({
     className: classnames(prefixCls, "".concat(prefixCls, "-sub"), "".concat(prefixCls, "-").concat(mode === 'inline' ? 'inline' : 'vertical'), className)
   }, restProps, {
     "data-menu-list": true,
@@ -21088,7 +21143,7 @@ function InlineSubMenuList(_ref) {
   return /*#__PURE__*/React.createElement(InheritableContextProvider, {
     mode: fixedMode,
     locked: !sameModeRef.current
-  }, /*#__PURE__*/React.createElement(CSSMotion, _extends$1({
+  }, /*#__PURE__*/React.createElement(CSSMotion, _extends$2({
     visible: mergedOpen
   }, mergedMotion, {
     forceRender: forceSubMenuRender,
@@ -21253,7 +21308,7 @@ var InternalSubMenu = function InternalSubMenu(props) {
 
   var popupId = domDataId && "".concat(domDataId, "-popup"); // >>>>> Title
 
-  var titleNode = /*#__PURE__*/React.createElement("div", _extends$1({
+  var titleNode = /*#__PURE__*/React.createElement("div", _extends$2({
     role: "menuitem",
     style: directionStyle,
     className: "".concat(subMenuPrefixCls, "-title"),
@@ -21312,7 +21367,7 @@ var InternalSubMenu = function InternalSubMenu(props) {
     mode: mode === 'horizontal' ? 'vertical' : mode,
     itemIcon: mergedItemIcon,
     expandIcon: mergedExpandIcon
-  }, /*#__PURE__*/React.createElement(ForwardOverflow.Item, _extends$1({
+  }, /*#__PURE__*/React.createElement(ForwardOverflow.Item, _extends$2({
     role: "none"
   }, restProps, {
     component: "li",
@@ -21877,13 +21932,14 @@ var Menu$1 = function Menu(props) {
       expandIcon = props.expandIcon,
       _props$overflowedIndi = props.overflowedIndicator,
       overflowedIndicator = _props$overflowedIndi === void 0 ? '...' : _props$overflowedIndi,
+      overflowedIndicatorPopupClassName = props.overflowedIndicatorPopupClassName,
       getPopupContainer = props.getPopupContainer,
       onClick = props.onClick,
       onOpenChange = props.onOpenChange,
       onKeyDown = props.onKeyDown,
       openAnimation = props.openAnimation,
       openTransitionName = props.openTransitionName,
-      restProps = _objectWithoutProperties$1(props, ["prefixCls", "style", "className", "tabIndex", "children", "direction", "id", "mode", "inlineCollapsed", "disabled", "disabledOverflow", "subMenuOpenDelay", "subMenuCloseDelay", "forceSubMenuRender", "defaultOpenKeys", "openKeys", "activeKey", "defaultActiveFirst", "selectable", "multiple", "defaultSelectedKeys", "selectedKeys", "onSelect", "onDeselect", "inlineIndent", "motion", "defaultMotions", "triggerSubMenuAction", "builtinPlacements", "itemIcon", "expandIcon", "overflowedIndicator", "getPopupContainer", "onClick", "onOpenChange", "onKeyDown", "openAnimation", "openTransitionName"]);
+      restProps = _objectWithoutProperties$1(props, ["prefixCls", "style", "className", "tabIndex", "children", "direction", "id", "mode", "inlineCollapsed", "disabled", "disabledOverflow", "subMenuOpenDelay", "subMenuCloseDelay", "forceSubMenuRender", "defaultOpenKeys", "openKeys", "activeKey", "defaultActiveFirst", "selectable", "multiple", "defaultSelectedKeys", "selectedKeys", "onSelect", "onDeselect", "inlineIndent", "motion", "defaultMotions", "triggerSubMenuAction", "builtinPlacements", "itemIcon", "expandIcon", "overflowedIndicator", "overflowedIndicatorPopupClassName", "getPopupContainer", "onClick", "onOpenChange", "onKeyDown", "openAnimation", "openTransitionName"]);
 
   var childList = parseChildren(children, EMPTY_LIST$1);
 
@@ -22117,7 +22173,7 @@ var Menu$1 = function Menu(props) {
     );
   }); // >>>>> Container
 
-  var container = /*#__PURE__*/React.createElement(ForwardOverflow, _extends$1({
+  var container = /*#__PURE__*/React.createElement(ForwardOverflow, _extends$2({
     id: id,
     ref: containerRef,
     prefixCls: "".concat(prefixCls, "-overflow"),
@@ -22140,7 +22196,8 @@ var Menu$1 = function Menu(props) {
         eventKey: OVERFLOW_KEY,
         title: overflowedIndicator,
         disabled: allVisible,
-        internalPopupClose: len === 0
+        internalPopupClose: len === 0,
+        popupClassName: overflowedIndicatorPopupClassName
       }, originOmitItems);
     },
     maxCount: mergedMode !== 'horizontal' || disabledOverflow ? ForwardOverflow.INVALIDATE : ForwardOverflow.RESPONSIVE,
@@ -22208,7 +22265,7 @@ var InternalMenuItemGroup = function InternalMenuItemGroup(_ref) {
       prefixCls = _React$useContext.prefixCls;
 
   var groupPrefixCls = "".concat(prefixCls, "-item-group");
-  return /*#__PURE__*/React.createElement("li", _extends$1({}, restProps, {
+  return /*#__PURE__*/React.createElement("li", _extends$2({}, restProps, {
     onClick: function onClick(e) {
       return e.stopPropagation();
     },
@@ -22233,7 +22290,7 @@ function MenuItemGroup(_ref2) {
     return childList;
   }
 
-  return /*#__PURE__*/React.createElement(InternalMenuItemGroup, props, childList);
+  return /*#__PURE__*/React.createElement(InternalMenuItemGroup, omit(props, ['warnKey']), childList);
 }
 
 function Divider(_ref) {
@@ -22263,261 +22320,6 @@ ExportMenu.Item = MenuItem$3;
 ExportMenu.SubMenu = SubMenu$2;
 ExportMenu.ItemGroup = MenuItemGroup;
 ExportMenu.Divider = Divider;
-
-// This icon file is generated automatically.
-var BarsOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "0 0 1024 1024", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M912 192H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM104 228a56 56 0 10112 0 56 56 0 10-112 0zm0 284a56 56 0 10112 0 56 56 0 10-112 0zm0 284a56 56 0 10112 0 56 56 0 10-112 0z" } }] }, "name": "bars", "theme": "outlined" };
-
-// GENERATE BY ./scripts/generate.ts
-
-var BarsOutlined = function BarsOutlined(props, ref) {
-  return /*#__PURE__*/React.createElement(Icon$1, Object.assign({}, props, {
-    ref: ref,
-    icon: BarsOutlined$2
-  }));
-};
-
-BarsOutlined.displayName = 'BarsOutlined';
-var BarsOutlined$1 = /*#__PURE__*/React.forwardRef(BarsOutlined);
-
-// This icon file is generated automatically.
-var CalendarOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z" } }] }, "name": "calendar", "theme": "outlined" };
-
-// GENERATE BY ./scripts/generate.ts
-
-var CalendarOutlined = function CalendarOutlined(props, ref) {
-  return /*#__PURE__*/React.createElement(Icon$1, Object.assign({}, props, {
-    ref: ref,
-    icon: CalendarOutlined$2
-  }));
-};
-
-CalendarOutlined.displayName = 'CalendarOutlined';
-var CalendarOutlined$1 = /*#__PURE__*/React.forwardRef(CalendarOutlined);
-
-// This icon file is generated automatically.
-var CaretDownFilled$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "0 0 1024 1024", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M840.4 300H183.6c-19.7 0-30.7 20.8-18.5 35l328.4 380.8c9.4 10.9 27.5 10.9 37 0L858.9 335c12.2-14.2 1.2-35-18.5-35z" } }] }, "name": "caret-down", "theme": "filled" };
-
-// GENERATE BY ./scripts/generate.ts
-
-var CaretDownFilled = function CaretDownFilled(props, ref) {
-  return /*#__PURE__*/React.createElement(Icon$1, Object.assign({}, props, {
-    ref: ref,
-    icon: CaretDownFilled$2
-  }));
-};
-
-CaretDownFilled.displayName = 'CaretDownFilled';
-var CaretDownFilled$1 = /*#__PURE__*/React.forwardRef(CaretDownFilled);
-
-// This icon file is generated automatically.
-var CaretDownOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "0 0 1024 1024", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M840.4 300H183.6c-19.7 0-30.7 20.8-18.5 35l328.4 380.8c9.4 10.9 27.5 10.9 37 0L858.9 335c12.2-14.2 1.2-35-18.5-35z" } }] }, "name": "caret-down", "theme": "outlined" };
-
-// GENERATE BY ./scripts/generate.ts
-
-var CaretDownOutlined = function CaretDownOutlined(props, ref) {
-  return /*#__PURE__*/React.createElement(Icon$1, Object.assign({}, props, {
-    ref: ref,
-    icon: CaretDownOutlined$2
-  }));
-};
-
-CaretDownOutlined.displayName = 'CaretDownOutlined';
-var CaretDownOutlined$1 = /*#__PURE__*/React.forwardRef(CaretDownOutlined);
-
-// This icon file is generated automatically.
-var CaretRightOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "0 0 1024 1024", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M715.8 493.5L335 165.1c-14.2-12.2-35-1.2-35 18.5v656.8c0 19.7 20.8 30.7 35 18.5l380.8-328.4c10.9-9.4 10.9-27.6 0-37z" } }] }, "name": "caret-right", "theme": "outlined" };
-
-// GENERATE BY ./scripts/generate.ts
-
-var CaretRightOutlined = function CaretRightOutlined(props, ref) {
-  return /*#__PURE__*/React.createElement(Icon$1, Object.assign({}, props, {
-    ref: ref,
-    icon: CaretRightOutlined$2
-  }));
-};
-
-CaretRightOutlined.displayName = 'CaretRightOutlined';
-var CaretRightOutlined$1 = /*#__PURE__*/React.forwardRef(CaretRightOutlined);
-
-// This icon file is generated automatically.
-var CaretUpOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "0 0 1024 1024", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M858.9 689L530.5 308.2c-9.4-10.9-27.5-10.9-37 0L165.1 689c-12.2 14.2-1.2 35 18.5 35h656.8c19.7 0 30.7-20.8 18.5-35z" } }] }, "name": "caret-up", "theme": "outlined" };
-
-// GENERATE BY ./scripts/generate.ts
-
-var CaretUpOutlined = function CaretUpOutlined(props, ref) {
-  return /*#__PURE__*/React.createElement(Icon$1, Object.assign({}, props, {
-    ref: ref,
-    icon: CaretUpOutlined$2
-  }));
-};
-
-CaretUpOutlined.displayName = 'CaretUpOutlined';
-var CaretUpOutlined$1 = /*#__PURE__*/React.forwardRef(CaretUpOutlined);
-
-// This icon file is generated automatically.
-var ClockCircleOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z" } }, { "tag": "path", "attrs": { "d": "M686.7 638.6L544.1 535.5V288c0-4.4-3.6-8-8-8H488c-4.4 0-8 3.6-8 8v275.4c0 2.6 1.2 5 3.3 6.5l165.4 120.6c3.6 2.6 8.6 1.8 11.2-1.7l28.6-39c2.6-3.7 1.8-8.7-1.8-11.2z" } }] }, "name": "clock-circle", "theme": "outlined" };
-
-// GENERATE BY ./scripts/generate.ts
-
-var ClockCircleOutlined = function ClockCircleOutlined(props, ref) {
-  return /*#__PURE__*/React.createElement(Icon$1, Object.assign({}, props, {
-    ref: ref,
-    icon: ClockCircleOutlined$2
-  }));
-};
-
-ClockCircleOutlined.displayName = 'ClockCircleOutlined';
-var ClockCircleOutlined$1 = /*#__PURE__*/React.forwardRef(ClockCircleOutlined);
-
-// This icon file is generated automatically.
-var DoubleLeftOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M272.9 512l265.4-339.1c4.1-5.2.4-12.9-6.3-12.9h-77.3c-4.9 0-9.6 2.3-12.6 6.1L186.8 492.3a31.99 31.99 0 000 39.5l255.3 326.1c3 3.9 7.7 6.1 12.6 6.1H532c6.7 0 10.4-7.7 6.3-12.9L272.9 512zm304 0l265.4-339.1c4.1-5.2.4-12.9-6.3-12.9h-77.3c-4.9 0-9.6 2.3-12.6 6.1L490.8 492.3a31.99 31.99 0 000 39.5l255.3 326.1c3 3.9 7.7 6.1 12.6 6.1H836c6.7 0 10.4-7.7 6.3-12.9L576.9 512z" } }] }, "name": "double-left", "theme": "outlined" };
-
-// GENERATE BY ./scripts/generate.ts
-
-var DoubleLeftOutlined = function DoubleLeftOutlined(props, ref) {
-  return /*#__PURE__*/React.createElement(Icon$1, Object.assign({}, props, {
-    ref: ref,
-    icon: DoubleLeftOutlined$2
-  }));
-};
-
-DoubleLeftOutlined.displayName = 'DoubleLeftOutlined';
-var DoubleLeftOutlined$1 = /*#__PURE__*/React.forwardRef(DoubleLeftOutlined);
-
-// This icon file is generated automatically.
-var DoubleRightOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M533.2 492.3L277.9 166.1c-3-3.9-7.7-6.1-12.6-6.1H188c-6.7 0-10.4 7.7-6.3 12.9L447.1 512 181.7 851.1A7.98 7.98 0 00188 864h77.3c4.9 0 9.6-2.3 12.6-6.1l255.3-326.1c9.1-11.7 9.1-27.9 0-39.5zm304 0L581.9 166.1c-3-3.9-7.7-6.1-12.6-6.1H492c-6.7 0-10.4 7.7-6.3 12.9L751.1 512 485.7 851.1A7.98 7.98 0 00492 864h77.3c4.9 0 9.6-2.3 12.6-6.1l255.3-326.1c9.1-11.7 9.1-27.9 0-39.5z" } }] }, "name": "double-right", "theme": "outlined" };
-
-// GENERATE BY ./scripts/generate.ts
-
-var DoubleRightOutlined = function DoubleRightOutlined(props, ref) {
-  return /*#__PURE__*/React.createElement(Icon$1, Object.assign({}, props, {
-    ref: ref,
-    icon: DoubleRightOutlined$2
-  }));
-};
-
-DoubleRightOutlined.displayName = 'DoubleRightOutlined';
-var DoubleRightOutlined$1 = /*#__PURE__*/React.forwardRef(DoubleRightOutlined);
-
-// This icon file is generated automatically.
-var EyeInvisibleOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M942.2 486.2Q889.47 375.11 816.7 305l-50.88 50.88C807.31 395.53 843.45 447.4 874.7 512 791.5 684.2 673.4 766 512 766q-72.67 0-133.87-22.38L323 798.75Q408 838 512 838q288.3 0 430.2-300.3a60.29 60.29 0 000-51.5zm-63.57-320.64L836 122.88a8 8 0 00-11.32 0L715.31 232.2Q624.86 186 512 186q-288.3 0-430.2 300.3a60.3 60.3 0 000 51.5q56.69 119.4 136.5 191.41L112.48 835a8 8 0 000 11.31L155.17 889a8 8 0 0011.31 0l712.15-712.12a8 8 0 000-11.32zM149.3 512C232.6 339.8 350.7 258 512 258c54.54 0 104.13 9.36 149.12 28.39l-70.3 70.3a176 176 0 00-238.13 238.13l-83.42 83.42C223.1 637.49 183.3 582.28 149.3 512zm246.7 0a112.11 112.11 0 01146.2-106.69L401.31 546.2A112 112 0 01396 512z" } }, { "tag": "path", "attrs": { "d": "M508 624c-3.46 0-6.87-.16-10.25-.47l-52.82 52.82a176.09 176.09 0 00227.42-227.42l-52.82 52.82c.31 3.38.47 6.79.47 10.25a111.94 111.94 0 01-112 112z" } }] }, "name": "eye-invisible", "theme": "outlined" };
-
-// GENERATE BY ./scripts/generate.ts
-
-var EyeInvisibleOutlined = function EyeInvisibleOutlined(props, ref) {
-  return /*#__PURE__*/React.createElement(Icon$1, Object.assign({}, props, {
-    ref: ref,
-    icon: EyeInvisibleOutlined$2
-  }));
-};
-
-EyeInvisibleOutlined.displayName = 'EyeInvisibleOutlined';
-var EyeInvisibleOutlined$1 = /*#__PURE__*/React.forwardRef(EyeInvisibleOutlined);
-
-// This icon file is generated automatically.
-var EyeOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M942.2 486.2C847.4 286.5 704.1 186 512 186c-192.2 0-335.4 100.5-430.2 300.3a60.3 60.3 0 000 51.5C176.6 737.5 319.9 838 512 838c192.2 0 335.4-100.5 430.2-300.3 7.7-16.2 7.7-35 0-51.5zM512 766c-161.3 0-279.4-81.8-362.7-254C232.6 339.8 350.7 258 512 258c161.3 0 279.4 81.8 362.7 254C791.5 684.2 673.4 766 512 766zm-4-430c-97.2 0-176 78.8-176 176s78.8 176 176 176 176-78.8 176-176-78.8-176-176-176zm0 288c-61.9 0-112-50.1-112-112s50.1-112 112-112 112 50.1 112 112-50.1 112-112 112z" } }] }, "name": "eye", "theme": "outlined" };
-
-// GENERATE BY ./scripts/generate.ts
-
-var EyeOutlined = function EyeOutlined(props, ref) {
-  return /*#__PURE__*/React.createElement(Icon$1, Object.assign({}, props, {
-    ref: ref,
-    icon: EyeOutlined$2
-  }));
-};
-
-EyeOutlined.displayName = 'EyeOutlined';
-var EyeOutlined$1 = /*#__PURE__*/React.forwardRef(EyeOutlined);
-
-// This icon file is generated automatically.
-var FileOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M854.6 288.6L639.4 73.4c-6-6-14.1-9.4-22.6-9.4H192c-17.7 0-32 14.3-32 32v832c0 17.7 14.3 32 32 32h640c17.7 0 32-14.3 32-32V311.3c0-8.5-3.4-16.7-9.4-22.7zM790.2 326H602V137.8L790.2 326zm1.8 562H232V136h302v216a42 42 0 0042 42h216v494z" } }] }, "name": "file", "theme": "outlined" };
-
-// GENERATE BY ./scripts/generate.ts
-
-var FileOutlined = function FileOutlined(props, ref) {
-  return /*#__PURE__*/React.createElement(Icon$1, Object.assign({}, props, {
-    ref: ref,
-    icon: FileOutlined$2
-  }));
-};
-
-FileOutlined.displayName = 'FileOutlined';
-var FileOutlined$1 = /*#__PURE__*/React.forwardRef(FileOutlined);
-
-// This icon file is generated automatically.
-var FilterFilled$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M349 838c0 17.7 14.2 32 31.8 32h262.4c17.6 0 31.8-14.3 31.8-32V642H349v196zm531.1-684H143.9c-24.5 0-39.8 26.7-27.5 48l221.3 376h348.8l221.3-376c12.1-21.3-3.2-48-27.7-48z" } }] }, "name": "filter", "theme": "filled" };
-
-// GENERATE BY ./scripts/generate.ts
-
-var FilterFilled = function FilterFilled(props, ref) {
-  return /*#__PURE__*/React.createElement(Icon$1, Object.assign({}, props, {
-    ref: ref,
-    icon: FilterFilled$2
-  }));
-};
-
-FilterFilled.displayName = 'FilterFilled';
-var FilterFilled$1 = /*#__PURE__*/React.forwardRef(FilterFilled);
-
-// This icon file is generated automatically.
-var LeftOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 000 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z" } }] }, "name": "left", "theme": "outlined" };
-
-// GENERATE BY ./scripts/generate.ts
-
-var LeftOutlined = function LeftOutlined(props, ref) {
-  return /*#__PURE__*/React.createElement(Icon$1, Object.assign({}, props, {
-    ref: ref,
-    icon: LeftOutlined$2
-  }));
-};
-
-LeftOutlined.displayName = 'LeftOutlined';
-var LeftOutlined$1 = /*#__PURE__*/React.forwardRef(LeftOutlined);
-
-// This icon file is generated automatically.
-var MinusSquareOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M328 544h368c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8H328c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8z" } }, { "tag": "path", "attrs": { "d": "M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656z" } }] }, "name": "minus-square", "theme": "outlined" };
-
-// GENERATE BY ./scripts/generate.ts
-
-var MinusSquareOutlined = function MinusSquareOutlined(props, ref) {
-  return /*#__PURE__*/React.createElement(Icon$1, Object.assign({}, props, {
-    ref: ref,
-    icon: MinusSquareOutlined$2
-  }));
-};
-
-MinusSquareOutlined.displayName = 'MinusSquareOutlined';
-var MinusSquareOutlined$1 = /*#__PURE__*/React.forwardRef(MinusSquareOutlined);
-
-// This icon file is generated automatically.
-var PlusSquareOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M328 544h152v152c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V544h152c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8H544V328c0-4.4-3.6-8-8-8h-48c-4.4 0-8 3.6-8 8v152H328c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8z" } }, { "tag": "path", "attrs": { "d": "M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656z" } }] }, "name": "plus-square", "theme": "outlined" };
-
-// GENERATE BY ./scripts/generate.ts
-
-var PlusSquareOutlined = function PlusSquareOutlined(props, ref) {
-  return /*#__PURE__*/React.createElement(Icon$1, Object.assign({}, props, {
-    ref: ref,
-    icon: PlusSquareOutlined$2
-  }));
-};
-
-PlusSquareOutlined.displayName = 'PlusSquareOutlined';
-var PlusSquareOutlined$1 = /*#__PURE__*/React.forwardRef(PlusSquareOutlined);
-
-// This icon file is generated automatically.
-var SwapRightOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "0 0 1024 1024", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M873.1 596.2l-164-208A32 32 0 00684 376h-64.8c-6.7 0-10.4 7.7-6.3 13l144.3 183H152c-4.4 0-8 3.6-8 8v60c0 4.4 3.6 8 8 8h695.9c26.8 0 41.7-30.8 25.2-51.8z" } }] }, "name": "swap-right", "theme": "outlined" };
-
-// GENERATE BY ./scripts/generate.ts
-
-var SwapRightOutlined = function SwapRightOutlined(props, ref) {
-  return /*#__PURE__*/React.createElement(Icon$1, Object.assign({}, props, {
-    ref: ref,
-    icon: SwapRightOutlined$2
-  }));
-};
-
-SwapRightOutlined.displayName = 'SwapRightOutlined';
-var SwapRightOutlined$1 = /*#__PURE__*/React.forwardRef(SwapRightOutlined);
 
 var MenuContext = /*#__PURE__*/createContext({
   prefixCls: '',
@@ -22556,14 +22358,44 @@ function SubMenu$1(props) {
   }
 
   return /*#__PURE__*/React.createElement(MenuContext.Provider, {
-    value: _extends$1(_extends$1({}, context), {
+    value: _extends$2(_extends$2({}, context), {
       firstLevel: false
     })
-  }, /*#__PURE__*/React.createElement(SubMenu$2, _extends$1({}, omit(props, ['icon']), {
+  }, /*#__PURE__*/React.createElement(SubMenu$2, _extends$2({}, omit(props, ['icon']), {
     title: titleNode,
     popupClassName: classnames(prefixCls, "".concat(prefixCls, "-").concat(antdMenuTheme), popupClassName)
   })));
 }
+
+// This icon file is generated automatically.
+var BarsOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "0 0 1024 1024", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M912 192H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM104 228a56 56 0 10112 0 56 56 0 10-112 0zm0 284a56 56 0 10112 0 56 56 0 10-112 0zm0 284a56 56 0 10112 0 56 56 0 10-112 0z" } }] }, "name": "bars", "theme": "outlined" };
+
+// GENERATE BY ./scripts/generate.ts
+
+var BarsOutlined = function BarsOutlined(props, ref) {
+  return /*#__PURE__*/React.createElement(Icon$1, Object.assign({}, props, {
+    ref: ref,
+    icon: BarsOutlined$2
+  }));
+};
+
+BarsOutlined.displayName = 'BarsOutlined';
+var BarsOutlined$1 = /*#__PURE__*/React.forwardRef(BarsOutlined);
+
+// This icon file is generated automatically.
+var LeftOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 000 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z" } }] }, "name": "left", "theme": "outlined" };
+
+// GENERATE BY ./scripts/generate.ts
+
+var LeftOutlined = function LeftOutlined(props, ref) {
+  return /*#__PURE__*/React.createElement(Icon$1, Object.assign({}, props, {
+    ref: ref,
+    icon: LeftOutlined$2
+  }));
+};
+
+LeftOutlined.displayName = 'LeftOutlined';
+var LeftOutlined$1 = /*#__PURE__*/React.forwardRef(LeftOutlined);
 
 var __rest$m = undefined && undefined.__rest || function (s, e) {
   var t = {};
@@ -22599,7 +22431,7 @@ function generator(_ref) {
 
       var customizePrefixCls = props.prefixCls;
       var prefixCls = getPrefixCls(suffixCls, customizePrefixCls);
-      return /*#__PURE__*/React.createElement(BasicComponent, _extends$1({
+      return /*#__PURE__*/React.createElement(BasicComponent, _extends$2({
         prefixCls: prefixCls,
         tagName: tagName
       }, props));
@@ -22618,7 +22450,7 @@ var Basic = function Basic(props) {
       others = __rest$m(props, ["prefixCls", "className", "children", "tagName"]);
 
   var classString = classnames(prefixCls, className);
-  return /*#__PURE__*/React.createElement(tagName, _extends$1({
+  return /*#__PURE__*/React.createElement(tagName, _extends$2({
     className: classString
   }, others), children);
 };
@@ -22659,7 +22491,7 @@ var BasicLayout = function BasicLayout(props) {
         }
       }
     }
-  }, /*#__PURE__*/React.createElement(Tag, _extends$1({
+  }, /*#__PURE__*/React.createElement(Tag, _extends$2({
     className: classString
   }, others), children));
 };
@@ -22859,7 +22691,7 @@ var Sider = /*#__PURE__*/React.forwardRef(function (_a, ref) {
       }
     }, trigger || defaultTrigger) : null;
 
-    var divStyle = _extends$1(_extends$1({}, style), {
+    var divStyle = _extends$2(_extends$2({}, style), {
       flex: "0 0 ".concat(siderWidth),
       maxWidth: siderWidth,
       minWidth: siderWidth,
@@ -22867,7 +22699,7 @@ var Sider = /*#__PURE__*/React.forwardRef(function (_a, ref) {
     });
 
     var siderCls = classnames(prefixCls, "".concat(prefixCls, "-").concat(theme), (_classNames = {}, _defineProperty$4(_classNames, "".concat(prefixCls, "-collapsed"), !!collapsed), _defineProperty$4(_classNames, "".concat(prefixCls, "-has-trigger"), collapsible && trigger !== null && !zeroWidthTrigger), _defineProperty$4(_classNames, "".concat(prefixCls, "-below"), !!below), _defineProperty$4(_classNames, "".concat(prefixCls, "-zero-width"), parseFloat(siderWidth) === 0), _classNames), className);
-    return /*#__PURE__*/React.createElement("aside", _extends$1({
+    return /*#__PURE__*/React.createElement("aside", _extends$2({
       className: siderCls
     }, divProps, {
       style: divStyle,
@@ -22952,10 +22784,10 @@ var MenuItem$2 = /*#__PURE__*/function (_React$Component) {
       }
 
       var childrenLength = toArray$6(children).length;
-      return /*#__PURE__*/React.createElement(Tooltip, _extends$1({}, tooltipProps, {
+      return /*#__PURE__*/React.createElement(Tooltip, _extends$2({}, tooltipProps, {
         placement: direction === 'rtl' ? 'left' : 'right',
         overlayClassName: "".concat(prefixCls, "-inline-collapsed-tooltip")
-      }), /*#__PURE__*/React.createElement(MenuItem$3, _extends$1({}, rest, {
+      }), /*#__PURE__*/React.createElement(MenuItem$3, _extends$2({}, rest, {
         className: classnames((_classNames = {}, _defineProperty$4(_classNames, "".concat(prefixCls, "-item-danger"), danger), _defineProperty$4(_classNames, "".concat(prefixCls, "-item-only-child"), (icon ? childrenLength + 1 : childrenLength) === 1), _classNames), className),
         title: typeof title === 'string' ? title : undefined
       }), cloneElement(icon, {
@@ -23062,9 +22894,10 @@ var InternalMenu = /*#__PURE__*/function (_React$Component) {
           direction: direction,
           firstLevel: true
         }
-      }, /*#__PURE__*/React.createElement(ExportMenu, _extends$1({
+      }, /*#__PURE__*/React.createElement(ExportMenu, _extends$2({
         getPopupContainer: getPopupContainer,
-        overflowedIndicator: /*#__PURE__*/React.createElement(EllipsisOutlined$1, null)
+        overflowedIndicator: /*#__PURE__*/React.createElement(EllipsisOutlined$1, null),
+        overflowedIndicatorPopupClassName: "".concat(prefixCls, "-").concat(theme)
       }, passedProps, {
         inlineCollapsed: inlineCollapsed,
         className: menuClassName,
@@ -23127,7 +22960,7 @@ var Menu = /*#__PURE__*/function (_React$Component2) {
       var _this2 = this;
 
       return /*#__PURE__*/React.createElement(SiderContext.Consumer, null, function (context) {
-        return /*#__PURE__*/React.createElement(InternalMenu, _extends$1({}, _this2.props, context));
+        return /*#__PURE__*/React.createElement(InternalMenu, _extends$2({}, _this2.props, context));
       });
     }
   }]);
@@ -29355,7 +29188,7 @@ function DecadeHeader(props) {
   var yearNumber = generateConfig.getYear(viewDate);
   var startYear = Math.floor(yearNumber / DECADE_DISTANCE_COUNT) * DECADE_DISTANCE_COUNT;
   var endYear = startYear + DECADE_DISTANCE_COUNT - 1;
-  return /*#__PURE__*/React.createElement(Header$2, _extends$1({}, props, {
+  return /*#__PURE__*/React.createElement(Header$2, _extends$2({}, props, {
     prefixCls: headerPrefixCls,
     onSuperPrev: onPrevDecades,
     onSuperNext: onNextDecades
@@ -29520,7 +29353,7 @@ function DecadeBody(props) {
     return _ref = {}, _defineProperty$4(_ref, "".concat(cellPrefixCls, "-in-view"), startDecadeYear <= startDecadeNumber && endDecadeNumber <= endDecadeYear), _defineProperty$4(_ref, "".concat(cellPrefixCls, "-selected"), startDecadeNumber === decadeYearNumber), _ref;
   };
 
-  return /*#__PURE__*/React.createElement(PanelBody, _extends$1({}, props, {
+  return /*#__PURE__*/React.createElement(PanelBody, _extends$2({}, props, {
     rowNum: DECADE_ROW_COUNT,
     colNum: DECADE_COL_COUNT,
     baseDate: baseDecadeYear,
@@ -29840,7 +29673,7 @@ function DecadePanel(props) {
 
   return /*#__PURE__*/React.createElement("div", {
     className: panelPrefixCls
-  }, /*#__PURE__*/React.createElement(DecadeHeader, _extends$1({}, props, {
+  }, /*#__PURE__*/React.createElement(DecadeHeader, _extends$2({}, props, {
     prefixCls: prefixCls,
     onPrevDecades: function onPrevDecades() {
       onDecadesChange(-1);
@@ -29848,7 +29681,7 @@ function DecadePanel(props) {
     onNextDecades: function onNextDecades() {
       onDecadesChange(1);
     }
-  })), /*#__PURE__*/React.createElement(DecadeBody, _extends$1({}, props, {
+  })), /*#__PURE__*/React.createElement(DecadeBody, _extends$2({}, props, {
     prefixCls: prefixCls,
     onSelect: onInternalSelect
   })));
@@ -30490,10 +30323,10 @@ function TimePanel(props) {
   };
   return /*#__PURE__*/React.createElement("div", {
     className: classnames(panelPrefixCls, _defineProperty$4({}, "".concat(panelPrefixCls, "-active"), active))
-  }, /*#__PURE__*/React.createElement(TimeHeader, _extends$1({}, props, {
+  }, /*#__PURE__*/React.createElement(TimeHeader, _extends$2({}, props, {
     format: format,
     prefixCls: prefixCls
-  })), /*#__PURE__*/React.createElement(TimeBody, _extends$1({}, props, {
+  })), /*#__PURE__*/React.createElement(TimeBody, _extends$2({}, props, {
     prefixCls: prefixCls,
     activeColumnIndex: activeColumnIndex,
     operationRef: bodyOperationRef
@@ -30598,7 +30431,7 @@ function DateBody(props) {
   var getCellNode = dateRender ? function (date) {
     return dateRender(date, today);
   } : undefined;
-  return /*#__PURE__*/React.createElement(PanelBody, _extends$1({}, props, {
+  return /*#__PURE__*/React.createElement(PanelBody, _extends$2({}, props, {
     rowNum: rowCount,
     colNum: WEEK_DAY_COUNT,
     baseDate: baseDate,
@@ -30663,7 +30496,7 @@ function DateHeader(props) {
     generateConfig: generateConfig
   }) : monthsLocale[month]);
   var monthYearNodes = locale.monthBeforeYear ? [monthNode, yearNode] : [yearNode, monthNode];
-  return /*#__PURE__*/React.createElement(Header$2, _extends$1({}, props, {
+  return /*#__PURE__*/React.createElement(Header$2, _extends$2({}, props, {
     prefixCls: headerPrefixCls,
     onSuperPrev: onPrevYear,
     onPrev: onPrevMonth,
@@ -30722,7 +30555,7 @@ function DatePanel(props) {
 
   return /*#__PURE__*/React.createElement("div", {
     className: classnames(panelPrefixCls, _defineProperty$4({}, "".concat(panelPrefixCls, "-active"), active))
-  }, /*#__PURE__*/React.createElement(DateHeader, _extends$1({}, props, {
+  }, /*#__PURE__*/React.createElement(DateHeader, _extends$2({}, props, {
     prefixCls: prefixCls,
     value: value,
     viewDate: viewDate // View Operation
@@ -30745,7 +30578,7 @@ function DatePanel(props) {
     onYearClick: function onYearClick() {
       onPanelChange('year', viewDate);
     }
-  })), /*#__PURE__*/React.createElement(DateBody, _extends$1({}, props, {
+  })), /*#__PURE__*/React.createElement(DateBody, _extends$2({}, props, {
     onSelect: function onSelect(date) {
       return _onSelect(date, 'mouse');
     },
@@ -30852,13 +30685,13 @@ function DatetimePanel(props) {
   var disabledTimes = disabledTime ? disabledTime(value || null) : {};
   return /*#__PURE__*/React.createElement("div", {
     className: classnames(panelPrefixCls, _defineProperty$4({}, "".concat(panelPrefixCls, "-active"), activePanel))
-  }, /*#__PURE__*/React.createElement(DatePanel, _extends$1({}, props, {
+  }, /*#__PURE__*/React.createElement(DatePanel, _extends$2({}, props, {
     operationRef: dateOperationRef,
     active: activePanel === 'date',
     onSelect: function onSelect(date) {
       onInternalSelect(setDateTime(generateConfig, date, showTime && _typeof$4(showTime) === 'object' ? showTime.defaultValue : null), 'date');
     }
-  })), /*#__PURE__*/React.createElement(TimePanel, _extends$1({}, props, {
+  })), /*#__PURE__*/React.createElement(TimePanel, _extends$2({}, props, {
     format: undefined
   }, timeProps, disabledTimes, {
     defaultValue: undefined,
@@ -30892,7 +30725,7 @@ function WeekPanel(props) {
     return classnames(rowPrefixCls, _defineProperty$4({}, "".concat(rowPrefixCls, "-selected"), isSameWeek(generateConfig, locale.locale, value, date)));
   };
 
-  return /*#__PURE__*/React.createElement(DatePanel, _extends$1({}, props, {
+  return /*#__PURE__*/React.createElement(DatePanel, _extends$2({}, props, {
     panelName: "week",
     prefixColumn: prefixColumn,
     rowClassName: rowClassName,
@@ -30919,7 +30752,7 @@ function MonthHeader(props) {
   }
 
   var headerPrefixCls = "".concat(prefixCls, "-header");
-  return /*#__PURE__*/React.createElement(Header$2, _extends$1({}, props, {
+  return /*#__PURE__*/React.createElement(Header$2, _extends$2({}, props, {
     prefixCls: headerPrefixCls,
     onSuperPrev: onPrevYear,
     onSuperNext: onNextYear
@@ -30971,7 +30804,7 @@ function MonthBody(props) {
   var getCellNode = monthCellRender ? function (date) {
     return monthCellRender(date, locale);
   } : undefined;
-  return /*#__PURE__*/React.createElement(PanelBody, _extends$1({}, props, {
+  return /*#__PURE__*/React.createElement(PanelBody, _extends$2({}, props, {
     rowNum: MONTH_ROW_COUNT,
     colNum: MONTH_COL_COUNT,
     baseDate: baseMonth,
@@ -31033,7 +30866,7 @@ function MonthPanel(props) {
 
   return /*#__PURE__*/React.createElement("div", {
     className: panelPrefixCls
-  }, /*#__PURE__*/React.createElement(MonthHeader, _extends$1({}, props, {
+  }, /*#__PURE__*/React.createElement(MonthHeader, _extends$2({}, props, {
     prefixCls: prefixCls,
     onPrevYear: function onPrevYear() {
       onYearChange(-1);
@@ -31044,7 +30877,7 @@ function MonthPanel(props) {
     onYearClick: function onYearClick() {
       onPanelChange('year', viewDate);
     }
-  })), /*#__PURE__*/React.createElement(MonthBody, _extends$1({}, props, {
+  })), /*#__PURE__*/React.createElement(MonthBody, _extends$2({}, props, {
     prefixCls: prefixCls,
     onSelect: function onSelect(date) {
       _onSelect(date, 'mouse');
@@ -31071,7 +30904,7 @@ function QuarterHeader(props) {
   }
 
   var headerPrefixCls = "".concat(prefixCls, "-header");
-  return /*#__PURE__*/React.createElement(Header$2, _extends$1({}, props, {
+  return /*#__PURE__*/React.createElement(Header$2, _extends$2({}, props, {
     prefixCls: headerPrefixCls,
     onSuperPrev: onPrevYear,
     onSuperNext: onNextYear
@@ -31118,7 +30951,7 @@ function QuarterBody(props) {
     }
   });
   var baseQuarter = generateConfig.setDate(generateConfig.setMonth(viewDate, 0), 1);
-  return /*#__PURE__*/React.createElement(PanelBody, _extends$1({}, props, {
+  return /*#__PURE__*/React.createElement(PanelBody, _extends$2({}, props, {
     rowNum: QUARTER_ROW_COUNT,
     colNum: QUARTER_COL_COUNT,
     baseDate: baseQuarter,
@@ -31178,7 +31011,7 @@ function QuarterPanel(props) {
 
   return /*#__PURE__*/React.createElement("div", {
     className: panelPrefixCls
-  }, /*#__PURE__*/React.createElement(QuarterHeader, _extends$1({}, props, {
+  }, /*#__PURE__*/React.createElement(QuarterHeader, _extends$2({}, props, {
     prefixCls: prefixCls,
     onPrevYear: function onPrevYear() {
       onYearChange(-1);
@@ -31189,7 +31022,7 @@ function QuarterPanel(props) {
     onYearClick: function onYearClick() {
       onPanelChange('year', viewDate);
     }
-  })), /*#__PURE__*/React.createElement(QuarterBody, _extends$1({}, props, {
+  })), /*#__PURE__*/React.createElement(QuarterBody, _extends$2({}, props, {
     prefixCls: prefixCls,
     onSelect: function onSelect(date) {
       _onSelect(date, 'mouse');
@@ -31216,7 +31049,7 @@ function YearHeader(props) {
   var yearNumber = generateConfig.getYear(viewDate);
   var startYear = Math.floor(yearNumber / YEAR_DECADE_COUNT) * YEAR_DECADE_COUNT;
   var endYear = startYear + YEAR_DECADE_COUNT - 1;
-  return /*#__PURE__*/React.createElement(Header$2, _extends$1({}, props, {
+  return /*#__PURE__*/React.createElement(Header$2, _extends$2({}, props, {
     prefixCls: headerPrefixCls,
     onSuperPrev: onPrevDecade,
     onSuperNext: onNextDecade
@@ -31267,7 +31100,7 @@ function YearBody(props) {
       return generateConfig.addYear(date, offset);
     }
   });
-  return /*#__PURE__*/React.createElement(PanelBody, _extends$1({}, props, {
+  return /*#__PURE__*/React.createElement(PanelBody, _extends$2({}, props, {
     rowNum: YEAR_ROW_COUNT,
     colNum: YEAR_COL_COUNT,
     baseDate: baseYear,
@@ -31325,7 +31158,7 @@ function YearPanel(props) {
 
   return /*#__PURE__*/React.createElement("div", {
     className: panelPrefixCls
-  }, /*#__PURE__*/React.createElement(YearHeader, _extends$1({}, props, {
+  }, /*#__PURE__*/React.createElement(YearHeader, _extends$2({}, props, {
     prefixCls: prefixCls,
     onPrevDecade: function onPrevDecade() {
       onDecadeChange(-1);
@@ -31336,7 +31169,7 @@ function YearPanel(props) {
     onDecadeClick: function onDecadeClick() {
       onPanelChange('decade', viewDate);
     }
-  })), /*#__PURE__*/React.createElement(YearBody, _extends$1({}, props, {
+  })), /*#__PURE__*/React.createElement(YearBody, _extends$2({}, props, {
     prefixCls: prefixCls,
     onSelect: function onSelect(date) {
       onPanelChange(sourceMode === 'date' ? 'date' : 'month', date);
@@ -31669,7 +31502,7 @@ function PickerPanel(props) {
 
   switch (mergedMode) {
     case 'decade':
-      panelNode = /*#__PURE__*/React.createElement(DecadePanel, _extends$1({}, pickerProps, {
+      panelNode = /*#__PURE__*/React.createElement(DecadePanel, _extends$2({}, pickerProps, {
         onSelect: function onSelect(date, type) {
           setViewDate(date);
           triggerSelect(date, type);
@@ -31678,7 +31511,7 @@ function PickerPanel(props) {
       break;
 
     case 'year':
-      panelNode = /*#__PURE__*/React.createElement(YearPanel, _extends$1({}, pickerProps, {
+      panelNode = /*#__PURE__*/React.createElement(YearPanel, _extends$2({}, pickerProps, {
         onSelect: function onSelect(date, type) {
           setViewDate(date);
           triggerSelect(date, type);
@@ -31687,7 +31520,7 @@ function PickerPanel(props) {
       break;
 
     case 'month':
-      panelNode = /*#__PURE__*/React.createElement(MonthPanel, _extends$1({}, pickerProps, {
+      panelNode = /*#__PURE__*/React.createElement(MonthPanel, _extends$2({}, pickerProps, {
         onSelect: function onSelect(date, type) {
           setViewDate(date);
           triggerSelect(date, type);
@@ -31696,7 +31529,7 @@ function PickerPanel(props) {
       break;
 
     case 'quarter':
-      panelNode = /*#__PURE__*/React.createElement(QuarterPanel, _extends$1({}, pickerProps, {
+      panelNode = /*#__PURE__*/React.createElement(QuarterPanel, _extends$2({}, pickerProps, {
         onSelect: function onSelect(date, type) {
           setViewDate(date);
           triggerSelect(date, type);
@@ -31705,7 +31538,7 @@ function PickerPanel(props) {
       break;
 
     case 'week':
-      panelNode = /*#__PURE__*/React.createElement(WeekPanel, _extends$1({}, pickerProps, {
+      panelNode = /*#__PURE__*/React.createElement(WeekPanel, _extends$2({}, pickerProps, {
         onSelect: function onSelect(date, type) {
           setViewDate(date);
           triggerSelect(date, type);
@@ -31715,7 +31548,7 @@ function PickerPanel(props) {
 
     case 'time':
       delete pickerProps.showTime;
-      panelNode = /*#__PURE__*/React.createElement(TimePanel, _extends$1({}, pickerProps, _typeof$4(showTime) === 'object' ? showTime : null, {
+      panelNode = /*#__PURE__*/React.createElement(TimePanel, _extends$2({}, pickerProps, _typeof$4(showTime) === 'object' ? showTime : null, {
         onSelect: function onSelect(date, type) {
           setViewDate(date);
           triggerSelect(date, type);
@@ -31725,14 +31558,14 @@ function PickerPanel(props) {
 
     default:
       if (showTime) {
-        panelNode = /*#__PURE__*/React.createElement(DatetimePanel, _extends$1({}, pickerProps, {
+        panelNode = /*#__PURE__*/React.createElement(DatetimePanel, _extends$2({}, pickerProps, {
           onSelect: function onSelect(date, type) {
             setViewDate(date);
             triggerSelect(date, type);
           }
         }));
       } else {
-        panelNode = /*#__PURE__*/React.createElement(DatePanel, _extends$1({}, pickerProps, {
+        panelNode = /*#__PURE__*/React.createElement(DatePanel, _extends$2({}, pickerProps, {
           onSelect: function onSelect(date, type) {
             setViewDate(date);
             triggerSelect(date, type);
@@ -32442,7 +32275,7 @@ function InnerPicker(props) {
     onChange: null
   });
 
-  var panelNode = /*#__PURE__*/React.createElement(PickerPanel, _extends$1({}, panelProps, {
+  var panelNode = /*#__PURE__*/React.createElement(PickerPanel, _extends$2({}, panelProps, {
     generateConfig: generateConfig,
     className: classnames(_defineProperty$4({}, "".concat(prefixCls, "-panel-focused"), !typing)),
     value: selectedValue,
@@ -32492,7 +32325,8 @@ function InnerPicker(props) {
         triggerChange(null);
         triggerOpen(false);
       },
-      className: "".concat(prefixCls, "-clear")
+      className: "".concat(prefixCls, "-clear"),
+      role: "button"
     }, clearIcon || /*#__PURE__*/React.createElement("span", {
       className: "".concat(prefixCls, "-clear-btn")
     }));
@@ -32547,7 +32381,7 @@ function InnerPicker(props) {
   }, /*#__PURE__*/React.createElement("div", {
     className: classnames("".concat(prefixCls, "-input"), _defineProperty$4({}, "".concat(prefixCls, "-input-placeholder"), !!hoverValue)),
     ref: inputDivRef
-  }, /*#__PURE__*/React.createElement("input", _extends$1({
+  }, /*#__PURE__*/React.createElement("input", _extends$2({
     id: id,
     tabIndex: tabIndex,
     disabled: disabled,
@@ -32599,7 +32433,7 @@ var Picker = /*#__PURE__*/function (_React$Component) {
   _createClass$2(Picker, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/React.createElement(InnerPicker, _extends$1({}, this.props, {
+      return /*#__PURE__*/React.createElement(InnerPicker, _extends$2({}, this.props, {
         pickerRef: this.pickerRef
       }));
     }
@@ -32881,6 +32715,8 @@ function InnerRangePicker(props) {
       onCalendarChange = props.onCalendarChange,
       _onFocus = props.onFocus,
       onBlur = props.onBlur,
+      onMouseEnter = props.onMouseEnter,
+      onMouseLeave = props.onMouseLeave,
       _onOk = props.onOk,
       _onKeyDown = props.onKeyDown,
       components = props.components,
@@ -33464,7 +33300,7 @@ function InnerRangePicker(props) {
         rangedValue: rangeHoverValue || selectedValue,
         hoverRangedValue: panelHoverRangedValue
       }
-    }, /*#__PURE__*/React.createElement(PickerPanel, _extends$1({}, props, panelProps, {
+    }, /*#__PURE__*/React.createElement(PickerPanel, _extends$2({}, props, panelProps, {
       dateRender: panelDateRender,
       showTime: panelShowTime,
       mode: mergedModes[mergedActivePickerIndex],
@@ -33707,16 +33543,18 @@ function InnerRangePicker(props) {
     transitionName: transitionName,
     range: true,
     direction: direction
-  }, /*#__PURE__*/React.createElement("div", _extends$1({
+  }, /*#__PURE__*/React.createElement("div", _extends$2({
     ref: containerRef,
     className: classnames(prefixCls, "".concat(prefixCls, "-range"), className, (_classNames2 = {}, _defineProperty$4(_classNames2, "".concat(prefixCls, "-disabled"), mergedDisabled[0] && mergedDisabled[1]), _defineProperty$4(_classNames2, "".concat(prefixCls, "-focused"), mergedActivePickerIndex === 0 ? startFocused : endFocused), _defineProperty$4(_classNames2, "".concat(prefixCls, "-rtl"), direction === 'rtl'), _classNames2)),
     style: style,
     onClick: onPickerClick,
+    onMouseEnter: onMouseEnter,
+    onMouseLeave: onMouseLeave,
     onMouseDown: onPickerMouseDown
   }, getDataOrAriaProps(props)), /*#__PURE__*/React.createElement("div", {
     className: classnames("".concat(prefixCls, "-input"), (_classNames3 = {}, _defineProperty$4(_classNames3, "".concat(prefixCls, "-input-active"), mergedActivePickerIndex === 0), _defineProperty$4(_classNames3, "".concat(prefixCls, "-input-placeholder"), !!startHoverValue), _classNames3)),
     ref: startInputDivRef
-  }, /*#__PURE__*/React.createElement("input", _extends$1({
+  }, /*#__PURE__*/React.createElement("input", _extends$2({
     id: id,
     disabled: mergedDisabled[0],
     readOnly: inputReadOnly || typeof formatList[0] === 'function' || !startTyping,
@@ -33735,7 +33573,7 @@ function InnerRangePicker(props) {
   }, separator), /*#__PURE__*/React.createElement("div", {
     className: classnames("".concat(prefixCls, "-input"), (_classNames4 = {}, _defineProperty$4(_classNames4, "".concat(prefixCls, "-input-active"), mergedActivePickerIndex === 1), _defineProperty$4(_classNames4, "".concat(prefixCls, "-input-placeholder"), !!endHoverValue), _classNames4)),
     ref: endInputDivRef
-  }, /*#__PURE__*/React.createElement("input", _extends$1({
+  }, /*#__PURE__*/React.createElement("input", _extends$2({
     disabled: mergedDisabled[1],
     readOnly: inputReadOnly || typeof formatList[0] === 'function' || !endTyping,
     value: endHoverValue || endText,
@@ -33787,7 +33625,7 @@ var RangePicker$1 = /*#__PURE__*/function (_React$Component) {
   _createClass$2(RangePicker, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/React.createElement(InnerRangePicker, _extends$1({}, this.props, {
+      return /*#__PURE__*/React.createElement(InnerRangePicker, _extends$2({}, this.props, {
         pickerRef: this.pickerRef
       }));
     }
@@ -33899,7 +33737,7 @@ var Checkbox$3 = /*#__PURE__*/function (_Component) {
       return /*#__PURE__*/React__default.createElement("span", {
         className: classString,
         style: style
-      }, /*#__PURE__*/React__default.createElement("input", _extends$1({
+      }, /*#__PURE__*/React__default.createElement("input", _extends$2({
         name: name,
         id: id,
         type: type,
@@ -33999,7 +33837,7 @@ var InternalRadio = function InternalRadio(props, ref) {
 
   var prefixCls = getPrefixCls('radio', customizePrefixCls);
 
-  var radioProps = _extends$1({}, restProps);
+  var radioProps = _extends$2({}, restProps);
 
   if (context) {
     radioProps.name = context.name;
@@ -34017,7 +33855,7 @@ var InternalRadio = function InternalRadio(props, ref) {
       style: style,
       onMouseEnter: props.onMouseEnter,
       onMouseLeave: props.onMouseLeave
-    }, /*#__PURE__*/React.createElement(Checkbox$3, _extends$1({}, radioProps, {
+    }, /*#__PURE__*/React.createElement(Checkbox$3, _extends$2({}, radioProps, {
       prefixCls: prefixCls,
       ref: mergedRef
     })), children !== undefined ? /*#__PURE__*/React.createElement("span", null, children) : null)
@@ -34108,7 +33946,7 @@ var RadioGroup$1 = /*#__PURE__*/React.forwardRef(function (props, ref) {
 
     var mergedSize = customizeSize || size;
     var classString = classnames(groupPrefixCls, "".concat(groupPrefixCls, "-").concat(buttonStyle), (_classNames = {}, _defineProperty$4(_classNames, "".concat(groupPrefixCls, "-").concat(mergedSize), mergedSize), _defineProperty$4(_classNames, "".concat(groupPrefixCls, "-rtl"), direction === 'rtl'), _classNames), className);
-    return /*#__PURE__*/React.createElement("div", _extends$1({}, getDataOrAriaProps$1(props), {
+    return /*#__PURE__*/React.createElement("div", _extends$2({}, getDataOrAriaProps$1(props), {
       className: classString,
       style: style,
       onMouseEnter: onMouseEnter,
@@ -34158,7 +33996,7 @@ var RadioButton = function RadioButton(props, ref) {
     radioProps.disabled = props.disabled || radioGroupContext.disabled;
   }
 
-  return /*#__PURE__*/React.createElement(Radio$1, _extends$1({
+  return /*#__PURE__*/React.createElement(Radio$1, _extends$2({
     prefixCls: prefixCls
   }, radioProps, {
     type: "radio",
@@ -34302,7 +34140,7 @@ var CollapsePanel$1 = /*#__PURE__*/function (_React$Component) {
         className: "".concat(prefixCls, "-header-text")
       }, header) : header, extra && /*#__PURE__*/React.createElement("div", {
         className: "".concat(prefixCls, "-extra")
-      }, extra)), /*#__PURE__*/React.createElement(CSSMotion, _extends$1({
+      }, extra)), /*#__PURE__*/React.createElement(CSSMotion, _extends$2({
         visible: isActive,
         leavedClassName: "".concat(prefixCls, "-content-hidden")
       }, openMotion, {
@@ -34519,7 +34357,7 @@ var CollapsePanel = function CollapsePanel(props) {
       showArrow = _props$showArrow === void 0 ? true : _props$showArrow;
   var prefixCls = getPrefixCls('collapse', customizePrefixCls);
   var collapsePanelClassName = classnames(_defineProperty$4({}, "".concat(prefixCls, "-no-arrow"), !showArrow), className);
-  return /*#__PURE__*/React.createElement(Collapse$1.Panel, _extends$1({}, props, {
+  return /*#__PURE__*/React.createElement(Collapse$1.Panel, _extends$2({}, props, {
     prefixCls: prefixCls,
     className: collapsePanelClassName
   }));
@@ -34566,7 +34404,7 @@ var Collapse = function Collapse(props) {
   var iconPosition = getIconPosition();
   var collapseClassName = classnames((_classNames = {}, _defineProperty$4(_classNames, "".concat(prefixCls, "-borderless"), !bordered), _defineProperty$4(_classNames, "".concat(prefixCls, "-icon-position-").concat(iconPosition), true), _defineProperty$4(_classNames, "".concat(prefixCls, "-rtl"), direction === 'rtl'), _defineProperty$4(_classNames, "".concat(prefixCls, "-ghost"), !!ghost), _classNames), className);
 
-  var openMotion = _extends$1(_extends$1({}, collapseMotion), {
+  var openMotion = _extends$2(_extends$2({}, collapseMotion), {
     motionAppear: false,
     leavedClassName: "".concat(prefixCls, "-content-hidden")
   });
@@ -34582,7 +34420,7 @@ var Collapse = function Collapse(props) {
             disabled = _child$props.disabled,
             collapsible = _child$props.collapsible;
 
-        var childProps = _extends$1(_extends$1({}, omit(child.props, ['disabled'])), {
+        var childProps = _extends$2(_extends$2({}, omit(child.props, ['disabled'])), {
           key: key,
           collapsible: collapsible !== null && collapsible !== void 0 ? collapsible : disabled ? 'disabled' : undefined
         });
@@ -34594,7 +34432,7 @@ var Collapse = function Collapse(props) {
     });
   };
 
-  return /*#__PURE__*/React.createElement(Collapse$1, _extends$1({
+  return /*#__PURE__*/React.createElement(Collapse$1, _extends$2({
     openMotion: openMotion
   }, props, {
     bordered: bordered,
@@ -35150,7 +34988,7 @@ var Input = /*#__PURE__*/function (_React$Component) {
       var otherProps = omit(_this.props, ['prefixCls', 'onPressEnter', 'addonBefore', 'addonAfter', 'prefix', 'suffix', 'allowClear', // Input elements must be either controlled or uncontrolled,
       // specify either the value prop, or the defaultValue prop, but not both.
       'defaultValue', 'size', 'inputType', 'bordered']);
-      return /*#__PURE__*/React.createElement("input", _extends$1({
+      return /*#__PURE__*/React.createElement("input", _extends$2({
         autoComplete: input.autoComplete
       }, otherProps, {
         onChange: _this.handleChange,
@@ -35203,7 +35041,7 @@ var Input = /*#__PURE__*/function (_React$Component) {
       var prefixCls = getPrefixCls('input', customizePrefixCls);
       _this.direction = direction;
       return /*#__PURE__*/React.createElement(SizeContext.Consumer, null, function (size) {
-        return /*#__PURE__*/React.createElement(ClearableLabeledInput, _extends$1({
+        return /*#__PURE__*/React.createElement(ClearableLabeledInput, _extends$2({
           size: size
         }, _this.props, {
           prefixCls: prefixCls,
@@ -35397,14 +35235,14 @@ var Search = /*#__PURE__*/React.forwardRef(function (props, ref) {
 
   var prefixCls = getPrefixCls('input-search', customizePrefixCls);
   var inputPrefixCls = getPrefixCls('input', customizeInputPrefixCls);
-  var searchIcon = typeof enterButton === 'boolean' || typeof enterButton === 'undefined' ? /*#__PURE__*/React.createElement(SearchOutlined$1, null) : null;
+  var searchIcon = typeof enterButton === 'boolean' ? /*#__PURE__*/React.createElement(SearchOutlined$1, null) : null;
   var btnClassName = "".concat(prefixCls, "-button");
   var button;
   var enterButtonAsElement = enterButton || {};
   var isAntdButton = enterButtonAsElement.type && enterButtonAsElement.type.__ANT_BUTTON === true;
 
   if (isAntdButton || enterButtonAsElement.type === 'button') {
-    button = cloneElement(enterButtonAsElement, _extends$1({
+    button = cloneElement(enterButtonAsElement, _extends$2({
       onMouseDown: onMouseDown,
       onClick: onSearch,
       key: 'enterButton'
@@ -35433,7 +35271,7 @@ var Search = /*#__PURE__*/React.forwardRef(function (props, ref) {
   }
 
   var cls = classnames(prefixCls, (_classNames = {}, _defineProperty$4(_classNames, "".concat(prefixCls, "-rtl"), direction === 'rtl'), _defineProperty$4(_classNames, "".concat(prefixCls, "-").concat(size), !!size), _defineProperty$4(_classNames, "".concat(prefixCls, "-with-button"), !!enterButton), _classNames), className);
-  return /*#__PURE__*/React.createElement(Input, _extends$1({
+  return /*#__PURE__*/React.createElement(Input, _extends$2({
     ref: composeRef(inputRef, ref),
     onPressEnter: onSearch
   }, restProps, {
@@ -35676,7 +35514,7 @@ var ResizableTextArea = /*#__PURE__*/function (_React$Component) {
       return /*#__PURE__*/React.createElement(ReactResizeObserver, {
         onResize: _this.handleResize,
         disabled: !(autoSize || onResize)
-      }, /*#__PURE__*/React.createElement("textarea", _extends$1({}, otherProps, {
+      }, /*#__PURE__*/React.createElement("textarea", _extends$2({}, otherProps, {
         className: cls,
         style: style,
         ref: _this.saveTextArea
@@ -35804,7 +35642,7 @@ var TextArea$1 = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/React.createElement(ResizableTextArea, _extends$1({}, this.props, {
+      return /*#__PURE__*/React.createElement(ResizableTextArea, _extends$2({}, this.props, {
         value: this.state.value,
         onKeyDown: this.handleKeyDown,
         onChange: this.handleChange,
@@ -35955,7 +35793,7 @@ var TextArea = /*#__PURE__*/React.forwardRef(function (_a, ref) {
       }
     };
   });
-  var textArea = /*#__PURE__*/React.createElement(TextArea$1, _extends$1({}, omit(props, ['allowClear']), {
+  var textArea = /*#__PURE__*/React.createElement(TextArea$1, _extends$2({}, omit(props, ['allowClear']), {
     className: classnames((_classNames = {}, _defineProperty$4(_classNames, "".concat(prefixCls, "-borderless"), !bordered), _defineProperty$4(_classNames, className, className && !showCount), _defineProperty$4(_classNames, "".concat(prefixCls, "-sm"), size === 'small' || customizeSize === 'small'), _defineProperty$4(_classNames, "".concat(prefixCls, "-lg"), size === 'large' || customizeSize === 'large'), _classNames)),
     style: showCount ? undefined : style,
     prefixCls: prefixCls,
@@ -35972,7 +35810,7 @@ var TextArea = /*#__PURE__*/React.forwardRef(function (_a, ref) {
   } // TextArea
 
 
-  var textareaNode = /*#__PURE__*/React.createElement(ClearableLabeledInput, _extends$1({}, props, {
+  var textareaNode = /*#__PURE__*/React.createElement(ClearableLabeledInput, _extends$2({}, props, {
     prefixCls: prefixCls,
     direction: direction,
     inputType: "text",
@@ -36006,6 +35844,36 @@ var TextArea = /*#__PURE__*/React.forwardRef(function (_a, ref) {
 
   return textareaNode;
 });
+
+// This icon file is generated automatically.
+var EyeOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M942.2 486.2C847.4 286.5 704.1 186 512 186c-192.2 0-335.4 100.5-430.2 300.3a60.3 60.3 0 000 51.5C176.6 737.5 319.9 838 512 838c192.2 0 335.4-100.5 430.2-300.3 7.7-16.2 7.7-35 0-51.5zM512 766c-161.3 0-279.4-81.8-362.7-254C232.6 339.8 350.7 258 512 258c161.3 0 279.4 81.8 362.7 254C791.5 684.2 673.4 766 512 766zm-4-430c-97.2 0-176 78.8-176 176s78.8 176 176 176 176-78.8 176-176-78.8-176-176-176zm0 288c-61.9 0-112-50.1-112-112s50.1-112 112-112 112 50.1 112 112-50.1 112-112 112z" } }] }, "name": "eye", "theme": "outlined" };
+
+// GENERATE BY ./scripts/generate.ts
+
+var EyeOutlined = function EyeOutlined(props, ref) {
+  return /*#__PURE__*/React.createElement(Icon$1, Object.assign({}, props, {
+    ref: ref,
+    icon: EyeOutlined$2
+  }));
+};
+
+EyeOutlined.displayName = 'EyeOutlined';
+var EyeOutlined$1 = /*#__PURE__*/React.forwardRef(EyeOutlined);
+
+// This icon file is generated automatically.
+var EyeInvisibleOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M942.2 486.2Q889.47 375.11 816.7 305l-50.88 50.88C807.31 395.53 843.45 447.4 874.7 512 791.5 684.2 673.4 766 512 766q-72.67 0-133.87-22.38L323 798.75Q408 838 512 838q288.3 0 430.2-300.3a60.29 60.29 0 000-51.5zm-63.57-320.64L836 122.88a8 8 0 00-11.32 0L715.31 232.2Q624.86 186 512 186q-288.3 0-430.2 300.3a60.3 60.3 0 000 51.5q56.69 119.4 136.5 191.41L112.48 835a8 8 0 000 11.31L155.17 889a8 8 0 0011.31 0l712.15-712.12a8 8 0 000-11.32zM149.3 512C232.6 339.8 350.7 258 512 258c54.54 0 104.13 9.36 149.12 28.39l-70.3 70.3a176 176 0 00-238.13 238.13l-83.42 83.42C223.1 637.49 183.3 582.28 149.3 512zm246.7 0a112.11 112.11 0 01146.2-106.69L401.31 546.2A112 112 0 01396 512z" } }, { "tag": "path", "attrs": { "d": "M508 624c-3.46 0-6.87-.16-10.25-.47l-52.82 52.82a176.09 176.09 0 00227.42-227.42l-52.82 52.82c.31 3.38.47 6.79.47 10.25a111.94 111.94 0 01-112 112z" } }] }, "name": "eye-invisible", "theme": "outlined" };
+
+// GENERATE BY ./scripts/generate.ts
+
+var EyeInvisibleOutlined = function EyeInvisibleOutlined(props, ref) {
+  return /*#__PURE__*/React.createElement(Icon$1, Object.assign({}, props, {
+    ref: ref,
+    icon: EyeInvisibleOutlined$2
+  }));
+};
+
+EyeInvisibleOutlined.displayName = 'EyeInvisibleOutlined';
+var EyeInvisibleOutlined$1 = /*#__PURE__*/React.forwardRef(EyeInvisibleOutlined);
 
 var __rest$e = undefined && undefined.__rest || function (s, e) {
   var t = {};
@@ -36076,7 +35944,7 @@ var Password = /*#__PURE__*/React.forwardRef(function (props, ref) {
     var suffixIcon = visibilityToggle && getIcon(prefixCls);
     var inputClassName = classnames(prefixCls, className, _defineProperty$4({}, "".concat(prefixCls, "-").concat(size), !!size));
 
-    var omittedProps = _extends$1(_extends$1({}, omit(restProps, ['suffix', 'iconRender'])), {
+    var omittedProps = _extends$2(_extends$2({}, omit(restProps, ['suffix', 'iconRender'])), {
       type: visible ? 'text' : 'password',
       className: inputClassName,
       prefixCls: inputPrefixCls,
@@ -36087,7 +35955,7 @@ var Password = /*#__PURE__*/React.forwardRef(function (props, ref) {
       omittedProps.size = size;
     }
 
-    return /*#__PURE__*/React.createElement(Input, _extends$1({
+    return /*#__PURE__*/React.createElement(Input, _extends$2({
       ref: ref
     }, omittedProps));
   };
@@ -36238,7 +36106,7 @@ var InternalCheckboxGroup = function InternalCheckboxGroup(_a, ref) {
     cancelValue: cancelValue
   };
   var classString = classnames(groupPrefixCls, _defineProperty$4({}, "".concat(groupPrefixCls, "-rtl"), direction === 'rtl'), className);
-  return /*#__PURE__*/React.createElement("div", _extends$1({
+  return /*#__PURE__*/React.createElement("div", _extends$2({
     className: classString,
     style: style
   }, domProps, {
@@ -36305,7 +36173,7 @@ var InternalCheckbox = function InternalCheckbox(_a, ref) {
   }, [restProps.value]);
   var prefixCls = getPrefixCls('checkbox', customizePrefixCls);
 
-  var checkboxProps = _extends$1({}, restProps);
+  var checkboxProps = _extends$2({}, restProps);
 
   if (checkboxGroup && !skipGroup) {
     checkboxProps.onChange = function () {
@@ -36336,7 +36204,7 @@ var InternalCheckbox = function InternalCheckbox(_a, ref) {
       style: style,
       onMouseEnter: onMouseEnter,
       onMouseLeave: onMouseLeave
-    }, /*#__PURE__*/React.createElement(Checkbox$3, _extends$1({}, checkboxProps, {
+    }, /*#__PURE__*/React.createElement(Checkbox$3, _extends$2({}, checkboxProps, {
       prefixCls: prefixCls,
       className: checkboxClass,
       ref: ref
@@ -36352,7 +36220,7 @@ Checkbox$1.Group = Group;
 Checkbox$1.__ANT_CHECKBOX = true;
 
 function PickerButton(props) {
-  return /*#__PURE__*/React.createElement(Button$2, _extends$1({
+  return /*#__PURE__*/React.createElement(Button$2, _extends$2({
     size: "small",
     type: "primary"
   }, props));
@@ -36391,7 +36259,7 @@ var CheckableTag = function CheckableTag(_a) {
 
   var prefixCls = getPrefixCls('tag', customizePrefixCls);
   var cls = classnames(prefixCls, (_classNames = {}, _defineProperty$4(_classNames, "".concat(prefixCls, "-checkable"), true), _defineProperty$4(_classNames, "".concat(prefixCls, "-checkable-checked"), checked), _classNames), className);
-  return /*#__PURE__*/React.createElement("span", _extends$1({}, restProps, {
+  return /*#__PURE__*/React.createElement("span", _extends$2({}, restProps, {
     className: cls,
     onClick: handleClick
   }));
@@ -36450,7 +36318,7 @@ var InternalTag = function InternalTag(_a, ref) {
     return PresetColorRegex.test(color) || PresetStatusColorRegex.test(color);
   };
 
-  var tagStyle = _extends$1({
+  var tagStyle = _extends$2({
     backgroundColor: color && !isPresetColor() ? color : undefined
   }, style);
 
@@ -36489,7 +36357,7 @@ var InternalTag = function InternalTag(_a, ref) {
   var tagProps = omit(props, ['visible']);
   var iconNode = icon || null;
   var kids = iconNode ? /*#__PURE__*/React.createElement(React.Fragment, null, iconNode, /*#__PURE__*/React.createElement("span", null, children)) : children;
-  var tagNode = /*#__PURE__*/React.createElement("span", _extends$1({}, tagProps, {
+  var tagNode = /*#__PURE__*/React.createElement("span", _extends$2({}, tagProps, {
     ref: ref,
     className: tagClassName,
     style: tagStyle
@@ -36502,10 +36370,40 @@ Tag.displayName = 'Tag';
 Tag.CheckableTag = CheckableTag;
 
 function PickerTag(props) {
-  return /*#__PURE__*/React.createElement(Tag, _extends$1({
+  return /*#__PURE__*/React.createElement(Tag, _extends$2({
     color: "blue"
   }, props));
 }
+
+// This icon file is generated automatically.
+var CalendarOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z" } }] }, "name": "calendar", "theme": "outlined" };
+
+// GENERATE BY ./scripts/generate.ts
+
+var CalendarOutlined = function CalendarOutlined(props, ref) {
+  return /*#__PURE__*/React.createElement(Icon$1, Object.assign({}, props, {
+    ref: ref,
+    icon: CalendarOutlined$2
+  }));
+};
+
+CalendarOutlined.displayName = 'CalendarOutlined';
+var CalendarOutlined$1 = /*#__PURE__*/React.forwardRef(CalendarOutlined);
+
+// This icon file is generated automatically.
+var ClockCircleOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z" } }, { "tag": "path", "attrs": { "d": "M686.7 638.6L544.1 535.5V288c0-4.4-3.6-8-8-8H488c-4.4 0-8 3.6-8 8v275.4c0 2.6 1.2 5 3.3 6.5l165.4 120.6c3.6 2.6 8.6 1.8 11.2-1.7l28.6-39c2.6-3.7 1.8-8.7-1.8-11.2z" } }] }, "name": "clock-circle", "theme": "outlined" };
+
+// GENERATE BY ./scripts/generate.ts
+
+var ClockCircleOutlined = function ClockCircleOutlined(props, ref) {
+  return /*#__PURE__*/React.createElement(Icon$1, Object.assign({}, props, {
+    ref: ref,
+    icon: ClockCircleOutlined$2
+  }));
+};
+
+ClockCircleOutlined.displayName = 'ClockCircleOutlined';
+var ClockCircleOutlined$1 = /*#__PURE__*/React.forwardRef(ClockCircleOutlined);
 
 function getPlaceholder(picker, locale, customizePlaceholder) {
   if (customizePlaceholder !== undefined) {
@@ -36598,7 +36496,7 @@ function generatePicker$1(generateConfig) {
         };
 
         _this.renderPicker = function (contextLocale) {
-          var locale = _extends$1(_extends$1({}, contextLocale), _this.props.locale);
+          var locale = _extends$2(_extends$2({}, contextLocale), _this.props.locale);
 
           var _this$context = _this.context,
               getPrefixCls = _this$context.getPrefixCls,
@@ -36629,10 +36527,10 @@ function generatePicker$1(generateConfig) {
           }
 
           var mergedPicker = picker || _this.props.picker;
-          additionalOverrideProps = _extends$1(_extends$1(_extends$1({}, additionalOverrideProps), showTime ? getTimeProps(_extends$1({
+          additionalOverrideProps = _extends$2(_extends$2(_extends$2({}, additionalOverrideProps), showTime ? getTimeProps(_extends$2({
             format: format,
             picker: mergedPicker
-          }, showTime)) : {}), mergedPicker === 'time' ? getTimeProps(_extends$1(_extends$1({
+          }, showTime)) : {}), mergedPicker === 'time' ? getTimeProps(_extends$2(_extends$2({
             format: format
           }, _this.props), {
             picker: mergedPicker
@@ -36642,7 +36540,7 @@ function generatePicker$1(generateConfig) {
             var _classNames;
 
             var mergedSize = customizeSize || size;
-            return /*#__PURE__*/React.createElement(Picker, _extends$1({
+            return /*#__PURE__*/React.createElement(Picker, _extends$2({
               ref: _this.pickerRef,
               placeholder: getPlaceholder(mergedPicker, locale, placeholder),
               suffixIcon: mergedPicker === 'time' ? /*#__PURE__*/React.createElement(ClockCircleOutlined$1, null) : /*#__PURE__*/React.createElement(CalendarOutlined$1, null),
@@ -36715,6 +36613,21 @@ function generatePicker$1(generateConfig) {
   };
 }
 
+// This icon file is generated automatically.
+var SwapRightOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "0 0 1024 1024", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M873.1 596.2l-164-208A32 32 0 00684 376h-64.8c-6.7 0-10.4 7.7-6.3 13l144.3 183H152c-4.4 0-8 3.6-8 8v60c0 4.4 3.6 8 8 8h695.9c26.8 0 41.7-30.8 25.2-51.8z" } }] }, "name": "swap-right", "theme": "outlined" };
+
+// GENERATE BY ./scripts/generate.ts
+
+var SwapRightOutlined = function SwapRightOutlined(props, ref) {
+  return /*#__PURE__*/React.createElement(Icon$1, Object.assign({}, props, {
+    ref: ref,
+    icon: SwapRightOutlined$2
+  }));
+};
+
+SwapRightOutlined.displayName = 'SwapRightOutlined';
+var SwapRightOutlined$1 = /*#__PURE__*/React.forwardRef(SwapRightOutlined);
+
 var __rest$8 = undefined && undefined.__rest || function (s, e) {
   var t = {};
 
@@ -36754,7 +36667,7 @@ function generateRangePicker(generateConfig) {
       };
 
       _this.renderPicker = function (contextLocale) {
-        var locale = _extends$1(_extends$1({}, contextLocale), _this.props.locale);
+        var locale = _extends$2(_extends$2({}, contextLocale), _this.props.locale);
 
         var _this$context = _this.context,
             getPrefixCls = _this$context.getPrefixCls,
@@ -36777,10 +36690,10 @@ function generateRangePicker(generateConfig) {
             picker = _this$props.picker;
         var prefixCls = getPrefixCls('picker', customizePrefixCls);
         var additionalOverrideProps = {};
-        additionalOverrideProps = _extends$1(_extends$1(_extends$1({}, additionalOverrideProps), showTime ? getTimeProps(_extends$1({
+        additionalOverrideProps = _extends$2(_extends$2(_extends$2({}, additionalOverrideProps), showTime ? getTimeProps(_extends$2({
           format: format,
           picker: picker
-        }, showTime)) : {}), picker === 'time' ? getTimeProps(_extends$1(_extends$1({
+        }, showTime)) : {}), picker === 'time' ? getTimeProps(_extends$2(_extends$2({
           format: format
         }, _this.props), {
           picker: picker
@@ -36790,7 +36703,7 @@ function generateRangePicker(generateConfig) {
           var _classNames;
 
           var mergedSize = customizeSize || size;
-          return /*#__PURE__*/React.createElement(RangePicker$1, _extends$1({
+          return /*#__PURE__*/React.createElement(RangePicker$1, _extends$2({
             separator: /*#__PURE__*/React.createElement("span", {
               "aria-label": "to",
               className: "".concat(prefixCls, "-separator")
@@ -36867,7 +36780,7 @@ function getTimeProps(props) {
       use12Hours = props.use12Hours;
   var firstFormat = toArray$2(format)[0];
 
-  var showTimeObj = _extends$1({}, props);
+  var showTimeObj = _extends$2({}, props);
 
   if (firstFormat && typeof firstFormat === 'string') {
     if (!firstFormat.includes('s') && showSecond === undefined) {
@@ -39453,7 +39366,7 @@ function Mask(props) {
   }, function (_ref) {
     var motionClassName = _ref.className,
         motionStyle = _ref.style;
-    return /*#__PURE__*/React.createElement("div", _extends$1({
+    return /*#__PURE__*/React.createElement("div", _extends$2({
       style: _objectSpread2$1(_objectSpread2$1({}, motionStyle), style),
       className: classnames("".concat(prefixCls, "-mask"), motionClassName)
     }, maskProps));
@@ -39627,7 +39540,7 @@ var Content = /*#__PURE__*/React.forwardRef(function (props, ref) {
 
   var content = /*#__PURE__*/React.createElement("div", {
     className: "".concat(prefixCls, "-content")
-  }, closer, headerNode, /*#__PURE__*/React.createElement("div", _extends$1({
+  }, closer, headerNode, /*#__PURE__*/React.createElement("div", _extends$2({
     className: "".concat(prefixCls, "-body"),
     style: bodyStyle
   }, bodyProps), children), footerNode);
@@ -39826,7 +39739,7 @@ function Dialog$1(props) {
       zIndex: zIndex
     }, maskStyle),
     maskProps: maskProps
-  }), /*#__PURE__*/React.createElement("div", _extends$1({
+  }), /*#__PURE__*/React.createElement("div", _extends$2({
     tabIndex: -1,
     onKeyDown: onWrapperKeyDown,
     className: classnames("".concat(prefixCls, "-wrap"), wrapClassName),
@@ -39839,7 +39752,7 @@ function Dialog$1(props) {
     }, wrapStyle), {}, {
       display: !animatedVisible ? 'none' : null
     })
-  }, wrapProps), /*#__PURE__*/React.createElement(Content, _extends$1({}, props, {
+  }, wrapProps), /*#__PURE__*/React.createElement(Content, _extends$2({}, props, {
     onMouseDown: onContentMouseDown,
     onMouseUp: onContentMouseUp,
     ref: contentRef,
@@ -39881,7 +39794,7 @@ var DialogWrap = function DialogWrap(props) {
   }, [visible]); // 渲染在当前 dom 里；
 
   if (getContainer === false) {
-    return /*#__PURE__*/React.createElement(Dialog$1, _extends$1({}, props, {
+    return /*#__PURE__*/React.createElement(Dialog$1, _extends$2({}, props, {
       getOpenCount: function getOpenCount() {
         return 2;
       } // 不对 body 做任何操作。。
@@ -39899,7 +39812,7 @@ var DialogWrap = function DialogWrap(props) {
     forceRender: forceRender,
     getContainer: getContainer
   }, function (childProps) {
-    return /*#__PURE__*/React.createElement(Dialog$1, _extends$1({}, props, {
+    return /*#__PURE__*/React.createElement(Dialog$1, _extends$2({}, props, {
       destroyOnClose: destroyOnClose,
       afterClose: function afterClose() {
         _afterClose === null || _afterClose === void 0 ? void 0 : _afterClose();
@@ -40018,7 +39931,7 @@ var Spin = /*#__PURE__*/function (_React$Component) {
       var spinClassName = classnames(prefixCls, (_classNames = {}, _defineProperty$4(_classNames, "".concat(prefixCls, "-sm"), size === 'small'), _defineProperty$4(_classNames, "".concat(prefixCls, "-lg"), size === 'large'), _defineProperty$4(_classNames, "".concat(prefixCls, "-spinning"), spinning), _defineProperty$4(_classNames, "".concat(prefixCls, "-show-text"), !!tip), _defineProperty$4(_classNames, "".concat(prefixCls, "-rtl"), direction === 'rtl'), _classNames), className); // fix https://fb.me/react-unknown-prop
 
       var divProps = omit(restProps, ['spinning', 'delay', 'indicator']);
-      var spinElement = /*#__PURE__*/React.createElement("div", _extends$1({}, divProps, {
+      var spinElement = /*#__PURE__*/React.createElement("div", _extends$2({}, divProps, {
         style: style,
         className: spinClassName
       }), renderIndicator(prefixCls, _this.props), tip ? /*#__PURE__*/React.createElement("div", {
@@ -40027,7 +39940,7 @@ var Spin = /*#__PURE__*/function (_React$Component) {
 
       if (_this.isNestedPattern()) {
         var containerClassName = classnames("".concat(prefixCls, "-container"), _defineProperty$4({}, "".concat(prefixCls, "-blur"), spinning));
-        return /*#__PURE__*/React.createElement("div", _extends$1({}, divProps, {
+        return /*#__PURE__*/React.createElement("div", _extends$2({}, divProps, {
           className: classnames("".concat(prefixCls, "-nested-loading"), wrapperClassName)
         }), spinning && /*#__PURE__*/React.createElement("div", {
           key: "loading"
@@ -40749,7 +40662,7 @@ var Pagination$1 = /*#__PURE__*/function (_React$Component) {
           }, gotoButton);
         }
 
-        return /*#__PURE__*/React__default.createElement("ul", _extends$1({
+        return /*#__PURE__*/React__default.createElement("ul", _extends$2({
           className: classnames(prefixCls, "".concat(prefixCls, "-simple"), _defineProperty$4({}, "".concat(prefixCls, "-disabled"), disabled), className),
           style: style,
           ref: this.savePaginationNode
@@ -40794,7 +40707,7 @@ var Pagination$1 = /*#__PURE__*/function (_React$Component) {
         };
 
         if (!allPages) {
-          pagerList.push( /*#__PURE__*/React__default.createElement(Pager, _extends$1({}, pagerProps, {
+          pagerList.push( /*#__PURE__*/React__default.createElement(Pager, _extends$2({}, pagerProps, {
             key: "noPager",
             page: allPages,
             className: "".concat(prefixCls, "-disabled")
@@ -40803,7 +40716,7 @@ var Pagination$1 = /*#__PURE__*/function (_React$Component) {
 
         for (var i = 1; i <= allPages; i += 1) {
           var active = current === i;
-          pagerList.push( /*#__PURE__*/React__default.createElement(Pager, _extends$1({}, pagerProps, {
+          pagerList.push( /*#__PURE__*/React__default.createElement(Pager, _extends$2({}, pagerProps, {
             key: i,
             page: i,
             active: active
@@ -40915,7 +40828,7 @@ var Pagination$1 = /*#__PURE__*/function (_React$Component) {
 
       var prevDisabled = !this.hasPrev() || !allPages;
       var nextDisabled = !this.hasNext() || !allPages;
-      return /*#__PURE__*/React__default.createElement("ul", _extends$1({
+      return /*#__PURE__*/React__default.createElement("ul", _extends$2({
         className: classnames(prefixCls, className, _defineProperty$4({}, "".concat(prefixCls, "-disabled"), disabled)),
         style: style,
         unselectable: "unselectable",
@@ -41002,8 +40915,38 @@ Pagination$1.defaultProps = {
   totalBoundaryShowSizeChanger: 50
 };
 
+// This icon file is generated automatically.
+var DoubleLeftOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M272.9 512l265.4-339.1c4.1-5.2.4-12.9-6.3-12.9h-77.3c-4.9 0-9.6 2.3-12.6 6.1L186.8 492.3a31.99 31.99 0 000 39.5l255.3 326.1c3 3.9 7.7 6.1 12.6 6.1H532c6.7 0 10.4-7.7 6.3-12.9L272.9 512zm304 0l265.4-339.1c4.1-5.2.4-12.9-6.3-12.9h-77.3c-4.9 0-9.6 2.3-12.6 6.1L490.8 492.3a31.99 31.99 0 000 39.5l255.3 326.1c3 3.9 7.7 6.1 12.6 6.1H836c6.7 0 10.4-7.7 6.3-12.9L576.9 512z" } }] }, "name": "double-left", "theme": "outlined" };
+
+// GENERATE BY ./scripts/generate.ts
+
+var DoubleLeftOutlined = function DoubleLeftOutlined(props, ref) {
+  return /*#__PURE__*/React.createElement(Icon$1, Object.assign({}, props, {
+    ref: ref,
+    icon: DoubleLeftOutlined$2
+  }));
+};
+
+DoubleLeftOutlined.displayName = 'DoubleLeftOutlined';
+var DoubleLeftOutlined$1 = /*#__PURE__*/React.forwardRef(DoubleLeftOutlined);
+
+// This icon file is generated automatically.
+var DoubleRightOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M533.2 492.3L277.9 166.1c-3-3.9-7.7-6.1-12.6-6.1H188c-6.7 0-10.4 7.7-6.3 12.9L447.1 512 181.7 851.1A7.98 7.98 0 00188 864h77.3c4.9 0 9.6-2.3 12.6-6.1l255.3-326.1c9.1-11.7 9.1-27.9 0-39.5zm304 0L581.9 166.1c-3-3.9-7.7-6.1-12.6-6.1H492c-6.7 0-10.4 7.7-6.3 12.9L751.1 512 485.7 851.1A7.98 7.98 0 00492 864h77.3c4.9 0 9.6-2.3 12.6-6.1l255.3-326.1c9.1-11.7 9.1-27.9 0-39.5z" } }] }, "name": "double-right", "theme": "outlined" };
+
+// GENERATE BY ./scripts/generate.ts
+
+var DoubleRightOutlined = function DoubleRightOutlined(props, ref) {
+  return /*#__PURE__*/React.createElement(Icon$1, Object.assign({}, props, {
+    ref: ref,
+    icon: DoubleRightOutlined$2
+  }));
+};
+
+DoubleRightOutlined.displayName = 'DoubleRightOutlined';
+var DoubleRightOutlined$1 = /*#__PURE__*/React.forwardRef(DoubleRightOutlined);
+
 var MiniSelect = function MiniSelect(props) {
-  return /*#__PURE__*/React.createElement(Select$2, _extends$1({
+  return /*#__PURE__*/React.createElement(Select$2, _extends$2({
     size: "small"
   }, props));
 };
@@ -41087,14 +41030,14 @@ var Pagination = function Pagination(_a) {
   };
 
   var renderPagination = function renderPagination(contextLocale) {
-    var locale = _extends$1(_extends$1({}, contextLocale), customLocale);
+    var locale = _extends$2(_extends$2({}, contextLocale), customLocale);
 
     var isSmall = size === 'small' || !!(xs && !size && restProps.responsive);
     var selectPrefixCls = getPrefixCls('select', customizeSelectPrefixCls);
     var extendedClassName = classnames(_defineProperty$4({
       mini: isSmall
     }, "".concat(prefixCls, "-rtl"), direction === 'rtl'), className);
-    return /*#__PURE__*/React.createElement(Pagination$1, _extends$1({}, restProps, {
+    return /*#__PURE__*/React.createElement(Pagination$1, _extends$2({}, restProps, {
       prefixCls: prefixCls,
       selectPrefixCls: selectPrefixCls
     }, getIconsProps(), {
@@ -41219,7 +41162,7 @@ var ActionButton = function ActionButton(props) {
       children = props.children,
       prefixCls = props.prefixCls,
       buttonProps = props.buttonProps;
-  return /*#__PURE__*/React.createElement(Button$2, _extends$1({}, convertLegacyProps(type), {
+  return /*#__PURE__*/React.createElement(Button$2, _extends$2({}, convertLegacyProps(type), {
     onClick: onClick,
     loading: loading,
     prefixCls: prefixCls
@@ -41366,7 +41309,7 @@ var HookModal = function HookModal(_ref, ref) {
       destroy: close,
       update: function update(newConfig) {
         setInnerConfig(function (originConfig) {
-          return _extends$1(_extends$1({}, originConfig), newConfig);
+          return _extends$2(_extends$2({}, originConfig), newConfig);
         });
       }
     };
@@ -41375,7 +41318,7 @@ var HookModal = function HookModal(_ref, ref) {
     componentName: "Modal",
     defaultLocale: localeValues.Modal
   }, function (modalLocale) {
-    return /*#__PURE__*/React.createElement(ConfirmDialog, _extends$1({
+    return /*#__PURE__*/React.createElement(ConfirmDialog, _extends$2({
       prefixCls: prefixCls,
       rootPrefixCls: rootPrefixCls
     }, innerConfig, {
@@ -41413,7 +41356,7 @@ function confirm(config) {
   var div = document.createElement('div');
   document.body.appendChild(div); // eslint-disable-next-line @typescript-eslint/no-use-before-define
 
-  var currentConfig = _extends$1(_extends$1({}, config), {
+  var currentConfig = _extends$2(_extends$2({}, config), {
     close: close,
     visible: true
   });
@@ -41468,7 +41411,7 @@ function confirm(config) {
 
       var rootPrefixCls = getPrefixCls(undefined, getRootPrefixCls());
       var prefixCls = customizePrefixCls || "".concat(rootPrefixCls, "-modal");
-      ReactDOM.render( /*#__PURE__*/React.createElement(ConfirmDialog, _extends$1({}, props, {
+      ReactDOM.render( /*#__PURE__*/React.createElement(ConfirmDialog, _extends$2({}, props, {
         prefixCls: prefixCls,
         rootPrefixCls: rootPrefixCls,
         okText: okText || (props.okCancel ? runtimeLocale.okText : runtimeLocale.justOkText),
@@ -41484,7 +41427,7 @@ function confirm(config) {
       args[_key2] = arguments[_key2];
     }
 
-    currentConfig = _extends$1(_extends$1({}, currentConfig), {
+    currentConfig = _extends$2(_extends$2({}, currentConfig), {
       visible: false,
       afterClose: function afterClose() {
         if (typeof config.afterClose === 'function') {
@@ -41501,7 +41444,7 @@ function confirm(config) {
     if (typeof configUpdate === 'function') {
       currentConfig = configUpdate(currentConfig);
     } else {
-      currentConfig = _extends$1(_extends$1({}, currentConfig), configUpdate);
+      currentConfig = _extends$2(_extends$2({}, currentConfig), configUpdate);
     }
 
     render(currentConfig);
@@ -41515,7 +41458,7 @@ function confirm(config) {
   };
 }
 function withWarn(props) {
-  return _extends$1(_extends$1({
+  return _extends$2(_extends$2({
     icon: /*#__PURE__*/React.createElement(ExclamationCircleOutlined$1, null),
     okCancel: false
   }, props), {
@@ -41523,7 +41466,7 @@ function withWarn(props) {
   });
 }
 function withInfo(props) {
-  return _extends$1(_extends$1({
+  return _extends$2(_extends$2({
     icon: /*#__PURE__*/React.createElement(InfoCircleOutlined$1, null),
     okCancel: false
   }, props), {
@@ -41531,7 +41474,7 @@ function withInfo(props) {
   });
 }
 function withSuccess(props) {
-  return _extends$1(_extends$1({
+  return _extends$2(_extends$2({
     icon: /*#__PURE__*/React.createElement(CheckCircleOutlined$1, null),
     okCancel: false
   }, props), {
@@ -41539,7 +41482,7 @@ function withSuccess(props) {
   });
 }
 function withError(props) {
-  return _extends$1(_extends$1({
+  return _extends$2(_extends$2({
     icon: /*#__PURE__*/React.createElement(CloseCircleOutlined$1, null),
     okCancel: false
   }, props), {
@@ -41547,7 +41490,7 @@ function withError(props) {
   });
 }
 function withConfirm(props) {
-  return _extends$1(_extends$1({
+  return _extends$2(_extends$2({
     icon: /*#__PURE__*/React.createElement(ExclamationCircleOutlined$1, null),
     okCancel: true
   }, props), {
@@ -41714,9 +41657,9 @@ var Modal$2 = function Modal(props) {
         okType = props.okType,
         cancelText = props.cancelText,
         confirmLoading = props.confirmLoading;
-    return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Button$2, _extends$1({
+    return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Button$2, _extends$2({
       onClick: handleCancel
-    }, props.cancelButtonProps), cancelText || locale.cancelText), /*#__PURE__*/React.createElement(Button$2, _extends$1({}, convertLegacyProps(okType), {
+    }, props.cancelButtonProps), cancelText || locale.cancelText), /*#__PURE__*/React.createElement(Button$2, _extends$2({}, convertLegacyProps(okType), {
       loading: confirmLoading,
       onClick: handleOk
     }, props.okButtonProps), okText || locale.okText));
@@ -41745,7 +41688,7 @@ var Modal$2 = function Modal(props) {
     className: "".concat(prefixCls, "-close-icon")
   }));
   var wrapClassNameExtended = classnames(wrapClassName, (_classNames = {}, _defineProperty$4(_classNames, "".concat(prefixCls, "-centered"), !!centered), _defineProperty$4(_classNames, "".concat(prefixCls, "-wrap-rtl"), direction === 'rtl'), _classNames));
-  return /*#__PURE__*/React.createElement(DialogWrap, _extends$1({}, restProps, {
+  return /*#__PURE__*/React.createElement(DialogWrap, _extends$2({}, restProps, {
     getContainer: getContainer === undefined ? getContextPopupContainer : getContainer,
     prefixCls: prefixCls,
     wrapClassName: wrapClassNameExtended,
@@ -42141,7 +42084,7 @@ function HeaderRow(_ref) {
       additionalProps = cell.column.onHeaderCell(column);
     }
 
-    return /*#__PURE__*/React.createElement(MemoCell, _extends$1({}, cell, {
+    return /*#__PURE__*/React.createElement(MemoCell, _extends$2({}, cell, {
       ellipsis: column.ellipsis,
       align: column.align,
       component: CellComponent,
@@ -42385,7 +42328,7 @@ function BodyRow(props) {
   }
 
   var columnsKey = getColumnsKey(flattenColumns);
-  var baseRowNode = /*#__PURE__*/React.createElement(RowComponent, _extends$1({}, additionalProps, {
+  var baseRowNode = /*#__PURE__*/React.createElement(RowComponent, _extends$2({}, additionalProps, {
     "data-row-key": rowKey,
     className: classnames(className, "".concat(prefixCls, "-row"), "".concat(prefixCls, "-row-level-").concat(indent), computeRowClassName, additionalProps && additionalProps.className),
     style: _objectSpread2$1(_objectSpread2$1({}, style), additionalProps ? additionalProps.style : null),
@@ -42420,7 +42363,7 @@ function BodyRow(props) {
       additionalCellProps = column.onCell(record, index);
     }
 
-    return /*#__PURE__*/React.createElement(MemoCell, _extends$1({
+    return /*#__PURE__*/React.createElement(MemoCell, _extends$2({
       className: columnClassName,
       ellipsis: column.ellipsis,
       align: column.align,
@@ -42463,7 +42406,7 @@ function BodyRow(props) {
   if (hasNestChildren && expanded) {
     nestRowNode = (record[childrenColumnName] || []).map(function (subRecord, subIndex) {
       var subKey = getRowKey(subRecord, subIndex);
-      return /*#__PURE__*/React.createElement(BodyRow, _extends$1({}, props, {
+      return /*#__PURE__*/React.createElement(BodyRow, _extends$2({}, props, {
         key: subKey,
         rowKey: subKey,
         record: subRecord,
@@ -42958,7 +42901,7 @@ function ColGroup(_ref) {
     var additionalProps = column && column[INTERNAL_COL_DEFINE];
 
     if (width || additionalProps || mustInsert) {
-      cols.unshift( /*#__PURE__*/React.createElement("col", _extends$1({
+      cols.unshift( /*#__PURE__*/React.createElement("col", _extends$2({
         key: i,
         style: {
           width: width
@@ -43000,7 +42943,7 @@ function SummaryCell(_ref) {
   var lastIndex = index + colSpan - 1;
   var mergedColSpan = lastIndex + 1 === scrollColumnIndex ? colSpan + 1 : colSpan;
   var fixedInfo = getCellFixedInfo(index, index + mergedColSpan - 1, flattenColumns, stickyOffsets, direction);
-  return /*#__PURE__*/React.createElement(MemoCell, _extends$1({
+  return /*#__PURE__*/React.createElement(MemoCell, _extends$2({
     className: className,
     index: index,
     component: "td",
@@ -43926,13 +43869,13 @@ function Table$1(props) {
       onScroll: onScroll
     });
 
-    groupTableNode = /*#__PURE__*/React.createElement(React.Fragment, null, showHeader !== false && /*#__PURE__*/React.createElement(FixedHolder, _extends$1({}, fixedHolderProps, {
+    groupTableNode = /*#__PURE__*/React.createElement(React.Fragment, null, showHeader !== false && /*#__PURE__*/React.createElement(FixedHolder, _extends$2({}, fixedHolderProps, {
       stickyTopOffset: offsetHeader,
       className: "".concat(prefixCls, "-header"),
       ref: scrollHeaderRef
     }), function (fixedHolderPassProps) {
       return /*#__PURE__*/React.createElement(Header$1, fixedHolderPassProps);
-    }), bodyContent, fixFooter && /*#__PURE__*/React.createElement(FixedHolder, _extends$1({}, fixedHolderProps, {
+    }), bodyContent, fixFooter && /*#__PURE__*/React.createElement(FixedHolder, _extends$2({}, fixedHolderProps, {
       stickyBottomOffset: offsetSummary,
       className: "".concat(prefixCls, "-summary"),
       ref: scrollSummaryRef
@@ -43956,14 +43899,14 @@ function Table$1(props) {
       style: _objectSpread2$1(_objectSpread2$1({}, scrollTableStyle), {}, {
         tableLayout: mergedTableLayout
       })
-    }, bodyColGroup, showHeader !== false && /*#__PURE__*/React.createElement(Header$1, _extends$1({}, headerProps, columnContext)), bodyTable, summaryNode && /*#__PURE__*/React.createElement(Footer, {
+    }, bodyColGroup, showHeader !== false && /*#__PURE__*/React.createElement(Header$1, _extends$2({}, headerProps, columnContext)), bodyTable, summaryNode && /*#__PURE__*/React.createElement(Footer, {
       stickyOffsets: stickyOffsets,
       flattenColumns: flattenColumns
     }, summaryNode)));
   }
 
   var ariaProps = getDataAndAriaProps(props);
-  var fullTable = /*#__PURE__*/React.createElement("div", _extends$1({
+  var fullTable = /*#__PURE__*/React.createElement("div", _extends$2({
     className: classnames(prefixCls, className, (_classNames = {}, _defineProperty$4(_classNames, "".concat(prefixCls, "-rtl"), direction === 'rtl'), _defineProperty$4(_classNames, "".concat(prefixCls, "-ping-left"), pingedLeft), _defineProperty$4(_classNames, "".concat(prefixCls, "-ping-right"), pingedRight), _defineProperty$4(_classNames, "".concat(prefixCls, "-layout-fixed"), tableLayout === 'fixed'), _defineProperty$4(_classNames, "".concat(prefixCls, "-fixed-header"), fixHeader), _defineProperty$4(_classNames, "".concat(prefixCls, "-fixed-column"), fixColumn), _defineProperty$4(_classNames, "".concat(prefixCls, "-scroll-horizontal"), horizonScroll), _defineProperty$4(_classNames, "".concat(prefixCls, "-has-fix-left"), flattenColumns[0] && flattenColumns[0].fixed), _defineProperty$4(_classNames, "".concat(prefixCls, "-has-fix-right"), flattenColumns[flattenColumns.length - 1] && flattenColumns[flattenColumns.length - 1].fixed === 'right'), _classNames)),
     style: style,
     id: id,
@@ -44146,7 +44089,7 @@ function usePagination(total, pagination, onChange) {
     return [{}, function () {}];
   }
 
-  return [_extends$1(_extends$1({}, mergedPagination), {
+  return [_extends$2(_extends$2({}, mergedPagination), {
     onChange: onInternalChange
   }), refreshPagination];
 }
@@ -44650,7 +44593,7 @@ var InternalTreeNode = /*#__PURE__*/function (_React$Component) {
 
       var isEndNode = isEnd[isEnd.length - 1];
       var mergedDraggable = typeof draggable === 'function' ? draggable(data) : draggable;
-      return /*#__PURE__*/React.createElement("div", _extends$1({
+      return /*#__PURE__*/React.createElement("div", _extends$2({
         ref: domRef,
         className: classnames(className, "".concat(prefixCls, "-treenode"), (_classNames = {}, _defineProperty$4(_classNames, "".concat(prefixCls, "-treenode-disabled"), disabled), _defineProperty$4(_classNames, "".concat(prefixCls, "-treenode-switcher-").concat(expanded ? 'open' : 'close'), !isLeaf), _defineProperty$4(_classNames, "".concat(prefixCls, "-treenode-checkbox-checked"), checked), _defineProperty$4(_classNames, "".concat(prefixCls, "-treenode-checkbox-indeterminate"), halfChecked), _defineProperty$4(_classNames, "".concat(prefixCls, "-treenode-selected"), selected), _defineProperty$4(_classNames, "".concat(prefixCls, "-treenode-loading"), loading), _defineProperty$4(_classNames, "".concat(prefixCls, "-treenode-active"), active), _defineProperty$4(_classNames, "".concat(prefixCls, "-treenode-leaf-last"), isEndNode), _defineProperty$4(_classNames, 'drop-target', dropTargetKey === eventKey), _defineProperty$4(_classNames, 'drop-container', dropContainerKey === eventKey), _defineProperty$4(_classNames, 'drag-over', !disabled && dragOver), _defineProperty$4(_classNames, 'drag-over-gap-top', !disabled && dragOverGapTop), _defineProperty$4(_classNames, 'drag-over-gap-bottom', !disabled && dragOverGapBottom), _defineProperty$4(_classNames, 'filter-node', filterTreeNode && filterTreeNode(convertNodePropsToEventData(this.props))), _classNames)),
         style: style,
@@ -44674,7 +44617,7 @@ var InternalTreeNode = /*#__PURE__*/function (_React$Component) {
 
 var ContextTreeNode = function ContextTreeNode(props) {
   return /*#__PURE__*/React.createElement(TreeContext.Consumer, null, function (context) {
-    return /*#__PURE__*/React.createElement(InternalTreeNode, _extends$1({}, props, {
+    return /*#__PURE__*/React.createElement(InternalTreeNode, _extends$2({}, props, {
       context: context
     }));
   });
@@ -45832,16 +45775,30 @@ function useSelection(rowSelection, config) {
         }, /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement(DownOutlined$1, null))));
       }
 
-      var allDisabled = flattedData.every(function (record, index) {
+      var allDisabledData = flattedData.map(function (record, index) {
         var key = getRowKey(record, index);
         var checkboxProps = checkboxPropsMap.get(key) || {};
-        return checkboxProps.disabled;
+        return _extends$2({
+          checked: keySet.has(key)
+        }, checkboxProps);
+      }).filter(function (_ref2) {
+        var disabled = _ref2.disabled;
+        return disabled;
+      });
+      var allDisabled = !!allDisabledData.length && allDisabledData.length === flattedData.length;
+      var allDisabledAndChecked = allDisabled && allDisabledData.every(function (_ref3) {
+        var checked = _ref3.checked;
+        return checked;
+      });
+      var allDisabledSomeChecked = allDisabled && allDisabledData.some(function (_ref4) {
+        var checked = _ref4.checked;
+        return checked;
       });
       title = !hideSelectAll && /*#__PURE__*/React.createElement("div", {
         className: "".concat(prefixCls, "-selection")
       }, /*#__PURE__*/React.createElement(Checkbox$1, {
-        checked: !allDisabled && !!flattedData.length && checkedCurrentAll,
-        indeterminate: !checkedCurrentAll && checkedCurrentSome,
+        checked: !allDisabled ? !!flattedData.length && checkedCurrentAll : allDisabledAndChecked,
+        indeterminate: !allDisabled ? !checkedCurrentAll && checkedCurrentSome : !allDisabledAndChecked && allDisabledSomeChecked,
         onChange: onSelectAllChange,
         disabled: flattedData.length === 0 || allDisabled,
         skipGroup: true
@@ -45856,7 +45813,7 @@ function useSelection(rowSelection, config) {
         var key = getRowKey(record, index);
         var checked = keySet.has(key);
         return {
-          node: /*#__PURE__*/React.createElement(Radio, _extends$1({}, checkboxPropsMap.get(key), {
+          node: /*#__PURE__*/React.createElement(Radio, _extends$2({}, checkboxPropsMap.get(key), {
             checked: checked,
             onClick: function onClick(e) {
               return e.stopPropagation();
@@ -45889,15 +45846,15 @@ function useSelection(rowSelection, config) {
 
 
         return {
-          node: /*#__PURE__*/React.createElement(Checkbox$1, _extends$1({}, checkboxProps, {
+          node: /*#__PURE__*/React.createElement(Checkbox$1, _extends$2({}, checkboxProps, {
             indeterminate: mergedIndeterminate,
             checked: checked,
             skipGroup: true,
             onClick: function onClick(e) {
               return e.stopPropagation();
             },
-            onChange: function onChange(_ref2) {
-              var nativeEvent = _ref2.nativeEvent;
+            onChange: function onChange(_ref5) {
+              var nativeEvent = _ref5.nativeEvent;
               var shiftKey = nativeEvent.shiftKey;
               var startIndex = -1;
               var endIndex = -1; // Get range of this
@@ -46014,17 +45971,47 @@ function useSelection(rowSelection, config) {
         expandColumn.fixed = selectionFixed;
       }
 
-      return [expandColumn, _extends$1(_extends$1({}, selectionColumn), {
+      return [expandColumn, _extends$2(_extends$2({}, selectionColumn), {
         fixed: selectionFixed
       })].concat(_toConsumableArray(restColumns));
     }
 
-    return [_extends$1(_extends$1({}, selectionColumn), {
+    return [_extends$2(_extends$2({}, selectionColumn), {
       fixed: fixed || getFixedType(columns[0])
     })].concat(_toConsumableArray(columns));
   }, [getRowKey, flattedData, rowSelection, derivedSelectedKeys, derivedSelectedKeySet, derivedHalfSelectedKeySet, selectionColWidth, mergedSelections, expandType, lastSelectedKey, checkboxPropsMap, onSelectMultiple, triggerSingleSelection, isCheckboxDisabled]);
   return [transformColumns, derivedSelectedKeySet];
 }
+
+// This icon file is generated automatically.
+var CaretDownOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "0 0 1024 1024", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M840.4 300H183.6c-19.7 0-30.7 20.8-18.5 35l328.4 380.8c9.4 10.9 27.5 10.9 37 0L858.9 335c12.2-14.2 1.2-35-18.5-35z" } }] }, "name": "caret-down", "theme": "outlined" };
+
+// GENERATE BY ./scripts/generate.ts
+
+var CaretDownOutlined = function CaretDownOutlined(props, ref) {
+  return /*#__PURE__*/React.createElement(Icon$1, Object.assign({}, props, {
+    ref: ref,
+    icon: CaretDownOutlined$2
+  }));
+};
+
+CaretDownOutlined.displayName = 'CaretDownOutlined';
+var CaretDownOutlined$1 = /*#__PURE__*/React.forwardRef(CaretDownOutlined);
+
+// This icon file is generated automatically.
+var CaretUpOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "0 0 1024 1024", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M858.9 689L530.5 308.2c-9.4-10.9-27.5-10.9-37 0L165.1 689c-12.2 14.2-1.2 35 18.5 35h656.8c19.7 0 30.7-20.8 18.5-35z" } }] }, "name": "caret-up", "theme": "outlined" };
+
+// GENERATE BY ./scripts/generate.ts
+
+var CaretUpOutlined = function CaretUpOutlined(props, ref) {
+  return /*#__PURE__*/React.createElement(Icon$1, Object.assign({}, props, {
+    ref: ref,
+    icon: CaretUpOutlined$2
+  }));
+};
+
+CaretUpOutlined.displayName = 'CaretUpOutlined';
+var CaretUpOutlined$1 = /*#__PURE__*/React.forwardRef(CaretUpOutlined);
 
 function getColumnKey(column, defaultKey) {
   if ('key' in column && column.key !== undefined && column.key !== null) {
@@ -46161,7 +46148,7 @@ function injectSorter(prefixCls, columns, sorterSates, triggerSorter, defaultSor
       var tooltipProps = _typeof$4(showSorterTooltip) === 'object' ? showSorterTooltip : {
         title: sortTip
       };
-      newColumn = _extends$1(_extends$1({}, newColumn), {
+      newColumn = _extends$2(_extends$2({}, newColumn), {
         className: classnames(newColumn.className, _defineProperty$4({}, "".concat(prefixCls, "-column-sort"), sorterOrder)),
         title: function title(renderProps) {
           var renderSortTitle = /*#__PURE__*/React.createElement("div", {
@@ -46199,7 +46186,7 @@ function injectSorter(prefixCls, columns, sorterSates, triggerSorter, defaultSor
     }
 
     if ('children' in newColumn) {
-      newColumn = _extends$1(_extends$1({}, newColumn), {
+      newColumn = _extends$2(_extends$2({}, newColumn), {
         children: injectSorter(prefixCls, newColumn.children, sorterSates, triggerSorter, defaultSortDirections, tableLocale, tableShowSorterTooltip, columnPos)
       });
     }
@@ -46227,7 +46214,7 @@ function generateSorterInfo(sorterStates) {
   // https://github.com/ant-design/ant-design/pull/19226
 
   if (list.length === 0 && sorterStates.length) {
-    return _extends$1(_extends$1({}, stateToInfo(sorterStates[sorterStates.length - 1])), {
+    return _extends$2(_extends$2({}, stateToInfo(sorterStates[sorterStates.length - 1])), {
       column: undefined
     });
   }
@@ -46275,7 +46262,7 @@ function getSortData(data, sortStates, childrenColumnName) {
     var subRecords = record[childrenColumnName];
 
     if (subRecords) {
-      return _extends$1(_extends$1({}, record), _defineProperty$4({}, childrenColumnName, getSortData(subRecords, sortStates, childrenColumnName)));
+      return _extends$2(_extends$2({}, record), _defineProperty$4({}, childrenColumnName, getSortData(subRecords, sortStates, childrenColumnName)));
     }
 
     return record;
@@ -46308,7 +46295,7 @@ function useFilterSorter(_ref5) {
       if (validate) {
         validateStates.push(state);
       } else {
-        validateStates.push(_extends$1(_extends$1({}, state), {
+        validateStates.push(_extends$2(_extends$2({}, state), {
           sortOrder: null
         }));
       }
@@ -46379,6 +46366,21 @@ function useFilterSorter(_ref5) {
 
   return [transformColumns, mergedSorterStates, columnTitleSorterProps, getSorters];
 }
+
+// This icon file is generated automatically.
+var FilterFilled$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M349 838c0 17.7 14.2 32 31.8 32h262.4c17.6 0 31.8-14.3 31.8-32V642H349v196zm531.1-684H143.9c-24.5 0-39.8 26.7-27.5 48l221.3 376h348.8l221.3-376c12.1-21.3-3.2-48-27.7-48z" } }] }, "name": "filter", "theme": "filled" };
+
+// GENERATE BY ./scripts/generate.ts
+
+var FilterFilled = function FilterFilled(props, ref) {
+  return /*#__PURE__*/React.createElement(Icon$1, Object.assign({}, props, {
+    ref: ref,
+    icon: FilterFilled$2
+  }));
+};
+
+FilterFilled.displayName = 'FilterFilled';
+var FilterFilled$1 = /*#__PURE__*/React.forwardRef(FilterFilled);
 
 var FilterDropdownMenuWrapper = function FilterDropdownMenuWrapper(props) {
   return /*#__PURE__*/React.createElement("div", {
@@ -46732,7 +46734,7 @@ function injectFilter(prefixCls, dropdownPrefixCls, columns, filterStates, trigg
         var key = _ref.key;
         return columnKey === key;
       });
-      newColumn = _extends$1(_extends$1({}, newColumn), {
+      newColumn = _extends$2(_extends$2({}, newColumn), {
         title: function title(renderProps) {
           return /*#__PURE__*/React.createElement(FilterDropdown, {
             tablePrefixCls: prefixCls,
@@ -46751,7 +46753,7 @@ function injectFilter(prefixCls, dropdownPrefixCls, columns, filterStates, trigg
     }
 
     if ('children' in newColumn) {
-      newColumn = _extends$1(_extends$1({}, newColumn), {
+      newColumn = _extends$2(_extends$2({}, newColumn), {
         children: injectFilter(prefixCls, dropdownPrefixCls, newColumn.children, filterStates, triggerFilter, getPopupContainer, locale, columnPos)
       });
     }
@@ -46835,15 +46837,21 @@ function useFilter(_ref4) {
       setFilterStates = _React$useState2[1];
 
   var mergedFilterStates = React.useMemo(function () {
-    var collectedStates = collectFilterStates(mergedColumns, false); // Return if not controlled
-
-    if (collectedStates.every(function (_ref5) {
+    var collectedStates = collectFilterStates(mergedColumns, false);
+    var filteredKeysIsNotControlled = collectedStates.every(function (_ref5) {
       var filteredKeys = _ref5.filteredKeys;
       return filteredKeys === undefined;
-    })) {
+    }); // Return if not controlled
+
+    if (filteredKeysIsNotControlled) {
       return filterStates;
     }
 
+    var filteredKeysIsAllControlled = collectedStates.every(function (_ref6) {
+      var filteredKeys = _ref6.filteredKeys;
+      return filteredKeys !== undefined;
+    });
+    devWarning(filteredKeysIsNotControlled || filteredKeysIsAllControlled, 'Table', '`FilteredKeys` should all be controlled or not controlled.');
     return collectedStates;
   }, [mergedColumns, filterStates]);
   var getFilters = React.useCallback(function () {
@@ -46851,8 +46859,8 @@ function useFilter(_ref4) {
   }, [mergedFilterStates]);
 
   var triggerFilter = function triggerFilter(filterState) {
-    var newFilterStates = mergedFilterStates.filter(function (_ref6) {
-      var key = _ref6.key;
+    var newFilterStates = mergedFilterStates.filter(function (_ref7) {
+      var key = _ref7.key;
       return key !== filterState.key;
     });
     newFilterStates.push(filterState);
@@ -46869,7 +46877,7 @@ function useFilter(_ref4) {
 
 function fillTitle(columns, columnTitleProps) {
   return columns.map(function (column) {
-    var cloneColumn = _extends$1({}, column);
+    var cloneColumn = _extends$2({}, column);
 
     cloneColumn.title = renderColumnTitle(column.title, columnTitleProps);
 
@@ -46981,7 +46989,7 @@ function Table(props) {
 
   var mergedSize = customizeSize || size;
 
-  var tableLocale = _extends$1(_extends$1({}, contextLocale.Table), locale);
+  var tableLocale = _extends$2(_extends$2({}, contextLocale.Table), locale);
 
   var rawData = dataSource || EMPTY_LIST;
 
@@ -46991,7 +46999,7 @@ function Table(props) {
   var prefixCls = getPrefixCls('table', customizePrefixCls);
   var dropdownPrefixCls = getPrefixCls('dropdown', customizeDropdownPrefixCls);
 
-  var mergedExpandable = _extends$1({
+  var mergedExpandable = _extends$2({
     childrenColumnName: legacyChildrenColumnName,
     expandIconColumnIndex: expandIconColumnIndex
   }, expandable);
@@ -47039,7 +47047,7 @@ function Table(props) {
   var triggerOnChange = function triggerOnChange(info, action) {
     var reset = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
 
-    var changeInfo = _extends$1(_extends$1({}, changeEventInfo), info);
+    var changeInfo = _extends$2(_extends$2({}, changeEventInfo), info);
 
     if (reset) {
       changeEventInfo.resetPagination(); // Reset event param
@@ -47127,7 +47135,7 @@ function Table(props) {
   changeEventInfo.filterStates = filterStates; // ============================ Column ============================
 
   var columnTitleProps = React.useMemo(function () {
-    return _extends$1({}, sorterTitleProps);
+    return _extends$2({}, sorterTitleProps);
   }, [sorterTitleProps]);
 
   var _useTitleColumns = useTitleColumns(columnTitleProps),
@@ -47137,7 +47145,7 @@ function Table(props) {
 
   var onPaginationChange = function onPaginationChange(current, pageSize) {
     triggerOnChange({
-      pagination: _extends$1(_extends$1({}, changeEventInfo.pagination), {
+      pagination: _extends$2(_extends$2({}, changeEventInfo.pagination), {
         current: current,
         pageSize: pageSize
       })
@@ -47238,7 +47246,7 @@ function Table(props) {
     }
 
     var renderPagination = function renderPagination(position) {
-      return /*#__PURE__*/React.createElement(Pagination, _extends$1({
+      return /*#__PURE__*/React.createElement(Pagination, _extends$2({
         className: "".concat(prefixCls, "-pagination ").concat(prefixCls, "-pagination-").concat(position)
       }, mergedPagination, {
         size: paginationSize
@@ -47283,7 +47291,7 @@ function Table(props) {
       spinning: loading
     };
   } else if (_typeof$4(loading) === 'object') {
-    spinProps = _extends$1({
+    spinProps = _extends$2({
       spinning: true
     }, loading);
   }
@@ -47292,9 +47300,9 @@ function Table(props) {
   return /*#__PURE__*/React.createElement("div", {
     className: wrapperClassNames,
     style: style
-  }, /*#__PURE__*/React.createElement(Spin, _extends$1({
+  }, /*#__PURE__*/React.createElement(Spin, _extends$2({
     spinning: false
-  }, spinProps), topPaginationNode, /*#__PURE__*/React.createElement(Table$1, _extends$1({}, tableProps, {
+  }, spinProps), topPaginationNode, /*#__PURE__*/React.createElement(Table$1, _extends$2({}, tableProps, {
     columns: mergedColumns,
     direction: direction,
     expandable: mergedExpandable,
@@ -47370,7 +47378,7 @@ var MotionTreeNode = function MotionTreeNode(_ref, ref) {
   }, []);
 
   if (motionNodes) {
-    return /*#__PURE__*/React.createElement(CSSMotion, _extends$1({
+    return /*#__PURE__*/React.createElement(CSSMotion, _extends$2({
       ref: ref,
       visible: visible
     }, motion, {
@@ -47393,7 +47401,7 @@ var MotionTreeNode = function MotionTreeNode(_ref, ref) {
 
         delete restProps.children;
         var treeNodeProps = getTreeNodeProps(key, treeNodeRequiredProps);
-        return /*#__PURE__*/React.createElement(ContextTreeNode, _extends$1({}, restProps, treeNodeProps, {
+        return /*#__PURE__*/React.createElement(ContextTreeNode, _extends$2({}, restProps, treeNodeProps, {
           active: active,
           data: treeNode.data,
           key: key,
@@ -47404,7 +47412,7 @@ var MotionTreeNode = function MotionTreeNode(_ref, ref) {
     });
   }
 
-  return /*#__PURE__*/React.createElement(ContextTreeNode, _extends$1({
+  return /*#__PURE__*/React.createElement(ContextTreeNode, _extends$2({
     domRef: ref,
     className: className,
     style: style
@@ -47703,7 +47711,7 @@ var RefNodeList = function RefNodeList(props, ref) {
   }, /*#__PURE__*/React.createElement("div", {
     ref: indentMeasurerRef,
     className: "".concat(prefixCls, "-indent-unit")
-  }))), /*#__PURE__*/React.createElement(List, _extends$1({}, domProps, {
+  }))), /*#__PURE__*/React.createElement(List, _extends$2({}, domProps, {
     data: mergedData,
     itemKey: itemKey,
     height: height,
@@ -47723,7 +47731,7 @@ var RefNodeList = function RefNodeList(props, ref) {
     var mergedKey = getKey(key, pos);
     delete restProps.children;
     var treeNodeProps = getTreeNodeProps(mergedKey, treeNodeRequiredProps);
-    return /*#__PURE__*/React.createElement(RefMotionTreeNode, _extends$1({}, restProps, treeNodeProps, {
+    return /*#__PURE__*/React.createElement(RefMotionTreeNode, _extends$2({}, restProps, treeNodeProps, {
       active: !!activeItem && key === activeItem.data.key,
       pos: pos,
       data: treeNode.data,
@@ -48785,7 +48793,7 @@ var Tree = /*#__PURE__*/function (_React$Component) {
         }
       }, /*#__PURE__*/React.createElement("div", {
         className: classnames(prefixCls, className, (_classNames = {}, _defineProperty$4(_classNames, "".concat(prefixCls, "-show-line"), showLine), _defineProperty$4(_classNames, "".concat(prefixCls, "-focused"), focused), _defineProperty$4(_classNames, "".concat(prefixCls, "-active-focused"), activeKey !== null), _classNames))
-      }, /*#__PURE__*/React.createElement(NodeList, _extends$1({
+      }, /*#__PURE__*/React.createElement(NodeList, _extends$2({
         ref: this.listRef,
         prefixCls: prefixCls,
         style: style,
@@ -48946,6 +48954,66 @@ Tree.defaultProps = {
   }
 };
 Tree.TreeNode = ContextTreeNode;
+
+// This icon file is generated automatically.
+var FileOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M854.6 288.6L639.4 73.4c-6-6-14.1-9.4-22.6-9.4H192c-17.7 0-32 14.3-32 32v832c0 17.7 14.3 32 32 32h640c17.7 0 32-14.3 32-32V311.3c0-8.5-3.4-16.7-9.4-22.7zM790.2 326H602V137.8L790.2 326zm1.8 562H232V136h302v216a42 42 0 0042 42h216v494z" } }] }, "name": "file", "theme": "outlined" };
+
+// GENERATE BY ./scripts/generate.ts
+
+var FileOutlined = function FileOutlined(props, ref) {
+  return /*#__PURE__*/React.createElement(Icon$1, Object.assign({}, props, {
+    ref: ref,
+    icon: FileOutlined$2
+  }));
+};
+
+FileOutlined.displayName = 'FileOutlined';
+var FileOutlined$1 = /*#__PURE__*/React.forwardRef(FileOutlined);
+
+// This icon file is generated automatically.
+var MinusSquareOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M328 544h368c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8H328c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8z" } }, { "tag": "path", "attrs": { "d": "M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656z" } }] }, "name": "minus-square", "theme": "outlined" };
+
+// GENERATE BY ./scripts/generate.ts
+
+var MinusSquareOutlined = function MinusSquareOutlined(props, ref) {
+  return /*#__PURE__*/React.createElement(Icon$1, Object.assign({}, props, {
+    ref: ref,
+    icon: MinusSquareOutlined$2
+  }));
+};
+
+MinusSquareOutlined.displayName = 'MinusSquareOutlined';
+var MinusSquareOutlined$1 = /*#__PURE__*/React.forwardRef(MinusSquareOutlined);
+
+// This icon file is generated automatically.
+var PlusSquareOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M328 544h152v152c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V544h152c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8H544V328c0-4.4-3.6-8-8-8h-48c-4.4 0-8 3.6-8 8v152H328c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8z" } }, { "tag": "path", "attrs": { "d": "M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656z" } }] }, "name": "plus-square", "theme": "outlined" };
+
+// GENERATE BY ./scripts/generate.ts
+
+var PlusSquareOutlined = function PlusSquareOutlined(props, ref) {
+  return /*#__PURE__*/React.createElement(Icon$1, Object.assign({}, props, {
+    ref: ref,
+    icon: PlusSquareOutlined$2
+  }));
+};
+
+PlusSquareOutlined.displayName = 'PlusSquareOutlined';
+var PlusSquareOutlined$1 = /*#__PURE__*/React.forwardRef(PlusSquareOutlined);
+
+// This icon file is generated automatically.
+var CaretDownFilled$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "0 0 1024 1024", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M840.4 300H183.6c-19.7 0-30.7 20.8-18.5 35l328.4 380.8c9.4 10.9 27.5 10.9 37 0L858.9 335c12.2-14.2 1.2-35-18.5-35z" } }] }, "name": "caret-down", "theme": "filled" };
+
+// GENERATE BY ./scripts/generate.ts
+
+var CaretDownFilled = function CaretDownFilled(props, ref) {
+  return /*#__PURE__*/React.createElement(Icon$1, Object.assign({}, props, {
+    ref: ref,
+    icon: CaretDownFilled$2
+  }));
+};
+
+CaretDownFilled.displayName = 'CaretDownFilled';
+var CaretDownFilled$1 = /*#__PURE__*/React.forwardRef(CaretDownFilled);
 
 function renderSwitcherIcon(prefixCls, switcherIcon, showLine, _ref) {
   var isLeaf = _ref.isLeaf,
@@ -49254,14 +49322,16 @@ var OptionList = function OptionList(props, ref) {
 
           case KeyCode.ENTER:
             {
-              var _activeEntity$data;
+              var _ref2 = (activeEntity === null || activeEntity === void 0 ? void 0 : activeEntity.data) || {},
+                  selectable = _ref2.selectable,
+                  value = _ref2.value;
 
-              if ((activeEntity === null || activeEntity === void 0 ? void 0 : (_activeEntity$data = activeEntity.data) === null || _activeEntity$data === void 0 ? void 0 : _activeEntity$data.selectable) !== false) {
+              if (selectable !== false) {
                 onInternalSelect(null, {
                   node: {
                     key: activeKey
                   },
-                  selected: !checkedKeys.includes(activeEntity.data.value)
+                  selected: !checkedKeys.includes(value)
                 });
               }
 
@@ -49303,7 +49373,7 @@ var OptionList = function OptionList(props, ref) {
   }, activeEntity && open && /*#__PURE__*/React.createElement("span", {
     style: HIDDEN_STYLE,
     "aria-live": "assertive"
-  }, activeEntity.data.value), /*#__PURE__*/React.createElement(Tree, _extends$1({
+  }, activeEntity.data.value), /*#__PURE__*/React.createElement(Tree, _extends$2({
     ref: treeRef,
     focusable: false,
     prefixCls: "".concat(prefixCls, "-tree"),
@@ -50223,7 +50293,7 @@ var RefTreeSelect = /*#__PURE__*/React.forwardRef(function (props, ref) {
       treeLine: treeLine,
       treeNodeFilterProp: treeNodeFilterProp
     }
-  }, /*#__PURE__*/React.createElement(RefSelect, _extends$1({
+  }, /*#__PURE__*/React.createElement(RefSelect, _extends$2({
     ref: selectRef,
     mode: mergedMultiple ? 'multiple' : null
   }, props, selectProps, {
@@ -50266,7 +50336,7 @@ var TreeSelect$2 = /*#__PURE__*/function (_React$Component) {
   _createClass$2(TreeSelect, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/React.createElement(RefTreeSelect, _extends$1({
+      return /*#__PURE__*/React.createElement(RefTreeSelect, _extends$2({
         ref: this.selectRef
       }, this.props));
     }
@@ -50335,7 +50405,7 @@ var InternalTreeSelect = function InternalTreeSelect(_a, ref) {
   var mergedDropdownClassName = classnames(dropdownClassName, "".concat(treeSelectPrefixCls, "-dropdown"), _defineProperty$4({}, "".concat(treeSelectPrefixCls, "-dropdown-rtl"), direction === 'rtl'));
   var isMultiple = !!(treeCheckable || multiple); // ===================== Icons =====================
 
-  var _getIcons = getIcons(_extends$1(_extends$1({}, props), {
+  var _getIcons = getIcons(_extends$2(_extends$2({}, props), {
     multiple: isMultiple,
     prefixCls: prefixCls
   })),
@@ -50357,7 +50427,7 @@ var InternalTreeSelect = function InternalTreeSelect(_a, ref) {
   var mergedSize = customizeSize || size;
   var mergedClassName = classnames(!customizePrefixCls && treeSelectPrefixCls, (_classNames2 = {}, _defineProperty$4(_classNames2, "".concat(prefixCls, "-lg"), mergedSize === 'large'), _defineProperty$4(_classNames2, "".concat(prefixCls, "-sm"), mergedSize === 'small'), _defineProperty$4(_classNames2, "".concat(prefixCls, "-rtl"), direction === 'rtl'), _defineProperty$4(_classNames2, "".concat(prefixCls, "-borderless"), !bordered), _classNames2), className);
   var rootPrefixCls = getPrefixCls();
-  return /*#__PURE__*/React.createElement(TreeSelect$2, _extends$1({
+  return /*#__PURE__*/React.createElement(TreeSelect$2, _extends$2({
     virtual: virtual,
     dropdownMatchSelectWidth: dropdownMatchSelectWidth
   }, selectProps, {
@@ -50427,7 +50497,7 @@ var TimelineItem = function TimelineItem(_a) {
   var prefixCls = getPrefixCls('timeline', customizePrefixCls);
   var itemClassName = classnames((_classNames = {}, _defineProperty$4(_classNames, "".concat(prefixCls, "-item"), true), _defineProperty$4(_classNames, "".concat(prefixCls, "-item-pending"), pending), _classNames), className);
   var dotClassName = classnames((_classNames2 = {}, _defineProperty$4(_classNames2, "".concat(prefixCls, "-item-head"), true), _defineProperty$4(_classNames2, "".concat(prefixCls, "-item-head-custom"), !!dot), _defineProperty$4(_classNames2, "".concat(prefixCls, "-item-head-").concat(color), true), _classNames2));
-  return /*#__PURE__*/React.createElement("li", _extends$1({}, restProps, {
+  return /*#__PURE__*/React.createElement("li", _extends$2({}, restProps, {
     className: itemClassName
   }), label && /*#__PURE__*/React.createElement("div", {
     className: "".concat(prefixCls, "-item-label")
@@ -50520,7 +50590,7 @@ var Timeline = function Timeline(props) {
     return !!((_a = item === null || item === void 0 ? void 0 : item.props) === null || _a === void 0 ? void 0 : _a.label);
   });
   var classString = classnames(prefixCls, (_classNames = {}, _defineProperty$4(_classNames, "".concat(prefixCls, "-pending"), !!pending), _defineProperty$4(_classNames, "".concat(prefixCls, "-reverse"), !!reverse), _defineProperty$4(_classNames, "".concat(prefixCls, "-").concat(mode), !!mode && !hasLabelItem), _defineProperty$4(_classNames, "".concat(prefixCls, "-label"), hasLabelItem), _defineProperty$4(_classNames, "".concat(prefixCls, "-rtl"), direction === 'rtl'), _classNames), className);
-  return /*#__PURE__*/React.createElement("ul", _extends$1({}, restProps, {
+  return /*#__PURE__*/React.createElement("ul", _extends$2({}, restProps, {
     className: classString
   }), items);
 };
@@ -50529,7 +50599,7 @@ Timeline.Item = TimelineItem;
 
 var Option = Select$2.Option;
 var Select = function (_a, ref) {
-    var className = _a.className, classNameSelect = _a.classNameSelect, _b = _a.value, value = _b === void 0 ? [] : _b, label = _a.label, _c = _a.defaultValue, defaultValue = _c === void 0 ? [] : _c, _d = _a.placeholder, placeholder = _d === void 0 ? "Please select" : _d, onChange = _a.onChange, disabled = _a.disabled, _e = _a.dataSource, dataSource = _e === void 0 ? [] : _e, error = _a.error, _f = _a.multiple, multiple = _f === void 0 ? false : _f, _g = _a.getLabel, getLabel = _g === void 0 ? function (item) { return item.label; } : _g, _h = _a.getKey, getKey = _h === void 0 ? function (item) { return item.id; } : _h, _j = _a.getValue, getValue = _j === void 0 ? function (item) { var _a; return (_a = item === null || item === void 0 ? void 0 : item.id) !== null && _a !== void 0 ? _a : null; } : _j, _k = _a.allowClear, allowClear = _k === void 0 ? true : _k, _l = _a.variant, variant = _l === void 0 ? "outline" : _l, _m = _a.hasFilter, hasFilter = _m === void 0 ? true : _m, props = __rest$s(_a, ["className", "classNameSelect", "value", "label", "defaultValue", "placeholder", "onChange", "disabled", "dataSource", "error", "multiple", "getLabel", "getKey", "getValue", "allowClear", "variant", "hasFilter"]);
+    var className = _a.className, classNameSelect = _a.classNameSelect, _b = _a.value, value = _b === void 0 ? [] : _b, label = _a.label, _c = _a.defaultValue, defaultValue = _c === void 0 ? [] : _c, _d = _a.placeholder, placeholder = _d === void 0 ? "Please select" : _d, onChange = _a.onChange, disabled = _a.disabled, _e = _a.dataSource, dataSource = _e === void 0 ? [] : _e, error = _a.error, _f = _a.multiple, multiple = _f === void 0 ? false : _f, _g = _a.getLabel, getLabel = _g === void 0 ? function (item) { return item.label; } : _g, _h = _a.getKey, getKey = _h === void 0 ? function (item) { return item.id; } : _h, _j = _a.getValue, getValue = _j === void 0 ? function (item) { var _a; return (_a = item === null || item === void 0 ? void 0 : item.id) !== null && _a !== void 0 ? _a : null; } : _j, _k = _a.allowClear, allowClear = _k === void 0 ? true : _k, _l = _a.variant, variant = _l === void 0 ? "outline" : _l, _m = _a.hasFilter, hasFilter = _m === void 0 ? true : _m, props = __rest$t(_a, ["className", "classNameSelect", "value", "label", "defaultValue", "placeholder", "onChange", "disabled", "dataSource", "error", "multiple", "getLabel", "getKey", "getValue", "allowClear", "variant", "hasFilter"]);
     var children = useMemo$1(function () {
         return dataSource.map(function (dataItem) {
             var label = getLabel(dataItem);
@@ -50549,17 +50619,14 @@ var Select = function (_a, ref) {
         "d-select__error": !!error,
     }, classNameSelect);
     var errorTextClass = classnames("text-x-small", "text-error", "ml-1");
-    return (jsxs("div", __assign({ className: container }, { children: [label && jsx("label", __assign({ className: labelClass }, { children: label }), void 0),
-            jsx(Select$2, __assign({ mode: multiple ? "multiple" : undefined, filterOption: function (input, option) {
+    return (jsxs("div", __assign({ className: container }, { children: [label && jsx("label", __assign({ className: labelClass }, { children: label }), void 0), jsx(Select$2, __assign({ mode: multiple ? "multiple" : undefined, filterOption: function (input, option) {
                     var _a = option.props, children = _a.children, value = _a.value;
                     if (!hasFilter) {
                         return true;
                     }
                     return ((children && children.toLowerCase().indexOf(input.toLowerCase()) >= 0) ||
                         (value && ("" + value).toLowerCase().indexOf(input.toLowerCase()) >= 0));
-                } }, props, { ref: selectRef, value: value, allowClear: allowClear, placeholder: placeholder, defaultValue: defaultValue, onChange: onChange, className: selectClass, showArrow: true, suffixIcon: jsx(Icon$2, { name: "expand_more" }, void 0), disabled: disabled, optionFilterProp: "children" }, { children: children }), void 0),
-            error && (jsxs("div", __assign({ className: "flex-center-y mt-1" }, { children: [jsx(Icon$2, { name: "error_outline", className: "text-error", size: "small" }, void 0),
-                    jsx("text", __assign({ className: errorTextClass }, { children: error }), void 0)] }), void 0))] }), void 0));
+                } }, props, { ref: selectRef, value: value, allowClear: allowClear, placeholder: placeholder, defaultValue: defaultValue, onChange: onChange, className: selectClass, showArrow: true, suffixIcon: jsx(Icon$2, { name: "expand_more" }, void 0), disabled: disabled, optionFilterProp: "children" }, { children: children }), void 0), error && (jsxs("div", __assign({ className: "flex-center-y mt-1" }, { children: [jsx(Icon$2, { name: "error_outline", className: "text-error", size: "small" }, void 0), jsx("text", __assign({ className: errorTextClass }, { children: error }), void 0)] }), void 0))] }), void 0));
 };
 var Select$1 = React__default.forwardRef(Select);
 
@@ -50572,10 +50639,7 @@ var TreeSelect = function (_a) {
         "d-select__error": !!error,
     }, classNameSelect);
     var errorTextClass = classnames("text-x-small", "text-error", "ml-1");
-    return (jsxs("div", __assign({ className: container }, { children: [label && jsx("label", __assign({ className: labelClass }, { children: label }), void 0),
-            jsx(TreeSelect$1, { className: selectClass, disabled: disabled, treeData: dataSource, onChange: onChange, value: value, placeholder: placeholder, multiple: multiple, allowClear: allowClear }, void 0),
-            error && (jsxs("div", __assign({ className: "flex-center-y mt-1" }, { children: [jsx(Icon$2, { name: "error_outline", className: "text-error", size: "small" }, void 0),
-                    jsx("text", __assign({ className: errorTextClass }, { children: error }), void 0)] }), void 0))] }), void 0));
+    return (jsxs("div", __assign({ className: container }, { children: [label && jsx("label", __assign({ className: labelClass }, { children: label }), void 0), jsx(TreeSelect$1, { className: selectClass, disabled: disabled, treeData: dataSource, onChange: onChange, value: value, placeholder: placeholder, multiple: multiple, allowClear: allowClear }, void 0), error && (jsxs("div", __assign({ className: "flex-center-y mt-1" }, { children: [jsx(Icon$2, { name: "error_outline", className: "text-error", size: "small" }, void 0), jsx("text", __assign({ className: errorTextClass }, { children: error }), void 0)] }), void 0))] }), void 0));
 };
 
 var lodash = createCommonjsModule(function (module, exports) {
@@ -68788,7 +68852,7 @@ var InfiniteScroll = /** @class */ (function (_super) {
     InfiniteScroll.prototype.render = function () {
         var _this = this;
         var renderProps = this.filterProps(this.props);
-        var children = renderProps.children, element = renderProps.element, hasMore = renderProps.hasMore; renderProps.initialLoad; var isReverse = renderProps.isReverse, loader = renderProps.loader; renderProps.loadMore; renderProps.pageStart; var ref = renderProps.ref; renderProps.threshold; renderProps.useCapture; renderProps.useWindow; renderProps.getScrollParent; var props = __rest$s(renderProps, ["children", "element", "hasMore", "initialLoad", "isReverse", "loader", "loadMore", "pageStart", "ref", "threshold", "useCapture", "useWindow", "getScrollParent"]);
+        var children = renderProps.children, element = renderProps.element, hasMore = renderProps.hasMore; renderProps.initialLoad; var isReverse = renderProps.isReverse, loader = renderProps.loader; renderProps.loadMore; renderProps.pageStart; var ref = renderProps.ref; renderProps.threshold; renderProps.useCapture; renderProps.useWindow; renderProps.getScrollParent; var props = __rest$t(renderProps, ["children", "element", "hasMore", "initialLoad", "isReverse", "loader", "loadMore", "pageStart", "ref", "threshold", "useCapture", "useWindow", "getScrollParent"]);
         props.ref = function (node) {
             _this.scrollComponent = node;
             if (ref) {
@@ -68943,10 +69007,7 @@ var EmptyView = /** @class */ (function (_super) {
         return (
         // pointerEvents to prevent touch to EmptyView and pass through to under component.
         // But still accept its children view receive touch.
-        jsxs("div", __assign({ className: "d-list-empty-view" }, { children: [this.renderEmptyViewInternal(),
-                this.renderErrorViewInternal(),
-                this.renderProgressInternal(),
-                this.renderFilterEmptyViewInternal()] }), void 0));
+        jsxs("div", __assign({ className: "d-list-empty-view" }, { children: [this.renderEmptyViewInternal(), this.renderErrorViewInternal(), this.renderProgressInternal(), this.renderFilterEmptyViewInternal()] }), void 0));
     };
     EmptyView.propTypes = {
         mode: propTypes$1.any,
@@ -69112,8 +69173,7 @@ var AwesomeListComponent = /** @class */ (function (_super) {
                             _this.setState({ loading: true }, function () {
                                 _this.start();
                             }));
-                    }, hasMore: hasMoreData, isReverse: isReverse, loader: jsx(PagingView, { onClickRetry: this.pagingRetry }, void 0), useWindow: false, className: classNameInfinityScroll }, { children: data.map(function (item, index) { return renderItem(item, index); }) }), void 0),
-                jsx(EmptyView, { mode: emptyMode, emptyText: emptyView }, void 0)] }), void 0));
+                    }, hasMore: hasMoreData, isReverse: isReverse, loader: jsx(PagingView, { onClickRetry: this.pagingRetry }, void 0), useWindow: false, className: classNameInfinityScroll }, { children: data.map(function (item, index) { return renderItem(item, index); }) }), void 0), jsx(EmptyView, { mode: emptyMode, emptyText: emptyView }, void 0)] }), void 0));
     };
     AwesomeListComponent.propTypes = {
         source: propTypes$1.func,
@@ -69142,7 +69202,7 @@ var AwesomeListComponent = /** @class */ (function (_super) {
 }(Component));
 
 var SelectInfinity = function (_a, ref) {
-    var _b = _a.source, source = _b === void 0 ? function () { return Promise.resolve(); } : _b, transformer = _a.transformer, _c = _a.getKey, getKey = _c === void 0 ? function (item) { return item === null || item === void 0 ? void 0 : item.id; } : _c, _d = _a.getLabel, getLabel = _d === void 0 ? function (item) { return item === null || item === void 0 ? void 0 : item.label; } : _d, _e = _a.getValue, getValue = _e === void 0 ? function (item) { var _a; return (_a = item === null || item === void 0 ? void 0 : item.id) !== null && _a !== void 0 ? _a : null; } : _e, pagingProps = _a.pagingProps, _f = _a.value, value = _f === void 0 ? [] : _f, onChange = _a.onChange, className = _a.className, mode = _a.mode, props = __rest$s(_a, ["source", "transformer", "getKey", "getLabel", "getValue", "pagingProps", "value", "onChange", "className", "mode"]);
+    var _b = _a.source, source = _b === void 0 ? function () { return Promise.resolve(); } : _b, transformer = _a.transformer, _c = _a.getKey, getKey = _c === void 0 ? function (item) { return item === null || item === void 0 ? void 0 : item.id; } : _c, _d = _a.getLabel, getLabel = _d === void 0 ? function (item) { return item === null || item === void 0 ? void 0 : item.label; } : _d, _e = _a.getValue, getValue = _e === void 0 ? function (item) { var _a; return (_a = item === null || item === void 0 ? void 0 : item.id) !== null && _a !== void 0 ? _a : null; } : _e, pagingProps = _a.pagingProps, _f = _a.value, value = _f === void 0 ? [] : _f, onChange = _a.onChange, className = _a.className, mode = _a.mode, props = __rest$t(_a, ["source", "transformer", "getKey", "getLabel", "getValue", "pagingProps", "value", "onChange", "className", "mode"]);
     var listRef = useRef(null);
     var selectRef = useRef(null);
     var textSearch = useRef();
@@ -69212,8 +69272,7 @@ var SelectInfinity = function (_a, ref) {
         if (!foundItem) {
             return jsx("div", {}, void 0);
         }
-        return (jsxs("div", __assign({ className: "py-1 text-white text-x-small px-2 bg-secondary flex-center-y mx-1", style: { width: "110px" } }, { children: [jsx("div", __assign({ className: "text-nowrap w-100" }, { children: getLabel(foundItem) }), void 0),
-                jsx(Icon$2, { name: "close", size: "x-small", className: "hover-pointer", onClick: function () { return onRemoveItem(tagValue); } }, void 0)] }), void 0));
+        return (jsxs("div", __assign({ className: "py-1 text-white text-x-small px-2 bg-secondary flex-center-y mx-1", style: { width: "110px" } }, { children: [jsx("div", __assign({ className: "text-nowrap w-100" }, { children: getLabel(foundItem) }), void 0), jsx(Icon$2, { name: "close", size: "x-small", className: "hover-pointer", onClick: function () { return onRemoveItem(tagValue); } }, void 0)] }), void 0));
     };
     return (jsx(Select$1, __assign({ showSearch: true, className: className, value: !mode ? getLabel(valueObj[0]) : value, ref: selectRef, onSearch: onChangeTextSearch, dropdownRender: renderDropDown, onChange: onChange, mode: mode, hasFilter: false, tagRender: customTagRender }, props), void 0));
 };
@@ -69221,7 +69280,7 @@ var SelectInfinity$1 = React__default.forwardRef(SelectInfinity);
 
 var Button = function (_a) {
     var _b;
-    var content = _a.content, iconName = _a.iconName, className = _a.className, classNameIcon = _a.classNameIcon, classNameIconSuffix = _a.classNameIconSuffix, onClick = _a.onClick, _c = _a.type, type = _c === void 0 ? "button" : _c, _d = _a.size, size = _d === void 0 ? "large" : _d, _e = _a.variant, variant = _e === void 0 ? "standard" : _e, _f = _a.color, color = _f === void 0 ? "primary" : _f, _g = _a.disabled, disabled = _g === void 0 ? false : _g, suffixIcon = _a.suffixIcon, suffixElement = _a.suffixElement, prefixElement = _a.prefixElement, children = _a.children, props = __rest$s(_a, ["content", "iconName", "className", "classNameIcon", "classNameIconSuffix", "onClick", "type", "size", "variant", "color", "disabled", "suffixIcon", "suffixElement", "prefixElement", "children"]);
+    var content = _a.content, iconName = _a.iconName, className = _a.className, classNameIcon = _a.classNameIcon, classNameIconSuffix = _a.classNameIconSuffix, onClick = _a.onClick, _c = _a.type, type = _c === void 0 ? "button" : _c, _d = _a.size, size = _d === void 0 ? "large" : _d, _e = _a.variant, variant = _e === void 0 ? "standard" : _e, _f = _a.color, color = _f === void 0 ? "primary" : _f, _g = _a.disabled, disabled = _g === void 0 ? false : _g, suffixIcon = _a.suffixIcon, suffixElement = _a.suffixElement, prefixElement = _a.prefixElement, children = _a.children, props = __rest$t(_a, ["content", "iconName", "className", "classNameIcon", "classNameIconSuffix", "onClick", "type", "size", "variant", "color", "disabled", "suffixIcon", "suffixElement", "prefixElement", "children"]);
     var buttonClass = classnames("text text-nowrap d-button d-button__" + size + " \n         d-button__" + variant + "-" + color, (_b = {
             "text-x-small": size === "x-small",
             "text-small font-weight-bold": variant === "trans"
@@ -69230,31 +69289,23 @@ var Button = function (_a) {
         _b), className);
     var iconClass = classnames("d-block", { "mx-2": (content || children) && iconName }, classNameIcon);
     var suffixIconClass = classnames("d-block", { "mx-2": (content || children) && iconName }, classNameIconSuffix);
-    return (jsxs("button", __assign({ className: buttonClass, type: type, disabled: disabled, onClick: onClick }, props, { children: [prefixElement && prefixElement(),
-            iconName && jsx(Icon$2, { name: iconName, size: "large", className: iconClass }, void 0),
-            children,
-            content,
-            suffixIcon && jsx(Icon$2, { name: suffixIcon, size: "large", className: suffixIconClass }, void 0),
-            suffixElement && suffixElement()] }), void 0));
+    return (jsxs("button", __assign({ className: buttonClass, type: type, disabled: disabled, onClick: onClick }, props, { children: [prefixElement && prefixElement(), iconName && jsx(Icon$2, { name: iconName, size: "large", className: iconClass }, void 0), children, content, suffixIcon && jsx(Icon$2, { name: suffixIcon, size: "large", className: suffixIconClass }, void 0), suffixElement && suffixElement()] }), void 0));
 };
 
 var Checkbox = function (_a) {
-    var className = _a.className, classNameInput = _a.classNameInput, classNameInputWrapper = _a.classNameInputWrapper, classNameLabel = _a.classNameLabel, id = _a.id, name = _a.name, value = _a.value, onChange = _a.onChange, label = _a.label, _b = _a.variant, variant = _b === void 0 ? "checkbox" : _b, disabled = _a.disabled, checked = _a.checked, props = __rest$s(_a, ["className", "classNameInput", "classNameInputWrapper", "classNameLabel", "id", "name", "value", "onChange", "label", "variant", "disabled", "checked"]);
+    var className = _a.className, classNameInput = _a.classNameInput, classNameInputWrapper = _a.classNameInputWrapper, classNameLabel = _a.classNameLabel, id = _a.id, name = _a.name, value = _a.value, onChange = _a.onChange, label = _a.label, _b = _a.variant, variant = _b === void 0 ? "checkbox" : _b, disabled = _a.disabled, checked = _a.checked, props = __rest$t(_a, ["className", "classNameInput", "classNameInputWrapper", "classNameLabel", "id", "name", "value", "onChange", "label", "variant", "disabled", "checked"]);
     var classContainer = classnames("checkbox__container", className);
     var classInputWrapper = classnames("checkbox__input-wrapper", "checkbox__input-wrapper-" + variant, { "checkbox__input-wrapper-disabled": disabled }, classNameInputWrapper);
     var classInput = classnames("checkbox__input", classNameInput);
     var classLabel = classnames("checkbox__label ml-3 text-nowrap", classNameLabel);
-    return (jsxs("div", __assign({ className: classContainer }, props, { children: [jsxs("div", __assign({ className: classInputWrapper }, { children: [jsx("input", { type: "checkbox", id: id, name: name, value: value, onChange: onChange, className: classInput, disabled: disabled, checked: checked }, void 0),
-                    jsx("span", { className: "checkbox__check-mark" }, void 0)] }), void 0),
-            label && jsx("div", __assign({ className: classLabel }, { children: label }), void 0)] }), void 0));
+    return (jsxs("div", __assign({ className: classContainer }, props, { children: [jsxs("div", __assign({ className: classInputWrapper }, { children: [jsx("input", { type: "checkbox", id: id, name: name, value: value, onChange: onChange, className: classInput, disabled: disabled, checked: checked }, void 0), jsx("span", { className: "checkbox__check-mark" }, void 0)] }), void 0), label && jsx("div", __assign({ className: classLabel }, { children: label }), void 0)] }), void 0));
 };
 
 var CheckboxGroup = function (_a) {
     var dataSource = _a.dataSource, className = _a.className, classNameItem = _a.classNameItem, _b = _a.getLabel, getLabel = _b === void 0 ? function (item) { return item === null || item === void 0 ? void 0 : item.label; } : _b, _c = _a.getValue, getValue = _c === void 0 ? function (item) { return item === null || item === void 0 ? void 0 : item.id; } : _c, _d = _a.value, value = _d === void 0 ? [] : _d, onChange = _a.onChange, getDisabledItem = _a.getDisabledItem, _e = _a.numberOfColumns, numberOfColumns = _e === void 0 ? "3" : _e, label = _a.label;
     var containerClass = classnames(className);
     var groupContainerClass = classnames("d-checkbox-group d-flex flex-wrap", className);
-    return (jsxs("div", __assign({ className: containerClass }, { children: [jsx("label", { children: label }, void 0),
-            jsx("div", __assign({ className: groupContainerClass }, { children: dataSource.map(function (item) {
+    return (jsxs("div", __assign({ className: containerClass }, { children: [jsx("label", { children: label }, void 0), jsx("div", __assign({ className: groupContainerClass }, { children: dataSource.map(function (item) {
                     var iLabel = getLabel(item);
                     var iValue = getValue(item);
                     var isChecked = value.includes(iValue);
@@ -69292,8 +69343,7 @@ var RadioGroup = function (_a) {
     var dataSource = _a.dataSource, className = _a.className, classNameItem = _a.classNameItem, _b = _a.getLabel, getLabel = _b === void 0 ? function (item) { return item === null || item === void 0 ? void 0 : item.label; } : _b, _c = _a.getValue, getValue = _c === void 0 ? function (item) { return item === null || item === void 0 ? void 0 : item.id; } : _c, getDisabledItem = _a.getDisabledItem, value = _a.value, onChange = _a.onChange, _d = _a.numberOfColumns, numberOfColumns = _d === void 0 ? "3" : _d, label = _a.label;
     var containerClass = classnames(className);
     var groupContainerClass = classnames("d-flex flex-wrap", className);
-    return (jsxs("div", __assign({ className: containerClass }, { children: [jsx("label", { children: label }, void 0),
-            jsx("div", __assign({ className: groupContainerClass }, { children: dataSource.map(function (item) {
+    return (jsxs("div", __assign({ className: containerClass }, { children: [jsx("label", { children: label }, void 0), jsx("div", __assign({ className: groupContainerClass }, { children: dataSource.map(function (item) {
                     var iLabel = getLabel(item);
                     var isChecked = getValue(item) === value;
                     var isDisabled = (getDisabledItem && getDisabledItem(item)) || false;
@@ -69347,23 +69397,16 @@ var Badge = function (_a) {
         }
     }
     var badgeView = jsx("div", __assign({ className: badgeWrapperClass }, { children: badge }), void 0);
-    return (jsxs("div", __assign({ className: wrapperClass, style: style, onClick: onClick }, { children: [badgeView,
-            content] }), void 0));
+    return (jsxs("div", __assign({ className: wrapperClass, style: style, onClick: onClick }, { children: [badgeView, content] }), void 0));
 };
 
 var HeaderTable = function (_a) {
-    var _b = _a.className, className = _b === void 0 ? "" : _b, classNameTop = _a.classNameTop, style = _a.style, _c = _a.label, label = _c === void 0 ? "" : _c, _d = _a.placeholder, placeholder = _d === void 0 ? "Search" : _d, onChangeText = _a.onChangeText, _e = _a.disabledSearch, disabledSearch = _e === void 0 ? false : _e, onClickNew = _a.onClickNew, onClickExport = _a.onClickExport, onClickFilter = _a.onClickFilter, onClickImport = _a.onClickImport, customView = _a.customView, _f = _a.isFiltered, isFiltered = _f === void 0 ? false : _f, _g = _a.badgeColor, badgeColor = _g === void 0 ? "secondary" : _g;
+    var _b = _a.className, className = _b === void 0 ? "" : _b, classNameTop = _a.classNameTop, style = _a.style, _c = _a.label, label = _c === void 0 ? "" : _c, _d = _a.placeholder, placeholder = _d === void 0 ? "Search" : _d, onChangeText = _a.onChangeText, _e = _a.disabledSearch, disabledSearch = _e === void 0 ? false : _e, onSubmitSearch = _a.onSubmitSearch, onClickNew = _a.onClickNew, onClickExport = _a.onClickExport, onClickFilter = _a.onClickFilter, onClickImport = _a.onClickImport, customView = _a.customView, _f = _a.isFiltered, isFiltered = _f === void 0 ? false : _f, _g = _a.badgeColor, badgeColor = _g === void 0 ? "secondary" : _g;
     var button = jsx(Button, { iconName: "filter_list", onClick: onClickFilter }, void 0);
     if (isFiltered) {
         button = (jsx(Badge, __assign({ color: badgeColor }, { children: jsx(Button, { iconName: "filter_list", onClick: onClickFilter }, void 0) }), void 0));
     }
-    return (jsxs("div", __assign({ className: classnames("w-100", className), style: style }, { children: [jsxs("div", __assign({ className: classnames("d-flex justify-content-between mb-3", classNameTop) }, { children: [jsx("div", __assign({ className: "h4" }, { children: label }), void 0),
-                    jsxs("div", __assign({ className: "d-flex" }, { children: [onClickNew && jsx(Button, { iconName: "add", content: "New", onClick: onClickNew, className: "ml-3" }, void 0),
-                            onClickImport && (jsx(Button, { iconName: "cloud_upload", content: "Import", onClick: onClickImport, className: "ml-3" }, void 0)),
-                            onClickExport && (jsx(Button, { iconName: "cloud_download", content: "Export", onClick: onClickExport, className: "ml-3" }, void 0))] }), void 0)] }), void 0),
-            jsxs("div", __assign({ className: "flex-center-y" }, { children: [customView && jsx("div", __assign({ className: "header-table__custom-view-container" }, { children: customView() }), void 0),
-                    jsx(InputTextSearch, { className: "w-100 mr-3 bg-white", placeholder: placeholder, onChange: onChangeText, disabled: disabledSearch }, void 0),
-                    onClickFilter && button] }), void 0)] }), void 0));
+    return (jsxs("div", __assign({ className: classnames("w-100", className), style: style }, { children: [jsxs("div", __assign({ className: classnames("d-flex justify-content-between mb-3", classNameTop) }, { children: [jsx("div", __assign({ className: "h4" }, { children: label }), void 0), jsxs("div", __assign({ className: "d-flex" }, { children: [onClickNew && jsx(Button, { iconName: "add", content: "New", onClick: onClickNew, className: "ml-3" }, void 0), onClickImport && (jsx(Button, { iconName: "cloud_upload", content: "Import", onClick: onClickImport, className: "ml-3" }, void 0)), onClickExport && (jsx(Button, { iconName: "cloud_download", content: "Export", onClick: onClickExport, className: "ml-3" }, void 0))] }), void 0)] }), void 0), jsxs("div", __assign({ className: "flex-center-y" }, { children: [customView && jsx("div", __assign({ className: "header-table__custom-view-container" }, { children: customView() }), void 0), jsx(InputTextSearch, { className: "w-100 mr-3 bg-white", placeholder: placeholder, onChange: onChangeText, disabled: disabledSearch, onSubmit: onSubmitSearch }, void 0), onClickFilter && button] }), void 0)] }), void 0));
 };
 
 var en = {
@@ -69416,16 +69459,11 @@ var Header = function (_a) {
         }
         return jsx("h4", __assign({ className: "text-primary" }, { children: title }), void 0);
     };
-    return (jsxs("div", __assign({ className: "card-container d-common-header " + className }, { children: [renderLeftView(),
-            jsxs("div", __assign({ className: "d-common-header__button-group" }, { children: [showCancel && (jsx(Button, { variant: "outline", content: cancelText, onClick: function () { return (onCancel ? onCancel() : window.history.go("back")); }, className: "mr-3" }, void 0)),
-                    onDelete && jsx(Button, { content: deleteText, onClick: onDelete, iconName: "delete", className: "mr-3" }, void 0),
-                    onPrint && jsx(Button, { content: printText, onClick: onPrint, iconName: "print", className: "mr-3" }, void 0),
-                    onEdit && jsx(Button, { content: editText, onClick: onEdit, className: "mr-3", iconName: "edit" }, void 0),
-                    onSave && jsx(Button, { content: saveText, onClick: onSave, disabled: disabledSave }, void 0)] }), void 0)] }), void 0));
+    return (jsxs("div", __assign({ className: "card-container d-common-header " + className }, { children: [renderLeftView(), jsxs("div", __assign({ className: "d-common-header__button-group" }, { children: [showCancel && (jsx(Button, { variant: "outline", content: cancelText, onClick: function () { return (onCancel ? onCancel() : window.history.go("back")); }, className: "mr-3" }, void 0)), onDelete && jsx(Button, { content: deleteText, onClick: onDelete, iconName: "delete", className: "mr-3" }, void 0), onPrint && jsx(Button, { content: printText, onClick: onPrint, iconName: "print", className: "mr-3" }, void 0), onEdit && jsx(Button, { content: editText, onClick: onEdit, className: "mr-3", iconName: "edit" }, void 0), onSave && jsx(Button, { content: saveText, onClick: onSave, disabled: disabledSave }, void 0)] }), void 0)] }), void 0));
 };
 
 function Avatar(_a) {
-    var _b = _a.size, size = _b === void 0 ? "medium" : _b, src = _a.src, alt = _a.alt, _c = _a.variant, variant = _c === void 0 ? "rounded" : _c, className = _a.className, classNameImage = _a.classNameImage, classNameLetter = _a.classNameLetter, text = _a.text, _d = _a.color, color = _d === void 0 ? "#D8D8D8" : _d, props = __rest$s(_a, ["size", "src", "alt", "variant", "className", "classNameImage", "classNameLetter", "text", "color"]);
+    var _b = _a.size, size = _b === void 0 ? "medium" : _b, src = _a.src, alt = _a.alt, _c = _a.variant, variant = _c === void 0 ? "rounded" : _c, className = _a.className, classNameImage = _a.classNameImage, classNameLetter = _a.classNameLetter, text = _a.text, _d = _a.color, color = _d === void 0 ? "#D8D8D8" : _d, props = __rest$t(_a, ["size", "src", "alt", "variant", "className", "classNameImage", "classNameLetter", "text", "color"]);
     var wrapperClass = classnames("d-image__container d-image__" + variant + "-" + size + " bg-" + color, { "d-flex justify-content-center align-items-center": !!text }, className);
     var imageClass = classnames("d-image__image", classNameImage);
     var letterClass = classnames("text-white text-center font-weight-normal", {
@@ -69474,13 +69512,9 @@ var AvatarName = function (_a) {
         return (jsxs("div", __assign({ className: nameClass }, { children: [jsx("div", __assign({ className: "" + nameTextClass, style: {
                         fontSize: size === "x-large" ? "56px" : undefined,
                         lineHeight: size === "x-large" ? "70px" : undefined,
-                    } }, { children: displayName }), void 0),
-                subLabel && (jsx("div", __assign({ className: subTextClass, style: { fontSize: size === "x-large" ? "32px" : undefined } }, { children: subLabel }), void 0))] }), void 0));
+                    } }, { children: displayName }), void 0), subLabel && (jsx("div", __assign({ className: subTextClass, style: { fontSize: size === "x-large" ? "32px" : undefined } }, { children: subLabel }), void 0))] }), void 0));
     };
-    return (jsxs("div", __assign({ className: wrapperClass }, { children: [position === "before" && renderName(),
-            avatar && jsx(Avatar, { src: avatar, size: size }, void 0),
-            !avatar && jsx(Avatar, { text: displayName.charAt(0), size: size }, void 0),
-            position === "after" && renderName()] }), void 0));
+    return (jsxs("div", __assign({ className: wrapperClass }, { children: [position === "before" && renderName(), avatar && jsx(Avatar, { src: avatar, size: size }, void 0), !avatar && jsx(Avatar, { text: displayName.charAt(0), size: size }, void 0), position === "after" && renderName()] }), void 0));
 };
 
 // eslint-disable-next-line import/no-extraneous-dependencies
@@ -69621,8 +69655,7 @@ var HeaderDetail = function (_a) {
     }, [status]);
     var leftView = function () {
         var titleStatus = function () {
-            return (jsxs("div", __assign({ className: "d-flex" }, { children: [jsx("h4", { children: title }, void 0),
-                    foundStatus && (jsx("div", __assign({ className: "py-1 px-2 text-center ml-3 text-white", style: { backgroundColor: foundStatus.color } }, { children: Messages[foundStatus.label] }), void 0))] }), void 0));
+            return (jsxs("div", __assign({ className: "d-flex" }, { children: [jsx("h4", { children: title }, void 0), foundStatus && (jsx("div", __assign({ className: "py-1 px-2 text-center ml-3 text-white", style: { backgroundColor: foundStatus.color } }, { children: Messages[foundStatus.label] }), void 0))] }), void 0));
         };
         var buttons = function () {
             return (jsx("div", __assign({ className: "d-flex align-items-center" }, { children: listButton.map(function (button, index) {
@@ -69632,8 +69665,7 @@ var HeaderDetail = function (_a) {
                     return (jsx(Button, { variant: "trans", content: Messages[button.label], iconName: button.icon, className: buttonClass, onClick: function () { return onButtonClick && onButtonClick(button); } }, void 0));
                 }) }), void 0));
         };
-        return (jsxs("div", __assign({ className: "d-flex flex-column" }, { children: [titleStatus(),
-                listButton.length > 0 && buttons()] }), void 0));
+        return (jsxs("div", __assign({ className: "d-flex flex-column" }, { children: [titleStatus(), listButton.length > 0 && buttons()] }), void 0));
     };
     var createdView = (jsx("div", __assign({ className: "text-x-small text-gray" }, { children: Messages.createdOn + " " + TimeUtils.convertMiliToDate(created) + " " + Messages.at + " " + TimeUtils.convertMiliToTime(created) }), void 0));
     if (customCreated) {
@@ -69643,11 +69675,9 @@ var HeaderDetail = function (_a) {
         if (customRight) {
             return customRight();
         }
-        return (jsxs("div", __assign({ className: "d-flex flex-column align-items-end" }, { children: [user && jsx(AvatarName, { user: user, className: "mb-1" }, void 0),
-                (created || customCreated) && createdView] }), void 0));
+        return (jsxs("div", __assign({ className: "d-flex flex-column align-items-end" }, { children: [user && jsx(AvatarName, { user: user, className: "mb-1" }, void 0), (created || customCreated) && createdView] }), void 0));
     };
-    return (jsxs("div", __assign({ className: "card-container d-flex align-items-center justify-content-between p-4" }, { children: [leftView(),
-            rightView()] }), void 0));
+    return (jsxs("div", __assign({ className: "card-container d-flex align-items-center justify-content-between p-4" }, { children: [leftView(), rightView()] }), void 0));
 };
 
 var HeaderBlock = function (_a) {
@@ -69658,21 +69688,18 @@ var HeaderBlock = function (_a) {
     var rightSide = function () {
         var content;
         if (showArrow) {
-            content = (jsxs("div", __assign({ className: "d-flex align-items-center" }, { children: [jsx(Button, __assign({ iconName: "chevron_left", variant: "outline", onClick: onPrevious, className: "mr-3 px-1", size: "fit-content", color: arrowColor }, arrowProps), void 0),
-                    jsx(Button, __assign({ iconName: "chevron_right", variant: "outline", onClick: onNext, className: "px-1", size: "fit-content", color: arrowColor }, arrowProps), void 0)] }), void 0));
+            content = (jsxs("div", __assign({ className: "d-flex align-items-center" }, { children: [jsx(Button, __assign({ iconName: "chevron_left", variant: "outline", onClick: onPrevious, className: "mr-3 px-1", size: "fit-content", color: arrowColor }, arrowProps), void 0), jsx(Button, __assign({ iconName: "chevron_right", variant: "outline", onClick: onNext, className: "px-1", size: "fit-content", color: arrowColor }, arrowProps), void 0)] }), void 0));
         }
         if (customRight) {
             content = customRight;
         }
         return content;
     };
-    return (jsxs("div", __assign({ className: wrapperClass, style: style }, { children: [jsx("div", __assign({ className: titleClass, style: styleTitle }, { children: title }), void 0),
-            showLine && jsx("div", { className: lineClass }, void 0),
-            rightSide()] }), void 0));
+    return (jsxs("div", __assign({ className: wrapperClass, style: style }, { children: [jsx("div", __assign({ className: titleClass, style: styleTitle }, { children: title }), void 0), showLine && jsx("div", { className: lineClass }, void 0), rightSide()] }), void 0));
 };
 
 var Modal = function (_a) {
-    var children = _a.children, open = _a.open, _b = _a.centered, centered = _b === void 0 ? true : _b, _c = _a.closable, closable = _c === void 0 ? false : _c, onClose = _a.onClose, onSave = _a.onSave, onSideClick = _a.onSideClick, cancelAction = _a.cancelAction, width = _a.width, title = _a.title, customHeader = _a.customHeader, customFooter = _a.customFooter, customSideButton = _a.customSideButton, headerSide = _a.headerSide, _d = _a.hasCloseIcon, hasCloseIcon = _d === void 0 ? true : _d, _e = _a.hasCancelButton, hasCancelButton = _e === void 0 ? false : _e, _f = _a.saveText, saveText = _f === void 0 ? "Save" : _f, _g = _a.cancelText, cancelText = _g === void 0 ? "Cancel" : _g, _h = _a.sideText, sideText = _h === void 0 ? "Clear" : _h, size = _a.size, className = _a.className, classNameContent = _a.classNameContent, classNameFooter = _a.classNameFooter, classNameHeader = _a.classNameHeader, _j = _a.showFooter, showFooter = _j === void 0 ? true : _j, _k = _a.showHeader, showHeader = _k === void 0 ? true : _k, props = __rest$s(_a, ["children", "open", "centered", "closable", "onClose", "onSave", "onSideClick", "cancelAction", "width", "title", "customHeader", "customFooter", "customSideButton", "headerSide", "hasCloseIcon", "hasCancelButton", "saveText", "cancelText", "sideText", "size", "className", "classNameContent", "classNameFooter", "classNameHeader", "showFooter", "showHeader"]);
+    var children = _a.children, open = _a.open, _b = _a.centered, centered = _b === void 0 ? true : _b, _c = _a.closable, closable = _c === void 0 ? false : _c, onClose = _a.onClose, onSave = _a.onSave, onSideClick = _a.onSideClick, cancelAction = _a.cancelAction, width = _a.width, title = _a.title, customHeader = _a.customHeader, customFooter = _a.customFooter, customSideButton = _a.customSideButton, headerSide = _a.headerSide, _d = _a.hasCloseIcon, hasCloseIcon = _d === void 0 ? true : _d, _e = _a.hasCancelButton, hasCancelButton = _e === void 0 ? false : _e, _f = _a.saveText, saveText = _f === void 0 ? "Save" : _f, _g = _a.cancelText, cancelText = _g === void 0 ? "Cancel" : _g, _h = _a.sideText, sideText = _h === void 0 ? "Clear" : _h, size = _a.size, className = _a.className, classNameContent = _a.classNameContent, classNameFooter = _a.classNameFooter, classNameHeader = _a.classNameHeader, _j = _a.showFooter, showFooter = _j === void 0 ? true : _j, _k = _a.showHeader, showHeader = _k === void 0 ? true : _k, props = __rest$t(_a, ["children", "open", "centered", "closable", "onClose", "onSave", "onSideClick", "cancelAction", "width", "title", "customHeader", "customFooter", "customSideButton", "headerSide", "hasCloseIcon", "hasCancelButton", "saveText", "cancelText", "sideText", "size", "className", "classNameContent", "classNameFooter", "classNameHeader", "showFooter", "showHeader"]);
     var modalClass = classnames("d-modal", "d-modal__" + size, className);
     var childrenClass = classnames("d-modal__children", classNameContent);
     var headerClass = classnames("d-modal__header border-bottom py-2", { "d-flex align-items-center": !!title }, classNameHeader);
@@ -69680,9 +69707,7 @@ var Modal = function (_a) {
     var header = function () {
         var content;
         content = function () {
-            return (jsxs(React__default.Fragment, { children: [hasCloseIcon && (jsx(Button, { iconName: "close", variant: "trans", onClick: onClose, className: "d-modal__header-close-icon" }, void 0)),
-                    title && jsx("h4", __assign({ className: "w-100 text-center" }, { children: title }), void 0),
-                    headerSide && headerSide()] }, void 0));
+            return (jsxs(React__default.Fragment, { children: [hasCloseIcon && (jsx(Button, { iconName: "close", variant: "trans", onClick: onClose, className: "d-modal__header-close-icon" }, void 0)), title && jsx("h4", __assign({ className: "w-100 text-center" }, { children: title }), void 0), headerSide && headerSide()] }, void 0));
         };
         if (customHeader) {
             content = customHeader;
@@ -69697,23 +69722,19 @@ var Modal = function (_a) {
             sideButton = customSideButton;
         }
         content = function () {
-            return (jsxs(React__default.Fragment, { children: [(onSideClick || !!customSideButton) && sideButton(),
-                    jsxs("div", __assign({ className: "w-100 d-flex align-items-center justify-content-end" }, { children: [hasCancelButton && (jsx(Button, { variant: "outline", content: cancelText, className: "mr-3", onClick: function (e) {
+            return (jsxs(React__default.Fragment, { children: [(onSideClick || !!customSideButton) && sideButton(), jsxs("div", __assign({ className: "w-100 d-flex align-items-center justify-content-end" }, { children: [hasCancelButton && (jsx(Button, { variant: "outline", content: cancelText, className: "mr-3", onClick: function (e) {
                                     if (cancelAction) {
                                         return cancelAction(e);
                                     }
                                     return onClose && onClose(e);
-                                } }, void 0)),
-                            jsx(Button, { variant: "standard", content: saveText, onClick: onSave }, void 0)] }), void 0)] }, void 0));
+                                } }, void 0)), jsx(Button, { variant: "standard", content: saveText, onClick: onSave }, void 0)] }), void 0)] }, void 0));
         };
         if (customFooter) {
             content = customFooter;
         }
         return jsx("div", __assign({ className: footerClass }, { children: content() }), void 0);
     };
-    return (jsxs(Modal$1, __assign({ visible: open, onCancel: onClose, centered: centered, className: modalClass, closable: closable, width: width, footer: null }, props, { children: [showHeader && header(),
-            jsx("div", __assign({ className: childrenClass }, { children: children }), void 0),
-            showFooter && footer()] }), void 0));
+    return (jsxs(Modal$1, __assign({ visible: open, onCancel: onClose, centered: centered, className: modalClass, closable: closable, width: width, footer: null }, props, { children: [showHeader && header(), jsx("div", __assign({ className: childrenClass }, { children: children }), void 0), showFooter && footer()] }), void 0));
 };
 
 var getValueFromStringKey = function (object, keyString) {
@@ -69914,8 +69935,7 @@ var RowInterchangeView = function (_a) {
                 content = renderContent({ id: id, data: dataSource, row: row });
             }
             var contentView = (jsx("div", __assign({ className: contentClass, style: styleContent }, { children: content }), void 0));
-            return (jsxs("div", __assign({ className: rowClass, style: style }, { children: [jsx("div", __assign({ className: labelClass, style: styleLabel }, { children: labelView }), void 0),
-                    contentView] }), id + " + " + index));
+            return (jsxs("div", __assign({ className: rowClass, style: style }, { children: [jsx("div", __assign({ className: labelClass, style: styleLabel }, { children: labelView }), void 0), contentView] }), id + " + " + index));
         }) }), void 0));
 };
 
@@ -69937,8 +69957,7 @@ var ViewRow = function (_a) {
     if (typeof children === "function") {
         content = children();
     }
-    return (jsxs("div", __assign({ className: wrapperClass, style: style }, { children: [label && (jsx("label", __assign({ className: labelClass, style: styleLabel }, { children: label }), void 0)),
-            jsx("div", __assign({ className: contentClass, style: styleContent }, { children: content }), void 0)] }), void 0));
+    return (jsxs("div", __assign({ className: wrapperClass, style: style }, { children: [label && (jsx("label", __assign({ className: labelClass, style: styleLabel }, { children: label }), void 0)), jsx("div", __assign({ className: contentClass, style: styleContent }, { children: content }), void 0)] }), void 0));
 };
 
 var ViewTextarea = function (_a) {
@@ -69969,16 +69988,29 @@ var ViewTextarea = function (_a) {
             console.log("Content Height", (_a = contentRef.current) === null || _a === void 0 ? void 0 : _a.offsetHeight);
         }, 200);
     }, [children]);
-    return (jsxs("div", __assign({ className: wrapperClass, style: __assign(__assign({}, style), { maxWidth: width }), ref: wrapperRef }, { children: [jsxs("div", __assign({ className: contentClass, ref: function (ref) { return (contentRef.current = ref); } }, { children: [children,
-                    isShowLess && (jsx("span", __assign({ className: showLessClass, onClick: function () {
+    return (jsxs("div", __assign({ className: wrapperClass, style: __assign(__assign({}, style), { maxWidth: width }), ref: wrapperRef }, { children: [jsxs("div", __assign({ className: contentClass, ref: function (ref) { return (contentRef.current = ref); } }, { children: [children, isShowLess && (jsx("span", __assign({ className: showLessClass, onClick: function () {
                             setExpanding(false);
                             wrapperRef.current && wrapperRef.current.setAttribute("style", "width:" + width + "px");
-                        } }, { children: " " + showLessText }), void 0))] }), void 0),
-            isShowMore && (jsx("span", __assign({ className: showMoreClass, onClick: function () {
+                        } }, { children: " " + showLessText }), void 0))] }), void 0), isShowMore && (jsx("span", __assign({ className: showMoreClass, onClick: function () {
                     setExpanding(true);
                     wrapperRef.current && wrapperRef.current.setAttribute("style", "width:100%");
                 } }, { children: showMoreText }), void 0))] }), void 0));
 };
+
+// This icon file is generated automatically.
+var CaretRightOutlined$2 = { "icon": { "tag": "svg", "attrs": { "viewBox": "0 0 1024 1024", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M715.8 493.5L335 165.1c-14.2-12.2-35-1.2-35 18.5v656.8c0 19.7 20.8 30.7 35 18.5l380.8-328.4c10.9-9.4 10.9-27.6 0-37z" } }] }, "name": "caret-right", "theme": "outlined" };
+
+// GENERATE BY ./scripts/generate.ts
+
+var CaretRightOutlined = function CaretRightOutlined(props, ref) {
+  return /*#__PURE__*/React.createElement(Icon$1, Object.assign({}, props, {
+    ref: ref,
+    icon: CaretRightOutlined$2
+  }));
+};
+
+CaretRightOutlined.displayName = 'CaretRightOutlined';
+var CaretRightOutlined$1 = /*#__PURE__*/React.forwardRef(CaretRightOutlined);
 
 var Panel = Collapse.Panel;
 var ViewCollapse = function (_a) {
@@ -69996,8 +70028,7 @@ var ViewTimeline = function (_a) {
     return (jsx(Timeline, __assign({ className: wrapperClass }, { children: dataSource.map(function (data) {
             var label = getLabel && getLabel(data);
             var content = getContent && getContent(data);
-            var mainView = (jsxs("div", __assign({ className: "text-small" }, { children: [label && jsx("div", __assign({ className: "text-small-bold " + classNameLabel }, { children: label }), void 0),
-                    content] }), void 0));
+            var mainView = (jsxs("div", __assign({ className: "text-small" }, { children: [label && jsx("div", __assign({ className: "text-small-bold " + classNameLabel }, { children: label }), void 0), content] }), void 0));
             if (customView) {
                 mainView = customView(data);
             }
@@ -70165,19 +70196,15 @@ var PopoverList = function (_a) {
                 onChange && onChange(event.target.value);
             } }, void 0));
     };
-    return (jsxs("div", __assign({ className: wrapperClass, ref: outSideRef }, { children: [jsx("div", __assign({ onClick: function () { return isClickOpen && setOpenPopover(true); } }, { children: mainViewPopover() }), void 0),
-            openPopover && (jsxs("div", __assign({ className: "d-popover-list__dropdown" }, { children: [buttonText && (jsx("div", __assign({ className: "d-flex w-100 justify-content-end" }, { children: jsx(Button, { content: buttonText, iconName: buttonIconName, variant: buttonVariant, onClick: function () {
+    return (jsxs("div", __assign({ className: wrapperClass, ref: outSideRef }, { children: [jsx("div", __assign({ onClick: function () { return isClickOpen && setOpenPopover(true); } }, { children: mainViewPopover() }), void 0), openPopover && (jsxs("div", __assign({ className: "d-popover-list__dropdown" }, { children: [buttonText && (jsx("div", __assign({ className: "d-flex w-100 justify-content-end" }, { children: jsx(Button, { content: buttonText, iconName: buttonIconName, variant: buttonVariant, onClick: function () {
                                 onClickCreateNewHandle();
-                            } }, void 0) }), void 0)),
-                    dataList.data.map(function (item, index) { return renderItemList(item, index); }),
-                    jsx(EmptyView, { mode: dataList.emptyMode }, void 0),
-                    showLoadMore && (jsx(Button, __assign({ className: "d-popover-list__footer", onClick: function () { return onClickLoadMore(); }, variant: "trans" }, { children: loadMoreText }), void 0))] }), void 0))] }), void 0));
+                            } }, void 0) }), void 0)), dataList.data.map(function (item, index) { return renderItemList(item, index); }), jsx(EmptyView, { mode: dataList.emptyMode }, void 0), showLoadMore && (jsx(Button, __assign({ className: "d-popover-list__footer", onClick: function () { return onClickLoadMore(); }, variant: "trans" }, { children: loadMoreText }), void 0))] }), void 0))] }), void 0));
 };
 
 // data stubs
 var RangePicker = DatePicker.RangePicker;
 var DateInput = function (_a) {
-    var onChange = _a.onChange, onBlur = _a.onBlur, value = _a.value, disabled = _a.disabled, defaultValue = _a.defaultValue, label = _a.label, placeholder = _a.placeholder, error = _a.error, _b = _a.type, type = _b === void 0 ? "date" : _b, _c = _a.format, format = _c === void 0 ? "DD/MM/YYYY HH:mm" : _c, _d = _a.variant, variant = _d === void 0 ? "outline" : _d, _e = _a.iconError, iconError = _e === void 0 ? "error_outline" : _e, _f = _a.iconButton, iconButton = _f === void 0 ? "event" : _f, _g = _a.showTime, showTime = _g === void 0 ? false : _g, _h = _a.useButton, useButton = _h === void 0 ? false : _h, _j = _a.isRangePicker, isRangePicker = _j === void 0 ? false : _j, className = _a.className, classNameInput = _a.classNameInput, classNameButton = _a.classNameButton, classNameLabel = _a.classNameLabel, classNameError = _a.classNameError, props = __rest$s(_a, ["onChange", "onBlur", "value", "disabled", "defaultValue", "label", "placeholder", "error", "type", "format", "variant", "iconError", "iconButton", "showTime", "useButton", "isRangePicker", "className", "classNameInput", "classNameButton", "classNameLabel", "classNameError"]);
+    var onChange = _a.onChange, onBlur = _a.onBlur, value = _a.value, disabled = _a.disabled, defaultValue = _a.defaultValue, label = _a.label, placeholder = _a.placeholder, error = _a.error, _b = _a.type, type = _b === void 0 ? "date" : _b, _c = _a.format, format = _c === void 0 ? "DD/MM/YYYY HH:mm" : _c, _d = _a.variant, variant = _d === void 0 ? "outline" : _d, _e = _a.iconError, iconError = _e === void 0 ? "error_outline" : _e, _f = _a.iconButton, iconButton = _f === void 0 ? "event" : _f, _g = _a.showTime, showTime = _g === void 0 ? false : _g, _h = _a.useButton, useButton = _h === void 0 ? false : _h, _j = _a.isRangePicker, isRangePicker = _j === void 0 ? false : _j, className = _a.className, classNameInput = _a.classNameInput, classNameButton = _a.classNameButton, classNameLabel = _a.classNameLabel, classNameError = _a.classNameError, props = __rest$t(_a, ["onChange", "onBlur", "value", "disabled", "defaultValue", "label", "placeholder", "error", "type", "format", "variant", "iconError", "iconButton", "showTime", "useButton", "isRangePicker", "className", "classNameInput", "classNameButton", "classNameLabel", "classNameError"]);
     var wrapperClass = classnames("d-date-input", { "d-date-input__hide-input": useButton }, className);
     var labelClass = classnames("text-label d-block", classNameLabel);
     var datePickerClass = classnames("d-date-input__input", {
@@ -70190,11 +70217,7 @@ var DateInput = function (_a) {
     if (isRangePicker) {
         content = (jsx(RangePicker, { value: value, onChange: onChange, onBlur: onBlur, className: datePickerClass, disabled: disabled, defaultValue: defaultValue, picker: type, placeholder: placeholder, format: format, showTime: showTime }, void 0));
     }
-    return (jsxs("div", __assign({ className: wrapperClass }, { children: [label && jsx("label", __assign({ className: labelClass }, { children: label }), void 0),
-            jsx(Button, { className: buttonClass, iconName: iconButton }, void 0),
-            content,
-            error && (jsxs("div", __assign({ className: errorClass }, { children: [jsx(Icon$2, { name: iconError, className: "text-error", size: "small" }, void 0),
-                    jsx("text", __assign({ className: errorTextClass }, { children: error }), void 0)] }), void 0))] }), void 0));
+    return (jsxs("div", __assign({ className: wrapperClass }, { children: [label && jsx("label", __assign({ className: labelClass }, { children: label }), void 0), jsx(Button, { className: buttonClass, iconName: iconButton }, void 0), content, error && (jsxs("div", __assign({ className: errorClass }, { children: [jsx(Icon$2, { name: iconError, className: "text-error", size: "small" }, void 0), jsx("text", __assign({ className: errorTextClass }, { children: error }), void 0)] }), void 0))] }), void 0));
 };
 
 var main = createCommonjsModule(function (module) {
@@ -71898,7 +71921,7 @@ var calculateDefaultExpandedRowKeys = function (data, options) {
         if (currentLevel === void 0) { currentLevel = 1; }
         var keys = [];
         source.forEach(function (_a) {
-            var children = _a.children, rest = __rest$s(_a, ["children"]);
+            var children = _a.children, rest = __rest$t(_a, ["children"]);
             if (children !== null) {
                 keys.push(rest[key]);
                 if (level < 0 || (level > 0 && level > currentLevel)) {
@@ -71915,15 +71938,14 @@ var transformColumn = function (columns, baseColumn) {
     if (columns === void 0) { columns = []; }
     if (baseColumn === void 0) { baseColumn = {}; }
     return columns.map(function (_a, index) {
-        var title = _a.title, titleTooltip = _a.titleTooltip, dataIndex = _a.dataIndex, render = _a.render, props = __rest$s(_a, ["title", "titleTooltip", "dataIndex", "render"]);
+        var title = _a.title, titleTooltip = _a.titleTooltip, dataIndex = _a.dataIndex, render = _a.render, props = __rest$t(_a, ["title", "titleTooltip", "dataIndex", "render"]);
         // custom title
         var titleResult = title;
         if (typeof title === "function") {
             titleResult = title();
         }
         if (titleTooltip) {
-            titleResult = (jsxs(Tooltip, __assign({ className: "flex-center-y", zIndex: 10000, title: titleTooltip }, { children: [title,
-                    jsx(Icon$2, { name: "info", className: "ml-3" }, void 0)] }), void 0));
+            titleResult = (jsxs(Tooltip, __assign({ className: "flex-center-y", zIndex: 10000, title: titleTooltip }, { children: [title, jsx(Icon$2, { name: "info", className: "ml-3" }, void 0)] }), void 0));
         }
         return __assign(__assign(__assign({}, baseColumn), { id: "" + index, title: titleResult, align: "center", dataIndex: dataIndex, render: function (data, item, index) {
                 var content = data;
@@ -72005,16 +72027,14 @@ var SelectLayoutView = function (_a) {
         if (lodash.isEmpty(selectedLayout)) {
             return (jsxs("div", __assign({ className: classnames("d-flex  align-items-center hover-pointer p-2", {
                     "border-right": showBorder,
-                }) }, { children: [jsx("div", __assign({ className: "text text-nowrap mr-2" }, { children: text }), void 0),
-                    jsx(Icon$2, { name: "arrow_drop_down", size: "large", className: "d-block" }, void 0)] }), void 0));
+                }) }, { children: [jsx("div", __assign({ className: "text text-nowrap mr-2" }, { children: text }), void 0), jsx(Icon$2, { name: "arrow_drop_down", size: "large", className: "d-block" }, void 0)] }), void 0));
         }
         return (jsx("div", __assign({ id: "titleSelectShipping", className: classnames("w-100", { "border-right": showBorder }) }, { children: jsx(Button, { content: (_a = selectedLayout === null || selectedLayout === void 0 ? void 0 : selectedLayout.name) !== null && _a !== void 0 ? _a : "N/A", iconName: "visibility", suffixIcon: "arrow_drop_down", variant: "trans", color: "gray", className: "font-weight-normal" }, void 0) }), void 0));
     };
     var renderLayoutItem = function (item) {
         var _a, _b;
         var isDefault = (_a = item === null || item === void 0 ? void 0 : item.default) !== null && _a !== void 0 ? _a : false;
-        return (jsxs("div", __assign({ className: "d-flex px-3 py-2" }, { children: [(_b = item === null || item === void 0 ? void 0 : item.name) !== null && _b !== void 0 ? _b : "N/A",
-                jsx("span", __assign({ className: "subTile2" }, { children: isDefault ? "- Default" : "" }), void 0)] }), void 0));
+        return (jsxs("div", __assign({ className: "d-flex px-3 py-2" }, { children: [(_b = item === null || item === void 0 ? void 0 : item.name) !== null && _b !== void 0 ? _b : "N/A", jsx("span", __assign({ className: "subTile2" }, { children: isDefault ? "- Default" : "" }), void 0)] }), void 0));
     };
     var transformer = function (res) {
         var result = [];
@@ -72171,10 +72191,7 @@ var SelectColumnModal = function (_a) {
         setSelectAll(!selectAll);
     };
     var renderContentModal = function () {
-        return (jsxs("div", __assign({ className: "d-flex flex-column align-items-start justify-content-center" }, { children: [jsxs("h5", { children: [actionText, ":"] }, void 0),
-                jsxs("div", __assign({ className: "d-flex align-items-center" }, { children: [jsx(Checkbox, { value: selectAll, checked: selectAll, onChange: onClickSelectAll, color: "primary", label: selectAllText }, void 0),
-                        jsx(Button, { onClick: onClickClearAll, disabled: lodash.isEmpty(listLayout), iconName: "highlight_off", content: "Clear All Layout", variant: "trans", color: "red" }, void 0)] }), void 0),
-                jsx("div", __assign({ className: "row my-4 w-100" }, { children: options.map(function (item) {
+        return (jsxs("div", __assign({ className: "d-flex flex-column align-items-start justify-content-center" }, { children: [jsxs("h5", { children: [actionText, ":"] }, void 0), jsxs("div", __assign({ className: "d-flex align-items-center" }, { children: [jsx(Checkbox, { value: selectAll, checked: selectAll, onChange: onClickSelectAll, color: "primary", label: selectAllText }, void 0), jsx(Button, { onClick: onClickClearAll, disabled: lodash.isEmpty(listLayout), iconName: "highlight_off", content: "Clear All Layout", variant: "trans", color: "red" }, void 0)] }), void 0), jsx("div", __assign({ className: "row my-4 w-100" }, { children: options.map(function (item) {
                         // eslint-disable-next-line operator-linebreak
                         var isChecked = !!selectedOption.find(function (obj) { return obj.id === item.id; });
                         var label = typeof (item === null || item === void 0 ? void 0 : item.title) === "function" ? item === null || item === void 0 ? void 0 : item.title() : item === null || item === void 0 ? void 0 : item.title;
@@ -72202,12 +72219,9 @@ var SelectColumnModal = function (_a) {
                 // eslint-disable-next-line react/jsx-curly-brace-presence
                 , { 
                     // eslint-disable-next-line react/jsx-curly-brace-presence
-                    content: "Save & Apply", onClick: handleOnClickSave, disabled: lodash.isEmpty(selectedLayout), className: "mr-3" }, void 0),
-                jsx(Button, { content: "Save", onClick: handleOnClickSaveNew }, void 0)] }), void 0));
+                    content: "Save & Apply", onClick: handleOnClickSave, disabled: lodash.isEmpty(selectedLayout), className: "mr-3" }, void 0), jsx(Button, { content: "Save", onClick: handleOnClickSaveNew }, void 0)] }), void 0));
     };
-    return (jsxs(React__default.Fragment, { children: [jsx(Button, { content: "Column", iconName: "settings", variant: "trans", onClick: function () { return setOpenOptionModal(true); }, color: "gray", className: "font-weight-normal" }, void 0),
-            jsx(Modal, __assign({ open: openOptionModal, onClose: function () { return setOpenOptionModal(false); }, onSave: handleOnClickSave, title: "Select Layout " + ((selectedLayout === null || selectedLayout === void 0 ? void 0 : selectedLayout.name) ? " - " + (selectedLayout === null || selectedLayout === void 0 ? void 0 : selectedLayout.name) : ""), customFooter: renderFooter, size: "medium", headerSide: renderSecondTitle }, { children: renderContentModal() }), void 0),
-            jsx(Modal, __assign({ open: openSaveNewModal, onClose: function () { return setOpenSaveNewModal(false); }, onSave: handleOnSaveNewLayout }, { children: renderContentSaveNewModal() }), void 0)] }, void 0));
+    return (jsxs(React__default.Fragment, { children: [jsx(Button, { content: "Column", iconName: "settings", variant: "trans", onClick: function () { return setOpenOptionModal(true); }, color: "gray", className: "font-weight-normal" }, void 0), jsx(Modal, __assign({ open: openOptionModal, onClose: function () { return setOpenOptionModal(false); }, onSave: handleOnClickSave, title: "Select Layout " + ((selectedLayout === null || selectedLayout === void 0 ? void 0 : selectedLayout.name) ? " - " + (selectedLayout === null || selectedLayout === void 0 ? void 0 : selectedLayout.name) : ""), customFooter: renderFooter, size: "medium", headerSide: renderSecondTitle }, { children: renderContentModal() }), void 0), jsx(Modal, __assign({ open: openSaveNewModal, onClose: function () { return setOpenSaveNewModal(false); }, onSave: handleOnSaveNewLayout }, { children: renderContentSaveNewModal() }), void 0)] }, void 0));
 };
 
 var shims = createCommonjsModule(function (module, exports) {
@@ -74151,19 +74165,21 @@ var React = _interopRequireWildcard(React__default);
 
 
 
+var _excluded = ["children", "className", "draggableOpts", "width", "height", "handle", "handleSize", "lockAspectRatio", "axis", "minConstraints", "maxConstraints", "onResize", "onResizeStop", "onResizeStart", "resizeHandles", "transformScale"];
+
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
 function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; _setPrototypeOf(subClass, superClass); }
 
@@ -74194,37 +74210,31 @@ var Resizable = /*#__PURE__*/function (_React$Component) {
     this.resetData();
   };
 
-  _proto.lockAspectRatio = function lockAspectRatio(width, height, aspectRatio) {
-    height = width / aspectRatio;
-    width = height * aspectRatio;
-    return [width, height];
-  };
-
   _proto.resetData = function resetData() {
     this.lastHandleRect = this.slack = null;
   } // Clamp width and height within provided constraints
   ;
 
   _proto.runConstraints = function runConstraints(width, height) {
-    var _ref = [this.props.minConstraints, this.props.maxConstraints],
-        min = _ref[0],
-        max = _ref[1];
-    if (!min && !max) return [width, height]; // If constraining to min and max, we need to also fit width and height to aspect ratio.
+    var _this$props = this.props,
+        minConstraints = _this$props.minConstraints,
+        maxConstraints = _this$props.maxConstraints,
+        lockAspectRatio = _this$props.lockAspectRatio; // short circuit
 
-    if (this.props.lockAspectRatio) {
-      var resizingHorizontally = height === this.props.height;
+    if (!minConstraints && !maxConstraints && !lockAspectRatio) return [width, height]; // If constraining to min and max, we need to also fit width and height to aspect ratio.
 
-      if (resizingHorizontally) {
-        var ratio = this.props.width / this.props.height;
+    if (lockAspectRatio) {
+      var ratio = this.props.width / this.props.height;
+      var deltaW = width - this.props.width;
+      var deltaH = height - this.props.height; // Find which coordinate was greater and should push the other toward it.
+      // E.g.:
+      // ratio = 1, deltaW = 10, deltaH = 5, deltaH should become 10.
+      // ratio = 2, deltaW = 10, deltaH = 6, deltaW should become 12.
+
+      if (Math.abs(deltaW) > Math.abs(deltaH * ratio)) {
         height = width / ratio;
-        width = height * ratio;
       } else {
-        // Take into account vertical resize with N/S handles on locked aspect
-        // ratio. Calculate the change height-first, instead of width-first
-        var _ratio = this.props.height / this.props.width;
-
-        width = height / _ratio;
-        height = width * _ratio;
+        width = height * ratio;
       }
     }
 
@@ -74233,21 +74243,21 @@ var Resizable = /*#__PURE__*/function (_React$Component) {
     // we start removing slack, the element won't react to it right away until it's been
     // completely removed.
 
-    var _ref2 = this.slack || [0, 0],
-        slackW = _ref2[0],
-        slackH = _ref2[1];
+    var _ref = this.slack || [0, 0],
+        slackW = _ref[0],
+        slackH = _ref[1];
 
     width += slackW;
     height += slackH;
 
-    if (min) {
-      width = Math.max(min[0], width);
-      height = Math.max(min[1], height);
+    if (minConstraints) {
+      width = Math.max(minConstraints[0], width);
+      height = Math.max(minConstraints[1], height);
     }
 
-    if (max) {
-      width = Math.min(max[0], width);
-      height = Math.min(max[1], height);
+    if (maxConstraints) {
+      width = Math.min(maxConstraints[0], width);
+      height = Math.min(maxConstraints[1], height);
     } // If the width or height changed, we must have introduced some slack. Record it for the next iteration.
 
 
@@ -74265,10 +74275,10 @@ var Resizable = /*#__PURE__*/function (_React$Component) {
   _proto.resizeHandler = function resizeHandler(handlerName, axis) {
     var _this2 = this;
 
-    return function (e, _ref3) {
-      var node = _ref3.node,
-          deltaX = _ref3.deltaX,
-          deltaY = _ref3.deltaY;
+    return function (e, _ref2) {
+      var node = _ref2.node,
+          deltaX = _ref2.deltaX,
+          deltaY = _ref2.deltaY;
       // Reset data in case it was left over somehow (should not be possible)
       if (handlerName === 'onResizeStart') _this2.resetData(); // Axis restrictions
 
@@ -74320,7 +74330,7 @@ var Resizable = /*#__PURE__*/function (_React$Component) {
       var shouldSkipCb = handlerName === 'onResize' && !dimensionsChanged;
 
       if (cb && !shouldSkipCb) {
-        if (typeof e.persist === 'function') e.persist();
+        e.persist == null ? void 0 : e.persist();
         cb(e, {
           node: node,
           size: {
@@ -74334,26 +74344,36 @@ var Resizable = /*#__PURE__*/function (_React$Component) {
 
       if (handlerName === 'onResizeStop') _this2.resetData();
     };
-  } // Render a resize handle given an axis & DOM ref.
+  } // Render a resize handle given an axis & DOM ref. Ref *must* be attached for
+  // the underlying draggable library to work properly.
   ;
 
   _proto.renderResizeHandle = function renderResizeHandle(handleAxis, ref) {
-    var handle = this.props.handle;
+    var handle = this.props.handle; // No handle provided, make the default
 
-    if (handle) {
-      if (typeof handle === 'function') {
-        return handle(handleAxis, ref);
-      }
-
-      return /*#__PURE__*/React.cloneElement(handle, {
+    if (!handle) {
+      return /*#__PURE__*/React.createElement("span", {
+        className: "react-resizable-handle react-resizable-handle-" + handleAxis,
         ref: ref
       });
-    }
+    } // Handle is a function, such as:
+    // `handle={(handleAxis) => <span className={...} />}`
 
-    return /*#__PURE__*/React.createElement("span", {
-      className: "react-resizable-handle react-resizable-handle-" + handleAxis,
+
+    if (typeof handle === 'function') {
+      return handle(handleAxis, ref);
+    } // Handle is a React component (composite or DOM).
+
+
+    var isDOMElement = typeof handle.type === 'string';
+
+    var props = _objectSpread({
       ref: ref
+    }, isDOMElement ? {} : {
+      handleAxis: handleAxis
     });
+
+    return /*#__PURE__*/React.cloneElement(handle, props);
   };
 
   _proto.render = function render() {
@@ -74361,27 +74381,27 @@ var Resizable = /*#__PURE__*/function (_React$Component) {
 
     // Pass along only props not meant for the `<Resizable>`.`
     // eslint-disable-next-line no-unused-vars
-    var _this$props = this.props,
-        children = _this$props.children,
-        className = _this$props.className,
-        draggableOpts = _this$props.draggableOpts;
-        _this$props.width;
-        _this$props.height;
-        _this$props.handle;
-        _this$props.handleSize;
-        _this$props.lockAspectRatio;
-        _this$props.axis;
-        _this$props.minConstraints;
-        _this$props.maxConstraints;
-        _this$props.onResize;
-        _this$props.onResizeStop;
-        _this$props.onResizeStart;
-        var resizeHandles = _this$props.resizeHandles;
-        _this$props.transformScale;
-        var p = _objectWithoutPropertiesLoose(_this$props, ["children", "className", "draggableOpts", "width", "height", "handle", "handleSize", "lockAspectRatio", "axis", "minConstraints", "maxConstraints", "onResize", "onResizeStop", "onResizeStart", "resizeHandles", "transformScale"]); // What we're doing here is getting the child of this element, and cloning it with this element's props.
+    var _this$props2 = this.props,
+        children = _this$props2.children,
+        className = _this$props2.className,
+        draggableOpts = _this$props2.draggableOpts;
+        _this$props2.width;
+        _this$props2.height;
+        _this$props2.handle;
+        _this$props2.handleSize;
+        _this$props2.lockAspectRatio;
+        _this$props2.axis;
+        _this$props2.minConstraints;
+        _this$props2.maxConstraints;
+        _this$props2.onResize;
+        _this$props2.onResizeStop;
+        _this$props2.onResizeStart;
+        var resizeHandles = _this$props2.resizeHandles;
+        _this$props2.transformScale;
+        var p = _objectWithoutPropertiesLoose(_this$props2, _excluded); // What we're doing here is getting the child of this element, and cloning it with this element's props.
     // We are then defining its children as:
-    // Its original children (resizable's child's children), and
-    // One or more draggable handles.
+    // 1. Its original children (resizable's child's children), and
+    // 2. One or more draggable handles.
 
 
     return (0, utils.cloneElement)(children, _objectSpread(_objectSpread({}, p), {}, {
@@ -74433,6 +74453,8 @@ var _Resizable = _interopRequireDefault(Resizable_1);
 
 
 
+var _excluded = ["handle", "handleSize", "onResize", "onResizeStart", "onResizeStop", "draggableOpts", "minConstraints", "maxConstraints", "lockAspectRatio", "axis", "width", "height", "resizeHandles", "style", "transformScale"];
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
@@ -74475,7 +74497,7 @@ var ResizableBox = /*#__PURE__*/function (_React$Component) {
       var size = data.size;
 
       if (_this.props.onResize) {
-        e.persist && e.persist();
+        e.persist == null ? void 0 : e.persist();
 
         _this.setState(size, function () {
           return _this.props.onResize && _this.props.onResize(e, data);
@@ -74524,7 +74546,7 @@ var ResizableBox = /*#__PURE__*/function (_React$Component) {
         var resizeHandles = _this$props.resizeHandles,
         style = _this$props.style,
         transformScale = _this$props.transformScale,
-        props = _objectWithoutPropertiesLoose(_this$props, ["handle", "handleSize", "onResize", "onResizeStart", "onResizeStop", "draggableOpts", "minConstraints", "maxConstraints", "lockAspectRatio", "axis", "width", "height", "resizeHandles", "style", "transformScale"]);
+        props = _objectWithoutPropertiesLoose(_this$props, _excluded);
 
     return /*#__PURE__*/React.createElement(_Resizable.default, {
       axis: axis,
@@ -74564,7 +74586,7 @@ var Resizable = Resizable_1.default;
 ResizableBox_1.default;
 
 var ResizableTitle = function (props) {
-    var onResize = props.onResize, width = props.width, restProps = __rest$s(props, ["onResize", "width"]);
+    var onResize = props.onResize, width = props.width, restProps = __rest$t(props, ["onResize", "width"]);
     if (!width) {
         return jsx("th", __assign({}, restProps), void 0);
     }
@@ -74606,9 +74628,7 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
                 var setSelectedKeys = _a.setSelectedKeys, selectedKeys = _a.selectedKeys, confirm = _a.confirm, clearFilters = _a.clearFilters;
                 return (jsxs("div", __assign({ style: { padding: 8 } }, { children: [jsx(Input, { ref: function (node) {
                                 _this.searchInput = node;
-                            }, placeholder: "Search " + dataIndex, value: selectedKeys[0], onChange: function (e) { return setSelectedKeys(e.target.value ? [e.target.value] : []); }, onPressEnter: function () { return _this.handleSearch(selectedKeys, confirm, dataIndex); }, style: { width: 188, marginBottom: 8, display: "block" } }, void 0),
-                        jsx(Button$2, __assign({ type: "primary", onClick: function () { return _this.handleSearch(selectedKeys, confirm, dataIndex); }, icon: "search", size: "small", style: { width: 90, marginRight: 8 } }, { children: "Search" }), void 0),
-                        jsx(Button$2, __assign({ onClick: function () { return _this.handleReset(clearFilters); }, size: "small", style: { width: 90 } }, { children: "Reset" }), void 0)] }), void 0));
+                            }, placeholder: "Search " + dataIndex, value: selectedKeys[0], onChange: function (e) { return setSelectedKeys(e.target.value ? [e.target.value] : []); }, onPressEnter: function () { return _this.handleSearch(selectedKeys, confirm, dataIndex); }, style: { width: 188, marginBottom: 8, display: "block" } }, void 0), jsx(Button$2, __assign({ type: "primary", onClick: function () { return _this.handleSearch(selectedKeys, confirm, dataIndex); }, icon: "search", size: "small", style: { width: 90, marginRight: 8 } }, { children: "Search" }), void 0), jsx(Button$2, __assign({ onClick: function () { return _this.handleReset(clearFilters); }, size: "small", style: { width: 90 } }, { children: "Reset" }), void 0)] }), void 0));
             },
             filterIcon: function (filtered) { return (
             // <Icons type="search" style={{ color: filtered ? '#1890ff' : undefined }} />
@@ -74853,14 +74873,11 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
         var funcRowClass = classnames("d-table-awesome-component__select-column my-2 w-100", {
             "d-flex justify-content-between align-items-center my-3": showSelectionView,
         });
-        return (jsxs("div", __assign({ className: wrapperClass }, { children: [showFuncRow && (jsxs("div", __assign({ className: funcRowClass }, { children: [showSelectionView && onSelectionView && onSelectionView(selectingRows),
-                        jsxs("div", __assign({ className: "flex-center-y" }, { children: [!lodash.isEmpty(tableLayoutList) && (jsx(SelectLayoutView, { listLayout: tableLayoutList, onClickItem: this.handleSelectTableLayout, selectedLayout: selectedLayout, showBorder: true }, void 0)),
-                                jsx(SelectColumnModal
+        return (jsxs("div", __assign({ className: wrapperClass }, { children: [showFuncRow && (jsxs("div", __assign({ className: funcRowClass }, { children: [showSelectionView && onSelectionView && onSelectionView(selectingRows), jsxs("div", __assign({ className: "flex-center-y" }, { children: [!lodash.isEmpty(tableLayoutList) && (jsx(SelectLayoutView, { listLayout: tableLayoutList, onClickItem: this.handleSelectTableLayout, selectedLayout: selectedLayout, showBorder: true }, void 0)), jsx(SelectColumnModal
                                 // eslint-disable-next-line react/destructuring-assignment
                                 , { 
                                     // eslint-disable-next-line react/destructuring-assignment
-                                    options: columns, setSelectedColumns: function (column) { return _this.setState({ selectedColumns: column }); }, keyTable: keyTableLayout, refreshLayout: function () { return _this.setDefaultTableLayout(); } }, void 0)] }), void 0)] }), void 0)),
-                jsx(Table, __assign({ rowKey: rowKey, dataSource: data, loading: loading, onChange: this.handleTableChange, rowClassName: function () { return "d-table-awesome-component__row"; }, pagination: paginationResult, scroll: isScroll ? { y: "1000" } : {}, tableLayout: tableLayout, bordered: bordered, components: this.components }, this.props, { className: "d-table-awesome-component__table " + classNameTable, 
+                                    options: columns, setSelectedColumns: function (column) { return _this.setState({ selectedColumns: column }); }, keyTable: keyTableLayout, refreshLayout: function () { return _this.setDefaultTableLayout(); } }, void 0)] }), void 0)] }), void 0)), jsx(Table, __assign({ rowKey: rowKey, dataSource: data, loading: loading, onChange: this.handleTableChange, rowClassName: function () { return "d-table-awesome-component__row"; }, pagination: paginationResult, scroll: isScroll ? { y: "1000" } : {}, tableLayout: tableLayout, bordered: bordered, components: this.components }, this.props, { className: "d-table-awesome-component__table " + classNameTable, 
                     // columns props always has to be in last position in order for Resizable table to work
                     columns: this.getColumns() }), void 0)] }), void 0));
     };
@@ -74918,10 +74935,7 @@ var MenuItem = function (_a) {
     if (isMainView) {
         arrowView = jsx(Icon$2, { name: "expand_more", className: "d-block ml-2" }, void 0);
     }
-    return (jsxs("div", __assign({ className: itemClass, onClick: function () { return onClick && onClick(item); } }, { children: [iconImageView,
-            labelView,
-            arrowView,
-            !isMainView && subMenu && subMenu.length > 0 && (jsx(DropdownMenu, { dataSource: subMenu, onClick: function (item) { return console.log({ item: item }); } }, void 0))] }), "" + id));
+    return (jsxs("div", __assign({ className: itemClass, onClick: function () { return onClick && onClick(item); } }, { children: [iconImageView, labelView, arrowView, !isMainView && subMenu && subMenu.length > 0 && (jsx(DropdownMenu, { dataSource: subMenu, onClick: function (item) { return console.log({ item: item }); } }, void 0))] }), "" + id));
 };
 var DropdownMenu = function (_a) {
     var _b = _a.dataSource, dataSource = _b === void 0 ? [] : _b, _c = _a.onClick, onClick = _c === void 0 ? function () { } : _c, Messages = _a.Messages, className = _a.className, position = _a.position;
@@ -74956,8 +74970,7 @@ var Dropdown = function (_a) {
     if (children) {
         mainView = jsx("div", __assign({ onClick: function () { return setOpenDropdown(!openDropdown); } }, { children: children }), void 0);
     }
-    return (jsx("div", __assign({ className: containerClass, ref: wrapperRef, style: style }, { children: jsxs("div", __assign({ className: "d-dropdown  position-relative" }, { children: [mainView,
-                openDropdown && (jsx(DropdownMenu, { dataSource: dataSource, onClick: handleOnClickItem, Messages: Messages, position: position }, void 0))] }), void 0) }), void 0));
+    return (jsx("div", __assign({ className: containerClass, ref: wrapperRef, style: style }, { children: jsxs("div", __assign({ className: "d-dropdown  position-relative" }, { children: [mainView, openDropdown && (jsx(DropdownMenu, { dataSource: dataSource, onClick: handleOnClickItem, Messages: Messages, position: position }, void 0))] }), void 0) }), void 0));
 };
 
 /* eslint-disable implicit-arrow-linebreak */
@@ -76183,10 +76196,7 @@ var ProgressComponent = /** @class */ (function (_super) {
         };
         _this.renderErrorView = function () {
             var error = _this.state.error;
-            return (jsxs("div", __assign({ className: "progress__error-container" }, { children: [jsx("h4", { children: Messages.error }, void 0),
-                    jsx("h5", __assign({ className: "mt-3" }, { children: error.message }), void 0),
-                    jsxs("div", __assign({ className: "progress__error-footer" }, { children: [jsx("button", __assign({ onClick: _this.dismiss, className: "btn btn-light mr-3", type: "button" }, { children: Messages.cancel }), void 0),
-                            jsx("button", __assign({ className: "btn btn-primary", onClick: _this.onClickRetry, type: "button" }, { children: Messages.retry }), void 0)] }), void 0)] }), void 0));
+            return (jsxs("div", __assign({ className: "progress__error-container" }, { children: [jsx("h4", { children: Messages.error }, void 0), jsx("h5", __assign({ className: "mt-3" }, { children: error.message }), void 0), jsxs("div", __assign({ className: "progress__error-footer" }, { children: [jsx("button", __assign({ onClick: _this.dismiss, className: "btn btn-light mr-3", type: "button" }, { children: Messages.cancel }), void 0), jsx("button", __assign({ className: "btn btn-primary", onClick: _this.onClickRetry, type: "button" }, { children: Messages.retry }), void 0)] }), void 0)] }), void 0));
         };
         _this.state = {
             open: false,
@@ -76196,8 +76206,7 @@ var ProgressComponent = /** @class */ (function (_super) {
     }
     ProgressComponent.prototype.render = function () {
         var _a = this.state, open = _a.open, error = _a.error;
-        return (jsxs(Modal$1, __assign({ visible: open, onCancel: this.dismiss, destroyOnClose: true, className: "progress__container", closable: false, footer: null }, { children: [!error && this.renderLoadingView(),
-                error && this.renderErrorView()] }), void 0));
+        return (jsxs(Modal$1, __assign({ visible: open, onCancel: this.dismiss, destroyOnClose: true, className: "progress__container", closable: false, footer: null }, { children: [!error && this.renderLoadingView(), error && this.renderErrorView()] }), void 0));
     };
     return ProgressComponent;
 }(Component));
@@ -76281,9 +76290,7 @@ var Card = function (_a) {
             if (customLeft) {
                 return customLeft;
             }
-            return (jsxs("div", { children: [jsxs("div", __assign({ className: titleWrapper }, { children: [jsx("div", __assign({ className: "text-medium-bold" }, { children: title }), void 0),
-                            index && jsx(Badge, { variant: "index", index: index, size: "xx-large", className: "ml-2" }, void 0)] }), void 0),
-                    subTitle && jsx("div", __assign({ className: "text-x-small" }, { children: subTitle }), void 0)] }, void 0));
+            return (jsxs("div", { children: [jsxs("div", __assign({ className: titleWrapper }, { children: [jsx("div", __assign({ className: "text-medium-bold" }, { children: title }), void 0), index && jsx(Badge, { variant: "index", index: index, size: "xx-large", className: "ml-2" }, void 0)] }), void 0), subTitle && jsx("div", __assign({ className: "text-x-small" }, { children: subTitle }), void 0)] }, void 0));
         };
         var rightSide = function () {
             if (customRight) {
@@ -76294,11 +76301,9 @@ var Card = function (_a) {
             }
             return jsx("div", {}, void 0);
         };
-        return (jsxs("div", __assign({ className: headerClass }, { children: [leftSide(),
-                rightSide()] }), void 0));
+        return (jsxs("div", __assign({ className: headerClass }, { children: [leftSide(), rightSide()] }), void 0));
     };
-    return (jsxs("div", __assign({ className: wrapClass }, { children: [header(),
-            children] }), void 0));
+    return (jsxs("div", __assign({ className: wrapClass }, { children: [header(), children] }), void 0));
 };
 
 function useFirstTime() {
