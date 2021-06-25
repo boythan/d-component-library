@@ -61,7 +61,12 @@ const InputTextSearch = ({
                 onBlur={onBlur}
                 disabled={disabled}
                 defaultValue={defaultValue}
-                onSubmit={onSubmit}
+                onKeyUp={(event) => {
+                    if (event.key === "Enter") {
+                        // eslint-disable-next-line no-unused-expressions
+                        onSubmit && onSubmit();
+                    }
+                }}
             />
         </div>
     );

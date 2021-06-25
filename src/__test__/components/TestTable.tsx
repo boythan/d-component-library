@@ -90,7 +90,14 @@ const TestTable = () => {
 
     return (
         <div className="my-4">
-            <HeaderTable label="Test Table" onChangeText={() => {}} onClickFilter={() => {}} />
+            <HeaderTable
+                label="Test Table"
+                onChangeText={() => {}}
+                onClickFilter={() => {}}
+                onSubmitSearch={() => {
+                    console.log("on submit text search");
+                }}
+            />
             <AwesomeTableComponent
                 source={(paging) => {
                     return Promise.resolve(ATTRIBUTE_INPUT_TYPE);

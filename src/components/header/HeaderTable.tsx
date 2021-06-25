@@ -10,7 +10,7 @@ export interface HeaderTableProps {
     style?: CSSProperties;
     label?: string;
     onChangeText: any;
-    onSubmitSearch: any;
+    onSubmitSearch?: any;
 
     placeholder?: string;
     disabledSearch?: boolean;
