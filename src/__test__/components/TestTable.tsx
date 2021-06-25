@@ -72,7 +72,12 @@ const TestTable = () => {
             title: "Action",
             align: "center",
             render: () => {
-                return <Dropdown dataSource={ATTRIBUTE_INPUT_TYPE} />;
+                return (
+                    <Dropdown
+                        dataSource={ATTRIBUTE_INPUT_TYPE}
+                        buttonProps={{ style: { width: "200px" }, iconName: "add" }}
+                    />
+                );
             },
         },
     ];

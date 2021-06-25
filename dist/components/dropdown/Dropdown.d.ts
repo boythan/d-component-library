@@ -1,4 +1,4 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 import { ButtonProps } from "../button/Button";
 export interface IDropdownMenuItemProps {
     id: string | number;
@@ -26,8 +26,8 @@ export interface DropdownProps extends DropDownMenuProps {
     value?: IDropdownMenuItemProps;
     placeholder?: string;
     className?: string;
-    classNameMenu?: string;
     position?: "left-edge" | "right-edge";
+    style?: CSSProperties;
 }
 export declare const DropdownMenu: React.FC<DropDownMenuProps>;
 declare const Dropdown: React.FC<DropdownProps>;

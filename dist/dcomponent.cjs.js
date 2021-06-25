@@ -69961,7 +69961,7 @@ var ViewRow = function (_a) {
         "col-8": width === "25%",
         "align-items-center": center,
     }, classNameLabel);
-    var contentClass = classnames("col-10 p-0", classNameContent);
+    var contentClass = classnames("col p-0", classNameContent);
     var content = children;
     if (typeof children === "function") {
         content = children();
@@ -74950,7 +74950,7 @@ var MenuItem = function (_a) {
     return (jsxRuntime.jsxs("div", __assign({ className: itemClass, onClick: function () { return onClick && onClick(item); } }, { children: [iconImageView,
             labelView,
             arrowView,
-            !isMainView && subMenu && subMenu.length > 0 && jsxRuntime.jsx(DropdownMenu, { dataSource: subMenu }, void 0)] }), "" + id));
+            !isMainView && subMenu && subMenu.length > 0 && (jsxRuntime.jsx(DropdownMenu, { dataSource: subMenu, onClick: function (item) { return console.log({ item: item }); } }, void 0))] }), "" + id));
 };
 var DropdownMenu = function (_a) {
     var _b = _a.dataSource, dataSource = _b === void 0 ? [] : _b, _c = _a.onClick, onClick = _c === void 0 ? function () { } : _c, Messages = _a.Messages, className = _a.className, position = _a.position;
@@ -74961,9 +74961,9 @@ var DropdownMenu = function (_a) {
     return jsxRuntime.jsx("div", __assign({ className: wrapperClass }, { children: list }), void 0);
 };
 var Dropdown = function (_a) {
-    var _b = _a.buttonProps, buttonProps = _b === void 0 ? { variant: "trans", iconName: "more_vert" } : _b, dataSource = _a.dataSource, onClick = _a.onClick, _c = _a.variant, variant = _c === void 0 ? "button" : _c, value = _a.value, Messages = _a.Messages, _d = _a.placeholder, placeholder = _d === void 0 ? "Select..." : _d, className = _a.className; _a.classNameMenu; var _e = _a.position, position = _e === void 0 ? "right-edge" : _e;
+    var _b = _a.buttonProps, buttonProps = _b === void 0 ? { variant: "trans", iconName: "more_vert" } : _b, dataSource = _a.dataSource, onClick = _a.onClick, _c = _a.variant, variant = _c === void 0 ? "button" : _c, value = _a.value, Messages = _a.Messages, _d = _a.placeholder, placeholder = _d === void 0 ? "Select..." : _d, className = _a.className, _e = _a.position, position = _e === void 0 ? "right-edge" : _e, style = _a.style, children = _a.children;
     var _f = React.useState(false), openDropdown = _f[0], setOpenDropdown = _f[1];
-    var containerClass = classnames("d-dropdown positon-relative", className);
+    var containerClass = classnames("flex-center-y justify-content-center", className);
     var wrapperRef = React.useRef(null);
     React.useEffect(function () {
         var handleOutsideClick = function (event) {
@@ -74978,17 +74978,15 @@ var Dropdown = function (_a) {
         setOpenDropdown(false);
         return onClick && onClick(item);
     };
-    var mainView = function () { return (jsxRuntime.jsx(Button, __assign({}, buttonProps, { onClick: function () { return setOpenDropdown(!openDropdown); } }), void 0)); };
+    var mainView = jsxRuntime.jsx(Button, __assign({}, buttonProps, { onClick: function () { return setOpenDropdown(!openDropdown); } }), void 0);
     if (variant === "view") {
-        mainView = function () {
-            if (!value) {
-                return jsxRuntime.jsx(Button, { content: placeholder, onClick: function () { return setOpenDropdown(!openDropdown); } }, void 0);
-            }
-            return (jsxRuntime.jsx(MenuItem, { item: value, Messages: Messages, onClick: function () { return setOpenDropdown(!openDropdown); }, isMainView: true }, void 0));
-        };
+        mainView = value ? (jsxRuntime.jsx(MenuItem, { item: value, Messages: Messages, onClick: function () { return setOpenDropdown(!openDropdown); }, isMainView: true }, void 0)) : (jsxRuntime.jsx(Button, __assign({ content: placeholder }, buttonProps, { onClick: function () { return setOpenDropdown(!openDropdown); } }), void 0));
     }
-    return (jsxRuntime.jsxs("div", __assign({ className: containerClass, ref: wrapperRef }, { children: [mainView(),
-            openDropdown && (jsxRuntime.jsx(DropdownMenu, { dataSource: dataSource, onClick: handleOnClickItem, Messages: Messages, position: variant === "view" ? undefined : position }, void 0))] }), void 0));
+    if (children) {
+        mainView = jsxRuntime.jsx("div", __assign({ onClick: function () { return setOpenDropdown(!openDropdown); } }, { children: children }), void 0);
+    }
+    return (jsxRuntime.jsx("div", __assign({ className: containerClass, ref: wrapperRef, style: style }, { children: jsxRuntime.jsxs("div", __assign({ className: "d-dropdown  position-relative" }, { children: [mainView,
+                openDropdown && (jsxRuntime.jsx(DropdownMenu, { dataSource: dataSource, onClick: handleOnClickItem, Messages: Messages, position: position }, void 0))] }), void 0) }), void 0));
 };
 
 /* eslint-disable implicit-arrow-linebreak */
