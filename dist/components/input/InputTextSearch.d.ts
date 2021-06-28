@@ -9,6 +9,7 @@ export interface InputTextSearchProps {
     disabled?: boolean;
     onChange?: any;
     onBlur?: any;
+    onSubmit?: any;
 }
-declare const InputTextSearch: ({ className, variant, value, defaultValue, error, placeholder, disabled, onChange, onBlur, }: InputTextSearchProps) => JSX.Element;
+declare const InputTextSearch: ({ className, variant, value, defaultValue, error, placeholder, disabled, onChange, onBlur, onSubmit, }: InputTextSearchProps) => JSX.Element;
 export default InputTextSearch;
