@@ -190,6 +190,16 @@ function mapWatchToEmbedYouTube(url: string) {
 
 const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
+function removeHTMLTags(str: string | null | undefined) {
+    if (str === null || str === "" || typeof str === "undefined") return false;
+    str = str.toString();
+
+    // Regular expression to identify HTML tags in
+    // the input string. Replacing the identified
+    // HTML tag with a null string.
+    return str.replace(/(<([^>]+)>)/gi, "");
+}
+
 export default {
     moneyFormat,
     moneyThaiFormat,
@@ -211,4 +221,5 @@ export default {
     isEnglishAlphabet,
     mapWatchToEmbedYouTube,
     phoneRegExp,
+    removeHTMLTags,
 };
