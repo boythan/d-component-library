@@ -7,11 +7,13 @@ import { Select } from "../../dcomponent";
 import { ATTRIBUTE_INPUT_TYPE, SELECT_DATA } from "../data/TestConstant";
 import SelectInfinity from "../../components/select/SelectInfinity";
 import DateInput from "../../components/dateInput/DateInput";
+import SelectCheckbox from "../../components/select/SelectCheckbox";
 
 const TestInput = () => {
     const [valueSelect, setValueSelect] = useState([]);
     const [valueTextInput, setValueTextInput] = useState([]);
     const [valueSelectInfinity, setValueSelectInfinity] = useState<any>();
+    const [selectCheckboxValue, setSelectCheckboxValue] = useState<any>([]);
 
     return (
         <div className="my-4">
@@ -95,6 +97,22 @@ const TestInput = () => {
                     mode="multiple"
                 />
             </ViewCollapse>
+            <SelectCheckbox
+                dataSource={ATTRIBUTE_INPUT_TYPE}
+                className="my-4"
+                label="Select Checkbox"
+                value={selectCheckboxValue}
+                onChange={(value) => setSelectCheckboxValue(value)}
+                showHeader
+            />
+            <SelectCheckbox
+                dataSource={ATTRIBUTE_INPUT_TYPE}
+                className="my-4"
+                label="Select Checkbox Right Edge"
+                position="right-edge"
+                value={selectCheckboxValue}
+                onChange={(value) => setSelectCheckboxValue(value)}
+            />
         </div>
     );
 };

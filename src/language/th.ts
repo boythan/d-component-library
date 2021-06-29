@@ -12,4 +12,6 @@ export default {
     back: "Back",
     showMore: "Show More",
     showLess: "Show Less",
+    selectAll: "Select All",
+    clear: "Clear",
 };
