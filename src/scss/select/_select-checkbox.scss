@@ -47,9 +47,30 @@
     }
 }
 
+.d-select-checkbox__container-active::after {
+    content: "";
+    position: absolute;
+    background-color: $light-color;
+    width: 8px;
+    height: 8px;
+    bottom: -10px;
+    left: 50%;
+    transform: rotate(-45deg);
+    box-shadow: $card-container-box-shadow;
+}
+
+.d-select-checkbox__container-error {
+    .d-select-checkbox__input {
+        border: $input-border-error;
+    }
+    .d-select-checkbox__dropdown {
+        top: 80% !important;
+    }
+}
+
 .d-select-checkbox__container-right-edge {
     .d-select-checkbox__dropdown {
-        top: 100%;
+        top: 115%;
         right: 0;
         left: auto;
     }
@@ -57,7 +78,7 @@
 
 .d-select-checkbox__container-left-edge {
     .d-select-checkbox__dropdown {
-        top: 100%;
+        top: 115%;
         left: 0;
         right: auto;
     }

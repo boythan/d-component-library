@@ -28,6 +28,7 @@ export interface SelectCheckboxProps extends CheckboxGroupProps {
     selectAllText?: string;
     clearText?: string;
     displayValue?: string;
+    error?: any;
     customValueView?: (value?: any) => any;
 }
 
@@ -46,6 +47,7 @@ const SelectCheckbox: React.FC<SelectCheckboxProps> = ({
     selectAllText = Messages.selectAll,
     clearText = Messages.clear,
     value,
+    error,
     onChange,
     getValue = (item) => item?.id,
     getLabel,
@@ -60,11 +62,13 @@ const SelectCheckbox: React.FC<SelectCheckboxProps> = ({
         `d-select-checkbox__container d-select-checkbox__container-${position}`,
         {
             "d-select-checkbox__container-active": openDropdown,
+            "d-select-checkbox__container-error": error,
         },
         className
     );
     const inputClass = ClassNames("d-select-checkbox__input hover-pointer");
     const dropdownWrapperClass = ClassNames("d-select-checkbox__dropdown", classNameDropdown);
+    const errorTextClass = ClassNames("text-x-small", "text-error", "ml-1");
 
     useEffect(() => {
         const handleOutsideClick = (event: MouseEvent) => {
@@ -90,7 +94,7 @@ const SelectCheckbox: React.FC<SelectCheckboxProps> = ({
         }
         return (
             <div className="flex-center-y w-100">
-                <div className="w-100">{name}</div>
+                <div className="">{name}</div>
                 <Badge variant="index" index={value?.length} size="x-large" className="ml-2" />
             </div>
         );
@@ -143,6 +147,12 @@ const SelectCheckbox: React.FC<SelectCheckboxProps> = ({
                     <Icon name={iconName} className="d-select-checkbox__arrow-icon ml-2" />
                 </div>
             </div>
+            {error && (
+                <div className="flex-center-y mt-1">
+                    <Icon name="error_outline" className="text-error" size="small" />
+                    <text className={errorTextClass}>{error}</text>
+                </div>
+            )}
             <div className={dropdownWrapperClass} ref={dropdownRef}>
                 {showHeader && checkboxHeader()}
                 <CheckboxGroup
