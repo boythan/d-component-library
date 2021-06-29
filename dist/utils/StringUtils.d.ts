@@ -10,6 +10,7 @@ declare function convertToNumber(string?: string): number | "";
 declare function stripHtml(html: any): string;
 declare function validURL(str: string): boolean;
 declare function mapWatchToEmbedYouTube(url: string): string;
+declare function removeHTMLTags(str: string | null | undefined): string | false;
 declare const _default: {
     moneyFormat: (n: any) => string;
     moneyThaiFormat: (number: number) => string;
@@ -31,5 +32,6 @@ declare const _default: {
     isEnglishAlphabet: (text: string) => boolean;
     mapWatchToEmbedYouTube: typeof mapWatchToEmbedYouTube;
     phoneRegExp: RegExp;
+    removeHTMLTags: typeof removeHTMLTags;
 };
 export default _default;

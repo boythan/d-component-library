@@ -12,5 +12,7 @@ declare const _default: {
     delete: string;
     print: string;
     edit: string;
+    selectAll: string;
+    clear: string;
 };
 export default _default;

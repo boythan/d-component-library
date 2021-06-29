@@ -29948,6 +29948,9 @@ a {
   min-height: 40px !important;
   box-shadow: none !important; }
 
+.d-select__select .ant-select-selection-item .ant-select-selection-item-remove {
+  display: flex; }
+
 .d-select__select .ant-select-selection-placeholder {
   left: 16px; }
 
@@ -29970,6 +29973,53 @@ a {
 .d-select__select-disabled {
   background-color: #F5F5F5 !important;
   border: none !important; }
+
+.d-select-checkbox__container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: fit-content; }
+  .d-select-checkbox__container .d-select-checkbox__input {
+    border: 0.5px solid #ECECEC;
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    transition: all 0.3s ease-in; }
+  .d-select-checkbox__container .d-select-checkbox__dropdown {
+    z-index: 20;
+    position: absolute;
+    background-color: #fff;
+    height: 0;
+    transition: opacity 0.3s ease-in;
+    overflow: hidden;
+    opacity: 0; }
+  .d-select-checkbox__container .d-select-checkbox__arrow-icon {
+    color: rgba(0, 0, 0, 0.25); }
+
+.d-select-checkbox__container-active .d-select-checkbox__input {
+  border: 0.5px solid #041b47; }
+
+.d-select-checkbox__container-active .d-select-checkbox__dropdown {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  min-width: 350px;
+  padding: 0px 16px;
+  padding-bottom: 16px; }
+
+.d-select-checkbox__container-right-edge .d-select-checkbox__dropdown {
+  top: 100%;
+  right: 0;
+  left: auto; }
+
+.d-select-checkbox__container-left-edge .d-select-checkbox__dropdown {
+  top: 100%;
+  left: 0;
+  right: auto; }
 
 /* ----------------------------------------
 // Button
@@ -33397,7 +33447,8 @@ h6,
   font-size: 8px;
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  font-size: 10px; }
 
 .d-badge__badge-index-xxx-large-secondary {
   background-color: #DE0D0C;
@@ -33410,7 +33461,8 @@ h6,
   font-size: 8px;
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  font-size: 10px; }
 
 .d-badge__badge-index-xxx-large-green {
   background-color: #33963D;
@@ -33423,7 +33475,8 @@ h6,
   font-size: 8px;
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  font-size: 10px; }
 
 .d-badge__badge-index-xxx-large-red {
   background-color: #F44336;
@@ -33436,7 +33489,8 @@ h6,
   font-size: 8px;
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  font-size: 10px; }
 
 .d-badge__badge-index-xxx-large-yellow {
   background-color: #FAC256;
@@ -33449,7 +33503,8 @@ h6,
   font-size: 8px;
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  font-size: 10px; }
 
 .d-badge__badge-index-xxx-large-blue {
   background-color: #17a2b8;
@@ -33462,7 +33517,8 @@ h6,
   font-size: 8px;
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  font-size: 10px; }
 
 .d-badge__badge-index-xxx-large-gray {
   background-color: #A7A7A7;
@@ -33475,7 +33531,8 @@ h6,
   font-size: 8px;
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  font-size: 10px; }
 
 .d-badge__badge-index-xxx-large-dark {
   background-color: #3d464d;
@@ -33488,7 +33545,8 @@ h6,
   font-size: 8px;
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  font-size: 10px; }
 
 .d-badge__badge-index-xxx-large-light {
   background-color: #fff;
@@ -33501,7 +33559,8 @@ h6,
   font-size: 8px;
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  font-size: 10px; }
 
 .d-badge__badge-index-xxx-large-error {
   background-color: #F44336;
@@ -33514,7 +33573,8 @@ h6,
   font-size: 8px;
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  font-size: 10px; }
 
 .d-badge__badge-index-xxx-large-success {
   background-color: #33963D;
@@ -33527,7 +33587,8 @@ h6,
   font-size: 8px;
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  font-size: 10px; }
 
 .d-badge__badge-index-xxx-large-warning {
   background-color: #FAC256;
@@ -33540,7 +33601,8 @@ h6,
   font-size: 8px;
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  font-size: 10px; }
 
 .d-badge__badge-index-xxx-large-muted {
   background-color: #F5F5F5;
@@ -33553,7 +33615,8 @@ h6,
   font-size: 8px;
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  font-size: 10px; }
 
 .d-badge__badge-index-xx-large-primary {
   background-color: #DE0D0C;
@@ -33566,7 +33629,8 @@ h6,
   font-size: 8px;
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  font-size: 10px; }
 
 .d-badge__badge-index-xx-large-secondary {
   background-color: #DE0D0C;
@@ -33579,7 +33643,8 @@ h6,
   font-size: 8px;
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  font-size: 10px; }
 
 .d-badge__badge-index-xx-large-green {
   background-color: #33963D;
@@ -33592,7 +33657,8 @@ h6,
   font-size: 8px;
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  font-size: 10px; }
 
 .d-badge__badge-index-xx-large-red {
   background-color: #F44336;
@@ -33605,7 +33671,8 @@ h6,
   font-size: 8px;
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  font-size: 10px; }
 
 .d-badge__badge-index-xx-large-yellow {
   background-color: #FAC256;
@@ -33618,7 +33685,8 @@ h6,
   font-size: 8px;
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  font-size: 10px; }
 
 .d-badge__badge-index-xx-large-blue {
   background-color: #17a2b8;
@@ -33631,7 +33699,8 @@ h6,
   font-size: 8px;
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  font-size: 10px; }
 
 .d-badge__badge-index-xx-large-gray {
   background-color: #A7A7A7;
@@ -33644,7 +33713,8 @@ h6,
   font-size: 8px;
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  font-size: 10px; }
 
 .d-badge__badge-index-xx-large-dark {
   background-color: #3d464d;
@@ -33657,7 +33727,8 @@ h6,
   font-size: 8px;
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  font-size: 10px; }
 
 .d-badge__badge-index-xx-large-light {
   background-color: #fff;
@@ -33670,7 +33741,8 @@ h6,
   font-size: 8px;
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  font-size: 10px; }
 
 .d-badge__badge-index-xx-large-error {
   background-color: #F44336;
@@ -33683,7 +33755,8 @@ h6,
   font-size: 8px;
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  font-size: 10px; }
 
 .d-badge__badge-index-xx-large-success {
   background-color: #33963D;
@@ -33696,7 +33769,8 @@ h6,
   font-size: 8px;
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  font-size: 10px; }
 
 .d-badge__badge-index-xx-large-warning {
   background-color: #FAC256;
@@ -33709,7 +33783,8 @@ h6,
   font-size: 8px;
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  font-size: 10px; }
 
 .d-badge__badge-index-xx-large-muted {
   background-color: #F5F5F5;
@@ -33722,7 +33797,8 @@ h6,
   font-size: 8px;
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  font-size: 10px; }
 
 .d-badge__badge-index-x-large-primary {
   background-color: #DE0D0C;
@@ -33735,7 +33811,8 @@ h6,
   font-size: 8px;
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  font-size: 10px; }
 
 .d-badge__badge-index-x-large-secondary {
   background-color: #DE0D0C;
@@ -33748,7 +33825,8 @@ h6,
   font-size: 8px;
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  font-size: 10px; }
 
 .d-badge__badge-index-x-large-green {
   background-color: #33963D;
@@ -33761,7 +33839,8 @@ h6,
   font-size: 8px;
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  font-size: 10px; }
 
 .d-badge__badge-index-x-large-red {
   background-color: #F44336;
@@ -33774,7 +33853,8 @@ h6,
   font-size: 8px;
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  font-size: 10px; }
 
 .d-badge__badge-index-x-large-yellow {
   background-color: #FAC256;
@@ -33787,7 +33867,8 @@ h6,
   font-size: 8px;
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  font-size: 10px; }
 
 .d-badge__badge-index-x-large-blue {
   background-color: #17a2b8;
@@ -33800,7 +33881,8 @@ h6,
   font-size: 8px;
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  font-size: 10px; }
 
 .d-badge__badge-index-x-large-gray {
   background-color: #A7A7A7;
@@ -33813,7 +33895,8 @@ h6,
   font-size: 8px;
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  font-size: 10px; }
 
 .d-badge__badge-index-x-large-dark {
   background-color: #3d464d;
@@ -33826,7 +33909,8 @@ h6,
   font-size: 8px;
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  font-size: 10px; }
 
 .d-badge__badge-index-x-large-light {
   background-color: #fff;
@@ -33839,7 +33923,8 @@ h6,
   font-size: 8px;
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  font-size: 10px; }
 
 .d-badge__badge-index-x-large-error {
   background-color: #F44336;
@@ -33852,7 +33937,8 @@ h6,
   font-size: 8px;
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  font-size: 10px; }
 
 .d-badge__badge-index-x-large-success {
   background-color: #33963D;
@@ -33865,7 +33951,8 @@ h6,
   font-size: 8px;
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  font-size: 10px; }
 
 .d-badge__badge-index-x-large-warning {
   background-color: #FAC256;
@@ -33878,7 +33965,8 @@ h6,
   font-size: 8px;
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  font-size: 10px; }
 
 .d-badge__badge-index-x-large-muted {
   background-color: #F5F5F5;
@@ -33891,7 +33979,8 @@ h6,
   font-size: 8px;
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  font-size: 10px; }
 
 .d-badge__badge-index-large-primary {
   background-color: #DE0D0C;
