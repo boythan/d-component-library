@@ -19,6 +19,7 @@ export interface SelectCheckboxProps extends CheckboxGroupProps {
     selectAllText?: string;
     clearText?: string;
     displayValue?: string;
+    error?: any;
     customValueView?: (value?: any) => any;
 }
 declare const SelectCheckbox: React.FC<SelectCheckboxProps>;

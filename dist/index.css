@@ -29060,6 +29060,9 @@ a {
   .md-modal {
     width: 85% !important; } }
 
+.notifications__content ul {
+  padding-inline-start: 15px; }
+
 /* ----------------------------------------
 // custom-mixin
 // ---------------------------------------- */
@@ -30011,13 +30014,30 @@ a {
   padding: 0px 16px;
   padding-bottom: 16px; }
 
+.d-select-checkbox__container-active::after {
+  content: "";
+  position: absolute;
+  background-color: #fff;
+  width: 8px;
+  height: 8px;
+  bottom: -10px;
+  left: 50%;
+  transform: rotate(-45deg);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05); }
+
+.d-select-checkbox__container-error .d-select-checkbox__input {
+  border: 0.5px solid #F44336; }
+
+.d-select-checkbox__container-error .d-select-checkbox__dropdown {
+  top: 80% !important; }
+
 .d-select-checkbox__container-right-edge .d-select-checkbox__dropdown {
-  top: 100%;
+  top: 115%;
   right: 0;
   left: auto; }
 
 .d-select-checkbox__container-left-edge .d-select-checkbox__dropdown {
-  top: 100%;
+  top: 115%;
   left: 0;
   right: auto; }
 
