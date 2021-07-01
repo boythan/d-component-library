@@ -12,4 +12,6 @@ export default {
     delete: "Delete",
     print: "Print",
     edit: "Edit",
+    selectAll: "Select All",
+    clear: "Clear",
 };

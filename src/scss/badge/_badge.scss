@@ -43,6 +43,16 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            @if (
+                $name ==
+                    "xx-large" or
+                    $name ==
+                    "x-large" or
+                    $name ==
+                    "xxx-large"
+            ) {
+                font-size: $text-xx-small-size;
+            }
         }
     }
 }

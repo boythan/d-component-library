@@ -56,6 +56,9 @@
     .ant-select-selection-item {
         @extend .text-x-small;
         @extend .flex-center-y;
+        .ant-select-selection-item-remove {
+            display: flex;
+        }
     }
     .ant-select-selection-search {
         @extend .text-x-small;

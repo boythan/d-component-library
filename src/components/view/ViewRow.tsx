@@ -3,7 +3,7 @@ import ClassName from "classnames";
 
 export interface ViewRowProps {
     children: any;
-    width?: "100%" | "50%" | "25%";
+    width?: "100%" | "75%" | "50%" | "25%";
     style?: CSSProperties;
     styleContent?: CSSProperties;
     styleLabel?: CSSProperties;
@@ -29,6 +29,7 @@ const ViewRow: React.FC<ViewRowProps> = ({
     const wrapperClass = ClassName(
         "d-flex",
         {
+            "w-75": width === "75%",
             "w-50": width === "50%",
             "w-25": width === "25%",
             "align-items-center": center,
@@ -39,6 +40,7 @@ const ViewRow: React.FC<ViewRowProps> = ({
         "d-block text-nowrap text-bold p-0",
         {
             "col-2": width === "100%",
+            "col-3": width === "75%",
             "col-4": width === "50%",
             "col-8": width === "25%",
             "align-items-center": center,

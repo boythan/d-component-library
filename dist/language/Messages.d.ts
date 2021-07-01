@@ -12,6 +12,8 @@ declare const Messages: {
     delete: string;
     print: string;
     edit: string;
+    selectAll: string;
+    clear: string;
 } | {
     error: string;
     success: string;
@@ -26,5 +28,7 @@ declare const Messages: {
     back: string;
     showMore: string;
     showLess: string;
+    selectAll: string;
+    clear: string;
 };
 export default Messages;

@@ -12,5 +12,7 @@ declare const _default: {
     back: string;
     showMore: string;
     showLess: string;
+    selectAll: string;
+    clear: string;
 };
 export default _default;

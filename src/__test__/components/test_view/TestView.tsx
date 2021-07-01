@@ -72,6 +72,9 @@ const TestView: React.FC<TestRowInterChagneProps> = ({ id }) => {
                 <ViewRow label="Width 100%" className="my-3" width="100%">
                     <InputText />
                 </ViewRow>
+                <ViewRow label="Width 75%" className="my-3" width="75%">
+                    <InputText />
+                </ViewRow>
                 <ViewRow label="Width 50%" className="my-3" width="50%">
                     <InputText />
                 </ViewRow>
