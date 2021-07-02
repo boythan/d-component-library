@@ -20741,7 +20741,7 @@ textarea.ant-mentions {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); }
 
 .ant-notification-notice-message {
-  display: inline-block;
+  display: none;
   margin-bottom: 8px;
   color: rgba(0, 0, 0, 0.85);
   font-size: 16px;
@@ -29060,7 +29060,25 @@ a {
   .md-modal {
     width: 85% !important; } }
 
-.notifications__content ul {
+.d-notification__container, .d-notification__error, .d-notification__success, .d-notification__warning, .d-notification__info {
+  border-radius: 0px !important;
+  color: white; }
+  .d-notification__container i, .d-notification__error i, .d-notification__success i, .d-notification__warning i, .d-notification__info i {
+    color: white !important; }
+
+.d-notification__error {
+  background-color: #F44336; }
+
+.d-notification__success {
+  background-color: #33963D; }
+
+.d-notification__warning {
+  background-color: #FAC256; }
+
+.d-notification__info {
+  background-color: #17a2b8; }
+
+.d-notifications__content ul {
   padding-inline-start: 15px; }
 
 /* ----------------------------------------

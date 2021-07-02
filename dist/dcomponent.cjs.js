@@ -76319,55 +76319,58 @@ var Progress = {
 };
 
 var getContentNotification = function (content) {
-    return jsxRuntime.jsx("div", { className: "notifications__content", dangerouslySetInnerHTML: { __html: content } }, void 0);
+    return jsxRuntime.jsx("div", { className: "d-notifications__content", dangerouslySetInnerHTML: { __html: content } }, void 0);
 };
 var showError = function (content, action) {
     api.open({
         message: Messages.error,
         description: getContentNotification(content),
-        icon: jsxRuntime.jsx(Icon$2, { name: "report", className: "text-danger", size: "large" }, void 0),
         closeIcon: jsxRuntime.jsx(Icon$2, { name: "close" }, void 0),
         onClick: function () {
             action && action();
         },
         placement: "bottomRight",
+        className: "d-notification__error",
     });
 };
 var showWarning = function (content, action) {
     api.open({
         message: Messages.warning,
         description: getContentNotification(content),
-        icon: jsxRuntime.jsx(Icon$2, { name: "warning", className: "text-warning", size: "large" }, void 0),
+        // icon: <Icon name="warning" className="text-warning" size="large" />,
         closeIcon: jsxRuntime.jsx(Icon$2, { name: "close" }, void 0),
         onClick: function () {
             action && action();
         },
         placement: "bottomRight",
+        className: "d-notification__warning",
     });
 };
 var showSuccess = function (content, action) {
     api.open({
         message: Messages.success,
         description: getContentNotification(content),
-        icon: jsxRuntime.jsx(Icon$2, { name: "check_circle", className: "text-success", size: "large" }, void 0),
+        // icon: <Icon name="check_circle" className="text-success" size="large" />,
         closeIcon: jsxRuntime.jsx(Icon$2, { name: "close" }, void 0),
         onClick: function () {
             action && action();
         },
         placement: "bottomRight",
+        className: "d-notification__success",
     });
 };
 var showInfo = function (content, action) {
     api.open({
         message: Messages.info,
         description: getContentNotification(content),
-        icon: jsxRuntime.jsx(Icon$2, { name: "info", className: "text-primary", size: "large" }, void 0),
+        // icon: <Icon name="info" className="text-primary" size="large" />,
         closeIcon: jsxRuntime.jsx(Icon$2, { name: "close" }, void 0),
         onClick: function () {
             action && action();
         },
         duration: 10,
         placement: "bottomRight",
+        className: "d-notification__info",
     });
 };
 var Notifications = { showError: showError, showInfo: showInfo, showSuccess: showSuccess, showWarning: showWarning };
