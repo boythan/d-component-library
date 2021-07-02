@@ -1,4 +1,33 @@
-.notifications__content {
+@import "../variables";
+
+.d-notification__container {
+    border-radius: $border-radius !important;
+    color: white;
+    i {
+        color: white !important;
+    }
+}
+.d-notification__error {
+    @extend .d-notification__container;
+    background-color: $error-color;
+}
+
+.d-notification__success {
+    @extend .d-notification__container;
+    background-color: $success-color;
+}
+
+.d-notification__warning {
+    @extend .d-notification__container;
+    background-color: $warning-color;
+}
+
+.d-notification__info {
+    @extend .d-notification__container;
+    background-color: $info-color;
+}
+
+.d-notifications__content {
     ul {
         padding-inline-start: 15px;
     }
