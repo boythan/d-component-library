@@ -16733,7 +16733,8 @@ textarea.ant-mentions {
 }
 
 .ant-notification-notice-message {
-    display: inline-block;
+    // display: inline-block;
+    display: none;
     margin-bottom: 8px;
     color: rgba(0, 0, 0, 0.85);
     font-size: 16px;

@@ -1,7 +1,7 @@
 import React, { CSSProperties } from "react";
 export interface ViewRowProps {
     children: any;
-    width?: "100%" | "50%" | "25%";
+    width?: "100%" | "75%" | "50%" | "25%";
     style?: CSSProperties;
     styleContent?: CSSProperties;
     styleLabel?: CSSProperties;
