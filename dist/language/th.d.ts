@@ -14,5 +14,8 @@ declare const _default: {
     showLess: string;
     selectAll: string;
     clear: string;
+    apply: string;
+    clearAll: string;
+    search: string;
 };
 export default _default;

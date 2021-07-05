@@ -13,8 +13,6 @@ export type { TreeSelectProps } from "./components/select/TreeSelect";
 export { default as TreeSelect } from "./components/select/TreeSelect";
 export type { SelectInfinityMethod, SelectInfinityProps } from "./components/select/SelectInfinity";
 export { default as SelectInfinity } from "./components/select/SelectInfinity";
-export type { SelectCheckboxProps } from "./components/select/SelectCheckbox";
-export { default as SelectCheckbox } from "./components/select/SelectCheckbox";
 export type { ButtonProps } from "./components/button/Button";
 export { default as Button } from "./components/button/Button";
 export type { CheckboxProps } from "./components/checkbox/Checkbox";
