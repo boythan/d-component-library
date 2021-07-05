@@ -1,6 +1,8 @@
 import { filter, includes, isEmpty, map } from "lodash";
 import React, { useMemo, useRef, useState } from "react";
+import Messages from "../../language/Messages";
 import CheckboxGroup, { CheckboxGroupProps } from "../checkbox/CheckboxGroup";
+import InputText from "../input/InputText";
 import InputDrop, { InputDropProps } from "./InputDrop";
 
 interface InputDropCheckboxGroupProps extends CheckboxGroupProps, InputDropProps {
@@ -43,14 +45,10 @@ const InputDropCheckboxGroup = (props: InputDropCheckboxGroupProps) => {
         setTextSearch(event.target.value);
     };
 
-    return (
-        <InputDrop
-            onClickSelectAll={onClickSelectAll}
-            onClickClearAll={() => setValueInput([])}
-            onChangeText={onChangeTextSearch}
-            onClickApply={onClickApply}
-            label={label}
-            content={() => (
+    const renderContentInput = () => {
+        return (
+            <div className="w-100">
+                <InputText placeholder={Messages.search} className="mt-3 w-100" onChange={onChangeTextSearch} />
                 <CheckboxGroup
                     dataSource={dataSelectSource}
                     numberOfColumns={numberOfColumns}
@@ -61,12 +59,21 @@ const InputDropCheckboxGroup = (props: InputDropCheckboxGroupProps) => {
                     value={valueInput}
                     className="w-100"
                 />
-            )}
+            </div>
+        );
+    };
+
+    return (
+        <InputDrop
+            onClickSelectAll={onClickSelectAll}
+            onClickClearAll={() => setValueInput([])}
+            onClickApply={onClickApply}
+            label={label}
+            content={renderContentInput}
             error={error}
             {...restProps}
             valueLength={value.length}
         />
     );
 };
-
 export default InputDropCheckboxGroup;
