@@ -1,4 +1,5 @@
 @import "../variables";
+@import "../common/base";
 
 .d-input-drop__container {
     position: relative;
@@ -82,4 +83,14 @@
         left: 0;
         right: auto;
     }
+}
+
+/********************************************INPUT DROP SELECT********************************************/
+.d-input-drop-select__item-container {
+    @extend .flex-center-y;
+    justify-content: space-between;
+    padding: 16px 0px;
+    border-bottom: 1px solid $border-color !important;
+    width: 100%;
+    cursor: pointer;
 }

@@ -7,6 +7,7 @@ import Badge from "../badge/Badge";
 import Button from "../button/Button";
 import { DropdownProps } from "../dropdown/Dropdown";
 import Icon from "../icon/Icon";
+import InputText from "../input/InputText";
 
 export interface InputDropProps {
     className?: string;
@@ -32,6 +33,8 @@ interface InputDropSourceProps extends InputDropProps {
     onClickClearAll: () => any;
     onClickApply: () => any;
     content: () => any;
+    onChangeText?: (value: any) => any;
+    onEnterText?: () => any;
 }
 
 const InputDrop: React.FC<InputDropSourceProps> = ({
@@ -55,6 +58,8 @@ const InputDrop: React.FC<InputDropSourceProps> = ({
     onClickSelectAll = () => {},
     onClickClearAll = () => {},
     onClickApply = () => {},
+    onChangeText,
+    onEnterText,
 
     content = () => <div />,
 }) => {
@@ -159,7 +164,19 @@ const InputDrop: React.FC<InputDropSourceProps> = ({
             )}
             <div className={dropdownWrapperClass} ref={dropdownRef}>
                 {renderHeader()}
-
+                {onChangeText && (
+                    <InputText
+                        placeholder={Messages.search}
+                        className="mt-3 w-100"
+                        onChange={onChangeText}
+                        onKeyUp={(event) => {
+                            if (event.keyCode === 13) {
+                                return onEnterText && onEnterText();
+                            }
+                            return true;
+                        }}
+                    />
+                )}
                 {content()}
                 {renderFooter()}
             </div>

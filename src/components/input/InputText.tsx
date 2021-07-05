@@ -60,6 +60,7 @@ const InputText = ({
 
     onChange,
     onBlur,
+    ...inputProps
 }: InputTextProps) => {
     const container = classname("d-input-text__container", className);
     const labelClass = classname("text-label");
@@ -110,23 +111,25 @@ const InputText = ({
                     defaultValue={defaultValue}
                     placeholder={placeholder}
                     style={styleInput}
+                    {...inputProps}
                 />
             );
         }
         return (
             <input
                 value={value}
-                onChange={onChange}
                 className={inputClass}
                 name={name}
                 required
                 key={key}
                 placeholder={placeholder}
-                onBlur={onBlur}
                 type={type}
                 disabled={disabled}
                 defaultValue={defaultValue}
                 style={styleInput}
+                onChange={onChange}
+                onBlur={onBlur}
+                {...inputProps}
             />
         );
     };
