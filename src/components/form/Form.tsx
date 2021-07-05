@@ -140,6 +140,8 @@ export function FormItem({ onChange, data, value = {}, Messages, className, erro
                 onChange={(value) => onChange(key, value)}
                 label={itemLabel}
                 className={className}
+                getLabel={(item) => (getLabel ? getLabel(item) : Messages[item?.label])}
+                getValue={(item) => (getValue ? getValue(item) : item?.id)}
             />
         );
     }
@@ -151,6 +153,8 @@ export function FormItem({ onChange, data, value = {}, Messages, className, erro
                 onChange={(value) => onChange(key, value)}
                 label={itemLabel}
                 className={className}
+                getLabel={(item) => (getLabel ? getLabel(item) : Messages[item?.label])}
+                getValue={(item) => (getValue ? getValue(item) : item?.id)}
             />
         );
     }

@@ -35,6 +35,7 @@ import TestAvatarIcon from "./components/test_avatar_icon/TestAvatarIcon";
 import TestCard from "./components/test_card/TestCard";
 import TestForm from "./components/test_form/TestForm";
 import TestQuickFilter from "./components/input_drop/TestInputDrop";
+import TestList from "./components/test_list/TestList";
 
 interface Props {
     content?: any;
@@ -91,39 +92,6 @@ export default function Test({ content }: Props): ReactElement {
         loadFakeData();
     }, []);
 
-    const list = (
-        <div className="my-4">
-            {/* <PopoverList
-                source={async (paging) => {
-                    const res = await fetch("https://jsonplaceholder.typicode.com/posts");
-                    return Promise.resolve(res);
-                }}
-                transformer={async (res) => {
-                    // const data = JSON.stringify(res);
-                    const data = await res.json();
-                    console.log({ data });
-                    return data;
-                }}
-                buttonText="New"
-                buttonIconName="add"
-                loadMoreText="Load More"
-                renderItem={(item) => item?.id}
-            /> */}
-            <AwesomeListComponent
-                source={async (paging) => {
-                    // const res = await fetch("https://jsonplaceholder.typicode.com/posts");
-                    return fetch("https://jsonplaceholder.typicode.com/posts");
-                }}
-                transformer={async (res) => {
-                    // const data = JSON.stringify(res);
-                    const data = await res.json();
-                    return data as any;
-                }}
-                renderItem={(item, index) => <div>{item?.id}</div>}
-            />
-        </div>
-    );
-
     const loading = (
         <div className="my-4 d-flex align-items-center">
             <Loading />
@@ -173,7 +141,7 @@ export default function Test({ content }: Props): ReactElement {
         { id: "HEADER", label: "HEADER", component: <TestHeader /> },
         { id: "TAB BAR", label: "TAB BAR", component: <TestTabBar /> },
         { id: "VIEW", label: "VIEW", component: <TestView /> },
-        { id: "LIST", label: "LIST", component: list },
+        { id: "LIST", label: "LIST", component: <TestList /> },
         { id: "LOADING", label: "LOADING", component: loading },
         { id: "DOT", label: "DOT", component: dot },
         { id: "DROPDOWN", label: "DROPDOWN", component: <TestDropdown /> },

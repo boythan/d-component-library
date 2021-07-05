@@ -1,6 +1,6 @@
 {
   "name": "d-react-components",
-  "version": "0.1.81",
+  "version": "0.1.82",
   "main": "dist/dcomponent.cjs.js",
   "module": "dist/dcomponent.es.js",
   "typings": "dist/dcomponent.d.ts",
@@ -71,6 +71,7 @@
     "@types/react-resizable": "^1.7.2",
     "@typescript-eslint/eslint-plugin": "4.0.1",
     "@typescript-eslint/parser": "4.0.1",
+    "axios": "^0.21.1",
     "eslint": "7.13.0",
     "eslint-config-airbnb": "18.2.1",
     "eslint-plugin-import": "2.22.1",
