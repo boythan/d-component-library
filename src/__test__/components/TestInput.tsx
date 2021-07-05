@@ -7,7 +7,6 @@ import { Select } from "../../dcomponent";
 import { ATTRIBUTE_INPUT_TYPE, SELECT_DATA } from "../data/TestConstant";
 import SelectInfinity from "../../components/select/SelectInfinity";
 import DateInput from "../../components/dateInput/DateInput";
-import SelectCheckbox from "../../components/select/SelectCheckbox";
 
 const TestInput = () => {
     const [valueSelect, setValueSelect] = useState([]);
@@ -97,25 +96,6 @@ const TestInput = () => {
                     mode="multiple"
                 />
             </ViewCollapse>
-            <SelectCheckbox
-                dataSource={ATTRIBUTE_INPUT_TYPE}
-                className="my-4"
-                label="Select Checkbox"
-                value={selectCheckboxValue}
-                onChange={(value) => {
-                    console.log({ value });
-                    setSelectCheckboxValue(value);
-                }}
-                showHeader
-            />
-            <SelectCheckbox
-                dataSource={ATTRIBUTE_INPUT_TYPE}
-                className="my-4"
-                label="Select Checkbox Right Edge"
-                position="right-edge"
-                value={selectCheckboxValue}
-                onChange={(value) => setSelectCheckboxValue(value)}
-            />
             <div className="w-100 flex-center-y">
                 <Select
                     dataSource={SELECT_DATA}
@@ -125,18 +105,6 @@ const TestInput = () => {
                     onChange={setValueSelect}
                     mode="tags"
                     getValue={(item) => item.id}
-                    error="Text Error"
-                />
-                <SelectCheckbox
-                    dataSource={ATTRIBUTE_INPUT_TYPE}
-                    className="w-100 ml-2"
-                    label="Select Checkbox Right Edge"
-                    position="right-edge"
-                    value={selectCheckboxValue}
-                    onChange={(value) => {
-                        setSelectCheckboxValue(value);
-                    }}
-                    showLabel
                     error="Text Error"
                 />
             </div>

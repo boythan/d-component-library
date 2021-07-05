@@ -5,53 +5,56 @@ import React, { useEffect, useRef, useState } from "react";
 import Messages from "../../language/Messages";
 import Badge from "../badge/Badge";
 import Button from "../button/Button";
-import CheckboxGroup, { CheckboxGroupProps } from "../checkbox/CheckboxGroup";
 import { DropdownProps } from "../dropdown/Dropdown";
 import Icon from "../icon/Icon";
+import InputText from "../input/InputText";
 
-export interface IDataItem {
-    id?: string;
-    label?: string;
-    [key: string]: any;
-}
-
-export interface SelectCheckboxProps extends CheckboxGroupProps {
-    [key: string]: any;
-    placeholder?: string;
-    label?: string;
+export interface InputDropProps {
     className?: string;
     classNameDropdown?: string;
-    position?: DropdownProps["position"];
-    showLabel?: boolean;
+
+    label?: string;
+    value?: any;
     iconName?: string;
-    showHeader?: boolean;
+    position?: DropdownProps["position"];
+    displayValue?: string;
     selectAllText?: string;
     clearText?: string;
-    displayValue?: string;
     error?: any;
-    customValueView?: (value?: any) => any;
+
+    hideLabel?: boolean;
+    hideSelectAll?: boolean;
+    hideClearAll?: boolean;
 }
 
-const SelectCheckbox: React.FC<SelectCheckboxProps> = ({
+interface InputDropSourceProps extends InputDropProps {
+    onClickSelectAll: () => any;
+    onClickClearAll: () => any;
+    content: () => any;
+}
+
+const InputDrop: React.FC<InputDropSourceProps> = ({
     label,
     className,
     classNameDropdown,
-    dataSource,
-    numberOfColumns = "2",
-    placeholder = "Select",
+
     position = "left-edge",
     iconName = "expand_more",
-    showHeader = false,
-    showLabel = false,
+
+    hideSelectAll = false,
+    hideClearAll = false,
+    hideLabel = false,
+
     displayValue,
     selectAllText = Messages.selectAll,
-    clearText = Messages.clear,
+    clearText = Messages.clearAll,
     value,
     error,
-    onChange,
-    getValue = (item) => item?.id,
-    getLabel,
-    customValueView,
+
+    onClickSelectAll = () => {},
+    onClickClearAll = () => {},
+
+    content = () => <div />,
 }) => {
     const [openDropdown, setOpenDropdown] = useState(false);
 
@@ -59,15 +62,15 @@ const SelectCheckbox: React.FC<SelectCheckboxProps> = ({
     const inputRef = useRef<HTMLDivElement>(null);
 
     const containerClass = ClassNames(
-        `d-select-checkbox__container d-select-checkbox__container-${position}`,
+        `d-input-drop__container d-input-drop__container-${position}`,
         {
-            "d-select-checkbox__container-active": openDropdown,
-            "d-select-checkbox__container-error": error,
+            "d-input-drop__container-active": openDropdown,
+            "d-input-drop__container-error": error,
         },
         className
     );
-    const inputClass = ClassNames("d-select-checkbox__input hover-pointer");
-    const dropdownWrapperClass = ClassNames("d-select-checkbox__dropdown", classNameDropdown);
+    const inputClass = ClassNames("d-input-drop__input hover-pointer");
+    const dropdownWrapperClass = ClassNames("d-input-drop__dropdown", classNameDropdown);
     const errorTextClass = ClassNames("text-x-small", "text-error", "ml-1");
 
     useEffect(() => {
@@ -82,12 +85,6 @@ const SelectCheckbox: React.FC<SelectCheckboxProps> = ({
     }, [dropdownRef, setOpenDropdown]);
 
     const inputValue = () => {
-        if (!(value && value?.length > 0)) {
-            return <div className="w-100">{placeholder}</div>;
-        }
-        if (customValueView) {
-            return customValueView();
-        }
         let name = label;
         if (displayValue) {
             name = displayValue;
@@ -100,42 +97,46 @@ const SelectCheckbox: React.FC<SelectCheckboxProps> = ({
         );
     };
 
-    const checkboxHeader = () => {
+    const renderHeader = () => {
         return (
-            <div className="flex-center-y justify-content-between border-bottom p-3 w-100">
+            <div className="flex-center-y justify-content-between border-bottom py-3 w-100">
                 <label className="font-weight-bold">{label}</label>
                 <div className="flex-center-y">
-                    <Button
-                        content={selectAllText}
-                        size="x-small"
-                        variant="trans"
-                        onClick={() => {
-                            let clone: any = [];
-                            if (dataSource?.length > 0) {
-                                clone = dataSource.map((i) => {
-                                    return getValue(i);
-                                });
-                            }
-                            return onChange && onChange(clone);
-                        }}
-                        color="blue"
-                        className="mr-2"
-                    />
+                    {!hideSelectAll && (
+                        <Button
+                            content={selectAllText}
+                            size="x-small"
+                            variant="trans"
+                            onClick={onClickSelectAll}
+                            color="blue"
+                            className="p-0 font-weight-normal text-label"
+                        />
+                    )}
+                </div>
+            </div>
+        );
+    };
+
+    const renderFooter = () => {
+        return (
+            <div className="flex-center-y justify-content-between border-top py-3 w-100">
+                {!hideClearAll && (
                     <Button
                         content={clearText}
                         size="x-small"
                         variant="trans"
-                        onClick={() => onChange && onChange([])}
-                        color="red"
+                        onClick={onClickClearAll}
+                        className="p-0 font-weight-normal text-danger"
                     />
-                </div>
+                )}
+                <Button content={Messages.apply} onClick={() => {}} />
             </div>
         );
     };
 
     return (
         <div className={containerClass}>
-            {showLabel && label && <label>{label}</label>}
+            {!hideLabel && <label>{label}</label>}
             <div
                 className={inputClass}
                 style={{ height: "40px" }}
@@ -144,7 +145,7 @@ const SelectCheckbox: React.FC<SelectCheckboxProps> = ({
             >
                 <div className="flex-center-y text-x-small w-100">
                     {inputValue()}
-                    <Icon name={iconName} className="d-select-checkbox__arrow-icon ml-2" />
+                    <Icon name={iconName} className="d-input-drop__arrow-icon ml-2" />
                 </div>
             </div>
             {error && (
@@ -154,18 +155,12 @@ const SelectCheckbox: React.FC<SelectCheckboxProps> = ({
                 </div>
             )}
             <div className={dropdownWrapperClass} ref={dropdownRef}>
-                {showHeader && checkboxHeader()}
-                <CheckboxGroup
-                    dataSource={dataSource}
-                    numberOfColumns={numberOfColumns}
-                    onChange={onChange}
-                    value={value}
-                    getLabel={getLabel}
-                    getValue={getValue}
-                />
+                {renderHeader()}
+                <InputText placeholder={Messages.search} className="mt-3 w-100" />
+                {content()}
+                {renderFooter()}
             </div>
         </div>
     );
 };
-
-export default SelectCheckbox;
+export default InputDrop;

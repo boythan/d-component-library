@@ -13,5 +13,8 @@ export default {
     print: "Print",
     edit: "Edit",
     selectAll: "Select All",
+    clearAll: "Clear All",
     clear: "Clear",
+    apply: "Apply",
+    search: "Search",
 };

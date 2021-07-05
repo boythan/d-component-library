@@ -34,6 +34,7 @@ import TestButton from "./components/test_button/TestButton";
 import TestAvatarIcon from "./components/test_avatar_icon/TestAvatarIcon";
 import TestCard from "./components/test_card/TestCard";
 import TestForm from "./components/test_form/TestForm";
+import TestQuickFilter from "./components/input_drop/TestInputDrop";
 
 interface Props {
     content?: any;
@@ -182,8 +183,8 @@ export default function Test({ content }: Props): ReactElement {
         { id: "NOTIFICATION", label: "NOTIFICATION", component: <TestNotification /> },
         { id: "CARD", label: "CARD", component: <TestCard /> },
         { id: "FORM", label: "FORM", component: <TestForm /> },
+        { id: "QUICK_FILTER", label: "QUICK_FILTER", component: <TestQuickFilter /> },
     ];
-
     return (
         <AppStateContext.Provider value={{ mockData }}>
             <div className="p-5 d-flex bg-muted">

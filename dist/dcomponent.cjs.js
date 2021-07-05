@@ -69453,12 +69453,12 @@ var SelectCheckbox = function (_a) {
     var _l = React.useState(false), openDropdown = _l[0], setOpenDropdown = _l[1];
     var dropdownRef = React.useRef(null);
     var inputRef = React.useRef(null);
-    var containerClass = classnames("d-select-checkbox__container d-select-checkbox__container-" + position, {
-        "d-select-checkbox__container-active": openDropdown,
-        "d-select-checkbox__container-error": error,
+    var containerClass = classnames("d-input-drop__container d-input-drop__container-" + position, {
+        "d-input-drop__container-active": openDropdown,
+        "d-input-drop__container-error": error,
     }, className);
-    var inputClass = classnames("d-select-checkbox__input hover-pointer");
-    var dropdownWrapperClass = classnames("d-select-checkbox__dropdown", classNameDropdown);
+    var inputClass = classnames("d-input-drop__input hover-pointer");
+    var dropdownWrapperClass = classnames("d-input-drop__dropdown", classNameDropdown);
     var errorTextClass = classnames("text-x-small", "text-error", "ml-1");
     React.useEffect(function () {
         var handleOutsideClick = function (event) {
@@ -69494,7 +69494,7 @@ var SelectCheckbox = function (_a) {
                                 return onChange && onChange(clone);
                             }, color: "blue", className: "mr-2" }, void 0), jsxRuntime.jsx(Button, { content: clearText, size: "x-small", variant: "trans", onClick: function () { return onChange && onChange([]); }, color: "red" }, void 0)] }), void 0)] }), void 0));
     };
-    return (jsxRuntime.jsxs("div", __assign({ className: containerClass }, { children: [showLabel && label && jsxRuntime.jsx("label", { children: label }, void 0), jsxRuntime.jsx("div", __assign({ className: inputClass, style: { height: "40px" }, onClick: function () { return setOpenDropdown(!openDropdown); }, ref: inputRef }, { children: jsxRuntime.jsxs("div", __assign({ className: "flex-center-y text-x-small w-100" }, { children: [inputValue(), jsxRuntime.jsx(Icon$2, { name: iconName, className: "d-select-checkbox__arrow-icon ml-2" }, void 0)] }), void 0) }), void 0), error && (jsxRuntime.jsxs("div", __assign({ className: "flex-center-y mt-1" }, { children: [jsxRuntime.jsx(Icon$2, { name: "error_outline", className: "text-error", size: "small" }, void 0), jsxRuntime.jsx("text", __assign({ className: errorTextClass }, { children: error }), void 0)] }), void 0)), jsxRuntime.jsxs("div", __assign({ className: dropdownWrapperClass, ref: dropdownRef }, { children: [showHeader && checkboxHeader(), jsxRuntime.jsx(CheckboxGroup, { dataSource: dataSource, numberOfColumns: numberOfColumns, onChange: onChange, value: value, getLabel: getLabel, getValue: getValue }, void 0)] }), void 0)] }), void 0));
+    return (jsxRuntime.jsxs("div", __assign({ className: containerClass }, { children: [showLabel && label && jsxRuntime.jsx("label", { children: label }, void 0), jsxRuntime.jsx("div", __assign({ className: inputClass, style: { height: "40px" }, onClick: function () { return setOpenDropdown(!openDropdown); }, ref: inputRef }, { children: jsxRuntime.jsxs("div", __assign({ className: "flex-center-y text-x-small w-100" }, { children: [inputValue(), jsxRuntime.jsx(Icon$2, { name: iconName, className: "d-input-drop__arrow-icon ml-2" }, void 0)] }), void 0) }), void 0), error && (jsxRuntime.jsxs("div", __assign({ className: "flex-center-y mt-1" }, { children: [jsxRuntime.jsx(Icon$2, { name: "error_outline", className: "text-error", size: "small" }, void 0), jsxRuntime.jsx("text", __assign({ className: errorTextClass }, { children: error }), void 0)] }), void 0)), jsxRuntime.jsxs("div", __assign({ className: dropdownWrapperClass, ref: dropdownRef }, { children: [showHeader && checkboxHeader(), jsxRuntime.jsx(CheckboxGroup, { dataSource: dataSource, numberOfColumns: numberOfColumns, onChange: onChange, value: value, getLabel: getLabel, getValue: getValue }, void 0)] }), void 0)] }), void 0));
 };
 
 var RadioGroup = function (_a) {
