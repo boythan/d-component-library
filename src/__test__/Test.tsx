@@ -1,40 +1,32 @@
 /* eslint-disable operator-linebreak */
-import React, { ReactElement, useContext, useEffect, useRef, useState } from "react";
-import Avatar from "../components/avatar/Avatar";
-import AvatarName from "../components/avatar/AvatarName";
-import Button from "../components/button/Button";
+import React, { ReactElement, useEffect, useRef, useState } from "react";
 import DateInput from "../components/dateInput/DateInput";
 import DialogComponent from "../components/dialog/DialogComponent";
 import DialogManager from "../components/dialog/DialogManager";
 import Dot from "../components/dot/Dot";
-import Icon from "../components/icon/Icon";
-import InputText from "../components/input/InputText";
-import InputTextSearch from "../components/input/InputTextSearch";
-import AwesomeListComponent from "../components/list/awesomeList/AwesomeListComponent";
 import Loading from "../components/loading/Loading";
 import Modal from "../components/modal/Modal";
 import Progress from "../components/progress/Progress";
-import Select from "../components/select/Select";
 import TabBar from "../components/tab/TabBar";
-import RowInterchangeView from "../components/view/RowInterchangeView";
 import { ProgressComponent } from "../dcomponent";
 import TestBadge from "./components/badge/TestBadge";
+import TestQuickFilter from "./components/input_drop/TestInputDrop";
 import TestHeader from "./components/TestHeader";
 import TestInput from "./components/TestInput";
 import TestTable from "./components/TestTable";
+import TestAvatarIcon from "./components/test_avatar_icon/TestAvatarIcon";
+import TestButton from "./components/test_button/TestButton";
+import TestCard from "./components/test_card/TestCard";
 import TestCheckbox from "./components/test_checkbox/TestCheckbox";
 import TestDropdown from "./components/test_dropdown/TestDropdown";
-import TestProgress from "./components/test_progress/TestProgress";
+import TestForm from "./components/test_form/TestForm";
+import TestList from "./components/test_list/TestList";
 import TestNotification from "./components/test_notification/TestNotification";
+import TestProgress from "./components/test_progress/TestProgress";
+import TestTabBar from "./components/test_tabBar/TestTabBar";
 import TestUtils from "./components/test_util/TestUtils";
 import TestView from "./components/test_view/TestView";
 import { ATTRIBUTE_INPUT_TYPE } from "./data/TestConstant";
-import TestTabBar from "./components/test_tabBar/TestTabBar";
-import TestButton from "./components/test_button/TestButton";
-import TestAvatarIcon from "./components/test_avatar_icon/TestAvatarIcon";
-import TestCard from "./components/test_card/TestCard";
-import TestForm from "./components/test_form/TestForm";
-import TestList from "./components/test_list/TestList";
 
 interface Props {
     content?: any;
@@ -150,8 +142,8 @@ export default function Test({ content }: Props): ReactElement {
         { id: "NOTIFICATION", label: "NOTIFICATION", component: <TestNotification /> },
         { id: "CARD", label: "CARD", component: <TestCard /> },
         { id: "FORM", label: "FORM", component: <TestForm /> },
+        { id: "QUICK_FILTER", label: "QUICK_FILTER", component: <TestQuickFilter /> },
     ];
-
     return (
         <AppStateContext.Provider value={{ mockData }}>
             <div className="p-5 d-flex bg-muted">

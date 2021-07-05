@@ -14,4 +14,7 @@ export default {
     showLess: "Show Less",
     selectAll: "Select All",
     clear: "Clear",
+    apply: "Apply",
+    clearAll: "Clear All",
+    search: "Search",
 };

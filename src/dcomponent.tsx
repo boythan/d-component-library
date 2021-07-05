@@ -33,9 +33,6 @@ export { default as TreeSelect } from "./components/select/TreeSelect";
 export type { SelectInfinityMethod, SelectInfinityProps } from "./components/select/SelectInfinity";
 export { default as SelectInfinity } from "./components/select/SelectInfinity";
 
-export type { SelectCheckboxProps } from "./components/select/SelectCheckbox";
-export { default as SelectCheckbox } from "./components/select/SelectCheckbox";
-
 /* ----------------------------------------
 // Button
 // ---------------------------------------- */
