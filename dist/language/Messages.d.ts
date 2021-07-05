@@ -13,7 +13,10 @@ declare const Messages: {
     print: string;
     edit: string;
     selectAll: string;
+    clearAll: string;
     clear: string;
+    apply: string;
+    search: string;
 } | {
     error: string;
     success: string;
@@ -30,5 +33,8 @@ declare const Messages: {
     showLess: string;
     selectAll: string;
     clear: string;
+    apply: string;
+    clearAll: string;
+    search: string;
 };
 export default Messages;

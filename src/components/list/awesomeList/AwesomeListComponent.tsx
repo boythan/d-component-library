@@ -174,8 +174,6 @@ class AwesomeListComponent extends Component<AwesomeListComponentProps, any> {
     refresh() {
         const { loading } = this.state;
         if (loading) return;
-
-        this.isNoMoreData = () => false;
         this.pagingData = null;
         this.setState(
             {

@@ -13,6 +13,9 @@ declare const _default: {
     print: string;
     edit: string;
     selectAll: string;
+    clearAll: string;
     clear: string;
+    apply: string;
+    search: string;
 };
 export default _default;
