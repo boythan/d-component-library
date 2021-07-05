@@ -14,7 +14,6 @@ export interface InputDropProps {
     classNameDropdown?: string;
 
     label?: string;
-    value?: any;
     iconName?: string;
     position?: DropdownProps["position"];
     displayValue?: string;
@@ -28,8 +27,11 @@ export interface InputDropProps {
 }
 
 interface InputDropSourceProps extends InputDropProps {
+    valueLength: number;
+
     onClickSelectAll: () => any;
     onClickClearAll: () => any;
+    onClickApply: () => any;
     content: () => any;
 }
 
@@ -48,11 +50,12 @@ const InputDrop: React.FC<InputDropSourceProps> = ({
     displayValue,
     selectAllText = Messages.selectAll,
     clearText = Messages.clearAll,
-    value,
     error,
+    valueLength = 0,
 
     onClickSelectAll = () => {},
     onClickClearAll = () => {},
+    onClickApply = () => {},
 
     content = () => <div />,
 }) => {
@@ -92,7 +95,7 @@ const InputDrop: React.FC<InputDropSourceProps> = ({
         return (
             <div className="flex-center-y w-100">
                 <div className="">{name}</div>
-                <Badge variant="index" index={value?.length} size="x-large" className="ml-2" />
+                <Badge variant="index" index={valueLength} size="x-large" className="ml-2" />
             </div>
         );
     };
@@ -129,7 +132,13 @@ const InputDrop: React.FC<InputDropSourceProps> = ({
                         className="p-0 font-weight-normal text-danger"
                     />
                 )}
-                <Button content={Messages.apply} onClick={() => {}} />
+                <Button
+                    content={Messages.apply}
+                    onClick={() => {
+                        onClickApply();
+                        setOpenDropdown(false);
+                    }}
+                />
             </div>
         );
     };
@@ -137,12 +146,7 @@ const InputDrop: React.FC<InputDropSourceProps> = ({
     return (
         <div className={containerClass}>
             {!hideLabel && <label>{label}</label>}
-            <div
-                className={inputClass}
-                style={{ height: "40px" }}
-                onClick={() => setOpenDropdown(!openDropdown)}
-                ref={inputRef}
-            >
+            <div className={inputClass} onClick={() => setOpenDropdown(!openDropdown)} ref={inputRef}>
                 <div className="flex-center-y text-x-small w-100">
                     {inputValue()}
                     <Icon name={iconName} className="d-input-drop__arrow-icon ml-2" />

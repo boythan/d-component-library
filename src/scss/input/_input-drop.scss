@@ -11,6 +11,7 @@
         align-items: center;
         padding: 12px 16px;
         transition: all 0.3s ease-in;
+        height: $input-height;
     }
     .d-input-drop__dropdown {
         z-index: 20;
