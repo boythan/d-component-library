@@ -1,5 +1,5 @@
-import { map } from "lodash";
-import React, { useState } from "react";
+import { filter, includes, isEmpty, map } from "lodash";
+import React, { useMemo, useRef, useState } from "react";
 import CheckboxGroup, { CheckboxGroupProps } from "../checkbox/CheckboxGroup";
 import InputDrop, { InputDropProps } from "./InputDrop";
 
@@ -15,12 +15,18 @@ const InputDropCheckboxGroup = (props: InputDropCheckboxGroupProps) => {
         value = [],
 
         onChange,
-        getLabel,
+        getLabel = (item) => item.label,
         getValue = (item) => item?.id,
         error,
         ...restProps
     } = props;
     const [valueInput, setValueInput] = useState<any[]>(value);
+    const [textSearch, setTextSearch] = useState<string>("");
+
+    const dataSelectSource = useMemo(() => {
+        if (isEmpty(textSearch)) return dataSource;
+        return filter(dataSource, (item) => includes(getLabel(item), textSearch));
+    }, [textSearch]);
 
     const onClickSelectAll = () => {
         const clone = map(dataSource, (i) => {
@@ -33,21 +39,27 @@ const InputDropCheckboxGroup = (props: InputDropCheckboxGroupProps) => {
         return onChange && onChange(valueInput);
     };
 
+    const onChangeTextSearch = (event: any) => {
+        setTextSearch(event.target.value);
+    };
+
     return (
         <InputDrop
             onClickSelectAll={onClickSelectAll}
             onClickClearAll={() => setValueInput([])}
+            onChangeText={onChangeTextSearch}
             onClickApply={onClickApply}
             label={label}
             content={() => (
                 <CheckboxGroup
-                    dataSource={dataSource}
+                    dataSource={dataSelectSource}
                     numberOfColumns={numberOfColumns}
                     onChange={setValueInput}
                     getLabel={getLabel}
                     getValue={getValue}
                     {...restProps}
                     value={valueInput}
+                    className="w-100"
                 />
             )}
             error={error}
