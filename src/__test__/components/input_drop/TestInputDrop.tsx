@@ -17,6 +17,7 @@ const TestInputDrop: React.FC<TestInputDropProps> = ({ id }) => {
                 value={quickFilterValue}
                 onChange={setQuickValue}
                 hideLabel
+                multiple={false}
             />
 
             <InputDropCheckboxGroup

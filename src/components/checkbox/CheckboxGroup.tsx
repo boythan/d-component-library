@@ -4,33 +4,58 @@ import React from "react";
 import Checkbox from "./Checkbox";
 
 export interface CheckboxGroupProps {
-    dataSource: Array<any>;
-    label?: any;
     className?: string;
     classNameItem?: string;
-    getLabel?: (item: any) => any;
-    getValue?: (item: any) => any;
+
+    dataSource: Array<any>;
+    label?: any;
     value?: Array<any>;
     defaultValue?: Array<any>;
+    numberOfColumns?: "1" | "2" | "3" | "4" | "5" | "6";
+    multiple?: boolean;
+
+    getLabel?: (item: any) => any;
+    getValue?: (item: any) => any;
     onChange?: (values: Array<any>) => void;
     getDisabledItem?: (checkItem: any) => void;
-    numberOfColumns?: "1" | "2" | "3" | "4" | "5" | "6";
 }
 
 const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
-    dataSource,
     className,
     classNameItem,
-    getLabel = (item: any) => item?.label,
-    getValue = (item: any) => item?.id,
+
+    dataSource,
     value = [],
-    onChange,
-    getDisabledItem,
+    multiple = true,
     numberOfColumns = "3",
     label,
+
+    getLabel = (item: any) => item?.label,
+    getValue = (item: any) => item?.id,
+    onChange,
+    getDisabledItem,
 }) => {
     const containerClass = ClassNames(className);
     const groupContainerClass = ClassNames("d-checkbox-group d-flex flex-wrap", className);
+
+    const onChangeChecked = (item: any, event: any) => {
+        if (!multiple) {
+            onChange && onChange([getValue(item)]);
+            return;
+        }
+
+        // multiple check
+        const isPush = event.target.checked;
+        let clone = [...value];
+        if (isPush) {
+            clone.push(getValue(item));
+        } else {
+            clone = value.filter((i: any) => {
+                return i !== getValue(item);
+            });
+        }
+        onChange && onChange(clone);
+    };
 
     return (
         <div className={containerClass}>
@@ -68,18 +93,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
                         <Checkbox
                             label={iLabel}
                             value={getValue(item)}
-                            onChange={(event) => {
-                                const isPush = event.target.checked;
-                                let clone = [...value];
-                                if (isPush) {
-                                    clone.push(getValue(item));
-                                } else {
-                                    clone = value.filter((i: any) => {
-                                        return i !== getValue(item);
-                                    });
-                                }
-                                onChange && onChange(clone);
-                            }}
+                            onChange={(event) => onChangeChecked(item, event)}
                             checked={isChecked}
                             disabled={isDisabled}
                             key={iValue}
