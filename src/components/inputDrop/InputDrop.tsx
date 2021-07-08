@@ -34,7 +34,7 @@ interface InputDropSourceProps extends InputDropProps {
     onClickApply: () => any;
     content: () => any;
     onChangeText?: (value: any) => any;
-    onEnterText?: () => any;
+    propsSearchText?: any;
 }
 
 const InputDrop: React.FC<InputDropSourceProps> = ({
@@ -59,7 +59,7 @@ const InputDrop: React.FC<InputDropSourceProps> = ({
     onClickClearAll = () => {},
     onClickApply = () => {},
     onChangeText,
-    onEnterText,
+    propsSearchText = {},
 
     content = () => <div />,
 }) => {
@@ -169,12 +169,7 @@ const InputDrop: React.FC<InputDropSourceProps> = ({
                         placeholder={Messages.search}
                         className="mt-3 w-100"
                         onChange={onChangeText}
-                        onKeyUp={(event) => {
-                            if (event.keyCode === 13) {
-                                return onEnterText && onEnterText();
-                            }
-                            return true;
-                        }}
+                        {...propsSearchText}
                     />
                 )}
                 {content()}

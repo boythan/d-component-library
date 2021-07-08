@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/tabindex-no-positive */
+/* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import classNames from "classnames";
@@ -29,6 +31,8 @@ const InputDropSelect = (props: InputDropSelectProps) => {
     } = props;
     const [valueInput, setValueInput] = useState<any[]>(value);
     const [textSearch, setTextSearch] = useState<string>("");
+    const [focusSelectList, setFocusSelectList] = useState<boolean>(true);
+    const [focusInputSearch, setFocusInputSearch] = useState<boolean>(false);
 
     const dataSelectSource = useMemo(() => {
         if (isEmpty(textSearch)) return dataSource;
@@ -76,11 +80,20 @@ const InputDropSelect = (props: InputDropSelectProps) => {
     };
 
     const renderSelectList = () => {
-        return map(dataSelectSource, (item) => renderValueItem(getValue(item)));
+        return (
+            <div
+                tabIndex={1}
+                onBlur={() => setFocusSelectList(false)}
+                onFocus={() => setFocusSelectList(true)}
+                className="w-100"
+            >
+                {map(dataSelectSource, (item) => renderValueItem(getValue(item)))}
+            </div>
+        );
     };
 
     const renderContentInput = () => {
-        if (!isEmpty(textSearch)) return renderSelectList();
+        if (focusInputSearch || focusSelectList) return renderSelectList();
         return <div className="w-100">{valueInput.map(renderValueItem)}</div>;
     };
 
@@ -89,7 +102,10 @@ const InputDropSelect = (props: InputDropSelectProps) => {
             onClickSelectAll={onClickSelectAll}
             onClickClearAll={() => setValueInput([])}
             onChangeText={onChangeTextSearch}
-            onEnterText={() => setTextSearch("")}
+            propsSearchText={{
+                onBlur: () => setTimeout(() => setFocusInputSearch(false), 200),
+                onFocus: () => setFocusInputSearch(true),
+            }}
             onClickApply={onClickApply}
             label={label}
             content={renderContentInput}
