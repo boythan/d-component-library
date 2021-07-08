@@ -21,6 +21,7 @@ interface InputDropSourceProps extends InputDropProps {
     onClickApply: () => any;
     content: () => any;
     onChangeText?: (value: any) => any;
+    propsSearchText?: any;
 }
 declare const InputDrop: React.FC<InputDropSourceProps>;
 export default InputDrop;

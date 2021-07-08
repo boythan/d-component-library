@@ -21,5 +21,5 @@ export interface InputTextProps extends InputHTMLAttributes<any> {
     prefix?: any;
     suffix?: any;
 }
-declare const InputText: ({ className, classNameInput, classNameInputContainer, style, styleInput, styleInputContainer, styleLabel, variant, multiple, value, defaultValue, error, name, label, key, placeholder, type, rows, cols, disabled, prefix, suffix, onChange, onBlur, }: InputTextProps) => JSX.Element;
+declare const InputText: ({ className, classNameInput, classNameInputContainer, style, styleInput, styleInputContainer, styleLabel, variant, multiple, value, defaultValue, error, name, label, key, placeholder, type, rows, cols, disabled, prefix, suffix, onChange, onBlur, ...inputProps }: InputTextProps) => JSX.Element;
 export default InputText;
