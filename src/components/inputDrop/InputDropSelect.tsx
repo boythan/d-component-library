@@ -2,14 +2,10 @@
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import classNames from "classnames";
-import { map, find, isEmpty, filter, includes } from "lodash";
+import { filter, find, includes, isEmpty, map } from "lodash";
 import React, { useMemo, useState } from "react";
-import Messages from "../../language/Messages";
-import Button from "../button/Button";
 import { CheckboxGroupProps } from "../checkbox/CheckboxGroup";
 import Icon from "../icon/Icon";
-import Select from "../select/Select";
 import InputDrop, { InputDropProps } from "./InputDrop";
 
 interface InputDropSelectProps extends CheckboxGroupProps, InputDropProps {
@@ -20,13 +16,13 @@ const InputDropSelect = (props: InputDropSelectProps) => {
     const {
         label,
         dataSource = [],
-        numberOfColumns = "2",
         value = [],
 
         onChange,
         getLabel = (item) => item.label,
         getValue = (item) => item?.id,
         error,
+        multiple = true,
         ...restProps
     } = props;
     const [valueInput, setValueInput] = useState<any[]>(value);
@@ -58,6 +54,10 @@ const InputDropSelect = (props: InputDropSelectProps) => {
     };
 
     const onClickSelectItem = (iValue: string) => {
+        if (!multiple) {
+            setValueInput([iValue]);
+            return;
+        }
         const selected = isSelected(iValue);
         if (selected) {
             const dataResult = filter(valueInput, (id) => iValue !== id);
@@ -83,7 +83,7 @@ const InputDropSelect = (props: InputDropSelectProps) => {
         return (
             <div
                 tabIndex={1}
-                onBlur={() => setFocusSelectList(false)}
+                onBlur={() => setTimeout(() => setFocusSelectList(false), 200)}
                 onFocus={() => setFocusSelectList(true)}
                 className="w-100"
             >

@@ -17,4 +17,6 @@ export default {
     apply: "Apply",
     clearAll: "Clear All",
     search: "Search",
+    showAll: "Show all",
+    closeAll: "Close All",
 };

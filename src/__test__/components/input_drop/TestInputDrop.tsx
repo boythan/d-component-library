@@ -13,10 +13,16 @@ const TestInputDrop: React.FC<TestInputDropProps> = ({ id }) => {
             <InputDropSelect
                 dataSource={ATTRIBUTE_INPUT_TYPE}
                 className="my-4"
-                label="Select Checkbox Right Edge"
+                label="Input Drop Select Multiple"
                 value={quickFilterValue}
                 onChange={setQuickValue}
-                hideLabel
+            />
+            <InputDropSelect
+                dataSource={ATTRIBUTE_INPUT_TYPE}
+                className="my-4"
+                label="Input Drop Select Single"
+                value={quickFilterValue}
+                onChange={setQuickValue}
                 multiple={false}
             />
             <InputDropCheckboxGroup
@@ -25,7 +31,6 @@ const TestInputDrop: React.FC<TestInputDropProps> = ({ id }) => {
                 label="Select Checkbox Right Edge"
                 value={quickFilterValue}
                 onChange={setQuickValue}
-                hideLabel
                 multiple={false}
             />
 

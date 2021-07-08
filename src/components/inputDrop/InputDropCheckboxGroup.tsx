@@ -13,6 +13,7 @@ const InputDropCheckboxGroup = (props: InputDropCheckboxGroupProps) => {
         dataSource = [],
         numberOfColumns = "2",
         value = [],
+        multiple,
 
         onChange,
         getLabel = (item) => item.label,
@@ -50,6 +51,7 @@ const InputDropCheckboxGroup = (props: InputDropCheckboxGroupProps) => {
             onChangeText={onChangeTextSearch}
             onClickApply={onClickApply}
             label={label}
+            hideSelectAll={!multiple}
             content={() => (
                 <CheckboxGroup
                     dataSource={dataSelectSource}
@@ -57,6 +59,7 @@ const InputDropCheckboxGroup = (props: InputDropCheckboxGroupProps) => {
                     onChange={setValueInput}
                     getLabel={getLabel}
                     getValue={getValue}
+                    multiple={multiple}
                     {...restProps}
                     value={valueInput}
                     className="w-100"
