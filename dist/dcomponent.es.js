@@ -76231,8 +76231,9 @@ var ProgressComponent = /** @class */ (function (_super) {
             return jsx(Loading, {}, void 0);
         };
         _this.renderErrorView = function () {
+            var _a;
             var error = _this.state.error;
-            return (jsxs("div", __assign({ className: "progress__error-container" }, { children: [jsx("h4", { children: Messages.error }, void 0), jsx("h5", __assign({ className: "mt-3" }, { children: error.message }), void 0), jsxs("div", __assign({ className: "progress__error-footer" }, { children: [jsx("button", __assign({ onClick: _this.dismiss, className: "btn btn-light mr-3", type: "button" }, { children: Messages.cancel }), void 0), jsx("button", __assign({ className: "btn btn-primary", onClick: _this.onClickRetry, type: "button" }, { children: Messages.retry }), void 0)] }), void 0)] }), void 0));
+            return (jsxs("div", __assign({ className: "progress__error-container" }, { children: [jsx("h4", { children: Messages.error }, void 0), jsx("h5", { className: "mt-3 d-notifications__content", dangerouslySetInnerHTML: { __html: (_a = error === null || error === void 0 ? void 0 : error.message) !== null && _a !== void 0 ? _a : "" } }, void 0), jsxs("div", __assign({ className: "progress__error-footer" }, { children: [jsx("button", __assign({ onClick: _this.dismiss, className: "btn btn-light mr-3", type: "button" }, { children: Messages.cancel }), void 0), jsx("button", __assign({ className: "btn btn-primary", onClick: _this.onClickRetry, type: "button" }, { children: Messages.retry }), void 0)] }), void 0)] }), void 0));
         };
         _this.state = {
             open: false,
