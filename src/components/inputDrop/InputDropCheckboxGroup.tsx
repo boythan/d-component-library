@@ -1,9 +1,9 @@
 import { filter, includes, isEmpty, map } from "lodash";
-import React, { useMemo, useRef, useState } from "react";
+import React, { useMemo, useState } from "react";
 import CheckboxGroup, { CheckboxGroupProps } from "../checkbox/CheckboxGroup";
 import InputDrop, { InputDropProps } from "./InputDrop";
 
-interface InputDropCheckboxGroupProps extends CheckboxGroupProps, InputDropProps {
+export interface InputDropCheckboxGroupProps extends CheckboxGroupProps, InputDropProps {
     label: string;
     value?: any;
 }
