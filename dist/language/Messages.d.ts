@@ -17,6 +17,8 @@ declare const Messages: {
     clear: string;
     apply: string;
     search: string;
+    showAll: string;
+    closeAll: string;
 } | {
     error: string;
     success: string;
@@ -36,5 +38,7 @@ declare const Messages: {
     apply: string;
     clearAll: string;
     search: string;
+    showAll: string;
+    closeAll: string;
 };
 export default Messages;

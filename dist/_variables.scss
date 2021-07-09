@@ -44,12 +44,13 @@
 // -- font family
 // ----------------------------------------
    :root:lang(en) {
-      $font-family: "Poppins", Sans-serif;
+      --appFont: "Poppins", Sans-serif;
    }
 
    :root:lang(th) {
-      $font-family: "Prompt", Sans-serif;
+      --appFont: "Prompt", Sans-serif;
    }
+   $font-family:                 var(--appFont)                         !default;
 // ----------------------------------------
 // -- direction
 // ----------------------------------------

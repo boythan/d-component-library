@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-expressions */
 import ClassNames from "classnames";
-import { slice } from "lodash";
+import _ from "lodash";
 import React, { useState } from "react";
 import Messages from "../../language/Messages";
 import Button from "../button/Button";
@@ -42,7 +42,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
     getDisabledItem,
 }) => {
     const [expended, setExpended] = useState<boolean>(false);
-    const dataSourceBrief = slice(dataSource, 0, numberOfDefaultShow);
+    const dataSourceBrief = _.slice(dataSource, 0, numberOfDefaultShow);
     const dataSourceDisplay = expended ? dataSource : dataSourceBrief;
 
     const showExpandButtons = dataSource.length > numberOfDefaultShow;

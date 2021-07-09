@@ -17,5 +17,7 @@ declare const _default: {
     apply: string;
     clearAll: string;
     search: string;
+    showAll: string;
+    closeAll: string;
 };
 export default _default;

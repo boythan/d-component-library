@@ -1,7 +1,7 @@
 /// <reference types="react" />
 import { CheckboxGroupProps } from "../checkbox/CheckboxGroup";
 import { InputDropProps } from "./InputDrop";
-interface InputDropCheckboxGroupProps extends CheckboxGroupProps, InputDropProps {
+export interface InputDropCheckboxGroupProps extends CheckboxGroupProps, InputDropProps {
     label: string;
     value?: any;
 }

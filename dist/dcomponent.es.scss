@@ -47,6 +47,17 @@
 //   - .typography
 
 // ----------------------------------------
+// -- font family
+// ----------------------------------------
+   :root:lang(en) {
+      --appFont: "Poppins", Sans-serif;
+   }
+
+   :root:lang(th) {
+      --appFont: "Prompt", Sans-serif;
+   }
+   $font-family:                 var(--appFont)                         !default;
+// ----------------------------------------
 // -- direction
 // ----------------------------------------
    $direction:                 ltr                                      !default; // or rtl
@@ -175,8 +186,6 @@
       lg-end:   1199px,
       xl-start: 1200px
    );
-
-   $font-family: 'Poppins', 'sans-serif';
 
    $border-radius:      0px     !default;
 
@@ -27279,6 +27288,17 @@ div.ant-typography-edit-content {
 //   - .typography
 
 // ----------------------------------------
+// -- font family
+// ----------------------------------------
+   :root:lang(en) {
+      --appFont: "Poppins", Sans-serif;
+   }
+
+   :root:lang(th) {
+      --appFont: "Prompt", Sans-serif;
+   }
+   $font-family:                 var(--appFont)                         !default;
+// ----------------------------------------
 // -- direction
 // ----------------------------------------
    $direction:                 ltr                                      !default; // or rtl
@@ -27407,8 +27427,6 @@ div.ant-typography-edit-content {
       lg-end:   1199px,
       xl-start: 1200px
    );
-
-   $font-family: 'Poppins', 'sans-serif';
 
    $border-radius:      0px     !default;
 
@@ -28136,6 +28154,17 @@ div.ant-typography-edit-content {
 //   - .typography
 
 // ----------------------------------------
+// -- font family
+// ----------------------------------------
+   :root:lang(en) {
+      --appFont: "Poppins", Sans-serif;
+   }
+
+   :root:lang(th) {
+      --appFont: "Prompt", Sans-serif;
+   }
+   $font-family:                 var(--appFont)                         !default;
+// ----------------------------------------
 // -- direction
 // ----------------------------------------
    $direction:                 ltr                                      !default; // or rtl
@@ -28264,8 +28293,6 @@ div.ant-typography-edit-content {
       lg-end:   1199px,
       xl-start: 1200px
    );
-
-   $font-family: 'Poppins', 'sans-serif';
 
    $border-radius:      0px     !default;
 
@@ -28986,6 +29013,17 @@ div.ant-typography-edit-content {
 //   - .typography
 
 // ----------------------------------------
+// -- font family
+// ----------------------------------------
+   :root:lang(en) {
+      --appFont: "Poppins", Sans-serif;
+   }
+
+   :root:lang(th) {
+      --appFont: "Prompt", Sans-serif;
+   }
+   $font-family:                 var(--appFont)                         !default;
+// ----------------------------------------
 // -- direction
 // ----------------------------------------
    $direction:                 ltr                                      !default; // or rtl
@@ -29114,8 +29152,6 @@ div.ant-typography-edit-content {
       lg-end:   1199px,
       xl-start: 1200px
    );
-
-   $font-family: 'Poppins', 'sans-serif';
 
    $border-radius:      0px     !default;
 
@@ -30135,6 +30171,17 @@ h6,
 //   - .typography
 
 // ----------------------------------------
+// -- font family
+// ----------------------------------------
+   :root:lang(en) {
+      --appFont: "Poppins", Sans-serif;
+   }
+
+   :root:lang(th) {
+      --appFont: "Prompt", Sans-serif;
+   }
+   $font-family:                 var(--appFont)                         !default;
+// ----------------------------------------
 // -- direction
 // ----------------------------------------
    $direction:                 ltr                                      !default; // or rtl
@@ -30263,8 +30310,6 @@ h6,
       lg-end:   1199px,
       xl-start: 1200px
    );
-
-   $font-family: 'Poppins', 'sans-serif';
 
    $border-radius:      0px     !default;
 
@@ -31029,6 +31074,17 @@ h6,
 //   - .typography
 
 // ----------------------------------------
+// -- font family
+// ----------------------------------------
+   :root:lang(en) {
+      --appFont: "Poppins", Sans-serif;
+   }
+
+   :root:lang(th) {
+      --appFont: "Prompt", Sans-serif;
+   }
+   $font-family:                 var(--appFont)                         !default;
+// ----------------------------------------
 // -- direction
 // ----------------------------------------
    $direction:                 ltr                                      !default; // or rtl
@@ -31157,8 +31213,6 @@ h6,
       lg-end:   1199px,
       xl-start: 1200px
    );
-
-   $font-family: 'Poppins', 'sans-serif';
 
    $border-radius:      0px     !default;
 
@@ -31879,6 +31933,17 @@ h6,
 //   - .typography
 
 // ----------------------------------------
+// -- font family
+// ----------------------------------------
+   :root:lang(en) {
+      --appFont: "Poppins", Sans-serif;
+   }
+
+   :root:lang(th) {
+      --appFont: "Prompt", Sans-serif;
+   }
+   $font-family:                 var(--appFont)                         !default;
+// ----------------------------------------
 // -- direction
 // ----------------------------------------
    $direction:                 ltr                                      !default; // or rtl
@@ -32007,8 +32072,6 @@ h6,
       lg-end:   1199px,
       xl-start: 1200px
    );
-
-   $font-family: 'Poppins', 'sans-serif';
 
    $border-radius:      0px     !default;
 
@@ -33181,6 +33244,17 @@ a {
 //   - .typography
 
 // ----------------------------------------
+// -- font family
+// ----------------------------------------
+   :root:lang(en) {
+      --appFont: "Poppins", Sans-serif;
+   }
+
+   :root:lang(th) {
+      --appFont: "Prompt", Sans-serif;
+   }
+   $font-family:                 var(--appFont)                         !default;
+// ----------------------------------------
 // -- direction
 // ----------------------------------------
    $direction:                 ltr                                      !default; // or rtl
@@ -33309,8 +33383,6 @@ a {
       lg-end:   1199px,
       xl-start: 1200px
    );
-
-   $font-family: 'Poppins', 'sans-serif';
 
    $border-radius:      0px     !default;
 
@@ -34031,6 +34103,17 @@ a {
 //   - .typography
 
 // ----------------------------------------
+// -- font family
+// ----------------------------------------
+   :root:lang(en) {
+      --appFont: "Poppins", Sans-serif;
+   }
+
+   :root:lang(th) {
+      --appFont: "Prompt", Sans-serif;
+   }
+   $font-family:                 var(--appFont)                         !default;
+// ----------------------------------------
 // -- direction
 // ----------------------------------------
    $direction:                 ltr                                      !default; // or rtl
@@ -34159,8 +34242,6 @@ a {
       lg-end:   1199px,
       xl-start: 1200px
    );
-
-   $font-family: 'Poppins', 'sans-serif';
 
    $border-radius:      0px     !default;
 
@@ -34915,6 +34996,17 @@ a {
 //   - .typography
 
 // ----------------------------------------
+// -- font family
+// ----------------------------------------
+   :root:lang(en) {
+      --appFont: "Poppins", Sans-serif;
+   }
+
+   :root:lang(th) {
+      --appFont: "Prompt", Sans-serif;
+   }
+   $font-family:                 var(--appFont)                         !default;
+// ----------------------------------------
 // -- direction
 // ----------------------------------------
    $direction:                 ltr                                      !default; // or rtl
@@ -35043,8 +35135,6 @@ a {
       lg-end:   1199px,
       xl-start: 1200px
    );
-
-   $font-family: 'Poppins', 'sans-serif';
 
    $border-radius:      0px     !default;
 
@@ -35771,6 +35861,17 @@ a {
 //   - .typography
 
 // ----------------------------------------
+// -- font family
+// ----------------------------------------
+   :root:lang(en) {
+      --appFont: "Poppins", Sans-serif;
+   }
+
+   :root:lang(th) {
+      --appFont: "Prompt", Sans-serif;
+   }
+   $font-family:                 var(--appFont)                         !default;
+// ----------------------------------------
 // -- direction
 // ----------------------------------------
    $direction:                 ltr                                      !default; // or rtl
@@ -35899,8 +36000,6 @@ a {
       lg-end:   1199px,
       xl-start: 1200px
    );
-
-   $font-family: 'Poppins', 'sans-serif';
 
    $border-radius:      0px     !default;
 
@@ -36785,6 +36884,17 @@ a {
 //   - .typography
 
 // ----------------------------------------
+// -- font family
+// ----------------------------------------
+   :root:lang(en) {
+      --appFont: "Poppins", Sans-serif;
+   }
+
+   :root:lang(th) {
+      --appFont: "Prompt", Sans-serif;
+   }
+   $font-family:                 var(--appFont)                         !default;
+// ----------------------------------------
 // -- direction
 // ----------------------------------------
    $direction:                 ltr                                      !default; // or rtl
@@ -36913,8 +37023,6 @@ a {
       lg-end:   1199px,
       xl-start: 1200px
    );
-
-   $font-family: 'Poppins', 'sans-serif';
 
    $border-radius:      0px     !default;
 
@@ -37635,6 +37743,17 @@ a {
 //   - .typography
 
 // ----------------------------------------
+// -- font family
+// ----------------------------------------
+   :root:lang(en) {
+      --appFont: "Poppins", Sans-serif;
+   }
+
+   :root:lang(th) {
+      --appFont: "Prompt", Sans-serif;
+   }
+   $font-family:                 var(--appFont)                         !default;
+// ----------------------------------------
 // -- direction
 // ----------------------------------------
    $direction:                 ltr                                      !default; // or rtl
@@ -37763,8 +37882,6 @@ a {
       lg-end:   1199px,
       xl-start: 1200px
    );
-
-   $font-family: 'Poppins', 'sans-serif';
 
    $border-radius:      0px     !default;
 
@@ -38562,6 +38679,17 @@ a {
 //   - .typography
 
 // ----------------------------------------
+// -- font family
+// ----------------------------------------
+   :root:lang(en) {
+      --appFont: "Poppins", Sans-serif;
+   }
+
+   :root:lang(th) {
+      --appFont: "Prompt", Sans-serif;
+   }
+   $font-family:                 var(--appFont)                         !default;
+// ----------------------------------------
 // -- direction
 // ----------------------------------------
    $direction:                 ltr                                      !default; // or rtl
@@ -38690,8 +38818,6 @@ a {
       lg-end:   1199px,
       xl-start: 1200px
    );
-
-   $font-family: 'Poppins', 'sans-serif';
 
    $border-radius:      0px     !default;
 
@@ -39696,6 +39822,17 @@ $width-side-bar: 250px;
 //   - .typography
 
 // ----------------------------------------
+// -- font family
+// ----------------------------------------
+   :root:lang(en) {
+      --appFont: "Poppins", Sans-serif;
+   }
+
+   :root:lang(th) {
+      --appFont: "Prompt", Sans-serif;
+   }
+   $font-family:                 var(--appFont)                         !default;
+// ----------------------------------------
 // -- direction
 // ----------------------------------------
    $direction:                 ltr                                      !default; // or rtl
@@ -39824,8 +39961,6 @@ $width-side-bar: 250px;
       lg-end:   1199px,
       xl-start: 1200px
    );
-
-   $font-family: 'Poppins', 'sans-serif';
 
    $border-radius:      0px     !default;
 
@@ -40609,6 +40744,17 @@ $sides: ("top", "right", "bottom", "left");
 //   - .typography
 
 // ----------------------------------------
+// -- font family
+// ----------------------------------------
+   :root:lang(en) {
+      --appFont: "Poppins", Sans-serif;
+   }
+
+   :root:lang(th) {
+      --appFont: "Prompt", Sans-serif;
+   }
+   $font-family:                 var(--appFont)                         !default;
+// ----------------------------------------
 // -- direction
 // ----------------------------------------
    $direction:                 ltr                                      !default; // or rtl
@@ -40737,8 +40883,6 @@ $sides: ("top", "right", "bottom", "left");
       lg-end:   1199px,
       xl-start: 1200px
    );
-
-   $font-family: 'Poppins', 'sans-serif';
 
    $border-radius:      0px     !default;
 
@@ -41599,6 +41743,17 @@ $sides: ("top", "right", "bottom", "left");
 //   - .typography
 
 // ----------------------------------------
+// -- font family
+// ----------------------------------------
+   :root:lang(en) {
+      --appFont: "Poppins", Sans-serif;
+   }
+
+   :root:lang(th) {
+      --appFont: "Prompt", Sans-serif;
+   }
+   $font-family:                 var(--appFont)                         !default;
+// ----------------------------------------
 // -- direction
 // ----------------------------------------
    $direction:                 ltr                                      !default; // or rtl
@@ -41727,8 +41882,6 @@ $sides: ("top", "right", "bottom", "left");
       lg-end:   1199px,
       xl-start: 1200px
    );
-
-   $font-family: 'Poppins', 'sans-serif';
 
    $border-radius:      0px     !default;
 
@@ -42471,6 +42624,17 @@ $sides: ("top", "right", "bottom", "left");
 //   - .typography
 
 // ----------------------------------------
+// -- font family
+// ----------------------------------------
+   :root:lang(en) {
+      --appFont: "Poppins", Sans-serif;
+   }
+
+   :root:lang(th) {
+      --appFont: "Prompt", Sans-serif;
+   }
+   $font-family:                 var(--appFont)                         !default;
+// ----------------------------------------
 // -- direction
 // ----------------------------------------
    $direction:                 ltr                                      !default; // or rtl
@@ -42599,8 +42763,6 @@ $sides: ("top", "right", "bottom", "left");
       lg-end:   1199px,
       xl-start: 1200px
    );
-
-   $font-family: 'Poppins', 'sans-serif';
 
    $border-radius:      0px     !default;
 
@@ -43324,6 +43486,17 @@ $sides: ("top", "right", "bottom", "left");
 //   - .typography
 
 // ----------------------------------------
+// -- font family
+// ----------------------------------------
+   :root:lang(en) {
+      --appFont: "Poppins", Sans-serif;
+   }
+
+   :root:lang(th) {
+      --appFont: "Prompt", Sans-serif;
+   }
+   $font-family:                 var(--appFont)                         !default;
+// ----------------------------------------
 // -- direction
 // ----------------------------------------
    $direction:                 ltr                                      !default; // or rtl
@@ -43452,8 +43625,6 @@ $sides: ("top", "right", "bottom", "left");
       lg-end:   1199px,
       xl-start: 1200px
    );
-
-   $font-family: 'Poppins', 'sans-serif';
 
    $border-radius:      0px     !default;
 
@@ -44174,6 +44345,17 @@ $sides: ("top", "right", "bottom", "left");
 //   - .typography
 
 // ----------------------------------------
+// -- font family
+// ----------------------------------------
+   :root:lang(en) {
+      --appFont: "Poppins", Sans-serif;
+   }
+
+   :root:lang(th) {
+      --appFont: "Prompt", Sans-serif;
+   }
+   $font-family:                 var(--appFont)                         !default;
+// ----------------------------------------
 // -- direction
 // ----------------------------------------
    $direction:                 ltr                                      !default; // or rtl
@@ -44302,8 +44484,6 @@ $sides: ("top", "right", "bottom", "left");
       lg-end:   1199px,
       xl-start: 1200px
    );
-
-   $font-family: 'Poppins', 'sans-serif';
 
    $border-radius:      0px     !default;
 
@@ -45573,6 +45753,17 @@ a {
 //   - .typography
 
 // ----------------------------------------
+// -- font family
+// ----------------------------------------
+   :root:lang(en) {
+      --appFont: "Poppins", Sans-serif;
+   }
+
+   :root:lang(th) {
+      --appFont: "Prompt", Sans-serif;
+   }
+   $font-family:                 var(--appFont)                         !default;
+// ----------------------------------------
 // -- direction
 // ----------------------------------------
    $direction:                 ltr                                      !default; // or rtl
@@ -45701,8 +45892,6 @@ a {
       lg-end:   1199px,
       xl-start: 1200px
    );
-
-   $font-family: 'Poppins', 'sans-serif';
 
    $border-radius:      0px     !default;
 
@@ -46435,6 +46624,17 @@ a {
 //   - .typography
 
 // ----------------------------------------
+// -- font family
+// ----------------------------------------
+   :root:lang(en) {
+      --appFont: "Poppins", Sans-serif;
+   }
+
+   :root:lang(th) {
+      --appFont: "Prompt", Sans-serif;
+   }
+   $font-family:                 var(--appFont)                         !default;
+// ----------------------------------------
 // -- direction
 // ----------------------------------------
    $direction:                 ltr                                      !default; // or rtl
@@ -46563,8 +46763,6 @@ a {
       lg-end:   1199px,
       xl-start: 1200px
    );
-
-   $font-family: 'Poppins', 'sans-serif';
 
    $border-radius:      0px     !default;
 
@@ -47288,6 +47486,17 @@ a {
 //   - .typography
 
 // ----------------------------------------
+// -- font family
+// ----------------------------------------
+   :root:lang(en) {
+      --appFont: "Poppins", Sans-serif;
+   }
+
+   :root:lang(th) {
+      --appFont: "Prompt", Sans-serif;
+   }
+   $font-family:                 var(--appFont)                         !default;
+// ----------------------------------------
 // -- direction
 // ----------------------------------------
    $direction:                 ltr                                      !default; // or rtl
@@ -47416,8 +47625,6 @@ a {
       lg-end:   1199px,
       xl-start: 1200px
    );
-
-   $font-family: 'Poppins', 'sans-serif';
 
    $border-radius:      0px     !default;
 
@@ -48138,6 +48345,17 @@ a {
 //   - .typography
 
 // ----------------------------------------
+// -- font family
+// ----------------------------------------
+   :root:lang(en) {
+      --appFont: "Poppins", Sans-serif;
+   }
+
+   :root:lang(th) {
+      --appFont: "Prompt", Sans-serif;
+   }
+   $font-family:                 var(--appFont)                         !default;
+// ----------------------------------------
 // -- direction
 // ----------------------------------------
    $direction:                 ltr                                      !default; // or rtl
@@ -48266,8 +48484,6 @@ a {
       lg-end:   1199px,
       xl-start: 1200px
    );
-
-   $font-family: 'Poppins', 'sans-serif';
 
    $border-radius:      0px     !default;
 
@@ -49540,6 +49756,17 @@ a {
 //   - .typography
 
 // ----------------------------------------
+// -- font family
+// ----------------------------------------
+   :root:lang(en) {
+      --appFont: "Poppins", Sans-serif;
+   }
+
+   :root:lang(th) {
+      --appFont: "Prompt", Sans-serif;
+   }
+   $font-family:                 var(--appFont)                         !default;
+// ----------------------------------------
 // -- direction
 // ----------------------------------------
    $direction:                 ltr                                      !default; // or rtl
@@ -49668,8 +49895,6 @@ a {
       lg-end:   1199px,
       xl-start: 1200px
    );
-
-   $font-family: 'Poppins', 'sans-serif';
 
    $border-radius:      0px     !default;
 
@@ -50393,6 +50618,17 @@ a {
 //   - .typography
 
 // ----------------------------------------
+// -- font family
+// ----------------------------------------
+   :root:lang(en) {
+      --appFont: "Poppins", Sans-serif;
+   }
+
+   :root:lang(th) {
+      --appFont: "Prompt", Sans-serif;
+   }
+   $font-family:                 var(--appFont)                         !default;
+// ----------------------------------------
 // -- direction
 // ----------------------------------------
    $direction:                 ltr                                      !default; // or rtl
@@ -50521,8 +50757,6 @@ a {
       lg-end:   1199px,
       xl-start: 1200px
    );
-
-   $font-family: 'Poppins', 'sans-serif';
 
    $border-radius:      0px     !default;
 
@@ -51243,6 +51477,17 @@ a {
 //   - .typography
 
 // ----------------------------------------
+// -- font family
+// ----------------------------------------
+   :root:lang(en) {
+      --appFont: "Poppins", Sans-serif;
+   }
+
+   :root:lang(th) {
+      --appFont: "Prompt", Sans-serif;
+   }
+   $font-family:                 var(--appFont)                         !default;
+// ----------------------------------------
 // -- direction
 // ----------------------------------------
    $direction:                 ltr                                      !default; // or rtl
@@ -51371,8 +51616,6 @@ a {
       lg-end:   1199px,
       xl-start: 1200px
    );
-
-   $font-family: 'Poppins', 'sans-serif';
 
    $border-radius:      0px     !default;
 
@@ -52509,6 +52752,17 @@ h6,
 //   - .typography
 
 // ----------------------------------------
+// -- font family
+// ----------------------------------------
+   :root:lang(en) {
+      --appFont: "Poppins", Sans-serif;
+   }
+
+   :root:lang(th) {
+      --appFont: "Prompt", Sans-serif;
+   }
+   $font-family:                 var(--appFont)                         !default;
+// ----------------------------------------
 // -- direction
 // ----------------------------------------
    $direction:                 ltr                                      !default; // or rtl
@@ -52637,8 +52891,6 @@ h6,
       lg-end:   1199px,
       xl-start: 1200px
    );
-
-   $font-family: 'Poppins', 'sans-serif';
 
    $border-radius:      0px     !default;
 
@@ -53359,6 +53611,17 @@ h6,
 //   - .typography
 
 // ----------------------------------------
+// -- font family
+// ----------------------------------------
+   :root:lang(en) {
+      --appFont: "Poppins", Sans-serif;
+   }
+
+   :root:lang(th) {
+      --appFont: "Prompt", Sans-serif;
+   }
+   $font-family:                 var(--appFont)                         !default;
+// ----------------------------------------
 // -- direction
 // ----------------------------------------
    $direction:                 ltr                                      !default; // or rtl
@@ -53487,8 +53750,6 @@ h6,
       lg-end:   1199px,
       xl-start: 1200px
    );
-
-   $font-family: 'Poppins', 'sans-serif';
 
    $border-radius:      0px     !default;
 
@@ -54392,6 +54653,17 @@ $button-variant: ("outline", "standard", "trans");
 //   - .typography
 
 // ----------------------------------------
+// -- font family
+// ----------------------------------------
+   :root:lang(en) {
+      --appFont: "Poppins", Sans-serif;
+   }
+
+   :root:lang(th) {
+      --appFont: "Prompt", Sans-serif;
+   }
+   $font-family:                 var(--appFont)                         !default;
+// ----------------------------------------
 // -- direction
 // ----------------------------------------
    $direction:                 ltr                                      !default; // or rtl
@@ -54520,8 +54792,6 @@ $button-variant: ("outline", "standard", "trans");
       lg-end:   1199px,
       xl-start: 1200px
    );
-
-   $font-family: 'Poppins', 'sans-serif';
 
    $border-radius:      0px     !default;
 
@@ -55385,6 +55655,17 @@ $button-variant: ("outline", "standard", "trans");
 //   - .typography
 
 // ----------------------------------------
+// -- font family
+// ----------------------------------------
+   :root:lang(en) {
+      --appFont: "Poppins", Sans-serif;
+   }
+
+   :root:lang(th) {
+      --appFont: "Prompt", Sans-serif;
+   }
+   $font-family:                 var(--appFont)                         !default;
+// ----------------------------------------
 // -- direction
 // ----------------------------------------
    $direction:                 ltr                                      !default; // or rtl
@@ -55513,8 +55794,6 @@ $button-variant: ("outline", "standard", "trans");
       lg-end:   1199px,
       xl-start: 1200px
    );
-
-   $font-family: 'Poppins', 'sans-serif';
 
    $border-radius:      0px     !default;
 
@@ -56273,6 +56552,17 @@ $avatar-variant: ("rounded", "square");
 //   - .typography
 
 // ----------------------------------------
+// -- font family
+// ----------------------------------------
+   :root:lang(en) {
+      --appFont: "Poppins", Sans-serif;
+   }
+
+   :root:lang(th) {
+      --appFont: "Prompt", Sans-serif;
+   }
+   $font-family:                 var(--appFont)                         !default;
+// ----------------------------------------
 // -- direction
 // ----------------------------------------
    $direction:                 ltr                                      !default; // or rtl
@@ -56401,8 +56691,6 @@ $avatar-variant: ("rounded", "square");
       lg-end:   1199px,
       xl-start: 1200px
    );
-
-   $font-family: 'Poppins', 'sans-serif';
 
    $border-radius:      0px     !default;
 
@@ -57171,6 +57459,17 @@ $avatar-variant: ("rounded", "square");
 //   - .typography
 
 // ----------------------------------------
+// -- font family
+// ----------------------------------------
+   :root:lang(en) {
+      --appFont: "Poppins", Sans-serif;
+   }
+
+   :root:lang(th) {
+      --appFont: "Prompt", Sans-serif;
+   }
+   $font-family:                 var(--appFont)                         !default;
+// ----------------------------------------
 // -- direction
 // ----------------------------------------
    $direction:                 ltr                                      !default; // or rtl
@@ -57299,8 +57598,6 @@ $avatar-variant: ("rounded", "square");
       lg-end:   1199px,
       xl-start: 1200px
    );
-
-   $font-family: 'Poppins', 'sans-serif';
 
    $border-radius:      0px     !default;
 
@@ -58184,6 +58481,17 @@ $avatar-variant: ("rounded", "square");
 //   - .typography
 
 // ----------------------------------------
+// -- font family
+// ----------------------------------------
+   :root:lang(en) {
+      --appFont: "Poppins", Sans-serif;
+   }
+
+   :root:lang(th) {
+      --appFont: "Prompt", Sans-serif;
+   }
+   $font-family:                 var(--appFont)                         !default;
+// ----------------------------------------
 // -- direction
 // ----------------------------------------
    $direction:                 ltr                                      !default; // or rtl
@@ -58312,8 +58620,6 @@ $avatar-variant: ("rounded", "square");
       lg-end:   1199px,
       xl-start: 1200px
    );
-
-   $font-family: 'Poppins', 'sans-serif';
 
    $border-radius:      0px     !default;
 
@@ -59037,6 +59343,17 @@ $avatar-variant: ("rounded", "square");
 //   - .typography
 
 // ----------------------------------------
+// -- font family
+// ----------------------------------------
+   :root:lang(en) {
+      --appFont: "Poppins", Sans-serif;
+   }
+
+   :root:lang(th) {
+      --appFont: "Prompt", Sans-serif;
+   }
+   $font-family:                 var(--appFont)                         !default;
+// ----------------------------------------
 // -- direction
 // ----------------------------------------
    $direction:                 ltr                                      !default; // or rtl
@@ -59165,8 +59482,6 @@ $avatar-variant: ("rounded", "square");
       lg-end:   1199px,
       xl-start: 1200px
    );
-
-   $font-family: 'Poppins', 'sans-serif';
 
    $border-radius:      0px     !default;
 
@@ -59887,6 +60202,17 @@ $avatar-variant: ("rounded", "square");
 //   - .typography
 
 // ----------------------------------------
+// -- font family
+// ----------------------------------------
+   :root:lang(en) {
+      --appFont: "Poppins", Sans-serif;
+   }
+
+   :root:lang(th) {
+      --appFont: "Prompt", Sans-serif;
+   }
+   $font-family:                 var(--appFont)                         !default;
+// ----------------------------------------
 // -- direction
 // ----------------------------------------
    $direction:                 ltr                                      !default; // or rtl
@@ -60015,8 +60341,6 @@ $avatar-variant: ("rounded", "square");
       lg-end:   1199px,
       xl-start: 1200px
    );
-
-   $font-family: 'Poppins', 'sans-serif';
 
    $border-radius:      0px     !default;
 
@@ -61104,6 +61428,17 @@ h6,
 //   - .typography
 
 // ----------------------------------------
+// -- font family
+// ----------------------------------------
+   :root:lang(en) {
+      --appFont: "Poppins", Sans-serif;
+   }
+
+   :root:lang(th) {
+      --appFont: "Prompt", Sans-serif;
+   }
+   $font-family:                 var(--appFont)                         !default;
+// ----------------------------------------
 // -- direction
 // ----------------------------------------
    $direction:                 ltr                                      !default; // or rtl
@@ -61232,8 +61567,6 @@ h6,
       lg-end:   1199px,
       xl-start: 1200px
    );
-
-   $font-family: 'Poppins', 'sans-serif';
 
    $border-radius:      0px     !default;
 
@@ -61957,6 +62290,17 @@ h6,
 //   - .typography
 
 // ----------------------------------------
+// -- font family
+// ----------------------------------------
+   :root:lang(en) {
+      --appFont: "Poppins", Sans-serif;
+   }
+
+   :root:lang(th) {
+      --appFont: "Prompt", Sans-serif;
+   }
+   $font-family:                 var(--appFont)                         !default;
+// ----------------------------------------
 // -- direction
 // ----------------------------------------
    $direction:                 ltr                                      !default; // or rtl
@@ -62085,8 +62429,6 @@ h6,
       lg-end:   1199px,
       xl-start: 1200px
    );
-
-   $font-family: 'Poppins', 'sans-serif';
 
    $border-radius:      0px     !default;
 
@@ -62807,6 +63149,17 @@ h6,
 //   - .typography
 
 // ----------------------------------------
+// -- font family
+// ----------------------------------------
+   :root:lang(en) {
+      --appFont: "Poppins", Sans-serif;
+   }
+
+   :root:lang(th) {
+      --appFont: "Prompt", Sans-serif;
+   }
+   $font-family:                 var(--appFont)                         !default;
+// ----------------------------------------
 // -- direction
 // ----------------------------------------
    $direction:                 ltr                                      !default; // or rtl
@@ -62935,8 +63288,6 @@ h6,
       lg-end:   1199px,
       xl-start: 1200px
    );
-
-   $font-family: 'Poppins', 'sans-serif';
 
    $border-radius:      0px     !default;
 
@@ -64073,6 +64424,17 @@ h6,
 //   - .typography
 
 // ----------------------------------------
+// -- font family
+// ----------------------------------------
+   :root:lang(en) {
+      --appFont: "Poppins", Sans-serif;
+   }
+
+   :root:lang(th) {
+      --appFont: "Prompt", Sans-serif;
+   }
+   $font-family:                 var(--appFont)                         !default;
+// ----------------------------------------
 // -- direction
 // ----------------------------------------
    $direction:                 ltr                                      !default; // or rtl
@@ -64201,8 +64563,6 @@ h6,
       lg-end:   1199px,
       xl-start: 1200px
    );
-
-   $font-family: 'Poppins', 'sans-serif';
 
    $border-radius:      0px     !default;
 
@@ -64923,6 +65283,17 @@ h6,
 //   - .typography
 
 // ----------------------------------------
+// -- font family
+// ----------------------------------------
+   :root:lang(en) {
+      --appFont: "Poppins", Sans-serif;
+   }
+
+   :root:lang(th) {
+      --appFont: "Prompt", Sans-serif;
+   }
+   $font-family:                 var(--appFont)                         !default;
+// ----------------------------------------
 // -- direction
 // ----------------------------------------
    $direction:                 ltr                                      !default; // or rtl
@@ -65051,8 +65422,6 @@ h6,
       lg-end:   1199px,
       xl-start: 1200px
    );
-
-   $font-family: 'Poppins', 'sans-serif';
 
    $border-radius:      0px     !default;
 
@@ -65836,6 +66205,17 @@ h6,
 //   - .typography
 
 // ----------------------------------------
+// -- font family
+// ----------------------------------------
+   :root:lang(en) {
+      --appFont: "Poppins", Sans-serif;
+   }
+
+   :root:lang(th) {
+      --appFont: "Prompt", Sans-serif;
+   }
+   $font-family:                 var(--appFont)                         !default;
+// ----------------------------------------
 // -- direction
 // ----------------------------------------
    $direction:                 ltr                                      !default; // or rtl
@@ -65964,8 +66344,6 @@ h6,
       lg-end:   1199px,
       xl-start: 1200px
    );
-
-   $font-family: 'Poppins', 'sans-serif';
 
    $border-radius:      0px     !default;
 
@@ -66838,6 +67216,17 @@ h6,
 //   - .typography
 
 // ----------------------------------------
+// -- font family
+// ----------------------------------------
+   :root:lang(en) {
+      --appFont: "Poppins", Sans-serif;
+   }
+
+   :root:lang(th) {
+      --appFont: "Prompt", Sans-serif;
+   }
+   $font-family:                 var(--appFont)                         !default;
+// ----------------------------------------
 // -- direction
 // ----------------------------------------
    $direction:                 ltr                                      !default; // or rtl
@@ -66966,8 +67355,6 @@ h6,
       lg-end:   1199px,
       xl-start: 1200px
    );
-
-   $font-family: 'Poppins', 'sans-serif';
 
    $border-radius:      0px     !default;
 
@@ -67801,6 +68188,17 @@ h6,
 //   - .typography
 
 // ----------------------------------------
+// -- font family
+// ----------------------------------------
+   :root:lang(en) {
+      --appFont: "Poppins", Sans-serif;
+   }
+
+   :root:lang(th) {
+      --appFont: "Prompt", Sans-serif;
+   }
+   $font-family:                 var(--appFont)                         !default;
+// ----------------------------------------
 // -- direction
 // ----------------------------------------
    $direction:                 ltr                                      !default; // or rtl
@@ -67929,8 +68327,6 @@ h6,
       lg-end:   1199px,
       xl-start: 1200px
    );
-
-   $font-family: 'Poppins', 'sans-serif';
 
    $border-radius:      0px     !default;
 
@@ -68654,6 +69050,17 @@ h6,
 //   - .typography
 
 // ----------------------------------------
+// -- font family
+// ----------------------------------------
+   :root:lang(en) {
+      --appFont: "Poppins", Sans-serif;
+   }
+
+   :root:lang(th) {
+      --appFont: "Prompt", Sans-serif;
+   }
+   $font-family:                 var(--appFont)                         !default;
+// ----------------------------------------
 // -- direction
 // ----------------------------------------
    $direction:                 ltr                                      !default; // or rtl
@@ -68782,8 +69189,6 @@ h6,
       lg-end:   1199px,
       xl-start: 1200px
    );
-
-   $font-family: 'Poppins', 'sans-serif';
 
    $border-radius:      0px     !default;
 
@@ -69504,6 +69909,17 @@ h6,
 //   - .typography
 
 // ----------------------------------------
+// -- font family
+// ----------------------------------------
+   :root:lang(en) {
+      --appFont: "Poppins", Sans-serif;
+   }
+
+   :root:lang(th) {
+      --appFont: "Prompt", Sans-serif;
+   }
+   $font-family:                 var(--appFont)                         !default;
+// ----------------------------------------
 // -- direction
 // ----------------------------------------
    $direction:                 ltr                                      !default; // or rtl
@@ -69632,8 +70048,6 @@ h6,
       lg-end:   1199px,
       xl-start: 1200px
    );
-
-   $font-family: 'Poppins', 'sans-serif';
 
    $border-radius:      0px     !default;
 
@@ -70650,6 +71064,17 @@ h6,
 //   - .typography
 
 // ----------------------------------------
+// -- font family
+// ----------------------------------------
+   :root:lang(en) {
+      --appFont: "Poppins", Sans-serif;
+   }
+
+   :root:lang(th) {
+      --appFont: "Prompt", Sans-serif;
+   }
+   $font-family:                 var(--appFont)                         !default;
+// ----------------------------------------
 // -- direction
 // ----------------------------------------
    $direction:                 ltr                                      !default; // or rtl
@@ -70778,8 +71203,6 @@ h6,
       lg-end:   1199px,
       xl-start: 1200px
    );
-
-   $font-family: 'Poppins', 'sans-serif';
 
    $border-radius:      0px     !default;
 
@@ -71605,6 +72028,17 @@ h6,
 //   - .typography
 
 // ----------------------------------------
+// -- font family
+// ----------------------------------------
+   :root:lang(en) {
+      --appFont: "Poppins", Sans-serif;
+   }
+
+   :root:lang(th) {
+      --appFont: "Prompt", Sans-serif;
+   }
+   $font-family:                 var(--appFont)                         !default;
+// ----------------------------------------
 // -- direction
 // ----------------------------------------
    $direction:                 ltr                                      !default; // or rtl
@@ -71733,8 +72167,6 @@ h6,
       lg-end:   1199px,
       xl-start: 1200px
    );
-
-   $font-family: 'Poppins', 'sans-serif';
 
    $border-radius:      0px     !default;
 

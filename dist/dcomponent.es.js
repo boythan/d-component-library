@@ -69309,8 +69309,68 @@ var Checkbox = function (_a) {
     return (jsxs("div", __assign({ className: classContainer }, props, { children: [jsxs("div", __assign({ className: classInputWrapper }, { children: [jsx("input", { type: "checkbox", id: id, name: name, value: value, onChange: onChange, className: classInput, disabled: disabled, checked: checked }, void 0), jsx("span", { className: "checkbox__check-mark" }, void 0)] }), void 0), label && jsx("div", __assign({ className: classLabel }, { children: label }), void 0)] }), void 0));
 };
 
+var en = {
+    error: "Error",
+    success: "Success",
+    info: "Info",
+    warning: "Warning",
+    cancel: "Cancel",
+    retry: "Retry",
+    showMore: "Show More",
+    showLess: "Show Less",
+    save: "Save",
+    back: "Back",
+    delete: "Delete",
+    print: "Print",
+    edit: "Edit",
+    selectAll: "Select All",
+    clearAll: "Clear All",
+    clear: "Clear",
+    apply: "Apply",
+    search: "Search",
+    showAll: "Show all",
+    closeAll: "Close All",
+};
+
+var th = {
+    error: "ผิดพลาด",
+    success: "สำเร็จ",
+    info: "ข้อมูล",
+    warning: "คำเตือน",
+    cancel: "ยกเลิก",
+    retry: "ลองอีกครั้ง",
+    save: "บันทึก",
+    edit: "แก้ไข",
+    delete: "ลบทิ้ง",
+    print: "พิมพ์",
+    back: "Back",
+    showMore: "Show More",
+    showLess: "Show Less",
+    selectAll: "Select All",
+    clear: "Clear",
+    apply: "Apply",
+    clearAll: "Clear All",
+    search: "Search",
+    showAll: "Show all",
+    closeAll: "Close All",
+};
+
+var _a;
+var Languages = {
+    en: en,
+    th: th,
+};
+var currentLang = (_a = document.documentElement.lang) !== null && _a !== void 0 ? _a : "en";
+var Messages = Languages[currentLang];
+console.log({ Messages: Messages });
+console.log({ currentLang: currentLang });
+
 var CheckboxGroup = function (_a) {
-    var className = _a.className, classNameItem = _a.classNameItem, dataSource = _a.dataSource, _b = _a.value, value = _b === void 0 ? [] : _b, _c = _a.multiple, multiple = _c === void 0 ? true : _c, _d = _a.numberOfColumns, numberOfColumns = _d === void 0 ? "3" : _d, label = _a.label, _e = _a.getLabel, getLabel = _e === void 0 ? function (item) { return item === null || item === void 0 ? void 0 : item.label; } : _e, _f = _a.getValue, getValue = _f === void 0 ? function (item) { return item === null || item === void 0 ? void 0 : item.id; } : _f, onChange = _a.onChange, getDisabledItem = _a.getDisabledItem;
+    var className = _a.className, classNameItem = _a.classNameItem, _b = _a.dataSource, dataSource = _b === void 0 ? [] : _b, _c = _a.value, value = _c === void 0 ? [] : _c, _d = _a.multiple, multiple = _d === void 0 ? true : _d, _e = _a.numberOfColumns, numberOfColumns = _e === void 0 ? "3" : _e, _f = _a.numberOfDefaultShow, numberOfDefaultShow = _f === void 0 ? 10 : _f, label = _a.label, _g = _a.getLabel, getLabel = _g === void 0 ? function (item) { return item === null || item === void 0 ? void 0 : item.label; } : _g, _h = _a.getValue, getValue = _h === void 0 ? function (item) { return item === null || item === void 0 ? void 0 : item.id; } : _h, onChange = _a.onChange, getDisabledItem = _a.getDisabledItem;
+    var _j = useState(false), expended = _j[0], setExpended = _j[1];
+    var dataSourceBrief = lodash.slice(dataSource, 0, numberOfDefaultShow);
+    var dataSourceDisplay = expended ? dataSource : dataSourceBrief;
+    var showExpandButtons = dataSource.length > numberOfDefaultShow;
     var containerClass = classnames(className);
     var groupContainerClass = classnames("d-checkbox-group d-flex flex-wrap", className);
     var onChangeChecked = function (item, event) {
@@ -69331,7 +69391,15 @@ var CheckboxGroup = function (_a) {
         }
         onChange && onChange(clone);
     };
-    return (jsxs("div", __assign({ className: containerClass }, { children: [jsx("label", { children: label }, void 0), jsx("div", __assign({ className: groupContainerClass }, { children: dataSource.map(function (item) {
+    var renderExpandedButtons = function () {
+        if (!showExpandButtons)
+            return jsx("div", {}, void 0);
+        if (expended) {
+            return (jsxs(Button, __assign({ variant: "trans", className: "p-0", onClick: function () { return setExpended(false); } }, { children: [jsx("div", __assign({ className: "flex-center-y text-x-small text-underline mr-2" }, { children: Messages.closeAll }), void 0), jsx(Icon$2, { name: "expand_less", size: "x-small" }, void 0)] }), void 0));
+        }
+        return (jsxs(Button, __assign({ variant: "trans", className: "p-0", onClick: function () { return setExpended(true); } }, { children: [jsx("div", __assign({ className: "flex-center-y text-x-small text-underline mr-2" }, { children: Messages.showAll }), void 0), jsx(Icon$2, { name: "expand_more", size: "x-small" }, void 0)] }), void 0));
+    };
+    return (jsxs("div", __assign({ className: containerClass }, { children: [jsx("label", { children: label }, void 0), jsx("div", __assign({ className: groupContainerClass }, { children: dataSourceDisplay.map(function (item) {
                     var iLabel = getLabel(item);
                     var iValue = getValue(item);
                     var isChecked = value.includes(iValue);
@@ -69350,7 +69418,7 @@ var CheckboxGroup = function (_a) {
                         "col-2": numberOfColumns === "6",
                     }, classNameItem);
                     return (jsx(Checkbox, { label: iLabel, value: getValue(item), onChange: function (event) { return onChangeChecked(item, event); }, checked: isChecked, disabled: isDisabled, className: itemClass }, iValue));
-                }) }), void 0)] }), void 0));
+                }) }), void 0), renderExpandedButtons()] }), void 0));
 };
 
 var RadioGroup = function (_a) {
@@ -69422,58 +69490,6 @@ var HeaderTable = function (_a) {
     }
     return (jsxs("div", __assign({ className: classnames("w-100", className), style: style }, { children: [jsxs("div", __assign({ className: classnames("d-flex justify-content-between mb-3", classNameTop) }, { children: [jsx("div", __assign({ className: "h4" }, { children: label }), void 0), jsxs("div", __assign({ className: "d-flex" }, { children: [onClickNew && jsx(Button, { iconName: "add", content: "New", onClick: onClickNew, className: "ml-3" }, void 0), onClickImport && (jsx(Button, { iconName: "cloud_upload", content: "Import", onClick: onClickImport, className: "ml-3" }, void 0)), onClickExport && (jsx(Button, { iconName: "cloud_download", content: "Export", onClick: onClickExport, className: "ml-3" }, void 0))] }), void 0)] }), void 0), jsxs("div", __assign({ className: "flex-center-y" }, { children: [customView && jsx("div", __assign({ className: "header-table__custom-view-container" }, { children: customView() }), void 0), jsx(InputTextSearch, { className: "w-100 mr-3 bg-white", placeholder: placeholder, onChange: onChangeText, disabled: disabledSearch, onSubmit: onSubmitSearch }, void 0), onClickFilter && button] }), void 0)] }), void 0));
 };
-
-var en = {
-    error: "Error",
-    success: "Success",
-    info: "Info",
-    warning: "Warning",
-    cancel: "Cancel",
-    retry: "Retry",
-    showMore: "Show More",
-    showLess: "Show Less",
-    save: "Save",
-    back: "Back",
-    delete: "Delete",
-    print: "Print",
-    edit: "Edit",
-    selectAll: "Select All",
-    clearAll: "Clear All",
-    clear: "Clear",
-    apply: "Apply",
-    search: "Search",
-};
-
-var th = {
-    error: "ผิดพลาด",
-    success: "สำเร็จ",
-    info: "ข้อมูล",
-    warning: "คำเตือน",
-    cancel: "ยกเลิก",
-    retry: "ลองอีกครั้ง",
-    save: "บันทึก",
-    edit: "แก้ไข",
-    delete: "ลบทิ้ง",
-    print: "พิมพ์",
-    back: "Back",
-    showMore: "Show More",
-    showLess: "Show Less",
-    selectAll: "Select All",
-    clear: "Clear",
-    apply: "Apply",
-    clearAll: "Clear All",
-    search: "Search",
-};
-
-var _a;
-var Languages = {
-    en: en,
-    th: th,
-};
-var currentLang = (_a = document.documentElement.lang) !== null && _a !== void 0 ? _a : "en";
-var Messages = Languages[currentLang];
-console.log({ Messages: Messages });
-console.log({ currentLang: currentLang });
 
 var Header = function (_a) {
     var title = _a.title, _b = _a.saveText, saveText = _b === void 0 ? Messages.save : _b, _c = _a.cancelText, cancelText = _c === void 0 ? Messages.back : _c, _d = _a.deleteText, deleteText = _d === void 0 ? Messages.delete : _d, _e = _a.printText, printText = _e === void 0 ? Messages.print : _e, _f = _a.editText, editText = _f === void 0 ? Messages.edit : _f, onCancel = _a.onCancel, onSave = _a.onSave, onDelete = _a.onDelete, onPrint = _a.onPrint, onEdit = _a.onEdit, disabledSave = _a.disabledSave, customLeft = _a.customLeft, _g = _a.showCancel, showCancel = _g === void 0 ? true : _g, className = _a.className;
@@ -76565,5 +76581,130 @@ var Form = function (_a) {
             })) }), void 0));
 };
 
-export { Avatar, AvatarName, AwesomeListComponent, AwesomeTableComponent, AwesomeTableUtils, Badge, Button, Card, Checkbox, CheckboxGroup, DateInput, DialogComponent, DialogManager, Dot, Dropdown, Form, FormItem, Header, HeaderBlock, HeaderDetail, HeaderTable, Icon$2 as Icon, ImageUtils, InputColor, InputText, InputTextSearch, Loading, MapUtils, Modal, Notifications, ObjectUtils, PopoverList, Progress, ProgressComponent, RadioGroup, RowInterchangeView, Select$1 as Select, SelectInfinity$1 as SelectInfinity, StringUtils, TabBar, TimeUtils, TreeDataUtils, TreeSelect, UrlUtils, ViewCollapse, ViewRow, ViewTextarea, ViewTimeline, useFirstTime, useForceUpdate, useForceUpdateConstraint, usePrevious };
+var InputDrop = function (_a) {
+    var label = _a.label, className = _a.className, classNameDropdown = _a.classNameDropdown, _b = _a.position, position = _b === void 0 ? "left-edge" : _b, _c = _a.iconName, iconName = _c === void 0 ? "expand_more" : _c, _d = _a.hideSelectAll, hideSelectAll = _d === void 0 ? false : _d, _e = _a.hideClearAll, hideClearAll = _e === void 0 ? false : _e, _f = _a.hideLabel, hideLabel = _f === void 0 ? false : _f, displayValue = _a.displayValue, _g = _a.selectAllText, selectAllText = _g === void 0 ? Messages.selectAll : _g, _h = _a.clearText, clearText = _h === void 0 ? Messages.clearAll : _h, error = _a.error, _j = _a.valueLength, valueLength = _j === void 0 ? 0 : _j, _k = _a.onClickSelectAll, onClickSelectAll = _k === void 0 ? function () { } : _k, _l = _a.onClickClearAll, onClickClearAll = _l === void 0 ? function () { } : _l, _m = _a.onClickApply, onClickApply = _m === void 0 ? function () { } : _m, onChangeText = _a.onChangeText, _o = _a.propsSearchText, propsSearchText = _o === void 0 ? {} : _o, _p = _a.content, content = _p === void 0 ? function () { return jsx("div", {}, void 0); } : _p;
+    var _q = useState(false), openDropdown = _q[0], setOpenDropdown = _q[1];
+    var dropdownRef = useRef(null);
+    var inputRef = useRef(null);
+    var containerClass = classnames("d-input-drop__container d-input-drop__container-" + position, {
+        "d-input-drop__container-active": openDropdown,
+        "d-input-drop__container-error": error,
+    }, className);
+    var inputClass = classnames("d-input-drop__input hover-pointer");
+    var dropdownWrapperClass = classnames("d-input-drop__dropdown", classNameDropdown);
+    var errorTextClass = classnames("text-x-small", "text-error", "ml-1");
+    useEffect(function () {
+        var handleOutsideClick = function (event) {
+            var isClickOutside = dropdownRef.current && !dropdownRef.current.contains(event === null || event === void 0 ? void 0 : event.target);
+            var isClickInput = inputRef.current && inputRef.current.contains(event.target);
+            if (isClickOutside && !isClickInput) {
+                setOpenDropdown(false);
+            }
+        };
+        document.addEventListener("mousedown", handleOutsideClick);
+    }, [dropdownRef, setOpenDropdown]);
+    var inputValue = function () {
+        var name = label;
+        if (displayValue) {
+            name = displayValue;
+        }
+        return (jsxs("div", __assign({ className: "flex-center-y w-100" }, { children: [jsx("div", __assign({ className: "" }, { children: name }), void 0), jsx(Badge, { variant: "index", index: valueLength, size: "x-large", className: "ml-2" }, void 0)] }), void 0));
+    };
+    var renderHeader = function () {
+        return (jsxs("div", __assign({ className: "flex-center-y justify-content-between border-bottom py-3 w-100" }, { children: [jsx("label", __assign({ className: "font-weight-bold" }, { children: label }), void 0), jsx("div", __assign({ className: "flex-center-y" }, { children: !hideSelectAll && (jsx(Button, { content: selectAllText, size: "x-small", variant: "trans", onClick: onClickSelectAll, color: "blue", className: "p-0 font-weight-normal text-label" }, void 0)) }), void 0)] }), void 0));
+    };
+    var renderFooter = function () {
+        return (jsxs("div", __assign({ className: "flex-center-y justify-content-between border-top py-3 w-100" }, { children: [!hideClearAll && (jsx(Button, { content: clearText, size: "x-small", variant: "trans", onClick: onClickClearAll, className: "p-0 font-weight-normal text-danger" }, void 0)), jsx(Button, { content: Messages.apply, onClick: function () {
+                        onClickApply();
+                        setOpenDropdown(false);
+                    } }, void 0)] }), void 0));
+    };
+    return (jsxs("div", __assign({ className: containerClass }, { children: [!hideLabel && jsx("label", { children: label }, void 0), jsx("div", __assign({ className: inputClass, onClick: function () { return setOpenDropdown(!openDropdown); }, ref: inputRef }, { children: jsxs("div", __assign({ className: "flex-center-y text-x-small w-100" }, { children: [inputValue(), jsx(Icon$2, { name: iconName, className: "d-input-drop__arrow-icon ml-2" }, void 0)] }), void 0) }), void 0), error && (jsxs("div", __assign({ className: "flex-center-y mt-1" }, { children: [jsx(Icon$2, { name: "error_outline", className: "text-error", size: "small" }, void 0), jsx("text", __assign({ className: errorTextClass }, { children: error }), void 0)] }), void 0)), jsxs("div", __assign({ className: dropdownWrapperClass, ref: dropdownRef }, { children: [renderHeader(), onChangeText && (jsx(InputText, __assign({ placeholder: Messages.search, className: "mt-3 w-100", onChange: onChangeText }, propsSearchText), void 0)), content(), renderFooter()] }), void 0)] }), void 0));
+};
+
+var isEmpty$1 = lodash.isEmpty, filter$1 = lodash.filter, includes$1 = lodash.includes, map$1 = lodash.map;
+var InputDropCheckboxGroup = function (props) {
+    var label = props.label, _a = props.dataSource, dataSource = _a === void 0 ? [] : _a, _b = props.numberOfColumns, numberOfColumns = _b === void 0 ? "2" : _b, _c = props.value, value = _c === void 0 ? [] : _c, multiple = props.multiple, onChange = props.onChange, _d = props.getLabel, getLabel = _d === void 0 ? function (item) { return item.label; } : _d, _e = props.getValue, getValue = _e === void 0 ? function (item) { return item === null || item === void 0 ? void 0 : item.id; } : _e, error = props.error, restProps = __rest$t(props, ["label", "dataSource", "numberOfColumns", "value", "multiple", "onChange", "getLabel", "getValue", "error"]);
+    var _f = useState(value), valueInput = _f[0], setValueInput = _f[1];
+    var _g = useState(""), textSearch = _g[0], setTextSearch = _g[1];
+    var dataSelectSource = useMemo$1(function () {
+        if (isEmpty$1(textSearch))
+            return dataSource;
+        return filter$1(dataSource, function (item) { return includes$1(getLabel(item), textSearch); });
+    }, [textSearch]);
+    var onClickSelectAll = function () {
+        var clone = map$1(dataSource, function (i) {
+            return getValue(i);
+        });
+        setValueInput(clone);
+    };
+    var onClickApply = function () {
+        return onChange && onChange(valueInput);
+    };
+    var onChangeTextSearch = function (event) {
+        setTextSearch(event.target.value);
+    };
+    return (jsx(InputDrop, __assign({ onClickSelectAll: onClickSelectAll, onClickClearAll: function () { return setValueInput([]); }, onChangeText: onChangeTextSearch, onClickApply: onClickApply, label: label, hideSelectAll: !multiple, content: function () { return (jsx(CheckboxGroup, __assign({ dataSource: dataSelectSource, numberOfColumns: numberOfColumns, onChange: setValueInput, getLabel: getLabel, getValue: getValue, multiple: multiple }, restProps, { value: valueInput, className: "w-100" }), void 0)); }, error: error }, restProps, { valueLength: value.length }), void 0));
+};
+
+var filter = lodash.filter, find = lodash.find, includes = lodash.includes, isEmpty = lodash.isEmpty, map = lodash.map;
+var InputDropSelect = function (props) {
+    var label = props.label, _a = props.dataSource, dataSource = _a === void 0 ? [] : _a, _b = props.value, value = _b === void 0 ? [] : _b, onChange = props.onChange, _c = props.getLabel, getLabel = _c === void 0 ? function (item) { return item.label; } : _c, _d = props.getValue, getValue = _d === void 0 ? function (item) { return item === null || item === void 0 ? void 0 : item.id; } : _d, error = props.error, _e = props.multiple, multiple = _e === void 0 ? true : _e, restProps = __rest$t(props, ["label", "dataSource", "value", "onChange", "getLabel", "getValue", "error", "multiple"]);
+    var _f = useState(value), valueInput = _f[0], setValueInput = _f[1];
+    var _g = useState(""), textSearch = _g[0], setTextSearch = _g[1];
+    var _h = useState(true), focusSelectList = _h[0], setFocusSelectList = _h[1];
+    var _j = useState(false), focusInputSearch = _j[0], setFocusInputSearch = _j[1];
+    var dataSelectSource = useMemo$1(function () {
+        if (isEmpty(textSearch))
+            return dataSource;
+        return filter(dataSource, function (item) { return includes(getLabel(item), textSearch); });
+    }, [textSearch]);
+    var onClickSelectAll = function () {
+        var clone = map(dataSource, function (i) {
+            return getValue(i);
+        });
+        setValueInput(clone);
+    };
+    var isSelected = function (iValue) { return !!find(valueInput, function (id) { return id === iValue; }); };
+    var onClickApply = function () {
+        return onChange && onChange(valueInput);
+    };
+    var onChangeTextSearch = function (event) {
+        var textValue = event.target.value;
+        setTextSearch(textValue);
+    };
+    var onClickSelectItem = function (iValue) {
+        if (!multiple) {
+            setValueInput([iValue]);
+            return;
+        }
+        var selected = isSelected(iValue);
+        if (selected) {
+            var dataResult = filter(valueInput, function (id) { return iValue !== id; });
+            setValueInput(dataResult);
+        }
+        else {
+            setValueInput(__spreadArray(__spreadArray([], valueInput), [iValue]));
+        }
+    };
+    var renderValueItem = function (id) {
+        var itemValue = find(dataSource, function (item) { return getValue(item) === id; });
+        var selected = isSelected(id);
+        return (jsxs("div", __assign({ className: "d-input-drop-select__item-container", onClick: function () { return onClickSelectItem(id); } }, { children: [jsx("text", { children: getLabel(itemValue) }, void 0), selected && jsx(Icon$2, { name: "remove_circle", className: "text-danger" }, void 0)] }), void 0));
+    };
+    var renderSelectList = function () {
+        return (jsx("div", __assign({ tabIndex: 1, onBlur: function () { return setTimeout(function () { return setFocusSelectList(false); }, 200); }, onFocus: function () { return setFocusSelectList(true); }, className: "w-100" }, { children: map(dataSelectSource, function (item) { return renderValueItem(getValue(item)); }) }), void 0));
+    };
+    var renderContentInput = function () {
+        if (focusInputSearch || focusSelectList)
+            return renderSelectList();
+        return jsx("div", __assign({ className: "w-100" }, { children: valueInput.map(renderValueItem) }), void 0);
+    };
+    return (jsx(InputDrop, __assign({ onClickSelectAll: onClickSelectAll, onClickClearAll: function () { return setValueInput([]); }, onChangeText: onChangeTextSearch, propsSearchText: {
+            onBlur: function () { return setTimeout(function () { return setFocusInputSearch(false); }, 200); },
+            onFocus: function () { return setFocusInputSearch(true); },
+        }, onClickApply: onClickApply, label: label, content: renderContentInput, error: error }, restProps, { valueLength: value.length, hideSelectAll: true }), void 0));
+};
+
+export { Avatar, AvatarName, AwesomeListComponent, AwesomeTableComponent, AwesomeTableUtils, Badge, Button, Card, Checkbox, CheckboxGroup, DateInput, DialogComponent, DialogManager, Dot, Dropdown, Form, FormItem, Header, HeaderBlock, HeaderDetail, HeaderTable, Icon$2 as Icon, ImageUtils, InputColor, InputDrop, InputDropCheckboxGroup, InputDropSelect, InputText, InputTextSearch, Loading, MapUtils, Modal, Notifications, ObjectUtils, PopoverList, Progress, ProgressComponent, RadioGroup, RowInterchangeView, Select$1 as Select, SelectInfinity$1 as SelectInfinity, StringUtils, TabBar, TimeUtils, TreeDataUtils, TreeSelect, UrlUtils, ViewCollapse, ViewRow, ViewTextarea, ViewTimeline, useFirstTime, useForceUpdate, useForceUpdateConstraint, usePrevious };
 //# sourceMappingURL=dcomponent.es.js.map

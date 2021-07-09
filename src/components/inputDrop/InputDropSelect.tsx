@@ -2,12 +2,13 @@
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { filter, find, includes, isEmpty, map } from "lodash";
+import _ from "lodash";
 import React, { useMemo, useState } from "react";
 import { CheckboxGroupProps } from "../checkbox/CheckboxGroup";
 import Icon from "../icon/Icon";
 import InputDrop, { InputDropProps } from "./InputDrop";
 
+const { filter, find, includes, isEmpty, map } = _;
 export interface InputDropSelectProps extends CheckboxGroupProps, InputDropProps {
     label: string;
     value?: any;

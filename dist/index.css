@@ -7478,6 +7478,12 @@ a.text-dark:focus, a.text-dark:hover {
   .table .thead-dark th {
     color: inherit;
     border-color: #dee2e6; } }
+:root:lang(en) {
+  --appFont: "Poppins", Sans-serif; }
+
+:root:lang(th) {
+  --appFont: "Prompt", Sans-serif; }
+
 /* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
 /* stylelint-disable no-duplicate-selectors */
 /* stylelint-disable */
@@ -27862,14 +27868,32 @@ div.ant-typography-edit-content {
     padding: 0;
     opacity: 0; } }
 
+:root:lang(en) {
+  --appFont: "Poppins", Sans-serif; }
+
+:root:lang(th) {
+  --appFont: "Prompt", Sans-serif; }
+
 /* ----------------------------------------
 // common
 // ---------------------------------------- */
 /*
 // text
 */
+:root:lang(en) {
+  --appFont: "Poppins", Sans-serif; }
+
+:root:lang(th) {
+  --appFont: "Prompt", Sans-serif; }
+
+:root:lang(en) {
+  --appFont: "Poppins", Sans-serif; }
+
+:root:lang(th) {
+  --appFont: "Prompt", Sans-serif; }
+
 .text-large, .text-large-bold {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 18px;
   line-height: 24px;
   font-weight: 400;
@@ -27878,7 +27902,7 @@ div.ant-typography-edit-content {
     font-weight: 600; }
 
 .text-medium, .text-medium-bold {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 16px;
   line-height: 20px;
   font-weight: 400;
@@ -27894,7 +27918,7 @@ text-bold,
 .text-small-bold,
 .ant-select-item-option,
 .d-table-awesome-component__row td {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 14px;
   line-height: 20px;
   font-weight: 400;
@@ -27908,7 +27932,7 @@ text-bold,
 .label,
 .text-label, .d-input-search > input, .d-select__select .ant-select-selection-item, .d-select__select .ant-select-selection-search, .d-select__select .ant-select-selection-placeholder, .d-select__select input, .d-date-input .ant-picker-input > input, .d-table-awesome-component .ant-table-thead > tr > th, .d-table-awesome-component .ant-pagination-total-text, .d-table-awesome-component .ant-pagination-item-link, .d-table-awesome-component .ant-pagination-options-quick-jumper input, .d-table-awesome-component .ant-pagination-item,
 .d-table-awesome-component .ant-select-selection-item {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 12px;
   line-height: 16px !important;
   font-weight: 400;
@@ -27919,7 +27943,7 @@ text-bold,
     font-weight: 600; }
 
 .text-xx-small, .text-xx-small-bold, .d-badge__badge-index-xxx-large-primary, .d-badge__badge-index-xxx-large-secondary, .d-badge__badge-index-xxx-large-green, .d-badge__badge-index-xxx-large-red, .d-badge__badge-index-xxx-large-yellow, .d-badge__badge-index-xxx-large-blue, .d-badge__badge-index-xxx-large-gray, .d-badge__badge-index-xxx-large-dark, .d-badge__badge-index-xxx-large-light, .d-badge__badge-index-xxx-large-error, .d-badge__badge-index-xxx-large-success, .d-badge__badge-index-xxx-large-warning, .d-badge__badge-index-xxx-large-muted, .d-badge__badge-index-xx-large-primary, .d-badge__badge-index-xx-large-secondary, .d-badge__badge-index-xx-large-green, .d-badge__badge-index-xx-large-red, .d-badge__badge-index-xx-large-yellow, .d-badge__badge-index-xx-large-blue, .d-badge__badge-index-xx-large-gray, .d-badge__badge-index-xx-large-dark, .d-badge__badge-index-xx-large-light, .d-badge__badge-index-xx-large-error, .d-badge__badge-index-xx-large-success, .d-badge__badge-index-xx-large-warning, .d-badge__badge-index-xx-large-muted, .d-badge__badge-index-x-large-primary, .d-badge__badge-index-x-large-secondary, .d-badge__badge-index-x-large-green, .d-badge__badge-index-x-large-red, .d-badge__badge-index-x-large-yellow, .d-badge__badge-index-x-large-blue, .d-badge__badge-index-x-large-gray, .d-badge__badge-index-x-large-dark, .d-badge__badge-index-x-large-light, .d-badge__badge-index-x-large-error, .d-badge__badge-index-x-large-success, .d-badge__badge-index-x-large-warning, .d-badge__badge-index-x-large-muted, .d-badge__badge-index-large-primary, .d-badge__badge-index-large-secondary, .d-badge__badge-index-large-green, .d-badge__badge-index-large-red, .d-badge__badge-index-large-yellow, .d-badge__badge-index-large-blue, .d-badge__badge-index-large-gray, .d-badge__badge-index-large-dark, .d-badge__badge-index-large-light, .d-badge__badge-index-large-error, .d-badge__badge-index-large-success, .d-badge__badge-index-large-warning, .d-badge__badge-index-large-muted, .d-badge__badge-index-medium-primary, .d-badge__badge-index-medium-secondary, .d-badge__badge-index-medium-green, .d-badge__badge-index-medium-red, .d-badge__badge-index-medium-yellow, .d-badge__badge-index-medium-blue, .d-badge__badge-index-medium-gray, .d-badge__badge-index-medium-dark, .d-badge__badge-index-medium-light, .d-badge__badge-index-medium-error, .d-badge__badge-index-medium-success, .d-badge__badge-index-medium-warning, .d-badge__badge-index-medium-muted, .d-badge__badge-index-small-primary, .d-badge__badge-index-small-secondary, .d-badge__badge-index-small-green, .d-badge__badge-index-small-red, .d-badge__badge-index-small-yellow, .d-badge__badge-index-small-blue, .d-badge__badge-index-small-gray, .d-badge__badge-index-small-dark, .d-badge__badge-index-small-light, .d-badge__badge-index-small-error, .d-badge__badge-index-small-success, .d-badge__badge-index-small-warning, .d-badge__badge-index-small-muted, .d-badge__badge-index-x-small-primary, .d-badge__badge-index-x-small-secondary, .d-badge__badge-index-x-small-green, .d-badge__badge-index-x-small-red, .d-badge__badge-index-x-small-yellow, .d-badge__badge-index-x-small-blue, .d-badge__badge-index-x-small-gray, .d-badge__badge-index-x-small-dark, .d-badge__badge-index-x-small-light, .d-badge__badge-index-x-small-error, .d-badge__badge-index-x-small-success, .d-badge__badge-index-x-small-warning, .d-badge__badge-index-x-small-muted, .d-badge__badge-index-xx-small-primary, .d-badge__badge-index-xx-small-secondary, .d-badge__badge-index-xx-small-green, .d-badge__badge-index-xx-small-red, .d-badge__badge-index-xx-small-yellow, .d-badge__badge-index-xx-small-blue, .d-badge__badge-index-xx-small-gray, .d-badge__badge-index-xx-small-dark, .d-badge__badge-index-xx-small-light, .d-badge__badge-index-xx-small-error, .d-badge__badge-index-xx-small-success, .d-badge__badge-index-xx-small-warning, .d-badge__badge-index-xx-small-muted {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 10px;
   line-height: 14px !important;
   font-weight: 400;
@@ -27971,7 +27995,7 @@ label,
   font-weight: 400 !important; }
 
 .p-large {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 18px;
   line-height: 28px;
   font-weight: 400;
@@ -27980,14 +28004,14 @@ label,
 p,
 .p,
 .p-medium {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
   font-style: normal; }
 
 .p-small {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
@@ -27995,7 +28019,7 @@ p,
 
 h0,
 .h0 {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 40px;
   line-height: 52px;
   font-weight: 600;
@@ -28004,7 +28028,7 @@ h0,
 
 h1,
 .h1 {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 34px;
   line-height: 40px;
   font-weight: 600;
@@ -28013,7 +28037,7 @@ h1,
 
 h2,
 .h2 {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 28px;
   line-height: 36px;
   font-weight: 600;
@@ -28022,7 +28046,7 @@ h2,
 
 h3,
 .h3 {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 24px;
   line-height: 32px;
   font-weight: 600;
@@ -28031,7 +28055,7 @@ h3,
 
 h4,
 .h4 {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 20px;
   line-height: 28px;
   font-weight: 600;
@@ -28040,7 +28064,7 @@ h4,
 
 h5,
 .h5 {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 14px;
   line-height: 20px;
   font-weight: 600;
@@ -28049,7 +28073,7 @@ h5,
 
 h6,
 .h6 {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 12px;
   line-height: 16px;
   font-weight: 600;
@@ -28059,6 +28083,12 @@ h6,
 /*
 // animations
 */
+:root:lang(en) {
+  --appFont: "Poppins", Sans-serif; }
+
+:root:lang(th) {
+  --appFont: "Prompt", Sans-serif; }
+
 @keyframes preloader-animation {
   from {
     transform: rotateZ(0deg); }
@@ -28068,13 +28098,25 @@ h6,
 /*
 // base
 */
+:root:lang(en) {
+  --appFont: "Poppins", Sans-serif; }
+
+:root:lang(th) {
+  --appFont: "Prompt", Sans-serif; }
+
+:root:lang(en) {
+  --appFont: "Poppins", Sans-serif; }
+
+:root:lang(th) {
+  --appFont: "Prompt", Sans-serif; }
+
 html {
   height: 100%;
   font-size: 14px; }
 
 body {
   height: 100%;
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 14px;
   font-weight: 400;
   line-height: 1.5;
@@ -28737,6 +28779,30 @@ a {
 /*
 // .document
 */
+:root:lang(en) {
+  --appFont: "Poppins", Sans-serif; }
+
+:root:lang(th) {
+  --appFont: "Prompt", Sans-serif; }
+
+:root:lang(en) {
+  --appFont: "Poppins", Sans-serif; }
+
+:root:lang(th) {
+  --appFont: "Prompt", Sans-serif; }
+
+:root:lang(en) {
+  --appFont: "Poppins", Sans-serif; }
+
+:root:lang(th) {
+  --appFont: "Prompt", Sans-serif; }
+
+:root:lang(en) {
+  --appFont: "Poppins", Sans-serif; }
+
+:root:lang(th) {
+  --appFont: "Prompt", Sans-serif; }
+
 .document {
   border: 2px solid #f0f0f0;
   border-radius: 2px;
@@ -28817,6 +28883,18 @@ a {
 /*
 // .page-header
 */
+:root:lang(en) {
+  --appFont: "Poppins", Sans-serif; }
+
+:root:lang(th) {
+  --appFont: "Prompt", Sans-serif; }
+
+:root:lang(en) {
+  --appFont: "Poppins", Sans-serif; }
+
+:root:lang(th) {
+  --appFont: "Prompt", Sans-serif; }
+
 .page-header {
   display: flex;
   justify-content: flex-start; }
@@ -28844,6 +28922,12 @@ a {
 /*
 // .site
 */
+:root:lang(en) {
+  --appFont: "Poppins", Sans-serif; }
+
+:root:lang(th) {
+  --appFont: "Prompt", Sans-serif; }
+
 .site {
   min-height: 100%;
   display: flex;
@@ -29060,6 +29144,12 @@ a {
   .md-modal {
     width: 85% !important; } }
 
+:root:lang(en) {
+  --appFont: "Poppins", Sans-serif; }
+
+:root:lang(th) {
+  --appFont: "Prompt", Sans-serif; }
+
 .d-notification__container, .d-notification__error, .d-notification__success, .d-notification__warning, .d-notification__info {
   border-radius: 0px !important;
   color: white; }
@@ -29111,6 +29201,12 @@ a {
 /* ----------------------------------------
 // Input
 // ---------------------------------------- */
+:root:lang(en) {
+  --appFont: "Poppins", Sans-serif; }
+
+:root:lang(th) {
+  --appFont: "Prompt", Sans-serif; }
+
 /********************************************LABEL & CONTAINER********************************************/
 .d-input-text__container {
   display: flex;
@@ -29225,6 +29321,12 @@ a {
   background-color: #F5F5F5 !important;
   border: none !important; }
 
+:root:lang(en) {
+  --appFont: "Poppins", Sans-serif; }
+
+:root:lang(th) {
+  --appFont: "Prompt", Sans-serif; }
+
 .d-input-color__container {
   display: flex;
   flex-direction: column; }
@@ -29245,16 +29347,34 @@ a {
   padding: 0px !important;
   background-color: transparent !important; }
 
+:root:lang(en) {
+  --appFont: "Poppins", Sans-serif; }
+
+:root:lang(th) {
+  --appFont: "Prompt", Sans-serif; }
+
 /*
 // base
 */
+:root:lang(en) {
+  --appFont: "Poppins", Sans-serif; }
+
+:root:lang(th) {
+  --appFont: "Prompt", Sans-serif; }
+
+:root:lang(en) {
+  --appFont: "Poppins", Sans-serif; }
+
+:root:lang(th) {
+  --appFont: "Prompt", Sans-serif; }
+
 html {
   height: 100%;
   font-size: 14px; }
 
 body {
   height: 100%;
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 14px;
   font-weight: 400;
   line-height: 1.5;
@@ -29989,6 +30109,12 @@ a {
 /* ----------------------------------------
 // Icon
 // ---------------------------------------- */
+:root:lang(en) {
+  --appFont: "Poppins", Sans-serif; }
+
+:root:lang(th) {
+  --appFont: "Prompt", Sans-serif; }
+
 .d-icon__xx-small {
   font-size: 10px; }
 
@@ -30016,16 +30142,34 @@ a {
 /* ----------------------------------------
 // Select
 // ---------------------------------------- */
+:root:lang(en) {
+  --appFont: "Poppins", Sans-serif; }
+
+:root:lang(th) {
+  --appFont: "Prompt", Sans-serif; }
+
 /*
 // base
 */
+:root:lang(en) {
+  --appFont: "Poppins", Sans-serif; }
+
+:root:lang(th) {
+  --appFont: "Prompt", Sans-serif; }
+
+:root:lang(en) {
+  --appFont: "Poppins", Sans-serif; }
+
+:root:lang(th) {
+  --appFont: "Prompt", Sans-serif; }
+
 html {
   height: 100%;
   font-size: 14px; }
 
 body {
   height: 100%;
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 14px;
   font-weight: 400;
   line-height: 1.5;
@@ -30739,11 +30883,29 @@ a {
 /* ----------------------------------------
 // Button
 // ---------------------------------------- */
+:root:lang(en) {
+  --appFont: "Poppins", Sans-serif; }
+
+:root:lang(th) {
+  --appFont: "Prompt", Sans-serif; }
+
 /*
 // text
 */
+:root:lang(en) {
+  --appFont: "Poppins", Sans-serif; }
+
+:root:lang(th) {
+  --appFont: "Prompt", Sans-serif; }
+
+:root:lang(en) {
+  --appFont: "Poppins", Sans-serif; }
+
+:root:lang(th) {
+  --appFont: "Prompt", Sans-serif; }
+
 .text-large, .text-large-bold {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 18px;
   line-height: 24px;
   font-weight: 400;
@@ -30752,7 +30914,7 @@ a {
     font-weight: 600; }
 
 .text-medium, .text-medium-bold {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 16px;
   line-height: 20px;
   font-weight: 400;
@@ -30768,7 +30930,7 @@ text-bold,
 .text-small-bold,
 .ant-select-item-option,
 .d-table-awesome-component__row td {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 14px;
   line-height: 20px;
   font-weight: 400;
@@ -30782,7 +30944,7 @@ text-bold,
 .label,
 .text-label, .d-input-search > input, .d-select__select .ant-select-selection-item, .d-select__select .ant-select-selection-search, .d-select__select .ant-select-selection-placeholder, .d-select__select input, .d-date-input .ant-picker-input > input, .d-table-awesome-component .ant-table-thead > tr > th, .d-table-awesome-component .ant-pagination-total-text, .d-table-awesome-component .ant-pagination-item-link, .d-table-awesome-component .ant-pagination-options-quick-jumper input, .d-table-awesome-component .ant-pagination-item,
 .d-table-awesome-component .ant-select-selection-item {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 12px;
   line-height: 16px !important;
   font-weight: 400;
@@ -30793,7 +30955,7 @@ text-bold,
     font-weight: 600; }
 
 .text-xx-small, .text-xx-small-bold, .d-badge__badge-index-xxx-large-primary, .d-badge__badge-index-xxx-large-secondary, .d-badge__badge-index-xxx-large-green, .d-badge__badge-index-xxx-large-red, .d-badge__badge-index-xxx-large-yellow, .d-badge__badge-index-xxx-large-blue, .d-badge__badge-index-xxx-large-gray, .d-badge__badge-index-xxx-large-dark, .d-badge__badge-index-xxx-large-light, .d-badge__badge-index-xxx-large-error, .d-badge__badge-index-xxx-large-success, .d-badge__badge-index-xxx-large-warning, .d-badge__badge-index-xxx-large-muted, .d-badge__badge-index-xx-large-primary, .d-badge__badge-index-xx-large-secondary, .d-badge__badge-index-xx-large-green, .d-badge__badge-index-xx-large-red, .d-badge__badge-index-xx-large-yellow, .d-badge__badge-index-xx-large-blue, .d-badge__badge-index-xx-large-gray, .d-badge__badge-index-xx-large-dark, .d-badge__badge-index-xx-large-light, .d-badge__badge-index-xx-large-error, .d-badge__badge-index-xx-large-success, .d-badge__badge-index-xx-large-warning, .d-badge__badge-index-xx-large-muted, .d-badge__badge-index-x-large-primary, .d-badge__badge-index-x-large-secondary, .d-badge__badge-index-x-large-green, .d-badge__badge-index-x-large-red, .d-badge__badge-index-x-large-yellow, .d-badge__badge-index-x-large-blue, .d-badge__badge-index-x-large-gray, .d-badge__badge-index-x-large-dark, .d-badge__badge-index-x-large-light, .d-badge__badge-index-x-large-error, .d-badge__badge-index-x-large-success, .d-badge__badge-index-x-large-warning, .d-badge__badge-index-x-large-muted, .d-badge__badge-index-large-primary, .d-badge__badge-index-large-secondary, .d-badge__badge-index-large-green, .d-badge__badge-index-large-red, .d-badge__badge-index-large-yellow, .d-badge__badge-index-large-blue, .d-badge__badge-index-large-gray, .d-badge__badge-index-large-dark, .d-badge__badge-index-large-light, .d-badge__badge-index-large-error, .d-badge__badge-index-large-success, .d-badge__badge-index-large-warning, .d-badge__badge-index-large-muted, .d-badge__badge-index-medium-primary, .d-badge__badge-index-medium-secondary, .d-badge__badge-index-medium-green, .d-badge__badge-index-medium-red, .d-badge__badge-index-medium-yellow, .d-badge__badge-index-medium-blue, .d-badge__badge-index-medium-gray, .d-badge__badge-index-medium-dark, .d-badge__badge-index-medium-light, .d-badge__badge-index-medium-error, .d-badge__badge-index-medium-success, .d-badge__badge-index-medium-warning, .d-badge__badge-index-medium-muted, .d-badge__badge-index-small-primary, .d-badge__badge-index-small-secondary, .d-badge__badge-index-small-green, .d-badge__badge-index-small-red, .d-badge__badge-index-small-yellow, .d-badge__badge-index-small-blue, .d-badge__badge-index-small-gray, .d-badge__badge-index-small-dark, .d-badge__badge-index-small-light, .d-badge__badge-index-small-error, .d-badge__badge-index-small-success, .d-badge__badge-index-small-warning, .d-badge__badge-index-small-muted, .d-badge__badge-index-x-small-primary, .d-badge__badge-index-x-small-secondary, .d-badge__badge-index-x-small-green, .d-badge__badge-index-x-small-red, .d-badge__badge-index-x-small-yellow, .d-badge__badge-index-x-small-blue, .d-badge__badge-index-x-small-gray, .d-badge__badge-index-x-small-dark, .d-badge__badge-index-x-small-light, .d-badge__badge-index-x-small-error, .d-badge__badge-index-x-small-success, .d-badge__badge-index-x-small-warning, .d-badge__badge-index-x-small-muted, .d-badge__badge-index-xx-small-primary, .d-badge__badge-index-xx-small-secondary, .d-badge__badge-index-xx-small-green, .d-badge__badge-index-xx-small-red, .d-badge__badge-index-xx-small-yellow, .d-badge__badge-index-xx-small-blue, .d-badge__badge-index-xx-small-gray, .d-badge__badge-index-xx-small-dark, .d-badge__badge-index-xx-small-light, .d-badge__badge-index-xx-small-error, .d-badge__badge-index-xx-small-success, .d-badge__badge-index-xx-small-warning, .d-badge__badge-index-xx-small-muted {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 10px;
   line-height: 14px !important;
   font-weight: 400;
@@ -30845,7 +31007,7 @@ label,
   font-weight: 400 !important; }
 
 .p-large {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 18px;
   line-height: 28px;
   font-weight: 400;
@@ -30854,14 +31016,14 @@ label,
 p,
 .p,
 .p-medium {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
   font-style: normal; }
 
 .p-small {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
@@ -30869,7 +31031,7 @@ p,
 
 h0,
 .h0 {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 40px;
   line-height: 52px;
   font-weight: 600;
@@ -30878,7 +31040,7 @@ h0,
 
 h1,
 .h1 {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 34px;
   line-height: 40px;
   font-weight: 600;
@@ -30887,7 +31049,7 @@ h1,
 
 h2,
 .h2 {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 28px;
   line-height: 36px;
   font-weight: 600;
@@ -30896,7 +31058,7 @@ h2,
 
 h3,
 .h3 {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 24px;
   line-height: 32px;
   font-weight: 600;
@@ -30905,7 +31067,7 @@ h3,
 
 h4,
 .h4 {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 20px;
   line-height: 28px;
   font-weight: 600;
@@ -30914,7 +31076,7 @@ h4,
 
 h5,
 .h5 {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 14px;
   line-height: 20px;
   font-weight: 600;
@@ -30923,12 +31085,24 @@ h5,
 
 h6,
 .h6 {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 12px;
   line-height: 16px;
   font-weight: 600;
   font-style: normal;
   margin-bottom: 0rem !important; }
+
+:root:lang(en) {
+  --appFont: "Poppins", Sans-serif; }
+
+:root:lang(th) {
+  --appFont: "Prompt", Sans-serif; }
+
+:root:lang(en) {
+  --appFont: "Poppins", Sans-serif; }
+
+:root:lang(th) {
+  --appFont: "Prompt", Sans-serif; }
 
 .d-button {
   display: flex;
@@ -31664,6 +31838,12 @@ h6,
 /* ----------------------------------------
 // Checkbox
 // ---------------------------------------- */
+:root:lang(en) {
+  --appFont: "Poppins", Sans-serif; }
+
+:root:lang(th) {
+  --appFont: "Prompt", Sans-serif; }
+
 .checkbox__container {
   display: flex;
   align-items: center;
@@ -31769,6 +31949,12 @@ h6,
 /* ----------------------------------------
 // avatar
 // ---------------------------------------- */
+:root:lang(en) {
+  --appFont: "Poppins", Sans-serif; }
+
+:root:lang(th) {
+  --appFont: "Prompt", Sans-serif; }
+
 .d-image__image {
   width: 100%;
   height: 100%;
@@ -31855,6 +32041,12 @@ h6,
 /* ----------------------------------------
 // tab-bar
 // ---------------------------------------- */
+:root:lang(en) {
+  --appFont: "Poppins", Sans-serif; }
+
+:root:lang(th) {
+  --appFont: "Prompt", Sans-serif; }
+
 .d-tab-bar__horizontal {
   -ms-overflow-style: none;
   /* IE and Edge */
@@ -31891,6 +32083,12 @@ h6,
 /* ----------------------------------------
 // list
 // ---------------------------------------- */
+:root:lang(en) {
+  --appFont: "Poppins", Sans-serif; }
+
+:root:lang(th) {
+  --appFont: "Prompt", Sans-serif; }
+
 .d-popover-list {
   /* display: flex;
     flex-direction: column;
@@ -32022,11 +32220,29 @@ h6,
 /* ----------------------------------------
 // date input
 // ---------------------------------------- */
+:root:lang(en) {
+  --appFont: "Poppins", Sans-serif; }
+
+:root:lang(th) {
+  --appFont: "Prompt", Sans-serif; }
+
 /*
 // text
 */
+:root:lang(en) {
+  --appFont: "Poppins", Sans-serif; }
+
+:root:lang(th) {
+  --appFont: "Prompt", Sans-serif; }
+
+:root:lang(en) {
+  --appFont: "Poppins", Sans-serif; }
+
+:root:lang(th) {
+  --appFont: "Prompt", Sans-serif; }
+
 .text-large, .text-large-bold {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 18px;
   line-height: 24px;
   font-weight: 400;
@@ -32035,7 +32251,7 @@ h6,
     font-weight: 600; }
 
 .text-medium, .text-medium-bold {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 16px;
   line-height: 20px;
   font-weight: 400;
@@ -32051,7 +32267,7 @@ text-bold,
 .text-small-bold,
 .ant-select-item-option,
 .d-table-awesome-component__row td {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 14px;
   line-height: 20px;
   font-weight: 400;
@@ -32065,7 +32281,7 @@ text-bold,
 .label,
 .text-label, .d-input-search > input, .d-select__select .ant-select-selection-item, .d-select__select .ant-select-selection-search, .d-select__select .ant-select-selection-placeholder, .d-select__select input, .d-date-input .ant-picker-input > input, .d-table-awesome-component .ant-table-thead > tr > th, .d-table-awesome-component .ant-pagination-total-text, .d-table-awesome-component .ant-pagination-item-link, .d-table-awesome-component .ant-pagination-options-quick-jumper input, .d-table-awesome-component .ant-pagination-item,
 .d-table-awesome-component .ant-select-selection-item {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 12px;
   line-height: 16px !important;
   font-weight: 400;
@@ -32076,7 +32292,7 @@ text-bold,
     font-weight: 600; }
 
 .text-xx-small, .text-xx-small-bold, .d-badge__badge-index-xxx-large-primary, .d-badge__badge-index-xxx-large-secondary, .d-badge__badge-index-xxx-large-green, .d-badge__badge-index-xxx-large-red, .d-badge__badge-index-xxx-large-yellow, .d-badge__badge-index-xxx-large-blue, .d-badge__badge-index-xxx-large-gray, .d-badge__badge-index-xxx-large-dark, .d-badge__badge-index-xxx-large-light, .d-badge__badge-index-xxx-large-error, .d-badge__badge-index-xxx-large-success, .d-badge__badge-index-xxx-large-warning, .d-badge__badge-index-xxx-large-muted, .d-badge__badge-index-xx-large-primary, .d-badge__badge-index-xx-large-secondary, .d-badge__badge-index-xx-large-green, .d-badge__badge-index-xx-large-red, .d-badge__badge-index-xx-large-yellow, .d-badge__badge-index-xx-large-blue, .d-badge__badge-index-xx-large-gray, .d-badge__badge-index-xx-large-dark, .d-badge__badge-index-xx-large-light, .d-badge__badge-index-xx-large-error, .d-badge__badge-index-xx-large-success, .d-badge__badge-index-xx-large-warning, .d-badge__badge-index-xx-large-muted, .d-badge__badge-index-x-large-primary, .d-badge__badge-index-x-large-secondary, .d-badge__badge-index-x-large-green, .d-badge__badge-index-x-large-red, .d-badge__badge-index-x-large-yellow, .d-badge__badge-index-x-large-blue, .d-badge__badge-index-x-large-gray, .d-badge__badge-index-x-large-dark, .d-badge__badge-index-x-large-light, .d-badge__badge-index-x-large-error, .d-badge__badge-index-x-large-success, .d-badge__badge-index-x-large-warning, .d-badge__badge-index-x-large-muted, .d-badge__badge-index-large-primary, .d-badge__badge-index-large-secondary, .d-badge__badge-index-large-green, .d-badge__badge-index-large-red, .d-badge__badge-index-large-yellow, .d-badge__badge-index-large-blue, .d-badge__badge-index-large-gray, .d-badge__badge-index-large-dark, .d-badge__badge-index-large-light, .d-badge__badge-index-large-error, .d-badge__badge-index-large-success, .d-badge__badge-index-large-warning, .d-badge__badge-index-large-muted, .d-badge__badge-index-medium-primary, .d-badge__badge-index-medium-secondary, .d-badge__badge-index-medium-green, .d-badge__badge-index-medium-red, .d-badge__badge-index-medium-yellow, .d-badge__badge-index-medium-blue, .d-badge__badge-index-medium-gray, .d-badge__badge-index-medium-dark, .d-badge__badge-index-medium-light, .d-badge__badge-index-medium-error, .d-badge__badge-index-medium-success, .d-badge__badge-index-medium-warning, .d-badge__badge-index-medium-muted, .d-badge__badge-index-small-primary, .d-badge__badge-index-small-secondary, .d-badge__badge-index-small-green, .d-badge__badge-index-small-red, .d-badge__badge-index-small-yellow, .d-badge__badge-index-small-blue, .d-badge__badge-index-small-gray, .d-badge__badge-index-small-dark, .d-badge__badge-index-small-light, .d-badge__badge-index-small-error, .d-badge__badge-index-small-success, .d-badge__badge-index-small-warning, .d-badge__badge-index-small-muted, .d-badge__badge-index-x-small-primary, .d-badge__badge-index-x-small-secondary, .d-badge__badge-index-x-small-green, .d-badge__badge-index-x-small-red, .d-badge__badge-index-x-small-yellow, .d-badge__badge-index-x-small-blue, .d-badge__badge-index-x-small-gray, .d-badge__badge-index-x-small-dark, .d-badge__badge-index-x-small-light, .d-badge__badge-index-x-small-error, .d-badge__badge-index-x-small-success, .d-badge__badge-index-x-small-warning, .d-badge__badge-index-x-small-muted, .d-badge__badge-index-xx-small-primary, .d-badge__badge-index-xx-small-secondary, .d-badge__badge-index-xx-small-green, .d-badge__badge-index-xx-small-red, .d-badge__badge-index-xx-small-yellow, .d-badge__badge-index-xx-small-blue, .d-badge__badge-index-xx-small-gray, .d-badge__badge-index-xx-small-dark, .d-badge__badge-index-xx-small-light, .d-badge__badge-index-xx-small-error, .d-badge__badge-index-xx-small-success, .d-badge__badge-index-xx-small-warning, .d-badge__badge-index-xx-small-muted {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 10px;
   line-height: 14px !important;
   font-weight: 400;
@@ -32128,7 +32344,7 @@ label,
   font-weight: 400 !important; }
 
 .p-large {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 18px;
   line-height: 28px;
   font-weight: 400;
@@ -32137,14 +32353,14 @@ label,
 p,
 .p,
 .p-medium {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
   font-style: normal; }
 
 .p-small {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
@@ -32152,7 +32368,7 @@ p,
 
 h0,
 .h0 {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 40px;
   line-height: 52px;
   font-weight: 600;
@@ -32161,7 +32377,7 @@ h0,
 
 h1,
 .h1 {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 34px;
   line-height: 40px;
   font-weight: 600;
@@ -32170,7 +32386,7 @@ h1,
 
 h2,
 .h2 {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 28px;
   line-height: 36px;
   font-weight: 600;
@@ -32179,7 +32395,7 @@ h2,
 
 h3,
 .h3 {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 24px;
   line-height: 32px;
   font-weight: 600;
@@ -32188,7 +32404,7 @@ h3,
 
 h4,
 .h4 {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 20px;
   line-height: 28px;
   font-weight: 600;
@@ -32197,7 +32413,7 @@ h4,
 
 h5,
 .h5 {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 14px;
   line-height: 20px;
   font-weight: 600;
@@ -32206,7 +32422,7 @@ h5,
 
 h6,
 .h6 {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 12px;
   line-height: 16px;
   font-weight: 600;
@@ -32263,11 +32479,29 @@ h6,
 /* ----------------------------------------
 // dot
 // ---------------------------------------- */
+:root:lang(en) {
+  --appFont: "Poppins", Sans-serif; }
+
+:root:lang(th) {
+  --appFont: "Prompt", Sans-serif; }
+
 /*
 // text
 */
+:root:lang(en) {
+  --appFont: "Poppins", Sans-serif; }
+
+:root:lang(th) {
+  --appFont: "Prompt", Sans-serif; }
+
+:root:lang(en) {
+  --appFont: "Poppins", Sans-serif; }
+
+:root:lang(th) {
+  --appFont: "Prompt", Sans-serif; }
+
 .text-large, .text-large-bold {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 18px;
   line-height: 24px;
   font-weight: 400;
@@ -32276,7 +32510,7 @@ h6,
     font-weight: 600; }
 
 .text-medium, .text-medium-bold {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 16px;
   line-height: 20px;
   font-weight: 400;
@@ -32292,7 +32526,7 @@ text-bold,
 .text-small-bold,
 .ant-select-item-option,
 .d-table-awesome-component__row td {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 14px;
   line-height: 20px;
   font-weight: 400;
@@ -32306,7 +32540,7 @@ text-bold,
 .label,
 .text-label, .d-input-search > input, .d-select__select .ant-select-selection-item, .d-select__select .ant-select-selection-search, .d-select__select .ant-select-selection-placeholder, .d-select__select input, .d-date-input .ant-picker-input > input, .d-table-awesome-component .ant-table-thead > tr > th, .d-table-awesome-component .ant-pagination-total-text, .d-table-awesome-component .ant-pagination-item-link, .d-table-awesome-component .ant-pagination-options-quick-jumper input, .d-table-awesome-component .ant-pagination-item,
 .d-table-awesome-component .ant-select-selection-item {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 12px;
   line-height: 16px !important;
   font-weight: 400;
@@ -32317,7 +32551,7 @@ text-bold,
     font-weight: 600; }
 
 .text-xx-small, .text-xx-small-bold, .d-badge__badge-index-xxx-large-primary, .d-badge__badge-index-xxx-large-secondary, .d-badge__badge-index-xxx-large-green, .d-badge__badge-index-xxx-large-red, .d-badge__badge-index-xxx-large-yellow, .d-badge__badge-index-xxx-large-blue, .d-badge__badge-index-xxx-large-gray, .d-badge__badge-index-xxx-large-dark, .d-badge__badge-index-xxx-large-light, .d-badge__badge-index-xxx-large-error, .d-badge__badge-index-xxx-large-success, .d-badge__badge-index-xxx-large-warning, .d-badge__badge-index-xxx-large-muted, .d-badge__badge-index-xx-large-primary, .d-badge__badge-index-xx-large-secondary, .d-badge__badge-index-xx-large-green, .d-badge__badge-index-xx-large-red, .d-badge__badge-index-xx-large-yellow, .d-badge__badge-index-xx-large-blue, .d-badge__badge-index-xx-large-gray, .d-badge__badge-index-xx-large-dark, .d-badge__badge-index-xx-large-light, .d-badge__badge-index-xx-large-error, .d-badge__badge-index-xx-large-success, .d-badge__badge-index-xx-large-warning, .d-badge__badge-index-xx-large-muted, .d-badge__badge-index-x-large-primary, .d-badge__badge-index-x-large-secondary, .d-badge__badge-index-x-large-green, .d-badge__badge-index-x-large-red, .d-badge__badge-index-x-large-yellow, .d-badge__badge-index-x-large-blue, .d-badge__badge-index-x-large-gray, .d-badge__badge-index-x-large-dark, .d-badge__badge-index-x-large-light, .d-badge__badge-index-x-large-error, .d-badge__badge-index-x-large-success, .d-badge__badge-index-x-large-warning, .d-badge__badge-index-x-large-muted, .d-badge__badge-index-large-primary, .d-badge__badge-index-large-secondary, .d-badge__badge-index-large-green, .d-badge__badge-index-large-red, .d-badge__badge-index-large-yellow, .d-badge__badge-index-large-blue, .d-badge__badge-index-large-gray, .d-badge__badge-index-large-dark, .d-badge__badge-index-large-light, .d-badge__badge-index-large-error, .d-badge__badge-index-large-success, .d-badge__badge-index-large-warning, .d-badge__badge-index-large-muted, .d-badge__badge-index-medium-primary, .d-badge__badge-index-medium-secondary, .d-badge__badge-index-medium-green, .d-badge__badge-index-medium-red, .d-badge__badge-index-medium-yellow, .d-badge__badge-index-medium-blue, .d-badge__badge-index-medium-gray, .d-badge__badge-index-medium-dark, .d-badge__badge-index-medium-light, .d-badge__badge-index-medium-error, .d-badge__badge-index-medium-success, .d-badge__badge-index-medium-warning, .d-badge__badge-index-medium-muted, .d-badge__badge-index-small-primary, .d-badge__badge-index-small-secondary, .d-badge__badge-index-small-green, .d-badge__badge-index-small-red, .d-badge__badge-index-small-yellow, .d-badge__badge-index-small-blue, .d-badge__badge-index-small-gray, .d-badge__badge-index-small-dark, .d-badge__badge-index-small-light, .d-badge__badge-index-small-error, .d-badge__badge-index-small-success, .d-badge__badge-index-small-warning, .d-badge__badge-index-small-muted, .d-badge__badge-index-x-small-primary, .d-badge__badge-index-x-small-secondary, .d-badge__badge-index-x-small-green, .d-badge__badge-index-x-small-red, .d-badge__badge-index-x-small-yellow, .d-badge__badge-index-x-small-blue, .d-badge__badge-index-x-small-gray, .d-badge__badge-index-x-small-dark, .d-badge__badge-index-x-small-light, .d-badge__badge-index-x-small-error, .d-badge__badge-index-x-small-success, .d-badge__badge-index-x-small-warning, .d-badge__badge-index-x-small-muted, .d-badge__badge-index-xx-small-primary, .d-badge__badge-index-xx-small-secondary, .d-badge__badge-index-xx-small-green, .d-badge__badge-index-xx-small-red, .d-badge__badge-index-xx-small-yellow, .d-badge__badge-index-xx-small-blue, .d-badge__badge-index-xx-small-gray, .d-badge__badge-index-xx-small-dark, .d-badge__badge-index-xx-small-light, .d-badge__badge-index-xx-small-error, .d-badge__badge-index-xx-small-success, .d-badge__badge-index-xx-small-warning, .d-badge__badge-index-xx-small-muted {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 10px;
   line-height: 14px !important;
   font-weight: 400;
@@ -32369,7 +32603,7 @@ label,
   font-weight: 400 !important; }
 
 .p-large {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 18px;
   line-height: 28px;
   font-weight: 400;
@@ -32378,14 +32612,14 @@ label,
 p,
 .p,
 .p-medium {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
   font-style: normal; }
 
 .p-small {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
@@ -32393,7 +32627,7 @@ p,
 
 h0,
 .h0 {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 40px;
   line-height: 52px;
   font-weight: 600;
@@ -32402,7 +32636,7 @@ h0,
 
 h1,
 .h1 {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 34px;
   line-height: 40px;
   font-weight: 600;
@@ -32411,7 +32645,7 @@ h1,
 
 h2,
 .h2 {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 28px;
   line-height: 36px;
   font-weight: 600;
@@ -32420,7 +32654,7 @@ h2,
 
 h3,
 .h3 {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 24px;
   line-height: 32px;
   font-weight: 600;
@@ -32429,7 +32663,7 @@ h3,
 
 h4,
 .h4 {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 20px;
   line-height: 28px;
   font-weight: 600;
@@ -32438,7 +32672,7 @@ h4,
 
 h5,
 .h5 {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 14px;
   line-height: 20px;
   font-weight: 600;
@@ -32447,12 +32681,24 @@ h5,
 
 h6,
 .h6 {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 12px;
   line-height: 16px;
   font-weight: 600;
   font-style: normal;
   margin-bottom: 0rem !important; }
+
+:root:lang(en) {
+  --appFont: "Poppins", Sans-serif; }
+
+:root:lang(th) {
+  --appFont: "Prompt", Sans-serif; }
+
+:root:lang(en) {
+  --appFont: "Poppins", Sans-serif; }
+
+:root:lang(th) {
+  --appFont: "Prompt", Sans-serif; }
 
 .d-dot__xxx-large-primary {
   background-color: #DE0D0C;
@@ -33757,6 +34003,12 @@ h6,
 /* ----------------------------------------
 // table
 // ---------------------------------------- */
+:root:lang(en) {
+  --appFont: "Poppins", Sans-serif; }
+
+:root:lang(th) {
+  --appFont: "Prompt", Sans-serif; }
+
 .d-table-awesome-component {
   height: 100%;
   width: 100%;
@@ -33861,6 +34113,12 @@ h6,
 /* ----------------------------------------
 // dropdown
 // ---------------------------------------- */
+:root:lang(en) {
+  --appFont: "Poppins", Sans-serif; }
+
+:root:lang(th) {
+  --appFont: "Prompt", Sans-serif; }
+
 .d-dropdown {
   width: fit-content;
   position: relative !important;
@@ -33942,11 +34200,29 @@ h6,
 /* ----------------------------------------
 // badge
 // ---------------------------------------- */
+:root:lang(en) {
+  --appFont: "Poppins", Sans-serif; }
+
+:root:lang(th) {
+  --appFont: "Prompt", Sans-serif; }
+
 /*
 // text
 */
+:root:lang(en) {
+  --appFont: "Poppins", Sans-serif; }
+
+:root:lang(th) {
+  --appFont: "Prompt", Sans-serif; }
+
+:root:lang(en) {
+  --appFont: "Poppins", Sans-serif; }
+
+:root:lang(th) {
+  --appFont: "Prompt", Sans-serif; }
+
 .text-large, .text-large-bold {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 18px;
   line-height: 24px;
   font-weight: 400;
@@ -33955,7 +34231,7 @@ h6,
     font-weight: 600; }
 
 .text-medium, .text-medium-bold {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 16px;
   line-height: 20px;
   font-weight: 400;
@@ -33971,7 +34247,7 @@ text-bold,
 .text-small-bold,
 .ant-select-item-option,
 .d-table-awesome-component__row td {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 14px;
   line-height: 20px;
   font-weight: 400;
@@ -33985,7 +34261,7 @@ text-bold,
 .label,
 .text-label, .d-input-search > input, .d-select__select .ant-select-selection-item, .d-select__select .ant-select-selection-search, .d-select__select .ant-select-selection-placeholder, .d-select__select input, .d-date-input .ant-picker-input > input, .d-table-awesome-component .ant-table-thead > tr > th, .d-table-awesome-component .ant-pagination-total-text, .d-table-awesome-component .ant-pagination-item-link, .d-table-awesome-component .ant-pagination-options-quick-jumper input, .d-table-awesome-component .ant-pagination-item,
 .d-table-awesome-component .ant-select-selection-item {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 12px;
   line-height: 16px !important;
   font-weight: 400;
@@ -33996,7 +34272,7 @@ text-bold,
     font-weight: 600; }
 
 .text-xx-small, .text-xx-small-bold, .d-badge__badge-index-xxx-large-primary, .d-badge__badge-index-xxx-large-secondary, .d-badge__badge-index-xxx-large-green, .d-badge__badge-index-xxx-large-red, .d-badge__badge-index-xxx-large-yellow, .d-badge__badge-index-xxx-large-blue, .d-badge__badge-index-xxx-large-gray, .d-badge__badge-index-xxx-large-dark, .d-badge__badge-index-xxx-large-light, .d-badge__badge-index-xxx-large-error, .d-badge__badge-index-xxx-large-success, .d-badge__badge-index-xxx-large-warning, .d-badge__badge-index-xxx-large-muted, .d-badge__badge-index-xx-large-primary, .d-badge__badge-index-xx-large-secondary, .d-badge__badge-index-xx-large-green, .d-badge__badge-index-xx-large-red, .d-badge__badge-index-xx-large-yellow, .d-badge__badge-index-xx-large-blue, .d-badge__badge-index-xx-large-gray, .d-badge__badge-index-xx-large-dark, .d-badge__badge-index-xx-large-light, .d-badge__badge-index-xx-large-error, .d-badge__badge-index-xx-large-success, .d-badge__badge-index-xx-large-warning, .d-badge__badge-index-xx-large-muted, .d-badge__badge-index-x-large-primary, .d-badge__badge-index-x-large-secondary, .d-badge__badge-index-x-large-green, .d-badge__badge-index-x-large-red, .d-badge__badge-index-x-large-yellow, .d-badge__badge-index-x-large-blue, .d-badge__badge-index-x-large-gray, .d-badge__badge-index-x-large-dark, .d-badge__badge-index-x-large-light, .d-badge__badge-index-x-large-error, .d-badge__badge-index-x-large-success, .d-badge__badge-index-x-large-warning, .d-badge__badge-index-x-large-muted, .d-badge__badge-index-large-primary, .d-badge__badge-index-large-secondary, .d-badge__badge-index-large-green, .d-badge__badge-index-large-red, .d-badge__badge-index-large-yellow, .d-badge__badge-index-large-blue, .d-badge__badge-index-large-gray, .d-badge__badge-index-large-dark, .d-badge__badge-index-large-light, .d-badge__badge-index-large-error, .d-badge__badge-index-large-success, .d-badge__badge-index-large-warning, .d-badge__badge-index-large-muted, .d-badge__badge-index-medium-primary, .d-badge__badge-index-medium-secondary, .d-badge__badge-index-medium-green, .d-badge__badge-index-medium-red, .d-badge__badge-index-medium-yellow, .d-badge__badge-index-medium-blue, .d-badge__badge-index-medium-gray, .d-badge__badge-index-medium-dark, .d-badge__badge-index-medium-light, .d-badge__badge-index-medium-error, .d-badge__badge-index-medium-success, .d-badge__badge-index-medium-warning, .d-badge__badge-index-medium-muted, .d-badge__badge-index-small-primary, .d-badge__badge-index-small-secondary, .d-badge__badge-index-small-green, .d-badge__badge-index-small-red, .d-badge__badge-index-small-yellow, .d-badge__badge-index-small-blue, .d-badge__badge-index-small-gray, .d-badge__badge-index-small-dark, .d-badge__badge-index-small-light, .d-badge__badge-index-small-error, .d-badge__badge-index-small-success, .d-badge__badge-index-small-warning, .d-badge__badge-index-small-muted, .d-badge__badge-index-x-small-primary, .d-badge__badge-index-x-small-secondary, .d-badge__badge-index-x-small-green, .d-badge__badge-index-x-small-red, .d-badge__badge-index-x-small-yellow, .d-badge__badge-index-x-small-blue, .d-badge__badge-index-x-small-gray, .d-badge__badge-index-x-small-dark, .d-badge__badge-index-x-small-light, .d-badge__badge-index-x-small-error, .d-badge__badge-index-x-small-success, .d-badge__badge-index-x-small-warning, .d-badge__badge-index-x-small-muted, .d-badge__badge-index-xx-small-primary, .d-badge__badge-index-xx-small-secondary, .d-badge__badge-index-xx-small-green, .d-badge__badge-index-xx-small-red, .d-badge__badge-index-xx-small-yellow, .d-badge__badge-index-xx-small-blue, .d-badge__badge-index-xx-small-gray, .d-badge__badge-index-xx-small-dark, .d-badge__badge-index-xx-small-light, .d-badge__badge-index-xx-small-error, .d-badge__badge-index-xx-small-success, .d-badge__badge-index-xx-small-warning, .d-badge__badge-index-xx-small-muted {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 10px;
   line-height: 14px !important;
   font-weight: 400;
@@ -34048,7 +34324,7 @@ label,
   font-weight: 400 !important; }
 
 .p-large {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 18px;
   line-height: 28px;
   font-weight: 400;
@@ -34057,14 +34333,14 @@ label,
 p,
 .p,
 .p-medium {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
   font-style: normal; }
 
 .p-small {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
@@ -34072,7 +34348,7 @@ p,
 
 h0,
 .h0 {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 40px;
   line-height: 52px;
   font-weight: 600;
@@ -34081,7 +34357,7 @@ h0,
 
 h1,
 .h1 {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 34px;
   line-height: 40px;
   font-weight: 600;
@@ -34090,7 +34366,7 @@ h1,
 
 h2,
 .h2 {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 28px;
   line-height: 36px;
   font-weight: 600;
@@ -34099,7 +34375,7 @@ h2,
 
 h3,
 .h3 {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 24px;
   line-height: 32px;
   font-weight: 600;
@@ -34108,7 +34384,7 @@ h3,
 
 h4,
 .h4 {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 20px;
   line-height: 28px;
   font-weight: 600;
@@ -34117,7 +34393,7 @@ h4,
 
 h5,
 .h5 {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 14px;
   line-height: 20px;
   font-weight: 600;
@@ -34126,12 +34402,18 @@ h5,
 
 h6,
 .h6 {
-  font-family: "Poppins", "sans-serif";
+  font-family: var(--appFont);
   font-size: 12px;
   line-height: 16px;
   font-weight: 600;
   font-style: normal;
   margin-bottom: 0rem !important; }
+
+:root:lang(en) {
+  --appFont: "Poppins", Sans-serif; }
+
+:root:lang(th) {
+  --appFont: "Prompt", Sans-serif; }
 
 .d-badge__container {
   position: relative;
@@ -35545,6 +35827,12 @@ h6,
 /* ----------------------------------------
 // view
 // ---------------------------------------- */
+:root:lang(en) {
+  --appFont: "Poppins", Sans-serif; }
+
+:root:lang(th) {
+  --appFont: "Prompt", Sans-serif; }
+
 .collapse-view-container,
 .ant-collapse {
   border-radius: 0px !important; }
