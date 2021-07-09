@@ -231,3 +231,16 @@ export type {
 } from "./components/form/Form";
 export { default as Form } from "./components/form/Form";
 export { FormItem } from "./components/form/Form";
+
+/* ----------------------------------------
+// Input Drop down
+// ---------------------------------------- */
+
+export type { InputDropProps } from "./components/inputDrop/InputDrop";
+export { default as InputDrop } from "./components/inputDrop/InputDrop";
+
+export type { InputDropCheckboxGroupProps } from "./components/inputDrop/InputDropCheckboxGroup";
+export { default as InputDropCheckboxGroup } from "./components/inputDrop/InputDropCheckboxGroup";
+
+export type { InputDropSelectProps } from "./components/inputDrop/InputDropSelect";
+export { default as InputDropSelect } from "./components/inputDrop/InputDropSelect";

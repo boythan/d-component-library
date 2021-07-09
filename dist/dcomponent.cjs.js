@@ -212,7 +212,7 @@ var Icon$2 = function (_a) {
 
 var InputText = function (_a) {
     var className = _a.className, classNameInput = _a.classNameInput, classNameInputContainer = _a.classNameInputContainer, style = _a.style, styleInput = _a.styleInput, styleInputContainer = _a.styleInputContainer, styleLabel = _a.styleLabel, _b = _a.variant, variant = _b === void 0 ? "outline" : _b, // standard || outline
-    multiple = _a.multiple, value = _a.value, defaultValue = _a.defaultValue, error = _a.error, name = _a.name, label = _a.label, key = _a.key, placeholder = _a.placeholder, type = _a.type, _c = _a.rows, rows = _c === void 0 ? 5 : _c, cols = _a.cols, disabled = _a.disabled, prefix = _a.prefix, suffix = _a.suffix, onChange = _a.onChange, onBlur = _a.onBlur;
+    multiple = _a.multiple, value = _a.value, defaultValue = _a.defaultValue, error = _a.error, name = _a.name, label = _a.label, key = _a.key, placeholder = _a.placeholder, type = _a.type, _c = _a.rows, rows = _c === void 0 ? 5 : _c, cols = _a.cols, disabled = _a.disabled, prefix = _a.prefix, suffix = _a.suffix, onChange = _a.onChange, onBlur = _a.onBlur, inputProps = __rest$t(_a, ["className", "classNameInput", "classNameInputContainer", "style", "styleInput", "styleInputContainer", "styleLabel", "variant", "multiple", "value", "defaultValue", "error", "name", "label", "key", "placeholder", "type", "rows", "cols", "disabled", "prefix", "suffix", "onChange", "onBlur"]);
     var container = classnames("d-input-text__container", className);
     var labelClass = classnames("text-label");
     var inputClass = classnames("text-x-small", "d-input-text__input", classNameInput);
@@ -234,9 +234,9 @@ var InputText = function (_a) {
     var errorTextClass = classnames("text-x-small", "text-error", "ml-1");
     var renderInput = function () {
         if (multiple) {
-            return (jsxRuntime.jsx("textarea", { value: value, onChange: onChange, rows: rows, name: name, className: textAreaClass, cols: cols, disabled: disabled, defaultValue: defaultValue, placeholder: placeholder, style: styleInput }, void 0));
+            return (jsxRuntime.jsx("textarea", __assign({ value: value, onChange: onChange, rows: rows, name: name, className: textAreaClass, cols: cols, disabled: disabled, defaultValue: defaultValue, placeholder: placeholder, style: styleInput }, inputProps), void 0));
         }
-        return (jsxRuntime.jsx("input", { value: value, onChange: onChange, className: inputClass, name: name, required: true, placeholder: placeholder, onBlur: onBlur, type: type, disabled: disabled, defaultValue: defaultValue, style: styleInput }, key));
+        return (jsxRuntime.jsx("input", __assign({ value: value, className: inputClass, name: name, required: true, placeholder: placeholder, type: type, disabled: disabled, defaultValue: defaultValue, style: styleInput, onChange: onChange, onBlur: onBlur }, inputProps), key));
     };
     return (jsxRuntime.jsxs("div", __assign({ className: container, style: style }, { children: [label && (jsxRuntime.jsx("label", __assign({ htmlFor: name, className: labelClass, style: styleLabel }, { children: jsxRuntime.jsx("span", { children: label }, void 0) }), void 0)), jsxRuntime.jsxs("div", __assign({ className: inputContainerClass, style: styleInputContainer }, { children: [jsxRuntime.jsx("div", __assign({ className: inputPrefixClass }, { children: prefix }), void 0), renderInput(), jsxRuntime.jsx("div", __assign({ className: inputSuffixClass }, { children: suffix }), void 0)] }), void 0), error && (jsxRuntime.jsxs("div", __assign({ className: "flex-center-y mt-1" }, { children: [jsxRuntime.jsx(Icon$2, { name: "error_outline", className: "text-error", size: "small" }, void 0), jsxRuntime.jsx("text", __assign({ className: errorTextClass }, { children: error }), void 0)] }), void 0))] }), void 0));
 };
@@ -12201,7 +12201,7 @@ function useMobileTouchMove(inVirtual, listRef, callback) {
   }, [inVirtual]);
 }
 
-var _excluded$5 = ["prefixCls", "className", "height", "itemHeight", "fullHeight", "style", "data", "children", "itemKey", "virtual", "component", "onScroll"];
+var _excluded$9 = ["prefixCls", "className", "height", "itemHeight", "fullHeight", "style", "data", "children", "itemKey", "virtual", "component", "onScroll"];
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
@@ -12247,7 +12247,7 @@ function RawList(props, ref) {
       _props$component = props.component,
       Component = _props$component === void 0 ? 'div' : _props$component,
       onScroll = props.onScroll,
-      restProps = _objectWithoutProperties(props, _excluded$5); // ================================= MISC =================================
+      restProps = _objectWithoutProperties(props, _excluded$9); // ================================= MISC =================================
 
 
   var useVirtual = !!(virtual !== false && height && itemHeight);
@@ -33142,7 +33142,7 @@ function InnerRangePicker(props) {
       forwardKeyDown: forwardKeyDown,
       onBlur: onBlur,
       isClickOutside: function isClickOutside(target) {
-        return !elementsContains([panelDivRef.current, startInputDivRef.current, endInputDivRef.current], target);
+        return !elementsContains([panelDivRef.current, startInputDivRef.current, endInputDivRef.current, containerRef.current], target);
       },
       onFocus: function onFocus(e) {
         setMergedActivePickerIndex(index);
@@ -41882,7 +41882,7 @@ function validateValue(val) {
   return val !== null && val !== undefined;
 }
 
-var _excluded$4 = ["colSpan", "rowSpan", "style", "className"];
+var _excluded$8 = ["colSpan", "rowSpan", "style", "className"];
 
 function isRenderCell(data) {
   return data && _typeof$4(data) === 'object' && !Array.isArray(data) && ! /*#__PURE__*/React__namespace.isValidElement(data);
@@ -41964,7 +41964,7 @@ function Cell(_ref, ref) {
       cellRowSpan = _ref2.rowSpan,
       cellStyle = _ref2.style,
       cellClassName = _ref2.className,
-      restCellProps = _objectWithoutProperties$1(_ref2, _excluded$4);
+      restCellProps = _objectWithoutProperties$1(_ref2, _excluded$8);
 
   var mergedColSpan = cellColSpan !== undefined ? cellColSpan : colSpan;
   var mergedRowSpan = cellRowSpan !== undefined ? cellRowSpan : rowSpan;
@@ -42567,11 +42567,11 @@ function Body(_ref) {
 var MemoBody = /*#__PURE__*/React__namespace.memo(Body);
 MemoBody.displayName = 'Body';
 
-var _excluded$3 = ["expandable"];
+var _excluded$7 = ["expandable"];
 var INTERNAL_COL_DEFINE = 'RC_TABLE_INTERNAL_COL_DEFINE';
 function getExpandableProps(props) {
   var expandable = props.expandable,
-      legacyExpandableConfig = _objectWithoutProperties$1(props, _excluded$3);
+      legacyExpandableConfig = _objectWithoutProperties$1(props, _excluded$7);
 
   if ('expandable' in props) {
     return _objectSpread2$1(_objectSpread2$1({}, legacyExpandableConfig), expandable);
@@ -42602,8 +42602,8 @@ function getDataAndAriaProps(props) {
   /* eslint-enable */
 }
 
-var _excluded$2 = ["children"],
-    _excluded2 = ["fixed"];
+var _excluded$6 = ["children"],
+    _excluded2$2 = ["fixed"];
 function convertChildrenToColumns(children) {
   return toArray$6(children).filter(function (node) {
     return /*#__PURE__*/React__namespace.isValidElement(node);
@@ -42612,7 +42612,7 @@ function convertChildrenToColumns(children) {
         props = _ref.props;
 
     var nodeChildren = props.children,
-        restProps = _objectWithoutProperties$1(props, _excluded$2);
+        restProps = _objectWithoutProperties$1(props, _excluded$6);
 
     var column = _objectSpread2$1({
       key: key
@@ -42678,7 +42678,7 @@ function warningFixed(flattenColumns) {
 function revertForRtl(columns) {
   return columns.map(function (column) {
     var fixed = column.fixed,
-        restProps = _objectWithoutProperties$1(column, _excluded2); // Convert `fixed='left'` to `fixed='right'` instead
+        restProps = _objectWithoutProperties$1(column, _excluded2$2); // Convert `fixed='left'` to `fixed='right'` instead
 
 
     var parsedFixed = fixed;
@@ -42992,10 +42992,10 @@ function SummaryCell(_ref) {
   }, fixedInfo));
 }
 
-var _excluded$1 = ["children"];
+var _excluded$5 = ["children"];
 function FooterRow(_ref) {
   var children = _ref.children,
-      props = _objectWithoutProperties$1(_ref, _excluded$1);
+      props = _objectWithoutProperties$1(_ref, _excluded$5);
 
   return /*#__PURE__*/React__namespace.createElement("tr", props, children);
 }
@@ -43275,7 +43275,7 @@ function useSticky(sticky, prefixCls) {
   }, [offsetScroll, offsetHeader, offsetSummary, prefixCls, container]);
 }
 
-var _excluded = ["className", "noData", "columns", "flattenColumns", "colWidths", "columCount", "stickyOffsets", "direction", "fixHeader", "stickyTopOffset", "stickyBottomOffset", "stickyClassName", "onScroll", "maxContentScroll", "children"];
+var _excluded$4 = ["className", "noData", "columns", "flattenColumns", "colWidths", "columCount", "stickyOffsets", "direction", "fixHeader", "stickyTopOffset", "stickyBottomOffset", "stickyClassName", "onScroll", "maxContentScroll", "children"];
 
 function useColumnWidth(colWidths, columCount) {
   return React.useMemo(function () {
@@ -43311,7 +43311,7 @@ var FixedHolder = /*#__PURE__*/React__namespace.forwardRef(function (_ref, ref) 
       onScroll = _ref.onScroll,
       maxContentScroll = _ref.maxContentScroll,
       children = _ref.children,
-      props = _objectWithoutProperties$1(_ref, _excluded);
+      props = _objectWithoutProperties$1(_ref, _excluded$4);
 
   var _React$useContext = React__namespace.useContext(TableContext),
       prefixCls = _React$useContext.prefixCls,
@@ -44188,6 +44188,7 @@ var Indent = function Indent(_ref) {
   }, list);
 };
 
+var _excluded$3 = ["eventKey", "className", "style", "dragOver", "dragOverGapTop", "dragOverGapBottom", "isLeaf", "isStart", "isEnd", "expanded", "selected", "checked", "halfChecked", "loading", "domRef", "active", "data", "onMouseMove"];
 var ICON_OPEN = 'open';
 var ICON_CLOSE = 'close';
 var defaultTitle = '---';
@@ -44202,10 +44203,15 @@ var InternalTreeNode = /*#__PURE__*/function (_React$Component) {
 
     _classCallCheck$2(this, InternalTreeNode);
 
-    _this = _super.apply(this, arguments);
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
     _this.state = {
       dragNodeHighlight: false
     };
+    _this.selectHandle = void 0;
 
     _this.onSelectorClick = function (e) {
       // Click trigger before select/check operation
@@ -44317,8 +44323,7 @@ var InternalTreeNode = /*#__PURE__*/function (_React$Component) {
       });
 
       onNodeDrop(e, _assertThisInitialized$1(_this));
-    }; // Disabled item still can be switch
-
+    };
 
     _this.onExpand = function (e) {
       var _this$props2 = _this.props,
@@ -44326,8 +44331,7 @@ var InternalTreeNode = /*#__PURE__*/function (_React$Component) {
           onNodeExpand = _this$props2.context.onNodeExpand;
       if (loading) return;
       onNodeExpand(e, convertNodePropsToEventData(_this.props));
-    }; // Drag usage
-
+    };
 
     _this.setSelectHandle = function (node) {
       _this.selectHandle = node;
@@ -44380,8 +44384,7 @@ var InternalTreeNode = /*#__PURE__*/function (_React$Component) {
 
       if (!treeCheckable || checkable === false) return false;
       return treeCheckable;
-    }; // Load data to avoid default expanded tree without data
-
+    };
 
     _this.syncLoadData = function (props) {
       var expanded = props.expanded,
@@ -44390,7 +44393,10 @@ var InternalTreeNode = /*#__PURE__*/function (_React$Component) {
       var _this$props$context = _this.props.context,
           loadData = _this$props$context.loadData,
           onNodeLoad = _this$props$context.onNodeLoad;
-      if (loading) return; // read from state to avoid loadData at same time
+
+      if (loading) {
+        return;
+      }
 
       if (loadData && expanded && !_this.isLeaf()) {
         // We needn't reload data when has children in sync logic
@@ -44413,8 +44419,7 @@ var InternalTreeNode = /*#__PURE__*/function (_React$Component) {
       }
 
       return switcherIcon;
-    }; // Switcher
-
+    };
 
     _this.renderSwitcher = function () {
       var expanded = _this.props.expanded;
@@ -44437,8 +44442,7 @@ var InternalTreeNode = /*#__PURE__*/function (_React$Component) {
         onClick: _this.onExpand,
         className: switcherCls
       }, switcherIconDom) : null;
-    }; // Checkbox
-
+    };
 
     _this.renderCheckbox = function () {
       var _this$props4 = _this.props,
@@ -44466,8 +44470,7 @@ var InternalTreeNode = /*#__PURE__*/function (_React$Component) {
       return /*#__PURE__*/React__namespace.createElement("span", {
         className: classnames("".concat(prefixCls, "-iconEle"), "".concat(prefixCls, "-icon__").concat(_this.getNodeState() || 'docu'), loading && "".concat(prefixCls, "-icon_loading"))
       });
-    }; // Icon + Title
-
+    };
 
     _this.renderSelector = function () {
       var dragNodeHighlight = _this.state.dragNodeHighlight;
@@ -44556,12 +44559,12 @@ var InternalTreeNode = /*#__PURE__*/function (_React$Component) {
     };
 
     return _this;
-  } // Isomorphic needn't load data in server side
-
+  }
 
   _createClass$2(InternalTreeNode, [{
     key: "componentDidMount",
-    value: function componentDidMount() {
+    value: // Isomorphic needn't load data in server side
+    function componentDidMount() {
       this.syncLoadData(this.props);
     }
   }, {
@@ -44605,7 +44608,7 @@ var InternalTreeNode = /*#__PURE__*/function (_React$Component) {
           active = _this$props7.active,
           data = _this$props7.data,
           onMouseMove = _this$props7.onMouseMove,
-          otherProps = _objectWithoutProperties$1(_this$props7, ["eventKey", "className", "style", "dragOver", "dragOverGapTop", "dragOverGapBottom", "isLeaf", "isStart", "isEnd", "expanded", "selected", "checked", "halfChecked", "loading", "domRef", "active", "data", "onMouseMove"]);
+          otherProps = _objectWithoutProperties$1(_this$props7, _excluded$3);
 
       var _this$props$context4 = this.props.context,
           prefixCls = _this$props$context4.prefixCls,
@@ -44936,6 +44939,7 @@ function getDataAndAria(props) {
   return omitProps;
 }
 
+var _excluded$2 = ["children"];
 function getKey(key, pos) {
   if (key !== null && key !== undefined) {
     return key;
@@ -44984,7 +44988,7 @@ function convertTreeToData(rootNodes) {
 
       var _treeNode$props = treeNode.props,
           children = _treeNode$props.children,
-          rest = _objectWithoutProperties$1(_treeNode$props, ["children"]);
+          rest = _objectWithoutProperties$1(_treeNode$props, _excluded$2);
 
       var dataNode = _objectSpread2$1({
         key: key
@@ -47358,6 +47362,9 @@ Table.Column = Column;
 Table.ColumnGroup = ColumnGroup;
 Table.Summary = FooterComponents;
 
+var _excluded$1 = ["className", "style", "motion", "motionNodes", "motionType", "onMotionStart", "onMotionEnd", "active", "treeNodeRequiredProps"],
+    _excluded2$1 = ["key"];
+
 var MotionTreeNode = function MotionTreeNode(_ref, ref) {
   var className = _ref.className,
       style = _ref.style,
@@ -47368,7 +47375,7 @@ var MotionTreeNode = function MotionTreeNode(_ref, ref) {
       onOriginMotionEnd = _ref.onMotionEnd,
       active = _ref.active,
       treeNodeRequiredProps = _ref.treeNodeRequiredProps,
-      props = _objectWithoutProperties$1(_ref, ["className", "style", "motion", "motionNodes", "motionType", "onMotionStart", "onMotionEnd", "active", "treeNodeRequiredProps"]);
+      props = _objectWithoutProperties$1(_ref, _excluded$1);
 
   var _React$useState = React__namespace.useState(true),
       _React$useState2 = _slicedToArray$3(_React$useState, 2),
@@ -47424,7 +47431,7 @@ var MotionTreeNode = function MotionTreeNode(_ref, ref) {
       }, motionNodes.map(function (treeNode) {
         var _treeNode$data = treeNode.data,
             key = _treeNode$data.key,
-            restProps = _objectWithoutProperties$1(_treeNode$data, ["key"]),
+            restProps = _objectWithoutProperties$1(_treeNode$data, _excluded2$1),
             isStart = treeNode.isStart,
             isEnd = treeNode.isEnd;
 
@@ -47511,6 +47518,8 @@ function getExpandRange(shorter, longer, key) {
   return longer.slice(longerStartIndex + 1);
 }
 
+var _excluded = ["prefixCls", "data", "selectable", "checkable", "expandedKeys", "selectedKeys", "checkedKeys", "loadedKeys", "loadingKeys", "halfCheckedKeys", "keyEntities", "disabled", "dragging", "dragOverNodeKey", "dropPosition", "motion", "height", "itemHeight", "virtual", "focusable", "activeItem", "focused", "tabIndex", "onKeyDown", "onFocus", "onBlur", "onActiveChange", "onListChangeStart", "onListChangeEnd"],
+    _excluded2 = ["key"];
 var HIDDEN_STYLE$1 = {
   width: 0,
   height: 0,
@@ -47605,7 +47614,7 @@ var RefNodeList = function RefNodeList(props, ref) {
       onActiveChange = props.onActiveChange,
       onListChangeStart = props.onListChangeStart,
       onListChangeEnd = props.onListChangeEnd,
-      domProps = _objectWithoutProperties$1(props, ["prefixCls", "data", "selectable", "checkable", "expandedKeys", "selectedKeys", "checkedKeys", "loadedKeys", "loadingKeys", "halfCheckedKeys", "keyEntities", "disabled", "dragging", "dragOverNodeKey", "dropPosition", "motion", "height", "itemHeight", "virtual", "focusable", "activeItem", "focused", "tabIndex", "onKeyDown", "onFocus", "onBlur", "onActiveChange", "onListChangeStart", "onListChangeEnd"]); // =============================== Ref ================================
+      domProps = _objectWithoutProperties$1(props, _excluded); // =============================== Ref ================================
 
 
   var listRef = React__namespace.useRef(null);
@@ -47753,7 +47762,7 @@ var RefNodeList = function RefNodeList(props, ref) {
     var pos = treeNode.pos,
         _treeNode$data = treeNode.data,
         key = _treeNode$data.key,
-        restProps = _objectWithoutProperties$1(_treeNode$data, ["key"]),
+        restProps = _objectWithoutProperties$1(_treeNode$data, _excluded2),
         isStart = treeNode.isStart,
         isEnd = treeNode.isEnd;
 
@@ -47826,8 +47835,13 @@ var Tree = /*#__PURE__*/function (_React$Component) {
 
     _classCallCheck$2(this, Tree);
 
-    _this = _super.apply(this, arguments);
+    for (var _len = arguments.length, _args = new Array(_len), _key = 0; _key < _len; _key++) {
+      _args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(_args));
     _this.destroyed = false;
+    _this.delayedDragEnterLogic = void 0;
     _this.state = {
       keyEntities: {},
       indent: null,
@@ -47860,6 +47874,7 @@ var Tree = /*#__PURE__*/function (_React$Component) {
       prevProps: null
     };
     _this.dragStartMousePosition = null;
+    _this.dragNode = void 0;
     _this.listRef = /*#__PURE__*/React__namespace.createRef();
 
     _this.onNodeDragStart = function (event, node) {
@@ -47892,14 +47907,6 @@ var Tree = /*#__PURE__*/function (_React$Component) {
         });
       }
     };
-    /**
-     * [Legacy] Select handler is smaller than node,
-     * so that this will trigger when drag enter node or select handler.
-     * This is a little tricky if customize css without padding.
-     * Better for use mouse move event to refresh drag state.
-     * But let's just keep it to avoid event trigger logic change.
-     */
-
 
     _this.onNodeDragEnter = function (event, node) {
       var _this$state2 = _this.state,
@@ -48090,16 +48097,13 @@ var Tree = /*#__PURE__*/function (_React$Component) {
           node: convertNodePropsToEventData(node.props)
         });
       }
-    }; // since stopPropagation() is called in treeNode
-    // if onWindowDrag is called, whice means state is keeped, drag state should be cleared
-
+    };
 
     _this.onWindowDragEnd = function (event) {
       _this.onNodeDragEnd(event, null, true);
 
       window.removeEventListener('dragend', _this.onWindowDragEnd);
-    }; // if onNodeDragEnd is called, onWindowDragEnd won't be called since stopPropagation() is called
-
+    };
 
     _this.onNodeDragEnd = function (event, node) {
       var outsideTree = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
@@ -48329,7 +48333,7 @@ var Tree = /*#__PURE__*/function (_React$Component) {
     };
 
     _this.onNodeLoad = function (treeNode) {
-      return new Promise(function (resolve) {
+      return new Promise(function (resolve, reject) {
         // We need to get the latest state of loading/loaded keys
         _this.setState(function (_ref) {
           var _ref$loadedKeys = _ref.loadedKeys,
@@ -48342,8 +48346,7 @@ var Tree = /*#__PURE__*/function (_React$Component) {
           var key = treeNode.key;
 
           if (!loadData || loadedKeys.indexOf(key) !== -1 || loadingKeys.indexOf(key) !== -1) {
-            // react 15 will warn if return null
-            return {};
+            return null;
           } // Process load data
 
 
@@ -48372,6 +48375,15 @@ var Tree = /*#__PURE__*/function (_React$Component) {
             });
 
             resolve();
+          }).catch(function (e) {
+            var currentLoadingKeys = _this.state.loadingKeys;
+            var newLoadingKeys = arrDel(currentLoadingKeys, key);
+
+            _this.setState({
+              loadingKeys: newLoadingKeys
+            });
+
+            reject(e);
           });
           return {
             loadingKeys: arrAdd(loadingKeys, key)
@@ -48462,10 +48474,7 @@ var Tree = /*#__PURE__*/function (_React$Component) {
         dropPosition: dropPosition,
         keyEntities: keyEntities
       };
-    }; // =========================== Expanded ===========================
-
-    /** Set uncontrolled `expandedKeys`. This will also auto update `flattenNodes`. */
-
+    };
 
     _this.setExpandedKeys = function (expandedKeys) {
       var treeData = _this.state.treeData;
@@ -48523,6 +48532,11 @@ var Tree = /*#__PURE__*/function (_React$Component) {
             _this.setUncontrolledState({
               flattenNodes: newFlattenTreeData
             });
+          }).catch(function () {
+            var currentExpandedKeys = _this.state.expandedKeys;
+            var expandedKeysToRestore = arrDel(currentExpandedKeys, key);
+
+            _this.setExpandedKeys(expandedKeysToRestore);
           });
         }
       }
@@ -48540,8 +48554,7 @@ var Tree = /*#__PURE__*/function (_React$Component) {
           listChanging: false
         });
       });
-    }; // =========================== Keyboard ===========================
-
+    };
 
     _this.onActiveChange = function (newActiveKey) {
       var activeKey = _this.state.activeKey;
@@ -48693,10 +48706,6 @@ var Tree = /*#__PURE__*/function (_React$Component) {
         onKeyDown(event);
       }
     };
-    /**
-     * Only update the value which is not in props
-     */
-
 
     _this.setUncontrolledState = function (state) {
       var atomic = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
@@ -76251,8 +76260,9 @@ var ProgressComponent = /** @class */ (function (_super) {
             return jsxRuntime.jsx(Loading, {}, void 0);
         };
         _this.renderErrorView = function () {
+            var _a;
             var error = _this.state.error;
-            return (jsxRuntime.jsxs("div", __assign({ className: "progress__error-container" }, { children: [jsxRuntime.jsx("h4", { children: Messages.error }, void 0), jsxRuntime.jsx("h5", __assign({ className: "mt-3" }, { children: error.message }), void 0), jsxRuntime.jsxs("div", __assign({ className: "progress__error-footer" }, { children: [jsxRuntime.jsx("button", __assign({ onClick: _this.dismiss, className: "btn btn-light mr-3", type: "button" }, { children: Messages.cancel }), void 0), jsxRuntime.jsx("button", __assign({ className: "btn btn-primary", onClick: _this.onClickRetry, type: "button" }, { children: Messages.retry }), void 0)] }), void 0)] }), void 0));
+            return (jsxRuntime.jsxs("div", __assign({ className: "progress__error-container" }, { children: [jsxRuntime.jsx("h4", { children: Messages.error }, void 0), jsxRuntime.jsx("h5", { className: "mt-3 d-notifications__content", dangerouslySetInnerHTML: { __html: (_a = error === null || error === void 0 ? void 0 : error.message) !== null && _a !== void 0 ? _a : "" } }, void 0), jsxRuntime.jsxs("div", __assign({ className: "progress__error-footer" }, { children: [jsxRuntime.jsx("button", __assign({ onClick: _this.dismiss, className: "btn btn-light mr-3", type: "button" }, { children: Messages.cancel }), void 0), jsxRuntime.jsx("button", __assign({ className: "btn btn-primary", onClick: _this.onClickRetry, type: "button" }, { children: Messages.retry }), void 0)] }), void 0)] }), void 0));
         };
         _this.state = {
             open: false,

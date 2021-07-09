@@ -10,7 +10,7 @@ import Progress from "../components/progress/Progress";
 import TabBar from "../components/tab/TabBar";
 import { ProgressComponent } from "../dcomponent";
 import TestBadge from "./components/badge/TestBadge";
-import TestQuickFilter from "./components/input_drop/TestInputDrop";
+import TestInputDrop from "./components/input_drop/TestInputDrop";
 import TestHeader from "./components/TestHeader";
 import TestInput from "./components/TestInput";
 import TestTable from "./components/TestTable";
@@ -142,7 +142,7 @@ export default function Test({ content }: Props): ReactElement {
         { id: "NOTIFICATION", label: "NOTIFICATION", component: <TestNotification /> },
         { id: "CARD", label: "CARD", component: <TestCard /> },
         { id: "FORM", label: "FORM", component: <TestForm /> },
-        { id: "QUICK_FILTER", label: "QUICK_FILTER", component: <TestQuickFilter /> },
+        { id: "INPUT_DROP", label: "INPUT_DROP", component: <TestInputDrop /> },
     ];
     return (
         <AppStateContext.Provider value={{ mockData }}>

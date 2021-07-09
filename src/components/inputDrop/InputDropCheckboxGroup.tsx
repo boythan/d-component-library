@@ -1,9 +1,9 @@
 import { filter, includes, isEmpty, map } from "lodash";
-import React, { useMemo, useRef, useState } from "react";
+import React, { useMemo, useState } from "react";
 import CheckboxGroup, { CheckboxGroupProps } from "../checkbox/CheckboxGroup";
 import InputDrop, { InputDropProps } from "./InputDrop";
 
-interface InputDropCheckboxGroupProps extends CheckboxGroupProps, InputDropProps {
+export interface InputDropCheckboxGroupProps extends CheckboxGroupProps, InputDropProps {
     label: string;
     value?: any;
 }
@@ -13,6 +13,7 @@ const InputDropCheckboxGroup = (props: InputDropCheckboxGroupProps) => {
         dataSource = [],
         numberOfColumns = "2",
         value = [],
+        multiple,
 
         onChange,
         getLabel = (item) => item.label,
@@ -50,6 +51,7 @@ const InputDropCheckboxGroup = (props: InputDropCheckboxGroupProps) => {
             onChangeText={onChangeTextSearch}
             onClickApply={onClickApply}
             label={label}
+            hideSelectAll={!multiple}
             content={() => (
                 <CheckboxGroup
                     dataSource={dataSelectSource}
@@ -57,6 +59,7 @@ const InputDropCheckboxGroup = (props: InputDropCheckboxGroupProps) => {
                     onChange={setValueInput}
                     getLabel={getLabel}
                     getValue={getValue}
+                    multiple={multiple}
                     {...restProps}
                     value={valueInput}
                     className="w-100"

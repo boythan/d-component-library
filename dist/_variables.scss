@@ -41,6 +41,16 @@
 //   - .typography
 
 // ----------------------------------------
+// -- font family
+// ----------------------------------------
+   :root:lang(en) {
+      $font-family: "Poppins", Sans-serif;
+   }
+
+   :root:lang(th) {
+      $font-family: "Prompt", Sans-serif;
+   }
+// ----------------------------------------
 // -- direction
 // ----------------------------------------
    $direction:                 ltr                                      !default; // or rtl
@@ -169,8 +179,6 @@
       lg-end:   1199px,
       xl-start: 1200px
    );
-
-   $font-family: 'Poppins', 'sans-serif';
 
    $border-radius:      0px     !default;
 

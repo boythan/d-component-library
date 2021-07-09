@@ -120,7 +120,10 @@ class ProgressComponent extends Component<ProgressComponentProps, any> {
         return (
             <div className="progress__error-container">
                 <h4>{Messages.error}</h4>
-                <h5 className="mt-3">{error.message}</h5>
+                <h5
+                    className="mt-3 d-notifications__content"
+                    dangerouslySetInnerHTML={{ __html: error?.message ?? "" }}
+                />
                 <div className="progress__error-footer">
                     <button onClick={this.dismiss} className="btn btn-light mr-3" type="button">
                         {Messages.cancel}

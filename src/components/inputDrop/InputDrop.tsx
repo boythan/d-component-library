@@ -34,6 +34,7 @@ interface InputDropSourceProps extends InputDropProps {
     onClickApply: () => any;
     content: () => any;
     onChangeText?: (value: any) => any;
+    propsSearchText?: any;
 }
 
 const InputDrop: React.FC<InputDropSourceProps> = ({
@@ -57,7 +58,8 @@ const InputDrop: React.FC<InputDropSourceProps> = ({
     onClickSelectAll = () => {},
     onClickClearAll = () => {},
     onClickApply = () => {},
-    onChangeText = () => {},
+    onChangeText,
+    propsSearchText = {},
 
     content = () => <div />,
 }) => {
@@ -163,7 +165,12 @@ const InputDrop: React.FC<InputDropSourceProps> = ({
             <div className={dropdownWrapperClass} ref={dropdownRef}>
                 {renderHeader()}
                 {onChangeText && (
-                    <InputText placeholder={Messages.search} className="mt-3 w-100" onChange={onChangeText} />
+                    <InputText
+                        placeholder={Messages.search}
+                        className="mt-3 w-100"
+                        onChange={onChangeText}
+                        {...propsSearchText}
+                    />
                 )}
                 {content()}
                 {renderFooter()}

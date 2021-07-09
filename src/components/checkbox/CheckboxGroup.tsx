@@ -1,6 +1,10 @@
 /* eslint-disable no-unused-expressions */
 import ClassNames from "classnames";
-import React from "react";
+import { slice } from "lodash";
+import React, { useState } from "react";
+import Messages from "../../language/Messages";
+import Button from "../button/Button";
+import Icon from "../icon/Icon";
 import Checkbox from "./Checkbox";
 
 export interface CheckboxGroupProps {
@@ -12,6 +16,7 @@ export interface CheckboxGroupProps {
     value?: Array<any>;
     defaultValue?: Array<any>;
     numberOfColumns?: "1" | "2" | "3" | "4" | "5" | "6";
+    numberOfDefaultShow?: number;
     multiple?: boolean;
 
     getLabel?: (item: any) => any;
@@ -24,10 +29,11 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
     className,
     classNameItem,
 
-    dataSource,
+    dataSource = [],
     value = [],
     multiple = true,
     numberOfColumns = "3",
+    numberOfDefaultShow = 10,
     label,
 
     getLabel = (item: any) => item?.label,
@@ -35,6 +41,12 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
     onChange,
     getDisabledItem,
 }) => {
+    const [expended, setExpended] = useState<boolean>(false);
+    const dataSourceBrief = slice(dataSource, 0, numberOfDefaultShow);
+    const dataSourceDisplay = expended ? dataSource : dataSourceBrief;
+
+    const showExpandButtons = dataSource.length > numberOfDefaultShow;
+
     const containerClass = ClassNames(className);
     const groupContainerClass = ClassNames("d-checkbox-group d-flex flex-wrap", className);
 
@@ -57,11 +69,29 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
         onChange && onChange(clone);
     };
 
+    const renderExpandedButtons = () => {
+        if (!showExpandButtons) return <div />;
+        if (expended) {
+            return (
+                <Button variant="trans" className="p-0" onClick={() => setExpended(false)}>
+                    <div className="flex-center-y text-x-small text-underline mr-2">{Messages.closeAll}</div>
+                    <Icon name="expand_less" size="x-small" />
+                </Button>
+            );
+        }
+        return (
+            <Button variant="trans" className="p-0" onClick={() => setExpended(true)}>
+                <div className="flex-center-y text-x-small text-underline mr-2">{Messages.showAll}</div>
+                <Icon name="expand_more" size="x-small" />
+            </Button>
+        );
+    };
+
     return (
         <div className={containerClass}>
             <label>{label}</label>
             <div className={groupContainerClass}>
-                {dataSource.map((item) => {
+                {dataSourceDisplay.map((item) => {
                     const iLabel = getLabel(item);
                     const iValue: any = getValue(item);
                     const isChecked = value.includes(iValue);
@@ -102,6 +132,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
                     );
                 })}
             </div>
+            {renderExpandedButtons()}
         </div>
     );
 };

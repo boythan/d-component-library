@@ -34,17 +34,10 @@ export const ATTRIBUTE_INPUT_TYPE = [
     { id: "text", label: "swatchText " },
     { id: "image", label: "swatchImage" },
     { id: "color", label: "swatchColor" },
-    { id: "color", label: "swatchColor" },
-    { id: "color", label: "swatchColor" },
-    { id: "color", label: "swatchColor" },
-    { id: "color", label: "swatchColor" },
-    { id: "color", label: "swatchColor" },
-    { id: "color", label: "swatchColor" },
-    { id: "color", label: "swatchColor" },
-    { id: "color", label: "swatchColor" },
-    { id: "color", label: "swatchColor" },
-    { id: "color", label: "swatchColor" },
-    { id: "color", label: "swatchColor" },
+    { id: "theme", label: "swatchTheme" },
+    { id: "size", label: "swatchSize" },
+    { id: "thin", label: "swatchThin" },
+    { id: "fat", label: "swatchFat" },
 ];
 
 export const SELECT_DATA = [
