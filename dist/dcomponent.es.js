@@ -76403,6 +76403,21 @@ function usePrevious(value) {
     return ref.current;
 }
 
+/**
+ * This hook avoid calling useEffect on the initial value of his dependency array
+ */
+var useDidUpdate = function (callback, dep) {
+    var isMounted = useRef(false);
+    useEffect(function () {
+        if (isMounted.current) {
+            callback();
+        }
+        else {
+            isMounted.current = true;
+        }
+    }, dep);
+};
+
 var getDefaultValue = function (type) {
     switch (type) {
         case "checkbox":
@@ -76706,5 +76721,5 @@ var InputDropSelect = function (props) {
         }, onClickApply: onClickApply, label: label, content: renderContentInput, error: error }, restProps, { valueLength: value.length, hideSelectAll: true }), void 0));
 };
 
-export { Avatar, AvatarName, AwesomeListComponent, AwesomeTableComponent, AwesomeTableUtils, Badge, Button, Card, Checkbox, CheckboxGroup, DateInput, DialogComponent, DialogManager, Dot, Dropdown, Form, FormItem, Header, HeaderBlock, HeaderDetail, HeaderTable, Icon$2 as Icon, ImageUtils, InputColor, InputDrop, InputDropCheckboxGroup, InputDropSelect, InputText, InputTextSearch, Loading, MapUtils, Modal, Notifications, ObjectUtils, PopoverList, Progress, ProgressComponent, RadioGroup, RowInterchangeView, Select$1 as Select, SelectInfinity$1 as SelectInfinity, StringUtils, TabBar, TimeUtils, TreeDataUtils, TreeSelect, UrlUtils, ViewCollapse, ViewRow, ViewTextarea, ViewTimeline, useFirstTime, useForceUpdate, useForceUpdateConstraint, usePrevious };
+export { Avatar, AvatarName, AwesomeListComponent, AwesomeTableComponent, AwesomeTableUtils, Badge, Button, Card, Checkbox, CheckboxGroup, DateInput, DialogComponent, DialogManager, Dot, Dropdown, Form, FormItem, Header, HeaderBlock, HeaderDetail, HeaderTable, Icon$2 as Icon, ImageUtils, InputColor, InputDrop, InputDropCheckboxGroup, InputDropSelect, InputText, InputTextSearch, Loading, MapUtils, Modal, Notifications, ObjectUtils, PopoverList, Progress, ProgressComponent, RadioGroup, RowInterchangeView, Select$1 as Select, SelectInfinity$1 as SelectInfinity, StringUtils, TabBar, TimeUtils, TreeDataUtils, TreeSelect, UrlUtils, ViewCollapse, ViewRow, ViewTextarea, ViewTimeline, useDidUpdate, useFirstTime, useForceUpdate, useForceUpdateConstraint, usePrevious };
 //# sourceMappingURL=dcomponent.es.js.map

@@ -76432,6 +76432,21 @@ function usePrevious(value) {
     return ref.current;
 }
 
+/**
+ * This hook avoid calling useEffect on the initial value of his dependency array
+ */
+var useDidUpdate = function (callback, dep) {
+    var isMounted = React.useRef(false);
+    React.useEffect(function () {
+        if (isMounted.current) {
+            callback();
+        }
+        else {
+            isMounted.current = true;
+        }
+    }, dep);
+};
+
 var getDefaultValue = function (type) {
     switch (type) {
         case "checkbox":
@@ -76786,6 +76801,7 @@ exports.ViewCollapse = ViewCollapse;
 exports.ViewRow = ViewRow;
 exports.ViewTextarea = ViewTextarea;
 exports.ViewTimeline = ViewTimeline;
+exports.useDidUpdate = useDidUpdate;
 exports.useFirstTime = useFirstTime;
 exports.useForceUpdate = useForceUpdate;
 exports.useForceUpdateConstraint = useForceUpdateConstraint;
