@@ -216,6 +216,7 @@ export { default as useFirstTime } from "./hooks/useFirstTime";
 export { default as useForceUpdate } from "./hooks/useForceUpdate";
 export { useForceUpdateConstraint } from "./hooks/useForceUpdate";
 export { default as usePrevious } from "./hooks/usePrevious";
+export { default as useDidUpdate } from "./hooks/useDidUpdate";
 
 /* ----------------------------------------
 // Form
