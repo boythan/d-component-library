@@ -59,9 +59,9 @@ const HeaderTable = ({
     return (
         <div className={ClassNames("w-100", className)} style={style}>
             <div className={ClassNames("d-flex justify-content-between mb-3", classNameTop)}>
-                {customButtons && customButtons()}
                 <div className="h4">{label}</div>
                 <div className="d-flex">
+                    {customButtons && customButtons()}
                     {onClickNew && <Button iconName="add" content="New" onClick={onClickNew} className="ml-3" />}
                     {onClickImport && (
                         <Button iconName="cloud_upload" content="Import" onClick={onClickImport} className="ml-3" />
