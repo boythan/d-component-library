@@ -17919,7 +17919,7 @@ textarea.ant-mentions {
 .ant-pagination-item a {
     display: block;
     padding: 0 6px;
-    color: rgba(0, 0, 0, 0.65);
+    color: rgba(0, 0, 0, 0.65) !important;
     transition: none;
 }
 
@@ -17945,7 +17945,7 @@ textarea.ant-mentions {
 }
 
 .ant-pagination-item-active a {
-    color: $primary-color;
+    color: $primary-color !important;
 }
 
 .ant-pagination-item-active:focus,

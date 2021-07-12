@@ -14,8 +14,9 @@ export interface HeaderTableProps {
     onClickFilter?: any;
     onClickImport?: any;
     customView?: any;
+    customButtons?: any;
     isFiltered?: boolean;
     badgeColor?: BadgeProps["color"];
 }
-declare const HeaderTable: ({ className, classNameTop, style, label, placeholder, onChangeText, disabledSearch, onSubmitSearch, onClickNew, onClickExport, onClickFilter, onClickImport, customView, isFiltered, badgeColor, }: HeaderTableProps) => JSX.Element;
+declare const HeaderTable: ({ className, classNameTop, style, label, placeholder, onChangeText, disabledSearch, onSubmitSearch, onClickNew, onClickExport, onClickFilter, onClickImport, customView, customButtons, isFiltered, badgeColor, }: HeaderTableProps) => JSX.Element;
 export default HeaderTable;

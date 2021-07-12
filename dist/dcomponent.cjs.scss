@@ -17945,7 +17945,7 @@ textarea.ant-mentions {
 }
 
 .ant-pagination-item-active a {
-    color: $primary-color;
+    color: $primary-color !important;
 }
 
 .ant-pagination-item-active:focus,

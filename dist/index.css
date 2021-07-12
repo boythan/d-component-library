@@ -21015,7 +21015,7 @@ textarea.ant-mentions {
 .ant-pagination-item a {
   display: block;
   padding: 0 6px;
-  color: rgba(0, 0, 0, 0.65);
+  color: rgba(0, 0, 0, 0.65) !important;
   transition: none; }
 
 .ant-pagination-item a:hover {
@@ -21036,7 +21036,7 @@ textarea.ant-mentions {
   border-color: #DE0D0C; }
 
 .ant-pagination-item-active a {
-  color: #DE0D0C; }
+  color: #DE0D0C !important; }
 
 .ant-pagination-item-active:focus,
 .ant-pagination-item-active:hover {
