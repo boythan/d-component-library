@@ -76259,7 +76259,7 @@ var ProgressComponent = /** @class */ (function (_super) {
     }
     ProgressComponent.prototype.render = function () {
         var _a = this.state, open = _a.open, error = _a.error;
-        return (jsxs(Modal$1, __assign({ visible: open, onCancel: this.dismiss, destroyOnClose: true, className: "progress__container", closable: false, footer: null }, { children: [!error && this.renderLoadingView(), error && this.renderErrorView()] }), void 0));
+        return (jsxs(Modal$1, __assign({ visible: open, onCancel: this.dismiss, destroyOnClose: true, className: "progress__container", closable: false, footer: null, getContainer: false }, { children: [!error && this.renderLoadingView(), error && this.renderErrorView()] }), void 0));
     };
     return ProgressComponent;
 }(Component));
