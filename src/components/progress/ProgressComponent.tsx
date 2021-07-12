@@ -146,7 +146,7 @@ class ProgressComponent extends Component<ProgressComponentProps, any> {
                 className="progress__container"
                 closable={false}
                 footer={null}
-                // centered
+                getContainer={false}
             >
                 {!error && this.renderLoadingView()}
                 {error && this.renderErrorView()}
