@@ -19,7 +19,9 @@ export interface HeaderTableProps {
     onClickExport?: any;
     onClickFilter?: any;
     onClickImport?: any;
+
     customView?: any;
+    customButtons?: any;
 
     isFiltered?: boolean;
     badgeColor?: BadgeProps["color"];
@@ -39,7 +41,10 @@ const HeaderTable = ({
     onClickExport,
     onClickFilter,
     onClickImport,
+
     customView,
+    customButtons,
+
     isFiltered = false,
     badgeColor = "secondary",
 }: HeaderTableProps) => {
@@ -54,6 +59,7 @@ const HeaderTable = ({
     return (
         <div className={ClassNames("w-100", className)} style={style}>
             <div className={ClassNames("d-flex justify-content-between mb-3", classNameTop)}>
+                {customButtons && customButtons()}
                 <div className="h4">{label}</div>
                 <div className="d-flex">
                     {onClickNew && <Button iconName="add" content="New" onClick={onClickNew} className="ml-3" />}
