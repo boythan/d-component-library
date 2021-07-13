@@ -11,7 +11,8 @@ import _ from "lodash";
 import React, { Component } from "react";
 import Highlighter from "react-highlight-words";
 import { isArray, isString, transformColumn } from "../../utils/AwesomeTableUtils";
-import LayoutManagerButtonColumns from "./layoutManager/LayoutManagerButtonColumns";
+import LayoutManagerColumnButton from "./layoutManager/LayoutManagerColumnButton";
+import LayoutManagerViewSelect from "./layoutManager/LayoutManagerViewSelect";
 // data stubs
 import LayoutTableManager from "./layoutManager/LayoutTableManager";
 import SelectColumnModal, { SelectLayoutView } from "./layoutManager/SelectColumnModal";
@@ -83,7 +84,7 @@ export interface AwesomeTableComponentState {
     sorter: any;
 
     columns: TableProps<any>["columns"];
-    selectedColumns: TableProps<any>["columns"];
+    selectedColumns: string[];
 
     tableLayoutList: any;
     selectedLayout: any;
@@ -136,6 +137,12 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
     constructor(props: any) {
         super(props);
 
+        const tableColumns = transformColumn(props.columns, props.baseColumnProps);
+        const selectedColumns = _.map(
+            _.filter(tableColumns, (item) => item.isDefault),
+            (item) => item.id
+        );
+
         this.state = {
             data: [],
             loading: true,
@@ -149,9 +156,9 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
             pagination: this.getDefaultPagination(),
             sorter: null,
 
-            columns: transformColumn(props.columns, props.baseColumnProps),
-            selectedColumns: transformColumn(props.columns, props.baseColumnProps),
-            tableLayoutList: {},
+            columns: tableColumns,
+            selectedColumns,
+            tableLayoutList: [],
             selectedLayout: null,
         };
     }
@@ -265,25 +272,16 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
 
     setDefaultTableLayout = () => {
         const { keyTableLayout, showSelectColumn } = this.props;
-        const { columns } = this.state;
         if (!keyTableLayout || !showSelectColumn) return;
 
-        const tableLayout = LayoutTableManager.getLayout(keyTableLayout);
-        if (_.isEmpty(tableLayout)) return;
+        const tableLayouts = LayoutTableManager.getTableLayouts(keyTableLayout);
 
-        const listTableLayout: any = [];
-        const tableKey = Object.keys(tableLayout);
-        tableKey.forEach((key) => {
-            listTableLayout.push({ ...tableLayout[key], name: key });
-        });
-        const defaultLayout = listTableLayout.find((item: any) => item?.default);
+        const defaultLayout = tableLayouts.find((item: any) => item?.default);
         if (!_.isEmpty(defaultLayout)) {
             const defaultIndex = defaultLayout?.data?.map((item: any) => item?.id);
-            // eslint-disable-next-line operator-linebreak
-            const defaultColumns = columns && columns.filter((item: any) => defaultIndex.includes(item?.id));
             this.setState({
-                selectedColumns: defaultColumns,
-                tableLayoutList: tableLayout,
+                selectedColumns: defaultIndex,
+                tableLayoutList: tableLayouts,
                 selectedLayout: defaultLayout,
             });
         }
@@ -303,21 +301,28 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
         };
     };
 
-    handleSelectTableLayout = async (item: any) => {
-        const { keyTableLayout } = this.props;
-        const listLayout = LayoutTableManager.getLayout(keyTableLayout);
-        const saveLayout = { data: item.data, default: true };
-        const newTableLayout: any = {};
-        const listLayoutKey = Object.keys(listLayout);
-        listLayoutKey.forEach((key) => {
-            if (key === item.name) {
-                newTableLayout[key] = saveLayout;
-            } else {
-                newTableLayout[key] = { ...listLayout[key], default: false };
-            }
-        });
-        await LayoutTableManager.saveTableLayout(newTableLayout, keyTableLayout);
-        this.setDefaultTableLayout();
+    onChangeTableLayout = async (item: any) => {
+        // const { keyTableLayout } = this.props;
+        // const listLayout = LayoutTableManager.getTableLayouts(keyTableLayout);
+        // const saveLayout = { data: item.data, default: true };
+        // const newTableLayout: any = {};
+        // const listLayoutKey = Object.keys(listLayout);
+        // listLayoutKey.forEach((key) => {
+        //     if (key === item.name) {
+        //         newTableLayout[key] = saveLayout;
+        //     } else {
+        //         newTableLayout[key] = { ...listLayout[key], default: false };
+        //     }
+        // });
+        // await LayoutTableManager.saveTableLayout(newTableLayout, keyTableLayout);
+        // this.setDefaultTableLayout();
+    };
+
+    onChangeTableLayoutDefault = () => {
+        const { columns } = this.state;
+        const columnsDefault = _.filter(columns, (item) => (item as any).isDefault);
+        const columnIdsDefault = _.map(columnsDefault, (item) => (item as any).id);
+        this.setState({ selectedColumns: columnIdsDefault });
     };
 
     handleTableChange = (paging: IPaginationProps, filters: any, sorter: any) => {
@@ -442,8 +447,7 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
         let columnsSelected = columnsResizable;
 
         if (showSelectColumn) {
-            const selectedIndex = selectedColumns.map((item: any) => item?.id);
-            columnsSelected = columnsResizable.filter((item: any) => selectedIndex.includes(item.id));
+            columnsSelected = columnsResizable.filter((item: any) => selectedColumns.includes(item.id));
         }
         return columnsSelected;
     }
@@ -451,7 +455,16 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
     /** ************************************************** RENDER *************************************************** */
 
     render() {
-        const { total, pagination, tableLayoutList, selectedLayout, data, loading, columns } = this.state;
+        const {
+            total,
+            pagination,
+            tableLayoutList,
+            selectedLayout,
+            data,
+            loading,
+            columns,
+            selectedColumns = [],
+        } = this.state;
 
         // eslint-disable-next-line operator-linebreak
         const {
@@ -460,7 +473,6 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
             classNameTable,
             tableLayout,
             showSelectColumn,
-            keyTableLayout,
             className,
             onSelectionView,
             selectingRows,
@@ -486,21 +498,19 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
                     <div className={funcRowClass}>
                         {showSelectionView && onSelectionView && onSelectionView(selectingRows)}
                         <div className="flex-center-y">
-                            {!_.isEmpty(tableLayoutList) && (
-                                <SelectLayoutView
-                                    listLayout={tableLayoutList}
-                                    onClickItem={this.handleSelectTableLayout}
-                                    selectedLayout={selectedLayout}
-                                    showBorder
-                                />
-                            )}
-                            {/* <SelectColumnModal
-                                options={columns}
-                                setSelectedColumns={(column: any) => this.setState({ selectedColumns: column })}
-                                keyTable={keyTableLayout}
-                                refreshLayout={() => this.setDefaultTableLayout()}
-                            /> */}
-                            <LayoutManagerButtonColumns />
+                            <LayoutManagerViewSelect
+                                listLayout={tableLayoutList}
+                                onClickItem={this.onChangeTableLayout}
+                                selectedLayout={selectedLayout}
+                                onClickDefaultView={this.onChangeTableLayoutDefault}
+                            />
+                            <LayoutManagerColumnButton
+                                dataSource={columns as any[]}
+                                onChange={(selectedColumns) => this.setState({ selectedColumns })}
+                                values={selectedColumns}
+                                onClickCancel={() => {}}
+                                onClickReset={() => {}}
+                            />
                         </div>
                     </div>
                 )}

@@ -28,6 +28,8 @@ export interface PopoverListProps extends ButtonProps {
     source: (paging: any) => Promise<any>;
     transformer: (data: any) => any;
     renderItem?: (item: any, index: any) => React.ReactNode;
+    renderContentHeader?: () => React.ReactNode;
+    renderContentFooter?: () => React.ReactNode;
     setRef?: (ref: any) => void;
     onChange?: (value: any) => void;
     customView?: () => React.ReactNode | React.ReactNode;
@@ -39,12 +41,15 @@ export interface PopoverListProps extends ButtonProps {
     isClickOpen?: boolean;
     placeHolder?: string;
     loadMoreText?: string;
+    emptyText?: string;
 }
 
 const PopoverList: React.FC<PopoverListProps> = ({
     source,
     transformer,
     renderItem,
+    renderContentHeader = () => <div />,
+    renderContentFooter = () => <div />,
     setRef,
     onChange,
     customView,
@@ -55,6 +60,7 @@ const PopoverList: React.FC<PopoverListProps> = ({
     buttonIconName,
     isClickOpen = true,
     loadMoreText = "Load More",
+    emptyText,
     className,
 }) => {
     const [dataList, setDataList] = useState(DEFAULT_DATA_LIST);
@@ -179,6 +185,7 @@ const PopoverList: React.FC<PopoverListProps> = ({
     const renderContent = () => {
         return (
             <div className="d-popover-list__dropdown">
+                {renderContentHeader()}
                 {buttonText && (
                     <div className="d-flex w-100 justify-content-end">
                         <Button
@@ -192,12 +199,13 @@ const PopoverList: React.FC<PopoverListProps> = ({
                     </div>
                 )}
                 {dataList.data.map((item, index) => renderItemList(item, index))}
-                <EmptyView mode={dataList.emptyMode} />
+                <EmptyView mode={dataList.emptyMode} emptyText={emptyText} />
                 {showLoadMore && (
                     <Button className="d-popover-list__footer" onClick={() => onClickLoadMore()} variant="trans">
                         {loadMoreText}
                     </Button>
                 )}
+                {renderContentFooter()}
             </div>
         );
     };

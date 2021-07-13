@@ -19,4 +19,8 @@ export default {
     search: "Search",
     showAll: "Show all",
     closeAll: "Close All",
+    column: "Column",
+    reset: "Reset",
+    outOfVisible: "%numOfVisible out of %total visible",
+    defaultView: "Default View",
 };

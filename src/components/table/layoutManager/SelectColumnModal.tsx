@@ -103,7 +103,7 @@ const SelectColumnModal = ({
         if (_.isEmpty(keyTable)) {
             return;
         }
-        const listLayoutTable = LayoutTableManager.getLayout(keyTable);
+        const listLayoutTable = LayoutTableManager.getTableLayouts(keyTable);
         setListLayout(listLayoutTable);
     };
 
@@ -116,7 +116,7 @@ const SelectColumnModal = ({
     useEffect(() => {
         let defaultLayout = {};
         if (!_.isEmpty(keyTable)) {
-            const tableLayout = LayoutTableManager.getLayout(keyTable);
+            const tableLayout = LayoutTableManager.getTableLayouts(keyTable);
             if (!_.isEmpty(tableLayout)) {
                 const keyTable = Object.keys(tableLayout);
                 keyTable.forEach((key) => {
@@ -151,7 +151,6 @@ const SelectColumnModal = ({
 
     const handleOnClickSave = async () => {
         if (!_.isEmpty(selectedLayout)) {
-            // const storagedLayout = LayoutTableManager.getLayout(selectedLayout?.name)
             const selected = selectedOption.map((item: any) => ({
                 id: item.id,
             }));
@@ -185,7 +184,7 @@ const SelectColumnModal = ({
             id: item.id,
         }));
         const layout = { data: selected, default: false };
-        await LayoutTableManager.saveNewLayout(layout, keyTable, nameOfLayout);
+        await LayoutTableManager.createLayout(layout, keyTable, nameOfLayout);
         setOpenSaveNewModal(false);
         setSelectedLayout({ ...layout, name: nameOfLayout });
         refreshLayout && refreshLayout();

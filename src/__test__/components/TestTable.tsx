@@ -1,76 +1,66 @@
 /* eslint-disable max-len */
 import React, { useState } from "react";
-import { Dropdown as DropdownAnt } from "antd";
 import Button from "../../components/button/Button";
-import HeaderTable from "../../components/header/HeaderTable";
-import AwesomeTableComponent, {
-    AwesomeTableComponentProps,
-    IColumnsProps,
-} from "../../components/table/AwesomeTableComponent";
-import ViewTextarea from "../../components/view/ViewTextarea";
-import { ATTRIBUTE_INPUT_TYPE } from "../data/TestConstant";
 import Dropdown from "../../components/dropdown/Dropdown";
+import HeaderTable from "../../components/header/HeaderTable";
+import AwesomeTableComponent, { IColumnsProps } from "../../components/table/AwesomeTableComponent";
+import { ATTRIBUTE_INPUT_TYPE } from "../data/TestConstant";
 
 const TestTable = () => {
     const [selectingRows, setSelectingRows] = useState<any>([]);
     const [dataSource, setDataSource] = useState(ATTRIBUTE_INPUT_TYPE);
     const columns: IColumnsProps = [
         {
-            title: () => <h5>ID</h5>,
+            title: () => "Id",
             dataIndex: "id",
             width: 300,
             render: () => {
-                return <Dropdown dataSource={ATTRIBUTE_INPUT_TYPE} position="left-edge" />;
+                return <Dropdown dataSource={ATTRIBUTE_INPUT_TYPE} />;
             },
         },
-        // {
-        //     title: "Label",
-        //     align: "center",
-        //     dataIndex: "label",
-        //     width: 300,
-        //     render: (label) => {
-        //         return (
-        //             <div>
-        //                 <ViewTextarea limitedLength={20}>
-        //                     {`This is Ant Design's internal standard for evaluating design quality. Based on the assumption that
-        //         "everyone is pursuing happiness at work", we have added the two values of "Meaningfulness" and "Growth"
-        //         on the basis of "Certainty" and "Naturalness" to guide each designer towards better judgment and
-        //         decision-making.`}
-        //                     {/* {label} */}
-        //                 </ViewTextarea>
-        //             </div>
-        //         );
-        //     },
-        // },
         {
             title: "Name",
-            align: "center",
+
             dataIndex: "label",
             width: 300,
         },
         {
             title: "Age",
-            align: "center",
+
             dataIndex: "label",
         },
         {
             title: "Sex",
-            align: "center",
+
             dataIndex: "label",
         },
         {
             title: "DOB",
-            align: "center",
             dataIndex: "label",
         },
         {
-            title: "DOB Test",
-            align: "center",
+            title: "BF",
+            dataIndex: "label",
+        },
+        {
+            title: "Single",
+            dataIndex: "label",
+        },
+        {
+            title: "Skin",
+            dataIndex: "label",
+        },
+        {
+            title: "Hair color",
+            dataIndex: "label",
+        },
+        {
+            title: "Eyes color",
             dataIndex: "label",
         },
         {
             title: "Action",
-            align: "center",
+
             render: () => {
                 return (
                     <Dropdown

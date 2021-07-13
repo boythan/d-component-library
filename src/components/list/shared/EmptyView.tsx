@@ -80,7 +80,7 @@ class EmptyView extends Component<any, any> {
      * Incase change only few cases, we should use props.renderEmptyView
      */
     renderEmptyView() {
-        return <div className="text">{this.props.emptyText}</div>;
+        return <text className="p-3">{this.props.emptyText}</text>;
     }
 
     /**
@@ -88,7 +88,7 @@ class EmptyView extends Component<any, any> {
      * Incase change only few cases, we should use props.renderFilterEmptyView
      */
     renderFilterEmptyView() {
-        return <div className="text">{this.props.filterEmptyText}</div>;
+        return <text className="p-3">{this.props.filterEmptyText}</text>;
     }
 
     /**

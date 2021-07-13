@@ -87,6 +87,22 @@
     }
 }
 
+.d-table-awesome__layout-manager-column-popover {
+    width: max-content !important;
+}
+
+.d-table-awesome__layout-manager-view-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 30rem;
+    padding: 8px 16px;
+    cursor: pointer;
+    &:hover {
+        background-color: $hover-color;
+    }
+}
+
 @media screen and (max-width: 1000px) {
     .d-table-awesome-component table,
     .d-table-awesome-component tbody,
