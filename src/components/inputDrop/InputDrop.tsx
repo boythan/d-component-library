@@ -8,6 +8,7 @@ import Button from "../button/Button";
 import { DropdownProps } from "../dropdown/Dropdown";
 import Icon from "../icon/Icon";
 import InputText from "../input/InputText";
+import Popover from "../popover/Popover";
 
 export interface InputDropProps {
     className?: string;
@@ -40,7 +41,6 @@ interface InputDropSourceProps extends InputDropProps {
 const InputDrop: React.FC<InputDropSourceProps> = ({
     label,
     className,
-    classNameDropdown,
 
     position = "left-edge",
     iconName = "expand_more",
@@ -65,9 +65,6 @@ const InputDrop: React.FC<InputDropSourceProps> = ({
 }) => {
     const [openDropdown, setOpenDropdown] = useState(false);
 
-    const dropdownRef = useRef<HTMLDivElement>(null);
-    const inputRef = useRef<HTMLDivElement>(null);
-
     const containerClass = ClassNames(
         `d-input-drop__container d-input-drop__container-${position}`,
         {
@@ -77,19 +74,8 @@ const InputDrop: React.FC<InputDropSourceProps> = ({
         className
     );
     const inputClass = ClassNames("d-input-drop__input hover-pointer");
-    const dropdownWrapperClass = ClassNames("d-input-drop__dropdown", classNameDropdown);
+    const dropdownWrapperClass = ClassNames("d-input-drop__dropdown");
     const errorTextClass = ClassNames("text-x-small", "text-error", "ml-1");
-
-    useEffect(() => {
-        const handleOutsideClick = (event: MouseEvent) => {
-            const isClickOutside = dropdownRef.current && !dropdownRef.current.contains(event?.target as HTMLElement);
-            const isClickInput = inputRef.current && inputRef.current.contains(event.target as HTMLElement);
-            if (isClickOutside && !isClickInput) {
-                setOpenDropdown(false);
-            }
-        };
-        document.addEventListener("mousedown", handleOutsideClick);
-    }, [dropdownRef, setOpenDropdown]);
 
     const inputValue = () => {
         let name = label;
@@ -147,22 +133,9 @@ const InputDrop: React.FC<InputDropSourceProps> = ({
         );
     };
 
-    return (
-        <div className={containerClass}>
-            {!hideLabel && <label>{label}</label>}
-            <div className={inputClass} onClick={() => setOpenDropdown(!openDropdown)} ref={inputRef}>
-                <div className="flex-center-y text-x-small w-100">
-                    {inputValue()}
-                    <Icon name={iconName} className="d-input-drop__arrow-icon ml-2" />
-                </div>
-            </div>
-            {error && (
-                <div className="flex-center-y mt-1">
-                    <Icon name="error_outline" className="text-error" size="small" />
-                    <text className={errorTextClass}>{error}</text>
-                </div>
-            )}
-            <div className={dropdownWrapperClass} ref={dropdownRef}>
+    const renderPopoverContent = () => {
+        return (
+            <div className="w-100">
                 {renderHeader()}
                 {onChangeText && (
                     <InputText
@@ -175,6 +148,31 @@ const InputDrop: React.FC<InputDropSourceProps> = ({
                 {content()}
                 {renderFooter()}
             </div>
+        );
+    };
+
+    return (
+        <div className={containerClass}>
+            {!hideLabel && <label>{label}</label>}
+            <Popover
+                className={inputClass}
+                classNameContent={dropdownWrapperClass}
+                open={openDropdown}
+                onOpen={() => setOpenDropdown(true)}
+                onClose={() => setOpenDropdown(false)}
+                content={renderPopoverContent()}
+            >
+                <div className="flex-center-y text-x-small w-100">
+                    {inputValue()}
+                    <Icon name={iconName} className="d-input-drop__arrow-icon ml-2" />
+                </div>
+            </Popover>
+            {error && (
+                <div className="flex-center-y mt-1">
+                    <Icon name="error_outline" className="text-error" size="small" />
+                    <text className={errorTextClass}>{error}</text>
+                </div>
+            )}
         </div>
     );
 };

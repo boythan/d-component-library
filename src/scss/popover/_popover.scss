@@ -15,3 +15,15 @@
     min-width: 20rem;
     right: 0;
 }
+
+.d-popover__content-right-edge {
+    top: 115%;
+    right: 0;
+    left: auto;
+}
+
+.d-popover__content-left-edge {
+    top: 115%;
+    left: 0;
+    right: auto;
+}

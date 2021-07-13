@@ -17,14 +17,17 @@ const TestInputDrop: React.FC<TestInputDropProps> = ({ id }) => {
                 value={quickFilterValue}
                 onChange={setQuickValue}
             />
-            <InputDropSelect
-                dataSource={ATTRIBUTE_INPUT_TYPE}
-                className="my-4"
-                label="Input Drop Select Single"
-                value={quickFilterValue}
-                onChange={setQuickValue}
-                multiple={false}
-            />
+            <div className="d-flex justify-content-end ">
+                <InputDropSelect
+                    dataSource={ATTRIBUTE_INPUT_TYPE}
+                    className="my-4"
+                    label="Input Drop Select Single"
+                    value={quickFilterValue}
+                    onChange={setQuickValue}
+                    multiple={false}
+                />
+            </div>
+
             <InputDropCheckboxGroup
                 dataSource={ATTRIBUTE_INPUT_TYPE}
                 className="my-4"
