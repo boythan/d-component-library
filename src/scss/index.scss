@@ -78,7 +78,6 @@
 // list
 // ---------------------------------------- */
 
-@import "./list/popover-list";
 @import "./list/awesome-list";
 @import "./list/empty-view";
 
@@ -137,3 +136,11 @@
 // ---------------------------------------- */
 
 @import "./progress/progress";
+
+/* ----------------------------------------
+// popover
+// ---------------------------------------- */
+
+@import "./popover/popover";
+@import "./popover/popover-list";
+

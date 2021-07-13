@@ -1,4 +1,4 @@
-import { Input, TablePaginationConfig, TableProps, TableColumnType, TableColumnGroupType } from "antd";
+import { Input, TableColumnGroupType, TableColumnType, TablePaginationConfig, TableProps } from "antd";
 import React, { Component } from "react";
 export interface IPaginationProps extends TablePaginationConfig {
     pageIndex?: number;

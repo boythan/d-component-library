@@ -70133,145 +70133,6 @@ var TabBar = function (_a) {
         }) }), void 0));
 };
 
-var DEFAULT_PAGING_DATA = {
-    pageIndex: 1,
-    pageSize: 10,
-};
-var DEFAULT_DATA_LIST = {
-    data: [],
-    emptyMode: MODE.PROGRESS,
-    refreshing: false,
-};
-var PopoverList = function (_a) {
-    var source = _a.source, transformer = _a.transformer, renderItem = _a.renderItem, setRef = _a.setRef, onChange = _a.onChange, customView = _a.customView, onClickItem = _a.onClickItem, onCreateNew = _a.onCreateNew, buttonText = _a.buttonText, _b = _a.buttonVariant, buttonVariant = _b === void 0 ? "trans" : _b, buttonIconName = _a.buttonIconName, _c = _a.isClickOpen, isClickOpen = _c === void 0 ? true : _c; _a.placeHolder; var _e = _a.loadMoreText, loadMoreText = _e === void 0 ? "Load More" : _e, className = _a.className;
-    var _f = React.useState(DEFAULT_DATA_LIST), dataList = _f[0], setDataList = _f[1];
-    var _g = React.useState(false), openPopover = _g[0], setOpenPopover = _g[1];
-    var _h = React.useState(false), showLoadMore = _h[0], setShowLoadMore = _h[1];
-    var wrapperClass = classnames("d-popover-list", className);
-    var pagingData = React.useRef(DEFAULT_PAGING_DATA);
-    var noMoreData = React.useRef(false);
-    var listRef = React.useRef({ refresh: function () { return refresh(); } });
-    var outSideRef = React.useRef();
-    var isArray = function (array) {
-        return Array.isArray(array);
-    };
-    var isNoMoreData = function (newData) {
-        if (!newData || !isArray(newData))
-            return true;
-        return pagingData ? newData.length < pagingData.current.pageSize : false;
-    };
-    var handleClick = function (e) {
-        var _a;
-        if ((_a = outSideRef === null || outSideRef === void 0 ? void 0 : outSideRef.current) === null || _a === void 0 ? void 0 : _a.contains(e.target)) {
-            // inside click
-            // console.log("click inside");
-            return;
-        }
-        // outside click
-        setOpenPopover(false);
-    };
-    React.useEffect(function () {
-        // add when mounted
-        document.addEventListener("mousedown", handleClick);
-        // return function to be called when unmounted
-        return function () {
-            document.removeEventListener("mousedown", handleClick);
-        };
-    }, []);
-    React.useEffect(function () {
-        setRef && setRef(listRef.current);
-        onLoadData();
-    }, []);
-    var refresh = function () {
-        noMoreData.current = false;
-        pagingData.current = DEFAULT_PAGING_DATA;
-        onLoadData();
-    };
-    function onLoadData() {
-        var _this = this;
-        if (noMoreData.current) {
-            setShowLoadMore(false);
-            return;
-        }
-        source(pagingData.current)
-            .then(function (response) { return __awaiter(_this, void 0, void 0, function () {
-            var data, newData;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        pagingData.current = __assign(__assign({}, pagingData.current), { pageIndex: pagingData.current.pageIndex + 1 });
-                        return [4 /*yield*/, transformer(response)];
-                    case 1:
-                        data = _a.sent();
-                        noMoreData.current = isNoMoreData(data);
-                        if (!noMoreData.current) {
-                            setShowLoadMore(true);
-                        }
-                        else {
-                            setShowLoadMore(false);
-                        }
-                        if (!isArray(data)) {
-                            // eslint-disable-next-line no-throw-literal
-                            throw "Data is not an array";
-                        }
-                        if (lodash.isEmpty(data) && dataList.data.length === 0) {
-                            setDataList({
-                                data: [],
-                                emptyMode: MODE.EMPTY,
-                                refreshing: false,
-                            });
-                            return [2 /*return*/];
-                        }
-                        newData = dataList.data.concat(data);
-                        setDataList({
-                            data: newData,
-                            emptyMode: MODE.HIDDEN,
-                            refreshing: false,
-                        });
-                        return [2 /*return*/];
-                }
-            });
-        }); })
-            .catch(function () { });
-    }
-    var onClickLoadMore = function () {
-        onLoadData();
-    };
-    var onClickItemList = function (item, index) {
-        setOpenPopover(false);
-        onClickItem && onClickItem(item, index);
-    };
-    var onClickCreateNewHandle = function () {
-        setOpenPopover(false);
-        onCreateNew && onCreateNew();
-    };
-    var renderItemList = function (item, index) {
-        var content = (item === null || item === void 0 ? void 0 : item.name) || (item === null || item === void 0 ? void 0 : item.label);
-        if (renderItem) {
-            content = renderItem(item, index);
-        }
-        return (jsxRuntime.jsx("div", __assign({ className: "renderItemList", onClick: function () { return onClickItemList(item, index); } }, { children: content }), index + Math.random()));
-    };
-    var mainViewPopover = function () {
-        if (customView) {
-            if (typeof customView === "function") {
-                return customView();
-            }
-            return customView;
-        }
-        return (jsxRuntime.jsx(InputTextSearch, { onChange: function (event) {
-                if (!event.target.value.trim()) {
-                    return;
-                }
-                !isClickOpen && setOpenPopover(true);
-                onChange && onChange(event.target.value);
-            } }, void 0));
-    };
-    return (jsxRuntime.jsxs("div", __assign({ className: wrapperClass, ref: outSideRef }, { children: [jsxRuntime.jsx("div", __assign({ onClick: function () { return isClickOpen && setOpenPopover(true); } }, { children: mainViewPopover() }), void 0), openPopover && (jsxRuntime.jsxs("div", __assign({ className: "d-popover-list__dropdown" }, { children: [buttonText && (jsxRuntime.jsx("div", __assign({ className: "d-flex w-100 justify-content-end" }, { children: jsxRuntime.jsx(Button, { content: buttonText, iconName: buttonIconName, variant: buttonVariant, onClick: function () {
-                                onClickCreateNewHandle();
-                            } }, void 0) }), void 0)), dataList.data.map(function (item, index) { return renderItemList(item, index); }), jsxRuntime.jsx(EmptyView, { mode: dataList.emptyMode }, void 0), showLoadMore && (jsxRuntime.jsx(Button, __assign({ className: "d-popover-list__footer", onClick: function () { return onClickLoadMore(); }, variant: "trans" }, { children: loadMoreText }), void 0))] }), void 0))] }), void 0));
-};
-
 // data stubs
 var RangePicker = DatePicker.RangePicker;
 var DateInput = function (_a) {
@@ -72018,7 +71879,7 @@ var transformColumn = function (columns, baseColumn) {
         if (titleTooltip) {
             titleResult = (jsxRuntime.jsxs(Tooltip, __assign({ className: "flex-center-y", zIndex: 10000, title: titleTooltip }, { children: [title, jsxRuntime.jsx(Icon$2, { name: "info", className: "ml-3" }, void 0)] }), void 0));
         }
-        return __assign(__assign(__assign({}, baseColumn), { id: "" + index, title: titleResult, align: "center", dataIndex: dataIndex, render: function (data, item, index) {
+        return __assign(__assign(__assign({}, baseColumn), { id: "" + index, title: titleResult, align: "left", dataIndex: dataIndex, render: function (data, item, index) {
                 var content = data;
                 if (typeof render === "function") {
                     content = render(data, item, index);
@@ -72033,6 +71894,10 @@ var transformColumn = function (columns, baseColumn) {
 var AwesomeTableUtils = {
     transformColumn: transformColumn,
     calculateDefaultExpandedRowKeys: calculateDefaultExpandedRowKeys,
+};
+
+var LayoutManagerButtonColumns = function () {
+    return (jsxRuntime.jsx("div", { children: jsxRuntime.jsx(Button, { content: "Column", iconName: "settings", variant: "trans", onClick: function () { }, color: "gray", className: "font-weight-normal" }, void 0) }, void 0));
 };
 
 var ALL_LAYOUT_TABLE_KEY = "ALL_LAYOUT_TABLE_KEY";
@@ -72091,6 +71956,161 @@ var DialogManager = {
     },
 };
 
+var Popover = function (_a) {
+    var content = _a.content, children = _a.children, _b = _a.isClickOpen, isClickOpen = _b === void 0 ? true : _b, className = _a.className, classNameContent = _a.classNameContent, setRef = _a.setRef;
+    var outSideRef = React.useRef();
+    var _c = React.useState(false), openPopover = _c[0], setOpenPopover = _c[1];
+    var wrapperClass = classnames("d-popover", className);
+    var contentClass = classnames("d-popover__content", classNameContent);
+    var popoverRef = React.useRef({ onOpen: function () { return setOpenPopover(true); }, onClose: function () { return setOpenPopover(false); } });
+    React.useEffect(function () {
+        // eslint-disable-next-line no-unused-expressions
+        setRef && setRef(popoverRef.current);
+    }, []);
+    var handleClick = function (e) {
+        var _a;
+        if ((_a = outSideRef === null || outSideRef === void 0 ? void 0 : outSideRef.current) === null || _a === void 0 ? void 0 : _a.contains(e.target)) {
+            return;
+        }
+        // outside click
+        setOpenPopover(false);
+    };
+    React.useEffect(function () {
+        // add when mounted
+        document.addEventListener("mousedown", handleClick);
+        // return function to be called when unmounted
+        return function () {
+            document.removeEventListener("mousedown", handleClick);
+        };
+    }, []);
+    return (jsxRuntime.jsxs("div", __assign({ className: wrapperClass, ref: outSideRef }, { children: [jsxRuntime.jsx("div", __assign({ onClick: function () { return isClickOpen && setOpenPopover(true); } }, { children: children }), void 0), openPopover && jsxRuntime.jsx("div", __assign({ className: contentClass }, { children: content }), void 0)] }), void 0));
+};
+
+var DEFAULT_PAGING_DATA = {
+    pageIndex: 1,
+    pageSize: 10,
+};
+var DEFAULT_DATA_LIST = {
+    data: [],
+    emptyMode: MODE.PROGRESS,
+    refreshing: false,
+};
+var PopoverList = function (_a) {
+    var source = _a.source, transformer = _a.transformer, renderItem = _a.renderItem, setRef = _a.setRef, onChange = _a.onChange, customView = _a.customView, onClickItem = _a.onClickItem, onCreateNew = _a.onCreateNew, buttonText = _a.buttonText, _b = _a.buttonVariant, buttonVariant = _b === void 0 ? "trans" : _b, buttonIconName = _a.buttonIconName, _c = _a.isClickOpen, isClickOpen = _c === void 0 ? true : _c, _d = _a.loadMoreText, loadMoreText = _d === void 0 ? "Load More" : _d, className = _a.className;
+    var _e = React.useState(DEFAULT_DATA_LIST), dataList = _e[0], setDataList = _e[1];
+    var _f = React.useState(false), showLoadMore = _f[0], setShowLoadMore = _f[1];
+    var wrapperClass = classnames("d-popover-list", className);
+    var pagingData = React.useRef(DEFAULT_PAGING_DATA);
+    var noMoreData = React.useRef(false);
+    var listRef = React.useRef({ refresh: function () { return refresh(); } });
+    var popoverRef = React.useRef({});
+    var isArray = function (array) {
+        return Array.isArray(array);
+    };
+    var isNoMoreData = function (newData) {
+        if (!newData || !isArray(newData))
+            return true;
+        return pagingData ? newData.length < pagingData.current.pageSize : false;
+    };
+    React.useEffect(function () {
+        setRef && setRef(listRef.current);
+        onLoadData();
+    }, []);
+    var refresh = function () {
+        noMoreData.current = false;
+        pagingData.current = DEFAULT_PAGING_DATA;
+        onLoadData();
+    };
+    function onLoadData() {
+        var _this = this;
+        if (noMoreData.current) {
+            setShowLoadMore(false);
+            return;
+        }
+        source(pagingData.current)
+            .then(function (response) { return __awaiter(_this, void 0, void 0, function () {
+            var data, newData;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        pagingData.current = __assign(__assign({}, pagingData.current), { pageIndex: pagingData.current.pageIndex + 1 });
+                        return [4 /*yield*/, transformer(response)];
+                    case 1:
+                        data = _a.sent();
+                        noMoreData.current = isNoMoreData(data);
+                        if (!noMoreData.current) {
+                            setShowLoadMore(true);
+                        }
+                        else {
+                            setShowLoadMore(false);
+                        }
+                        if (!isArray(data)) {
+                            // eslint-disable-next-line no-throw-literal
+                            throw "Data is not an array";
+                        }
+                        if (lodash.isEmpty(data) && dataList.data.length === 0) {
+                            setDataList({
+                                data: [],
+                                emptyMode: MODE.EMPTY,
+                                refreshing: false,
+                            });
+                            return [2 /*return*/];
+                        }
+                        newData = dataList.data.concat(data);
+                        setDataList({
+                            data: newData,
+                            emptyMode: MODE.HIDDEN,
+                            refreshing: false,
+                        });
+                        return [2 /*return*/];
+                }
+            });
+        }); })
+            .catch(function () { });
+    }
+    var onClickLoadMore = function () {
+        onLoadData();
+    };
+    var onClickItemList = function (item, index) {
+        popoverRef.current.onClose();
+        onClickItem && onClickItem(item, index);
+    };
+    var onClickCreateNewHandle = function () {
+        popoverRef.current.onClose();
+        onCreateNew && onCreateNew();
+    };
+    var renderItemList = function (item, index) {
+        var content = (item === null || item === void 0 ? void 0 : item.name) || (item === null || item === void 0 ? void 0 : item.label);
+        if (renderItem) {
+            content = renderItem(item, index);
+        }
+        return (jsxRuntime.jsx("div", __assign({ className: "renderItemList", onClick: function () { return onClickItemList(item, index); } }, { children: content }), index + Math.random()));
+    };
+    var mainViewPopover = function () {
+        if (customView) {
+            if (typeof customView === "function") {
+                return customView();
+            }
+            return customView;
+        }
+        return (jsxRuntime.jsx(InputTextSearch, { onChange: function (event) {
+                if (!event.target.value.trim()) {
+                    return;
+                }
+                !isClickOpen && popoverRef.current.onOpen();
+                onChange && onChange(event.target.value);
+            } }, void 0));
+    };
+    var renderContent = function () {
+        return (jsxRuntime.jsxs("div", __assign({ className: "d-popover-list__dropdown" }, { children: [buttonText && (jsxRuntime.jsx("div", __assign({ className: "d-flex w-100 justify-content-end" }, { children: jsxRuntime.jsx(Button, { content: buttonText, iconName: buttonIconName, variant: buttonVariant, onClick: function () {
+                            onClickCreateNewHandle();
+                        } }, void 0) }), void 0)), dataList.data.map(function (item, index) { return renderItemList(item, index); }), jsxRuntime.jsx(EmptyView, { mode: dataList.emptyMode }, void 0), showLoadMore && (jsxRuntime.jsx(Button, __assign({ className: "d-popover-list__footer", onClick: function () { return onClickLoadMore(); }, variant: "trans" }, { children: loadMoreText }), void 0))] }), void 0));
+    };
+    return (jsxRuntime.jsx(Popover, __assign({ content: renderContent(), className: wrapperClass, setRef: function (ref) {
+            popoverRef.current = ref;
+        } }, { children: mainViewPopover() }), void 0));
+};
+
 var SelectLayoutView = function (_a) {
     var onClickItem = _a.onClickItem, _b = _a.listLayout, listLayout = _b === void 0 ? {} : _b, selectedLayout = _a.selectedLayout, showBorder = _a.showBorder, _c = _a.text, text = _c === void 0 ? "Select Layout" : _c;
     var renderTitleSelectLayout = function () {
@@ -72118,181 +72138,6 @@ var SelectLayoutView = function (_a) {
         return result;
     };
     return (jsxRuntime.jsx(PopoverList, { source: function () { return Promise.resolve(); }, transformer: transformer, renderItem: renderLayoutItem, onClickItem: onClickItem, isClickOpen: true, customView: renderTitleSelectLayout }, lodash.now()));
-};
-var SelectColumnModal = function (_a) {
-    var _b = _a.options, options = _b === void 0 ? [] : _b, setSelectedColumns = _a.setSelectedColumns, _c = _a.keyTable, keyTable = _c === void 0 ? null : _c, refreshLayout = _a.refreshLayout, _d = _a.actionText, actionText = _d === void 0 ? "Action" : _d, _e = _a.selectAllText, selectAllText = _e === void 0 ? "Select All" : _e;
-    var _f = React.useState(false), openOptionModal = _f[0], setOpenOptionModal = _f[1];
-    var _g = React.useState(false), openSaveNewModal = _g[0], setOpenSaveNewModal = _g[1];
-    var _h = React.useState(false), selectAll = _h[0], setSelectAll = _h[1];
-    var _j = React.useState(options), selectedOption = _j[0], setSelectedOption = _j[1];
-    var _k = React.useState(), nameOfLayout = _k[0], setNameOfLayout = _k[1];
-    var _l = React.useState(), listLayout = _l[0], setListLayout = _l[1];
-    var _m = React.useState({}), selectedLayout = _m[0], setSelectedLayout = _m[1];
-    var getLayoutTable = function () {
-        if (lodash.isEmpty(keyTable)) {
-            return;
-        }
-        var listLayoutTable = LayoutTableManager.getLayout(keyTable);
-        setListLayout(listLayoutTable);
-    };
-    React.useEffect(function () {
-        if (!lodash.isEmpty(keyTable)) {
-            getLayoutTable();
-        }
-    }, [keyTable, openOptionModal, openSaveNewModal]);
-    React.useEffect(function () {
-        var defaultLayout = {};
-        if (!lodash.isEmpty(keyTable)) {
-            var tableLayout_1 = LayoutTableManager.getLayout(keyTable);
-            if (!lodash.isEmpty(tableLayout_1)) {
-                var keyTable_1 = Object.keys(tableLayout_1);
-                keyTable_1.forEach(function (key) {
-                    var _a, _b, _c;
-                    if ((_a = tableLayout_1[key]) === null || _a === void 0 ? void 0 : _a.default) {
-                        defaultLayout = __assign(__assign({}, tableLayout_1[key]), { name: key });
-                        setSelectedOption((_c = (_b = tableLayout_1 === null || tableLayout_1 === void 0 ? void 0 : tableLayout_1[key]) === null || _b === void 0 ? void 0 : _b.data) !== null && _c !== void 0 ? _c : []);
-                    }
-                });
-            }
-        }
-        setSelectedLayout(defaultLayout);
-    }, [keyTable, openOptionModal]);
-    React.useEffect(function () {
-        if ((selectedOption === null || selectedOption === void 0 ? void 0 : selectedOption.length) === (options === null || options === void 0 ? void 0 : options.length)) {
-            setSelectAll(true);
-        }
-        else {
-            setSelectAll(false);
-        }
-    }, [selectedOption, openOptionModal]);
-    var removeItemFromSelected = function (selectedItem) {
-        var clone = selectedOption.filter(function (item) { return item.id !== selectedItem; });
-        setSelectedOption(clone);
-    };
-    var addItemToSelected = function (selectedItem) {
-        var addedItem = options.find(function (obj) { return obj.id === selectedItem; });
-        var clone = __spreadArray(__spreadArray([], selectedOption), [addedItem]);
-        setSelectedOption(clone);
-    };
-    var handleOnClickSave = function () { return __awaiter(void 0, void 0, void 0, function () {
-        var selected, layout_1, newTableLayout_1, keyLayout;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    if (!!lodash.isEmpty(selectedLayout)) return [3 /*break*/, 2];
-                    selected = selectedOption.map(function (item) { return ({
-                        id: item.id,
-                    }); });
-                    layout_1 = { data: selected, default: true };
-                    newTableLayout_1 = {};
-                    keyLayout = Object.keys(listLayout);
-                    keyLayout.forEach(function (key) {
-                        if (key === selectedLayout.name) {
-                            newTableLayout_1[key] = layout_1;
-                        }
-                        else {
-                            newTableLayout_1[key] = __assign(__assign({}, listLayout[key]), { default: false });
-                        }
-                    });
-                    return [4 /*yield*/, LayoutTableManager.saveTableLayout(newTableLayout_1, keyTable)];
-                case 1:
-                    _a.sent();
-                    _a.label = 2;
-                case 2:
-                    setSelectedColumns && setSelectedColumns(selectedOption);
-                    refreshLayout && refreshLayout();
-                    return [2 /*return*/, setOpenOptionModal(false)];
-            }
-        });
-    }); };
-    var handleOnClickSaveNew = function () { return __awaiter(void 0, void 0, void 0, function () {
-        return __generator(this, function (_a) {
-            setOpenSaveNewModal(true);
-            return [2 /*return*/, Promise.resolve()];
-        });
-    }); };
-    var handleOnSaveNewLayout = function () { return __awaiter(void 0, void 0, void 0, function () {
-        var selected, layout;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    if (lodash.isEmpty(nameOfLayout)) {
-                        return [2 /*return*/, Promise.reject()];
-                    }
-                    selected = selectedOption.map(function (item) { return ({
-                        id: item.id,
-                    }); });
-                    layout = { data: selected, default: false };
-                    return [4 /*yield*/, LayoutTableManager.saveNewLayout(layout, keyTable, nameOfLayout)];
-                case 1:
-                    _a.sent();
-                    setOpenSaveNewModal(false);
-                    setSelectedLayout(__assign(__assign({}, layout), { name: nameOfLayout }));
-                    refreshLayout && refreshLayout();
-                    return [2 /*return*/, Promise.resolve()];
-            }
-        });
-    }); };
-    var onSelectLayout = function (item) {
-        var _a, _b;
-        var layoutIndex = (_b = (_a = item === null || item === void 0 ? void 0 : item.data) === null || _a === void 0 ? void 0 : _a.map(function (item) { return item === null || item === void 0 ? void 0 : item.id; })) !== null && _b !== void 0 ? _b : [];
-        var filterOption = options.filter(function (item) { return layoutIndex.includes(item === null || item === void 0 ? void 0 : item.id); });
-        setSelectedLayout(item);
-        setSelectedOption(filterOption);
-        getLayoutTable();
-    };
-    var onClickClearAll = function () {
-        return DialogManager.showConfirm("Confirm", "Are you sure want to delete all Layout?", function () { return __awaiter(void 0, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, LayoutTableManager.clearTableLayout(keyTable)];
-                    case 1:
-                        _a.sent();
-                        setListLayout({});
-                        setSelectedLayout({});
-                        return [2 /*return*/];
-                }
-            });
-        }); });
-    };
-    var onClickSelectAll = function () {
-        if (!selectAll) {
-            setSelectedOption(options);
-        }
-        setSelectAll(!selectAll);
-    };
-    var renderContentModal = function () {
-        return (jsxRuntime.jsxs("div", __assign({ className: "d-flex flex-column align-items-start justify-content-center" }, { children: [jsxRuntime.jsxs("h5", { children: [actionText, ":"] }, void 0), jsxRuntime.jsxs("div", __assign({ className: "d-flex align-items-center" }, { children: [jsxRuntime.jsx(Checkbox, { value: selectAll, checked: selectAll, onChange: onClickSelectAll, color: "primary", label: selectAllText }, void 0), jsxRuntime.jsx(Button, { onClick: onClickClearAll, disabled: lodash.isEmpty(listLayout), iconName: "highlight_off", content: "Clear All Layout", variant: "trans", color: "red" }, void 0)] }), void 0), jsxRuntime.jsx("div", __assign({ className: "row my-4 w-100" }, { children: options.map(function (item) {
-                        // eslint-disable-next-line operator-linebreak
-                        var isChecked = !!selectedOption.find(function (obj) { return obj.id === item.id; });
-                        var label = typeof (item === null || item === void 0 ? void 0 : item.title) === "function" ? item === null || item === void 0 ? void 0 : item.title() : item === null || item === void 0 ? void 0 : item.title;
-                        return (jsxRuntime.jsx("div", __assign({ className: "col-sm-6 mt-3" }, { children: jsxRuntime.jsx(Checkbox, { checked: isChecked, onChange: function (event) {
-                                    var _a, _b;
-                                    if (isChecked) {
-                                        removeItemFromSelected((_a = event === null || event === void 0 ? void 0 : event.target) === null || _a === void 0 ? void 0 : _a.value);
-                                    }
-                                    else {
-                                        addItemToSelected((_b = event === null || event === void 0 ? void 0 : event.target) === null || _b === void 0 ? void 0 : _b.value);
-                                    }
-                                }, value: item === null || item === void 0 ? void 0 : item.id, 
-                                // eslint-disable-next-line react/no-children-prop
-                                label: label, className: "my-2" }, void 0) }), void 0));
-                    }) }), void 0)] }), void 0));
-    };
-    var renderSecondTitle = function () {
-        return (jsxRuntime.jsx(SelectLayoutView, { listLayout: listLayout, onClickItem: function (item) { return onSelectLayout(item); }, selectedLayout: selectedLayout }, void 0));
-    };
-    var renderContentSaveNewModal = function () {
-        return (jsxRuntime.jsx(InputText, { onChange: function (event) { return setNameOfLayout(event.target.value); }, "aria-label": "Default", "aria-describedby": "inputGroup-sizing-default", placeholder: "Name Of Layout" }, void 0));
-    };
-    var renderFooter = function () {
-        return (jsxRuntime.jsxs("div", __assign({ className: "d-flex align-items-center w-100 justify-content-end" }, { children: [jsxRuntime.jsx(Button
-                // eslint-disable-next-line react/jsx-curly-brace-presence
-                , { 
-                    // eslint-disable-next-line react/jsx-curly-brace-presence
-                    content: "Save & Apply", onClick: handleOnClickSave, disabled: lodash.isEmpty(selectedLayout), className: "mr-3" }, void 0), jsxRuntime.jsx(Button, { content: "Save", onClick: handleOnClickSaveNew }, void 0)] }), void 0));
-    };
-    return (jsxRuntime.jsxs(React__default['default'].Fragment, { children: [jsxRuntime.jsx(Button, { content: "Column", iconName: "settings", variant: "trans", onClick: function () { return setOpenOptionModal(true); }, color: "gray", className: "font-weight-normal" }, void 0), jsxRuntime.jsx(Modal, __assign({ open: openOptionModal, onClose: function () { return setOpenOptionModal(false); }, onSave: handleOnClickSave, title: "Select Layout " + ((selectedLayout === null || selectedLayout === void 0 ? void 0 : selectedLayout.name) ? " - " + (selectedLayout === null || selectedLayout === void 0 ? void 0 : selectedLayout.name) : ""), customFooter: renderFooter, size: "medium", headerSide: renderSecondTitle }, { children: renderContentModal() }), void 0), jsxRuntime.jsx(Modal, __assign({ open: openSaveNewModal, onClose: function () { return setOpenSaveNewModal(false); }, onSave: handleOnSaveNewLayout }, { children: renderContentSaveNewModal() }), void 0)] }, void 0));
 };
 
 var shims = createCommonjsModule(function (module, exports) {
@@ -74933,10 +74778,9 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
     };
     /** ************************************************** RENDER *************************************************** */
     AwesomeTableComponent.prototype.render = function () {
-        var _this = this;
-        var _a = this.state, total = _a.total, pagination = _a.pagination, tableLayoutList = _a.tableLayoutList, selectedLayout = _a.selectedLayout, data = _a.data, loading = _a.loading, columns = _a.columns;
+        var _a = this.state, total = _a.total, pagination = _a.pagination, tableLayoutList = _a.tableLayoutList, selectedLayout = _a.selectedLayout, data = _a.data, loading = _a.loading; _a.columns;
         // eslint-disable-next-line operator-linebreak
-        var _b = this.props, rowKey = _b.rowKey, isScroll = _b.isScroll, classNameTable = _b.classNameTable, tableLayout = _b.tableLayout, showSelectColumn = _b.showSelectColumn, keyTableLayout = _b.keyTableLayout, className = _b.className, onSelectionView = _b.onSelectionView, selectingRows = _b.selectingRows, _c = _b.bordered, bordered = _c === void 0 ? true : _c;
+        var _b = this.props, rowKey = _b.rowKey, isScroll = _b.isScroll, classNameTable = _b.classNameTable, tableLayout = _b.tableLayout, showSelectColumn = _b.showSelectColumn; _b.keyTableLayout; var className = _b.className, onSelectionView = _b.onSelectionView, selectingRows = _b.selectingRows, _c = _b.bordered, bordered = _c === void 0 ? true : _c;
         var showSelectionView = onSelectionView && selectingRows && (selectingRows === null || selectingRows === void 0 ? void 0 : selectingRows.length) > 0;
         var showFuncRow = showSelectColumn || showSelectionView;
         var paginationResult = pagination ? __assign(__assign({}, pagination), { current: pagination.pageIndex, total: total }) : false;
@@ -74944,11 +74788,7 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
         var funcRowClass = classnames("d-table-awesome-component__select-column my-2 w-100", {
             "d-flex justify-content-between align-items-center my-3": showSelectionView,
         });
-        return (jsxRuntime.jsxs("div", __assign({ className: wrapperClass }, { children: [showFuncRow && (jsxRuntime.jsxs("div", __assign({ className: funcRowClass }, { children: [showSelectionView && onSelectionView && onSelectionView(selectingRows), jsxRuntime.jsxs("div", __assign({ className: "flex-center-y" }, { children: [!lodash.isEmpty(tableLayoutList) && (jsxRuntime.jsx(SelectLayoutView, { listLayout: tableLayoutList, onClickItem: this.handleSelectTableLayout, selectedLayout: selectedLayout, showBorder: true }, void 0)), jsxRuntime.jsx(SelectColumnModal
-                                // eslint-disable-next-line react/destructuring-assignment
-                                , { 
-                                    // eslint-disable-next-line react/destructuring-assignment
-                                    options: columns, setSelectedColumns: function (column) { return _this.setState({ selectedColumns: column }); }, keyTable: keyTableLayout, refreshLayout: function () { return _this.setDefaultTableLayout(); } }, void 0)] }), void 0)] }), void 0)), jsxRuntime.jsx(Table, __assign({ rowKey: rowKey, dataSource: data, loading: loading, onChange: this.handleTableChange, rowClassName: function () { return "d-table-awesome-component__row"; }, pagination: paginationResult, scroll: isScroll ? { y: "1000" } : {}, tableLayout: tableLayout, bordered: bordered, components: this.components }, this.props, { className: "d-table-awesome-component__table " + classNameTable, 
+        return (jsxRuntime.jsxs("div", __assign({ className: wrapperClass }, { children: [showFuncRow && (jsxRuntime.jsxs("div", __assign({ className: funcRowClass }, { children: [showSelectionView && onSelectionView && onSelectionView(selectingRows), jsxRuntime.jsxs("div", __assign({ className: "flex-center-y" }, { children: [!lodash.isEmpty(tableLayoutList) && (jsxRuntime.jsx(SelectLayoutView, { listLayout: tableLayoutList, onClickItem: this.handleSelectTableLayout, selectedLayout: selectedLayout, showBorder: true }, void 0)), jsxRuntime.jsx(LayoutManagerButtonColumns, {}, void 0)] }), void 0)] }), void 0)), jsxRuntime.jsx(Table, __assign({ rowKey: rowKey, dataSource: data, loading: loading, onChange: this.handleTableChange, rowClassName: function () { return "d-table-awesome-component__row"; }, pagination: paginationResult, scroll: isScroll ? { y: "1000" } : {}, tableLayout: tableLayout, bordered: bordered, components: this.components }, this.props, { className: "d-table-awesome-component__table " + classNameTable, 
                     // columns props always has to be in last position in order for Resizable table to work
                     columns: this.getColumns() }), void 0)] }), void 0));
     };
@@ -76784,6 +76624,7 @@ exports.MapUtils = MapUtils;
 exports.Modal = Modal;
 exports.Notifications = Notifications;
 exports.ObjectUtils = ObjectUtils;
+exports.Popover = Popover;
 exports.PopoverList = PopoverList;
 exports.Progress = Progress;
 exports.ProgressComponent = ProgressComponent;

@@ -11,7 +11,7 @@ import Checkbox from "../../checkbox/Checkbox";
 import DialogManager from "../../dialog/DialogManager";
 import Icon from "../../icon/Icon";
 import InputText from "../../input/InputText";
-import PopoverList from "../../list/popoverList/PopoverList";
+import PopoverList from "../../popover/PopoverList";
 import Modal from "../../modal/Modal";
 // data stubs
 import LayoutTableManager from "./LayoutTableManager";

@@ -26,12 +26,12 @@ import TestProgress from "./components/test_progress/TestProgress";
 import TestTabBar from "./components/test_tabBar/TestTabBar";
 import TestUtils from "./components/test_util/TestUtils";
 import TestView from "./components/test_view/TestView";
+import TestPopover from "./components/text_popover/TestPopover";
 import { ATTRIBUTE_INPUT_TYPE } from "./data/TestConstant";
 
 interface Props {
     content?: any;
 }
-
 const AppStateContext = React.createContext<any>({ defaultValue: null });
 
 const FAKE_TOKEN =
@@ -143,6 +143,7 @@ export default function Test({ content }: Props): ReactElement {
         { id: "CARD", label: "CARD", component: <TestCard /> },
         { id: "FORM", label: "FORM", component: <TestForm /> },
         { id: "INPUT_DROP", label: "INPUT_DROP", component: <TestInputDrop /> },
+        { id: "POPOVER", label: "POPOVER", component: <TestPopover /> },
     ];
     return (
         <AppStateContext.Provider value={{ mockData }}>

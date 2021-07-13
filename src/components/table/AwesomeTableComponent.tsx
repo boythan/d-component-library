@@ -11,6 +11,7 @@ import _ from "lodash";
 import React, { Component } from "react";
 import Highlighter from "react-highlight-words";
 import { isArray, isString, transformColumn } from "../../utils/AwesomeTableUtils";
+import LayoutManagerButtonColumns from "./layoutManager/LayoutManagerButtonColumns";
 // data stubs
 import LayoutTableManager from "./layoutManager/LayoutTableManager";
 import SelectColumnModal, { SelectLayoutView } from "./layoutManager/SelectColumnModal";
@@ -493,12 +494,13 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
                                     showBorder
                                 />
                             )}
-                            <SelectColumnModal
+                            {/* <SelectColumnModal
                                 options={columns}
                                 setSelectedColumns={(column: any) => this.setState({ selectedColumns: column })}
                                 keyTable={keyTableLayout}
                                 refreshLayout={() => this.setDefaultTableLayout()}
-                            />
+                            /> */}
+                            <LayoutManagerButtonColumns />
                         </div>
                     </div>
                 )}

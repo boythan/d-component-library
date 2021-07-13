@@ -116,9 +116,6 @@ export { default as TabBar } from "./components/tab/TabBar";
 // List
 // ---------------------------------------- */
 
-export type { PopoverListProps } from "./components/list/popoverList/PopoverList";
-export { default as PopoverList } from "./components/list/popoverList/PopoverList";
-
 export type { AwesomeListComponentProps } from "./components/list/awesomeList/AwesomeListComponent";
 export { default as AwesomeListComponent } from "./components/list/awesomeList/AwesomeListComponent";
 
@@ -244,3 +241,12 @@ export { default as InputDropCheckboxGroup } from "./components/inputDrop/InputD
 
 export type { InputDropSelectProps } from "./components/inputDrop/InputDropSelect";
 export { default as InputDropSelect } from "./components/inputDrop/InputDropSelect";
+
+/* ----------------------------------------
+// Popover
+// ---------------------------------------- */
+export type { PopoverProps } from "./components/popover/Popover";
+export { default as Popover } from "./components/popover/Popover";
+
+export type { PopoverListProps } from "./components/popover/PopoverList";
+export { default as PopoverList } from "./components/popover/PopoverList";
