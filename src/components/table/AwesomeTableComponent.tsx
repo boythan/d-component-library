@@ -4,16 +4,7 @@
 /* eslint-disable react/static-property-placement */
 // react
 import { SearchOutlined } from "@ant-design/icons";
-import {
-    Button,
-    Input,
-    Table,
-    TablePaginationConfig,
-    TableProps,
-    TableColumnType,
-    TableColumnsType,
-    TableColumnGroupType,
-} from "antd";
+import { Button, Input, Table, TableColumnGroupType, TableColumnType, TablePaginationConfig, TableProps } from "antd";
 // third-party
 import ClassNames from "classnames";
 import _ from "lodash";
@@ -503,7 +494,6 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
                                 />
                             )}
                             <SelectColumnModal
-                                // eslint-disable-next-line react/destructuring-assignment
                                 options={columns}
                                 setSelectedColumns={(column: any) => this.setState({ selectedColumns: column })}
                                 keyTable={keyTableLayout}

@@ -73,7 +73,7 @@ export const transformColumn = (columns: Array<any> = [], baseColumn: any = {}):
             ...baseColumn,
             id: `${index}`,
             title: titleResult,
-            align: "center",
+            align: "left",
             dataIndex,
             render: (data: any, item: any, index: number) => {
                 let content = data;
