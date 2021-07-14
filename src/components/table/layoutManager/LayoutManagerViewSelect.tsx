@@ -29,6 +29,7 @@ const SelectLayoutItem = ({ layoutItem, onDelete, onSaveName, onClick }: any) =>
                     onChange={(event) => setLayoutNameEditing(event.target.value)}
                     autoFocus
                     className="w-100"
+                    defaultValue="New View"
                 />
                 <Button
                     iconName="done"
