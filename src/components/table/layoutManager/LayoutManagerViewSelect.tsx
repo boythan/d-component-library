@@ -1,18 +1,24 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import classNames from "classnames";
-import _ from "lodash";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import useForceUpdate from "../../../hooks/useForceUpdate";
 import Messages from "../../../language/Messages";
+import StringUtils from "../../../utils/StringUtils";
 import Button from "../../button/Button";
-import Icon from "../../icon/Icon";
 import InputText from "../../input/InputText";
-import PopoverList from "../../popover/PopoverList";
+import Popover from "../../popover/Popover";
+import LayoutTableManager from "./LayoutTableManager";
 
 const SelectLayoutItem = ({ layoutItem, onDelete, onSaveName }: any) => {
     const [isEditing, setIsEditing] = useState(false);
     const [layoutNameEditing, setLayoutNameEditing] = useState(layoutItem?.name);
     const classNameContainer = "d-table-awesome__layout-manager-view-item";
+
+    useEffect(() => {
+        setIsEditing(false);
+    }, [layoutItem.id]);
+
     if (isEditing) {
         return (
             <div className={classNameContainer}>
@@ -35,7 +41,7 @@ const SelectLayoutItem = ({ layoutItem, onDelete, onSaveName }: any) => {
                     iconName="delete"
                     variant="trans"
                     onClick={(event) => {
-                        onDelete();
+                        onDelete(layoutItem);
                         event.stopPropagation();
                     }}
                 />
@@ -56,21 +62,71 @@ const SelectLayoutItem = ({ layoutItem, onDelete, onSaveName }: any) => {
         </div>
     );
 };
-const LayoutManagerViewSelect = ({ onClickItem, listLayout = [], selectedLayout, onClickDefaultView }: any) => {
-    const renderTitleSelectLayout = () => (
-        <div id="titleSelectShipping" className={classNames("w-100 border-right")}>
-            <Button
-                content={selectedLayout?.name ?? Messages.defaultView}
-                iconName="visibility"
-                suffixIcon="arrow_drop_down"
-                variant="trans"
-                color="gray"
-                className="font-weight-normal"
-            />
+
+const SaveAsNewView = ({ selectedColumns = [], tableKey, onSuccess }: any) => {
+    const [isEditing, setEditing] = useState(false);
+    const [layoutNameEditing, setLayoutNameEditing] = useState("");
+    const classNameContainer = "d-table-awesome__layout-manager-view-item text-primary";
+
+    const onSaveNew = () => {
+        const newColumnsLayout = {
+            columnsIds: selectedColumns,
+            name: layoutNameEditing,
+            id: StringUtils.getUniqueID(),
+        };
+        LayoutTableManager.createLayout(newColumnsLayout, tableKey);
+        onSuccess();
+    };
+
+    if (isEditing) {
+        return (
+            <div className={classNameContainer}>
+                <InputText
+                    value={layoutNameEditing}
+                    onChange={(event) => setLayoutNameEditing(event.target.value)}
+                    autoFocus
+                    className="w-100"
+                />
+                <Button
+                    iconName="done"
+                    variant="trans"
+                    onClick={(event) => {
+                        onSaveNew();
+                        event.stopPropagation();
+                    }}
+                />
+            </div>
+        );
+    }
+    return (
+        <div className={classNameContainer} onClick={() => setEditing(true)}>
+            {Messages.saveViewAs}
         </div>
     );
+};
 
-    const onChangeLayoutName = (layoutItem: any, newName: string) => {};
+const LayoutManagerViewSelect = ({
+    onClickItem,
+    selectedLayout,
+    selectedColumns = [],
+    onClickDefaultView,
+    tableKey,
+}: any) => {
+    const tableLayouts = LayoutTableManager.getTableLayouts(tableKey);
+
+    const [openPopover, setOpenPopover] = useState(false);
+    const forceUpdate = useForceUpdate();
+
+    const onChangeLayoutName = (layoutItem: any, newName: string) => {
+        const newLayout = { ...layoutItem, name: newName };
+        LayoutTableManager.updateLayout(newLayout, tableKey);
+        forceUpdate();
+    };
+
+    const onDeleteLayoutItem = (layoutItem: any) => {
+        LayoutTableManager.deleteLayout(layoutItem.id, tableKey);
+        forceUpdate();
+    };
 
     const renderSelectDefaultView = () => {
         return (
@@ -80,18 +136,36 @@ const LayoutManagerViewSelect = ({ onClickItem, listLayout = [], selectedLayout,
         );
     };
 
+    const renderPopoverContent = () => {
+        return (
+            <div className="d-flex flex-column">
+                {renderSelectDefaultView()}
+                {tableLayouts.map((item: any) => (
+                    <SelectLayoutItem layoutItem={item} onSaveName={onChangeLayoutName} onDelete={onDeleteLayoutItem} />
+                ))}
+                <SaveAsNewView selectedColumns={selectedColumns} tableKey={tableKey} onSuccess={forceUpdate} />
+            </div>
+        );
+    };
+
     return (
-        <PopoverList
-            source={() => Promise.resolve(listLayout)}
-            transformer={(res) => res}
-            renderItem={(item) => <SelectLayoutItem layoutItem={item} onSaveName={onChangeLayoutName} />}
-            onClickItem={onClickItem}
-            isClickOpen
-            key={_.now()}
-            customView={renderTitleSelectLayout}
-            renderContentHeader={renderSelectDefaultView}
-            emptyText=""
-        />
+        <Popover
+            open={openPopover}
+            onOpen={() => setOpenPopover(true)}
+            onClose={() => setOpenPopover(false)}
+            content={renderPopoverContent()}
+        >
+            <div id="titleSelectShipping" className={classNames("w-100 border-right")}>
+                <Button
+                    content={selectedLayout?.name ?? Messages.defaultView}
+                    iconName="visibility"
+                    suffixIcon="arrow_drop_down"
+                    variant="trans"
+                    color="gray"
+                    className="font-weight-normal"
+                />
+            </div>
+        </Popover>
     );
 };
 

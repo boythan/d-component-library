@@ -23,4 +23,5 @@ export default {
     reset: "Reset",
     outOfVisible: "%numOfVisible out of %total visible",
     defaultView: "Default View",
+    saveViewAs: "Save View As...",
 };

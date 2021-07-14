@@ -1,5 +1,4 @@
 import _ from "lodash";
-import StringUtils from "../../../utils/StringUtils";
 
 interface ILayoutTableManager {
     id: string;
@@ -24,7 +23,7 @@ LayoutTableManager.clearTableLayout = (tableKey: any) => {
 LayoutTableManager.createLayout = (layout: ILayoutTableManager, tableKey: any) => {
     const tableLayouts = LayoutTableManager.getTableLayouts(tableKey);
     const allLayout = LayoutTableManager.getAllLayouts();
-    allLayout[tableKey] = [...tableLayouts, { ...layout, id: StringUtils.getUniqueID() }];
+    allLayout[tableKey] = [...tableLayouts, layout];
     return localStorage.setItem(ALL_LAYOUT_TABLE_KEY, JSON.stringify(allLayout));
 };
 

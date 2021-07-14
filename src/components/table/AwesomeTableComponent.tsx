@@ -85,9 +85,6 @@ export interface AwesomeTableComponentState {
 
     columns: TableProps<any>["columns"];
     selectedColumns: string[];
-
-    tableLayoutList: any;
-    selectedLayout: any;
 }
 
 class AwesomeTableComponent extends Component<AwesomeTableComponentProps, AwesomeTableComponentState> {
@@ -158,8 +155,6 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
 
             columns: tableColumns,
             selectedColumns,
-            tableLayoutList: [],
-            selectedLayout: null,
         };
     }
 
@@ -180,7 +175,6 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
 
     componentDidMount() {
         this.start();
-        this.setDefaultTableLayout();
     }
 
     UNSAFE_componentWillReceiveProps(nextProps: any) {
@@ -270,23 +264,6 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
         this.setState({ searchText: "" });
     };
 
-    setDefaultTableLayout = () => {
-        const { keyTableLayout, showSelectColumn } = this.props;
-        if (!keyTableLayout || !showSelectColumn) return;
-
-        const tableLayouts = LayoutTableManager.getTableLayouts(keyTableLayout);
-
-        const defaultLayout = tableLayouts.find((item: any) => item?.default);
-        if (!_.isEmpty(defaultLayout)) {
-            const defaultIndex = defaultLayout?.data?.map((item: any) => item?.id);
-            this.setState({
-                selectedColumns: defaultIndex,
-                tableLayoutList: tableLayouts,
-                selectedLayout: defaultLayout,
-            });
-        }
-    };
-
     /** *************************************** TABLE CONTROL *********************************************** */
     handleResize = (index: any) => {
         return (e: any, { size }: any) => {
@@ -301,22 +278,7 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
         };
     };
 
-    onChangeTableLayout = async (item: any) => {
-        // const { keyTableLayout } = this.props;
-        // const listLayout = LayoutTableManager.getTableLayouts(keyTableLayout);
-        // const saveLayout = { data: item.data, default: true };
-        // const newTableLayout: any = {};
-        // const listLayoutKey = Object.keys(listLayout);
-        // listLayoutKey.forEach((key) => {
-        //     if (key === item.name) {
-        //         newTableLayout[key] = saveLayout;
-        //     } else {
-        //         newTableLayout[key] = { ...listLayout[key], default: false };
-        //     }
-        // });
-        // await LayoutTableManager.saveTableLayout(newTableLayout, keyTableLayout);
-        // this.setDefaultTableLayout();
-    };
+    onChangeTableLayout = async (item: any) => {};
 
     onChangeTableLayoutDefault = () => {
         const { columns } = this.state;
@@ -455,16 +417,7 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
     /** ************************************************** RENDER *************************************************** */
 
     render() {
-        const {
-            total,
-            pagination,
-            tableLayoutList,
-            selectedLayout,
-            data,
-            loading,
-            columns,
-            selectedColumns = [],
-        } = this.state;
+        const { total, pagination, data, loading, columns, selectedColumns = [] } = this.state;
 
         // eslint-disable-next-line operator-linebreak
         const {
@@ -477,7 +430,9 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
             onSelectionView,
             selectingRows,
             bordered = true,
+            keyTableLayout,
         } = this.props;
+
         const showSelectionView = onSelectionView && selectingRows && selectingRows?.length > 0;
         const showFuncRow = showSelectColumn || showSelectionView;
 
@@ -499,10 +454,10 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
                         {showSelectionView && onSelectionView && onSelectionView(selectingRows)}
                         <div className="flex-center-y">
                             <LayoutManagerViewSelect
-                                listLayout={tableLayoutList}
                                 onClickItem={this.onChangeTableLayout}
-                                selectedLayout={selectedLayout}
                                 onClickDefaultView={this.onChangeTableLayoutDefault}
+                                selectedColumns={selectedColumns}
+                                tableKey={keyTableLayout}
                             />
                             <LayoutManagerColumnButton
                                 dataSource={columns as any[]}

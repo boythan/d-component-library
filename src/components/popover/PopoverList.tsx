@@ -30,6 +30,7 @@ export interface PopoverListProps extends ButtonProps {
     renderItem?: (item: any, index: any) => React.ReactNode;
     renderContentHeader?: () => React.ReactNode;
     renderContentFooter?: () => React.ReactNode;
+    renderEmptyView?: () => React.ReactNode;
     setRef?: (ref: any) => void;
     onChange?: (value: any) => void;
     customView?: () => React.ReactNode | React.ReactNode;
@@ -50,6 +51,7 @@ const PopoverList: React.FC<PopoverListProps> = ({
     renderItem,
     renderContentHeader = () => <div />,
     renderContentFooter = () => <div />,
+    renderEmptyView,
     setRef,
     onChange,
     customView,
@@ -199,7 +201,7 @@ const PopoverList: React.FC<PopoverListProps> = ({
                     </div>
                 )}
                 {dataList.data.map((item, index) => renderItemList(item, index))}
-                <EmptyView mode={dataList.emptyMode} emptyText={emptyText} />
+                <EmptyView mode={dataList.emptyMode} emptyText={emptyText} renderEmptyView={renderEmptyView} />
                 {showLoadMore && (
                     <Button className="d-popover-list__footer" onClick={() => onClickLoadMore()} variant="trans">
                         {loadMoreText}
