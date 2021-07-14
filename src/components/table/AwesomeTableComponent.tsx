@@ -14,8 +14,7 @@ import { isArray, isString, transformColumn } from "../../utils/AwesomeTableUtil
 import LayoutManagerColumnButton from "./layoutManager/LayoutManagerColumnButton";
 import LayoutManagerViewSelect from "./layoutManager/LayoutManagerViewSelect";
 // data stubs
-import LayoutTableManager, { ILayoutTableManager } from "./layoutManager/LayoutTableManager";
-import SelectColumnModal, { SelectLayoutView } from "./layoutManager/SelectColumnModal";
+import { ILayoutTableManager } from "./layoutManager/LayoutTableManager";
 // application
 import ResizableTitle from "./ResizableTitle";
 
@@ -468,8 +467,9 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
                                 dataSource={columns as any[]}
                                 onChange={(selectedColumns) => this.setState({ selectedColumns })}
                                 values={selectedColumns}
-                                onClickCancel={() => {}}
-                                onClickReset={() => {}}
+                                onChangeLayout={this.onChangeTableLayout}
+                                onClickReset={this.onChangeTableLayoutDefault}
+                                tableKey={keyTableLayout ?? ""}
                             />
                         </div>
                     </div>

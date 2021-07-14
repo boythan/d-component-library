@@ -1,19 +1,25 @@
-import React, { useState } from "react";
+import _ from "lodash";
+import React, { useMemo, useState } from "react";
 import Messages from "../../../language/Messages";
 import Button from "../../button/Button";
 import CheckboxGroup from "../../checkbox/CheckboxGroup";
 import Popover from "../../popover/Popover";
+import LayoutTableManager from "./LayoutTableManager";
 
 interface LayoutManagerColumnButtonProps {
     dataSource: any[];
     values: any[];
+    tableKey: string;
     onChange: (values: any[]) => any;
     onClickReset: () => any;
-    onClickCancel: () => any;
+    onChangeLayout: (layout: any) => any;
 }
 const LayoutManagerColumnButton = (props: LayoutManagerColumnButtonProps) => {
-    const { dataSource, values = [], onChange, onClickReset, onClickCancel } = props;
+    const { dataSource, values = [], onChange, onClickReset, onChangeLayout, tableKey } = props;
     const [openPopover, setOpenPopover] = useState<boolean>(false);
+
+    const tableLayouts = LayoutTableManager.getTableLayouts(tableKey);
+    const tableLayoutDefault = useMemo(() => _.find(tableLayouts, (item) => item.isDefault), [tableLayouts]);
 
     const renderManageColumns = () => {
         return (
@@ -37,7 +43,7 @@ const LayoutManagerColumnButton = (props: LayoutManagerColumnButtonProps) => {
                     <Button variant="trans" onClick={onClickReset}>
                         {Messages.reset}
                     </Button>
-                    <Button variant="trans" onClick={onClickCancel}>
+                    <Button variant="trans" onClick={() => onChangeLayout(tableLayoutDefault)}>
                         {Messages.cancel}
                     </Button>
                 </div>
