@@ -14,7 +14,7 @@ import { isArray, isString, transformColumn } from "../../utils/AwesomeTableUtil
 import LayoutManagerColumnButton from "./layoutManager/LayoutManagerColumnButton";
 import LayoutManagerViewSelect from "./layoutManager/LayoutManagerViewSelect";
 // data stubs
-import LayoutTableManager from "./layoutManager/LayoutTableManager";
+import LayoutTableManager, { ILayoutTableManager } from "./layoutManager/LayoutTableManager";
 import SelectColumnModal, { SelectLayoutView } from "./layoutManager/SelectColumnModal";
 // application
 import ResizableTitle from "./ResizableTitle";
@@ -278,7 +278,13 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
         };
     };
 
-    onChangeTableLayout = async (item: any) => {};
+    onChangeTableLayout = async (layoutItem: ILayoutTableManager) => {
+        if (layoutItem?.id) {
+            this.setState({ selectedColumns: layoutItem.columnsIds });
+        } else {
+            this.onChangeTableLayoutDefault();
+        }
+    };
 
     onChangeTableLayoutDefault = () => {
         const { columns } = this.state;
@@ -454,10 +460,9 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
                         {showSelectionView && onSelectionView && onSelectionView(selectingRows)}
                         <div className="flex-center-y">
                             <LayoutManagerViewSelect
-                                onClickItem={this.onChangeTableLayout}
-                                onClickDefaultView={this.onChangeTableLayoutDefault}
                                 selectedColumns={selectedColumns}
                                 tableKey={keyTableLayout}
+                                onChangeLayout={this.onChangeTableLayout}
                             />
                             <LayoutManagerColumnButton
                                 dataSource={columns as any[]}

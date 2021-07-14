@@ -1,9 +1,10 @@
 import _ from "lodash";
 
-interface ILayoutTableManager {
+export interface ILayoutTableManager {
     id: string;
     name: string;
     columnsIds: string[];
+    isDefault: boolean;
 }
 
 const ALL_LAYOUT_TABLE_KEY = "ALL_LAYOUT_TABLE_KEY";
@@ -42,6 +43,20 @@ LayoutTableManager.updateLayout = (newLayout: ILayoutTableManager, tableKey: any
 LayoutTableManager.deleteLayout = (layoutId: string, tableKey: any) => {
     const tableLayouts = LayoutTableManager.getTableLayouts(tableKey);
     const tableLayoutResult = _.filter(tableLayouts, (layout) => layout.id !== layoutId);
+
+    const allLayout = LayoutTableManager.getAllLayouts();
+    allLayout[tableKey] = tableLayoutResult;
+    return localStorage.setItem(ALL_LAYOUT_TABLE_KEY, JSON.stringify(allLayout));
+};
+
+LayoutTableManager.setDefaultLayout = (layoutId: string, tableKey: any) => {
+    const tableLayouts = LayoutTableManager.getTableLayouts(tableKey);
+    const tableLayoutResult = _.map(tableLayouts, (layout) => {
+        if (layout.id === layoutId) {
+            return { ...layout, isDefault: true };
+        }
+        return { ...layout, isDefault: false };
+    });
 
     const allLayout = LayoutTableManager.getAllLayouts();
     allLayout[tableKey] = tableLayoutResult;
