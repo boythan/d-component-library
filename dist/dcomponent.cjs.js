@@ -72260,7 +72260,7 @@ var SelectLayoutItem = function (_a) {
         setIsEditing(false);
     }, [layoutItem.id]);
     if (isEditing) {
-        return (jsxRuntime.jsxs("div", __assign({ className: classNameContainer }, { children: [jsxRuntime.jsx(InputText, { value: layoutNameEditing, onChange: function (event) { return setLayoutNameEditing(event.target.value); }, autoFocus: true, className: "w-100" }, void 0), jsxRuntime.jsx(Button, { iconName: "done", variant: "trans", onClick: function (event) {
+        return (jsxRuntime.jsxs("div", __assign({ className: classNameContainer }, { children: [jsxRuntime.jsx(InputText, { value: layoutNameEditing, onChange: function (event) { return setLayoutNameEditing(event.target.value); }, autoFocus: true, className: "w-100", defaultValue: "New View" }, void 0), jsxRuntime.jsx(Button, { iconName: "done", variant: "trans", onClick: function (event) {
                         onSaveName(layoutItem, layoutNameEditing);
                         setIsEditing(false);
                         event.stopPropagation();
