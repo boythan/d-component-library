@@ -1,5 +1,6 @@
 import { Input, TableColumnGroupType, TableColumnType, TablePaginationConfig, TableProps } from "antd";
 import React, { Component } from "react";
+import { ILayoutTableManager } from "./layoutManager/LayoutTableManager";
 export interface IPaginationProps extends TablePaginationConfig {
     pageIndex?: number;
 }
@@ -38,9 +39,7 @@ export interface AwesomeTableComponentState {
     pagination: IPaginationProps | false;
     sorter: any;
     columns: TableProps<any>["columns"];
-    selectedColumns: TableProps<any>["columns"];
-    tableLayoutList: any;
-    selectedLayout: any;
+    selectedColumns: string[];
 }
 declare class AwesomeTableComponent extends Component<AwesomeTableComponentProps, AwesomeTableComponentState> {
     static defaultProps: {
@@ -93,10 +92,10 @@ declare class AwesomeTableComponent extends Component<AwesomeTableComponentProps
     };
     handleSearch: (selectedKeys: any, confirm: any, dataIndex: any) => void;
     handleReset: (clearFilters: any) => void;
-    setDefaultTableLayout: () => void;
     /** *************************************** TABLE CONTROL *********************************************** */
     handleResize: (index: any) => (e: any, { size }: any) => void;
-    handleSelectTableLayout: (item: any) => Promise<void>;
+    onChangeTableLayout: (layoutItem: ILayoutTableManager) => Promise<void>;
+    onChangeTableLayoutDefault: () => void;
     handleTableChange: (paging: IPaginationProps, filters: any, sorter: any) => void;
     start(): void;
     refresh(): void;

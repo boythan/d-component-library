@@ -19,6 +19,11 @@ declare const Messages: {
     search: string;
     showAll: string;
     closeAll: string;
+    column: string;
+    reset: string;
+    outOfVisible: string;
+    defaultView: string;
+    saveViewAs: string;
 } | {
     error: string;
     success: string;
@@ -40,5 +45,10 @@ declare const Messages: {
     search: string;
     showAll: string;
     closeAll: string;
+    column: string;
+    reset: string;
+    outOfVisible: string;
+    defaultView: string;
+    saveViewAs: string;
 };
 export default Messages;

@@ -4,6 +4,9 @@ export interface PopoverListProps extends ButtonProps {
     source: (paging: any) => Promise<any>;
     transformer: (data: any) => any;
     renderItem?: (item: any, index: any) => React.ReactNode;
+    renderContentHeader?: () => React.ReactNode;
+    renderContentFooter?: () => React.ReactNode;
+    renderEmptyView?: () => React.ReactNode;
     setRef?: (ref: any) => void;
     onChange?: (value: any) => void;
     customView?: () => React.ReactNode | React.ReactNode;
@@ -15,6 +18,7 @@ export interface PopoverListProps extends ButtonProps {
     isClickOpen?: boolean;
     placeHolder?: string;
     loadMoreText?: string;
+    emptyText?: string;
 }
 declare const PopoverList: React.FC<PopoverListProps>;
 export default PopoverList;

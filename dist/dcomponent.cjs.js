@@ -69012,14 +69012,14 @@ var EmptyView = /** @class */ (function (_super) {
      * Incase change only few cases, we should use props.renderEmptyView
      */
     EmptyView.prototype.renderEmptyView = function () {
-        return jsxRuntime.jsx("div", __assign({ className: "text" }, { children: this.props.emptyText }), void 0);
+        return jsxRuntime.jsx("text", __assign({ className: "p-3" }, { children: this.props.emptyText }), void 0);
     };
     /**
      * Override incase build another EmptyView in whole system
      * Incase change only few cases, we should use props.renderFilterEmptyView
      */
     EmptyView.prototype.renderFilterEmptyView = function () {
-        return jsxRuntime.jsx("div", __assign({ className: "text" }, { children: this.props.filterEmptyText }), void 0);
+        return jsxRuntime.jsx("text", __assign({ className: "p-3" }, { children: this.props.filterEmptyText }), void 0);
     };
     /**
      * Override incase build another EmptyView in whole system
@@ -69359,6 +69359,11 @@ var en = {
     search: "Search",
     showAll: "Show all",
     closeAll: "Close All",
+    column: "Column",
+    reset: "Reset",
+    outOfVisible: "%numOfVisible out of %total visible",
+    defaultView: "Default View",
+    saveViewAs: "Save View As...",
 };
 
 var th = {
@@ -69382,6 +69387,11 @@ var th = {
     search: "Search",
     showAll: "Show all",
     closeAll: "Close All",
+    column: "Column",
+    reset: "Reset",
+    outOfVisible: "%numOfVisible out of %total visible",
+    defaultView: "Default View",
+    saveViewAs: "Save View As...",
 };
 
 var _a;
@@ -71879,7 +71889,7 @@ var transformColumn = function (columns, baseColumn) {
         if (titleTooltip) {
             titleResult = (jsxRuntime.jsxs(Tooltip, __assign({ className: "flex-center-y", zIndex: 10000, title: titleTooltip }, { children: [title, jsxRuntime.jsx(Icon$2, { name: "info", className: "ml-3" }, void 0)] }), void 0));
         }
-        return __assign(__assign(__assign({}, baseColumn), { id: "" + index, title: titleResult, align: "left", dataIndex: dataIndex, render: function (data, item, index) {
+        return __assign(__assign(__assign({}, baseColumn), { id: "" + index, title: titleResult, align: "left", isDefault: true, dataIndex: dataIndex, render: function (data, item, index) {
                 var content = data;
                 if (typeof render === "function") {
                     content = render(data, item, index);
@@ -71896,84 +71906,219 @@ var AwesomeTableUtils = {
     calculateDefaultExpandedRowKeys: calculateDefaultExpandedRowKeys,
 };
 
-var LayoutManagerButtonColumns = function () {
-    return (jsxRuntime.jsx("div", { children: jsxRuntime.jsx(Button, { content: "Column", iconName: "settings", variant: "trans", onClick: function () { }, color: "gray", className: "font-weight-normal" }, void 0) }, void 0));
+/* eslint-disable implicit-arrow-linebreak */
+var moneyFormat = function (n) {
+    return "" + (n
+        ? Number(n)
+            .toFixed(0)
+            .replace(/./g, function (c, i, a) { return (i > 0 && c !== "." && (a.length - i) % 3 === 0 ? "," + c : c); })
+        : "0");
 };
-
-var ALL_LAYOUT_TABLE_KEY = "ALL_LAYOUT_TABLE_KEY";
-var LayoutTableManager = {};
-LayoutTableManager.clearAll = function () {
-    return localStorage.setItem(ALL_LAYOUT_TABLE_KEY, null);
+var moneyFormatFixed2 = function (n) {
+    return "" + (n
+        ? Number(n)
+            .toFixed(2)
+            .replace(/./g, function (c, i, a) { return (i > 0 && c !== "." && (a.length - i) % 3 === 0 ? "," + c : c); })
+        : "0");
 };
-LayoutTableManager.clearTableLayout = function (tableKey) {
-    var allLayout = LayoutTableManager.getAllLayout();
-    allLayout[tableKey] = null;
-    return localStorage.setItem(ALL_LAYOUT_TABLE_KEY, JSON.stringify(allLayout));
+var moneyThaiFormat = function (number) {
+    if (!number) {
+        return "\u0E3F" + 0;
+    }
+    if (number < 0) {
+        return "\u0E3F-" + moneyFormat("" + Math.abs(number));
+    }
+    return "\u0E3F" + moneyFormat(number);
 };
-LayoutTableManager.saveNewLayout = function (layout, tableKey, name) {
-    var newLayout = LayoutTableManager.getLayout(tableKey);
-    newLayout[name] = layout;
-    var allLayout = LayoutTableManager.getAllLayout();
-    allLayout[tableKey] = newLayout;
-    return localStorage.setItem(ALL_LAYOUT_TABLE_KEY, JSON.stringify(allLayout));
+var moneyThaiFormatFixed2 = function (number) {
+    if (!number) {
+        return "\u0E3F" + 0;
+    }
+    return "\u0E3F" + moneyFormatFixed2(number);
 };
-LayoutTableManager.saveTableLayout = function (tableLayout, tableKey) {
-    var allLayout = LayoutTableManager.getAllLayout();
-    allLayout[tableKey] = tableLayout;
-    return localStorage.setItem(ALL_LAYOUT_TABLE_KEY, JSON.stringify(allLayout));
+var isAllDigit = function (string) {
+    return /^\d+$/.test(string);
 };
-LayoutTableManager.getAllLayout = function () {
-    var allLayout = JSON.parse(localStorage.getItem(ALL_LAYOUT_TABLE_KEY)) || {};
-    return allLayout;
+var validateEmail = function (email) {
+    var re = /\S+@\S+\.\S+/;
+    return re.test(email);
 };
-LayoutTableManager.getLayout = function (key) {
-    var _a;
-    var allLayout = LayoutTableManager.getAllLayout();
-    return (_a = allLayout === null || allLayout === void 0 ? void 0 : allLayout[key]) !== null && _a !== void 0 ? _a : {};
+var isEnglishAlphabet = function (text) {
+    var regular = /^[a-zA-Z0-9$@$!%*?&#^-_. +--]+$/;
+    return regular.test(text);
 };
-
-var DialogManager = {
-    currentDialog: {
-        showConfirm: function (title, messages, handleOnOK) { },
-        showWarning: function (title, messages, handleOnOK) { },
-        showInfo: function (title, messages, handleOnOK) { },
-        showError: function (title, messages, handleOnOK) { },
-    },
-    initialDialog: function (refDialog) {
-        this.currentDialog = refDialog;
-    },
-    showConfirm: function (title, message, handleOnOk) {
-        this.currentDialog.showConfirm(title, message, handleOnOk);
-    },
-    showWarning: function (title, message, handleOnOk) {
-        this.currentDialog.showWarning(title, message, handleOnOk);
-    },
-    showInfo: function (title, message, handleOnOk) {
-        this.currentDialog.showInfo(title, message, handleOnOk);
-    },
-    showError: function (title, message, handleOnOk) {
-        this.currentDialog.showError(title, message, handleOnOk);
-    },
+function convertCsvJSON(csv) {
+    var lines = lodash.split(csv, "\n");
+    var result = [];
+    var headers = lodash.split(lines[0], ",");
+    var _loop_1 = function (i) {
+        var validObject = false;
+        // eslint-disable-next-line no-continue
+        if (!lines[i])
+            return "continue";
+        var objectItem = {};
+        var currentline = lines[i].split(",");
+        headers.forEach(function (header, index) {
+            var _a;
+            var currentHeader = header.replace(/\W/g, "");
+            var currentLineIndex = currentline[index];
+            var currentValue = (_a = currentline[index]) === null || _a === void 0 ? void 0 : _a.replace(/\W/g, "");
+            if (currentLineIndex.includes("-")) {
+                currentValue = "-" + currentValue;
+            }
+            if (!lodash.isEmpty(currentValue)) {
+                validObject = true;
+                objectItem[currentHeader] = currentValue;
+            }
+        });
+        if (validObject) {
+            result.push(objectItem);
+        }
+    };
+    // eslint-disable-next-line no-plusplus
+    for (var i = 1; i < lines.length; i++) {
+        _loop_1(i);
+    }
+    return result;
+}
+var getExtensionFromFilename = function (filename) {
+    if (!filename) {
+        return "";
+    }
+    // eslint-disable-next-line no-bitwise
+    return filename === null || filename === void 0 ? void 0 : filename.slice((((filename === null || filename === void 0 ? void 0 : filename.lastIndexOf(".")) - 1) >>> 0) + 2);
+};
+function generateCode(length) {
+    var result = "";
+    var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    var charactersLength = characters.length;
+    // eslint-disable-next-line no-plusplus
+    for (var i = 0; i < length; i++) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+}
+function getRandomNumber(min, max) {
+    // eslint-disable-next-line no-param-reassign
+    min = Math.ceil(min);
+    // eslint-disable-next-line no-param-reassign
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min;
+}
+function getRandomColor() {
+    var letters = "0123456789ABCDEF";
+    var color = "#";
+    // eslint-disable-next-line no-plusplus
+    for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+function getFullNameStore(store) {
+    var _a, _b;
+    if (!store) {
+        return "N/A";
+    }
+    return ((_a = store === null || store === void 0 ? void 0 : store.name) !== null && _a !== void 0 ? _a : "") + " - " + ((_b = store === null || store === void 0 ? void 0 : store.code) !== null && _b !== void 0 ? _b : "");
+}
+function getUniqueID() {
+    return Math.random().toString(36).substr(2, 9);
+}
+function removeAllSpace(str) {
+    if (lodash.isEmpty(str))
+        return "";
+    return str.replace(/\s/g, "");
+}
+function removeAllEnterAndSpace(str) {
+    if (lodash.isEmpty(str))
+        return "";
+    var convertArray = lodash.split(str, "\n");
+    var filterArray = convertArray.map(function (string) { return string.replace(/\s/g, ""); });
+    return lodash.join(filterArray, "\n");
+}
+function convertToNumber(string) {
+    if (string === void 0) { string = ""; }
+    var value = string.replace(/\D+/g, "");
+    if (!value) {
+        return "";
+    }
+    // eslint-disable-next-line radix
+    return parseInt(value);
+}
+function stripHtml(html) {
+    var tmp = document.createElement("DIV");
+    tmp.innerHTML = html;
+    return tmp.textContent || tmp.innerText || "";
+}
+function validURL(str) {
+    var pattern = new RegExp("^(https?:\\/\\/)?" + // protocol
+        "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
+        "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
+        "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
+        "(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
+        "(\\#[-a-z\\d_]*)?$", "i"); // fragment locator
+    return !!pattern.test(str);
+}
+function getYouTubeVideoId(url) {
+    var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    var match = url.match(regExp);
+    return match && match[2].length === 11 ? match[2] : null;
+}
+function mapWatchToEmbedYouTube(url) {
+    var videoId = getYouTubeVideoId(url);
+    if (videoId) {
+        return "https://www.youtube.com/embed/" + videoId;
+    }
+    return url;
+}
+var phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
+function removeHTMLTags(str) {
+    if (str === null || str === "" || typeof str === "undefined")
+        return false;
+    str = str.toString();
+    // Regular expression to identify HTML tags in
+    // the input string. Replacing the identified
+    // HTML tag with a null string.
+    return str.replace(/(<([^>]+)>)/gi, "");
+}
+var StringUtils = {
+    moneyFormat: moneyFormat,
+    moneyThaiFormat: moneyThaiFormat,
+    isAllDigit: isAllDigit,
+    validateEmail: validateEmail,
+    moneyThaiFormatFixed2: moneyThaiFormatFixed2,
+    convertCsvJSON: convertCsvJSON,
+    getExtensionFromFilename: getExtensionFromFilename,
+    generateCode: generateCode,
+    getRandomNumber: getRandomNumber,
+    getRandomColor: getRandomColor,
+    getFullNameStore: getFullNameStore,
+    getUniqueID: getUniqueID,
+    removeAllSpace: removeAllSpace,
+    removeAllEnterAndSpace: removeAllEnterAndSpace,
+    convertToNumber: convertToNumber,
+    stripHtml: stripHtml,
+    validURL: validURL,
+    isEnglishAlphabet: isEnglishAlphabet,
+    mapWatchToEmbedYouTube: mapWatchToEmbedYouTube,
+    phoneRegExp: phoneRegExp,
+    removeHTMLTags: removeHTMLTags,
 };
 
 var Popover = function (_a) {
-    var content = _a.content, children = _a.children, _b = _a.isClickOpen, isClickOpen = _b === void 0 ? true : _b, className = _a.className, classNameContent = _a.classNameContent, setRef = _a.setRef;
+    var open = _a.open, onOpen = _a.onOpen, onClose = _a.onClose, content = _a.content, children = _a.children, className = _a.className, classNameContent = _a.classNameContent;
     var outSideRef = React.useRef();
-    var _c = React.useState(false), openPopover = _c[0], setOpenPopover = _c[1];
+    var _b = React.useState(""), classNameContentEdge = _b[0], setClassNameContentEdge = _b[1];
+    var idContainer = React.useRef(StringUtils.getUniqueID()).current;
     var wrapperClass = classnames("d-popover", className);
-    var contentClass = classnames("d-popover__content", classNameContent);
-    var popoverRef = React.useRef({ onOpen: function () { return setOpenPopover(true); }, onClose: function () { return setOpenPopover(false); } });
-    React.useEffect(function () {
-        // eslint-disable-next-line no-unused-expressions
-        setRef && setRef(popoverRef.current);
-    }, []);
+    var contentClass = classnames("d-popover__content", classNameContent, classNameContentEdge);
     var handleClick = function (e) {
         var _a;
         if ((_a = outSideRef === null || outSideRef === void 0 ? void 0 : outSideRef.current) === null || _a === void 0 ? void 0 : _a.contains(e.target)) {
             return;
         }
         // outside click
-        setOpenPopover(false);
+        onClose();
     };
     React.useEffect(function () {
         // add when mounted
@@ -71983,161 +72128,217 @@ var Popover = function (_a) {
             document.removeEventListener("mousedown", handleClick);
         };
     }, []);
-    return (jsxRuntime.jsxs("div", __assign({ className: wrapperClass, ref: outSideRef }, { children: [jsxRuntime.jsx("div", __assign({ onClick: function () { return isClickOpen && setOpenPopover(true); } }, { children: children }), void 0), openPopover && jsxRuntime.jsx("div", __assign({ className: contentClass }, { children: content }), void 0)] }), void 0));
-};
-
-var DEFAULT_PAGING_DATA = {
-    pageIndex: 1,
-    pageSize: 10,
-};
-var DEFAULT_DATA_LIST = {
-    data: [],
-    emptyMode: MODE.PROGRESS,
-    refreshing: false,
-};
-var PopoverList = function (_a) {
-    var source = _a.source, transformer = _a.transformer, renderItem = _a.renderItem, setRef = _a.setRef, onChange = _a.onChange, customView = _a.customView, onClickItem = _a.onClickItem, onCreateNew = _a.onCreateNew, buttonText = _a.buttonText, _b = _a.buttonVariant, buttonVariant = _b === void 0 ? "trans" : _b, buttonIconName = _a.buttonIconName, _c = _a.isClickOpen, isClickOpen = _c === void 0 ? true : _c, _d = _a.loadMoreText, loadMoreText = _d === void 0 ? "Load More" : _d, className = _a.className;
-    var _e = React.useState(DEFAULT_DATA_LIST), dataList = _e[0], setDataList = _e[1];
-    var _f = React.useState(false), showLoadMore = _f[0], setShowLoadMore = _f[1];
-    var wrapperClass = classnames("d-popover-list", className);
-    var pagingData = React.useRef(DEFAULT_PAGING_DATA);
-    var noMoreData = React.useRef(false);
-    var listRef = React.useRef({ refresh: function () { return refresh(); } });
-    var popoverRef = React.useRef({});
-    var isArray = function (array) {
-        return Array.isArray(array);
-    };
-    var isNoMoreData = function (newData) {
-        if (!newData || !isArray(newData))
-            return true;
-        return pagingData ? newData.length < pagingData.current.pageSize : false;
-    };
     React.useEffect(function () {
-        setRef && setRef(listRef.current);
-        onLoadData();
-    }, []);
-    var refresh = function () {
-        noMoreData.current = false;
-        pagingData.current = DEFAULT_PAGING_DATA;
-        onLoadData();
-    };
-    function onLoadData() {
-        var _this = this;
-        if (noMoreData.current) {
-            setShowLoadMore(false);
-            return;
-        }
-        source(pagingData.current)
-            .then(function (response) { return __awaiter(_this, void 0, void 0, function () {
-            var data, newData;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        pagingData.current = __assign(__assign({}, pagingData.current), { pageIndex: pagingData.current.pageIndex + 1 });
-                        return [4 /*yield*/, transformer(response)];
-                    case 1:
-                        data = _a.sent();
-                        noMoreData.current = isNoMoreData(data);
-                        if (!noMoreData.current) {
-                            setShowLoadMore(true);
-                        }
-                        else {
-                            setShowLoadMore(false);
-                        }
-                        if (!isArray(data)) {
-                            // eslint-disable-next-line no-throw-literal
-                            throw "Data is not an array";
-                        }
-                        if (lodash.isEmpty(data) && dataList.data.length === 0) {
-                            setDataList({
-                                data: [],
-                                emptyMode: MODE.EMPTY,
-                                refreshing: false,
-                            });
-                            return [2 /*return*/];
-                        }
-                        newData = dataList.data.concat(data);
-                        setDataList({
-                            data: newData,
-                            emptyMode: MODE.HIDDEN,
-                            refreshing: false,
-                        });
-                        return [2 /*return*/];
-                }
-            });
-        }); })
-            .catch(function () { });
-    }
-    var onClickLoadMore = function () {
-        onLoadData();
-    };
-    var onClickItemList = function (item, index) {
-        popoverRef.current.onClose();
-        onClickItem && onClickItem(item, index);
-    };
-    var onClickCreateNewHandle = function () {
-        popoverRef.current.onClose();
-        onCreateNew && onCreateNew();
-    };
-    var renderItemList = function (item, index) {
-        var content = (item === null || item === void 0 ? void 0 : item.name) || (item === null || item === void 0 ? void 0 : item.label);
-        if (renderItem) {
-            content = renderItem(item, index);
-        }
-        return (jsxRuntime.jsx("div", __assign({ className: "renderItemList", onClick: function () { return onClickItemList(item, index); } }, { children: content }), index + Math.random()));
-    };
-    var mainViewPopover = function () {
-        if (customView) {
-            if (typeof customView === "function") {
-                return customView();
-            }
-            return customView;
-        }
-        return (jsxRuntime.jsx(InputTextSearch, { onChange: function (event) {
-                if (!event.target.value.trim()) {
-                    return;
-                }
-                !isClickOpen && popoverRef.current.onOpen();
-                onChange && onChange(event.target.value);
-            } }, void 0));
-    };
-    var renderContent = function () {
-        return (jsxRuntime.jsxs("div", __assign({ className: "d-popover-list__dropdown" }, { children: [buttonText && (jsxRuntime.jsx("div", __assign({ className: "d-flex w-100 justify-content-end" }, { children: jsxRuntime.jsx(Button, { content: buttonText, iconName: buttonIconName, variant: buttonVariant, onClick: function () {
-                            onClickCreateNewHandle();
-                        } }, void 0) }), void 0)), dataList.data.map(function (item, index) { return renderItemList(item, index); }), jsxRuntime.jsx(EmptyView, { mode: dataList.emptyMode }, void 0), showLoadMore && (jsxRuntime.jsx(Button, __assign({ className: "d-popover-list__footer", onClick: function () { return onClickLoadMore(); }, variant: "trans" }, { children: loadMoreText }), void 0))] }), void 0));
-    };
-    return (jsxRuntime.jsx(Popover, __assign({ content: renderContent(), className: wrapperClass, setRef: function (ref) {
-            popoverRef.current = ref;
-        } }, { children: mainViewPopover() }), void 0));
+        var _a, _b;
+        var popoverContainer = document.getElementById(idContainer);
+        var windowWidth = window.innerWidth;
+        var marginLeft = (_b = (_a = popoverContainer === null || popoverContainer === void 0 ? void 0 : popoverContainer.getBoundingClientRect()) === null || _a === void 0 ? void 0 : _a.left) !== null && _b !== void 0 ? _b : 0;
+        var isLeftSide = marginLeft / windowWidth < 0.5;
+        var className = classnames({
+            "d-popover__content-left-edge": isLeftSide,
+            "d-popover__content-right-edge": !isLeftSide,
+        });
+        setClassNameContentEdge(className);
+    }, [window.innerWidth]);
+    return (jsxRuntime.jsxs("div", __assign({ className: wrapperClass, ref: outSideRef, id: idContainer }, { children: [jsxRuntime.jsx("div", __assign({ onClick: function () { return (open ? onClose() : onOpen()); } }, { children: children }), void 0), open && jsxRuntime.jsx("div", __assign({ className: contentClass }, { children: content }), void 0)] }), void 0));
 };
 
-var SelectLayoutView = function (_a) {
-    var onClickItem = _a.onClickItem, _b = _a.listLayout, listLayout = _b === void 0 ? {} : _b, selectedLayout = _a.selectedLayout, showBorder = _a.showBorder, _c = _a.text, text = _c === void 0 ? "Select Layout" : _c;
-    var renderTitleSelectLayout = function () {
-        var _a;
-        if (lodash.isEmpty(selectedLayout)) {
-            return (jsxRuntime.jsxs("div", __assign({ className: classnames("d-flex  align-items-center hover-pointer p-2", {
-                    "border-right": showBorder,
-                }) }, { children: [jsxRuntime.jsx("div", __assign({ className: "text text-nowrap mr-2" }, { children: text }), void 0), jsxRuntime.jsx(Icon$2, { name: "arrow_drop_down", size: "large", className: "d-block" }, void 0)] }), void 0));
+var ALL_LAYOUT_TABLE_KEY = "ALL_LAYOUT_TABLE_KEY";
+var LayoutTableManager = {};
+LayoutTableManager.clearAll = function () {
+    return localStorage.setItem(ALL_LAYOUT_TABLE_KEY, []);
+};
+LayoutTableManager.clearTableLayout = function (tableKey) {
+    var allLayout = LayoutTableManager.getAllLayouts();
+    allLayout[tableKey] = null;
+    return localStorage.setItem(ALL_LAYOUT_TABLE_KEY, JSON.stringify(allLayout));
+};
+LayoutTableManager.createLayout = function (layout, tableKey) {
+    var tableLayouts = LayoutTableManager.getTableLayouts(tableKey);
+    var allLayout = LayoutTableManager.getAllLayouts();
+    allLayout[tableKey] = __spreadArray(__spreadArray([], tableLayouts), [layout]);
+    return localStorage.setItem(ALL_LAYOUT_TABLE_KEY, JSON.stringify(allLayout));
+};
+LayoutTableManager.updateLayout = function (newLayout, tableKey) {
+    var tableLayouts = LayoutTableManager.getTableLayouts(tableKey);
+    var tableLayoutResult = lodash.map(tableLayouts, function (layout) {
+        if (layout.id === newLayout.id)
+            return newLayout;
+        return layout;
+    });
+    var allLayout = LayoutTableManager.getAllLayouts();
+    allLayout[tableKey] = tableLayoutResult;
+    return localStorage.setItem(ALL_LAYOUT_TABLE_KEY, JSON.stringify(allLayout));
+};
+LayoutTableManager.deleteLayout = function (layoutId, tableKey) {
+    var tableLayouts = LayoutTableManager.getTableLayouts(tableKey);
+    var tableLayoutResult = lodash.filter(tableLayouts, function (layout) { return layout.id !== layoutId; });
+    var allLayout = LayoutTableManager.getAllLayouts();
+    allLayout[tableKey] = tableLayoutResult;
+    return localStorage.setItem(ALL_LAYOUT_TABLE_KEY, JSON.stringify(allLayout));
+};
+LayoutTableManager.setDefaultLayout = function (layoutId, tableKey) {
+    var tableLayouts = LayoutTableManager.getTableLayouts(tableKey);
+    var tableLayoutResult = lodash.map(tableLayouts, function (layout) {
+        if (layout.id === layoutId) {
+            return __assign(__assign({}, layout), { isDefault: true });
         }
-        return (jsxRuntime.jsx("div", __assign({ id: "titleSelectShipping", className: classnames("w-100", { "border-right": showBorder }) }, { children: jsxRuntime.jsx(Button, { content: (_a = selectedLayout === null || selectedLayout === void 0 ? void 0 : selectedLayout.name) !== null && _a !== void 0 ? _a : "N/A", iconName: "visibility", suffixIcon: "arrow_drop_down", variant: "trans", color: "gray", className: "font-weight-normal" }, void 0) }), void 0));
+        return __assign(__assign({}, layout), { isDefault: false });
+    });
+    var allLayout = LayoutTableManager.getAllLayouts();
+    allLayout[tableKey] = tableLayoutResult;
+    return localStorage.setItem(ALL_LAYOUT_TABLE_KEY, JSON.stringify(allLayout));
+};
+/**
+ * *********************** MANAGE ALL LAYOUTS ***********************
+ */
+LayoutTableManager.getAllLayouts = function () {
+    var allLayout = JSON.parse(localStorage.getItem(ALL_LAYOUT_TABLE_KEY)) || {};
+    return allLayout;
+};
+LayoutTableManager.getTableLayouts = function (tableKey) {
+    var _a;
+    var allLayout = LayoutTableManager.getAllLayouts();
+    return (_a = allLayout === null || allLayout === void 0 ? void 0 : allLayout[tableKey]) !== null && _a !== void 0 ? _a : [];
+};
+LayoutTableManager.saveTableLayouts = function (tableLayouts, tableKey) {
+    var allLayout = LayoutTableManager.getAllLayouts();
+    allLayout[tableKey] = tableLayouts;
+    return localStorage.setItem(ALL_LAYOUT_TABLE_KEY, JSON.stringify(allLayout));
+};
+
+var LayoutManagerColumnButton = function (props) {
+    var dataSource = props.dataSource, _a = props.values, values = _a === void 0 ? [] : _a, onChange = props.onChange, onClickReset = props.onClickReset, onChangeLayout = props.onChangeLayout, tableKey = props.tableKey;
+    var _b = React.useState(false), openPopover = _b[0], setOpenPopover = _b[1];
+    var tableLayouts = LayoutTableManager.getTableLayouts(tableKey);
+    var tableLayoutDefault = React.useMemo(function () { return lodash.find(tableLayouts, function (item) { return item.isDefault; }); }, [tableLayouts]);
+    var renderManageColumns = function () {
+        return (jsxRuntime.jsxs("div", __assign({ className: "w-100 p-3" }, { children: [jsxRuntime.jsx("div", __assign({ className: "border-bottom py-3" }, { children: jsxRuntime.jsx("small", { children: Messages.outOfVisible
+                            .replace("%numOfVisible", "" + values.length)
+                            .replace("%total", "" + dataSource.length) }, void 0) }), void 0), jsxRuntime.jsx("div", { children: jsxRuntime.jsx(CheckboxGroup, { dataSource: dataSource, value: values, onChange: onChange, getLabel: function (item) { return item.title; } }, void 0) }, void 0), jsxRuntime.jsxs("div", __assign({ className: "border-top d-flex flex-space-between " }, { children: [jsxRuntime.jsx(Button, __assign({ variant: "trans", onClick: onClickReset }, { children: Messages.reset }), void 0), jsxRuntime.jsx(Button, __assign({ variant: "trans", onClick: function () { return onChangeLayout(tableLayoutDefault); } }, { children: Messages.cancel }), void 0)] }), void 0)] }), void 0));
     };
-    var renderLayoutItem = function (item) {
-        var _a, _b;
-        var isDefault = (_a = item === null || item === void 0 ? void 0 : item.default) !== null && _a !== void 0 ? _a : false;
-        return (jsxRuntime.jsxs("div", __assign({ className: "d-flex px-3 py-2" }, { children: [(_b = item === null || item === void 0 ? void 0 : item.name) !== null && _b !== void 0 ? _b : "N/A", jsxRuntime.jsx("span", __assign({ className: "subTile2" }, { children: isDefault ? "- Default" : "" }), void 0)] }), void 0));
+    return (jsxRuntime.jsx(Popover, __assign({ open: openPopover, onOpen: function () { return setOpenPopover(true); }, onClose: function () { return setOpenPopover(false); }, content: renderManageColumns(), classNameContent: "d-table-awesome__layout-manager-column-popover" }, { children: jsxRuntime.jsx(Button, { content: Messages.column, iconName: "settings", variant: "trans", onClick: function () { }, color: "gray", className: "font-weight-normal" }, void 0) }), void 0));
+};
+
+function useFirstTime() {
+    var ref = React.useRef(true);
+    React.useEffect(function () {
+        ref.current = false;
+    }, []);
+    return ref.current;
+}
+
+/* eslint-disable no-unused-expressions */
+function useForceUpdate() {
+    var _a = React.useState(0), setTick = _a[1];
+    var update = React.useCallback(function () {
+        setTick(function (tick) { return tick + 1; });
+    }, []);
+    return update;
+}
+var useForceUpdateConstraint = function (constraint) {
+    var _a = React.useState(true), isUpdate = _a[0], setUpdate = _a[1];
+    var isFirstTime = useFirstTime();
+    React.useEffect(function () {
+        if (isFirstTime)
+            return;
+        setUpdate(false);
+    }, [constraint]);
+    React.useEffect(function () {
+        !isUpdate && setUpdate(true);
+    }, [isUpdate]);
+    return isUpdate;
+};
+
+var SelectLayoutItem = function (_a) {
+    var _b;
+    var layoutItem = _a.layoutItem, onDelete = _a.onDelete, onSaveName = _a.onSaveName, onClick = _a.onClick;
+    var _c = React.useState(false), isEditing = _c[0], setIsEditing = _c[1];
+    var _d = React.useState(layoutItem === null || layoutItem === void 0 ? void 0 : layoutItem.name), layoutNameEditing = _d[0], setLayoutNameEditing = _d[1];
+    var classNameContainer = "d-table-awesome__layout-manager-view-item";
+    React.useEffect(function () {
+        setIsEditing(false);
+    }, [layoutItem.id]);
+    if (isEditing) {
+        return (jsxRuntime.jsxs("div", __assign({ className: classNameContainer }, { children: [jsxRuntime.jsx(InputText, { value: layoutNameEditing, onChange: function (event) { return setLayoutNameEditing(event.target.value); }, autoFocus: true, className: "w-100" }, void 0), jsxRuntime.jsx(Button, { iconName: "done", variant: "trans", onClick: function (event) {
+                        onSaveName(layoutItem, layoutNameEditing);
+                        setIsEditing(false);
+                        event.stopPropagation();
+                    } }, void 0), jsxRuntime.jsx(Button, { iconName: "delete", variant: "trans", onClick: function (event) {
+                        onDelete(layoutItem);
+                        event.stopPropagation();
+                    } }, void 0)] }), void 0));
+    }
+    return (jsxRuntime.jsxs("div", __assign({ className: classNameContainer, onClick: function () { return onClick(layoutItem); } }, { children: [(_b = layoutItem === null || layoutItem === void 0 ? void 0 : layoutItem.name) !== null && _b !== void 0 ? _b : "N/A", jsxRuntime.jsx(Button, { iconName: "edit", variant: "trans", onClick: function (event) {
+                    setIsEditing(true);
+                    event.stopPropagation();
+                } }, void 0)] }), void 0));
+};
+var SaveAsNewView = function (_a) {
+    var _b = _a.selectedColumns, selectedColumns = _b === void 0 ? [] : _b, tableKey = _a.tableKey, onSuccess = _a.onSuccess;
+    var _c = React.useState(false), isEditing = _c[0], setEditing = _c[1];
+    var _d = React.useState(""), layoutNameEditing = _d[0], setLayoutNameEditing = _d[1];
+    var classNameContainer = "d-table-awesome__layout-manager-view-item text-primary";
+    var onSaveNew = function () {
+        var layoutId = StringUtils.getUniqueID();
+        var newColumnsLayout = {
+            columnsIds: selectedColumns,
+            name: layoutNameEditing,
+            id: layoutId,
+        };
+        LayoutTableManager.createLayout(newColumnsLayout, tableKey);
+        LayoutTableManager.setDefaultLayout(layoutId, tableKey);
+        onSuccess();
     };
-    var transformer = function (res) {
-        var result = [];
-        var keyArr = Object.keys(listLayout);
-        keyArr.forEach(function (key) {
-            if (!lodash.isEmpty(listLayout[key])) {
-                result.push(__assign(__assign({}, listLayout[key]), { name: key }));
-            }
-        });
-        return result;
+    if (isEditing) {
+        return (jsxRuntime.jsxs("div", __assign({ className: classNameContainer }, { children: [jsxRuntime.jsx(InputText, { value: layoutNameEditing, onChange: function (event) { return setLayoutNameEditing(event.target.value); }, autoFocus: true, className: "w-100" }, void 0), jsxRuntime.jsx(Button, { iconName: "done", variant: "trans", onClick: function (event) {
+                        onSaveNew();
+                        event.stopPropagation();
+                    } }, void 0)] }), void 0));
+    }
+    return (jsxRuntime.jsx("div", __assign({ className: classNameContainer, onClick: function () { return setEditing(true); } }, { children: Messages.saveViewAs }), void 0));
+};
+var LayoutManagerViewSelect = function (_a) {
+    var _b;
+    var _c = _a.selectedColumns, selectedColumns = _c === void 0 ? [] : _c, tableKey = _a.tableKey, onChangeLayout = _a.onChangeLayout;
+    var tableLayouts = LayoutTableManager.getTableLayouts(tableKey);
+    var tableLayoutDefault = React.useMemo(function () { return lodash.find(tableLayouts, function (item) { return item.isDefault; }); }, [tableLayouts]);
+    React.useEffect(function () {
+        onChangeLayout(tableLayoutDefault);
+    }, [tableLayoutDefault === null || tableLayoutDefault === void 0 ? void 0 : tableLayoutDefault.id]);
+    var isShowSaveNew = React.useMemo(function () {
+        if (!tableLayoutDefault)
+            return true;
+        return !ObjectUtils.compareTwoStringArray(tableLayoutDefault.columnsIds, selectedColumns);
+    }, [selectedColumns, tableLayoutDefault]);
+    var _d = React.useState(false), openPopover = _d[0], setOpenPopover = _d[1];
+    var forceUpdate = useForceUpdate();
+    var onChangeLayoutName = function (layoutItem, newName) {
+        var newLayout = __assign(__assign({}, layoutItem), { name: newName });
+        LayoutTableManager.updateLayout(newLayout, tableKey);
+        forceUpdate();
     };
-    return (jsxRuntime.jsx(PopoverList, { source: function () { return Promise.resolve(); }, transformer: transformer, renderItem: renderLayoutItem, onClickItem: onClickItem, isClickOpen: true, customView: renderTitleSelectLayout }, lodash.now()));
+    var onDeleteLayoutItem = function (layoutItem) {
+        LayoutTableManager.deleteLayout(layoutItem.id, tableKey);
+        forceUpdate();
+    };
+    var onSelectLayout = function (layoutItem) {
+        LayoutTableManager.setDefaultLayout(layoutItem.id, tableKey);
+        forceUpdate();
+        setOpenPopover(false);
+    };
+    var onClickDefaultView = function () {
+        LayoutTableManager.setDefaultLayout(null, tableKey);
+        forceUpdate();
+        setOpenPopover(false);
+    };
+    var renderSelectDefaultView = function () {
+        return (jsxRuntime.jsx("div", __assign({ className: "d-table-awesome__layout-manager-view-item", onClick: onClickDefaultView }, { children: Messages.defaultView }), void 0));
+    };
+    var renderPopoverContent = function () {
+        return (jsxRuntime.jsxs("div", __assign({ className: "d-flex flex-column" }, { children: [renderSelectDefaultView(), tableLayouts.map(function (item) { return (jsxRuntime.jsx(SelectLayoutItem, { layoutItem: item, onSaveName: onChangeLayoutName, onDelete: onDeleteLayoutItem, onClick: onSelectLayout }, void 0)); }), isShowSaveNew && (jsxRuntime.jsx(SaveAsNewView, { selectedColumns: selectedColumns, tableKey: tableKey, onSuccess: forceUpdate }, void 0))] }), void 0));
+    };
+    return (jsxRuntime.jsx(Popover, __assign({ open: openPopover, onOpen: function () { return setOpenPopover(true); }, onClose: function () { return setOpenPopover(false); }, content: renderPopoverContent() }, { children: jsxRuntime.jsx("div", __assign({ id: "titleSelectShipping", className: classnames("w-100 border-right") }, { children: jsxRuntime.jsx(Button, { content: (_b = tableLayoutDefault === null || tableLayoutDefault === void 0 ? void 0 : tableLayoutDefault.name) !== null && _b !== void 0 ? _b : Messages.defaultView, iconName: "visibility", suffixIcon: "arrow_drop_down", variant: "trans", color: "gray", className: "font-weight-normal" }, void 0) }), void 0) }), void 0));
 };
 
 var shims = createCommonjsModule(function (module, exports) {
@@ -74582,32 +74783,6 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
             clearFilters();
             _this.setState({ searchText: "" });
         };
-        _this.setDefaultTableLayout = function () {
-            var _a;
-            var _b = _this.props, keyTableLayout = _b.keyTableLayout, showSelectColumn = _b.showSelectColumn;
-            var columns = _this.state.columns;
-            if (!keyTableLayout || !showSelectColumn)
-                return;
-            var tableLayout = LayoutTableManager.getLayout(keyTableLayout);
-            if (lodash.isEmpty(tableLayout))
-                return;
-            var listTableLayout = [];
-            var tableKey = Object.keys(tableLayout);
-            tableKey.forEach(function (key) {
-                listTableLayout.push(__assign(__assign({}, tableLayout[key]), { name: key }));
-            });
-            var defaultLayout = listTableLayout.find(function (item) { return item === null || item === void 0 ? void 0 : item.default; });
-            if (!lodash.isEmpty(defaultLayout)) {
-                var defaultIndex_1 = (_a = defaultLayout === null || defaultLayout === void 0 ? void 0 : defaultLayout.data) === null || _a === void 0 ? void 0 : _a.map(function (item) { return item === null || item === void 0 ? void 0 : item.id; });
-                // eslint-disable-next-line operator-linebreak
-                var defaultColumns = columns && columns.filter(function (item) { return defaultIndex_1.includes(item === null || item === void 0 ? void 0 : item.id); });
-                _this.setState({
-                    selectedColumns: defaultColumns,
-                    tableLayoutList: tableLayout,
-                    selectedLayout: defaultLayout,
-                });
-            }
-        };
         /** *************************************** TABLE CONTROL *********************************************** */
         _this.handleResize = function (index) {
             return function (e, _a) {
@@ -74620,32 +74795,23 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
                 });
             };
         };
-        _this.handleSelectTableLayout = function (item) { return __awaiter(_this, void 0, void 0, function () {
-            var keyTableLayout, listLayout, saveLayout, newTableLayout, listLayoutKey;
+        _this.onChangeTableLayout = function (layoutItem) { return __awaiter(_this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        keyTableLayout = this.props.keyTableLayout;
-                        listLayout = LayoutTableManager.getLayout(keyTableLayout);
-                        saveLayout = { data: item.data, default: true };
-                        newTableLayout = {};
-                        listLayoutKey = Object.keys(listLayout);
-                        listLayoutKey.forEach(function (key) {
-                            if (key === item.name) {
-                                newTableLayout[key] = saveLayout;
-                            }
-                            else {
-                                newTableLayout[key] = __assign(__assign({}, listLayout[key]), { default: false });
-                            }
-                        });
-                        return [4 /*yield*/, LayoutTableManager.saveTableLayout(newTableLayout, keyTableLayout)];
-                    case 1:
-                        _a.sent();
-                        this.setDefaultTableLayout();
-                        return [2 /*return*/];
+                if (layoutItem === null || layoutItem === void 0 ? void 0 : layoutItem.id) {
+                    this.setState({ selectedColumns: layoutItem.columnsIds });
                 }
+                else {
+                    this.onChangeTableLayoutDefault();
+                }
+                return [2 /*return*/];
             });
         }); };
+        _this.onChangeTableLayoutDefault = function () {
+            var columns = _this.state.columns;
+            var columnsDefault = lodash.filter(columns, function (item) { return item.isDefault; });
+            var columnIdsDefault = lodash.map(columnsDefault, function (item) { return item.id; });
+            _this.setState({ selectedColumns: columnIdsDefault });
+        };
         _this.handleTableChange = function (paging, filters, sorter) {
             var setCurrentPage = _this.props.setCurrentPage;
             var pagination = _this.state.pagination;
@@ -74661,6 +74827,8 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
                 sorter: paramSorter,
             }, function () { return _this.start(); });
         };
+        var tableColumns = transformColumn(props.columns, props.baseColumnProps);
+        var selectedColumns = lodash.map(lodash.filter(tableColumns, function (item) { return item.isDefault; }), function (item) { return item.id; });
         _this.state = {
             data: [],
             loading: true,
@@ -74670,10 +74838,8 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
             filteredInfo: null,
             pagination: _this.getDefaultPagination(),
             sorter: null,
-            columns: transformColumn(props.columns, props.baseColumnProps),
-            selectedColumns: transformColumn(props.columns, props.baseColumnProps),
-            tableLayoutList: {},
-            selectedLayout: null,
+            columns: tableColumns,
+            selectedColumns: selectedColumns,
         };
         return _this;
     }
@@ -74682,7 +74848,6 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
     };
     AwesomeTableComponent.prototype.componentDidMount = function () {
         this.start();
-        this.setDefaultTableLayout();
     };
     AwesomeTableComponent.prototype.UNSAFE_componentWillReceiveProps = function (nextProps) {
         var columns = this.props.columns;
@@ -74771,16 +74936,16 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
             }); } })); });
         var columnsSelected = columnsResizable;
         if (showSelectColumn) {
-            var selectedIndex_1 = selectedColumns.map(function (item) { return item === null || item === void 0 ? void 0 : item.id; });
-            columnsSelected = columnsResizable.filter(function (item) { return selectedIndex_1.includes(item.id); });
+            columnsSelected = columnsResizable.filter(function (item) { return selectedColumns.includes(item.id); });
         }
         return columnsSelected;
     };
     /** ************************************************** RENDER *************************************************** */
     AwesomeTableComponent.prototype.render = function () {
-        var _a = this.state, total = _a.total, pagination = _a.pagination, tableLayoutList = _a.tableLayoutList, selectedLayout = _a.selectedLayout, data = _a.data, loading = _a.loading; _a.columns;
+        var _this = this;
+        var _a = this.state, total = _a.total, pagination = _a.pagination, data = _a.data, loading = _a.loading, columns = _a.columns, _b = _a.selectedColumns, selectedColumns = _b === void 0 ? [] : _b;
         // eslint-disable-next-line operator-linebreak
-        var _b = this.props, rowKey = _b.rowKey, isScroll = _b.isScroll, classNameTable = _b.classNameTable, tableLayout = _b.tableLayout, showSelectColumn = _b.showSelectColumn; _b.keyTableLayout; var className = _b.className, onSelectionView = _b.onSelectionView, selectingRows = _b.selectingRows, _c = _b.bordered, bordered = _c === void 0 ? true : _c;
+        var _c = this.props, rowKey = _c.rowKey, isScroll = _c.isScroll, classNameTable = _c.classNameTable, tableLayout = _c.tableLayout, showSelectColumn = _c.showSelectColumn, className = _c.className, onSelectionView = _c.onSelectionView, selectingRows = _c.selectingRows, _d = _c.bordered, bordered = _d === void 0 ? true : _d, keyTableLayout = _c.keyTableLayout;
         var showSelectionView = onSelectionView && selectingRows && (selectingRows === null || selectingRows === void 0 ? void 0 : selectingRows.length) > 0;
         var showFuncRow = showSelectColumn || showSelectionView;
         var paginationResult = pagination ? __assign(__assign({}, pagination), { current: pagination.pageIndex, total: total }) : false;
@@ -74788,7 +74953,7 @@ var AwesomeTableComponent = /** @class */ (function (_super) {
         var funcRowClass = classnames("d-table-awesome-component__select-column my-2 w-100", {
             "d-flex justify-content-between align-items-center my-3": showSelectionView,
         });
-        return (jsxRuntime.jsxs("div", __assign({ className: wrapperClass }, { children: [showFuncRow && (jsxRuntime.jsxs("div", __assign({ className: funcRowClass }, { children: [showSelectionView && onSelectionView && onSelectionView(selectingRows), jsxRuntime.jsxs("div", __assign({ className: "flex-center-y" }, { children: [!lodash.isEmpty(tableLayoutList) && (jsxRuntime.jsx(SelectLayoutView, { listLayout: tableLayoutList, onClickItem: this.handleSelectTableLayout, selectedLayout: selectedLayout, showBorder: true }, void 0)), jsxRuntime.jsx(LayoutManagerButtonColumns, {}, void 0)] }), void 0)] }), void 0)), jsxRuntime.jsx(Table, __assign({ rowKey: rowKey, dataSource: data, loading: loading, onChange: this.handleTableChange, rowClassName: function () { return "d-table-awesome-component__row"; }, pagination: paginationResult, scroll: isScroll ? { y: "1000" } : {}, tableLayout: tableLayout, bordered: bordered, components: this.components }, this.props, { className: "d-table-awesome-component__table " + classNameTable, 
+        return (jsxRuntime.jsxs("div", __assign({ className: wrapperClass }, { children: [showFuncRow && (jsxRuntime.jsxs("div", __assign({ className: funcRowClass }, { children: [showSelectionView && onSelectionView && onSelectionView(selectingRows), jsxRuntime.jsxs("div", __assign({ className: "flex-center-y" }, { children: [jsxRuntime.jsx(LayoutManagerViewSelect, { selectedColumns: selectedColumns, tableKey: keyTableLayout, onChangeLayout: this.onChangeTableLayout }, void 0), jsxRuntime.jsx(LayoutManagerColumnButton, { dataSource: columns, onChange: function (selectedColumns) { return _this.setState({ selectedColumns: selectedColumns }); }, values: selectedColumns, onChangeLayout: this.onChangeTableLayout, onClickReset: this.onChangeTableLayoutDefault, tableKey: keyTableLayout !== null && keyTableLayout !== void 0 ? keyTableLayout : "" }, void 0)] }), void 0)] }), void 0)), jsxRuntime.jsx(Table, __assign({ rowKey: rowKey, dataSource: data, loading: loading, onChange: this.handleTableChange, rowClassName: function () { return "d-table-awesome-component__row"; }, pagination: paginationResult, scroll: isScroll ? { y: "1000" } : {}, tableLayout: tableLayout, bordered: bordered, components: this.components }, this.props, { className: "d-table-awesome-component__table " + classNameTable, 
                     // columns props always has to be in last position in order for Resizable table to work
                     columns: this.getColumns() }), void 0)] }), void 0));
     };
@@ -74882,205 +75047,6 @@ var Dropdown = function (_a) {
         mainView = jsxRuntime.jsx("div", __assign({ onClick: function () { return setOpenDropdown(!openDropdown); } }, { children: children }), void 0);
     }
     return (jsxRuntime.jsx("div", __assign({ className: containerClass, ref: wrapperRef, style: style }, { children: jsxRuntime.jsxs("div", __assign({ className: "d-dropdown  position-relative" }, { children: [mainView, openDropdown && (jsxRuntime.jsx(DropdownMenu, { dataSource: dataSource, onClick: handleOnClickItem, Messages: Messages, position: position }, void 0))] }), void 0) }), void 0));
-};
-
-/* eslint-disable implicit-arrow-linebreak */
-var moneyFormat = function (n) {
-    return "" + (n
-        ? Number(n)
-            .toFixed(0)
-            .replace(/./g, function (c, i, a) { return (i > 0 && c !== "." && (a.length - i) % 3 === 0 ? "," + c : c); })
-        : "0");
-};
-var moneyFormatFixed2 = function (n) {
-    return "" + (n
-        ? Number(n)
-            .toFixed(2)
-            .replace(/./g, function (c, i, a) { return (i > 0 && c !== "." && (a.length - i) % 3 === 0 ? "," + c : c); })
-        : "0");
-};
-var moneyThaiFormat = function (number) {
-    if (!number) {
-        return "\u0E3F" + 0;
-    }
-    if (number < 0) {
-        return "\u0E3F-" + moneyFormat("" + Math.abs(number));
-    }
-    return "\u0E3F" + moneyFormat(number);
-};
-var moneyThaiFormatFixed2 = function (number) {
-    if (!number) {
-        return "\u0E3F" + 0;
-    }
-    return "\u0E3F" + moneyFormatFixed2(number);
-};
-var isAllDigit = function (string) {
-    return /^\d+$/.test(string);
-};
-var validateEmail = function (email) {
-    var re = /\S+@\S+\.\S+/;
-    return re.test(email);
-};
-var isEnglishAlphabet = function (text) {
-    var regular = /^[a-zA-Z0-9$@$!%*?&#^-_. +--]+$/;
-    return regular.test(text);
-};
-function convertCsvJSON(csv) {
-    var lines = lodash.split(csv, "\n");
-    var result = [];
-    var headers = lodash.split(lines[0], ",");
-    var _loop_1 = function (i) {
-        var validObject = false;
-        // eslint-disable-next-line no-continue
-        if (!lines[i])
-            return "continue";
-        var objectItem = {};
-        var currentline = lines[i].split(",");
-        headers.forEach(function (header, index) {
-            var _a;
-            var currentHeader = header.replace(/\W/g, "");
-            var currentLineIndex = currentline[index];
-            var currentValue = (_a = currentline[index]) === null || _a === void 0 ? void 0 : _a.replace(/\W/g, "");
-            if (currentLineIndex.includes("-")) {
-                currentValue = "-" + currentValue;
-            }
-            if (!lodash.isEmpty(currentValue)) {
-                validObject = true;
-                objectItem[currentHeader] = currentValue;
-            }
-        });
-        if (validObject) {
-            result.push(objectItem);
-        }
-    };
-    // eslint-disable-next-line no-plusplus
-    for (var i = 1; i < lines.length; i++) {
-        _loop_1(i);
-    }
-    return result;
-}
-var getExtensionFromFilename = function (filename) {
-    if (!filename) {
-        return "";
-    }
-    // eslint-disable-next-line no-bitwise
-    return filename === null || filename === void 0 ? void 0 : filename.slice((((filename === null || filename === void 0 ? void 0 : filename.lastIndexOf(".")) - 1) >>> 0) + 2);
-};
-function generateCode(length) {
-    var result = "";
-    var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    var charactersLength = characters.length;
-    // eslint-disable-next-line no-plusplus
-    for (var i = 0; i < length; i++) {
-        result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
-}
-function getRandomNumber(min, max) {
-    // eslint-disable-next-line no-param-reassign
-    min = Math.ceil(min);
-    // eslint-disable-next-line no-param-reassign
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min)) + min;
-}
-function getRandomColor() {
-    var letters = "0123456789ABCDEF";
-    var color = "#";
-    // eslint-disable-next-line no-plusplus
-    for (var i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-}
-function getFullNameStore(store) {
-    var _a, _b;
-    if (!store) {
-        return "N/A";
-    }
-    return ((_a = store === null || store === void 0 ? void 0 : store.name) !== null && _a !== void 0 ? _a : "") + " - " + ((_b = store === null || store === void 0 ? void 0 : store.code) !== null && _b !== void 0 ? _b : "");
-}
-function getUniqueID() {
-    return Math.random().toString(36).substr(2, 9);
-}
-function removeAllSpace(str) {
-    if (lodash.isEmpty(str))
-        return "";
-    return str.replace(/\s/g, "");
-}
-function removeAllEnterAndSpace(str) {
-    if (lodash.isEmpty(str))
-        return "";
-    var convertArray = lodash.split(str, "\n");
-    var filterArray = convertArray.map(function (string) { return string.replace(/\s/g, ""); });
-    return lodash.join(filterArray, "\n");
-}
-function convertToNumber(string) {
-    if (string === void 0) { string = ""; }
-    var value = string.replace(/\D+/g, "");
-    if (!value) {
-        return "";
-    }
-    // eslint-disable-next-line radix
-    return parseInt(value);
-}
-function stripHtml(html) {
-    var tmp = document.createElement("DIV");
-    tmp.innerHTML = html;
-    return tmp.textContent || tmp.innerText || "";
-}
-function validURL(str) {
-    var pattern = new RegExp("^(https?:\\/\\/)?" + // protocol
-        "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
-        "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
-        "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
-        "(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
-        "(\\#[-a-z\\d_]*)?$", "i"); // fragment locator
-    return !!pattern.test(str);
-}
-function getYouTubeVideoId(url) {
-    var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
-    var match = url.match(regExp);
-    return match && match[2].length === 11 ? match[2] : null;
-}
-function mapWatchToEmbedYouTube(url) {
-    var videoId = getYouTubeVideoId(url);
-    if (videoId) {
-        return "https://www.youtube.com/embed/" + videoId;
-    }
-    return url;
-}
-var phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
-function removeHTMLTags(str) {
-    if (str === null || str === "" || typeof str === "undefined")
-        return false;
-    str = str.toString();
-    // Regular expression to identify HTML tags in
-    // the input string. Replacing the identified
-    // HTML tag with a null string.
-    return str.replace(/(<([^>]+)>)/gi, "");
-}
-var StringUtils = {
-    moneyFormat: moneyFormat,
-    moneyThaiFormat: moneyThaiFormat,
-    isAllDigit: isAllDigit,
-    validateEmail: validateEmail,
-    moneyThaiFormatFixed2: moneyThaiFormatFixed2,
-    convertCsvJSON: convertCsvJSON,
-    getExtensionFromFilename: getExtensionFromFilename,
-    generateCode: generateCode,
-    getRandomNumber: getRandomNumber,
-    getRandomColor: getRandomColor,
-    getFullNameStore: getFullNameStore,
-    getUniqueID: getUniqueID,
-    removeAllSpace: removeAllSpace,
-    removeAllEnterAndSpace: removeAllEnterAndSpace,
-    convertToNumber: convertToNumber,
-    stripHtml: stripHtml,
-    validURL: validURL,
-    isEnglishAlphabet: isEnglishAlphabet,
-    mapWatchToEmbedYouTube: mapWatchToEmbedYouTube,
-    phoneRegExp: phoneRegExp,
-    removeHTMLTags: removeHTMLTags,
 };
 
 var strictUriEncode = str => encodeURIComponent(str).replace(/[!'()*]/g, x => `%${x.charCodeAt(0).toString(16).toUpperCase()}`);
@@ -76044,6 +76010,30 @@ var Dialog = function (props, ref) {
 };
 var DialogComponent = React.forwardRef(Dialog);
 
+var DialogManager = {
+    currentDialog: {
+        showConfirm: function (title, messages, handleOnOK) { },
+        showWarning: function (title, messages, handleOnOK) { },
+        showInfo: function (title, messages, handleOnOK) { },
+        showError: function (title, messages, handleOnOK) { },
+    },
+    initialDialog: function (refDialog) {
+        this.currentDialog = refDialog;
+    },
+    showConfirm: function (title, message, handleOnOk) {
+        this.currentDialog.showConfirm(title, message, handleOnOk);
+    },
+    showWarning: function (title, message, handleOnOk) {
+        this.currentDialog.showWarning(title, message, handleOnOk);
+    },
+    showInfo: function (title, message, handleOnOk) {
+        this.currentDialog.showInfo(title, message, handleOnOk);
+    },
+    showError: function (title, message, handleOnOk) {
+        this.currentDialog.showError(title, message, handleOnOk);
+    },
+};
+
 var ProgressComponent = /** @class */ (function (_super) {
     __extends(ProgressComponent, _super);
     function ProgressComponent(props) {
@@ -76232,36 +76222,6 @@ var Card = function (_a) {
         return (jsxRuntime.jsxs("div", __assign({ className: headerClass }, { children: [leftSide(), rightSide()] }), void 0));
     };
     return (jsxRuntime.jsxs("div", __assign({ className: wrapClass }, { children: [header(), children] }), void 0));
-};
-
-function useFirstTime() {
-    var ref = React.useRef(true);
-    React.useEffect(function () {
-        ref.current = false;
-    }, []);
-    return ref.current;
-}
-
-/* eslint-disable no-unused-expressions */
-function useForceUpdate() {
-    var _a = React.useState(0), setTick = _a[1];
-    var update = React.useCallback(function () {
-        setTick(function (tick) { return tick + 1; });
-    }, []);
-    return update;
-}
-var useForceUpdateConstraint = function (constraint) {
-    var _a = React.useState(true), isUpdate = _a[0], setUpdate = _a[1];
-    var isFirstTime = useFirstTime();
-    React.useEffect(function () {
-        if (isFirstTime)
-            return;
-        setUpdate(false);
-    }, [constraint]);
-    React.useEffect(function () {
-        !isUpdate && setUpdate(true);
-    }, [isUpdate]);
-    return isUpdate;
 };
 
 function usePrevious(value) {
@@ -76466,27 +76426,15 @@ var Form = function (_a) {
 };
 
 var InputDrop = function (_a) {
-    var label = _a.label, className = _a.className, classNameDropdown = _a.classNameDropdown, _b = _a.position, position = _b === void 0 ? "left-edge" : _b, _c = _a.iconName, iconName = _c === void 0 ? "expand_more" : _c, _d = _a.hideSelectAll, hideSelectAll = _d === void 0 ? false : _d, _e = _a.hideClearAll, hideClearAll = _e === void 0 ? false : _e, _f = _a.hideLabel, hideLabel = _f === void 0 ? false : _f, displayValue = _a.displayValue, _g = _a.selectAllText, selectAllText = _g === void 0 ? Messages.selectAll : _g, _h = _a.clearText, clearText = _h === void 0 ? Messages.clearAll : _h, error = _a.error, _j = _a.valueLength, valueLength = _j === void 0 ? 0 : _j, _k = _a.onClickSelectAll, onClickSelectAll = _k === void 0 ? function () { } : _k, _l = _a.onClickClearAll, onClickClearAll = _l === void 0 ? function () { } : _l, _m = _a.onClickApply, onClickApply = _m === void 0 ? function () { } : _m, onChangeText = _a.onChangeText, _o = _a.propsSearchText, propsSearchText = _o === void 0 ? {} : _o, _p = _a.content, content = _p === void 0 ? function () { return jsxRuntime.jsx("div", {}, void 0); } : _p;
+    var label = _a.label, className = _a.className, _b = _a.position, position = _b === void 0 ? "left-edge" : _b, _c = _a.iconName, iconName = _c === void 0 ? "expand_more" : _c, _d = _a.hideSelectAll, hideSelectAll = _d === void 0 ? false : _d, _e = _a.hideClearAll, hideClearAll = _e === void 0 ? false : _e, _f = _a.hideLabel, hideLabel = _f === void 0 ? false : _f, displayValue = _a.displayValue, _g = _a.selectAllText, selectAllText = _g === void 0 ? Messages.selectAll : _g, _h = _a.clearText, clearText = _h === void 0 ? Messages.clearAll : _h, error = _a.error, _j = _a.valueLength, valueLength = _j === void 0 ? 0 : _j, _k = _a.onClickSelectAll, onClickSelectAll = _k === void 0 ? function () { } : _k, _l = _a.onClickClearAll, onClickClearAll = _l === void 0 ? function () { } : _l, _m = _a.onClickApply, onClickApply = _m === void 0 ? function () { } : _m, onChangeText = _a.onChangeText, _o = _a.propsSearchText, propsSearchText = _o === void 0 ? {} : _o, _p = _a.content, content = _p === void 0 ? function () { return jsxRuntime.jsx("div", {}, void 0); } : _p;
     var _q = React.useState(false), openDropdown = _q[0], setOpenDropdown = _q[1];
-    var dropdownRef = React.useRef(null);
-    var inputRef = React.useRef(null);
     var containerClass = classnames("d-input-drop__container d-input-drop__container-" + position, {
         "d-input-drop__container-active": openDropdown,
         "d-input-drop__container-error": error,
     }, className);
     var inputClass = classnames("d-input-drop__input hover-pointer");
-    var dropdownWrapperClass = classnames("d-input-drop__dropdown", classNameDropdown);
+    var dropdownWrapperClass = classnames("d-input-drop__dropdown");
     var errorTextClass = classnames("text-x-small", "text-error", "ml-1");
-    React.useEffect(function () {
-        var handleOutsideClick = function (event) {
-            var isClickOutside = dropdownRef.current && !dropdownRef.current.contains(event === null || event === void 0 ? void 0 : event.target);
-            var isClickInput = inputRef.current && inputRef.current.contains(event.target);
-            if (isClickOutside && !isClickInput) {
-                setOpenDropdown(false);
-            }
-        };
-        document.addEventListener("mousedown", handleOutsideClick);
-    }, [dropdownRef, setOpenDropdown]);
     var inputValue = function () {
         var name = label;
         if (displayValue) {
@@ -76503,7 +76451,10 @@ var InputDrop = function (_a) {
                         setOpenDropdown(false);
                     } }, void 0)] }), void 0));
     };
-    return (jsxRuntime.jsxs("div", __assign({ className: containerClass }, { children: [!hideLabel && jsxRuntime.jsx("label", { children: label }, void 0), jsxRuntime.jsx("div", __assign({ className: inputClass, onClick: function () { return setOpenDropdown(!openDropdown); }, ref: inputRef }, { children: jsxRuntime.jsxs("div", __assign({ className: "flex-center-y text-x-small w-100" }, { children: [inputValue(), jsxRuntime.jsx(Icon$2, { name: iconName, className: "d-input-drop__arrow-icon ml-2" }, void 0)] }), void 0) }), void 0), error && (jsxRuntime.jsxs("div", __assign({ className: "flex-center-y mt-1" }, { children: [jsxRuntime.jsx(Icon$2, { name: "error_outline", className: "text-error", size: "small" }, void 0), jsxRuntime.jsx("text", __assign({ className: errorTextClass }, { children: error }), void 0)] }), void 0)), jsxRuntime.jsxs("div", __assign({ className: dropdownWrapperClass, ref: dropdownRef }, { children: [renderHeader(), onChangeText && (jsxRuntime.jsx(InputText, __assign({ placeholder: Messages.search, className: "mt-3 w-100", onChange: onChangeText }, propsSearchText), void 0)), content(), renderFooter()] }), void 0)] }), void 0));
+    var renderPopoverContent = function () {
+        return (jsxRuntime.jsxs("div", __assign({ className: "w-100" }, { children: [renderHeader(), onChangeText && (jsxRuntime.jsx(InputText, __assign({ placeholder: Messages.search, className: "mt-3 w-100", onChange: onChangeText }, propsSearchText), void 0)), content(), renderFooter()] }), void 0));
+    };
+    return (jsxRuntime.jsxs("div", __assign({ className: containerClass }, { children: [!hideLabel && jsxRuntime.jsx("label", { children: label }, void 0), jsxRuntime.jsx(Popover, __assign({ className: inputClass, classNameContent: dropdownWrapperClass, open: openDropdown, onOpen: function () { return setOpenDropdown(true); }, onClose: function () { return setOpenDropdown(false); }, content: renderPopoverContent() }, { children: jsxRuntime.jsxs("div", __assign({ className: "flex-center-y text-x-small w-100" }, { children: [inputValue(), jsxRuntime.jsx(Icon$2, { name: iconName, className: "d-input-drop__arrow-icon ml-2" }, void 0)] }), void 0) }), void 0), error && (jsxRuntime.jsxs("div", __assign({ className: "flex-center-y mt-1" }, { children: [jsxRuntime.jsx(Icon$2, { name: "error_outline", className: "text-error", size: "small" }, void 0), jsxRuntime.jsx("text", __assign({ className: errorTextClass }, { children: error }), void 0)] }), void 0))] }), void 0));
 };
 
 var isEmpty$1 = lodash.isEmpty, filter$1 = lodash.filter, includes$1 = lodash.includes, map$1 = lodash.map;
@@ -76588,6 +76539,129 @@ var InputDropSelect = function (props) {
             onBlur: function () { return setTimeout(function () { return setFocusInputSearch(false); }, 200); },
             onFocus: function () { return setFocusInputSearch(true); },
         }, onClickApply: onClickApply, label: label, content: renderContentInput, error: error }, restProps, { valueLength: value.length, hideSelectAll: true }), void 0));
+};
+
+var DEFAULT_PAGING_DATA = {
+    pageIndex: 1,
+    pageSize: 10,
+};
+var DEFAULT_DATA_LIST = {
+    data: [],
+    emptyMode: MODE.PROGRESS,
+    refreshing: false,
+};
+var PopoverList = function (_a) {
+    var source = _a.source, transformer = _a.transformer, renderItem = _a.renderItem, _b = _a.renderContentHeader, renderContentHeader = _b === void 0 ? function () { return jsxRuntime.jsx("div", {}, void 0); } : _b, _c = _a.renderContentFooter, renderContentFooter = _c === void 0 ? function () { return jsxRuntime.jsx("div", {}, void 0); } : _c, renderEmptyView = _a.renderEmptyView, setRef = _a.setRef, onChange = _a.onChange, customView = _a.customView, onClickItem = _a.onClickItem, onCreateNew = _a.onCreateNew, buttonText = _a.buttonText, _d = _a.buttonVariant, buttonVariant = _d === void 0 ? "trans" : _d, buttonIconName = _a.buttonIconName, _e = _a.isClickOpen, isClickOpen = _e === void 0 ? true : _e, _f = _a.loadMoreText, loadMoreText = _f === void 0 ? "Load More" : _f, emptyText = _a.emptyText, className = _a.className;
+    var _g = React.useState(DEFAULT_DATA_LIST), dataList = _g[0], setDataList = _g[1];
+    var _h = React.useState(false), showLoadMore = _h[0], setShowLoadMore = _h[1];
+    var _j = React.useState(false), openPopover = _j[0], setOpenPopover = _j[1];
+    var wrapperClass = classnames("d-popover-list", className);
+    var pagingData = React.useRef(DEFAULT_PAGING_DATA);
+    var noMoreData = React.useRef(false);
+    var listRef = React.useRef({ refresh: function () { return refresh(); } });
+    var isArray = function (array) {
+        return Array.isArray(array);
+    };
+    var isNoMoreData = function (newData) {
+        if (!newData || !isArray(newData))
+            return true;
+        return pagingData ? newData.length < pagingData.current.pageSize : false;
+    };
+    React.useEffect(function () {
+        setRef && setRef(listRef.current);
+        onLoadData();
+    }, []);
+    var refresh = function () {
+        noMoreData.current = false;
+        pagingData.current = DEFAULT_PAGING_DATA;
+        onLoadData();
+    };
+    function onLoadData() {
+        var _this = this;
+        if (noMoreData.current) {
+            setShowLoadMore(false);
+            return;
+        }
+        source(pagingData.current)
+            .then(function (response) { return __awaiter(_this, void 0, void 0, function () {
+            var data, newData;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        pagingData.current = __assign(__assign({}, pagingData.current), { pageIndex: pagingData.current.pageIndex + 1 });
+                        return [4 /*yield*/, transformer(response)];
+                    case 1:
+                        data = _a.sent();
+                        noMoreData.current = isNoMoreData(data);
+                        if (!noMoreData.current) {
+                            setShowLoadMore(true);
+                        }
+                        else {
+                            setShowLoadMore(false);
+                        }
+                        if (!isArray(data)) {
+                            // eslint-disable-next-line no-throw-literal
+                            throw "Data is not an array";
+                        }
+                        if (lodash.isEmpty(data) && dataList.data.length === 0) {
+                            setDataList({
+                                data: [],
+                                emptyMode: MODE.EMPTY,
+                                refreshing: false,
+                            });
+                            return [2 /*return*/];
+                        }
+                        newData = dataList.data.concat(data);
+                        setDataList({
+                            data: newData,
+                            emptyMode: MODE.HIDDEN,
+                            refreshing: false,
+                        });
+                        return [2 /*return*/];
+                }
+            });
+        }); })
+            .catch(function () { });
+    }
+    var onClickLoadMore = function () {
+        onLoadData();
+    };
+    var onClickItemList = function (item, index) {
+        setOpenPopover(false);
+        onClickItem && onClickItem(item, index);
+    };
+    var onClickCreateNewHandle = function () {
+        setOpenPopover(false);
+        onCreateNew && onCreateNew();
+    };
+    var renderItemList = function (item, index) {
+        var content = (item === null || item === void 0 ? void 0 : item.name) || (item === null || item === void 0 ? void 0 : item.label);
+        if (renderItem) {
+            content = renderItem(item, index);
+        }
+        return (jsxRuntime.jsx("div", __assign({ className: "renderItemList", onClick: function () { return onClickItemList(item, index); } }, { children: content }), index + Math.random()));
+    };
+    var mainViewPopover = function () {
+        if (customView) {
+            if (typeof customView === "function") {
+                return customView();
+            }
+            return customView;
+        }
+        return (jsxRuntime.jsx(InputTextSearch, { onChange: function (event) {
+                if (!event.target.value.trim()) {
+                    return;
+                }
+                !isClickOpen && setOpenPopover(true);
+                onChange && onChange(event.target.value);
+            } }, void 0));
+    };
+    var renderContent = function () {
+        return (jsxRuntime.jsxs("div", __assign({ className: "d-popover-list__dropdown" }, { children: [renderContentHeader(), buttonText && (jsxRuntime.jsx("div", __assign({ className: "d-flex w-100 justify-content-end" }, { children: jsxRuntime.jsx(Button, { content: buttonText, iconName: buttonIconName, variant: buttonVariant, onClick: function () {
+                            onClickCreateNewHandle();
+                        } }, void 0) }), void 0)), dataList.data.map(function (item, index) { return renderItemList(item, index); }), jsxRuntime.jsx(EmptyView, { mode: dataList.emptyMode, emptyText: emptyText, renderEmptyView: renderEmptyView }, void 0), showLoadMore && (jsxRuntime.jsx(Button, __assign({ className: "d-popover-list__footer", onClick: function () { return onClickLoadMore(); }, variant: "trans" }, { children: loadMoreText }), void 0)), renderContentFooter()] }), void 0));
+    };
+    return (jsxRuntime.jsx(Popover, __assign({ content: renderContent(), className: wrapperClass, open: openPopover, onClose: function () { return setOpenPopover(false); }, onOpen: function () { return setOpenPopover(true); } }, { children: mainViewPopover() }), void 0));
 };
 
 exports.Avatar = Avatar;
