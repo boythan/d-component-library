@@ -71873,7 +71873,7 @@ h6,
    
 
 
-.collapse-view-container,
+.d-collapse-view__container,
 .ant-collapse {
     .ant-collapse-header {
         background-color: $bg-muted-color;
@@ -71884,23 +71884,11 @@ h6,
     border-radius: 0px !important;
 }
 
-.collapse-view__header {
-    background-color: $bg-muted-color;
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem;
-    align-items: center;
-
-    :hover {
-        cursor: pointer;
-    }
-}
-
-.collapse-view__header-title {
+.d-collapse-view__header-title {
     font-weight: 500 !important;
 }
 
-.collapse-view-container {
+.d-collapse-view__container {
     .ant-collapse-header {
         position: relative;
         &_custom-right-view-extra {
@@ -71923,6 +71911,21 @@ h6,
         background-color: #3d464d !important;
         border-color: #3d464d !important;
     }
+}
+
+.d-view-label-status {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px !important;
+    padding: 8px 16px;
+    width: max-content;
+}
+
+.d-view-label-status__dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 7px;
 }
 
 

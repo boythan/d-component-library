@@ -105,6 +105,9 @@ export { default as ViewCollapse } from "./components/view/ViewCollapse";
 export type { ViewTimelineProps } from "./components/view/ViewTimeline";
 export { default as ViewTimeline } from "./components/view/ViewTimeline";
 
+export type { ViewLabelStatusProps } from "./components/view/ViewLabelStatus";
+export { default as ViewLabelStatus } from "./components/view/ViewLabelStatus";
+
 /* ----------------------------------------
 // TabBar
 // ---------------------------------------- */

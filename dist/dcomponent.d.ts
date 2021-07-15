@@ -45,6 +45,8 @@ export type { ViewCollapseProps } from "./components/view/ViewCollapse";
 export { default as ViewCollapse } from "./components/view/ViewCollapse";
 export type { ViewTimelineProps } from "./components/view/ViewTimeline";
 export { default as ViewTimeline } from "./components/view/ViewTimeline";
+export type { ViewLabelStatusProps } from "./components/view/ViewLabelStatus";
+export { default as ViewLabelStatus } from "./components/view/ViewLabelStatus";
 export type { TabBarProps, ITabItem } from "./components/tab/TabBar";
 export { default as TabBar } from "./components/tab/TabBar";
 export type { AwesomeListComponentProps } from "./components/list/awesomeList/AwesomeListComponent";

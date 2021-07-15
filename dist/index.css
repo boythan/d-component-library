@@ -35738,36 +35738,27 @@ h6,
 :root:lang(th) {
   --appFont: "Prompt", Sans-serif; }
 
-.collapse-view-container,
+.d-collapse-view__container,
 .ant-collapse {
   border-radius: 0px !important; }
-  .collapse-view-container .ant-collapse-header,
+  .d-collapse-view__container .ant-collapse-header,
   .ant-collapse .ant-collapse-header {
     background-color: #F5F5F5;
     border-radius: 0px !important;
     display: flex;
     align-items: center; }
 
-.collapse-view__header {
-  background-color: #F5F5F5;
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem;
-  align-items: center; }
-  .collapse-view__header :hover {
-    cursor: pointer; }
-
-.collapse-view__header-title {
+.d-collapse-view__header-title {
   font-weight: 500 !important; }
 
-.collapse-view-container .ant-collapse-header {
+.d-collapse-view__container .ant-collapse-header {
   position: relative; }
-  .collapse-view-container .ant-collapse-header_custom-right-view-extra {
+  .d-collapse-view__container .ant-collapse-header_custom-right-view-extra {
     position: absolute;
     z-index: 1;
     right: 35px !important;
     bottom: 13px !important; }
-  .collapse-view-container .ant-collapse-header_custom-right-view {
+  .d-collapse-view__container .ant-collapse-header_custom-right-view {
     position: absolute;
     z-index: 1;
     right: 35px !important;
@@ -35776,6 +35767,19 @@ h6,
 .timeline-view__wrapper .ant-timeline-item-head-blue {
   background-color: #3d464d !important;
   border-color: #3d464d !important; }
+
+.d-view-label-status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px !important;
+  padding: 8px 16px;
+  width: max-content; }
+
+.d-view-label-status__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 7px; }
 
 /* ----------------------------------------
 // progress
