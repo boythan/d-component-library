@@ -69954,7 +69954,7 @@ var ObjectUtils = {
     removeArrayById: removeArrayById,
 };
 
-var RowInterchangeView = function (_a) {
+var ViewRowInterchange = function (_a) {
     var _b = _a.dataSource, dataSource = _b === void 0 ? {} : _b, _c = _a.keyList, keyList = _c === void 0 ? [] : _c, _d = _a.variant, variant = _d === void 0 ? "background" : _d, _e = _a.boldLabel, boldLabel = _e === void 0 ? false : _e, className = _a.className, classNameRow = _a.classNameRow, classNameLabel = _a.classNameLabel, classNameContent = _a.classNameContent, Messages = _a.Messages, style = _a.style, styleLabel = _a.styleLabel, styleContent = _a.styleContent;
     var wrapperClass = classnames(className);
     return (jsx("div", __assign({ className: wrapperClass }, { children: keyList.map(function (row, index) {
@@ -76635,5 +76635,5 @@ var PopoverList = function (_a) {
     return (jsx(Popover, __assign({ content: renderContent(), className: wrapperClass, open: openPopover, onClose: function () { return setOpenPopover(false); }, onOpen: function () { return setOpenPopover(true); } }, { children: mainViewPopover() }), void 0));
 };
 
-export { Avatar, AvatarName, AwesomeListComponent, AwesomeTableComponent, AwesomeTableUtils, Badge, Button, Card, Checkbox, CheckboxGroup, DateInput, DialogComponent, DialogManager, Dot, Dropdown, Form, FormItem, Header, HeaderBlock, HeaderDetail, HeaderTable, Icon$2 as Icon, ImageUtils, InputColor, InputDrop, InputDropCheckboxGroup, InputDropSelect, InputText, InputTextSearch, Loading, MapUtils, Modal, Notifications, ObjectUtils, Popover, PopoverList, Progress, ProgressComponent, RadioGroup, RowInterchangeView, Select$1 as Select, SelectInfinity$1 as SelectInfinity, StringUtils, TabBar, TimeUtils, TreeDataUtils, TreeSelect, UrlUtils, ViewCollapse, ViewRow, ViewTextarea, ViewTimeline, useDidUpdate, useFirstTime, useForceUpdate, useForceUpdateConstraint, usePrevious };
+export { Avatar, AvatarName, AwesomeListComponent, AwesomeTableComponent, AwesomeTableUtils, Badge, Button, Card, Checkbox, CheckboxGroup, DateInput, DialogComponent, DialogManager, Dot, Dropdown, Form, FormItem, Header, HeaderBlock, HeaderDetail, HeaderTable, Icon$2 as Icon, ImageUtils, InputColor, InputDrop, InputDropCheckboxGroup, InputDropSelect, InputText, InputTextSearch, Loading, MapUtils, Modal, Notifications, ObjectUtils, Popover, PopoverList, Progress, ProgressComponent, RadioGroup, ViewRowInterchange, Select$1 as Select, SelectInfinity$1 as SelectInfinity, StringUtils, TabBar, TimeUtils, TreeDataUtils, TreeSelect, UrlUtils, ViewCollapse, ViewRow, ViewTextarea, ViewTimeline, useDidUpdate, useFirstTime, useForceUpdate, useForceUpdateConstraint, usePrevious };
 //# sourceMappingURL=dcomponent.es.js.map

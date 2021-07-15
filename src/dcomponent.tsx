@@ -90,8 +90,8 @@ export { default as AvatarName } from "./components/avatar/AvatarName";
 // View
 // ---------------------------------------- */
 
-export type { RowInterchangeViewProps, IRowsKey } from "./components/view/RowInterchangeView";
-export { default as RowInterchangeView } from "./components/view/RowInterchangeView";
+export type { RowInterchangeViewProps, IRowsKey } from "./components/view/ViewRowInterchange";
+export { default as ViewRowInterchange } from "./components/view/ViewRowInterchange";
 
 export type { ViewRowProps } from "./components/view/ViewRow";
 export { default as ViewRow } from "./components/view/ViewRow";

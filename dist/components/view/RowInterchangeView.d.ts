@@ -27,5 +27,5 @@ export interface RowInterchangeViewProps {
     styleContent?: CSSProperties;
     styleLabel?: CSSProperties;
 }
-declare const RowInterchangeView: React.FC<RowInterchangeViewProps>;
-export default RowInterchangeView;
+declare const ViewRowInterchange: React.FC<RowInterchangeViewProps>;
+export default ViewRowInterchange;

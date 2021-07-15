@@ -1,6 +1,6 @@
 import React from "react";
 import InputText from "../../../components/input/InputText";
-import RowInterchangeView from "../../../components/view/RowInterchangeView";
+import ViewRowInterchange from "../../../components/view/ViewRowInterchange";
 import ViewCollapse from "../../../components/view/ViewCollapse";
 import ViewRow from "../../../components/view/ViewRow";
 import ViewTextarea from "../../../components/view/ViewTextarea";
@@ -16,7 +16,7 @@ const TestView: React.FC<TestRowInterChagneProps> = ({ id }) => {
         <div className="my-4">
             <ViewCollapse label="Test collapse view">
                 <div className="text-bold">Row Interchange View </div>
-                <RowInterchangeView
+                <ViewRowInterchange
                     dataSource={ATTRIBUTE_INPUT_TYPE[0]}
                     keyList={[
                         { id: "id", label: "ID" },
@@ -40,7 +40,7 @@ const TestView: React.FC<TestRowInterChagneProps> = ({ id }) => {
                     ]}
                 />
                 <div className="text-bold my-3">Row Interchange View Variant Dashed </div>
-                <RowInterchangeView
+                <ViewRowInterchange
                     dataSource={ATTRIBUTE_INPUT_TYPE[0]}
                     keyList={[
                         { id: "id", label: "ID" },
@@ -52,7 +52,7 @@ const TestView: React.FC<TestRowInterChagneProps> = ({ id }) => {
                     variant="dashed"
                 />
                 <div className="text-bold my-3">Row Interchange View Variant Border </div>
-                <RowInterchangeView
+                <ViewRowInterchange
                     dataSource={ATTRIBUTE_INPUT_TYPE}
                     keyList={[
                         { id: "id", label: "ID" },

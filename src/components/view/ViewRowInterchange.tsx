@@ -24,7 +24,7 @@ export interface RowInterchangeViewProps {
     styleLabel?: CSSProperties;
 }
 
-const RowInterchangeView: React.FC<RowInterchangeViewProps> = ({
+const ViewRowInterchange: React.FC<RowInterchangeViewProps> = ({
     dataSource = {},
     keyList = [],
     variant = "background",
@@ -89,4 +89,4 @@ const RowInterchangeView: React.FC<RowInterchangeViewProps> = ({
     );
 };
 
-export default RowInterchangeView;
+export default ViewRowInterchange;

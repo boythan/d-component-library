@@ -69983,7 +69983,7 @@ var ObjectUtils = {
     removeArrayById: removeArrayById,
 };
 
-var RowInterchangeView = function (_a) {
+var ViewRowInterchange = function (_a) {
     var _b = _a.dataSource, dataSource = _b === void 0 ? {} : _b, _c = _a.keyList, keyList = _c === void 0 ? [] : _c, _d = _a.variant, variant = _d === void 0 ? "background" : _d, _e = _a.boldLabel, boldLabel = _e === void 0 ? false : _e, className = _a.className, classNameRow = _a.classNameRow, classNameLabel = _a.classNameLabel, classNameContent = _a.classNameContent, Messages = _a.Messages, style = _a.style, styleLabel = _a.styleLabel, styleContent = _a.styleContent;
     var wrapperClass = classnames(className);
     return (jsxRuntime.jsx("div", __assign({ className: wrapperClass }, { children: keyList.map(function (row, index) {
@@ -76703,7 +76703,7 @@ exports.PopoverList = PopoverList;
 exports.Progress = Progress;
 exports.ProgressComponent = ProgressComponent;
 exports.RadioGroup = RadioGroup;
-exports.RowInterchangeView = RowInterchangeView;
+exports.ViewRowInterchange = ViewRowInterchange;
 exports.Select = Select$1;
 exports.SelectInfinity = SelectInfinity$1;
 exports.StringUtils = StringUtils;
