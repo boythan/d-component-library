@@ -14,7 +14,7 @@ export interface ViewCollapseProps {
 const { Panel } = Collapse;
 
 const ViewCollapse = ({ label = "Title", children, className, defaultOpen = 1, extra }: ViewCollapseProps) => {
-    const classContainerName = classNames("card-container collapse-view-container", className);
+    const classContainerName = classNames("card-container d-collapse-view__container", className);
 
     return (
         <Collapse
@@ -23,7 +23,7 @@ const ViewCollapse = ({ label = "Title", children, className, defaultOpen = 1, e
             expandIconPosition="right"
             expandIcon={({ isActive }) => <CaretRightOutlined rotate={isActive ? 90 : 0} />}
         >
-            <Panel header={<h5 className="collapse-view__header-title">{label}</h5>} key="1" extra={extra}>
+            <Panel header={<h5 className="d-collapse-view__header-title">{label}</h5>} key="1" extra={extra}>
                 {children}
             </Panel>
         </Collapse>

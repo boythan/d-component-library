@@ -1,6 +1,6 @@
 @import "../variables";
 
-.collapse-view-container,
+.d-collapse-view__container,
 .ant-collapse {
     .ant-collapse-header {
         background-color: $bg-muted-color;
@@ -11,23 +11,11 @@
     border-radius: 0px !important;
 }
 
-.collapse-view__header {
-    background-color: $bg-muted-color;
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem;
-    align-items: center;
-
-    :hover {
-        cursor: pointer;
-    }
-}
-
-.collapse-view__header-title {
+.d-collapse-view__header-title {
     font-weight: 500 !important;
 }
 
-.collapse-view-container {
+.d-collapse-view__container {
     .ant-collapse-header {
         position: relative;
         &_custom-right-view-extra {

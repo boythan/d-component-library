@@ -1,0 +1,14 @@
+.d-view-label-status {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px !important;
+    padding: 8px 16px;
+    width: max-content;
+}
+
+.d-view-label-status__dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 7px;
+}

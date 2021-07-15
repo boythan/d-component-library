@@ -6,6 +6,7 @@ import ViewRow from "../../../components/view/ViewRow";
 import ViewTextarea from "../../../components/view/ViewTextarea";
 import ViewTimeline from "../../../components/view/ViewTimeline";
 import { ATTRIBUTE_INPUT_TYPE } from "../../data/TestConstant";
+import ViewLabelStatus from "../../../components/view/ViewLabelStatus";
 
 export interface TestRowInterChagneProps {
     [key: string]: any;
@@ -14,6 +15,15 @@ export interface TestRowInterChagneProps {
 const TestView: React.FC<TestRowInterChagneProps> = ({ id }) => {
     return (
         <div className="my-4">
+            <ViewCollapse label="Test view label status" defaultOpen={false}>
+                <ViewLabelStatus content="Cancelled" color="#C4C4C4" />
+                <ViewLabelStatus content="Pending Confirmation" color="#FAC256" className="mt-3" />
+                <ViewLabelStatus content="Completed" color="#33B950" className="mt-3" />
+                <ViewLabelStatus content="Delivery Processing" color="#29B3BC" className="mt-3" />
+                <ViewLabelStatus content="Order Processing" color="#84C4FF" className="mt-3" />
+                <ViewLabelStatus content="Pending" color="#ED6969" className="mt-3" />
+                <ViewLabelStatus content="Loaded" color="#828282" className="mt-3" />
+            </ViewCollapse>
             <ViewCollapse label="Test collapse view">
                 <div className="text-bold">Row Interchange View </div>
                 <ViewRowInterchange
