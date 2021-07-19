@@ -94,14 +94,11 @@ const sliceArrayToMui = (bigArray = [], numberOfItem = 10) => {
     return arrayOfArrays;
 };
 
-const arrayMove = (arr: any[], oldIndex: number, newIndex: number) => {
-    if (newIndex >= arr.length) {
-        let k = newIndex - arr.length + 1;
-        // eslint-disable-next-line no-plusplus
-        while (k--) {
-            arr.push(undefined);
-        }
+const arrayMove = (arr, oldIndex, newIndex) => {
+    if (newIndex >= arr.length || newIndex < 0) {
+        return arr;
     }
+
     arr.splice(newIndex, 0, arr.splice(oldIndex, 1)[0]);
     return arr; // for testing
 };
