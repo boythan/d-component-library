@@ -20,7 +20,7 @@ const TestTable = () => {
         },
         {
             title: "Name",
-
+            mobileTitle: "Mobile name",
             dataIndex: "label",
             width: 300,
         },

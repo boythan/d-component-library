@@ -38,9 +38,11 @@ export interface IPaginationProps extends TablePaginationConfig {
 
 interface MyTableColumnType extends TableColumnType<any> {
     columnId?: string;
+    mobileTitle?: string;
 }
 interface MyTableColumnGroupType extends TableColumnGroupType<any> {
     columnId?: string;
+    mobileTitle?: string;
 }
 
 export type IColumnsProps = (MyTableColumnGroupType | MyTableColumnType)[];

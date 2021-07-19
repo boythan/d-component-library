@@ -54,9 +54,10 @@ export const calculateDefaultExpandedRowKeys = function (data = [], options: any
 };
 
 export const transformColumn = (columns: Array<any> = [], baseColumn: any = {}): Array<any> => {
-    return columns.map(({ title, titleTooltip, dataIndex, render, ...props }: any, index: number) => {
+    return columns.map(({ title, titleTooltip, dataIndex, render, mobileTitle, ...props }: any, index: number) => {
         // custom title
         let titleResult: any = title;
+        let mobileTitleResult: any = title;
         if (typeof title === "function") {
             titleResult = title();
         }
@@ -69,6 +70,9 @@ export const transformColumn = (columns: Array<any> = [], baseColumn: any = {}):
             );
         }
 
+        if (mobileTitle) {
+            mobileTitleResult = mobileTitle;
+        }
         return {
             ...baseColumn,
             id: `${index}`,
@@ -83,7 +87,7 @@ export const transformColumn = (columns: Array<any> = [], baseColumn: any = {}):
                 }
                 return {
                     children: content,
-                    props: { "data-title": title },
+                    props: { "data-title": mobileTitleResult },
                 };
             },
             ...props,
