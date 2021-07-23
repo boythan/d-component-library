@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 /* eslint-disable no-unused-expressions */
 import ClassNames from "classnames";
 import _ from "lodash";
@@ -101,22 +102,22 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
                     const itemClass = ClassNames(
                         "my-3 p-0",
                         {
-                            "col-12": numberOfColumns === "1",
+                            "col-12": numberOfColumns == "1",
                         },
                         {
-                            "col-6": numberOfColumns === "2",
+                            "col-6": numberOfColumns == "2",
                         },
                         {
-                            "col-4": numberOfColumns === "3",
+                            "col-4": numberOfColumns == "3",
                         },
                         {
-                            "col-3": numberOfColumns === "4",
+                            "col-3": numberOfColumns == "4",
                         },
                         {
-                            col: numberOfColumns === "5",
+                            col: numberOfColumns == "5",
                         },
                         {
-                            "col-2": numberOfColumns === "6",
+                            "col-2": numberOfColumns == "6",
                         },
 
                         classNameItem

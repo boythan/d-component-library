@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 /* eslint-disable no-unused-expressions */
 import classNames from "classnames";
 import React from "react";
@@ -44,22 +45,22 @@ const RadioGroup: React.FC<RadioGroupProps> = ({
                     const itemClass = classNames(
                         "my-3",
                         {
-                            "col-12": numberOfColumns === "1",
+                            "col-12": numberOfColumns == "1",
                         },
                         {
-                            "col-6": numberOfColumns === "2",
+                            "col-6": numberOfColumns == "2",
                         },
                         {
-                            "col-4": numberOfColumns === "3",
+                            "col-4": numberOfColumns == "3",
                         },
                         {
-                            "col-3": numberOfColumns === "4",
+                            "col-3": numberOfColumns == "4",
                         },
                         {
-                            col: numberOfColumns === "5",
+                            col: numberOfColumns == "5",
                         },
                         {
-                            "col-2": numberOfColumns === "6",
+                            "col-2": numberOfColumns == "6",
                         },
                         classNameItem
                     );
