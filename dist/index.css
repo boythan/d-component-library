@@ -35790,7 +35790,8 @@ h6,
   width: 100vw;
   display: flex;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  z-index: 999999999; }
 
 .progress__error-footer {
   display: flex;

@@ -9,6 +9,7 @@ export interface CheckboxGroupProps {
     numberOfColumns?: "1" | "2" | "3" | "4" | "5" | "6";
     numberOfDefaultShow?: number;
     multiple?: boolean;
+    disabled?: boolean;
     getLabel?: (item: any) => any;
     getValue?: (item: any) => any;
     onChange?: (values: Array<any>) => void;

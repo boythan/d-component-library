@@ -1,6 +1,7 @@
 import React, { ReactNode } from "react";
 import { ModalProps as ModalAntProps } from "antd";
-export interface ModalProps extends ModalAntProps {
+import { ButtonProps } from "../button/Button";
+export interface ModalProps extends Omit<ModalAntProps, "cancelButtonProps"> {
     children: React.ReactNode;
     open: boolean;
     onClose: ModalAntProps["onCancel"];
@@ -21,6 +22,8 @@ export interface ModalProps extends ModalAntProps {
     classNameContent?: string;
     showFooter?: boolean;
     showHeader?: boolean;
+    cancelButtonProps?: ButtonProps;
+    saveButtonProps?: ButtonProps;
 }
 declare const Modal: React.FC<ModalProps>;
 export default Modal;
