@@ -15,6 +15,7 @@ export interface RadioGroupProps {
     defaultValue?: Array<any>;
     onChange?: (values: Array<any>) => void;
     numberOfColumns?: "1" | "2" | "3" | "4" | "5" | "6";
+    disabled?: boolean;
 }
 
 const RadioGroup: React.FC<RadioGroupProps> = ({
@@ -28,6 +29,7 @@ const RadioGroup: React.FC<RadioGroupProps> = ({
     onChange,
     numberOfColumns = "3",
     label,
+    disabled,
 }) => {
     const containerClass = classNames(className);
     const groupContainerClass = classNames("d-flex flex-wrap", className);
@@ -70,7 +72,7 @@ const RadioGroup: React.FC<RadioGroupProps> = ({
                             }}
                             checked={isChecked}
                             variant="radio"
-                            disabled={isDisabled}
+                            disabled={isDisabled || disabled}
                             className={itemClass}
                         />
                     );

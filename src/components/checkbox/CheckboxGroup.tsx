@@ -18,6 +18,7 @@ export interface CheckboxGroupProps {
     numberOfColumns?: "1" | "2" | "3" | "4" | "5" | "6";
     numberOfDefaultShow?: number;
     multiple?: boolean;
+    disabled?: boolean;
 
     getLabel?: (item: any) => any;
     getValue?: (item: any) => any;
@@ -35,6 +36,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
     numberOfColumns = "3",
     numberOfDefaultShow = 10,
     label,
+    disabled,
 
     getLabel = (item: any) => item?.label,
     getValue = (item: any) => item?.id,
@@ -125,7 +127,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
                             value={getValue(item)}
                             onChange={(event) => onChangeChecked(item, event)}
                             checked={isChecked}
-                            disabled={isDisabled}
+                            disabled={isDisabled || disabled}
                             key={iValue}
                             className={itemClass}
                         />
