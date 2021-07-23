@@ -92,7 +92,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
 
     return (
         <div className={containerClass}>
-            <label>{label}</label>
+            {label && <label>{label}</label>}
             <div className={groupContainerClass}>
                 {dataSourceDisplay.map((item) => {
                     const iLabel = getLabel(item);

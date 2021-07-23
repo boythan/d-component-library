@@ -1,7 +1,7 @@
 /* eslint-disable eqeqeq */
 /* eslint-disable no-unused-expressions */
 import classNames from "classnames";
-import React from "react";
+import React, { CSSProperties } from "react";
 import Checkbox from "./Checkbox";
 
 export interface RadioGroupProps {
@@ -9,6 +9,7 @@ export interface RadioGroupProps {
     label?: any;
     className?: string;
     classNameItem?: string;
+    style?: CSSProperties;
     getLabel?: (item: any) => any;
     getValue?: (item: any) => any;
     getDisabledItem?: (checkItem: any) => void;
@@ -23,6 +24,7 @@ const RadioGroup: React.FC<RadioGroupProps> = ({
     dataSource,
     className,
     classNameItem,
+    style,
     getLabel = (item: any) => item?.label,
     getValue = (item: any) => item?.id,
     getDisabledItem,
@@ -35,8 +37,8 @@ const RadioGroup: React.FC<RadioGroupProps> = ({
     const containerClass = classNames(className);
     const groupContainerClass = classNames("d-flex flex-wrap", className);
     return (
-        <div className={containerClass}>
-            <label>{label}</label>
+        <div className={containerClass} style={style}>
+            {label && <label>{label}</label>}
             <div className={groupContainerClass}>
                 {dataSource.map((item) => {
                     const iLabel = getLabel(item);
