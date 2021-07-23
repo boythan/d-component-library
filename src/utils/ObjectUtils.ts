@@ -94,7 +94,7 @@ const sliceArrayToMui = (bigArray = [], numberOfItem = 10) => {
     return arrayOfArrays;
 };
 
-const arrayMove = (arr, oldIndex, newIndex) => {
+const arrayMove = (arr: any[], oldIndex: any, newIndex: any) => {
     if (newIndex >= arr.length || newIndex < 0) {
         return arr;
     }
