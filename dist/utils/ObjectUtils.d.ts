@@ -12,7 +12,7 @@ declare const _default: {
     findItemFromId: (list: any[] | undefined, id: string) => any;
     removeItemFromId: (list: any[] | undefined, id: string) => any[];
     sliceArrayToMui: (bigArray?: never[], numberOfItem?: number) => never[][];
-    arrayMove: (arr: any[], oldIndex: any, newIndex: any) => any[];
+    arrayMove: (arr?: never[], oldIndex?: number, newIndex?: number) => never[];
     mapArrayToObject: (array: any[], getKey?: (item: any) => any) => any;
     combineAllArray: typeof combineAllArray;
     compareTwoStringArray: typeof compareTwoStringArray;
