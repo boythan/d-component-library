@@ -1,9 +1,9 @@
 import React, { ReactNode } from "react";
 import { Modal as ModalAnt, ModalProps as ModalAntProps } from "antd";
 import ClassNames from "classnames";
-import Button from "../button/Button";
+import Button, { ButtonProps } from "../button/Button";
 
-export interface ModalProps extends ModalAntProps {
+export interface ModalProps extends Omit<ModalAntProps, "cancelButtonProps"> {
     children: React.ReactNode;
     open: boolean;
     onClose: ModalAntProps["onCancel"];
@@ -24,6 +24,8 @@ export interface ModalProps extends ModalAntProps {
     classNameContent?: string;
     showFooter?: boolean;
     showHeader?: boolean;
+    cancelButtonProps?: ButtonProps;
+    saveButtonProps?: ButtonProps;
 }
 
 const Modal: React.FC<ModalProps> = ({
@@ -53,6 +55,8 @@ const Modal: React.FC<ModalProps> = ({
     classNameHeader,
     showFooter = true,
     showHeader = true,
+    cancelButtonProps,
+    saveButtonProps,
     ...props
 }) => {
     const modalClass = ClassNames("d-modal", `d-modal__${size}`, className);
@@ -114,9 +118,10 @@ const Modal: React.FC<ModalProps> = ({
                                     }
                                     return onClose && onClose(e);
                                 }}
+                                {...cancelButtonProps}
                             />
                         )}
-                        <Button variant="standard" content={saveText} onClick={onSave} />
+                        <Button variant="standard" content={saveText} onClick={onSave} {...saveButtonProps} />
                     </div>
                 </React.Fragment>
             );

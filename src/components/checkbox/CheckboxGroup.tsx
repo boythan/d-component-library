@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 /* eslint-disable no-unused-expressions */
 import ClassNames from "classnames";
 import _ from "lodash";
@@ -18,6 +19,7 @@ export interface CheckboxGroupProps {
     numberOfColumns?: "1" | "2" | "3" | "4" | "5" | "6";
     numberOfDefaultShow?: number;
     multiple?: boolean;
+    disabled?: boolean;
 
     getLabel?: (item: any) => any;
     getValue?: (item: any) => any;
@@ -35,6 +37,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
     numberOfColumns = "3",
     numberOfDefaultShow = 10,
     label,
+    disabled,
 
     getLabel = (item: any) => item?.label,
     getValue = (item: any) => item?.id,
@@ -89,7 +92,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
 
     return (
         <div className={containerClass}>
-            <label>{label}</label>
+            {label && <label>{label}</label>}
             <div className={groupContainerClass}>
                 {dataSourceDisplay.map((item) => {
                     const iLabel = getLabel(item);
@@ -99,22 +102,22 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
                     const itemClass = ClassNames(
                         "my-3 p-0",
                         {
-                            "col-12": numberOfColumns === "1",
+                            "col-12": numberOfColumns == "1",
                         },
                         {
-                            "col-6": numberOfColumns === "2",
+                            "col-6": numberOfColumns == "2",
                         },
                         {
-                            "col-4": numberOfColumns === "3",
+                            "col-4": numberOfColumns == "3",
                         },
                         {
-                            "col-3": numberOfColumns === "4",
+                            "col-3": numberOfColumns == "4",
                         },
                         {
-                            col: numberOfColumns === "5",
+                            col: numberOfColumns == "5",
                         },
                         {
-                            "col-2": numberOfColumns === "6",
+                            "col-2": numberOfColumns == "6",
                         },
 
                         classNameItem
@@ -125,7 +128,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
                             value={getValue(item)}
                             onChange={(event) => onChangeChecked(item, event)}
                             checked={isChecked}
-                            disabled={isDisabled}
+                            disabled={isDisabled || disabled}
                             key={iValue}
                             className={itemClass}
                         />

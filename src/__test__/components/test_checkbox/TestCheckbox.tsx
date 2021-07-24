@@ -90,6 +90,7 @@ const TestCheckbox: React.FC<TestCheckboxProps> = ({ id }) => {
                     value={radioValue}
                     onChange={(value) => setRadioValue(value)}
                     getDisabledItem={(item) => item?.id === "color"}
+                    numberOfColumns="2"
                 />
             </div>
         </React.Fragment>
