@@ -18,7 +18,7 @@ import { ILayoutTableManager } from "./layoutManager/LayoutTableManager";
 // application
 import ResizableTitle from "./ResizableTitle";
 
-const INIT_PAGINATION = {
+export const INIT_PAGINATION = {
     pageIndex: 1,
     pageSize: 20,
     showQuickJumper: true,

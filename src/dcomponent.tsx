@@ -151,6 +151,7 @@ export type {
     AwesomeTableComponentProps,
     IPaginationProps,
     IColumnsProps,
+    INIT_PAGINATION,
 } from "./components/table/AwesomeTableComponent";
 export { default as AwesomeTableComponent } from "./components/table/AwesomeTableComponent";
 
