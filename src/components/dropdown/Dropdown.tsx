@@ -99,7 +99,7 @@ export const DropdownMenu: React.FC<DropDownMenuProps> = ({
 };
 
 const Dropdown: React.FC<DropdownProps> = ({
-    buttonProps = { variant: "trans", iconName: "more_vert" },
+    buttonProps = {},
     dataSource,
     onClick,
     variant = "button",
@@ -131,7 +131,9 @@ const Dropdown: React.FC<DropdownProps> = ({
         return onClick && onClick(item);
     };
 
-    let mainView: any = <Button {...buttonProps} onClick={() => setOpenDropdown(!openDropdown)} />;
+    let mainView: any = (
+        <Button variant="trans" iconName="more_vert" {...buttonProps} onClick={() => setOpenDropdown(!openDropdown)} />
+    );
     if (variant === "view") {
         mainView = value ? (
             <MenuItem item={value} Messages={Messages} onClick={() => setOpenDropdown(!openDropdown)} isMainView />
