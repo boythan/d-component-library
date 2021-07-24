@@ -30,6 +30,7 @@ import TestView from "./components/test_view/TestView";
 import TestPopover from "./components/test_popover/TestPopover";
 import { ATTRIBUTE_INPUT_TYPE } from "./data/TestConstant";
 import TestModal from "./components/test_modal/TestModal";
+import API from "./network/API";
 
 interface Props {
     content?: any;
@@ -176,12 +177,16 @@ export default function Test({ content }: Props): ReactElement {
                 </div>
                 <div className="col-9 py-5 px-5 ml-4 card-container">
                     {selectedTab?.component ?? "N/A"}
-                    {/* <Button content="Open Modal" variant="trans" onClick={() => setOpenModal(true)} /> */}
+                    <Button content="Open Modal" variant="trans" onClick={() => setOpenModal(true)} />
                 </div>
                 <Modal
                     open={openModal}
                     onClose={() => setOpenModal(false)}
-                    onSave={() => setOpenModal(false)}
+                    onSave={() => {
+                        return Progress.show({ method: API.brandList, params: [] }, (res) => {
+                            setOpenModal(false);
+                        });
+                    }}
                     title="Filter"
                     closeIcon={false}
                     hasCancelButton
