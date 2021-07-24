@@ -118,13 +118,13 @@ class ProgressComponent extends Component<ProgressComponentProps, any> {
     renderErrorView = () => {
         const { error } = this.state;
         return (
-            <div className="progress__error-container">
+            <div className="d-progress__error-container">
                 <h4>{Messages.error}</h4>
                 <h5
                     className="mt-3 d-notifications__content"
                     dangerouslySetInnerHTML={{ __html: error?.message ?? "" }}
                 />
-                <div className="progress__error-footer">
+                <div className="d-progress__error-footer">
                     <button onClick={this.dismiss} className="btn btn-light mr-3" type="button">
                         {Messages.cancel}
                     </button>
@@ -139,18 +139,20 @@ class ProgressComponent extends Component<ProgressComponentProps, any> {
     render() {
         const { open, error } = this.state;
         return (
-            <Modal
-                visible={open}
-                onCancel={this.dismiss}
-                destroyOnClose
-                className="progress__container"
-                closable={false}
-                footer={null}
-                getContainer={false}
-            >
-                {!error && this.renderLoadingView()}
-                {error && this.renderErrorView()}
-            </Modal>
+            <div className="d-progress__root">
+                <Modal
+                    visible={open}
+                    onCancel={this.dismiss}
+                    destroyOnClose
+                    className="d-progress__container"
+                    closable={false}
+                    footer={null}
+                    getContainer={false}
+                >
+                    {!error && this.renderLoadingView()}
+                    {error && this.renderErrorView()}
+                </Modal>
+            </div>
         );
     }
 }

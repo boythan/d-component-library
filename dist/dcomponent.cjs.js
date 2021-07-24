@@ -69913,12 +69913,11 @@ var sliceArrayToMui = function (bigArray, numberOfItem) {
     return arrayOfArrays;
 };
 var arrayMove = function (arr, oldIndex, newIndex) {
-    if (newIndex >= arr.length) {
-        var k = newIndex - arr.length + 1;
-        // eslint-disable-next-line no-plusplus
-        while (k--) {
-            arr.push(undefined);
-        }
+    if (arr === void 0) { arr = []; }
+    if (oldIndex === void 0) { oldIndex = 0; }
+    if (newIndex === void 0) { newIndex = 0; }
+    if (newIndex >= arr.length || newIndex < 0) {
+        return arr;
     }
     arr.splice(newIndex, 0, arr.splice(oldIndex, 1)[0]);
     return arr; // for testing
@@ -71909,14 +71908,18 @@ var transformColumn = function (columns, baseColumn) {
     if (columns === void 0) { columns = []; }
     if (baseColumn === void 0) { baseColumn = {}; }
     return columns.map(function (_a, index) {
-        var title = _a.title, titleTooltip = _a.titleTooltip, dataIndex = _a.dataIndex, render = _a.render, props = __rest$t(_a, ["title", "titleTooltip", "dataIndex", "render"]);
+        var title = _a.title, titleTooltip = _a.titleTooltip, dataIndex = _a.dataIndex, render = _a.render, mobileTitle = _a.mobileTitle, props = __rest$t(_a, ["title", "titleTooltip", "dataIndex", "render", "mobileTitle"]);
         // custom title
         var titleResult = title;
+        var mobileTitleResult = title;
         if (typeof title === "function") {
             titleResult = title();
         }
         if (titleTooltip) {
             titleResult = (jsxRuntime.jsxs(Tooltip, __assign({ className: "flex-center-y", zIndex: 10000, title: titleTooltip }, { children: [title, jsxRuntime.jsx(Icon$2, { name: "info", className: "ml-3" }, void 0)] }), void 0));
+        }
+        if (mobileTitle) {
+            mobileTitleResult = mobileTitle;
         }
         return __assign(__assign(__assign({}, baseColumn), { id: "" + index, title: titleResult, align: "left", isDefault: true, dataIndex: dataIndex, render: function (data, item, index) {
                 var content = data;
@@ -71925,7 +71928,7 @@ var transformColumn = function (columns, baseColumn) {
                 }
                 return {
                     children: content,
-                    props: { "data-title": title },
+                    props: { "data-title": mobileTitleResult },
                 };
             } }), props);
     });

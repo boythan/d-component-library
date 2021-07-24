@@ -1,5 +1,6 @@
 /* eslint-disable operator-linebreak */
 import React, { ReactElement, useEffect, useRef, useState } from "react";
+import Button from "../components/button/Button";
 import DateInput from "../components/dateInput/DateInput";
 import DialogComponent from "../components/dialog/DialogComponent";
 import DialogManager from "../components/dialog/DialogManager";
@@ -26,8 +27,9 @@ import TestProgress from "./components/test_progress/TestProgress";
 import TestTabBar from "./components/test_tabBar/TestTabBar";
 import TestUtils from "./components/test_util/TestUtils";
 import TestView from "./components/test_view/TestView";
-import TestPopover from "./components/text_popover/TestPopover";
+import TestPopover from "./components/test_popover/TestPopover";
 import { ATTRIBUTE_INPUT_TYPE } from "./data/TestConstant";
+import TestModal from "./components/test_modal/TestModal";
 
 interface Props {
     content?: any;
@@ -144,16 +146,13 @@ export default function Test({ content }: Props): ReactElement {
         { id: "FORM", label: "FORM", component: <TestForm /> },
         { id: "INPUT_DROP", label: "INPUT_DROP", component: <TestInputDrop /> },
         { id: "POPOVER", label: "POPOVER", component: <TestPopover /> },
+        { id: "MODAL", label: "MODAL", component: <TestModal /> },
     ];
     return (
         <AppStateContext.Provider value={{ mockData }}>
             <div className="p-5 d-flex bg-muted">
                 <DialogComponent ref={dialogRef.current} />
-                <ProgressComponent
-                    ref={(ref) => {
-                        progressRef.current = ref;
-                    }}
-                />
+
                 <div className="col-3 p-0 mr-4 card-container" style={{ height: "fit-content" }}>
                     <TabBar
                         dataSource={TAB_LIST}
@@ -198,6 +197,11 @@ export default function Test({ content }: Props): ReactElement {
                     {mainContent()}
                 </Modal>
             </div>
+            <ProgressComponent
+                ref={(ref) => {
+                    progressRef.current = ref;
+                }}
+            />
         </AppStateContext.Provider>
     );
 }

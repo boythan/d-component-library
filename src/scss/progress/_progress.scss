@@ -1,4 +1,4 @@
-.progress__container {
+.d-progress__container {
     border-radius: 1rem;
     height: 80vh;
     width: 100vw;
@@ -7,12 +7,26 @@
     align-items: center;
 }
 
-.progress__error-footer {
+.d-progress__error-footer {
     display: flex;
     justify-content: flex-end;
     margin-top: 1rem;
 }
 
-.progress__error-container {
+.d-progress__error-container {
     min-width: 50vw;
+}
+
+.d-progress__root {
+    .ant-modal-root {
+        z-index: 1001;
+    }
+
+    .ant-modal-mask {
+        z-index: 1001;
+    }
+
+    .ant-modal-wrap {
+        z-index: 1001;
+    }
 }
