@@ -67073,7 +67073,7 @@ h6,
 
 .d-dropdown-menu__container {
     position: absolute;
-    z-index: 20;
+    z-index: 1000;
 
     background-color: $light-color;
     box-shadow: $card-container-box-shadow;

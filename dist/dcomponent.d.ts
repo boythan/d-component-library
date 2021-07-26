@@ -57,7 +57,7 @@ export type { DateInputProp } from "./components/dateInput/DateInput";
 export { default as DateInput } from "./components/dateInput/DateInput";
 export type { DotProps } from "./components/dot/Dot";
 export { default as Dot } from "./components/dot/Dot";
-export type { AwesomeTableComponentProps, IPaginationProps, IColumnsProps, } from "./components/table/AwesomeTableComponent";
+export type { AwesomeTableComponentProps, IPaginationProps, IColumnsProps, INIT_PAGINATION, } from "./components/table/AwesomeTableComponent";
 export { default as AwesomeTableComponent } from "./components/table/AwesomeTableComponent";
 export type { DropdownProps, IDropdownMenuItemProps, DropDownMenuProps } from "./components/dropdown/Dropdown";
 export { default as Dropdown } from "./components/dropdown/Dropdown";

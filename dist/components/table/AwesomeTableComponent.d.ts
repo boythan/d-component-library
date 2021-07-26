@@ -1,6 +1,14 @@
 import { Input, TableColumnGroupType, TableColumnType, TablePaginationConfig, TableProps } from "antd";
 import React, { Component } from "react";
 import { ILayoutTableManager } from "./layoutManager/LayoutTableManager";
+export declare const INIT_PAGINATION: {
+    pageIndex: number;
+    pageSize: number;
+    showQuickJumper: boolean;
+    showTotal: (total: any) => JSX.Element;
+    pageSizeOptions: string[];
+    showSizeChanger: boolean;
+};
 export interface IPaginationProps extends TablePaginationConfig {
     pageIndex?: number;
 }
