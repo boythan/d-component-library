@@ -4,12 +4,13 @@ import ColorUtils from "../../utils/ColorUtils";
 
 export interface ViewLabelStatusProps {
     color?: string;
-    content: string;
+    content?: string;
     className?: string;
     style?: CSSProperties;
     listStatus?: any[];
     status?: any;
     getValue?: (item: any) => any;
+    getLabel?: (item: any) => any;
 }
 const ViewLabelStatus = ({
     color = "#000000",
@@ -19,6 +20,7 @@ const ViewLabelStatus = ({
     listStatus,
     status,
     getValue = (item) => item?.id,
+    getLabel = (item) => item?.label,
 }: ViewLabelStatusProps) => {
     const classNameContainer = classNames("d-view-label-status", className);
     let colorStatus = "#000000";
@@ -27,7 +29,7 @@ const ViewLabelStatus = ({
         try {
             const foundStatus = listStatus?.find((item) => getValue(item) === status);
             colorStatus = foundStatus?.color;
-            labelStatus = foundStatus?.label;
+            labelStatus = getLabel(foundStatus);
         } catch (error) {
             console.error({ error });
         }
