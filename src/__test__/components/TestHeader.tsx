@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import Header from "../../components/header/Header";
 import HeaderBlock from "../../components/header/HeaderBlock";
+import HeaderDetail from "../../components/header/HeaderDetail";
 import HeaderTable from "../../components/header/HeaderTable";
 import Select from "../../components/select/Select";
-import { ATTRIBUTE_INPUT_TYPE } from "../data/TestConstant";
+import { ATTRIBUTE_INPUT_TYPE, DELIVERY_STATUS_LIST } from "../data/TestConstant";
+import Messages from "../../language/Messages";
 
 const TestHeader = () => {
     const [valueSelect, setValueSelect] = useState();
@@ -33,6 +35,15 @@ const TestHeader = () => {
             <HeaderBlock title="Block Title" showArrow />
             <HeaderBlock title="Block Title" className="my-3" />
             <HeaderBlock title="Block Title" className="my-3" customRight={customRight()} />
+            <HeaderDetail
+                Messages={Messages}
+                listStatus={DELIVERY_STATUS_LIST}
+                status="pending"
+                className="my-4"
+                title="Header Detail"
+                user={{ fullName: "Admin" }}
+                created={new Date().valueOf()}
+            />
         </div>
     );
 };

@@ -1,4 +1,5 @@
 import { DropdownProps } from "../../components/dropdown/Dropdown";
+import Messages from "../../language/Messages";
 
 // eslint-disable-next-line import/prefer-default-export
 export const ATTRIBUTE_INPUT_TYPE = [
@@ -69,5 +70,29 @@ export const LANGUAGES: DropdownProps["dataSource"] = [
         label: "English",
         iconName: "person",
         image: "./images/languages/language-3.png",
+    },
+];
+
+export const DELIVERY_STATUS_LIST = [
+    {
+        id: "pending",
+        value: "pending",
+        label: "pendingName",
+        color: "#FFBD59 ",
+    },
+
+    { id: "reject", value: "reject", label: "rejected", color: "#EB5757" },
+
+    {
+        id: "confirm",
+        value: "confirm",
+        label: "confirmed",
+        color: "#33B950",
+    },
+    {
+        id: "cancelled",
+        value: "cancelled",
+        label: "cancelled",
+        color: "#8D8D8D",
     },
 ];

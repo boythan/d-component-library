@@ -1,8 +1,9 @@
-import React, { useMemo } from "react";
+import React, { CSSProperties, useMemo } from "react";
 import ClassNames from "classnames";
-import Button from "../button/Button";
+import Button, { ButtonProps } from "../button/Button";
 import AvatarName, { IUserBasic } from "../avatar/AvatarName";
 import TimeUtils from "../../utils/TimeUtils";
+import ViewLabelStatus, { ViewLabelStatusProps } from "../view/ViewLabelStatus";
 
 export interface IStatusItem {
     id: string;
@@ -22,16 +23,27 @@ export interface HeaderDetailProps {
     title?: string;
     listStatus?: Array<IStatusItem>;
     listButton?: Array<IButtonItem>;
+    buttonProps?: ButtonProps;
     status?: string;
     created?: number;
     user?: IUserBasic;
     customRight?: () => React.ReactNode;
     onButtonClick?: (item: IButtonItem) => void;
     customCreated?: (props?: any) => any;
-    Messages?: any;
+    customStatus?: (status?: any) => any;
+    viewStatusProps?: ViewLabelStatusProps;
+    style?: CSSProperties;
+    className?: string;
+    classNameButton?: string;
+    classNameStatus?: string;
+    Messages: any;
 }
 
 const HeaderDetail: React.FC<HeaderDetailProps> = ({
+    style,
+    className,
+    classNameButton,
+    classNameStatus,
     title,
     status,
     listStatus = [],
@@ -39,34 +51,32 @@ const HeaderDetail: React.FC<HeaderDetailProps> = ({
         { id: "print", icon: "print", label: "print" },
         { id: "cancel", icon: "cancel", label: "cancel" },
     ],
+    buttonProps,
     created,
     user,
     customRight,
     customCreated,
+    customStatus,
     onButtonClick,
     Messages,
+    viewStatusProps,
 }) => {
-    const foundStatus = useMemo(() => {
-        let result = null;
-        if (status && listStatus.length > 0) {
-            result = listStatus.find((item) => item?.id === status);
-        }
-        return result;
-    }, [status]);
-
     const leftView = () => {
         const titleStatus = () => {
             return (
                 <div className="d-flex">
                     <h4>{title}</h4>
-                    {foundStatus && (
-                        <div
-                            className="py-1 px-2 text-center ml-3 text-white"
-                            style={{ backgroundColor: foundStatus.color }}
-                        >
-                            {Messages[foundStatus.label]}
-                        </div>
-                    )}
+                    {status &&
+                        (customStatus ? (
+                            customStatus()
+                        ) : (
+                            <ViewLabelStatus
+                                listStatus={listStatus}
+                                status={status}
+                                className={`ml-3 ${classNameStatus}`}
+                                {...viewStatusProps}
+                            />
+                        ))}
                 </div>
             );
         };
@@ -75,8 +85,9 @@ const HeaderDetail: React.FC<HeaderDetailProps> = ({
             return (
                 <div className="d-flex align-items-center">
                     {listButton.map((button, index) => {
-                        const buttonClass = ClassNames("p-0 text-gray font-weight-normal", {
-                            "mx-3": index !== 0,
+                        const buttonClass = ClassNames("px-0 text-gray font-weight-normal", {
+                            "mx-4": index !== 0,
+                            classNameButton,
                         });
                         return (
                             <Button
@@ -85,6 +96,7 @@ const HeaderDetail: React.FC<HeaderDetailProps> = ({
                                 iconName={button.icon}
                                 className={buttonClass}
                                 onClick={() => onButtonClick && onButtonClick(button)}
+                                {...buttonProps}
                             />
                         );
                     })}
@@ -124,7 +136,10 @@ const HeaderDetail: React.FC<HeaderDetailProps> = ({
     };
 
     return (
-        <div className="card-container d-flex align-items-center justify-content-between p-4">
+        <div
+            className={`card-container d-flex align-items-center justify-content-between p-4 ${className}`}
+            style={style}
+        >
             {leftView()}
             {rightView()}
         </div>
