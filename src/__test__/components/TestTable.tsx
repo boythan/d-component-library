@@ -94,8 +94,7 @@ const TestTable = () => {
                 }}
                 transformer={(res) => ATTRIBUTE_INPUT_TYPE}
                 columns={columns}
-                showSelectColumn
-                keyTableLayout="TEST TABLE"
+                keyTableLayout="TEST TnABLE"
                 rowSelection={{ onChange: (value) => setSelectingRows(value) }}
                 selectingRows={selectingRows}
                 onSelectionView={() => {
@@ -110,9 +109,10 @@ const TestTable = () => {
                 isPagination={false}
                 tableLayout="auto"
                 bordered={false}
+                showSelectColumn
             />
 
-            <AwesomeTableComponent columns={columns} showSelectColumn dataSource={dataSource} tableLayout="auto" />
+            <AwesomeTableComponent columns={columns} dataSource={dataSource} tableLayout="auto" />
             <Button content="Remove" onClick={onClickRemove} />
         </div>
     );

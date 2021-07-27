@@ -28,6 +28,8 @@ const TestModal = () => {
                     </div>
                 )}
                 classNameFooter="d-none"
+                titleAlign="start"
+                hasCloseIcon={false}
             >
                 <div />
             </Modal>

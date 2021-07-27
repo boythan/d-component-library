@@ -22,10 +22,12 @@ export interface ModalProps extends Omit<ModalAntProps, "cancelButtonProps"> {
     classNameHeader?: string;
     classNameFooter?: string;
     classNameContent?: string;
+    classNameTitle?: string;
     showFooter?: boolean;
     showHeader?: boolean;
     cancelButtonProps?: ButtonProps;
     saveButtonProps?: ButtonProps;
+    titleAlign?: "center" | "start" | "end";
 }
 
 const Modal: React.FC<ModalProps> = ({
@@ -53,10 +55,12 @@ const Modal: React.FC<ModalProps> = ({
     classNameContent,
     classNameFooter,
     classNameHeader,
+    classNameTitle,
     showFooter = true,
     showHeader = true,
     cancelButtonProps,
     saveButtonProps,
+    titleAlign = "center",
     ...props
 }) => {
     const modalClass = ClassNames("d-modal", `d-modal__${size}`, className);
@@ -67,6 +71,15 @@ const Modal: React.FC<ModalProps> = ({
         classNameHeader
     );
     const footerClass = ClassNames("d-modal__footer d-flex align-items-center border-top py-3 px-3", classNameFooter);
+    const titleClass = ClassNames(
+        "w-100",
+        {
+            "text-center": titleAlign === "center",
+            "text-start ml-3": titleAlign === "start",
+            "text-end mr-3": titleAlign === "end",
+        },
+        classNameTitle
+    );
 
     const header = () => {
         let content;
@@ -81,7 +94,7 @@ const Modal: React.FC<ModalProps> = ({
                             className="d-modal__header-close-icon"
                         />
                     )}
-                    {title && <h4 className="w-100 text-center">{title}</h4>}
+                    {title && <h4 className={titleClass}>{title}</h4>}
                     {headerSide && headerSide()}
                 </React.Fragment>
             );
