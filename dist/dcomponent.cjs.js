@@ -359,7 +359,7 @@ function _getPrototypeOf$2(o) {
   return _getPrototypeOf$2(o);
 }
 
-function _isNativeReflectConstruct$3() {
+function _isNativeReflectConstruct$2() {
   if (typeof Reflect === "undefined" || !Reflect.construct) return false;
   if (Reflect.construct.sham) return false;
   if (typeof Proxy === "function") return true;
@@ -415,8 +415,8 @@ function _possibleConstructorReturn$1(self, call) {
   return _assertThisInitialized$1(self);
 }
 
-function _createSuper$2(Derived) {
-  var hasNativeReflectConstruct = _isNativeReflectConstruct$3();
+function _createSuper$1(Derived) {
+  var hasNativeReflectConstruct = _isNativeReflectConstruct$2();
   return function _createSuperInternal() {
     var Super = _getPrototypeOf$2(Derived),
         result;
@@ -448,23 +448,7 @@ function _typeof$4(obj) {
   return _typeof$4(obj);
 }
 
-function ownKeys$6(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread$4(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$6(Object(source), true).forEach(function (key) { _defineProperty$4(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$6(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function omit(obj, fields) {
-  var clone = _objectSpread$4({}, obj);
-
-  if (Array.isArray(fields)) {
-    fields.forEach(function (key) {
-      delete clone[key];
-    });
-  }
-
-  return clone;
-}
-
-function ownKeys$5(object, enumerableOnly) {
+function ownKeys$3(object, enumerableOnly) {
   var keys = Object.keys(object);
 
   if (Object.getOwnPropertySymbols) {
@@ -487,19 +471,31 @@ function _objectSpread2$1(target) {
     var source = arguments[i] != null ? arguments[i] : {};
 
     if (i % 2) {
-      ownKeys$5(Object(source), true).forEach(function (key) {
+      ownKeys$3(Object(source), true).forEach(function (key) {
         _defineProperty$4(target, key, source[key]);
       });
     } else if (Object.getOwnPropertyDescriptors) {
       Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
     } else {
-      ownKeys$5(Object(source)).forEach(function (key) {
+      ownKeys$3(Object(source)).forEach(function (key) {
         Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
       });
     }
   }
 
   return target;
+}
+
+function omit(obj, fields) {
+  var clone = _objectSpread2$1({}, obj);
+
+  if (Array.isArray(fields)) {
+    fields.forEach(function (key) {
+      delete clone[key];
+    });
+  }
+
+  return clone;
 }
 
 /**
@@ -1792,7 +1788,7 @@ var INTERNAL_PREFIX_KEY = 'rc-observer-key'; // Still need to be compatible with
 var ReactResizeObserver = /*#__PURE__*/function (_React$Component) {
   _inherits$1(ReactResizeObserver, _React$Component);
 
-  var _super = _createSuper$2(ReactResizeObserver);
+  var _super = _createSuper$1(ReactResizeObserver);
 
   function ReactResizeObserver() {
     var _this;
@@ -2888,7 +2884,7 @@ function _setPrototypeOf$1(o, p) {
   return _setPrototypeOf$1(o, p);
 }
 
-function _isNativeReflectConstruct$2() {
+function _isNativeReflectConstruct$1() {
   if (typeof Reflect === "undefined" || !Reflect.construct) return false;
   if (Reflect.construct.sham) return false;
   if (typeof Proxy === "function") return true;
@@ -2902,7 +2898,7 @@ function _isNativeReflectConstruct$2() {
 }
 
 function _construct(Parent, args, Class) {
-  if (_isNativeReflectConstruct$2()) {
+  if (_isNativeReflectConstruct$1()) {
     _construct = Reflect.construct;
   } else {
     _construct = function _construct(Parent, args, Class) {
@@ -4312,10 +4308,6 @@ function _toArray(arr) {
   return _arrayWithHoles$3(arr) || _iterableToArray(arr) || _unsupportedIterableToArray$3(arr) || _nonIterableRest$3();
 }
 
-function ownKeys$4(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread$3(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$4(Object(source), true).forEach(function (key) { _defineProperty$4(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$4(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
 function internalSet(entity, paths, value, removeIfUndefined) {
   if (!paths.length) {
     return value;
@@ -4332,7 +4324,7 @@ function internalSet(entity, paths, value, removeIfUndefined) {
   } else if (Array.isArray(entity)) {
     clone = _toConsumableArray(entity);
   } else {
-    clone = _objectSpread$3({}, entity);
+    clone = _objectSpread2$1({}, entity);
   } // Delete prop if `removeIfUndefined` and value is undefined
 
 
@@ -4898,7 +4890,7 @@ function requireUpdate(shouldUpdate, prev, next, prevValue, nextValue, info) {
 var Field = /*#__PURE__*/function (_React$Component) {
   _inherits$1(Field, _React$Component);
 
-  var _super = _createSuper$2(Field);
+  var _super = _createSuper$1(Field);
 
   // ============================== Subscriptions ==============================
   function Field(props) {
@@ -6988,7 +6980,7 @@ var ANT_MARK = 'internalMark';
 var LocaleProvider = /*#__PURE__*/function (_React$Component) {
   _inherits$1(LocaleProvider, _React$Component);
 
-  var _super = _createSuper$2(LocaleProvider);
+  var _super = _createSuper$1(LocaleProvider);
 
   function LocaleProvider(props) {
     var _this;
@@ -7043,7 +7035,7 @@ LocaleProvider.defaultProps = {
 var LocaleReceiver = /*#__PURE__*/function (_React$Component) {
   _inherits$1(LocaleReceiver, _React$Component);
 
-  var _super = _createSuper$2(LocaleReceiver);
+  var _super = _createSuper$1(LocaleReceiver);
 
   function LocaleReceiver() {
     _classCallCheck$2(this, LocaleReceiver);
@@ -7809,7 +7801,7 @@ function useStatus(supportMotion, visible, getElement, _ref) {
 var DomWrapper = /*#__PURE__*/function (_React$Component) {
   _inherits$1(DomWrapper, _React$Component);
 
-  var _super = _createSuper$2(DomWrapper);
+  var _super = _createSuper$1(DomWrapper);
 
   function DomWrapper() {
     _classCallCheck$2(this, DomWrapper);
@@ -8064,7 +8056,7 @@ function genCSSMotionList(transitionSupport) {
   var CSSMotionList = /*#__PURE__*/function (_React$Component) {
     _inherits$1(CSSMotionList, _React$Component);
 
-    var _super = _createSuper$2(CSSMotionList);
+    var _super = _createSuper$1(CSSMotionList);
 
     function CSSMotionList() {
       var _this;
@@ -8171,7 +8163,7 @@ var CSSMotionList = genCSSMotionList(supportTransition);
 var Notice = /*#__PURE__*/function (_Component) {
   _inherits$1(Notice, _Component);
 
-  var _super = _createSuper$2(Notice);
+  var _super = _createSuper$1(Notice);
 
   function Notice() {
     var _this;
@@ -8350,7 +8342,7 @@ function getUuid() {
 var Notification = /*#__PURE__*/function (_Component) {
   _inherits$1(Notification, _Component);
 
-  var _super = _createSuper$2(Notification);
+  var _super = _createSuper$1(Notification);
 
   function Notification() {
     var _this;
@@ -11343,10 +11335,6 @@ var KeyCode = {
   }
 };
 
-function ownKeys$3(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread$2(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$3(Object(source), true).forEach(function (key) { _defineProperty$4(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$3(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
 var attributes = "accept acceptCharset accessKey action allowFullScreen allowTransparency\n    alt async autoComplete autoFocus autoPlay capture cellPadding cellSpacing challenge\n    charSet checked classID className colSpan cols content contentEditable contextMenu\n    controls coords crossOrigin data dateTime default defer dir disabled download draggable\n    encType form formAction formEncType formMethod formNoValidate formTarget frameBorder\n    headers height hidden high href hrefLang htmlFor httpEquiv icon id inputMode integrity\n    is keyParams keyType kind label lang list loop low manifest marginHeight marginWidth max maxLength media\n    mediaGroup method min minLength multiple muted name noValidate nonce open\n    optimum pattern placeholder poster preload radioGroup readOnly rel required\n    reversed role rowSpan rows sandbox scope scoped scrolling seamless selected\n    shape size sizes span spellCheck src srcDoc srcLang srcSet start step style\n    summary tabIndex target title type useMap value width wmode wrap";
 var eventsName = "onCopy onCut onPaste onCompositionEnd onCompositionStart onCompositionUpdate onKeyDown\n    onKeyPress onKeyUp onFocus onBlur onChange onInput onSubmit onClick onContextMenu onDoubleClick\n    onDrag onDragEnd onDragEnter onDragExit onDragLeave onDragOver onDragStart onDrop onMouseDown\n    onMouseEnter onMouseLeave onMouseMove onMouseOut onMouseOver onMouseUp onSelect onTouchCancel\n    onTouchEnd onTouchMove onTouchStart onScroll onWheel onAbort onCanPlay onCanPlayThrough\n    onDurationChange onEmptied onEncrypted onEnded onError onLoadedData onLoadedMetadata\n    onLoadStart onPause onPlay onPlaying onProgress onRateChange onSeeked onSeeking onStalled onSuspend onTimeUpdate onVolumeChange onWaiting onLoad onError";
 var propList = "".concat(attributes, " ").concat(eventsName).split(/[\s\n]+/);
@@ -11380,7 +11368,7 @@ function pickAttrs(props) {
       aria: true
     };
   } else {
-    mergedConfig = _objectSpread$2({}, ariaOnly);
+    mergedConfig = _objectSpread2$1({}, ariaOnly);
   }
 
   var attrs = {};
@@ -11463,13 +11451,13 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-function _createSuper$1(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$1(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof$3(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _isNativeReflectConstruct$1() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 var MIN_SIZE = 20;
@@ -11481,7 +11469,7 @@ function getPageY(e) {
 var ScrollBar = /*#__PURE__*/function (_React$Component) {
   _inherits(ScrollBar, _React$Component);
 
-  var _super = _createSuper$1(ScrollBar);
+  var _super = _createSuper(ScrollBar);
 
   function ScrollBar() {
     var _this;
@@ -12201,7 +12189,7 @@ function useMobileTouchMove(inVirtual, listRef, callback) {
   }, [inVirtual]);
 }
 
-var _excluded$5 = ["prefixCls", "className", "height", "itemHeight", "fullHeight", "style", "data", "children", "itemKey", "virtual", "component", "onScroll"];
+var _excluded$9 = ["prefixCls", "className", "height", "itemHeight", "fullHeight", "style", "data", "children", "itemKey", "virtual", "component", "onScroll"];
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
@@ -12247,7 +12235,7 @@ function RawList(props, ref) {
       _props$component = props.component,
       Component = _props$component === void 0 ? 'div' : _props$component,
       onScroll = props.onScroll,
-      restProps = _objectWithoutProperties(props, _excluded$5); // ================================= MISC =================================
+      restProps = _objectWithoutProperties(props, _excluded$9); // ================================= MISC =================================
 
 
   var useVirtual = !!(virtual !== false && height && itemHeight);
@@ -14407,7 +14395,7 @@ function contains(root, n) {
   return root.contains(n);
 }
 
-var Portal = React.forwardRef(function (props, ref) {
+var Portal = /*#__PURE__*/React.forwardRef(function (props, ref) {
   var didUpdate = props.didUpdate,
       getContainer = props.getContainer,
       children = props.children;
@@ -14437,7 +14425,7 @@ var Portal = React.forwardRef(function (props, ref) {
       (_containerRef$current = containerRef.current) === null || _containerRef$current === void 0 ? void 0 : (_containerRef$current2 = _containerRef$current.parentNode) === null || _containerRef$current2 === void 0 ? void 0 : _containerRef$current2.removeChild(containerRef.current);
     };
   }, []);
-  return containerRef.current ? ReactDOM__default['default'].createPortal(children, containerRef.current) : null;
+  return containerRef.current ? /*#__PURE__*/ReactDOM__default['default'].createPortal(children, containerRef.current) : null;
 });
 
 function isPointsEq(a1, a2, isAlignPoint) {
@@ -16563,7 +16551,7 @@ function generateTrigger(PortalComponent) {
   var Trigger = /*#__PURE__*/function (_React$Component) {
     _inherits$1(Trigger, _React$Component);
 
-    var _super = _createSuper$2(Trigger);
+    var _super = _createSuper$1(Trigger);
 
     function Trigger(props) {
       var _this;
@@ -18573,7 +18561,7 @@ var RefSelect$1 = generateSelector({
 var Select$3 = /*#__PURE__*/function (_React$Component) {
   _inherits$1(Select, _React$Component);
 
-  var _super = _createSuper$2(Select);
+  var _super = _createSuper$1(Select);
 
   function Select() {
     var _this;
@@ -19185,7 +19173,7 @@ function getOverflowOptions(autoAdjustOverflow) {
 }
 function getPlacements(config) {
   var _config$arrowWidth = config.arrowWidth,
-      arrowWidth = _config$arrowWidth === void 0 ? 5 : _config$arrowWidth,
+      arrowWidth = _config$arrowWidth === void 0 ? 4 : _config$arrowWidth,
       _config$horizontalArr = config.horizontalArrowShift,
       horizontalArrowShift = _config$horizontalArr === void 0 ? 16 : _config$horizontalArr,
       _config$verticalArrow = config.verticalArrowShift,
@@ -19831,7 +19819,7 @@ function isNotGrey(color) {
 var Wave = /*#__PURE__*/function (_React$Component) {
   _inherits$1(Wave, _React$Component);
 
-  var _super = _createSuper$2(Wave);
+  var _super = _createSuper$1(Wave);
 
   function Wave() {
     var _this;
@@ -20366,7 +20354,9 @@ var DropdownButton = function DropdownButton(props) {
       buttonsRender = props.buttonsRender,
       mouseEnterDelay = props.mouseEnterDelay,
       mouseLeaveDelay = props.mouseLeaveDelay,
-      restProps = __rest$n(props, ["prefixCls", "type", "disabled", "onClick", "htmlType", "children", "className", "overlay", "trigger", "align", "visible", "onVisibleChange", "placement", "getPopupContainer", "href", "icon", "title", "buttonsRender", "mouseEnterDelay", "mouseLeaveDelay"]);
+      overlayClassName = props.overlayClassName,
+      overlayStyle = props.overlayStyle,
+      restProps = __rest$n(props, ["prefixCls", "type", "disabled", "onClick", "htmlType", "children", "className", "overlay", "trigger", "align", "visible", "onVisibleChange", "placement", "getPopupContainer", "href", "icon", "title", "buttonsRender", "mouseEnterDelay", "mouseLeaveDelay", "overlayClassName", "overlayStyle"]);
 
   var prefixCls = getPrefixCls('dropdown-button', customizePrefixCls);
   var dropdownProps = {
@@ -20377,7 +20367,9 @@ var DropdownButton = function DropdownButton(props) {
     onVisibleChange: onVisibleChange,
     getPopupContainer: getPopupContainer || getContextPopupContainer,
     mouseEnterDelay: mouseEnterDelay,
-    mouseLeaveDelay: mouseLeaveDelay
+    mouseLeaveDelay: mouseLeaveDelay,
+    overlayClassName: overlayClassName,
+    overlayStyle: overlayStyle
   };
 
   if ('visible' in props) {
@@ -20731,7 +20723,7 @@ function useMenuId(eventKey) {
 var LegacyMenuItem = /*#__PURE__*/function (_React$Component) {
   _inherits$1(LegacyMenuItem, _React$Component);
 
-  var _super = _createSuper$2(LegacyMenuItem);
+  var _super = _createSuper$1(LegacyMenuItem);
 
   function LegacyMenuItem() {
     _classCallCheck$2(this, LegacyMenuItem);
@@ -22762,7 +22754,7 @@ var __rest$k = undefined && undefined.__rest || function (s, e) {
 var MenuItem$2 = /*#__PURE__*/function (_React$Component) {
   _inherits$1(MenuItem, _React$Component);
 
-  var _super = _createSuper$2(MenuItem);
+  var _super = _createSuper$1(MenuItem);
 
   function MenuItem() {
     var _this;
@@ -22878,7 +22870,7 @@ var __rest$j = undefined && undefined.__rest || function (s, e) {
 var InternalMenu = /*#__PURE__*/function (_React$Component) {
   _inherits$1(InternalMenu, _React$Component);
 
-  var _super = _createSuper$2(InternalMenu);
+  var _super = _createSuper$1(InternalMenu);
 
   function InternalMenu(props) {
     var _this;
@@ -22975,7 +22967,7 @@ InternalMenu.defaultProps = {
 var Menu = /*#__PURE__*/function (_React$Component2) {
   _inherits$1(Menu, _React$Component2);
 
-  var _super2 = _createSuper$2(Menu);
+  var _super2 = _createSuper$1(Menu);
 
   function Menu() {
     _classCallCheck$2(this, Menu);
@@ -32434,7 +32426,7 @@ function InnerPicker(props) {
 var Picker = /*#__PURE__*/function (_React$Component) {
   _inherits$1(Picker, _React$Component);
 
-  var _super = _createSuper$2(Picker);
+  var _super = _createSuper$1(Picker);
 
   function Picker() {
     var _this;
@@ -33142,7 +33134,7 @@ function InnerRangePicker(props) {
       forwardKeyDown: forwardKeyDown,
       onBlur: onBlur,
       isClickOutside: function isClickOutside(target) {
-        return !elementsContains([panelDivRef.current, startInputDivRef.current, endInputDivRef.current], target);
+        return !elementsContains([panelDivRef.current, startInputDivRef.current, endInputDivRef.current, containerRef.current], target);
       },
       onFocus: function onFocus(e) {
         setMergedActivePickerIndex(index);
@@ -33626,7 +33618,7 @@ function InnerRangePicker(props) {
 var RangePicker$1 = /*#__PURE__*/function (_React$Component) {
   _inherits$1(RangePicker, _React$Component);
 
-  var _super = _createSuper$2(RangePicker);
+  var _super = _createSuper$1(RangePicker);
 
   function RangePicker() {
     var _this;
@@ -33666,7 +33658,7 @@ var RangePicker$1 = /*#__PURE__*/function (_React$Component) {
 var Checkbox$3 = /*#__PURE__*/function (_Component) {
   _inherits$1(Checkbox, _Component);
 
-  var _super = _createSuper$2(Checkbox);
+  var _super = _createSuper$1(Checkbox);
 
   function Checkbox(props) {
     var _this;
@@ -34083,7 +34075,7 @@ PanelContent.displayName = 'PanelContent';
 var CollapsePanel$1 = /*#__PURE__*/function (_React$Component) {
   _inherits$1(CollapsePanel, _React$Component);
 
-  var _super = _createSuper$2(CollapsePanel);
+  var _super = _createSuper$1(CollapsePanel);
 
   function CollapsePanel() {
     var _this;
@@ -34219,7 +34211,7 @@ function getActiveKeysArray(activeKey) {
 var Collapse$1 = /*#__PURE__*/function (_React$Component) {
   _inherits$1(Collapse, _React$Component);
 
-  var _super = _createSuper$2(Collapse);
+  var _super = _createSuper$1(Collapse);
 
   function Collapse(props) {
     var _this;
@@ -34695,7 +34687,7 @@ function hasAddon(props) {
 var ClearableLabeledInput = /*#__PURE__*/function (_React$Component) {
   _inherits$1(ClearableLabeledInput, _React$Component);
 
-  var _super = _createSuper$2(ClearableLabeledInput);
+  var _super = _createSuper$1(ClearableLabeledInput);
 
   function ClearableLabeledInput() {
     var _this;
@@ -34736,7 +34728,12 @@ var ClearableLabeledInput = /*#__PURE__*/function (_React$Component) {
       var needClear = !disabled && !readOnly && value;
       var className = "".concat(prefixCls, "-clear-icon");
       return /*#__PURE__*/React__namespace.createElement(CloseCircleFilled$1, {
-        onClick: handleReset,
+        onClick: handleReset // Do not trigger onBlur when clear input
+        // https://github.com/ant-design/ant-design/issues/31200
+        ,
+        onMouseDown: function onMouseDown(e) {
+          return e.preventDefault();
+        },
         className: classnames(_defineProperty$4({}, "".concat(className, "-hidden"), !needClear), className),
         role: "button"
       });
@@ -34955,7 +34952,7 @@ function triggerFocus(element, option) {
 var Input = /*#__PURE__*/function (_React$Component) {
   _inherits$1(Input, _React$Component);
 
-  var _super = _createSuper$2(Input);
+  var _super = _createSuper$1(Input);
 
   function Input(props) {
     var _this;
@@ -35445,7 +35442,7 @@ var RESIZE_STATUS;
 var ResizableTextArea = /*#__PURE__*/function (_React$Component) {
   _inherits$1(ResizableTextArea, _React$Component);
 
-  var _super = _createSuper$2(ResizableTextArea);
+  var _super = _createSuper$1(ResizableTextArea);
 
   function ResizableTextArea(props) {
     var _this;
@@ -35604,7 +35601,7 @@ var ResizableTextArea = /*#__PURE__*/function (_React$Component) {
 var TextArea$1 = /*#__PURE__*/function (_React$Component) {
   _inherits$1(TextArea, _React$Component);
 
-  var _super = _createSuper$2(TextArea);
+  var _super = _createSuper$1(TextArea);
 
   function TextArea(props) {
     var _this;
@@ -36502,7 +36499,7 @@ function generatePicker$1(generateConfig) {
     var Picker$1 = /*#__PURE__*/function (_React$Component) {
       _inherits$1(Picker$1, _React$Component);
 
-      var _super = _createSuper$2(Picker$1);
+      var _super = _createSuper$1(Picker$1);
 
       function Picker$1(props) {
         var _this;
@@ -36673,7 +36670,7 @@ function generateRangePicker(generateConfig) {
   var RangePicker = /*#__PURE__*/function (_React$Component) {
     _inherits$1(RangePicker, _React$Component);
 
-    var _super = _createSuper$2(RangePicker);
+    var _super = _createSuper$1(RangePicker);
 
     function RangePicker() {
       var _this;
@@ -37002,17 +36999,19 @@ var uuid$2 = 0; // https://github.com/ant-design/ant-design/issues/19340
 
 var cacheStyle = new Map();
 
-var ScrollLocker = function ScrollLocker(options) {
+var ScrollLocker = function ScrollLocker(_options) {
   var _this = this;
 
   _classCallCheck$2(this, ScrollLocker);
+
+  this.lockTarget = void 0;
+  this.options = void 0;
 
   this.getContainer = function () {
     var _this$options;
 
     return (_this$options = _this.options) === null || _this$options === void 0 ? void 0 : _this$options.container;
-  }; // if options change...
-
+  };
 
   this.reLock = function (options) {
     var findLock = locks.find(function (_ref) {
@@ -37074,7 +37073,7 @@ var ScrollLocker = function ScrollLocker(options) {
       return (options === null || options === void 0 ? void 0 : options.container) === ((_this$options4 = _this.options) === null || _this$options4 === void 0 ? void 0 : _this$options4.container);
     }).length === 0) {
       cacheStyle.set(container, setStyle({
-        width: "calc(100% - ".concat(scrollBarSize, "px)"),
+        width: scrollBarSize !== 0 ? "calc(100% - ".concat(scrollBarSize, "px)") : undefined,
         overflow: 'hidden',
         overflowX: 'hidden',
         overflowY: 'hidden'
@@ -37125,16 +37124,13 @@ var ScrollLocker = function ScrollLocker(options) {
     });
     cacheStyle.delete(container);
     container.className = container.className.replace(scrollingEffectClassNameReg, '').trim();
-  }; // eslint-disable-next-line no-plusplus
+  };
 
-
+  // eslint-disable-next-line no-plusplus
   this.lockTarget = uuid$2++;
-  this.options = options;
+  this.options = _options;
 };
 
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf$2(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf$2(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn$1(this, result); }; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 var openCount = 0;
 var supportDom = canUseDom();
 // https://github.com/ant-design/ant-design/issues/19332
@@ -37166,7 +37162,7 @@ var getParent = function getParent(getContainer) {
 var PortalWrapper = /*#__PURE__*/function (_React$Component) {
   _inherits$1(PortalWrapper, _React$Component);
 
-  var _super = _createSuper(PortalWrapper);
+  var _super = _createSuper$1(PortalWrapper);
 
   function PortalWrapper(props) {
     var _this;
@@ -37174,7 +37170,11 @@ var PortalWrapper = /*#__PURE__*/function (_React$Component) {
     _classCallCheck$2(this, PortalWrapper);
 
     _this = _super.call(this, props);
-    _this.componentRef = React__namespace.createRef();
+    _this.container = void 0;
+    _this.componentRef = /*#__PURE__*/React__namespace.createRef();
+    _this.rafId = void 0;
+    _this.scrollLocker = void 0;
+    _this.renderComponent = void 0;
 
     _this.updateScrollLocker = function (prevProps) {
       var _ref = prevProps || {},
@@ -37264,15 +37264,6 @@ var PortalWrapper = /*#__PURE__*/function (_React$Component) {
       // Let's handle this again to avoid refactor issue.
       (_this$container = _this.container) === null || _this$container === void 0 ? void 0 : (_this$container$paren = _this$container.parentNode) === null || _this$container$paren === void 0 ? void 0 : _this$container$paren.removeChild(_this.container);
     };
-    /**
-     * Enhance ./switchScrollingEffect
-     * 1. Simulate document body scroll bar with
-     * 2. Record body has overflow style and recover when all of PortalWrapper invisible
-     * 3. Disable body scroll when PortalWrapper has open
-     *
-     * @memberof PortalWrapper
-     */
-
 
     _this.switchScrollingEffect = function () {
       if (openCount === 1 && !Object.keys(cacheOverflow).length) {
@@ -39909,7 +39900,7 @@ function shouldDelay(spinning, delay) {
 var Spin = /*#__PURE__*/function (_React$Component) {
   _inherits$1(Spin, _React$Component);
 
-  var _super = _createSuper$2(Spin);
+  var _super = _createSuper$1(Spin);
 
   function Spin(props) {
     var _this;
@@ -40086,7 +40077,7 @@ var KEYCODE = {
 var Options = /*#__PURE__*/function (_React$Component) {
   _inherits$1(Options, _React$Component);
 
-  var _super = _createSuper$2(Options);
+  var _super = _createSuper$1(Options);
 
   function Options() {
     var _this;
@@ -40310,7 +40301,7 @@ function calculatePage(p, state, props) {
 var Pagination$1 = /*#__PURE__*/function (_React$Component) {
   _inherits$1(Pagination, _React$Component);
 
-  var _super = _createSuper$2(Pagination);
+  var _super = _createSuper$1(Pagination);
 
   function Pagination(props) {
     var _this;
@@ -41882,7 +41873,7 @@ function validateValue(val) {
   return val !== null && val !== undefined;
 }
 
-var _excluded$4 = ["colSpan", "rowSpan", "style", "className"];
+var _excluded$8 = ["colSpan", "rowSpan", "style", "className"];
 
 function isRenderCell(data) {
   return data && _typeof$4(data) === 'object' && !Array.isArray(data) && ! /*#__PURE__*/React__namespace.isValidElement(data);
@@ -41964,7 +41955,7 @@ function Cell(_ref, ref) {
       cellRowSpan = _ref2.rowSpan,
       cellStyle = _ref2.style,
       cellClassName = _ref2.className,
-      restCellProps = _objectWithoutProperties$1(_ref2, _excluded$4);
+      restCellProps = _objectWithoutProperties$1(_ref2, _excluded$8);
 
   var mergedColSpan = cellColSpan !== undefined ? cellColSpan : colSpan;
   var mergedRowSpan = cellRowSpan !== undefined ? cellRowSpan : rowSpan;
@@ -42567,11 +42558,11 @@ function Body(_ref) {
 var MemoBody = /*#__PURE__*/React__namespace.memo(Body);
 MemoBody.displayName = 'Body';
 
-var _excluded$3 = ["expandable"];
+var _excluded$7 = ["expandable"];
 var INTERNAL_COL_DEFINE = 'RC_TABLE_INTERNAL_COL_DEFINE';
 function getExpandableProps(props) {
   var expandable = props.expandable,
-      legacyExpandableConfig = _objectWithoutProperties$1(props, _excluded$3);
+      legacyExpandableConfig = _objectWithoutProperties$1(props, _excluded$7);
 
   if ('expandable' in props) {
     return _objectSpread2$1(_objectSpread2$1({}, legacyExpandableConfig), expandable);
@@ -42602,8 +42593,8 @@ function getDataAndAriaProps(props) {
   /* eslint-enable */
 }
 
-var _excluded$2 = ["children"],
-    _excluded2 = ["fixed"];
+var _excluded$6 = ["children"],
+    _excluded2$2 = ["fixed"];
 function convertChildrenToColumns(children) {
   return toArray$6(children).filter(function (node) {
     return /*#__PURE__*/React__namespace.isValidElement(node);
@@ -42612,7 +42603,7 @@ function convertChildrenToColumns(children) {
         props = _ref.props;
 
     var nodeChildren = props.children,
-        restProps = _objectWithoutProperties$1(props, _excluded$2);
+        restProps = _objectWithoutProperties$1(props, _excluded$6);
 
     var column = _objectSpread2$1({
       key: key
@@ -42678,7 +42669,7 @@ function warningFixed(flattenColumns) {
 function revertForRtl(columns) {
   return columns.map(function (column) {
     var fixed = column.fixed,
-        restProps = _objectWithoutProperties$1(column, _excluded2); // Convert `fixed='left'` to `fixed='right'` instead
+        restProps = _objectWithoutProperties$1(column, _excluded2$2); // Convert `fixed='left'` to `fixed='right'` instead
 
 
     var parsedFixed = fixed;
@@ -42992,10 +42983,10 @@ function SummaryCell(_ref) {
   }, fixedInfo));
 }
 
-var _excluded$1 = ["children"];
+var _excluded$5 = ["children"];
 function FooterRow(_ref) {
   var children = _ref.children,
-      props = _objectWithoutProperties$1(_ref, _excluded$1);
+      props = _objectWithoutProperties$1(_ref, _excluded$5);
 
   return /*#__PURE__*/React__namespace.createElement("tr", props, children);
 }
@@ -43275,7 +43266,7 @@ function useSticky(sticky, prefixCls) {
   }, [offsetScroll, offsetHeader, offsetSummary, prefixCls, container]);
 }
 
-var _excluded = ["className", "noData", "columns", "flattenColumns", "colWidths", "columCount", "stickyOffsets", "direction", "fixHeader", "stickyTopOffset", "stickyBottomOffset", "stickyClassName", "onScroll", "maxContentScroll", "children"];
+var _excluded$4 = ["className", "noData", "columns", "flattenColumns", "colWidths", "columCount", "stickyOffsets", "direction", "fixHeader", "stickyTopOffset", "stickyBottomOffset", "stickyClassName", "onScroll", "maxContentScroll", "children"];
 
 function useColumnWidth(colWidths, columCount) {
   return React.useMemo(function () {
@@ -43311,7 +43302,7 @@ var FixedHolder = /*#__PURE__*/React__namespace.forwardRef(function (_ref, ref) 
       onScroll = _ref.onScroll,
       maxContentScroll = _ref.maxContentScroll,
       children = _ref.children,
-      props = _objectWithoutProperties$1(_ref, _excluded);
+      props = _objectWithoutProperties$1(_ref, _excluded$4);
 
   var _React$useContext = React__namespace.useContext(TableContext),
       prefixCls = _React$useContext.prefixCls,
@@ -44188,6 +44179,7 @@ var Indent = function Indent(_ref) {
   }, list);
 };
 
+var _excluded$3 = ["eventKey", "className", "style", "dragOver", "dragOverGapTop", "dragOverGapBottom", "isLeaf", "isStart", "isEnd", "expanded", "selected", "checked", "halfChecked", "loading", "domRef", "active", "data", "onMouseMove"];
 var ICON_OPEN = 'open';
 var ICON_CLOSE = 'close';
 var defaultTitle = '---';
@@ -44195,17 +44187,22 @@ var defaultTitle = '---';
 var InternalTreeNode = /*#__PURE__*/function (_React$Component) {
   _inherits$1(InternalTreeNode, _React$Component);
 
-  var _super = _createSuper$2(InternalTreeNode);
+  var _super = _createSuper$1(InternalTreeNode);
 
   function InternalTreeNode() {
     var _this;
 
     _classCallCheck$2(this, InternalTreeNode);
 
-    _this = _super.apply(this, arguments);
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
     _this.state = {
       dragNodeHighlight: false
     };
+    _this.selectHandle = void 0;
 
     _this.onSelectorClick = function (e) {
       // Click trigger before select/check operation
@@ -44317,8 +44314,7 @@ var InternalTreeNode = /*#__PURE__*/function (_React$Component) {
       });
 
       onNodeDrop(e, _assertThisInitialized$1(_this));
-    }; // Disabled item still can be switch
-
+    };
 
     _this.onExpand = function (e) {
       var _this$props2 = _this.props,
@@ -44326,8 +44322,7 @@ var InternalTreeNode = /*#__PURE__*/function (_React$Component) {
           onNodeExpand = _this$props2.context.onNodeExpand;
       if (loading) return;
       onNodeExpand(e, convertNodePropsToEventData(_this.props));
-    }; // Drag usage
-
+    };
 
     _this.setSelectHandle = function (node) {
       _this.selectHandle = node;
@@ -44380,8 +44375,7 @@ var InternalTreeNode = /*#__PURE__*/function (_React$Component) {
 
       if (!treeCheckable || checkable === false) return false;
       return treeCheckable;
-    }; // Load data to avoid default expanded tree without data
-
+    };
 
     _this.syncLoadData = function (props) {
       var expanded = props.expanded,
@@ -44390,7 +44384,10 @@ var InternalTreeNode = /*#__PURE__*/function (_React$Component) {
       var _this$props$context = _this.props.context,
           loadData = _this$props$context.loadData,
           onNodeLoad = _this$props$context.onNodeLoad;
-      if (loading) return; // read from state to avoid loadData at same time
+
+      if (loading) {
+        return;
+      }
 
       if (loadData && expanded && !_this.isLeaf()) {
         // We needn't reload data when has children in sync logic
@@ -44413,8 +44410,7 @@ var InternalTreeNode = /*#__PURE__*/function (_React$Component) {
       }
 
       return switcherIcon;
-    }; // Switcher
-
+    };
 
     _this.renderSwitcher = function () {
       var expanded = _this.props.expanded;
@@ -44437,8 +44433,7 @@ var InternalTreeNode = /*#__PURE__*/function (_React$Component) {
         onClick: _this.onExpand,
         className: switcherCls
       }, switcherIconDom) : null;
-    }; // Checkbox
-
+    };
 
     _this.renderCheckbox = function () {
       var _this$props4 = _this.props,
@@ -44466,8 +44461,7 @@ var InternalTreeNode = /*#__PURE__*/function (_React$Component) {
       return /*#__PURE__*/React__namespace.createElement("span", {
         className: classnames("".concat(prefixCls, "-iconEle"), "".concat(prefixCls, "-icon__").concat(_this.getNodeState() || 'docu'), loading && "".concat(prefixCls, "-icon_loading"))
       });
-    }; // Icon + Title
-
+    };
 
     _this.renderSelector = function () {
       var dragNodeHighlight = _this.state.dragNodeHighlight;
@@ -44556,12 +44550,12 @@ var InternalTreeNode = /*#__PURE__*/function (_React$Component) {
     };
 
     return _this;
-  } // Isomorphic needn't load data in server side
-
+  }
 
   _createClass$2(InternalTreeNode, [{
     key: "componentDidMount",
-    value: function componentDidMount() {
+    value: // Isomorphic needn't load data in server side
+    function componentDidMount() {
       this.syncLoadData(this.props);
     }
   }, {
@@ -44605,7 +44599,7 @@ var InternalTreeNode = /*#__PURE__*/function (_React$Component) {
           active = _this$props7.active,
           data = _this$props7.data,
           onMouseMove = _this$props7.onMouseMove,
-          otherProps = _objectWithoutProperties$1(_this$props7, ["eventKey", "className", "style", "dragOver", "dragOverGapTop", "dragOverGapBottom", "isLeaf", "isStart", "isEnd", "expanded", "selected", "checked", "halfChecked", "loading", "domRef", "active", "data", "onMouseMove"]);
+          otherProps = _objectWithoutProperties$1(_this$props7, _excluded$3);
 
       var _this$props$context4 = this.props.context,
           prefixCls = _this$props$context4.prefixCls,
@@ -44936,6 +44930,7 @@ function getDataAndAria(props) {
   return omitProps;
 }
 
+var _excluded$2 = ["children"];
 function getKey(key, pos) {
   if (key !== null && key !== undefined) {
     return key;
@@ -44984,7 +44979,7 @@ function convertTreeToData(rootNodes) {
 
       var _treeNode$props = treeNode.props,
           children = _treeNode$props.children,
-          rest = _objectWithoutProperties$1(_treeNode$props, ["children"]);
+          rest = _objectWithoutProperties$1(_treeNode$props, _excluded$2);
 
       var dataNode = _objectSpread2$1({
         key: key
@@ -45542,16 +45537,38 @@ function useSelection(rowSelection, config) {
       childrenColumnName = config.childrenColumnName,
       tableLocale = config.locale,
       expandIconColumnIndex = config.expandIconColumnIndex,
-      getPopupContainer = config.getPopupContainer; // ======================== Caches ========================
-
-  var preserveRecordsRef = React__namespace.useRef(new Map()); // ========================= Keys =========================
+      getPopupContainer = config.getPopupContainer; // ========================= Keys =========================
 
   var _useMergedState = useControlledState(selectedRowKeys || defaultSelectedRowKeys || [], {
     value: selectedRowKeys
   }),
       _useMergedState2 = _slicedToArray$3(_useMergedState, 2),
       mergedSelectedKeys = _useMergedState2[0],
-      setMergedSelectedKeys = _useMergedState2[1];
+      setMergedSelectedKeys = _useMergedState2[1]; // ======================== Caches ========================
+
+
+  var preserveRecordsRef = React__namespace.useRef(new Map());
+  var updatePreserveRecordsCache = React.useCallback(function (keys) {
+    if (preserveSelectedRowKeys) {
+      var newCache = new Map(); // Keep key if mark as preserveSelectedRowKeys
+
+      keys.forEach(function (key) {
+        var record = getRecordByKey(key);
+
+        if (!record && preserveRecordsRef.current.has(key)) {
+          record = preserveRecordsRef.current.get(key);
+        }
+
+        newCache.set(key, record);
+      }); // Refresh to new cache
+
+      preserveRecordsRef.current = newCache;
+    }
+  }, [getRecordByKey, preserveSelectedRowKeys]); // Update cache with selectedKeys
+
+  React__namespace.useEffect(function () {
+    updatePreserveRecordsCache(mergedSelectedKeys);
+  }, [mergedSelectedKeys]);
 
   var _useMemo = React.useMemo(function () {
     return checkStrictly ? {
@@ -45624,23 +45641,13 @@ function useSelection(rowSelection, config) {
   var setSelectedKeys = React.useCallback(function (keys) {
     var availableKeys;
     var records;
+    updatePreserveRecordsCache(keys);
 
     if (preserveSelectedRowKeys) {
-      // Keep key if mark as preserveSelectedRowKeys
-      var newCache = new Map();
       availableKeys = keys;
       records = keys.map(function (key) {
-        var record = getRecordByKey(key);
-
-        if (!record && preserveRecordsRef.current.has(key)) {
-          record = preserveRecordsRef.current.get(key);
-        }
-
-        newCache.set(key, record);
-        return record;
-      }); // Refresh to new cache
-
-      preserveRecordsRef.current = newCache;
+        return preserveRecordsRef.current.get(key);
+      });
     } else {
       // Filter key which not exist in the `dataSource`
       availableKeys = [];
@@ -46719,9 +46726,7 @@ function collectFilterStates(columns, init, pos) {
 
     var columnPos = getColumnPos(index, pos);
 
-    if ('children' in column) {
-      filterStates = [].concat(_toConsumableArray(filterStates), _toConsumableArray(collectFilterStates(column.children, init, columnPos)));
-    } else if (column.filters || 'filterDropdown' in column || 'onFilter' in column) {
+    if (column.filters || 'filterDropdown' in column || 'onFilter' in column) {
       if ('filteredValue' in column) {
         // Controlled
         var filteredValues = column.filteredValue;
@@ -46745,6 +46750,10 @@ function collectFilterStates(columns, init, pos) {
           forceFiltered: column.filtered
         });
       }
+    }
+
+    if ('children' in column) {
+      filterStates = [].concat(_toConsumableArray(filterStates), _toConsumableArray(collectFilterStates(column.children, init, columnPos)));
     }
   });
   return filterStates;
@@ -47358,6 +47367,9 @@ Table.Column = Column;
 Table.ColumnGroup = ColumnGroup;
 Table.Summary = FooterComponents;
 
+var _excluded$1 = ["className", "style", "motion", "motionNodes", "motionType", "onMotionStart", "onMotionEnd", "active", "treeNodeRequiredProps"],
+    _excluded2$1 = ["key"];
+
 var MotionTreeNode = function MotionTreeNode(_ref, ref) {
   var className = _ref.className,
       style = _ref.style,
@@ -47368,7 +47380,7 @@ var MotionTreeNode = function MotionTreeNode(_ref, ref) {
       onOriginMotionEnd = _ref.onMotionEnd,
       active = _ref.active,
       treeNodeRequiredProps = _ref.treeNodeRequiredProps,
-      props = _objectWithoutProperties$1(_ref, ["className", "style", "motion", "motionNodes", "motionType", "onMotionStart", "onMotionEnd", "active", "treeNodeRequiredProps"]);
+      props = _objectWithoutProperties$1(_ref, _excluded$1);
 
   var _React$useState = React__namespace.useState(true),
       _React$useState2 = _slicedToArray$3(_React$useState, 2),
@@ -47424,7 +47436,7 @@ var MotionTreeNode = function MotionTreeNode(_ref, ref) {
       }, motionNodes.map(function (treeNode) {
         var _treeNode$data = treeNode.data,
             key = _treeNode$data.key,
-            restProps = _objectWithoutProperties$1(_treeNode$data, ["key"]),
+            restProps = _objectWithoutProperties$1(_treeNode$data, _excluded2$1),
             isStart = treeNode.isStart,
             isEnd = treeNode.isEnd;
 
@@ -47511,6 +47523,8 @@ function getExpandRange(shorter, longer, key) {
   return longer.slice(longerStartIndex + 1);
 }
 
+var _excluded = ["prefixCls", "data", "selectable", "checkable", "expandedKeys", "selectedKeys", "checkedKeys", "loadedKeys", "loadingKeys", "halfCheckedKeys", "keyEntities", "disabled", "dragging", "dragOverNodeKey", "dropPosition", "motion", "height", "itemHeight", "virtual", "focusable", "activeItem", "focused", "tabIndex", "onKeyDown", "onFocus", "onBlur", "onActiveChange", "onListChangeStart", "onListChangeEnd"],
+    _excluded2 = ["key"];
 var HIDDEN_STYLE$1 = {
   width: 0,
   height: 0,
@@ -47605,7 +47619,7 @@ var RefNodeList = function RefNodeList(props, ref) {
       onActiveChange = props.onActiveChange,
       onListChangeStart = props.onListChangeStart,
       onListChangeEnd = props.onListChangeEnd,
-      domProps = _objectWithoutProperties$1(props, ["prefixCls", "data", "selectable", "checkable", "expandedKeys", "selectedKeys", "checkedKeys", "loadedKeys", "loadingKeys", "halfCheckedKeys", "keyEntities", "disabled", "dragging", "dragOverNodeKey", "dropPosition", "motion", "height", "itemHeight", "virtual", "focusable", "activeItem", "focused", "tabIndex", "onKeyDown", "onFocus", "onBlur", "onActiveChange", "onListChangeStart", "onListChangeEnd"]); // =============================== Ref ================================
+      domProps = _objectWithoutProperties$1(props, _excluded); // =============================== Ref ================================
 
 
   var listRef = React__namespace.useRef(null);
@@ -47753,7 +47767,7 @@ var RefNodeList = function RefNodeList(props, ref) {
     var pos = treeNode.pos,
         _treeNode$data = treeNode.data,
         key = _treeNode$data.key,
-        restProps = _objectWithoutProperties$1(_treeNode$data, ["key"]),
+        restProps = _objectWithoutProperties$1(_treeNode$data, _excluded2),
         isStart = treeNode.isStart,
         isEnd = treeNode.isEnd;
 
@@ -47819,15 +47833,20 @@ function DropIndicator(_ref) {
 var Tree = /*#__PURE__*/function (_React$Component) {
   _inherits$1(Tree, _React$Component);
 
-  var _super = _createSuper$2(Tree);
+  var _super = _createSuper$1(Tree);
 
   function Tree() {
     var _this;
 
     _classCallCheck$2(this, Tree);
 
-    _this = _super.apply(this, arguments);
+    for (var _len = arguments.length, _args = new Array(_len), _key = 0; _key < _len; _key++) {
+      _args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(_args));
     _this.destroyed = false;
+    _this.delayedDragEnterLogic = void 0;
     _this.state = {
       keyEntities: {},
       indent: null,
@@ -47860,6 +47879,7 @@ var Tree = /*#__PURE__*/function (_React$Component) {
       prevProps: null
     };
     _this.dragStartMousePosition = null;
+    _this.dragNode = void 0;
     _this.listRef = /*#__PURE__*/React__namespace.createRef();
 
     _this.onNodeDragStart = function (event, node) {
@@ -47892,14 +47912,6 @@ var Tree = /*#__PURE__*/function (_React$Component) {
         });
       }
     };
-    /**
-     * [Legacy] Select handler is smaller than node,
-     * so that this will trigger when drag enter node or select handler.
-     * This is a little tricky if customize css without padding.
-     * Better for use mouse move event to refresh drag state.
-     * But let's just keep it to avoid event trigger logic change.
-     */
-
 
     _this.onNodeDragEnter = function (event, node) {
       var _this$state2 = _this.state,
@@ -48090,16 +48102,13 @@ var Tree = /*#__PURE__*/function (_React$Component) {
           node: convertNodePropsToEventData(node.props)
         });
       }
-    }; // since stopPropagation() is called in treeNode
-    // if onWindowDrag is called, whice means state is keeped, drag state should be cleared
-
+    };
 
     _this.onWindowDragEnd = function (event) {
       _this.onNodeDragEnd(event, null, true);
 
       window.removeEventListener('dragend', _this.onWindowDragEnd);
-    }; // if onNodeDragEnd is called, onWindowDragEnd won't be called since stopPropagation() is called
-
+    };
 
     _this.onNodeDragEnd = function (event, node) {
       var outsideTree = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
@@ -48329,7 +48338,7 @@ var Tree = /*#__PURE__*/function (_React$Component) {
     };
 
     _this.onNodeLoad = function (treeNode) {
-      return new Promise(function (resolve) {
+      return new Promise(function (resolve, reject) {
         // We need to get the latest state of loading/loaded keys
         _this.setState(function (_ref) {
           var _ref$loadedKeys = _ref.loadedKeys,
@@ -48342,8 +48351,7 @@ var Tree = /*#__PURE__*/function (_React$Component) {
           var key = treeNode.key;
 
           if (!loadData || loadedKeys.indexOf(key) !== -1 || loadingKeys.indexOf(key) !== -1) {
-            // react 15 will warn if return null
-            return {};
+            return null;
           } // Process load data
 
 
@@ -48372,6 +48380,15 @@ var Tree = /*#__PURE__*/function (_React$Component) {
             });
 
             resolve();
+          }).catch(function (e) {
+            var currentLoadingKeys = _this.state.loadingKeys;
+            var newLoadingKeys = arrDel(currentLoadingKeys, key);
+
+            _this.setState({
+              loadingKeys: newLoadingKeys
+            });
+
+            reject(e);
           });
           return {
             loadingKeys: arrAdd(loadingKeys, key)
@@ -48462,10 +48479,7 @@ var Tree = /*#__PURE__*/function (_React$Component) {
         dropPosition: dropPosition,
         keyEntities: keyEntities
       };
-    }; // =========================== Expanded ===========================
-
-    /** Set uncontrolled `expandedKeys`. This will also auto update `flattenNodes`. */
-
+    };
 
     _this.setExpandedKeys = function (expandedKeys) {
       var treeData = _this.state.treeData;
@@ -48523,6 +48537,11 @@ var Tree = /*#__PURE__*/function (_React$Component) {
             _this.setUncontrolledState({
               flattenNodes: newFlattenTreeData
             });
+          }).catch(function () {
+            var currentExpandedKeys = _this.state.expandedKeys;
+            var expandedKeysToRestore = arrDel(currentExpandedKeys, key);
+
+            _this.setExpandedKeys(expandedKeysToRestore);
           });
         }
       }
@@ -48540,8 +48559,7 @@ var Tree = /*#__PURE__*/function (_React$Component) {
           listChanging: false
         });
       });
-    }; // =========================== Keyboard ===========================
-
+    };
 
     _this.onActiveChange = function (newActiveKey) {
       var activeKey = _this.state.activeKey;
@@ -48693,10 +48711,6 @@ var Tree = /*#__PURE__*/function (_React$Component) {
         onKeyDown(event);
       }
     };
-    /**
-     * Only update the value which is not in props
-     */
-
 
     _this.setUncontrolledState = function (state) {
       var atomic = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
@@ -50341,7 +50355,7 @@ var RefTreeSelect = /*#__PURE__*/React__namespace.forwardRef(function (props, re
 var TreeSelect$2 = /*#__PURE__*/function (_React$Component) {
   _inherits$1(TreeSelect, _React$Component);
 
-  var _super = _createSuper$2(TreeSelect);
+  var _super = _createSuper$1(TreeSelect);
 
   function TreeSelect() {
     var _this;
@@ -50427,7 +50441,7 @@ var InternalTreeSelect = function InternalTreeSelect(_a, ref) {
       dropdownMatchSelectWidth = _React$useContext.dropdownMatchSelectWidth;
 
   var size = React__namespace.useContext(SizeContext);
-  devWarning(multiple !== false || !treeCheckable, 'TreeSelect', '`multiple` will alway be `true` when `treeCheckable` is true');
+  devWarning(multiple !== false || !treeCheckable, 'TreeSelect', '`multiple` will always be `true` when `treeCheckable` is true');
   var prefixCls = getPrefixCls('select', customizePrefixCls);
   var treePrefixCls = getPrefixCls('select-tree', customizePrefixCls);
   var treeSelectPrefixCls = getPrefixCls('tree-select', customizePrefixCls);
@@ -74745,7 +74759,7 @@ var ResizableTitle = function (props) {
 
 var INIT_PAGINATION = {
     pageIndex: 1,
-    pageSize: 20,
+    pageSize: 10,
     showQuickJumper: true,
     showTotal: function (total) { return jsxRuntime.jsx("div", __assign({ className: "captionText" }, { children: "Total " + total + " items" }), void 0); },
     pageSizeOptions: ["10", "20", "50"],
