@@ -25,7 +25,7 @@ export interface HeaderDetailProps {
     listButton?: Array<IButtonItem>;
     buttonProps?: ButtonProps;
     status?: string;
-    created?: number;
+    created?: any;
     user?: IUserBasic;
     customRight?: () => React.ReactNode;
     onButtonClick?: (item: IButtonItem) => void;
