@@ -73,8 +73,13 @@ body {
     background-color: $gray-color !important;
 }
 
-.bg-light-gray {
+.bg-light-gray,
+.bg-gray-light {
     background-color: $light-gray-color !important;
+}
+
+.bg-yellow-light {
+    background-color: $yellow-light-color !important;
 }
 
 @each $opacityName, $opacity in $opacity-range {
