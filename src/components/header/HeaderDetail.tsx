@@ -1,8 +1,8 @@
-import React, { CSSProperties, useMemo } from "react";
 import ClassNames from "classnames";
-import Button, { ButtonProps } from "../button/Button";
-import AvatarName, { IUserBasic } from "../avatar/AvatarName";
+import React, { CSSProperties } from "react";
 import TimeUtils from "../../utils/TimeUtils";
+import AvatarName, { IUserBasic } from "../avatar/AvatarName";
+import Button, { ButtonProps } from "../button/Button";
 import ViewLabelStatus, { ViewLabelStatusProps } from "../view/ViewLabelStatus";
 
 export interface IStatusItem {
