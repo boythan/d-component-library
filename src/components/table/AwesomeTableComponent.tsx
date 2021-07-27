@@ -20,7 +20,7 @@ import ResizableTitle from "./ResizableTitle";
 
 export const INIT_PAGINATION = {
     pageIndex: 1,
-    pageSize: 20,
+    pageSize: 10,
     showQuickJumper: true,
     showTotal: (total: any) => <div className="captionText">{`Total ${total} items`}</div>,
     pageSizeOptions: ["10", "20", "50"],
