@@ -152,9 +152,9 @@ export type {
     IPaginationProps,
     IColumnsProps,
     INIT_PAGINATION,
-    SimpleTable as Table,
 } from "./components/table/AwesomeTableComponent";
 export { default as AwesomeTableComponent } from "./components/table/AwesomeTableComponent";
+export { SimpleTable as Table } from "./components/table/AwesomeTableComponent";
 
 /* ----------------------------------------
 // Dropdown
