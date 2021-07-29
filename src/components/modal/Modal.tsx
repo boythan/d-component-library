@@ -67,7 +67,7 @@ const Modal: React.FC<ModalProps> = ({
     const childrenClass = ClassNames("d-modal__children", classNameContent);
     const headerClass = ClassNames(
         "d-modal__header border-bottom py-2",
-        { "d-flex align-items-center": !!title },
+        { "d-flex align-items-center": !!title, "py-3": !hasCloseIcon },
         classNameHeader
     );
     const footerClass = ClassNames("d-modal__footer d-flex align-items-center border-top py-3 px-3", classNameFooter);
