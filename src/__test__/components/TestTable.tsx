@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Button from "../../components/button/Button";
 import Dropdown from "../../components/dropdown/Dropdown";
 import HeaderTable from "../../components/header/HeaderTable";
-import AwesomeTableComponent, { IColumnsProps } from "../../components/table/AwesomeTableComponent";
+import AwesomeTableComponent, { IColumnsProps, SimpleTable } from "../../components/table/AwesomeTableComponent";
 import { ATTRIBUTE_INPUT_TYPE } from "../data/TestConstant";
 
 const TestTable = () => {
@@ -78,6 +78,22 @@ const TestTable = () => {
         setDataSource(result);
     };
 
+    const renderSummary = () => {
+        return (
+            <SimpleTable.Summary.Row className="w-100">
+                <SimpleTable.Summary.Cell className="text-right font-weight-bold" index={1} align="left" colSpan={3}>
+                    Total
+                </SimpleTable.Summary.Cell>
+                <SimpleTable.Summary.Cell className="text-center font-weight-bold" index={10}>
+                    123
+                </SimpleTable.Summary.Cell>
+                <SimpleTable.Summary.Cell className="text-center font-weight-bold" index={10}>
+                    123
+                </SimpleTable.Summary.Cell>
+            </SimpleTable.Summary.Row>
+        );
+    };
+
     return (
         <div className="my-4">
             <HeaderTable
@@ -95,24 +111,30 @@ const TestTable = () => {
                 transformer={(res) => ATTRIBUTE_INPUT_TYPE}
                 columns={columns}
                 keyTableLayout="TEST TnABLE"
-                rowSelection={{ onChange: (value) => setSelectingRows(value) }}
-                selectingRows={selectingRows}
-                onSelectionView={() => {
-                    return (
-                        <div>
-                            <Button variant="outline" content="Approve All" />
-                        </div>
-                    );
-                }}
+                // rowSelection={{ onChange: (value) => setSelectingRows(value) }}
+                // selectingRows={selectingRows}
+                // onSelectionView={() => {
+                //     return (
+                //         <div>
+                //             <Button variant="outline" content="Approve All" />
+                //         </div>
+                //     );
+                // }}
                 pagination={{ pageSize: 5, pageSizeOptions: ["5", "10", "15"] }}
                 getTotalItems={(res) => res?.length}
                 isPagination={false}
                 tableLayout="auto"
                 bordered={false}
                 showSelectColumn
+                summary={() => renderSummary()}
             />
 
-            <AwesomeTableComponent columns={columns} dataSource={dataSource} tableLayout="auto" />
+            <AwesomeTableComponent
+                columns={columns}
+                dataSource={dataSource}
+                tableLayout="auto"
+                summary={() => renderSummary()}
+            />
             <Button content="Remove" onClick={onClickRemove} />
         </div>
     );

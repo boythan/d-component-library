@@ -498,3 +498,5 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
 }
 
 export default AwesomeTableComponent;
+
+export const SimpleTable = Table;
