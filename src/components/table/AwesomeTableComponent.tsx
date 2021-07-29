@@ -499,4 +499,4 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
 
 export default AwesomeTableComponent;
 
-export const SimpleTable = Table;
+export const { Summary, ColumnGroup, Column, defaultProps, SELECTION_ALL, SELECTION_NONE, SELECTION_INVERT } = Table;
