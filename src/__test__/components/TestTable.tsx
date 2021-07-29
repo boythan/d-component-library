@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Button from "../../components/button/Button";
 import Dropdown from "../../components/dropdown/Dropdown";
 import HeaderTable from "../../components/header/HeaderTable";
-import AwesomeTableComponent, { IColumnsProps, SimpleTable } from "../../components/table/AwesomeTableComponent";
+import AwesomeTableComponent, { IColumnsProps, Summary } from "../../components/table/AwesomeTableComponent";
 import { ATTRIBUTE_INPUT_TYPE } from "../data/TestConstant";
 
 const TestTable = () => {
@@ -80,17 +80,17 @@ const TestTable = () => {
 
     const renderSummary = () => {
         return (
-            <SimpleTable.Summary.Row className="w-100">
-                <SimpleTable.Summary.Cell className="text-right font-weight-bold" index={1} align="left" colSpan={3}>
+            <Summary.Row className="w-100">
+                <Summary.Cell className="text-right font-weight-bold" index={1} align="left" colSpan={3}>
                     Total
-                </SimpleTable.Summary.Cell>
-                <SimpleTable.Summary.Cell className="text-center font-weight-bold" index={10}>
+                </Summary.Cell>
+                <Summary.Cell className="text-center font-weight-bold" index={10}>
                     123
-                </SimpleTable.Summary.Cell>
-                <SimpleTable.Summary.Cell className="text-center font-weight-bold" index={10}>
+                </Summary.Cell>
+                <Summary.Cell className="text-center font-weight-bold" index={10}>
                     123
-                </SimpleTable.Summary.Cell>
-            </SimpleTable.Summary.Row>
+                </Summary.Cell>
+            </Summary.Row>
         );
     };
 
