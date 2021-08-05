@@ -83,10 +83,11 @@ const HeaderDetail: React.FC<HeaderDetailProps> = ({
 
         const buttons = () => {
             return (
-                <div className="d-flex align-items-center">
+                <div className="d-flex align-items-center mt-3">
                     {listButton.map((button, index) => {
-                        const buttonClass = ClassNames("px-0 text-gray font-weight-normal", {
+                        const buttonClass = ClassNames("text-gray font-weight-normal", {
                             "mx-4": index !== 0,
+                            "pl-0": index === 0,
                             classNameButton,
                         });
                         return (
@@ -112,7 +113,7 @@ const HeaderDetail: React.FC<HeaderDetailProps> = ({
     };
 
     let createdView = (
-        <div className="text-x-small text-gray">
+        <div className="text-x-small text-gray mt-3">
             {`${Messages.createdOn} ${TimeUtils.convertMiliToDate(created as any)} ${
                 Messages.at
             } ${TimeUtils.convertMiliToTime(created as any)}`}
