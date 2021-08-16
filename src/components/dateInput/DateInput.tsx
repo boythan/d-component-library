@@ -9,12 +9,12 @@ import Icon from "../icon/Icon";
 
 // data stubs
 
-const { RangePicker } = DatePicker;
+const { RangePicker, TimePicker } = DatePicker;
 
-export type TDateFormat = "DD/MM/YYYY HH:mm" | "DD/MM/YYYY" | "MM/YYYY" | "YYYY";
+export type TDateFormat = "DD/MM/YYYY HH:mm" | "DD/MM/YYYY" | "MM/YYYY" | "YYYY" | "HH:mm" | "HH:mm:";
 
 export interface DateInputNewProps {
-    type?: "date" | "week" | "month" | "quarter" | "year";
+    type?: "date" | "week" | "month" | "quarter" | "year" | "time";
     label?: string;
     showTime?: boolean;
     format?: TDateFormat;
@@ -84,6 +84,20 @@ const DateInput: React.FC<DateInputProp> = ({
             showTime={showTime as any}
         />
     );
+    if (type === "time") {
+        content = (
+            <TimePicker
+                value={value as any}
+                onChange={onChange as any}
+                onBlur={onBlur}
+                className={datePickerClass}
+                disabled={disabled}
+                defaultValue={defaultValue as any}
+                placeholder={placeholder as any}
+                format="HH:mm"
+            />
+        );
+    }
     if (isRangePicker) {
         content = (
             <RangePicker
