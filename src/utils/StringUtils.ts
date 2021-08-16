@@ -130,7 +130,8 @@ function getFullNameStore(store: any) {
 }
 
 function getUniqueID() {
-    return Math.random().toString(36).substr(2, 9);
+    const randomMath = Math.random().toString(36).substr(2, 9);
+    return `${randomMath}${_.now()}`;
 }
 
 function removeAllSpace(str: string) {
@@ -188,7 +189,8 @@ function mapWatchToEmbedYouTube(url: string) {
     return url;
 }
 
-const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
+const phoneRegExp =
+    /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
 function removeHTMLTags(str: string | null | undefined) {
     if (str === null || str === "" || typeof str === "undefined") return false;
