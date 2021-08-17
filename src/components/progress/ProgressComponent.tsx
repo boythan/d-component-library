@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-expressions */
-import React, { Component } from "react";
-import _ from "lodash";
 import { Modal } from "antd";
-import Loading from "../loading/Loading";
+import _ from "lodash";
+import React, { Component } from "react";
 import Messages from "../../language/Messages";
+import Loading from "../loading/Loading";
 
 export interface IProgressFunctionProps {
     method: (props?: any, paging?: any, index?: any) => Promise<any>;
@@ -112,7 +112,11 @@ class ProgressComponent extends Component<ProgressComponentProps, any> {
     };
 
     renderLoadingView = () => {
-        return <Loading />;
+        return (
+            <div className="p-4 flex-center">
+                <Loading />
+            </div>
+        );
     };
 
     renderErrorView = () => {
