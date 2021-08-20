@@ -25,6 +25,7 @@ export interface IFormItemDataRender<T> {
     onChange?: IFormItemProps["onChange"];
     className?: string;
     key?: keyof T;
+    error?: any;
 }
 
 export interface IFormItemData<T> {
