@@ -71,6 +71,12 @@ const replaceState = (obj: { [key: string]: any }) => {
     return window.history.replaceState("", "", url as any);
 };
 
+const deleteState = (key: string) => {
+    const url = new URL(window.location as any);
+    url.searchParams.delete(key);
+    return window.history.replaceState("", "", url as any);
+};
+
 //* *************************************USE FOR NEW UPDATE PARAMS********************************************** */
 
 const addQuery = (newQuery = {}) => {
@@ -113,4 +119,5 @@ export default {
     getQuery,
     pushState,
     replaceState,
+    deleteState,
 };
