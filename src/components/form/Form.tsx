@@ -159,7 +159,7 @@ export function FormItem({ onChange, data, value = {}, Messages, className, erro
             />
         );
     }
-    if (type === "select") {
+    if (type === "select" || type === "multi-select") {
         return (
             <Select
                 dataSource={dataSource}
@@ -170,6 +170,7 @@ export function FormItem({ onChange, data, value = {}, Messages, className, erro
                 getLabel={(item) => (getLabel ? getLabel(item) : Messages[item?.label])}
                 getValue={(item) => (getValue ? getValue(item) : item?.id)}
                 error={error}
+                multiple={type === "multi-select"}
             />
         );
     }
