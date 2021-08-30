@@ -5,6 +5,7 @@ import Form, { IFormItemData } from "../../../components/form/Form";
 import Notifications from "../../../components/notifications/Notifications";
 import SelectInfinity from "../../../components/select/SelectInfinity";
 import Messages from "../../../language/Messages";
+import { SELECT_DATA } from "../../data/TestConstant";
 
 export interface ITestFormProps {
     [key: string]: any;
@@ -50,7 +51,9 @@ const FORM_DATA: IFormItemData<IEmployeePrivacyInfo>[] = [
         rowsId: "religion&maritalStatus",
         label: "religion",
         key: "religion",
-        type: "select",
+        type: "multi-select",
+        dataSource: SELECT_DATA,
+        getLabel: (item) => item?.label,
     },
     {
         rowsId: "religion&maritalStatus",

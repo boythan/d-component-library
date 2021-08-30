@@ -43,7 +43,7 @@ const TestInput = () => {
             </ViewCollapse>
 
             <ViewCollapse label="Input Date" className="mt-3" defaultOpen={false}>
-                <DateInput variant="outline" className="w-100" label="Range Date" type="time" />
+                <DateInput variant="outline" className="w-100" label="Range Date" type="time" placeholder="123" />
                 <DateInput
                     variant="outline"
                     className="mt-3 w-100"
