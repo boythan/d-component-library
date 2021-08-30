@@ -20,8 +20,8 @@ export interface HeaderProps {
     editText?: string;
     disabledSave?: boolean;
     customLeft?: () => React.ReactNode;
+    customRight?: () => React.ReactNode;
     showCancel?: boolean;
-    Messages?: any;
     className?: string;
 }
 
@@ -39,6 +39,7 @@ const Header: React.FC<HeaderProps> = ({
     onEdit,
     disabledSave,
     customLeft,
+    customRight,
     showCancel = true,
     className,
 }) => {
@@ -52,6 +53,7 @@ const Header: React.FC<HeaderProps> = ({
         <div className={`card-container d-common-header ${className}`}>
             {renderLeftView()}
             <div className="d-common-header__button-group">
+                {customRight && customRight()}
                 {showCancel && (
                     <Button
                         variant="outline"
