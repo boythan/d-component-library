@@ -1,4 +1,4 @@
-import _, { isEmpty } from "lodash";
+import _ from "lodash";
 
 const getValueFromStringKey = (object: any, keyString: string) => {
     const keyList = keyString.split(".");
@@ -14,7 +14,7 @@ const getValueFromStringKey = (object: any, keyString: string) => {
 };
 
 const setValueFromStringKey = (object: any, keyString: string, value: any) => {
-    if (isEmpty(keyString)) {
+    if (_.isEmpty(keyString)) {
         return value;
     }
     const keyList = keyString.split(".");
