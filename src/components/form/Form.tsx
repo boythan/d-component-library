@@ -329,6 +329,7 @@ const Form: React.FC<IFormProps> = ({
                                         onChangeState({ key, value, onValidate: onChangeValidate }),
                                     className: itemClass,
                                     key,
+                                    error: errorLabel,
                                 });
                             }
 

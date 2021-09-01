@@ -1,6 +1,8 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useFormik } from "formik";
 import React, { useState } from "react";
+import * as Yup from "yup";
+import Button from "../../../components/button/Button";
 import Form, { IFormItemData } from "../../../components/form/Form";
 import Notifications from "../../../components/notifications/Notifications";
 import SelectInfinity from "../../../components/select/SelectInfinity";
@@ -115,12 +117,20 @@ const FORM_WITH_CUSTOM_ITEM: IFormItemData<IEmployeePrivacyInfo>[] = [
     },
 ];
 
+const TestFormSchema = Yup.object().shape({
+    nationality: Yup.array().required("Is Required !"),
+});
+
 const TestForm: React.FC<ITestFormProps> = ({ id }) => {
     const [formState, setFormState] = useState<any>({});
     const formik = useFormik<IEmployeePrivacyInfo>({
         initialValues: {},
         onSubmit: () => {},
+        validateOnChange: false,
+        validationSchema: TestFormSchema,
     });
+    const { values, errors } = formik;
+
     return (
         <div className="">
             <div className="h3 my-2"> Form with validate before change: </div>
@@ -148,6 +158,7 @@ const TestForm: React.FC<ITestFormProps> = ({ id }) => {
                 value={formState}
                 onChange={(key, value) => setFormState({ ...formState, [key]: value })}
             />
+            <Button onClick={(e) => formik.handleSubmit()}>Submit</Button>
         </div>
     );
 };
