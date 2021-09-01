@@ -15,7 +15,7 @@ const getValueFromStringKey = (object: any, keyString: string) => {
 
 const setValueFromStringKey = (object: any, keyString: string, value: any) => {
     if (_.isEmpty(keyString)) {
-        return value;
+        return { ...object, ...value };
     }
     const keyList = keyString.split(".");
     _.reverse(keyList);
