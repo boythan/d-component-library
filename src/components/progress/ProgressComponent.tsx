@@ -3,6 +3,7 @@ import { Modal } from "antd";
 import _ from "lodash";
 import React, { Component } from "react";
 import Messages from "../../language/Messages";
+import Button from "../button/Button";
 import Loading from "../loading/Loading";
 
 export interface IProgressFunctionProps {
@@ -129,12 +130,10 @@ class ProgressComponent extends Component<ProgressComponentProps, any> {
                     dangerouslySetInnerHTML={{ __html: error?.message ?? "" }}
                 />
                 <div className="d-progress__error-footer">
-                    <button onClick={this.dismiss} className="btn btn-light mr-3" type="button">
+                    <Button onClick={this.dismiss} className="mr-3" variant="trans">
                         {Messages.cancel}
-                    </button>
-                    <button className="btn btn-primary" onClick={this.onClickRetry} type="button">
-                        {Messages.retry}
-                    </button>
+                    </Button>
+                    <Button onClick={this.onClickRetry}>{Messages.retry}</Button>
                 </div>
             </div>
         );
