@@ -5,8 +5,8 @@ import ObjectUtils from "../../utils/ObjectUtils";
 export interface IRowsKey<T> {
     id: keyof T;
     label: string | number;
-    renderLabel?: (props: { id: IRowsKey<T>["id"]; data: any; row?: IRowsKey<T> }) => any;
-    renderContent?: (props: { id: IRowsKey<T>["id"]; data: any; row?: IRowsKey<T> }) => any;
+    renderLabel?: (props: { id: IRowsKey<T>["id"]; data: any; item?: any; row?: IRowsKey<T> }) => any;
+    renderContent?: (props: { id: IRowsKey<T>["id"]; data: any; item?: any; row?: IRowsKey<T> }) => any;
 }
 
 export interface RowInterchangeViewProps {
@@ -62,14 +62,14 @@ const ViewRowInterchange: React.FC<RowInterchangeViewProps> = ({
                     labelView = Messages[label];
                 }
                 if (typeof renderLabel === "function") {
-                    labelView = renderLabel({ id, data: dataSource, row });
+                    labelView = renderLabel({ id, item: dataSource, data: dataSource?.[id], row });
                 }
                 content = dataSource?.[id] ?? "N/A";
                 if (typeof id === "string" && id.includes(".")) {
                     content = ObjectUtils.getValueFromStringKey(dataSource, id);
                 }
                 if (typeof renderContent === "function") {
-                    content = renderContent({ id, data: dataSource, row });
+                    content = renderContent({ id, data: dataSource?.[id], row, item: dataSource });
                 }
                 const contentView = (
                     <div className={contentClass} style={styleContent}>

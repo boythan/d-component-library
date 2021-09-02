@@ -37,12 +37,11 @@ const TestView: React.FC<TestRowInterChagneProps> = ({ id }) => {
                             id: "subObject.children.name",
                             label: "Sub Children",
                             renderContent: ({ id, data }) => {
-                                console.log(data[id]);
                                 return (
                                     <div className="d-flex flex-column">
-                                        <div className="py-3">{data.id}</div>
-                                        <div className="py-3">{data.id}</div>
-                                        <div className="py-3">{data.id}</div>
+                                        <div className="py-3">{data}</div>
+                                        <div className="py-3">{data}</div>
+                                        <div className="py-3">{data}</div>
                                     </div>
                                 );
                             },
