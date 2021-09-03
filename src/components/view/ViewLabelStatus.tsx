@@ -25,6 +25,13 @@ const ViewLabelStatus = ({
     const classNameContainer = classNames("d-view-label-status", className);
     let colorStatus = "#000000";
     let labelStatus;
+
+    if (color) {
+        colorStatus = color;
+    }
+    if (content) {
+        labelStatus = content;
+    }
     if (listStatus && listStatus?.length > 0 && status) {
         try {
             const foundStatus = listStatus?.find((item) => getValue(item) === status);
@@ -33,12 +40,6 @@ const ViewLabelStatus = ({
         } catch (error) {
             console.error({ error });
         }
-    }
-    if (color) {
-        colorStatus = color;
-    }
-    if (content) {
-        labelStatus = content;
     }
     const styleLabelContainer = {
         backgroundColor: ColorUtils.hexToRGB(colorStatus, 0.2),
