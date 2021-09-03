@@ -29,6 +29,7 @@ export interface InputTextProps extends InputHTMLAttributes<any> {
     rows?: number;
     cols?: number;
     disabled?: boolean;
+    required?: boolean;
     prefix?: any;
     suffix?: any;
 }
@@ -57,13 +58,14 @@ const InputText = ({
     disabled,
     prefix,
     suffix,
+    required,
 
     onChange,
     onBlur,
     ...inputProps
 }: InputTextProps) => {
     const container = classname("d-input-text__container", className);
-    const labelClass = classname("text-label");
+    const labelClass = classname("text-label", { "d-input-text__label-required": required });
 
     const inputClass = classname("text-x-small", "d-input-text__input", classNameInput);
 

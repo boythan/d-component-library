@@ -65,3 +65,11 @@
         display: none;
     }
 }
+
+.d-date-input__abel-required {
+    &::after {
+        content: "*";
+        color: $error-color;
+        margin-left: 3px;
+    }
+}
