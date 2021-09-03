@@ -82,9 +82,18 @@
     @include prefix();
     border-right: $input-border;
 }
+
 .d-input-text__suffix-container {
     @include prefix();
     border-left: $input-border;
+}
+
+.d-input-text__label-required {
+    &::after {
+        content: "*";
+        color: $error-color;
+        margin-left: 3px;
+    }
 }
 
 /********************************************INPUT TEXT********************************************/

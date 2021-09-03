@@ -20,6 +20,7 @@ export interface SelectProps extends SelectAntProps<any> {
 
     hasFilter?: boolean;
     multiple?: boolean;
+    required?: boolean;
 }
 export interface SelectMethod {
     onBlur: () => void;
@@ -49,6 +50,7 @@ const Select: React.ForwardRefRenderFunction<SelectMethod, SelectProps> = (
         allowClear = true,
         variant = "outline",
         hasFilter = true,
+        required,
         ...props
     }: SelectProps,
     ref
@@ -74,7 +76,7 @@ const Select: React.ForwardRefRenderFunction<SelectMethod, SelectProps> = (
     }));
 
     const container = ClassName("d-select__container", `d-select__container-${variant}`, className);
-    const labelClass = ClassName("text-label");
+    const labelClass = ClassName("text-label", { "d-select__abel-required": required });
 
     const selectClass = ClassName(
         "d-select__select",

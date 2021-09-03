@@ -17,7 +17,7 @@ const TestInput = () => {
     return (
         <div className="my-4">
             <ViewCollapse label="Input Text" defaultOpen={false}>
-                <InputText label="Input Text" placeholder="Please enter" className="mt-3" type="number" />
+                <InputText label="Input Text" placeholder="Please enter" className="mt-3" type="number" required />
                 <InputText label="Input Text" placeholder="Please enter" className="mt-3" error="Error Text" />
                 <InputText label="Input Text" placeholder="Please enter" className="mt-3" disabled />
                 <InputText label="Input Text" placeholder="Please enter" className="mt-3" suffix="$" />
@@ -43,7 +43,14 @@ const TestInput = () => {
             </ViewCollapse>
 
             <ViewCollapse label="Input Date" className="mt-3" defaultOpen={false}>
-                <DateInput variant="outline" className="w-100" label="Range Date" type="time" placeholder="123" />
+                <DateInput
+                    variant="outline"
+                    className="w-100"
+                    label="Range Date"
+                    type="time"
+                    placeholder="123"
+                    required
+                />
                 <DateInput
                     variant="outline"
                     className="mt-3 w-100"
@@ -62,6 +69,7 @@ const TestInput = () => {
                     value={valueSelect}
                     onChange={setValueSelect}
                     multiple
+                    required
                 />
 
                 <Select
