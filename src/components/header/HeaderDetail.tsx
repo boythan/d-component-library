@@ -17,6 +17,7 @@ interface IButtonItem {
     label: string;
     icon: string;
     render?: (props: { className: string; icon: string; label: string; id: string }) => any;
+    onClick?: (props: IButtonItem) => any;
 }
 
 export interface HeaderDetailProps {
@@ -86,7 +87,7 @@ const HeaderDetail: React.FC<HeaderDetailProps> = ({
             return (
                 <div className="d-flex align-items-center mt-3">
                     {listButton.map((button, index) => {
-                        const { render, icon, label, id } = button;
+                        const { render, icon, label, id, onClick } = button;
                         const buttonClass = ClassNames("text-gray font-weight-normal", {
                             "mx-4": index !== 0,
                             "pl-0": index === 0,
@@ -101,7 +102,12 @@ const HeaderDetail: React.FC<HeaderDetailProps> = ({
                                 content={Messages[label]}
                                 iconName={icon}
                                 className={buttonClass}
-                                onClick={() => onButtonClick && onButtonClick(button)}
+                                onClick={() => {
+                                    if (onClick) {
+                                        return onClick(button);
+                                    }
+                                    return onButtonClick && onButtonClick(button);
+                                }}
                                 {...buttonProps}
                             />
                         );
