@@ -21,7 +21,6 @@ interface IButtonItem {
 }
 
 export interface HeaderDetailProps {
-    [key: string]: any;
     title?: string;
     listStatus?: Array<IStatusItem>;
     listButton?: Array<IButtonItem>;

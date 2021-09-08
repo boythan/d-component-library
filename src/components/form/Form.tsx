@@ -123,7 +123,7 @@ export function FormItem({ onChange, data, value = {}, Messages, className, erro
                 onChange={(value) => {
                     let clone = null;
                     if (value) {
-                        clone = moment(value).valueOf();
+                        clone = moment(value);
                     }
                     onChange(key, clone);
                 }}
