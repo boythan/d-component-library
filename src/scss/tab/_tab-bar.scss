@@ -1,8 +1,6 @@
 @import "../variables";
 
 .d-tab-bar__horizontal {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
     .d-tab-bar__item {
         font-weight: $font-weight-normal !important;
         color: $gray-color;
@@ -14,7 +12,12 @@
     }
 }
 
-.d-tab-bar__horizontal::-webkit-scrollbar {
+.d-tab-bar__hide-scroll-bar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+.d-tab-bar__hide-scroll-bar::-webkit-scrollbar {
     display: none;
 }
 
