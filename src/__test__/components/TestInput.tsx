@@ -55,9 +55,8 @@ const TestInput = () => {
                     variant="outline"
                     className="mt-3 w-100"
                     label="Range Date"
-                    useButton
                     onChange={(value) => console.log({ value })}
-                    isRangePicker
+                    type="time"
                 />
             </ViewCollapse>
 

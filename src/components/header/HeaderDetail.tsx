@@ -16,10 +16,11 @@ interface IButtonItem {
     id: string;
     label: string;
     icon: string;
+    render?: (props: { className: string; icon: string; label: string; id: string }) => any;
+    onClick?: (props: IButtonItem) => any;
 }
 
 export interface HeaderDetailProps {
-    [key: string]: any;
     title?: string;
     listStatus?: Array<IStatusItem>;
     listButton?: Array<IButtonItem>;
@@ -85,18 +86,27 @@ const HeaderDetail: React.FC<HeaderDetailProps> = ({
             return (
                 <div className="d-flex align-items-center mt-3">
                     {listButton.map((button, index) => {
+                        const { render, icon, label, id, onClick } = button;
                         const buttonClass = ClassNames("text-gray font-weight-normal", {
                             "mx-4": index !== 0,
                             "pl-0": index === 0,
                             classNameButton,
                         });
+                        if (render) {
+                            return render({ className: buttonClass, icon, id, label });
+                        }
                         return (
                             <Button
                                 variant="trans"
-                                content={Messages[button.label]}
-                                iconName={button.icon}
+                                content={Messages[label]}
+                                iconName={icon}
                                 className={buttonClass}
-                                onClick={() => onButtonClick && onButtonClick(button)}
+                                onClick={() => {
+                                    if (onClick) {
+                                        return onClick(button);
+                                    }
+                                    return onButtonClick && onButtonClick(button);
+                                }}
                                 {...buttonProps}
                             />
                         );

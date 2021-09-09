@@ -30,8 +30,9 @@ export interface TabBarProps<T extends ITabItem> {
     className?: string;
     classNameItem?: string;
     variant?: "horizontal" | "vertical";
-    isScroll?: boolean;
     minWidthItem?: string | number;
+    isScroll?: boolean;
+    hideScrollBar?: boolean;
 }
 
 const TabBar: React.FC<TabBarProps<ITabItem>> = ({
@@ -45,12 +46,14 @@ const TabBar: React.FC<TabBarProps<ITabItem>> = ({
     getItemProps,
     isScroll = false,
     minWidthItem = 200,
+    hideScrollBar = true,
 }) => {
     const wrapperClass = ClassNames(
         `d-tab-bar d-tab-bar__${variant}`,
         {
             "d-flex ": variant === "horizontal",
             "flex-wrap": !isScroll && variant === "horizontal",
+            "d-tab-bar__hide-scroll-bar": isScroll && hideScrollBar && variant === "horizontal",
         },
         className
     );
