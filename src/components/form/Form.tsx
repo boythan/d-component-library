@@ -15,6 +15,8 @@ export type IFormItemType =
     | "select"
     | "multi-select"
     | "date"
+    | "time"
+    | "date-time"
     | "date-range"
     | "textarea"
     | "radio";
@@ -112,7 +114,7 @@ export function FormItem({ onChange, data, value = {}, Messages, className, erro
             />
         );
     }
-    if (type === "date") {
+    if (type === "date" || type === "date-time" || type === "time") {
         let transValue: any = null;
         if (value) {
             transValue = moment(value);
@@ -130,6 +132,9 @@ export function FormItem({ onChange, data, value = {}, Messages, className, erro
                 label={itemLabel}
                 className={className}
                 error={error}
+                type={type === "time" ? "time" : undefined}
+                // eslint-disable-next-line no-nested-ternary
+                format={type === "date" ? "DD/MM/YYYY" : type === "time" ? "HH:mm" : undefined}
             />
         );
     }
