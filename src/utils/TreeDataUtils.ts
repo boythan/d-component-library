@@ -88,8 +88,8 @@ const getAllChildAndSubChild = (nodeId: string, dataList: any[] = []) => {
     return result;
 };
 
-const searchNode = (findId: string, checkNode: any): any => {
-    if (findId === checkNode?.id) {
+const searchNode = (findId: string, checkNode: any, getId = (node: any) => node?.id): any => {
+    if (findId === getId(checkNode)) {
         return checkNode;
     }
     if (checkNode?.children?.length > 0) {
@@ -97,19 +97,19 @@ const searchNode = (findId: string, checkNode: any): any => {
         let i;
         // eslint-disable-next-line no-plusplus
         for (i = 0; result == null && i < checkNode.children.length; i++) {
-            result = searchNode(findId, checkNode?.children?.[i]);
+            result = searchNode(findId, checkNode?.children?.[i], getId);
         }
         return result;
     }
     return null;
 };
 
-const searchNodeFromTreeList = (nodeId: string, treeList = []) => {
+const searchNodeFromTreeList = (nodeId: string, treeList = [], getId?: any) => {
     let i;
     let result = null;
     // eslint-disable-next-line no-plusplus
     for (i = 0; result == null && i < treeList.length; i++) {
-        result = searchNode(nodeId, treeList[i]);
+        result = searchNode(nodeId, treeList[i], getId);
     }
     return result;
 };
