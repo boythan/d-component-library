@@ -142,4 +142,5 @@ export default {
     getAllChildCategory,
     getAllChildAndSubChild,
     getLevelOfNode,
+    searchNodeFromTreeList,
 };
