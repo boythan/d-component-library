@@ -15,6 +15,14 @@
     font-weight: 500 !important;
 }
 
+.d-collapse-view__header-title-required {
+    &::after {
+        content: "*";
+        color: $error-color;
+        margin-left: 3px;
+    }
+}
+
 .d-collapse-view__container {
     .ant-collapse-header {
         position: relative;
