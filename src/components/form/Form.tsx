@@ -133,6 +133,7 @@ export function FormItem({ onChange, data, value = {}, Messages, className, erro
                 className={className}
                 error={error}
                 type={type === "time" ? "time" : undefined}
+                showTime={type === "date-time"}
                 // eslint-disable-next-line no-nested-ternary
                 format={type === "date" ? "DD/MM/YYYY" : type === "time" ? "HH:mm" : undefined}
             />
