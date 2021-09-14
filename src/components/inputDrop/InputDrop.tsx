@@ -76,7 +76,6 @@ const InputDrop: React.FC<InputDropSourceProps> = ({
     );
     const inputClass = ClassNames("d-input-drop__input hover-pointer");
     const dropdownWrapperClass = ClassNames("d-input-drop__dropdown");
-    const errorTextClass = ClassNames("text-x-small", "text-error", "ml-1");
 
     const inputValue = () => {
         let name = label;
@@ -168,7 +167,7 @@ const InputDrop: React.FC<InputDropSourceProps> = ({
                     <Icon name={iconName} className="d-input-drop__arrow-icon ml-2" />
                 </div>
             </Popover>
-            <ViewTextError error={error} classNameText={errorTextClass} />
+            <ViewTextError error={error} />
         </div>
     );
 };

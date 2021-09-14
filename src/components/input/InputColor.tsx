@@ -72,8 +72,6 @@ const InputColor = ({
 
     const inputValueClass = classname("text-x-small", "ml-1");
 
-    const errorTextClass = classname("text-x-small", "text-error", "ml-1");
-
     const renderInput = () => {
         return (
             <input
@@ -104,7 +102,7 @@ const InputColor = ({
                 {renderInput()}
                 <div className={inputValueClass}>{value}</div>
             </div>
-            <ViewTextError error={error} classNameText={errorTextClass} />
+            <ViewTextError error={error} />
         </div>
     );
 };

@@ -98,8 +98,6 @@ const InputText = ({
         classNameInput
     );
 
-    const errorTextClass = classname("text-x-small", "text-error", "ml-1");
-
     const renderInput = () => {
         if (multiple) {
             return (
@@ -149,7 +147,7 @@ const InputText = ({
                 {renderInput()}
                 <div className={inputSuffixClass}>{suffix}</div>
             </div>
-            <ViewTextError error={error} classNameText={errorTextClass} />
+            <ViewTextError error={error} />
         </div>
     );
 };

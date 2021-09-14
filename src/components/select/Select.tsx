@@ -89,7 +89,6 @@ const Select: React.ForwardRefRenderFunction<SelectMethod, SelectProps> = (
         classNameSelect
     );
 
-    const errorTextClass = ClassName("text-x-small", "text-error", "ml-1");
     return (
         <div className={container}>
             {label && <label className={labelClass}>{label}</label>}
@@ -120,7 +119,7 @@ const Select: React.ForwardRefRenderFunction<SelectMethod, SelectProps> = (
             >
                 {children}
             </SelectAnt>
-            <ViewTextError error={error} classNameText={errorTextClass} />
+            <ViewTextError error={error} />
         </div>
     );
 };

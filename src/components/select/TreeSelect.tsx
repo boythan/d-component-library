@@ -50,7 +50,6 @@ const TreeSelect = ({
         classNameSelect
     );
 
-    const errorTextClass = classname("text-x-small", "text-error", "ml-1");
     return (
         <div className={container}>
             {label && <label className={labelClass}>{label}</label>}
@@ -66,7 +65,7 @@ const TreeSelect = ({
                 allowClear={allowClear}
             />
 
-            <ViewTextError error={error} classNameText={errorTextClass} />
+            <ViewTextError error={error} />
         </div>
     );
 };

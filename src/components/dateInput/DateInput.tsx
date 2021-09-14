@@ -6,6 +6,7 @@ import React from "react";
 import Button from "../button/Button";
 // application
 import Icon from "../icon/Icon";
+import ViewTextError from "../view/ViewTextError";
 
 // data stubs
 
@@ -24,11 +25,9 @@ export interface DateInputNewProps {
     useButton?: boolean;
     required?: boolean;
     iconButton?: string;
-    iconError?: string;
     classNameButton?: string;
     classNameLabel?: string;
     classNameInput?: string;
-    classNameError?: string;
 }
 
 export type DateInputProp = DatePickerProps & DateInputNewProps;
@@ -45,7 +44,6 @@ const DateInput: React.FC<DateInputProp> = ({
     type = "date",
     format = "DD/MM/YYYY HH:mm",
     variant = "outline",
-    iconError = "error_outline",
     iconButton = "event",
     showTime = false,
     useButton = false,
@@ -55,7 +53,7 @@ const DateInput: React.FC<DateInputProp> = ({
     classNameInput,
     classNameButton,
     classNameLabel,
-    classNameError,
+
     ...props
 }) => {
     const wrapperClass = ClassNames("d-date-input", { "d-date-input__hide-input": useButton }, className);
@@ -68,8 +66,6 @@ const DateInput: React.FC<DateInputProp> = ({
         classNameInput
     );
     const buttonClass = ClassNames("d-date-input__button", classNameButton);
-    const errorClass = ClassNames("flex-center-y mt-1", classNameError);
-    const errorTextClass = ClassNames("text-x-small", "text-error", "ml-1");
 
     let content = (
         <DatePicker
@@ -122,12 +118,7 @@ const DateInput: React.FC<DateInputProp> = ({
             {label && <label className={labelClass}>{label}</label>}
             <Button className={buttonClass} iconName={iconButton} />
             {content}
-            {error && (
-                <div className={errorClass}>
-                    <Icon name={iconError} className="text-error" size="small" />
-                    <text className={errorTextClass}>{error}</text>
-                </div>
-            )}
+            <ViewTextError error={error} />
         </div>
     );
 };
