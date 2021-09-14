@@ -9,6 +9,7 @@ import { DropdownProps } from "../dropdown/Dropdown";
 import Icon from "../icon/Icon";
 import InputText from "../input/InputText";
 import Popover from "../popover/Popover";
+import ViewTextError from "../view/ViewTextError";
 
 export interface InputDropProps {
     className?: string;
@@ -167,12 +168,7 @@ const InputDrop: React.FC<InputDropSourceProps> = ({
                     <Icon name={iconName} className="d-input-drop__arrow-icon ml-2" />
                 </div>
             </Popover>
-            {error && (
-                <div className="flex-center-y mt-1">
-                    <Icon name="error_outline" className="text-error" size="small" />
-                    <text className={errorTextClass}>{error}</text>
-                </div>
-            )}
+            <ViewTextError error={error} classNameText={errorTextClass} />
         </div>
     );
 };

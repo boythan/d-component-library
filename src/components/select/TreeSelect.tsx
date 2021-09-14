@@ -2,6 +2,7 @@ import { TreeSelect as TreeSelectAnt } from "antd";
 import classname from "classnames";
 import React from "react";
 import Icon from "../icon/Icon";
+import ViewTextError from "../view/ViewTextError";
 
 export interface TreeSelectProps {
     className?: string;
@@ -64,12 +65,8 @@ const TreeSelect = ({
                 multiple={multiple}
                 allowClear={allowClear}
             />
-            {error && (
-                <div className="flex-center-y mt-1">
-                    <Icon name="error_outline" className="text-error" size="small" />
-                    <text className={errorTextClass}>{error}</text>
-                </div>
-            )}
+
+            <ViewTextError error={error} classNameText={errorTextClass} />
         </div>
     );
 };

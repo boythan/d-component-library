@@ -5,6 +5,7 @@ import { SelectProps as SelectAntProps } from "antd/es/select";
 import ClassName from "classnames";
 import React, { useImperativeHandle, useMemo, useRef } from "react";
 import Icon from "../icon/Icon";
+import ViewTextError from "../view/ViewTextError";
 
 export interface SelectProps extends SelectAntProps<any> {
     classNameSelect?: string;
@@ -119,12 +120,7 @@ const Select: React.ForwardRefRenderFunction<SelectMethod, SelectProps> = (
             >
                 {children}
             </SelectAnt>
-            {error && (
-                <div className="flex-center-y mt-1">
-                    <Icon name="error_outline" className="text-error" size="small" />
-                    <text className={errorTextClass}>{error}</text>
-                </div>
-            )}
+            <ViewTextError error={error} classNameText={errorTextClass} />
         </div>
     );
 };

@@ -8,6 +8,7 @@ import classname from "classnames";
 
 // data stubs
 import Icon from "../icon/Icon";
+import ViewTextError from "../view/ViewTextError";
 
 export interface InputColorProps extends InputHTMLAttributes<any> {
     className?: string;
@@ -103,12 +104,7 @@ const InputColor = ({
                 {renderInput()}
                 <div className={inputValueClass}>{value}</div>
             </div>
-            {error && (
-                <div className="flex-center-y mt-1">
-                    <Icon name="error_outline" className="text-error" size="small" />
-                    <text className={errorTextClass}>{error}</text>
-                </div>
-            )}
+            <ViewTextError error={error} classNameText={errorTextClass} />
         </div>
     );
 };

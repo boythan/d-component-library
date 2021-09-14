@@ -108,6 +108,9 @@ export { default as ViewTimeline } from "./components/view/ViewTimeline";
 export type { ViewLabelStatusProps } from "./components/view/ViewLabelStatus";
 export { default as ViewLabelStatus } from "./components/view/ViewLabelStatus";
 
+export type { ViewTextErrorProps } from "./components/view/ViewTextError";
+export { default as ViewTextError } from "./components/view/ViewTextError";
+
 /* ----------------------------------------
 // TabBar
 // ---------------------------------------- */
