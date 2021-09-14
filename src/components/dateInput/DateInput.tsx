@@ -59,7 +59,7 @@ const DateInput: React.FC<DateInputProp> = ({
     ...props
 }) => {
     const wrapperClass = ClassNames("d-date-input", { "d-date-input__hide-input": useButton }, className);
-    const labelClass = ClassNames("text-label d-block", { "d-date-input__abel-required": required }, classNameLabel);
+    const labelClass = ClassNames("text-label d-block", { "text-label-required": required }, classNameLabel);
     const datePickerClass = ClassNames(
         "d-date-input__input",
         {

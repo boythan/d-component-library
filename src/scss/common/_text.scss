@@ -82,6 +82,14 @@ label,
     color: $input-color-label;
 }
 
+.text-label-required {
+    &::after {
+        content: "*";
+        color: $error-color;
+        margin-left: 3px;
+    }
+}
+
 .text-nowrap {
     white-space: nowrap !important;
     overflow: hidden !important;

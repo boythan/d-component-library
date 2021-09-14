@@ -24,7 +24,7 @@ const ViewCollapse = ({
 }: ViewCollapseProps) => {
     const classContainerName = classNames("card-container d-collapse-view__container", className);
     const labelClass = classNames("d-collapse-view__header-title", {
-        "d-collapse-view__header-title-required": required,
+        "text-label-required": required,
     });
     return (
         <Collapse

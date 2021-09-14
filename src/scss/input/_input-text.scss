@@ -88,13 +88,7 @@
     border-left: $input-border;
 }
 
-.d-input-text__label-required {
-    &::after {
-        content: "*";
-        color: $error-color;
-        margin-left: 3px;
-    }
-}
+
 
 /********************************************INPUT TEXT********************************************/
 .d-input-text__input {

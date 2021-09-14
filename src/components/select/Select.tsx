@@ -76,7 +76,7 @@ const Select: React.ForwardRefRenderFunction<SelectMethod, SelectProps> = (
     }));
 
     const container = ClassName("d-select__container", `d-select__container-${variant}`, className);
-    const labelClass = ClassName("text-label", { "d-select__abel-required": required });
+    const labelClass = ClassName("text-label", { "text-label-required": required });
 
     const selectClass = ClassName(
         "d-select__select",

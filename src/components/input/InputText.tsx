@@ -65,7 +65,7 @@ const InputText = ({
     ...inputProps
 }: InputTextProps) => {
     const container = classname("d-input-text__container", className);
-    const labelClass = classname("text-label", { "d-input-text__label-required": required });
+    const labelClass = classname("text-label", { "text-label-required": required });
 
     const inputClass = classname("text-x-small", "d-input-text__input", classNameInput);
 

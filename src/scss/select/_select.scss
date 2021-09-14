@@ -45,14 +45,6 @@
     }
 }
 
-.d-select__abel-required {
-    &::after {
-        content: "*";
-        color: $error-color;
-        margin-left: 3px;
-    }
-}
-
 /********************************************INPUT TEXT********************************************/
 .d-select__select {
     .ant-select-selector {
