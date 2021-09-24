@@ -1,5 +1,6 @@
 import ClassNames from "classnames";
 import React, { CSSProperties } from "react";
+import Messages from "../../language/Messages";
 import TimeUtils from "../../utils/TimeUtils";
 import AvatarName, { IUserBasic } from "../avatar/AvatarName";
 import Button, { ButtonProps } from "../button/Button";
@@ -37,7 +38,6 @@ export interface HeaderDetailProps {
     className?: string;
     classNameButton?: string;
     classNameStatus?: string;
-    Messages: any;
 }
 
 const HeaderDetail: React.FC<HeaderDetailProps> = ({
@@ -59,7 +59,6 @@ const HeaderDetail: React.FC<HeaderDetailProps> = ({
     customCreated,
     customStatus,
     onButtonClick,
-    Messages,
     viewStatusProps,
 }) => {
     const leftView = () => {
@@ -98,7 +97,7 @@ const HeaderDetail: React.FC<HeaderDetailProps> = ({
                         return (
                             <Button
                                 variant="trans"
-                                content={Messages[label]}
+                                content={label}
                                 iconName={icon}
                                 className={buttonClass}
                                 onClick={() => {

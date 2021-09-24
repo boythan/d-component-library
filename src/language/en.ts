@@ -24,4 +24,6 @@ export default {
     outOfVisible: "%numOfVisible out of %total visible",
     defaultView: "Default View",
     saveViewAs: "Save View As...",
+    createdOn: "Created on",
+    at: "At",
 };
