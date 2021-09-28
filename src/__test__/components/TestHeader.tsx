@@ -36,7 +36,6 @@ const TestHeader = () => {
             <HeaderBlock title="Block Title" className="my-3" />
             <HeaderBlock title="Block Title" className="my-3" customRight={customRight()} />
             <HeaderDetail
-                Messages={Messages}
                 listStatus={DELIVERY_STATUS_LIST}
                 status="pending"
                 className="my-4"
