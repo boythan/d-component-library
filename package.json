@@ -1,6 +1,6 @@
 {
   "name": "d-react-components",
-  "version": "0.2.34",
+  "version": "0.2.35",
   "main": "dist/dcomponent.cjs.js",
   "module": "dist/dcomponent.es.js",
   "typings": "dist/dcomponent.d.ts",
@@ -66,6 +66,8 @@
     "@babel/preset-env": "^7.14.2",
     "@babel/preset-react": "^7.13.13",
     "@rollup/plugin-babel": "^5.3.0",
+    "@rollup/plugin-image": "^2.1.1",
+    "@rollup/plugin-json": "^4.1.0",
     "@types/lodash": "^4.14.170",
     "@types/query-string": "^6.3.0",
     "@types/react-highlight-words": "^0.16.2",
