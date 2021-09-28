@@ -4,6 +4,8 @@ import commonjs from "rollup-plugin-commonjs";
 import external from "rollup-plugin-peer-deps-external";
 import resolve from "rollup-plugin-node-resolve";
 import bundleScss from "rollup-plugin-bundle-scss";
+import image from "@rollup/plugin-image";
+import json from "@rollup/plugin-json";
 // import scss from "rollup-plugin-scss";
 import path from "path";
 
@@ -28,6 +30,8 @@ export default {
     plugins: [
         external(),
         resolve(),
+        image(),
+        json(),
         // scss(),
         bundleScss({ exclusive: false }),
         postcss({
@@ -50,6 +54,16 @@ export default {
                 "node_modules/react/react.js": ["Children", "Component", "PropTypes", "createElement"],
                 "node_modules/react-dom/index.js": ["render"],
                 "node_modules/react-is/index.js": ["isFragment", "ForwardRef", "isMemo"],
+                "node_modules/prop-types/index.js": [
+                    "node",
+                    "bool",
+                    "string",
+                    "any",
+                    "arrayOf",
+                    "oneOfType",
+                    "object",
+                    "func",
+                ],
             },
         }),
     ],
