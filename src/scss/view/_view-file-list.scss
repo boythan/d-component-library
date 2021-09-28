@@ -43,27 +43,18 @@
     left: 15px;
 }
 
-.image-upload-item {
+.d-file-preview {
     position: relative;
-    &__remove {
+    .d-file-preview__remove {
         position: absolute;
-        right: 5px;
-        top: 5px;
+        bottom: 0;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        border-radius: 999px;
-        background-color: white;
+        background-color: rgba(0, 0, 0, 0.54);
         font-size: 5px;
-        color: $accent-color;
-    }
-    &__image {
-        // @include square-image(9rem);
-        object-fit: contain;
+        color: white;
+        width: 100%;
     }
 }
-
-/* .attachmentPreviewContainer::-webkit-scrollbar {
-    display: none;
-  } */

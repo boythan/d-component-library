@@ -2,7 +2,7 @@ import ClassNames from "classnames";
 import React from "react";
 import InputText from "../../../components/input/InputText";
 import ViewCollapse from "../../../components/view/ViewCollapse";
-import ViewFileList from "../../../components/view/ViewFileList";
+import ViewFileList, { FilePreview } from "../../../components/view/ViewFileList";
 import ViewLabelStatus from "../../../components/view/ViewLabelStatus";
 import ViewRow from "../../../components/view/ViewRow";
 import ViewRowInterchange from "../../../components/view/ViewRowInterchange";
@@ -108,6 +108,11 @@ const TestView: React.FC<TestRowInterChagneProps> = ({ id }) => {
                     getSource={(item) => item}
                     getName={(item) => item}
                 />
+                <div>
+                    {LANGUAGES.map((item) => {
+                        return <FilePreview src={item.image} size="medium" removable hasLightBox />;
+                    })}
+                </div>
             </ViewCollapse>
         </div>
     );

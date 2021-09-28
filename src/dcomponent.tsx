@@ -111,8 +111,13 @@ export { default as ViewLabelStatus } from "./components/view/ViewLabelStatus";
 export type { ViewTextErrorProps } from "./components/view/ViewTextError";
 export { default as ViewTextError } from "./components/view/ViewTextError";
 
-export type { IFilePreviewProps, IRenderPreviewFileProps, IViewFileListProps } from "./components/view/ViewFileList";
-export { default as ViewFileList, RenderPreviewFile, FilePreview } from "./components/view/ViewFileList";
+export type {
+    IFilePreviewProps,
+    IRenderPreviewFileProps,
+    IViewFileListProps,
+    IModalLightBox,
+} from "./components/view/ViewFileList";
+export { default as ViewFileList, RenderPreviewFile, FilePreview, ModalLightBox } from "./components/view/ViewFileList";
 
 /* ----------------------------------------
 // TabBar

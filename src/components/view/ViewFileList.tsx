@@ -10,7 +10,7 @@ import ClassNames from "classnames";
 import _ from "lodash";
 import React, { useEffect, useRef, useState, ImgHTMLAttributes } from "react";
 import { useDropzone } from "react-dropzone";
-import Carousel, { Modal, ModalGateway } from "react-images";
+import Carousel, { Modal, ModalGateway, CarouselProps } from "react-images";
 // data stubs
 import Messages from "../../language/Messages";
 import { DOC, EXCEL, PDF, IMAGE } from "../../utils/ImageUtils";
@@ -18,15 +18,26 @@ import StringUtils from "../../utils/StringUtils";
 import Button from "../button/Button";
 import Icon from "../icon/Icon";
 import Notifications from "../notifications/Notifications";
+import { AvatarProps } from "../avatar/Avatar";
 // application
 
 const FILE_TYPE = [DOC, EXCEL, PDF];
+
+export interface IModalLightBox extends Omit<CarouselProps, "views"> {
+    open: boolean;
+    onClose: (props?: any) => void;
+    images: CarouselProps["views"];
+}
 
 export interface IFilePreviewProps extends ImgHTMLAttributes<any> {
     onClick?: (props?: any) => any;
     onRemove?: (props?: any) => any;
     removable?: boolean;
     videoUrl?: any;
+    className?: string;
+    classNameItem?: string;
+    size?: AvatarProps["size"];
+    hasLightBox?: boolean;
 }
 
 export interface IRenderPreviewFileProps extends IFilePreviewProps {
@@ -36,18 +47,87 @@ export interface IRenderPreviewFileProps extends IFilePreviewProps {
     onViewImage?: (props?: any, src?: any) => any;
 }
 
+export interface IViewFileListProps {
+    className?: string;
+    classNameList?: string;
+    classNameSquare?: string;
+    classNameButton?: string;
+    buttonText?: string;
+    getFile?: (props?: any) => any;
+    getImage?: (props?: any) => any;
+    getVideo?: (props?: any) => any;
+    getSource?: (props?: any) => any;
+    getName?: (props?: any) => any;
+    onRemoveUploaded?: (props?: any) => any;
+    uploadedFiles?: any[];
+    video?: any[];
+    uploadImagesOnly?: boolean;
+    showButton?: boolean;
+    disabled?: boolean;
+    justGetFile?: boolean;
+    removableUploaded?: boolean;
+    allowNoExtension?: boolean;
+    variant?: "square" | "button";
+}
+
+export const ModalLightBox: React.FC<IModalLightBox> = ({ open, onClose, currentIndex, images }) => {
+    return (
+        <ModalGateway>
+            {open ? (
+                <Modal onClose={onClose}>
+                    <Carousel currentIndex={currentIndex} views={images} />
+                </Modal>
+            ) : null}
+        </ModalGateway>
+    );
+};
+
 export const FilePreview: React.FC<IFilePreviewProps> = ({
     src,
     onRemove,
     onClick,
     removable = true,
     videoUrl = null,
+    className,
+    classNameItem,
+    size = "x-large",
+    hasLightBox = false,
 }) => {
+    const [openLightBox, setOpenLightBox] = useState(false);
+    const imageClass = ClassNames(
+        "hover-pointer",
+        {
+            "image-square-x-large": size === "x-large",
+            "image-square-large": size === "large",
+            "image-square-medium": size === "medium",
+            "image-square-small": size === "small",
+            "image-square-x-small": size === "x-small",
+            "image-square-xx-small": size === "xx-small",
+        },
+        classNameItem
+    );
+    const videoClass = ClassNames(
+        "d-file-preview__preview-video",
+        {
+            "image-square-x-large": size === "x-large",
+            "image-square-large": size === "large",
+            "image-square-medium": size === "medium",
+            "image-square-small": size === "small",
+            "image-square-x-small": size === "x-small",
+            "image-square-xx-small": size === "xx-small",
+        },
+        classNameItem
+    );
     let children = (
         <img
-            className="image-upload-item__image image-square-x-large"
+            className={imageClass}
             src={src}
-            onClick={() => onClick && onClick()}
+            onClick={() => {
+                if (hasLightBox) {
+                    setOpenLightBox(true);
+                }
+                onClick && onClick();
+            }}
             alt="upload-item"
         />
     );
@@ -58,7 +138,7 @@ export const FilePreview: React.FC<IFilePreviewProps> = ({
                 frameBorder="0"
                 allowFullScreen
                 title="item"
-                className="upload-file-container__preview-video"
+                className={videoClass}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 width="200px"
                 height="126px"
@@ -66,13 +146,18 @@ export const FilePreview: React.FC<IFilePreviewProps> = ({
         );
     }
     return (
-        <div className="image-upload-item mr-2 ml-2">
+        <div className={`d-file-preview mr-2 ml-2 width-fit-content ${className}`}>
             {removable && (
-                <div onClick={() => onRemove && onRemove()} className="image-upload-item__remove">
+                <div onClick={() => onRemove && onRemove()} className="d-file-preview__remove hover-pointer">
                     <Icon name="delete" />
                 </div>
             )}
             {children}
+            <ModalLightBox
+                open={openLightBox}
+                onClose={() => setOpenLightBox(false)}
+                images={[{ source: src as any }]}
+            />
         </div>
     );
 };
@@ -123,26 +208,11 @@ export const RenderPreviewFile: React.FC<IRenderPreviewFileProps> = ({
     );
 };
 
-export interface IViewFileListProps {
-    buttonText?: string;
-    getFile?: (props?: any) => any;
-    getImage?: (props?: any) => any;
-    getVideo?: (props?: any) => any;
-    getSource?: (props?: any) => any;
-    getName?: (props?: any) => any;
-    onRemoveUploaded?: (props?: any) => any;
-    uploadedFiles?: any[];
-    video?: any[];
-    uploadImagesOnly?: boolean;
-    showButton?: boolean;
-    disabled?: boolean;
-    justGetFile?: boolean;
-    removableUploaded?: boolean;
-    allowNoExtension?: boolean;
-    variant?: "square" | "button";
-}
-
 const ViewFileList: React.FC<IViewFileListProps> = ({
+    className,
+    classNameList,
+    classNameSquare,
+    classNameButton,
     buttonText = Messages.browsefiles,
     uploadedFiles = [],
     uploadImagesOnly = false,
@@ -171,10 +241,20 @@ const ViewFileList: React.FC<IViewFileListProps> = ({
     const listImageRef = useRef<any>([]);
     const isSquare = variant === "square";
     const inputParam = uploadImagesOnly ? { accept: "image/x-png,image/jpeg,image/heic" } : {};
-    const containerClass = ClassNames("d-view-file-list", "d-flex", "mt-3", {
-        "flex-column": !isSquare,
-        "align-items-start": isSquare,
-    });
+    const containerClass = ClassNames(
+        "d-view-file-list",
+        "d-flex",
+        {
+            "flex-column": !isSquare,
+            "align-items-start": isSquare,
+        },
+        className
+    );
+    const listClass = ClassNames("d-view-file-list__preview", classNameList);
+    const buttonSquareClass = ClassNames(
+        "bg-white ml-2 border-dashed text-x-small border-primary text-center d-flex align-items-center justify-content-center  hover-pointer",
+        classNameSquare
+    );
 
     useEffect(() => {
         listImageRef.current = [...attachments, ...uploadedFiles];
@@ -241,7 +321,7 @@ const ViewFileList: React.FC<IViewFileListProps> = ({
 
     return (
         <div className={containerClass}>
-            <div className="d-view-file-list__preview">
+            <div className={listClass}>
                 {!_.isEmpty(uploadedFiles) &&
                     uploadedFiles.map((file) => {
                         const fileName = getName(file);
@@ -281,12 +361,7 @@ const ViewFileList: React.FC<IViewFileListProps> = ({
                         return <FilePreview onRemove={() => handleRemoveVideo(item)} removable videoUrl={item} />;
                     })}
                 {showButton && isSquare && (
-                    <button
-                        className="product-create__gallery-add-image ml-2 border-dashed text-x-small border-primary text-center d-flex align-items-center justify-content-center  hover-pointer"
-                        {...getRootProps()}
-                        type="button"
-                        disabled={disabled}
-                    >
+                    <button className={buttonSquareClass} {...getRootProps()} type="button" disabled={disabled}>
                         <small className="text-center mt-1">{Messages.browseOrDropHere}</small>
                         <input {...getInputProps(inputParam)} />
                     </button>
@@ -300,27 +375,23 @@ const ViewFileList: React.FC<IViewFileListProps> = ({
                     </Button>
                 </div>
             )}
-            <ModalGateway>
-                {modalImageView ? (
-                    <Modal onClose={() => setModalImageView(false)}>
-                        <Carousel
-                            currentIndex={imageIndex}
-                            views={
-                                getImage
-                                    ? getImage(listImageRef.current)
-                                    : listImageRef.current?.map((image: any) => {
-                                          if (!_.isEmpty(image?.imageData)) {
-                                              return {
-                                                  src: image?.imageData,
-                                              };
-                                          }
-                                          return { src: image };
-                                      })
-                            }
-                        />
-                    </Modal>
-                ) : null}
-            </ModalGateway>
+            <ModalLightBox
+                open={modalImageView}
+                onClose={() => setModalImageView(false)}
+                currentIndex={imageIndex}
+                images={
+                    getImage
+                        ? getImage(listImageRef.current)
+                        : listImageRef.current?.map((image: any) => {
+                              if (!_.isEmpty(image?.imageData)) {
+                                  return {
+                                      src: image?.imageData,
+                                  };
+                              }
+                              return { src: image };
+                          })
+                }
+            />
         </div>
     );
 };
