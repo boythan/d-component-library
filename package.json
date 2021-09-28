@@ -1,6 +1,6 @@
 {
   "name": "d-react-components",
-  "version": "0.2.33",
+  "version": "0.2.34",
   "main": "dist/dcomponent.cjs.js",
   "module": "dist/dcomponent.es.js",
   "typings": "dist/dcomponent.d.ts",
@@ -39,7 +39,8 @@
     "i-all": "npm i && cd demo-site && npm i",
     "dev": "npm-run-all --parallel build-watch start-demo",
     "start": "react-scripts start",
-    "buildReact": "react-scripts build"
+    "buildReact": "react-scripts build",
+    "publishD": "rollup -c && npm run build-cp-variable && yarn publish"
   },
   "eslintConfig": {
     "extends": [
@@ -82,6 +83,8 @@
     "postcss": "^8.2.15",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-dropzone": "^11.4.2",
+    "react-images": "^1.2.0-beta.7",
     "react-scripts": "^4.0.3",
     "rollup": "^2.48.0",
     "rollup-plugin-bundle-scss": "^0.1.3",
