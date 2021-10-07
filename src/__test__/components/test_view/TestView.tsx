@@ -27,7 +27,7 @@ const TestView: React.FC<TestRowInterChagneProps> = ({ id }) => {
                 <ViewLabelStatus content="Pending" color="#ED6969" className="mt-3" />
                 <ViewLabelStatus content="Loaded" color="#828282" className="mt-3" />
             </ViewCollapse>
-            <ViewCollapse label="Row Interchange View" className={collapseClass}>
+            <ViewCollapse label="Row Interchange View" className={collapseClass} defaultOpen={false}>
                 <div className="text-bold">Row Interchange View </div>
                 <ViewRowInterchange
                     dataSource={ATTRIBUTE_INPUT_TYPE[0]}
@@ -75,17 +75,21 @@ const TestView: React.FC<TestRowInterChagneProps> = ({ id }) => {
                     variant="border"
                 />
             </ViewCollapse>
-            <ViewCollapse label="View Text Area With Show More Show Less Button" className={collapseClass}>
+            <ViewCollapse
+                label="View Text Area With Show More Show Less Button"
+                className={collapseClass}
+                defaultOpen={false}
+            >
                 <div className="text-bold my-3">View Text Area With Show More Show Less Button </div>
                 <ViewTextarea limitedLength={60} width={600}>
                     {`This is Ant Design's internal standard for evaluating design quality. Based on the assumption . `}
                 </ViewTextarea>
             </ViewCollapse>
-            <ViewCollapse label="View Timeline" className={collapseClass}>
+            <ViewCollapse label="View Timeline" className={collapseClass} defaultOpen={false}>
                 <div className="text-bold my-3">View Timeline</div>
                 <ViewTimeline dataSource={ATTRIBUTE_INPUT_TYPE} getContent={(item) => item?.label} />
             </ViewCollapse>
-            <ViewCollapse label="View Row" className={collapseClass}>
+            <ViewCollapse label="View Row" className={collapseClass} defaultOpen={false}>
                 <div className="text-bold my-3">View Row</div>
                 <ViewRow label="Width 100%" className="my-3" width="100%">
                     <InputText />
@@ -100,7 +104,7 @@ const TestView: React.FC<TestRowInterChagneProps> = ({ id }) => {
                     <InputText />
                 </ViewRow>
             </ViewCollapse>
-            <ViewCollapse label="View File List">
+            <ViewCollapse label="View File List" defaultOpen={false}>
                 <div className="text-bold my-3">View File List</div>
                 <ViewFileList
                     uploadedFiles={LANGUAGES.map((item) => item.image)}
