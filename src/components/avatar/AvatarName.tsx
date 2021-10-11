@@ -11,13 +11,13 @@ export interface IUserBasic {
 }
 
 export interface AvatarNameProps {
-    [key: string]: any;
     user: IUserBasic;
     position?: "before" | "after";
     size?: AvatarProps["size"];
     subLabel?: string;
     className?: string;
     classNameText?: string;
+    customName?: (props: { className: string; name: string }) => any | Element;
 }
 
 const AvatarName: React.FC<AvatarNameProps> = ({
@@ -27,6 +27,7 @@ const AvatarName: React.FC<AvatarNameProps> = ({
     subLabel,
     className,
     classNameText,
+    customName,
 }) => {
     const { avatar, fullName, name = "" } = user;
     let displayName = name;
@@ -59,6 +60,12 @@ const AvatarName: React.FC<AvatarNameProps> = ({
     });
 
     const renderName = () => {
+        if (customName) {
+            if (typeof customName === "function") {
+                return customName({ className: nameTextClass, name: displayName });
+            }
+            return customName;
+        }
         return (
             <div className={nameClass}>
                 <div
