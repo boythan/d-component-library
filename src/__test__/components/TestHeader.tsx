@@ -42,6 +42,9 @@ const TestHeader = () => {
                 title="Header Detail"
                 user={{ fullName: "Admin" }}
                 created={new Date().valueOf()}
+                avatarNameProps={{
+                    customName: ({ name, className }) => <div className="font-weight-bold">{name}</div>,
+                }}
             />
         </div>
     );

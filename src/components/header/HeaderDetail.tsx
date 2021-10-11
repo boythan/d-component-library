@@ -2,7 +2,7 @@ import ClassNames from "classnames";
 import React, { CSSProperties } from "react";
 import Messages from "../../language/Messages";
 import TimeUtils from "../../utils/TimeUtils";
-import AvatarName, { IUserBasic } from "../avatar/AvatarName";
+import AvatarName, { IUserBasic, AvatarNameProps } from "../avatar/AvatarName";
 import Button, { ButtonProps } from "../button/Button";
 import ViewLabelStatus, { ViewLabelStatusProps } from "../view/ViewLabelStatus";
 
@@ -38,6 +38,7 @@ export interface HeaderDetailProps {
     className?: string;
     classNameButton?: string;
     classNameStatus?: string;
+    avatarNameProps?: Partial<AvatarNameProps>;
 }
 
 const HeaderDetail: React.FC<HeaderDetailProps> = ({
@@ -60,6 +61,7 @@ const HeaderDetail: React.FC<HeaderDetailProps> = ({
     customStatus,
     onButtonClick,
     viewStatusProps,
+    avatarNameProps = {},
 }) => {
     const leftView = () => {
         const titleStatus = () => {
@@ -139,7 +141,7 @@ const HeaderDetail: React.FC<HeaderDetailProps> = ({
         }
         return (
             <div className="d-flex flex-column align-items-end">
-                {user && <AvatarName user={user} className="mb-1" />}
+                {user && <AvatarName user={user} className="mb-1" {...avatarNameProps} />}
                 {(created || customCreated) && createdView}
             </div>
         );
