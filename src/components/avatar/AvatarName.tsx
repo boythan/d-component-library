@@ -1,5 +1,5 @@
 /* eslint-disable no-nested-ternary */
-import React from "react";
+import React, { ReactElement } from "react";
 import ClassNames from "classnames";
 import Avatar, { AvatarProps } from "./Avatar";
 
@@ -19,7 +19,7 @@ export interface AvatarNameProps {
     classNameTextWrap?: string;
     classNameText?: string;
     classNameSub?: string;
-    customName?: (props: { className: string; name: string }) => any | Element;
+    customName?: ((props: { className: string; name: string }) => any) | Element | ReactElement;
 }
 
 const AvatarName: React.FC<AvatarNameProps> = ({
