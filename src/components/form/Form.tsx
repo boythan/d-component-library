@@ -83,9 +83,14 @@ export const getDefaultValue = (type?: IFormItemType) => {
             return [];
         case "date":
         case "date-range":
+        case "time":
+        case "date-time":
             return null;
-        default:
+        case "inputText":
+        case "textarea":
             return "";
+        default:
+            return undefined;
     }
 };
 
