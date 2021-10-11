@@ -16,6 +16,7 @@ export interface AvatarNameProps {
     size?: AvatarProps["size"];
     subLabel?: string;
     className?: string;
+    classNameTextWrap?: string;
     classNameText?: string;
     classNameSub?: string;
     customName?: (props: { className: string; name: string }) => any | Element;
@@ -29,6 +30,7 @@ const AvatarName: React.FC<AvatarNameProps> = ({
     className,
     classNameText,
     classNameSub,
+    classNameTextWrap,
     customName,
 }) => {
     const { avatar, fullName, name = "" } = user;
@@ -38,10 +40,14 @@ const AvatarName: React.FC<AvatarNameProps> = ({
     }
 
     const wrapperClass = ClassNames(`d-flex align-items-center`, className);
-    const nameClass = ClassNames("d-flex flex-column", {
-        "mr-2": position === "before",
-        "ml-2": position === "after",
-    });
+    const textClass = ClassNames(
+        "d-flex flex-column",
+        {
+            "mr-2": position === "before",
+            "ml-2": position === "after",
+        },
+        classNameTextWrap
+    );
     const nameTextClass = ClassNames(
         "text-nowrap",
         {
@@ -64,15 +70,15 @@ const AvatarName: React.FC<AvatarNameProps> = ({
         classNameSub
     );
 
-    const renderName = () => {
-        if (customName) {
-            if (typeof customName === "function") {
-                return customName({ className: nameTextClass, name: displayName });
+    const renderText = () => {
+        const renderName = () => {
+            if (customName) {
+                if (typeof customName === "function") {
+                    return customName({ className: nameTextClass, name: displayName });
+                }
+                return customName;
             }
-            return customName;
-        }
-        return (
-            <div className={nameClass}>
+            return (
                 <div
                     className={`${nameTextClass}`}
                     style={{
@@ -82,6 +88,11 @@ const AvatarName: React.FC<AvatarNameProps> = ({
                 >
                     {displayName}
                 </div>
+            );
+        };
+        return (
+            <div className={textClass}>
+                {renderName()}
                 {subLabel && (
                     <div className={subTextClass} style={{ fontSize: size === "x-large" ? "32px" : undefined }}>
                         {subLabel}
@@ -92,10 +103,10 @@ const AvatarName: React.FC<AvatarNameProps> = ({
     };
     return (
         <div className={wrapperClass}>
-            {position === "before" && renderName()}
+            {position === "before" && renderText()}
             {avatar && <Avatar src={avatar} size={size} />}
             {!avatar && <Avatar text={displayName.charAt(0)} size={size} />}
-            {position === "after" && renderName()}
+            {position === "after" && renderText()}
         </div>
     );
 };
