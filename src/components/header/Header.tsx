@@ -1,9 +1,11 @@
+/* eslint-disable no-param-reassign */
 // react
 // third-party
 import React from "react";
 import Messages from "../../language/Messages";
 // application
 import Button from "../button/Button";
+import Icon from "../icon/Icon";
 // data stubs
 
 export interface HeaderProps {
@@ -23,6 +25,7 @@ export interface HeaderProps {
     customRight?: () => React.ReactNode;
     showCancel?: boolean;
     className?: string;
+    breadcrumb?: any;
 }
 
 const Header: React.FC<HeaderProps> = ({
@@ -42,12 +45,42 @@ const Header: React.FC<HeaderProps> = ({
     customRight,
     showCancel = true,
     className,
+    breadcrumb = [],
 }) => {
+    if (breadcrumb.length > 0) {
+        const lastIndex = breadcrumb.length - 1;
+
+        breadcrumb = breadcrumb.map((item: any, index: number) => {
+            let link;
+
+            if (lastIndex === index) {
+                link = <div className="small">{item.title}</div>;
+            } else {
+                link = (
+                    <div key={index} className="flex-center">
+                        <a href={item.url} className="small">
+                            {item.title}
+                        </a>
+                        <Icon className="breadcrumb-arrow mx-2" name="chevron_right" />
+                    </div>
+                );
+            }
+
+            return link;
+        });
+
+        breadcrumb = <div className="page-header__breadcrumb">{breadcrumb}</div>;
+    }
     const renderLeftView = () => {
         if (customLeft) {
             return customLeft();
         }
-        return <h4 className="text-primary">{title}</h4>;
+        return (
+            <div className="page-header__container ">
+                {breadcrumb}
+                <h4 className="text-primary">{title}</h4>
+            </div>
+        );
     };
     return (
         <div className={`card-container d-common-header ${className}`}>

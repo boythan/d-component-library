@@ -14,6 +14,8 @@ const TestHeader = () => {
         return <div>custom right</div>;
     };
 
+    const breadcrumb = [{ title: "All Product", url: "/" }, { title: "Product detail" }];
+
     return (
         <div className="bg-muted">
             <HeaderTable
@@ -31,12 +33,11 @@ const TestHeader = () => {
                 classNameTop="my-0"
             />
 
-            <Header title="Header example" />
+            <Header title="Header example" breadcrumb={breadcrumb} />
             <HeaderBlock title="Block Title" showArrow />
             <HeaderBlock title="Block Title" className="my-3" />
             <HeaderBlock title="Block Title" className="my-3" customRight={customRight()} />
             <HeaderDetail
-                Messages={Messages}
                 listStatus={DELIVERY_STATUS_LIST}
                 status="pending"
                 className="my-4"

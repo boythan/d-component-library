@@ -10,8 +10,12 @@
 }
 .page-header__container {
 }
+
 .page-header__breadcrumb {
+    display: flex;
+    flex-direction: row;
 }
+
 .page-header__title {
     padding-top: 8px;
 
