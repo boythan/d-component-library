@@ -1,7 +1,9 @@
+/* eslint-disable no-param-reassign */
 // react
 // third-party
 import React from "react";
 import Messages from "../../language/Messages";
+import Breadcrumb from "../breadcrumb/Breadcrumb";
 // application
 import Button from "../button/Button";
 // data stubs
@@ -23,6 +25,7 @@ export interface HeaderProps {
     customRight?: () => React.ReactNode;
     showCancel?: boolean;
     className?: string;
+    breadcrumb?: any;
 }
 
 const Header: React.FC<HeaderProps> = ({
@@ -42,12 +45,18 @@ const Header: React.FC<HeaderProps> = ({
     customRight,
     showCancel = true,
     className,
+    breadcrumb = [],
 }) => {
     const renderLeftView = () => {
         if (customLeft) {
             return customLeft();
         }
-        return <h4 className="text-primary">{title}</h4>;
+        return (
+            <div className="page-header__container ">
+                <Breadcrumb breadcrumb={breadcrumb} />
+                <h4 className="text-primary">{title}</h4>
+            </div>
+        );
     };
     return (
         <div className={`card-container d-common-header ${className}`}>

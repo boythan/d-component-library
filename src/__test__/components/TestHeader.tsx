@@ -1,11 +1,11 @@
 import React, { useState } from "react";
+import Breadcrumb from "../../components/breadcrumb/Breadcrumb";
 import Header from "../../components/header/Header";
 import HeaderBlock from "../../components/header/HeaderBlock";
 import HeaderDetail from "../../components/header/HeaderDetail";
 import HeaderTable from "../../components/header/HeaderTable";
 import Select from "../../components/select/Select";
 import { ATTRIBUTE_INPUT_TYPE, DELIVERY_STATUS_LIST } from "../data/TestConstant";
-import Messages from "../../language/Messages";
 
 const TestHeader = () => {
     const [valueSelect, setValueSelect] = useState();
@@ -13,6 +13,8 @@ const TestHeader = () => {
     const customRight = () => {
         return <div>custom right</div>;
     };
+
+    const breadcrumb = [{ title: "All Product", url: "/" }, { title: "Product detail" }];
 
     return (
         <div className="bg-muted">
@@ -31,7 +33,9 @@ const TestHeader = () => {
                 classNameTop="my-0"
             />
 
-            <Header title="Header example" />
+            <Breadcrumb breadcrumb={breadcrumb} className="py-3" />
+
+            <Header title="Header example" breadcrumb={breadcrumb} />
             <HeaderBlock title="Block Title" showArrow />
             <HeaderBlock title="Block Title" className="my-3" />
             <HeaderBlock title="Block Title" className="my-3" customRight={customRight()} />
