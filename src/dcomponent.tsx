@@ -274,3 +274,9 @@ export { default as Popover } from "./components/popover/Popover";
 
 export type { PopoverListProps } from "./components/popover/PopoverList";
 export { default as PopoverList } from "./components/popover/PopoverList";
+
+/* ----------------------------------------
+// Breadcrumb
+// ---------------------------------------- */
+export type { BreadcrumbProps } from "./components/breadcrumb/Breadcrumb";
+export { default as Breadcrumb } from "./components/breadcrumb/Breadcrumb";
