@@ -1,0 +1,60 @@
+@import "../variables";
+
+.d-view-file-list {
+    .d-view-file-list__preview {
+        display: flex;
+        max-width: 100%;
+        overflow-x: scroll;
+        flex-wrap: wrap;
+    }
+    .product-create__gallery-add-image {
+        background-color: white;
+    }
+}
+
+.d-view-file-list__file-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // width: 10rem;
+    position: relative;
+}
+
+.d-view-file-list__file-preview:hover {
+    cursor: pointer;
+}
+
+.d-view-file-list__file-preview:hover .d-view-file-list__download-icon {
+    display: block;
+}
+
+#fileNameText {
+    text-overflow: ellipsis;
+    height: 2rem;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 8rem;
+}
+
+.d-view-file-list__download-icon {
+    display: none;
+    position: absolute;
+    top: 30px;
+    left: 15px;
+}
+
+.d-file-preview {
+    position: relative;
+    .d-file-preview__remove {
+        position: absolute;
+        bottom: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(0, 0, 0, 0.54);
+        font-size: 5px;
+        color: white;
+        width: 100%;
+    }
+}

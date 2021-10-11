@@ -1,5 +1,10 @@
 import _ from "lodash";
 
+export const DOC = { extension: ["docx", "doc", "pptx", "pps"], iconFile: "../images/files/doc.png" };
+export const EXCEL = { extension: ["xls", "csv", "xlsx"], iconFile: "../images/files/sheets.png" };
+export const PDF = { extension: ["pdf"], iconFile: "../images/files/pdf-files.png" };
+export const IMAGE = { extension: ["jpeg", "bmp", "png", "jpg", "heic"], iconFile: "" };
+
 const getBase64ImageFromUrl = async (imageUrl: string) => {
     if (!imageUrl || _.isEmpty(imageUrl)) {
         // eslint-disable-next-line prefer-promise-reject-errors

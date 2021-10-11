@@ -111,6 +111,14 @@ export { default as ViewLabelStatus } from "./components/view/ViewLabelStatus";
 export type { ViewTextErrorProps } from "./components/view/ViewTextError";
 export { default as ViewTextError } from "./components/view/ViewTextError";
 
+export type {
+    IFilePreviewProps,
+    IRenderPreviewFileProps,
+    IViewFileListProps,
+    IModalLightBox,
+} from "./components/view/ViewFileList";
+export { default as ViewFileList, RenderPreviewFile, FilePreview, ModalLightBox } from "./components/view/ViewFileList";
+
 /* ----------------------------------------
 // TabBar
 // ---------------------------------------- */
@@ -185,7 +193,7 @@ export { default as TreeDataUtils } from "./utils/TreeDataUtils";
 export { default as TimeUtils } from "./utils/TimeUtils";
 export { default as ObjectUtils } from "./utils/ObjectUtils";
 export { default as MapUtils } from "./utils/MapUtils";
-export { default as ImageUtils } from "./utils/ImageUtils";
+export { default as ImageUtils, DOC, EXCEL, IMAGE, PDF } from "./utils/ImageUtils";
 
 /* ----------------------------------------
 // Badge

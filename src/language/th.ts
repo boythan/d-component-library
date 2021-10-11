@@ -26,4 +26,7 @@ export default {
     saveViewAs: "Save View As...",
     createdOn: "Created on",
     at: "At",
+    browsefiles: "Browse Files",
+    errorUploadingFile: "Sorry, this file type is not permitted for security reasons.",
+    browseOrDropHere: "Browse or drag and drop here",
 };
