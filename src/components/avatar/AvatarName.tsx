@@ -17,6 +17,7 @@ export interface AvatarNameProps {
     subLabel?: string;
     className?: string;
     classNameText?: string;
+    classNameSub?: string;
     customName?: (props: { className: string; name: string }) => any | Element;
 }
 
@@ -27,6 +28,7 @@ const AvatarName: React.FC<AvatarNameProps> = ({
     subLabel,
     className,
     classNameText,
+    classNameSub,
     customName,
 }) => {
     const { avatar, fullName, name = "" } = user;
@@ -52,12 +54,15 @@ const AvatarName: React.FC<AvatarNameProps> = ({
         classNameText
     );
 
-    const subTextClass = ClassNames({
-        "text-large": size === "large",
-        "text-medium": size === "medium",
-        "text-x-small": size === "small",
-        "text-xx-small": size === "x-small" || size === "xx-small",
-    });
+    const subTextClass = ClassNames(
+        {
+            "text-large": size === "large",
+            "text-medium": size === "medium",
+            "text-x-small": size === "small",
+            "text-xx-small": size === "x-small" || size === "xx-small",
+        },
+        classNameSub
+    );
 
     const renderName = () => {
         if (customName) {
