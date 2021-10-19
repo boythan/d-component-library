@@ -111,7 +111,6 @@ const SelectInfinity: React.ForwardRefRenderFunction<SelectInfinityMethod, Selec
         onChange && onChange(clone, null as any);
     };
     const customTagRender = (props: any) => {
-        console.log({ props });
         const tagItem = props?.value ?? null;
         const tagValue = getValue(tagItem);
         let foundItem = null;

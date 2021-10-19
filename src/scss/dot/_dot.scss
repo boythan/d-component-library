@@ -2,25 +2,31 @@
 @import "../variables";
 @import "../functions";
 
+.d-dot_container {
+    border-radius: 999px;
+    text-align: center;
+    border: none;
+    outline: none;
+}
+
 @each $nameSize, $size in $dot-size {
-    @each $name, $color in $basic-color {
-        .d-dot__#{$nameSize}-#{$name} {
-            background-color: $color;
-            border: none;
-            outline: none;
-            width: $size;
-            height: $size;
-            border-radius: 999px;
-            text-align: center;
-            line-height: $size;
-            color: set-text-color($color);
-            font-size: $size;
-            @if ($nameSize == "xxx-large" or $nameSize == "xx-large") {
-                font-size: $size - 11px !important;
-            }
-            @if ($nameSize == "x-large" or $nameSize == "large") {
-                font-size: $size - 9px !important;
-            }
+    .d-dot__#{$nameSize} {
+        width: $size;
+        height: $size;
+        line-height: $size;
+        font-size: $size;
+        @if ($nameSize == "xxx-large" or $nameSize == "xx-large") {
+            font-size: $size - 11px !important;
         }
+        @if ($nameSize == "x-large" or $nameSize == "large") {
+            font-size: $size - 9px !important;
+        }
+    }
+}
+
+@each $name, $color in $basic-color {
+    .d-dot__#{$name} {
+        background-color: $color;
+        color: set-text-color($color);
     }
 }
