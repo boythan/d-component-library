@@ -280,3 +280,9 @@ export { default as PopoverList } from "./components/popover/PopoverList";
 // ---------------------------------------- */
 export type { BreadcrumbProps } from "./components/breadcrumb/Breadcrumb";
 export { default as Breadcrumb } from "./components/breadcrumb/Breadcrumb";
+
+/* ----------------------------------------
+// ErrorBoundary
+// ---------------------------------------- */
+export type { ErrorBoundaryProps } from "./components/error/ErrorBoundary";
+export { default as ErrorBoundary } from "./components/error/ErrorBoundary";
