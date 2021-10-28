@@ -96,7 +96,9 @@ export default function Test({ content }: Props): ReactElement {
 
     const dot = (
         <div className="my-4 d-flex align-items-center">
-            <Dot>123</Dot>
+            <Dot color="green" size="xxx-large">
+                123
+            </Dot>
             <Dot size="xx-small" />
             <Dot size="x-small" />
             <Dot size="small">99+</Dot>

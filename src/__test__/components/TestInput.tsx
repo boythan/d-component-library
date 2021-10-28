@@ -1,18 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import Button from "../../components/button/Button";
+import DateInput from "../../components/dateInput/DateInput";
+import InputColor from "../../components/input/InputColor";
 import InputText from "../../components/input/InputText";
 import InputTextSearch from "../../components/input/InputTextSearch";
-import InputColor from "../../components/input/InputColor";
+import SelectInfinity from "../../components/select/SelectInfinity";
 import ViewCollapse from "../../components/view/ViewCollapse";
 import { Select } from "../../dcomponent";
-import { ATTRIBUTE_INPUT_TYPE, SELECT_DATA } from "../data/TestConstant";
-import SelectInfinity from "../../components/select/SelectInfinity";
-import DateInput from "../../components/dateInput/DateInput";
+import UrlUtils from "../../utils/UrlUtils";
+import { SELECT_DATA } from "../data/TestConstant";
 
 const TestInput = () => {
     const [valueSelect, setValueSelect] = useState([]);
     const [valueTextInput, setValueTextInput] = useState([]);
     const [valueSelectInfinity, setValueSelectInfinity] = useState<any>();
     const [selectCheckboxValue, setSelectCheckboxValue] = useState<any>([]);
+
+    useEffect(() => {
+        const query = UrlUtils.getQuery();
+        const infinityValue = query?.infinity ?? null;
+        if (infinityValue) {
+            const parse = JSON.parse(infinityValue as any);
+            setValueSelectInfinity(parse);
+        }
+    }, []);
 
     return (
         <div className="my-4">
@@ -102,6 +113,14 @@ const TestInput = () => {
                     onChange={setValueSelectInfinity}
                     mode="multiple"
                 />
+                <div className="w-100 d-flex flex-column my-3">
+                    <Button
+                        className="align-self-end"
+                        onClick={() => UrlUtils.replaceState({ infinity: JSON.stringify(valueSelectInfinity) })}
+                    >
+                        Save
+                    </Button>
+                </div>
             </ViewCollapse>
             <div className="w-100 flex-center-y">
                 <Select

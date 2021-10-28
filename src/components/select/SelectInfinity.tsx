@@ -23,7 +23,7 @@ const SelectInfinity: React.ForwardRefRenderFunction<SelectInfinityMethod, Selec
         transformer,
         getKey = (item) => item?.id,
         getLabel = (item) => item?.label,
-        getValue = (item) => item?.id ?? null,
+        getValue = (item) => item?.id,
         pagingProps,
         value = [],
         onChange,
@@ -36,7 +36,6 @@ const SelectInfinity: React.ForwardRefRenderFunction<SelectInfinityMethod, Selec
     const listRef = useRef<ElementRef<typeof AwesomeListComponent>>(null);
     const selectRef = useRef<React.ElementRef<typeof Select>>(null);
     const textSearch = useRef();
-    const [valueObj, setValueObj] = useState<Array<any>>([]);
 
     const refreshList = () => {
         // @ts-ignore
@@ -63,19 +62,18 @@ const SelectInfinity: React.ForwardRefRenderFunction<SelectInfinityMethod, Selec
                 onClick={() => {
                     if (mode === "tags" || mode === "multiple") {
                         let clone: Array<any> = [...value];
-                        let cloneObj: Array<any> = [...valueObj];
-                        if (clone.includes(itemValue)) {
-                            clone = clone?.filter((i: any) => i !== itemValue);
-                            cloneObj = cloneObj.filter((i: any) => i?.id !== itemValue);
-                        } else {
-                            clone.push(itemValue);
-                            cloneObj.push(item);
+                        let cloneValue: Array<any> = [];
+                        if (clone?.length > 0) {
+                            cloneValue = clone.map((i) => getValue(i));
                         }
-                        setValueObj(cloneObj);
+                        if (cloneValue.includes(itemValue)) {
+                            clone = clone?.filter((i: any) => getValue(i) !== itemValue);
+                        } else {
+                            clone.push(item);
+                        }
                         onChange && onChange(clone, null as any);
                     } else {
-                        setValueObj([item]);
-                        onChange && onChange([itemValue], null as any);
+                        onChange && onChange([item], null as any);
                     }
                     if (mode !== "tags" && mode !== "multiple") {
                         selectRef.current && selectRef.current.onBlur();
@@ -109,17 +107,15 @@ const SelectInfinity: React.ForwardRefRenderFunction<SelectInfinityMethod, Selec
     };
 
     const onRemoveItem = (id: any) => {
-        const clone = value.filter((i: any) => i !== id);
-        const cloneObj = valueObj.filter((i) => i?.id !== id);
-        setValueObj(cloneObj);
+        const clone = value.filter((i: any) => getValue(i) !== id);
         onChange && onChange(clone, null as any);
     };
     const customTagRender = (props: any) => {
-        console.log({ props });
-        const tagValue = props?.value ?? null;
+        const tagItem = props?.value ?? null;
+        const tagValue = getValue(tagItem);
         let foundItem = null;
         if (tagValue) {
-            foundItem = valueObj?.find((i: any) => i?.id === tagValue);
+            foundItem = value?.find((i: any) => i?.id === tagValue);
         }
         if (!foundItem) {
             return <div />;
@@ -139,7 +135,7 @@ const SelectInfinity: React.ForwardRefRenderFunction<SelectInfinityMethod, Selec
         <Select
             showSearch
             className={className}
-            value={!mode ? getLabel(valueObj[0]) : value}
+            value={!mode ? getLabel(value[0]) : value}
             ref={selectRef}
             onSearch={onChangeTextSearch}
             dropdownRender={renderDropDown}

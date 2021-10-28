@@ -1,6 +1,7 @@
 import _ from "lodash";
 
-const mapListDataToTree = (list: any[] = []) => {
+const mapListDataToTree = (list: any[] = [], parentIdKey?: string) => {
+    const parentKey = parentIdKey || "parent_id";
     const map: any = {};
     let node: any = {};
     const roots = [];
@@ -13,13 +14,13 @@ const mapListDataToTree = (list: any[] = []) => {
         for (i = 0; i < list.length; i += 1) {
             node = list[i];
             // if (node.parent_id && list[map[node.parent_id]]) {
-            if (node.parent_id) {
+            if (node[parentKey]) {
                 // if you have dangling branches check that map[node.parentId] exists
-                if (!list[map[node.parent_id]]) {
+                if (!list[map[node[parentKey]]]) {
                     // eslint-disable-next-line no-throw-literal
-                    throw `dont have Parent NODE (${node.parent_id}) of nodeid ${node.id}`;
+                    throw `dont have Parent NODE (${node[parentKey]}) of nodeid ${node.id}`;
                 }
-                list[map[node.parent_id]].children.push(node);
+                list[map[node[parentKey]]].children.push(node);
             } else {
                 roots.push(node);
             }
@@ -31,35 +32,39 @@ const mapListDataToTree = (list: any[] = []) => {
     return roots;
 };
 
-const getAllSiblings = (nodeId: string, dataList: any[] = []) => {
+const getAllSiblings = (nodeId: string, dataList: any[] = [], parentIdKey?: string) => {
+    const parentKey = parentIdKey || "parent_id";
     const currentNode = dataList.find((item) => item.id === nodeId);
     let allSibling = [];
-    if (currentNode.parent_id) {
-        allSibling = dataList.filter((item) => item.parent_id && item.parent_id === currentNode.parent_id);
+    if (currentNode[parentKey]) {
+        allSibling = dataList.filter((item) => item[parentKey] && item[parentKey] === currentNode[parentKey]);
     } else {
-        allSibling = dataList.filter((item) => !item.parent_id);
+        allSibling = dataList.filter((item) => !item[parentKey]);
     }
     return _.sortBy(allSibling, (item) => item.priority);
 };
 
-const getAllSiblingCategory = (nodeId: string, dataList: any[] = []) => {
+const getAllSiblingCategory = (nodeId: string, dataList: any[] = [], parentIdKey?: string) => {
+    const parentKey = parentIdKey || "parent_id";
     const currentNode = dataList.find((item) => item.id === nodeId);
     let allSibling = [];
-    if (currentNode.parent_id) {
-        allSibling = dataList.filter((item) => item.parent_id && item.parent_id === currentNode.parent_id);
+    if (currentNode[parentKey]) {
+        allSibling = dataList.filter((item) => item[parentKey] && item[parentKey] === currentNode[parentKey]);
     } else {
-        allSibling = dataList.filter((item) => !item.parent_id);
+        allSibling = dataList.filter((item) => !item[parentKey]);
     }
     return _.sortBy(allSibling, (item) => item.position);
 };
 
-const getAllChild = (nodeId: string, dataList: any[] = []) => {
-    const childNodes = dataList.filter((item) => item.parent_id === nodeId);
+const getAllChild = (nodeId: string, dataList: any[] = [], parentIdKey?: string) => {
+    const parentKey = parentIdKey || "parent_id";
+    const childNodes = dataList.filter((item) => item[parentKey] === nodeId);
     return _.sortBy(childNodes, (item) => item.priority);
 };
 
-const getAllChildCategory = (nodeId: string, dataList: any[] = []) => {
-    const childNodes = dataList.filter((item) => item?.parent_id === nodeId);
+const getAllChildCategory = (nodeId: string, dataList: any[] = [], parentIdKey?: string) => {
+    const parentKey = parentIdKey || "parent_id";
+    const childNodes = dataList.filter((item) => item?.[parentKey] === nodeId);
     return _.sortBy(childNodes, (item) => item.position);
 };
 
@@ -68,13 +73,15 @@ const isLeafNode = (nodeId: string, dataList: any[] = []) => {
     return children.length === 0;
 };
 
-const isRootNode = (nodeId: string, dataList: any[] = []) => {
+const isRootNode = (nodeId: string, dataList: any[] = [], parentIdKey?: string) => {
+    const parentKey = parentIdKey || "parent_id";
     const currentNode: any = dataList.filter((item) => item.id === nodeId);
-    return !currentNode.parent_id;
+    return !currentNode[parentKey];
 };
 
-const getAllChildAndSubChild = (nodeId: string, dataList: any[] = []) => {
-    const childNodes = dataList.filter((item) => item?.parent_id === nodeId);
+const getAllChildAndSubChild = (nodeId: string, dataList: any[] = [], parentIdKey?: string) => {
+    const parentKey = parentIdKey || "parent_id";
+    const childNodes = dataList.filter((item) => item?.[parentKey] === nodeId);
     if (_.isEmpty(childNodes)) {
         return [];
     }
