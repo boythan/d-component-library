@@ -20,6 +20,7 @@ export interface CheckboxGroupProps {
     numberOfDefaultShow?: number;
     multiple?: boolean;
     disabled?: boolean;
+    hidden?: boolean;
 
     getLabel?: (item: any) => any;
     getValue?: (item: any) => any;
@@ -38,6 +39,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
     numberOfDefaultShow = 10,
     label,
     disabled,
+    hidden,
 
     getLabel = (item: any) => item?.label,
     getValue = (item: any) => item?.id,
@@ -91,7 +93,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
     };
 
     return (
-        <div className={containerClass}>
+        <div className={containerClass} hidden={hidden}>
             {label && <label>{label}</label>}
             <div className={groupContainerClass}>
                 {dataSourceDisplay.map((item) => {

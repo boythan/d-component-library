@@ -21,6 +21,7 @@ export interface InputTextSearchProps {
     placeholder?: string;
 
     disabled?: boolean;
+    hidden?: boolean;
 
     onChange?: any;
     onBlur?: any;
@@ -35,6 +36,7 @@ const InputTextSearch = ({
     error,
     placeholder,
     disabled,
+    hidden,
 
     onChange,
     onBlur,
@@ -51,7 +53,7 @@ const InputTextSearch = ({
     );
 
     return (
-        <div className={container}>
+        <div className={container} hidden={hidden}>
             <Icon name="search" className="mr-3" />
             <input
                 value={value}

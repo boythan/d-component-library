@@ -22,6 +22,7 @@ export interface SelectProps extends SelectAntProps<any> {
     hasFilter?: boolean;
     multiple?: boolean;
     required?: boolean;
+    hidden?: boolean;
 }
 export interface SelectMethod {
     onBlur: () => void;
@@ -52,6 +53,7 @@ const Select: React.ForwardRefRenderFunction<SelectMethod, SelectProps> = (
         variant = "outline",
         hasFilter = true,
         required,
+        hidden,
         ...props
     }: SelectProps,
     ref
@@ -90,7 +92,7 @@ const Select: React.ForwardRefRenderFunction<SelectMethod, SelectProps> = (
     );
 
     return (
-        <div className={container}>
+        <div className={container} hidden={hidden}>
             {label && <label className={labelClass}>{label}</label>}
             <SelectAnt
                 mode={multiple ? "multiple" : undefined}

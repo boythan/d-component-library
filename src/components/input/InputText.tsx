@@ -1,13 +1,7 @@
 // react
-import React, { CSSProperties, InputHTMLAttributes } from "react";
-
 // third-party
 import classname from "classnames";
-
-// application
-
-// data stubs
-import Icon from "../icon/Icon";
+import React, { CSSProperties, InputHTMLAttributes } from "react";
 import ViewTextError from "../view/ViewTextError";
 
 export interface InputTextProps extends InputHTMLAttributes<any> {
@@ -31,6 +25,7 @@ export interface InputTextProps extends InputHTMLAttributes<any> {
     cols?: number;
     disabled?: boolean;
     required?: boolean;
+    hidden?: boolean;
     prefix?: any;
     suffix?: any;
 }
@@ -60,7 +55,7 @@ const InputText = ({
     prefix,
     suffix,
     required,
-
+    hidden,
     onChange,
     onBlur,
     ...inputProps
@@ -136,7 +131,7 @@ const InputText = ({
     };
 
     return (
-        <div className={container} style={style}>
+        <div className={container} style={style} hidden={hidden}>
             {label && (
                 <label htmlFor={name} className={labelClass} style={styleLabel}>
                     <span>{label}</span>
