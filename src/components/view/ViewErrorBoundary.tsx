@@ -1,16 +1,16 @@
 import React from "react";
 
-export interface ErrorBoundaryProps {
+export interface ViewErrorBoundaryProps {
     children: any;
 }
 
-export interface ErrorBoundaryState {
+export interface ViewErrorBoundaryState {
     hasError: boolean;
     error: any;
     errorInfo: any;
 }
 
-class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
+class ViewErrorBoundary extends React.Component<ViewErrorBoundaryProps, ViewErrorBoundaryState> {
     constructor(props: any) {
         super(props);
         this.state = { hasError: false, error: "", errorInfo: "" };
@@ -40,4 +40,4 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
     }
 }
 
-export default ErrorBoundary;
+export default ViewErrorBoundary;

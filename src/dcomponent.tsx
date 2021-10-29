@@ -284,5 +284,5 @@ export { default as Breadcrumb } from "./components/breadcrumb/Breadcrumb";
 /* ----------------------------------------
 // ErrorBoundary
 // ---------------------------------------- */
-export type { ErrorBoundaryProps } from "./components/error/ErrorBoundary";
-export { default as ErrorBoundary } from "./components/error/ErrorBoundary";
+export type { ViewErrorBoundaryProps } from "./components/view/ViewErrorBoundary";
+export { default as ViewErrorBoundary } from "./components/view/ViewErrorBoundary";
