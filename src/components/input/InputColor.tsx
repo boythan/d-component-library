@@ -28,6 +28,7 @@ export interface InputColorProps extends InputHTMLAttributes<any> {
     placeholder?: string;
 
     disabled?: boolean;
+    hidden?: boolean;
     prefix?: any;
     suffix?: any;
 }
@@ -51,6 +52,7 @@ const InputColor = ({
     placeholder,
 
     disabled,
+    hidden,
 
     onChange,
     onBlur,
@@ -92,7 +94,7 @@ const InputColor = ({
     };
 
     return (
-        <div className={container} style={style}>
+        <div className={container} style={style} hidden={hidden}>
             {label && (
                 <label htmlFor={name} className={labelClass} style={styleLabel}>
                     <span>{label}</span>

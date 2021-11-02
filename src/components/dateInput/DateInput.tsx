@@ -4,8 +4,6 @@ import { DatePicker, DatePickerProps } from "antd";
 import ClassNames from "classnames";
 import React from "react";
 import Button from "../button/Button";
-// application
-import Icon from "../icon/Icon";
 import ViewTextError from "../view/ViewTextError";
 
 // data stubs
@@ -24,6 +22,7 @@ export interface DateInputNewProps {
     error?: string;
     useButton?: boolean;
     required?: boolean;
+    hidden?: boolean;
     iconButton?: string;
     classNameButton?: string;
     classNameLabel?: string;
@@ -49,6 +48,7 @@ const DateInput: React.FC<DateInputProp> = ({
     useButton = false,
     isRangePicker = false,
     required,
+    hidden,
     className,
     classNameInput,
     classNameButton,
@@ -114,7 +114,7 @@ const DateInput: React.FC<DateInputProp> = ({
     }
 
     return (
-        <div className={wrapperClass}>
+        <div className={wrapperClass} hidden={hidden}>
             {label && <label className={labelClass}>{label}</label>}
             <Button className={buttonClass} iconName={iconButton} />
             {content}
