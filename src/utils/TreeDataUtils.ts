@@ -68,8 +68,8 @@ const getAllChildCategory = (nodeId: string, dataList: any[] = [], parentIdKey?:
     return _.sortBy(childNodes, (item) => item.position);
 };
 
-const isLeafNode = (nodeId: string, dataList: any[] = []) => {
-    const children = getAllChild(nodeId, dataList);
+const isLeafNode = (nodeId: string, dataList: any[] = [], parentIdKey?: string) => {
+    const children = getAllChild(nodeId, dataList, parentIdKey);
     return children.length === 0;
 };
 
@@ -87,7 +87,7 @@ const getAllChildAndSubChild = (nodeId: string, dataList: any[] = [], parentIdKe
     }
     let result = [...childNodes];
     childNodes.forEach((item) => {
-        const subChildNode = getAllChildAndSubChild(item?.id, dataList);
+        const subChildNode = getAllChildAndSubChild(item?.id, dataList, parentIdKey);
         if (!_.isEmpty(subChildNode)) {
             result = [...result, ...subChildNode];
         }
