@@ -74,6 +74,7 @@
     .checkbox__input-wrapper-disabled {
         .checkbox__check-mark {
             background-color: $disabled-color;
+            border: none;
         }
     }
     .checkbox__input:checked ~ .checkbox__check-mark::after {

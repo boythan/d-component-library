@@ -41,7 +41,7 @@ const DateInput: React.FC<DateInputProp> = ({
     placeholder,
     error,
     type = "date",
-    format = "DD/MM/YYYY HH:mm",
+    format = "DD/MM/YYYY",
     variant = "outline",
     iconButton = "event",
     showTime = false,
