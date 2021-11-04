@@ -1,6 +1,6 @@
 import _ from "lodash";
 
-const mapListDataToTree = (list: any[] = [], parentIdKey?: string) => {
+export const mapListDataToTree = (list: any[] = [], parentIdKey?: string) => {
     const parentKey = parentIdKey || "parent_id";
     const map: any = {};
     let node: any = {};
@@ -32,7 +32,7 @@ const mapListDataToTree = (list: any[] = [], parentIdKey?: string) => {
     return roots;
 };
 
-const getAllSiblings = (nodeId: string, dataList: any[] = [], parentIdKey?: string) => {
+export const getAllSiblings = (nodeId: string, dataList: any[] = [], parentIdKey?: string) => {
     const parentKey = parentIdKey || "parent_id";
     const currentNode = dataList.find((item) => item.id === nodeId);
     let allSibling = [];
@@ -44,7 +44,7 @@ const getAllSiblings = (nodeId: string, dataList: any[] = [], parentIdKey?: stri
     return _.sortBy(allSibling, (item) => item.priority);
 };
 
-const getAllSiblingCategory = (nodeId: string, dataList: any[] = [], parentIdKey?: string) => {
+export const getAllSiblingCategory = (nodeId: string, dataList: any[] = [], parentIdKey?: string) => {
     const parentKey = parentIdKey || "parent_id";
     const currentNode = dataList.find((item) => item.id === nodeId);
     let allSibling = [];
@@ -56,30 +56,30 @@ const getAllSiblingCategory = (nodeId: string, dataList: any[] = [], parentIdKey
     return _.sortBy(allSibling, (item) => item.position);
 };
 
-const getAllChild = (nodeId: string, dataList: any[] = [], parentIdKey?: string) => {
+export const getAllChild = (nodeId: string, dataList: any[] = [], parentIdKey?: string) => {
     const parentKey = parentIdKey || "parent_id";
     const childNodes = dataList.filter((item) => item[parentKey] === nodeId);
     return _.sortBy(childNodes, (item) => item.priority);
 };
 
-const getAllChildCategory = (nodeId: string, dataList: any[] = [], parentIdKey?: string) => {
+export const getAllChildCategory = (nodeId: string, dataList: any[] = [], parentIdKey?: string) => {
     const parentKey = parentIdKey || "parent_id";
     const childNodes = dataList.filter((item) => item?.[parentKey] === nodeId);
     return _.sortBy(childNodes, (item) => item.position);
 };
 
-const isLeafNode = (nodeId: string, dataList: any[] = []) => {
-    const children = getAllChild(nodeId, dataList);
+export const isLeafNode = (nodeId: string, dataList: any[] = [], parentIdKey?: string) => {
+    const children = getAllChild(nodeId, dataList, parentIdKey);
     return children.length === 0;
 };
 
-const isRootNode = (nodeId: string, dataList: any[] = [], parentIdKey?: string) => {
+export const isRootNode = (nodeId: string, dataList: any[] = [], parentIdKey?: string) => {
     const parentKey = parentIdKey || "parent_id";
     const currentNode: any = dataList.filter((item) => item.id === nodeId);
     return !currentNode[parentKey];
 };
 
-const getAllChildAndSubChild = (nodeId: string, dataList: any[] = [], parentIdKey?: string) => {
+export const getAllChildAndSubChild = (nodeId: string, dataList: any[] = [], parentIdKey?: string) => {
     const parentKey = parentIdKey || "parent_id";
     const childNodes = dataList.filter((item) => item?.[parentKey] === nodeId);
     if (_.isEmpty(childNodes)) {
@@ -87,7 +87,7 @@ const getAllChildAndSubChild = (nodeId: string, dataList: any[] = [], parentIdKe
     }
     let result = [...childNodes];
     childNodes.forEach((item) => {
-        const subChildNode = getAllChildAndSubChild(item?.id, dataList);
+        const subChildNode = getAllChildAndSubChild(item?.id, dataList, parentIdKey);
         if (!_.isEmpty(subChildNode)) {
             result = [...result, ...subChildNode];
         }
@@ -95,7 +95,7 @@ const getAllChildAndSubChild = (nodeId: string, dataList: any[] = [], parentIdKe
     return result;
 };
 
-const searchNode = (findId: string, checkNode: any, getId = (node: any) => node?.id): any => {
+export const searchNode = (findId: string, checkNode: any, getId = (node: any) => node?.id): any => {
     if (findId === getId(checkNode)) {
         return checkNode;
     }
@@ -111,7 +111,7 @@ const searchNode = (findId: string, checkNode: any, getId = (node: any) => node?
     return null;
 };
 
-const searchNodeFromTreeList = (nodeId: string, treeList = [], getId?: any) => {
+export const searchNodeFromTreeList = (nodeId: string, treeList = [], getId?: any) => {
     let i;
     let result = null;
     // eslint-disable-next-line no-plusplus
@@ -121,7 +121,7 @@ const searchNodeFromTreeList = (nodeId: string, treeList = [], getId?: any) => {
     return result;
 };
 
-const getLevel = (obj: any) => {
+export const getLevel = (obj: any) => {
     let depth = 0;
     if (obj.children) {
         obj.children.forEach((d: any) => {
@@ -134,9 +134,26 @@ const getLevel = (obj: any) => {
     return 1 + depth;
 };
 
-const getLevelOfNode = (nodeId: string, treeList = []) => {
+export const getLevelOfNode = (nodeId: string, treeList = []) => {
     const nodeItem = searchNodeFromTreeList(nodeId, treeList);
     return getLevel(nodeItem);
+};
+
+export const getParentNode = (parentId: string, dataList: any[]) => {
+    return dataList.find((i) => i?.id === parentId) || null;
+};
+
+export const getAllParentNode = (node: any = {}, dataList: any[] = [], parentIdKey?: string) => {
+    const parentKey = parentIdKey || "parent_id";
+    let allParentNode: any[] = [];
+    const parentId = node?.[parentKey] ?? null;
+    const parentNode = getParentNode(parentId, dataList);
+    if (parentNode) {
+        allParentNode.push(parentNode);
+        const otherParent = getAllParentNode(parentNode, dataList, parentIdKey);
+        allParentNode = [...allParentNode, ...otherParent];
+    }
+    return allParentNode;
 };
 
 export default {
@@ -150,4 +167,5 @@ export default {
     getAllChildAndSubChild,
     getLevelOfNode,
     searchNodeFromTreeList,
+    getAllParentNode,
 };

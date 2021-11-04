@@ -96,3 +96,179 @@ export const DELIVERY_STATUS_LIST = [
         color: "#8D8D8D",
     },
 ];
+
+export const TREE_DATA = [
+    {
+        id: "timeline",
+        label: "timeLine",
+        iconName: "access_time",
+        title: "timeLine",
+    },
+    {
+        id: "employee",
+        label: "employee",
+        iconName: "manage_accounts",
+        title: "employee",
+    },
+    {
+        id: "employeeDetail",
+        label: "employeeDetail",
+        title: "employeeDetail",
+        notShow: true,
+        parentId: "employee",
+    },
+    {
+        id: "newEmployee",
+        label: "newEmployee",
+        title: "newEmployee",
+        notShow: true,
+        parentId: "employee",
+    },
+
+    {
+        id: "paySlipGroup",
+        label: "paySlipGroup",
+        iconName: "paid",
+        title: "paySlipGroup",
+        subMenu: [],
+    },
+
+    {
+        id: "createPaySlip",
+        label: "createPaySlip",
+        title: "createPaySlip",
+        notShow: true,
+        parentId: "paySlipGroup",
+    },
+    {
+        id: "createPaySlipSub",
+        label: "createPaySlipSub",
+        title: "createPaySlipSub",
+        notShow: true,
+        parentId: "createPaySlip",
+    },
+    {
+        id: "createPaySlipSub_1",
+        label: "createPaySlipSub_1",
+        title: "createPaySlipSub_1",
+        notShow: true,
+        parentId: "createPaySlipSub",
+    },
+    {
+        id: "payslipDetail",
+        label: "payslipDetail",
+        title: "payslipDetail",
+        notShow: true,
+        parentId: "paySlipGroup",
+    },
+
+    {
+        id: "request",
+        label: "request",
+        iconName: "shutter_speed",
+        title: "request",
+        subMenu: [
+            {
+                id: "eventRequest",
+                label: "eventRequest",
+                title: "eventRequest",
+                notShow: true,
+                parentId: "request",
+                query: "tab=eventRequest",
+                subMenu: [
+                    {
+                        id: "eventDetail",
+                        label: "eventDetail",
+                        title: "eventDetail",
+                        notShow: true,
+                        parentId: "eventRequest",
+                    },
+                    {
+                        id: "eventCreate",
+                        label: "eventCreate",
+                        title: "eventCreate",
+                        notShow: true,
+                        parentId: "eventRequest",
+                    },
+                ],
+            },
+            {
+                id: "leaveRequest",
+                label: "leaveRequest",
+                title: "leaveRequest",
+                notShow: true,
+                parentId: "request",
+                query: "tab=leaveRequest",
+                subMenu: [
+                    {
+                        id: "leaveDetail",
+                        label: "leaveDetail",
+                        title: "leaveDetail",
+                        notShow: true,
+                        parentId: "leaveRequest",
+                    },
+                    {
+                        id: "leaveReqCreate",
+                        label: "leaveReqCreate",
+                        title: "leaveReqCreate",
+                        notShow: true,
+                        parentId: "leaveCreate",
+                    },
+                ],
+            },
+            {
+                id: "otRequest",
+                label: "otRequest",
+                title: "otRequest",
+                notShow: true,
+                parentId: "request",
+                query: "tab=otRequest",
+                subMenu: [
+                    {
+                        id: "overtimeDetail",
+                        label: "overtimeDetail",
+                        title: "overtimeDetail",
+                        notShow: true,
+                        parentId: "otRequest",
+                    },
+                    {
+                        id: "overtimeCreate",
+                        label: "overtimeCreate",
+                        title: "overtimeCreate",
+                        notShow: true,
+                        parentId: "otRequest",
+                    },
+                ],
+            },
+        ],
+    },
+
+    {
+        id: "broadcast",
+        label: "broadcast",
+        iconName: "podcasts",
+        title: "broadcast",
+    },
+
+    {
+        id: "createBroadcast",
+        label: "createBroadcast",
+        title: "createBroadcast",
+        notShow: true,
+        parentId: "broadcast",
+    },
+
+    {
+        id: "holiday",
+        label: "holiday",
+        iconName: "sailing",
+        title: "holiday",
+    },
+
+    {
+        id: "recruitment",
+        label: "recruitment",
+        iconName: "settings_input_antenna",
+        title: "recruitment",
+    },
+];
