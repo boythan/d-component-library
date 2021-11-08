@@ -33,6 +33,7 @@ export interface HeaderDetailProps {
     onButtonClick?: (item: IButtonItem) => void;
     customCreated?: (props?: any) => any;
     customStatus?: (status?: any) => any;
+    customUserView?: (props?: any) => any;
     viewStatusProps?: ViewLabelStatusProps;
     style?: CSSProperties;
     className?: string;
@@ -59,6 +60,7 @@ const HeaderDetail: React.FC<HeaderDetailProps> = ({
     customRight,
     customCreated,
     customStatus,
+    customUserView,
     onButtonClick,
     viewStatusProps,
     avatarNameProps = {},
@@ -139,9 +141,15 @@ const HeaderDetail: React.FC<HeaderDetailProps> = ({
         if (customRight) {
             return customRight();
         }
+        const renderUser = () => {
+            if (customUserView) {
+                return customUserView(user);
+            }
+            return user && <AvatarName user={user} className="mb-1" {...avatarNameProps} />;
+        };
         return (
             <div className="d-flex flex-column align-items-end">
-                {user && <AvatarName user={user} className="mb-1" {...avatarNameProps} />}
+                {renderUser()}
                 {(created || customCreated) && createdView}
             </div>
         );
