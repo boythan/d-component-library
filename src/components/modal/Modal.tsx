@@ -28,6 +28,9 @@ export interface ModalProps extends Omit<ModalAntProps, "cancelButtonProps"> {
     cancelButtonProps?: ButtonProps;
     saveButtonProps?: ButtonProps;
     titleAlign?: "center" | "start" | "end";
+
+    disabledSaveButton?: boolean;
+    disabledCancelButton?: boolean;
 }
 
 const Modal: React.FC<ModalProps> = ({
@@ -60,6 +63,8 @@ const Modal: React.FC<ModalProps> = ({
     showHeader = true,
     cancelButtonProps,
     saveButtonProps,
+    disabledCancelButton,
+    disabledSaveButton,
     titleAlign = "center",
     ...props
 }) => {
@@ -131,10 +136,17 @@ const Modal: React.FC<ModalProps> = ({
                                     }
                                     return onClose && onClose(e);
                                 }}
+                                disabled={disabledCancelButton}
                                 {...cancelButtonProps}
                             />
                         )}
-                        <Button variant="standard" content={saveText} onClick={onSave} {...saveButtonProps} />
+                        <Button
+                            variant="standard"
+                            content={saveText}
+                            onClick={onSave}
+                            disabled={disabledSaveButton}
+                            {...saveButtonProps}
+                        />
                     </div>
                 </React.Fragment>
             );
