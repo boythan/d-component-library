@@ -48,7 +48,7 @@ interface MyTableColumnGroupType extends TableColumnGroupType<any> {
 export type IColumnsProps = (MyTableColumnGroupType | MyTableColumnType)[];
 
 export interface AwesomeTableComponentProps extends TableProps<any> {
-    source: (pagination: IPaginationProps, sorter?: any) => Promise<any>;
+    source: (pagination: { pageIndex?: number; pageSize?: number }, sorter?: any) => Promise<any>;
     transformer: (res: any) => Array<any>;
     columns: IColumnsProps;
     baseColumnProps?: any;
@@ -317,7 +317,13 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
         const { source, transformer, getTotalItems } = this.props;
         const { pagination, sorter } = this.state;
 
-        source(pagination as any, sorter)
+        source(
+            {
+                pageIndex: typeof pagination !== "boolean" ? pagination?.pageIndex ?? 1 : 1,
+                pageSize: typeof pagination !== "boolean" ? pagination?.pageSize ?? 10 : 10,
+            },
+            sorter
+        )
             .then((response) => {
                 const data = transformer(response);
                 if (!isArray(data)) {
