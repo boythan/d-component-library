@@ -386,7 +386,9 @@ body {
 // -- LINK
 // ----------------------------------------
 
-a {
+a,
+.a,
+.link {
     color: $link-color !important;
     &:hover {
         color: $link-hover-color !important;
