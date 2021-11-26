@@ -1,9 +1,13 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import moment, { unitOfTime, MomentInput } from "moment";
+import moment, { unitOfTime as UnitOfTime, MomentInput } from "moment";
 
-const DATE_TIME_FORMAT = "DD/MM/YYYY HH:mm";
-const TIME_FORMAT = "HH:mm";
-const DATE_FORMAT = "DD/MM/YYYY";
+export enum ITimeFormat {
+    DATE_TIME_FORMAT = "DD/MM/YYYY HH:mm",
+    TIME_FORMAT = "HH:mm",
+    DATE_FORMAT = "DD/MM/YYYY",
+}
+
+const { DATE_TIME_FORMAT, TIME_FORMAT, DATE_FORMAT } = ITimeFormat;
 // react-datepicker format
 const DATE_TIME_INPUT_FORMAT = "dd/MM/yyyy HH:mm";
 const DATE_INPUT_FORMAT = "dd/MM/yyyy";
@@ -88,7 +92,7 @@ function calculateDayDifferent(d1: number, d2: number) {
     return Math.abs(Math.round(diff));
 }
 
-function calculateTimeDifferent(moment1: MomentInput, moment2: MomentInput, type: unitOfTime.Diff = "day") {
+function calculateTimeDifferent(moment1: MomentInput, moment2: MomentInput, type: UnitOfTime.Diff = "day") {
     // type accept : years, months, weeks, days, hours, minutes, and seconds
     const start = moment(moment1);
     const end = moment(moment2);
@@ -104,6 +108,11 @@ function convertRangeDateToArray(date1: MomentInput, date2: MomentInput) {
         start = start.add(1, "days");
     }
     return dates;
+}
+
+// @ts-ignore
+function getFirstDayOf(date: any, timeUnit: moment.unitOfTime, format: ITimeFormat = ITimeFormat.DATE_TIME_FORMAT) {
+    return moment(date).startOf(timeUnit).format(format);
 }
 
 export default {
@@ -134,4 +143,6 @@ export default {
     ANT_DATE_INPUT_FORMAT,
     ANT_MONTH_INPUT_FORMAT,
     ANT_YEAR_INPUT_FORMAT,
+
+    getFirstDayOf,
 };
