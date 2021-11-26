@@ -186,6 +186,8 @@ export { default as Dropdown } from "./components/dropdown/Dropdown";
 // Utils
 // ---------------------------------------- */
 
+export type { ITimeFormat } from "./utils/TimeUtils";
+
 export { default as AwesomeTableUtils } from "./utils/AwesomeTableUtils";
 export { default as StringUtils } from "./utils/StringUtils";
 export { default as UrlUtils } from "./utils/UrlUtils";

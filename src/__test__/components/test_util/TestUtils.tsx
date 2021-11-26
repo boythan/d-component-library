@@ -27,6 +27,7 @@ const TestUtils: React.FC<TestUtilsProps> = ({ id }) => {
             <div>{TimeUtils.convertMiliToDateTime(new Date() as any)}</div>
             <div>{TimeUtils.convertMiliToDateTime(moment(new Date()) as any)}</div>
             <div>{TimeUtils.calculateTimeDifferent(moment(new Date()), moment(new Date()))}</div>
+            <div>{TimeUtils.getFirstDayOf(new Date(), "week", "MMM/YYYY" as any)}</div>
             <Button
                 content="Push State Params"
                 onClick={() => UrlUtils.pushState({})}

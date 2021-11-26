@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import moment, { unitOfTime as UnitOfTime, MomentInput } from "moment";
+import moment, { unitOfTime, MomentInput } from "moment";
 
 export enum ITimeFormat {
     DATE_TIME_FORMAT = "DD/MM/YYYY HH:mm",
@@ -92,7 +92,7 @@ function calculateDayDifferent(d1: number, d2: number) {
     return Math.abs(Math.round(diff));
 }
 
-function calculateTimeDifferent(moment1: MomentInput, moment2: MomentInput, type: UnitOfTime.Diff = "day") {
+function calculateTimeDifferent(moment1: MomentInput, moment2: MomentInput, type: unitOfTime.Diff = "day") {
     // type accept : years, months, weeks, days, hours, minutes, and seconds
     const start = moment(moment1);
     const end = moment(moment2);
@@ -110,9 +110,12 @@ function convertRangeDateToArray(date1: MomentInput, date2: MomentInput) {
     return dates;
 }
 
-// @ts-ignore
-function getFirstDayOf(date: any, timeUnit: moment.unitOfTime, format: ITimeFormat = ITimeFormat.DATE_TIME_FORMAT) {
+function getFirstDayOf(date: any, timeUnit: unitOfTime.Base, format: ITimeFormat = ITimeFormat.DATE_TIME_FORMAT) {
     return moment(date).startOf(timeUnit).format(format);
+}
+
+function getLastDayOf(date: any, timeUnit: unitOfTime.Base, format: ITimeFormat = ITimeFormat.DATE_TIME_FORMAT) {
+    return moment(date).endOf(timeUnit).format(format);
 }
 
 export default {
@@ -145,4 +148,5 @@ export default {
     ANT_YEAR_INPUT_FORMAT,
 
     getFirstDayOf,
+    getLastDayOf,
 };
