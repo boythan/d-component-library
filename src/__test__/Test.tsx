@@ -31,6 +31,7 @@ import TestPopover from "./components/test_popover/TestPopover";
 import { ATTRIBUTE_INPUT_TYPE } from "./data/TestConstant";
 import TestModal from "./components/test_modal/TestModal";
 import API from "./network/API";
+import TestDrawer from "./components/test_drawer/TestDrawer";
 
 interface Props {
     content?: any;
@@ -150,6 +151,7 @@ export default function Test({ content }: Props): ReactElement {
         { id: "INPUT_DROP", label: "INPUT_DROP", component: <TestInputDrop /> },
         { id: "POPOVER", label: "POPOVER", component: <TestPopover /> },
         { id: "MODAL", label: "MODAL", component: <TestModal /> },
+        { id: "DRAWER", label: "DRAWER", component: <TestDrawer /> },
     ];
     return (
         <AppStateContext.Provider value={{ mockData }}>
