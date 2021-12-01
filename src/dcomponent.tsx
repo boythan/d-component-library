@@ -288,3 +288,9 @@ export { default as Breadcrumb } from "./components/breadcrumb/Breadcrumb";
 // ---------------------------------------- */
 export type { ViewErrorBoundaryProps } from "./components/view/ViewErrorBoundary";
 export { default as ViewErrorBoundary } from "./components/view/ViewErrorBoundary";
+
+/* ----------------------------------------
+// Drawer
+// ---------------------------------------- */
+export type { IDrawerProps } from "./components/drawer/Drawer";
+export { default as Drawer } from "./components/drawer/Drawer";

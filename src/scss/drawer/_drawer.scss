@@ -1,0 +1,41 @@
+.d-drawer__container {
+    .ant-drawer-content {
+        overflow: visible !important;
+        overflow-y: scroll;
+    }
+    .d-drawer__close-button {
+        position: absolute;
+        top: 0;
+        left: -42px;
+    }
+}
+
+.d-drawer__x-large {
+    .ant-drawer-content-wrapper {
+        width: 576px !important;
+    }
+}
+
+.d-drawer__large {
+    .ant-drawer-content-wrapper {
+        width: 512px !important;
+    }
+}
+
+.d-drawer__medium {
+    .ant-drawer-content-wrapper {
+        width: 384px !important;
+    }
+}
+
+.d-drawer__small {
+    .ant-drawer-content-wrapper {
+        width: 320px !important;
+    }
+}
+
+.d-drawer__x-small {
+    .ant-drawer-content-wrapper {
+        width: 256px !important;
+    }
+}
