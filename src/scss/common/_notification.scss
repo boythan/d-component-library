@@ -9,22 +9,22 @@
 }
 .d-notification__error {
     @extend .d-notification__container;
-    background-color: $error-color;
+    background-color: $error-color !important;
 }
 
 .d-notification__success {
     @extend .d-notification__container;
-    background-color: $success-color;
+    background-color: $success-color !important;
 }
 
 .d-notification__warning {
     @extend .d-notification__container;
-    background-color: $warning-color;
+    background-color: $warning-color !important;
 }
 
 .d-notification__info {
     @extend .d-notification__container;
-    background-color: $info-color;
+    background-color: $info-color !important;
 }
 
 .d-notifications__content {
