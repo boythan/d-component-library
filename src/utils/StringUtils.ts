@@ -29,7 +29,7 @@ const moneyThaiFormat = (number: number) => {
         return `฿${0}`;
     }
     if (number < 0) {
-        return `฿-${moneyFormat(`${Math.abs(number)}`)}`;
+        return `-฿${moneyFormat(`${Math.abs(number)}`)}`;
     }
     return `฿${moneyFormat(number)}`;
 };
