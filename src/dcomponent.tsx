@@ -240,6 +240,7 @@ export { default as useForceUpdate } from "./hooks/useForceUpdate";
 export { useForceUpdateConstraint } from "./hooks/useForceUpdate";
 export { default as usePrevious } from "./hooks/usePrevious";
 export { default as useDidUpdate } from "./hooks/useDidUpdate";
+export { default as useDeepEffect, useDeepCompareMemoize } from "./hooks/useDeepEffect";
 
 /* ----------------------------------------
 // Form
