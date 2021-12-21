@@ -9,7 +9,7 @@ import React, { useEffect, useState } from "react";
 import Button from "../../button/Button";
 import Checkbox from "../../checkbox/Checkbox";
 import DialogManager from "../../dialog/DialogManager";
-import Icon from "../../icon/Icon";
+import Icon from "../../elements/icon/Icon";
 import InputText from "../../input/InputText";
 import PopoverList from "../../popover/PopoverList";
 import Modal from "../../modal/Modal";

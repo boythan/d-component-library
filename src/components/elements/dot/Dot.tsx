@@ -1,6 +1,6 @@
 import React, { CSSProperties } from "react";
 import ClassNames from "classnames";
-import { ButtonProps } from "../button/Button";
+import { ButtonProps } from "../../button/Button";
 import { IconProps } from "../icon/Icon";
 
 export interface DotProps {

@@ -7,7 +7,7 @@ import classname from "classnames";
 // application
 
 // data stubs
-import Icon from "../icon/Icon";
+import Icon from "../elements/icon/Icon";
 
 export interface InputTextSearchProps {
     className?: string;

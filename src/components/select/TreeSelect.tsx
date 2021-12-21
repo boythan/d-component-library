@@ -1,7 +1,7 @@
 import { TreeSelect as TreeSelectAnt } from "antd";
 import classname from "classnames";
 import React from "react";
-import Icon from "../icon/Icon";
+import Icon from "../elements/icon/Icon";
 import ViewTextError from "../view/ViewTextError";
 
 export interface TreeSelectProps {

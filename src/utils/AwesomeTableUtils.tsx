@@ -1,6 +1,6 @@
 import { Tooltip } from "antd";
 import React from "react";
-import Icon from "../components/icon/Icon";
+import Icon from "../components/elements/icon/Icon";
 
 export const isString = (variable: any) => {
     return typeof variable === "string";

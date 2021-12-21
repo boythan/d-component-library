@@ -3,7 +3,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { CSSProperties, useEffect, useRef, useState } from "react";
 import ClassNames from "classnames";
-import Icon from "../icon/Icon";
+import Icon from "../elements/icon/Icon";
 import Button, { ButtonProps } from "../button/Button";
 
 export interface IDropdownMenuItemProps {

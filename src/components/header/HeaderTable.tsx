@@ -1,6 +1,6 @@
 import ClassNames from "classnames";
 import React, { CSSProperties } from "react";
-import Badge, { BadgeProps } from "../badge/Badge";
+import Badge, { BadgeProps } from "../elements/badge/Badge";
 import Button from "../button/Button";
 import InputTextSearch from "../input/InputTextSearch";
 

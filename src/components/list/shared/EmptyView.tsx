@@ -2,7 +2,7 @@
 /* eslint-disable react/static-property-placement */
 import PropTypes from "prop-types";
 import React, { Component } from "react";
-import Loading from "../../loading/Loading";
+import Loading from "../../elements/loading/Loading";
 import Mode from "./Mode";
 
 // create a component

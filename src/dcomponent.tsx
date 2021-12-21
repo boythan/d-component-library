@@ -17,8 +17,8 @@ export { default as InputColor } from "./components/input/InputColor";
 // Icon
 // ---------------------------------------- */
 
-export type { IconProps } from "./components/icon/Icon";
-export { default as Icon } from "./components/icon/Icon";
+export type { IconProps } from "./components/elements/icon/Icon";
+export { default as Icon } from "./components/elements/icon/Icon";
 
 /* ----------------------------------------
 // Select
@@ -137,8 +137,8 @@ export { default as AwesomeListComponent } from "./components/list/awesomeList/A
 // Loading
 // ---------------------------------------- */
 
-export type { LoadingProps } from "./components/loading/Loading";
-export { default as Loading } from "./components/loading/Loading";
+export type { LoadingProps } from "./components/elements/loading/Loading";
+export { default as Loading } from "./components/elements/loading/Loading";
 
 /* ----------------------------------------
 // Date Input
@@ -151,8 +151,8 @@ export { default as DateInput } from "./components/dateInput/DateInput";
 // Dot
 // ---------------------------------------- */
 
-export type { DotProps } from "./components/dot/Dot";
-export { default as Dot } from "./components/dot/Dot";
+export type { DotProps } from "./components/elements/dot/Dot";
+export { default as Dot } from "./components/elements/dot/Dot";
 
 /* ----------------------------------------
 // Table
@@ -201,8 +201,8 @@ export { default as ImageUtils, DOC, EXCEL, IMAGE, PDF } from "./utils/ImageUtil
 // Badge
 // ---------------------------------------- */
 
-export type { BadgeProps } from "./components/badge/Badge";
-export { default as Badge } from "./components/badge/Badge";
+export type { BadgeProps } from "./components/elements/badge/Badge";
+export { default as Badge } from "./components/elements/badge/Badge";
 
 /* ----------------------------------------
 // Dialog

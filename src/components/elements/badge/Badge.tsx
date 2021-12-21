@@ -3,7 +3,7 @@
 import ClassNames from "classnames";
 import _ from "lodash";
 import React, { CSSProperties } from "react";
-import { ButtonProps } from "../button/Button";
+import { ButtonProps } from "../../button/Button";
 import Dot, { DotProps } from "../dot/Dot";
 import { IconProps } from "../icon/Icon";
 

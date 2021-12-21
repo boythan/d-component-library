@@ -5,7 +5,7 @@
 import _ from "lodash";
 import React, { useMemo, useState } from "react";
 import { CheckboxGroupProps } from "../checkbox/CheckboxGroup";
-import Icon from "../icon/Icon";
+import Icon from "../elements/icon/Icon";
 import InputDrop, { InputDropProps } from "./InputDrop";
 
 const { filter, find, includes, isEmpty, map } = _;

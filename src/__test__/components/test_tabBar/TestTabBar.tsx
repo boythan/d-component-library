@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Badge from "../../../components/badge/Badge";
+import Badge from "../../../components/elements/badge/Badge";
 import TabBar, { TabBarProps, ITabItem } from "../../../components/tab/TabBar";
 import { ATTRIBUTE_INPUT_TYPE, SELECT_DATA } from "../../data/TestConstant";
 

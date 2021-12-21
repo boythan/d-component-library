@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import React from "react";
-import Icon from "../icon/Icon";
+import Icon from "../elements/icon/Icon";
 
 export interface BreadcrumbProps {
     breadcrumb: any;

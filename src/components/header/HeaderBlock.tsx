@@ -1,7 +1,7 @@
 import React, { CSSProperties } from "react";
 import ClassNames from "classnames";
 import Button, { ButtonProps } from "../button/Button";
-import Icon from "../icon/Icon";
+import Icon from "../elements/icon/Icon";
 
 export interface HeaderBlockProps {
     title?: string;

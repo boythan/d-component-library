@@ -3,10 +3,10 @@
 import ClassNames from "classnames";
 import React, { useEffect, useRef, useState } from "react";
 import Messages from "../../language/Messages";
-import Badge from "../badge/Badge";
+import Badge from "../elements/badge/Badge";
 import Button from "../button/Button";
 import { DropdownProps } from "../dropdown/Dropdown";
-import Icon from "../icon/Icon";
+import Icon from "../elements/icon/Icon";
 import InputText from "../input/InputText";
 import Popover from "../popover/Popover";
 import ViewTextError from "../view/ViewTextError";

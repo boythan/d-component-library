@@ -4,7 +4,7 @@ import { Select as SelectAnt } from "antd";
 import { SelectProps as SelectAntProps } from "antd/es/select";
 import ClassName from "classnames";
 import React, { useImperativeHandle, useMemo, useRef } from "react";
-import Icon from "../icon/Icon";
+import Icon from "../elements/icon/Icon";
 import ViewTextError from "../view/ViewTextError";
 
 export interface SelectProps extends SelectAntProps<any> {
