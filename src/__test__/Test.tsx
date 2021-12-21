@@ -32,6 +32,7 @@ import { ATTRIBUTE_INPUT_TYPE } from "./data/TestConstant";
 import TestModal from "./components/test_modal/TestModal";
 import API from "./network/API";
 import TestDrawer from "./components/test_drawer/TestDrawer";
+import TestRating from "./components/test_rating/TestRating";
 
 interface Props {
     content?: any;
@@ -152,6 +153,7 @@ export default function Test({ content }: Props): ReactElement {
         { id: "POPOVER", label: "POPOVER", component: <TestPopover /> },
         { id: "MODAL", label: "MODAL", component: <TestModal /> },
         { id: "DRAWER", label: "DRAWER", component: <TestDrawer /> },
+        { id: "RATING", label: "RATING", component: <TestRating /> },
     ];
     return (
         <AppStateContext.Provider value={{ mockData }}>

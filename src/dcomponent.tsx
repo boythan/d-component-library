@@ -275,9 +275,6 @@ export { default as InputDropSelect } from "./components/inputDrop/InputDropSele
 export type { PopoverProps } from "./components/popover/Popover";
 export { default as Popover } from "./components/popover/Popover";
 
-export type { PopoverListProps } from "./components/popover/PopoverList";
-export { default as PopoverList } from "./components/popover/PopoverList";
-
 /* ----------------------------------------
 // Breadcrumb
 // ---------------------------------------- */
@@ -295,3 +292,9 @@ export { default as ViewErrorBoundary } from "./components/view/ViewErrorBoundar
 // ---------------------------------------- */
 export type { IDrawerProps } from "./components/drawer/Drawer";
 export { default as Drawer } from "./components/drawer/Drawer";
+
+/* ----------------------------------------
+// Rating
+// ---------------------------------------- */
+export type { IRatingProps } from "./components/elements/rating/Rating";
+export { default as Rating } from "./components/elements/rating/Rating";
