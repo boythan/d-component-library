@@ -1,6 +1,6 @@
 {
   "name": "d-react-components",
-  "version": "0.2.61",
+  "version": "0.2.62",
   "main": "dist/dcomponent.cjs.js",
   "module": "dist/dcomponent.es.js",
   "typings": "dist/dcomponent.d.ts",
