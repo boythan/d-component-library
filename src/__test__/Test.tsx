@@ -33,6 +33,7 @@ import TestModal from "./components/test_modal/TestModal";
 import API from "./network/API";
 import TestDrawer from "./components/test_drawer/TestDrawer";
 import TestRating from "./components/test_rating/TestRating";
+import TestElement from "./components/test_elements/TestElement";
 
 interface Props {
     content?: any;
@@ -88,30 +89,6 @@ export default function Test({ content }: Props): ReactElement {
         loadFakeData();
     }, []);
 
-    const loading = (
-        <div className="my-4 d-flex align-items-center">
-            <Loading />
-            <Loading size="large" className="mx-5" />
-            <Loading size="small" />
-        </div>
-    );
-
-    const dot = (
-        <div className="my-4 d-flex align-items-center">
-            <Dot color="green" size="xxx-large">
-                123
-            </Dot>
-            <Dot size="xx-small" />
-            <Dot size="x-small" />
-            <Dot size="small">99+</Dot>
-            <Dot size="medium">99+</Dot>
-            <Dot size="large">99+</Dot>
-            <Dot size="x-large">99+</Dot>
-            <Dot size="xx-large">99+</Dot>
-            <Dot size="xxx-large">99+</Dot>
-        </div>
-    );
-
     const mainContent = () => {
         return (
             <React.Fragment>
@@ -124,8 +101,6 @@ export default function Test({ content }: Props): ReactElement {
                 <TestTabBar />
                 <TestView />
                 {/* {list} */}
-                {loading}
-                {dot}
                 <div className="p-3 border bg-primary-30">Border</div>
             </React.Fragment>
         );
@@ -140,8 +115,6 @@ export default function Test({ content }: Props): ReactElement {
         { id: "TAB BAR", label: "TAB BAR", component: <TestTabBar /> },
         { id: "VIEW", label: "VIEW", component: <TestView /> },
         { id: "LIST", label: "LIST", component: <TestList /> },
-        { id: "LOADING", label: "LOADING", component: loading },
-        { id: "DOT", label: "DOT", component: dot },
         { id: "DROPDOWN", label: "DROPDOWN", component: <TestDropdown /> },
         { id: "BADGE", label: "BADGE", component: <TestBadge /> },
         { id: "UTIL", label: "UTIL", component: <TestUtils /> },
@@ -153,7 +126,7 @@ export default function Test({ content }: Props): ReactElement {
         { id: "POPOVER", label: "POPOVER", component: <TestPopover /> },
         { id: "MODAL", label: "MODAL", component: <TestModal /> },
         { id: "DRAWER", label: "DRAWER", component: <TestDrawer /> },
-        { id: "RATING", label: "RATING", component: <TestRating /> },
+        { id: "ELEMENTS", label: "ELEMENTS", component: <TestElement /> },
     ];
     return (
         <AppStateContext.Provider value={{ mockData }}>
@@ -183,7 +156,7 @@ export default function Test({ content }: Props): ReactElement {
                 </div>
                 <div className="col-9 py-5 px-5 ml-4 card-container">
                     {selectedTab?.component ?? "N/A"}
-                    <Button content="Open Modal" variant="trans" onClick={() => setOpenModal(true)} />
+                    {/* <Button content="Open Modal" variant="trans" onClick={() => setOpenModal(true)} /> */}
                 </div>
                 <Modal
                     open={openModal}

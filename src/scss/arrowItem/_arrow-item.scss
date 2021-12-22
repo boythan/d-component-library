@@ -1,0 +1,41 @@
+@import "../variables";
+
+.d-arrow-item {
+    display: table-cell;
+    position: relative;
+    padding: 0px;
+    margin: 0px;
+    height: 40px;
+    text-align: center;
+    border: 1px solid #d68a3a;
+    .d-arrow-item__content {
+        position: relative;
+        line-height: 40px;
+        height: 100%;
+        width: 100%;
+    }
+    .d-arrow-item__content-middle::after,
+    .d-arrow-item__content-middle::before,
+    .d-arrow-item__content-first::after {
+        content: "";
+        display: inline-block;
+        border-width: 21px;
+        border-style: solid;
+        width: 0px;
+        height: 0px;
+        left: 100%;
+        top: -1px;
+        position: absolute;
+        z-index: 1;
+    }
+    .d-arrow-item__content-middle::after {
+        border-color: transparent transparent transparent #d68a3a;
+    }
+    .d-arrow-item__content-middle::before {
+        border-width: 19px;
+        display: block;
+        border-color: transparent transparent transparent #ffffff;
+        z-index: 2;
+        top: 1px;
+    }
+}
