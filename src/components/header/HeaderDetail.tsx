@@ -13,13 +13,13 @@ export interface IStatusItem {
     [key: string]: any;
 }
 
-interface IButtonItem {
+export interface IButtonItem {
     id: string;
-    label: string;
-    icon: string;
+    label?: string;
+    icon?: string;
     buttonProps?: ButtonProps;
     classNameButton?: string;
-    render?: (props: { className: string; icon: string; label: string; id: string }) => any;
+    render?: (props: { className: string; icon?: string; label?: string; id: string }) => any;
     onClick?: (props: IButtonItem) => any;
 }
 
