@@ -41,6 +41,7 @@ const TestHeader = () => {
             <HeaderBlock title="Block Title" className="my-3" customRight={customRight()} />
             <HeaderDetail
                 listStatus={DELIVERY_STATUS_LIST}
+                subTitle="Applied on 16/12/2002"
                 status="pending"
                 className="my-4"
                 title="Header Detail"

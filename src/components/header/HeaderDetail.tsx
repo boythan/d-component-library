@@ -23,6 +23,7 @@ interface IButtonItem {
 
 export interface HeaderDetailProps {
     title?: string;
+    subTitle?: string;
     listStatus?: Array<IStatusItem>;
     listButton?: Array<IButtonItem>;
     buttonProps?: ButtonProps;
@@ -32,11 +33,13 @@ export interface HeaderDetailProps {
     customRight?: () => React.ReactNode;
     onButtonClick?: (item: IButtonItem) => void;
     customCreated?: (props?: any) => any;
+    customButtons?: (props?: any) => any;
     customStatus?: (status?: any) => any;
     customUserView?: (props?: any) => any;
     viewStatusProps?: ViewLabelStatusProps;
     style?: CSSProperties;
     className?: string;
+    classNameSubTitle?: string;
     classNameButton?: string;
     classNameStatus?: string;
     avatarNameProps?: Partial<AvatarNameProps>;
@@ -47,7 +50,9 @@ const HeaderDetail: React.FC<HeaderDetailProps> = ({
     className,
     classNameButton,
     classNameStatus,
+    classNameSubTitle,
     title,
+    subTitle,
     status,
     listStatus = [],
     listButton = [
@@ -59,6 +64,7 @@ const HeaderDetail: React.FC<HeaderDetailProps> = ({
     user,
     customRight,
     customCreated,
+    customButtons,
     customStatus,
     customUserView,
     onButtonClick,
@@ -85,12 +91,19 @@ const HeaderDetail: React.FC<HeaderDetailProps> = ({
             );
         };
 
+        const renderSubTitle = () => {
+            return <div className={`text-small mt-3 ${classNameSubTitle}`}>{subTitle}</div>;
+        };
+
         const buttons = () => {
+            if (customButtons) {
+                return customButtons();
+            }
             return (
                 <div className="d-flex align-items-center mt-3">
                     {listButton.map((button, index) => {
                         const { render, icon, label, id, onClick } = button;
-                        const buttonClass = ClassNames("text-gray font-weight-normal", {
+                        const buttonClass = ClassNames("text-gray font-weight-normal py-0", {
                             "mx-4": index !== 0,
                             "pl-0": index === 0,
                             classNameButton,
@@ -120,6 +133,7 @@ const HeaderDetail: React.FC<HeaderDetailProps> = ({
         return (
             <div className="d-flex flex-column">
                 {titleStatus()}
+                {subTitle && renderSubTitle()}
                 {listButton.length > 0 && buttons()}
             </div>
         );
