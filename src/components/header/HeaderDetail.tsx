@@ -17,6 +17,8 @@ interface IButtonItem {
     id: string;
     label: string;
     icon: string;
+    buttonProps?: ButtonProps;
+    classNameButton?: string;
     render?: (props: { className: string; icon: string; label: string; id: string }) => any;
     onClick?: (props: IButtonItem) => any;
 }
@@ -26,7 +28,6 @@ export interface HeaderDetailProps {
     subTitle?: string;
     listStatus?: Array<IStatusItem>;
     listButton?: Array<IButtonItem>;
-    buttonProps?: ButtonProps;
     status?: string;
     created?: any;
     user?: IUserBasic;
@@ -40,7 +41,6 @@ export interface HeaderDetailProps {
     style?: CSSProperties;
     className?: string;
     classNameSubTitle?: string;
-    classNameButton?: string;
     classNameStatus?: string;
     avatarNameProps?: Partial<AvatarNameProps>;
 }
@@ -48,7 +48,6 @@ export interface HeaderDetailProps {
 const HeaderDetail: React.FC<HeaderDetailProps> = ({
     style,
     className,
-    classNameButton,
     classNameStatus,
     classNameSubTitle,
     title,
@@ -59,7 +58,6 @@ const HeaderDetail: React.FC<HeaderDetailProps> = ({
         { id: "print", icon: "print", label: "print" },
         { id: "cancel", icon: "cancel", label: "cancel" },
     ],
-    buttonProps,
     created,
     user,
     customRight,
@@ -102,7 +100,7 @@ const HeaderDetail: React.FC<HeaderDetailProps> = ({
             return (
                 <div className="d-flex align-items-center mt-3">
                     {listButton.map((button, index) => {
-                        const { render, icon, label, id, onClick } = button;
+                        const { render, icon, label, id, onClick, buttonProps, classNameButton } = button;
                         const buttonClass = ClassNames("text-gray font-weight-normal py-0", {
                             "mx-4": index !== 0,
                             "pl-0": index === 0,
