@@ -70,7 +70,7 @@ const HeaderDetail: React.FC<HeaderDetailProps> = ({
             return (
                 <div className="d-flex">
                     <h4>{title}</h4>
-                    {status &&
+                    {(status || customStatus) &&
                         (customStatus ? (
                             customStatus()
                         ) : (

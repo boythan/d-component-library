@@ -7,9 +7,10 @@ export interface IRatingProps {
     range?: number;
     className?: string;
     size?: IconProps["size"];
+    color?: IconProps["color"];
 }
 
-const Rating: React.FC<IRatingProps> = ({ value, range = 5, className, size = "medium" }) => {
+const Rating: React.FC<IRatingProps> = ({ value, range = 5, className, size = "medium", color = "#DE0D0C" }) => {
     const containerClass = ClassNames("d-rating__container d-flex", className);
     const rangeArr = Array.from({ length: range }, (x, i) => i + 1);
     const stars = rangeArr.map((rating) => {
@@ -19,7 +20,7 @@ const Rating: React.FC<IRatingProps> = ({ value, range = 5, className, size = "m
             "d-rating__star-active": isFilled,
         });
 
-        return <Icon name={iconName} key={rating} className={starClass} color="#DE0D0C" size={size} />;
+        return <Icon name={iconName} key={rating} className={starClass} color={color} size={size} />;
     });
 
     return <div className={containerClass}>{stars}</div>;
