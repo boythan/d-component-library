@@ -98,7 +98,7 @@ const HeaderDetail: React.FC<HeaderDetailProps> = ({
                 return customButtons();
             }
             return (
-                <div className="d-flex align-items-center mt-3">
+                <div className="d-flex align-items-center mt-3 ml-1">
                     {listButton.map((button, index) => {
                         const { render, icon, label, id, onClick, buttonProps, classNameButton } = button;
                         const buttonClass = ClassNames("text-primary font-weight-normal py-0", {
