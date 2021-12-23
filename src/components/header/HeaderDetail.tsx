@@ -102,8 +102,9 @@ const HeaderDetail: React.FC<HeaderDetailProps> = ({
                     {listButton.map((button, index) => {
                         const { render, icon, label, id, onClick, buttonProps, classNameButton } = button;
                         const buttonClass = ClassNames("text-primary font-weight-normal py-0", {
-                            "mx-4": index !== 0,
-                            "pl-0": index === 0,
+                            "mr-3": index === 0,
+                            "mx-3": index !== 0,
+                            "pl-0 pr-4": index === 0,
                             classNameButton,
                         });
                         if (render) {
