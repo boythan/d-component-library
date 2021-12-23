@@ -72,7 +72,7 @@ const HeaderDetail: React.FC<HeaderDetailProps> = ({
     const leftView = () => {
         const titleStatus = () => {
             return (
-                <div className="d-flex">
+                <div className="d-flex ml-3">
                     <h4>{title}</h4>
                     {(status || customStatus) &&
                         (customStatus ? (
@@ -90,7 +90,7 @@ const HeaderDetail: React.FC<HeaderDetailProps> = ({
         };
 
         const renderSubTitle = () => {
-            return <div className={`text-small mt-3 ${classNameSubTitle}`}>{subTitle}</div>;
+            return <div className={`text-small ml-3 mt-3 ${classNameSubTitle}`}>{subTitle}</div>;
         };
 
         const buttons = () => {
@@ -101,7 +101,7 @@ const HeaderDetail: React.FC<HeaderDetailProps> = ({
                 <div className="d-flex align-items-center mt-3">
                     {listButton.map((button, index) => {
                         const { render, icon, label, id, onClick, buttonProps, classNameButton } = button;
-                        const buttonClass = ClassNames("text-gray font-weight-normal py-0", {
+                        const buttonClass = ClassNames("text-primary font-weight-normal py-0", {
                             "mx-4": index !== 0,
                             "pl-0": index === 0,
                             classNameButton,
@@ -160,7 +160,7 @@ const HeaderDetail: React.FC<HeaderDetailProps> = ({
             return user && <AvatarName user={user} className="mb-1" {...avatarNameProps} />;
         };
         return (
-            <div className="d-flex flex-column align-items-end">
+            <div className="d-flex flex-column align-items-end mr-3">
                 {renderUser()}
                 {(created || customCreated) && createdView}
             </div>
