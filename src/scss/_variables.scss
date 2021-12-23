@@ -854,6 +854,9 @@
    // ----------------------------------------
 
    $arrow-item-height:                         40px                         !default;
+   $arrow-item-border-width:                   $arrow-item-height/2+1px     !default;
+   $arrow-item-border-secondary:               $arrow-item-height/2 - 1px   !default;
+   $arrow-item-border:                       $light-color                   !default;
    $arrow-item-background-color:             #6FCF97                      !default;
    $arrow-item-active-background-color:      #219653                      !default;
 

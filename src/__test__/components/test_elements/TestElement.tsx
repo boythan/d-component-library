@@ -41,7 +41,16 @@ const TestElement: React.FC<ITestElementProps> = ({ id }) => {
                 {Array.from({ length: 7 }).map((i, index) => {
                     const isLast = index === 6;
                     const isFirst = index === 0;
-                    return <ArrowItem isFirst={isFirst} isLast={isLast} />;
+                    // const color = index === 6 ? "#219653" : undefined;
+                    const isActive = index === 0 ? true : undefined;
+                    return (
+                        <ArrowItem
+                            isFirst={isFirst}
+                            isLast={isLast}
+                            label={index as any}
+                            isActive={isActive}
+                        />
+                    );
                 })}
             </div>
         );
