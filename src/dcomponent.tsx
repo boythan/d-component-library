@@ -298,3 +298,9 @@ export { default as Drawer } from "./components/drawer/Drawer";
 // ---------------------------------------- */
 export type { IRatingProps } from "./components/elements/rating/Rating";
 export { default as Rating } from "./components/elements/rating/Rating";
+
+/* ----------------------------------------
+// Arrow Item
+// ---------------------------------------- */
+export type { IArrowItemProps } from "./components/elements/arrowItem/ArrowItem";
+export { default as ArrowItem } from "./components/elements/arrowItem/ArrowItem";
