@@ -304,3 +304,6 @@ export { default as Rating } from "./components/elements/rating/Rating";
 // ---------------------------------------- */
 export type { IArrowItemProps } from "./components/elements/arrowItem/ArrowItem";
 export { default as ArrowItem } from "./components/elements/arrowItem/ArrowItem";
+
+export type { ITriangleProps } from "./components/elements/arrowItem/Triangle";
+export { default as Triangle } from "./components/elements/arrowItem/Triangle";
