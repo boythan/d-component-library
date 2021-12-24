@@ -10,7 +10,7 @@ const Languages = {
 };
 
 const currentLang: ILanguage["language"] =
-    (document && (document.documentElement.lang as ILanguage["language"])) ?? "en";
+    (typeof document !== "undefined" ? (document.documentElement.lang as ILanguage["language"]) : "en") ?? "en";
 const Messages = Languages[currentLang];
 
 export default Messages;
