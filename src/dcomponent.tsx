@@ -119,6 +119,9 @@ export type {
 } from "./components/view/ViewFileList";
 export { default as ViewFileList, RenderPreviewFile, FilePreview, ModalLightBox } from "./components/view/ViewFileList";
 
+export type { ICollapseProps, ICollapseRenderFn, ICollapseRenderFnData } from "./components/collapse/Collapse";
+export { default as Collapse } from "./components/collapse/Collapse";
+
 /* ----------------------------------------
 // TabBar
 // ---------------------------------------- */
