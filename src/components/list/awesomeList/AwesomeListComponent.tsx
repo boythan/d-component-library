@@ -1,15 +1,16 @@
+/* eslint-disable no-unused-expressions */
 /* eslint-disable max-len */
 /* eslint-disable react/static-property-placement */
 /* eslint-disable react/sort-comp */
-import React, { Component } from "react";
-import PropTypes from "prop-types";
 import _ from "lodash";
-
+import React, { Component, CSSProperties } from "react";
+import PropTypes from "prop-types";
+import Button, { ButtonProps } from "../../button/Button";
+import EmptyView from "../shared/EmptyView";
 // import AwesomeListMode from "./AwesomeListMode";
 import AwesomeListMode from "../shared/Mode";
 import InfiniteScroll from "./InfiniteScroll";
 import PagingView from "./PagingView";
-import EmptyView from "../shared/EmptyView";
 
 export interface IPaging {
     pageIndex: number;
@@ -30,26 +31,39 @@ export interface AwesomeListComponentProps {
     isReverse?: boolean;
     className?: string;
     classNameInfinityScroll?: string;
-    styleContainer?: any;
+    styleContainer?: CSSProperties;
 
     pagingProps?: IPaging;
     emptyView?: any;
+
+    variant?: "infinity-scroll" | "load-more";
+    loadMoreText?: string;
+    loadMoreButtonProps?: ButtonProps;
 }
 
-class AwesomeListComponent extends Component<AwesomeListComponentProps, any> {
-    static propTypes = {
-        source: PropTypes.func,
-        transformer: PropTypes.func,
-        renderItem: PropTypes.func,
+export interface AwesomeListComponentState {
+    data: Array<any>;
+    emptyMode: typeof AwesomeListMode;
+    loading: boolean;
+    hasMoreData: boolean;
+}
 
-        isPaging: PropTypes.bool,
-        isReverse: PropTypes.bool,
-        className: PropTypes.string,
-        classNameInfinityScroll: PropTypes.string,
+class AwesomeListComponent extends Component<AwesomeListComponentProps, AwesomeListComponentState> {
+    // static propTypes = {
+    //     source: PropTypes.func,
+    //     transformer: PropTypes.func,
+    //     renderItem: PropTypes.func,
 
-        pagingProps: PropTypes.any,
-        emptyView: PropTypes.any,
-    };
+    //     isPaging: PropTypes.bool,
+    //     isReverse: PropTypes.bool,
+    //     className: PropTypes.string,
+    //     classNameInfinityScroll: PropTypes.string,
+
+    //     pagingProps: PropTypes.any,
+    //     emptyView: PropTypes.any,
+    //     variant: PropTypes.string,
+    //     loadMoreText: PropTypes.string,
+    // };
 
     static defaultProps = {
         source: () => Promise.resolve([]),
@@ -64,6 +78,8 @@ class AwesomeListComponent extends Component<AwesomeListComponentProps, any> {
 
         pagingProps: null,
         emptyView: "No data",
+        variant: "infinity-scroll",
+        loadMoreText: "Load More",
     };
 
     pagingData: any;
@@ -81,12 +97,15 @@ class AwesomeListComponent extends Component<AwesomeListComponentProps, any> {
         this.unmounted = undefined;
     }
 
-    // componentDidMount() {
-    //     !this.state.loading &&
-    //         this.setState({ loading: true }, () => {
-    //             this.start();
-    //         });
-    // }
+    componentDidMount() {
+        const { loading } = this.state;
+        const { variant } = this.props;
+        !loading &&
+            variant === "load-more" &&
+            this.setState({ loading: true }, () => {
+                this.start();
+            });
+    }
 
     // eslint-disable-next-line react/no-deprecated
     componentWillMount() {
@@ -200,31 +219,69 @@ class AwesomeListComponent extends Component<AwesomeListComponentProps, any> {
         );
     };
 
+    renderInfinityVariant = () => {
+        const { data, hasMoreData, loading } = this.state;
+        const { renderItem, isReverse, classNameInfinityScroll } = this.props;
+        return (
+            <InfiniteScroll
+                threshold={1}
+                pageStart={0}
+                loadMore={() => {
+                    return (
+                        // eslint-disable-next-line operator-linebreak
+                        !loading &&
+                        this.setState({ loading: true }, () => {
+                            this.start();
+                        })
+                    );
+                }}
+                hasMore={hasMoreData}
+                isReverse={isReverse}
+                loader={<PagingView onClickRetry={this.pagingRetry} />}
+                useWindow={false}
+                className={classNameInfinityScroll}
+            >
+                {data.map((item: any, index: any) => renderItem(item, index))}
+            </InfiniteScroll>
+        );
+    };
+
+    renderLoadMoreVariant = () => {
+        const { data, hasMoreData, loading } = this.state;
+        const { renderItem, loadMoreText, loadMoreButtonProps } = this.props;
+        if (!(data?.length > 0)) {
+            return null;
+        }
+        return (
+            <div>
+                {data.map((item: any, index: any) => renderItem(item, index))}
+                {hasMoreData && (
+                    <div className="w-100">
+                        <Button
+                            content={loadMoreText}
+                            {...loadMoreButtonProps}
+                            onClick={() => {
+                                return (
+                                    // eslint-disable-next-line operator-linebreak
+                                    !loading &&
+                                    this.setState({ loading: true }, () => {
+                                        this.start();
+                                    })
+                                );
+                            }}
+                        />
+                    </div>
+                )}
+            </div>
+        );
+    };
+
     render() {
-        const { data, hasMoreData, loading, emptyMode } = this.state;
-        const { renderItem, styleContainer, isReverse, className, classNameInfinityScroll, emptyView } = this.props;
+        const { emptyMode } = this.state;
+        const { styleContainer, className, emptyView, variant } = this.props;
         return (
             <div className={`d-awesome-list ${className}`} style={{ ...styleContainer }}>
-                <InfiniteScroll
-                    threshold={1}
-                    pageStart={0}
-                    loadMore={() => {
-                        return (
-                            // eslint-disable-next-line operator-linebreak
-                            !loading &&
-                            this.setState({ loading: true }, () => {
-                                this.start();
-                            })
-                        );
-                    }}
-                    hasMore={hasMoreData}
-                    isReverse={isReverse}
-                    loader={<PagingView onClickRetry={this.pagingRetry} />}
-                    useWindow={false}
-                    className={classNameInfinityScroll}
-                >
-                    {data.map((item: any, index: any) => renderItem(item, index))}
-                </InfiniteScroll>
+                {variant === "infinity-scroll" ? this.renderInfinityVariant() : this.renderLoadMoreVariant()}
                 <EmptyView mode={emptyMode} emptyText={emptyView} />
             </div>
         );

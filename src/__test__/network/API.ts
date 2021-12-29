@@ -50,7 +50,7 @@ const API = {
     },
 
     productList: (body: any, paging: any) => {
-        return API.instance.get(API_PRODUCT, {
+        return API.instance.get(API_BRAND, {
             params: {
                 page: paging?.pageIndex ?? 1,
                 per_page: paging?.pageSize ?? 20,

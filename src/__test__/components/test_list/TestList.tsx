@@ -33,10 +33,17 @@ const TestList: React.FC<ITestListProps> = ({ id }) => {
                     return API.productList(body, paging);
                 }}
                 transformer={(res) => {
-                    return res?.data?.data?.products ?? [];
+                    return res?.data?.data?.brand ?? [];
                 }}
-                renderItem={(item, index) => <div className="my-5">{item?.id}</div>}
+                renderItem={(item, index) => (
+                    <div className="my-4 p-4 border bg-muted label">
+                        {item?.name}
+                        <div className="py-3 text-x-small">{item?.id}</div>
+                    </div>
+                )}
                 isPaging
+                pagingProps={{ pageIndex: 1, pageSize: 10 }}
+                variant="load-more"
             />
         </div>
     );

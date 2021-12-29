@@ -7,7 +7,9 @@ import Icon from "../elements/icon/Icon";
 import AwesomeListComponent, { AwesomeListComponentProps, IPaging } from "../list/awesomeList/AwesomeListComponent";
 import Select, { SelectProps } from "./Select";
 
-export interface SelectInfinityProps extends Omit<AwesomeListComponentProps, "source" | "renderItem">, SelectProps {
+export interface SelectInfinityProps
+    extends Omit<AwesomeListComponentProps, "source" | "renderItem" | "variant">,
+        SelectProps {
     source?: (params: any, paging: IPaging) => Promise<any>;
 }
 
