@@ -23,10 +23,11 @@ export interface ICollapseProps<T extends HTMLElement, P extends HTMLElement> {
     label?: string;
     children: any;
     customIcon?: ReactElement;
+    className?: string;
 }
 
 function Collapse<T extends HTMLElement, P extends HTMLElement>(props: ICollapseProps<T, P>) {
-    const { toggleClass = "d-collapse__opened", customRender, open, label, children, customIcon } = props;
+    const { toggleClass = "d-collapse__opened", customRender, open, label, children, customIcon, className } = props;
     const [init, setInit] = useState(false);
     const itemRef = useRef<T>(null);
     const contentRef = useRef<P>(null);
@@ -129,7 +130,11 @@ function Collapse<T extends HTMLElement, P extends HTMLElement>(props: ICollapse
         }
         return (
             <div className={toggleClass} ref={itemRef as any}>
-                <Button className="flex-center-y w-100 justify-content-between" variant="trans" onClick={handleToggle}>
+                <Button
+                    className="flex-center-y w-100 justify-content-between px-0"
+                    variant="trans"
+                    onClick={handleToggle}
+                >
                     <div>{label || "N/A"}</div>
                     {customIcon || <Icon name="expand_more" className="d-collapse__arrow" />}
                 </Button>
@@ -140,23 +145,19 @@ function Collapse<T extends HTMLElement, P extends HTMLElement>(props: ICollapse
         );
     };
 
-    if (render) {
-        return (
-            <Fragment>
-                {useMemo(
-                    () =>
-                        render({
-                            toggle: handleToggle,
-                            setItemRef: itemRef,
-                            setContentRef: contentRef,
-                        }),
-                    [render, handleToggle, itemRef, contentRef]
-                )}
-            </Fragment>
-        );
-    }
-
-    return null;
+    return (
+        <div className={className}>
+            {useMemo(
+                () =>
+                    render({
+                        toggle: handleToggle,
+                        setItemRef: itemRef,
+                        setContentRef: contentRef,
+                    }),
+                [render, handleToggle, itemRef, contentRef]
+            )}
+        </div>
+    );
 }
 
 export default Collapse;
