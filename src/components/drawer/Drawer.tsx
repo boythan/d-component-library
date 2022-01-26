@@ -3,7 +3,7 @@ import ClassNames from "classnames";
 import { Drawer as DrawerAnt, DrawerProps } from "antd";
 import Button from "../button/Button";
 
-export interface IDrawerProps extends DrawerProps {
+export interface IDrawerProps extends Omit<DrawerProps, "size"> {
     open: boolean;
     size?: "x-small" | "small" | "medium" | "large" | "x-large" | "auto";
 }
