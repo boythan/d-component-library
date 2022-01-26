@@ -35,8 +35,10 @@ const ViewLabelStatus = ({
     if (listStatus && listStatus?.length > 0 && status) {
         try {
             const foundStatus = listStatus?.find((item) => getValue(item) === status);
-            colorStatus = foundStatus?.color;
-            labelStatus = getLabel(foundStatus);
+            if (foundStatus) {
+                colorStatus = foundStatus?.color;
+                labelStatus = getLabel(foundStatus);
+            }
         } catch (error) {
             console.error({ error });
         }
