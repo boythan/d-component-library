@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Avatar from "../../../components/avatar/Avatar";
-import Badge from "../../../components/badge/Badge";
+import Badge from "../../../components/elements/badge/Badge";
 import Button from "../../../components/button/Button";
-import Icon from "../../../components/icon/Icon";
+import Icon from "../../../components/elements/icon/Icon";
 
 const TestBadge = () => {
     const [valueSelect, setValueSelect] = useState();

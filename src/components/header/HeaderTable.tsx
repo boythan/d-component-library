@@ -1,6 +1,6 @@
 import ClassNames from "classnames";
 import React, { CSSProperties } from "react";
-import Badge, { BadgeProps } from "../badge/Badge";
+import Badge, { BadgeProps } from "../elements/badge/Badge";
 import Button from "../button/Button";
 import InputTextSearch from "../input/InputTextSearch";
 
@@ -22,6 +22,7 @@ export interface HeaderTableProps {
 
     customView?: any;
     customButtons?: any;
+    customFilterButton?: (() => React.ReactElement) | React.ReactElement;
 
     isFiltered?: boolean;
     badgeColor?: BadgeProps["color"];
@@ -44,6 +45,7 @@ const HeaderTable = ({
 
     customView,
     customButtons,
+    customFilterButton,
 
     isFiltered = false,
     badgeColor = "secondary",
@@ -81,6 +83,8 @@ const HeaderTable = ({
                     onSubmit={onSubmitSearch}
                 />
                 {onClickFilter && button}
+                {customFilterButton &&
+                    (typeof customFilterButton === "function" ? customFilterButton() : customFilterButton)}
             </div>
         </div>
     );

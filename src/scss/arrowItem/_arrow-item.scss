@@ -1,0 +1,52 @@
+@import "../variables";
+
+.d-arrow-item {
+    display: table-cell;
+    position: relative;
+    padding: 0px;
+    margin: 0px;
+    height: $arrow-item-height;
+    text-align: center;
+    border: 1px solid $arrow-item-border;
+    .d-arrow-item__content {
+        position: relative;
+        line-height: $arrow-item-height;
+        height: 100%;
+        width: 100%;
+    }
+    .d-arrow-item__content-middle::after,
+    .d-arrow-item__content-middle::before,
+    .d-arrow-item__content-first::after {
+        content: "";
+        display: inline-block;
+        border-width: $arrow-item-border-width;
+        border-style: solid;
+        width: 0px;
+        height: 0px;
+        left: 100%;
+        top: -1px;
+        position: absolute;
+        z-index: 1;
+    }
+
+    .d-arrow-item__content-middle::after {
+        border-color: transparent transparent transparent white;
+    }
+
+    .d-arrow-item__content-middle::before {
+        border-width: $arrow-item-border-secondary;
+        display: block;
+        border-color: transparent transparent transparent #6fcf97;
+        z-index: 2;
+        top: 1px;
+    }
+
+    .d-arrow-item__content-active {
+        background-color: $arrow-item-active-background-color !important;
+    }
+
+    .d-arrow-item__content-active::before {
+        border-color: transparent transparent transparent
+            $arrow-item-active-background-color;
+    }
+}

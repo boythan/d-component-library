@@ -9,9 +9,8 @@ const Languages = {
     th,
 };
 
-const currentLang: ILanguage["language"] = (document.documentElement.lang as ILanguage["language"]) ?? "en";
+const currentLang: ILanguage["language"] =
+    (typeof document !== "undefined" ? (document.documentElement.lang as ILanguage["language"]) : "en") ?? "en";
 const Messages = Languages[currentLang];
-console.log({ Messages });
-console.log({ currentLang });
 
 export default Messages;

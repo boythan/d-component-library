@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import moment, { unitOfTime, MomentInput } from "moment";
+import moment, { unitOfTime, MomentInput, Moment } from "moment";
 
 export enum ITimeFormat {
     DATE_TIME_FORMAT = "DD/MM/YYYY HH:mm",
@@ -118,6 +118,12 @@ function getLastDayOf(date: any, timeUnit: unitOfTime.Base, format: ITimeFormat 
     return moment(date).endOf(timeUnit).format(format);
 }
 
+const checkTimeIsBetweenRangeDate = (date: any, start: Moment, end: Moment, unit: unitOfTime.Base = "d"): boolean => {
+    return (
+        moment(date).isBetween(start, end, unit) || moment(date).isSame(start, unit) || moment(date).isSame(end, unit)
+    );
+};
+
 export default {
     convertToDefaultInputFormat,
     convertMiliToDateWithFormat,
@@ -149,4 +155,6 @@ export default {
 
     getFirstDayOf,
     getLastDayOf,
+
+    checkTimeIsBetweenRangeDate,
 };

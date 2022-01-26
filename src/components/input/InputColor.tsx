@@ -7,7 +7,7 @@ import classname from "classnames";
 // application
 
 // data stubs
-import Icon from "../icon/Icon";
+import Icon from "../elements/icon/Icon";
 import ViewTextError from "../view/ViewTextError";
 
 export interface InputColorProps extends InputHTMLAttributes<any> {

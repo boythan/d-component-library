@@ -1,7 +1,7 @@
 /* eslint-disable react/button-has-type */
 import React from "react";
 import ClassNames from "classnames";
-import Icon from "../icon/Icon";
+import Icon from "../elements/icon/Icon";
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     content?: string;

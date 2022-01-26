@@ -1,5 +1,6 @@
 import ClassNames from "classnames";
 import React from "react";
+import Collapse from "../../../components/collapse/Collapse";
 import InputText from "../../../components/input/InputText";
 import ViewCollapse from "../../../components/view/ViewCollapse";
 import ViewFileList, { FilePreview } from "../../../components/view/ViewFileList";
@@ -118,6 +119,9 @@ const TestView: React.FC<TestRowInterChagneProps> = ({ id }) => {
                     })}
                 </div>
             </ViewCollapse>
+            <Collapse>
+                <ViewTimeline dataSource={ATTRIBUTE_INPUT_TYPE} getContent={(item) => item?.label} />
+            </Collapse>
         </div>
     );
 };

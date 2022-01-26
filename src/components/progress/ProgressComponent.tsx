@@ -4,7 +4,7 @@ import _ from "lodash";
 import React, { Component } from "react";
 import Messages from "../../language/Messages";
 import Button from "../button/Button";
-import Loading from "../loading/Loading";
+import Loading from "../elements/loading/Loading";
 
 export interface IProgressFunctionProps {
     method: (props?: any, paging?: any, index?: any) => Promise<any>;

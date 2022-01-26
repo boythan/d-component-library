@@ -840,7 +840,7 @@
 
 
    // ----------------------------------------
-   // -- .badge
+   // -- .dropdown
    // ----------------------------------------
 
    $dropdown-min-width:                150px                          !default;
@@ -848,6 +848,17 @@
    $dropdown-focus-outline:            $accent-color                  !default;
    $dropdown-main-view-bg:             $light-gray-color              !default;
    $dropdown-hover-color:              $light-gray-color              !default;
+
+   // ----------------------------------------
+   // -- .arrow-item
+   // ----------------------------------------
+
+   $arrow-item-height:                         50px                         !default;
+   $arrow-item-border-width:                   $arrow-item-height/2+1px     !default;
+   $arrow-item-border-secondary:               $arrow-item-height/2 - 1px   !default;
+   $arrow-item-border:                       $light-color                   !default;
+   $arrow-item-background-color:             #6FCF97                      !default;
+   $arrow-item-active-background-color:      #219653                      !default;
 
   // ----------------------------------------
    // -- .custom variable

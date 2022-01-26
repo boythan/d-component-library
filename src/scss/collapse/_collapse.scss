@@ -1,0 +1,34 @@
+/*
+// .filter
+*/
+@import "../variables";
+@import "../mixins/direction";
+
+$local-title-vertical-padding: 6px;
+$local-title-horizontal-padding: 10px;
+$local-transition-duration: 0.2s;
+
+.d-collapse__arrow {
+    transition: transform $local-transition-duration;
+}
+.d-collapse__body {
+    overflow: hidden;
+    visibility: hidden;
+    height: 0;
+    opacity: 0;
+    transition: height $local-transition-duration,
+        opacity $local-transition-duration,
+        visibility 0s $local-transition-duration;
+}
+
+.d-collapse__opened {
+    .d-collapse__body {
+        transition-delay: 0s, 0s;
+        visibility: visible;
+        height: auto;
+        opacity: 1;
+    }
+    .d-collapse__arrow {
+        transform: rotateZ(180deg);
+    }
+}

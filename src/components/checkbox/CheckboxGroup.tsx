@@ -5,7 +5,7 @@ import _ from "lodash";
 import React, { useState } from "react";
 import Messages from "../../language/Messages";
 import Button from "../button/Button";
-import Icon from "../icon/Icon";
+import Icon from "../elements/icon/Icon";
 import Checkbox from "./Checkbox";
 
 export interface CheckboxGroupProps {

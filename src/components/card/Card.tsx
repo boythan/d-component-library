@@ -1,7 +1,7 @@
 import React from "react";
 import ClassNames from "classnames";
 import Button, { ButtonProps } from "../button/Button";
-import Badge from "../badge/Badge";
+import Badge from "../elements/badge/Badge";
 
 export interface CardProps {
     children?: any;

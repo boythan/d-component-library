@@ -1,7 +1,7 @@
 import React from "react";
 import Avatar from "../../../components/avatar/Avatar";
 import AvatarName from "../../../components/avatar/AvatarName";
-import Icon from "../../../components/icon/Icon";
+import Icon from "../../../components/elements/icon/Icon";
 
 export interface TestAvatarIconProps {
     [key: string]: any;

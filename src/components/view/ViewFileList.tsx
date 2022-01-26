@@ -16,7 +16,7 @@ import Messages from "../../language/Messages";
 import { DOC, EXCEL, PDF, IMAGE } from "../../utils/ImageUtils";
 import StringUtils from "../../utils/StringUtils";
 import Button from "../button/Button";
-import Icon from "../icon/Icon";
+import Icon from "../elements/icon/Icon";
 import Notifications from "../notifications/Notifications";
 import { AvatarProps } from "../avatar/Avatar";
 // application

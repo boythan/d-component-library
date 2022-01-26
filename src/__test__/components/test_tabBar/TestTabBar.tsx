@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Badge from "../../../components/badge/Badge";
+import Badge from "../../../components/elements/badge/Badge";
 import TabBar, { TabBarProps, ITabItem } from "../../../components/tab/TabBar";
 import { ATTRIBUTE_INPUT_TYPE, SELECT_DATA } from "../../data/TestConstant";
 
@@ -21,28 +21,28 @@ const TestTabBar: React.FC<TestTabBarProps> = ({ id }) => {
                 dataSource={SELECT_DATA}
                 onChange={(tab) => setSelectedTab(tab)}
                 value={selectedTab}
-                // tabBarItemProps={(item, isActive) => {
-                //     if (isActive) {
-                //         return {
-                //             className: "border-primary bg-white w-100",
-                //             suffixElement: () => (
-                //                 <Badge variant="index" index="+99" size="xx-large" classNameBadge="ml-3" />
-                //             ),
-                //             style: { borderTop: "3px solid red" },
-                //         };
-                //     }
-                //     return {
-                //         className: "bg-muted w-100",
-                //     };
-                // }}
-                isScroll
+                getItemProps={({ item, isActive }) => {
+                    if (isActive) {
+                        return {
+                            className: "border-primary bg-white w-100",
+                            suffixElement: () => (
+                                <Badge variant="index" index="+99" size="xx-large" classNameBadge="ml-3" />
+                            ),
+                            style: { borderTop: "3px solid red" },
+                        };
+                    }
+                    return {
+                        className: "bg-muted w-100",
+                    };
+                }}
+                // isScroll
             />
-            {/* <TabBar
+            <TabBar
                 dataSource={ATTRIBUTE_INPUT_TYPE}
                 onChange={(tab) => setSelectedTab(tab)}
                 value={selectedTab}
                 variant="vertical"
-                tabBarItemProps={(item, isActive) => {
+                getItemProps={({ item, isActive }) => {
                     if (isActive) {
                         return {
                             className: "border-primary bg-white w-100 p-3",
@@ -56,7 +56,7 @@ const TestTabBar: React.FC<TestTabBarProps> = ({ id }) => {
                         // className: "bg-muted",
                     };
                 }}
-            /> */}
+            />
         </div>
     );
 };

@@ -17,8 +17,8 @@ export { default as InputColor } from "./components/input/InputColor";
 // Icon
 // ---------------------------------------- */
 
-export type { IconProps } from "./components/icon/Icon";
-export { default as Icon } from "./components/icon/Icon";
+export type { IconProps } from "./components/elements/icon/Icon";
+export { default as Icon } from "./components/elements/icon/Icon";
 
 /* ----------------------------------------
 // Select
@@ -119,6 +119,9 @@ export type {
 } from "./components/view/ViewFileList";
 export { default as ViewFileList, RenderPreviewFile, FilePreview, ModalLightBox } from "./components/view/ViewFileList";
 
+export type { ICollapseProps, ICollapseRenderFn, ICollapseRenderFnData } from "./components/collapse/Collapse";
+export { default as Collapse } from "./components/collapse/Collapse";
+
 /* ----------------------------------------
 // TabBar
 // ---------------------------------------- */
@@ -137,8 +140,8 @@ export { default as AwesomeListComponent } from "./components/list/awesomeList/A
 // Loading
 // ---------------------------------------- */
 
-export type { LoadingProps } from "./components/loading/Loading";
-export { default as Loading } from "./components/loading/Loading";
+export type { LoadingProps } from "./components/elements/loading/Loading";
+export { default as Loading } from "./components/elements/loading/Loading";
 
 /* ----------------------------------------
 // Date Input
@@ -151,8 +154,8 @@ export { default as DateInput } from "./components/dateInput/DateInput";
 // Dot
 // ---------------------------------------- */
 
-export type { DotProps } from "./components/dot/Dot";
-export { default as Dot } from "./components/dot/Dot";
+export type { DotProps } from "./components/elements/dot/Dot";
+export { default as Dot } from "./components/elements/dot/Dot";
 
 /* ----------------------------------------
 // Table
@@ -201,8 +204,8 @@ export { default as ImageUtils, DOC, EXCEL, IMAGE, PDF } from "./utils/ImageUtil
 // Badge
 // ---------------------------------------- */
 
-export type { BadgeProps } from "./components/badge/Badge";
-export { default as Badge } from "./components/badge/Badge";
+export type { BadgeProps } from "./components/elements/badge/Badge";
+export { default as Badge } from "./components/elements/badge/Badge";
 
 /* ----------------------------------------
 // Dialog
@@ -240,6 +243,7 @@ export { default as useForceUpdate } from "./hooks/useForceUpdate";
 export { useForceUpdateConstraint } from "./hooks/useForceUpdate";
 export { default as usePrevious } from "./hooks/usePrevious";
 export { default as useDidUpdate } from "./hooks/useDidUpdate";
+export { default as useDeepEffect, useDeepCompareMemoize } from "./hooks/useDeepEffect";
 
 /* ----------------------------------------
 // Form
@@ -274,9 +278,6 @@ export { default as InputDropSelect } from "./components/inputDrop/InputDropSele
 export type { PopoverProps } from "./components/popover/Popover";
 export { default as Popover } from "./components/popover/Popover";
 
-export type { PopoverListProps } from "./components/popover/PopoverList";
-export { default as PopoverList } from "./components/popover/PopoverList";
-
 /* ----------------------------------------
 // Breadcrumb
 // ---------------------------------------- */
@@ -294,3 +295,18 @@ export { default as ViewErrorBoundary } from "./components/view/ViewErrorBoundar
 // ---------------------------------------- */
 export type { IDrawerProps } from "./components/drawer/Drawer";
 export { default as Drawer } from "./components/drawer/Drawer";
+
+/* ----------------------------------------
+// Rating
+// ---------------------------------------- */
+export type { IRatingProps } from "./components/elements/rating/Rating";
+export { default as Rating } from "./components/elements/rating/Rating";
+
+/* ----------------------------------------
+// Arrow Item
+// ---------------------------------------- */
+export type { IArrowItemProps } from "./components/elements/arrowItem/ArrowItem";
+export { default as ArrowItem } from "./components/elements/arrowItem/ArrowItem";
+
+export type { ITriangleProps } from "./components/elements/arrowItem/Triangle";
+export { default as Triangle } from "./components/elements/arrowItem/Triangle";

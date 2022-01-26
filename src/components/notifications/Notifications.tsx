@@ -3,7 +3,7 @@
 import { notification } from "antd";
 import React from "react";
 import Messages from "../../language/Messages";
-import Icon from "../icon/Icon";
+import Icon from "../elements/icon/Icon";
 
 const getContentNotification = (content: string) => {
     return <div className="d-notifications__content" dangerouslySetInnerHTML={{ __html: content }} />;

@@ -29,6 +29,7 @@ export interface IFormItemDataRender<T> {
     className?: string;
     key?: keyof T;
     error?: any;
+    formValues?: any;
 }
 
 export interface IFormItemData<T> {
@@ -350,6 +351,7 @@ const Form: React.FC<IFormProps> = ({
                                     className: itemClass,
                                     key,
                                     error: errorLabel,
+                                    formValues: formValue,
                                 });
                             }
 
