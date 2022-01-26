@@ -5,7 +5,7 @@ import Button from "../button/Button";
 
 export interface IDrawerProps extends DrawerProps {
     open: boolean;
-    size?: "x-small" | "small" | "medium" | "large" | "x-large";
+    size?: "x-small" | "small" | "medium" | "large" | "x-large" | "auto";
 }
 
 const Drawer: React.FC<IDrawerProps> = ({ children, open, onClose, size = "medium", closable = false, ...rest }) => {
