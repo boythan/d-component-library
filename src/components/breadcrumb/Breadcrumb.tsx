@@ -2,8 +2,13 @@ import classNames from "classnames";
 import React from "react";
 import Icon from "../elements/icon/Icon";
 
+export interface IBreadcrumb {
+    title: string;
+    url: string;
+}
+
 export interface BreadcrumbProps {
-    breadcrumb: any;
+    breadcrumb: IBreadcrumb[];
     classNameText?: string;
     className?: string;
 }
