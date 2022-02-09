@@ -119,7 +119,7 @@ class AwesomeListComponent extends Component<AwesomeListComponentProps, AwesomeL
     // eslint-disable-next-line react/sort-comp
     isNoMoreData(newData: any) {
         const { isPaging } = this.props;
-        if (!newData || !Array.isArray(newData) || !isPaging) return true;
+        if (!newData || !Array.isArray(newData) || newData?.length === 0 || !isPaging) return true;
         return this.pagingData ? newData.length < this.pagingData.pageSize : false;
     }
 
@@ -152,7 +152,6 @@ class AwesomeListComponent extends Component<AwesomeListComponentProps, AwesomeL
 
                 if (_.isEmpty(data) && data.length === 0) {
                     this.setState({
-                        data: [],
                         emptyMode: AwesomeListMode.EMPTY,
                         hasMoreData,
                         loading: false,
