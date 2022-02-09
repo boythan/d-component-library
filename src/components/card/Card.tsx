@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import ClassNames from "classnames";
 import Button, { ButtonProps } from "../button/Button";
 import Badge from "../elements/badge/Badge";
@@ -13,9 +13,9 @@ export interface CardProps {
     classNameButton?: string;
     classNameIndex?: string;
     classNameHeader?: string;
-    customHeader?: React.ComponentType | React.ReactNode;
-    customLeft?: React.ComponentType | React.ReactNode;
-    customRight?: React.ComponentType | React.ReactNode;
+    customHeader?: (() => ReactElement | Element) | ReactElement | Element;
+    customLeft?: (() => ReactElement | Element) | ReactElement | Element;
+    customRight?: (() => ReactElement | Element) | ReactElement | Element;
     onClick?: () => void;
     buttonProps?: ButtonProps;
 }
@@ -43,10 +43,16 @@ const Card: React.FC<CardProps> = ({
     const buttonClass = ClassNames("text-secondary p-0", classNameButton);
 
     const header = () => {
+        if (customHeader && typeof customHeader === "function") {
+            return customHeader();
+        }
         if (customHeader) {
             return customHeader;
         }
         const leftSide = () => {
+            if (customLeft && typeof customLeft === "function") {
+                return customLeft();
+            }
             if (customLeft) {
                 return customLeft;
             }
@@ -61,6 +67,9 @@ const Card: React.FC<CardProps> = ({
             );
         };
         const rightSide = () => {
+            if (customRight && typeof customRight === "function") {
+                return customRight();
+            }
             if (customRight) {
                 return customRight;
             }

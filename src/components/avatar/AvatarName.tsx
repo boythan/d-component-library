@@ -1,13 +1,14 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable no-nested-ternary */
-import React, { ReactElement } from "react";
 import ClassNames from "classnames";
+import React, { DOMAttributes, ReactElement } from "react";
 import Avatar, { AvatarProps } from "./Avatar";
 
 export interface IUserBasic {
     fullName?: string;
     avatar?: string | null;
     name?: string;
-    [key: string]: any;
 }
 
 export interface AvatarNameProps {
@@ -20,6 +21,7 @@ export interface AvatarNameProps {
     classNameText?: string;
     classNameSub?: string;
     customName?: ((props: { className: string; name: string }) => any) | Element | ReactElement;
+    onClick?: DOMAttributes<any>["onClick"];
 }
 
 const AvatarName: React.FC<AvatarNameProps> = ({
@@ -32,6 +34,7 @@ const AvatarName: React.FC<AvatarNameProps> = ({
     classNameSub,
     classNameTextWrap,
     customName,
+    onClick,
 }) => {
     const { avatar, fullName, name = "" } = user;
     let displayName = name;
@@ -102,7 +105,7 @@ const AvatarName: React.FC<AvatarNameProps> = ({
         );
     };
     return (
-        <div className={wrapperClass}>
+        <div className={wrapperClass} onClick={onClick}>
             {position === "before" && renderText()}
             {avatar && <Avatar src={avatar} size={size} />}
             {!avatar && <Avatar text={displayName.charAt(0)} size={size} />}
