@@ -15,16 +15,25 @@ export interface IDropdownMenuItemProps {
     title?: string;
     selected?: boolean;
     subMenu?: Array<IDropdownMenuItemProps>;
-    [key: string]: any;
+}
+
+export interface IMenuItemProps {
+    item: IDropdownMenuItemProps;
+    Messages?: any;
+    onClick?: (item: IDropdownMenuItemProps) => void;
+    isMainView?: boolean;
+    className?: string;
+    style?: CSSProperties;
 }
 
 export interface DropDownMenuProps {
-    [key: string]: any;
     dataSource: IDropdownMenuItemProps[];
     onClick?: (item: IDropdownMenuItemProps) => void;
     Messages?: any;
     className?: string;
     position?: "left-edge" | "right-edge";
+    classNameMenuItem?: string;
+    styleMenuItem?: CSSProperties;
 }
 
 export interface DropdownProps extends DropDownMenuProps {
@@ -38,22 +47,16 @@ export interface DropdownProps extends DropDownMenuProps {
     style?: CSSProperties;
 }
 
-const MenuItem = ({
-    item,
-    Messages,
-    onClick,
-    isMainView,
-}: {
-    item: IDropdownMenuItemProps;
-    Messages?: any;
-    onClick?: (item: IDropdownMenuItemProps) => void;
-    isMainView?: boolean;
-}) => {
+const MenuItem: React.FC<IMenuItemProps> = ({ item, Messages, onClick, isMainView, className, style }) => {
     const { id, iconName, subMenu, label, image } = item;
-    const itemClass = ClassNames("d-dropdown-menu__item ", {
-        "d-dropdown-menu__item-with-submenu": subMenu && subMenu?.length > 0,
-        "d-dropdown-menu__item-main-view": isMainView,
-    });
+    const itemClass = ClassNames(
+        "d-dropdown-menu__item ",
+        {
+            "d-dropdown-menu__item-with-submenu": subMenu && subMenu?.length > 0,
+            "d-dropdown-menu__item-main-view": isMainView,
+        },
+        className
+    );
     let iconImageView;
     const labelView = (
         <div className="w-100 text d-dropdown-menu__item-label">{Messages ? Messages[label] : label}</div>
@@ -72,7 +75,7 @@ const MenuItem = ({
         arrowView = <Icon name="expand_more" className="d-block ml-2" />;
     }
     return (
-        <div className={itemClass} onClick={() => onClick && onClick(item)} key={`${id}`}>
+        <div className={itemClass} onClick={() => onClick && onClick(item)} key={`${id}`} style={style}>
             {iconImageView}
             {labelView}
             {arrowView}
@@ -89,10 +92,20 @@ export const DropdownMenu: React.FC<DropDownMenuProps> = ({
     Messages,
     className,
     position,
+    classNameMenuItem,
+    styleMenuItem,
 }) => {
     const wrapperClass = ClassNames(`d-dropdown-menu__container d-dropdown-menu__container-${position}`, className);
     const list = dataSource.map((item, index) => {
-        return <MenuItem item={item} onClick={onClick} Messages={Messages} />;
+        return (
+            <MenuItem
+                item={item}
+                onClick={onClick}
+                Messages={Messages}
+                className={classNameMenuItem}
+                style={styleMenuItem}
+            />
+        );
     });
 
     return <div className={wrapperClass}>{list}</div>;
@@ -110,6 +123,7 @@ const Dropdown: React.FC<DropdownProps> = ({
     position = "right-edge",
     style,
     children,
+    ...rest
 }) => {
     const [openDropdown, setOpenDropdown] = useState(false);
     const containerClass = ClassNames("flex-center-y justify-content-center", className);
@@ -155,6 +169,7 @@ const Dropdown: React.FC<DropdownProps> = ({
                         onClick={handleOnClickItem}
                         Messages={Messages}
                         position={position}
+                        {...rest}
                     />
                 )}
             </div>

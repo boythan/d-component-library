@@ -41,6 +41,7 @@ const TestDropdown: React.FC<TestDropdownProps> = ({ id }) => {
                         variant: "trans",
                         content: "Select Layout",
                     }}
+                    classNameMenuItem="text-nowrap"
                 />
             </ViewRow>
             <ViewRow label="Drop Down With Children View" className="my-4 border-bottom p-3">

@@ -43,7 +43,7 @@ const TestList: React.FC<ITestListProps> = ({ id }) => {
                 )}
                 isPaging
                 pagingProps={{ pageIndex: 1, pageSize: 10 }}
-                variant="load-more"
+                // variant="load-more"
             />
         </div>
     );

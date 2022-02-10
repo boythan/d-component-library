@@ -5,7 +5,7 @@ import Messages from "../../language/Messages";
 export const ATTRIBUTE_INPUT_TYPE = [
     {
         id: "dropdown",
-        label: "dropdown",
+        label: "dropdowndropdowndropdowndropdown",
         iconName: "person",
         subObject: {
             name: "Test",

@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import React, { CSSProperties, ReactElement } from "react";
 import ClassNames from "classnames";
 import Button, { ButtonProps } from "../button/Button";
 import Badge from "../elements/badge/Badge";
@@ -18,6 +18,7 @@ export interface CardProps {
     customRight?: (() => ReactElement | Element) | ReactElement | Element;
     onClick?: () => void;
     buttonProps?: ButtonProps;
+    style?: CSSProperties;
 }
 
 const Card: React.FC<CardProps> = ({
@@ -35,6 +36,7 @@ const Card: React.FC<CardProps> = ({
     customLeft,
     customRight,
     buttonProps,
+    style,
 }) => {
     const wrapClass = ClassNames("card-container p-4", className);
     const headerClass = ClassNames("d-flex w-100 justify-content-between mb-3", classNameHeader);
@@ -95,7 +97,7 @@ const Card: React.FC<CardProps> = ({
         );
     };
     return (
-        <div className={wrapClass}>
+        <div className={wrapClass} style={style}>
             {header()}
             {children}
         </div>
