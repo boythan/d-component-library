@@ -99,7 +99,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
                 {dataSourceDisplay.map((item) => {
                     const iLabel = getLabel(item);
                     const iValue: any = getValue(item);
-                    const isChecked = value.includes(iValue);
+                    const isChecked = _.includes(value, iValue);
                     const isDisabled = ((getDisabledItem && getDisabledItem(item)) as any) || false;
                     const itemClass = ClassNames(
                         "my-3 p-0",

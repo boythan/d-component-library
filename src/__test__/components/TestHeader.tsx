@@ -33,7 +33,7 @@ const TestHeader = () => {
                 classNameTop="my-0"
             />
 
-            <Breadcrumb breadcrumb={breadcrumb} className="py-3" />
+            <Breadcrumb breadcrumb={breadcrumb as any} className="py-3" />
 
             <Header title="Header example" breadcrumb={breadcrumb} />
             <HeaderBlock title="Block Title" showArrow />
