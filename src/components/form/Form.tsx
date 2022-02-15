@@ -18,6 +18,7 @@ export type IFormItemType =
     | "date"
     | "time"
     | "date-time"
+    | "time-range"
     | "date-range"
     | "textarea"
     | "radio";
@@ -99,10 +100,29 @@ export const getDefaultValue = (type?: IFormItemType) => {
 export function FormItem({ onChange, data, value = {}, Messages, className, error }: IFormItemProps) {
     const { key, type, label, dataSource = [], getLabel, getValue, rows, inputType } = data;
     const itemLabel = Messages?.[label as any] || label;
-    if (type === "date-range") {
+    if (type === "date-range" || type === "time-range") {
         let transValue: any = null;
         if (Array.isArray(value)) {
             transValue = value.map((item) => moment(item));
+        }
+        if (type === "time-range") {
+            return (
+                <DateInput
+                    value={transValue}
+                    onChange={(value) => {
+                        let clone = null;
+                        if (Array.isArray(value)) {
+                            clone = value.map((item) => moment(item).valueOf());
+                        }
+                        onChange(key, clone);
+                    }}
+                    label={Messages[label as any] || label}
+                    className={className}
+                    isRangePicker
+                    type="time"
+                    error={error}
+                />
+            );
         }
         return (
             <DateInput

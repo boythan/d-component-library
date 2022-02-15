@@ -46,7 +46,7 @@ const FORM_DATA: IFormItemData<IEmployeePrivacyInfo>[] = [
     {
         rowsId: "passportId&passportExp",
         label: "passportExp",
-        type: "date-time",
+        type: "time-range",
         key: "passportExp",
     },
     {
