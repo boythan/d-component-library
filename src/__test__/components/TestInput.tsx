@@ -15,6 +15,11 @@ const TestInput = () => {
     const [valueTextInput, setValueTextInput] = useState([]);
     const [valueSelectInfinity, setValueSelectInfinity] = useState<any>();
     const [selectCheckboxValue, setSelectCheckboxValue] = useState<any>([]);
+    const [rangeDate, setRangeDate] = useState<any>();
+    const [rangeTime, setRangeTime] = useState<any>();
+
+    console.log({ rangeDate });
+    console.log({ rangeTime });
 
     useEffect(() => {
         const query = UrlUtils.getQuery();
@@ -66,8 +71,19 @@ const TestInput = () => {
                     variant="outline"
                     className="mt-3 w-100"
                     label="Range Date"
-                    onChange={(value) => console.log({ value })}
+                    onChange={(value) => setRangeDate(value)}
+                    value={rangeDate}
+                    type="date"
+                    isRangePicker
+                />
+                <DateInput
+                    variant="outline"
+                    className="mt-3 w-100"
+                    label="Range Time Picker"
+                    onChange={(value) => setRangeTime(value)}
                     type="time"
+                    isRangePicker
+                    value={rangeTime}
                 />
             </ViewCollapse>
 

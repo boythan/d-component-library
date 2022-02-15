@@ -1,5 +1,5 @@
 // react
-import { DatePicker, DatePickerProps } from "antd";
+import { DatePicker, DatePickerProps, TimePicker as TimePickerAntd } from "antd";
 // third-party
 import ClassNames from "classnames";
 import React from "react";
@@ -111,6 +111,20 @@ const DateInput: React.FC<DateInputProp> = ({
                 showTime={showTime as any}
             />
         );
+        if (type === "time") {
+            content = (
+                <TimePickerAntd.RangePicker
+                    value={value as any}
+                    onChange={onChange as any}
+                    onBlur={onBlur}
+                    className={datePickerClass}
+                    disabled={disabled}
+                    defaultValue={defaultValue as any}
+                    placeholder={placeholder as any}
+                    format="HH:mm"
+                />
+            );
+        }
     }
 
     return (

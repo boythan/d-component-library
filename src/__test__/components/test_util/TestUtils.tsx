@@ -24,8 +24,8 @@ const TestUtils: React.FC<TestUtilsProps> = ({ id }) => {
     const allParent = TreeDataUtils.getAllParentNode(testNode, TREE_DATA, "parentId");
 
     const { hours, days, minutes, seconds } = TimeUtils.calculatePreciseDifferentTime({
-        from: "12/02/2022 10:25",
-        to: "12/05/2022 9:25",
+        from: "12/05/2022 10:25",
+        to: "12/05/2022 12:25",
     });
 
     // console.log({ allParent });
