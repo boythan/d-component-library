@@ -11,6 +11,7 @@ export interface HeaderTableProps {
     label?: string;
     onChangeText: any;
     onSubmitSearch?: any;
+    searchValue?: string;
 
     placeholder?: string;
     disabledSearch?: boolean;
@@ -37,6 +38,7 @@ const HeaderTable = ({
     onChangeText,
     disabledSearch = false,
     onSubmitSearch,
+    searchValue,
 
     onClickNew,
     onClickExport,
@@ -81,6 +83,7 @@ const HeaderTable = ({
                     onChange={onChangeText}
                     disabled={disabledSearch}
                     onSubmit={onSubmitSearch}
+                    {...(searchValue ? { value: searchValue } : {})}
                 />
                 {onClickFilter && button}
                 {customFilterButton &&
