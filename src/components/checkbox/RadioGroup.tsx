@@ -2,12 +2,14 @@
 /* eslint-disable no-unused-expressions */
 import classNames from "classnames";
 import React, { CSSProperties } from "react";
+import ViewTextError from "../view/ViewTextError";
 import Checkbox from "./Checkbox";
 
 export interface RadioGroupProps {
     dataSource: Array<any>;
     label?: any;
     className?: string;
+    classNameContent?: string;
     classNameItem?: string;
     style?: CSSProperties;
     getLabel?: (item: any) => any;
@@ -19,11 +21,14 @@ export interface RadioGroupProps {
     numberOfColumns?: "1" | "2" | "3" | "4" | "5" | "6";
     disabled?: boolean;
     hidden?: boolean;
+    required?: boolean;
+    error?: any;
 }
 
 const RadioGroup: React.FC<RadioGroupProps> = ({
     dataSource,
     className,
+    classNameContent,
     classNameItem,
     style,
     getLabel = (item: any) => item?.label,
@@ -35,12 +40,15 @@ const RadioGroup: React.FC<RadioGroupProps> = ({
     label,
     disabled,
     hidden,
+    required,
+    error,
 }) => {
     const containerClass = classNames(className);
-    const groupContainerClass = classNames("d-flex flex-wrap", className);
+    const groupContainerClass = classNames("d-flex flex-wrap", classNameContent);
+    const labelClass = classNames("text-label", { "text-label-required": required });
     return (
         <div className={containerClass} style={style} hidden={hidden}>
-            {label && <label>{label}</label>}
+            {label && <label className={labelClass}>{label}</label>}
             <div className={groupContainerClass}>
                 {dataSource.map((item) => {
                     const iLabel = getLabel(item);
@@ -83,6 +91,7 @@ const RadioGroup: React.FC<RadioGroupProps> = ({
                     );
                 })}
             </div>
+            <ViewTextError error={error} />
         </div>
     );
 };
