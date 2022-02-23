@@ -62,6 +62,8 @@ const DateInput: React.FC<DateInputProp> = ({
         "d-date-input__input",
         {
             "d-date-input__no-out-line": variant === "standard",
+            "d-date-input__disabled": disabled,
+            "d-date-input__error": !!error,
         },
         classNameInput
     );

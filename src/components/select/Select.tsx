@@ -9,6 +9,8 @@ import ViewTextError from "../view/ViewTextError";
 
 export interface SelectProps extends SelectAntProps<any> {
     classNameSelect?: string;
+    classNameOption?: string;
+
     label?: string;
     dataSource?: Array<any>;
     error?: any;
@@ -18,6 +20,7 @@ export interface SelectProps extends SelectAntProps<any> {
     getLabel?: (item: any) => any;
     getKey?: (item: any) => any;
     getValue?: (item: any) => any;
+    getDisableOption?: (item: any) => any;
 
     hasFilter?: boolean;
     multiple?: boolean;
@@ -34,6 +37,7 @@ const Select: React.ForwardRefRenderFunction<SelectMethod, SelectProps> = (
     {
         className,
         classNameSelect,
+        classNameOption,
 
         value = [],
         label,
@@ -48,6 +52,7 @@ const Select: React.ForwardRefRenderFunction<SelectMethod, SelectProps> = (
         getLabel = (item: any) => item.label,
         getKey = (item: any) => item.id,
         getValue = (item: any) => item?.id ?? null,
+        getDisableOption = (item: any) => false,
 
         allowClear = true,
         variant = "outline",
@@ -63,8 +68,9 @@ const Select: React.ForwardRefRenderFunction<SelectMethod, SelectProps> = (
             dataSource.map((dataItem: any) => {
                 const label = getLabel(dataItem);
                 const key = getKey(dataItem);
+                const disabled = getDisableOption(dataItem);
                 return (
-                    <Option key={key} value={getValue(dataItem)}>
+                    <Option key={key} value={getValue(dataItem)} disabled={disabled} className={classNameOption}>
                         {label}
                     </Option>
                 );
