@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import _ from "lodash";
-import React, { ElementRef, useImperativeHandle, useRef, useState } from "react";
+import React, { CSSProperties, ElementRef, useImperativeHandle, useRef, useState } from "react";
 import Icon from "../elements/icon/Icon";
 import AwesomeListComponent, { AwesomeListComponentProps, IPaging } from "../list/awesomeList/AwesomeListComponent";
 import Select, { SelectProps } from "./Select";
@@ -11,6 +11,8 @@ export interface SelectInfinityProps
     extends Omit<AwesomeListComponentProps, "source" | "renderItem" | "variant">,
         SelectProps {
     source?: (params: any, paging: IPaging) => Promise<any>;
+    classNameTagItem?: string;
+    styleTagItem?: CSSProperties;
 }
 
 export interface SelectInfinityMethod {
@@ -30,6 +32,8 @@ const SelectInfinity: React.ForwardRefRenderFunction<SelectInfinityMethod, Selec
         value = [],
         onChange,
         className,
+        classNameTagItem,
+        styleTagItem = {},
         mode,
         ...props
     },
@@ -117,15 +121,15 @@ const SelectInfinity: React.ForwardRefRenderFunction<SelectInfinityMethod, Selec
         const tagValue = getValue(tagItem);
         let foundItem = null;
         if (tagValue) {
-            foundItem = value?.find((i: any) => i?.id === tagValue);
+            foundItem = value?.find((i: any) => getValue(i) === tagValue);
         }
         if (!foundItem) {
             return <div />;
         }
         return (
             <div
-                className="py-1 text-white text-x-small px-2 bg-secondary flex-center-y mx-1"
-                style={{ width: "110px" }}
+                className={`py-1 text-white text-x-small px-2 bg-secondary flex-center-y mx-1 my-1 ${classNameTagItem}`}
+                style={{ width: "120px", ...styleTagItem }}
             >
                 <div className="text-nowrap w-100">{getLabel(foundItem)}</div>
                 <Icon name="close" size="x-small" className="hover-pointer" onClick={() => onRemoveItem(tagValue)} />
