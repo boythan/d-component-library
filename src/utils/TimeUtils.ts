@@ -34,6 +34,7 @@ const convertMinutesToMili = (minutes: any) => {
     // eslint-disable-next-line consistent-return
     return minutes * 60 * 1000;
 };
+
 const convertMiliToDateTime = (timeInMillis: any, lang: string = "en") => {
     const date = new Date(timeInMillis);
     if (lang === "th") {
@@ -151,6 +152,41 @@ function calculatePreciseDifferentTime({ from, to }: { from: string | Moment; to
     return { days, hours, minutes, seconds };
 }
 
+/** ****
+ * VERSION 2.0 for shorter name
+ */
+
+const toDateTime = (timeInMillis: any, lang: string = "en") => {
+    const date = new Date(timeInMillis);
+    if (lang === "th") {
+        return date ? moment(date).add("years", 543).format(DATE_TIME_FORMAT) : "";
+    }
+    return date ? moment(date).format(DATE_TIME_FORMAT) : "";
+};
+
+const toMillisecond = (dateTime: any) => {
+    const date = new Date(dateTime);
+    return date.getTime();
+};
+
+const toDate = (timeInMillis: any, lang: string = "en") => {
+    const date = new Date(timeInMillis);
+    if (lang === "th") {
+        return date ? moment(date).add("years", 543).format(DATE_FORMAT) : "";
+    }
+    return date ? moment(date).format(DATE_FORMAT) : "";
+};
+
+const toTime = (timeInMillis: any) => {
+    const date = new Date(timeInMillis);
+    return date ? moment(date).format(TIME_FORMAT) : "";
+};
+
+const format = (timeInMillis: any, FORMAT: string) => {
+    const date = new Date(timeInMillis);
+    return date ? moment(date).format(FORMAT) : "";
+};
+
 export default {
     convertToDefaultInputFormat,
     convertMiliToDateWithFormat,
@@ -183,6 +219,11 @@ export default {
 
     getFirstDayOf,
     getLastDayOf,
-
     checkTimeIsBetweenRangeDate,
+
+    toDateTime,
+    toMillisecond,
+    toDate,
+    toTime,
+    format,
 };
