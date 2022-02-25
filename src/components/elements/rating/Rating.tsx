@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ClassNames from "classnames";
-import { isUndefined } from "lodash";
+import _ from "lodash";
 import Icon, { IconProps } from "../icon/Icon";
 
 export interface IRatingProps {
@@ -20,7 +20,7 @@ const Rating: React.FC<IRatingProps> = ({
     color = "#DE0D0C",
     onChange,
 }) => {
-    const ratingChangable = !isUndefined(onChange);
+    const ratingChangable = !_.isUndefined(onChange);
     const [hoverRating, setHoverRating] = useState(value);
     const containerClass = ClassNames("d-rating__container d-flex", className, {
         "d-rating-changable": ratingChangable,
