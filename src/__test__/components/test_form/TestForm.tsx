@@ -119,6 +119,7 @@ const FORM_WITH_CUSTOM_ITEM: IFormItemData<IEmployeePrivacyInfo>[] = [
 
 const TestFormSchema = Yup.object().shape({
     nationality: Yup.array().required("Is Required !"),
+    passportExp: Yup.array().min(2).nullable().required("Is Required !"),
 });
 
 const TestForm: React.FC<ITestFormProps> = ({ id }) => {

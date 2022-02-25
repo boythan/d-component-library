@@ -33,6 +33,9 @@ export { default as TreeSelect } from "./components/select/TreeSelect";
 export type { SelectInfinityMethod, SelectInfinityProps } from "./components/select/SelectInfinity";
 export { default as SelectInfinity } from "./components/select/SelectInfinity";
 
+export type { SelectConfirmationProps } from "./components/select/SelectConfirmation";
+export { default as SelectConfirmation } from "./components/select/SelectConfirmation";
+
 /* ----------------------------------------
 // Button
 // ---------------------------------------- */
