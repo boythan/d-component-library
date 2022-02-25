@@ -41,6 +41,7 @@ const TestAvatarIcon: React.FC<TestAvatarIconProps> = ({ id }) => {
                     size="xx-small"
                     className="mx-3"
                 />
+                <Avatar size="xx-small" className="mx-3" />
             </div>
             <div className="d-flex align-items-center my-3">
                 <Avatar

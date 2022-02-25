@@ -39,7 +39,7 @@ export default function Avatar({
         },
         classNameLetter
     );
-    let content;
+    let content = <img src="images/placeholder.png" alt={alt} className={imageClass} />;
     if (text) {
         const firstLetter = text.charAt(0);
         content = (

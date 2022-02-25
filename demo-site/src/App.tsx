@@ -15,12 +15,12 @@ function App() {
             <div className="container-fluid">
                 <InputText label="Username" />
                 <InputText label="Password" />
-                <Select
+                {/* <Select
                     dataSource={ATTRIBUTE_INPUT_TYPE}
                     onChange={setSelectValues}
                     value={selectValue}
                     className="mt-5"
-                />
+                /> */}
 
             </div>
         </div>
