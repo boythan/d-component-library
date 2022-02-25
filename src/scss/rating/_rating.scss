@@ -1,2 +1,7 @@
 .d-rating__container {
+    &.d-rating-changable {
+        &:hover {
+            cursor: pointer;
+        }
+    }
 }
