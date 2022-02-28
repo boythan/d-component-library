@@ -20,9 +20,12 @@
 
 @mixin disabled {
     // padding: $input-padding !important;
-    color: $input-color-disabled !important;
     background-color: $input-bg-color-disabled !important;
     border: none !important;
+    > textarea,
+    input {
+        color: $input-color-disabled !important;
+    }
 }
 
 @mixin outline {
@@ -87,8 +90,6 @@
     @include prefix();
     border-left: $input-border;
 }
-
-
 
 /********************************************INPUT TEXT********************************************/
 .d-input-text__input {

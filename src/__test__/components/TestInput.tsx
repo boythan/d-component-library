@@ -11,7 +11,7 @@ import UrlUtils from "../../utils/UrlUtils";
 import { SELECT_DATA } from "../data/TestConstant";
 
 const TestInput = () => {
-    const [valueSelect, setValueSelect] = useState([]);
+    const [valueSelect, setValueSelect] = useState(["text"]);
     const [valueTextInput, setValueTextInput] = useState([]);
     const [valueSelectInfinity, setValueSelectInfinity] = useState<any>();
     const [selectCheckboxValue, setSelectCheckboxValue] = useState<any>([]);
@@ -40,7 +40,14 @@ const TestInput = () => {
                 <InputText label="Input Text" placeholder="Please enter" className="mt-3" prefix="$" />
                 <InputText label="Input Text" placeholder="Please enter" multiple className="mt-3" />
                 <InputText label="Input Text" placeholder="Please enter" multiple className="mt-3" error="Error Text" />
-                <InputText label="Input Text" placeholder="Please enter" multiple className="mt-3" disabled />
+                <InputText
+                    label="Input Text"
+                    placeholder="Please enter"
+                    multiple
+                    className="mt-3"
+                    disabled
+                    value="sample input text"
+                />
             </ViewCollapse>
 
             <ViewCollapse label="Input Text Search" className="mt-3" defaultOpen={false}>
@@ -94,8 +101,8 @@ const TestInput = () => {
                     className="mt-4"
                     value={valueSelect}
                     onChange={setValueSelect}
-                    multiple
                     required
+                    disabled
                 />
 
                 <Select
