@@ -187,6 +187,12 @@ const format = (timeInMillis: any, FORMAT: string) => {
     return date ? moment(date).format(FORMAT) : "";
 };
 
+const tomorrow = (timeInMillis?: any) => {
+    const tomorrowDate = timeInMillis ? new Date(timeInMillis) : new Date();
+    tomorrowDate.setDate(tomorrowDate.getDate() + 1);
+    return tomorrowDate;
+};
+
 export default {
     convertToDefaultInputFormat,
     convertMiliToDateWithFormat,
@@ -226,4 +232,5 @@ export default {
     toDate,
     toTime,
     format,
+    tomorrow,
 };
