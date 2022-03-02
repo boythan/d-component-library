@@ -19,9 +19,9 @@ const ANT_DATE_INPUT_FORMAT = "DD/MM/YYYY";
 const ANT_MONTH_INPUT_FORMAT = "MM/YYYY";
 const ANT_YEAR_INPUT_FORMAT = "YYYY";
 
-const MONTH_MILISECOND = 30 * 24 * 60 * 60 * 1000;
-const WEEK_MILISECOND = 7 * 24 * 60 * 60 * 1000;
-const DAY_MILISECOND = 24 * 60 * 60 * 1000;
+const MONTH_MILLISECOND = 30 * 24 * 60 * 60 * 1000;
+const WEEK_MILLISECOND = 7 * 24 * 60 * 60 * 1000;
+const DAY_MILLISECOND = 24 * 60 * 60 * 1000;
 
 const convertMiliToMinutes = (miliSeconds: any) => {
     if (!miliSeconds) return 0;
@@ -187,10 +187,23 @@ const format = (timeInMillis: any, FORMAT: string) => {
     return date ? moment(date).format(FORMAT) : "";
 };
 
-const tomorrow = (timeInMillis?: any) => {
-    const tomorrowDate = timeInMillis ? new Date(timeInMillis) : new Date();
-    tomorrowDate.setDate(tomorrowDate.getDate() + 1);
-    return tomorrowDate;
+/**
+ * return a date that far from the dateParam a period of time
+ * period: default 0 day.
+ * dateParam: can be millisecond or moment or date
+ */
+const getDateFarFrom = (period = 0, dateParam?: any) => {
+    const date = dateParam ? new Date(dateParam) : new Date();
+    date.setDate(date.getDate() + period);
+    return date;
+};
+
+const tomorrow = (dateParam?: any) => {
+    return getDateFarFrom(1, dateParam);
+};
+
+const yesterday = (dateParam?: any) => {
+    return getDateFarFrom(-1, dateParam);
 };
 
 export default {
@@ -208,9 +221,9 @@ export default {
     calculateTimeDifferent,
     convertRangeDateToArray,
     calculatePreciseDifferentTime,
-    MONTH_MILISECOND,
-    WEEK_MILISECOND,
-    DAY_MILISECOND,
+    MONTH_MILLISECOND,
+    WEEK_MILLISECOND,
+    DAY_MILLISECOND,
 
     DATE_FORMAT,
     DATE_TIME_FORMAT,
@@ -232,5 +245,8 @@ export default {
     toDate,
     toTime,
     format,
+
+    getDateFarFrom,
     tomorrow,
+    yesterday,
 };
