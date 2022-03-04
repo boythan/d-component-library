@@ -54,6 +54,7 @@ export interface IFormItemData<T> {
     getItemClass?: (props: { key?: keyof T; index?: any; value?: any; error?: any; rows?: Array<any> }) => string;
     getElementClass?: (props: { key?: keyof T; index?: any; value?: any; error?: any; rows?: Array<any> }) => string;
     elementClass?: string;
+    inputProps?: { [key: string]: any };
 }
 
 export interface IFormItemProps {
@@ -98,7 +99,7 @@ export const getDefaultValue = (type?: IFormItemType) => {
 };
 
 export function FormItem({ onChange, data, value = {}, Messages, className, error }: IFormItemProps) {
-    const { key, type, label, dataSource = [], getLabel, getValue, rows, inputType } = data;
+    const { key, type, label, dataSource = [], getLabel, getValue, rows, inputType, inputProps } = data;
     const itemLabel = Messages?.[label as any] || label;
     if (type === "date-range" || type === "time-range") {
         let transValue: any = null;
@@ -225,6 +226,7 @@ export function FormItem({ onChange, data, value = {}, Messages, className, erro
                 error={error}
                 multiple
                 rows={rows}
+                {...inputProps}
             />
         );
     }
@@ -237,6 +239,7 @@ export function FormItem({ onChange, data, value = {}, Messages, className, erro
             className={className}
             error={error}
             type={inputType}
+            {...inputProps}
         />
     );
 }
