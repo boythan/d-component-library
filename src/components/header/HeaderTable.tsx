@@ -24,6 +24,8 @@ export interface HeaderTableProps {
     customView?: any;
     customButtons?: any;
     customFilterButton?: (() => React.ReactElement) | React.ReactElement;
+    customExportButton?: (() => React.ReactElement) | React.ReactElement;
+    customImportButton?: (() => React.ReactElement) | React.ReactElement;
 
     isFiltered?: boolean;
     badgeColor?: BadgeProps["color"];
@@ -48,6 +50,8 @@ const HeaderTable = ({
     customView,
     customButtons,
     customFilterButton,
+    customExportButton,
+    customImportButton,
 
     isFiltered = false,
     badgeColor = "secondary",
@@ -70,9 +74,13 @@ const HeaderTable = ({
                     {onClickImport && (
                         <Button iconName="cloud_upload" content="Import" onClick={onClickImport} className="ml-3" />
                     )}
+                    {customImportButton &&
+                        (typeof customImportButton === "function" ? customImportButton() : customImportButton)}
                     {onClickExport && (
                         <Button iconName="cloud_download" content="Export" onClick={onClickExport} className="ml-3" />
                     )}
+                    {customExportButton &&
+                        (typeof customExportButton === "function" ? customExportButton() : customExportButton)}
                 </div>
             </div>
             <div className="flex-center-y">
