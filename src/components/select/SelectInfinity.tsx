@@ -3,6 +3,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import _ from "lodash";
 import React, { CSSProperties, ElementRef, useImperativeHandle, useRef, useState } from "react";
+import ClassNames from "classnames";
 import Icon from "../elements/icon/Icon";
 import AwesomeListComponent, { AwesomeListComponentProps, IPaging } from "../list/awesomeList/AwesomeListComponent";
 import Select, { SelectProps } from "./Select";
@@ -13,6 +14,7 @@ export interface SelectInfinityProps
         SelectProps {
     source?: (params: any, paging: IPaging) => Promise<any>;
     classNameTagItem?: string;
+    classNameDropdownItem?: string;
     styleTagItem?: CSSProperties;
     tagColor?: ButtonProps["color"];
 }
@@ -34,6 +36,7 @@ const SelectInfinity: React.ForwardRefRenderFunction<SelectInfinityMethod, Selec
         value = [],
         onChange,
         className,
+        classNameDropdownItem,
         classNameTagItem,
         styleTagItem = {},
         mode,
@@ -65,9 +68,15 @@ const SelectInfinity: React.ForwardRefRenderFunction<SelectInfinityMethod, Selec
     const renderItemDropdown = (item: any, index: any) => {
         const label = getLabel(item);
         const itemValue = getValue(item);
+        const isSelected = !!value && value?.length > 0 && value?.find((i: any) => getValue(i) === itemValue);
+        const itemClass = ClassNames(
+            "py-2 px-3 hover-pointer",
+            { "ant-select-item-option-active ant-select-item-option-selected": isSelected },
+            classNameDropdownItem
+        );
         return (
             <div
-                className="py-3 px-3 hover-pointer"
+                className={itemClass}
                 onClick={() => {
                     if (mode === "tags" || mode === "multiple") {
                         let clone: Array<any> = [...value];
@@ -119,9 +128,10 @@ const SelectInfinity: React.ForwardRefRenderFunction<SelectInfinityMethod, Selec
         const clone = value.filter((i: any) => getValue(i) !== id);
         onChange && onChange(clone, null as any);
     };
+
     const customTagRender = (props: any) => {
-        const tagItem = props?.value ?? null;
-        const tagValue = getValue(tagItem);
+        const tagValue = props?.value ?? null;
+        // const tagValue = getValue(tagItem);
         let foundItem = null;
         if (tagValue) {
             foundItem = value?.find((i: any) => getValue(i) === tagValue);

@@ -236,7 +236,7 @@ export function FormItem({ onChange, data, value = {}, Messages, className, erro
                 getValue={(item) => (getValue ? getValue(item) : item?.id)}
                 error={error}
                 multiple={type === "multi-select"}
-                allowClear={false}
+                allowClear
                 {...selectProps}
             />
         );
