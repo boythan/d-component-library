@@ -6,6 +6,7 @@ import React, { CSSProperties, ElementRef, useImperativeHandle, useRef, useState
 import Icon from "../elements/icon/Icon";
 import AwesomeListComponent, { AwesomeListComponentProps, IPaging } from "../list/awesomeList/AwesomeListComponent";
 import Select, { SelectProps } from "./Select";
+import { ButtonProps } from "../button/Button";
 
 export interface SelectInfinityProps
     extends Omit<AwesomeListComponentProps, "source" | "renderItem" | "variant">,
@@ -13,6 +14,7 @@ export interface SelectInfinityProps
     source?: (params: any, paging: IPaging) => Promise<any>;
     classNameTagItem?: string;
     styleTagItem?: CSSProperties;
+    tagColor?: ButtonProps["color"];
 }
 
 export interface SelectInfinityMethod {
@@ -35,6 +37,7 @@ const SelectInfinity: React.ForwardRefRenderFunction<SelectInfinityMethod, Selec
         classNameTagItem,
         styleTagItem = {},
         mode,
+        tagColor = "primary",
         ...props
     },
     ref
@@ -128,7 +131,7 @@ const SelectInfinity: React.ForwardRefRenderFunction<SelectInfinityMethod, Selec
         }
         return (
             <div
-                className={`py-1 text-white text-x-small px-2 bg-secondary flex-center-y mx-1 my-1 ${classNameTagItem}`}
+                className={`py-1 text-white text-x-small px-2 bg-${tagColor} flex-center-y mx-1 my-1 ${classNameTagItem}`}
                 style={{ width: "120px", ...styleTagItem }}
             >
                 <div className="text-nowrap w-100">{getLabel(foundItem)}</div>

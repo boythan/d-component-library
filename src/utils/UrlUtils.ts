@@ -65,6 +65,7 @@ const replaceState = (obj: { [key: string]: any }) => {
         const originUrl = window.location.href.substring(window.location.href.lastIndexOf("/") + 1).split("?")[0];
         return window.history.replaceState("", "", ("/" + originUrl) as any);
     }
+    url.search = "";
     Object.keys(obj).forEach((key) => {
         url.searchParams.set(key, obj[key]);
     });
