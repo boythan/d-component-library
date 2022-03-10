@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import _ from "lodash";
-import React, { CSSProperties, ElementRef, useImperativeHandle, useRef, useState } from "react";
+import React, { CSSProperties, ElementRef, useImperativeHandle, useMemo, useRef, useState } from "react";
 import ClassNames from "classnames";
 import Icon from "../elements/icon/Icon";
 import AwesomeListComponent, { AwesomeListComponentProps, IPaging } from "../list/awesomeList/AwesomeListComponent";
@@ -48,6 +48,14 @@ const SelectInfinity: React.ForwardRefRenderFunction<SelectInfinityMethod, Selec
     const listRef = useRef<ElementRef<typeof AwesomeListComponent>>(null);
     const selectRef = useRef<React.ElementRef<typeof Select>>(null);
     const textSearch = useRef();
+    // add value properties for array value so when render tag it can be display
+    const valueDisplay = useMemo(() => {
+        let res: Array<any> = [];
+        if (value?.length > 0) {
+            res = value.map((i: any) => ({ ...i, value: getValue(i) }));
+        }
+        return res;
+    }, [value]);
 
     const refreshList = () => {
         // @ts-ignore
@@ -154,7 +162,7 @@ const SelectInfinity: React.ForwardRefRenderFunction<SelectInfinityMethod, Selec
         <Select
             showSearch
             className={className}
-            value={!mode ? getLabel(value[0]) : value}
+            value={!mode ? getLabel(valueDisplay[0]) : valueDisplay}
             ref={selectRef}
             onSearch={onChangeTextSearch}
             dropdownRender={renderDropDown}

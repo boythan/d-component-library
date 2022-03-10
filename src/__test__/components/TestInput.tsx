@@ -157,7 +157,7 @@ const TestInput = () => {
                     }}
                     value={valueSelectInfinity}
                     onChange={setValueSelectInfinity}
-                    mode="multiple"
+                    mode={undefined}
                 />
             </div>
         </div>
