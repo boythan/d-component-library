@@ -130,11 +130,11 @@
     .d-table-awesome-component .ant-table-tbody > tr > td::before {
         content: attr(data-title);
         white-space: nowrap;
-        font-size: 1.5rem;
         font-family: var(--appFont);
         font-weight: bold;
         text-align: left !important;
         position: absolute;
         left: 0.5rem;
+        font-size: 14px;
     }
 }
