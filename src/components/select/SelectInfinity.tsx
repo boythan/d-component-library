@@ -2,17 +2,21 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import _ from "lodash";
-import React, { CSSProperties, ElementRef, useImperativeHandle, useRef, useState } from "react";
+import React, { CSSProperties, ElementRef, useImperativeHandle, useMemo, useRef, useState } from "react";
+import ClassNames from "classnames";
 import Icon from "../elements/icon/Icon";
 import AwesomeListComponent, { AwesomeListComponentProps, IPaging } from "../list/awesomeList/AwesomeListComponent";
 import Select, { SelectProps } from "./Select";
+import { ButtonProps } from "../button/Button";
 
 export interface SelectInfinityProps
     extends Omit<AwesomeListComponentProps, "source" | "renderItem" | "variant">,
         SelectProps {
     source?: (params: any, paging: IPaging) => Promise<any>;
     classNameTagItem?: string;
+    classNameDropdownItem?: string;
     styleTagItem?: CSSProperties;
+    tagColor?: ButtonProps["color"];
 }
 
 export interface SelectInfinityMethod {
@@ -32,9 +36,11 @@ const SelectInfinity: React.ForwardRefRenderFunction<SelectInfinityMethod, Selec
         value = [],
         onChange,
         className,
+        classNameDropdownItem,
         classNameTagItem,
         styleTagItem = {},
         mode,
+        tagColor = "primary",
         ...props
     },
     ref
@@ -42,6 +48,14 @@ const SelectInfinity: React.ForwardRefRenderFunction<SelectInfinityMethod, Selec
     const listRef = useRef<ElementRef<typeof AwesomeListComponent>>(null);
     const selectRef = useRef<React.ElementRef<typeof Select>>(null);
     const textSearch = useRef();
+    // add value properties for array value so when render tag it can be display
+    const valueDisplay = useMemo(() => {
+        let res: Array<any> = [];
+        if (value?.length > 0) {
+            res = value.map((i: any) => ({ ...i, value: getValue(i) }));
+        }
+        return res;
+    }, [value]);
 
     const refreshList = () => {
         // @ts-ignore
@@ -62,9 +76,15 @@ const SelectInfinity: React.ForwardRefRenderFunction<SelectInfinityMethod, Selec
     const renderItemDropdown = (item: any, index: any) => {
         const label = getLabel(item);
         const itemValue = getValue(item);
+        const isSelected = !!value && value?.length > 0 && value?.find((i: any) => getValue(i) === itemValue);
+        const itemClass = ClassNames(
+            "py-2 px-3 hover-pointer",
+            { "ant-select-item-option-active ant-select-item-option-selected": isSelected },
+            classNameDropdownItem
+        );
         return (
             <div
-                className="py-3 px-3 hover-pointer"
+                className={itemClass}
                 onClick={() => {
                     if (mode === "tags" || mode === "multiple") {
                         let clone: Array<any> = [...value];
@@ -116,9 +136,10 @@ const SelectInfinity: React.ForwardRefRenderFunction<SelectInfinityMethod, Selec
         const clone = value.filter((i: any) => getValue(i) !== id);
         onChange && onChange(clone, null as any);
     };
+
     const customTagRender = (props: any) => {
-        const tagItem = props?.value ?? null;
-        const tagValue = getValue(tagItem);
+        const tagValue = props?.value ?? null;
+        // const tagValue = getValue(tagItem);
         let foundItem = null;
         if (tagValue) {
             foundItem = value?.find((i: any) => getValue(i) === tagValue);
@@ -128,7 +149,7 @@ const SelectInfinity: React.ForwardRefRenderFunction<SelectInfinityMethod, Selec
         }
         return (
             <div
-                className={`py-1 text-white text-x-small px-2 bg-secondary flex-center-y mx-1 my-1 ${classNameTagItem}`}
+                className={`py-1 text-white text-x-small px-2 bg-${tagColor} flex-center-y mx-1 my-1 ${classNameTagItem}`}
                 style={{ width: "120px", ...styleTagItem }}
             >
                 <div className="text-nowrap w-100">{getLabel(foundItem)}</div>
@@ -141,7 +162,7 @@ const SelectInfinity: React.ForwardRefRenderFunction<SelectInfinityMethod, Selec
         <Select
             showSearch
             className={className}
-            value={!mode ? getLabel(value[0]) : value}
+            value={!mode ? getLabel(valueDisplay[0]) : valueDisplay}
             ref={selectRef}
             onSearch={onChangeTextSearch}
             dropdownRender={renderDropDown}

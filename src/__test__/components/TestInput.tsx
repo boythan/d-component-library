@@ -114,28 +114,7 @@ const TestInput = () => {
                     mode="tags"
                     getValue={(item) => item.id}
                 />
-                <SelectInfinity
-                    label="Select Infinity"
-                    className="my-4"
-                    source={async (paging) => {
-                        // const res = await fetch("https://jsonplaceholder.typicode.com/posts");
-                        return fetch("https://jsonplaceholder.typicode.com/posts");
-                    }}
-                    transformer={async (res) => {
-                        // const data = JSON.stringify(res);
-                        const data = await res.json();
-                        const cloneData = data.map((item: any = {}) => ({
-                            ...item,
-                            label: item?.title,
-                            value: item?.title,
-                            key: item?.id,
-                        }));
-                        return cloneData as any;
-                    }}
-                    value={valueSelectInfinity}
-                    onChange={setValueSelectInfinity}
-                    mode="multiple"
-                />
+
                 <div className="w-100 d-flex flex-column my-3">
                     <Button
                         className="align-self-end"
@@ -155,6 +134,30 @@ const TestInput = () => {
                     mode="tags"
                     getValue={(item) => item.id}
                     error="Text Error"
+                />
+            </div>
+            <div className="w-100 flex-center-y">
+                <SelectInfinity
+                    label="Select Infinity"
+                    className="my-4 w-100"
+                    source={async (paging) => {
+                        // const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+                        return fetch("https://jsonplaceholder.typicode.com/posts");
+                    }}
+                    transformer={async (res) => {
+                        // const data = JSON.stringify(res);
+                        const data = await res.json();
+                        const cloneData = data.map((item: any = {}) => ({
+                            ...item,
+                            label: item?.title,
+                            value: item?.id,
+                            key: item?.id,
+                        }));
+                        return cloneData as any;
+                    }}
+                    value={valueSelectInfinity}
+                    onChange={setValueSelectInfinity}
+                    mode={undefined}
                 />
             </div>
         </div>

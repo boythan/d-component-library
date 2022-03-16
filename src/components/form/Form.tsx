@@ -4,11 +4,11 @@ import ClassNames from "classnames";
 import _ from "lodash";
 import moment from "moment";
 import React, { useMemo } from "react";
-import CheckboxGroup from "../checkbox/CheckboxGroup";
-import RadioGroup from "../checkbox/RadioGroup";
-import DateInput from "../dateInput/DateInput";
-import InputText from "../input/InputText";
-import Select from "../select/Select";
+import CheckboxGroup, { CheckboxGroupProps } from "../checkbox/CheckboxGroup";
+import RadioGroup, { RadioGroupProps } from "../checkbox/RadioGroup";
+import DateInput, { DateInputProp } from "../dateInput/DateInput";
+import InputText, { InputTextProps } from "../input/InputText";
+import Select, { SelectProps } from "../select/Select";
 
 export type IFormItemType =
     | "checkbox"
@@ -54,6 +54,12 @@ export interface IFormItemData<T> {
     getItemClass?: (props: { key?: keyof T; index?: any; value?: any; error?: any; rows?: Array<any> }) => string;
     getElementClass?: (props: { key?: keyof T; index?: any; value?: any; error?: any; rows?: Array<any> }) => string;
     elementClass?: string;
+
+    inputProps?: InputTextProps;
+    selectProps?: SelectProps;
+    dateInputProps?: DateInputProp;
+    checkBoxProps?: CheckboxGroupProps;
+    radiogroupProps?: RadioGroupProps;
 }
 
 export interface IFormItemProps {
@@ -98,7 +104,21 @@ export const getDefaultValue = (type?: IFormItemType) => {
 };
 
 export function FormItem({ onChange, data, value = {}, Messages, className, error }: IFormItemProps) {
-    const { key, type, label, dataSource = [], getLabel, getValue, rows, inputType } = data;
+    const {
+        key,
+        type,
+        label,
+        dataSource = [],
+        getLabel,
+        getValue,
+        rows,
+        inputType,
+        inputProps,
+        selectProps,
+        checkBoxProps,
+        radiogroupProps,
+        dateInputProps,
+    } = data;
     const itemLabel = Messages?.[label as any] || label;
     if (type === "date-range" || type === "time-range") {
         let transValue: any = null;
@@ -121,6 +141,7 @@ export function FormItem({ onChange, data, value = {}, Messages, className, erro
                     isRangePicker
                     type="time"
                     error={error}
+                    {...dateInputProps}
                 />
             );
         }
@@ -138,6 +159,7 @@ export function FormItem({ onChange, data, value = {}, Messages, className, erro
                 className={className}
                 isRangePicker
                 error={error}
+                {...dateInputProps}
             />
         );
     }
@@ -170,6 +192,7 @@ export function FormItem({ onChange, data, value = {}, Messages, className, erro
                         ? "DD/MM/YYYY HH:mm"
                         : undefined
                 }
+                {...dateInputProps}
             />
         );
     }
@@ -183,6 +206,7 @@ export function FormItem({ onChange, data, value = {}, Messages, className, erro
                 className={className}
                 getLabel={(item) => (getLabel ? getLabel(item) : Messages[item?.label])}
                 getValue={(item) => (getValue ? getValue(item) : item?.id)}
+                {...checkBoxProps}
             />
         );
     }
@@ -196,6 +220,7 @@ export function FormItem({ onChange, data, value = {}, Messages, className, erro
                 className={className}
                 getLabel={(item) => (getLabel ? getLabel(item) : Messages[item?.label])}
                 getValue={(item) => (getValue ? getValue(item) : item?.id)}
+                {...radiogroupProps}
             />
         );
     }
@@ -211,7 +236,8 @@ export function FormItem({ onChange, data, value = {}, Messages, className, erro
                 getValue={(item) => (getValue ? getValue(item) : item?.id)}
                 error={error}
                 multiple={type === "multi-select"}
-                allowClear={false}
+                allowClear
+                {...selectProps}
             />
         );
     }
@@ -225,6 +251,7 @@ export function FormItem({ onChange, data, value = {}, Messages, className, erro
                 error={error}
                 multiple
                 rows={rows}
+                {...inputProps}
             />
         );
     }
@@ -237,6 +264,7 @@ export function FormItem({ onChange, data, value = {}, Messages, className, erro
             className={className}
             error={error}
             type={inputType}
+            {...inputProps}
         />
     );
 }

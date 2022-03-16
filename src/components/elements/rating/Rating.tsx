@@ -52,8 +52,9 @@ const Rating: React.FC<IRatingProps> = ({
                 }}
                 onClick={() => {
                     if (ratingChangable) {
-                        onChange(rating);
+                        return onChange && onChange(rating);
                     }
+                    return null;
                 }}
             />
         );
