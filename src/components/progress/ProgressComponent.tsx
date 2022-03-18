@@ -1,7 +1,8 @@
+/* eslint-disable react/destructuring-assignment */
 /* eslint-disable no-unused-expressions */
 import { Modal } from "antd";
 import _ from "lodash";
-import React, { Component } from "react";
+import React, { Component, DOMElement } from "react";
 import Messages from "../../language/Messages";
 import Button from "../button/Button";
 import Loading from "../elements/loading/Loading";
@@ -23,6 +24,7 @@ export interface ProgressComponentProps {
     onSuccess?: (res?: Array<IResponseAPI> | IResponseAPI) => any;
     promiseFunction?: Array<IProgressFunctionProps> | IProgressFunctionProps;
     transformError?: (error: any) => any;
+    loadingView?: DOMElement<any, any>;
 }
 
 export interface ProgressComponentState {}
@@ -32,6 +34,11 @@ class ProgressComponent extends Component<ProgressComponentProps, any> {
 
     // eslint-disable-next-line react/static-property-placement
     static defaultProps = {
+        loadingView: (
+            <div className="p-4 flex-center">
+                <Loading />
+            </div>
+        ),
         transformError: (error: any) => (typeof error === "string" ? error : error?.response?.data?.message),
     };
 
@@ -116,14 +123,6 @@ class ProgressComponent extends Component<ProgressComponentProps, any> {
         this.setState({ error: false }, () => this.loadData());
     };
 
-    renderLoadingView = () => {
-        return (
-            <div className="p-4 flex-center">
-                <Loading />
-            </div>
-        );
-    };
-
     renderErrorView = () => {
         const { error } = this.state;
         return (
@@ -153,7 +152,7 @@ class ProgressComponent extends Component<ProgressComponentProps, any> {
                     footer={null}
                     getContainer={false}
                 >
-                    {!error && this.renderLoadingView()}
+                    {!error && (this.props.loadingView as any)}
                     {error && this.renderErrorView()}
                 </Modal>
             </div>
