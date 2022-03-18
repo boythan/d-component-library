@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-expressions */
 import { Modal } from "antd";
 import _ from "lodash";
-import React, { Component, DOMElement } from "react";
+import React, { Component } from "react";
 import Messages from "../../language/Messages";
 import Button from "../button/Button";
 import Loading from "../elements/loading/Loading";
@@ -22,9 +22,9 @@ export interface IResponseAPI {
 
 export interface ProgressComponentProps {
     onSuccess?: (res?: Array<IResponseAPI> | IResponseAPI) => any;
-    transformError?: (error: any) => string;
+    transformError?: (error: any) => string | string[] | any;
     promiseFunction?: Array<IProgressFunctionProps> | IProgressFunctionProps;
-    loadingView?: HTMLElement;
+    loadingView?: any;
 }
 
 export interface ProgressComponentState {}
