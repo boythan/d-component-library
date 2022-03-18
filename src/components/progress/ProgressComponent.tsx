@@ -20,15 +20,20 @@ export interface IResponseAPI {
 }
 
 export interface ProgressComponentProps {
-    Messages?: any;
     onSuccess?: (res?: Array<IResponseAPI> | IResponseAPI) => any;
     promiseFunction?: Array<IProgressFunctionProps> | IProgressFunctionProps;
+    transformError?: (error: any) => any;
 }
 
 export interface ProgressComponentState {}
 
 class ProgressComponent extends Component<ProgressComponentProps, any> {
     unmounted: any;
+
+    // eslint-disable-next-line react/static-property-placement
+    static defaultProps = {
+        transformError: (error: any) => (typeof error === "string" ? error : error?.response?.data),
+    };
 
     constructor(props: any) {
         super(props);
@@ -64,7 +69,6 @@ class ProgressComponent extends Component<ProgressComponentProps, any> {
 
     loadData = () => {
         const { promiseFunction, onSuccess } = this.state;
-        const { Messages } = this.props;
         let promiseAll;
         const isArrayFunction = _.isArray(promiseFunction);
         if (isArrayFunction) {
@@ -80,7 +84,7 @@ class ProgressComponent extends Component<ProgressComponentProps, any> {
                 onSuccess && onSuccess(isArrayFunction ? result : result?.[0]);
             } else {
                 this.setError({
-                    message: Messages ? Messages.error : "Error",
+                    message: Messages.error,
                 });
             }
         }).catch((error) => {
@@ -93,15 +97,15 @@ class ProgressComponent extends Component<ProgressComponentProps, any> {
 
     setError = (error: any) => {
         const { handleError } = this.state;
+        const { transformError } = this.props;
+
         if (handleError && handleError(error)) {
             this.dismiss();
             return;
         }
-        if (error && error.response && error.response.data) {
-            this.setState({ error: error.response.data });
-            return;
-        }
-        this.setState({ error });
+
+        const errorMessage = (transformError as any)(error);
+        this.setState({ error: errorMessage });
     };
 
     dismiss = () => {
