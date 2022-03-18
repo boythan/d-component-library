@@ -32,7 +32,7 @@ class ProgressComponent extends Component<ProgressComponentProps, any> {
 
     // eslint-disable-next-line react/static-property-placement
     static defaultProps = {
-        transformError: (error: any) => (typeof error === "string" ? error : error?.response?.data),
+        transformError: (error: any) => (typeof error === "string" ? error : error?.response?.data?.message),
     };
 
     constructor(props: any) {
@@ -129,10 +129,7 @@ class ProgressComponent extends Component<ProgressComponentProps, any> {
         return (
             <div className="d-progress__error-container">
                 <h4>{Messages.error}</h4>
-                <h5
-                    className="mt-3 d-notifications__content"
-                    dangerouslySetInnerHTML={{ __html: error?.message ?? "" }}
-                />
+                <h5 className="mt-3 d-notifications__content" dangerouslySetInnerHTML={{ __html: error ?? "" }} />
                 <div className="d-progress__error-footer">
                     <Button onClick={this.dismiss} className="mr-3" variant="trans">
                         {Messages.cancel}
