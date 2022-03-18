@@ -22,9 +22,9 @@ export interface IResponseAPI {
 
 export interface ProgressComponentProps {
     onSuccess?: (res?: Array<IResponseAPI> | IResponseAPI) => any;
+    transformError?: (error: any) => string;
     promiseFunction?: Array<IProgressFunctionProps> | IProgressFunctionProps;
-    transformError?: (error: any) => any;
-    loadingView?: DOMElement<any, any>;
+    loadingView?: HTMLElement;
 }
 
 export interface ProgressComponentState {}
