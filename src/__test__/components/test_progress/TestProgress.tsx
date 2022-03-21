@@ -33,6 +33,8 @@ function later(delay: number, value: any) {
 const TestProgress = () => {
     const onClickShowProgress = () => {
         Progress.show({ method: () => later(100000, true), params: [] }, (res) => {});
+        // eslint-disable-next-line prefer-promise-reject-errors
+        // Progress.show({ method: () => Promise.reject({ messages: "error" }), params: [] }, (res) => {});
     };
 
     return (

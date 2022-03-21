@@ -1,6 +1,7 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable no-unused-expressions */
 import { Modal } from "antd";
+import classNames from "classnames";
 import _ from "lodash";
 import React, { Component } from "react";
 import Messages from "../../language/Messages";
@@ -141,13 +142,14 @@ class ProgressComponent extends Component<ProgressComponentProps, any> {
 
     render() {
         const { open, error } = this.state;
+        const classNameModal = classNames("d-progress__container", { "d-progress__loading-container": !error });
         return (
             <div className="d-progress__root">
                 <Modal
                     visible={open}
                     onCancel={this.dismiss}
                     destroyOnClose
-                    className="d-progress__container"
+                    className={classNameModal}
                     closable={false}
                     footer={null}
                     getContainer={false}
