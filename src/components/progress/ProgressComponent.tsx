@@ -36,7 +36,7 @@ class ProgressComponent extends Component<ProgressComponentProps, any> {
     static defaultProps = {
         loadingView: (
             <div className="p-4 flex-center">
-                <Loading />
+                <Loading size="large" />
             </div>
         ),
         transformError: (error: any) => (typeof error === "string" ? error : error?.response?.data?.message),

@@ -26,15 +26,13 @@ function TestGeneric<T>({ dataSource }: ITestGenericProps<T>) {
     );
 }
 
-const TestProgress = () => {
-    const progressMethod = async () => {
-        setTimeout(() => {
-            return Promise.resolve(true);
-        }, 2000);
-    };
+function later(delay: number, value: any) {
+    return new Promise((resolve) => setTimeout(resolve, delay, value));
+}
 
+const TestProgress = () => {
     const onClickShowProgress = () => {
-        Progress.show({ method: progressMethod, params: [] }, (res) => {});
+        Progress.show({ method: () => later(100000, true), params: [] }, (res) => {});
     };
 
     return (
