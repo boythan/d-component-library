@@ -1,4 +1,5 @@
 import { Tooltip } from "antd";
+import _ from "lodash";
 import React from "react";
 import Icon from "../components/elements/icon/Icon";
 
@@ -54,45 +55,49 @@ export const calculateDefaultExpandedRowKeys = function (data = [], options: any
 };
 
 export const transformColumn = (columns: Array<any> = [], baseColumn: any = {}): Array<any> => {
-    return columns.map(({ title, titleTooltip, dataIndex, render, mobileTitle, ...props }: any, index: number) => {
-        // custom title
-        let titleResult: any = title;
-        let mobileTitleResult: any = title;
-        if (typeof title === "function") {
-            titleResult = title();
-        }
-        if (titleTooltip) {
-            titleResult = (
-                <Tooltip className="flex-center-y" zIndex={10000} title={titleTooltip}>
-                    {title}
-                    <Icon name="info" className="ml-3" />
-                </Tooltip>
-            );
-        }
+    const visibleColumn = _.filter(columns, (item) => !item.hidden);
+    return _.map(
+        visibleColumn,
+        ({ title, titleTooltip, dataIndex, render, mobileTitle, ...props }: any, index: number) => {
+            // custom title
+            let titleResult: any = title;
+            let mobileTitleResult: any = title;
+            if (typeof title === "function") {
+                titleResult = title();
+            }
+            if (titleTooltip) {
+                titleResult = (
+                    <Tooltip className="flex-center-y" zIndex={10000} title={titleTooltip}>
+                        {title}
+                        <Icon name="info" className="ml-3" />
+                    </Tooltip>
+                );
+            }
 
-        if (mobileTitle) {
-            mobileTitleResult = mobileTitle;
+            if (mobileTitle) {
+                mobileTitleResult = mobileTitle;
+            }
+            return {
+                ...baseColumn,
+                id: `${index}`,
+                title: titleResult,
+                align: "left",
+                isDefault: true,
+                dataIndex,
+                render: (data: any, item: any, index: number) => {
+                    let content = data;
+                    if (typeof render === "function") {
+                        content = render(data, item, index);
+                    }
+                    return {
+                        children: content,
+                        props: { "data-title": mobileTitleResult },
+                    };
+                },
+                ...props,
+            };
         }
-        return {
-            ...baseColumn,
-            id: `${index}`,
-            title: titleResult,
-            align: "left",
-            isDefault: true,
-            dataIndex,
-            render: (data: any, item: any, index: number) => {
-                let content = data;
-                if (typeof render === "function") {
-                    content = render(data, item, index);
-                }
-                return {
-                    children: content,
-                    props: { "data-title": mobileTitleResult },
-                };
-            },
-            ...props,
-        };
-    });
+    );
 };
 
 export default {

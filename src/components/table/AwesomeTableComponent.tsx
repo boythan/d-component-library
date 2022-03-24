@@ -29,20 +29,20 @@ export const INIT_PAGINATION = {
 
 export interface IPaginationProps extends TablePaginationConfig {
     pageIndex?: number;
-    // pageSize: number;
-    // showQuickJumper?: boolean;
-    // showTotal?: (total: any) => React.ReactNode;
-    // pageSizeOptions?: Array<string>;
-    // showSizeChanger?: boolean;
 }
 
 interface MyTableColumnType extends TableColumnType<any> {
     columnId?: string;
     mobileTitle?: string;
+    hidden?: boolean;
+    titleTooltip?: any;
 }
+
 interface MyTableColumnGroupType extends TableColumnGroupType<any> {
     columnId?: string;
     mobileTitle?: string;
+    hidden?: boolean;
+    titleTooltip?: any;
 }
 
 export type IColumnsProps = (MyTableColumnGroupType | MyTableColumnType)[];
