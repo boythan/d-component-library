@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { CSSProperties, ReactNode } from "react";
 import { Modal as ModalAnt, ModalProps as ModalAntProps } from "antd";
 import ClassNames from "classnames";
 import Button, { ButtonProps } from "../button/Button";
@@ -31,6 +31,8 @@ export interface ModalProps extends Omit<ModalAntProps, "cancelButtonProps"> {
 
     disabledSaveButton?: boolean;
     disabledCancelButton?: boolean;
+
+    styleContent?: CSSProperties;
 }
 
 const Modal: React.FC<ModalProps> = ({
@@ -66,6 +68,7 @@ const Modal: React.FC<ModalProps> = ({
     disabledCancelButton,
     disabledSaveButton,
     titleAlign = "center",
+    styleContent,
     ...props
 }) => {
     const modalClass = ClassNames("d-modal", `d-modal__${size}`, className);
@@ -171,7 +174,9 @@ const Modal: React.FC<ModalProps> = ({
             {...props}
         >
             {showHeader && header()}
-            <div className={childrenClass}>{children}</div>
+            <div className={childrenClass} style={styleContent}>
+                {children}
+            </div>
             {showFooter && footer()}
         </ModalAnt>
     );

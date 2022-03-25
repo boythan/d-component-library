@@ -8,6 +8,10 @@
 // common
 // ---------------------------------------- */
 
+body > iframe {
+    display: none;
+}
+
 @import "./common/text";
 @import "./common/animations";
 @import "./common/base";
@@ -169,3 +173,9 @@
 // ---------------------------------------- */
 
 @import "./collapse/collapse";
+
+/* ----------------------------------------
+// border
+// ---------------------------------------- */
+
+@import "./border/border";

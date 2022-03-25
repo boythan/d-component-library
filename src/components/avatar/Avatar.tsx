@@ -4,7 +4,7 @@ import ClassNames from "classnames";
 
 export interface AvatarProps extends React.ImgHTMLAttributes<HTMLImageElement> {
     size?: "x-large" | "large" | "medium" | "small" | "x-small" | "xx-small";
-    variant?: "rounded" | "square";
+    variant?: "rounded" | "square" | "circle";
     text?: string;
     color?: string;
     classNameImage?: string;
@@ -15,7 +15,7 @@ export default function Avatar({
     size = "medium",
     src,
     alt,
-    variant = "rounded",
+    variant = "circle",
     className,
     classNameImage,
     classNameLetter,
@@ -25,10 +25,10 @@ export default function Avatar({
 }: AvatarProps): ReactElement {
     const wrapperClass = ClassNames(
         `d-image__container d-image__${variant}-${size} bg-${color}`,
-        { "d-flex justify-content-center align-items-center": !!text },
+        { "d-flex justify-content-center align-items-center": !!text, "rounded-3": variant === "rounded" },
         className
     );
-    const imageClass = ClassNames("d-image__image", classNameImage);
+    const imageClass = ClassNames("d-image__image", { "rounded-3": variant === "rounded" }, classNameImage);
     const letterClass = ClassNames(
         "text-white text-center font-weight-normal",
         {

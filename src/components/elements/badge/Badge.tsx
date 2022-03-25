@@ -11,22 +11,24 @@ export interface BadgeProps {
     [key: string]: any;
     children?: any;
     variant?: "dot" | "index";
-    shape?: "round" | "square";
+    shape?: "rounded" | "square";
     index?: any;
     dotProps?: DotProps;
     color?: ButtonProps["color"];
     size?: IconProps["size"];
     style?: CSSProperties;
-    badgeStyle?: CSSProperties;
+    styleBadge?: CSSProperties;
+    styleBadgeWrapper?: CSSProperties;
     onClick?: () => any;
     className?: string;
     classNameBadge?: string;
+    classNameBadgeWrapper?: string;
 }
 
 const Badge: React.FC<BadgeProps> = ({
     children,
     variant = "dot",
-    shape = "round",
+    shape = "rounded",
     index,
     dotProps = {},
     className,
@@ -34,21 +36,22 @@ const Badge: React.FC<BadgeProps> = ({
     color = "secondary",
     size = "medium",
     style = {},
-    badgeStyle,
+    styleBadge,
+    styleBadgeWrapper,
     onClick,
 }) => {
     let content = children;
     if (typeof children === "function") {
         content = children();
     }
-    let badge = <Dot {...dotProps} color={color} size={size} style={badgeStyle} />;
+    let badge = <Dot {...dotProps} color={color} size={size} style={styleBadge} />;
 
     // className
     const wrapperClass = ClassNames(`d-badge__container d-badge__container-${variant}`, className);
     const badgeWrapperClass = ClassNames(
         "d-badge__badge-wrapper",
         {
-            "rounded-circle": shape === "round",
+            "rounded-circle": shape === "rounded",
             "position-absolute": !_.isEmpty(content),
         },
         classNameBadge
@@ -63,14 +66,18 @@ const Badge: React.FC<BadgeProps> = ({
         }
         if (display) {
             badge = (
-                <div className={badgeIndexClass} style={badgeStyle}>
+                <div className={badgeIndexClass} style={styleBadge}>
                     {display}
                 </div>
             );
         }
     }
 
-    const badgeView = <div className={badgeWrapperClass}>{badge}</div>;
+    const badgeView = (
+        <div className={badgeWrapperClass} style={styleBadgeWrapper}>
+            {badge}
+        </div>
+    );
 
     return (
         <div className={wrapperClass} style={style} onClick={onClick}>

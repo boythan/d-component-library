@@ -75,6 +75,38 @@ const TestAvatarIcon: React.FC<TestAvatarIconProps> = ({ id }) => {
                     variant="square"
                 />
             </div>
+            <div className="d-flex align-items-center my-3">
+                <Avatar
+                    src="https://c4.wallpaperflare.com/wallpaper/462/200/955/face-women-model-portrait-wallpaper-preview.jpg"
+                    size="x-large"
+                    className="mx-3"
+                    variant="rounded"
+                />
+                <Avatar
+                    src="https://c4.wallpaperflare.com/wallpaper/462/200/955/face-women-model-portrait-wallpaper-preview.jpg"
+                    size="large"
+                    className="mx-3"
+                    variant="rounded"
+                />
+                <Avatar
+                    src="https://c4.wallpaperflare.com/wallpaper/462/200/955/face-women-model-portrait-wallpaper-preview.jpg"
+                    size="medium"
+                    className="mx-3"
+                    variant="rounded"
+                />
+                <Avatar
+                    src="https://c4.wallpaperflare.com/wallpaper/462/200/955/face-women-model-portrait-wallpaper-preview.jpg"
+                    size="small"
+                    className="mx-3"
+                    variant="rounded"
+                />
+                <Avatar
+                    src="https://c4.wallpaperflare.com/wallpaper/462/200/955/face-women-model-portrait-wallpaper-preview.jpg"
+                    size="x-small"
+                    className="mx-3"
+                    variant="rounded"
+                />
+            </div>
             <div className="d-flex align-items-center my-4">
                 <Avatar size="x-large" className="mx-3" text="Joker" />
                 <Avatar size="large" className="mx-3" text="Joker" />
