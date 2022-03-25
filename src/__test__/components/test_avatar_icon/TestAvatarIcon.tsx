@@ -133,6 +133,7 @@ const TestAvatarIcon: React.FC<TestAvatarIconProps> = ({ id }) => {
                 <AvatarName
                     user={{
                         fullName: "X-large",
+                        lastName: "X-large",
                     }}
                     subLabel="X-large"
                     size="x-large"
@@ -157,6 +158,7 @@ const TestAvatarIcon: React.FC<TestAvatarIconProps> = ({ id }) => {
                 <AvatarName
                     user={{
                         fullName: "Small",
+                        lastName: "Small",
                     }}
                     subLabel="Small"
                     size="small"
@@ -165,6 +167,7 @@ const TestAvatarIcon: React.FC<TestAvatarIconProps> = ({ id }) => {
                 <AvatarName
                     user={{
                         fullName: "X-small",
+                        lastName: "Small",
                     }}
                     subLabel="X-small"
                     size="x-small"
