@@ -17,6 +17,7 @@ export interface SelectInfinityProps
     classNameDropdownItem?: string;
     styleTagItem?: CSSProperties;
     tagColor?: ButtonProps["color"];
+    getLabelDropdownItem?: (item: any) => any;
 }
 
 export interface SelectInfinityMethod {
@@ -31,6 +32,7 @@ const SelectInfinity: React.ForwardRefRenderFunction<SelectInfinityMethod, Selec
         transformer,
         getKey = (item) => item?.id,
         getLabel = (item) => item?.label,
+        getLabelDropdownItem,
         getValue = (item) => item?.id,
         pagingProps,
         value = [],
@@ -74,7 +76,7 @@ const SelectInfinity: React.ForwardRefRenderFunction<SelectInfinityMethod, Selec
     }, 400);
 
     const renderItemDropdown = (item: any, index: any) => {
-        const label = getLabel(item);
+        const label = getLabelDropdownItem ? getLabelDropdownItem(item) : getLabel(item);
         const itemValue = getValue(item);
         const isSelected = !!value && value?.length > 0 && value?.find((i: any) => getValue(i) === itemValue);
         const itemClass = ClassNames(
