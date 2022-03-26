@@ -28,7 +28,9 @@ const TestCheckbox: React.FC<TestCheckboxProps> = ({ id }) => {
                     onChange={(value) => {
                         setValueSelect(value);
                     }}
-                    numberOfColumns="1"
+                    showSelectAll
+                    numberOfColumns="3"
+                    numberOfDefaultShow={6}
                 />
             </div>
             <div className="my-5">
@@ -40,6 +42,7 @@ const TestCheckbox: React.FC<TestCheckboxProps> = ({ id }) => {
                         setValueSelect(value);
                     }}
                     numberOfColumns="2"
+                    showSelectAll
                 />
             </div>
             <div className="my-5">
