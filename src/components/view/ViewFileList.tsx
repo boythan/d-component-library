@@ -1,4 +1,5 @@
 /* eslint-disable indent */
+/* eslint-disable react/no-unused-prop-types */
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
@@ -30,9 +31,9 @@ export interface IModalLightBox extends Omit<CarouselProps, "views"> {
 }
 
 export interface IFilePreviewProps extends ImgHTMLAttributes<any> {
-    onClick?: (props?: any) => any;
     onRemove?: (props?: any) => any;
     removable?: boolean;
+    onClick?: (props?: any) => any;
     videoUrl?: any;
     className?: string;
     classNameItem?: string;

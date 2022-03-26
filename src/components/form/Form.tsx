@@ -278,6 +278,7 @@ const Form: React.FC<IFormProps> = ({
     error = {},
     onChange,
     classNameRow,
+    getRowClass,
 }) => {
     const transformData = useMemo(() => {
         const clone: Array<typeof dataSource> = [];
