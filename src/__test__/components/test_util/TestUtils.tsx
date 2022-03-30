@@ -1,13 +1,14 @@
 /* eslint-disable max-len */
-import React from "react";
+import _ from "lodash";
 import moment from "moment";
-import TimeUtils from "../../../utils/TimeUtils";
+import React, { useState } from "react";
 import Button from "../../../components/button/Button";
-import UrlUtils from "../../../utils/UrlUtils";
-import TreeDataUtils from "../../../utils/TreeDataUtils";
-import { TREE_DATA } from "../../data/TestConstant";
 import ViewCollapse from "../../../components/view/ViewCollapse";
 import ViewRow from "../../../components/view/ViewRow";
+import TimeUtils from "../../../utils/TimeUtils";
+import TreeDataUtils from "../../../utils/TreeDataUtils";
+import UrlUtils from "../../../utils/UrlUtils";
+import { TREE_DATA } from "../../data/TestConstant";
 
 export interface TestUtilsProps {
     [key: string]: any;
@@ -22,6 +23,7 @@ const TestUtils: React.FC<TestUtilsProps> = ({ id }) => {
         parentId: "createPaySlipSub",
     };
     const allParent = TreeDataUtils.getAllParentNode(testNode, TREE_DATA, "parentId");
+    const [query, setQuery] = useState();
 
     const { hours, days, minutes, seconds } = TimeUtils.calculatePreciseDifferentTime({
         from: "12/05/2022 10:25",
@@ -41,10 +43,18 @@ const TestUtils: React.FC<TestUtilsProps> = ({ id }) => {
                 </ViewRow>
             </ViewCollapse>
             <ViewCollapse label="URL Utils" className="my-5">
+                {!_.isEmpty(query) && (
+                    <div>
+                        Get Query From Url:
+                        {Object.keys(query as any).map((key) => {
+                            return <div>{`${key}:${query?.[key]}`}</div>;
+                        })}
+                    </div>
+                )}
                 <Button
                     content="Push State Params"
-                    onClick={() => UrlUtils.pushState({})}
-                    // onClick={() => UrlUtils.pushState({ search: "text search", filter: "filter body" })}
+                    // onClick={() => UrlUtils.pushState({})}
+                    onClick={() => UrlUtils.pushState({ search: "text search", filter: "filter body" })}
                     className="my-4"
                 />
                 <Button
@@ -56,6 +66,15 @@ const TestUtils: React.FC<TestUtilsProps> = ({ id }) => {
                     content="Replace State Params"
                     // onClick={() => UrlUtils.replaceState({ search: "replace text search", filter: JSON.stringify({ key: "123" }) })}
                     onClick={() => UrlUtils.replaceState({})}
+                    className="my-4"
+                />
+                <Button
+                    content="Get Query From URL "
+                    // onClick={() => UrlUtils.replaceState({ search: "replace text search", filter: JSON.stringify({ key: "123" }) })}
+                    onClick={() => {
+                        const query = UrlUtils.getParams();
+                        setQuery(query);
+                    }}
                     className="my-4"
                 />
             </ViewCollapse>

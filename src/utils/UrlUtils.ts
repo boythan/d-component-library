@@ -9,10 +9,12 @@ const getParams = function (url?: string) {
     parser.href = url || currentUrl;
     const query = parser.search.substring(1);
     const vars = query.split("&");
-    // eslint-disable-next-line no-plusplus
-    for (let i = 0; i < vars.length; i++) {
-        const pair = vars[i].split("=");
-        params[pair[0]] = decodeURIComponent(pair[1]);
+    if (!_.isEmpty(query)) {
+        // eslint-disable-next-line no-plusplus
+        for (let i = 0; i < vars.length; i++) {
+            const pair = vars[i].split("=");
+            params[pair[0]] = decodeURIComponent(pair[1]);
+        }
     }
     return params;
 };
