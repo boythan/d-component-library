@@ -5,6 +5,7 @@
 // react
 import { SearchOutlined } from "@ant-design/icons";
 import { Button, Input, Table, TableColumnGroupType, TableColumnType, TablePaginationConfig, TableProps } from "antd";
+import { SorterResult } from "antd/lib/table/interface";
 // third-party
 import ClassNames from "classnames";
 import _ from "lodash";
@@ -48,7 +49,7 @@ interface MyTableColumnGroupType extends TableColumnGroupType<any> {
 export type IColumnsProps = (MyTableColumnGroupType | MyTableColumnType)[];
 
 export interface AwesomeTableComponentProps extends TableProps<any> {
-    source: (pagination: { pageIndex?: number; pageSize?: number }, sorter?: any) => Promise<any>;
+    source: (pagination: { pageIndex?: number; pageSize?: number }, sorter?: SorterResult<any>) => Promise<any>;
     transformer: (res: any) => Array<any>;
     columns: IColumnsProps;
     baseColumnProps?: any;
