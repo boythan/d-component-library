@@ -7,9 +7,9 @@ import ClassNames from "classnames";
 import Messages from "../../language/Messages";
 
 export interface ViewTextareaProps {
-    [key: string]: any;
     children: string;
     style?: CSSProperties;
+    styleContent?: CSSProperties;
     showMoreText?: string;
     showLessText?: string;
     limitedLength?: number;
@@ -27,6 +27,7 @@ const ViewTextarea: React.FC<ViewTextareaProps> = ({
     classNameShowMore,
     classNameShowLess,
     style = {},
+    styleContent = {},
     showLessText = Messages.showLess,
     showMoreText = Messages.showMore,
     limitedLength = 200,
@@ -48,12 +49,20 @@ const ViewTextarea: React.FC<ViewTextareaProps> = ({
 
     // classNames
 
-    const wrapperClass = ClassNames("d-view-textarea text-small text-start", className);
+    const wrapperClass = ClassNames(
+        "d-view-textarea text-small text-start",
+        {
+            "d-view-textarea__expading": expanding,
+            "d-view-textarea__closing": !expanding,
+        },
+        className
+    );
     const contentClass = ClassNames(
         "d-view-textarea__content",
         {
             "text-nowrap": isOverFollow && !expanding,
-            // "d-inline-block": !expanding,
+            "d-view-textarea__content-expading": expanding,
+            "d-view-textarea__content-closing": !expanding,
         },
         classNameContent
     );
@@ -69,7 +78,7 @@ const ViewTextarea: React.FC<ViewTextareaProps> = ({
 
     return (
         <div className={wrapperClass} style={{ ...style, maxWidth: width }} ref={wrapperRef}>
-            <div className={contentClass} ref={(ref) => (contentRef.current = ref)}>
+            <div className={contentClass} style={styleContent} ref={(ref) => (contentRef.current = ref)}>
                 {children}
                 {isShowLess && (
                     <span
