@@ -1,6 +1,6 @@
 {
   "name": "d-react-components",
-  "version": "0.3.21",
+  "version": "0.3.22",
   "main": "dist/dcomponent.cjs.js",
   "module": "dist/dcomponent.es.js",
   "typings": "dist/dcomponent.d.ts",
@@ -111,6 +111,11 @@
   "keywords": [
     "react-component"
   ],
+  "resolutions": {
+    "react-error-overlay": "6.0.9",
+    "@types/react": "17.0.39",
+    "@types/react-dom": "17.0.5"
+  },
   "author": "D.",
   "license": "UNLICENSED"
 }
