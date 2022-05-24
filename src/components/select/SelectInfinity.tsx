@@ -76,18 +76,25 @@ const SelectInfinity: React.ForwardRefRenderFunction<SelectInfinityMethod, Selec
     }, 400);
 
     const renderItemDropdown = (item: any, index: any) => {
+        const { getDisableOption } = props;
+        const disabled = getDisableOption ? getDisableOption(item) : false;
         const label = getLabelDropdownItem ? getLabelDropdownItem(item) : getLabel(item);
         const itemValue = getValue(item);
         const isSelected = !!value && value?.length > 0 && value?.find((i: any) => getValue(i) === itemValue);
         const itemClass = ClassNames(
-            "py-2 px-3 hover-pointer",
+            "py-2 px-3",
             { "ant-select-item-option-active ant-select-item-option-selected": isSelected },
+            { "ant-select-item-option-disabled": disabled },
+            { "hover-pointer": !disabled },
             classNameDropdownItem
         );
         return (
             <div
                 className={itemClass}
                 onClick={() => {
+                    if (disabled) {
+                        return;
+                    }
                     if (mode === "tags" || mode === "multiple") {
                         let clone: Array<any> = [...value];
                         let cloneValue: Array<any> = [];
