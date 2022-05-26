@@ -6,6 +6,7 @@ import ViewTextError from "../view/ViewTextError";
 
 export interface InputTextProps extends InputHTMLAttributes<any> {
     className?: string;
+    classNameLabel?: string;
     classNameInput?: string;
     classNameInputContainer?: string;
     styleInput?: CSSProperties;
@@ -32,6 +33,7 @@ export interface InputTextProps extends InputHTMLAttributes<any> {
 
 const InputText = ({
     className,
+    classNameLabel,
     classNameInput,
     classNameInputContainer,
     style,
@@ -61,7 +63,7 @@ const InputText = ({
     ...inputProps
 }: InputTextProps) => {
     const container = classname("d-input-text__container", className);
-    const labelClass = classname("text-label", { "text-label-required": required });
+    const labelClass = classname("text-label", { "text-label-required": required }, classNameLabel);
 
     const inputClass = classname("text-x-small", "d-input-text__input", classNameInput);
 
