@@ -1,13 +1,7 @@
 // react
-import React, { CSSProperties, InputHTMLAttributes } from "react";
-
 // third-party
 import classname from "classnames";
-
-// application
-
-// data stubs
-import Icon from "../elements/icon/Icon";
+import React, { CSSProperties, InputHTMLAttributes } from "react";
 import ViewTextError from "../view/ViewTextError";
 
 export interface InputColorProps extends InputHTMLAttributes<any> {
@@ -29,8 +23,6 @@ export interface InputColorProps extends InputHTMLAttributes<any> {
 
     disabled?: boolean;
     hidden?: boolean;
-    prefix?: any;
-    suffix?: any;
 }
 
 const InputColor = ({

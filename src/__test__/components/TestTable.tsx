@@ -23,6 +23,7 @@ const TestTable = () => {
             mobileTitle: "Mobile name",
             dataIndex: "label",
             width: 300,
+            sorter: true,
         },
         {
             title: "Age",
@@ -105,7 +106,7 @@ const TestTable = () => {
                 }}
             />
             <AwesomeTableComponent
-                source={(paging) => {
+                source={(paging, sorter) => {
                     return Promise.resolve(ATTRIBUTE_INPUT_TYPE);
                 }}
                 transformer={(res) => ATTRIBUTE_INPUT_TYPE}

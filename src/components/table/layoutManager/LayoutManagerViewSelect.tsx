@@ -161,14 +161,16 @@ const LayoutManagerViewSelect = ({ selectedColumns = [], tableKey, onChangeLayou
         return (
             <div className="d-flex flex-column">
                 {renderSelectDefaultView()}
-                {tableLayouts.map((item: any) => (
-                    <SelectLayoutItem
-                        layoutItem={item}
-                        onSaveName={onChangeLayoutName}
-                        onDelete={onDeleteLayoutItem}
-                        onClick={onSelectLayout}
-                    />
-                ))}
+                {tableLayouts &&
+                    tableLayouts?.length > 0 &&
+                    tableLayouts.map((item: any) => (
+                        <SelectLayoutItem
+                            layoutItem={item}
+                            onSaveName={onChangeLayoutName}
+                            onDelete={onDeleteLayoutItem}
+                            onClick={onSelectLayout}
+                        />
+                    ))}
                 {isShowSaveNew && (
                     <SaveAsNewView selectedColumns={selectedColumns} tableKey={tableKey} onSuccess={forceUpdate} />
                 )}

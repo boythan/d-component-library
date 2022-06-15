@@ -11,6 +11,7 @@ import Checkbox from "./Checkbox";
 export interface CheckboxGroupProps {
     className?: string;
     classNameItem?: string;
+    selectAllText?: string;
 
     dataSource: Array<any>;
     label?: any;
@@ -21,6 +22,7 @@ export interface CheckboxGroupProps {
     multiple?: boolean;
     disabled?: boolean;
     hidden?: boolean;
+    showSelectAll?: boolean;
 
     getLabel?: (item: any) => any;
     getValue?: (item: any) => any;
@@ -34,12 +36,15 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
 
     dataSource = [],
     value = [],
+    defaultValue,
     multiple = true,
     numberOfColumns = "3",
     numberOfDefaultShow = 10,
     label,
     disabled,
     hidden,
+    showSelectAll = false,
+    selectAllText = Messages.selectAll,
 
     getLabel = (item: any) => item?.label,
     getValue = (item: any) => item?.id,
@@ -78,16 +83,29 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
         if (!showExpandButtons) return <div />;
         if (expended) {
             return (
-                <Button variant="trans" className="p-0" onClick={() => setExpended(false)}>
+                <Button variant="trans" size="x-small" className="p-0 mr-4" onClick={() => setExpended(false)}>
                     <div className="flex-center-y text-x-small text-underline mr-2">{Messages.closeAll}</div>
                     <Icon name="expand_less" size="x-small" />
                 </Button>
             );
         }
         return (
-            <Button variant="trans" className="p-0" onClick={() => setExpended(true)}>
+            <Button variant="trans" size="x-small" className="p-0 mr-4" onClick={() => setExpended(true)}>
                 <div className="flex-center-y text-x-small text-underline mr-2">{Messages.showAll}</div>
                 <Icon name="expand_more" size="x-small" />
+            </Button>
+        );
+    };
+
+    const renderSelectAll = () => {
+        return (
+            <Button
+                onClick={() => onChange && onChange(dataSource?.map((item) => getValue(item)))}
+                variant="outline"
+                size="x-small"
+                className="my-2"
+            >
+                {selectAllText}
             </Button>
         );
     };
@@ -137,7 +155,10 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
                     );
                 })}
             </div>
-            {renderExpandedButtons()}
+            <div className="flex-center-y">
+                {renderExpandedButtons()}
+                {showSelectAll && renderSelectAll()}
+            </div>
         </div>
     );
 };

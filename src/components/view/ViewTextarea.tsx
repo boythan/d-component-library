@@ -7,9 +7,9 @@ import ClassNames from "classnames";
 import Messages from "../../language/Messages";
 
 export interface ViewTextareaProps {
-    [key: string]: any;
     children: string;
     style?: CSSProperties;
+    styleContent?: CSSProperties;
     showMoreText?: string;
     showLessText?: string;
     limitedLength?: number;
@@ -17,7 +17,6 @@ export interface ViewTextareaProps {
     classNameContent?: string;
     classNameShowMore?: string;
     classNameShowLess?: string;
-    width?: number;
 }
 
 const ViewTextarea: React.FC<ViewTextareaProps> = ({
@@ -27,10 +26,10 @@ const ViewTextarea: React.FC<ViewTextareaProps> = ({
     classNameShowMore,
     classNameShowLess,
     style = {},
+    styleContent = {},
     showLessText = Messages.showLess,
     showMoreText = Messages.showMore,
     limitedLength = 200,
-    width,
 }) => {
     const [expanding, setExpanding] = useState(false);
     const contentLength = useMemo(() => {
@@ -46,14 +45,29 @@ const ViewTextarea: React.FC<ViewTextareaProps> = ({
     const isShowMore = isOverFollow && !expanding;
     const isShowLess = isOverFollow && expanding;
 
+    const displayText = useMemo(() => {
+        let content = children;
+        if (isOverFollow && isShowMore) {
+            content = children.substring(0, limitedLength);
+        }
+        return content;
+    }, [isOverFollow, contentLength, isShowLess, isShowMore, expanding]);
+
     // classNames
 
-    const wrapperClass = ClassNames("d-view-textarea text-small text-start", className);
+    const wrapperClass = ClassNames(
+        "d-view-textarea text-small text-start",
+        {
+            "d-view-textarea__expading": expanding,
+            "d-view-textarea__closing": !expanding,
+        },
+        className
+    );
     const contentClass = ClassNames(
         "d-view-textarea__content",
         {
-            "text-nowrap": isOverFollow && !expanding,
-            // "d-inline-block": !expanding,
+            "d-view-textarea__content-expading": expanding,
+            "d-view-textarea__content-closing": !expanding,
         },
         classNameContent
     );
@@ -68,21 +82,21 @@ const ViewTextarea: React.FC<ViewTextareaProps> = ({
     }, [children]);
 
     return (
-        <div className={wrapperClass} style={{ ...style, maxWidth: width }} ref={wrapperRef}>
-            <div className={contentClass} ref={(ref) => (contentRef.current = ref)}>
-                {children}
+        <div className={wrapperClass} style={{ ...style }} ref={wrapperRef}>
+            <p className={contentClass} style={styleContent} ref={(ref) => (contentRef.current = ref)}>
+                {displayText}
+                {isShowMore && isOverFollow && <span>...</span>}
                 {isShowLess && (
                     <span
                         className={showLessClass}
                         onClick={() => {
                             setExpanding(false);
-                            wrapperRef.current && wrapperRef.current.setAttribute("style", `width:${width}px`);
                         }}
                     >
                         {` ${showLessText}`}
                     </span>
                 )}
-            </div>
+            </p>
             {isShowMore && (
                 <span
                     className={showMoreClass}

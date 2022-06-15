@@ -35,6 +35,7 @@ const RadioGroup: React.FC<RadioGroupProps> = ({
     getValue = (item: any) => item?.id,
     getDisabledItem,
     value,
+    defaultValue,
     onChange,
     numberOfColumns = "3",
     label,

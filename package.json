@@ -1,6 +1,6 @@
 {
   "name": "d-react-components",
-  "version": "0.3.14",
+  "version": "0.3.27",
   "main": "dist/dcomponent.cjs.js",
   "module": "dist/dcomponent.es.js",
   "typings": "dist/dcomponent.d.ts",
@@ -38,7 +38,7 @@
     "start-demo": "react-scripts start",
     "i-all": "npm i && npm i",
     "dev": "npm-run-all --parallel build-watch start-demo",
-    "start": "CHOKIDAR_USEPOLLING=true react-scripts start",
+    "start": "CHOKIDAR_USEPOLLING=true FAST_REFRESH=false react-scripts start",
     "buildReact": "react-scripts build",
     "publishD": "rollup -c && npm run build-cp-variable && yarn publish"
   },
@@ -111,6 +111,11 @@
   "keywords": [
     "react-component"
   ],
+  "resolutions": {
+    "react-error-overlay": "6.0.9",
+    "@types/react": "17.0.39",
+    "@types/react-dom": "17.0.5"
+  },
   "author": "D.",
   "license": "UNLICENSED"
 }

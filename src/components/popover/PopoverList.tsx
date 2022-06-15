@@ -40,7 +40,6 @@ export interface PopoverListProps extends ButtonProps {
     buttonIconName?: ButtonProps["iconName"];
     buttonVariant?: ButtonProps["variant"];
     isClickOpen?: boolean;
-    placeHolder?: string;
     loadMoreText?: string;
     emptyText?: string;
 }

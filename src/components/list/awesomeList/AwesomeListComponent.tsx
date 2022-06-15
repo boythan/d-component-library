@@ -39,6 +39,8 @@ export interface AwesomeListComponentProps {
     variant?: "infinity-scroll" | "load-more";
     loadMoreText?: string;
     loadMoreButtonProps?: ButtonProps;
+
+    containerId?: string;
 }
 
 export interface AwesomeListComponentState {
@@ -277,9 +279,9 @@ class AwesomeListComponent extends Component<AwesomeListComponentProps, AwesomeL
 
     render() {
         const { emptyMode } = this.state;
-        const { styleContainer, className, emptyView, variant } = this.props;
+        const { styleContainer, className, emptyView, variant, containerId } = this.props;
         return (
-            <div className={`d-awesome-list ${className}`} style={{ ...styleContainer }}>
+            <div className={`d-awesome-list ${className}`} style={{ ...styleContainer }} id={containerId}>
                 {variant === "infinity-scroll" ? this.renderInfinityVariant() : this.renderLoadMoreVariant()}
                 <EmptyView mode={emptyMode} emptyText={emptyView} />
             </div>

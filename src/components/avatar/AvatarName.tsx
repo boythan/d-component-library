@@ -9,12 +9,14 @@ export interface IUserBasic {
     fullName?: string;
     avatar?: string | null;
     name?: string;
+    lastName?: string;
 }
 
 export interface AvatarNameProps {
     user: IUserBasic;
     position?: "before" | "after";
     size?: AvatarProps["size"];
+    variant?: AvatarProps["variant"];
     subLabel?: string;
     className?: string;
     classNameTextWrap?: string;
@@ -22,6 +24,7 @@ export interface AvatarNameProps {
     classNameSub?: string;
     customName?: ((props: { className: string; name: string }) => any) | Element | ReactElement;
     onClick?: DOMAttributes<any>["onClick"];
+    avatarProps?: AvatarProps;
 }
 
 const AvatarName: React.FC<AvatarNameProps> = ({
@@ -35,8 +38,10 @@ const AvatarName: React.FC<AvatarNameProps> = ({
     classNameTextWrap,
     customName,
     onClick,
+    variant,
+    avatarProps = {},
 }) => {
-    const { avatar, fullName, name = "" } = user;
+    const { avatar, fullName, name = "", lastName } = user;
     let displayName = name;
     if (fullName) {
         displayName = fullName;
@@ -107,8 +112,16 @@ const AvatarName: React.FC<AvatarNameProps> = ({
     return (
         <div className={wrapperClass} onClick={onClick}>
             {position === "before" && renderText()}
-            {avatar && <Avatar src={avatar} size={size} />}
-            {!avatar && <Avatar text={displayName.charAt(0)} size={size} />}
+            {avatar && <Avatar src={avatar} size={size} variant={variant} {...avatarProps} />}
+            {!avatar && (
+                <Avatar
+                    text={displayName.charAt(0)}
+                    secondText={lastName}
+                    size={size}
+                    variant={variant}
+                    {...avatarProps}
+                />
+            )}
             {position === "after" && renderText()}
         </div>
     );

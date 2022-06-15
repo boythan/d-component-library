@@ -82,8 +82,17 @@ const TestView: React.FC<TestRowInterChagneProps> = ({ id }) => {
                 defaultOpen={false}
             >
                 <div className="text-bold my-3">View Text Area With Show More Show Less Button </div>
-                <ViewTextarea limitedLength={60} width={600}>
-                    {`This is Ant Design's internal standard for evaluating design quality. Based on the assumption . `}
+                <ViewTextarea limitedLength={300}>
+                    {`show more/Less text with just HTML and JavaScript - SyntaxFixhttps://syntaxfix.com › Question
+Dịch trang này
+I am needing to create a show more/less text function, but with just ... hiding the show link when it is selected: */ #textarea + ul.controls .hide, ...
+8 câu trả lờiJ
+Câu trả lời hàng đầu: 
+My answer is similar but different there are a few ways to achieve toggling effect I ...
+
+How To Create a Read More Read Less Button - W3Schoolshttps://www.w3schools.com › howto › h...
+Dịch trang này
+Learn how to create a "read more - read less" button with JavaScript. Example Text. Lorem ipsum dolor sit amet, ... if (dots.style.display === "none") { `}
                 </ViewTextarea>
             </ViewCollapse>
             <ViewCollapse label="View Timeline" className={collapseClass} defaultOpen={false}>

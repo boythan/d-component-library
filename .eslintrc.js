@@ -75,5 +75,6 @@ module.exports = {
         "operator-linebreak": [0],
         "implicit-arrow-linebreak": [0],
         "react/jsx-curly-newline": [0],
+        "react/default-props-match-prop-types": [0],
     },
 };

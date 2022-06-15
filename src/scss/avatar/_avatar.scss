@@ -8,7 +8,7 @@ $avatar-size: (
     "x-small": $avatar-size-x-small,
     "xx-small": $avatar-size-xx-small,
 );
-$avatar-variant: ("rounded", "square");
+$avatar-variant: ("rounded", "square", "circle");
 
 .d-image__image {
     width: 100%;
@@ -22,7 +22,7 @@ $avatar-variant: ("rounded", "square");
             width: $size;
             min-width: $size;
             height: $size;
-            @if ($var == "rounded") {
+            @if ($var == "circle") {
                 border-radius: 9999px;
                 .d-image__image {
                     border-radius: 9999px;
