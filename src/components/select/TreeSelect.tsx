@@ -36,6 +36,7 @@ const TreeSelect = ({
 
     allowClear = true,
     variant = "outline",
+    ...rest
 }: TreeSelectProps) => {
     const container = classname("d-select__container", `d-select__container-${variant}`, className);
     const labelClass = classname("text-label", "d-select__label");
@@ -63,6 +64,7 @@ const TreeSelect = ({
                 placeholder={placeholder}
                 multiple={multiple}
                 allowClear={allowClear}
+                {...rest}
             />
 
             <ViewTextError error={error} />
