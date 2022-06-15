@@ -1,10 +1,8 @@
-import { TreeSelect as TreeSelectAnt } from "antd";
+import { TreeSelect as TreeSelectAnt, TreeSelectProps as TreeSelectPropsAnt } from "antd";
 import classname from "classnames";
-import React from "react";
-import Icon from "../elements/icon/Icon";
 import ViewTextError from "../view/ViewTextError";
 
-export interface TreeSelectProps {
+export interface TreeSelectProps extends TreeSelectPropsAnt {
     className?: string;
     classNameSelect?: string;
 
