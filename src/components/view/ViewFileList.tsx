@@ -9,17 +9,17 @@
 import ClassNames from "classnames";
 // third-party
 import _ from "lodash";
-import React, { useEffect, useRef, useState, ImgHTMLAttributes } from "react";
+import React, { ImgHTMLAttributes, useEffect, useMemo, useRef, useState } from "react";
 import { useDropzone } from "react-dropzone";
-import Carousel, { Modal, ModalGateway, CarouselProps } from "react-images";
+import Carousel, { CarouselProps, Modal, ModalGateway } from "react-images";
 // data stubs
 import Messages from "../../language/Messages";
-import { DOC, EXCEL, PDF, IMAGE } from "../../utils/ImageUtils";
+import { DOC, EXCEL, PDF } from "../../utils/ImageUtils";
 import StringUtils from "../../utils/StringUtils";
+import { AvatarProps } from "../avatar/Avatar";
 import Button from "../button/Button";
 import Icon from "../elements/icon/Icon";
 import Notifications from "../notifications/Notifications";
-import { AvatarProps } from "../avatar/Avatar";
 // application
 
 const FILE_TYPE = [DOC, EXCEL, PDF];
@@ -172,40 +172,34 @@ export const RenderPreviewFile: React.FC<IRenderPreviewFileProps> = ({
     onViewImage,
     onRemove,
 }) => {
-    if (IMAGE.extension.includes(extension)) {
+    const foundTypeDocument = useMemo(() => {
+        return _.find(FILE_TYPE, (type) => _.includes(type?.extension ?? [], extension));
+    }, [FILE_TYPE, extension]);
+
+    if (foundTypeDocument) {
         return (
             <div className="d-view-file-list__file-preview">
-                <FilePreview
-                    onRemove={() => onRemove && onRemove(item)}
-                    src={src || item?.imageData}
-                    removable={!!removable}
-                    onClick={() => onViewImage && onViewImage(item, src)}
-                />
+                <a href={item?.url} target="_blank" rel="noreferrer">
+                    <FilePreview
+                        onRemove={() => onRemove && onRemove(item)}
+                        src={foundTypeDocument?.iconFile}
+                        removable={removable}
+                    />
+                    {!removable && <div className="d-view-file-list__download-icon">get app icon</div>}
+                </a>
                 {/* <text id="fileNameText">{name}</text> */}
             </div>
         );
     }
     return (
-        <React.Fragment>
-            {FILE_TYPE.map((type) => {
-                if (type.extension.includes(extension)) {
-                    return (
-                        <div className="d-view-file-list__file-preview">
-                            <a href={item?.url} target="_blank" rel="noreferrer">
-                                <FilePreview
-                                    onRemove={() => onRemove && onRemove(item)}
-                                    src={type.iconFile}
-                                    removable={removable}
-                                />
-                                {!removable && <div className="d-view-file-list__download-icon">get app icon</div>}
-                            </a>
-                            {/* <text id="fileNameText">{name}</text> */}
-                        </div>
-                    );
-                }
-                return null;
-            })}
-        </React.Fragment>
+        <div className="d-view-file-list__file-preview">
+            <FilePreview
+                onRemove={() => onRemove && onRemove(item)}
+                src={src || item?.imageData}
+                removable={!!removable}
+                onClick={() => onViewImage && onViewImage(item, src)}
+            />
+        </div>
     );
 };
 
