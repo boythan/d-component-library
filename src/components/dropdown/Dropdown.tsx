@@ -50,7 +50,7 @@ export interface DropdownProps extends DropDownMenuProps {
 const MenuItem: React.FC<IMenuItemProps> = ({ item, Messages, onClick, isMainView, className, style }) => {
     const { id, iconName, subMenu, label, image } = item;
     const itemClass = ClassNames(
-        "d-dropdown-menu__item ",
+        "d-dropdown-menu__item text-nowrap",
         {
             "d-dropdown-menu__item-with-submenu": subMenu && subMenu?.length > 0,
             "d-dropdown-menu__item-main-view": isMainView,
@@ -75,14 +75,14 @@ const MenuItem: React.FC<IMenuItemProps> = ({ item, Messages, onClick, isMainVie
         arrowView = <Icon name="expand_more" className="d-block ml-2" />;
     }
     return (
-        <div className={itemClass} onClick={() => onClick && onClick(item)} key={`${id}`} style={style}>
+        <li className={itemClass} onClick={() => onClick && onClick(item)} key={`${id}`} style={style}>
             {iconImageView}
             {labelView}
             {arrowView}
             {!isMainView && subMenu && subMenu.length > 0 && (
                 <DropdownMenu dataSource={subMenu} onClick={(item) => console.log({ item })} />
             )}
-        </div>
+        </li>
     );
 };
 
@@ -108,7 +108,7 @@ export const DropdownMenu: React.FC<DropDownMenuProps> = ({
         );
     });
 
-    return <div className={wrapperClass}>{list}</div>;
+    return <ul className={wrapperClass}>{list}</ul>;
 };
 
 const Dropdown: React.FC<DropdownProps> = ({
@@ -126,7 +126,7 @@ const Dropdown: React.FC<DropdownProps> = ({
     ...rest
 }) => {
     const [openDropdown, setOpenDropdown] = useState(false);
-    const containerClass = ClassNames("flex-center-y justify-content-center", className);
+    const containerClass = ClassNames("d-dropdown  position-relative", className);
 
     const wrapperRef = useRef<HTMLDivElement>(null);
 
@@ -161,18 +161,16 @@ const Dropdown: React.FC<DropdownProps> = ({
 
     return (
         <div className={containerClass} ref={wrapperRef} style={style}>
-            <div className="d-dropdown  position-relative">
-                {mainView}
-                {openDropdown && (
-                    <DropdownMenu
-                        dataSource={dataSource}
-                        onClick={handleOnClickItem}
-                        Messages={Messages}
-                        position={position}
-                        {...rest}
-                    />
-                )}
-            </div>
+            {mainView}
+            {openDropdown && (
+                <DropdownMenu
+                    dataSource={dataSource}
+                    onClick={handleOnClickItem}
+                    Messages={Messages}
+                    position={position}
+                    {...rest}
+                />
+            )}
         </div>
     );
 };
