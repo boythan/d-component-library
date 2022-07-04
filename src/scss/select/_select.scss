@@ -21,6 +21,12 @@
 .d-select__container {
     display: flex;
     flex-direction: column;
+    .d-select__select {
+        border-radius: $border-radius;
+    }
+    .ant-select-selector {
+        border-radius: $border-radius !important;
+    }
 }
 
 .d-select__container-standard {
@@ -38,6 +44,7 @@
     .ant-select-focused {
         outline: none !important;
         border: $input-border-focus !important;
+        border-radius: $border-radius;
     }
 
     .ant-select-selector {

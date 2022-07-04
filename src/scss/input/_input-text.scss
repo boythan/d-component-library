@@ -12,7 +12,7 @@
 @mixin input-container {
     display: flex !important;
     flex-direction: row !important;
-    border-radius: $border-radius !important;
+    border-radius: $border-radius;
     outline: none !important;
     color: $input-color-content;
     min-height: $input-height;
@@ -43,17 +43,27 @@
     border-bottom: $input-border !important;
     outline: none;
     padding-left: 0px;
+    border-radius: 0px;
 
     &:focus-within {
         outline: none !important;
         border: none !important;
         border-bottom: $input-border-focus !important;
     }
+    .d-input-text__suffix-container {
+        border-left: 0px;
+        background-color: transparent;
+    }
+    .d-input-text__prefix-container {
+        border-right: 0px;
+        background-color: transparent;
+    }
 }
 
 @mixin prefix {
     padding: $input-padding;
     background-color: $bg-muted-color;
+    border-radius: $border-radius;
 }
 /********************************************LABEL & CONTAINER********************************************/
 .d-input-text__container {
