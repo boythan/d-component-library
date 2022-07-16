@@ -1,6 +1,6 @@
 {
   "name": "d-react-components",
-  "version": "0.3.31",
+  "version": "0.3.32",
   "main": "dist/dcomponent.cjs.js",
   "module": "dist/dcomponent.es.js",
   "typings": "dist/dcomponent.d.ts",
@@ -13,13 +13,6 @@
     "url": "git+https://github.com/boythan/d-component-library.git"
   },
   "dependencies": {
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "@types/jest": "^26.0.15",
-    "@types/node": "^12.0.0",
-    "@types/react": "^17.0.0",
-    "@types/react-dom": "^17.0.0",
     "antd": "4.18.9",
     "bootstrap": "4.5.3",
     "classnames": "^2.3.1",
@@ -28,8 +21,7 @@
     "node-sass": "^6.0.0",
     "query-string": "6.12.1",
     "react-highlight-words": "^0.17.0",
-    "react-resizable": "^3.0.1",
-    "web-vitals": "^1.0.1"
+    "react-resizable": "^3.0.1"
   },
   "scripts": {
     "build-cp-variable": "cp -v src/scss/_variables.scss dist/_variables.scss ",
@@ -68,8 +60,15 @@
     "@rollup/plugin-babel": "^5.3.0",
     "@rollup/plugin-image": "^2.1.1",
     "@rollup/plugin-json": "^4.1.0",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "@types/jest": "^26.0.15",
     "@types/lodash": "^4.14.170",
+    "@types/node": "^12.0.0",
     "@types/query-string": "^6.3.0",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
     "@types/react-highlight-words": "^0.16.2",
     "@types/react-resizable": "^1.7.2",
     "@typescript-eslint/eslint-plugin": "4.0.1",
@@ -98,6 +97,7 @@
     "rollup-plugin-scss": "^2.6.1",
     "rollup-plugin-typescript2": "^0.31.0",
     "typescript": "^4.1.2",
+    "web-vitals": "^1.0.1",
     "yup": "^0.32.9"
   },
   "peerDependencies": {
