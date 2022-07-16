@@ -33,7 +33,15 @@ const TestInput = () => {
     return (
         <div className="my-4">
             <ViewCollapse label="Input Text" defaultOpen={false}>
-                <InputText label="Input Text" placeholder="Please enter" className="mt-3" type="number" required />
+                <InputText
+                    label="Input Text"
+                    placeholder="Please enter"
+                    className="mt-3"
+                    type="number"
+                    variant="standard"
+                    required
+                    suffix="$"
+                />
                 <InputText label="Input Text" placeholder="Please enter" className="mt-3" error="Error Text" />
                 <InputText label="Input Text" placeholder="Please enter" className="mt-3" disabled />
                 <InputText label="Input Text" placeholder="Please enter" className="mt-3" suffix="$" />
