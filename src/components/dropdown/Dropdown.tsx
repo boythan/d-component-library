@@ -1,10 +1,11 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import React, { CSSProperties, useEffect, useRef, useState } from "react";
+import React, { CSSProperties, ElementRef, useEffect, useRef, useState } from "react";
 import ClassNames from "classnames";
 import Icon from "../elements/icon/Icon";
 import Button, { ButtonProps } from "../button/Button";
+import StringUtils from "../../utils/StringUtils";
 
 export interface IDropdownMenuItemProps {
     id: string | number;
@@ -24,6 +25,7 @@ export interface IMenuItemProps {
     isMainView?: boolean;
     className?: string;
     style?: CSSProperties;
+    id?: string;
 }
 
 export interface DropDownMenuProps {
@@ -43,14 +45,13 @@ export interface DropdownProps extends DropDownMenuProps {
     value?: IDropdownMenuItemProps;
     placeholder?: string;
     className?: string;
-    position?: "left-edge" | "right-edge";
     style?: CSSProperties;
 }
 
-const MenuItem: React.FC<IMenuItemProps> = ({ item, Messages, onClick, isMainView, className, style }) => {
-    const { id, iconName, subMenu, label, image } = item;
+const MenuItem: React.FC<IMenuItemProps> = ({ item, Messages, onClick, isMainView, className, style, id }) => {
+    const { id: idItem, iconName, subMenu, label, image } = item;
     const itemClass = ClassNames(
-        "d-dropdown-menu__item text-nowrap",
+        "d-dropdown-menu__item",
         {
             "d-dropdown-menu__item-with-submenu": subMenu && subMenu?.length > 0,
             "d-dropdown-menu__item-main-view": isMainView,
@@ -75,7 +76,7 @@ const MenuItem: React.FC<IMenuItemProps> = ({ item, Messages, onClick, isMainVie
         arrowView = <Icon name="expand_more" className="d-block ml-2" />;
     }
     return (
-        <li className={itemClass} onClick={() => onClick && onClick(item)} key={`${id}`} style={style}>
+        <li className={itemClass} onClick={() => onClick && onClick(item)} key={`${idItem}`} style={style} id={id}>
             {iconImageView}
             {labelView}
             {arrowView}
@@ -126,8 +127,10 @@ const Dropdown: React.FC<DropdownProps> = ({
     ...rest
 }) => {
     const [openDropdown, setOpenDropdown] = useState(false);
-    const containerClass = ClassNames("d-dropdown  position-relative", className);
-
+    const idContainer = useRef<string>(StringUtils.getUniqueID()).current;
+    const idContent = useRef<string>(StringUtils.getUniqueID()).current;
+    const containerClass = ClassNames(`d-dropdown`, className);
+    const [contentPosition, setContentPosition] = useState<"right-edge" | "left-edge">();
     const wrapperRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -140,34 +143,69 @@ const Dropdown: React.FC<DropdownProps> = ({
         document.addEventListener("mousedown", handleOutsideClick);
     }, [wrapperRef, setOpenDropdown]);
 
+    useEffect(() => {
+        const dropdownContainer = document.getElementById(idContainer);
+        const windowWidth = window.innerWidth;
+        const marginLeft = dropdownContainer?.getBoundingClientRect()?.left ?? 0;
+        const isLeftSide = marginLeft / windowWidth < 0.5;
+        setContentPosition(isLeftSide ? "left-edge" : "right-edge");
+    }, [window.innerWidth]);
+
+    useEffect(() => {
+        const dropdownContent = document.getElementById(idContent);
+        const contentDimension = dropdownContent?.getBoundingClientRect();
+        console.log({ contentDimension });
+    }, [window.innerWidth]);
+
     const handleOnClickItem = (item: any) => {
         setOpenDropdown(false);
         return onClick && onClick(item);
     };
 
     let mainView: any = (
-        <Button variant="trans" iconName="more_vert" {...buttonProps} onClick={() => setOpenDropdown(!openDropdown)} />
+        <Button
+            variant="trans"
+            iconName="more_vert"
+            {...buttonProps}
+            onClick={() => setOpenDropdown(!openDropdown)}
+            id={idContent}
+        />
     );
     if (variant === "view") {
         mainView = value ? (
-            <MenuItem item={value} Messages={Messages} onClick={() => setOpenDropdown(!openDropdown)} isMainView />
+            <MenuItem
+                item={value}
+                Messages={Messages}
+                onClick={() => setOpenDropdown(!openDropdown)}
+                isMainView
+                id={idContent}
+            />
         ) : (
-            <Button content={placeholder} {...buttonProps} onClick={() => setOpenDropdown(!openDropdown)} />
+            <Button
+                content={placeholder}
+                {...buttonProps}
+                onClick={() => setOpenDropdown(!openDropdown)}
+                id={idContent}
+            />
         );
     }
     if (children) {
-        mainView = <div onClick={() => setOpenDropdown(!openDropdown)}>{children}</div>;
+        mainView = (
+            <div onClick={() => setOpenDropdown(!openDropdown)} id={idContent}>
+                {children}
+            </div>
+        );
     }
 
     return (
-        <div className={containerClass} ref={wrapperRef} style={style}>
+        <div className={containerClass} ref={wrapperRef} style={style} id={idContainer}>
             {mainView}
             {openDropdown && (
                 <DropdownMenu
                     dataSource={dataSource}
                     onClick={handleOnClickItem}
                     Messages={Messages}
-                    position={position}
+                    position={contentPosition}
                     {...rest}
                 />
             )}

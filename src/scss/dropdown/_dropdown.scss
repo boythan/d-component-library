@@ -27,7 +27,6 @@
     transition: all 0.3s ease-in;
     padding: 16px 0px;
     min-width: $dropdown-min-width;
-    width: 100%;
 
     .d-dropdown-menu__item-with-submenu {
         position: relative !important;
@@ -61,6 +60,7 @@
                 bottom: auto;
                 left: auto;
                 right: 100%;
+                width: 100%;
             }
         }
     }
@@ -78,6 +78,7 @@
                 bottom: auto;
                 left: auto;
                 right: -100%;
+                width: 100%;
             }
         }
     }
