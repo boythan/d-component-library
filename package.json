@@ -38,7 +38,7 @@
     "start-demo": "react-scripts start",
     "i-all": "npm i && npm i",
     "dev": "npm-run-all --parallel build-watch start-demo",
-    "start": "CHOKIDAR_USEPOLLING=true FAST_REFRESH=false react-scripts start",
+    "start": "react-scripts start",
     "buildReact": "react-scripts build",
     "publishD": "rollup -c && npm run build-cp-variable && yarn publish"
   },
