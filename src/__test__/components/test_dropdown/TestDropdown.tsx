@@ -15,7 +15,7 @@ const TestDropdown: React.FC<TestDropdownProps> = ({ id }) => {
     return (
         <div className="d-flex flex-column my-4">
             <ViewRow label="Default Dropdown" className="my-4 border-bottom p-3">
-                <Dropdown dataSource={ATTRIBUTE_INPUT_TYPE} position="left-edge" />
+                <Dropdown dataSource={ATTRIBUTE_INPUT_TYPE} position="left-edge" activeOnHover />
             </ViewRow>
             <ViewRow label="Dropdown Variant View" className="my-4 border-bottom p-3">
                 <Dropdown
@@ -41,7 +41,8 @@ const TestDropdown: React.FC<TestDropdownProps> = ({ id }) => {
                         variant: "trans",
                         content: "Select Layout",
                     }}
-                    classNameMenuItem="text-nowrap"
+                    // classNameMenuItem="text-nowrap"
+                    activeOnHover
                 />
             </ViewRow>
             <ViewRow label="Drop Down With Children View" className="my-4 border-bottom p-3">
