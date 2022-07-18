@@ -1,14 +1,21 @@
 @import "../variables";
 
-.d-collapse-view__container,
-.ant-collapse {
+.d-collapse-view__container {
     .ant-collapse-header {
         background-color: $bg-muted-color;
-        border-radius: 0px !important;
+        border-radius: $border-radius !important;
         display: flex;
         align-items: center;
     }
-    border-radius: 0px !important;
+    .ant-collapse-item-active {
+        .ant-collapse-header {
+            border-radius: $border-radius $border-radius 0px 0px !important;
+        }
+    }
+    .ant-collapse-content-box {
+        border-radius: $border-radius;
+    }
+    border-radius: $border-radius;
 }
 
 .d-collapse-view__header-title {
