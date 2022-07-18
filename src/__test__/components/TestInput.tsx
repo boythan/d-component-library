@@ -88,7 +88,7 @@ const TestInput = () => {
                     label="Range Date"
                     onChange={(value) => setRangeDate(value)}
                     value={rangeDate}
-                    type="date"
+                    disabledDate={(date) => date.isBefore(new Date())}
                     isRangePicker
                 />
                 <DateInput
