@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import React, { CSSProperties, ElementRef, useEffect, useRef, useState } from "react";
+import React, { CSSProperties, ElementRef, useEffect, useMemo, useRef, useState } from "react";
 import ClassNames from "classnames";
 import Icon from "../elements/icon/Icon";
 import Button, { ButtonProps } from "../button/Button";
@@ -135,9 +135,35 @@ const Dropdown: React.FC<DropdownProps> = ({
     const [openDropdown, setOpenDropdown] = useState(false);
     const idContainer = useRef<string>(StringUtils.getUniqueID()).current;
     const idContent = useRef<string>(StringUtils.getUniqueID()).current;
+    const idDropdown = useRef<string>(StringUtils.getUniqueID()).current;
     const containerClass = ClassNames(`d-dropdown`, className);
-    const [contentPosition, setContentPosition] = useState<"right-edge" | "left-edge">();
+    const [contentHorizontalPosition, setContentHorizontalPosition] = useState<"right-edge" | "left-edge">();
+    const [contentVerticalPosition, setContentVerticalPosition] = useState<"top-edge" | "bottom-edge">();
+    const [contentDimension, setContentDimension] = useState<DOMRect>();
+    const [dropdownMenuDimension, setDropdownMenuDimension] = useState<DOMRect>();
     const wrapperRef = useRef<HTMLDivElement>(null);
+
+    const dropDownMenuPosition = useMemo<CSSProperties | undefined>(() => {
+        if (!contentDimension || !dropdownMenuDimension) {
+            return undefined;
+        }
+        const isLeftEdge = contentHorizontalPosition === "left-edge";
+        const isRightEdge = contentHorizontalPosition === "right-edge";
+        const isBottomEdge = contentVerticalPosition === "bottom-edge";
+        const { top = 0, left, right, bottom, height = 0, width, x, y } = contentDimension || {};
+        if (isBottomEdge) {
+            return {
+                top: `${top - dropdownMenuDimension?.height}px`,
+                left: isLeftEdge ? `${left}px` : `${right}px`,
+                transform: isRightEdge ? `translate(-${dropdownMenuDimension?.width}px,0px)` : "none",
+            };
+        }
+        return {
+            top: `${top + height}px`,
+            left: isLeftEdge ? `${left}px` : `${right}px`,
+            transform: isRightEdge ? `translate(-${dropdownMenuDimension?.width}px,0px)` : "none",
+        };
+    }, [contentDimension, contentHorizontalPosition, contentVerticalPosition, dropdownMenuDimension]);
 
     useEffect(() => {
         const handleOutsideClick = (event: MouseEvent) => {
@@ -152,16 +178,26 @@ const Dropdown: React.FC<DropdownProps> = ({
     useEffect(() => {
         const dropdownContainer = document.getElementById(idContainer);
         const windowWidth = window.innerWidth;
+        const windowHeight = window.innerHeight;
         const marginLeft = dropdownContainer?.getBoundingClientRect()?.left ?? 0;
+        const marginBottom = dropdownContainer?.getBoundingClientRect()?.top ?? 0;
         const isLeftSide = marginLeft / windowWidth < 0.5;
-        setContentPosition(isLeftSide ? "left-edge" : "right-edge");
-    }, [window.innerWidth]);
+        const isBottomSie = marginBottom / windowHeight > 0.65;
+        setContentHorizontalPosition(isLeftSide ? "left-edge" : "right-edge");
+        setContentVerticalPosition(isBottomSie ? "bottom-edge" : "top-edge");
+    }, [window.innerWidth, openDropdown, idContainer]);
 
     useEffect(() => {
         const dropdownContent = document.getElementById(idContent);
         const contentDimension = dropdownContent?.getBoundingClientRect();
-        console.log({ contentDimension });
-    }, [window.innerWidth]);
+        setContentDimension(contentDimension);
+    }, [window.innerWidth, openDropdown, idContent]);
+
+    useEffect(() => {
+        const dropdownMenu = document.getElementById(idDropdown);
+        const dropdownMenuDimension = dropdownMenu?.getBoundingClientRect();
+        setDropdownMenuDimension(dropdownMenuDimension);
+    }, [window.innerWidth, openDropdown, idDropdown]);
 
     const handleOnClickItem = (item: any) => {
         setOpenDropdown(false);
@@ -238,15 +274,19 @@ const Dropdown: React.FC<DropdownProps> = ({
         <div className={containerClass} ref={wrapperRef} style={style} id={idContainer}>
             {mainView}
             {openDropdown && (
-                <DropdownMenu
-                    dataSource={dataSource}
-                    onClick={handleOnClickItem}
-                    Messages={Messages}
-                    position={contentPosition}
-                    {...rest}
-                    onMouseEnter={onMouseEnterHandler}
-                    onMouseLeave={onMouseLeaveHandler}
-                />
+                <div className="d-dropdown__overlay">
+                    <DropdownMenu
+                        dataSource={dataSource}
+                        onClick={handleOnClickItem}
+                        Messages={Messages}
+                        position={contentHorizontalPosition}
+                        {...rest}
+                        style={dropDownMenuPosition}
+                        onMouseEnter={onMouseEnterHandler}
+                        onMouseLeave={onMouseLeaveHandler}
+                        id={idDropdown}
+                    />
+                </div>
             )}
         </div>
     );
