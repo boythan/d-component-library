@@ -1,14 +1,29 @@
 @import "../variables";
 
 .d-tab-bar__horizontal {
+    background-color: white;
     .d-tab-bar__item {
         font-weight: $font-weight-normal !important;
         color: $gray-color;
+        border: 0.5px solid $border-color;
     }
     .d-tab-bar__item-active {
         font-weight: $font-weight-semi-bold !important;
         border-bottom: 3px solid $accent-color;
         color: $accent-color;
+        border-radius: 0px;
+        background-color: white;
+    }
+    .d-tab-bar__item-inactive {
+        border: 0.5px solid $border-color;
+        background-color: $border-color;
+        border-radius: 0px;
+    }
+    .d-tab-bar__item-active-right {
+        border-radius: 0px 0px 0px $border-radius;
+    }
+    .d-tab-bar__item-active-left {
+        border-radius: 0px 0px $border-radius 0px;
     }
 }
 

@@ -21,18 +21,18 @@ const TestTabBar: React.FC<TestTabBarProps> = ({ id }) => {
                 dataSource={SELECT_DATA}
                 onChange={(tab) => setSelectedTab(tab)}
                 value={selectedTab}
-                getItemProps={({ item, isActive }) => {
+                getItemProps={({ item, isActive, className }) => {
                     if (isActive) {
                         return {
-                            className: "border-primary bg-white",
+                            // className: "border-primary bg-white",
                             suffixElement: () => (
                                 <Badge variant="index" index="+99" size="xx-large" classNameBadge="ml-3" />
                             ),
-                            style: { borderTop: "3px solid red" },
+                            // style: { borderTop: "3px solid red" },
                         };
                     }
                     return {
-                        className: "bg-muted",
+                        className: `${className} bg`,
                     };
                 }}
                 // isScroll

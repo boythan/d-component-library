@@ -2,9 +2,10 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable max-len */
 // react
-import React from "react";
-// third-party
+// third-party‚
 import ClassNames from "classnames";
+import _ from "lodash";
+import React from "react";
 // application
 import Button, { ButtonProps } from "../button/Button";
 // data stubs
@@ -30,6 +31,7 @@ export interface TabBarProps<T extends ITabItem> {
     className?: string;
     classNameItem?: string;
     variant?: "horizontal" | "vertical";
+    activeBorder?: "top" | "bottom";
     minWidthItem?: string | number;
     isScroll?: boolean;
     hideScrollBar?: boolean;
@@ -58,14 +60,21 @@ const TabBar: React.FC<TabBarProps<ITabItem>> = ({
         className
     );
     const activateScroll = isScroll && variant === "horizontal";
+    const activeIndex = _.findIndex(dataSource, (item) => item?.id === value?.id);
+
     return (
         <div className={wrapperClass} style={{ overflowX: activateScroll ? "scroll" : undefined }}>
             {dataSource.map((tabItem, index) => {
-                const isSelect = value?.id === tabItem?.id;
+                const isSelect = index === activeIndex;
+                const leftActive = index === activeIndex - 1;
+                const rightActive = index === activeIndex + 1 && activeIndex >= 0;
                 const itemClass = ClassNames(
                     "d-tab-bar__item text-small",
                     {
+                        "d-tab-bar__item-active-left": leftActive,
+                        "d-tab-bar__item-active-right": rightActive,
                         "d-tab-bar__item-active": isSelect,
+                        "d-tab-bar__item-inactive": !isSelect,
                     },
                     classNameItem
                 );
