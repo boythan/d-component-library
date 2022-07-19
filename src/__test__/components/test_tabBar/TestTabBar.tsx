@@ -24,7 +24,7 @@ const TestTabBar: React.FC<TestTabBarProps> = ({ id }) => {
                 getItemProps={({ item, isActive }) => {
                     if (isActive) {
                         return {
-                            className: "border-primary bg-white w-100",
+                            className: "border-primary bg-white",
                             suffixElement: () => (
                                 <Badge variant="index" index="+99" size="xx-large" classNameBadge="ml-3" />
                             ),
@@ -32,7 +32,7 @@ const TestTabBar: React.FC<TestTabBarProps> = ({ id }) => {
                         };
                     }
                     return {
-                        className: "bg-muted w-100",
+                        className: "bg-muted",
                     };
                 }}
                 // isScroll

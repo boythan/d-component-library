@@ -41,6 +41,8 @@
     pointer-events: all;
     width: fit-content;
 
+    border-radius: 0px 0px $border-radius $border-radius;
+
     .d-dropdown-menu__item-with-submenu {
         position: relative !important;
         .d-dropdown-menu__container {
