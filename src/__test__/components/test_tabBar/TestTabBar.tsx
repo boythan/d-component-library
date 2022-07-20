@@ -21,6 +21,7 @@ const TestTabBar: React.FC<TestTabBarProps> = ({ id }) => {
                 dataSource={SELECT_DATA}
                 onChange={(tab) => setSelectedTab(tab)}
                 value={selectedTab}
+                activeBorder="none"
                 getItemProps={({ item, isActive, className }) => {
                     if (isActive) {
                         return {

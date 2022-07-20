@@ -37,6 +37,7 @@
 //   - .share-links
 //   - .social-links
 //   - .tags
+//   - .tab
 //   - .tooltip
 //   - .typography
 
@@ -735,6 +736,19 @@
       $tags-hover-bg:           $accent-color           !default;
       $tags-hover-border:       1px solid $accent-color !default;
       $tags-hover-font-color:   $accent-opposite-color  !default;
+
+   // ----------------------------------------
+   // -- .tab
+   // ----------------------------------------
+      // border
+      $tab-border-width:            0.5px                           !default;
+      $tab-border-color:            $border-color                   !default;
+      $tab-border-active-color:     $accent-color                   !default;
+      // background
+      $tab-bg:                  $light-color           !default;
+      $tab-active-bg:           $light-color           !default;
+      $tab-inactive-bg:         $light-gray-color      !default;
+      $tab-hover-bg:            $light-color           !default;
 
    // ----------------------------------------
    // -- .tooltip
