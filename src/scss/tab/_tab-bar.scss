@@ -76,7 +76,7 @@
     .d-tab-bar__item {
         width: 100%;
         border-radius: 0px;
-        border-bottom: 1px solid $tab-border-color;
+        border-bottom: $tab-border-width solid $tab-border-color;
         padding: 16px 0px;
     }
 
@@ -103,6 +103,15 @@
     .d-tab-bar__item:last-child {
         border-radius: 0px 0px $border-radius $border-radius;
     }
+
+    .d-tab-bar__item-active-left:first-child {
+        border-radius: $border-radius $border-radius $border-radius 0px;
+    }
+
+    .d-tab-bar__item-active-right:last-child {
+        border-radius: 0px $border-radius $border-radius $border-radius;
+    }
+
     .d-tab-bar__item-active-indicator-fill {
         background-color: $primary;
         color: set-text-color($primary);
