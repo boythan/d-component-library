@@ -1,4 +1,5 @@
 @import "../variables";
+@import "../functions";
 
 .d-tab-bar {
     background-color: $tab-bg;
@@ -18,20 +19,21 @@
         background-color: $tab-inactive-bg;
         &:hover {
             background-color: $tab-hover-bg;
+            border: $tab-border-width solid $tab-border-color;
         }
     }
 
-    .d-tab-bar__item-active-border-top {
+    .d-tab-bar__item-active-indicator-top {
         border-top: 3px solid $tab-border-active-color;
     }
 
-    .d-tab-bar__item-active-border-bottom {
+    .d-tab-bar__item-active-indicator-bottom {
         border-bottom: 3px solid $tab-border-active-color;
     }
-    .d-tab-bar__item-active-border-left {
+    .d-tab-bar__item-active-indicator-left {
         border-left: 3px solid $tab-border-active-color;
     }
-    .d-tab-bar__item-active-border-right {
+    .d-tab-bar__item-active-indicator-right {
         border-right: 3px solid $tab-border-active-color;
     }
 }
@@ -43,9 +45,15 @@
         border-radius: 0px;
         border: 0px solid $tab-border-color;
         border-top: $tab-border-width solid $tab-border-color;
+        &:last-child {
+            border-right: $tab-border-width solid $tab-border-color;
+        }
+        &:first-child {
+            border-left: $tab-border-width solid $tab-border-color;
+        }
     }
     .d-tab-bar__item-inactive {
-        border: 0.5px solid $tab-border-color;
+        border: $tab-border-width solid $tab-border-color;
         border-radius: 0px;
     }
     .d-tab-bar__item-active-right {
@@ -53,6 +61,10 @@
     }
     .d-tab-bar__item-active-left {
         border-radius: 0px 0px $border-radius 0px;
+    }
+    .d-tab-bar__item-active-indicator-fill {
+        background-color: $primary;
+        color: set-text-color($primary);
     }
 }
 
@@ -89,8 +101,11 @@
         border-radius: $border-radius $border-radius 0px 0px;
     }
     .d-tab-bar__item:last-child {
-        border: none;
         border-radius: 0px 0px $border-radius $border-radius;
+    }
+    .d-tab-bar__item-active-indicator-fill {
+        background-color: $primary;
+        color: set-text-color($primary);
     }
 }
 

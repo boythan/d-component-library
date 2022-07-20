@@ -21,7 +21,7 @@ const TestTabBar: React.FC<TestTabBarProps> = ({ id }) => {
                 dataSource={SELECT_DATA}
                 onChange={(tab) => setSelectedTab(tab)}
                 value={selectedTab}
-                activeBorder="none"
+                activeIndicator="none"
                 getItemProps={({ item, isActive, className }) => {
                     if (isActive) {
                         return {
@@ -43,20 +43,7 @@ const TestTabBar: React.FC<TestTabBarProps> = ({ id }) => {
                 onChange={(tab) => setSelectedTab(tab)}
                 value={selectedTab}
                 variant="vertical"
-                getItemProps={({ item, isActive }) => {
-                    if (isActive) {
-                        return {
-                            className: "border-primary bg-white w-100 p-3",
-                            suffixElement: () => (
-                                <Badge variant="index" index="+99" size="xx-large" classNameBadge="ml-3" />
-                            ),
-                            style: { borderTop: "3px solid red" },
-                        };
-                    }
-                    return {
-                        // className: "bg-muted",
-                    };
-                }}
+                activeIndicator="fill"
             />
         </div>
     );

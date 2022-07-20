@@ -31,7 +31,7 @@ export interface TabBarProps<T extends ITabItem> {
     className?: string;
     classNameItem?: string;
     variant?: "horizontal" | "vertical";
-    activeBorder?: "top" | "bottom" | "left" | "right" | "none";
+    activeIndicator?: "top" | "bottom" | "left" | "right" | "none" | "fill";
     minWidthItem?: string | number;
     isScroll?: boolean;
     hideScrollBar?: boolean;
@@ -43,7 +43,7 @@ const TabBar: React.FC<TabBarProps<ITabItem>> = ({
     className,
     classNameItem,
     variant = "horizontal",
-    activeBorder = "bottom",
+    activeIndicator = "bottom",
     onChange,
     getLabel,
     getItemProps,
@@ -75,7 +75,7 @@ const TabBar: React.FC<TabBarProps<ITabItem>> = ({
                         "d-tab-bar__item-active-left": leftActive,
                         "d-tab-bar__item-active-right": rightActive,
                         "d-tab-bar__item-active": isSelect,
-                        [`d-tab-bar__item-active-border-${activeBorder}`]: isSelect,
+                        [`d-tab-bar__item-active-indicator-${activeIndicator}`]: isSelect,
                         "d-tab-bar__item-inactive": !isSelect,
                     },
                     classNameItem

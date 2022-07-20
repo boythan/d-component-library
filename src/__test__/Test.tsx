@@ -139,7 +139,7 @@ export default function Test({ content }: Props): ReactElement {
                         variant="vertical"
                         onChange={(tab) => setSelectedTab(tab)}
                         value={selectedTab}
-                        activeBorder="left"
+                        activeIndicator="left"
                         getItemProps={({ item, isActive }) => {
                             if (isActive) {
                                 return {
