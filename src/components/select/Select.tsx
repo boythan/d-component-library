@@ -10,6 +10,7 @@ import ViewTextError from "../view/ViewTextError";
 export interface SelectProps extends SelectAntProps<any> {
     classNameSelect?: string;
     classNameOption?: string;
+    classNameLabel?: string;
 
     label?: string;
     dataSource?: Array<any>;
@@ -38,6 +39,7 @@ const Select: React.ForwardRefRenderFunction<SelectMethod, SelectProps> = (
         className,
         classNameSelect,
         classNameOption,
+        classNameLabel,
 
         value = [],
         label,
@@ -85,7 +87,7 @@ const Select: React.ForwardRefRenderFunction<SelectMethod, SelectProps> = (
     }));
 
     const container = ClassName("d-select__container", `d-select__container-${variant}`, className);
-    const labelClass = ClassName("text-label", { "text-label-required": required });
+    const labelClass = ClassName("text-label", { "text-label-required": required }, classNameLabel);
 
     const selectClass = ClassName(
         "d-select__select",
