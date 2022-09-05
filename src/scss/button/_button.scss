@@ -12,6 +12,7 @@ $button-variant: ("outline", "standard", "trans");
     width: fit-content;
     border: none;
     min-width: $btn-min-width;
+    border-radius: $border-radius;
     i {
         text-decoration: none !important;
     }

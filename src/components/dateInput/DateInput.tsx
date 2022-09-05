@@ -53,7 +53,6 @@ const DateInput: React.FC<DateInputProp> = ({
     classNameInput,
     classNameButton,
     classNameLabel,
-
     ...props
 }) => {
     const wrapperClass = ClassNames("d-date-input", { "d-date-input__hide-input": useButton }, className);
@@ -101,6 +100,7 @@ const DateInput: React.FC<DateInputProp> = ({
     if (isRangePicker) {
         content = (
             <RangePicker
+                {...(props as any)}
                 value={value as any}
                 onChange={onChange as any}
                 onBlur={onBlur}

@@ -4,16 +4,27 @@
     width: fit-content;
     position: relative !important;
     overflow: visible;
+    pointer-events: all;
     button:active,
     button:focus {
         border: 1px solid $dropdown-focus-outline !important;
     }
 }
 
+.d-dropdown__overlay {
+    position: fixed;
+    right: 0;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    // background-color: black;
+    pointer-events: none;
+    z-index: 10;
+}
+
 .d-dropdown-menu__container {
     position: absolute;
     z-index: 1000;
-
     background-color: $light-color;
     box-shadow: $card-container-box-shadow;
     list-style-type: none;
@@ -27,7 +38,10 @@
     transition: all 0.3s ease-in;
     padding: 16px 0px;
     min-width: $dropdown-min-width;
-    width: 100%;
+    pointer-events: all;
+    width: fit-content;
+
+    border-radius: 0px 0px $border-radius $border-radius;
 
     .d-dropdown-menu__item-with-submenu {
         position: relative !important;
@@ -61,6 +75,7 @@
                 bottom: auto;
                 left: auto;
                 right: 100%;
+                width: 100%;
             }
         }
     }
@@ -78,6 +93,7 @@
                 bottom: auto;
                 left: auto;
                 right: -100%;
+                width: 100%;
             }
         }
     }
@@ -89,6 +105,7 @@
     display: flex;
     align-items: center;
     height: $dropdown-height;
+    pointer-events: all;
     &:hover {
         cursor: pointer;
         background-color: $dropdown-hover-color;
