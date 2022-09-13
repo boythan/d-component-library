@@ -127,3 +127,19 @@
 .d-tab-bar__hide-scroll-bar::-webkit-scrollbar {
     display: none;
 }
+
+.d-tab-bar {
+    .d-tab-bar__item-active-indicator-top {
+        border-top: 3px solid $tab-border-active-color;
+    }
+
+    .d-tab-bar__item-active-indicator-bottom {
+        border-bottom: 3px solid $tab-border-active-color;
+    }
+    .d-tab-bar__item-active-indicator-left {
+        border-left: 3px solid $tab-border-active-color;
+    }
+    .d-tab-bar__item-active-indicator-right {
+        border-right: 3px solid $tab-border-active-color;
+    }
+}
