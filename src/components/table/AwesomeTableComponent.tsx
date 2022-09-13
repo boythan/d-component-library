@@ -24,7 +24,7 @@ export const INIT_PAGINATION = {
     pageSize: 10,
     showQuickJumper: true,
     showTotal: (total: any) => <div className="captionText">{`Total ${total} items`}</div>,
-    pageSizeOptions: ["10", "20", "50"],
+    pageSizeOptions: ["10", "20", "50", "100", "200"],
     showSizeChanger: true,
 };
 
