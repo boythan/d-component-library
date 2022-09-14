@@ -29,4 +29,5 @@ export default {
     browsefiles: "Browse Files",
     errorUploadingFile: "Sorry, this file type is not permitted for security reasons.",
     browseOrDropHere: "Browse or drag and drop here",
+    deSelectAll: "Deselect All",
 };

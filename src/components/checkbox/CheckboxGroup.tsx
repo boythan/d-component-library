@@ -12,6 +12,7 @@ export interface CheckboxGroupProps {
     className?: string;
     classNameItem?: string;
     selectAllText?: string;
+    deSelectAllText?: string;
 
     dataSource: Array<any>;
     label?: any;
@@ -45,6 +46,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
     hidden,
     showSelectAll = false,
     selectAllText = Messages.selectAll,
+    deSelectAllText = Messages.deSelectAll,
 
     getLabel = (item: any) => item?.label,
     getValue = (item: any) => item?.id,
@@ -99,20 +101,28 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
 
     const renderSelectAll = () => {
         return (
-            <Button
-                onClick={() => onChange && onChange(dataSource?.map((item) => getValue(item)))}
-                variant="outline"
-                size="x-small"
-                className="my-2"
-            >
-                {selectAllText}
-            </Button>
+            <div className="d-flex">
+                <Button
+                    onClick={() => onChange && onChange(dataSource?.map((item) => getValue(item)))}
+                    variant="trans"
+                    size="x-small"
+                    className="my-2"
+                >
+                    {selectAllText}
+                </Button>
+                <Button onClick={() => onChange && onChange([])} variant="trans" size="x-small" className="my-2">
+                    {deSelectAllText}
+                </Button>
+            </div>
         );
     };
 
     return (
         <div className={containerClass} hidden={hidden}>
-            {label && <label>{label}</label>}
+            <div className="d-flex justify-content-between align-items-center">
+                {label && <label>{label}</label>}
+                {showSelectAll && renderSelectAll()}
+            </div>
             <div className={groupContainerClass}>
                 {dataSourceDisplay.map((item) => {
                     const iLabel = getLabel(item);
@@ -155,10 +165,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
                     );
                 })}
             </div>
-            <div className="flex-center-y">
-                {renderExpandedButtons()}
-                {showSelectAll && renderSelectAll()}
-            </div>
+            {renderExpandedButtons()}
         </div>
     );
 };
