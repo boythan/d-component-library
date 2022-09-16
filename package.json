@@ -1,6 +1,6 @@
 {
   "name": "d-react-components",
-  "version": "0.3.43",
+  "version": "0.3.44",
   "main": "dist/dcomponent.cjs.js",
   "module": "dist/dcomponent.es.js",
   "typings": "dist/dcomponent.d.ts",
@@ -13,7 +13,7 @@
     "url": "git+https://github.com/boythan/d-component-library.git"
   },
   "dependencies": {
-    "antd": "4.18.9",
+    "antd": "^4.23.1",
     "bootstrap": "4.5.3",
     "classnames": "^2.3.1",
     "lodash": "^4.17.21",
