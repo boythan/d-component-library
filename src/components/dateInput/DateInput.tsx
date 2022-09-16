@@ -13,7 +13,7 @@ const { RangePicker, TimePicker } = DatePicker;
 export type TDateFormat = "DD/MM/YYYY HH:mm" | "DD/MM/YYYY" | "MM/YYYY" | "YYYY" | "HH:mm" | "HH:mm:";
 
 export interface DateInputNewProps {
-    type?: "date" | "week" | "month" | "quarter" | "year" | "time";
+    type?: "time" | "date" | "week" | "month" | "quarter" | "year";
     label?: string;
     showTime?: boolean;
     format?: TDateFormat;
@@ -68,21 +68,24 @@ const DateInput: React.FC<DateInputProp> = ({
     );
     const buttonClass = ClassNames("d-date-input__button", classNameButton);
 
-    let content = (
-        <DatePicker
-            {...props}
-            value={value}
-            onChange={onChange}
-            onBlur={onBlur}
-            className={datePickerClass}
-            disabled={disabled}
-            defaultValue={defaultValue}
-            picker={type}
-            placeholder={placeholder}
-            format={format}
-            showTime={showTime as any}
-        />
-    );
+    let content = null;
+    if (type !== "time") {
+        content = (
+            <DatePicker
+                {...props}
+                value={value}
+                onChange={onChange}
+                onBlur={onBlur}
+                className={datePickerClass}
+                disabled={disabled}
+                defaultValue={defaultValue}
+                picker={type as any}
+                placeholder={placeholder}
+                format={format}
+                showTime={showTime as any}
+            />
+        );
+    }
     if (type === "time") {
         content = (
             <TimePicker
