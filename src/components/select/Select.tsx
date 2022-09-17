@@ -27,6 +27,10 @@ export interface SelectProps extends SelectAntProps<any> {
     multiple?: boolean;
     required?: boolean;
     hidden?: boolean;
+
+    selectAll?: boolean;
+    selectAllLabel?: string;
+    deselectAllLabel?: string;
 }
 export interface SelectMethod {
     onBlur: () => void;
@@ -56,6 +60,10 @@ const Select: React.ForwardRefRenderFunction<SelectMethod, SelectProps> = (
         getValue = (item: any) => item?.id ?? null,
         getDisableOption = (item: any) => false,
 
+        selectAll = false,
+        selectAllLabel = "Select All",
+        deselectAllLabel = "Deselect All",
+
         allowClear = true,
         variant = "outline",
         hasFilter = true,
@@ -65,6 +73,33 @@ const Select: React.ForwardRefRenderFunction<SelectMethod, SelectProps> = (
     }: SelectProps,
     ref
 ) => {
+    const hasAnOptionSelected = useMemo(() => {
+        return value && value.length > 0;
+    }, [value]);
+
+    const handelOnChange: SelectProps["onChange"] = (val, option) => {
+        if (val && val.length && val.includes("all")) {
+            if (onChange) {
+                if (hasAnOptionSelected) {
+                    onChange([], []);
+                } else {
+                    const allValue = dataSource.map((item) => getValue(item));
+                    onChange(allValue, dataSource);
+                }
+            }
+        } else if (onChange) {
+            onChange(val, option);
+        }
+    };
+
+    const selectAllOption = useMemo(() => {
+        return (
+            <Option key="all" value="all" className={classNameOption}>
+                {hasAnOptionSelected ? deselectAllLabel : selectAllLabel}
+            </Option>
+        );
+    }, [hasAnOptionSelected]);
+
     const children = useMemo(
         () =>
             dataSource.map((dataItem: any) => {
@@ -120,13 +155,14 @@ const Select: React.ForwardRefRenderFunction<SelectMethod, SelectProps> = (
                 allowClear={allowClear}
                 placeholder={placeholder}
                 defaultValue={defaultValue}
-                onChange={onChange}
+                onChange={handelOnChange}
                 className={selectClass}
                 showArrow
                 suffixIcon={<Icon name="expand_more" />}
                 disabled={disabled}
                 optionFilterProp="children"
             >
+                {selectAll && selectAllOption}
                 {children}
             </SelectAnt>
             <ViewTextError error={error} />
