@@ -39,6 +39,7 @@ export interface IFilePreviewProps extends ImgHTMLAttributes<any> {
     classNameItem?: string;
     size?: AvatarProps["size"];
     hasLightBox?: boolean;
+    renderContent?: (props: { className?: string; onClick?: any }) => React.ReactNode;
 }
 
 export interface IRenderPreviewFileProps extends IFilePreviewProps {
@@ -87,6 +88,7 @@ export const FilePreview: React.FC<IFilePreviewProps> = ({
     src,
     onRemove,
     onClick,
+    renderContent,
     removable = true,
     videoUrl = null,
     className,
@@ -119,7 +121,17 @@ export const FilePreview: React.FC<IFilePreviewProps> = ({
         },
         classNameItem
     );
-    let children = (
+
+    const onClickImage = () => {
+        if (hasLightBox) {
+            setOpenLightBox(true);
+        }
+        onClick && onClick();
+    };
+
+    let content: any = renderContent ? (
+        renderContent({ className: imageClass, onClick: onClickImage })
+    ) : (
         <img
             className={imageClass}
             src={src}
@@ -133,7 +145,9 @@ export const FilePreview: React.FC<IFilePreviewProps> = ({
         />
     );
     if (videoUrl) {
-        children = (
+        content = renderContent ? (
+            renderContent({ className: videoClass })
+        ) : (
             <iframe
                 src={videoUrl}
                 frameBorder="0"
@@ -153,7 +167,7 @@ export const FilePreview: React.FC<IFilePreviewProps> = ({
                     <Icon name="delete" />
                 </div>
             )}
-            {children}
+            {content}
             <ModalLightBox
                 open={openLightBox}
                 onClose={() => setOpenLightBox(false)}
