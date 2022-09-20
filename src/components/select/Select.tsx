@@ -78,7 +78,7 @@ const Select: React.ForwardRefRenderFunction<SelectMethod, SelectProps> = (
     }, [value]);
 
     const handelOnChange: SelectProps["onChange"] = (val, option) => {
-        if (val && val.length && val.includes("all")) {
+        if (selectAll && val && val.length && val.includes("all")) {
             if (onChange) {
                 if (hasAnOptionSelected) {
                     onChange([], []);
