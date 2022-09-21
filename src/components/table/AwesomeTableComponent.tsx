@@ -166,7 +166,7 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
             return false;
         }
         if (defaultPagination && defaultPagination.pageIndex && defaultPagination.pageSize) {
-            return { current: defaultPagination.pageIndex, pageSize: defaultPagination.pageSize };
+            return { current: defaultPagination.pageIndex, pageSize: defaultPagination.pageSize, ...defaultPagination };
         }
         return INIT_PAGINATION;
     };
