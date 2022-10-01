@@ -18,6 +18,9 @@ export interface SelectInfinityProps
     styleTagItem?: CSSProperties;
     tagColor?: ButtonProps["color"];
     getLabelDropdownItem?: (item: any) => any;
+    allowCreateNew?: boolean;
+    onCreateNew?: () => any;
+    createNewLabel?: string | React.ReactNode;
 }
 
 export interface SelectInfinityMethod {
@@ -43,6 +46,9 @@ const SelectInfinity: React.ForwardRefRenderFunction<SelectInfinityMethod, Selec
         styleTagItem = {},
         mode,
         tagColor = "primary",
+        allowCreateNew,
+        onCreateNew,
+        createNewLabel = "Create New",
         ...props
     },
     ref
@@ -124,6 +130,14 @@ const SelectInfinity: React.ForwardRefRenderFunction<SelectInfinityMethod, Selec
     const renderDropDown = () => {
         return (
             <div style={{ height: "250px" }}>
+                {allowCreateNew && (
+                    <div
+                        onClick={() => onCreateNew && onCreateNew()}
+                        className={ClassNames("py-2 px-3 cursor-pointer", classNameDropdownItem)}
+                    >
+                        {createNewLabel}
+                    </div>
+                )}
                 <AwesomeListComponent
                     ref={listRef}
                     renderItem={renderItemDropdown}
