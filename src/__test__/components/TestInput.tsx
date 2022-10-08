@@ -146,6 +146,7 @@ const TestInput = () => {
             </div>
             <div className="w-100 flex-center-y">
                 <SelectInfinity
+                    multiple
                     label="Select Infinity"
                     className="my-4 w-100"
                     source={async (paging) => {
@@ -165,7 +166,7 @@ const TestInput = () => {
                     }}
                     value={valueSelectInfinity}
                     onChange={setValueSelectInfinity}
-                    mode={undefined}
+                    mode="multiple"
                 />
             </div>
         </div>

@@ -49,13 +49,15 @@ const SelectInfinity: React.ForwardRefRenderFunction<SelectInfinityMethod, Selec
         allowCreateNew,
         onCreateNew,
         createNewLabel = "Create New",
+        onClick,
         ...props
     },
     ref
 ) => {
     const listRef = useRef<ElementRef<typeof AwesomeListComponent>>(null);
     const selectRef = useRef<React.ElementRef<typeof Select>>(null);
-    const textSearch = useRef();
+
+    const [textSearch, setTextSearch] = useState<string>();
     // add value properties for array value so when render tag it can be display
     const valueDisplay = useMemo(() => {
         let res: Array<any> = [];
@@ -77,7 +79,7 @@ const SelectInfinity: React.ForwardRefRenderFunction<SelectInfinityMethod, Selec
     }));
 
     const onChangeTextSearch = _.debounce((text) => {
-        textSearch.current = text;
+        setTextSearch(text);
         refreshList();
     }, 400);
 
@@ -145,7 +147,7 @@ const SelectInfinity: React.ForwardRefRenderFunction<SelectInfinityMethod, Selec
                     transformer={transformer}
                     source={(paging) => {
                         const params = {
-                            search: textSearch.current,
+                            search: textSearch,
                         };
                         return source && source(params, paging);
                     }}
@@ -193,6 +195,10 @@ const SelectInfinity: React.ForwardRefRenderFunction<SelectInfinityMethod, Selec
             mode={mode}
             hasFilter={false}
             tagRender={customTagRender}
+            onClick={(e) => {
+                setTextSearch("");
+                onClick && onClick(e);
+            }}
             {...props}
         />
     );
