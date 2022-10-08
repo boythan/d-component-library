@@ -49,7 +49,6 @@ const SelectInfinity: React.ForwardRefRenderFunction<SelectInfinityMethod, Selec
         allowCreateNew,
         onCreateNew,
         createNewLabel = "Create New",
-        onClick,
         ...props
     },
     ref
@@ -195,10 +194,6 @@ const SelectInfinity: React.ForwardRefRenderFunction<SelectInfinityMethod, Selec
             mode={mode}
             hasFilter={false}
             tagRender={customTagRender}
-            onClick={(e) => {
-                setTextSearch("");
-                onClick && onClick(e);
-            }}
             {...props}
         />
     );
