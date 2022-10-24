@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 // react
 // third-party
 import classname from "classnames";
@@ -29,6 +31,9 @@ export interface InputTextProps extends InputHTMLAttributes<any> {
     hidden?: boolean;
     prefix?: any;
     suffix?: any;
+
+    onClickSuffix?: () => any;
+    onClickPrefix?: () => any;
 }
 
 const InputText = ({
@@ -60,6 +65,8 @@ const InputText = ({
     hidden,
     onChange,
     onBlur,
+    onClickSuffix,
+    onClickPrefix,
     ...inputProps
 }: InputTextProps) => {
     const container = classname("d-input-text__container", className);
@@ -80,10 +87,12 @@ const InputText = ({
     const inputPrefixClass = classname("text-x-small", "d-input-text__prefix-container", {
         "d-none": !prefix,
         "border-0": disabled,
+        "hover-pointer": !!onClickPrefix,
     });
     const inputSuffixClass = classname("text-x-small", "d-input-text__suffix-container", {
         "d-none": !suffix,
         "border-0": disabled,
+        "hover-pointer": !!onClickSuffix,
     });
 
     const textAreaClass = classname(
@@ -140,9 +149,13 @@ const InputText = ({
                 </label>
             )}
             <div className={inputContainerClass} style={styleInputContainer}>
-                <div className={inputPrefixClass}>{prefix}</div>
+                <div className={inputPrefixClass} onClick={onClickPrefix}>
+                    {prefix}
+                </div>
                 {renderInput()}
-                <div className={inputSuffixClass}>{suffix}</div>
+                <div className={inputSuffixClass} onClick={onClickSuffix}>
+                    {suffix}
+                </div>
             </div>
             <ViewTextError error={error} />
         </div>

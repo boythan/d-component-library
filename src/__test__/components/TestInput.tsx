@@ -3,6 +3,7 @@ import Button from "../../components/button/Button";
 import DateInput from "../../components/dateInput/DateInput";
 import InputColor from "../../components/input/InputColor";
 import InputText from "../../components/input/InputText";
+import InputTextPassword from "../../components/input/InputTextPassword";
 import InputTextSearch from "../../components/input/InputTextSearch";
 import SelectInfinity from "../../components/select/SelectInfinity";
 import ViewCollapse from "../../components/view/ViewCollapse";
@@ -60,6 +61,7 @@ const TestInput = () => {
 
             <ViewCollapse label="Input Text Search" className="mt-3" defaultOpen={false}>
                 <InputTextSearch placeholder="Please enter" className="mt-3" />
+                <InputTextPassword placeholder="Please enter" className="mt-3" />
             </ViewCollapse>
             <ViewCollapse label="Input Color" className="mt-3" defaultOpen={false}>
                 <InputColor
