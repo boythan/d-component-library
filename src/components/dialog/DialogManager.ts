@@ -1,6 +1,6 @@
 export default {
     currentDialog: {
-        showConfirm: (title: any, messages: any, handleOnOK: any) => {},
+        showConfirm: (title: any, messages: any, handleOnOK: any, handleOnCancel: any) => {},
         showWarning: (title: any, messages: any, handleOnOK: any) => {},
         showInfo: (title: any, messages: any, handleOnOK: any) => {},
         showError: (title: any, messages: any, handleOnOK: any) => {},
@@ -10,8 +10,8 @@ export default {
         this.currentDialog = refDialog;
     },
 
-    showConfirm(title?: any, message?: any, handleOnOk?: any) {
-        this.currentDialog.showConfirm(title, message, handleOnOk);
+    showConfirm(title?: any, message?: any, handleOnOk?: any, handleOnCancel?: any) {
+        this.currentDialog.showConfirm(title, message, handleOnOk, handleOnCancel);
     },
     showWarning(title?: any, message?: any, handleOnOk?: any) {
         this.currentDialog.showWarning(title, message, handleOnOk);
