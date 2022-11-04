@@ -16,6 +16,11 @@ export interface HeaderTableProps {
     placeholder?: string;
     disabledSearch?: boolean;
 
+    showAddNew?: boolean;
+    showExport?: boolean;
+    showFilter?: boolean;
+    showImport?: boolean;
+
     onClickNew?: any;
     onClickExport?: any;
     onClickFilter?: any;
@@ -47,6 +52,11 @@ const HeaderTable = ({
     onClickFilter,
     onClickImport,
 
+    showAddNew = true,
+    showExport = true,
+    showFilter = true,
+    showImport = true,
+
     customView,
     customButtons,
     customFilterButton,
@@ -70,15 +80,19 @@ const HeaderTable = ({
                 <div className="h4">{label}</div>
                 <div className="d-flex">
                     {customButtons && customButtons()}
-                    {onClickNew && <Button iconName="add" content="New" onClick={onClickNew} className="ml-3" />}
-                    {onClickImport && (
+                    {onClickNew && showAddNew && (
+                        <Button iconName="add" content="New" onClick={onClickNew} className="ml-3" />
+                    )}
+                    {onClickImport && showImport && (
                         <Button iconName="cloud_upload" content="Import" onClick={onClickImport} className="ml-3" />
                     )}
                     {customImportButton &&
                         (typeof customImportButton === "function" ? customImportButton() : customImportButton)}
-                    {onClickExport && (
+
+                    {onClickExport && showExport && (
                         <Button iconName="cloud_download" content="Export" onClick={onClickExport} className="ml-3" />
                     )}
+
                     {customExportButton &&
                         (typeof customExportButton === "function" ? customExportButton() : customExportButton)}
                 </div>
@@ -93,7 +107,7 @@ const HeaderTable = ({
                     onSubmit={onSubmitSearch}
                     {...(searchValue ? { value: searchValue } : {})}
                 />
-                {onClickFilter && button}
+                {onClickFilter && showFilter && button}
                 {customFilterButton &&
                     (typeof customFilterButton === "function" ? customFilterButton() : customFilterButton)}
             </div>
