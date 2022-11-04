@@ -47,6 +47,8 @@ export interface IRenderPreviewFileProps extends IFilePreviewProps {
     extension?: any;
     name?: any;
     onViewImage?: (props?: any, src?: any) => any;
+    fileTypeSource?: Array<any>;
+    customItem?: (props: any) => any;
 }
 
 export interface IViewFileListProps {
@@ -185,10 +187,16 @@ export const RenderPreviewFile: React.FC<IRenderPreviewFileProps> = ({
     removable = false,
     onViewImage,
     onRemove,
+    fileTypeSource,
+    customItem,
 }) => {
     const foundTypeDocument = useMemo(() => {
-        return _.find(FILE_TYPE, (type) => _.includes(type?.extension ?? [], extension));
+        return _.find(fileTypeSource || FILE_TYPE, (type) => _.includes(type?.extension ?? [], extension));
     }, [FILE_TYPE, extension]);
+
+    if (customItem) {
+        return customItem({ foundTypeDocument, src, item, extension });
+    }
 
     if (foundTypeDocument) {
         return (
