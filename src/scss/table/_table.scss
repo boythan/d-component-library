@@ -21,7 +21,9 @@
 .d-table-awesome-component__no-border {
     .ant-table-thead
         > tr
-        > th:not(:last-child):not(.ant-table-selection-column):not(.ant-table-row-expand-icon-cell):not([colspan])::before {
+        > th:not(:last-child):not(.ant-table-selection-column):not(
+            .ant-table-row-expand-icon-cell
+        ):not([colspan])::before {
         opacity: 0;
     }
 }
@@ -112,7 +114,10 @@
     .d-table-awesome-component td {
         display: block;
     }
-    .d-table-awesome-component thead > tr {
+    .d-table-awesome-component
+        thead
+        > tr
+        > th:not(.ant-table-selection-column) {
         position: absolute;
         top: -9999999px;
         left: -9999999px;
