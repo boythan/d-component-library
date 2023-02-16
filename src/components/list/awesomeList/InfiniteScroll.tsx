@@ -21,6 +21,7 @@ export default class InfiniteScroll extends Component<any, any> {
         threshold: PropTypes.number,
         useCapture: PropTypes.bool,
         useWindow: PropTypes.bool,
+        useMemorizeScrollPosition: PropTypes.func,
     };
 
     static defaultProps = {
@@ -188,10 +189,15 @@ export default class InfiniteScroll extends Component<any, any> {
     }
 
     scrollListener() {
-        const { isReverse, useWindow, threshold, loadMore } = this.props;
+        const { isReverse, useWindow, threshold, loadMore, useMemorizeScrollPosition } = this.props;
         const el = this.scrollComponent;
         const scrollEl = window;
         const parentNode = this.getParentElement(el);
+        const { scrollTop } = parentNode;
+
+        if (useMemorizeScrollPosition && typeof useMemorizeScrollPosition === "function") {
+            useMemorizeScrollPosition(scrollTop);
+        }
 
         let offset;
         if (useWindow) {
@@ -207,7 +213,6 @@ export default class InfiniteScroll extends Component<any, any> {
         } else {
             offset = parentNode.scrollHeight - parentNode.scrollTop - parentNode.clientHeight;
         }
-
         // Here we make sure the element is visible as well as checking the offset
         if (offset < Number(threshold) && el && el.offsetParent !== null) {
             this.detachScrollListener();

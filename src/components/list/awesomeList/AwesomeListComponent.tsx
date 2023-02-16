@@ -1,16 +1,17 @@
+/* eslint-disable class-methods-use-this */
+/* eslint-disable react/default-props-match-prop-types */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable max-len */
 /* eslint-disable react/static-property-placement */
 /* eslint-disable react/sort-comp */
 import _ from "lodash";
 import React, { Component, CSSProperties } from "react";
-import PropTypes from "prop-types";
-import Button, { ButtonProps } from "../../button/Button";
+import PagingView from "./PagingView";
 import EmptyView from "../shared/EmptyView";
-// import AwesomeListMode from "./AwesomeListMode";
 import AwesomeListMode from "../shared/Mode";
 import InfiniteScroll from "./InfiniteScroll";
-import PagingView from "./PagingView";
+// import AwesomeListMode from "./AwesomeListMode";
+import Button, { ButtonProps } from "../../button/Button";
 
 export interface IPaging {
     pageIndex: number;
@@ -26,6 +27,8 @@ export interface AwesomeListComponentProps {
     source: (paging: any) => Promise<any>;
     transformer: (response: any) => Array<any> | any;
     renderItem: (item: any, index: any) => React.ReactNode;
+    getScrollPosition?: (position?: any) => any;
+    filterData?: (data?: Array<any>) => Array<any>;
 
     isPaging?: boolean;
     isReverse?: boolean;
@@ -121,7 +124,10 @@ class AwesomeListComponent extends Component<AwesomeListComponentProps, AwesomeL
     // eslint-disable-next-line react/sort-comp
     isNoMoreData(newData: any) {
         const { isPaging } = this.props;
-        if (!newData || !Array.isArray(newData) || newData?.length === 0 || !isPaging) return true;
+        if (!newData || !Array.isArray(newData) || newData?.length === 0 || !isPaging) {
+            return true;
+        }
+
         return this.pagingData ? newData.length < this.pagingData.pageSize : false;
     }
 
@@ -129,7 +135,7 @@ class AwesomeListComponent extends Component<AwesomeListComponentProps, AwesomeL
 
     start() {
         const { hasMoreData, data } = this.state;
-        const { source, transformer, isReverse, pagingProps } = this.props;
+        const { source, transformer, isReverse, pagingProps, filterData } = this.props;
         if (!hasMoreData) {
             return;
         }
@@ -161,12 +167,18 @@ class AwesomeListComponent extends Component<AwesomeListComponentProps, AwesomeL
                     return;
                 }
 
-                this.setState((state: any) => ({
-                    data: isReverse ? [...data, ...state.data] : state.data.concat(data),
-                    emptyMode: AwesomeListMode.HIDDEN,
-                    hasMoreData,
-                    loading: false,
-                }));
+                this.setState((state: any) => {
+                    let listData = isReverse ? [...data, ...state.data] : state.data.concat(data);
+                    if (filterData && typeof filterData === "function") {
+                        listData = filterData(listData);
+                    }
+                    return {
+                        data: listData,
+                        emptyMode: AwesomeListMode.HIDDEN,
+                        hasMoreData,
+                        loading: false,
+                    };
+                });
             })
             .catch(() => {
                 if (this.unmounted) return;
@@ -222,7 +234,7 @@ class AwesomeListComponent extends Component<AwesomeListComponentProps, AwesomeL
 
     renderInfinityVariant = () => {
         const { data, hasMoreData, loading } = this.state;
-        const { renderItem, isReverse, classNameInfinityScroll } = this.props;
+        const { renderItem, isReverse, classNameInfinityScroll, getScrollPosition } = this.props;
         return (
             <InfiniteScroll
                 threshold={1}
@@ -240,6 +252,7 @@ class AwesomeListComponent extends Component<AwesomeListComponentProps, AwesomeL
                 isReverse={isReverse}
                 loader={<PagingView onClickRetry={this.pagingRetry} />}
                 useWindow={false}
+                useMemorizeScrollPosition={getScrollPosition}
                 className={classNameInfinityScroll}
             >
                 {data.map((item: any, index: any) => renderItem(item, index))}
