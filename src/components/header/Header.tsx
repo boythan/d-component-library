@@ -75,7 +75,7 @@ const Header: React.FC<HeaderProps> = ({
     return (
         <div className={`card-container d-common-header ${className}`}>
             {renderLeftView()}
-            <div className={`d-common-header__right-side ${classNameRight}`}>
+            <div className={`d-common-header__right-side flex-center-y ${classNameRight}`}>
                 {customRight && customRight()}
                 {showCancel && (
                     <Button
