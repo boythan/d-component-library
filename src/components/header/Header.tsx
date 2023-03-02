@@ -5,7 +5,7 @@ import React from "react";
 import Messages from "../../language/Messages";
 import Breadcrumb from "../breadcrumb/Breadcrumb";
 // application
-import Button from "../button/Button";
+import Button, { ButtonProps } from "../button/Button";
 // data stubs
 
 export interface HeaderProps {
@@ -25,7 +25,14 @@ export interface HeaderProps {
     customRight?: () => React.ReactNode;
     showCancel?: boolean;
     className?: string;
+    classNameLeft?: string;
+    classNameRight?: string;
     breadcrumb?: any;
+    cancelButtonProps?: ButtonProps;
+    deleteButtonProps?: ButtonProps;
+    printButtonProps?: ButtonProps;
+    editButtonProps?: ButtonProps;
+    saveButtonProps?: ButtonProps;
 }
 
 const Header: React.FC<HeaderProps> = ({
@@ -45,14 +52,21 @@ const Header: React.FC<HeaderProps> = ({
     customRight,
     showCancel = true,
     className,
+    classNameLeft,
+    classNameRight,
     breadcrumb = [],
+    cancelButtonProps = {},
+    deleteButtonProps = {},
+    printButtonProps = {},
+    editButtonProps = {},
+    saveButtonProps = {},
 }) => {
     const renderLeftView = () => {
         if (customLeft) {
             return customLeft();
         }
         return (
-            <div className="page-header__container ">
+            <div className={`page-header__container ${classNameLeft}`}>
                 <Breadcrumb breadcrumb={breadcrumb} />
                 <h4 className="text-primary">{title}</h4>
             </div>
@@ -61,7 +75,7 @@ const Header: React.FC<HeaderProps> = ({
     return (
         <div className={`card-container d-common-header ${className}`}>
             {renderLeftView()}
-            <div className="d-common-header__button-group">
+            <div className={`d-common-header__right-side ${classNameRight}`}>
                 {customRight && customRight()}
                 {showCancel && (
                     <Button
@@ -69,12 +83,31 @@ const Header: React.FC<HeaderProps> = ({
                         content={cancelText}
                         onClick={() => (onCancel ? onCancel() : window.history.go("back" as any))}
                         className="mr-3"
+                        {...cancelButtonProps}
                     />
                 )}
-                {onDelete && <Button content={deleteText} onClick={onDelete} iconName="delete" className="mr-3" />}
-                {onPrint && <Button content={printText} onClick={onPrint} iconName="print" className="mr-3" />}
-                {onEdit && <Button content={editText} onClick={onEdit} className="mr-3" iconName="edit" />}
-                {onSave && <Button content={saveText} onClick={onSave} disabled={disabledSave} />}
+                {onDelete && (
+                    <Button
+                        content={deleteText}
+                        onClick={onDelete}
+                        iconName="delete"
+                        className="mr-3"
+                        {...deleteButtonProps}
+                    />
+                )}
+                {onPrint && (
+                    <Button
+                        content={printText}
+                        onClick={onPrint}
+                        iconName="print"
+                        className="mr-3"
+                        {...printButtonProps}
+                    />
+                )}
+                {onEdit && (
+                    <Button content={editText} onClick={onEdit} className="mr-3" iconName="edit" {...editButtonProps} />
+                )}
+                {onSave && <Button content={saveText} onClick={onSave} disabled={disabledSave} {...saveButtonProps} />}
             </div>
         </div>
     );
