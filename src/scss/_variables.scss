@@ -689,7 +689,7 @@
    // ----------------------------------------
       $product-image-width:  1                                              !default;
       $product-image-height: 1                                              !default;
-      $product-image-ratio:  ($product-image-width / $product-image-height) !default;
+      $product-image-ratio:  calc($product-image-width / $product-image-height) !default;
 
    // ----------------------------------------
    // -- .rating
@@ -870,8 +870,8 @@
    // ----------------------------------------
 
    $arrow-item-height:                         50px                         !default;
-   $arrow-item-border-width:                   $arrow-item-height/2+1px     !default;
-   $arrow-item-border-secondary:               $arrow-item-height/2 - 1px   !default;
+   $arrow-item-border-width:                   calc($arrow-item-height/2)+1px     !default;
+   $arrow-item-border-secondary:               calc($arrow-item-height/2) - 1px   !default;
    $arrow-item-border:                       $light-color                   !default;
    $arrow-item-background-color:             #6FCF97                      !default;
    $arrow-item-active-background-color:      #219653                      !default;
