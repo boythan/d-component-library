@@ -1,6 +1,6 @@
 {
   "name": "d-react-components",
-  "version": "0.3.62",
+  "version": "0.3.63",
   "main": "dist/dcomponent.cjs.js",
   "module": "dist/dcomponent.es.js",
   "typings": "dist/dcomponent.d.ts",
@@ -18,10 +18,10 @@
     "classnames": "^2.3.1",
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
+    "node-sass": "^8.0.0",
     "query-string": "6.12.1",
     "react-highlight-words": "^0.17.0",
-    "react-resizable": "^3.0.1",
-    "sass": "^1.59.3"
+    "react-resizable": "^3.0.1"
   },
   "scripts": {
     "build-cp-variable": "cp -v src/scss/_variables.scss dist/_variables.scss ",
