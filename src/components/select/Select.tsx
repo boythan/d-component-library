@@ -1,7 +1,7 @@
 /* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable operator-linebreak */
 import { Select as SelectAnt } from "antd";
-import { SelectProps as SelectAntProps } from "antd/es/select";
+import { SelectProps as SelectAntProps, OptionProps } from "antd/es/select";
 import ClassName from "classnames";
 import React, { useImperativeHandle, useMemo, useRef } from "react";
 import Icon from "../elements/icon/Icon";
@@ -22,6 +22,7 @@ export interface SelectProps extends SelectAntProps<any> {
     getKey?: (item: any) => any;
     getValue?: (item: any) => any;
     getDisableOption?: (item: any) => any;
+    getOptionProps?: (item: any) => OptionProps;
 
     hasFilter?: boolean;
     multiple?: boolean;
@@ -59,6 +60,7 @@ const Select: React.ForwardRefRenderFunction<SelectMethod, SelectProps> = (
         getKey = (item: any) => item.id,
         getValue = (item: any) => item?.id ?? null,
         getDisableOption = (item: any) => false,
+        getOptionProps = (item: any) => ({} as any),
 
         selectAll = false,
         selectAllLabel = "Select All",
@@ -106,8 +108,15 @@ const Select: React.ForwardRefRenderFunction<SelectMethod, SelectProps> = (
                 const label = getLabel(dataItem);
                 const key = getKey(dataItem);
                 const disabled = getDisableOption(dataItem);
+                const optionProps = getOptionProps(dataItem);
                 return (
-                    <Option key={key} value={getValue(dataItem)} disabled={disabled} className={classNameOption}>
+                    <Option
+                        key={key}
+                        value={getValue(dataItem)}
+                        disabled={disabled}
+                        className={classNameOption}
+                        {...optionProps}
+                    >
                         {label}
                     </Option>
                 );
