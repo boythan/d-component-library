@@ -309,6 +309,7 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
                 // eslint-disable-next-line react/no-access-state-in-setstate
                 pagination: { ...pagination, pageIndex: current, pageSize },
                 sorter: paramSorter?.field ? paramSorter : undefined,
+                loading: true
             },
             () => this.start()
         );
