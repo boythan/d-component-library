@@ -1,8 +1,8 @@
 import _ from "lodash";
 
-export const DOC = { extension: ["docx", "doc", "pptx", "pps"], iconFile: "../images/files/doc.png" };
-export const EXCEL = { extension: ["xls", "csv", "xlsx"], iconFile: "../images/files/sheets.png" };
-export const PDF = { extension: ["pdf"], iconFile: "../images/files/pdf-files.png" };
+export const DOC = { extension: ["docx", "doc", "pptx", "pps"], iconFile: "https://www.amazon.com/photos/shared/rQZhhXKaRQ2L-WcwN4AVJQ.bRVF68flfITSxjU_ZMdWxd" };
+export const EXCEL = { extension: ["xls", "csv", "xlsx"], iconFile: "https://www.amazon.com/photos/shared/46bssV64SN2lKn0wquegXQ.ls6DruUfkk-6qa1Rtzna-Y" };
+export const PDF = { extension: ["pdf"], iconFile: "https://www.amazon.com/photos/shared/zsm1zx5vTe2GGAXRQ4wMMQ.Aq980KcnqMtUH0OZPCfBHP" };
 export const IMAGE = { extension: ["jpeg", "bmp", "png", "jpg", "heic"], iconFile: "" };
 
 const getBase64ImageFromUrl = async (imageUrl: string) => {
