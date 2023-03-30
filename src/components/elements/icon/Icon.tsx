@@ -8,10 +8,10 @@ export interface IconProps extends React.HTMLAttributes<HTMLElement> {
     color?: string;
 }
 
-const Icon = ({ name, size = "medium", className, color, ...props }: IconProps) => {
+const Icon = ({ name, size = "medium", className, color, style = {}, ...props }: IconProps) => {
     const iconClass = ClassNames("material-icons", `d-icon__${size}`, className);
     return (
-        <i className={iconClass} {...props} style={{ color }}>
+        <i className={iconClass} {...props} style={{ color, ...style }}>
             {name}
         </i>
     );
