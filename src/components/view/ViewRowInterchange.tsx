@@ -5,6 +5,7 @@ import ObjectUtils from "../../utils/ObjectUtils";
 export interface IRowsKey<T> {
     id: keyof T;
     label: string | number;
+    hidden?: boolean;
     renderLabel?: (props: { id: IRowsKey<T>["id"]; data: any; item?: any; row?: IRowsKey<T> }) => any;
     renderContent?: (props: { id: IRowsKey<T>["id"]; data: any; item?: any; row?: IRowsKey<T> }) => any;
 }
@@ -54,9 +55,12 @@ const ViewRowInterchange: React.FC<RowInterchangeViewProps> = ({
                 );
                 const labelClass = ClassNames("text-small w-100", { "font-weight-bold": boldLabel }, classNameLabel);
                 const contentClass = ClassNames("w-100 text", classNameContent);
-                const { id, label, renderLabel, renderContent } = row;
+                const { id, label, renderLabel, renderContent, hidden } = row;
                 let labelView;
                 let content;
+                if (hidden) {
+                    return null;
+                }
                 labelView = label;
                 if (Messages) {
                     labelView = Messages[label];
