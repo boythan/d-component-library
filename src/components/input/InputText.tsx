@@ -5,6 +5,7 @@
 import classname from "classnames";
 import React, { CSSProperties, InputHTMLAttributes } from "react";
 import ViewTextError from "../view/ViewTextError";
+import WrapperComponent from "../wrapper/WrapperComponent";
 
 export interface InputTextProps extends InputHTMLAttributes<any> {
     className?: string;
@@ -31,6 +32,8 @@ export interface InputTextProps extends InputHTMLAttributes<any> {
     hidden?: boolean;
     prefix?: any;
     suffix?: any;
+
+    wrapperElement?: any;
 
     onClickSuffix?: () => any;
     onClickPrefix?: () => any;
@@ -63,6 +66,7 @@ const InputText = ({
     suffix,
     required,
     hidden,
+    wrapperElement,
     onChange,
     onBlur,
     onClickSuffix,
@@ -142,7 +146,7 @@ const InputText = ({
     };
 
     return (
-        <div className={container} style={style} hidden={hidden}>
+        <WrapperComponent element={wrapperElement || <div className={container} style={style} hidden={hidden} />}>
             {label && (
                 <label htmlFor={name} className={labelClass} style={styleLabel}>
                     <span>{label}</span>
@@ -158,7 +162,7 @@ const InputText = ({
                 </div>
             </div>
             <ViewTextError error={error} />
-        </div>
+        </WrapperComponent>
     );
 };
 

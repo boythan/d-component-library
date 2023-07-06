@@ -318,3 +318,6 @@ export { default as ArrowItem } from "./components/elements/arrowItem/ArrowItem"
 
 export type { ITriangleProps } from "./components/elements/arrowItem/Triangle";
 export { default as Triangle } from "./components/elements/arrowItem/Triangle";
+
+export type { IWrapperComponentProps } from "./components/wrapper/WrapperComponent";
+export { default as WrapperComponent } from "./components/wrapper/WrapperComponent";
