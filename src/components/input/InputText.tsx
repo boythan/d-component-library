@@ -11,6 +11,7 @@ export interface InputTextProps extends InputHTMLAttributes<any> {
     className?: string;
     classNameLabel?: string;
     classNameInput?: string;
+    classNameError?: string;
     classNameInputContainer?: string;
     styleInput?: CSSProperties;
     styleInputContainer?: CSSProperties;
@@ -43,6 +44,7 @@ const InputText = ({
     className,
     classNameLabel,
     classNameInput,
+    classNameError,
     classNameInputContainer,
     style,
     styleInput,
@@ -161,7 +163,7 @@ const InputText = ({
                     {suffix}
                 </div>
             </div>
-            <ViewTextError error={error} />
+            <ViewTextError error={error} className={`d-input-text__error ${classNameError}`} />
         </WrapperComponent>
     );
 };
