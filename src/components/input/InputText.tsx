@@ -163,7 +163,7 @@ const InputText = ({
                     {suffix}
                 </div>
             </div>
-            <ViewTextError error={error} className={`d-input-text__error ${classNameError}`} />
+            <ViewTextError error={error} className={`d-input-text__error-view ${classNameError}`} />
         </WrapperComponent>
     );
 };
