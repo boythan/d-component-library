@@ -159,8 +159,8 @@ const Select: React.ForwardRefRenderFunction<SelectMethod, SelectProps> = (
                         return true;
                     }
                     return (
-                        (children && children?.toLowerCase().indexOf(input?.toLowerCase()) >= 0) ||
-                        (value && `${value}`?.toLowerCase().indexOf(input?.toLowerCase()) >= 0)
+                        (children && children?.toLowerCase?.()?.indexOf?.(input?.toLowerCase()) >= 0) ||
+                        (value && `${value}`?.toLowerCase?.()?.indexOf?.(input?.toLowerCase()) >= 0)
                     );
                 }}
                 showArrow
