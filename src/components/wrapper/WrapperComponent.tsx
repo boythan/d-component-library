@@ -1,7 +1,7 @@
 import React, { DetailedReactHTMLElement } from "react";
 
 export interface IWrapperComponentProps {
-    element: any;
+    element: React.ReactElement;
     props?: any;
 }
 

@@ -6,6 +6,7 @@ import ClassName from "classnames";
 import React, { useImperativeHandle, useMemo, useRef } from "react";
 import Icon from "../elements/icon/Icon";
 import ViewTextError from "../view/ViewTextError";
+import WrapperComponent from "../wrapper/WrapperComponent";
 
 export interface SelectProps extends SelectAntProps<any> {
     classNameSelect?: string;
@@ -32,6 +33,8 @@ export interface SelectProps extends SelectAntProps<any> {
     selectAll?: boolean;
     selectAllLabel?: string;
     deselectAllLabel?: string;
+
+    wrapperElement?: React.ReactElement;
 }
 export interface SelectMethod {
     onBlur: () => void;
@@ -71,6 +74,8 @@ const Select: React.ForwardRefRenderFunction<SelectMethod, SelectProps> = (
         hasFilter = true,
         required,
         hidden,
+
+        wrapperElement,
         ...props
     }: SelectProps,
     ref
@@ -144,7 +149,7 @@ const Select: React.ForwardRefRenderFunction<SelectMethod, SelectProps> = (
     );
 
     return (
-        <div className={container} hidden={hidden}>
+        <WrapperComponent element={wrapperElement || <div className={container} hidden={hidden} />}>
             {label && <label className={labelClass}>{label}</label>}
             <SelectAnt
                 mode={multiple ? "multiple" : undefined}
@@ -175,7 +180,7 @@ const Select: React.ForwardRefRenderFunction<SelectMethod, SelectProps> = (
                 {children}
             </SelectAnt>
             <ViewTextError error={error} />
-        </div>
+        </WrapperComponent>
     );
 };
 
