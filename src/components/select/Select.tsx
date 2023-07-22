@@ -163,6 +163,9 @@ const Select: React.ForwardRefRenderFunction<SelectMethod, SelectProps> = (
                         (value && `${value}`?.toLowerCase().indexOf(input?.toLowerCase()) >= 0)
                     );
                 }}
+                showArrow
+                suffixIcon={<Icon name="expand_more" />}
+                optionFilterProp="children"
                 {...props}
                 ref={selectRef}
                 value={value}
@@ -171,10 +174,7 @@ const Select: React.ForwardRefRenderFunction<SelectMethod, SelectProps> = (
                 defaultValue={defaultValue}
                 onChange={handelOnChange}
                 className={selectClass}
-                showArrow
-                suffixIcon={<Icon name="expand_more" />}
                 disabled={disabled}
-                optionFilterProp="children"
             >
                 {selectAll && selectAllOption}
                 {children}
