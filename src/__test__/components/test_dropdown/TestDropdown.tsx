@@ -12,6 +12,7 @@ const TestDropdown: React.FC<TestDropdownProps> = ({ id }) => {
     const [selectedDropdown, setSelectedDropdown] = useState<any>(ATTRIBUTE_INPUT_TYPE[0]);
     const [selectedLanguages, setSelectedLanguages] = useState<any>(LANGUAGES[0]);
     const [selectCustomDropdown, setSelectCustomDropdown] = useState<any>();
+    const [selectMultiChoices, setSelectMultiChoices] = useState<any[]>();
     return (
         <div className="d-flex flex-column my-4">
             <ViewRow label="Default Dropdown" className="my-4 border-bottom p-3">
@@ -31,9 +32,10 @@ const TestDropdown: React.FC<TestDropdownProps> = ({ id }) => {
             <ViewRow label="Dropdown With Custom View" className="my-4 border-bottom p-3">
                 <Dropdown
                     dataSource={ATTRIBUTE_INPUT_TYPE}
-                    variant="view"
-                    value={selectCustomDropdown}
+                    variant="button"
+                    value={selectMultiChoices}
                     onClick={(item) => setSelectCustomDropdown(item)}
+                    onChange={(value) => setSelectMultiChoices(value)}
                     buttonProps={{
                         iconName: "visibility",
                         style: { minWidth: "150px" },
@@ -41,8 +43,11 @@ const TestDropdown: React.FC<TestDropdownProps> = ({ id }) => {
                         variant: "trans",
                         content: "Select Layout",
                     }}
+                    multiple
+                    showSelectIndicator
                     // classNameMenuItem="text-nowrap"
                     activeOnHover
+                    closeAfterSelect={false}
                 />
             </ViewRow>
             <ViewRow label="Drop Down With Children View" className="my-4 border-bottom p-3">

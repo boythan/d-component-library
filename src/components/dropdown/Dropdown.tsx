@@ -1,11 +1,13 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import React, { CSSProperties, ElementRef, useEffect, useMemo, useRef, useState } from "react";
 import ClassNames from "classnames";
-import Icon from "../elements/icon/Icon";
-import Button, { ButtonProps } from "../button/Button";
+import { filter, find, join, map } from "lodash";
+import React, { CSSProperties, useEffect, useMemo, useRef, useState } from "react";
 import StringUtils from "../../utils/StringUtils";
+import Button, { ButtonProps } from "../button/Button";
+import Icon from "../elements/icon/Icon";
 
 export interface IDropdownMenuItemProps {
     id: string | number;
@@ -24,6 +26,8 @@ export interface IMenuItemProps extends Omit<React.LiHTMLAttributes<HTMLLIElemen
     onClick?: (item: IDropdownMenuItemProps) => void;
     isMainView?: boolean;
     className?: string;
+    selected?: boolean;
+    showSelectIndicator?: boolean;
     style?: CSSProperties;
     id?: string;
 }
@@ -33,23 +37,37 @@ export interface DropDownMenuProps extends Omit<React.LiHTMLAttributes<HTMLUList
     onClick?: (item: IDropdownMenuItemProps) => void;
     Messages?: any;
     className?: string;
+    showSelectIndicator?: boolean;
+    multiple?: boolean;
     position?: "left-edge" | "right-edge";
     classNameMenuItem?: string;
     styleMenuItem?: CSSProperties;
+    value?: IDropdownMenuItemProps | IDropdownMenuItemProps[];
+    onChange?: (values?: any) => void;
 }
 
 export interface DropdownProps extends DropDownMenuProps {
-    [key: string]: any;
     buttonProps?: ButtonProps;
     variant?: "button" | "view";
-    value?: IDropdownMenuItemProps;
     placeholder?: string;
     className?: string;
     style?: CSSProperties;
     activeOnHover?: boolean;
+    closeAfterSelect?: boolean;
+    [key: string]: any;
 }
 
-const MenuItem: React.FC<IMenuItemProps> = ({ item, Messages, onClick, isMainView, className, style, ...rest }) => {
+const MenuItem: React.FC<IMenuItemProps> = ({
+    item,
+    Messages,
+    onClick,
+    isMainView,
+    className,
+    style,
+    selected,
+    showSelectIndicator,
+    ...rest
+}) => {
     const { id: idItem, iconName, subMenu, label, image } = item;
     const itemClass = ClassNames(
         "d-dropdown-menu__item",
@@ -79,6 +97,8 @@ const MenuItem: React.FC<IMenuItemProps> = ({ item, Messages, onClick, isMainVie
     return (
         <li className={itemClass} onClick={() => onClick && onClick(item)} key={`${idItem}`} style={style} {...rest}>
             {iconImageView}
+            {selected && showSelectIndicator && <Icon name="check" className="mr-2" />}
+            {!selected && showSelectIndicator && <div style={{ width: "15px" }} className="mr-2" />}
             {labelView}
             {arrowView}
             {!isMainView && subMenu && subMenu.length > 0 && (
@@ -91,22 +111,32 @@ const MenuItem: React.FC<IMenuItemProps> = ({ item, Messages, onClick, isMainVie
 export const DropdownMenu: React.FC<DropDownMenuProps> = ({
     dataSource = [],
     onClick = () => {},
+    value,
     Messages,
     className,
     position,
     classNameMenuItem,
     styleMenuItem,
+    showSelectIndicator,
+    multiple,
     ...rest
 }) => {
     const wrapperClass = ClassNames(`d-dropdown-menu__container d-dropdown-menu__container-${position}`, className);
     const list = dataSource.map((item, index) => {
+        const isSelected = Array?.isArray(value)
+            ? map(value, (i) => i?.id).includes(item?.id)
+            : (value as any)?.id === item?.id;
+
         return (
             <MenuItem
+                key={`${item?.id}${index}`}
                 item={item}
                 onClick={onClick}
+                selected={isSelected}
                 Messages={Messages}
                 className={classNameMenuItem}
                 style={styleMenuItem}
+                showSelectIndicator={showSelectIndicator || multiple}
             />
         );
     });
@@ -122,6 +152,7 @@ const Dropdown: React.FC<DropdownProps> = ({
     buttonProps = {},
     dataSource,
     onClick,
+    onChange,
     variant = "button",
     value,
     Messages,
@@ -130,6 +161,8 @@ const Dropdown: React.FC<DropdownProps> = ({
     style,
     children,
     activeOnHover,
+    multiple,
+    closeAfterSelect = true,
     ...rest
 }) => {
     const [openDropdown, setOpenDropdown] = useState(false);
@@ -200,7 +233,16 @@ const Dropdown: React.FC<DropdownProps> = ({
     }, [window.innerWidth, openDropdown, idDropdown]);
 
     const handleOnClickItem = (item: any) => {
-        setOpenDropdown(false);
+        if (multiple) {
+            const isIn = !!find(value || [], (i: any) => i?.id === item?.id);
+            if (isIn) {
+                return onChange && onChange(filter(value, (i: any) => i?.id !== item?.id));
+            }
+            return onChange && onChange(Array?.isArray(value) ? [...value, item] : [item]);
+        }
+        if (closeAfterSelect) {
+            setOpenDropdown(false);
+        }
         return onClick && onClick(item);
     };
 
@@ -237,15 +279,19 @@ const Dropdown: React.FC<DropdownProps> = ({
     );
     if (variant === "view") {
         mainView = value ? (
-            <MenuItem
-                item={value}
-                Messages={Messages}
-                onClick={onClickHandler}
-                isMainView
-                id={idContent}
-                onMouseEnter={onMouseEnterHandler}
-                onMouseLeave={onMouseLeaveHandler}
-            />
+            Array?.isArray(value) ? (
+                map(value, (item) => <div>{value?.length ? join(map(value, (i) => i?.label)) : null}</div>)
+            ) : (
+                <MenuItem
+                    item={value as any}
+                    Messages={Messages}
+                    onClick={onClickHandler}
+                    isMainView
+                    id={idContent}
+                    onMouseEnter={onMouseEnterHandler}
+                    onMouseLeave={onMouseLeaveHandler}
+                />
+            )
         ) : (
             <Button
                 content={placeholder}
@@ -281,6 +327,7 @@ const Dropdown: React.FC<DropdownProps> = ({
                         Messages={Messages}
                         position={contentHorizontalPosition}
                         {...rest}
+                        value={value}
                         style={dropDownMenuPosition}
                         onMouseEnter={onMouseEnterHandler}
                         onMouseLeave={onMouseLeaveHandler}
