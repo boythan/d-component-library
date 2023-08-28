@@ -328,6 +328,7 @@ const Dropdown: React.FC<DropdownProps> = ({
                         position={contentHorizontalPosition}
                         {...rest}
                         value={value}
+                        multiple={multiple}
                         style={dropDownMenuPosition}
                         onMouseEnter={onMouseEnterHandler}
                         onMouseLeave={onMouseLeaveHandler}
