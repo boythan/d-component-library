@@ -3,7 +3,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import ClassNames from "classnames";
-import { filter, find, join, map } from "lodash";
+import _ from "lodash";
 import React, { CSSProperties, useEffect, useMemo, useRef, useState } from "react";
 import StringUtils from "../../utils/StringUtils";
 import Button, { ButtonProps } from "../button/Button";
@@ -124,7 +124,7 @@ export const DropdownMenu: React.FC<DropDownMenuProps> = ({
     const wrapperClass = ClassNames(`d-dropdown-menu__container d-dropdown-menu__container-${position}`, className);
     const list = dataSource.map((item, index) => {
         const isSelected = Array?.isArray(value)
-            ? map(value, (i) => i?.id).includes(item?.id)
+            ? _.map(value, (i) => i?.id).includes(item?.id)
             : (value as any)?.id === item?.id;
 
         return (
@@ -234,9 +234,9 @@ const Dropdown: React.FC<DropdownProps> = ({
 
     const handleOnClickItem = (item: any) => {
         if (multiple) {
-            const isIn = !!find(value || [], (i: any) => i?.id === item?.id);
+            const isIn = !!_.find(value || [], (i: any) => i?.id === item?.id);
             if (isIn) {
-                return onChange && onChange(filter(value, (i: any) => i?.id !== item?.id));
+                return onChange && onChange(_.filter(value, (i: any) => i?.id !== item?.id));
             }
             return onChange && onChange(Array?.isArray(value) ? [...value, item] : [item]);
         }
@@ -280,7 +280,7 @@ const Dropdown: React.FC<DropdownProps> = ({
     if (variant === "view") {
         mainView = value ? (
             Array?.isArray(value) ? (
-                map(value, (item) => <div>{value?.length ? join(map(value, (i) => i?.label)) : null}</div>)
+                _.map(value, (item) => <div>{value?.length ? _.join(_.map(value, (i) => i?.label)) : null}</div>)
             ) : (
                 <MenuItem
                     item={value as any}
