@@ -8,6 +8,7 @@ import Icon from "../elements/icon/Icon";
 import AwesomeListComponent, { AwesomeListComponentProps, IPaging } from "../list/awesomeList/AwesomeListComponent";
 import Select, { SelectProps } from "./Select";
 import { ButtonProps } from "../button/Button";
+import { isString } from "../../utils/AwesomeTableUtils";
 
 export interface SelectInfinityProps
     extends Omit<AwesomeListComponentProps, "source" | "renderItem" | "variant">,
@@ -21,6 +22,7 @@ export interface SelectInfinityProps
     allowCreateNew?: boolean;
     onCreateNew?: () => any;
     createNewLabel?: string | React.ReactNode;
+    dropdownHeight?: string | number;
 }
 
 export interface SelectInfinityMethod {
@@ -49,6 +51,7 @@ const SelectInfinity: React.ForwardRefRenderFunction<SelectInfinityMethod, Selec
         allowCreateNew,
         onCreateNew,
         createNewLabel = "Create New",
+        dropdownHeight = 250,
         ...props
     },
     ref
@@ -130,7 +133,11 @@ const SelectInfinity: React.ForwardRefRenderFunction<SelectInfinityMethod, Selec
 
     const renderDropDown = () => {
         return (
-            <div style={{ height: "250px" }}>
+            <div
+                style={{
+                    height: isString(dropdownHeight) ? dropdownHeight : `${dropdownHeight}px`,
+                }}
+            >
                 {allowCreateNew && (
                     <div
                         onClick={() => onCreateNew && onCreateNew()}
