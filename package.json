@@ -30,6 +30,7 @@
     "i-all": "npm i && npm i",
     "dev": "npm-run-all --parallel build-watch start-demo",
     "start": "react-scripts start",
+    "start:legacy": "NODE_OPTIONS=--openssl-legacy-provider react-scripts start",
     "buildReact": "react-scripts build",
     "publishD": "rollup -c && npm run build-cp-variable && yarn publish"
   },

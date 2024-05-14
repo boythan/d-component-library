@@ -7,10 +7,13 @@
 
 # testing
 /coverage
+/demo-site
+/src/__test__/*
 
 # production
 /build
-/dist/*
+
+
 
 # misc
 .DS_Store
@@ -22,12 +25,3 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-
-# Yarn
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/sdks
-!.yarn/versions
