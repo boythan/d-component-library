@@ -49,9 +49,9 @@ const Select: React.ForwardRefRenderFunction<SelectMethod, SelectProps> = (
         classNameOption,
         classNameLabel,
 
-        value = [],
+        value,
         label,
-        defaultValue = [],
+        defaultValue,
         placeholder = "Please select",
         onChange,
         disabled,
