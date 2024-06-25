@@ -36,7 +36,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
     classNameItem,
 
     dataSource = [],
-    value = [],
+    value,
     defaultValue,
     multiple = true,
     numberOfColumns = "3",
@@ -70,11 +70,11 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
 
         // multiple check
         const isPush = event.target.checked;
-        let clone = [...value];
+        let clone = value ? [...(value || [])] : [...(defaultValue || [])];
         if (isPush) {
             clone.push(getValue(item));
         } else {
-            clone = value.filter((i: any) => {
+            clone = (value || defaultValue || []).filter((i: any) => {
                 return i !== getValue(item);
             });
         }
@@ -127,7 +127,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
                 {dataSourceDisplay.map((item) => {
                     const iLabel = getLabel(item);
                     const iValue: any = getValue(item);
-                    const isChecked = _.includes(value, iValue);
+                    const isChecked = value ? _.includes(value, iValue) : _.includes(defaultValue, iValue);
                     const isDisabled = ((getDisabledItem && getDisabledItem(item)) as any) || false;
                     const itemClass = ClassNames(
                         "my-3 p-0",
