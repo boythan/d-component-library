@@ -72,10 +72,11 @@ export interface IFormItemProps {
 }
 
 export interface IFormProps {
-    Messages: any;
+    Messages?: any;
     dataSource?: Array<IFormItemData<any>>;
     formik?: any;
     value?: any;
+    defaultValue?: any;
     error?: any;
     onChange?: (key: any, value: any) => any;
     getRowClass?: (index?: any) => string;
@@ -274,8 +275,9 @@ const Form: React.FC<IFormProps> = ({
     Messages,
     formik,
     value,
+    defaultValue,
     className,
-    error = {},
+    error,
     onChange,
     classNameRow,
     getRowClass,
@@ -298,7 +300,7 @@ const Form: React.FC<IFormProps> = ({
         if (formik) {
             return formik?.errors ?? {};
         }
-        return error;
+        return error || {};
     }, [formik]);
 
     const onChangeState = ({
@@ -345,7 +347,7 @@ const Form: React.FC<IFormProps> = ({
                                 classNameRow,
                                 onChangeValidate,
                             } = item;
-                            const valueItem = formValue?.[key] || getDefaultValue(type);
+                            const valueItem = formValue?.[key] || defaultValue[key] || getDefaultValue(type);
                             const errorItem = formError?.[key] ?? null;
                             const errorLabel = errorItem ? Messages?.[errorItem] ?? errorItem : null;
                             if (errorLabel) {

@@ -19,9 +19,6 @@ const TestInput = () => {
     const [rangeDate, setRangeDate] = useState<any>();
     const [rangeTime, setRangeTime] = useState<any>();
 
-    console.log({ rangeDate });
-    console.log({ rangeTime });
-
     useEffect(() => {
         const query = UrlUtils.getQuery();
         const infinityValue = query?.infinity ?? null;
@@ -138,6 +135,7 @@ const TestInput = () => {
                 <Select
                     dataSource={SELECT_DATA}
                     label="Select Tags"
+                    hasFilter
                     className="w-100 mr-2"
                     value={valueSelect}
                     onChange={setValueSelect}
