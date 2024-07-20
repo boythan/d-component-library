@@ -347,7 +347,7 @@ const Form: React.FC<IFormProps> = ({
                                 classNameRow,
                                 onChangeValidate,
                             } = item;
-                            const valueItem = formValue?.[key] || defaultValue?.[key] || getDefaultValue(type);
+                            const valueItem = formValue?.[key] || (defaultValue || {})?.[key] || getDefaultValue(type);
                             const errorItem = formError?.[key] ?? null;
                             const errorLabel = errorItem ? Messages?.[errorItem] ?? errorItem : null;
                             if (errorLabel) {

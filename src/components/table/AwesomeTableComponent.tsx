@@ -4,7 +4,16 @@
 /* eslint-disable react/static-property-placement */
 // react
 import { SearchOutlined } from "@ant-design/icons";
-import { Button, Input, InputRef, Table, TableColumnGroupType, TableColumnType, TablePaginationConfig, TableProps } from "antd";
+import {
+    Button,
+    Input,
+    InputRef,
+    Table,
+    TableColumnGroupType,
+    TableColumnType,
+    TablePaginationConfig,
+    TableProps,
+} from "antd";
 import { SorterResult } from "antd/lib/table/interface";
 // third-party
 import ClassNames from "classnames";
@@ -166,7 +175,12 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
             return false;
         }
         if (defaultPagination && defaultPagination.pageIndex && defaultPagination.pageSize) {
-            return { current: defaultPagination.pageIndex, pageSize: defaultPagination.pageSize, ...defaultPagination };
+            return {
+                ...INIT_PAGINATION,
+                current: defaultPagination.pageIndex,
+                pageSize: defaultPagination.pageSize,
+                ...defaultPagination,
+            };
         }
         return INIT_PAGINATION;
     };
@@ -309,7 +323,7 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
                 // eslint-disable-next-line react/no-access-state-in-setstate
                 pagination: { ...pagination, pageIndex: current, pageSize },
                 sorter: paramSorter?.field ? paramSorter : undefined,
-                loading: true
+                loading: true,
             },
             () => this.start()
         );
