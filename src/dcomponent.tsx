@@ -183,7 +183,6 @@ export {
     SELECTION_ALL,
     SELECTION_INVERT,
     SELECTION_NONE,
-    defaultProps,
 } from "./components/table/AwesomeTableComponent";
 
 /* ----------------------------------------
