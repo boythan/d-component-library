@@ -1,6 +1,6 @@
 {
   "name": "d-react-components",
-  "version": "0.3.86",
+  "version": "0.3.88",
   "main": "dist/dcomponent.cjs.js",
   "module": "dist/dcomponent.es.js",
   "typings": "dist/dcomponent.d.ts",
@@ -13,7 +13,7 @@
     "url": "git+https://github.com/boythan/d-component-library.git"
   },
   "dependencies": {
-    "antd": "^4.23.1",
+    "antd": "4.23.1",
     "bootstrap": "4.5.3",
     "classnames": "^2.3.1",
     "lodash": "^4.17.21",
@@ -80,7 +80,6 @@
     "eslint-plugin-jsx-a11y": "6.4.1",
     "eslint-plugin-react": "7.21.5",
     "formik": "^2.2.9",
-    "node-sass": "^8.0.0",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.2.15",
     "react": "^17.0.2",
@@ -88,7 +87,7 @@
     "react-dropzone": "^11.4.2",
     "react-images": "^1.2.0-beta.7",
     "react-scripts": "^4.0.3",
-    "rollup": "^2.48.0",
+    "rollup": "2.79.1",
     "rollup-plugin-bundle-scss": "^0.1.3",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-delete": "^2.0.0",
@@ -97,6 +96,7 @@
     "rollup-plugin-postcss": "^4.0.0",
     "rollup-plugin-scss": "^2.6.1",
     "rollup-plugin-typescript2": "^0.31.0",
+    "sass": "^1.77.8",
     "typescript": "^4.1.2",
     "web-vitals": "^1.0.1",
     "yup": "^0.32.9"
@@ -114,6 +114,7 @@
   ],
   "resolutions": {
     "react-error-overlay": "6.0.9",
+    "react-is": "18.2.4",
     "@types/react": "17.0.39",
     "@types/react-dom": "17.0.5"
   },

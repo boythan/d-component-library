@@ -72,6 +72,8 @@ export interface IViewFileListProps {
     removableUploaded?: boolean;
     allowNoExtension?: boolean;
     variant?: "square" | "button";
+    fileItemProps?: Partial<IFilePreviewProps>;
+    maxUploadedImageDisplay?: number;
 }
 
 export const ModalLightBox: React.FC<IModalLightBox> = ({ open, onClose, currentIndex, images }) => {
@@ -189,6 +191,7 @@ export const RenderPreviewFile: React.FC<IRenderPreviewFileProps> = ({
     onRemove,
     fileTypeSource,
     customItem,
+    ...rest
 }) => {
     const foundTypeDocument = useMemo(() => {
         return _.find(fileTypeSource || FILE_TYPE, (type) => _.includes(type?.extension ?? [], extension));
@@ -206,6 +209,7 @@ export const RenderPreviewFile: React.FC<IRenderPreviewFileProps> = ({
                         onRemove={() => onRemove && onRemove(item)}
                         src={foundTypeDocument?.iconFile}
                         removable={removable}
+                        {...rest}
                     />
                     {!removable && <div className="d-view-file-list__download-icon">get app icon</div>}
                 </a>
@@ -220,6 +224,7 @@ export const RenderPreviewFile: React.FC<IRenderPreviewFileProps> = ({
                 src={src || item?.imageData}
                 removable={!!removable}
                 onClick={() => onViewImage && onViewImage(item, src)}
+                {...rest}
             />
         </div>
     );
@@ -246,6 +251,8 @@ const ViewFileList: React.FC<IViewFileListProps> = ({
     video = [],
     allowNoExtension = true,
     variant = "button",
+    maxUploadedImageDisplay,
+    fileItemProps,
 }) => {
     const { getRootProps, getInputProps, isDragActive } = useDropzone({
         onDrop,
@@ -340,10 +347,18 @@ const ViewFileList: React.FC<IViewFileListProps> = ({
         <div className={containerClass}>
             <div className={listClass}>
                 {!_.isEmpty(uploadedFiles) &&
-                    uploadedFiles.map((file) => {
+                    uploadedFiles.map((file, index) => {
                         const fileName = getName(file);
                         const fileExtension = StringUtils.getExtensionFromFilename(fileName)?.toLowerCase();
                         const source = getSource(file);
+                        if (
+                            maxUploadedImageDisplay &&
+                            maxUploadedImageDisplay > 0 &&
+                            index >= maxUploadedImageDisplay
+                        ) {
+                            return null;
+                        }
+
                         return (
                             <RenderPreviewFile
                                 item={file}
@@ -354,6 +369,7 @@ const ViewFileList: React.FC<IViewFileListProps> = ({
                                 onRemove={onRemoveUploaded}
                                 onViewImage={handleViewImage}
                                 removable={removableUploaded}
+                                {...(fileItemProps || {})}
                             />
                         );
                     })}
@@ -369,6 +385,7 @@ const ViewFileList: React.FC<IViewFileListProps> = ({
                                 removable
                                 onRemove={onClickRemoveHandle}
                                 onViewImage={handleViewImage}
+                                {...(fileItemProps || {})}
                             />
                         );
                     })}
