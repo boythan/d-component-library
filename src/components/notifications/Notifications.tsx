@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable react/jsx-filename-extension */
 import { notification } from "antd";
+import { ArgsProps } from "antd/lib/notification";
 import React from "react";
 import Messages from "../../language/Messages";
 import Icon from "../elements/icon/Icon";
@@ -9,7 +10,7 @@ const getContentNotification = (content: string) => {
     return <div className="d-notifications__content" dangerouslySetInnerHTML={{ __html: content }} />;
 };
 
-const showError = (content: any, action?: any) => {
+const showError = (content: any, action?: any, options?: Partial<ArgsProps>) => {
     notification.open({
         message: Messages.error,
         description: getContentNotification(content),
@@ -19,10 +20,11 @@ const showError = (content: any, action?: any) => {
         },
         placement: "bottomRight",
         className: "d-notification__error",
+        ...(options || {}),
     });
 };
 
-const showWarning = (content: any, action?: any) => {
+const showWarning = (content: any, action?: any, options?: Partial<ArgsProps>) => {
     notification.open({
         message: Messages.warning,
         description: getContentNotification(content),
@@ -33,10 +35,11 @@ const showWarning = (content: any, action?: any) => {
         },
         placement: "bottomRight",
         className: "d-notification__warning",
+        ...(options || {}),
     });
 };
 
-const showSuccess = (content: any, action?: any) => {
+const showSuccess = (content: any, action?: any, options?: Partial<ArgsProps>) => {
     notification.open({
         message: Messages.success,
         description: getContentNotification(content),
@@ -47,10 +50,11 @@ const showSuccess = (content: any, action?: any) => {
         },
         placement: "bottomRight",
         className: "d-notification__success",
+        ...(options || {}),
     });
 };
 
-const showInfo = (content: any, action?: any) => {
+const showInfo = (content: any, action?: any, options?: Partial<ArgsProps>) => {
     notification.open({
         message: Messages.info,
         description: getContentNotification(content),
@@ -62,6 +66,7 @@ const showInfo = (content: any, action?: any) => {
         duration: 10,
         placement: "bottomRight",
         className: "d-notification__info",
+        ...(options || {}),
     });
 };
 
