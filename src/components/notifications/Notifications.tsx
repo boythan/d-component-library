@@ -18,7 +18,6 @@ const showError = (content: any, action?: any, options?: Partial<ArgsProps>) => 
         onClick: () => {
             action && action();
         },
-        placement: "bottomRight",
         className: "d-notification__error",
         ...(options || {}),
     });
@@ -33,7 +32,6 @@ const showWarning = (content: any, action?: any, options?: Partial<ArgsProps>) =
         onClick: () => {
             action && action();
         },
-        placement: "bottomRight",
         className: "d-notification__warning",
         ...(options || {}),
     });
@@ -48,7 +46,6 @@ const showSuccess = (content: any, action?: any, options?: Partial<ArgsProps>) =
         onClick: () => {
             action && action();
         },
-        placement: "bottomRight",
         className: "d-notification__success",
         ...(options || {}),
     });
@@ -64,10 +61,9 @@ const showInfo = (content: any, action?: any, options?: Partial<ArgsProps>) => {
             action && action();
         },
         duration: 10,
-        placement: "bottomRight",
         className: "d-notification__info",
         ...(options || {}),
     });
 };
 
-export default { showError, showInfo, showSuccess, showWarning };
+export default { showError, showInfo, showSuccess, showWarning, notification };
