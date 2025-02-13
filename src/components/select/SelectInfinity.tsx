@@ -23,6 +23,7 @@ export interface SelectInfinityProps
     onCreateNew?: () => any;
     createNewLabel?: string | React.ReactNode;
     dropdownHeight?: string | number;
+    customDropdownHeader?: () => React.ReactNode;
 }
 
 export interface SelectInfinityMethod {
@@ -52,6 +53,7 @@ const SelectInfinity: React.ForwardRefRenderFunction<SelectInfinityMethod, Selec
         onCreateNew,
         createNewLabel = "Create New",
         dropdownHeight = 250,
+        customDropdownHeader,
         ...props
     },
     ref
@@ -146,6 +148,7 @@ const SelectInfinity: React.ForwardRefRenderFunction<SelectInfinityMethod, Selec
                         {createNewLabel}
                     </div>
                 )}
+                {customDropdownHeader && customDropdownHeader()}
                 <AwesomeListComponent
                     ref={listRef}
                     renderItem={renderItemDropdown}
