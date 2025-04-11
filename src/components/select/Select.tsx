@@ -24,6 +24,7 @@ export interface SelectProps extends SelectAntProps<any> {
     getValue?: (item: any) => any;
     getDisableOption?: (item: any) => any;
     getOptionProps?: (item: any) => OptionProps;
+    getLabelDropdownItem?: (item: any) => any;
 
     hasFilter?: boolean;
     multiple?: boolean;
@@ -64,6 +65,7 @@ const Select: React.ForwardRefRenderFunction<SelectMethod, SelectProps> = (
         getValue = (item: any) => item?.id ?? null,
         getDisableOption = (item: any) => false,
         getOptionProps = (item: any) => ({} as any),
+        getLabelDropdownItem,
 
         selectAll = false,
         selectAllLabel = "Select All",
@@ -110,7 +112,7 @@ const Select: React.ForwardRefRenderFunction<SelectMethod, SelectProps> = (
     const children = useMemo(
         () =>
             dataSource.map((dataItem: any) => {
-                const label = getLabel(dataItem);
+                const label = getLabelDropdownItem ? getLabelDropdownItem(dataItem) : getLabel(dataItem);
                 const key = getKey(dataItem);
                 const disabled = getDisableOption(dataItem);
                 const optionProps = getOptionProps(dataItem);
