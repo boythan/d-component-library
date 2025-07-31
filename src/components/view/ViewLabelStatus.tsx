@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import _ from "lodash";
 import React, { CSSProperties } from "react";
 import ColorUtils from "../../utils/ColorUtils";
 
@@ -32,7 +33,7 @@ const ViewLabelStatus = ({
     if (content) {
         labelStatus = content;
     }
-    if (listStatus && listStatus?.length > 0 && status) {
+    if (listStatus && listStatus?.length > 0 && !_.isUndefined(status)) {
         try {
             const foundStatus = listStatus?.find((item) => getValue(item) === status);
             if (foundStatus) {
