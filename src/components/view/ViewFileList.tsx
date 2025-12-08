@@ -11,7 +11,8 @@ import ClassNames from "classnames";
 import _ from "lodash";
 import React, { ImgHTMLAttributes, useEffect, useMemo, useRef, useState } from "react";
 import { useDropzone } from "react-dropzone";
-import Carousel, { CarouselProps, Modal, ModalGateway } from "react-images";
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
 // data stubs
 import Messages from "../../language/Messages";
 import { DOC, EXCEL, PDF } from "../../utils/ImageUtils";
@@ -24,10 +25,11 @@ import Notifications from "../notifications/Notifications";
 
 const FILE_TYPE = [DOC, EXCEL, PDF];
 
-export interface IModalLightBox extends Omit<CarouselProps, "views"> {
+export interface IModalLightBox {
     open: boolean;
     onClose: (props?: any) => void;
-    images: CarouselProps["views"];
+    images: Array<{ src: string; caption?: string }>;
+    currentIndex?: number;
 }
 
 export interface IFilePreviewProps extends ImgHTMLAttributes<any> {
@@ -76,15 +78,20 @@ export interface IViewFileListProps {
     maxUploadedImageDisplay?: number;
 }
 
-export const ModalLightBox: React.FC<IModalLightBox> = ({ open, onClose, currentIndex, images }) => {
+export const ModalLightBox: React.FC<IModalLightBox> = ({ open, onClose, currentIndex = 0, images }) => {
+    const slides = images.map(img => ({
+        src: img.src,
+        alt: img.caption || '',
+        title: img.caption || ''
+    }));
+
     return (
-        <ModalGateway>
-            {open ? (
-                <Modal onClose={onClose}>
-                    <Carousel currentIndex={currentIndex} views={images} />
-                </Modal>
-            ) : null}
-        </ModalGateway>
+        <Lightbox
+            open={open}
+            close={onClose}
+            slides={slides}
+            index={currentIndex}
+        />
     );
 };
 
@@ -175,7 +182,7 @@ export const FilePreview: React.FC<IFilePreviewProps> = ({
             <ModalLightBox
                 open={openLightBox}
                 onClose={() => setOpenLightBox(false)}
-                images={[{ source: src as any }]}
+                images={[{ src: src as string }]}
             />
         </div>
     );

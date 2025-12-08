@@ -128,7 +128,7 @@ const PopoverList: React.FC<PopoverListProps> = ({
                     });
                     return;
                 }
-                const newData = dataList.data.concat(data);
+                const newData = dataList.data.concat(data as any);
                 setDataList({
                     data: newData,
                     emptyMode: PopoverMode.HIDDEN,
@@ -224,4 +224,3 @@ const PopoverList: React.FC<PopoverListProps> = ({
 };
 
 export default PopoverList;
-XMLHttpRequest;

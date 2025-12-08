@@ -7,8 +7,8 @@ export interface TestButtonProps {
 
 const TestButton: React.FC<TestButtonProps> = ({ id }) => {
     return (
-        <div className="d-flex my-4">
-            <div className="d-flex flex-column mr-5">
+        <div className="grid grid-cols-3 my-4">
+            <div className="mr-5">
                 <Button content="Button Outline Gray" color="gray" variant="outline" className="my-3" />
                 <Button content="Button Outline Green" color="green" variant="outline" className="my-3" />
                 <Button
@@ -29,13 +29,13 @@ const TestButton: React.FC<TestButtonProps> = ({ id }) => {
                 <Button content="Button Small Success" className="my-3" size="small" color="success" />
                 <Button content="Button X-small" className="my-3" size="x-small" />
             </div>
-            <div className="d-flex flex-column mx-5">
+            <div className="mx-5">
                 <Button content="Button Outline Disabled" variant="outline" className="my-3" disabled />
                 <Button content="Button Outline Medium" className="my-3" size="medium" variant="outline" />
                 <Button content="Button Outline Small" className="my-3" size="small" variant="outline" />
                 <Button content="Button Outline X-small" className="my-3" size="x-small" variant="outline" />
             </div>
-            <div className="d-flex flex-column ml-5">
+            <div className="ml-5">
                 <Button variant="trans">Button With Children</Button>
                 <Button content="Icon Button" iconName="home" />
                 <Button content="Icon Button" iconName="home" disabled />

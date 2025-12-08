@@ -14,7 +14,7 @@ import {
     TablePaginationConfig,
     TableProps,
 } from "antd";
-import { SorterResult } from "antd/lib/table/interface";
+import type { SorterResult } from "antd/es/table/interface";
 // third-party
 import ClassNames from "classnames";
 import _ from "lodash";
@@ -222,7 +222,7 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
                 <Button
                     type="primary"
                     onClick={() => this.handleSearch(selectedKeys, confirm, dataIndex)}
-                    icon="search"
+                    icon={<SearchOutlined />}
                     size="small"
                     style={{ width: 90, marginRight: 8 }}
                 >
@@ -521,4 +521,4 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
 
 export default AwesomeTableComponent;
 
-export const { Summary, ColumnGroup, Column, defaultProps, SELECTION_ALL, SELECTION_NONE, SELECTION_INVERT } = Table;
+export const { Summary, ColumnGroup, Column, SELECTION_ALL, SELECTION_NONE, SELECTION_INVERT } = Table;

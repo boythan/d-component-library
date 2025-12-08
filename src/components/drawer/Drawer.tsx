@@ -23,7 +23,7 @@ const Drawer: React.FC<IDrawerProps> = ({
     const drawerClass = ClassNames(`d-drawer__container d-drawer__${size} ${className}`);
     return (
         <DrawerAnt
-            visible={open}
+            open={open}
             onClose={(e) => onClose && onClose(e)}
             closable={closable}
             {...rest}

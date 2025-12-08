@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable react/jsx-filename-extension */
 import { notification } from "antd";
-import { ArgsProps } from "antd/lib/notification";
+import type { NotificationConfig } from "antd/es/notification/interface";
 import React from "react";
 import Messages from "../../language/Messages";
 import Icon from "../elements/icon/Icon";
@@ -10,7 +10,7 @@ const getContentNotification = (content: string) => {
     return <div className="d-notifications__content" dangerouslySetInnerHTML={{ __html: content }} />;
 };
 
-const showError = (content: any, action?: any, options?: Partial<ArgsProps>) => {
+const showError = (content: any, action?: any, options?: Partial<NotificationConfig>) => {
     notification.open({
         message: Messages.error,
         description: getContentNotification(content),
@@ -20,10 +20,10 @@ const showError = (content: any, action?: any, options?: Partial<ArgsProps>) => 
         },
         className: "d-notification__error",
         ...(options || {}),
-    });
+    } as any);
 };
 
-const showWarning = (content: any, action?: any, options?: Partial<ArgsProps>) => {
+const showWarning = (content: any, action?: any, options?: Partial<NotificationConfig>) => {
     notification.open({
         message: Messages.warning,
         description: getContentNotification(content),
@@ -34,10 +34,10 @@ const showWarning = (content: any, action?: any, options?: Partial<ArgsProps>) =
         },
         className: "d-notification__warning",
         ...(options || {}),
-    });
+    } as any);
 };
 
-const showSuccess = (content: any, action?: any, options?: Partial<ArgsProps>) => {
+const showSuccess = (content: any, action?: any, options?: Partial<NotificationConfig>) => {
     notification.open({
         message: Messages.success,
         description: getContentNotification(content),
@@ -48,10 +48,10 @@ const showSuccess = (content: any, action?: any, options?: Partial<ArgsProps>) =
         },
         className: "d-notification__success",
         ...(options || {}),
-    });
+    } as any);
 };
 
-const showInfo = (content: any, action?: any, options?: Partial<ArgsProps>) => {
+const showInfo = (content: any, action?: any, options?: Partial<NotificationConfig>) => {
     notification.open({
         message: Messages.info,
         description: getContentNotification(content),
@@ -63,7 +63,9 @@ const showInfo = (content: any, action?: any, options?: Partial<ArgsProps>) => {
         duration: 10,
         className: "d-notification__info",
         ...(options || {}),
-    });
+    } as any);
 };
 
-export default { showError, showInfo, showSuccess, showWarning, notification };
+const Notifications = { showError, showInfo, showSuccess, showWarning };
+
+export default Notifications;

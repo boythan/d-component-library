@@ -30,7 +30,7 @@ const ViewCollapse = ({
         <Collapse
             className={classContainerName}
             defaultActiveKey={defaultOpen}
-            expandIconPosition="right"
+            expandIconPosition="end"
             expandIcon={({ isActive }) => <CaretRightOutlined rotate={isActive ? 90 : 0} />}
         >
             <Panel header={<h5 className={labelClass}>{label}</h5>} key="1" extra={extra}>

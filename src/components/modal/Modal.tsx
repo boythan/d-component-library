@@ -164,7 +164,7 @@ const Modal: React.FC<ModalProps> = ({
 
     return (
         <ModalAnt
-            visible={open}
+            open={open}
             onCancel={onClose}
             centered={centered}
             className={modalClass}

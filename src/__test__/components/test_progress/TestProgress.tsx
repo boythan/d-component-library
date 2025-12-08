@@ -20,7 +20,7 @@ function TestGeneric<T>({ dataSource }: ITestGenericProps<T>) {
     return (
         <div>
             {dataSource.map((i) => (
-                <div className="text-small-bold">{i?.id ?? "N/A"}</div>
+                <div className="text-small-bold">{String(i?.id ?? "N/A")}</div>
             ))}
         </div>
     );

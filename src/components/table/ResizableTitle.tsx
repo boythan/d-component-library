@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from "react";
 import { Resizable } from "react-resizable";
-import "./ResizableTitle.scss";
+import "./ResizableTitle.css";
 
 const ResizableTitle = (props: any) => {
     const { onResize, width, ...restProps } = props;

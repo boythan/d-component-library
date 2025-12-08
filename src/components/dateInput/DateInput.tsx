@@ -29,7 +29,7 @@ export interface DateInputNewProps {
     classNameInput?: string;
 }
 
-export type DateInputProp = DatePickerProps & DateInputNewProps;
+export type DateInputProp = Omit<DatePickerProps, "variant"> & DateInputNewProps;
 
 const DateInput: React.FC<DateInputProp> = ({
     onChange,
@@ -55,87 +55,75 @@ const DateInput: React.FC<DateInputProp> = ({
     classNameLabel,
     ...props
 }) => {
-    const wrapperClass = ClassNames("d-date-input", { "d-date-input__hide-input": useButton }, className);
-    const labelClass = ClassNames("text-label d-block", { "text-label-required": required }, classNameLabel);
-    const datePickerClass = ClassNames(
-        "d-date-input__input",
+    const wrapperClass = ClassNames("flex flex-col w-full", { relative: useButton }, className);
+
+    const labelClass = ClassNames(
+        "text-sm font-medium mb-1 text-text-main block",
+        { "after:content-['*'] after:ml-0.5 after:text-red-500": required },
+        classNameLabel
+    );
+
+    // Common DatePicker/RangePicker classes
+    const datePickerBaseClass = ClassNames(
+        "w-full !rounded-none !h-10", // h-10 is 40px
         {
-            "d-date-input__no-out-line": variant === "standard",
-            "d-date-input__disabled": disabled,
-            "d-date-input__error": !!error,
+            // Standard variant: only bottom border
+            "!border-0 !border-b !border-neutral-200": variant === "standard",
+            "bg-neutral-100 !border-none": disabled,
+            "!border-red-500": !!error,
+
+            // Hide input mode (useButton)
+            "!w-10 !border-none !bg-transparent opacity-0 absolute top-0 left-0 z-10 cursor-pointer": useButton,
         },
         classNameInput
     );
-    const buttonClass = ClassNames("d-date-input__button", classNameButton);
+
+    const buttonClass = ClassNames("absolute top-0 left-0 pointer-events-none z-0", classNameButton);
+
+    // Map our custom variant to Ant Design's variant
+    const antdVariant = variant === "outline" ? "outlined" : "borderless";
+    // Note: 'filled' in AntD might be different, using 'borderless' + border-b for standard looks closer to legacy.
+    // For outline, we stick to default but apply our border radius override.
 
     let content = null;
+
+    // Helper to render picker with common props
+    const renderPicker = (Component: any, extraProps: any = {}) => (
+        <Component
+            {...props}
+            value={value}
+            onChange={onChange}
+            onBlur={onBlur}
+            className={datePickerBaseClass}
+            disabled={disabled}
+            defaultValue={defaultValue}
+            placeholder={placeholder}
+            format={format}
+            variant={antdVariant}
+            {...extraProps}
+        />
+    );
+
     if (type !== "time") {
-        content = (
-            <DatePicker
-                {...props}
-                value={value}
-                onChange={onChange}
-                onBlur={onBlur}
-                className={datePickerClass}
-                disabled={disabled}
-                defaultValue={defaultValue}
-                picker={type as any}
-                placeholder={placeholder}
-                format={format}
-                showTime={showTime as any}
-            />
-        );
+        content = renderPicker(DatePicker, { picker: type, showTime });
     }
+
     if (type === "time") {
-        content = (
-            <TimePicker
-                value={value as any}
-                onChange={onChange as any}
-                onBlur={onBlur}
-                className={datePickerClass}
-                disabled={disabled}
-                defaultValue={defaultValue as any}
-                placeholder={placeholder as any}
-                format="HH:mm"
-            />
-        );
+        content = renderPicker(TimePicker, { format: "HH:mm" });
     }
+
     if (isRangePicker) {
-        content = (
-            <RangePicker
-                {...(props as any)}
-                value={value as any}
-                onChange={onChange as any}
-                onBlur={onBlur}
-                className={datePickerClass}
-                disabled={disabled}
-                defaultValue={defaultValue as any}
-                picker={type}
-                placeholder={placeholder as any}
-                format={format as any}
-                showTime={showTime as any}
-            />
-        );
         if (type === "time") {
-            content = (
-                <TimePickerAntd.RangePicker
-                    value={value as any}
-                    onChange={onChange as any}
-                    onBlur={onBlur}
-                    className={datePickerClass}
-                    disabled={disabled}
-                    defaultValue={defaultValue as any}
-                    placeholder={placeholder as any}
-                    format="HH:mm"
-                />
-            );
+            content = renderPicker(TimePickerAntd.RangePicker, { format: "HH:mm" });
+        } else {
+            content = renderPicker(RangePicker, { picker: type, showTime });
         }
     }
 
     return (
         <div className={wrapperClass} hidden={hidden}>
             {label && <label className={labelClass}>{label}</label>}
-            <Button className={buttonClass} iconName={iconButton} />
+            {useButton && <Button className={buttonClass} iconName={iconButton} />}
             {content}
             <ViewTextError error={error} />
         </div>

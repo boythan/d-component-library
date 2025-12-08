@@ -1,10 +1,10 @@
-import React, { CSSProperties, ReactElement } from "react";
+import React, { CSSProperties } from "react";
 import ClassNames from "classnames";
 import Button, { ButtonProps } from "../button/Button";
 import Badge from "../elements/badge/Badge";
 
 export interface CardProps {
-    children?: any;
+    children?: React.ReactNode;
     className?: string;
     title?: string;
     sideText?: string;
@@ -13,9 +13,9 @@ export interface CardProps {
     classNameButton?: string;
     classNameIndex?: string;
     classNameHeader?: string;
-    customHeader?: (() => ReactElement | Element) | ReactElement | Element;
-    customLeft?: (() => ReactElement | Element) | ReactElement | Element;
-    customRight?: (() => ReactElement | Element) | ReactElement | Element;
+    customHeader?: (() => React.ReactNode) | React.ReactNode;
+    customLeft?: (() => React.ReactNode) | React.ReactNode;
+    customRight?: (() => React.ReactNode) | React.ReactNode;
     onClick?: () => void;
     buttonProps?: ButtonProps;
     style?: CSSProperties;
@@ -44,19 +44,19 @@ const Card: React.FC<CardProps> = ({
     const indexClass = ClassNames("text-xx-small bg-secondary text-white ml-1 text-center", classNameIndex);
     const buttonClass = ClassNames("text-secondary p-0", classNameButton);
 
-    const header = () => {
+    const header = (): React.ReactNode => {
         if (customHeader && typeof customHeader === "function") {
             return customHeader();
         }
         if (customHeader) {
-            return customHeader;
+            return customHeader as React.ReactNode;
         }
-        const leftSide = () => {
+        const leftSide = (): React.ReactNode => {
             if (customLeft && typeof customLeft === "function") {
                 return customLeft();
             }
             if (customLeft) {
-                return customLeft;
+                return customLeft as React.ReactNode;
             }
             return (
                 <div>
@@ -68,12 +68,12 @@ const Card: React.FC<CardProps> = ({
                 </div>
             );
         };
-        const rightSide = () => {
+        const rightSide = (): React.ReactNode => {
             if (customRight && typeof customRight === "function") {
                 return customRight();
             }
             if (customRight) {
-                return customRight;
+                return customRight as React.ReactNode;
             }
             if (sideText) {
                 return (
@@ -87,19 +87,23 @@ const Card: React.FC<CardProps> = ({
                     />
                 );
             }
-            return <div />;
+            return null;
         };
         return (
             <div className={headerClass}>
-                {leftSide()}
-                {rightSide()}
+                <React.Fragment>
+                    {leftSide()}
+                    {rightSide()}
+                </React.Fragment>
             </div>
         );
     };
     return (
         <div className={wrapClass} style={style}>
-            {header()}
-            {children}
+            <React.Fragment>
+                {header()}
+                {children}
+            </React.Fragment>
         </div>
     );
 };

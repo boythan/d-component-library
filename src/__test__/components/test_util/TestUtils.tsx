@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import _ from "lodash";
-import moment from "moment";
+import dayjs from "dayjs";
 import React, { useState } from "react";
 import Button from "../../../components/button/Button";
 import ViewCollapse from "../../../components/view/ViewCollapse";
@@ -35,8 +35,8 @@ const TestUtils: React.FC<TestUtilsProps> = ({ id }) => {
         <div className="d-flex flex-column my-4">
             <ViewCollapse label="Time Utils">
                 <div>{TimeUtils.convertMiliToDateTime(new Date() as any)}</div>
-                <div>{TimeUtils.convertMiliToDateTime(moment(new Date()) as any)}</div>
-                <div>{TimeUtils.calculateTimeDifferent(moment(new Date()), moment(new Date()))}</div>
+                <div>{TimeUtils.convertMiliToDateTime(dayjs(new Date()) as any)}</div>
+                <div>{TimeUtils.calculateTimeDifferent(dayjs(new Date()), dayjs(new Date()))}</div>
                 <div>{TimeUtils.getFirstDayOf(new Date(), "week", "MMM/YYYY" as any)}</div>
                 <ViewRow label="Calculate Precise Different Time" className="my-3">
                     {`${days} days: ${hours} hours: ${minutes} minutes : ${seconds} seconds}`}

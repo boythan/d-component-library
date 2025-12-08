@@ -13,7 +13,7 @@ import { SELECT_DATA } from "../data/TestConstant";
 
 const TestInput = () => {
     const [valueSelect, setValueSelect] = useState(["text"]);
-    const [valueTextInput, setValueTextInput] = useState([]);
+    const [valueTextInput, setValueTextInput] = useState();
     const [valueSelectInfinity, setValueSelectInfinity] = useState<any>();
     const [selectCheckboxValue, setSelectCheckboxValue] = useState<any>([]);
     const [rangeDate, setRangeDate] = useState<any>();
@@ -109,7 +109,6 @@ const TestInput = () => {
                     value={valueSelect}
                     onChange={setValueSelect}
                     required
-                    disabled
                 />
 
                 <Select
@@ -120,6 +119,7 @@ const TestInput = () => {
                     onChange={setValueSelect}
                     mode="tags"
                     getValue={(item) => item.id}
+                    size="middle"
                 />
 
                 <div className="w-100 d-flex flex-column my-3">

@@ -2,7 +2,7 @@ import { TreeSelect as TreeSelectAnt, TreeSelectProps as TreeSelectPropsAnt } fr
 import classname from "classnames";
 import ViewTextError from "../view/ViewTextError";
 
-export interface TreeSelectProps extends TreeSelectPropsAnt {
+export interface TreeSelectProps extends Omit<TreeSelectPropsAnt, 'variant'> {
     className?: string;
     classNameSelect?: string;
 
@@ -49,6 +49,9 @@ const TreeSelect = ({
         classNameSelect
     );
 
+    // Map our custom variant to Ant Design's variant
+    const antdVariant = variant === "outline" ? "outlined" : "filled";
+
     return (
         <div className={container}>
             {label && <label className={labelClass}>{label}</label>}
@@ -62,6 +65,7 @@ const TreeSelect = ({
                 placeholder={placeholder}
                 multiple={multiple}
                 allowClear={allowClear}
+                variant={antdVariant}
                 {...rest}
             />
 

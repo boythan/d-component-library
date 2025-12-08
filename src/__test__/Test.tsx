@@ -130,10 +130,10 @@ export default function Test({ content }: Props): ReactElement {
     ];
     return (
         <AppStateContext.Provider value={{ mockData }}>
-            <div className="p-5 d-flex bg-muted">
+            <div className="p-5 grid grid-cols-12 bg-muted">
                 <DialogComponent ref={dialogRef.current} />
 
-                <div className="col-3 p-0 mr-0 card-container" style={{ height: "fit-content" }}>
+                <div className="col-span-3 p-0 card-container" style={{ height: "fit-content" }}>
                     <TabBar
                         dataSource={TAB_LIST}
                         variant="vertical"
@@ -154,7 +154,7 @@ export default function Test({ content }: Props): ReactElement {
                         }}
                     />
                 </div>
-                <div className="col-9 py-5 px-5 ml-0 card-container">
+                <div className="col-span-9 py-5 px-5 card-container">
                     {selectedTab?.component ?? "N/A"}
                     {/* <Button content="Open Modal" variant="trans" onClick={() => setOpenModal(true)} /> */}
                 </div>

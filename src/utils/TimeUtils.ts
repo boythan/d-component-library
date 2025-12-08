@@ -1,5 +1,12 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import moment, { unitOfTime, MomentInput, Moment } from "moment";
+import dayjs, { Dayjs, ManipulateType, OpUnitType, QUnitType } from "dayjs";
+import isBetween from "dayjs/plugin/isBetween";
+import isSameOrBefore from "dayjs/plugin/isSameOrBefore";
+import isSameOrAfter from "dayjs/plugin/isSameOrAfter";
+
+dayjs.extend(isBetween);
+dayjs.extend(isSameOrBefore);
+dayjs.extend(isSameOrAfter);
 
 export enum ITimeFormat {
     DATE_TIME_FORMAT = "DD/MM/YYYY HH:mm",
@@ -38,9 +45,9 @@ const convertMinutesToMili = (minutes: any) => {
 const convertMiliToDateTime = (timeInMillis: any, lang: string = "en") => {
     const date = new Date(timeInMillis);
     if (lang === "th") {
-        return date ? moment(date).add("years", 543).format(DATE_TIME_FORMAT) : "";
+        return date ? dayjs(date).add(543, "year").format(DATE_TIME_FORMAT) : "";
     }
-    return date ? moment(date).format(DATE_TIME_FORMAT) : "";
+    return date ? dayjs(date).format(DATE_TIME_FORMAT) : "";
 };
 
 const convertDateTimeToMili = (dateTime: any) => {
@@ -51,20 +58,20 @@ const convertDateTimeToMili = (dateTime: any) => {
 const convertMiliToDate = (timeInMillis: any, lang: string = "en") => {
     const date = new Date(timeInMillis);
     if (lang === "th") {
-        return date ? moment(date).add("years", 543).format(DATE_FORMAT) : "";
+        return date ? dayjs(date).add(543, "year").format(DATE_FORMAT) : "";
     }
-    return date ? moment(date).format(DATE_FORMAT) : "";
+    return date ? dayjs(date).format(DATE_FORMAT) : "";
 };
 
 const convertMiliToTime = (timeInMillis: any) => {
     const date = new Date(timeInMillis);
 
-    return date ? moment(date).format(TIME_FORMAT) : "";
+    return date ? dayjs(date).format(TIME_FORMAT) : "";
 };
 
 const convertMiliToDateWithFormat = (timeInMillis: any, FORMAT: string) => {
     const date = new Date(timeInMillis);
-    return date ? moment(date).format(FORMAT) : "";
+    return date ? dayjs(date).format(FORMAT) : "";
 };
 
 const convertToDefaultInputFormat = (timeMili: any) => {
@@ -93,39 +100,39 @@ function calculateDayDifferent(d1: number, d2: number) {
     return Math.abs(Math.round(diff));
 }
 
-function calculateTimeDifferent(moment1: MomentInput, moment2: MomentInput, type: unitOfTime.Diff = "day") {
+function calculateTimeDifferent(date1: any, date2: any, type: QUnitType | OpUnitType = "day") {
     // type accept : years, months, weeks, days, hours, minutes, and seconds
-    const start = moment(moment1);
-    const end = moment(moment2);
+    const start = dayjs(date1);
+    const end = dayjs(date2);
     return end.diff(start, type);
 }
 
-function convertRangeDateToArray(date1: MomentInput, date2: MomentInput) {
-    let start = moment(date1);
-    const end = moment(date2);
+function convertRangeDateToArray(date1: any, date2: any) {
+    let start = dayjs(date1);
+    const end = dayjs(date2);
     const dates = [];
-    while (start <= end) {
+    while (start.isBefore(end) || start.isSame(end)) {
         dates.push(start.toString());
-        start = start.add(1, "days");
+        start = start.add(1, "day");
     }
     return dates;
 }
 
-function getFirstDayOf(date: any, timeUnit: unitOfTime.Base, format: ITimeFormat = ITimeFormat.DATE_TIME_FORMAT) {
-    return moment(date).startOf(timeUnit).format(format);
+function getFirstDayOf(date: any, timeUnit: OpUnitType, format: ITimeFormat = ITimeFormat.DATE_TIME_FORMAT) {
+    return dayjs(date).startOf(timeUnit).format(format);
 }
 
-function getLastDayOf(date: any, timeUnit: unitOfTime.Base, format: ITimeFormat = ITimeFormat.DATE_TIME_FORMAT) {
-    return moment(date).endOf(timeUnit).format(format);
+function getLastDayOf(date: any, timeUnit: OpUnitType, format: ITimeFormat = ITimeFormat.DATE_TIME_FORMAT) {
+    return dayjs(date).endOf(timeUnit).format(format);
 }
 
-const checkTimeIsBetweenRangeDate = (date: any, start: Moment, end: Moment, unit: unitOfTime.Base = "d"): boolean => {
+const checkTimeIsBetweenRangeDate = (date: any, start: Dayjs, end: Dayjs, unit: OpUnitType = "d"): boolean => {
     return (
-        moment(date).isBetween(start, end, unit) || moment(date).isSame(start, unit) || moment(date).isSame(end, unit)
+        dayjs(date).isBetween(start, end, unit) || dayjs(date).isSame(start, unit) || dayjs(date).isSame(end, unit)
     );
 };
 
-function calculatePreciseDifferentTime({ from, to }: { from: string | Moment; to: string | Moment }): {
+function calculatePreciseDifferentTime({ from, to }: { from: string | Dayjs; to: string | Dayjs }): {
     days: number;
     hours: number;
     minutes: number;
@@ -134,7 +141,7 @@ function calculatePreciseDifferentTime({ from, to }: { from: string | Moment; to
     const daysDiff = calculateTimeDifferent(from, to, "day");
     const hoursDiff = calculateTimeDifferent(from, to, "hour");
     const minutesDiff = calculateTimeDifferent(from, to, "minute");
-    const secondsDiff = calculateTimeDifferent(from, to, "seconds");
+    const secondsDiff = calculateTimeDifferent(from, to, "second");
     const days = daysDiff;
     let hours = hoursDiff;
     let minutes = minutesDiff;
@@ -159,9 +166,9 @@ function calculatePreciseDifferentTime({ from, to }: { from: string | Moment; to
 const toDateTime = (timeInMillis: any, lang: string = "en") => {
     const date = new Date(timeInMillis);
     if (lang === "th") {
-        return date ? moment(date).add("years", 543).format(DATE_TIME_FORMAT) : "";
+        return date ? dayjs(date).add(543, "year").format(DATE_TIME_FORMAT) : "";
     }
-    return date ? moment(date).format(DATE_TIME_FORMAT) : "";
+    return date ? dayjs(date).format(DATE_TIME_FORMAT) : "";
 };
 
 const toMillisecond = (dateTime: any) => {
@@ -172,19 +179,19 @@ const toMillisecond = (dateTime: any) => {
 const toDate = (timeInMillis: any, lang: string = "en") => {
     const date = new Date(timeInMillis);
     if (lang === "th") {
-        return date ? moment(date).add("years", 543).format(DATE_FORMAT) : "";
+        return date ? dayjs(date).add(543, "year").format(DATE_FORMAT) : "";
     }
-    return date ? moment(date).format(DATE_FORMAT) : "";
+    return date ? dayjs(date).format(DATE_FORMAT) : "";
 };
 
 const toTime = (timeInMillis: any) => {
     const date = new Date(timeInMillis);
-    return date ? moment(date).format(TIME_FORMAT) : "";
+    return date ? dayjs(date).format(TIME_FORMAT) : "";
 };
 
 const format = (timeInMillis: any, FORMAT: string) => {
     const date = new Date(timeInMillis);
-    return date ? moment(date).format(FORMAT) : "";
+    return date ? dayjs(date).format(FORMAT) : "";
 };
 
 /**

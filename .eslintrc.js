@@ -3,7 +3,7 @@ module.exports = {
         browser: true,
         es6: true,
     },
-    extends: "airbnb",
+    extends: ["react-app", "react-app/jest"],
     globals: {
         Atomics: "readonly",
         SharedArrayBuffer: "readonly",
@@ -16,7 +16,6 @@ module.exports = {
         ecmaVersion: 2018,
         sourceType: "module",
     },
-    plugins: ["react", "@typescript-eslint"],
     settings: {
         "import/resolver": {
             node: {

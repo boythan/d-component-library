@@ -3,7 +3,7 @@ import postcss from "rollup-plugin-postcss";
 import commonjs from "rollup-plugin-commonjs";
 import external from "rollup-plugin-peer-deps-external";
 import resolve from "rollup-plugin-node-resolve";
-import bundleScss from "rollup-plugin-bundle-scss";
+// import bundleScss from "rollup-plugin-bundle-scss";
 import image from "@rollup/plugin-image";
 import json from "@rollup/plugin-json";
 // import scss from "rollup-plugin-scss";
@@ -33,7 +33,7 @@ export default {
         image(),
         json(),
         // scss(),
-        bundleScss({ exclusive: false }),
+        // bundleScss({ exclusive: false }),
         postcss({
             // extract: true,
             // Or with custom file name, it will generate file relative to bundle.js in v3
@@ -53,7 +53,9 @@ export default {
             namedExports: {
                 "node_modules/react/react.js": ["Children", "Component", "PropTypes", "createElement"],
                 "node_modules/react-dom/index.js": ["render"],
-                "node_modules/react-is/index.js": ["isFragment", "ForwardRef", "isMemo"],
+                "node_modules/react-is/index.js": ["isFragment", "ForwardRef", "isMemo", "isValidElementType", "isContextConsumer"],
+                "node_modules/@rc-component/util/node_modules/react-is/index.js": ["isFragment", "ForwardRef", "isMemo", "isValidElementType", "isContextConsumer"],
+                "node_modules/rc-util/node_modules/react-is/index.js": ["isFragment", "ForwardRef", "isMemo", "isValidElementType", "isContextConsumer"],
                 "node_modules/prop-types/index.js": [
                     "node",
                     "bool",

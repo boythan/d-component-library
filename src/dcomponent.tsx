@@ -1,4 +1,6 @@
-import "./scss/index.scss";
+// import "./scss/index.scss";
+import "./styles/tailwind.css";
+import "./styles/style.css";
 
 /* ----------------------------------------
 // Input
@@ -183,7 +185,6 @@ export {
     SELECTION_ALL,
     SELECTION_INVERT,
     SELECTION_NONE,
-    defaultProps,
 } from "./components/table/AwesomeTableComponent";
 
 /* ----------------------------------------

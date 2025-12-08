@@ -11,7 +11,7 @@ export interface HeaderBlockProps {
     styleTitle?: CSSProperties;
     showLine?: boolean;
     showArrow?: boolean;
-    customRight?: React.ReactNode | React.ComponentType;
+    customRight?: React.ReactNode;
     onPrevious?: () => any;
     onNext?: () => any;
     arrowProps?: ButtonProps;

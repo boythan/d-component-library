@@ -2,7 +2,7 @@
 /* eslint-disable indent */
 import ClassNames from "classnames";
 import _ from "lodash";
-import moment from "moment";
+import dayjs from "dayjs";
 import React, { useMemo } from "react";
 import CheckboxGroup, { CheckboxGroupProps } from "../checkbox/CheckboxGroup";
 import RadioGroup, { RadioGroupProps } from "../checkbox/RadioGroup";
@@ -124,7 +124,7 @@ export function FormItem({ onChange, data, value = {}, Messages, className, erro
     if (type === "date-range" || type === "time-range") {
         let transValue: any = null;
         if (Array.isArray(value)) {
-            transValue = value.map((item) => moment(item));
+            transValue = value.map((item) => dayjs(item));
         }
         if (type === "time-range") {
             return (
@@ -133,7 +133,7 @@ export function FormItem({ onChange, data, value = {}, Messages, className, erro
                     onChange={(value) => {
                         let clone = null;
                         if (Array.isArray(value)) {
-                            clone = value.map((item) => moment(item).valueOf());
+                            clone = value.map((item) => dayjs(item).valueOf());
                         }
                         onChange(key, clone);
                     }}
@@ -152,7 +152,7 @@ export function FormItem({ onChange, data, value = {}, Messages, className, erro
                 onChange={(value) => {
                     let clone = null;
                     if (Array.isArray(value)) {
-                        clone = value.map((item) => moment(item).valueOf());
+                        clone = value.map((item) => dayjs(item).valueOf());
                     }
                     onChange(key, clone);
                 }}
@@ -167,17 +167,14 @@ export function FormItem({ onChange, data, value = {}, Messages, className, erro
     if (type === "date" || type === "date-time" || type === "time") {
         let transValue: any = null;
         if (value) {
-            transValue = moment(value);
+            transValue = dayjs(value);
         }
         return (
             <DateInput
                 value={transValue}
                 onChange={(value) => {
-                    let clone = null;
-                    if (value) {
-                        clone = moment(value);
-                    }
-                    onChange(key, clone);
+                    // value is already a dayjs object from DateInput
+                    onChange(key, value);
                 }}
                 label={itemLabel}
                 className={className}

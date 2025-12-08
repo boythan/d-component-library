@@ -95,9 +95,9 @@ const SelectInfinity: React.ForwardRefRenderFunction<SelectInfinityMethod, Selec
         const isSelected = !!value && value?.length > 0 && value?.find((i: any) => getValue(i) === itemValue);
         const itemClass = ClassNames(
             "py-2 px-3",
-            { "ant-select-item-option-active ant-select-item-option-selected": isSelected },
-            { "ant-select-item-option-disabled": disabled },
-            { "hover-pointer": !disabled },
+            { "bg-primary-100 font-semibold": isSelected },
+            { "opacity-50 cursor-not-allowed": disabled },
+            { "cursor-pointer hover:bg-neutral-100": !disabled && !isSelected },
             classNameDropdownItem
         );
         return (
@@ -128,7 +128,7 @@ const SelectInfinity: React.ForwardRefRenderFunction<SelectInfinityMethod, Selec
                 }}
                 key={getKey(item)}
             >
-                <div className="text-small">{label}</div>
+                <div className="text-sm">{label}</div>
             </div>
         );
     };
@@ -136,6 +136,7 @@ const SelectInfinity: React.ForwardRefRenderFunction<SelectInfinityMethod, Selec
     const renderDropDown = () => {
         return (
             <div
+                className="bg-white shadow-lg rounded-sm border border-neutral-200"
                 style={{
                     height: isString(dropdownHeight) ? dropdownHeight : `${dropdownHeight}px`,
                 }}
@@ -143,7 +144,10 @@ const SelectInfinity: React.ForwardRefRenderFunction<SelectInfinityMethod, Selec
                 {allowCreateNew && (
                     <div
                         onClick={() => onCreateNew && onCreateNew()}
-                        className={ClassNames("py-2 px-3 cursor-pointer", classNameDropdownItem)}
+                        className={ClassNames(
+                            "py-2 px-3 cursor-pointer hover:bg-neutral-100 border-b border-neutral-200 text-primary",
+                            classNameDropdownItem
+                        )}
                     >
                         {createNewLabel}
                     </div>
@@ -181,25 +185,33 @@ const SelectInfinity: React.ForwardRefRenderFunction<SelectInfinityMethod, Selec
         if (!foundItem) {
             return <div />;
         }
+        // Map common colors if needed, but assuming tagColor passes valid tailwind color names or we use dynamic class.
+        // If tagColor is 'primary', 'bg-primary' works.
         return (
             <div
-                className={`py-1 text-white text-x-small px-2 bg-${tagColor} flex-center-y mx-1 my-1 ${classNameTagItem}`}
+                className={`py-1 text-white text-xs px-2 bg-${tagColor} flex items-center mx-1 my-1 rounded ${classNameTagItem}`}
                 style={{ width: "120px", ...styleTagItem }}
             >
-                <div className="text-nowrap w-100">{getLabel(foundItem)}</div>
-                <Icon name="close" size="x-small" className="hover-pointer" onClick={() => onRemoveItem(tagValue)} />
+                <div className="whitespace-nowrap w-full truncate">{getLabel(foundItem)}</div>
+                <Icon
+                    name="close"
+                    size="small"
+                    className="cursor-pointer ml-1"
+                    onClick={() => onRemoveItem(tagValue)}
+                />
             </div>
         );
     };
 
     return (
         <Select
-            showSearch
             className={className}
             value={!mode ? getLabel(valueDisplay[0]) : valueDisplay}
             ref={selectRef}
-            onSearch={onChangeTextSearch}
-            dropdownRender={renderDropDown}
+            showSearch={{
+                onSearch: onChangeTextSearch,
+            }}
+            popupRender={renderDropDown}
             onChange={onChange}
             mode={mode}
             hasFilter={false}
