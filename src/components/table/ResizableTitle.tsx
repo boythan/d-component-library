@@ -11,23 +11,28 @@ const ResizableTitle = (props: any) => {
         return <th {...restProps} />;
     }
 
+    // Extract children to put inside Resizable
+    const { children, style, ...thProps } = restProps;
+
     return (
-        <Resizable
-            width={width}
-            height={0}
-            handle={(
-                <span
-                    className="react-resizable-handle"
-                    onClick={(e) => {
-                        e.stopPropagation();
-                    }}
-                />
-            )}
-            onResize={onResize}
-            draggableOpts={{ enableUserSelectHack: false }}
-        >
-            <th {...restProps} />
-        </Resizable>
+        <th {...thProps} style={{ ...style, width }} className={restProps.className}>
+            <Resizable
+                width={width}
+                height={0}
+                handle={
+                    <span
+                        className="react-resizable-handle"
+                        onClick={(e) => {
+                            e.stopPropagation();
+                        }}
+                    />
+                }
+                onResize={onResize}
+                draggableOpts={{ enableUserSelectHack: false }}
+            >
+                <div style={{ height: "100%", width: "100%" }}>{children}</div>
+            </Resizable>
+        </th>
     );
 };
 

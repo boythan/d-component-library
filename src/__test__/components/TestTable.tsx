@@ -13,10 +13,11 @@ const TestTable = () => {
         {
             title: () => "Id",
             dataIndex: "id",
-            width: 300,
+            width: 100,
             render: () => {
                 return <Dropdown dataSource={ATTRIBUTE_INPUT_TYPE} />;
             },
+            fixed: true,
         },
         {
             title: "Name",
@@ -82,13 +83,13 @@ const TestTable = () => {
     const renderSummary = () => {
         return (
             <Summary.Row className="w-100">
-                <Summary.Cell className="text-right font-weight-bold" index={1} align="left" colSpan={3}>
+                <Summary.Cell className="text-right font-bold" index={1} colSpan={3}>
                     Total
                 </Summary.Cell>
-                <Summary.Cell className="text-center font-weight-bold" index={10}>
+                <Summary.Cell className="text-center font-bold" index={10}>
                     123
                 </Summary.Cell>
-                <Summary.Cell className="text-center font-weight-bold" index={10}>
+                <Summary.Cell className="text-center font-bold" index={10}>
                     123
                 </Summary.Cell>
             </Summary.Row>
@@ -111,7 +112,7 @@ const TestTable = () => {
                 }}
                 transformer={(res) => ATTRIBUTE_INPUT_TYPE}
                 columns={columns}
-                keyTableLayout="TEST TnABLE"
+                keyTableLayout="TEST TABLE"
                 // rowSelection={{ onChange: (value) => setSelectingRows(value) }}
                 // selectingRows={selectingRows}
                 // onSelectionView={() => {
@@ -124,18 +125,12 @@ const TestTable = () => {
                 pagination={{ pageSize: 5, pageSizeOptions: ["5", "10", "15"] }}
                 getTotalItems={(res) => res?.length}
                 isPagination={false}
-                tableLayout="auto"
                 bordered={false}
                 showSelectColumn
                 summary={() => renderSummary()}
             />
 
-            <AwesomeTableComponent
-                columns={columns}
-                dataSource={dataSource}
-                tableLayout="auto"
-                summary={() => renderSummary()}
-            />
+            <AwesomeTableComponent columns={columns} dataSource={dataSource} summary={() => renderSummary()} />
             <Button content="Remove" onClick={onClickRemove} />
         </div>
     );

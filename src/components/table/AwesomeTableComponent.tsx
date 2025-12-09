@@ -1,8 +1,5 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable camelcase */
-/* eslint-disable react/sort-comp */
-/* eslint-disable react/static-property-placement */
-// react
 import { SearchOutlined } from "@ant-design/icons";
 import {
     Button,
@@ -14,25 +11,27 @@ import {
     TablePaginationConfig,
     TableProps,
 } from "antd";
-import type { SorterResult } from "antd/es/table/interface";
-// third-party
+import { SorterResult } from "antd/es/table/interface";
 import ClassNames from "classnames";
-import _ from "lodash";
-import React, { Component } from "react";
+import filter from "lodash/filter";
+import isEmpty from "lodash/isEmpty";
+import isEqual from "lodash/isEqual";
+import map from "lodash/map";
+import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } from "react";
 import Highlighter from "react-highlight-words";
 import { isArray, isString, transformColumn } from "../../utils/AwesomeTableUtils";
 import LayoutManagerColumnButton from "./layoutManager/LayoutManagerColumnButton";
 import LayoutManagerViewSelect from "./layoutManager/LayoutManagerViewSelect";
-// data stubs
 import { ILayoutTableManager } from "./layoutManager/LayoutTableManager";
-// application
 import ResizableTitle from "./ResizableTitle";
 
 export const INIT_PAGINATION = {
     pageIndex: 1,
     pageSize: 10,
     showQuickJumper: true,
-    showTotal: (total: any) => <div className="captionText">{`Total ${total} items`}</div>,
+    showTotal: (total: any) => (
+        <div className="text-sm text-gray-500 flex items-center h-full">{`Total ${total} items`}</div>
+    ),
     pageSizeOptions: ["10", "20", "50", "100", "200"],
     showSizeChanger: true,
 };
@@ -46,6 +45,8 @@ interface MyTableColumnType extends TableColumnType<any> {
     mobileTitle?: string;
     hidden?: boolean;
     titleTooltip?: any;
+    isDefault?: boolean;
+    isSearch?: boolean;
 }
 
 interface MyTableColumnGroupType extends TableColumnGroupType<any> {
@@ -53,13 +54,15 @@ interface MyTableColumnGroupType extends TableColumnGroupType<any> {
     mobileTitle?: string;
     hidden?: boolean;
     titleTooltip?: any;
+    isDefault?: boolean;
+    isSearch?: boolean;
 }
 
 export type IColumnsProps = (MyTableColumnGroupType | MyTableColumnType)[];
 
 export interface AwesomeTableComponentProps extends TableProps<any> {
-    source: (pagination: { pageIndex?: number; pageSize?: number }, sorter?: SorterResult<any>) => Promise<any>;
-    transformer: (res: any) => Array<any>;
+    source?: (pagination: { pageIndex?: number; pageSize?: number }, sorter?: SorterResult<any>) => Promise<any>;
+    transformer?: (res: any) => Array<any>;
     columns: IColumnsProps;
     baseColumnProps?: any;
 
@@ -73,104 +76,53 @@ export interface AwesomeTableComponentProps extends TableProps<any> {
 
     isScroll?: boolean;
     isPagination?: boolean;
-    defaultPagination?: IPaginationProps;
+    defaultPagination?: IPaginationProps | null;
 
     showSelectColumn?: boolean;
     keyTableLayout?: string;
 
     classNameTable?: string;
+    bordered?: boolean;
 }
 
-export interface AwesomeTableComponentState {
-    data: Array<any>;
-    loading: boolean;
-    total: number;
-
-    searchText: "";
-    searchedColumn: "";
-
-    filteredInfo: any;
-
-    pagination: IPaginationProps | false;
-    sorter: any;
-
-    columns: TableProps<any>["columns"];
-    selectedColumns: string[];
+export interface AwesomeTableComponentRef {
+    refresh: () => void;
+    refreshData: () => void;
+    refreshKeepPaging: (paging: any) => void;
+    getDataList: () => any[];
 }
 
-class AwesomeTableComponent extends Component<AwesomeTableComponentProps, AwesomeTableComponentState> {
-    static defaultProps = {
-        rowKey: (item: any) => {
+const DEFAULT_BASE_COLUMN_PROPS = {};
+
+const AwesomeTableComponent = forwardRef<AwesomeTableComponentRef, AwesomeTableComponentProps>((props, ref) => {
+    const {
+        source = () => Promise.resolve([]),
+        transformer = (response: any) => response,
+        columns: propColumns = [],
+        baseColumnProps = DEFAULT_BASE_COLUMN_PROPS,
+        rowKey = (item: any) => {
             if (item.id) {
                 return item.id;
             }
-
             if (isString(item)) return item;
             return Math.random();
         },
-        source: () => Promise.resolve([]),
-        transformer: (response: any) => {
-            return response;
-        },
+        setCurrentPage = (page: any) => page,
+        getTotalItems = (response: any) => response?.data?.data?.pagination?.items ?? 0,
+        isPagination = true,
+        defaultPagination = null,
+        isScroll = true,
+        classNameTable = "",
+        tableLayout = isScroll ? "fixed" : "auto",
+        showSelectColumn = false,
+        keyTableLayout = "",
+        onSelectionView,
+        selectingRows,
+        className,
+        bordered = true,
+    } = props;
 
-        // eslint-disable-next-line react/default-props-match-prop-types
-        columns: [],
-        baseColumnProps: {},
-        isPagination: true,
-        defaultPagination: null,
-        isScroll: true,
-        border: true,
-        classNameTable: "",
-
-        setCurrentPage: (page: any) => {
-            return page;
-        },
-        getTotalItems: (response: any) => response?.data?.data?.pagination?.items ?? 0,
-        tableLayout: "auto",
-
-        showSelectColumn: false,
-        keyTableLayout: "",
-    };
-
-    components = {
-        header: {
-            cell: ResizableTitle,
-        },
-    };
-
-    unmounted: boolean | undefined;
-
-    searchInput: InputRef | null | undefined;
-
-    constructor(props: any) {
-        super(props);
-
-        const tableColumns = transformColumn(props.columns, props.baseColumnProps);
-        const selectedColumns = _.map(
-            _.filter(tableColumns, (item) => item.isDefault),
-            (item) => item.id
-        );
-
-        this.state = {
-            data: [],
-            loading: true,
-            total: 0,
-
-            searchText: "",
-            searchedColumn: "",
-
-            filteredInfo: null,
-
-            pagination: this.getDefaultPagination(),
-            sorter: null,
-
-            columns: tableColumns,
-            selectedColumns,
-        };
-    }
-
-    getDefaultPagination = () => {
-        const { isPagination, defaultPagination } = this.props;
+    const getDefaultPagination = () => {
         if (!isPagination) {
             return false;
         }
@@ -185,81 +137,188 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
         return INIT_PAGINATION;
     };
 
-    UNSAFE_componentWillMount() {
-        this.unmounted = false;
-    }
+    const [data, setData] = useState<Array<any>>([]);
+    const [loading, setLoading] = useState<boolean>(true);
+    const [total, setTotal] = useState<number>(0);
+    const [searchText, setSearchText] = useState<string>("");
+    const [searchedColumn, setSearchedColumn] = useState<string>("");
+    const [filteredInfo, setFilteredInfo] = useState<any>(null);
+    const [pagination, setPagination] = useState<IPaginationProps | false>(getDefaultPagination());
+    const [sorter, setSorter] = useState<any>(null);
 
-    componentDidMount() {
-        this.start();
-    }
+    // transformColumn likely needs to be re-run if props change, so we use state for columns
+    const [columns, setColumns] = useState<any[]>(transformColumn(propColumns, baseColumnProps));
+    const [selectedColumns, setSelectedColumns] = useState<string[]>(
+        map(
+            filter(columns, (item: any) => item.isDefault),
+            (item: any) => item.id
+        )
+    );
 
-    UNSAFE_componentWillReceiveProps(nextProps: any) {
-        const { columns } = this.props;
-        if (nextProps?.columns !== columns) {
-            this.setState({ columns: transformColumn(nextProps.columns, nextProps.baseColumnProps) });
+    const searchInput = useRef<InputRef>(null);
+    const unmountedRef = useRef<boolean>(false);
+
+    // Initial load
+    useEffect(() => {
+        unmountedRef.current = false;
+        start();
+        return () => {
+            unmountedRef.current = true;
+        };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    // Update columns when props change
+    useEffect(() => {
+        if (propColumns) {
+            const newCols = transformColumn(propColumns, baseColumnProps);
+            if (!isEqual(newCols, columns)) {
+                setColumns(newCols);
+            }
         }
-    }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [propColumns, baseColumnProps]);
 
-    componentWillUnmount() {
-        this.unmounted = true;
-    }
+    const start = () => {
+        const currentPagination = pagination;
+        const currentSorter = sorter;
 
-    /** ***************************************HANDLE SEARCH FUNCTION ********************************************** */
+        const params = {
+            pageIndex: typeof currentPagination !== "boolean" ? currentPagination?.pageIndex ?? 1 : 1,
+            pageSize: typeof currentPagination !== "boolean" ? currentPagination?.pageSize ?? 10 : 10,
+        };
 
-    getColumnSearchProps = (dataIndex: any) => ({
+        source(params, currentSorter)
+            .then((response) => {
+                const transformedData = transformer(response);
+                if (!isArray(transformedData)) {
+                    // eslint-disable-next-line no-throw-literal
+                    throw "Data is not an array";
+                }
+
+                if (unmountedRef.current) return;
+
+                if (isEmpty(transformedData) && data.length === 0) {
+                    setData([]);
+                    setLoading(false);
+                    return;
+                }
+
+                setData(transformedData);
+                setLoading(false);
+                setTotal((getTotalItems && getTotalItems(response)) || 0);
+            })
+            .catch(() => {
+                if (unmountedRef.current) return;
+                setLoading(false);
+            });
+    };
+
+    // Need to use refs or state in start?
+    // The `start` function captures `pagination` and `sorter` from closure.
+    // However, since `start` is called from effects and imperative handles, we need to be careful about stale state.
+    // In Class component, `this.state` is always fresh.
+    // Here, `start` closes over the state values when defined.
+    // WE MUST USE REFS for pagination and sorter if we want
+    // `start` to be stable or just rely on `start` being recreated.
+    // Or we pass params to start()?
+    // Let's use Refs for state accessed in async/callbacks to emulate "this.state" behavior or pass arguments.
+    // The original `start()` read from `this.state`.
+    // Let's trust that we can call start with current state, but `refresh` sets state then calls start.
+    // So `start` should probably just depend on state, but we need to trigger it after state update.
+    // `useEffect` on pagination/sorter change?
+    // Usage in `handleTableChange` calls `start` after `setState` callback.
+    // Let's separate "fetchData" that takes params.
+
+    const fetchData = (fetchPagination: IPaginationProps | false, fetchSorter: any) => {
+        // setLoading(true);
+        // Don't always set loading here if we want to control it from outside?
+        // Original start didn't set loading true, handleTableChange did.
+
+        const params = {
+            pageIndex: typeof fetchPagination !== "boolean" ? fetchPagination?.pageIndex ?? 1 : 1,
+            pageSize: typeof fetchPagination !== "boolean" ? fetchPagination?.pageSize ?? 10 : 10,
+        };
+
+        source(params, fetchSorter)
+            .then((response) => {
+                if (unmountedRef.current) return;
+                const transformedData = transformer(response);
+                if (!isArray(transformedData)) throw "Data is not an array";
+
+                if (isEmpty(transformedData) && data.length === 0) {
+                    setData([]);
+                    setLoading(false);
+                    return;
+                }
+                setData(transformedData);
+                setTotal((getTotalItems && getTotalItems(response)) || 0);
+                setLoading(false);
+            })
+            .catch(() => {
+                if (unmountedRef.current) return;
+                setLoading(false);
+            });
+    };
+
+    // We can't easily rely on `useEffect` for all `start` calls because `refresh` also triggers it.
+    // Let's use a ref to track if we should fetch, or just call `fetchData` directly with the new state.
+
+    const handleSearch = (selectedKeys: any, confirm: any, dataIndex: any) => {
+        confirm();
+        setSearchText(selectedKeys[0]);
+        setSearchedColumn(dataIndex);
+    };
+
+    const handleReset = (clearFilters: any) => {
+        clearFilters();
+        setSearchText("");
+    };
+
+    const getColumnSearchProps = (dataIndex: any) => ({
         filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters }: any) => (
-            <div style={{ padding: 8 }}>
+            <div className="p-2">
                 <Input
-                    ref={(node) => {
-                        this.searchInput = node;
-                    }}
+                    ref={searchInput}
                     placeholder={`Search ${dataIndex}`}
                     value={selectedKeys[0]}
                     onChange={(e) => setSelectedKeys(e.target.value ? [e.target.value] : [])}
-                    onPressEnter={() => this.handleSearch(selectedKeys, confirm, dataIndex)}
-                    style={{ width: 188, marginBottom: 8, display: "block" }}
+                    onPressEnter={() => handleSearch(selectedKeys, confirm, dataIndex)}
+                    className="w-[188px] mb-2 block"
                 />
                 <Button
                     type="primary"
-                    onClick={() => this.handleSearch(selectedKeys, confirm, dataIndex)}
+                    onClick={() => handleSearch(selectedKeys, confirm, dataIndex)}
                     icon={<SearchOutlined />}
                     size="small"
-                    style={{ width: 90, marginRight: 8 }}
+                    className="w-[90px] mr-2"
                 >
                     Search
                 </Button>
-                <Button onClick={() => this.handleReset(clearFilters)} size="small" style={{ width: 90 }}>
+                <Button onClick={() => handleReset(clearFilters)} size="small" className="w-[90px]">
                     Reset
                 </Button>
             </div>
         ),
-        filterIcon: (filtered: any) => (
-            // <Icons type="search" style={{ color: filtered ? '#1890ff' : undefined }} />
-            <SearchOutlined style={{ color: filtered ? "#1890ff" : undefined }} />
-        ),
+        filterIcon: (filtered: any) => <SearchOutlined style={{ color: filtered ? "#1890ff" : undefined }} />,
         onFilter: (value: any, record: any) => {
             return record?.[dataIndex]?.toString().toLowerCase().includes(value.toLowerCase()) ?? false;
         },
-
         onFilterDropdownVisibleChange: (visible: any) => {
             if (visible) {
                 setTimeout(() => {
-                    if (this.searchInput) {
-                        this.searchInput.select();
-                    }
+                    searchInput.current?.select();
                 });
             }
         },
-        // eslint-disable-next-line no-confusing-arrow
         render: (text: any) => {
-            const { searchedColumn, searchText } = this.state;
             if (searchedColumn === dataIndex) {
                 return (
                     <Highlighter
                         highlightStyle={{ backgroundColor: "#ffc069", padding: 0 }}
                         searchWords={[searchText]}
                         autoEscape
-                        textToHighlight={text.toString()}
+                        textToHighlight={text ? text.toString() : ""}
                     />
                 );
             }
@@ -267,148 +326,81 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
         },
     });
 
-    handleSearch = (selectedKeys: any, confirm: any, dataIndex: any) => {
-        confirm();
-        this.setState({
-            searchText: selectedKeys[0],
-            searchedColumn: dataIndex,
-        });
-    };
-
-    handleReset = (clearFilters: any) => {
-        clearFilters();
-        this.setState({ searchText: "" });
-    };
-
-    /** *************************************** TABLE CONTROL *********************************************** */
-    handleResize = (index: any) => {
+    const handleResize = (index: number) => {
         return (e: any, { size }: any) => {
-            this.setState(({ columns = [] }) => {
-                const nextColumns = [...columns];
+            setColumns((prevColumns) => {
+                const nextColumns = [...prevColumns];
                 nextColumns[index] = {
                     ...nextColumns[index],
                     width: size?.width,
                 };
-                return { columns: nextColumns };
+                return nextColumns;
             });
         };
     };
 
-    onChangeTableLayout = async (layoutItem: ILayoutTableManager) => {
+    const onChangeTableLayoutDefault = () => {
+        const columnsDefault = filter(columns, (item: any) => item.isDefault);
+        const columnIdsDefault = map(columnsDefault, (item: any) => item.id);
+        setSelectedColumns(columnIdsDefault);
+    };
+
+    const onChangeTableLayout = async (layoutItem: ILayoutTableManager) => {
         if (layoutItem?.id) {
-            this.setState({ selectedColumns: layoutItem.columnsIds });
+            setSelectedColumns(layoutItem.columnsIds);
         } else {
-            this.onChangeTableLayoutDefault();
+            onChangeTableLayoutDefault();
         }
     };
 
-    onChangeTableLayoutDefault = () => {
-        const { columns } = this.state;
-        const columnsDefault = _.filter(columns, (item) => (item as any).isDefault);
-        const columnIdsDefault = _.map(columnsDefault, (item) => (item as any).id);
-        this.setState({ selectedColumns: columnIdsDefault });
-    };
-
-    handleTableChange = (paging: IPaginationProps, filters: any, sorter: any) => {
-        const { setCurrentPage } = this.props;
-        const { pagination } = this.state;
-        const { current, pageSize } = paging;
-        const { field, order } = sorter;
+    const handleTableChange = (paging: any, filters: any, sorterResult: any) => {
+        const { current, pageSize: newPageSize } = paging;
+        // Handle both single sorter and multiple sorters (though code only handled single before)
+        const { field, order } = sorterResult;
         const paramSorter = { field, order };
+
+        const newPagination = {
+            ...(typeof pagination === "object" ? pagination : {}),
+            pageIndex: current,
+            pageSize: newPageSize,
+        };
+
         if (typeof setCurrentPage === "function") {
-            setCurrentPage({ pageIndex: current, pageSize });
+            setCurrentPage({ pageIndex: current, pageSize: newPageSize });
         }
-        this.setState(
-            {
-                // eslint-disable-next-line react/no-access-state-in-setstate
-                pagination: { ...pagination, pageIndex: current, pageSize },
-                sorter: paramSorter?.field ? paramSorter : undefined,
-                loading: true,
-            },
-            () => this.start()
-        );
+
+        setPagination(newPagination);
+        setSorter(paramSorter?.field ? paramSorter : undefined);
+        setLoading(true);
+
+        // Fetch using new values directly to ensure closure correctness
+        fetchData(newPagination, paramSorter?.field ? paramSorter : undefined);
     };
 
-    start() {
-        const { source, transformer, getTotalItems } = this.props;
-        const { pagination, sorter } = this.state;
+    useImperativeHandle(ref, () => ({
+        refresh: () => {
+            setLoading(true);
+            setFilteredInfo(null);
+            const newPagination = isPagination ? INIT_PAGINATION : false;
+            setPagination(newPagination);
+            fetchData(newPagination, sorter);
+        },
+        refreshData: () => {
+            setLoading(true);
+            setFilteredInfo(null);
+            fetchData(pagination, sorter);
+        },
+        refreshKeepPaging: (paging: any) => {
+            setLoading(true);
+            setFilteredInfo(null);
+            const newPagination = { ...INIT_PAGINATION, ...paging };
+            setPagination(newPagination);
+            fetchData(newPagination, sorter);
+        },
+        getDataList: () => data,
+    }));
 
-        source(
-            {
-                pageIndex: typeof pagination !== "boolean" ? pagination?.pageIndex ?? 1 : 1,
-                pageSize: typeof pagination !== "boolean" ? pagination?.pageSize ?? 10 : 10,
-            },
-            sorter
-        )
-            .then((response) => {
-                const data = transformer(response);
-                if (!isArray(data)) {
-                    // eslint-disable-next-line no-throw-literal
-                    throw "Data is not an array";
-                }
-
-                // eslint-disable-next-line react/destructuring-assignment
-                if (_.isEmpty(data) && this.state.data.length === 0) {
-                    this.setState({
-                        data: [],
-                        loading: false,
-                    });
-                    return;
-                }
-
-                this.setState({
-                    data,
-                    loading: false,
-                    total: (getTotalItems && getTotalItems(response)) || 0,
-                });
-            })
-            .catch(() => {
-                if (this.unmounted) return;
-                this.setState({ loading: false });
-            });
-    }
-
-    refresh() {
-        this.setState(
-            {
-                loading: true,
-                filteredInfo: null,
-                // eslint-disable-next-line react/destructuring-assignment
-                pagination: this.props.isPagination ? INIT_PAGINATION : false,
-            },
-            () => this.start()
-        );
-    }
-
-    refreshData() {
-        this.setState(
-            {
-                loading: true,
-                filteredInfo: null,
-            },
-            () => this.start()
-        );
-    }
-
-    refreshKeepPaging(paging: any) {
-        this.setState(
-            {
-                loading: true,
-                filteredInfo: null,
-                pagination: { ...INIT_PAGINATION, ...paging },
-            },
-            () => this.start()
-        );
-    }
-
-    getDataList() {
-        return this.state.data;
-    }
-
-    getColumns() {
-        const { filteredInfo, columns = [], selectedColumns = [] } = this.state;
-        const { showSelectColumn } = this.props;
-
+    const getColumns = () => {
         const columnsSearchFilter = columns.map((columnParams: any) => {
             let column = columnParams;
             if (column.filters && column.filters.length > 0) {
@@ -421,7 +413,7 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
             if (column.isSearch) {
                 column = {
                     ...column,
-                    ...this.getColumnSearchProps(column.dataIndex),
+                    ...getColumnSearchProps(column.dataIndex),
                 };
             }
             return column;
@@ -431,7 +423,7 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
             ...col,
             onHeaderCell: (column: any) => ({
                 width: column?.width,
-                onResize: this.handleResize(index),
+                onResize: handleResize(index),
             }),
         }));
 
@@ -441,83 +433,68 @@ class AwesomeTableComponent extends Component<AwesomeTableComponentProps, Awesom
             columnsSelected = columnsResizable.filter((item: any) => selectedColumns.includes(item.id));
         }
         return columnsSelected;
-    }
+    };
 
-    /** ************************************************** RENDER *************************************************** */
+    const showSelectionView = onSelectionView && selectingRows && selectingRows?.length > 0;
+    const showFuncRow = showSelectColumn || showSelectionView;
+    const paginationResult = pagination ? { ...pagination, current: pagination.pageIndex || 1, total } : false;
 
-    render() {
-        const { total, pagination, data, loading, columns, selectedColumns = [] } = this.state;
+    // Tailwind classes
+    const wrapperClass = ClassNames(
+        "bg-white", // Assuming basic background
+        { "border-none": !bordered },
+        className
+    );
 
-        // eslint-disable-next-line operator-linebreak
-        const {
-            rowKey,
-            isScroll,
-            classNameTable,
-            tableLayout,
-            showSelectColumn,
-            className,
-            onSelectionView,
-            selectingRows,
-            bordered = true,
-            keyTableLayout,
-        } = this.props;
+    const funcRowClass = ClassNames("my-2 w-full", {
+        "flex justify-between items-center my-3": showSelectionView,
+    });
 
-        const showSelectionView = onSelectionView && selectingRows && selectingRows?.length > 0;
-        const showFuncRow = showSelectColumn || showSelectionView;
-
-        const paginationResult = pagination ? { ...pagination, current: pagination.pageIndex, total } : false;
-
-        const wrapperClass = ClassNames(
-            "d-table-awesome-component",
-            { "d-table-awesome-component__no-border": !bordered },
-            className
-        );
-        const funcRowClass = ClassNames("d-table-awesome-component__select-column my-2 w-100", {
-            "d-flex justify-content-between align-items-center my-3": showSelectionView,
-        });
-
-        return (
-            <div className={wrapperClass}>
-                {showFuncRow && (
-                    <div className={funcRowClass}>
-                        {showSelectionView && onSelectionView && onSelectionView(selectingRows)}
-                        <div className="flex-center-y">
-                            <LayoutManagerViewSelect
-                                selectedColumns={selectedColumns}
-                                tableKey={keyTableLayout}
-                                onChangeLayout={this.onChangeTableLayout}
-                            />
-                            <LayoutManagerColumnButton
-                                dataSource={columns as any[]}
-                                onChange={(selectedColumns) => this.setState({ selectedColumns })}
-                                values={selectedColumns}
-                                onChangeLayout={this.onChangeTableLayout}
-                                onClickReset={this.onChangeTableLayoutDefault}
-                                tableKey={keyTableLayout ?? ""}
-                            />
-                        </div>
+    return (
+        <div className={wrapperClass}>
+            {showFuncRow && (
+                <div className={funcRowClass}>
+                    {showSelectionView && onSelectionView && onSelectionView(selectingRows)}
+                    <div className="flex justify-end items-center gap-2">
+                        <LayoutManagerViewSelect
+                            selectedColumns={selectedColumns}
+                            tableKey={keyTableLayout}
+                            onChangeLayout={onChangeTableLayout}
+                        />
+                        <LayoutManagerColumnButton
+                            dataSource={columns as any[]}
+                            onChange={(vals) => setSelectedColumns(vals)}
+                            values={selectedColumns}
+                            onChangeLayout={onChangeTableLayout}
+                            onClickReset={onChangeTableLayoutDefault}
+                            tableKey={keyTableLayout ?? ""}
+                            classNames="min-w-[500px]"
+                        />
                     </div>
-                )}
-                <Table
-                    rowKey={rowKey}
-                    dataSource={data}
-                    loading={loading}
-                    onChange={this.handleTableChange}
-                    rowClassName={() => "d-table-awesome-component__row"}
-                    pagination={paginationResult}
-                    scroll={isScroll ? { y: "1000" } : {}}
-                    tableLayout={tableLayout}
-                    bordered={bordered}
-                    components={this.components}
-                    {...this.props}
-                    className={`d-table-awesome-component__table ${classNameTable}`}
-                    // columns props always has to be in last position in order for Resizable table to work
-                    columns={this.getColumns()}
-                />
-            </div>
-        );
-    }
-}
+                </div>
+            )}
+            <Table
+                rowKey={rowKey}
+                dataSource={data}
+                loading={loading}
+                onChange={handleTableChange}
+                rowClassName={() => "align-middle whitespace-nowrap"} // d-table-awesome-component__row
+                pagination={paginationResult}
+                scroll={isScroll ? { y: "1000px", x: "max-content" } : {}}
+                tableLayout={tableLayout}
+                bordered={bordered}
+                components={{
+                    header: {
+                        cell: ResizableTitle,
+                    },
+                }}
+                {...props}
+                className={`w-full ${classNameTable}`}
+                columns={getColumns()}
+            />
+        </div>
+    );
+});
 
 export default AwesomeTableComponent;
 

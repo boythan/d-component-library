@@ -18,11 +18,15 @@ export interface PopoverProps {
 
 const Popover: React.FC<PopoverProps> = ({ open, onOpen, onClose, content, children, className, classNameContent }) => {
     const outSideRef = useRef<any>();
-    const [classNameContentEdge, setClassNameContentEdge] = useState("");
+    const [contentPositionClass, setContentPositionClass] = useState("left-0");
     const idContainer = useRef<string>(StringUtils.getUniqueID()).current;
 
-    const wrapperClass = classNames("d-popover", className);
-    const contentClass = classNames("d-popover__content", classNameContent, classNameContentEdge);
+    const wrapperClass = classNames("relative inline-block", className);
+    const contentClass = classNames(
+        "absolute z-50 bg-white shadow-lg rounded-sm border border-neutral-200 p-2 min-w-[200px]",
+        contentPositionClass,
+        classNameContent
+    );
 
     const handleClick = (e: any) => {
         if (outSideRef?.current?.contains(e.target)) {
@@ -39,19 +43,21 @@ const Popover: React.FC<PopoverProps> = ({ open, onOpen, onClose, content, child
         return () => {
             document.removeEventListener("mousedown", handleClick);
         };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useEffect(() => {
-        const popoverContainer = document.getElementById(idContainer);
-        const windowWidth = window.innerWidth;
-        const marginLeft = popoverContainer?.getBoundingClientRect()?.left ?? 0;
-        const isLeftSide = marginLeft / windowWidth < 0.5;
-        const className = classNames({
-            "d-popover__content-left-edge": isLeftSide,
-            "d-popover__content-right-edge": !isLeftSide,
-        });
-        setClassNameContentEdge(className);
-    }, [window.innerWidth]);
+        if (open) {
+            const popoverContainer = document.getElementById(idContainer);
+            const rect = popoverContainer?.getBoundingClientRect();
+            const windowWidth = window.innerWidth;
+
+            // If element is in the right half of the screen, align content to the right (grow left)
+            const isRightSide = (rect?.left ?? 0) > windowWidth / 2;
+
+            setContentPositionClass(isRightSide ? "right-0" : "left-0");
+        }
+    }, [open, idContainer]);
 
     return (
         <div className={wrapperClass} ref={outSideRef} id={idContainer}>

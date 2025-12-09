@@ -45,49 +45,49 @@ const RadioGroup: React.FC<RadioGroupProps> = ({
     error,
 }) => {
     const containerClass = classNames(className);
-    const groupContainerClass = classNames("d-flex flex-wrap", classNameContent);
-    const labelClass = classNames("text-label", { "text-label-required": required });
+
+    // Map column count to Tailwind grid classes
+    const gridColsClass =
+        {
+            "1": "grid-cols-1",
+            "2": "grid-cols-2",
+            "3": "grid-cols-3",
+            "4": "grid-cols-4",
+            "5": "grid-cols-5",
+            "6": "grid-cols-6",
+        }[numberOfColumns] || "grid-cols-3";
+
+    const groupContainerClass = classNames("grid gap-4", gridColsClass, classNameContent);
+    const labelClass = classNames("text-sm font-semibold mb-2 block", { "text-red-500": required }); // "text-label"
+
     return (
         <div className={containerClass} style={style} hidden={hidden}>
             {label && <label className={labelClass}>{label}</label>}
             <div className={groupContainerClass}>
                 {dataSource.map((item) => {
                     const iLabel = getLabel(item);
-                    const isChecked = getValue(item) === value;
+                    const iValue = getValue(item);
+                    const isChecked = iValue === value;
                     const isDisabled = ((getDisabledItem && getDisabledItem(item)) as any) || false;
-                    const itemClass = classNames(
-                        "my-3",
-                        {
-                            "col-12": numberOfColumns == "1",
-                        },
-                        {
-                            "col-6": numberOfColumns == "2",
-                        },
-                        {
-                            "col-4": numberOfColumns == "3",
-                        },
-                        {
-                            "col-3": numberOfColumns == "4",
-                        },
-                        {
-                            col: numberOfColumns == "5",
-                        },
-                        {
-                            "col-2": numberOfColumns == "6",
-                        },
-                        classNameItem
-                    );
+
                     return (
                         <Checkbox
+                            key={iValue}
                             label={iLabel}
-                            value={value}
-                            onChange={(event) => {
-                                onChange && onChange(getValue(item));
+                            value={value} // The group value? No, Checkbox variant radio expects its own value?
+                            // Ant Radio Group manages value, but we are using individual Radios manually controlled?
+                            // Yes, existing logic: onChange={() => onChange(getValue(item))}
+                            // implies customized control.
+                            // If we use Ant Radio, we might need to verify props.
+                            // Our Checkbox refactor accepts `checked`.
+
+                            onChange={() => {
+                                onChange && onChange(iValue);
                             }}
                             checked={isChecked}
                             variant="radio"
                             disabled={isDisabled || disabled}
-                            className={itemClass}
+                            className={classNameItem}
                         />
                     );
                 })}

@@ -2,10 +2,13 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+import { Dropdown as AntDropdown, MenuProps } from "antd";
 import ClassNames from "classnames";
-import _ from "lodash";
-import React, { CSSProperties, useEffect, useMemo, useRef, useState } from "react";
-import StringUtils from "../../utils/StringUtils";
+import filter from "lodash/filter";
+import find from "lodash/find";
+import join from "lodash/join";
+import map from "lodash/map";
+import React, { CSSProperties } from "react";
 import Button, { ButtonProps } from "../button/Button";
 import Icon from "../elements/icon/Icon";
 
@@ -18,139 +21,37 @@ export interface IDropdownMenuItemProps {
     title?: string;
     selected?: boolean;
     subMenu?: Array<IDropdownMenuItemProps>;
+    [key: string]: any;
 }
 
-export interface IMenuItemProps extends Omit<React.LiHTMLAttributes<HTMLLIElement>, "onClick"> {
-    item: IDropdownMenuItemProps;
-    Messages?: any;
-    onClick?: (item: IDropdownMenuItemProps) => void;
-    isMainView?: boolean;
-    className?: string;
-    selected?: boolean;
-    showSelectIndicator?: boolean;
-    style?: CSSProperties;
-    id?: string;
-}
-
-export interface DropDownMenuProps extends Omit<React.LiHTMLAttributes<HTMLUListElement>, "onClick" | "value"> {
+export interface DropDownMenuProps {
     dataSource: IDropdownMenuItemProps[];
     onClick?: (item: IDropdownMenuItemProps) => void;
     Messages?: any;
-    className?: string;
-    showSelectIndicator?: boolean;
-    multiple?: boolean;
-    position?: "left-edge" | "right-edge";
+    className?: string; // wrapper class
     classNameMenuItem?: string;
     styleMenuItem?: CSSProperties;
     value?: IDropdownMenuItemProps | IDropdownMenuItemProps[];
     onChange?: (values?: any) => void;
+    showSelectIndicator?: boolean;
+    multiple?: boolean;
+    position?: "left-edge" | "right-edge"; // Deprecated/proxied to placement
 }
 
 export interface DropdownProps extends DropDownMenuProps {
     buttonProps?: ButtonProps;
     variant?: "button" | "view";
     placeholder?: string;
-    className?: string;
+    className?: string; // wrapper class
     style?: CSSProperties;
     activeOnHover?: boolean;
     closeAfterSelect?: boolean;
     [key: string]: any;
 }
 
-const MenuItem: React.FC<IMenuItemProps> = ({
-    item,
-    Messages,
-    onClick,
-    isMainView,
-    className,
-    style,
-    selected,
-    showSelectIndicator,
-    ...rest
-}) => {
-    const { id: idItem, iconName, subMenu, label, image } = item;
-    const itemClass = ClassNames(
-        "d-dropdown-menu__item",
-        {
-            "d-dropdown-menu__item-with-submenu": subMenu && subMenu?.length > 0,
-            "d-dropdown-menu__item-main-view": isMainView,
-        },
-        className
-    );
-    let iconImageView;
-    const labelView = (
-        <div className="w-100 text d-dropdown-menu__item-label">{Messages ? Messages[label] : label}</div>
-    );
-    let arrowView;
-    if (iconName) {
-        iconImageView = <Icon name={iconName} className="d-block mr-2" />;
-    }
-    if (image) {
-        iconImageView = <img src={image} alt="" className="d-block image-square-x-small mr-2" />;
-    }
-    if (subMenu && subMenu?.length > 0) {
-        arrowView = <Icon name="chevron_right" className="d-block" />;
-    }
-    if (isMainView) {
-        arrowView = <Icon name="expand_more" className="d-block ml-2" />;
-    }
-    return (
-        <li className={itemClass} onClick={() => onClick && onClick(item)} key={`${idItem}`} style={style} {...rest}>
-            {iconImageView}
-            {selected && showSelectIndicator && <Icon name="check" className="mr-2" />}
-            {!selected && showSelectIndicator && <div style={{ width: "15px" }} className="mr-2" />}
-            {labelView}
-            {arrowView}
-            {!isMainView && subMenu && subMenu.length > 0 && (
-                <DropdownMenu dataSource={subMenu} onClick={(item) => console.log({ item })} />
-            )}
-        </li>
-    );
-};
-
-export const DropdownMenu: React.FC<DropDownMenuProps> = ({
-    dataSource = [],
-    onClick = () => {},
-    value,
-    Messages,
-    className,
-    position,
-    classNameMenuItem,
-    styleMenuItem,
-    showSelectIndicator,
-    multiple,
-    ...rest
-}) => {
-    const wrapperClass = ClassNames(`d-dropdown-menu__container d-dropdown-menu__container-${position}`, className);
-    const list = dataSource.map((item, index) => {
-        const isSelected = Array?.isArray(value)
-            ? _.map(value, (i) => i?.id).includes(item?.id)
-            : (value as any)?.id === item?.id;
-
-        return (
-            <MenuItem
-                key={`${item?.id}${index}`}
-                item={item}
-                onClick={onClick}
-                selected={isSelected}
-                Messages={Messages}
-                className={classNameMenuItem}
-                style={styleMenuItem}
-                showSelectIndicator={showSelectIndicator || multiple}
-            />
-        );
-    });
-
-    return (
-        <ul className={wrapperClass} {...rest}>
-            {list}
-        </ul>
-    );
-};
-
 const Dropdown: React.FC<DropdownProps> = ({
     buttonProps = {},
-    dataSource,
+    dataSource = [],
     onClick,
     onChange,
     variant = "button",
@@ -163,179 +64,118 @@ const Dropdown: React.FC<DropdownProps> = ({
     activeOnHover,
     multiple,
     closeAfterSelect = true,
+    showSelectIndicator,
+    classNameMenuItem,
+    styleMenuItem,
     ...rest
 }) => {
-    const [openDropdown, setOpenDropdown] = useState(false);
-    const idContainer = useRef<string>(StringUtils.getUniqueID()).current;
-    const idContent = useRef<string>(StringUtils.getUniqueID()).current;
-    const idDropdown = useRef<string>(StringUtils.getUniqueID()).current;
-    const containerClass = ClassNames(`d-dropdown`, className);
-    const [contentHorizontalPosition, setContentHorizontalPosition] = useState<"right-edge" | "left-edge">();
-    const [contentVerticalPosition, setContentVerticalPosition] = useState<"top-edge" | "bottom-edge">();
-    const [contentDimension, setContentDimension] = useState<DOMRect>();
-    const [dropdownMenuDimension, setDropdownMenuDimension] = useState<DOMRect>();
-    const wrapperRef = useRef<HTMLDivElement>(null);
-
-    const dropDownMenuPosition = useMemo<CSSProperties | undefined>(() => {
-        if (!contentDimension || !dropdownMenuDimension) {
-            return undefined;
-        }
-        const isLeftEdge = contentHorizontalPosition === "left-edge";
-        const isRightEdge = contentHorizontalPosition === "right-edge";
-        const isBottomEdge = contentVerticalPosition === "bottom-edge";
-        const { top = 0, left, right, bottom, height = 0, width, x, y } = contentDimension || {};
-        if (isBottomEdge) {
-            return {
-                top: `${top - dropdownMenuDimension?.height}px`,
-                left: isLeftEdge ? `${left}px` : `${right}px`,
-                transform: isRightEdge ? `translate(-${dropdownMenuDimension?.width}px,0px)` : "none",
-            };
-        }
-        return {
-            top: `${top + height}px`,
-            left: isLeftEdge ? `${left}px` : `${right}px`,
-            transform: isRightEdge ? `translate(-${dropdownMenuDimension?.width}px,0px)` : "none",
-        };
-    }, [contentDimension, contentHorizontalPosition, contentVerticalPosition, dropdownMenuDimension]);
-
-    useEffect(() => {
-        const handleOutsideClick = (event: MouseEvent) => {
-            const isClickOutside = wrapperRef.current && !wrapperRef.current.contains(event.target as HTMLElement);
-            if (isClickOutside) {
-                setOpenDropdown(false);
-            }
-        };
-        document.addEventListener("mousedown", handleOutsideClick);
-    }, [wrapperRef, setOpenDropdown]);
-
-    useEffect(() => {
-        const dropdownContainer = document.getElementById(idContainer);
-        const windowWidth = window.innerWidth;
-        const windowHeight = window.innerHeight;
-        const marginLeft = dropdownContainer?.getBoundingClientRect()?.left ?? 0;
-        const marginBottom = dropdownContainer?.getBoundingClientRect()?.top ?? 0;
-        const isLeftSide = marginLeft / windowWidth < 0.5;
-        const isBottomSie = marginBottom / windowHeight > 0.65;
-        setContentHorizontalPosition(isLeftSide ? "left-edge" : "right-edge");
-        setContentVerticalPosition(isBottomSie ? "bottom-edge" : "top-edge");
-    }, [window.innerWidth, openDropdown, idContainer]);
-
-    useEffect(() => {
-        const dropdownContent = document.getElementById(idContent);
-        const contentDimension = dropdownContent?.getBoundingClientRect();
-        setContentDimension(contentDimension);
-    }, [window.innerWidth, openDropdown, idContent]);
-
-    useEffect(() => {
-        const dropdownMenu = document.getElementById(idDropdown);
-        const dropdownMenuDimension = dropdownMenu?.getBoundingClientRect();
-        setDropdownMenuDimension(dropdownMenuDimension);
-    }, [window.innerWidth, openDropdown, idDropdown]);
-
-    const handleOnClickItem = (item: any) => {
+    const handleOnClickItem = (item: IDropdownMenuItemProps) => {
         if (multiple) {
-            const isIn = !!_.find(value || [], (i: any) => i?.id === item?.id);
+            const isIn = !!find(value as any[], (i: any) => i?.id === item?.id);
             if (isIn) {
-                return onChange && onChange(_.filter(value, (i: any) => i?.id !== item?.id));
+                return onChange && onChange(filter(value as any[], (i: any) => i?.id !== item?.id));
             }
-            return onChange && onChange(Array?.isArray(value) ? [...value, item] : [item]);
-        }
-        if (closeAfterSelect) {
-            setOpenDropdown(false);
+            return onChange && onChange(Array.isArray(value) ? [...(value as any[]), item] : [item]);
         }
         return onClick && onClick(item);
     };
 
-    const onMouseEnterHandler = () => {
-        if (activeOnHover) {
-            return setOpenDropdown(true);
-        }
-        return null;
+    const mapToAntdItems = (items: IDropdownMenuItemProps[]): MenuProps["items"] => {
+        return items.map((item) => {
+            const { id, label, iconName, image, subMenu } = item;
+            const isSelected = Array.isArray(value)
+                ? map(value, (i) => i?.id).includes(item?.id)
+                : (value as any)?.id === item?.id;
+
+            return {
+                key: String(id),
+                label: (
+                    <div className="flex items-center justify-between min-w-[150px]">
+                        <div className="flex items-center">
+                            {(showSelectIndicator || multiple) && (
+                                <div className="w-5 mr-2 flex items-center justify-center">
+                                    {isSelected && <Icon name="check" />}
+                                </div>
+                            )}
+                            {image ? (
+                                <img src={image} alt="" className="w-6 h-6 object-cover mr-2" />
+                            ) : (
+                                iconName && <Icon name={iconName} className="mr-2" />
+                            )}
+                            <span>{Messages ? Messages[label] : label}</span>
+                        </div>
+                    </div>
+                ),
+                children: subMenu && subMenu.length > 0 ? mapToAntdItems(subMenu) : undefined,
+                className: classNameMenuItem,
+                style: styleMenuItem,
+                onClick: () => handleOnClickItem(item),
+            };
+        });
     };
 
-    const onMouseLeaveHandler = () => {
-        if (activeOnHover) {
-            return setOpenDropdown(false);
-        }
-        return null;
+    const menuProps: MenuProps = {
+        items: mapToAntdItems(dataSource),
     };
 
-    const onClickHandler = () => {
-        if (activeOnHover) {
-            return null;
-        }
-        return setOpenDropdown(!openDropdown);
-    };
-    let mainView: any = (
-        <Button
-            variant="trans"
-            iconName="more_vert"
-            {...buttonProps}
-            onClick={onClickHandler}
-            id={idContent}
-            onMouseEnter={onMouseEnterHandler}
-            onMouseLeave={onMouseLeaveHandler}
-        />
-    );
+    const containerClass = ClassNames("relative inline-block", className);
+
+    let mainView: React.ReactNode = <Button variant="trans" iconName="more_vert" {...buttonProps} />;
+
     if (variant === "view") {
-        mainView = value ? (
-            Array?.isArray(value) ? (
-                _.map(value, (item) => <div>{value?.length ? _.join(_.map(value, (i) => i?.label)) : null}</div>)
-            ) : (
-                <MenuItem
-                    item={value as any}
-                    Messages={Messages}
-                    onClick={onClickHandler}
-                    isMainView
-                    id={idContent}
-                    onMouseEnter={onMouseEnterHandler}
-                    onMouseLeave={onMouseLeaveHandler}
-                />
-            )
-        ) : (
-            <Button
-                content={placeholder}
-                {...buttonProps}
-                onClick={onClickHandler}
-                id={idContent}
-                onMouseEnter={onMouseEnterHandler}
-                onMouseLeave={onMouseLeaveHandler}
-            />
-        );
+        const renderTriggerItem = (item?: IDropdownMenuItemProps) => {
+            const { image, iconName, label } = item || {};
+            return (
+                <div className="border flex items-center justify-between cursor-pointer px-3 py-2 rounded hover:bg-neutral-100 transition-colors duration-200">
+                    <div className="flex items-center">
+                        {image ? (
+                            <img src={image} alt="" className="w-6 h-6 object-cover mr-2" />
+                        ) : (
+                            iconName && <Icon name={iconName} className="mr-2" />
+                        )}
+                        <span className="text-sm">{item ? (Messages ? Messages[label!] : label) : placeholder}</span>
+                    </div>
+                    <Icon name="expand_more" className="ml-2 text-neutral-500" />
+                </div>
+            );
+        };
+
+        if (value) {
+            if (Array.isArray(value)) {
+                mainView = (
+                    <div className="cursor-pointer px-3 py-2 rounded hover:bg-neutral-100 transition-colors duration-200">
+                        {value?.length
+                            ? join(
+                                  map(value, (i) => i?.label),
+                                  ", "
+                              )
+                            : placeholder}
+                    </div>
+                );
+            } else {
+                mainView = renderTriggerItem(value as IDropdownMenuItemProps);
+            }
+        } else {
+            mainView = renderTriggerItem(undefined);
+        }
     }
+
     if (children) {
-        mainView = (
-            <div
-                onClick={onClickHandler}
-                id={idContent}
-                onMouseEnter={onMouseEnterHandler}
-                onMouseLeave={onMouseLeaveHandler}
-            >
-                {children}
-            </div>
-        );
+        mainView = children;
     }
 
     return (
-        <div className={containerClass} ref={wrapperRef} style={style} id={idContainer}>
-            {mainView}
-            {openDropdown && (
-                <div className="d-dropdown__overlay">
-                    <DropdownMenu
-                        dataSource={dataSource}
-                        onClick={handleOnClickItem}
-                        Messages={Messages}
-                        position={contentHorizontalPosition}
-                        {...rest}
-                        value={value}
-                        multiple={multiple}
-                        style={dropDownMenuPosition}
-                        onMouseEnter={onMouseEnterHandler}
-                        onMouseLeave={onMouseLeaveHandler}
-                        id={idDropdown}
-                    />
+        <div className={containerClass} style={style}>
+            <AntDropdown
+                menu={menuProps}
+                trigger={activeOnHover ? ["hover"] : ["click"]}
+                // placement="bottomRight" // Default behavior seems sufficient, or use position prop if needed
+                {...rest}
+            >
+                <div className="inline-block" onClick={(e) => e.preventDefault()}>
+                    {mainView}
                 </div>
-            )}
+            </AntDropdown>
         </div>
     );
 };

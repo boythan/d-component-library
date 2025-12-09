@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import classNames from "classnames";
-import _ from "lodash";
+import find from "lodash/find";
 import { useEffect, useMemo, useState } from "react";
 import useForceUpdate from "../../../hooks/useForceUpdate";
 import Messages from "../../../language/Messages";
@@ -15,7 +15,8 @@ import LayoutTableManager, { ILayoutTableManager } from "./LayoutTableManager";
 const SelectLayoutItem = ({ layoutItem, onDelete, onSaveName, onClick }: any) => {
     const [isEditing, setIsEditing] = useState(false);
     const [layoutNameEditing, setLayoutNameEditing] = useState(layoutItem?.name);
-    const classNameContainer = "d-table-awesome__layout-manager-view-item";
+    const classNameContainer =
+        "flex items-center justify-between p-2 hover:bg-neutral-100 cursor-pointer transition-colors duration-200";
 
     useEffect(() => {
         setIsEditing(false);
@@ -28,7 +29,7 @@ const SelectLayoutItem = ({ layoutItem, onDelete, onSaveName, onClick }: any) =>
                     value={layoutNameEditing}
                     onChange={(event) => setLayoutNameEditing(event.target.value)}
                     autoFocus
-                    className="w-100"
+                    className="w-full"
                     defaultValue="New View"
                 />
                 <Button
@@ -53,7 +54,7 @@ const SelectLayoutItem = ({ layoutItem, onDelete, onSaveName, onClick }: any) =>
     }
     return (
         <div className={classNameContainer} onClick={() => onClick(layoutItem)}>
-            {layoutItem?.name ?? "N/A"}
+            <div className="flex-1 truncate">{layoutItem?.name ?? "N/A"}</div>
             <Button
                 iconName="edit"
                 variant="trans"
@@ -69,7 +70,8 @@ const SelectLayoutItem = ({ layoutItem, onDelete, onSaveName, onClick }: any) =>
 const SaveAsNewView = ({ selectedColumns = [], tableKey, onSuccess }: any) => {
     const [isEditing, setEditing] = useState(false);
     const [layoutNameEditing, setLayoutNameEditing] = useState("");
-    const classNameContainer = "d-table-awesome__layout-manager-view-item text-primary";
+    const classNameContainer =
+        "flex items-center justify-between p-2 hover:bg-neutral-100 cursor-pointer transition-colors duration-200 text-red-600";
 
     const onSaveNew = () => {
         const layoutId = StringUtils.getUniqueID();
@@ -90,7 +92,7 @@ const SaveAsNewView = ({ selectedColumns = [], tableKey, onSuccess }: any) => {
                     value={layoutNameEditing}
                     onChange={(event) => setLayoutNameEditing(event.target.value)}
                     autoFocus
-                    className="w-100"
+                    className="w-full"
                 />
                 <Button
                     iconName="done"
@@ -112,7 +114,7 @@ const SaveAsNewView = ({ selectedColumns = [], tableKey, onSuccess }: any) => {
 
 const LayoutManagerViewSelect = ({ selectedColumns = [], tableKey, onChangeLayout }: any) => {
     const tableLayouts = LayoutTableManager.getTableLayouts(tableKey);
-    const tableLayoutDefault = useMemo(() => _.find(tableLayouts, (item) => item.isDefault), [tableLayouts]);
+    const tableLayoutDefault = useMemo(() => find(tableLayouts, (item) => item.isDefault), [tableLayouts]);
 
     useEffect(() => {
         onChangeLayout(tableLayoutDefault);
@@ -151,7 +153,10 @@ const LayoutManagerViewSelect = ({ selectedColumns = [], tableKey, onChangeLayou
 
     const renderSelectDefaultView = () => {
         return (
-            <div className="d-table-awesome__layout-manager-view-item" onClick={onClickDefaultView}>
+            <div
+                className="p-2 hover:bg-neutral-100 cursor-pointer transition-colors duration-200"
+                onClick={onClickDefaultView}
+            >
                 {Messages.defaultView}
             </div>
         );
@@ -159,7 +164,7 @@ const LayoutManagerViewSelect = ({ selectedColumns = [], tableKey, onChangeLayou
 
     const renderPopoverContent = () => {
         return (
-            <div className="d-flex flex-column">
+            <div className="flex flex-col min-w-[200px]">
                 {renderSelectDefaultView()}
                 {tableLayouts &&
                     tableLayouts?.length > 0 &&
@@ -185,14 +190,14 @@ const LayoutManagerViewSelect = ({ selectedColumns = [], tableKey, onChangeLayou
             onClose={() => setOpenPopover(false)}
             content={renderPopoverContent()}
         >
-            <div id="titleSelectShipping" className={classNames("w-100 border-right")}>
+            <div id="titleSelectShipping" className={classNames("w-full border-r border-neutral-200")}>
                 <Button
                     content={tableLayoutDefault?.name ?? Messages.defaultView}
                     iconName="visibility"
                     suffixIcon="arrow_drop_down"
                     variant="trans"
                     color="gray"
-                    className="font-weight-normal"
+                    className="font-normal"
                 />
             </div>
         </Popover>

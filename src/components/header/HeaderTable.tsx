@@ -75,10 +75,10 @@ const HeaderTable = ({
         );
     }
     return (
-        <div className={ClassNames("w-100", className)} style={style}>
-            <div className={ClassNames("d-flex justify-content-between mb-3", classNameTop)}>
-                <div className="h4">{label}</div>
-                <div className="d-flex">
+        <div className={ClassNames("w-full", className)} style={style}>
+            <div className={ClassNames("flex justify-between mb-3", classNameTop)}>
+                <div className="text-xl font-medium">{label}</div>
+                <div className="flex gap-2">
                     {customButtons && customButtons()}
                     {onClickNew && showAddNew && (
                         <Button iconName="add" content="New" onClick={onClickNew} className="ml-3" />
@@ -97,10 +97,10 @@ const HeaderTable = ({
                         (typeof customExportButton === "function" ? customExportButton() : customExportButton)}
                 </div>
             </div>
-            <div className="flex-center-y">
-                {customView && <div className="header-table__custom-view-container">{customView()}</div>}
+            <div className="flex gap-2 items-center">
+                {customView && <div className="flex-1 mr-3">{customView()}</div>}
                 <InputTextSearch
-                    className="w-100 mr-3 bg-white"
+                    className="w-full mr-3 bg-white"
                     placeholder={placeholder}
                     onChange={onChangeText}
                     disabled={disabledSearch}

@@ -1,4 +1,4 @@
-import _ from "lodash";
+import find from "lodash/find";
 import React, { useMemo, useState } from "react";
 import Messages from "../../../language/Messages";
 import Button from "../../button/Button";
@@ -13,18 +13,19 @@ interface LayoutManagerColumnButtonProps {
     onChange: (values: any[]) => any;
     onClickReset: () => any;
     onChangeLayout: (layout: any) => any;
+    classNames?: string;
 }
 const LayoutManagerColumnButton = (props: LayoutManagerColumnButtonProps) => {
-    const { dataSource, values = [], onChange, onClickReset, onChangeLayout, tableKey } = props;
+    const { dataSource, values = [], onChange, onClickReset, onChangeLayout, tableKey, classNames } = props;
     const [openPopover, setOpenPopover] = useState<boolean>(false);
 
     const tableLayouts = LayoutTableManager.getTableLayouts(tableKey);
-    const tableLayoutDefault = useMemo(() => _.find(tableLayouts, (item) => item.isDefault), [tableLayouts]);
+    const tableLayoutDefault = useMemo(() => find(tableLayouts, (item) => item.isDefault), [tableLayouts]);
 
     const renderManageColumns = () => {
         return (
-            <div className="w-100 p-3">
-                <div className="border-bottom py-3">
+            <div className="w-full p-3">
+                <div className="border-b border-neutral-200 py-3">
                     <small>
                         {Messages.outOfVisible
                             .replace("%numOfVisible", `${values.length}`)
@@ -39,7 +40,7 @@ const LayoutManagerColumnButton = (props: LayoutManagerColumnButtonProps) => {
                         getLabel={(item) => item.title}
                     />
                 </div>
-                <div className="border-top d-flex flex-space-between ">
+                <div className="border-t border-neutral-200 flex justify-between pt-3 mt-3">
                     <Button variant="trans" onClick={onClickReset}>
                         {Messages.reset}
                     </Button>
@@ -56,7 +57,7 @@ const LayoutManagerColumnButton = (props: LayoutManagerColumnButtonProps) => {
             onOpen={() => setOpenPopover(true)}
             onClose={() => setOpenPopover(false)}
             content={renderManageColumns()}
-            classNameContent="d-table-awesome__layout-manager-column-popover"
+            classNameContent={`${classNames} d-table-awesome__layout-manager-column-popover`}
         >
             <Button
                 content={Messages.column}
@@ -64,7 +65,7 @@ const LayoutManagerColumnButton = (props: LayoutManagerColumnButtonProps) => {
                 variant="trans"
                 onClick={() => {}}
                 color="gray"
-                className="font-weight-normal"
+                className="font-normal"
             />
         </Popover>
     );

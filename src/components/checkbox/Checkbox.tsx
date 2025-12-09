@@ -1,7 +1,8 @@
+import { Checkbox as AntCheckbox, Radio as AntRadio } from "antd";
+import classNames from "classnames";
 import React from "react";
-import ClassNames from "classnames";
 
-export interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface CheckboxProps {
     label?: string;
     id?: string;
     name?: string;
@@ -10,6 +11,12 @@ export interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElemen
     classNameInputWrapper?: string;
     classNameLabel?: string;
     variant?: "checkbox" | "radio";
+    value?: any;
+    checked?: boolean;
+    defaultChecked?: boolean;
+    disabled?: boolean;
+    onChange?: (e: any) => void;
+    [key: string]: any;
 }
 
 const Checkbox = ({
@@ -28,33 +35,53 @@ const Checkbox = ({
     defaultChecked,
     ...props
 }: CheckboxProps) => {
-    const classContainer = ClassNames("checkbox__container", className);
-    const classInputWrapper = ClassNames(
-        "checkbox__input-wrapper",
-        `checkbox__input-wrapper-${variant}`,
-        { "checkbox__input-wrapper-disabled": disabled },
-        classNameInputWrapper
-    );
-    const classInput = ClassNames("checkbox__input", classNameInput);
-    const classLabel = ClassNames("checkbox__label ml-3 text-nowrap", classNameLabel);
-    return (
-        <div className={classContainer}>
-            <div className={classInputWrapper}>
-                <input
-                    type="checkbox"
+    const wrapperClass = classNames("flex items-center [&_.ant-checkbox-label]:overflow-hidden", className);
+    // Add truncate and block to label to handle overflow
+    const labelClass = classNames("ml-2 text-sm truncate block", classNameLabel);
+
+    if (variant === "radio") {
+        return (
+            <div className={wrapperClass}>
+                <AntRadio
                     id={id}
                     name={name}
                     value={value}
                     onChange={onChange}
-                    className={classInput}
                     disabled={disabled}
                     checked={checked}
                     defaultChecked={defaultChecked}
+                    className={classNames("max-w-full", classNameInput)}
                     {...props}
-                />
-                <span className="checkbox__check-mark" />
+                >
+                    {label && (
+                        <span className={labelClass} title={typeof label === "string" ? label : undefined}>
+                            {label}
+                        </span>
+                    )}
+                </AntRadio>
             </div>
-            {label && <div className={classLabel}>{label}</div>}
+        );
+    }
+
+    return (
+        <div className={wrapperClass}>
+            <AntCheckbox
+                id={id}
+                name={name}
+                value={value}
+                onChange={onChange}
+                disabled={disabled}
+                checked={checked}
+                defaultChecked={defaultChecked}
+                className={classNames("max-w-full", classNameInput)}
+                {...props}
+            >
+                {label && (
+                    <span className={labelClass} title={typeof label === "string" ? label : undefined}>
+                        {label}
+                    </span>
+                )}
+            </AntCheckbox>
         </div>
     );
 };

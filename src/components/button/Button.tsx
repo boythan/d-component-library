@@ -51,8 +51,8 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
     const sizeClasses = {
         large: "px-6 py-3 text-lg h-12",
-        medium: "px-4 py-2 text-base h-10",
-        small: "px-3 py-1.5 text-sm h-8",
+        medium: "px-4 py-2 text-sm h-10",
+        small: "px-3 py-1.5 text-xs h-8",
         "x-small": "px-2 py-1 text-xs h-6",
         auto: "h-auto",
         "fit-content": "w-fit h-auto",
@@ -105,12 +105,12 @@ const Button: React.FC<ButtonProps> = ({
     };
 
     const buttonClass = ClassNames(
-        "inline-flex items-center justify-center whitespace-nowrap rounded transition-all duration-200 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed font-medium",
+        "flex items-center justify-center whitespace-nowrap rounded transition-all duration-200 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed font-medium",
         sizeClasses[size as keyof typeof sizeClasses] || sizeClasses.medium,
         getVariantClasses(variant, color),
         {
             "font-bold": variant === "trans",
-            "p-2 rounded-full": iconName && !content && !children, // Icon only
+            "p-2": iconName && !content && !children, // Icon only
         },
         className
     );
