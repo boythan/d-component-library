@@ -63,8 +63,6 @@ const ProgressComponent = forwardRef<ProgressComponentRef, ProgressComponentProp
             setOpen(false);
         };
 
-        console.log("open", open);
-
         const setErrorState = (err: any) => {
             const { handleError } = currentOperation.current;
 

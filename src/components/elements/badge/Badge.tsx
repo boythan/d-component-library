@@ -45,7 +45,6 @@ const Badge: React.FC<BadgeProps> = ({
         content = children();
     }
 
-    console.log("content", content);
     let badge = <Dot {...dotProps} color={color} size={size} style={styleBadge} />;
 
     // className

@@ -75,12 +75,6 @@ const ViewTextarea: React.FC<ViewTextareaProps> = ({
     const showMoreClass = ClassNames(showClass, classNameShowMore);
     const showLessClass = ClassNames(showClass, classNameShowLess);
 
-    useEffect(() => {
-        setTimeout(() => {
-            console.log("Content Height", contentRef.current?.offsetHeight);
-        }, 200);
-    }, [children]);
-
     return (
         <div className={wrapperClass} style={{ ...style }} ref={wrapperRef}>
             <p className={contentClass} style={styleContent} ref={(ref) => (contentRef.current = ref)}>
