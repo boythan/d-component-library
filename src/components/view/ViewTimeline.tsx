@@ -19,22 +19,25 @@ const ViewTimeline: React.FC<ViewTimelineProps> = ({
     getLabel = (item) => item?.label ?? "N/A",
     getContent,
 }) => {
-    const wrapperClass = ClassNames("py-3 px-4 timeline-view__wrapper", className);
+    const wrapperClass = ClassNames("py-3 px-4", className);
     return (
         <TimeLineAnt className={wrapperClass}>
-            {dataSource.map((data) => {
+            {dataSource.map((data, index) => {
                 const label = getLabel && getLabel(data);
                 const content = getContent && getContent(data);
                 let mainView = (
-                    <div className="text-small">
-                        {label && <div className={`text-small-bold ${classNameLabel}`}>{label}</div>}
+                    <div className="text-sm">
+                        {label && (
+                            <div className={ClassNames("font-medium text-gray-900 mb-1", classNameLabel)}>{label}</div>
+                        )}
                         {content}
                     </div>
                 );
                 if (customView) {
                     mainView = customView(data);
                 }
-                return <TimeLineAnt.Item>{mainView}</TimeLineAnt.Item>;
+                // eslint-disable-next-line react/no-array-index-key
+                return <TimeLineAnt.Item key={index}>{mainView}</TimeLineAnt.Item>;
             })}
         </TimeLineAnt>
     );

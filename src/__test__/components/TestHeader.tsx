@@ -28,7 +28,12 @@ const TestHeader = () => {
                 disabledSearch={!valueSelect}
                 isFiltered
                 customView={() => (
-                    <Select dataSource={ATTRIBUTE_INPUT_TYPE} value={valueSelect} onChange={setValueSelect} />
+                    <Select
+                        dataSource={ATTRIBUTE_INPUT_TYPE}
+                        value={valueSelect}
+                        onChange={setValueSelect}
+                        className="[&_.ant-select]:pt-[1px] [&_.ant-select]:pb-[1px]"
+                    />
                 )}
                 classNameTop="my-0"
             />

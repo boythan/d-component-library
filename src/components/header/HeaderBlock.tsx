@@ -1,7 +1,6 @@
 import React, { CSSProperties } from "react";
 import ClassNames from "classnames";
 import Button, { ButtonProps } from "../button/Button";
-import Icon from "../elements/icon/Icon";
 
 export interface HeaderBlockProps {
     title?: string;
@@ -34,21 +33,22 @@ const HeaderBlock: React.FC<HeaderBlockProps> = ({
     onPrevious,
     onNext,
 }) => {
-    const wrapperClass = ClassNames("w-100 d-flex align-items-center py-3 text-nowrap", className);
-    const titleClass = ClassNames("text-bold", classNameTitle);
-    const lineClass = ClassNames(`border border-${lineColor} w-100 ml-4`, { "mr-4": showArrow || customRight });
+    const wrapperClass = ClassNames("w-full flex items-center py-3 whitespace-nowrap", className);
+    const titleClass = ClassNames("font-semibold text-base", classNameTitle);
+    // Assuming simple border color mapping or use tailwind colors. "gray" -> "border-gray-200"
+    const lineClass = ClassNames(`border-t border-gray-200 w-full ml-4`, { "mr-4": showArrow || customRight });
 
     const rightSide = () => {
         let content;
         if (showArrow) {
             content = (
-                <div className="d-flex align-items-center">
+                <div className="flex items-center">
                     <Button
                         iconName="chevron_left"
                         variant="outline"
                         onClick={onPrevious}
                         className="mr-3 px-1"
-                        size="fit-content"
+                        size="x-small"
                         color={arrowColor}
                         {...arrowProps}
                     />
@@ -57,7 +57,7 @@ const HeaderBlock: React.FC<HeaderBlockProps> = ({
                         variant="outline"
                         onClick={onNext}
                         className="px-1"
-                        size="fit-content"
+                        size="x-small"
                         color={arrowColor}
                         {...arrowProps}
                     />

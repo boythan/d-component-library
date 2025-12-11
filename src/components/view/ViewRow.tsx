@@ -15,8 +15,8 @@ export interface ViewRowProps {
 }
 
 const ViewRow: React.FC<ViewRowProps> = ({
-    className,
-    classNameLabel,
+    className = "gap-4",
+    classNameLabel = "text-sm",
     classNameContent,
     style,
     styleContent,
@@ -27,27 +27,27 @@ const ViewRow: React.FC<ViewRowProps> = ({
     children,
 }) => {
     const wrapperClass = ClassName(
-        "d-flex",
+        "flex",
         {
-            "w-75": width === "75%",
-            "w-50": width === "50%",
-            "w-25": width === "25%",
-            "align-items-center": center,
+            "w-3/4": width === "75%",
+            "w-1/2": width === "50%",
+            "w-1/4": width === "25%",
+            "items-center": center,
         },
         className
     );
     const labelClass = ClassName(
-        "d-block text-nowrap text-bold p-0",
+        "block whitespace-nowrap font-semibold p-0 truncate",
         {
-            "col-2": width === "100%",
-            "col-3": width === "75%",
-            "col-4": width === "50%",
-            "col-8": width === "25%",
-            "align-items-center": center,
+            "w-1/6": width === "100%", // col-2 approx 16.66%
+            "w-1/4": width === "75%", // col-3 25%
+            "w-1/3": width === "50%", // col-4 33.33%
+            "w-2/3": width === "25%", // col-8 66.66%
+            "items-center": center,
         },
         classNameLabel
     );
-    const contentClass = ClassName("col p-0", classNameContent);
+    const contentClass = ClassName("flex-1 p-0", classNameContent); // col -> flex-1
 
     let content = children;
     if (typeof children === "function") {

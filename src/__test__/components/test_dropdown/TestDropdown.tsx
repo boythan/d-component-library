@@ -15,10 +15,10 @@ const TestDropdown: React.FC<TestDropdownProps> = ({ id }) => {
     const [selectMultiChoices, setSelectMultiChoices] = useState<any[]>();
     return (
         <div className="d-flex flex-column my-4">
-            <ViewRow label="Default Dropdown" className="my-4 border-bottom p-3">
+            <ViewRow label="Default Dropdown" className="my-4 border-b p-3 gap-2">
                 <Dropdown dataSource={ATTRIBUTE_INPUT_TYPE} position="left-edge" activeOnHover />
             </ViewRow>
-            <ViewRow label="Dropdown Variant View" className="my-4 border-bottom p-3">
+            <ViewRow label="Dropdown Variant View" className="my-4 border-b p-3 gap-2">
                 <Dropdown
                     dataSource={LANGUAGES}
                     variant="view"
@@ -29,7 +29,7 @@ const TestDropdown: React.FC<TestDropdownProps> = ({ id }) => {
                     }}
                 />
             </ViewRow>
-            <ViewRow label="Dropdown With Custom View" className="my-4 border-bottom p-3">
+            <ViewRow label="Dropdown With Custom View" className="my-4 border-b p-3 gap-2">
                 <Dropdown
                     dataSource={ATTRIBUTE_INPUT_TYPE}
                     variant="button"
@@ -50,7 +50,7 @@ const TestDropdown: React.FC<TestDropdownProps> = ({ id }) => {
                     closeAfterSelect={false}
                 />
             </ViewRow>
-            <ViewRow label="Drop Down With Children View" className="my-4 border-bottom p-3">
+            <ViewRow label="Drop Down With Children View" className="my-4 border-b p-3 gap-2">
                 <Dropdown
                     dataSource={ATTRIBUTE_INPUT_TYPE}
                     variant="view"

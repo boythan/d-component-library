@@ -56,22 +56,22 @@ const ViewTextarea: React.FC<ViewTextareaProps> = ({
     // classNames
 
     const wrapperClass = ClassNames(
-        "d-view-textarea text-small text-start",
+        "relative text-sm text-left transition-all duration-300 ease-in-out",
         {
-            "d-view-textarea__expading": expanding,
-            "d-view-textarea__closing": !expanding,
+            "max-h-[1000px]": expanding,
+            "max-h-24 overflow-hidden": !expanding,
         },
         className
     );
     const contentClass = ClassNames(
-        "d-view-textarea__content",
+        "m-0 break-words",
         {
-            "d-view-textarea__content-expading": expanding,
-            "d-view-textarea__content-closing": !expanding,
+            // "d-view-textarea__content-expading": expanding,
+            // "d-view-textarea__content-closing": !expanding,
         },
         classNameContent
     );
-    const showClass = "d-view-textarea__show-more text-secondary hover-pointer text-x-small";
+    const showClass = "text-secondary hover:underline cursor-pointer text-xs ml-1";
     const showMoreClass = ClassNames(showClass, classNameShowMore);
     const showLessClass = ClassNames(showClass, classNameShowLess);
 
@@ -91,6 +91,7 @@ const ViewTextarea: React.FC<ViewTextareaProps> = ({
                         className={showLessClass}
                         onClick={() => {
                             setExpanding(false);
+                            // Scroll back if needed?
                         }}
                     >
                         {` ${showLessText}`}
@@ -102,7 +103,6 @@ const ViewTextarea: React.FC<ViewTextareaProps> = ({
                     className={showMoreClass}
                     onClick={() => {
                         setExpanding(true);
-                        wrapperRef.current && wrapperRef.current.setAttribute("style", "width:100%");
                     }}
                 >
                     {showMoreText}

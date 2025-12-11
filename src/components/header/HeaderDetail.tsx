@@ -39,7 +39,7 @@ export interface HeaderDetailProps {
     customUserView?: (props?: any) => any;
     viewStatusProps?: ViewLabelStatusProps;
     style?: CSSProperties;
-    className?: string;
+    className?: string; // wrapper class
     classNameSubTitle?: string;
     classNameStatus?: string;
     avatarNameProps?: Partial<AvatarNameProps>;
@@ -72,8 +72,8 @@ const HeaderDetail: React.FC<HeaderDetailProps> = ({
     const leftView = () => {
         const titleStatus = () => {
             return (
-                <div className="d-flex ml-3">
-                    <h4>{title}</h4>
+                <div className="flex items-center ml-3">
+                    <h4 className="text-xl font-semibold mb-0">{title}</h4>
                     {(status || customStatus) &&
                         (customStatus ? (
                             customStatus()
@@ -90,7 +90,7 @@ const HeaderDetail: React.FC<HeaderDetailProps> = ({
         };
 
         const renderSubTitle = () => {
-            return <div className={`text-small ml-3 mt-3 ${classNameSubTitle}`}>{subTitle}</div>;
+            return <div className={`text-sm ml-3 mt-3 text-gray-500 ${classNameSubTitle}`}>{subTitle}</div>;
         };
 
         const buttons = () => {
@@ -98,14 +98,14 @@ const HeaderDetail: React.FC<HeaderDetailProps> = ({
                 return customButtons();
             }
             return (
-                <div className="d-flex align-items-center mt-3 ml-1">
+                <div className="flex items-center mt-3 ml-1">
                     {listButton.map((button, index) => {
                         const { render, icon, label, id, onClick, buttonProps, classNameButton } = button;
-                        const buttonClass = ClassNames("text-primary font-weight-normal py-0", {
+                        const buttonClass = ClassNames("text-primary font-normal py-0", {
                             "mr-3": index === 0,
                             "mx-3": index !== 0,
                             "pl-0 pr-4": index === 0,
-                            classNameButton,
+                            [classNameButton || ""]: !!classNameButton,
                         });
                         if (render) {
                             return render({ className: buttonClass, icon, id, label });
@@ -122,6 +122,7 @@ const HeaderDetail: React.FC<HeaderDetailProps> = ({
                                     }
                                     return onButtonClick && onButtonClick(button);
                                 }}
+                                key={id}
                                 {...buttonProps}
                             />
                         );
@@ -130,7 +131,7 @@ const HeaderDetail: React.FC<HeaderDetailProps> = ({
             );
         };
         return (
-            <div className="d-flex flex-column">
+            <div className="flex flex-col">
                 {titleStatus()}
                 {subTitle && renderSubTitle()}
                 {listButton.length > 0 && buttons()}
@@ -139,7 +140,7 @@ const HeaderDetail: React.FC<HeaderDetailProps> = ({
     };
 
     let createdView = (
-        <div className="text-x-small text-gray mt-3">
+        <div className="text-xs text-gray-500 mt-3">
             {`${Messages.createdOn} ${TimeUtils.convertMiliToDate(created as any)} ${
                 Messages.at
             } ${TimeUtils.convertMiliToTime(created as any)}`}
@@ -161,7 +162,7 @@ const HeaderDetail: React.FC<HeaderDetailProps> = ({
             return user && <AvatarName user={user} className="mb-1" {...avatarNameProps} />;
         };
         return (
-            <div className="d-flex flex-column align-items-end mr-3">
+            <div className="flex flex-col items-end mr-3">
                 {renderUser()}
                 {(created || customCreated) && createdView}
             </div>
@@ -170,7 +171,7 @@ const HeaderDetail: React.FC<HeaderDetailProps> = ({
 
     return (
         <div
-            className={`card-container d-flex align-items-center justify-content-between p-4 ${className}`}
+            className={ClassNames("bg-white rounded-lg shadow-sm flex items-center justify-between p-4", className)}
             style={style}
         >
             {leftView()}

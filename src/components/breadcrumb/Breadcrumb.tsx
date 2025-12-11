@@ -14,22 +14,31 @@ export interface BreadcrumbProps {
 }
 
 const Breadcrumb: React.FC<BreadcrumbProps> = ({ breadcrumb, classNameText, className }) => {
-    const textClassName = classNames("text", classNameText);
-    const containerClassName = classNames("page-header__breadcrumb", className);
+    // "text" class replacement: text-sm text-gray-500
+    const textClassName = classNames("text-sm text-gray-500", classNameText);
+    // page-header__breadcrumb replacement: flex items-center
+    const containerClassName = classNames("flex items-center", className);
     const lastIndex = breadcrumb.length - 1;
 
     const breadcrumbView = breadcrumb.map((item: any, index: number) => {
         let link;
 
         if (lastIndex === index) {
-            link = <div className={textClassName}>{item.title}</div>;
+            link = (
+                <div key={index} className={classNames(textClassName, "font-medium text-gray-700")}>
+                    {item.title}
+                </div>
+            );
         } else {
             link = (
-                <div key={index} className="flex-center">
-                    <a href={item.url} className={textClassName}>
+                <div key={index} className="flex items-center">
+                    <a
+                        href={item.url}
+                        className={classNames(textClassName, "text-primary hover:text-primary transition-colors")}
+                    >
                         {item.title}
                     </a>
-                    <Icon className="breadcrumb-arrow mx-2" name="chevron_right" />
+                    <Icon className="text-gray-400 mx-2 text-sm" name="chevron_right" />
                 </div>
             );
         }

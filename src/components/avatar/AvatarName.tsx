@@ -47,9 +47,9 @@ const AvatarName: React.FC<AvatarNameProps> = ({
         displayName = fullName;
     }
 
-    const wrapperClass = ClassNames(`d-flex align-items-center`, className);
+    const wrapperClass = ClassNames("flex items-center", className);
     const textClass = ClassNames(
-        "d-flex flex-column",
+        "flex flex-col",
         {
             "mr-2": position === "before",
             "ml-2": position === "after",
@@ -57,23 +57,23 @@ const AvatarName: React.FC<AvatarNameProps> = ({
         classNameTextWrap
     );
     const nameTextClass = ClassNames(
-        "text-nowrap",
+        "whitespace-nowrap font-medium",
         {
-            "h1 font-weight-normal": size === "large",
-            "h3 font-weight-normal": size === "medium",
-            "text-medium": size === "small",
-            "text-small": size === "x-small",
-            "text-x-small": size === "xx-small",
+            "text-4xl": size === "large", // Adjusted approx
+            "text-2xl": size === "medium",
+            "text-base": size === "small",
+            "text-sm": size === "x-small",
+            "text-xs": size === "xx-small",
         },
         classNameText
     );
 
     const subTextClass = ClassNames(
+        "text-gray-500",
         {
-            "text-large": size === "large",
-            "text-medium": size === "medium",
-            "text-x-small": size === "small",
-            "text-xx-small": size === "x-small" || size === "xx-small",
+            "text-lg": size === "large",
+            "text-sm": size === "medium",
+            "text-xs": size === "small" || size === "x-small" || size === "xx-small",
         },
         classNameSub
     );
@@ -86,26 +86,12 @@ const AvatarName: React.FC<AvatarNameProps> = ({
                 }
                 return customName;
             }
-            return (
-                <div
-                    className={`${nameTextClass}`}
-                    style={{
-                        fontSize: size === "x-large" ? "56px" : undefined,
-                        lineHeight: size === "x-large" ? "70px" : undefined,
-                    }}
-                >
-                    {displayName}
-                </div>
-            );
+            return <div className={`${nameTextClass}`}>{displayName}</div>;
         };
         return (
             <div className={textClass}>
                 {renderName()}
-                {subLabel && (
-                    <div className={subTextClass} style={{ fontSize: size === "x-large" ? "32px" : undefined }}>
-                        {subLabel}
-                    </div>
-                )}
+                {subLabel && <div className={subTextClass}>{subLabel}</div>}
             </div>
         );
     };

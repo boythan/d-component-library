@@ -121,6 +121,7 @@ Learn how to create a "read more - read less" button with JavaScript. Example Te
                     variant="square"
                     getSource={(item) => item}
                     getName={(item) => item}
+                    className="mb-4"
                 />
                 <div>
                     {LANGUAGES.map((item) => {

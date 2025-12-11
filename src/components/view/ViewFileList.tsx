@@ -79,20 +79,13 @@ export interface IViewFileListProps {
 }
 
 export const ModalLightBox: React.FC<IModalLightBox> = ({ open, onClose, currentIndex = 0, images }) => {
-    const slides = images.map(img => ({
+    const slides = images.map((img) => ({
         src: img.src,
-        alt: img.caption || '',
-        title: img.caption || ''
+        alt: img.caption || "",
+        title: img.caption || "",
     }));
 
-    return (
-        <Lightbox
-            open={open}
-            close={onClose}
-            slides={slides}
-            index={currentIndex}
-        />
-    );
+    return <Lightbox open={open} close={onClose} slides={slides} index={currentIndex} />;
 };
 
 export const FilePreview: React.FC<IFilePreviewProps> = ({
@@ -102,33 +95,30 @@ export const FilePreview: React.FC<IFilePreviewProps> = ({
     renderContent,
     removable = true,
     videoUrl = null,
-    className,
-    classNameItem,
+    className = "",
+    classNameItem = "",
     size = "x-large",
     hasLightBox = false,
 }) => {
     const [openLightBox, setOpenLightBox] = useState(false);
     const imageClass = ClassNames(
-        "hover-pointer",
+        "cursor-pointer object-cover rounded-md border border-gray-200 block",
         {
-            "image-square-x-large": size === "x-large",
-            "image-square-large": size === "large",
-            "image-square-medium": size === "medium",
-            "image-square-small": size === "small",
-            "image-square-x-small": size === "x-small",
-            "image-square-xx-small": size === "xx-small",
+            "w-24 h-24": size === "x-large",
+            "w-20 h-20": size === "large",
+            "w-16 h-16": size === "medium",
+            "w-12 h-12": size === "small",
+            "w-10 h-10": size === "x-small",
+            "w-8 h-8": size === "xx-small",
         },
         classNameItem
     );
     const videoClass = ClassNames(
-        "d-file-preview__preview-video",
+        "rounded-md overflow-hidden",
+        // Reuse sizing logic or specific video sizing
         {
-            "image-square-x-large": size === "x-large",
-            "image-square-large": size === "large",
-            "image-square-medium": size === "medium",
-            "image-square-small": size === "small",
-            "image-square-x-small": size === "x-small",
-            "image-square-xx-small": size === "xx-small",
+            "w-24 h-24": size === "x-large",
+            // ... map other sizes if needed, or keep fixed as before
         },
         classNameItem
     );
@@ -166,16 +156,19 @@ export const FilePreview: React.FC<IFilePreviewProps> = ({
                 title="item"
                 className={videoClass}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                width="200px"
+                width="200px" // Could be dynamic
                 height="126px"
             />
         );
     }
     return (
-        <div className={`d-file-preview mr-2 ml-2 width-fit-content ${className}`}>
+        <div className={`relative inline-block ${className}`}>
             {removable && (
-                <div onClick={() => onRemove && onRemove()} className="d-file-preview__remove hover-pointer">
-                    <Icon name="delete" />
+                <div
+                    onClick={() => onRemove && onRemove()}
+                    className="absolute -top-2 -right-2 bg-white rounded-full p-0.5 shadow-md cursor-pointer text-red-500 z-10 hover:bg-gray-100 flex items-center justify-center w-5 h-5"
+                >
+                    <Icon name="delete" className="text-xs" />
                 </div>
             )}
             {content}
@@ -210,22 +203,25 @@ export const RenderPreviewFile: React.FC<IRenderPreviewFileProps> = ({
 
     if (foundTypeDocument) {
         return (
-            <div className="d-view-file-list__file-preview">
-                <a href={item?.url} target="_blank" rel="noreferrer">
+            <div className="inline-block relative group">
+                <a href={item?.url} target="_blank" rel="noreferrer" className="block">
                     <FilePreview
                         onRemove={() => onRemove && onRemove(item)}
                         src={foundTypeDocument?.iconFile}
                         removable={removable}
                         {...rest}
                     />
-                    {!removable && <div className="d-view-file-list__download-icon">get app icon</div>}
+                    {!removable && (
+                        <div className="hidden group-hover:flex absolute inset-0 bg-black/50 items-center justify-center text-white text-xs rounded-md">
+                            get app icon
+                        </div>
+                    )}
                 </a>
-                {/* <text id="fileNameText">{name}</text> */}
             </div>
         );
     }
     return (
-        <div className="d-view-file-list__file-preview">
+        <div className="inline-block leading-none">
             <FilePreview
                 onRemove={() => onRemove && onRemove(item)}
                 src={src || item?.imageData}
@@ -273,17 +269,17 @@ const ViewFileList: React.FC<IViewFileListProps> = ({
     const isSquare = variant === "square";
     const inputParam = uploadImagesOnly ? { accept: "image/x-png,image/jpeg,image/heic" } : {};
     const containerClass = ClassNames(
-        "d-view-file-list",
-        "d-flex",
+        "w-full",
+        "flex",
         {
-            "flex-column": !isSquare,
-            "align-items-start": isSquare,
+            "flex-col": !isSquare,
+            "items-start": isSquare,
         },
         className
     );
-    const listClass = ClassNames("d-view-file-list__preview", classNameList);
+    const listClass = ClassNames("flex flex-wrap items-center gap-2", classNameList);
     const buttonSquareClass = ClassNames(
-        "bg-white ml-2 border-dashed text-x-small border-primary text-center d-flex align-items-center justify-content-center  hover-pointer",
+        "bg-white p-2 ml-2 border-2 border-dashed border-primary text-xs text-primary rounded-md w-24 h-24 flex flex-col items-center justify-center cursor-pointer hover:bg-blue-50 transition-colors",
         classNameSquare
     );
 
@@ -403,14 +399,15 @@ const ViewFileList: React.FC<IViewFileListProps> = ({
                     })}
                 {showButton && isSquare && (
                     <button className={buttonSquareClass} {...getRootProps()} type="button" disabled={disabled}>
-                        <small className="text-center mt-1">{Messages.browseOrDropHere}</small>
+                        <Icon name="add" className="text-xl mb-1" />
+                        <span className="text-center text-xs">{Messages.browseOrDropHere}</span>
                         <input {...getInputProps(inputParam)} />
                     </button>
                 )}
             </div>
             {showButton && !isSquare && (
-                <div className="d-flex justify-content-end">
-                    <Button disabled={disabled} {...(getRootProps() as any)} type="button" className="btn-primary p-3">
+                <div className="flex justify-end mt-2">
+                    <Button disabled={disabled} {...(getRootProps() as any)} type="button" className="btn-primary">
                         <input {...getInputProps(inputParam)} />
                         {buttonText}
                     </Button>

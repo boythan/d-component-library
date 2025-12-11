@@ -38,10 +38,12 @@ const Card: React.FC<CardProps> = ({
     buttonProps,
     style,
 }) => {
-    const wrapClass = ClassNames("card-container p-4", className);
-    const headerClass = ClassNames("d-flex w-100 justify-content-between mb-3", classNameHeader);
-    const titleWrapper = ClassNames("flex-center-y");
-    const indexClass = ClassNames("text-xx-small bg-secondary text-white ml-1 text-center", classNameIndex);
+    // card-container replacement: bg-white rounded-lg shadow-sm
+    const wrapClass = ClassNames("bg-white rounded-lg shadow-sm p-4", className);
+    // d-flex w-100 justify-content-between -> flex w-full justify-between
+    const headerClass = ClassNames("flex w-full justify-between mb-3", classNameHeader);
+    const titleWrapper = ClassNames("flex items-center");
+    const indexClass = ClassNames("text-xs bg-secondary text-white ml-1 text-center", classNameIndex);
     const buttonClass = ClassNames("text-secondary p-0", classNameButton);
 
     const header = (): React.ReactNode => {
@@ -61,10 +63,10 @@ const Card: React.FC<CardProps> = ({
             return (
                 <div>
                     <div className={titleWrapper}>
-                        <div className="text-medium-bold">{title}</div>
+                        <div className="font-semibold text-base">{title}</div>
                         {index && <Badge variant="index" index={index} size="xx-large" className="ml-2" />}
                     </div>
-                    {subTitle && <div className="text-x-small">{subTitle}</div>}
+                    {subTitle && <div className="text-xs text-gray-500">{subTitle}</div>}
                 </div>
             );
         };

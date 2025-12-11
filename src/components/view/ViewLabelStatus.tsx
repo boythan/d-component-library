@@ -1,5 +1,6 @@
 import classNames from "classnames";
-import _ from "lodash";
+import find from "lodash/find";
+import isUndefined from "lodash/isUndefined";
 import React, { CSSProperties } from "react";
 import ColorUtils from "../../utils/ColorUtils";
 
@@ -23,7 +24,7 @@ const ViewLabelStatus = ({
     getValue = (item) => item?.id,
     getLabel = (item) => item?.label,
 }: ViewLabelStatusProps) => {
-    const classNameContainer = classNames("d-view-label-status", className);
+    const classNameContainer = classNames("inline-flex items-center px-2.5 py-1.5 rounded-full", className);
     let colorStatus = "#000000";
     let labelStatus;
 
@@ -33,9 +34,9 @@ const ViewLabelStatus = ({
     if (content) {
         labelStatus = content;
     }
-    if (listStatus && listStatus?.length > 0 && !_.isUndefined(status)) {
+    if (listStatus && listStatus?.length > 0 && !isUndefined(status)) {
         try {
-            const foundStatus = listStatus?.find((item) => getValue(item) === status);
+            const foundStatus = find(listStatus, (item) => getValue(item) === status);
             if (foundStatus) {
                 colorStatus = foundStatus?.color;
                 labelStatus = getLabel(foundStatus);
@@ -55,10 +56,10 @@ const ViewLabelStatus = ({
     };
     return (
         <div className={classNameContainer} style={{ ...styleLabelContainer, ...style }}>
-            <div className="d-view-label-status__dot" style={styleLabelDot} />
-            <text className="text-xx-small ml-3" style={styleLabelContent}>
+            <div className="w-2 h-2 rounded-full" style={styleLabelDot} />
+            <span className="text-xs ml-2 font-base" style={styleLabelContent}>
                 {labelStatus}
-            </text>
+            </span>
         </div>
     );
 };

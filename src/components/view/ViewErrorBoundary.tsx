@@ -28,9 +28,11 @@ class ViewErrorBoundary extends React.Component<ViewErrorBoundaryProps, ViewErro
         const { hasError, errorInfo } = this.state;
         if (hasError) {
             return (
-                <div className="w-100 h-100 flex-column align-items-center p-5">
-                    <h3>Something went wrong!!!</h3>
-                    <div className="mt-3">{JSON.stringify(errorInfo)}</div>
+                <div className="w-full h-full flex flex-col items-center justify-center p-5">
+                    <h3 className="text-base font-semibold">Something went wrong!!!</h3>
+                    <div className="mt-3 text-red-500 text-sm whitespace-pre-wrap">
+                        {errorInfo?.componentStack || JSON.stringify(errorInfo)}
+                    </div>
                 </div>
             );
         }

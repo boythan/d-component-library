@@ -98,7 +98,7 @@ const HeaderTable = ({
                 </div>
             </div>
             <div className="flex gap-2 items-center">
-                {customView && <div className="flex-1 mr-3">{customView()}</div>}
+                {customView && <div className="flex-1">{customView()}</div>}
                 <InputTextSearch
                     className="w-full mr-3 bg-white"
                     placeholder={placeholder}

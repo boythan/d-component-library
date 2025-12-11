@@ -27,7 +27,7 @@ const TestTabBar: React.FC<TestTabBarProps> = ({ id }) => {
                         return {
                             // className: "border-primary bg-white",
                             suffixElement: () => (
-                                <Badge variant="index" index="+99" size="xx-large" classNameBadge="ml-3" />
+                                <Badge variant="index" index="+99" size="small" classNameBadge="ml-2" />
                             ),
                             // style: { borderTop: "3px solid red" },
                         };

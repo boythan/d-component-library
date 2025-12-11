@@ -44,17 +44,17 @@ const ViewRowInterchange: React.FC<RowInterchangeViewProps> = ({
         <div className={wrapperClass}>
             {keyList.map((row, index) => {
                 const rowClass = ClassNames(
-                    "d-flex align-items-start w-100 justify-content-between py-3",
+                    "flex items-start w-full justify-between py-3",
                     {
                         "px-3": variant === "background",
-                        "bg-light-gray": index % 2 && variant === "background",
-                        "border-top": index !== 0 && variant === "border",
-                        "border-top-dashed": index !== 0 && variant === "dashed",
+                        "bg-gray-50": index % 2 && variant === "background", // bg-light-gray -> bg-gray-50
+                        "border-t border-gray-200": index !== 0 && variant === "border",
+                        "border-t border-dashed border-gray-200": index !== 0 && variant === "dashed",
                     },
                     classNameRow
                 );
-                const labelClass = ClassNames("text-small w-100", { "font-weight-bold": boldLabel }, classNameLabel);
-                const contentClass = ClassNames("w-100 text", classNameContent);
+                const labelClass = ClassNames("w-full", { "font-bold": boldLabel }, classNameLabel);
+                const contentClass = ClassNames("w-full", classNameContent); // text -> text-base
                 const { id, label, renderLabel, renderContent, hidden } = row;
                 let labelView;
                 let content;

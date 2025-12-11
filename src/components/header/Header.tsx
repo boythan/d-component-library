@@ -1,12 +1,9 @@
 /* eslint-disable no-param-reassign */
-// react
-// third-party
 import React from "react";
+import ClassNames from "classnames";
 import Messages from "../../language/Messages";
 import Breadcrumb from "../breadcrumb/Breadcrumb";
-// application
 import Button, { ButtonProps } from "../button/Button";
-// data stubs
 
 export interface HeaderProps {
     title?: string;
@@ -66,16 +63,16 @@ const Header: React.FC<HeaderProps> = ({
             return customLeft();
         }
         return (
-            <div className={`page-header__container ${classNameLeft}`}>
+            <div className={ClassNames("flex flex-col", classNameLeft)}>
                 <Breadcrumb breadcrumb={breadcrumb} />
-                <h4 className="text-primary">{title}</h4>
+                <h4 className="text-primary text-xl font-medium mt-1">{title}</h4>
             </div>
         );
     };
     return (
-        <div className={`card-container d-common-header ${className}`}>
+        <div className={ClassNames("bg-white rounded-lg shadow-sm p-4 flex justify-between items-center", className)}>
             {renderLeftView()}
-            <div className={`d-common-header__right-side flex-center-y ${classNameRight}`}>
+            <div className={ClassNames("flex items-center", classNameRight)}>
                 {customRight && customRight()}
                 {showCancel && (
                     <Button
