@@ -29,7 +29,7 @@ const Dot: React.FC<DotProps> = ({ size = "small", color = "green", className, s
     };
 
     const dotClass = ClassNames(
-        "rounded-full inline-flex items-center justify-center leading-none relative top-[5px] right-[5px] border-white border",
+        "rounded-full inline-flex items-center justify-center leading-none relative top-[2px] border-white border",
         sizeMap[size as string] || "w-2.5 h-2.5",
         {
             [`bg-${color}`]: isThemeColor,
