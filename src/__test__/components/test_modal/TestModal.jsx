@@ -18,20 +18,18 @@ const TestModal = () => {
                 onClose={() => setOpenModal(false)}
                 onSave={onClickSave}
                 title="Filter"
-                closeIcon={false}
                 hasCancelButton
                 onSideClick={() => {}}
                 size="medium"
-                headerSide={() => (
-                    <div className="text-nowrap" style={{ width: "200px" }}>
-                        this is header side
-                    </div>
-                )}
+                // headerSide={() => (
+                //     <div className="text-nowrap" style={{ width: "200px" }}>
+                //         this is header side
+                //     </div>
+                // )}
                 classNameFooter="d-none"
-                titleAlign="start"
-                hasCloseIcon={false}
+                titleAlign="center"
             >
-                <div />
+                <div>This is content of modal</div>
             </Modal>
         </div>
     );
