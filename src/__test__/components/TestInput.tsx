@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import { debounce } from "lodash";
+import React, { ElementRef, useEffect, useRef, useState } from "react";
 import Button from "../../components/button/Button";
 import DateInput from "../../components/dateInput/DateInput";
 import InputColor from "../../components/input/InputColor";
@@ -18,6 +19,9 @@ const TestInput = () => {
     const [selectCheckboxValue, setSelectCheckboxValue] = useState<any>([]);
     const [rangeDate, setRangeDate] = useState<any>();
     const [rangeTime, setRangeTime] = useState<any>();
+    const [textSearch, setTextSearch] = useState<string>();
+
+    const selectRef = useRef<ElementRef<typeof SelectInfinity>>(null);
 
     useEffect(() => {
         const query = UrlUtils.getQuery();
@@ -27,6 +31,11 @@ const TestInput = () => {
             setValueSelectInfinity(parse);
         }
     }, []);
+
+    const handleChangeTextSearch = debounce((text: string) => {
+        setTextSearch(text);
+        selectRef.current?.onRefresh();
+    }, 300);
 
     return (
         <div className="my-4">
@@ -146,11 +155,16 @@ const TestInput = () => {
             </div>
             <div className="w-100 flex-center-y">
                 <SelectInfinity
+                    ref={selectRef}
                     multiple
                     label="Select Infinity"
+                    onSearch={handleChangeTextSearch}
                     className="my-4 w-100"
                     source={async (paging) => {
                         // const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+                        if (!textSearch) {
+                            return Promise.resolve([]) as any;
+                        }
                         return fetch("https://jsonplaceholder.typicode.com/posts");
                     }}
                     transformer={async (res) => {

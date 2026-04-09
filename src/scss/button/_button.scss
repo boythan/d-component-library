@@ -43,6 +43,7 @@ $button-variant: ("outline", "standard", "trans");
     @each $name, $color in $basic-color {
         .d-button__#{$var}-#{$name} {
             @if ($var == "trans") {
+                border-radius: $border-radius;
                 background-color: $btn-trans-bg-color;
                 color: $color;
                 border: none;
@@ -63,6 +64,7 @@ $button-variant: ("outline", "standard", "trans");
                 }
             }
             @if ($var == "outline") {
+                border-radius: $border-radius;
                 border: 1px solid $color;
                 background-color: $btn-outline-bg-color;
                 color: $color;
@@ -87,6 +89,8 @@ $button-variant: ("outline", "standard", "trans");
                 }
             }
             @if ($var == "standard") {
+                border-radius: $border-radius;
+                border-radius: 4px;
                 background-color: $color;
                 color: set-text-color($color);
                 &:active {

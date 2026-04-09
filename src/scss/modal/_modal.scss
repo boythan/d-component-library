@@ -1,8 +1,13 @@
+@import "../variables";
+
 .d-modal {
     .d-modal__children {
         padding: 24px;
         max-height: 800px;
         overflow-y: scroll;
+    }
+    .ant-modal-content {
+        border-radius: 2 * $border-radius;
     }
     .ant-modal-body {
         padding: 0px !important;

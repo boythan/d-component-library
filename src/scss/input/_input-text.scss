@@ -1,7 +1,7 @@
 @import "../variables";
 
 @mixin input {
-    border-radius: $border-radius !important;
+    border-radius: $border-radius;
     outline: none !important;
     border: none !important;
     color: $input-color-content;
@@ -10,8 +10,8 @@
 }
 
 @mixin input-container {
-    display: flex !important;
-    flex-direction: row !important;
+    display: flex;
+    flex-direction: row;
     border-radius: $border-radius;
     outline: none !important;
     color: $input-color-content;
