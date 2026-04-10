@@ -322,7 +322,7 @@ const Form: React.FC<IFormProps> = ({
         // eslint-disable-next-line no-unused-expressions
         onChange && onChange(key, value);
     };
-    const wrapperClass = ClassNames("w-100", className);
+    const wrapperClass = ClassNames("w-full", className);
     return (
         <div className={wrapperClass}>
             {transformData &&
@@ -403,7 +403,7 @@ const Form: React.FC<IFormProps> = ({
                                 });
                             }
 
-                            let itemWrapperClass = ClassNames("w-100 py-2 d-flex", elementClass);
+                            let itemWrapperClass = ClassNames("w-full py-2 d-flex", elementClass);
 
                             if (getElementClass) {
                                 itemWrapperClass = getElementClass({
@@ -424,7 +424,7 @@ const Form: React.FC<IFormProps> = ({
                     }
 
                     let rowClass = ClassNames(
-                        "d-flex w-100 my-2",
+                        "flex w-full my-2",
                         {
                             "align-items-center": !hasError,
                             // "border-top": i !== 0,
