@@ -112,7 +112,7 @@ const Button: React.FC<ButtonProps> = ({
             "font-bold": variant === "trans",
             "p-2": iconName && !content && !children, // Icon only
         },
-        className
+        className,
     );
     const iconClass = ClassNames("block", { "mx-2": (content || children) && iconName }, classNameIcon);
     const suffixIconClass = ClassNames("block", { "mx-2": (content || children) && iconName }, classNameIconSuffix);

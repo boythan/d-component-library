@@ -26,6 +26,7 @@ export interface TabBarProps<T extends ITabItem> {
         isActive?: boolean;
         index?: any;
         className?: string;
+        size?: ButtonProps["size"];
     }) => React.HTMLAttributes<HTMLDivElement> & ButtonProps; // remember to return min-width for tab item in order for scroll in horizontal mode to work
     value?: ITabItem | null;
     className?: string;
@@ -60,7 +61,7 @@ const TabBar: React.FC<TabBarProps<ITabItem>> = ({
             "overflow-x-auto scrollbar-hide": isScroll && hideScrollBar && variant === "horizontal",
             "overflow-x-auto": isScroll && !hideScrollBar && variant === "horizontal",
         },
-        className
+        className,
     );
     const activateScroll = isScroll && variant === "horizontal";
     const activeIndex = _.findIndex(dataSource, (item) => item?.id === value?.id);
@@ -101,7 +102,7 @@ const TabBar: React.FC<TabBarProps<ITabItem>> = ({
                         "border-b-0": variant === "vertical" && isSelect, // Remove bottom border for active vertical
                         "w-full py-4": variant === "vertical", // Vertical sizing
                     },
-                    classNameItem
+                    classNameItem,
                 );
 
                 let label = tabItem?.label ?? "N/A";

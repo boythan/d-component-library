@@ -1,13 +1,27 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@layer base, components, antd, utilities;
+@import "tailwindcss";
+@import "antd/dist/reset.css" layer(antd);
 
-@layer utilities {
-    .scrollbar-hide {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-    }
-    .scrollbar-hide::-webkit-scrollbar {
+@theme {
+    --color-primary: #de0d0c;
+    --color-secondary: #de0d0c;
+    --color-success: #33963d;
+    --color-info: #17a2b8;
+    --color-warning: #fac256;
+    --color-danger: #f44336;
+    --color-light: #fff;
+    --color-dark: #3d464d;
+    --color-muted: #f5f5f5;
+    --color-text-main: #3d464d;
+    --color-text-sub: rgba(0, 0, 0, 0.56);
+    --font-sans: var(--app-font), sans-serif;
+    --spacing-18: 4.5rem;
+}
+
+@utility scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
         display: none;
     }
 }

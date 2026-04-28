@@ -3,6 +3,12 @@ import "./styles/tailwind.css";
 import "./styles/style.css";
 
 /* ----------------------------------------
+// Theme
+// ---------------------------------------- */
+export type { DThemeProviderProps } from "./components/theme/DThemeProvider";
+export { default as DThemeProvider } from "./components/theme/DThemeProvider";
+
+/* ----------------------------------------
 // Input
 // ---------------------------------------- */
 

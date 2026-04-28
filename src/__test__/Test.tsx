@@ -73,8 +73,8 @@ export default function Test({ content }: Props): ReactElement {
     const [openModal, setOpenModal] = useState(false);
     const [selectedTab, setSelectedTab] = useState<any>();
     const [mockData, setMockData] = useState<any>([]);
-    const dialogRef = useRef<any>();
-    const progressRef = useRef<any>();
+    const dialogRef = useRef<any>(null);
+    const progressRef = useRef<any>(null);
 
     async function loadFakeData() {
         const res = await fetch("https://jsonplaceholder.typicode.com/posts");
@@ -140,17 +140,10 @@ export default function Test({ content }: Props): ReactElement {
                         onChange={(tab) => setSelectedTab(tab)}
                         value={selectedTab}
                         activeIndicator="left"
-                        getItemProps={({ item, isActive }) => {
-                            if (isActive) {
-                                return {
-                                    style: {
-                                        // borderLeft: "3px solid red",
-                                        // borderBottom: "1px solid rgba(0,0,0,0.2)",
-                                        color: "red",
-                                    },
-                                };
-                            }
-                            return {};
+                        getItemProps={() => {
+                            return {
+                                size: "large",
+                            };
                         }}
                     />
                 </div>

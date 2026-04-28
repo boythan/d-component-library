@@ -17,7 +17,7 @@ export interface PopoverProps {
 }
 
 const Popover: React.FC<PopoverProps> = ({ open, onOpen, onClose, content, children, className, classNameContent }) => {
-    const outSideRef = useRef<any>();
+    const outSideRef = useRef<any>(null);
     const [contentPositionClass, setContentPositionClass] = useState("left-0");
     const idContainer = useRef<string>(StringUtils.getUniqueID()).current;
 
@@ -25,7 +25,7 @@ const Popover: React.FC<PopoverProps> = ({ open, onOpen, onClose, content, child
     const contentClass = classNames(
         "absolute z-50 bg-white shadow-lg rounded-sm border border-neutral-200 p-2 min-w-[200px]",
         contentPositionClass,
-        classNameContent
+        classNameContent,
     );
 
     const handleClick = (e: any) => {

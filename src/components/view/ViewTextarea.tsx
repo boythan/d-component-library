@@ -61,7 +61,7 @@ const ViewTextarea: React.FC<ViewTextareaProps> = ({
             "max-h-[1000px]": expanding,
             "max-h-24 overflow-hidden": !expanding,
         },
-        className
+        className,
     );
     const contentClass = ClassNames(
         "m-0 break-words",
@@ -69,7 +69,7 @@ const ViewTextarea: React.FC<ViewTextareaProps> = ({
             // "d-view-textarea__content-expading": expanding,
             // "d-view-textarea__content-closing": !expanding,
         },
-        classNameContent
+        classNameContent,
     );
     const showClass = "text-secondary hover:underline cursor-pointer text-xs ml-1";
     const showMoreClass = ClassNames(showClass, classNameShowMore);
@@ -77,7 +77,13 @@ const ViewTextarea: React.FC<ViewTextareaProps> = ({
 
     return (
         <div className={wrapperClass} style={{ ...style }} ref={wrapperRef}>
-            <p className={contentClass} style={styleContent} ref={(ref) => (contentRef.current = ref)}>
+            <p
+                className={contentClass}
+                style={styleContent}
+                ref={(ref) => {
+                    contentRef.current = ref;
+                }}
+            >
                 {displayText}
                 {isShowMore && isOverFollow && <span>...</span>}
                 {isShowLess && (

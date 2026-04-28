@@ -8,7 +8,7 @@ function deepCompareEquals(a: any, b: any) {
 }
 
 export function useDeepCompareMemoize(value: any) {
-    const ref = useRef();
+    const ref = useRef<any>(null);
     // it can be done by using useMemo as well
     // but useRef is rather cleaner and easier
 

@@ -41,7 +41,6 @@ export default {
             extract: path.resolve("dist/index.css"),
         }),
         typescript({
-            rollupCommonJSResolveHack: true,
             exclude: "**/__tests__/**",
             clean: true,
             tsconfigOverride: {
@@ -53,9 +52,27 @@ export default {
             namedExports: {
                 "node_modules/react/react.js": ["Children", "Component", "PropTypes", "createElement"],
                 "node_modules/react-dom/index.js": ["render"],
-                "node_modules/react-is/index.js": ["isFragment", "ForwardRef", "isMemo", "isValidElementType", "isContextConsumer"],
-                "node_modules/@rc-component/util/node_modules/react-is/index.js": ["isFragment", "ForwardRef", "isMemo", "isValidElementType", "isContextConsumer"],
-                "node_modules/rc-util/node_modules/react-is/index.js": ["isFragment", "ForwardRef", "isMemo", "isValidElementType", "isContextConsumer"],
+                "node_modules/react-is/index.js": [
+                    "isFragment",
+                    "ForwardRef",
+                    "isMemo",
+                    "isValidElementType",
+                    "isContextConsumer",
+                ],
+                "node_modules/@rc-component/util/node_modules/react-is/index.js": [
+                    "isFragment",
+                    "ForwardRef",
+                    "isMemo",
+                    "isValidElementType",
+                    "isContextConsumer",
+                ],
+                "node_modules/rc-util/node_modules/react-is/index.js": [
+                    "isFragment",
+                    "ForwardRef",
+                    "isMemo",
+                    "isValidElementType",
+                    "isContextConsumer",
+                ],
                 "node_modules/prop-types/index.js": [
                     "node",
                     "bool",

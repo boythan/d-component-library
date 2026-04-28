@@ -74,7 +74,7 @@ const InputDropSelect = (props: InputDropSelectProps) => {
 
         return (
             <div className="d-input-drop-select__item-container" onClick={() => onClickSelectItem(id)}>
-                <text>{getLabel(itemValue)}</text>
+                <span>{getLabel(itemValue)}</span>
                 {selected && <Icon name="remove_circle" className="text-danger" />}
             </div>
         );
