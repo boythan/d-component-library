@@ -1,6 +1,4 @@
-/* eslint-disable react/destructuring-assignment */
 /* eslint-disable no-unused-expressions */
-/* eslint-disable react/no-unused-prop-types */
 import { Modal } from "antd";
 import classNames from "classnames";
 import isArray from "lodash/isArray";

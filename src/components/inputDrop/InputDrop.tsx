@@ -1,11 +1,8 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
 import ClassNames from "classnames";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import Messages from "../../language/Messages";
 import Badge from "../elements/badge/Badge";
 import Button from "../button/Button";
-import { DropdownProps } from "../dropdown/Dropdown";
 import Icon from "../elements/icon/Icon";
 import InputText from "../input/InputText";
 import Popover from "../popover/Popover";
@@ -15,9 +12,9 @@ export interface InputDropProps {
     className?: string;
     classNameDropdown?: string;
 
+    id?: string;
     label?: string;
     iconName?: string;
-    position?: DropdownProps["position"];
     displayValue?: string;
     selectAllText?: string;
     clearText?: string;
@@ -40,10 +37,10 @@ interface InputDropSourceProps extends InputDropProps {
 }
 
 const InputDrop: React.FC<InputDropSourceProps> = ({
+    id,
     label,
     className,
 
-    position = "left-edge",
     iconName = "expand_more",
 
     hideSelectAll = false,
@@ -66,16 +63,20 @@ const InputDrop: React.FC<InputDropSourceProps> = ({
 }) => {
     const [openDropdown, setOpenDropdown] = useState(false);
 
-    const containerClass = ClassNames(
-        `d-input-drop__container d-input-drop__container-${position}`,
+    const containerClass = ClassNames("relative flex flex-col w-fit", className);
+
+    const inputClass = ClassNames(
+        "flex items-center justify-center px-4 h-10 transition-all duration-300 ease-in cursor-pointer border",
         {
-            "d-input-drop__container-active": openDropdown,
-            "d-input-drop__container-error": error,
-        },
-        className
+            "border-[#041b47]": openDropdown && !error,
+            "border-danger": !!error,
+            "border-[#ececec]": !openDropdown && !error,
+        }
     );
-    const inputClass = ClassNames("d-input-drop__input hover-pointer");
-    const dropdownWrapperClass = ClassNames("d-input-drop__dropdown");
+
+    const dropdownWrapperClass = ClassNames(
+        "z-20 bg-white flex flex-col justify-center items-center min-w-[350px] px-4"
+    );
 
     const inputValue = () => {
         let name = label;
@@ -83,18 +84,18 @@ const InputDrop: React.FC<InputDropSourceProps> = ({
             name = displayValue;
         }
         return (
-            <div className="flex-center-y w-100">
+            <div className="flex items-center w-full">
                 <div className="">{name}</div>
-                <Badge variant="index" index={valueLength} size="x-large" className="ml-2" />
+                <Badge variant="index" index={valueLength} size="medium" className="ml-2" />
             </div>
         );
     };
 
     const renderHeader = () => {
         return (
-            <div className="flex-center-y justify-content-between border-bottom py-3 w-100">
-                <label className="font-weight-bold">{label}</label>
-                <div className="flex-center-y">
+            <div className="flex items-center justify-between border-b py-3 w-full">
+                <label className="font-bold text-sm">{label}</label>
+                <div className="flex items-center">
                     {!hideSelectAll && (
                         <Button
                             content={selectAllText}
@@ -102,7 +103,7 @@ const InputDrop: React.FC<InputDropSourceProps> = ({
                             variant="trans"
                             onClick={onClickSelectAll}
                             color="blue"
-                            className="p-0 font-weight-normal text-label"
+                            className="p-0 font-normal text-xs leading-4"
                         />
                     )}
                 </div>
@@ -112,14 +113,14 @@ const InputDrop: React.FC<InputDropSourceProps> = ({
 
     const renderFooter = () => {
         return (
-            <div className="flex-center-y justify-content-between border-top py-3 w-100">
+            <div className="flex items-center justify-between border-t py-3 w-full">
                 {!hideClearAll && (
                     <Button
                         content={clearText}
                         size="x-small"
                         variant="trans"
                         onClick={onClickClearAll}
-                        className="p-0 font-weight-normal text-danger"
+                        className="p-0 font-normal text-danger"
                     />
                 )}
                 <Button
@@ -135,12 +136,12 @@ const InputDrop: React.FC<InputDropSourceProps> = ({
 
     const renderPopoverContent = () => {
         return (
-            <div className="w-100">
+            <div className="w-full">
                 {renderHeader()}
                 {onChangeText && (
                     <InputText
                         placeholder={Messages.search}
-                        className="mt-3 w-100"
+                        className="mt-3 w-full"
                         onChange={onChangeText}
                         {...propsSearchText}
                     />
@@ -152,8 +153,8 @@ const InputDrop: React.FC<InputDropSourceProps> = ({
     };
 
     return (
-        <div className={containerClass}>
-            {!hideLabel && <label>{label}</label>}
+        <div id={id} className={containerClass}>
+            {!hideLabel && <label htmlFor={id} className="text-sm font-medium mb-1 text-text-main">{label}</label>}
             <Popover
                 className={inputClass}
                 classNameContent={dropdownWrapperClass}
@@ -162,9 +163,9 @@ const InputDrop: React.FC<InputDropSourceProps> = ({
                 onClose={() => setOpenDropdown(false)}
                 content={renderPopoverContent()}
             >
-                <div className="flex-center-y text-x-small w-100">
+                <div className="flex items-center text-xs leading-4 w-full">
                     {inputValue()}
-                    <Icon name={iconName} className="d-input-drop__arrow-icon ml-2" />
+                    <Icon name={iconName} className="text-[rgba(0,0,0,0.25)] ml-2" />
                 </div>
             </Popover>
             <ViewTextError error={error} />

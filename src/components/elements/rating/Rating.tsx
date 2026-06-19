@@ -22,16 +22,12 @@ const Rating: React.FC<IRatingProps> = ({
 }) => {
     const ratingChangable = !_.isUndefined(onChange);
     const [hoverRating, setHoverRating] = useState(value);
-    const containerClass = ClassNames("d-rating__container d-flex", className, {
-        "d-rating-changable": ratingChangable,
-    });
-    const rangeArr = Array.from({ length: range }, (x, i) => i + 1);
+    const containerClass = ClassNames("flex", { "cursor-pointer": ratingChangable }, className);
+    const rangeArr = Array.from({ length: range }, (_, i) => i + 1);
     const stars = rangeArr.map((rating) => {
         const isFilled = (ratingChangable ? hoverRating : value) >= rating;
         const iconName = isFilled ? "star_rate" : "star_outline";
-        const starClass = ClassNames("d-rating__star", {
-            "d-rating__star-active": isFilled,
-        });
+        const starClass = ClassNames({ "opacity-100": isFilled, "opacity-50": !isFilled });
 
         return (
             <Icon

@@ -1,7 +1,6 @@
 import { DropdownProps } from "../../components/dropdown/Dropdown";
 import Messages from "../../language/Messages";
 
-// eslint-disable-next-line import/prefer-default-export
 export const ATTRIBUTE_INPUT_TYPE = [
     {
         id: "dropdown",

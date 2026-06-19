@@ -1,67 +1,61 @@
 /* eslint-disable no-unused-expressions */
-/* eslint-disable react/jsx-filename-extension */
 import { notification } from "antd";
 import type { NotificationConfig } from "antd/es/notification/interface";
 import React from "react";
-import Messages from "../../language/Messages";
 import Icon from "../elements/icon/Icon";
 
 const getContentNotification = (content: string) => {
-    return <div className="d-notifications__content" dangerouslySetInnerHTML={{ __html: content }} />;
+    return <div className="notifications-content" dangerouslySetInnerHTML={{ __html: content }} />;
 };
 
 const showError = (content: any, action?: any, options?: Partial<NotificationConfig>) => {
     notification.open({
-        message: Messages.error,
+        message: null,
         description: getContentNotification(content),
         closeIcon: <Icon name="close" />,
         onClick: () => {
             action && action();
         },
-        className: "d-notification__error",
+        className: "notification-error",
         ...(options || {}),
     } as any);
 };
 
 const showWarning = (content: any, action?: any, options?: Partial<NotificationConfig>) => {
     notification.open({
-        message: Messages.warning,
+        message: null,
         description: getContentNotification(content),
-        // icon: <Icon name="warning" className="text-warning" size="large" />,
         closeIcon: <Icon name="close" />,
         onClick: () => {
             action && action();
         },
-        className: "d-notification__warning",
+        className: "notification-warning",
         ...(options || {}),
     } as any);
 };
 
 const showSuccess = (content: any, action?: any, options?: Partial<NotificationConfig>) => {
     notification.open({
-        message: Messages.success,
+        message: null,
         description: getContentNotification(content),
-        // icon: <Icon name="check_circle" className="text-success" size="large" />,
         closeIcon: <Icon name="close" />,
         onClick: () => {
             action && action();
         },
-        className: "d-notification__success",
+        className: "notification-success",
         ...(options || {}),
     } as any);
 };
 
 const showInfo = (content: any, action?: any, options?: Partial<NotificationConfig>) => {
     notification.open({
-        message: Messages.info,
+        message: null,
         description: getContentNotification(content),
-        // icon: <Icon name="info" className="text-primary" size="large" />,
         closeIcon: <Icon name="close" />,
         onClick: () => {
             action && action();
         },
-        duration: 10,
-        className: "d-notification__info",
+        className: "notification-info",
         ...(options || {}),
     } as any);
 };

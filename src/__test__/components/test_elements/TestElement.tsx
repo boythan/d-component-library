@@ -12,7 +12,7 @@ const TestElement: React.FC<ITestElementProps> = ({ id }) => {
     const testDot = () => {
         return (
             <div className="my-4 d-flex align-items-center">
-                <Dot color="green" size="xxx-large">
+                <Dot color="success" size="xxx-large">
                     123
                 </Dot>
                 <Dot size="xx-small" />
@@ -37,7 +37,7 @@ const TestElement: React.FC<ITestElementProps> = ({ id }) => {
     };
     const testArrowItem = () => {
         return (
-            <div className="my-4 d-flex align-items-center">
+            <div className="my-4 flex items-center">
                 {Array.from({ length: 7 }).map((i, index) => {
                     const isLast = index === 6;
                     const isFirst = index === 0;

@@ -1,7 +1,5 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-use-before-define */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
 // react
 // third-party
 import ClassNames from "classnames";
@@ -67,7 +65,7 @@ const PopoverList: React.FC<PopoverListProps> = ({
     const [dataList, setDataList] = useState(DEFAULT_DATA_LIST);
     const [showLoadMore, setShowLoadMore] = useState(false);
     const [openPopover, setOpenPopover] = useState(false);
-    const wrapperClass = ClassNames("d-popover-list", className);
+    const wrapperClass = ClassNames(className);
 
     const pagingData = useRef(DEFAULT_PAGING_DATA);
     const noMoreData = useRef(false);
@@ -185,10 +183,10 @@ const PopoverList: React.FC<PopoverListProps> = ({
     };
     const renderContent = () => {
         return (
-            <div className="d-popover-list__dropdown">
+            <div className="flex flex-col overflow-y-scroll max-h-[32rem] w-max min-w-[20rem]">
                 {renderContentHeader()}
                 {buttonText && (
-                    <div className="d-flex w-100 justify-content-end">
+                    <div className="flex w-full justify-end">
                         <Button
                             content={buttonText}
                             iconName={buttonIconName}
@@ -202,7 +200,7 @@ const PopoverList: React.FC<PopoverListProps> = ({
                 {dataList.data.map((item, index) => renderItemList(item, index))}
                 <EmptyView mode={dataList.emptyMode} emptyText={emptyText} renderEmptyView={renderEmptyView} />
                 {showLoadMore && (
-                    <Button className="d-popover-list__footer" onClick={() => onClickLoadMore()} variant="trans">
+                    <Button className="min-w-[20em] text-[#2c98f0] cursor-pointer" onClick={() => onClickLoadMore()} variant="trans">
                         {loadMoreText}
                     </Button>
                 )}

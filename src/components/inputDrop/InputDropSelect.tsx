@@ -1,7 +1,3 @@
-/* eslint-disable jsx-a11y/tabindex-no-positive */
-/* eslint-disable jsx-a11y/no-noninteractive-tabindex */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import _ from "lodash";
 import React, { useMemo, useState } from "react";
 import { CheckboxGroupProps } from "../checkbox/CheckboxGroup";
@@ -73,7 +69,7 @@ const InputDropSelect = (props: InputDropSelectProps) => {
         const selected = isSelected(id);
 
         return (
-            <div className="d-input-drop-select__item-container" onClick={() => onClickSelectItem(id)}>
+            <div className="flex items-center justify-between py-4 border-b border-[#ececec] w-full cursor-pointer" onClick={() => onClickSelectItem(id)}>
                 <span>{getLabel(itemValue)}</span>
                 {selected && <Icon name="remove_circle" className="text-danger" />}
             </div>
@@ -86,7 +82,7 @@ const InputDropSelect = (props: InputDropSelectProps) => {
                 tabIndex={1}
                 onBlur={() => setTimeout(() => setFocusSelectList(false), 200)}
                 onFocus={() => setFocusSelectList(true)}
-                className="w-100"
+                className="w-full"
             >
                 {map(dataSelectSource, (item) => renderValueItem(getValue(item)))}
             </div>
@@ -95,7 +91,7 @@ const InputDropSelect = (props: InputDropSelectProps) => {
 
     const renderContentInput = () => {
         if (focusInputSearch || focusSelectList) return renderSelectList();
-        return <div className="w-100">{valueInput.map(renderValueItem)}</div>;
+        return <div className="w-full">{valueInput.map(renderValueItem)}</div>;
     };
 
     return (

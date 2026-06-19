@@ -37,7 +37,6 @@ class ViewErrorBoundary extends React.Component<ViewErrorBoundaryProps, ViewErro
             );
         }
 
-        // eslint-disable-next-line react/destructuring-assignment
         return this.props.children;
     }
 }

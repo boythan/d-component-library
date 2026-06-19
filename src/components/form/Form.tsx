@@ -351,7 +351,7 @@ const Form: React.FC<IFormProps> = ({
                                 hasError = true;
                             }
                             let itemClass = ClassNames(
-                                "w-100",
+                                "w-full",
                                 {
                                     "mr-3": rows?.length > 1 && index === 0,
                                     "mx-3": rows?.length > 1 && index > 0 && index < rows?.length,
@@ -403,7 +403,7 @@ const Form: React.FC<IFormProps> = ({
                                 });
                             }
 
-                            let itemWrapperClass = ClassNames("w-full py-2 d-flex", elementClass);
+                            let itemWrapperClass = ClassNames("flex-1 min-w-0 py-2 flex", elementClass);
 
                             if (getElementClass) {
                                 itemWrapperClass = getElementClass({
@@ -426,8 +426,8 @@ const Form: React.FC<IFormProps> = ({
                     let rowClass = ClassNames(
                         "flex w-full my-2",
                         {
-                            "align-items-center": !hasError,
-                            // "border-top": i !== 0,
+                            "items-center": !hasError,
+                            // "border-t": i !== 0,
                         },
                         classNameRow
                     );

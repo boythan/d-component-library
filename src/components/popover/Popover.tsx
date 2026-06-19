@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import classNames from "classnames";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import StringUtils from "../../utils/StringUtils";
@@ -61,7 +59,7 @@ const Popover: React.FC<PopoverProps> = ({ open, onOpen, onClose, content, child
 
     return (
         <div className={wrapperClass} ref={outSideRef} id={idContainer}>
-            <div onClick={() => (open ? onClose() : onOpen())}>{children}</div>
+            <div className="w-full h-full flex items-center" onClick={() => (open ? onClose() : onOpen())}>{children}</div>
             {open && <div className={contentClass}>{content}</div>}
         </div>
     );

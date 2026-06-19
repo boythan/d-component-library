@@ -1,5 +1,5 @@
 import ClassNames from "classnames";
-import React, { useEffect } from "react";
+import React from "react";
 
 export interface IArrowItemProps {
     isFirst?: boolean;
@@ -22,35 +22,19 @@ const ArrowItem: React.FC<IArrowItemProps> = ({
     classNameContent,
     isActive,
 }) => {
-    const wrapperClass = ClassNames("d-arrow-item col", className);
+    const wrapperClass = ClassNames(
+        "table-cell relative p-0 m-0 h-[50px] text-center border border-white flex-1",
+        className
+    );
     const contentClass = ClassNames(
-        "d-arrow-item__content text-white",
+        "relative leading-[50px] h-full w-full text-white",
         {
-            "d-arrow-item__content-active": isActive,
-            "d-arrow-item__content-first": isFirst,
-            "d-arrow-item__content-last": isLast,
-            "d-arrow-item__content-middle": !isLast && !isLast,
+            "arrow-content-active !bg-[#219653]": isActive,
+            "arrow-content-first": isFirst,
+            "arrow-content-middle": !isFirst && !isLast,
         },
         classNameContent
     );
-
-    const addStyle = () => {
-        const style = document.createElement("style");
-        const arrowItemContent = document.querySelectorAll(".d-arrow-item__content-middle");
-        style.textContent = `
-        .d-arrow-item__content-middle::before {
-            border-color: transparent transparent transparent ${color};
-        }
-
-        `;
-        // arrowItemContent.forEach((i) => i.appendChild(style));
-        // eslint-disable-next-line no-unused-expressions
-        arrowItemContent[0] && arrowItemContent[0].appendChild(style);
-    };
-
-    useEffect(() => {
-        // addStyle();
-    }, [color]);
 
     const renderLabel = () => {
         if (customLabel) {

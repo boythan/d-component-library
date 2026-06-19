@@ -1,4 +1,3 @@
-/* eslint-disable react/button-has-type */
 import React from "react";
 import ClassNames from "classnames";
 import Icon from "../elements/icon/Icon";
@@ -93,12 +92,22 @@ const Button: React.FC<ButtonProps> = ({
 
         const transColors: Record<string, string> = {
             primary: "text-primary bg-transparent hover:bg-red-50 border-transparent",
-            // Add others as needed, simplified for brevity
-            default: `text-${color} bg-transparent hover:bg-gray-100 border-transparent`,
+            secondary: "text-secondary bg-transparent hover:bg-red-50 border-transparent",
+            green: "text-success bg-transparent hover:bg-green-50 border-transparent",
+            red: "text-danger bg-transparent hover:bg-red-50 border-transparent",
+            yellow: "text-warning bg-transparent hover:bg-yellow-50 border-transparent",
+            blue: "text-info bg-transparent hover:bg-blue-50 border-transparent",
+            gray: "text-gray-500 bg-transparent hover:bg-gray-50 border-transparent",
+            dark: "text-dark bg-transparent hover:bg-gray-100 border-transparent",
+            light: "text-light bg-transparent hover:bg-gray-800 border-transparent",
+            error: "text-danger bg-transparent hover:bg-red-50 border-transparent",
+            success: "text-success bg-transparent hover:bg-green-50 border-transparent",
+            warning: "text-warning bg-transparent hover:bg-yellow-50 border-transparent",
+            muted: "text-muted bg-transparent hover:bg-gray-100 border-transparent",
         };
 
         if (variant === "outline") return `border ${outlineColors[color] || outlineColors.primary}`;
-        if (variant === "trans") return transColors[color] || transColors.default;
+        if (variant === "trans") return transColors[color] || transColors.primary;
 
         // Standard
         return `border ${baseColors[color] || baseColors.primary}`;

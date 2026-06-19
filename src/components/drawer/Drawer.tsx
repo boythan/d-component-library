@@ -9,6 +9,14 @@ export interface IDrawerProps extends Omit<DrawerProps, "size"> {
     classNameButton?: string;
 }
 
+const DRAWER_WIDTH: Record<string, number> = {
+    "x-small": 256,
+    small: 320,
+    medium: 384,
+    large: 512,
+    "x-large": 576,
+};
+
 const Drawer: React.FC<IDrawerProps> = ({
     children,
     open,
@@ -19,15 +27,22 @@ const Drawer: React.FC<IDrawerProps> = ({
     classNameButton,
     ...rest
 }) => {
-    const buttonClass = ClassNames("d-drawer__close-button", { "d-none": !open }, classNameButton);
-    const drawerClass = ClassNames(`d-drawer__container d-drawer__${size} ${className}`);
+    const buttonClass = ClassNames(
+        "absolute top-0 -left-[42px]",
+        { hidden: !open },
+        classNameButton
+    );
+    const computedWidth = size !== "auto" ? DRAWER_WIDTH[size] : undefined;
+
     return (
         <DrawerAnt
             open={open}
             onClose={(e) => onClose && onClose(e)}
             closable={closable}
+            width={computedWidth}
+            styles={{ wrapper: { overflow: "visible" }, body: { overflowY: "scroll" } }}
             {...rest}
-            className={drawerClass}
+            className={className}
         >
             <Button iconName="close" className={buttonClass} onClick={(e) => onClose && onClose(e)} />
             {children}

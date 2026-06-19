@@ -64,7 +64,7 @@ const InputDropCheckboxGroup = (props: InputDropCheckboxGroupProps) => {
                     multiple={multiple}
                     {...restProps}
                     value={valueInput}
-                    className="w-100"
+                    className="w-full"
                 />
             )}
             error={error}

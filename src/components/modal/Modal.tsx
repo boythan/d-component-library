@@ -35,6 +35,12 @@ export interface ModalProps extends Omit<ModalAntProps, "cancelButtonProps"> {
     styleContent?: CSSProperties;
 }
 
+const SIZE_WIDTH: Record<string, string> = {
+    small: "40%",
+    medium: "50%",
+    large: "85%",
+};
+
 const Modal: React.FC<ModalProps> = ({
     children,
     open,
@@ -71,22 +77,22 @@ const Modal: React.FC<ModalProps> = ({
     styleContent,
     ...props
 }) => {
-    const modalClass = ClassNames("d-modal", `d-modal__${size}`, className);
-    const childrenClass = ClassNames("d-modal__children", classNameContent);
+    const computedWidth = (size && SIZE_WIDTH[size]) ?? width;
+
     const headerClass = ClassNames(
-        "d-modal__header border-bottom py-2",
-        { "d-flex align-items-center": !!title, "py-3": !hasCloseIcon },
-        classNameHeader
+        "border-b py-2",
+        { "flex items-center": !!title, "py-3": !hasCloseIcon },
+        classNameHeader,
     );
-    const footerClass = ClassNames("d-modal__footer d-flex align-items-center border-top py-3 px-3", classNameFooter);
+    const footerClass = ClassNames("flex items-center border-t py-3 px-3", classNameFooter);
     const titleClass = ClassNames(
-        "w-100",
+        "w-full",
         {
             "text-center": titleAlign === "center",
             "text-start ml-3": titleAlign === "start",
             "text-end mr-3": titleAlign === "end",
         },
-        classNameTitle
+        classNameTitle,
     );
 
     const header = () => {
@@ -94,14 +100,7 @@ const Modal: React.FC<ModalProps> = ({
         content = () => {
             return (
                 <React.Fragment>
-                    {hasCloseIcon && (
-                        <Button
-                            iconName="close"
-                            variant="trans"
-                            onClick={onClose}
-                            className="d-modal__header-close-icon"
-                        />
-                    )}
+                    {hasCloseIcon && <Button iconName="close" variant="trans" onClick={onClose} className="!p-6" />}
                     {title && <h4 className={titleClass}>{title}</h4>}
                     {headerSide && headerSide()}
                 </React.Fragment>
@@ -127,7 +126,7 @@ const Modal: React.FC<ModalProps> = ({
             return (
                 <React.Fragment>
                     {(onSideClick || !!customSideButton) && sideButton()}
-                    <div className="w-100 d-flex align-items-center justify-content-end">
+                    <div className="w-full flex items-center justify-end">
                         {hasCancelButton && (
                             <Button
                                 variant="outline"
@@ -167,14 +166,15 @@ const Modal: React.FC<ModalProps> = ({
             open={open}
             onCancel={onClose}
             centered={centered}
-            className={modalClass}
+            className={className}
             closable={closable}
-            width={width}
+            width={computedWidth}
             footer={null}
+            styles={{ body: { padding: 0 } }}
             {...props}
         >
             {showHeader && header()}
-            <div className={childrenClass} style={styleContent}>
+            <div className={ClassNames("p-6 max-h-[800px] overflow-y-scroll", classNameContent)} style={styleContent}>
                 {children}
             </div>
             {showFooter && footer()}

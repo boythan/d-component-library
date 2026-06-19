@@ -27,7 +27,6 @@ const TestModal = () => {
                         this is header side
                     </div>
                 )}
-                classNameFooter="d-none"
                 titleAlign="start"
                 hasCloseIcon={false}
             >

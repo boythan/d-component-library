@@ -14,7 +14,7 @@ export interface DotProps {
 
 const THEME_COLORS = ["primary", "secondary", "success", "info", "warning", "danger", "light", "dark", "muted"];
 
-const Dot: React.FC<DotProps> = ({ size = "small", color = "green", className, style = {}, children, index }) => {
+const Dot: React.FC<DotProps> = ({ size = "small", color = "success", className, style = {}, children, index }) => {
     const isThemeColor = THEME_COLORS.includes(color || "");
 
     const sizeMap: Record<string, string> = {

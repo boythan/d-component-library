@@ -1,5 +1,4 @@
 /* eslint-disable no-use-before-define */
-/* eslint-disable import/no-extraneous-dependencies */
 import React from "react";
 import { createRoot } from "react-dom/client";
 import reportWebVitals from "./__test__/reportWebVitals";
@@ -9,8 +8,6 @@ import Test from "./__test__/Test";
 import "./styles/tailwind.css";
 import "./styles/style.css";
 
-import { ConfigProvider } from "antd";
-import { StyleProvider } from "@ant-design/cssinjs";
 import DThemeProvider from "./components/theme/DThemeProvider";
 
 // Suppress ResizeObserver loop limit exceeded error

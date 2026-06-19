@@ -1,7 +1,4 @@
 /* eslint-disable no-nested-ternary */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { Dropdown as AntDropdown, MenuProps } from "antd";
 import ClassNames from "classnames";
 import filter from "lodash/filter";

@@ -1,4 +1,3 @@
-/* eslint-disable react/default-props-match-prop-types */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable max-len */
 import _ from "lodash";
@@ -150,7 +149,7 @@ const AwesomeListComponent = forwardRef<AwesomeListComponentRef, AwesomeListComp
         };
 
         useEffect(() => {
-            if (variant === "load-more" && !loading) {
+            if (!loading) {
                 setLoading(true);
                 start();
             }
@@ -194,6 +193,7 @@ const AwesomeListComponent = forwardRef<AwesomeListComponentRef, AwesomeListComp
                 <InfiniteScroll
                     threshold={1}
                     pageStart={0}
+                    initialLoad={false}
                     loadMore={() => {
                         if (!loading) {
                             setLoading(true);

@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import classNames from "classnames";
 import find from "lodash/find";
 import { useEffect, useMemo, useState } from "react";

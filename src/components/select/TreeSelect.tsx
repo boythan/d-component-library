@@ -36,15 +36,14 @@ const TreeSelect = ({
     variant = "outline",
     ...rest
 }: TreeSelectProps) => {
-    const container = classname("d-select__container", `d-select__container-${variant}`, className);
-    const labelClass = classname("text-label", "d-select__label");
+    const container = classname("flex flex-col select-container", `select-container-${variant}`, className);
 
     const selectClass = classname(
-        "d-select__select",
-        `d-select__select-${variant}`,
+        "select-input",
+        `select-input-${variant}`,
         {
-            "d-select__select-disabled": disabled,
-            "d-select__error": !!error,
+            "select-input-disabled": disabled,
+            "select-input-error": !!error,
         },
         classNameSelect
     );
@@ -54,7 +53,7 @@ const TreeSelect = ({
 
     return (
         <div className={container}>
-            {label && <label className={labelClass}>{label}</label>}
+            {label && <label className="text-sm font-medium mb-1 text-text-main block">{label}</label>}
 
             <TreeSelectAnt
                 className={selectClass}

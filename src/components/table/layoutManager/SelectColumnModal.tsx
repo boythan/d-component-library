@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable no-unused-expressions */
 // react
 import ClassNames from "classnames";
@@ -27,18 +26,18 @@ export const SelectLayoutView = ({
         if (_.isEmpty(selectedLayout)) {
             return (
                 <div
-                    className={ClassNames("d-flex  align-items-center hover-pointer p-2", {
-                        "border-right": showBorder,
+                    className={ClassNames("flex items-center cursor-pointer p-2", {
+                        "border-r": showBorder,
                     })}
                 >
                     {/* <CustomizedIcon name="visibility" size="large" /> */}
-                    <div className="text text-nowrap mr-2">{text}</div>
-                    <Icon name="arrow_drop_down" size="large" className="d-block" />
+                    <div className="text whitespace-nowrap mr-2">{text}</div>
+                    <Icon name="arrow_drop_down" size="large" className="block" />
                 </div>
             );
         }
         return (
-            <div id="titleSelectShipping" className={ClassNames("w-100", { "border-right": showBorder })}>
+            <div id="titleSelectShipping" className={ClassNames("w-full", { "border-r": showBorder })}>
                 <Button
                     content={selectedLayout?.name ?? "N/A"}
                     iconName="visibility"
@@ -53,7 +52,7 @@ export const SelectLayoutView = ({
     const renderLayoutItem = (item: any) => {
         const isDefault = item?.default ?? false;
         return (
-            <div className="d-flex px-3 py-2">
+            <div className="flex px-3 py-2">
                 {item?.name ?? "N/A"}
                 <span className="subTile2">{isDefault ? `- Default` : ""}</span>
             </div>
@@ -216,9 +215,9 @@ const SelectColumnModal = ({
 
     const renderContentModal = () => {
         return (
-            <div className="d-flex flex-column align-items-start justify-content-center">
+            <div className="flex flex-col items-start justify-center">
                 <h5>{actionText}:</h5>
-                <div className="d-flex align-items-center">
+                <div className="flex items-center">
                     <Checkbox
                         value={selectAll as any}
                         checked={selectAll}
@@ -235,13 +234,13 @@ const SelectColumnModal = ({
                         color="red"
                     />
                 </div>
-                <div className="row my-4 w-100">
+                <div className="grid grid-cols-2 my-4 w-full">
                     {options.map((item: any) => {
                         // eslint-disable-next-line operator-linebreak
                         const isChecked = !!selectedOption.find((obj: any) => obj.id === item.id);
                         const label = typeof item?.title === "function" ? item?.title() : item?.title;
                         return (
-                            <div className="col-sm-6 mt-3">
+                            <div className="mt-3">
                                 <Checkbox
                                     checked={isChecked}
                                     onChange={(event) => {
@@ -252,7 +251,6 @@ const SelectColumnModal = ({
                                         }
                                     }}
                                     value={item?.id}
-                                    // eslint-disable-next-line react/no-children-prop
                                     label={label}
                                     className="my-2"
                                 />
@@ -287,9 +285,8 @@ const SelectColumnModal = ({
 
     const renderFooter = () => {
         return (
-            <div className="d-flex align-items-center w-100 justify-content-end">
+            <div className="flex items-center w-full justify-end">
                 <Button
-                    // eslint-disable-next-line react/jsx-curly-brace-presence
                     content={"Save & Apply"}
                     onClick={handleOnClickSave}
                     disabled={_.isEmpty(selectedLayout)}

@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from "react";
 import Loading from "../../elements/loading/Loading";
 import AwesomeListMode from "../shared/Mode";
@@ -16,14 +14,14 @@ const PagingView: React.FC<PagingViewProps> = ({ mode, onClickRetry }) => {
 
     if (mode === AwesomeListMode.ERROR) {
         return (
-            <div className="d-page-view__container" onClick={onClickRetry}>
+            <div className="flex justify-center items-center w-full p-8" onClick={onClickRetry}>
                 <div className="h5">Error..... Click to retry!</div>
             </div>
         );
     }
 
     return (
-        <div className="d-page-view__container">
+        <div className="flex justify-center items-center w-full p-8">
             <Loading size="small" />
         </div>
     );

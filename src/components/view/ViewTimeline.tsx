@@ -36,7 +36,6 @@ const ViewTimeline: React.FC<ViewTimelineProps> = ({
                 if (customView) {
                     mainView = customView(data);
                 }
-                // eslint-disable-next-line react/no-array-index-key
                 return <TimeLineAnt.Item key={index}>{mainView}</TimeLineAnt.Item>;
             })}
         </TimeLineAnt>

@@ -1,4 +1,3 @@
-/* eslint-disable react/destructuring-assignment */
 /* eslint-disable camelcase */
 import { SearchOutlined } from "@ant-design/icons";
 import {
@@ -304,7 +303,7 @@ const AwesomeTableComponent = forwardRef<AwesomeTableComponentRef, AwesomeTableC
         onFilter: (value: any, record: any) => {
             return record?.[dataIndex]?.toString().toLowerCase().includes(value.toLowerCase()) ?? false;
         },
-        onFilterDropdownVisibleChange: (visible: any) => {
+        onFilterDropdownOpenChange: (visible: any) => {
             if (visible) {
                 setTimeout(() => {
                     searchInput.current?.select();

@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-wrap-multilines */
 import { CaretRightOutlined } from "@ant-design/icons";
 import { Collapse, CollapseProps } from "antd";
 import classNames from "classnames";
@@ -15,7 +14,6 @@ export interface ViewCollapseProps {
     styles?: CollapseProps["styles"];
     classNames?: CollapseProps["classNames"];
 }
-const { Panel } = Collapse;
 
 const ViewCollapse = ({
     label = "Title",
@@ -41,11 +39,15 @@ const ViewCollapse = ({
             style={style}
             styles={styles}
             classNames={antdClassNames}
-        >
-            <Panel header={<h5 className={labelClass}>{label}</h5>} key="1" extra={extra}>
-                {children}
-            </Panel>
-        </Collapse>
+            items={[
+                {
+                    key: "1",
+                    label: <h5 className={labelClass}>{label}</h5>,
+                    children,
+                    extra,
+                },
+            ]}
+        />
     );
 };
 

@@ -1,7 +1,5 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-return-assign */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { CSSProperties, LegacyRef, useEffect, useMemo, useRef, useState } from "react";
 import ClassNames from "classnames";
 import Messages from "../../language/Messages";

@@ -1,5 +1,3 @@
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable react/static-property-placement */
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import Loading from "../../elements/loading/Loading";
@@ -116,7 +114,7 @@ class EmptyView extends Component<any, any> {
         return (
             // pointerEvents to prevent touch to EmptyView and pass through to under component.
             // But still accept its children view receive touch.
-            <div className="d-list-empty-view">
+            <div className="flex justify-center items-center w-full h-full bg-white">
                 {this.renderEmptyViewInternal()}
                 {this.renderErrorViewInternal()}
                 {this.renderProgressInternal()}

@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import { useFormik } from "formik";
 import React, { useState } from "react";
 import * as Yup from "yup";
@@ -68,7 +67,7 @@ const FORM_DATA: IFormItemData<IEmployeePrivacyInfo>[] = [
         label: "noOfChild",
         key: "noOfChild",
         type: "inputText",
-        classNameRow: "w-50 pr-3",
+        classNameRow: "pr-3",
         inputType: "number",
         onChangeValidate: ({ value, key }: any) => {
             if (value > 10) {

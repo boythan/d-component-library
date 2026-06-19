@@ -3,27 +3,25 @@ import postcss from "rollup-plugin-postcss";
 import commonjs from "rollup-plugin-commonjs";
 import external from "rollup-plugin-peer-deps-external";
 import resolve from "rollup-plugin-node-resolve";
-// import bundleScss from "rollup-plugin-bundle-scss";
 import image from "@rollup/plugin-image";
 import json from "@rollup/plugin-json";
-// import scss from "rollup-plugin-scss";
-import path from "path";
-
-import pkg from "./package.json";
-
 export default {
     input: "src/dcomponent.tsx",
+    external: ["react-is", "prop-types", /yet-another-react-lightbox\/.*\.css/],
     output: [
         {
-            file: pkg.main,
+            dir: "dist/cjs",
             format: "cjs",
             exports: "named",
+            preserveModules: true,
+            preserveModulesRoot: "src",
             sourcemap: true,
         },
         {
-            file: pkg.module,
+            dir: "dist/es",
             format: "es",
-            exports: "named",
+            preserveModules: true,
+            preserveModulesRoot: "src",
             sourcemap: true,
         },
     ],
@@ -32,58 +30,30 @@ export default {
         resolve(),
         image(),
         json(),
-        // scss(),
-        // bundleScss({ exclusive: false }),
         postcss({
-            // extract: true,
-            // Or with custom file name, it will generate file relative to bundle.js in v3
-
-            extract: path.resolve("dist/index.css"),
+            extract: "index.css",
         }),
         typescript({
             exclude: "**/__tests__/**",
             clean: true,
+            useTsconfigDeclarationDir: true,
             tsconfigOverride: {
                 exclude: ["node_modules", "dist", "src/__test__/**/*"],
+                compilerOptions: {
+                    noEmit: false,
+                    declaration: true,
+                    declarationDir: "dist/types",
+                    outDir: "dist",
+                },
             },
         }),
         commonjs({
             include: ["node_modules/**"],
-            namedExports: {
-                "node_modules/react/react.js": ["Children", "Component", "PropTypes", "createElement"],
-                "node_modules/react-dom/index.js": ["render"],
-                "node_modules/react-is/index.js": [
-                    "isFragment",
-                    "ForwardRef",
-                    "isMemo",
-                    "isValidElementType",
-                    "isContextConsumer",
-                ],
-                "node_modules/@rc-component/util/node_modules/react-is/index.js": [
-                    "isFragment",
-                    "ForwardRef",
-                    "isMemo",
-                    "isValidElementType",
-                    "isContextConsumer",
-                ],
-                "node_modules/rc-util/node_modules/react-is/index.js": [
-                    "isFragment",
-                    "ForwardRef",
-                    "isMemo",
-                    "isValidElementType",
-                    "isContextConsumer",
-                ],
-                "node_modules/prop-types/index.js": [
-                    "node",
-                    "bool",
-                    "string",
-                    "any",
-                    "arrayOf",
-                    "oneOfType",
-                    "object",
-                    "func",
-                ],
-            },
         }),
     ],
+    onwarn(warning, warn) {
+        if (warning.code === "MODULE_LEVEL_DIRECTIVE") return;
+        if (warning.code === "THIS_IS_UNDEFINED") return;
+        warn(warning);
+    },
 };

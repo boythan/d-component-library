@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import { filter, includes, map, uniqBy } from "lodash";
 import { useEffect, useState } from "react";
 

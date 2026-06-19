@@ -1,6 +1,4 @@
 /* eslint-disable no-unused-expressions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
 import _ from "lodash";
 import React, { CSSProperties, ElementRef, useImperativeHandle, useMemo, useRef, useState } from "react";
 import ClassNames from "classnames";
@@ -24,6 +22,7 @@ export interface SelectInfinityProps
     createNewLabel?: string | React.ReactNode;
     dropdownHeight?: string | number;
     customDropdownHeader?: () => React.ReactNode;
+    onOpenChange?: (open: boolean) => void;
 }
 
 export interface SelectInfinityMethod {
@@ -54,10 +53,28 @@ const SelectInfinity: React.ForwardRefRenderFunction<SelectInfinityMethod, Selec
         createNewLabel = "Create New",
         dropdownHeight = 250,
         customDropdownHeader,
+        onOpenChange,
         ...props
     },
     ref
 ) => {
+    const TAG_COLOR_MAP: Record<string, string> = {
+        primary: "var(--color-primary)",
+        secondary: "var(--color-secondary)",
+        success: "var(--color-success)",
+        green: "var(--color-success)",
+        info: "var(--color-info)",
+        blue: "var(--color-info)",
+        warning: "var(--color-warning)",
+        yellow: "var(--color-warning)",
+        danger: "var(--color-danger)",
+        red: "var(--color-danger)",
+        error: "var(--color-danger)",
+        dark: "var(--color-dark)",
+        light: "var(--color-light)",
+        muted: "var(--color-muted)",
+        gray: "#6b7280",
+    };
     const listRef = useRef<ElementRef<typeof AwesomeListComponent>>(null);
     const selectRef = useRef<React.ElementRef<typeof Select>>(null);
 
@@ -185,12 +202,10 @@ const SelectInfinity: React.ForwardRefRenderFunction<SelectInfinityMethod, Selec
         if (!foundItem) {
             return <div />;
         }
-        // Map common colors if needed, but assuming tagColor passes valid tailwind color names or we use dynamic class.
-        // If tagColor is 'primary', 'bg-primary' works.
         return (
             <div
-                className={`py-1 text-white text-xs px-2 bg-${tagColor} flex items-center mx-1 my-1 rounded ${classNameTagItem}`}
-                style={{ width: "120px", ...styleTagItem }}
+                className={`py-1 text-white text-xs px-2 flex items-center mx-1 my-1 rounded ${classNameTagItem}`}
+                style={{ width: "120px", backgroundColor: TAG_COLOR_MAP[tagColor] ?? TAG_COLOR_MAP.primary, ...styleTagItem }}
             >
                 <div className="whitespace-nowrap w-full truncate">{getLabel(foundItem)}</div>
                 <Icon
@@ -216,6 +231,7 @@ const SelectInfinity: React.ForwardRefRenderFunction<SelectInfinityMethod, Selec
             mode={mode}
             hasFilter={false}
             tagRender={customTagRender}
+            onOpenChange={onOpenChange}
             {...props}
         />
     );

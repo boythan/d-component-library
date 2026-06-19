@@ -52,7 +52,6 @@ export interface SelectMethod {
     onFocus: () => void;
 }
 
-const { Option } = SelectAnt;
 const Select: React.ForwardRefRenderFunction<SelectMethod, SelectProps> = (
     {
         className,
@@ -114,35 +113,34 @@ const Select: React.ForwardRefRenderFunction<SelectMethod, SelectProps> = (
         }
     };
 
-    const selectAllOption = useMemo(() => {
-        return (
-            <Option key="all" value="all" className={classNameOption}>
-                {hasAnOptionSelected ? deselectAllLabel : selectAllLabel}
-            </Option>
-        );
-    }, [hasAnOptionSelected]);
-
-    const children = useMemo(
-        () =>
-            dataSource.map((dataItem: any) => {
-                const label = getLabelDropdownItem ? getLabelDropdownItem(dataItem) : getLabel(dataItem);
-                const key = getKey(dataItem);
-                const disabled = getDisableOption(dataItem);
-                const optionProps = getOptionProps(dataItem);
-                return (
-                    <Option
-                        key={key}
-                        value={getValue(dataItem)}
-                        disabled={disabled}
-                        className={classNameOption}
-                        {...optionProps}
-                    >
-                        {label}
-                    </Option>
-                );
-            }),
-        [dataSource]
-    );
+    const options = useMemo(() => {
+        const items = dataSource.map((dataItem: any) => {
+            const itemLabel = getLabelDropdownItem ? getLabelDropdownItem(dataItem) : getLabel(dataItem);
+            const key = getKey(dataItem);
+            const isDisabled = getDisableOption(dataItem);
+            const optionProps = getOptionProps(dataItem);
+            return {
+                key,
+                value: getValue(dataItem),
+                label: itemLabel,
+                disabled: isDisabled,
+                className: classNameOption,
+                ...optionProps,
+            };
+        });
+        if (selectAll) {
+            return [
+                {
+                    key: "all",
+                    value: "all",
+                    label: hasAnOptionSelected ? deselectAllLabel : selectAllLabel,
+                    className: classNameOption,
+                },
+                ...items,
+            ];
+        }
+        return items;
+    }, [dataSource, hasAnOptionSelected, selectAll]);
     const selectRef = useRef<React.ElementRef<typeof SelectAnt>>(null);
 
     useImperativeHandle(ref, () => ({
@@ -190,6 +188,7 @@ const Select: React.ForwardRefRenderFunction<SelectMethod, SelectProps> = (
             // For single select, fixed height/leading is fine.
             // For multiple/tags, we should let it grow and just control min-height/padding.
             "!min-h-[40px]": size === "middle",
+            "!h-[40px]": size === "middle" && !multiple && props.mode !== "tags",
             "!leading-[38px]": size === "middle" && !multiple && props.mode !== "tags",
 
             "!px-4": size === "middle" && variant !== "standard",
@@ -205,7 +204,7 @@ const Select: React.ForwardRefRenderFunction<SelectMethod, SelectProps> = (
 
     return (
         <WrapperComponent
-            element={wrapperElement || <div className={classname("flex flex-col w-full", className)} hidden={hidden} />}
+            element={wrapperElement || <div className={classname("flex flex-col", className)} hidden={hidden} />}
         >
             {label && <label className={labelClass}>{label}</label>}
             <SelectAnt
@@ -236,10 +235,8 @@ const Select: React.ForwardRefRenderFunction<SelectMethod, SelectProps> = (
                 disabled={disabled}
                 style={mergedStyle}
                 size={size}
-            >
-                {selectAll && selectAllOption}
-                {children}
-            </SelectAnt>
+                options={options}
+            />
             <ViewTextError error={error} />
         </WrapperComponent>
     );

@@ -1,6 +1,3 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/interactive-supports-focus */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 // react
 import { Fragment, Ref, ReactNode, useCallback, useEffect, useMemo, useRef, useState, ReactElement } from "react";
 import Button from "../button/Button";
@@ -27,7 +24,7 @@ export interface ICollapseProps<T extends HTMLElement, P extends HTMLElement> {
 }
 
 function Collapse<T extends HTMLElement, P extends HTMLElement>(props: ICollapseProps<T, P>) {
-    const { toggleClass = "d-collapse__opened", customRender, open, label, children, customIcon, className } = props;
+    const { toggleClass = "collapse-opened", customRender, open, label, children, customIcon, className } = props;
     const [init, setInit] = useState(false);
     const itemRef = useRef<T>(null);
     const contentRef = useRef<P>(null);
@@ -131,14 +128,14 @@ function Collapse<T extends HTMLElement, P extends HTMLElement>(props: ICollapse
         return (
             <div className={toggleClass} ref={itemRef as any}>
                 <Button
-                    className="flex-center-y w-100 justify-content-between px-0"
+                    className="flex items-center w-full justify-between px-0"
                     variant="trans"
                     onClick={handleToggle}
                 >
                     <div>{label || "N/A"}</div>
-                    {customIcon || <Icon name="expand_more" className="d-collapse__arrow" />}
+                    {customIcon || <Icon name="expand_more" className="collapse-arrow" />}
                 </Button>
-                <div className="d-collapse__body" ref={contentRef as any}>
+                <div className="collapse-body" ref={contentRef as any}>
                     <div className="filter__container">{children}</div>
                 </div>
             </div>

@@ -64,7 +64,7 @@ const Card: React.FC<CardProps> = ({
                 <div>
                     <div className={titleWrapper}>
                         <div className="font-semibold text-base">{title}</div>
-                        {index && <Badge variant="index" index={index} size="xx-large" className="ml-2" />}
+                        {index && <Badge variant="index" index={index} size="medium" className="ml-2" />}
                     </div>
                     {subTitle && <div className="text-xs text-gray-500">{subTitle}</div>}
                 </div>

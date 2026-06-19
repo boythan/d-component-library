@@ -2,6 +2,10 @@
 @import "tailwindcss";
 @import "antd/dist/reset.css" layer(antd);
 
+:root {
+    --ant-modal-content-padding: 0;
+}
+
 @theme {
     --color-primary: #de0d0c;
     --color-secondary: #de0d0c;
@@ -16,6 +20,13 @@
     --color-text-sub: rgba(0, 0, 0, 0.56);
     --font-sans: var(--app-font), sans-serif;
     --spacing-18: 4.5rem;
+    --default-border-color: #ECECEC;
+}
+
+@layer base {
+    *, *::before, *::after {
+        border-color: var(--default-border-color);
+    }
 }
 
 @utility scrollbar-hide {
@@ -25,3 +36,162 @@
         display: none;
     }
 }
+
+@layer components {
+    /* TreeSelect / Select antd internal overrides */
+    .select-container .select-input {
+        border-radius: 0px;
+    }
+    .select-container .ant-select-selector {
+        border-radius: 0px !important;
+    }
+    .select-container-standard .ant-select-focused {
+        outline: none !important;
+        border-bottom: 0.5px solid #041b47 !important;
+    }
+    .select-container-standard .ant-select-selector {
+        padding-left: 0px !important;
+    }
+    .select-container-outline .ant-select-focused {
+        outline: none !important;
+        border: 0.5px solid #041b47 !important;
+        border-radius: 0px;
+    }
+    .select-container-outline .ant-select-selector {
+        padding-left: 16px !important;
+    }
+    .select-input .ant-select-selector {
+        border: none !important;
+        min-height: 40px !important;
+        box-shadow: none !important;
+    }
+    .select-input.ant-select-single .ant-select-selector {
+        height: 40px !important;
+    }
+    .select-input.ant-select-single .ant-select-selection-item,
+    .select-input.ant-select-single .ant-select-selection-placeholder {
+        line-height: 38px !important;
+    }
+    .select-input .ant-select-selection-item .ant-select-selection-item-remove {
+        display: flex;
+    }
+    .select-input .ant-select-selection-placeholder {
+        left: 16px;
+    }
+    .select-input input {
+        border-radius: 0px !important;
+        outline: none !important;
+    }
+    .select-input-outline {
+        border: 0.5px solid #ececec !important;
+        outline: none;
+    }
+    .select-input-standard {
+        border: none !important;
+        outline: none;
+        border-bottom: 0.5px solid #ececec !important;
+    }
+    .select-input-error {
+        border: 0.5px solid #f44336 !important;
+    }
+    .select-input-disabled {
+        background-color: #f5f5f5 !important;
+        border: none !important;
+    }
+
+    /* Collapse animated transitions */
+    .collapse-arrow {
+        transition: transform 0.2s;
+    }
+    .collapse-body {
+        overflow: hidden;
+        visibility: hidden;
+        height: 0;
+        opacity: 0;
+        transition: height 0.2s, opacity 0.2s, visibility 0s 0.2s;
+    }
+    .collapse-opened .collapse-body {
+        transition-delay: 0s, 0s;
+        visibility: visible;
+        height: auto;
+        opacity: 1;
+    }
+    .collapse-opened .collapse-arrow {
+        transform: rotateZ(180deg);
+    }
+
+    /* Notification styles (passed to antd notification.open className) */
+    .notification-error,
+    .notification-warning,
+    .notification-success,
+    .notification-info,
+    .notification-container {
+        color: white;
+    }
+    .notification-error .ant-notification-notice-description,
+    .notification-error .ant-notification-notice-message,
+    .notification-warning .ant-notification-notice-description,
+    .notification-warning .ant-notification-notice-message,
+    .notification-success .ant-notification-notice-description,
+    .notification-success .ant-notification-notice-message,
+    .notification-info .ant-notification-notice-description,
+    .notification-info .ant-notification-notice-message {
+        color: white !important;
+    }
+    .notification-error i,
+    .notification-warning i,
+    .notification-success i,
+    .notification-info i,
+    .notification-container i {
+        color: white !important;
+    }
+    .notification-error {
+        background-color: #f44336 !important;
+    }
+    .notification-success {
+        background-color: #33963d !important;
+    }
+    .notification-warning {
+        background-color: #fac256 !important;
+    }
+    .notification-info {
+        background-color: #17a2b8 !important;
+    }
+    .notifications-content ul {
+        padding-inline-start: 15px;
+    }
+
+    /* ArrowItem pseudo-element arrows */
+    .arrow-content-middle::after,
+    .arrow-content-middle::before,
+    .arrow-content-first::after,
+    .arrow-content-first::before {
+        content: "";
+        display: inline-block;
+        border-width: 26px;
+        border-style: solid;
+        width: 0px;
+        height: 0px;
+        left: 100%;
+        top: -1px;
+        position: absolute;
+        z-index: 1;
+    }
+    .arrow-content-middle::after,
+    .arrow-content-first::after {
+        border-color: transparent transparent transparent white;
+    }
+    .arrow-content-middle::before,
+    .arrow-content-first::before {
+        border-width: 24px;
+        display: block;
+        border-color: transparent transparent transparent #6fcf97;
+        z-index: 2;
+        top: 1px;
+    }
+    .arrow-content-active::before {
+        border-color: transparent transparent transparent #219653;
+    }
+
+}
+
