@@ -2,6 +2,7 @@ import React, { CSSProperties } from "react";
 import ClassNames from "classnames";
 import { ButtonProps } from "../../button/Button";
 import { IconProps } from "../icon/Icon";
+import ColorUtils from "../../../utils/ColorUtils";
 
 export interface DotProps {
     color?: ButtonProps["color"] | string;
@@ -12,10 +13,14 @@ export interface DotProps {
     index?: any;
 }
 
-const THEME_COLORS = ["primary", "secondary", "success", "info", "warning", "danger", "light", "dark", "muted"];
+// Named colors (theme or scale) resolved to Tailwind classes; anything else is treated as a raw CSS value.
+const KNOWN_COLORS = new Set([
+    "primary", "secondary", "success", "info", "warning", "danger", "light", "dark", "muted",
+    "red", "green", "blue", "yellow", "gray",
+]);
 
 const Dot: React.FC<DotProps> = ({ size = "small", color = "success", className, style = {}, children, index }) => {
-    const isThemeColor = THEME_COLORS.includes(color || "");
+    const isKnownColor = KNOWN_COLORS.has(color || "");
 
     const sizeMap: Record<string, string> = {
         "xx-small": "w-1.5 h-1.5 text-[0.4rem]",
@@ -31,15 +36,15 @@ const Dot: React.FC<DotProps> = ({ size = "small", color = "success", className,
     const dotClass = ClassNames(
         "rounded-full inline-flex items-center justify-center leading-none relative top-[2px] border-white border",
         sizeMap[size as string] || "w-2.5 h-2.5",
+        isKnownColor && ColorUtils.colorToBgClass(color!),
         {
-            [`bg-${color}`]: isThemeColor,
-            "text-white": isThemeColor && color !== "light",
-            "text-gray-700": color === "light",
+            "text-white": isKnownColor && !ColorUtils.isLightColor(color!),
+            "text-gray-700": isKnownColor && ColorUtils.isLightColor(color!),
         },
         className
     );
 
-    const styleProp = isThemeColor ? style : { backgroundColor: color, ...style };
+    const styleProp = isKnownColor ? style : { backgroundColor: color, ...style };
 
     return (
         <div className={dotClass} style={styleProp}>

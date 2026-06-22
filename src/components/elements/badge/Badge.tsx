@@ -4,6 +4,7 @@ import React, { CSSProperties } from "react";
 import { ButtonProps } from "../../button/Button";
 import Dot, { DotProps } from "../dot/Dot";
 import { IconProps } from "../icon/Icon";
+import ColorUtils from "../../../utils/ColorUtils";
 
 export interface BadgeProps {
     [key: string]: any;
@@ -88,7 +89,7 @@ const Badge: React.FC<BadgeProps> = ({
     // - using inline style for color mostly works if dynamic, but 'bg-secondary' is safe.
     // However, d-badge__badge-index-${size}-${color} suggests strict class generation.
     // We will use bg-${color} text-white pattern.
-    const colorClass = `bg-${color} text-white`;
+    const colorClass = `${ColorUtils.colorToBgClass(color)} ${ColorUtils.isLightColor(color) ? "text-gray-700" : "text-white"}`;
 
     const badgeIndexClass = ClassNames(
         "flex items-center justify-center rounded-full leading-none font-normal border-white border",

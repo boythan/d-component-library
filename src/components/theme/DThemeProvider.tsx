@@ -1,7 +1,7 @@
 import { ConfigProvider } from "antd";
 import type { ThemeConfig } from "antd";
 import { StyleProvider } from "@ant-design/cssinjs";
-import React, { CSSProperties } from "react";
+import React, { CSSProperties, createContext, useContext } from "react";
 
 export interface DThemeProviderProps {
     children: React.ReactNode;
@@ -9,7 +9,18 @@ export interface DThemeProviderProps {
     theme?: ThemeConfig;
 }
 
-const DEFAULT_PRIMARY = "#de0d0c";
+/** Default used by DThemeProvider when no colorPrimary is supplied via `theme` prop. */
+const DEFAULT_PRIMARY = "#2196f3";
+export interface DThemeContextValue {
+    colorPrimary: string;
+}
+
+export const DThemeContext = createContext<DThemeContextValue>({
+    colorPrimary: DEFAULT_PRIMARY,
+});
+
+/** Hook to read the current theme's primary color. */
+export const useDTheme = (): DThemeContextValue => useContext(DThemeContext);
 
 const DThemeProvider: React.FC<DThemeProviderProps> = ({ children, theme }) => {
     const colorPrimary = theme?.token?.colorPrimary ?? DEFAULT_PRIMARY;
@@ -34,11 +45,13 @@ const DThemeProvider: React.FC<DThemeProviderProps> = ({ children, theme }) => {
     };
 
     return (
-        <StyleProvider layer>
-            <ConfigProvider theme={mergedTheme}>
-                <div style={cssVars}>{children}</div>
-            </ConfigProvider>
-        </StyleProvider>
+        <DThemeContext.Provider value={{ colorPrimary }}>
+            <StyleProvider layer>
+                <ConfigProvider theme={mergedTheme}>
+                    <div style={cssVars}>{children}</div>
+                </ConfigProvider>
+            </StyleProvider>
+        </DThemeContext.Provider>
     );
 };
 
