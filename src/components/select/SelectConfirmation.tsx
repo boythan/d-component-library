@@ -33,9 +33,8 @@ const SelectConfirmation = (props: SelectConfirmationProps) => {
             onBlur={onBlur}
             value={value}
             onChange={(val) => setValue(val)}
-            filterOption={() => true}
-            showSearch
-            dropdownRender={(menu) => (
+            showSearch={{ filterOption: () => true }}
+            popupRender={(menu) => (
                 <React.Fragment>
                     {menu}
                     <div className={footerClassName}>

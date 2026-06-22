@@ -1,37 +1,42 @@
 # D React Components
 
-A comprehensive React component library built on top of Ant Design v5, providing ready-to-use components with customizable styling.
+A comprehensive React component library built on top of Ant Design v6, providing ready-to-use components with customizable styling.
 
 ## Version 1.0.0 - Major Update! 🎉
 
 This is the first stable 1.0 release with significant improvements:
 
-- ✅ **Ant Design v5** - Upgraded from v4 to latest stable v5
+- ✅ **Ant Design v5** - Upgraded from v4 to latest stable v6
 - ✅ **Day.js** - Replaced Moment.js with lightweight Day.js (~40% smaller)
 - ✅ **No Bootstrap** - Removed Bootstrap dependency (~30% smaller bundle)
 - ✅ **Same API** - All component interfaces unchanged
 
-**Upgrading from v0.3.x?** See [MIGRATION_GUIDE_V1.md](./MIGRATION_GUIDE_V1.md)
+### Migration Required
+
+If upgrading from v0.3.x, please see [MIGRATION_GUIDE_V1.md](./MIGRATION_GUIDE_V1.md)
 
 ---
 
 ## Installation
 
 ```bash
-npm install d-react-components
+npm install d-react-components@1.0.0
 ```
 
 ### Peer Dependencies
 
 ```bash
 # Required
-npm install react@^17.0.0 react-dom@^17.0.0
+npm install react@^19.0.0 react-dom@^19.0.0
 
 # If using Ant Design directly
-npm install antd@^5.21.6
+npm install antd@^6.4.4
 
 # If using date utilities
-npm install dayjs@^1.11.13
+npm install dayjs@^1.11.21
+
+# If using lodash utilities
+npm install lodash@^4.18.1
 ```
 
 ---
@@ -325,6 +330,25 @@ const MyButton: React.FC<ButtonProps> = (props) => {
   return <Button {...props} />;
 };
 ```
+
+---
+
+## Dependencies
+
+### Required (Peer Dependencies)
+- `react` >= 18.0.0
+- `react-dom` >= 18.0.0
+- `antd` >= 6.0.0
+- `dayjs` >= 1.0.0
+- `lodash` >= 4.0.0
+
+### Included (Bundled)
+- `classnames` ^2.5.1
+- `query-string` 9.4.0
+- `react-dropzone` ^15.0.0
+- `react-highlight-words` ^0.21.0
+- `react-resizable` ^4.0.2
+- `yet-another-react-lightbox` ^3.32.0
 
 ---
 
