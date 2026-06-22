@@ -31,7 +31,7 @@ interface InputDropSourceProps extends InputDropProps {
     onClickSelectAll: () => any;
     onClickClearAll: () => any;
     onClickApply: () => any;
-    content: () => any;
+    content?: () => any;
     onChangeText?: (value: any) => any;
     propsSearchText?: any;
 }

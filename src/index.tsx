@@ -1,7 +1,6 @@
 /* eslint-disable no-use-before-define */
 import React from "react";
 import { createRoot } from "react-dom/client";
-import reportWebVitals from "./__test__/reportWebVitals";
 import Test from "./__test__/Test";
 // import "antd/dist/reset.css"; // moved into @layer in tailwind.css
 // import "./scss/index.scss";
@@ -47,8 +46,3 @@ if (rootElement) {
         </DThemeProvider>,
     );
 }
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

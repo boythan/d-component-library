@@ -7,7 +7,7 @@ import image from "@rollup/plugin-image";
 import json from "@rollup/plugin-json";
 export default {
     input: "src/dcomponent.tsx",
-    external: ["react-is", "prop-types", /yet-another-react-lightbox\/.*\.css/],
+    external: ["react-is", "prop-types", "react-resizable", /yet-another-react-lightbox\/.*\.css/],
     output: [
         {
             dir: "dist/cjs",

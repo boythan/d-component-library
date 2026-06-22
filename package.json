@@ -26,7 +26,6 @@
     "query-string": "9.4.0",
     "react-dropzone": "^15.0.0",
     "react-highlight-words": "^0.21.0",
-    "react-resizable": "^4.0.2",
     "yet-another-react-lightbox": "^3.32.0"
   },
   "scripts": {
@@ -76,9 +75,11 @@
     "@vitest/coverage-v8": "^4.1.9",
     "antd": "^6.4.4",
     "autoprefixer": "^10.5.0",
+    "axios": "^1.18.0",
     "dayjs": "^1.11.21",
     "eslint": "10.5.0",
     "eslint-plugin-react-hooks": "^7.1.1",
+    "formik": "^2.4.9",
     "globals": "^16.2.0",
     "jsdom": "^29.1.1",
     "lodash": "^4.18.1",
@@ -96,14 +97,16 @@
     "tslib": "^2.8.1",
     "typescript": "^6.0.3",
     "vite": "^8.0.16",
-    "vitest": "^4.1.9"
+    "vitest": "^4.1.9",
+    "yup": "^1.7.1"
   },
   "peerDependencies": {
     "antd": ">=6.0.0",
     "dayjs": ">=1.0.0",
     "lodash": ">=4.0.0",
     "react": ">=18.0.0",
-    "react-dom": ">=18.0.0"
+    "react-dom": ">=18.0.0",
+    "react-resizable": ">=4.0.0"
   },
   "description": "",
   "bugs": {
