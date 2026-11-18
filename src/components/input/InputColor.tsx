@@ -1,8 +1,15 @@
 // react
 // third-party
 import classname from "classnames";
-import React, { CSSProperties, InputHTMLAttributes } from "react";
+import React, { CSSProperties, InputHTMLAttributes, useContext } from "react";
+import { DThemeContext, DShape } from "../theme/DThemeProvider";
 import ViewTextError from "../view/ViewTextError";
+
+const shapeClasses: Record<DShape, string> = {
+    flat: "rounded-none",
+    rounded: "rounded",
+    pilled: "rounded-full",
+};
 
 export interface InputColorProps extends InputHTMLAttributes<any> {
     className?: string; // Wrapper class
@@ -16,6 +23,7 @@ export interface InputColorProps extends InputHTMLAttributes<any> {
     style?: CSSProperties; // Wrapper style
 
     variant?: "standard" | "outline";
+    shape?: DShape;
 
     // Style override
     styles?: {
@@ -49,6 +57,7 @@ const InputColor = ({
     styles,
 
     variant = "outline", // standard || outline
+    shape: shapeProp,
     value,
     defaultValue,
     error,
@@ -65,6 +74,9 @@ const InputColor = ({
     onClick,
     ...inputProps
 }: InputColorProps) => {
+    const { shape: contextShape } = useContext(DThemeContext);
+    const shape = shapeProp ?? contextShape;
+
     // Wrapper: flex flex-col to match .d-input-color__container
     const container = classname("flex flex-col w-full", className);
 
@@ -77,9 +89,10 @@ const InputColor = ({
     const inputContainerClass = classname(
         "flex flex-row items-center min-h-[40px] px-4 py-1.5 w-full bg-white transition-all",
         // Borders based on variant
+        { [shapeClasses[shape]]: variant !== "standard" }, // Shape doesn't apply to the underline-only standard variant
         {
-            "border border-neutral-300 rounded": variant === "outline",
-            "border-b border-neutral-300 rounded-none": variant === "standard",
+            "border border-neutral-300": variant === "outline",
+            "border-b border-neutral-300": variant === "standard",
             "bg-neutral-100 cursor-not-allowed opacity-60": disabled,
             "!border-red-500": !!error,
         },

@@ -1,11 +1,17 @@
 // react
 // third-party
-import classname from "classnames";
-import React, { CSSProperties, ReactNode } from "react";
 import { Input } from "antd";
-import { TextAreaProps } from "antd/es/input";
+import classname from "classnames";
+import React, { CSSProperties, ReactNode, useContext } from "react";
+import { DThemeContext, DShape } from "../theme/DThemeProvider";
 import ViewTextError from "../view/ViewTextError";
 import WrapperComponent from "../wrapper/WrapperComponent";
+
+const shapeClasses: Record<DShape, string> = {
+    flat: "!rounded-none",
+    rounded: "!rounded",
+    pilled: "!rounded-full",
+};
 
 // Define strict props for Ant Design Input integration
 export interface InputTextProps {
@@ -27,6 +33,7 @@ export interface InputTextProps {
     };
 
     variant?: "standard" | "outline";
+    shape?: DShape;
     multiple?: boolean;
     defaultValue?: string;
     value?: string | number | readonly string[];
@@ -68,6 +75,7 @@ const InputText = ({
     styles,
 
     variant = "outline", // standard || outline
+    shape: shapeProp,
     multiple,
     value,
     defaultValue,
@@ -91,6 +99,9 @@ const InputText = ({
     size = "middle",
     ...inputProps
 }: InputTextProps) => {
+    const { shape: contextShape } = useContext(DThemeContext);
+    const shape = shapeProp ?? contextShape;
+
     // Wrapper container
     const containerClass = classname("flex flex-col w-full", className);
 
@@ -147,7 +158,7 @@ const InputText = ({
             // For now, mapping 'outline' to default, and 'standard' would need custom CSS or 'borderless' + utility.
             // Let's rely on AntD's default for 'outline'.
             {
-                "!rounded-none": !hasBorderRadiusOverride, // Only enforce 0 radius if not overridden
+                [shapeClasses[shape]]: !hasBorderRadiusOverride && variant !== "standard", // Shape doesn't apply to the underline-only standard variant
                 "!border-b !border-0 !border-b-neutral-300 focus:!shadow-none focus:!border-b-primary":
                     variant === "standard",
 

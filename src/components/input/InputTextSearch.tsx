@@ -1,5 +1,5 @@
 // react
-import React from "react";
+import React, { useContext } from "react";
 
 // third-party
 import classname from "classnames";
@@ -7,11 +7,19 @@ import { Input } from "antd";
 
 // application
 import Icon from "../elements/icon/Icon";
+import { DThemeContext, DShape } from "../theme/DThemeProvider";
+
+const shapeClasses: Record<DShape, string> = {
+    flat: "!rounded-none",
+    rounded: "!rounded",
+    pilled: "!rounded-full",
+};
 
 export interface InputTextSearchProps {
     className?: string;
 
     variant?: "standard" | "outline";
+    shape?: DShape;
 
     value?: string;
     defaultValue?: string;
@@ -36,6 +44,7 @@ export interface InputTextSearchProps {
 const InputTextSearch = ({
     className,
     variant = "outline",
+    shape: shapeProp,
     value,
     defaultValue,
     error,
@@ -49,6 +58,9 @@ const InputTextSearch = ({
     onBlur,
     onSubmit,
 }: InputTextSearchProps) => {
+    const { shape: contextShape } = useContext(DThemeContext);
+    const shape = shapeProp ?? contextShape;
+
     // Merge styles
     const mergedInputStyle = { ...style, ...styles?.input };
 
@@ -59,7 +71,7 @@ const InputTextSearch = ({
     const inputClass = classname(
         "!px-4 !py-2", // Match legacy padding (10px 16px -> py-2.5 px-4)
         {
-            "!rounded-none": !hasBorderRadiusOverride, // Only enforce 0 radius if not overridden
+            [shapeClasses[shape]]: !hasBorderRadiusOverride && variant !== "standard", // Shape doesn't apply to the underline-only standard variant
             // Mimic legacy border styles if needed, but AntD default outline is usually fine.
             // Legacy had border: 0.5px solid #ececec. AntD is 1px.
             // We can enforce legacy border color closer to #ececec if desired, usually border-neutral-200.

@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import ClassNames from "classnames";
 import Icon from "../elements/icon/Icon";
-import { DThemeContext } from "../theme/DThemeProvider";
+import { DThemeContext, DShape } from "../theme/DThemeProvider";
 
 // --- color utilities ---
 
@@ -54,6 +54,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
     disabled?: boolean;
     size?: "large" | "medium" | "small" | "x-small" | "auto" | "fit-content";
     variant?: "standard" | "outline" | "trans";
+    shape?: DShape;
     color?:
         | "primary"
         | "secondary"
@@ -83,6 +84,7 @@ const Button: React.FC<ButtonProps> = ({
     type = "button",
     size = "medium",
     variant = "standard",
+    shape: shapeProp,
     color = "primary",
     disabled = false,
     suffixIcon,
@@ -94,7 +96,8 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
     // primary/secondary read from context so the correct color is available on the first render,
     // preventing any flash caused by the CSS transition animating from the default to the real color.
-    const { colorPrimary } = useContext(DThemeContext);
+    const { colorPrimary, shape: contextShape } = useContext(DThemeContext);
+    const shape = shapeProp ?? contextShape;
     const [hovered, setHovered] = useState(false);
 
     const bgHex = (color === "primary" || color === "secondary")
@@ -137,9 +140,16 @@ const Button: React.FC<ButtonProps> = ({
         "fit-content": "w-fit h-auto",
     };
 
+    const shapeClasses: Record<DShape, string> = {
+        flat: "rounded-none",
+        rounded: "rounded",
+        pilled: "rounded-full",
+    };
+
     const buttonClass = ClassNames(
-        "flex items-center justify-center whitespace-nowrap rounded border transition-all duration-200 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed font-medium",
+        "flex items-center justify-center whitespace-nowrap border transition-all duration-200 focus:outline-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed font-medium",
         sizeClasses[size as keyof typeof sizeClasses] || sizeClasses.medium,
+        shapeClasses[shape],
         {
             "font-bold": variant === "trans",
             "p-2": iconName && !content && !children,
