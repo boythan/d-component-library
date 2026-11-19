@@ -133,7 +133,8 @@ Props are the same as v0.3.x except:
 | `InputText` | `key` removed from the props type (React's own `key` still works) |
 | `Button` | colour comes from `DThemeProvider` (default `#2196f3`), not from your CSS — see [Theming](#theming) |
 | `DateInput`, `TimeUtils` | Day.js instead of Moment.js |
-| `AwesomeTableComponent` | 1.0.0 rendered every row with `whitespace-nowrap`, so long cell text overflowed into neighbouring columns. Fixed in the next release (rows wrap again; pass `rowClassName` to override). |
+| `AwesomeTableComponent` | 1.0.0 rendered every row with `whitespace-nowrap`, so long cell text overflowed into neighbouring columns. Fixed in 1.0.1 (rows wrap again; pass `rowClassName` to override). |
+| `TabBar` | Styled with Tailwind classes. In 1.0.0–1.0.1 the items had primary-coloured text, rounded corners and no `d-tab-bar*` classes; from 1.0.2 the 0.3.x class names (`d-tab-bar`, `d-tab-bar__vertical`, `d-tab-bar__item-active`, …) are back as styling hooks, so app CSS written for 0.3.x applies again. With Bootstrap loaded, its `.border` / `.py-4` override the items' Tailwind border and padding — restore them in app CSS on the hook classes if needed. |
 
 ---
 
@@ -293,10 +294,35 @@ following `<html lang>`:
 ```
 
 The library's Tailwind styles read `--app-font`. It defines both `--app-font` and the v0.3.x `--appFont`
-as Poppins for `:lang(en)` and Prompt for `:lang(th)`. To use another font, override both, outside a layer:
+as Poppins (Prompt for `:lang(th)`). To use another font, override both, outside a layer:
 
 ```css
 :root:lang(en) { --app-font: "Inter", sans-serif; --appFont: "Inter", sans-serif; }
+```
+
+**The library does not load font files.** 1.0.x imported Poppins (all nine weights) from Google Fonts
+inside `index.css`; from 1.0.2 it only names the font, and the app loads it. Without this, text falls
+back to the browser's sans-serif font. Load only the weights you use, either from Google Fonts:
+
+```html
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Prompt:wght@400;500;600;700&display=swap"
+/>
+```
+
+or self-hosted (no requests to Google, works offline and under a strict CSP):
+
+```bash
+npm install @fontsource/poppins @fontsource/prompt
+```
+
+```tsx
+import "@fontsource/poppins/400.css";
+import "@fontsource/poppins/600.css";
+import "@fontsource/prompt/400.css"; // only if you have a Thai locale
 ```
 
 ---
@@ -309,7 +335,7 @@ as Poppins for `:lang(en)` and Prompt for `:lang(th)`. To use another font, over
 4. Apply antd v6 changes to direct antd usage (`visible` → `open`, `overlay` → `menu`, …); remove any `antd/dist/antd.css` import.
 5. Change the CSS import to `d-react-components/dist/es/index.css`.
 6. Restore the global styles you relied on: Bootstrap, typography, utility classes, `_variables.scss`.
-7. Wrap the app in `DThemeProvider` with your `colorPrimary` (and `fontFamily`).
+7. Wrap the app in `DThemeProvider` with your `colorPrimary` (and `fontFamily`), and load Poppins / Prompt in the app ([Font](#font)).
 8. Search your CSS for global rules on Tailwind utility names (`.block`, `.flex`, `.hidden`, …).
 9. Check visually: buttons with icons, tables with long text, modals, date pickers, forms, and every brand theme if you have more than one.
 
@@ -326,9 +352,10 @@ as Poppins for `:lang(en)` and Prompt for `:lang(th)`. To use another font, over
 | Buttons and antd components are blue | no `DThemeProvider`, or `antd/dist/antd.css` imported | add `DThemeProvider`; remove `antd.css` |
 | Fonts, link colours, text sizes look like browser defaults | v0.3.x global styles gone | see [Global styles](#global-styles-are-no-longer-included) |
 | Button icons drawn above the button | a global `.block { margin… }` rule overrides Tailwind's `block` | remove/rename the global rule |
-| Table cell text overlaps the next column | `whitespace-nowrap` on rows in 1.0.0 | upgrade to the fixed release, or pass `rowClassName={() => "align-middle"}` |
+| Table cell text overlaps the next column | `whitespace-nowrap` on rows in 1.0.0 | upgrade to 1.0.1+, or pass `rowClassName={() => "align-middle"}` |
 | Date pickers throw a `… is not a function` TypeError or show an invalid date | Moment object passed to a Day.js API | convert to `dayjs(...)` |
 | antd component font differs from the app | antd default font token | `token.fontFamily` in `DThemeProvider` |
+| Text falls back to a generic sans-serif after upgrading to 1.0.2 | the library no longer loads Poppins | load the font in the app ([Font](#font)) |
 
 ---
 

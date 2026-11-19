@@ -1,10 +1,7 @@
 @layer base, components, antd, utilities;
+/* No web-font @import here: the library does not load fonts; apps load Poppins / Prompt themselves. */
 @import "tailwindcss";
 @import "antd/dist/reset.css" layer(antd);
-
-:root {
-    --ant-modal-content-padding: 0;
-}
 
 @theme {
     --color-primary: #2196f3;

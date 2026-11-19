@@ -5,6 +5,42 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Fixed
+- **TabBar:** tab items are styled by TabBar's own classes again. Each item is a `Button`, whose inline colours
+  (`color`, `background-color`, `border-color`), rounded corners and fixed height overrode the tab styles, so
+  inactive tabs showed primary-coloured text. Items now render with `shape="flat"`, `size="auto"` and no inline
+  colours (`getItemProps().style` still applies).
+- **TabBar:** inactive tabs used the non-existent class `text-main`; now `text-text-main` (`--color-text-main`).
+- **Styles:** the Poppins font import was in `style.css`, which the bundle appends after the Tailwind output, so
+  it ended up mid-stylesheet (with a stray `@charset`) where browsers ignore it. It is now a single import
+  (weights 100–900) at the top of `index.css`.
+
+### Added
+- **TabBar:** 0.3.x class names are back as styling hooks: `d-tab-bar`, `d-tab-bar__horizontal` /
+  `d-tab-bar__vertical` on the wrapper; `d-tab-bar__item`, `d-tab-bar__item-active` / `d-tab-bar__item-inactive`
+  and `d-tab-bar__item-active-indicator-<indicator>` on items.
+
+## [1.0.2] - 2026-11-19
+
+### Changed
+- **Fonts are no longer loaded by the library.** `index.css` no longer `@import`s Poppins from Google Fonts
+  (a render-blocking request for all nine weights, made from every app's users). The `--app-font` / `--appFont`
+  variables still name Poppins (Prompt for `:lang(th)`); **apps must load the font themselves** — see
+  `MIGRATION_GUIDE_V1.md` → Font. Without it, text falls back to the browser's sans-serif font.
+- `--app-font` / `--appFont` now default to Poppins on every page, not only `:lang(en)`.
+- **TabBar:** the 0.3.x class names (`d-tab-bar`, `d-tab-bar__<variant>`, `d-tab-bar__item`,
+  `d-tab-bar__item-active` / `-inactive`, `d-tab-bar__item-active-indicator-<side>`) are back as styling hooks.
+  Items are square (`shape="flat"`), have no fixed height, and no longer get `Button`'s inline primary colour,
+  so the tab's own text / background / border classes apply. Inactive text uses `text-text-main` (the previous
+  `text-main` class did not exist).
+
+### Removed
+- Unlayered global `html { font-size: 16px }` and `body { font-family }` rules, which overrode apps' layered CSS.
+  Tailwind's preflight already applies `--app-font` to `<html>` inside `@layer base`.
+- Global `:root { --ant-modal-content-padding: 0 }` (leftover of the app-wide Modal override removed in 1.0.1).
+
 ## [1.0.1] - 2026-11-19
 
 ### Fixed

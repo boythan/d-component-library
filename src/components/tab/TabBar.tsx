@@ -50,7 +50,10 @@ const TabBar: React.FC<TabBarProps<ITabItem>> = ({
     minWidthItem = 200,
     hideScrollBar = true,
 }) => {
+    // `d-tab-bar*` classes are styling hooks (same names as 0.3.x) so apps can keep their TabBar overrides.
     const wrapperClass = ClassNames(
+        "d-tab-bar",
+        `d-tab-bar__${variant}`,
         "bg-transparent w-full",
         {
             flex: variant === "horizontal",
@@ -77,6 +80,12 @@ const TabBar: React.FC<TabBarProps<ITabItem>> = ({
 
                 // Specific logic for horizontal/vertical and active/inactive states
                 const itemClass = ClassNames(
+                    "d-tab-bar__item",
+                    {
+                        "d-tab-bar__item-active": isSelect,
+                        "d-tab-bar__item-inactive": !isSelect,
+                        [`d-tab-bar__item-active-indicator-${activeIndicator}`]: isSelect,
+                    },
                     baseItemClass,
                     {
                         // Active State (Horizontal)
@@ -87,7 +96,7 @@ const TabBar: React.FC<TabBarProps<ITabItem>> = ({
                         "font-semibold text-primary bg-white border-0": isSelect && variant === "vertical",
 
                         // Inactive State
-                        "bg-muted text-main hover:bg-white hover:text-main": !isSelect,
+                        "bg-muted text-text-main hover:bg-white hover:text-text-main": !isSelect,
 
                         // Indicators
                         "border-b-[3px] border-b-primary": isSelect && activeIndicator === "bottom",
@@ -113,15 +122,27 @@ const TabBar: React.FC<TabBarProps<ITabItem>> = ({
                 if (getItemProps) {
                     buttonProps = getItemProps({ item: tabItem, isActive: isSelect, index, className: itemClass });
                 }
+                const { style: itemStyle, ...restButtonProps } = buttonProps ?? {};
                 return (
                     <Button
                         className={itemClass}
                         onClick={() => onChange && onChange(tabItem)}
                         key={index}
-                        variant="trans" // Keep variant trans as it likely just removes default button styles
+                        variant="trans"
+                        // Tab items are styled by the classes above, not by Button: no rounded corners, no fixed
+                        // height, and Button's inline colours are cleared (undefined) so they don't override
+                        // the tab's text / background / border classes.
+                        shape="flat"
+                        size="auto"
                         iconName={icon}
-                        style={{ minWidth: activateScroll ? `${minWidthItem}px` : undefined }}
-                        {...buttonProps}
+                        {...restButtonProps}
+                        style={{
+                            color: undefined,
+                            backgroundColor: undefined,
+                            borderColor: undefined,
+                            minWidth: activateScroll ? `${minWidthItem}px` : undefined,
+                            ...itemStyle,
+                        }}
                     >
                         {label}
                     </Button>

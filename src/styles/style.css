@@ -1,21 +1,13 @@
-@charset "UTF-8";
-@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
-@import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900");
+/* Font variables only. The library does not load any font files: the app loads Poppins / Prompt itself
+   (see MIGRATION_GUIDE_V1.md → Font). Tailwind's preflight (in @layer base) applies --app-font to <html>
+   through --font-sans, so no unlayered html/body rules are needed here. */
 
-:root:lang(en) {
-    --appFont: "Poppins", Sans-serif;
+:root {
+    --appFont: "Poppins", sans-serif;
     --app-font: "Poppins", sans-serif;
 }
 
 :root:lang(th) {
-    --appFont: "Prompt", Sans-serif;
+    --appFont: "Prompt", sans-serif;
     --app-font: "Prompt", sans-serif;
-}
-
-html {
-    font-size: 16px;
-}
-
-body {
-    font-family: var(--appFont);
 }
