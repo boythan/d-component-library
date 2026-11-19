@@ -170,7 +170,9 @@ const Modal: React.FC<ModalProps> = ({
             closable={closable}
             width={computedWidth}
             footer={null}
-            styles={{ body: { padding: 0 } }}
+            // This Modal draws its own header/content/footer padding, so antd's container and body
+            // padding are removed here (per instance) instead of globally in DThemeProvider.
+            styles={{ container: { padding: 0 }, body: { padding: 0 } }}
             {...props}
         >
             {showHeader && header()}

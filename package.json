@@ -1,13 +1,15 @@
 {
   "name": "d-react-components",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/cjs/dcomponent.js",
   "module": "dist/es/dcomponent.js",
   "typings": "dist/types/dcomponent.d.ts",
   "style": "dist/es/index.css",
   "source": "src/dcomponent.tsx",
   "files": [
-    "dist"
+    "dist",
+    "MIGRATION_GUIDE_V1.md",
+    "CHANGELOG.md"
   ],
   "exports": {
     ".": {

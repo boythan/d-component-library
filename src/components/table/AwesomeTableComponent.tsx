@@ -477,7 +477,10 @@ const AwesomeTableComponent = forwardRef<AwesomeTableComponentRef, AwesomeTableC
                 dataSource={data}
                 loading={loading}
                 onChange={handleTableChange}
-                rowClassName={() => "align-middle whitespace-nowrap"} // d-table-awesome-component__row
+                // Cells must be able to wrap: with tableLayout "fixed" (the default when isScroll) and
+                // column widths, `whitespace-nowrap` made long text overflow into neighbouring columns.
+                // Pass `rowClassName` to override (e.g. "whitespace-nowrap" for single-line rows).
+                rowClassName={() => "d-table-awesome-component__row align-middle"}
                 pagination={paginationResult}
                 scroll={isScroll ? { y: "1000px", x: "max-content" } : {}}
                 tableLayout={tableLayout}

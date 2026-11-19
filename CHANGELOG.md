@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.1] - 2026-11-19
+
+### Fixed
+- **AwesomeTableComponent:** table cells wrap text again. 1.0.0 added `whitespace-nowrap` to every row, so with
+  the default `tableLayout="fixed"` and column widths, long text overflowed into neighbouring columns.
+  Rows now get `d-table-awesome-component__row align-middle` (the 0.3.x class is back as a styling hook).
+  Pass `rowClassName` to opt back into single-line rows.
+- **DThemeProvider / Modal:** `DThemeProvider` no longer sets antd's `Modal.contentPadding` to `0` for the whole
+  app, which removed the padding from every plain antd `Modal`. The library's own `Modal` now removes antd's
+  container and body padding on its own instances (`styles.container` / `styles.body`) instead.
+
+### Documentation
+- `MIGRATION_GUIDE_V1.md`: corrected the CSS import path, the component-API and Bootstrap→Tailwind sections,
+  and added theming, removed global styles, CSS-layer conflicts, and tooling requirements.
+- `MIGRATION_GUIDE_V1.md` and `CHANGELOG.md` are now included in the published package (the README links to them).
+
 ## [1.0.0] - 2024-12-08
 
 ### 🎉 Major Release

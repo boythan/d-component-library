@@ -46,8 +46,9 @@ const DThemeProvider: React.FC<DThemeProviderProps> = ({ children, theme, shape 
             colorBorderSecondary: "#ECECEC",
             ...theme?.token,
         },
+        // No global Modal override: d-react-components' Modal removes its own padding per instance
+        // (see Modal.tsx), so plain antd Modals in the app keep antd's default padding.
         components: {
-            Modal: { contentPadding: 0 } as any,
             ...theme?.components,
         },
     };
