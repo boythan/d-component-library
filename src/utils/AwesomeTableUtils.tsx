@@ -58,7 +58,7 @@ export const transformColumn = (columns: Array<any> = [], baseColumn: any = {}):
     const visibleColumn = _.filter(columns, (item) => !item.hidden);
     return _.map(
         visibleColumn,
-        ({ title, titleTooltip, dataIndex, render, mobileTitle, ...props }: any, index: number) => {
+        ({ title, titleTooltip, dataIndex, render, mobileTitle, onCell, ...props }: any, index: number) => {
             // custom title
             let titleResult: any = title;
             let mobileTitleResult: any = title;
@@ -77,6 +77,12 @@ export const transformColumn = (columns: Array<any> = [], baseColumn: any = {}):
             if (mobileTitle) {
                 mobileTitleResult = mobileTitle;
             }
+            // `data-title` (cell label for the mobile layout) is only set when the title is plain text:
+            // a React element or function title would be an invalid DOM attribute value.
+            const dataTitle =
+                typeof mobileTitleResult === "string" || typeof mobileTitleResult === "number"
+                    ? String(mobileTitleResult)
+                    : undefined;
             return {
                 ...baseColumn,
                 id: `${index}`,
@@ -84,16 +90,14 @@ export const transformColumn = (columns: Array<any> = [], baseColumn: any = {}):
                 align: "left",
                 isDefault: true,
                 dataIndex,
-                render: (data: any, item: any, index: number) => {
-                    let content = data;
-                    if (typeof render === "function") {
-                        content = render(data, item, index);
-                    }
-                    return {
-                        children: content,
-                        props: { "data-title": mobileTitleResult },
-                    };
-                },
+                render: (data: any, item: any, rowIndex: number) =>
+                    typeof render === "function" ? render(data, item, rowIndex) : data,
+                // Cell attributes go through onCell: returning `{ children, props }` from render is deprecated
+                // in antd (performance). A column's own onCell is kept and merged.
+                onCell: (record: any, rowIndex?: number) => ({
+                    ...(dataTitle !== undefined ? { "data-title": dataTitle } : {}),
+                    ...(typeof onCell === "function" ? onCell(record, rowIndex) : {}),
+                }),
                 ...props,
             };
         }

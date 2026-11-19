@@ -5,22 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [1.0.3] - 2026-11-19
 
 ### Fixed
-- **TabBar:** tab items are styled by TabBar's own classes again. Each item is a `Button`, whose inline colours
-  (`color`, `background-color`, `border-color`), rounded corners and fixed height overrode the tab styles, so
-  inactive tabs showed primary-coloured text. Items now render with `shape="flat"`, `size="auto"` and no inline
-  colours (`getItemProps().style` still applies).
-- **TabBar:** inactive tabs used the non-existent class `text-main`; now `text-text-main` (`--color-text-main`).
-- **Styles:** the Poppins font import was in `style.css`, which the bundle appends after the Tailwind output, so
-  it ended up mid-stylesheet (with a stray `@charset`) where browsers ignore it. It is now a single import
-  (weights 100–900) at the top of `index.css`.
-
-### Added
-- **TabBar:** 0.3.x class names are back as styling hooks: `d-tab-bar`, `d-tab-bar__horizontal` /
-  `d-tab-bar__vertical` on the wrapper; `d-tab-bar__item`, `d-tab-bar__item-active` / `d-tab-bar__item-inactive`
-  and `d-tab-bar__item-active-indicator-<indicator>` on items.
+- **AwesomeTableComponent:** columns no longer return `{ children, props }` from `render` (deprecated in antd for
+  performance; it logged "`columns.render` return cell props is deprecated"). The cell's `data-title` (mobile label)
+  is now set through `onCell`, merged with the column's own `onCell`, and only when the title is plain text: a
+  React-element title produced "Invalid value for prop `data-title`".
+- **Select:** passes the dropdown arrow as `suffix` (antd 6) instead of the deprecated `suffixIcon`.
+- **Modal:** `maskClosable` is converted to antd 6's `mask={{ closable }}` (no more deprecation warning); `mask`
+  is still accepted and merged.
 
 ## [1.0.2] - 2026-11-19
 

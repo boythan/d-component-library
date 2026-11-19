@@ -222,7 +222,7 @@ const Select: React.ForwardRefRenderFunction<SelectMethod, SelectProps> = (
                         );
                     },
                 }}
-                suffixIcon={<Icon name="expand_more" />}
+                suffix={<Icon name="expand_more" />} // antd 6: `suffixIcon` is deprecated
                 variant={antdVariant}
                 {...props}
                 ref={selectRef}

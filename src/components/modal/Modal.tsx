@@ -75,9 +75,16 @@ const Modal: React.FC<ModalProps> = ({
     disabledSaveButton,
     titleAlign = "center",
     styleContent,
+    maskClosable,
+    mask,
     ...props
 }) => {
     const computedWidth = (size && SIZE_WIDTH[size]) ?? width;
+    // antd 6 deprecated `maskClosable` in favour of `mask.closable`; keep accepting `maskClosable`.
+    const mergedMask =
+        maskClosable === undefined
+            ? mask
+            : { ...(typeof mask === "object" && mask ? mask : {}), closable: maskClosable };
 
     const headerClass = ClassNames(
         "border-b py-2",
@@ -173,6 +180,7 @@ const Modal: React.FC<ModalProps> = ({
             // This Modal draws its own header/content/footer padding, so antd's container and body
             // padding are removed here (per instance) instead of globally in DThemeProvider.
             styles={{ container: { padding: 0 }, body: { padding: 0 } }}
+            mask={mergedMask}
             {...props}
         >
             {showHeader && header()}
